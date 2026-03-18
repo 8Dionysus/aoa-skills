@@ -72,6 +72,12 @@ Write for portability:
 - keep runtime assumptions explicit
 - prefer small explicit workflow contracts
 
+## Local working notes
+
+- `TODO.local.md` and `PLANS.local.md` are local-only working files for private task control
+- keep them out of git
+- `docs/ROADMAP.md` is the public roadmap and must remain visible to git
+
 ## Contribution doctrine
 
 Use this flow:
