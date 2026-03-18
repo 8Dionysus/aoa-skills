@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - This scaffold is explicit-only because it classifies authority and execution boundaries for potentially sensitive actions.
