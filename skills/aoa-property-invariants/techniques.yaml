@@ -1,0 +1,23 @@
+skill_name: aoa-property-invariants
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-PROPERTY-INVARIANTS
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/testing/property-invariants/TECHNIQUE.md
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0007
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md
+    use_sections:
+      - summary
+      - Validation
+notes:
+  - Replace AOA-T-PENDING-PROPERTY-INVARIANTS with the real technique ID once published in aoa-techniques.
