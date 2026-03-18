@@ -1,0 +1,22 @@
+skill_name: aoa-change-protocol
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0001
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0002
+    repo: 8Dionysus/aoa-techniques
+    path: TECHNIQUE_INDEX.md
+    use_sections:
+      - summary
+notes:
+  - Replace the temporary AOA-T-0002 placeholder path with the canonical technique path once docs-source technique bundles are mirrored here more precisely.

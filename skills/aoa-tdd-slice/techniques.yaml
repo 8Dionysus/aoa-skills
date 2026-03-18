@@ -1,0 +1,23 @@
+skill_name: aoa-tdd-slice
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-TDD
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/testing/tdd-slice/TECHNIQUE.md
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0001
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
+    use_sections:
+      - Contracts
+      - Validation
+notes:
+  - Replace AOA-T-PENDING-TDD with the real technique ID once published in aoa-techniques.

@@ -1,0 +1,18 @@
+skill_name: skill-name
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0001
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/<domain>/<technique>/TECHNIQUE.md
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Keep runtime SKILL.md self-contained.
+  - Refresh this manifest when dependent techniques evolve.

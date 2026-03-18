@@ -1,0 +1,22 @@
+skill_name: aoa-bounded-context-map
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-BOUNDED-CONTEXT
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/architecture/bounded-context-map/TECHNIQUE.md
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0002
+    repo: 8Dionysus/aoa-techniques
+    path: TECHNIQUE_INDEX.md
+    use_sections:
+      - summary
+notes:
+  - Replace AOA-T-PENDING-BOUNDED-CONTEXT with the real technique ID once published in aoa-techniques.
