@@ -1,0 +1,22 @@
+skill_name: aoa-contract-test
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0003
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md
+    use_sections:
+      - Intent
+      - When to use
+      - Outputs
+      - Contracts
+      - Validation
+  - id: AOA-T-PENDING-CONTRACT-TEST
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/testing/contract-test-design/TECHNIQUE.md
+    use_sections:
+      - Intent
+      - Inputs
+      - Core procedure
+      - Risks
+notes:
+  - Replace AOA-T-PENDING-CONTRACT-TEST with the real technique ID once published in aoa-techniques.
