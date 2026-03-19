@@ -93,13 +93,8 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository is in bootstrap mode.
-The current goal is to establish:
-- docs and repository doctrine
-- bridge rules between techniques and skills
-- templates and conventions
-- first starter core skills
-- the path toward thin project overlays
+This repository now has a public core of 13 scaffold skills with first support artifacts.
+The next focus is strengthening technique traceability so each skill has an honest bridge manifest to `aoa-techniques`.
 
 ## Contribution model
 

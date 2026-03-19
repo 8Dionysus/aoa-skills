@@ -15,8 +15,6 @@ techniques:
       - Validation
   - id: AOA-T-0002
     repo: 8Dionysus/aoa-techniques
-    path: TECHNIQUE_INDEX.md
+    path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
     use_sections:
       - summary
-notes:
-  - Replace the temporary AOA-T-0002 placeholder path with the canonical technique path once docs-source technique bundles are mirrored here more precisely.

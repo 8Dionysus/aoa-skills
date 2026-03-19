@@ -1,9 +1,9 @@
-skill_name: aoa-bounded-context-map
+skill_name: aoa-source-of-truth-check
 composition_mode: bounded
 techniques:
-  - id: AOA-T-0016
+  - id: AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK
     repo: 8Dionysus/aoa-techniques
-    path: techniques/docs/bounded-context-map/TECHNIQUE.md
+    path: TBD
     use_sections:
       - Intent
       - When to use
@@ -17,4 +17,13 @@ techniques:
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
     use_sections:
-      - summary
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Replace AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK and path TBD after the upstream technique is published in aoa-techniques.

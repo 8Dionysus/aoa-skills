@@ -1,9 +1,9 @@
-skill_name: aoa-tdd-slice
+skill_name: aoa-safe-infra-change
 composition_mode: bounded
 techniques:
-  - id: AOA-T-0014
+  - id: AOA-T-PENDING-SAFE-INFRA-CHANGE
     repo: 8Dionysus/aoa-techniques
-    path: techniques/agent-workflows/tdd-slice/TECHNIQUE.md
+    path: TBD
     use_sections:
       - Intent
       - When to use
@@ -17,5 +17,10 @@ techniques:
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
     use_sections:
+      - Intent
+      - Outputs
       - Contracts
+      - Risks
       - Validation
+notes:
+  - Replace AOA-T-PENDING-SAFE-INFRA-CHANGE and path TBD after the upstream technique is published in aoa-techniques.

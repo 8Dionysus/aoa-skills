@@ -10,13 +10,11 @@ techniques:
       - Outputs
       - Contracts
       - Validation
-  - id: AOA-T-PENDING-CONTRACT-TEST
+  - id: AOA-T-0015
     repo: 8Dionysus/aoa-techniques
-    path: techniques/testing/contract-test-design/TECHNIQUE.md
+    path: techniques/evaluation/contract-test-design/TECHNIQUE.md
     use_sections:
       - Intent
       - Inputs
       - Core procedure
       - Risks
-notes:
-  - Replace AOA-T-PENDING-CONTRACT-TEST with the real technique ID once published in aoa-techniques.
