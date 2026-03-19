@@ -96,6 +96,26 @@ A typical skill bundle contains:
 This repository now has a public core of 13 scaffold skills with first support artifacts.
 The next focus is strengthening technique traceability so each skill has an honest bridge manifest to `aoa-techniques`.
 
+## Local validation
+
+Install the validator dependency:
+
+```bash
+python -m pip install -r requirements-dev.txt
+```
+
+Run the full repository check:
+
+```bash
+python scripts/validate_skills.py
+```
+
+Run a single skill check:
+
+```bash
+python scripts/validate_skills.py --skill aoa-change-protocol
+```
+
 ## Contribution model
 
 A skill is usually shaped from one or more real techniques.
