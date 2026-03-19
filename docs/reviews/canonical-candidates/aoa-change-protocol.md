@@ -3,7 +3,7 @@
 ## Current status
 
 - current maturity status: `evaluated`
-- promotion decision in this pass: direct `scaffold -> evaluated`
+- canonical decision status: ready for a separate `canonical` promotion PR
 - candidate set: first canonical-candidate review pass
 - scope: `core`
 - current lineage: manifest-aligned to published techniques `AOA-T-0001` and `AOA-T-0002`
@@ -32,15 +32,15 @@
 - the review checklist reinforces the same bounded workflow without widening scope
 - linked evidence is already covered by manifest-aligned published technique lineage and pinned source refs
 - reviewed evidence is already covered by this explicit candidate review pass and the aligned support artifact
+- the skill already reads like a stable default-use workflow rather than a narrow one-project specialization
 
 ## Gaps and blockers
 
-- no blocker was found for promotion to `evaluated`
-- this promotion intentionally stops short of `canonical`; passing the canonical gate is not the same as choosing the public reference surface for this workflow class
-- any future canonical proposal should still compare this candidate against the rest of the first candidate set and record an explicit reference-surface rationale
+- no current blocker remains for opening a separate `canonical` promotion PR
+- the promotion PR should still record explicit default-use rationale, even though the mechanical gate is already passing
+- the historical first cohort should still be documented comparatively rather than treated as an automatic gate consequence
 
 ## Recommendation
 
-Promote `aoa-change-protocol` to `evaluated` in this pass.
-A direct `scaffold -> evaluated` move is acceptable here because linked evidence is already covered by current manifest alignment and reviewed evidence is already covered by this candidate review pass.
-Do not promote it to `canonical` yet; that should remain a separate explicit decision.
+Treat `aoa-change-protocol` as ready for the next separate `canonical` promotion PR.
+No additional review refresh is needed before that PR; the remaining work is the explicit promotion decision itself and its recorded default-use rationale.
