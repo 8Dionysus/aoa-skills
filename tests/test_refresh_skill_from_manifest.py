@@ -30,7 +30,7 @@ PUBLISHED_TECHNIQUE = {
 
 
 class RefreshSkillFromManifestTests(unittest.TestCase):
-    def make_repo(self) -> Path:
+    def make_repo(self, *, use_sections: list[str] | None = None) -> Path:
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-refresh-"))
         self.addCleanup(shutil.rmtree, repo_root, True)
         skills_dir = repo_root / "skills"
@@ -102,13 +102,62 @@ class RefreshSkillFromManifestTests(unittest.TestCase):
         manifest = {
             "skill_name": "aoa-test-skill",
             "composition_mode": "bounded",
-            "techniques": [PUBLISHED_TECHNIQUE],
+            "techniques": [
+                {
+                    **PUBLISHED_TECHNIQUE,
+                    "use_sections": use_sections or PUBLISHED_TECHNIQUE["use_sections"],
+                }
+            ],
         }
         (skill_dir / "techniques.yaml").write_text(
             yaml.safe_dump(manifest, sort_keys=False),
             encoding="utf-8",
         )
         return repo_root
+
+    def align_skill_to_manifest(self, repo_root: Path) -> None:
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        _, frontmatter_lines, body = refresh_skill_from_manifest.parse_skill_document(
+            skill_md_path
+        )
+        manifest = yaml.safe_load(
+            (repo_root / "skills" / "aoa-test-skill" / "techniques.yaml").read_text(
+                encoding="utf-8"
+            )
+        )
+        frontmatter_lines = refresh_skill_from_manifest.replace_technique_dependencies(
+            frontmatter_lines,
+            [technique["id"] for technique in manifest["techniques"]],
+        )
+        body = refresh_skill_from_manifest.replace_traceability_section(
+            body, manifest["techniques"]
+        )
+        skill_md_path.write_text(
+            refresh_skill_from_manifest.render_skill_document(frontmatter_lines, body),
+            encoding="utf-8",
+        )
+
+    def remove_section(self, repo_root: Path, heading: str) -> None:
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        lines = skill_md_path.read_text(encoding="utf-8").splitlines()
+        start_index = None
+        end_index = len(lines)
+        heading_line = f"## {heading}"
+
+        for index, line in enumerate(lines):
+            if line.strip() == heading_line:
+                start_index = index
+                for next_index in range(index + 1, len(lines)):
+                    if lines[next_index].startswith("## "):
+                        end_index = next_index
+                        break
+                break
+
+        if start_index is None:
+            raise AssertionError(f"missing section {heading_line}")
+
+        updated = lines[:start_index] + lines[end_index:]
+        skill_md_path.write_text("\n".join(updated).strip() + "\n", encoding="utf-8")
 
     def run_main(self, repo_root: Path, argv: list[str] | None = None) -> tuple[int, str, str]:
         stdout = io.StringIO()
@@ -126,43 +175,47 @@ class RefreshSkillFromManifestTests(unittest.TestCase):
         self.assertEqual(0, status)
         self.assertEqual("", stderr)
         self.assertIn("Skill: aoa-test-skill", stdout)
-        self.assertIn("Status: needs refresh", stdout)
+        self.assertIn("Alignment: needs refresh", stdout)
+        self.assertIn("Bridge coverage: complete", stdout)
         self.assertIn("-## Future traceability", stdout)
         self.assertIn("+## Technique traceability", stdout)
         self.assertIn("+  - AOA-T-0001", stdout)
 
     def test_aligned_skill_reports_already_aligned(self) -> None:
         repo_root = self.make_repo()
-        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         proposed = refresh_skill_from_manifest.build_refresh_result(
             repo_root, "aoa-test-skill"
         )
         current_text = proposed.diff.splitlines()
         self.assertTrue(current_text)
-
-        _, frontmatter_lines, body = refresh_skill_from_manifest.parse_skill_document(
-            skill_md_path
-        )
-        manifest = yaml.safe_load(
-            (repo_root / "skills" / "aoa-test-skill" / "techniques.yaml").read_text(
-                encoding="utf-8"
-            )
-        )
-        frontmatter_lines = refresh_skill_from_manifest.replace_technique_dependencies(
-            frontmatter_lines, [PUBLISHED_TECHNIQUE["id"]]
-        )
-        body = refresh_skill_from_manifest.replace_traceability_section(
-            body, manifest["techniques"]
-        )
-        skill_md_path.write_text(
-            refresh_skill_from_manifest.render_skill_document(frontmatter_lines, body),
-            encoding="utf-8",
-        )
+        self.align_skill_to_manifest(repo_root)
 
         status, stdout, stderr = self.run_main(repo_root)
         self.assertEqual(0, status)
         self.assertEqual("", stderr)
+        self.assertIn("Alignment: already aligned", stdout)
+        self.assertIn("Bridge coverage: complete", stdout)
         self.assertIn("Status: already aligned", stdout)
+
+    def test_aligned_skill_reports_bridge_coverage_gaps(self) -> None:
+        repo_root = self.make_repo(
+            use_sections=["summary", "When to use", "When not to use", "Contracts"]
+        )
+        self.align_skill_to_manifest(repo_root)
+        self.remove_section(repo_root, "Contracts")
+
+        status, stdout, stderr = self.run_main(repo_root)
+        self.assertEqual(0, status)
+        self.assertEqual("", stderr)
+        self.assertIn("Alignment: already aligned", stdout)
+        self.assertIn("Bridge coverage: gaps detected", stdout)
+        self.assertIn(
+            "- AOA-T-0001: missing `Contracts` coverage via `## Contracts`",
+            stdout,
+        )
+        self.assertNotIn("missing `summary` coverage", stdout)
+        self.assertNotIn("missing `When to use` coverage", stdout)
+        self.assertNotIn("missing `When not to use` coverage", stdout)
 
     def test_write_without_skill_returns_error_and_does_not_mutate(self) -> None:
         repo_root = self.make_repo()
@@ -185,7 +238,8 @@ class RefreshSkillFromManifestTests(unittest.TestCase):
         )
         self.assertEqual(0, status)
         self.assertEqual("", stderr)
-        self.assertIn("Status: refreshed", stdout)
+        self.assertIn("Write result: refreshed", stdout)
+        self.assertIn("Bridge coverage: complete", stdout)
         self.assertIn("Updated: skills/aoa-test-skill/SKILL.md", stdout)
         self.assertNotEqual(original, skill_md_path.read_text(encoding="utf-8"))
 
@@ -194,4 +248,24 @@ class RefreshSkillFromManifestTests(unittest.TestCase):
         )
         self.assertEqual(0, status)
         self.assertEqual("", stderr)
-        self.assertIn("Status: already aligned", stdout)
+        self.assertIn("Alignment: already aligned", stdout)
+
+    def test_write_does_not_invent_missing_bridge_sections(self) -> None:
+        repo_root = self.make_repo(use_sections=["Intent", "Contracts"])
+        self.remove_section(repo_root, "Contracts")
+
+        status, stdout, stderr = self.run_main(
+            repo_root, ["--write", "--skill", "aoa-test-skill"]
+        )
+        self.assertEqual(0, status)
+        self.assertEqual("", stderr)
+        self.assertIn("Write result: refreshed", stdout)
+        self.assertIn("Bridge coverage: gaps detected", stdout)
+        self.assertIn(
+            "- AOA-T-0001: missing `Contracts` coverage via `## Contracts`",
+            stdout,
+        )
+
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        updated = skill_md_path.read_text(encoding="utf-8")
+        self.assertNotIn("## Contracts", updated)
