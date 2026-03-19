@@ -1,0 +1,17 @@
+skill_name: aoa-core-logic-boundary
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-CORE-LOGIC-BOUNDARY
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Replace AOA-T-PENDING-CORE-LOGIC-BOUNDARY and path TBD after the upstream technique is published in aoa-techniques.

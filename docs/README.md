@@ -30,7 +30,7 @@ an executable workflow for Codex.
 
 ## Current repository phase
 
-This repository is in bootstrap mode.
-The initial goal is to define the skeleton, bridge rules, templates, and first starter skills.
+This repository now has a public core of 13 scaffold skills with first support artifacts.
+The next focus is strengthening technique traceability across the skill surface.
 `ROADMAP.md` remains the canonical public roadmap.
 `PHASED_SKILL_PLAN.md` records an additional scoped expansion plan for the current scaffold pass.

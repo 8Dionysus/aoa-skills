@@ -1,0 +1,17 @@
+skill_name: aoa-approval-gate-check
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-APPROVAL-GATE-CHECK
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Replace AOA-T-PENDING-APPROVAL-GATE-CHECK and path TBD after the upstream technique is published in aoa-techniques.

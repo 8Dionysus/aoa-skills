@@ -1,9 +1,9 @@
 skill_name: aoa-property-invariants
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-PROPERTY-INVARIANTS
+  - id: AOA-T-0017
     repo: 8Dionysus/aoa-techniques
-    path: techniques/testing/property-invariants/TECHNIQUE.md
+    path: techniques/evaluation/property-invariants/TECHNIQUE.md
     use_sections:
       - Intent
       - When to use
@@ -19,5 +19,3 @@ techniques:
     use_sections:
       - summary
       - Validation
-notes:
-  - Replace AOA-T-PENDING-PROPERTY-INVARIANTS with the real technique ID once published in aoa-techniques.
