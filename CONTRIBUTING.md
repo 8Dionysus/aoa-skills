@@ -109,6 +109,12 @@ When proposing a promotion step:
 - explain whether the runtime `SKILL.md` meaning changed
 - name any remaining gaps that block the next maturity step
 
+When proposing `canonical` specifically:
+- ensure the skill uses `## Technique traceability`, not `## Future traceability`
+- ensure `technique_dependencies` and `techniques.yaml` contain no pending IDs or `TBD` source refs
+- ensure the skill has evaluation coverage in `tests/fixtures/skill_evaluation_cases.yaml`
+- rely on existing validator checks for `explicit-only` policy correctness rather than bypassing them
+
 ## Drift and refresh
 
 A skill may summarize or compose techniques, but it should not silently drift away from them.

@@ -62,6 +62,21 @@ but should not be the default choice for new use.
 - No skill should become `canonical` without already satisfying the expectations of `linked`, `reviewed`, and `evaluated`.
 - `deprecated` should explain what supersedes the skill or why it should no longer be used as the default.
 
+## Canonical gate checks
+
+Before a skill can move to `canonical`, it should pass these repository-level gates:
+- `SKILL.md` uses `## Technique traceability`, not `## Future traceability`
+- frontmatter `technique_dependencies` contains no `AOA-T-PENDING-*`
+- `techniques.yaml` contains no pending IDs and no `path: TBD` or `source_ref: TBD`
+- evaluation coverage exists in `tests/fixtures/skill_evaluation_cases.yaml`:
+  one autonomy check
+  at least one `use` trigger case
+  at least one `do_not_use` trigger case
+- if the skill is `explicit-only`, existing validator policy checks must still pass
+
+These gates do not promote a skill by themselves.
+They define the minimum machine-checkable floor before canonical promotion is even considered.
+
 ## Promotion evidence checklist
 
 Use this checklist when proposing any status change beyond `scaffold`:
@@ -90,3 +105,4 @@ For the first canonical-candidate pass, reviewers should explicitly assess:
 - whether the current fixtures catch meaningful misuse
 - whether the policy stance is appropriate for the operational surface
 - whether the skill is reusable beyond one project family without hidden assumptions
+- whether the canonical gate checks are already satisfied without exceptions
