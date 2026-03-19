@@ -13,8 +13,9 @@ an executable workflow for Codex.
 3. `REPOSITORY_STRUCTURE.md` — folder layout and conventions.
 4. `ROADMAP.md` — canonical public roadmap for repository evolution.
 5. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
-6. `reviews/README.md` — public review-record conventions and canonical-candidate review surface.
-7. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the current core.
+6. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
+7. `reviews/README.md` — public review-record conventions and review surfaces.
+8. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the current core.
 
 ## Core ideas
 
@@ -36,6 +37,7 @@ This repository now has a mixed-status public core of 13 skills with first suppo
 honest bridge manifests with pinned source refs, and local validation coverage.
 The repository now also has its first `canonical` skills, an expanded `evaluated` core surface, an expanded `evaluated` risk surface, and autonomy and trigger-boundary evaluation checks across representative skills.
 The repository now also has a documented maturity ladder and promotion guidance.
-The next focus is public-core hardening through broader evaluation and clearer governance.
+The repository now also has a documented public promotion path in `PROMOTION_PATH.md`.
+The next focus is public-core hardening through stronger bridge reporting and clearer governance.
 `ROADMAP.md` remains the canonical public roadmap.
 `PHASED_SKILL_PLAN.md` records the scaffold expansion that established the current 13-skill surface.
