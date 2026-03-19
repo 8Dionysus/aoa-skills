@@ -4,6 +4,7 @@ techniques:
   - id: AOA-T-PENDING-PORT-ADAPTER-REFACTOR
     repo: 8Dionysus/aoa-techniques
     path: TBD
+    source_ref: TBD
     use_sections:
       - Intent
       - When to use
@@ -14,4 +15,4 @@ techniques:
       - Risks
       - Validation
 notes:
-  - Replace AOA-T-PENDING-PORT-ADAPTER-REFACTOR and path TBD after the upstream technique is published in aoa-techniques.
+  - Replace AOA-T-PENDING-PORT-ADAPTER-REFACTOR, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

@@ -27,6 +27,7 @@
           "id",
           "repo",
           "path",
+          "source_ref",
           "use_sections"
         ],
         "properties": {
@@ -40,6 +41,10 @@
           "path": {
             "type": "string",
             "minLength": 1
+          },
+          "source_ref": {
+            "type": "string",
+            "pattern": "^(TBD|[0-9a-f]{40})$"
           },
           "use_sections": {
             "type": "array",

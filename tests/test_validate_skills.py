@@ -24,6 +24,7 @@ PRIMARY_PUBLISHED_TECHNIQUE = {
     "id": "AOA-T-0001",
     "repo": "8Dionysus/aoa-techniques",
     "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+    "source_ref": "0123456789abcdef0123456789abcdef01234567",
     "use_sections": [
         "Intent",
         "When to use",
@@ -311,10 +312,11 @@ class ValidateSkillsTests(unittest.TestCase):
                     "id": "AOA-T-PENDING-TEST",
                     "repo": "8Dionysus/aoa-techniques",
                     "path": "techniques/test/TECHNIQUE.md",
+                    "source_ref": "TBD",
                     "use_sections": ["Intent"],
                 }
             ],
-            notes=["Replace AOA-T-PENDING-TEST and path TBD after publication."],
+            notes=["Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publication."],
         )
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
@@ -327,6 +329,7 @@ class ValidateSkillsTests(unittest.TestCase):
                     "id": "AOA-T-0009",
                     "repo": "8Dionysus/aoa-techniques",
                     "path": "TBD",
+                    "source_ref": "0123456789abcdef0123456789abcdef01234567",
                     "use_sections": ["Intent"],
                 }
             ]
@@ -334,6 +337,39 @@ class ValidateSkillsTests(unittest.TestCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn("published techniques cannot use path 'TBD'", messages)
+
+    def test_pending_technique_with_non_tbd_source_ref_fails(self) -> None:
+        repo_root = self.make_repo(
+            techniques=[
+                {
+                    "id": "AOA-T-PENDING-TEST",
+                    "repo": "8Dionysus/aoa-techniques",
+                    "path": "TBD",
+                    "source_ref": "0123456789abcdef0123456789abcdef01234567",
+                    "use_sections": ["Intent"],
+                }
+            ],
+            notes=["Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publication."],
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("pending techniques must use source_ref 'TBD'", messages)
+
+    def test_published_technique_with_tbd_source_ref_fails(self) -> None:
+        repo_root = self.make_repo(
+            techniques=[
+                {
+                    "id": "AOA-T-0009",
+                    "repo": "8Dionysus/aoa-techniques",
+                    "path": "techniques/test/TECHNIQUE.md",
+                    "source_ref": "TBD",
+                    "use_sections": ["Intent"],
+                }
+            ]
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("published techniques cannot use source_ref 'TBD'", messages)
 
     def test_skill_index_mismatch_fails(self) -> None:
         repo_root = self.make_repo(index_names=["aoa-other-skill"])

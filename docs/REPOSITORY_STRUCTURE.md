@@ -52,7 +52,7 @@ Belong in `SKILL.md`:
 
 Belong in `techniques.yaml`:
 - upstream technique IDs
-- source paths
+- source paths and pinned source refs
 - selected sections
 - composition notes
 

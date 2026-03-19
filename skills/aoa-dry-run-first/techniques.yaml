@@ -4,6 +4,7 @@ techniques:
   - id: AOA-T-PENDING-DRY-RUN-FIRST
     repo: 8Dionysus/aoa-techniques
     path: TBD
+    source_ref: TBD
     use_sections:
       - Intent
       - When to use
@@ -16,6 +17,7 @@ techniques:
   - id: AOA-T-0004
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md
+    source_ref: a6f43089625afe286dda772e733b9d02d2759ac8
     use_sections:
       - Intent
       - When to use
@@ -23,4 +25,4 @@ techniques:
       - Core procedure
       - Validation
 notes:
-  - Replace AOA-T-PENDING-DRY-RUN-FIRST and path TBD after the upstream technique is published in aoa-techniques.
+  - Replace AOA-T-PENDING-DRY-RUN-FIRST, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

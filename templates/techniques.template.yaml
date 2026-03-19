@@ -4,6 +4,7 @@ techniques:
   - id: AOA-T-0001
     repo: 8Dionysus/aoa-techniques
     path: techniques/<domain>/<technique>/TECHNIQUE.md
+    source_ref: <aoa-techniques-commit-sha>
     use_sections:
       - Intent
       - When to use
@@ -16,3 +17,4 @@ techniques:
 notes:
   - Keep runtime SKILL.md self-contained.
   - Refresh this manifest when dependent techniques evolve.
+  - Use source_ref TBD only for unpublished pending techniques.

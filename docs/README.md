@@ -31,7 +31,7 @@ an executable workflow for Codex.
 ## Current repository phase
 
 This repository now has a public core of 13 scaffold skills with first support artifacts,
-honest bridge manifests, and local validation coverage.
+honest bridge manifests with pinned source refs, and local validation coverage.
 The next focus is public-core hardening through autonomy checks, evaluation, and clearer governance.
 `ROADMAP.md` remains the canonical public roadmap.
 `PHASED_SKILL_PLAN.md` records the scaffold expansion that established the current 13-skill surface.
