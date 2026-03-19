@@ -33,6 +33,19 @@ Please make sure:
 - examples and references are public-safe
 - project-shaped overlays do not silently change the core meaning of the skill
 
+Run the local validator before opening a PR:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python scripts/validate_skills.py
+```
+
+To focus on one bundle while iterating:
+
+```bash
+python scripts/validate_skills.py --skill aoa-change-protocol
+```
+
 ## Core distinction
 
 `aoa-techniques` is the source of truth for public reusable engineering techniques.
