@@ -5,7 +5,7 @@ status: scaffold
 summary: Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.
 invocation_mode: explicit-preferred
 technique_dependencies:
-  - AOA-T-PENDING-PROPERTY-INVARIANTS
+  - AOA-T-0017
   - AOA-T-0007
 ---
 
@@ -70,9 +70,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Primary source techniques:
-- AOA-T-PENDING-PROPERTY-INVARIANTS
-- AOA-T-0007 signal-first-gate-promotion
+Manifest-backed techniques:
+- AOA-T-0017 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0007 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation
 
 ## Adaptation points
 
