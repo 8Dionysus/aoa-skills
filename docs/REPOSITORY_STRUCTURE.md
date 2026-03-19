@@ -6,6 +6,8 @@
 - `SKILL_INDEX.md` — public map of current skills and their maturity
 - `docs/` — architecture, bridge rules, roadmap, conventions
 - `docs/reviews/` — public review records for candidate and promotion work
+- `docs/reviews/canonical-candidates/` — canonical-candidate review records
+- `docs/reviews/status-promotions/` — review records for non-canonical promotion steps
 - `templates/` — templates for authoring skills and related files
 - `skills/` — skill bundles
 - `scripts/` — optional generation or validation helpers

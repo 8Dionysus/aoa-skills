@@ -5,6 +5,7 @@ This folder stores public review records for repository-level skill review work.
 ## Current use
 
 - `canonical-candidates/` stores the current review records for skills being considered as future canonical references
+- `status-promotions/` stores public review records for non-canonical status promotions such as `scaffold -> evaluated`
 
 ## Conventions
 
@@ -12,9 +13,14 @@ This folder stores public review records for repository-level skill review work.
 - a review record documents findings, evidence, blockers, and recommendation
 - a review record does not change skill status by itself
 - candidate reviews should use `templates/CANDIDATE_REVIEW.template.md`
+- status-promotion reviews should use `templates/STATUS_PROMOTION_REVIEW.template.md`
 
 ## Expected location
 
 For canonical-candidate work, use:
 
 `docs/reviews/canonical-candidates/<skill-name>.md`
+
+For non-canonical promotion work, use:
+
+`docs/reviews/status-promotions/<skill-name>.md`
