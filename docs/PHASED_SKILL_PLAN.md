@@ -1,6 +1,7 @@
 # Phased skill plan
 
-This document records the current phased expansion plan for scaffold skills.
+This document records the scaffold expansion that established the current 13-skill public core.
+It is now primarily a phase record rather than the main source of next-step planning.
 
 ## Principle for this pass
 
@@ -34,19 +35,26 @@ Added in this expansion:
 - `aoa-dry-run-first`
 - `aoa-sanitized-share`
 
-## What is intentionally deferred
+## What landed after the scaffold pass
+
+After the initial scaffold expansion, the repository also gained:
+- honest `techniques.yaml` coverage across the current skill surface
+- first examples or review checklists for all current skills
+- a local validator for bundle shape, policy coherence, and `SKILL_INDEX.md` coverage
+
+## What remains intentionally deferred
 
 Deferred for later passes:
-- hard linkage to published techniques
-- project-specific overlays
-- stronger examples and checks
-- canonical versus promoted maturity decisions
-- generation or refresh tooling for skill composition
+- schema-backed contracts and pinned upstream traceability
+- build-time refresh tooling for skill composition
+- autonomy and evaluation harnesses beyond shape validation
+- formal maturity decisions and promotion criteria
+- project-specific overlays after the public core is harder
 
 ## Expected next steps
 
-1. review the new scaffolds for naming and scope quality
-2. keep `SKILL_INDEX.md` and docs surface aligned as scaffold skills land
-3. publish missing techniques in `aoa-techniques`
-4. replace placeholders and add technique traceability where it becomes real
-5. add examples, checks, and thin project overlays only after the public core becomes stable
+1. add schema-backed contracts for `SKILL.md`, `techniques.yaml`, and `agents/openai.yaml`
+2. add pinned traceability and refresh helpers for `SKILL.md`
+3. introduce autonomy checks, prompt fixtures, and trigger-boundary evaluation
+4. define a formal maturity ladder and promotion criteria
+5. add thin project overlays only after the public core is harder

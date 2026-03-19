@@ -19,7 +19,14 @@ SKILLS_DIR_NAME = "skills"
 SKILL_INDEX_NAME = "SKILL_INDEX.md"
 
 ALLOWED_SCOPES = {"core", "project", "risk"}
-ALLOWED_STATUS = {"scaffold", "promoted", "canonical", "deprecated"}
+ALLOWED_STATUS = {
+    "scaffold",
+    "linked",
+    "reviewed",
+    "evaluated",
+    "canonical",
+    "deprecated",
+}
 ALLOWED_INVOCATION_MODES = {
     "implicit-friendly",
     "explicit-preferred",

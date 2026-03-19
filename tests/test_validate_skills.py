@@ -44,6 +44,7 @@ class ValidateSkillsTests(unittest.TestCase):
         skill_name: str = "aoa-test-skill",
         traceability_heading: str = "Technique traceability",
         invocation_mode: str = "explicit-preferred",
+        status: str = "scaffold",
         include_support_artifact: bool = True,
         include_techniques_manifest: bool = True,
         policy_allow_implicit: bool | None = None,
@@ -68,7 +69,7 @@ class ValidateSkillsTests(unittest.TestCase):
             ---
             name: {skill_name}
             scope: core
-            status: scaffold
+            status: {status}
             summary: Test skill summary.
             invocation_mode: {invocation_mode}
             technique_dependencies:
@@ -195,6 +196,10 @@ class ValidateSkillsTests(unittest.TestCase):
 
     def test_future_traceability_heading_is_allowed(self) -> None:
         repo_root = self.make_repo(traceability_heading="Future traceability")
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_linked_status_is_allowed(self) -> None:
+        repo_root = self.make_repo(status="linked")
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
     def test_missing_techniques_yaml_fails(self) -> None:

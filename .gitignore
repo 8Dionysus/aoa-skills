@@ -1,6 +1,7 @@
 # Local working notes stay out of git.
 TODO.local.md
 PLANS.local.md
+seeds/
 
 # Python validator cache files stay local.
 __pycache__/
