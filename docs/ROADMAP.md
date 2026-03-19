@@ -16,9 +16,11 @@ The next steps should deepen autonomy, evaluation, and governance rather than on
 ## v0.3 public core hardening
 
 Continue the public core hardening pass with:
+- validator and index parity for declared multi-family skill prefixes such as `aoa-*`, `atm10-*`, and `abyss-*`
 - stable schemas for `SKILL.md` front matter, `techniques.yaml`, and `agents/openai.yaml`
+- status-aware validation so maturity levels have machine-checkable floors instead of only documented intent
 - pinned traceability to upstream technique source refs
-- build-time refresh helpers for reviewable `SKILL.md` updates
+- stronger build-time refresh helpers that move from alignment-only toward reviewable bridge composition
 - drift detection when a referenced technique changes materially
 - stronger autonomy checks for self-contained runtime use without live remote dependency
 
@@ -29,7 +31,9 @@ Add:
 - trigger-boundary tests
 - expected output snapshots for selected skills
 - autonomy and verification checks for runtime self-containment
+- explicit evaluation-coverage enforcement for `evaluated` and `canonical` skills
 - review checklists and behavior evidence for risk-heavy skills
+- end-to-end walkthroughs that show how selected skills look in real use
 
 ## v0.5 maturity and governance
 
@@ -38,6 +42,8 @@ Add:
 - promotion criteria for moving from `scaffold` toward `evaluated` or `canonical` states
 - governance-oriented skill and policy checks
 - clearer release and stability signaling for reusable versus experimental surfaces
+- a more explicit public promotion path that explains what evidence and review surface is expected at each maturity step
+- clearer public product surface for external readers, including stronger entry points and usage-oriented documentation
 
 ## v0.6 project overlays
 
