@@ -22,6 +22,7 @@ Typical characteristics:
 - published techniques are pinned to concrete upstream refs
 - pending techniques remain explicitly pending
 - runtime text and manifest no longer drift silently by omission
+- machine-checkable floor: validator-enforced bridge metadata honesty for published and pending technique refs
 
 ### `reviewed`
 
@@ -31,6 +32,7 @@ Typical characteristics:
 - contracts, risks, and verification guidance are coherent
 - traceability and runtime wording do not silently conflict
 - policy stance matches operational risk
+- machine-checkable floor: review evidence exists either in-bundle or as a public review record
 
 ### `evaluated`
 
@@ -76,6 +78,14 @@ Before a skill can move to `canonical`, it should pass these repository-level ga
 
 These gates do not promote a skill by themselves.
 They define the minimum machine-checkable floor before canonical promotion is even considered.
+
+## Machine-checkable floors vs human decisions
+
+The validator can enforce repository-level maturity floors for statuses such as `linked`, `reviewed`, and `canonical`.
+That does not replace human review or promotion judgment.
+
+- machine checks answer: "is the minimum repository evidence floor present?"
+- human review still answers: "is this skill actually mature enough to deserve the status change?"
 
 ## Promotion evidence checklist
 
