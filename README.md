@@ -123,6 +123,12 @@ python scripts/validate_skills.py --skill aoa-change-protocol
 The validator now uses repository schemas from `schemas/` as the contract layer for
 front matter, `techniques.yaml`, and `agents/openai.yaml`.
 
+Preview a manifest-driven `SKILL.md` refresh without rewriting files:
+
+```bash
+python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol
+```
+
 ## Contribution model
 
 A skill is usually shaped from one or more real techniques.
