@@ -217,6 +217,56 @@ class ValidateSkillsTests(unittest.TestCase):
             encoding="utf-8",
         )
 
+    def write_evaluation_fixtures_for_skill(
+        self,
+        repo_root: Path,
+        *,
+        skill_name: str = "aoa-test-skill",
+        include_autonomy: bool = True,
+        use_cases: int = 1,
+        do_not_use_cases: int = 1,
+    ) -> None:
+        fixtures_dir = repo_root / "tests" / "fixtures"
+        fixtures_dir.mkdir(parents=True, exist_ok=True)
+
+        data: dict[str, list[dict]] = {
+            "autonomy_checks": [],
+            "trigger_cases": [],
+        }
+        if include_autonomy:
+            data["autonomy_checks"].append(
+                {
+                    "skill": skill_name,
+                    "forbidden_runtime_terms": ["aoa-techniques"],
+                }
+            )
+
+        for index in range(use_cases):
+            data["trigger_cases"].append(
+                {
+                    "skill": skill_name,
+                    "case_id": f"{skill_name.replace('-', '_')}_use_{index + 1}",
+                    "prompt": "use case",
+                    "expected": "use",
+                    "required_phrases": ["needed"],
+                }
+            )
+        for index in range(do_not_use_cases):
+            data["trigger_cases"].append(
+                {
+                    "skill": skill_name,
+                    "case_id": f"{skill_name.replace('-', '_')}_do_not_use_{index + 1}",
+                    "prompt": "do not use case",
+                    "expected": "do_not_use",
+                    "required_phrases": ["not needed"],
+                }
+            )
+
+        (fixtures_dir / "skill_evaluation_cases.yaml").write_text(
+            yaml.safe_dump(data, sort_keys=False),
+            encoding="utf-8",
+        )
+
     def write_skill_index(self, repo_root: Path, index_names: list[str]) -> None:
         rows = "\n".join(
             f"| {name} | core | scaffold | Test summary. |" for name in index_names
@@ -581,6 +631,80 @@ class ValidateSkillsTests(unittest.TestCase):
             "status 'canonical' requires concrete path and source_ref for every technique",
             messages,
         )
+
+    def test_evaluated_status_requires_evaluation_fixture_file(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("file is missing", messages)
+
+    def test_evaluated_status_with_only_autonomy_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(
+            repo_root,
+            include_autonomy=True,
+            use_cases=0,
+            do_not_use_cases=0,
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "skill 'aoa-test-skill' with status 'evaluated' requires at least one 'use' trigger case",
+            messages,
+        )
+        self.assertIn(
+            "skill 'aoa-test-skill' with status 'evaluated' requires at least one 'do_not_use' trigger case",
+            messages,
+        )
+
+    def test_evaluated_status_with_one_trigger_side_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(
+            repo_root,
+            include_autonomy=True,
+            use_cases=1,
+            do_not_use_cases=0,
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "skill 'aoa-test-skill' with status 'evaluated' requires at least one 'do_not_use' trigger case",
+            messages,
+        )
+
+    def test_canonical_status_requires_evaluation_fixture_file(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("file is missing", messages)
+
+    def test_evaluated_status_passes_with_full_evaluation_coverage(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_canonical_status_passes_with_full_evaluation_coverage(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.assertEqual([], validate_skills.run_validation(repo_root))
 
     def test_skill_index_mismatch_fails(self) -> None:
         repo_root = self.make_repo(index_names=["aoa-other-skill"])

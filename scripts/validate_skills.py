@@ -24,6 +24,7 @@ SCHEMAS_DIR_NAME = "schemas"
 SKILL_NAME_PATTERN = r"(?:aoa|atm10|abyss)-[a-z0-9-]+"
 STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
 CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
+EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.yaml"
 
 REQUIRED_HEADINGS = {
     "Intent",
@@ -445,6 +446,7 @@ def status_requires_floor(status: str, floor: str) -> bool:
     floors = {
         "linked": {"linked", "reviewed", "evaluated", "canonical"},
         "reviewed": {"reviewed", "evaluated", "canonical"},
+        "evaluated": {"evaluated", "canonical"},
         "canonical": {"canonical"},
     }
     return status in floors[floor]
@@ -583,6 +585,93 @@ def validate_canonical_floor(
             break
 
 
+def load_evaluation_fixtures(
+    repo_root: Path,
+    issues: list[ValidationIssue],
+) -> dict[str, Any] | None:
+    fixtures_path = repo_root / EVALUATION_FIXTURES_PATH
+    data = load_yaml_file(fixtures_path, issues)
+    if data is None:
+        return None
+    if not isinstance(data, dict):
+        issues.append(
+            ValidationIssue(
+                relative_location(fixtures_path),
+                "evaluation fixtures must parse to a mapping",
+            )
+        )
+        return None
+    return data
+
+
+def validate_evaluation_floors(
+    repo_root: Path,
+    target_skills: Sequence[str],
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    skills_requiring_evaluation: dict[str, str] = {}
+
+    for skill_name in target_skills:
+        metadata, _ = parse_skill_markdown(
+            repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md",
+            [],
+        )
+        if metadata is None:
+            continue
+        status = metadata.get("status")
+        if isinstance(status, str) and status_requires_floor(status, "evaluated"):
+            skills_requiring_evaluation[skill_name] = status
+
+    if not skills_requiring_evaluation:
+        return issues
+
+    fixtures = load_evaluation_fixtures(repo_root, issues)
+    if fixtures is None:
+        return issues
+
+    autonomy_skills = {
+        check["skill"]
+        for check in fixtures.get("autonomy_checks", [])
+        if isinstance(check, dict) and isinstance(check.get("skill"), str)
+    }
+    trigger_case_counts: dict[str, dict[str, int]] = {}
+    for case in fixtures.get("trigger_cases", []):
+        if not isinstance(case, dict):
+            continue
+        skill_name = case.get("skill")
+        expected = case.get("expected")
+        if not isinstance(skill_name, str) or expected not in {"use", "do_not_use"}:
+            continue
+        counts = trigger_case_counts.setdefault(skill_name, {"use": 0, "do_not_use": 0})
+        counts[expected] += 1
+
+    fixtures_location = EVALUATION_FIXTURES_PATH.as_posix()
+    for skill_name, status in skills_requiring_evaluation.items():
+        if skill_name not in autonomy_skills:
+            issues.append(
+                ValidationIssue(
+                    fixtures_location,
+                    f"skill '{skill_name}' with status '{status}' requires an autonomy_check entry",
+                )
+            )
+        if trigger_case_counts.get(skill_name, {}).get("use", 0) < 1:
+            issues.append(
+                ValidationIssue(
+                    fixtures_location,
+                    f"skill '{skill_name}' with status '{status}' requires at least one 'use' trigger case",
+                )
+            )
+        if trigger_case_counts.get(skill_name, {}).get("do_not_use", 0) < 1:
+            issues.append(
+                ValidationIssue(
+                    fixtures_location,
+                    f"skill '{skill_name}' with status '{status}' requires at least one 'do_not_use' trigger case",
+                )
+            )
+
+    return issues
+
+
 def validate_skill_index(
     repo_root: Path,
     selected_skills: set[str] | None = None,
@@ -671,6 +760,7 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
     for name in target_skills:
         issues.extend(validate_skill_bundle(repo_root, name))
 
+    issues.extend(validate_evaluation_floors(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
     return issues
 
