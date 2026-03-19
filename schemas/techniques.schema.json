@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills techniques manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "skill_name",
+    "composition_mode",
+    "techniques"
+  ],
+  "properties": {
+    "skill_name": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "composition_mode": {
+      "const": "bounded"
+    },
+    "techniques": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "repo",
+          "path",
+          "use_sections"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^AOA-T-[A-Z0-9-]+$"
+          },
+          "repo": {
+            "const": "8Dionysus/aoa-techniques"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "use_sections": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "Intent",
+                "When to use",
+                "When not to use",
+                "Inputs",
+                "Outputs",
+                "Core procedure",
+                "Contracts",
+                "Risks",
+                "Validation",
+                "Adaptation notes",
+                "summary"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

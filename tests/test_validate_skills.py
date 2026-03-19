@@ -187,6 +187,43 @@ class ValidateSkillsTests(unittest.TestCase):
         with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
+    def load_skill_frontmatter(self, repo_root: Path) -> dict:
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        text = skill_md_path.read_text(encoding="utf-8")
+        _, frontmatter, _ = text.split("---", 2)
+        return yaml.safe_load(frontmatter)
+
+    def write_skill_frontmatter(self, repo_root: Path, frontmatter: dict) -> None:
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        text = skill_md_path.read_text(encoding="utf-8")
+        _, _, body = text.split("---", 2)
+        updated = (
+            "---\n"
+            + yaml.safe_dump(frontmatter, sort_keys=False).strip()
+            + "\n---"
+            + body
+        )
+        skill_md_path.write_text(updated, encoding="utf-8")
+
+    def load_manifest(self, repo_root: Path) -> dict:
+        manifest_path = repo_root / "skills" / "aoa-test-skill" / "techniques.yaml"
+        return yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
+
+    def write_manifest(self, repo_root: Path, manifest: dict) -> None:
+        manifest_path = repo_root / "skills" / "aoa-test-skill" / "techniques.yaml"
+        manifest_path.write_text(
+            yaml.safe_dump(manifest, sort_keys=False),
+            encoding="utf-8",
+        )
+
+    def write_policy(self, repo_root: Path, policy: dict) -> None:
+        policy_path = repo_root / "skills" / "aoa-test-skill" / "agents" / "openai.yaml"
+        policy_path.parent.mkdir(parents=True, exist_ok=True)
+        policy_path.write_text(
+            yaml.safe_dump(policy, sort_keys=False),
+            encoding="utf-8",
+        )
+
     def test_clean_fixture_passes(self) -> None:
         repo_root = self.make_repo()
         issues = validate_skills.run_validation(repo_root)
@@ -201,6 +238,40 @@ class ValidateSkillsTests(unittest.TestCase):
     def test_linked_status_is_allowed(self) -> None:
         repo_root = self.make_repo(status="linked")
         self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_frontmatter_schema_violation_fails(self) -> None:
+        repo_root = self.make_repo()
+        frontmatter = self.load_skill_frontmatter(repo_root)
+        frontmatter["summary"] = ["not", "a", "string"]
+        self.write_skill_frontmatter(repo_root, frontmatter)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertTrue(any("schema violation" in message for message in messages))
+
+    def test_manifest_schema_violation_fails(self) -> None:
+        repo_root = self.make_repo()
+        manifest = self.load_manifest(repo_root)
+        manifest["unexpected"] = True
+        self.write_manifest(repo_root, manifest)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertTrue(any("schema violation" in message for message in messages))
+
+    def test_policy_schema_violation_fails(self) -> None:
+        repo_root = self.make_repo(policy_allow_implicit=False)
+        self.write_policy(
+            repo_root,
+            {
+                "policy": {"allow_implicit_invocation": "sometimes"},
+                "notes": ["Invalid policy fixture."],
+            },
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertTrue(any("schema violation" in message for message in messages))
 
     def test_missing_techniques_yaml_fails(self) -> None:
         repo_root = self.make_repo(include_techniques_manifest=False)

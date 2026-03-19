@@ -4,42 +4,24 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from collections import Counter
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 
 import yaml
+from jsonschema import Draft202012Validator
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR_NAME = "skills"
 SKILL_INDEX_NAME = "SKILL_INDEX.md"
+SCHEMAS_DIR_NAME = "schemas"
 
-ALLOWED_SCOPES = {"core", "project", "risk"}
-ALLOWED_STATUS = {
-    "scaffold",
-    "linked",
-    "reviewed",
-    "evaluated",
-    "canonical",
-    "deprecated",
-}
-ALLOWED_INVOCATION_MODES = {
-    "implicit-friendly",
-    "explicit-preferred",
-    "explicit-only",
-}
-REQUIRED_FRONTMATTER_KEYS = {
-    "name",
-    "scope",
-    "status",
-    "summary",
-    "invocation_mode",
-    "technique_dependencies",
-}
 REQUIRED_HEADINGS = {
     "Intent",
     "Trigger boundary",
@@ -52,19 +34,6 @@ REQUIRED_HEADINGS = {
     "Adaptation points",
 }
 TRACEABILITY_HEADINGS = {"Technique traceability", "Future traceability"}
-ALLOWED_TECHNIQUE_SECTIONS = {
-    "Intent",
-    "When to use",
-    "When not to use",
-    "Inputs",
-    "Outputs",
-    "Core procedure",
-    "Contracts",
-    "Risks",
-    "Validation",
-    "Adaptation notes",
-    "summary",
-}
 REPO_NAME = "8Dionysus/aoa-techniques"
 
 
@@ -72,6 +41,18 @@ REPO_NAME = "8Dionysus/aoa-techniques"
 class ValidationIssue:
     location: str
     message: str
+
+
+@lru_cache(maxsize=None)
+def load_schema(schema_name: str) -> dict[str, Any]:
+    schema_path = REPO_ROOT / SCHEMAS_DIR_NAME / schema_name
+    with schema_path.open(encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+@lru_cache(maxsize=None)
+def get_schema_validator(schema_name: str) -> Draft202012Validator:
+    return Draft202012Validator(load_schema(schema_name))
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -102,6 +83,40 @@ def relative_location(path: Path) -> str:
         return path.relative_to(REPO_ROOT).as_posix()
     except ValueError:
         return path.as_posix()
+
+
+def format_schema_path(path_parts: Iterable[Any]) -> str:
+    parts: list[str] = []
+    for part in path_parts:
+        if isinstance(part, int):
+            parts.append(f"[{part}]")
+        else:
+            if parts:
+                parts.append(f".{part}")
+            else:
+                parts.append(str(part))
+    return "".join(parts)
+
+
+def validate_against_schema(
+    data: Any,
+    schema_name: str,
+    location: str,
+    issues: list[ValidationIssue],
+) -> bool:
+    validator = get_schema_validator(schema_name)
+    schema_errors = sorted(
+        validator.iter_errors(data),
+        key=lambda error: (list(error.absolute_path), error.message),
+    )
+    for error in schema_errors:
+        error_path = format_schema_path(error.absolute_path)
+        if error_path:
+            message = f"schema violation at '{error_path}': {error.message}"
+        else:
+            message = f"schema violation: {error.message}"
+        issues.append(ValidationIssue(location, message))
+    return not schema_errors
 
 
 def parse_skill_markdown(
@@ -243,52 +258,12 @@ def validate_skill_frontmatter(
     issues: list[ValidationIssue],
 ) -> None:
     location = relative_location(skill_md_path)
-    missing = sorted(REQUIRED_FRONTMATTER_KEYS - metadata.keys())
-    for key in missing:
-        issues.append(ValidationIssue(location, f"missing frontmatter key '{key}'"))
+    if not validate_against_schema(metadata, "skill-frontmatter.schema.json", location, issues):
+        return
 
     if metadata.get("name") != skill_name:
         issues.append(
             ValidationIssue(location, "frontmatter 'name' must match the directory name")
-        )
-
-    if metadata.get("scope") not in ALLOWED_SCOPES:
-        issues.append(
-            ValidationIssue(
-                location,
-                f"frontmatter 'scope' must be one of {sorted(ALLOWED_SCOPES)}",
-            )
-        )
-
-    if metadata.get("status") not in ALLOWED_STATUS:
-        issues.append(
-            ValidationIssue(
-                location,
-                f"frontmatter 'status' must be one of {sorted(ALLOWED_STATUS)}",
-            )
-        )
-
-    if not isinstance(metadata.get("summary"), str) or not metadata.get("summary", "").strip():
-        issues.append(
-            ValidationIssue(location, "frontmatter 'summary' must be a non-empty string")
-        )
-
-    if metadata.get("invocation_mode") not in ALLOWED_INVOCATION_MODES:
-        issues.append(
-            ValidationIssue(
-                location,
-                "frontmatter 'invocation_mode' must be one of "
-                f"{sorted(ALLOWED_INVOCATION_MODES)}",
-            )
-        )
-
-    technique_dependencies = metadata.get("technique_dependencies")
-    if not isinstance(technique_dependencies, list):
-        issues.append(
-            ValidationIssue(
-                location,
-                "frontmatter 'technique_dependencies' must be a list",
-            )
         )
 
 
@@ -322,59 +297,23 @@ def validate_techniques_manifest(
         issues.append(ValidationIssue(location, "manifest must parse to a mapping"))
         return
 
-    for key in ("skill_name", "composition_mode", "techniques"):
-        if key not in manifest:
-            issues.append(ValidationIssue(location, f"missing key '{key}'"))
+    if not validate_against_schema(manifest, "techniques.schema.json", location, issues):
+        return
 
     if manifest.get("skill_name") != skill_name:
         issues.append(
             ValidationIssue(location, "'skill_name' must match the directory name")
         )
 
-    if manifest.get("composition_mode") != "bounded":
-        issues.append(
-            ValidationIssue(location, "'composition_mode' must be 'bounded'")
-        )
-
     techniques = manifest.get("techniques")
-    if not isinstance(techniques, list) or not techniques:
-        issues.append(
-            ValidationIssue(location, "'techniques' must be a non-empty list")
-        )
-        return
 
     notes = manifest.get("notes")
     pending_ids: list[str] = []
     for index, technique in enumerate(techniques, start=1):
         entry_location = f"{location} [technique #{index}]"
-        if not isinstance(technique, dict):
-            issues.append(ValidationIssue(entry_location, "entry must be a mapping"))
-            continue
-
-        for key in ("id", "repo", "path", "use_sections"):
-            if key not in technique:
-                issues.append(ValidationIssue(entry_location, f"missing key '{key}'"))
-
         technique_id = technique.get("id")
-        if not isinstance(technique_id, str) or not technique_id.strip():
-            issues.append(ValidationIssue(entry_location, "'id' must be a non-empty string"))
-            continue
-
-        repo = technique.get("repo")
-        if repo != REPO_NAME:
-            issues.append(
-                ValidationIssue(
-                    entry_location,
-                    f"'repo' must be '{REPO_NAME}'",
-                )
-            )
-
         path_value = technique.get("path")
-        if not isinstance(path_value, str) or not path_value.strip():
-            issues.append(
-                ValidationIssue(entry_location, "'path' must be a non-empty string")
-            )
-        elif technique_id.startswith("AOA-T-PENDING-"):
+        if technique_id.startswith("AOA-T-PENDING-"):
             pending_ids.append(technique_id)
             if path_value != "TBD":
                 issues.append(
@@ -389,25 +328,7 @@ def validate_techniques_manifest(
                     entry_location,
                     "published techniques cannot use path 'TBD'",
                 )
-            )
-
-        use_sections = technique.get("use_sections")
-        if not isinstance(use_sections, list) or not use_sections:
-            issues.append(
-                ValidationIssue(
-                    entry_location,
-                    "'use_sections' must be a non-empty list",
                 )
-            )
-        else:
-            for section in use_sections:
-                if not isinstance(section, str) or section not in ALLOWED_TECHNIQUE_SECTIONS:
-                    issues.append(
-                        ValidationIssue(
-                            entry_location,
-                            f"invalid section '{section}' in 'use_sections'",
-                        )
-                    )
 
     if pending_ids and not has_pending_note(notes, pending_ids):
         issues.append(
@@ -445,23 +366,7 @@ def validate_policy_file(
     issues: list[ValidationIssue],
 ) -> None:
     location = relative_location(policy_path)
-    if not isinstance(policy_data, dict):
-        issues.append(ValidationIssue(location, "policy file must parse to a mapping"))
-        return
-
-    policy = policy_data.get("policy")
-    if not isinstance(policy, dict):
-        issues.append(ValidationIssue(location, "missing mapping 'policy'"))
-        return
-
-    allow_implicit = policy.get("allow_implicit_invocation")
-    if not isinstance(allow_implicit, bool):
-        issues.append(
-            ValidationIssue(
-                location,
-                "'policy.allow_implicit_invocation' must be a boolean",
-            )
-        )
+    validate_against_schema(policy_data, "openai-policy.schema.json", location, issues)
 
 
 def validate_explicit_only_policy(

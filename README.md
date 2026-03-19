@@ -74,6 +74,9 @@ In short:
 - `docs/` — architecture, bridge rules, roadmap, conventions
 - `templates/` — templates for skill authoring and composition metadata
 - `skills/` — skill bundles
+- `scripts/` — local validation and refresh helpers
+- `schemas/` — machine-readable bundle contracts
+- `tests/` — local validator and evaluation tests
 - `SKILL_INDEX.md` — repository-wide skill map
 
 Local working notes such as `TODO.local.md` and `PLANS.local.md` stay gitignored in each clone.
@@ -116,6 +119,9 @@ Run a single skill check:
 ```bash
 python scripts/validate_skills.py --skill aoa-change-protocol
 ```
+
+The validator now uses repository schemas from `schemas/` as the contract layer for
+front matter, `techniques.yaml`, and `agents/openai.yaml`.
 
 ## Contribution model
 
