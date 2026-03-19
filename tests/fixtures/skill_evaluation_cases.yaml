@@ -35,6 +35,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-sanitized-share
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
 
 trigger_cases:
   - skill: aoa-change-protocol
@@ -132,3 +138,30 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`
+
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_sensitive_material
+    prompt: Prepare logs and diagnostics for a broader audience without leaking secrets or private topology.
+    expected: use
+    required_phrases:
+      - logs, configs, diagnostics, reports, or examples may contain sensitive details
+      - a result needs to be shared publicly or with a broader audience
+      - raw material may reveal secrets, topology, internal identifiers, or unsafe context
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_already_public_safe
+    prompt: Share a short public-safe snippet that is already minimal and contains no sensitive context.
+    expected: do_not_use
+    required_phrases:
+      - the material is already clearly public-safe and minimal
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_authority_boundary
+    prompt: Decide whether a sensitive action should be allowed before thinking about what might be shared later.
+    expected: do_not_use
+    required_phrases:
+      - the main task is deciding whether the underlying action should be allowed; use `aoa-approval-gate-check`
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_execution_boundary
+    prompt: Choose how to preview or execute an operational change rather than preparing a safe shareable artifact.
+    expected: do_not_use
+    required_phrases:
+      - the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`
