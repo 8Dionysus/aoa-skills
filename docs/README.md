@@ -11,7 +11,8 @@ an executable workflow for Codex.
 1. `ARCHITECTURE.md` — high-level model of the repository.
 2. `BRIDGE_SPEC.md` — how skills reference and compose techniques.
 3. `REPOSITORY_STRUCTURE.md` — folder layout and conventions.
-4. `ROADMAP.md` — staged path for the first versions.
+4. `ROADMAP.md` — canonical public roadmap for repository evolution.
+5. `PHASED_SKILL_PLAN.md` — supplemental public plan for the current scaffold expansion pass.
 
 ## Core ideas
 
@@ -31,3 +32,5 @@ an executable workflow for Codex.
 
 This repository is in bootstrap mode.
 The initial goal is to define the skeleton, bridge rules, templates, and first starter skills.
+`ROADMAP.md` remains the canonical public roadmap.
+`PHASED_SKILL_PLAN.md` records an additional scoped expansion plan for the current scaffold pass.

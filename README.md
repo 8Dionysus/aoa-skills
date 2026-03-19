@@ -76,6 +76,9 @@ In short:
 - `skills/` — skill bundles
 - `SKILL_INDEX.md` — repository-wide skill map
 
+Local working notes such as `TODO.local.md` and `PLANS.local.md` stay gitignored in each clone.
+The public planning artifact for this repository is `docs/ROADMAP.md`, which remains tracked.
+
 A typical skill bundle contains:
 - `SKILL.md`
 - `techniques.yaml`
