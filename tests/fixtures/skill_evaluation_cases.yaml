@@ -17,6 +17,18 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-contract-test
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-dry-run-first
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
 
 trigger_cases:
   - skill: aoa-change-protocol
@@ -60,3 +72,31 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the task is clearly low-risk and already bounded by an ordinary workflow
+
+  - skill: aoa-contract-test
+    case_id: contract_test_meaningful_boundary
+    prompt: Tighten validation on a service boundary where downstream consumers rely on a stable response shape.
+    expected: use
+    required_phrases:
+      - two modules or services interact across a meaningful boundary
+      - a smoke path or interface needs a stable validation contract
+  - skill: aoa-contract-test
+    case_id: contract_test_purely_local_change
+    prompt: Refactor a local helper with no downstream boundary or interface change.
+    expected: do_not_use
+    required_phrases:
+      - the change is entirely local and does not affect a meaningful boundary
+
+  - skill: aoa-dry-run-first
+    case_id: dry_run_first_previewable_operation
+    prompt: Preview a configuration migration before applying it to a live service.
+    expected: use
+    required_phrases:
+      - the task can be simulated, previewed, or inspected before real execution
+      - the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface
+  - skill: aoa-dry-run-first
+    case_id: dry_run_first_pure_analysis
+    prompt: Analyze a proposal without approaching execution or touching a live surface.
+    expected: do_not_use
+    required_phrases:
+      - the task is purely analytical and does not approach execution at all
