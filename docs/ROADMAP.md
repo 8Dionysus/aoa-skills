@@ -8,7 +8,7 @@ Current public foundation:
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
 - local validator for bundle shape, policy, and `SKILL_INDEX.md` coverage
-- first autonomy and trigger-boundary seed checks for three representative skills
+- autonomy and trigger-boundary evaluation checks for five representative skills
 - documented maturity ladder and promotion guidance for future status changes
 
 The next steps should deepen autonomy, evaluation, and governance rather than only increase skill count.

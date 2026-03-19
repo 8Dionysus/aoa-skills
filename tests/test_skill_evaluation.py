@@ -7,7 +7,7 @@ import yaml
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-FIXTURES_PATH = REPO_ROOT / "tests" / "fixtures" / "seed_skill_evaluation_cases.yaml"
+FIXTURES_PATH = REPO_ROOT / "tests" / "fixtures" / "skill_evaluation_cases.yaml"
 RUNTIME_SECTIONS = [
     "Intent",
     "Trigger boundary",
@@ -68,7 +68,7 @@ def extract_trigger_bullets(skill_text: str) -> dict[str, list[str]]:
     return groups
 
 
-class SeedSkillEvaluationTests(unittest.TestCase):
+class SkillEvaluationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.fixtures = load_fixtures()
