@@ -21,6 +21,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR_NAME = "skills"
 SKILL_INDEX_NAME = "SKILL_INDEX.md"
 SCHEMAS_DIR_NAME = "schemas"
+SKILL_NAME_PATTERN = r"(?:aoa|atm10|abyss)-[a-z0-9-]+"
 
 REQUIRED_HEADINGS = {
     "Intent",
@@ -435,7 +436,7 @@ def validate_skill_index(
     except FileNotFoundError:
         return [ValidationIssue(SKILL_INDEX_NAME, "file is missing")]
 
-    pattern = re.compile(r"^\|\s*(aoa-[a-z0-9-]+)\s*\|", flags=re.MULTILINE)
+    pattern = re.compile(rf"^\|\s*({SKILL_NAME_PATTERN})\s*\|", flags=re.MULTILINE)
     names = pattern.findall(text)
     counts = Counter(names)
     location = relative_location(index_path)

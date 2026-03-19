@@ -39,10 +39,11 @@ PRIMARY_PUBLISHED_TECHNIQUE = {
 
 
 class ValidateSkillsTests(unittest.TestCase):
-    def make_repo(
+    def add_skill_bundle(
         self,
+        repo_root: Path,
         *,
-        skill_name: str = "aoa-test-skill",
+        skill_name: str,
         traceability_heading: str = "Technique traceability",
         invocation_mode: str = "explicit-preferred",
         status: str = "scaffold",
@@ -51,16 +52,7 @@ class ValidateSkillsTests(unittest.TestCase):
         policy_allow_implicit: bool | None = None,
         techniques: list[dict] | None = None,
         notes: list[str] | None = None,
-        index_names: list[str] | None = None,
-    ) -> Path:
-        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
-        self.addCleanup(shutil.rmtree, repo_root, True)
-        (repo_root / "skills").mkdir()
-
-        if index_names is None:
-            index_names = [skill_name]
-        self.write_skill_index(repo_root, index_names)
-
+    ) -> None:
         skill_dir = repo_root / "skills" / skill_name
         skill_dir.mkdir()
 
@@ -165,20 +157,51 @@ class ValidateSkillsTests(unittest.TestCase):
                 encoding="utf-8",
             )
 
+    def make_repo(
+        self,
+        *,
+        skill_name: str = "aoa-test-skill",
+        traceability_heading: str = "Technique traceability",
+        invocation_mode: str = "explicit-preferred",
+        status: str = "scaffold",
+        include_support_artifact: bool = True,
+        include_techniques_manifest: bool = True,
+        policy_allow_implicit: bool | None = None,
+        techniques: list[dict] | None = None,
+        notes: list[str] | None = None,
+        index_names: list[str] | None = None,
+    ) -> Path:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+
+        if index_names is None:
+            index_names = [skill_name]
+        self.write_skill_index(repo_root, index_names)
+        self.add_skill_bundle(
+            repo_root,
+            skill_name=skill_name,
+            traceability_heading=traceability_heading,
+            invocation_mode=invocation_mode,
+            status=status,
+            include_support_artifact=include_support_artifact,
+            include_techniques_manifest=include_techniques_manifest,
+            policy_allow_implicit=policy_allow_implicit,
+            techniques=techniques,
+            notes=notes,
+        )
+
         return repo_root
 
     def write_skill_index(self, repo_root: Path, index_names: list[str]) -> None:
         rows = "\n".join(
             f"| {name} | core | scaffold | Test summary. |" for name in index_names
         )
-        content = textwrap.dedent(
-            f"""\
-            # SKILL_INDEX
-
-            | name | scope | status | summary |
-            |---|---|---|---|
-            {rows}
-            """
+        content = (
+            "# SKILL_INDEX\n\n"
+            "| name | scope | status | summary |\n"
+            "|---|---|---|---|\n"
+            f"{rows}\n"
         )
         (repo_root / "SKILL_INDEX.md").write_text(content, encoding="utf-8")
 
@@ -239,6 +262,56 @@ class ValidateSkillsTests(unittest.TestCase):
     def test_linked_status_is_allowed(self) -> None:
         repo_root = self.make_repo(status="linked")
         self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_atm10_skill_passes(self) -> None:
+        repo_root = self.make_repo(skill_name="atm10-perception-tests")
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+        self.assertEqual(0, self.run_main(repo_root, ["--skill", "atm10-perception-tests"]))
+
+    def test_abyss_skill_passes(self) -> None:
+        repo_root = self.make_repo(skill_name="abyss-port-exposure-guard")
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+        self.assertEqual(
+            0,
+            self.run_main(repo_root, ["--skill", "abyss-port-exposure-guard"]),
+        )
+
+    def test_mixed_family_index_passes(self) -> None:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+        skill_names = [
+            "aoa-test-skill",
+            "atm10-perception-tests",
+            "abyss-port-exposure-guard",
+        ]
+        self.write_skill_index(repo_root, skill_names)
+        for skill_name in skill_names:
+            self.add_skill_bundle(repo_root, skill_name=skill_name)
+
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_mixed_family_index_duplicate_fails(self) -> None:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+        skill_names = [
+            "aoa-test-skill",
+            "atm10-perception-tests",
+            "abyss-port-exposure-guard",
+            "atm10-perception-tests",
+        ]
+        self.write_skill_index(repo_root, skill_names)
+        for skill_name in {
+            "aoa-test-skill",
+            "atm10-perception-tests",
+            "abyss-port-exposure-guard",
+        }:
+            self.add_skill_bundle(repo_root, skill_name=skill_name)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("skill 'atm10-perception-tests' appears 2 times in the index", messages)
 
     def test_frontmatter_schema_violation_fails(self) -> None:
         repo_root = self.make_repo()
