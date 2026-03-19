@@ -12,7 +12,8 @@ an executable workflow for Codex.
 2. `BRIDGE_SPEC.md` — how skills reference and compose techniques.
 3. `REPOSITORY_STRUCTURE.md` — folder layout and conventions.
 4. `ROADMAP.md` — canonical public roadmap for repository evolution.
-5. `PHASED_SKILL_PLAN.md` — supplemental public plan for the current scaffold expansion pass.
+5. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
+6. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the current core.
 
 ## Core ideas
 
@@ -33,6 +34,7 @@ an executable workflow for Codex.
 This repository now has a public core of 13 scaffold skills with first support artifacts,
 honest bridge manifests with pinned source refs, and local validation coverage.
 The repository now also has first autonomy and trigger-boundary seed checks for three representative skills.
+The repository now also has a documented maturity ladder and promotion guidance.
 The next focus is public-core hardening through broader evaluation and clearer governance.
 `ROADMAP.md` remains the canonical public roadmap.
 `PHASED_SKILL_PLAN.md` records the scaffold expansion that established the current 13-skill surface.
