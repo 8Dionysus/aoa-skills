@@ -67,6 +67,9 @@ Prefer:
 - or 1 focused refresh to an existing skill
 - or 1 clear repository-level docs or template improvement
 
+Promotion or maturity-changing PRs should also align with `docs/MATURITY_MODEL.md`
+and make the supporting evidence explicit.
+
 ## Recommended PR title format
 
 - `skill: add <skill-name>`
@@ -87,6 +90,16 @@ PRs are reviewed for:
 - clarity of trigger boundary
 - quality of risks and verification guidance
 - coherence with repository philosophy
+
+## Maturity and promotion
+
+Status changes are governance changes, not cosmetic relabeling.
+
+When proposing a promotion step:
+- state the current and target maturity status
+- cite the evidence that supports promotion
+- explain whether the runtime `SKILL.md` meaning changed
+- name any remaining gaps that block the next maturity step
 
 ## Drift and refresh
 

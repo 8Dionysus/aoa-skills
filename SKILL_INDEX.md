@@ -23,4 +23,4 @@ This file is the repository-wide map of public skills.
 ## Notes
 
 - `scaffold` means the skill shape exists, but it should still evolve through technique linkage, examples, and project overlays.
-- future states may include `linked`, `reviewed`, `evaluated`, `canonical`, and `deprecated`.
+- the documented maturity ladder is `scaffold`, `linked`, `reviewed`, `evaluated`, `canonical`, and `deprecated`.
