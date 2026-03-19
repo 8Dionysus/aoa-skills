@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills OpenAI policy file",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy"
+  ],
+  "properties": {
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allow_implicit_invocation"
+      ],
+      "properties": {
+        "allow_implicit_invocation": {
+          "type": "boolean"
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}
