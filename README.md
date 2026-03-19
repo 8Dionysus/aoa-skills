@@ -131,6 +131,14 @@ Preview a manifest-driven `SKILL.md` refresh without rewriting files:
 python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol
 ```
 
+Apply a manifest-driven refresh to one explicitly named skill:
+
+```bash
+python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --write
+```
+
+The first write mode is intentionally bounded to a single skill per run.
+
 ## Contribution model
 
 A skill is usually shaped from one or more real techniques.

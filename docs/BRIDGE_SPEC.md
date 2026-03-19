@@ -78,7 +78,13 @@ Current local helper:
 python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol
 ```
 
-In this pass, the helper is dry-run-first and reports a unified diff instead of rewriting files.
+Explicit single-skill write mode:
+
+```bash
+python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --write
+```
+
+The helper is dry-run-first. Repo-wide write mode remains intentionally unavailable in this pass.
 
 ## Runtime expectations
 

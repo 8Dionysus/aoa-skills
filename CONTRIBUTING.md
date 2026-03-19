@@ -52,6 +52,14 @@ To preview a manifest-driven `SKILL.md` refresh without rewriting files:
 python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol
 ```
 
+To apply that refresh, use explicit single-skill write mode:
+
+```bash
+python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --write
+```
+
+The helper does not support repo-wide write mode in this pass.
+
 ## Core distinction
 
 `aoa-techniques` is the source of truth for public reusable engineering techniques.
