@@ -6,7 +6,7 @@ summary: Design or extend contract-oriented validation at module, service, or wo
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0003
-  - AOA-T-PENDING-CONTRACT-TEST
+  - AOA-T-0015
 ---
 
 # aoa-contract-test
@@ -68,9 +68,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Primary source techniques:
-- AOA-T-0003 contract-first-smoke-summary
-- AOA-T-PENDING-CONTRACT-TEST
+Manifest-backed techniques:
+- AOA-T-0003 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation
+- AOA-T-0015 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks
 
 ## Adaptation points
 

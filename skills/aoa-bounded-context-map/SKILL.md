@@ -5,7 +5,7 @@ status: scaffold
 summary: Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.
 invocation_mode: explicit-preferred
 technique_dependencies:
-  - AOA-T-PENDING-BOUNDED-CONTEXT
+  - AOA-T-0016
   - AOA-T-0002
 ---
 
@@ -70,9 +70,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Primary source techniques:
-- AOA-T-PENDING-BOUNDED-CONTEXT
-- AOA-T-0002 source-of-truth-layout
+Manifest-backed techniques:
+- AOA-T-0016 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary
 
 ## Adaptation points
 
