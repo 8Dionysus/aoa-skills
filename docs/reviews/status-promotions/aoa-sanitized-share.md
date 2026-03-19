@@ -2,14 +2,14 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
+- current maturity status: `evaluated`
 - scope: `risk`
 - current lineage: manifest-aligned, but still depends on pending technique `AOA-T-PENDING-SANITIZED-SHARE`
 
 ## Target status
 
-- target maturity status: `evaluated`
-- why this target now: evaluation coverage, explicit-only policy, and support-checklist guidance now exist together and are coherent
+- target maturity status: `evaluated` (achieved in this pass)
+- why this target now: evaluation coverage, explicit-only policy, and support-checklist guidance now exist together and are coherent enough for a non-canonical promotion decision
 
 ## Evidence reviewed
 
@@ -33,5 +33,5 @@
 
 ## Recommendation
 
-Promote `aoa-sanitized-share` to `evaluated` in the next PR.
-Do not treat it as a `canonical` candidate yet; that should wait for published technique lineage and a separate default-use decision.
+Promotion to `evaluated` is complete in this pass.
+Keep `canonical` deferred until published technique lineage exists and a separate default-use decision is recorded.

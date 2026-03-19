@@ -17,8 +17,8 @@ This file is the repository-wide map of public skills.
 | aoa-source-of-truth-check | core | scaffold | Codex skill for checking whether canonical docs and repository guidance have clear ownership and do not silently conflict. |
 | aoa-approval-gate-check | risk | scaffold | Codex skill for classifying whether a requested action should proceed, wait for explicit approval, or be refused. |
 | aoa-dry-run-first | risk | scaffold | Codex skill for preferring simulation, inspection, or preview paths before real execution with operational consequences. |
-| aoa-safe-infra-change | risk | scaffold | Codex skill for making bounded infrastructure or configuration changes with explicit risk framing and reversible execution discipline. |
-| aoa-sanitized-share | risk | scaffold | Codex skill for preparing findings, logs, or diagnostics for sharing without leaking secrets or private operational detail. |
+| aoa-safe-infra-change | risk | evaluated | Codex skill for making bounded infrastructure or configuration changes with explicit risk framing and reversible execution discipline. |
+| aoa-sanitized-share | risk | evaluated | Codex skill for preparing findings, logs, or diagnostics for sharing without leaking secrets or private operational detail. |
 
 ## Notes
 

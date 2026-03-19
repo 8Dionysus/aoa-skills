@@ -2,13 +2,13 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
+- current maturity status: `evaluated`
 - scope: `risk`
 - current lineage: manifest-aligned, but still depends on pending technique `AOA-T-PENDING-SAFE-INFRA-CHANGE` plus published complement `AOA-T-0001`
 
 ## Target status
 
-- target maturity status: `evaluated`
+- target maturity status: `evaluated` (achieved in this pass)
 - why this target now: evaluation coverage, explicit-only policy, and review-checklist support now provide enough evidence for a non-canonical promotion decision
 
 ## Evidence reviewed
@@ -33,5 +33,5 @@
 
 ## Recommendation
 
-Promote `aoa-safe-infra-change` to `evaluated` in the next PR.
-Do not treat it as a `canonical` candidate yet; that should wait for published technique lineage and a separate default-use decision.
+Promotion to `evaluated` is complete in this pass.
+Keep `canonical` deferred until published technique lineage exists and a separate default-use decision is recorded.
