@@ -74,9 +74,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Primary source techniques:
-- AOA-T-0001 plan-diff-apply-verify-report
-- AOA-T-0002 source-of-truth-layout
+Manifest-backed techniques:
+- AOA-T-0001 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary
 
 ## Adaptation points
 
