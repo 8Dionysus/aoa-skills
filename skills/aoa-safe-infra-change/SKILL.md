@@ -4,7 +4,9 @@ scope: risk
 status: scaffold
 summary: Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.
 invocation_mode: explicit-only
-technique_dependencies: []
+technique_dependencies:
+  - AOA-T-PENDING-SAFE-INFRA-CHANGE
+  - AOA-T-0001
 ---
 
 # aoa-safe-infra-change
@@ -73,10 +75,11 @@ Do not use this skill when:
 - confirm rollback or recovery thinking was present before execution or recommendation
 - confirm the report includes unresolved risk or recovery notes
 
-## Future traceability
+## Technique traceability
 
-Technique linkage is intentionally deferred for this scaffold.
-Later revisions may connect this skill to reusable techniques in `aoa-techniques`.
+Manifest-backed techniques:
+- AOA-T-PENDING-SAFE-INFRA-CHANGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0001 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 

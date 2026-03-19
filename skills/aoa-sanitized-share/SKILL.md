@@ -4,7 +4,8 @@ scope: risk
 status: scaffold
 summary: Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.
 invocation_mode: explicit-only
-technique_dependencies: []
+technique_dependencies:
+  - AOA-T-PENDING-SANITIZED-SHARE
 ---
 
 # aoa-sanitized-share
@@ -69,10 +70,10 @@ Do not use this skill when:
 - confirm raw sensitive detail was not preserved by accident
 - confirm remaining uncertainty is named rather than ignored
 
-## Future traceability
+## Technique traceability
 
-Technique linkage is intentionally deferred for this scaffold.
-Later revisions may connect this skill to reusable techniques in `aoa-techniques`.
+Manifest-backed techniques:
+- AOA-T-PENDING-SANITIZED-SHARE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 

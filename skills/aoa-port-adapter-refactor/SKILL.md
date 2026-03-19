@@ -4,7 +4,8 @@ scope: core
 status: scaffold
 summary: Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.
 invocation_mode: explicit-preferred
-technique_dependencies: []
+technique_dependencies:
+  - AOA-T-PENDING-PORT-ADAPTER-REFACTOR
 ---
 
 # aoa-port-adapter-refactor
@@ -71,10 +72,10 @@ Do not use this skill when:
 - confirm behavior did not drift silently
 - confirm the refactor stayed inside the declared scope
 
-## Future traceability
+## Technique traceability
 
-Technique linkage is intentionally deferred for this scaffold.
-Later revisions may connect this skill to reusable techniques in `aoa-techniques`.
+Manifest-backed techniques:
+- AOA-T-PENDING-PORT-ADAPTER-REFACTOR from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 
