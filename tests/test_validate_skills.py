@@ -170,6 +170,7 @@ class ValidateSkillsTests(unittest.TestCase):
         techniques: list[dict] | None = None,
         notes: list[str] | None = None,
         index_names: list[str] | None = None,
+        review_record_surface: str | None = None,
     ) -> Path:
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
         self.addCleanup(shutil.rmtree, repo_root, True)
@@ -190,8 +191,31 @@ class ValidateSkillsTests(unittest.TestCase):
             techniques=techniques,
             notes=notes,
         )
+        if review_record_surface is not None:
+            self.add_public_review_record(repo_root, skill_name, review_record_surface)
 
         return repo_root
+
+    def add_public_review_record(
+        self,
+        repo_root: Path,
+        skill_name: str,
+        surface: str,
+    ) -> None:
+        if surface == "status-promotions":
+            review_dir = repo_root / "docs" / "reviews" / "status-promotions"
+            title = f"# {skill_name} status promotion review\n"
+        elif surface == "canonical-candidates":
+            review_dir = repo_root / "docs" / "reviews" / "canonical-candidates"
+            title = f"# {skill_name} candidate review\n"
+        else:
+            raise ValueError(f"unknown review surface '{surface}'")
+
+        review_dir.mkdir(parents=True, exist_ok=True)
+        (review_dir / f"{skill_name}.md").write_text(
+            title + "\n## Findings\n\n- Evidence exists.\n",
+            encoding="utf-8",
+        )
 
     def write_skill_index(self, repo_root: Path, index_names: list[str]) -> None:
         rows = "\n".join(
@@ -211,14 +235,19 @@ class ValidateSkillsTests(unittest.TestCase):
         with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
-    def load_skill_frontmatter(self, repo_root: Path) -> dict:
-        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+    def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
+        skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
         text = skill_md_path.read_text(encoding="utf-8")
         _, frontmatter, _ = text.split("---", 2)
         return yaml.safe_load(frontmatter)
 
-    def write_skill_frontmatter(self, repo_root: Path, frontmatter: dict) -> None:
-        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+    def write_skill_frontmatter(
+        self,
+        repo_root: Path,
+        frontmatter: dict,
+        skill_name: str = "aoa-test-skill",
+    ) -> None:
+        skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
         text = skill_md_path.read_text(encoding="utf-8")
         _, _, body = text.split("---", 2)
         updated = (
@@ -229,12 +258,17 @@ class ValidateSkillsTests(unittest.TestCase):
         )
         skill_md_path.write_text(updated, encoding="utf-8")
 
-    def load_manifest(self, repo_root: Path) -> dict:
-        manifest_path = repo_root / "skills" / "aoa-test-skill" / "techniques.yaml"
+    def load_manifest(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
+        manifest_path = repo_root / "skills" / skill_name / "techniques.yaml"
         return yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
 
-    def write_manifest(self, repo_root: Path, manifest: dict) -> None:
-        manifest_path = repo_root / "skills" / "aoa-test-skill" / "techniques.yaml"
+    def write_manifest(
+        self,
+        repo_root: Path,
+        manifest: dict,
+        skill_name: str = "aoa-test-skill",
+    ) -> None:
+        manifest_path = repo_root / "skills" / skill_name / "techniques.yaml"
         manifest_path.write_text(
             yaml.safe_dump(manifest, sort_keys=False),
             encoding="utf-8",
@@ -261,6 +295,56 @@ class ValidateSkillsTests(unittest.TestCase):
 
     def test_linked_status_is_allowed(self) -> None:
         repo_root = self.make_repo(status="linked")
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_linked_status_with_unpinned_source_ref_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="linked",
+            techniques=[
+                {
+                    "id": "AOA-T-0009",
+                    "repo": "8Dionysus/aoa-techniques",
+                    "path": "techniques/test/TECHNIQUE.md",
+                    "source_ref": "TBD",
+                    "use_sections": ["Intent"],
+                }
+            ],
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "status 'linked' requires published techniques to use concrete source_ref values",
+            messages,
+        )
+
+    def test_reviewed_status_requires_review_evidence(self) -> None:
+        repo_root = self.make_repo(status="reviewed")
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "status 'reviewed' requires review evidence via checks/review.md or a public review record",
+            messages,
+        )
+
+    def test_reviewed_status_passes_with_in_bundle_review_check(self) -> None:
+        repo_root = self.make_repo(status="reviewed")
+        review_check = repo_root / "skills" / "aoa-test-skill" / "checks" / "review.md"
+        review_check.parent.mkdir(parents=True, exist_ok=True)
+        review_check.write_text("# Review\n\n- ok\n", encoding="utf-8")
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_reviewed_status_passes_with_status_promotion_review_record(self) -> None:
+        repo_root = self.make_repo(
+            status="reviewed",
+            review_record_surface="status-promotions",
+        )
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_reviewed_status_passes_with_canonical_candidate_review_record(self) -> None:
+        repo_root = self.make_repo(
+            status="reviewed",
+            review_record_surface="canonical-candidates",
+        )
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
     def test_atm10_skill_passes(self) -> None:
@@ -443,6 +527,60 @@ class ValidateSkillsTests(unittest.TestCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn("published techniques cannot use source_ref 'TBD'", messages)
+
+    def test_canonical_status_rejects_pending_lineage(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+            techniques=[
+                {
+                    "id": "AOA-T-PENDING-TEST",
+                    "repo": "8Dionysus/aoa-techniques",
+                    "path": "TBD",
+                    "source_ref": "TBD",
+                    "use_sections": ["Intent"],
+                }
+            ],
+            notes=["Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publication."],
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("status 'canonical' cannot use pending technique_dependencies", messages)
+        self.assertIn("status 'canonical' cannot use pending techniques in techniques.yaml", messages)
+
+    def test_canonical_status_rejects_legacy_future_traceability(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            traceability_heading="Future traceability",
+            review_record_surface="canonical-candidates",
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "status 'canonical' requires 'Technique traceability' and forbids legacy 'Future traceability'",
+            messages,
+        )
+
+    def test_canonical_status_rejects_tbd_traceability_values(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+            techniques=[
+                {
+                    "id": "AOA-T-0009",
+                    "repo": "8Dionysus/aoa-techniques",
+                    "path": "techniques/test/TECHNIQUE.md",
+                    "source_ref": "TBD",
+                    "use_sections": ["Intent"],
+                }
+            ],
+        )
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "status 'canonical' requires concrete path and source_ref for every technique",
+            messages,
+        )
 
     def test_skill_index_mismatch_fails(self) -> None:
         repo_root = self.make_repo(index_names=["aoa-other-skill"])

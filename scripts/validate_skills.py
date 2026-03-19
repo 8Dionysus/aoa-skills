@@ -22,6 +22,8 @@ SKILLS_DIR_NAME = "skills"
 SKILL_INDEX_NAME = "SKILL_INDEX.md"
 SCHEMAS_DIR_NAME = "schemas"
 SKILL_NAME_PATTERN = r"(?:aoa|atm10|abyss)-[a-z0-9-]+"
+STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
+CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
 
 REQUIRED_HEADINGS = {
     "Intent",
@@ -225,6 +227,7 @@ def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIs
 
     metadata: dict[str, Any] | None = None
     headings: set[str] = set()
+    techniques_data: dict[str, Any] | None = None
     if skill_md_path.is_file():
         metadata, headings = parse_skill_markdown(skill_md_path, issues)
         if metadata is not None:
@@ -248,6 +251,19 @@ def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIs
 
     if metadata and metadata.get("invocation_mode") == "explicit-only":
         validate_explicit_only_policy(policy_path, issues)
+
+    if metadata is not None and techniques_data is not None:
+        validate_status_floors(
+            repo_root,
+            skill_name,
+            metadata,
+            headings,
+            techniques_data,
+            skill_dir,
+            skill_md_path,
+            techniques_path,
+            issues,
+        )
 
     return issues
 
@@ -423,6 +439,148 @@ def validate_explicit_only_policy(
                 "explicit-only skills must set 'policy.allow_implicit_invocation' to false",
             )
         )
+
+
+def status_requires_floor(status: str, floor: str) -> bool:
+    floors = {
+        "linked": {"linked", "reviewed", "evaluated", "canonical"},
+        "reviewed": {"reviewed", "evaluated", "canonical"},
+        "canonical": {"canonical"},
+    }
+    return status in floors[floor]
+
+
+def validate_status_floors(
+    repo_root: Path,
+    skill_name: str,
+    metadata: dict[str, Any],
+    headings: set[str],
+    techniques_data: dict[str, Any],
+    skill_dir: Path,
+    skill_md_path: Path,
+    techniques_path: Path,
+    issues: list[ValidationIssue],
+) -> None:
+    status = metadata.get("status")
+    if not isinstance(status, str):
+        return
+
+    if status_requires_floor(status, "linked"):
+        validate_linked_floor(status, techniques_data, techniques_path, issues)
+
+    if status_requires_floor(status, "reviewed"):
+        validate_reviewed_floor(repo_root, status, skill_name, skill_dir, skill_md_path, issues)
+
+    if status_requires_floor(status, "canonical"):
+        validate_canonical_floor(
+            metadata,
+            headings,
+            techniques_data,
+            skill_md_path,
+            techniques_path,
+            issues,
+        )
+
+
+def validate_linked_floor(
+    status: str,
+    techniques_data: dict[str, Any],
+    techniques_path: Path,
+    issues: list[ValidationIssue],
+) -> None:
+    location = relative_location(techniques_path)
+    for technique in techniques_data.get("techniques", []):
+        technique_id = technique.get("id", "")
+        if technique_id.startswith("AOA-T-PENDING-"):
+            continue
+        if technique.get("source_ref") == "TBD":
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"status '{status}' requires published techniques to use concrete source_ref values",
+                )
+            )
+            return
+
+
+def has_review_evidence(repo_root: Path, skill_name: str, skill_dir: Path) -> bool:
+    candidate_paths = [
+        skill_dir / "checks" / "review.md",
+        repo_root / STATUS_PROMOTION_REVIEWS_DIR / f"{skill_name}.md",
+        repo_root / CANONICAL_CANDIDATES_DIR / f"{skill_name}.md",
+    ]
+    return any(path.is_file() for path in candidate_paths)
+
+
+def validate_reviewed_floor(
+    repo_root: Path,
+    status: str,
+    skill_name: str,
+    skill_dir: Path,
+    skill_md_path: Path,
+    issues: list[ValidationIssue],
+) -> None:
+    if has_review_evidence(repo_root, skill_name, skill_dir):
+        return
+
+    issues.append(
+        ValidationIssue(
+            relative_location(skill_md_path),
+            f"status '{status}' requires review evidence via checks/review.md or a public review record",
+        )
+    )
+
+
+def validate_canonical_floor(
+    metadata: dict[str, Any],
+    headings: set[str],
+    techniques_data: dict[str, Any],
+    skill_md_path: Path,
+    techniques_path: Path,
+    issues: list[ValidationIssue],
+) -> None:
+    skill_location = relative_location(skill_md_path)
+    techniques_location = relative_location(techniques_path)
+
+    dependencies = metadata.get("technique_dependencies", [])
+    if any(
+        isinstance(dependency, str) and dependency.startswith("AOA-T-PENDING-")
+        for dependency in dependencies
+    ):
+        issues.append(
+            ValidationIssue(
+                skill_location,
+                "status 'canonical' cannot use pending technique_dependencies",
+            )
+        )
+
+    if "Technique traceability" not in headings or "Future traceability" in headings:
+        issues.append(
+            ValidationIssue(
+                skill_location,
+                "status 'canonical' requires 'Technique traceability' and forbids legacy 'Future traceability'",
+            )
+        )
+
+    for technique in techniques_data.get("techniques", []):
+        if technique.get("id", "").startswith("AOA-T-PENDING-"):
+            issues.append(
+                ValidationIssue(
+                    techniques_location,
+                    "status 'canonical' cannot use pending techniques in techniques.yaml",
+                )
+            )
+            break
+
+    for technique in techniques_data.get("techniques", []):
+        if technique.get("path") == "TBD" or technique.get("source_ref") == "TBD":
+            issues.append(
+                ValidationIssue(
+                    techniques_location,
+                    "status 'canonical' requires concrete path and source_ref for every technique",
+                )
+            )
+            break
 
 
 def validate_skill_index(
