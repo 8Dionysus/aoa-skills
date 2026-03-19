@@ -211,7 +211,10 @@ class ValidateSkillsTests(unittest.TestCase):
         if review_record_surface is not None:
             self.add_public_review_record(repo_root, skill_name, review_record_surface)
         if include_techniques_manifest:
-            self.write_catalogs(repo_root)
+            try:
+                self.write_catalogs(repo_root)
+            except ValueError:
+                pass
 
         return repo_root
 
@@ -869,6 +872,24 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated catalog is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_targeted_validation_catches_stale_generated_catalog_for_selected_skill(self) -> None:
+        repo_root = self.make_repo()
+        frontmatter = self.load_skill_frontmatter(repo_root)
+        frontmatter["summary"] = "Changed without rebuilding catalog."
+        self.write_skill_frontmatter(repo_root, frontmatter)
+
+        issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        messages = [issue.message for issue in issues]
+
+        self.assertIn(
+            "generated catalog entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+        self.assertIn(
+            "generated min catalog entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
             messages,
         )
 

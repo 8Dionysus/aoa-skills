@@ -182,6 +182,36 @@ class BuildCatalogTests(unittest.TestCase):
 
         self.assertEqual(1, self.run_main(repo_root, ["--check"]))
 
+    def test_write_catalogs_rejects_invalid_routing_contract(self) -> None:
+        repo_root = self.make_repo()
+        manifest_path = repo_root / "skills" / "aoa-test-skill" / "techniques.yaml"
+        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
+        manifest["techniques"][0]["repo"] = "aoa-evals"
+        manifest["techniques"][0]["path"] = "../bad/path.md"
+        manifest_path.write_text(
+            yaml.safe_dump(manifest, sort_keys=False),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(
+            ValueError,
+            "repo must resolve to 'aoa-techniques'",
+        ):
+            build_catalog.write_catalogs(repo_root)
+
+    def test_check_mode_reports_invalid_routing_contract(self) -> None:
+        repo_root = self.make_repo()
+        manifest_path = repo_root / "skills" / "aoa-test-skill" / "techniques.yaml"
+        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
+        manifest["techniques"][0]["repo"] = "aoa-evals"
+        manifest["techniques"][0]["path"] = "../bad/path.md"
+        manifest_path.write_text(
+            yaml.safe_dump(manifest, sort_keys=False),
+            encoding="utf-8",
+        )
+
+        self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
 
 if __name__ == "__main__":
     unittest.main()

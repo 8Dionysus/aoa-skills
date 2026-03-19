@@ -11,6 +11,8 @@ from typing import Any, Sequence
 
 import yaml
 
+import skill_catalog_contract
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR_NAME = "skills"
@@ -22,13 +24,6 @@ SOURCE_OF_TRUTH = {
     "skill_markdown": "skills/*/SKILL.md",
     "technique_manifest": "skills/*/techniques.yaml",
 }
-SHORT_REPO_NAMES = {
-    "aoa-techniques": "aoa-techniques",
-    "aoa-skills": "aoa-skills",
-    "aoa-evals": "aoa-evals",
-    "aoa-memo": "aoa-memo",
-}
-
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -50,49 +45,15 @@ def discover_skill_names(repo_root: Path) -> list[str]:
 
 
 def relative_path(path: Path, repo_root: Path) -> str:
-    try:
-        return path.relative_to(repo_root).as_posix()
-    except ValueError:
-        return path.as_posix()
+    return skill_catalog_contract.relative_location(path, repo_root)
 
 
 def is_repo_relative_path(path_value: Any) -> bool:
-    if not isinstance(path_value, str):
-        return False
-    if not path_value or path_value == "TBD":
-        return False
-    if "\\" in path_value:
-        return False
-    if path_value.startswith("/") or path_value.startswith("./"):
-        return False
-    parts = path_value.split("/")
-    if any(part in {"", ".", ".."} for part in parts):
-        return False
-    if ":" in parts[0]:
-        return False
-    return True
+    return skill_catalog_contract.is_repo_relative_path(path_value)
 
 
 def normalize_repo_name(raw_repo: Any) -> str:
-    if not isinstance(raw_repo, str) or not raw_repo.strip():
-        raise ValueError("repo must be a non-empty string")
-
-    candidate = raw_repo.strip().replace("\\", "/")
-    if candidate.endswith(".git"):
-        candidate = candidate[:-4]
-    candidate = candidate.rstrip("/")
-
-    lowered = candidate.lower()
-    for short_name in SHORT_REPO_NAMES.values():
-        if lowered == short_name:
-            return short_name
-        if lowered.endswith(f"/{short_name}"):
-            return short_name
-        if lowered.endswith(f":{short_name}"):
-            return short_name
-        if lowered.endswith(f"github.com/{short_name}"):
-            return short_name
-    raise ValueError(f"unsupported repo value '{raw_repo}'")
+    return skill_catalog_contract.normalize_repo_name(raw_repo)
 
 
 def load_yaml(path: Path) -> Any:
@@ -123,57 +84,11 @@ def parse_skill_document(path: Path) -> dict[str, Any]:
 
 
 def technique_ids_from_manifest(manifest: dict[str, Any]) -> list[str]:
-    techniques = manifest.get("techniques", [])
-    if not isinstance(techniques, list):
-        raise ValueError("techniques.yaml must contain a techniques list")
-
-    technique_ids: list[str] = []
-    for technique in techniques:
-        if not isinstance(technique, dict):
-            raise ValueError("each techniques.yaml technique entry must be an object")
-        technique_id = technique.get("id")
-        if not isinstance(technique_id, str):
-            raise ValueError("each techniques.yaml technique entry must define string id")
-        technique_ids.append(technique_id)
-    return technique_ids
+    return skill_catalog_contract.technique_ids_from_manifest(manifest)
 
 
 def normalize_technique_refs(manifest: dict[str, Any]) -> list[dict[str, Any]]:
-    techniques = manifest.get("techniques", [])
-    if not isinstance(techniques, list):
-        raise ValueError("techniques.yaml must contain a techniques list")
-
-    normalized_refs: list[dict[str, Any]] = []
-    for technique in techniques:
-        if not isinstance(technique, dict):
-            raise ValueError("each techniques.yaml technique entry must be an object")
-
-        technique_id = technique.get("id")
-        path_value = technique.get("path")
-        source_ref = technique.get("source_ref")
-        if not isinstance(technique_id, str):
-            raise ValueError("each techniques.yaml technique entry must define string id")
-        if not isinstance(path_value, str):
-            raise ValueError(f"technique '{technique_id}' must define string path")
-        if not isinstance(source_ref, str):
-            raise ValueError(f"technique '{technique_id}' must define string source_ref")
-
-        normalized_ref: dict[str, Any] = {
-            "id": technique_id,
-            "repo": normalize_repo_name(technique.get("repo")),
-            "path": path_value,
-            "source_ref": source_ref,
-        }
-        use_sections = technique.get("use_sections")
-        if use_sections is not None:
-            if not isinstance(use_sections, list):
-                raise ValueError(
-                    f"technique '{technique_id}' use_sections must be a list when present"
-                )
-            normalized_ref["use_sections"] = list(use_sections)
-        normalized_refs.append(normalized_ref)
-
-    return normalized_refs
+    return skill_catalog_contract.normalize_technique_refs(manifest)
 
 
 def build_skill_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
@@ -186,24 +101,18 @@ def build_skill_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
     if not isinstance(manifest, dict):
         raise ValueError(f"{techniques_path} must parse to a mapping")
 
-    entry = {
-        "name": metadata.get("name"),
-        "scope": metadata.get("scope"),
-        "status": metadata.get("status"),
-        "summary": metadata.get("summary"),
-        "invocation_mode": metadata.get("invocation_mode"),
-        "technique_dependencies": list(metadata.get("technique_dependencies", [])),
-        "skill_path": relative_path(skill_md_path, repo_root),
-        "composition_mode": manifest.get("composition_mode"),
-        "technique_refs": normalize_technique_refs(manifest),
-    }
-
-    manifest_ids = technique_ids_from_manifest(manifest)
-    if entry["technique_dependencies"] != manifest_ids:
-        raise ValueError(
-            f"{techniques_path} technique order does not match SKILL.md frontmatter"
-        )
-
+    entry, issues = skill_catalog_contract.build_skill_entry_from_sources(
+        repo_root,
+        skill_name,
+        metadata,
+        manifest,
+        skill_md_path,
+        techniques_path,
+    )
+    if issues:
+        raise ValueError(skill_catalog_contract.format_issues(issues))
+    if entry is None:
+        raise ValueError(f"failed to build routing entry for {skill_name}")
     return entry
 
 
@@ -273,7 +182,10 @@ def check_catalogs(repo_root: Path) -> list[str]:
     problems: list[str] = []
     full_path = repo_root / FULL_CATALOG_PATH
     min_path = repo_root / MIN_CATALOG_PATH
-    expected_full, expected_min = build_catalog_texts(repo_root)
+    try:
+        expected_full, expected_min = build_catalog_texts(repo_root)
+    except ValueError as exc:
+        return [f"source validation failed:\n{exc}"]
 
     for path in (full_path, min_path):
         if not path.is_file():

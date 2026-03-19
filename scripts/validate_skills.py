@@ -17,6 +17,7 @@ import yaml
 from jsonschema import Draft202012Validator
 
 import build_catalog
+import skill_catalog_contract
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -40,7 +41,7 @@ REQUIRED_HEADINGS = {
     "Adaptation points",
 }
 TRACEABILITY_HEADINGS = {"Technique traceability", "Future traceability"}
-EXPECTED_TECHNIQUE_REPO = "aoa-techniques"
+EXPECTED_TECHNIQUE_REPO = skill_catalog_contract.EXPECTED_TECHNIQUE_REPO
 
 
 @dataclass(frozen=True)
@@ -341,66 +342,23 @@ def validate_techniques_manifest(
     if not isinstance(techniques, list):
         return
 
+    for contract_issue in skill_catalog_contract.collect_technique_ref_issues(
+        manifest,
+        techniques_path,
+        techniques_path.parents[2],
+    ):
+        issues.append(
+            ValidationIssue(contract_issue.location, contract_issue.message)
+        )
+
     notes = manifest.get("notes")
     pending_ids: list[str] = []
-    for index, technique in enumerate(techniques, start=1):
+    for technique in techniques:
         if not isinstance(technique, dict):
             continue
-        entry_location = f"{location} [technique #{index}]"
         technique_id = technique.get("id")
-        repo_name = technique.get("repo")
-        path_value = technique.get("path")
-        source_ref = technique.get("source_ref")
-        try:
-            normalized_repo_name = build_catalog.normalize_repo_name(repo_name)
-        except ValueError:
-            normalized_repo_name = None
-        if normalized_repo_name != EXPECTED_TECHNIQUE_REPO:
-            issues.append(
-                ValidationIssue(
-                    entry_location,
-                    f"repo must resolve to '{EXPECTED_TECHNIQUE_REPO}'",
-                )
-            )
-        if not isinstance(technique_id, str):
-            continue
-        if technique_id.startswith("AOA-T-PENDING-"):
+        if isinstance(technique_id, str) and technique_id.startswith("AOA-T-PENDING-"):
             pending_ids.append(technique_id)
-            if path_value != "TBD":
-                issues.append(
-                    ValidationIssue(
-                        entry_location,
-                        "pending techniques must use path 'TBD'",
-                    )
-                )
-            if source_ref != "TBD":
-                issues.append(
-                    ValidationIssue(
-                        entry_location,
-                        "pending techniques must use source_ref 'TBD'",
-                    )
-                )
-        elif path_value == "TBD":
-            issues.append(
-                ValidationIssue(
-                    entry_location,
-                    "published techniques cannot use path 'TBD'",
-                )
-            )
-        elif not build_catalog.is_repo_relative_path(path_value):
-            issues.append(
-                ValidationIssue(
-                    entry_location,
-                    "published techniques must use concrete repo-relative paths",
-                )
-            )
-        elif source_ref == "TBD":
-            issues.append(
-                ValidationIssue(
-                    entry_location,
-                    "published techniques cannot use source_ref 'TBD'",
-                )
-            )
 
     if pending_ids and not has_pending_note(notes, pending_ids):
         issues.append(
@@ -794,31 +752,60 @@ def validate_skill_manifest_parity(
     _techniques_path: Path,
     issues: list[ValidationIssue],
 ) -> None:
-    skill_location = relative_location(skill_md_path)
-    manifest_skill_name = manifest.get("skill_name")
-    if metadata.get("name") != manifest_skill_name:
+    for contract_issue in skill_catalog_contract.collect_skill_parity_issues(
+        skill_name,
+        metadata,
+        manifest,
+        skill_md_path,
+        skill_md_path.parents[2],
+    ):
+        if contract_issue.message == "frontmatter 'name' must match the directory name":
+            continue
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+
+
+def catalog_entries_by_name(
+    catalog: dict[str, Any],
+    *,
+    array_key: str,
+    key_name: str,
+    location: str,
+    issues: list[ValidationIssue],
+) -> dict[str, dict[str, Any]]:
+    entries = catalog.get(array_key)
+    if not isinstance(entries, list):
         issues.append(
-            ValidationIssue(
-                skill_location,
-                "frontmatter 'name' must match techniques.yaml 'skill_name'",
-            )
+            ValidationIssue(location, f"catalog field '{array_key}' must be a list")
         )
+        return {}
 
-    dependencies = metadata.get("technique_dependencies")
-    if not isinstance(dependencies, list):
-        return
-
-    manifest_ids = technique_ids_from_manifest(manifest)
-    if dependencies != manifest_ids:
-        issues.append(
-            ValidationIssue(
-                skill_location,
-                "frontmatter 'technique_dependencies' must exactly match techniques.yaml technique IDs in order",
+    entry_map: dict[str, dict[str, Any]] = {}
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"catalog field '{array_key}[{index}]' must be an object",
+                )
             )
-        )
+            continue
+        name = entry.get(key_name)
+        if not isinstance(name, str):
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"catalog field '{array_key}[{index}].{key_name}' must be a string",
+                )
+            )
+            continue
+        entry_map[name] = entry
+    return entry_map
 
 
-def validate_generated_catalogs(repo_root: Path) -> list[ValidationIssue]:
+def validate_generated_catalogs(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     full_path = repo_root / build_catalog.FULL_CATALOG_PATH
     min_path = repo_root / build_catalog.MIN_CATALOG_PATH
@@ -878,7 +865,10 @@ def validate_generated_catalogs(repo_root: Path) -> list[ValidationIssue]:
                     )
                 )
 
-    if full_data is not None and min_data is not None:
+    if full_data is None or min_data is None:
+        return issues
+
+    if skill_names is None:
         projected_min = build_catalog.project_min_catalog(full_data)
         if min_data != projected_min:
             issues.append(
@@ -888,25 +878,101 @@ def validate_generated_catalogs(repo_root: Path) -> list[ValidationIssue]:
                 )
             )
 
-    try:
-        expected_full_text, expected_min_text = build_catalog.build_catalog_texts(repo_root)
-    except (FileNotFoundError, ValueError):
+        try:
+            expected_full_text, expected_min_text = build_catalog.build_catalog_texts(repo_root)
+        except (FileNotFoundError, ValueError):
+            return issues
+
+        if full_text is not None and full_text != expected_full_text:
+            issues.append(
+                ValidationIssue(
+                    relative_location(full_path),
+                    "generated catalog is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        if min_text is not None and min_text != expected_min_text:
+            issues.append(
+                ValidationIssue(
+                    relative_location(min_path),
+                    "generated catalog is out of date; run python scripts/build_catalog.py",
+                )
+            )
         return issues
 
-    if full_text is not None and full_text != expected_full_text:
-        issues.append(
-            ValidationIssue(
-                relative_location(full_path),
-                "generated catalog is out of date; run python scripts/build_catalog.py",
+    full_location = relative_location(full_path)
+    min_location = relative_location(min_path)
+    actual_full_entries = catalog_entries_by_name(
+        full_data,
+        array_key="skills",
+        key_name="name",
+        location=full_location,
+        issues=issues,
+    )
+    actual_min_entries = catalog_entries_by_name(
+        min_data,
+        array_key="skills",
+        key_name="name",
+        location=min_location,
+        issues=issues,
+    )
+
+    for skill_name in skill_names:
+        expected_full_entry = build_catalog.build_skill_entry(repo_root, skill_name)
+        expected_min_entry = build_catalog.project_min_catalog(
+            {
+                "catalog_version": build_catalog.CATALOG_VERSION,
+                "source_of_truth": build_catalog.SOURCE_OF_TRUTH,
+                "skills": [expected_full_entry],
+            }
+        )["skills"][0]
+
+        actual_full_entry = actual_full_entries.get(skill_name)
+        actual_min_entry = actual_min_entries.get(skill_name)
+        if actual_full_entry is None:
+            issues.append(
+                ValidationIssue(
+                    full_location,
+                    f"generated catalog is missing skill '{skill_name}'",
+                )
             )
-        )
-    if min_text is not None and min_text != expected_min_text:
-        issues.append(
-            ValidationIssue(
-                relative_location(min_path),
-                "generated catalog is out of date; run python scripts/build_catalog.py",
+            continue
+        if actual_min_entry is None:
+            issues.append(
+                ValidationIssue(
+                    min_location,
+                    f"generated min catalog is missing skill '{skill_name}'",
+                )
             )
-        )
+            continue
+
+        if actual_full_entry != expected_full_entry:
+            issues.append(
+                ValidationIssue(
+                    full_location,
+                    f"generated catalog entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        if actual_min_entry != expected_min_entry:
+            issues.append(
+                ValidationIssue(
+                    min_location,
+                    f"generated min catalog entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        projected_min_entry = build_catalog.project_min_catalog(
+            {
+                "catalog_version": full_data.get("catalog_version"),
+                "source_of_truth": full_data.get("source_of_truth"),
+                "skills": [actual_full_entry],
+            }
+        )["skills"][0]
+        if actual_min_entry != projected_min_entry:
+            issues.append(
+                ValidationIssue(
+                    min_location,
+                    f"generated min catalog entry for '{skill_name}' must stay a projection of the full catalog",
+                )
+            )
 
     return issues
 
@@ -919,6 +985,7 @@ def format_issues(issues: Sequence[ValidationIssue]) -> str:
 def run_validation(repo_root: Path, skill_name: str | None = None) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     all_skill_names = discover_skill_names(repo_root)
+    bundle_issues_by_name: dict[str, list[ValidationIssue]] = {}
     if skill_name is not None:
         if skill_name not in all_skill_names:
             raise ValueError(f"unknown skill '{skill_name}'")
@@ -929,12 +996,16 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         selected_skills = None
 
     for name in target_skills:
-        issues.extend(validate_skill_bundle(repo_root, name))
+        bundle_issues = validate_skill_bundle(repo_root, name)
+        bundle_issues_by_name[name] = bundle_issues
+        issues.extend(bundle_issues)
 
     issues.extend(validate_evaluation_floors(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
     if skill_name is None:
         issues.extend(validate_generated_catalogs(repo_root))
+    elif all(not bundle_issues_by_name[name] for name in target_skills):
+        issues.extend(validate_generated_catalogs(repo_root, skill_names=target_skills))
     return issues
 
 
