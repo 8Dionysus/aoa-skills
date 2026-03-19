@@ -1,7 +1,7 @@
 ---
 name: aoa-sanitized-share
 scope: risk
-status: scaffold
+status: evaluated
 summary: Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.
 invocation_mode: explicit-only
 technique_dependencies:
