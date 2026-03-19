@@ -5,6 +5,7 @@
 - `README.md` — project entry point
 - `SKILL_INDEX.md` — public map of current skills and their maturity
 - `docs/` — architecture, bridge rules, roadmap, conventions
+- `docs/reviews/` — public review records for candidate and promotion work
 - `templates/` — templates for authoring skills and related files
 - `skills/` — skill bundles
 - `scripts/` — optional generation or validation helpers
@@ -60,6 +61,11 @@ Belong in `agents/openai.yaml`:
 - invocation mode
 - policy
 - future Codex-specific metadata
+
+Belong in `docs/reviews/`:
+- candidate review records
+- promotion review records
+- public evidence notes about repository-level review decisions
 
 ## What should not live here
 

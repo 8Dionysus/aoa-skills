@@ -114,6 +114,8 @@ When proposing `canonical` specifically:
 - ensure `technique_dependencies` and `techniques.yaml` contain no pending IDs or `TBD` source refs
 - ensure the skill has evaluation coverage in `tests/fixtures/skill_evaluation_cases.yaml`
 - rely on existing validator checks for `explicit-only` policy correctness rather than bypassing them
+- add or update the public review record under `docs/reviews/canonical-candidates/`
+- use `templates/CANDIDATE_REVIEW.template.md` for new candidate-review records
 
 ## Drift and refresh
 
