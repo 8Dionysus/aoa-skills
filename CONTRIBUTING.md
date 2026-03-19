@@ -76,7 +76,7 @@ Prefer:
 - or 1 clear repository-level docs or template improvement
 
 Promotion or maturity-changing PRs should also align with `docs/MATURITY_MODEL.md`
-and make the supporting evidence explicit.
+and `docs/PROMOTION_PATH.md`, and make the supporting evidence explicit.
 
 ## Recommended PR title format
 
@@ -102,6 +102,7 @@ PRs are reviewed for:
 ## Maturity and promotion
 
 Status changes are governance changes, not cosmetic relabeling.
+The repository-level promotion path lives in `docs/PROMOTION_PATH.md`.
 
 When proposing a promotion step:
 - state the current and target maturity status
@@ -110,6 +111,7 @@ When proposing a promotion step:
 - name any remaining gaps that block the next maturity step
 - add or update the public review record under `docs/reviews/status-promotions/`
 - use `templates/STATUS_PROMOTION_REVIEW.template.md` for non-canonical promotion reviews
+- make the review record explicit about machine-checkable floors and what still blocks the next status step
 
 When proposing `canonical` specifically:
 - ensure the skill uses `## Technique traceability`, not `## Future traceability`
@@ -118,6 +120,7 @@ When proposing `canonical` specifically:
 - rely on existing validator checks for `explicit-only` policy correctness rather than bypassing them
 - add or update the public review record under `docs/reviews/canonical-candidates/`
 - use `templates/CANDIDATE_REVIEW.template.md` for new candidate-review records
+- make the review record explicit about machine floors, whether the runtime meaning changed, and what still blocks the next maintenance step
 
 ## Drift and refresh
 

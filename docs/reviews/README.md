@@ -12,6 +12,9 @@ This folder stores public review records for repository-level skill review work.
 - review records are tracked, public repository artifacts
 - a review record documents findings, evidence, blockers, and recommendation
 - a review record does not change skill status by itself
+- a review record should say whether the current machine-checkable floors pass
+- a review record should say whether the runtime `SKILL.md` meaning changed or only metadata/evidence changed
+- a review record should name what still blocks the next status step
 - candidate reviews should use `templates/CANDIDATE_REVIEW.template.md`
 - status-promotion reviews should use `templates/STATUS_PROMOTION_REVIEW.template.md`
 

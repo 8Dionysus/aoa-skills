@@ -5,6 +5,7 @@
 - `README.md` — project entry point
 - `SKILL_INDEX.md` — public map of current skills and their maturity
 - `docs/` — architecture, bridge rules, roadmap, conventions
+- `docs/PROMOTION_PATH.md` — public repository convention for maturity transitions
 - `docs/reviews/` — public review records for candidate and promotion work
 - `docs/reviews/canonical-candidates/` — canonical-candidate review records
 - `docs/reviews/status-promotions/` — review records for non-canonical promotion steps
@@ -68,6 +69,7 @@ Belong in `docs/reviews/`:
 - candidate review records
 - promotion review records
 - public evidence notes about repository-level review decisions
+- explicit notes about whether machine floors pass, whether skill meaning changed, and what blocks the next status step
 
 ## What should not live here
 

@@ -100,7 +100,8 @@ This repository now has a mixed-status public core of 13 skills with first suppo
 honest bridge manifests with pinned source refs, and local validation for bundle shape and policy coherence.
 The repository now also has its first `canonical` skills, an expanded `evaluated` core surface, an expanded `evaluated` risk surface, and autonomy and trigger-boundary evaluation checks across representative skills.
 The repository now also has a documented maturity ladder and promotion guidance.
-The next focus is broadening evaluation and governance around that public core.
+The repository now also has a documented public promotion path in `docs/PROMOTION_PATH.md`.
+The next focus is bridge-composer hardening and clearer public governance around that core.
 
 ## Local validation
 

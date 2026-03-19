@@ -3,6 +3,7 @@
 ## Current status
 
 - current maturity status:
+- current machine-checkable floor:
 - candidate set:
 - scope:
 - current lineage:
@@ -20,14 +21,17 @@
 
 - `skills/<skill-name>/SKILL.md`
 - `skills/<skill-name>/techniques.yaml`
+- validator and test evidence:
 
 ## Findings
 
-- 
+- machine-checkable floor result:
+- runtime `SKILL.md` meaning changed:
 
 ## Gaps and blockers
 
-- 
+- blockers for canonical:
+- blockers for the next maintenance step:
 
 ## Recommendation
 
