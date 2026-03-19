@@ -29,6 +29,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-safe-infra-change
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
 
 trigger_cases:
   - skill: aoa-change-protocol
@@ -100,3 +106,29 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the task is purely analytical and does not approach execution at all
+  - skill: aoa-dry-run-first
+    case_id: dry_run_first_authority_boundary
+    prompt: Decide whether execution is authorized before choosing any preview path.
+    expected: do_not_use
+    required_phrases:
+      - the central question is whether execution is authorized at all rather than how to preview it; use `aoa-approval-gate-check`
+
+  - skill: aoa-safe-infra-change
+    case_id: safe_infra_change_bounded_operational_change
+    prompt: Apply a bounded configuration change with explicit validation and rollback thinking on an operational surface.
+    expected: use
+    required_phrases:
+      - the task changes infrastructure, services, configuration, orchestration, or operational surfaces
+      - the task needs stronger verification and rollback thinking than a normal code edit
+  - skill: aoa-safe-infra-change
+    case_id: safe_infra_change_authority_boundary
+    prompt: First decide whether enough authority exists before any operational action proceeds.
+    expected: do_not_use
+    required_phrases:
+      - the main question is whether authority exists at all; use `aoa-approval-gate-check`
+  - skill: aoa-safe-infra-change
+    case_id: safe_infra_change_preview_boundary
+    prompt: The main decision is how to preview a risky operational action before any real execution.
+    expected: do_not_use
+    required_phrases:
+      - the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`
