@@ -2,13 +2,13 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
+- current maturity status: `evaluated`
 - scope: `core`
 - current lineage: manifest-aligned with published techniques `AOA-T-0016` and `AOA-T-0002`
 
 ## Target status
 
-- target maturity status: `evaluated`
+- target maturity status: `evaluated` (achieved in this pass)
 - why this target now: published lineage, support-example guidance, and behavior-oriented evaluation coverage now exist together
 
 ## Evidence reviewed
@@ -32,5 +32,5 @@
 
 ## Recommendation
 
-Promote `aoa-bounded-context-map` to `evaluated` in the next PR.
+Promotion to `evaluated` is complete in this pass.
 Keep `canonical` deferred to a separate review and promotion decision.
