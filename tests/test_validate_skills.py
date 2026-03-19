@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import contextlib
 import io
+import json
 import shutil
 import sys
 import tempfile
@@ -18,6 +19,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import validate_skills
+import build_catalog
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {
@@ -36,6 +38,21 @@ PRIMARY_PUBLISHED_TECHNIQUE = {
         "Validation",
     ],
 }
+SECONDARY_PUBLISHED_TECHNIQUE = {
+    "id": "AOA-T-0002",
+    "repo": "8Dionysus/aoa-techniques",
+    "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+    "source_ref": "0123456789abcdef0123456789abcdef01234567",
+    "use_sections": ["summary"],
+}
+PENDING_TECHNIQUE = {
+    "id": "AOA-T-PENDING-TEST",
+    "repo": "8Dionysus/aoa-techniques",
+    "path": "TBD",
+    "source_ref": "TBD",
+    "use_sections": ["Intent"],
+}
+PENDING_NOTE = "Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publish."
 
 
 class ValidateSkillsTests(unittest.TestCase):
@@ -193,6 +210,8 @@ class ValidateSkillsTests(unittest.TestCase):
         )
         if review_record_surface is not None:
             self.add_public_review_record(repo_root, skill_name, review_record_surface)
+        if include_techniques_manifest:
+            self.write_catalogs(repo_root)
 
         return repo_root
 
@@ -285,6 +304,9 @@ class ValidateSkillsTests(unittest.TestCase):
         with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
+    def write_catalogs(self, repo_root: Path) -> None:
+        build_catalog.write_catalogs(repo_root)
+
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
         text = skill_md_path.read_text(encoding="utf-8")
@@ -338,6 +360,82 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertEqual([], issues)
         self.assertEqual(0, self.run_main(repo_root))
         self.assertEqual(0, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
+
+    def test_build_catalog_projects_routing_surface(self) -> None:
+        repo_root = self.make_repo(
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+
+        full_catalog = build_catalog.build_full_catalog(repo_root)
+        min_catalog = build_catalog.project_min_catalog(full_catalog)
+
+        self.assertEqual(1, full_catalog["catalog_version"])
+        self.assertEqual(
+            {
+                "skill_markdown": "skills/*/SKILL.md",
+                "technique_manifest": "skills/*/techniques.yaml",
+            },
+            full_catalog["source_of_truth"],
+        )
+        self.assertEqual(
+            {
+                "name": "aoa-test-skill",
+                "scope": "core",
+                "status": "scaffold",
+                "summary": "Test skill summary.",
+                "invocation_mode": "explicit-preferred",
+                "technique_dependencies": ["AOA-T-0001", "AOA-T-0002"],
+                "skill_path": "skills/aoa-test-skill/SKILL.md",
+                "composition_mode": "bounded",
+                "technique_refs": [
+                    {
+                        "id": "AOA-T-0001",
+                        "repo": "aoa-techniques",
+                        "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+                        "source_ref": "0123456789abcdef0123456789abcdef01234567",
+                        "use_sections": [
+                            "Intent",
+                            "When to use",
+                            "Inputs",
+                            "Outputs",
+                            "Core procedure",
+                            "Contracts",
+                            "Risks",
+                            "Validation",
+                        ],
+                    },
+                    {
+                        "id": "AOA-T-0002",
+                        "repo": "aoa-techniques",
+                        "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+                        "source_ref": "0123456789abcdef0123456789abcdef01234567",
+                        "use_sections": ["summary"],
+                    },
+                ],
+            },
+            full_catalog["skills"][0],
+        )
+        self.assertEqual(
+            {
+                "catalog_version": 1,
+                "source_of_truth": {
+                    "skill_markdown": "skills/*/SKILL.md",
+                    "technique_manifest": "skills/*/techniques.yaml",
+                },
+                "skills": [
+                    {
+                        "name": "aoa-test-skill",
+                        "scope": "core",
+                        "status": "scaffold",
+                        "summary": "Test skill summary.",
+                        "invocation_mode": "explicit-preferred",
+                        "technique_dependencies": ["AOA-T-0001", "AOA-T-0002"],
+                        "skill_path": "skills/aoa-test-skill/SKILL.md",
+                    }
+                ],
+            },
+            min_catalog,
+        )
 
     def test_future_traceability_heading_is_allowed(self) -> None:
         repo_root = self.make_repo(traceability_heading="Future traceability")
@@ -422,6 +520,7 @@ class ValidateSkillsTests(unittest.TestCase):
         self.write_skill_index(repo_root, skill_names)
         for skill_name in skill_names:
             self.add_skill_bundle(repo_root, skill_name=skill_name)
+        self.write_catalogs(repo_root)
 
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
@@ -442,6 +541,7 @@ class ValidateSkillsTests(unittest.TestCase):
             "abyss-port-exposure-guard",
         }:
             self.add_skill_bundle(repo_root, skill_name=skill_name)
+        self.write_catalogs(repo_root)
 
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
@@ -516,14 +616,11 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root = self.make_repo(
             techniques=[
                 {
-                    "id": "AOA-T-PENDING-TEST",
-                    "repo": "8Dionysus/aoa-techniques",
+                    **PENDING_TECHNIQUE,
                     "path": "techniques/test/TECHNIQUE.md",
-                    "source_ref": "TBD",
-                    "use_sections": ["Intent"],
                 }
             ],
-            notes=["Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publication."],
+            notes=[PENDING_NOTE],
         )
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
@@ -549,14 +646,11 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root = self.make_repo(
             techniques=[
                 {
-                    "id": "AOA-T-PENDING-TEST",
-                    "repo": "8Dionysus/aoa-techniques",
-                    "path": "TBD",
+                    **PENDING_TECHNIQUE,
                     "source_ref": "0123456789abcdef0123456789abcdef01234567",
-                    "use_sections": ["Intent"],
                 }
             ],
-            notes=["Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publication."],
+            notes=[PENDING_NOTE],
         )
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
@@ -582,16 +676,8 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root = self.make_repo(
             status="canonical",
             review_record_surface="canonical-candidates",
-            techniques=[
-                {
-                    "id": "AOA-T-PENDING-TEST",
-                    "repo": "8Dionysus/aoa-techniques",
-                    "path": "TBD",
-                    "source_ref": "TBD",
-                    "use_sections": ["Intent"],
-                }
-            ],
-            notes=["Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publication."],
+            techniques=[PENDING_TECHNIQUE],
+            notes=[PENDING_NOTE],
         )
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
@@ -713,6 +799,90 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertIn("skill 'aoa-test-skill' is missing from the index", messages)
         self.assertIn(
             "index lists 'aoa-other-skill' but no matching skill directory exists",
+            messages,
+        )
+
+    def test_pending_technique_with_tbd_refs_passes_for_scaffold_skill(self) -> None:
+        repo_root = self.make_repo(
+            techniques=[PENDING_TECHNIQUE],
+            notes=[PENDING_NOTE],
+        )
+        self.write_catalogs(repo_root)
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_technique_dependencies_must_match_manifest_order(self) -> None:
+        repo_root = self.make_repo(
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        frontmatter = self.load_skill_frontmatter(repo_root)
+        frontmatter["technique_dependencies"] = [
+            SECONDARY_PUBLISHED_TECHNIQUE["id"],
+            PRIMARY_PUBLISHED_TECHNIQUE["id"],
+        ]
+        self.write_skill_frontmatter(repo_root, frontmatter)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "frontmatter 'technique_dependencies' must exactly match techniques.yaml technique IDs in order",
+            messages,
+        )
+
+    def test_manifest_repo_mismatch_fails_directly(self) -> None:
+        repo_root = self.make_repo()
+        manifest = self.load_manifest(repo_root)
+        manifest["techniques"][0]["repo"] = "example/other-repo"
+        self.write_manifest(repo_root, manifest)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("repo must resolve to 'aoa-techniques'", messages)
+
+    def test_published_technique_requires_repo_relative_path(self) -> None:
+        repo_root = self.make_repo()
+        manifest = self.load_manifest(repo_root)
+        manifest["techniques"][0]["path"] = "../techniques/test/TECHNIQUE.md"
+        self.write_manifest(repo_root, manifest)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "published techniques must use concrete repo-relative paths",
+            messages,
+        )
+
+    def test_missing_generated_catalogs_fail(self) -> None:
+        repo_root = self.make_repo()
+        shutil.rmtree(repo_root / "generated")
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("generated catalog is missing", messages)
+
+    def test_stale_generated_catalogs_fail(self) -> None:
+        repo_root = self.make_repo()
+        frontmatter = self.load_skill_frontmatter(repo_root)
+        frontmatter["summary"] = "Changed without rebuilding catalog."
+        self.write_skill_frontmatter(repo_root, frontmatter)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated catalog is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_min_catalog_must_match_full_projection(self) -> None:
+        repo_root = self.make_repo()
+        min_path = repo_root / "generated" / "skill_catalog.min.json"
+        min_catalog = json.loads(min_path.read_text(encoding="utf-8"))
+        min_catalog["skills"][0]["summary"] = "tampered"
+        min_path.write_text(json.dumps(min_catalog), encoding="utf-8")
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "min catalog must be an exact projection of the full catalog",
             messages,
         )
 

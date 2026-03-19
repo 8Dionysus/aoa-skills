@@ -74,6 +74,7 @@ In short:
 - `docs/` — architecture, bridge rules, roadmap, conventions
 - `templates/` — templates for skill authoring and composition metadata
 - `skills/` — skill bundles
+- `generated/` — derived reader catalogs built from committed skill markdown and manifests
 - `scripts/` — local validation and refresh helpers
 - `schemas/` — machine-readable bundle contracts
 - `tests/` — local validator and evaluation tests
@@ -87,6 +88,9 @@ A typical skill bundle contains:
 - `techniques.yaml`
 - optional `agents/openai.yaml`
 - optional `examples/`, `references/`, or `checks/`
+
+`SKILL.md` and `techniques.yaml` remain authoritative.
+`generated/skill_catalog.json` and `generated/skill_catalog.min.json` are derived reader surfaces for routing and indexing.
 
 ## Skill categories
 
@@ -117,6 +121,12 @@ Run the full repository check:
 python scripts/validate_skills.py
 ```
 
+Refresh the derived reader catalogs:
+
+```bash
+python scripts/build_catalog.py
+```
+
 Run a single skill check:
 
 ```bash
@@ -125,6 +135,7 @@ python scripts/validate_skills.py --skill aoa-change-protocol
 
 The validator now uses repository schemas from `schemas/` as the contract layer for
 front matter, `techniques.yaml`, and `agents/openai.yaml`.
+It also checks that the generated catalogs exist, stay current, and that the min catalog is an exact projection of the full catalog.
 
 Preview a manifest-driven `SKILL.md` refresh without rewriting files:
 
