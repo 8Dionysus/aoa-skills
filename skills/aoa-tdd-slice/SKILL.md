@@ -5,7 +5,7 @@ status: scaffold
 summary: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries.
 invocation_mode: explicit-preferred
 technique_dependencies:
-  - AOA-T-PENDING-TDD
+  - AOA-T-0014
   - AOA-T-0001
 ---
 
@@ -73,9 +73,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Primary source techniques:
-- AOA-T-PENDING-TDD
-- AOA-T-0001 plan-diff-apply-verify-report
+Manifest-backed techniques:
+- AOA-T-0014 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/agent-workflows/tdd-slice/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0001 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Contracts, Validation
 
 ## Adaptation points
 

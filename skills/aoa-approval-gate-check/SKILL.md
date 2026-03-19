@@ -4,7 +4,8 @@ scope: risk
 status: scaffold
 summary: Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.
 invocation_mode: explicit-only
-technique_dependencies: []
+technique_dependencies:
+  - AOA-T-PENDING-APPROVAL-GATE-CHECK
 ---
 
 # aoa-approval-gate-check
@@ -70,10 +71,10 @@ Do not use this skill when:
 - confirm the next step fits the stated authority level
 - confirm uncertainty was not masked as permission
 
-## Future traceability
+## Technique traceability
 
-Technique linkage is intentionally deferred for this scaffold.
-Later revisions may connect this skill to reusable techniques in `aoa-techniques`.
+Manifest-backed techniques:
+- AOA-T-PENDING-APPROVAL-GATE-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 
