@@ -13,7 +13,8 @@ an executable workflow for Codex.
 3. `REPOSITORY_STRUCTURE.md` — folder layout and conventions.
 4. `ROADMAP.md` — canonical public roadmap for repository evolution.
 5. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
-6. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the current core.
+6. `reviews/README.md` — public review-record conventions and canonical-candidate review surface.
+7. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the current core.
 
 ## Core ideas
 
