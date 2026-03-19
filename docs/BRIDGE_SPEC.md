@@ -72,6 +72,14 @@ Preferred model:
 
 This keeps skill execution stable and reproducible.
 
+Current local helper:
+
+```bash
+python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol
+```
+
+In this pass, the helper is dry-run-first and reports a unified diff instead of rewriting files.
+
 ## Runtime expectations
 
 At runtime, Codex should be able to use the committed `SKILL.md` without requiring live dependency resolution.

@@ -46,6 +46,12 @@ To focus on one bundle while iterating:
 python scripts/validate_skills.py --skill aoa-change-protocol
 ```
 
+To preview a manifest-driven `SKILL.md` refresh without rewriting files:
+
+```bash
+python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol
+```
+
 ## Core distinction
 
 `aoa-techniques` is the source of truth for public reusable engineering techniques.
