@@ -4,6 +4,7 @@ techniques:
   - id: AOA-T-PENDING-APPROVAL-GATE-CHECK
     repo: 8Dionysus/aoa-techniques
     path: TBD
+    source_ref: TBD
     use_sections:
       - Intent
       - When to use
@@ -14,4 +15,4 @@ techniques:
       - Risks
       - Validation
 notes:
-  - Replace AOA-T-PENDING-APPROVAL-GATE-CHECK and path TBD after the upstream technique is published in aoa-techniques.
+  - Replace AOA-T-PENDING-APPROVAL-GATE-CHECK, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

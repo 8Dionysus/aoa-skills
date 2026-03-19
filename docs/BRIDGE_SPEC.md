@@ -46,6 +46,7 @@ techniques:
   - id: AOA-T-0001
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
+    source_ref: 0123456789abcdef0123456789abcdef01234567
     use_sections:
       - Intent
       - When to use
@@ -57,10 +58,14 @@ techniques:
       - Validation
 ```
 
+Published techniques should be pinned to a concrete upstream commit SHA in `source_ref`.
+Pending techniques should use `path: TBD` and `source_ref: TBD` until the upstream technique is published.
+
 ## Build-time composition
 
 Preferred model:
 1. read one or more techniques from `aoa-techniques`
+1. resolve them at the pinned `source_ref`
 2. extract selected sections
 3. generate or refresh `SKILL.md`
 4. keep the final committed `SKILL.md` human-reviewable
@@ -91,6 +96,7 @@ If a technique changes materially in `aoa-techniques`, dependent skills should b
 
 A future automation flow may:
 - detect changed technique IDs
+- compare pinned source refs against newer upstream refs
 - list dependent skills
 - produce a refresh report
 
@@ -107,6 +113,7 @@ Risk-heavy infrastructure skills should generally be explicit-only.
 
 A skill PR should make it clear:
 - which techniques are referenced
+- which upstream source refs were pinned or refreshed
 - whether the skill is newly created or refreshed
 - whether project overlays were updated
 - whether the runtime `SKILL.md` changed meaningfully

@@ -4,6 +4,7 @@ techniques:
   - id: AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK
     repo: 8Dionysus/aoa-techniques
     path: TBD
+    source_ref: TBD
     use_sections:
       - Intent
       - When to use
@@ -16,6 +17,7 @@ techniques:
   - id: AOA-T-0002
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
+    source_ref: a6f43089625afe286dda772e733b9d02d2759ac8
     use_sections:
       - Intent
       - When to use
@@ -26,4 +28,4 @@ techniques:
       - Risks
       - Validation
 notes:
-  - Replace AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK and path TBD after the upstream technique is published in aoa-techniques.
+  - Replace AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

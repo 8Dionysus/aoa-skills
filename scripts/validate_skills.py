@@ -313,6 +313,7 @@ def validate_techniques_manifest(
         entry_location = f"{location} [technique #{index}]"
         technique_id = technique.get("id")
         path_value = technique.get("path")
+        source_ref = technique.get("source_ref")
         if technique_id.startswith("AOA-T-PENDING-"):
             pending_ids.append(technique_id)
             if path_value != "TBD":
@@ -322,20 +323,34 @@ def validate_techniques_manifest(
                         "pending techniques must use path 'TBD'",
                     )
                 )
+            if source_ref != "TBD":
+                issues.append(
+                    ValidationIssue(
+                        entry_location,
+                        "pending techniques must use source_ref 'TBD'",
+                    )
+                )
         elif path_value == "TBD":
             issues.append(
                 ValidationIssue(
                     entry_location,
                     "published techniques cannot use path 'TBD'",
                 )
+            )
+        elif source_ref == "TBD":
+            issues.append(
+                ValidationIssue(
+                    entry_location,
+                    "published techniques cannot use source_ref 'TBD'",
                 )
+            )
 
     if pending_ids and not has_pending_note(notes, pending_ids):
         issues.append(
             ValidationIssue(
                 location,
                 "pending techniques require a note explaining that pending IDs and "
-                "path TBD must be replaced after publication",
+                "path/source_ref TBD must be replaced after publication",
             )
         )
 
@@ -352,6 +367,8 @@ def has_pending_note(notes: Any, pending_ids: Iterable[str]) -> bool:
         if "replace" not in lowered:
             continue
         if "path" not in lowered:
+            continue
+        if "source_ref" not in lowered:
             continue
         if "publish" not in lowered:
             continue

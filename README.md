@@ -97,7 +97,7 @@ A typical skill bundle contains:
 ## Current repository phase
 
 This repository now has a public core of 13 scaffold skills with first support artifacts,
-honest bridge manifests, and local validation for bundle shape and policy coherence.
+honest bridge manifests with pinned source refs, and local validation for bundle shape and policy coherence.
 The next focus is hardening autonomy, evaluation, and governance around that public core.
 
 ## Local validation
