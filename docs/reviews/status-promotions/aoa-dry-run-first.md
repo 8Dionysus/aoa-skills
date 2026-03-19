@@ -2,13 +2,13 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
+- current maturity status: `evaluated`
 - scope: `risk`
 - current lineage: manifest-aligned with pending technique `AOA-T-PENDING-DRY-RUN-FIRST` plus published complement `AOA-T-0004`
 
 ## Target status
 
-- target maturity status: `evaluated`
+- target maturity status: `evaluated` (achieved in this pass)
 - why this target now: evaluation coverage, explicit-only policy, and review-checklist guidance are already strong enough for a non-canonical promotion
 
 ## Evidence reviewed
@@ -33,5 +33,5 @@
 
 ## Recommendation
 
-Promote `aoa-dry-run-first` to `evaluated` in the next PR.
+Promotion to `evaluated` is complete in this pass.
 Keep `canonical` deferred until published lineage exists and a separate default-use decision is recorded.

@@ -1,7 +1,7 @@
 ---
 name: aoa-dry-run-first
 scope: risk
-status: scaffold
+status: evaluated
 summary: Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences.
 invocation_mode: explicit-only
 technique_dependencies:
