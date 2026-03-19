@@ -4,7 +4,8 @@ scope: core
 status: scaffold
 summary: Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.
 invocation_mode: explicit-preferred
-technique_dependencies: []
+technique_dependencies:
+  - AOA-T-PENDING-CORE-LOGIC-BOUNDARY
 ---
 
 # aoa-core-logic-boundary
@@ -71,10 +72,10 @@ Do not use this skill when:
 - confirm the refactor improved clarity for future changes
 - confirm no unrelated structural churn was introduced
 
-## Future traceability
+## Technique traceability
 
-Technique linkage is intentionally deferred for this scaffold.
-Later revisions may connect this skill to reusable techniques in `aoa-techniques`.
+Manifest-backed techniques:
+- AOA-T-PENDING-CORE-LOGIC-BOUNDARY from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 

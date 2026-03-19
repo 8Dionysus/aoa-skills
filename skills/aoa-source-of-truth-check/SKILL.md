@@ -4,7 +4,9 @@ scope: core
 status: scaffold
 summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.
 invocation_mode: explicit-preferred
-technique_dependencies: []
+technique_dependencies:
+  - AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK
+  - AOA-T-0002
 ---
 
 # aoa-source-of-truth-check
@@ -70,10 +72,11 @@ Do not use this skill when:
 - confirm overlaps or conflicts were surfaced rather than hidden
 - confirm the result helps future contributors orient faster
 
-## Future traceability
+## Technique traceability
 
-Technique linkage is intentionally deferred for this scaffold.
-Later revisions may connect this skill to reusable techniques in `aoa-techniques`.
+Manifest-backed techniques:
+- AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `a6f43089625afe286dda772e733b9d02d2759ac8` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 

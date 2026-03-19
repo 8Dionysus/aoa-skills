@@ -4,7 +4,8 @@ scope: core
 status: scaffold
 summary: Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.
 invocation_mode: explicit-preferred
-technique_dependencies: []
+technique_dependencies:
+  - AOA-T-PENDING-ADR-WRITE
 ---
 
 # aoa-adr-write
@@ -71,10 +72,10 @@ Do not use this skill when:
 - confirm consequences or tradeoffs are named
 - confirm the note aligns with the real change surface
 
-## Future traceability
+## Technique traceability
 
-Technique linkage is intentionally deferred for this scaffold.
-Later revisions may connect this skill to reusable techniques in `aoa-techniques`.
+Manifest-backed techniques:
+- AOA-T-PENDING-ADR-WRITE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 
