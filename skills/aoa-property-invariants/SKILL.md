@@ -1,7 +1,7 @@
 ---
 name: aoa-property-invariants
 scope: core
-status: scaffold
+status: evaluated
 summary: Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.
 invocation_mode: explicit-preferred
 technique_dependencies:
