@@ -4,7 +4,7 @@
 
 Current public foundation:
 - coherent docs surface
-- 13 public skills across core and risk categories, including the first `evaluated` skills and the remaining scaffold surface
+- 13 public skills across core and risk categories, including the first `canonical` skills and the remaining scaffold surface
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
 - local validator for bundle shape, policy, and `SKILL_INDEX.md` coverage
