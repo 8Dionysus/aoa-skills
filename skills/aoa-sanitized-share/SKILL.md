@@ -23,6 +23,8 @@ Use this skill when:
 Do not use this skill when:
 - the material is already clearly public-safe and minimal
 - the task is to perform the underlying operational change rather than prepare a shareable surface
+- the main task is deciding whether the underlying action should be allowed; use `aoa-approval-gate-check`
+- the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`
 
 ## Inputs
 
@@ -33,7 +35,7 @@ Do not use this skill when:
 
 ## Outputs
 
-- sanitized shareable artifact or summary
+- sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly
 - note on what was generalized or removed
 - warning about any remaining ambiguity or sensitive edge
 
@@ -64,6 +66,7 @@ Do not use this skill when:
 - confirm obvious sensitive surfaces were checked
 - confirm the resulting artifact is still understandable
 - confirm the sanitization level matches the intended audience
+- confirm raw sensitive detail was not preserved by accident
 - confirm remaining uncertainty is named rather than ignored
 
 ## Future traceability

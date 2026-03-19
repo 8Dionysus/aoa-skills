@@ -25,6 +25,7 @@ Do not use this skill when:
 - the task is a tiny local fix with no architectural pressure
 - there is no meaningful boundary to clarify yet
 - the code would become more ceremonial than useful after extraction
+- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first
 
 ## Inputs
 

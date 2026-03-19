@@ -46,7 +46,7 @@ Deferred for later passes:
 ## Expected next steps
 
 1. review the new scaffolds for naming and scope quality
-2. refresh `SKILL_INDEX.md` when direct file-update flow is convenient
+2. keep `SKILL_INDEX.md` and docs surface aligned as scaffold skills land
 3. publish missing techniques in `aoa-techniques`
 4. replace placeholders and add technique traceability where it becomes real
-5. add thin project overlays only after the public core becomes stable
+5. add examples, checks, and thin project overlays only after the public core becomes stable

@@ -23,6 +23,8 @@ Use this skill when:
 Do not use this skill when:
 - no meaningful dry-run or preview path exists and the task is already clearly bounded and harmless
 - the task is purely analytical and does not approach execution at all
+- the central question is whether execution is authorized at all rather than how to preview it; use `aoa-approval-gate-check`
+- the task is only about preparing a sanitized artifact for sharing; use `aoa-sanitized-share`
 
 ## Inputs
 
@@ -65,6 +67,7 @@ Do not use this skill when:
 - confirm a preview or dry-run path was considered first
 - confirm the preview scope was named honestly
 - confirm unresolved risk after preview was not hidden
+- confirm the preview step did not silently perform the real action
 - confirm the recommended next step matches the preview confidence
 
 ## Future traceability

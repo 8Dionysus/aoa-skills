@@ -24,6 +24,8 @@ Do not use this skill when:
 - the task is a purely local code change with no operational implications
 - a more specific risk skill should be used instead
 - the operator has not provided enough authority for the requested action
+- the main question is whether authority exists at all; use `aoa-approval-gate-check`
+- the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`
 
 ## Inputs
 
@@ -36,7 +38,7 @@ Do not use this skill when:
 ## Outputs
 
 - explicit risk-aware plan
-- bounded infrastructure or config change
+- bounded infrastructure or config change, or bounded execution recommendation
 - verification result
 - report with remaining risk notes
 
@@ -68,6 +70,7 @@ Do not use this skill when:
 - confirm the operational surface was named clearly
 - confirm the change stayed bounded
 - confirm verification was explicit and proportional to the risk
+- confirm rollback or recovery thinking was present before execution or recommendation
 - confirm the report includes unresolved risk or recovery notes
 
 ## Future traceability

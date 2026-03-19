@@ -23,6 +23,8 @@ Use this skill when:
 Do not use this skill when:
 - the task is clearly low-risk and already bounded by an ordinary workflow
 - no meaningful approval boundary exists in the current context
+- the authority is already clear and the main need is choosing a preview path before execution; use `aoa-dry-run-first`
+- the task is only about preparing a public-safe artifact for sharing; use `aoa-sanitized-share`
 
 ## Inputs
 
@@ -34,7 +36,7 @@ Do not use this skill when:
 
 ## Outputs
 
-- classification of the action
+- classification of the action: safe to proceed, explicit approval required, or do not execute
 - note on whether explicit approval is needed
 - bounded next-step recommendation
 - report of unresolved authority assumptions
@@ -64,7 +66,7 @@ Do not use this skill when:
 ## Verification
 
 - confirm the touched surfaces were identified
-- confirm the approval need was classified explicitly
+- confirm the approval need was classified explicitly rather than as a vague warning
 - confirm the next step fits the stated authority level
 - confirm uncertainty was not masked as permission
 

@@ -25,6 +25,7 @@ Do not use this skill when:
 - the task is a tiny isolated fix with no meaningful boundary ambiguity
 - the code is already clearly partitioned
 - the result would only rename folders without improving understanding
+- the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use `aoa-port-adapter-refactor`
 
 ## Inputs
 

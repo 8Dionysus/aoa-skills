@@ -24,6 +24,7 @@ Use this skill when:
 Do not use this skill when:
 - the repository is tiny and has no meaningful source-of-truth ambiguity
 - the task is purely code-local with no documentation or policy impact
+- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`
 
 ## Inputs
 

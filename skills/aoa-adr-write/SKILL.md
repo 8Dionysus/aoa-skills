@@ -24,6 +24,7 @@ Use this skill when:
 Do not use this skill when:
 - the change is tiny and self-evident
 - the note would only restate an obvious diff with no real decision content
+- the main problem is unclear authoritative documentation rather than decision rationale; use `aoa-source-of-truth-check` first
 
 ## Inputs
 
