@@ -164,7 +164,7 @@ class RefreshSkillFromManifestTests(unittest.TestCase):
         self.assertEqual("", stderr)
         self.assertIn("Status: already aligned", stdout)
 
-    def test_write_flag_returns_error_and_does_not_mutate(self) -> None:
+    def test_write_without_skill_returns_error_and_does_not_mutate(self) -> None:
         repo_root = self.make_repo()
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         original = skill_md_path.read_text(encoding="utf-8")
@@ -172,5 +172,26 @@ class RefreshSkillFromManifestTests(unittest.TestCase):
         status, stdout, stderr = self.run_main(repo_root, ["--write"])
         self.assertEqual(2, status)
         self.assertEqual("", stdout)
-        self.assertIn("Write mode is intentionally unavailable", stderr)
+        self.assertIn("write mode requires --skill", stderr)
         self.assertEqual(original, skill_md_path.read_text(encoding="utf-8"))
+
+    def test_write_with_skill_updates_file_and_reports_refreshed(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        original = skill_md_path.read_text(encoding="utf-8")
+
+        status, stdout, stderr = self.run_main(
+            repo_root, ["--write", "--skill", "aoa-test-skill"]
+        )
+        self.assertEqual(0, status)
+        self.assertEqual("", stderr)
+        self.assertIn("Status: refreshed", stdout)
+        self.assertIn("Updated: skills/aoa-test-skill/SKILL.md", stdout)
+        self.assertNotEqual(original, skill_md_path.read_text(encoding="utf-8"))
+
+        status, stdout, stderr = self.run_main(
+            repo_root, ["--skill", "aoa-test-skill"]
+        )
+        self.assertEqual(0, status)
+        self.assertEqual("", stderr)
+        self.assertIn("Status: already aligned", stdout)

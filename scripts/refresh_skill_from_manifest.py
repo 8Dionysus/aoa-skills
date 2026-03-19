@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preview manifest-driven SKILL.md refreshes without rewriting files."""
+"""Preview or explicitly apply manifest-driven SKILL.md refreshes."""
 
 from __future__ import annotations
 
@@ -24,6 +24,8 @@ TRACEABILITY_HEADINGS = {
 @dataclass(frozen=True)
 class RefreshResult:
     skill_name: str
+    skill_md_path: Path
+    proposed_text: str
     changed: bool
     diff: str
 
@@ -39,7 +41,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--write",
         action="store_true",
-        help="Reserved for a future explicit write mode. Not available in this pass.",
+        help="Apply the refresh to one explicitly named skill. Requires --skill.",
     )
     return parser.parse_args(argv)
 
@@ -150,6 +152,11 @@ def render_skill_document(frontmatter_lines: list[str], body_text: str) -> str:
     )
 
 
+def write_skill_document(path: Path, text: str) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        handle.write(text)
+
+
 def relative_path(path: Path, repo_root: Path) -> str:
     try:
         return path.relative_to(repo_root).as_posix()
@@ -188,6 +195,8 @@ def build_refresh_result(repo_root: Path, skill_name: str) -> RefreshResult:
     )
     return RefreshResult(
         skill_name=skill_name,
+        skill_md_path=skill_md_path,
+        proposed_text=proposed_text,
         changed=bool(diff_lines),
         diff="\n".join(diff_lines),
     )
@@ -203,6 +212,16 @@ def build_report(results: list[RefreshResult]) -> str:
         else:
             blocks.append(f"Skill: {result.skill_name}\nStatus: already aligned")
     return "\n\n".join(blocks)
+
+
+def build_write_report(result: RefreshResult, repo_root: Path) -> str:
+    if result.changed:
+        return (
+            f"Skill: {result.skill_name}\n"
+            "Status: refreshed\n"
+            f"Updated: {relative_path(result.skill_md_path, repo_root)}"
+        )
+    return f"Skill: {result.skill_name}\nStatus: already aligned"
 
 
 def run_refresh_preview(repo_root: Path, skill_name: str | None = None) -> list[RefreshResult]:
@@ -222,12 +241,19 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
     try:
         args = parse_args(argv)
         if args.write:
-            print(
-                "Write mode is intentionally unavailable in this pass; run without "
-                "--write to preview refresh diffs.",
-                file=sys.stderr,
-            )
-            return 2
+            if args.skill is None:
+                print(
+                    "Runtime error: write mode requires --skill so the first write "
+                    "contract stays bounded to a single bundle.",
+                    file=sys.stderr,
+                )
+                return 2
+
+            result = run_refresh_preview(repo_root, skill_name=args.skill)[0]
+            if result.changed:
+                write_skill_document(result.skill_md_path, result.proposed_text)
+            print(build_write_report(result, repo_root))
+            return 0
 
         results = run_refresh_preview(repo_root, skill_name=args.skill)
     except (FileNotFoundError, ValueError) as exc:
