@@ -32,9 +32,9 @@ an executable workflow for Codex.
 
 ## Current repository phase
 
-This repository now has a public core of 13 scaffold skills with first support artifacts,
+This repository now has a mixed-status public core of 13 skills with first support artifacts,
 honest bridge manifests with pinned source refs, and local validation coverage.
-The repository now also has autonomy and trigger-boundary evaluation checks for six representative skills.
+The repository now also has its first `evaluated` skills and autonomy and trigger-boundary evaluation checks for six representative skills.
 The repository now also has a documented maturity ladder and promotion guidance.
 The next focus is public-core hardening through broader evaluation and clearer governance.
 `ROADMAP.md` remains the canonical public roadmap.

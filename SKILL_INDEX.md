@@ -2,12 +2,12 @@
 
 This file is the repository-wide map of public skills.
 
-## Scaffold skills
+## Current skills
 
 | name | scope | status | summary |
 |---|---|---|---|
-| aoa-change-protocol | core | scaffold | Codex skill for bounded change execution using plan, scoped edits, validation, and concise reporting. |
-| aoa-tdd-slice | core | scaffold | Codex skill for implementing a small feature slice through test-first change discipline. |
+| aoa-change-protocol | core | evaluated | Codex skill for bounded change execution using plan, scoped edits, validation, and concise reporting. |
+| aoa-tdd-slice | core | evaluated | Codex skill for implementing a small feature slice through test-first change discipline. |
 | aoa-contract-test | core | scaffold | Codex skill for designing or extending contract-oriented validation at service or module boundaries. |
 | aoa-bounded-context-map | core | scaffold | Codex skill for carving or clarifying domain or system boundaries and their interfaces. |
 | aoa-property-invariants | core | scaffold | Codex skill for expressing domain or system invariants as property-oriented tests and checks. |
@@ -23,4 +23,5 @@ This file is the repository-wide map of public skills.
 ## Notes
 
 - `scaffold` means the skill shape exists, but it should still evolve through technique linkage, examples, and project overlays.
+- `evaluated` means behavior-oriented evidence exists through autonomy checks and trigger-boundary fixtures.
 - the documented maturity ladder is `scaffold`, `linked`, `reviewed`, `evaluated`, `canonical`, and `deprecated`.

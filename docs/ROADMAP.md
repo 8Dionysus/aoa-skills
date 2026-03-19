@@ -4,7 +4,7 @@
 
 Current public foundation:
 - coherent docs surface
-- 13 scaffold skills across core and risk categories
+- 13 public skills across core and risk categories, including the first `evaluated` skills and the remaining scaffold surface
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
 - local validator for bundle shape, policy, and `SKILL_INDEX.md` coverage
@@ -34,8 +34,8 @@ Add:
 ## v0.5 maturity and governance
 
 Add:
-- formal maturity states for skills
-- promotion criteria for moving from `scaffold` toward reviewed or canonical states
+- explicit promotion decisions within the formal maturity ladder
+- promotion criteria for moving from `scaffold` toward `evaluated` or `canonical` states
 - governance-oriented skill and policy checks
 - clearer release and stability signaling for reusable versus experimental surfaces
 

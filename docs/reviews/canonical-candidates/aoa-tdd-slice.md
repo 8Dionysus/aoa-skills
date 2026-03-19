@@ -2,7 +2,8 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
+- current maturity status: `evaluated`
+- promotion decision in this pass: direct `scaffold -> evaluated`
 - candidate set: first canonical-candidate review pass
 - scope: `core`
 - current lineage: manifest-aligned to published techniques `AOA-T-0014` and `AOA-T-0001`
@@ -29,14 +30,17 @@
 - contracts and verification sections are coherent with the skill's test-first workflow
 - manifest-backed traceability and runtime wording no longer drift
 - the example remains aligned with the same bounded slice discipline described in `SKILL.md`
+- linked evidence is already covered by manifest-aligned published technique lineage and pinned source refs
+- reviewed evidence is already covered by this explicit candidate review pass and the aligned example artifact
 
 ## Gaps and blockers
 
-- no current canonical gate blocker was found
-- this pass does not yet provide an explicit promotion rationale for why this skill should be the public reference for bounded TDD-oriented workflow
-- promotion should still be considered alongside the rest of the first candidate set rather than inferred from gate-passing alone
+- no blocker was found for promotion to `evaluated`
+- this promotion intentionally stops short of `canonical`; passing the canonical gate is not the same as choosing the public reference surface for bounded TDD-oriented workflow
+- any future canonical proposal should still be comparative and record explicit reference-surface rationale
 
 ## Recommendation
 
-Keep `aoa-tdd-slice` as a strong canonical candidate and do not change status in this pass.
-It is structurally ready for a future promotion decision, but that decision should be explicit and comparative rather than automatic.
+Promote `aoa-tdd-slice` to `evaluated` in this pass.
+A direct `scaffold -> evaluated` move is acceptable here because linked evidence is already covered by current manifest alignment and reviewed evidence is already covered by this candidate review pass.
+Do not promote it to `canonical` yet; that should remain a separate explicit decision.
