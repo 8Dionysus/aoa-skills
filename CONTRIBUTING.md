@@ -108,6 +108,8 @@ When proposing a promotion step:
 - cite the evidence that supports promotion
 - explain whether the runtime `SKILL.md` meaning changed
 - name any remaining gaps that block the next maturity step
+- add or update the public review record under `docs/reviews/status-promotions/`
+- use `templates/STATUS_PROMOTION_REVIEW.template.md` for non-canonical promotion reviews
 
 When proposing `canonical` specifically:
 - ensure the skill uses `## Technique traceability`, not `## Future traceability`
