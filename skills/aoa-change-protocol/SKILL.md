@@ -1,7 +1,7 @@
 ---
 name: aoa-change-protocol
 scope: core
-status: scaffold
+status: evaluated
 summary: Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly.
 invocation_mode: explicit-preferred
 technique_dependencies:

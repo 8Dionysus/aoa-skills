@@ -2,7 +2,8 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
+- current maturity status: `evaluated`
+- promotion decision in this pass: direct `scaffold -> evaluated`
 - candidate set: first canonical-candidate review pass
 - scope: `core`
 - current lineage: manifest-aligned to published techniques `AOA-T-0001` and `AOA-T-0002`
@@ -29,14 +30,17 @@
 - contracts and verification guidance stay coherent with the bounded change-protocol intent
 - manifest-backed traceability and runtime wording are aligned
 - the review checklist reinforces the same bounded workflow without widening scope
+- linked evidence is already covered by manifest-aligned published technique lineage and pinned source refs
+- reviewed evidence is already covered by this explicit candidate review pass and the aligned support artifact
 
 ## Gaps and blockers
 
-- no current canonical gate blocker was found
-- this pass does not yet supply an explicit promotion rationale for why this skill should become the public reference for its workflow class
-- promotion should still compare this candidate against the rest of the first candidate set before any status change
+- no blocker was found for promotion to `evaluated`
+- this promotion intentionally stops short of `canonical`; passing the canonical gate is not the same as choosing the public reference surface for this workflow class
+- any future canonical proposal should still compare this candidate against the rest of the first candidate set and record an explicit reference-surface rationale
 
 ## Recommendation
 
-Keep `aoa-change-protocol` as a strong canonical candidate and do not change status in this pass.
-It is structurally ready for a future promotion decision, but that decision should be made explicitly in a separate promotion-focused PR.
+Promote `aoa-change-protocol` to `evaluated` in this pass.
+A direct `scaffold -> evaluated` move is acceptable here because linked evidence is already covered by current manifest alignment and reviewed evidence is already covered by this candidate review pass.
+Do not promote it to `canonical` yet; that should remain a separate explicit decision.
