@@ -1,0 +1,62 @@
+autonomy_checks:
+  - skill: aoa-change-protocol
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-tdd-slice
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-approval-gate-check
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+
+trigger_cases:
+  - skill: aoa-change-protocol
+    case_id: change_protocol_non_trivial_change
+    prompt: Update code and config for a non-trivial change with an explicit validation path.
+    expected: use
+    required_phrases:
+      - the change affects code, config, docs, or operational surfaces in a meaningful way
+      - the task benefits from an explicit plan and verification path
+  - skill: aoa-change-protocol
+    case_id: change_protocol_tiny_edit
+    prompt: Fix a tiny wording typo with no operational consequence.
+    expected: do_not_use
+    required_phrases:
+      - the edit is tiny and has no meaningful review or operational consequence
+
+  - skill: aoa-tdd-slice
+    case_id: tdd_slice_bounded_behavior
+    prompt: Add a small behavior change that can be specified in tests before coding.
+    expected: use
+    required_phrases:
+      - a behavior change can be expressed as tests before implementation
+      - the task fits a bounded slice rather than a broad rewrite
+  - skill: aoa-tdd-slice
+    case_id: tdd_slice_exploratory_work
+    prompt: Explore an undefined problem where the behavior is still unclear.
+    expected: do_not_use
+    required_phrases:
+      - the task is purely exploratory and behavior is still undefined
+
+  - skill: aoa-approval-gate-check
+    case_id: approval_gate_sensitive_action
+    prompt: Classify whether an operationally sensitive action can proceed under unclear authority.
+    expected: use
+    required_phrases:
+      - a task may be destructive, operationally sensitive, or security-relevant
+      - the current authority level is unclear
+  - skill: aoa-approval-gate-check
+    case_id: approval_gate_low_risk_task
+    prompt: Handle a clearly low-risk task already bounded by an ordinary workflow.
+    expected: do_not_use
+    required_phrases:
+      - the task is clearly low-risk and already bounded by an ordinary workflow
