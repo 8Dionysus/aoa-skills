@@ -86,6 +86,25 @@ python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --writ
 
 The helper is dry-run-first. Repo-wide write mode remains intentionally unavailable in this pass.
 
+The helper now also reports bridge-coverage gaps against the committed runtime shape.
+Those gaps are review signals, not auto-generated content.
+Single-skill write mode may refresh `technique_dependencies` and the traceability block,
+but it must not invent missing runtime sections on behalf of the author.
+
+Bridge-coverage mapping in the current pass:
+
+- `summary` -> frontmatter `summary`
+- `Intent` -> `## Intent`
+- `When to use` -> `## Trigger boundary`
+- `When not to use` -> `## Trigger boundary`
+- `Inputs` -> `## Inputs`
+- `Outputs` -> `## Outputs`
+- `Core procedure` -> `## Procedure`
+- `Contracts` -> `## Contracts`
+- `Risks` -> `## Risks and anti-patterns`
+- `Validation` -> `## Verification`
+- `Adaptation notes` -> `## Adaptation points`
+
 ## Runtime expectations
 
 At runtime, Codex should be able to use the committed `SKILL.md` without requiring live dependency resolution.

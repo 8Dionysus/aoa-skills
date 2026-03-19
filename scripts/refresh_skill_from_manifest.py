@@ -19,6 +19,19 @@ TRACEABILITY_HEADINGS = {
     "## Technique traceability",
     "## Future traceability",
 }
+BRIDGE_SECTION_LOCATIONS = {
+    "summary": "frontmatter `summary`",
+    "Intent": "`## Intent`",
+    "When to use": "`## Trigger boundary`",
+    "When not to use": "`## Trigger boundary`",
+    "Inputs": "`## Inputs`",
+    "Outputs": "`## Outputs`",
+    "Core procedure": "`## Procedure`",
+    "Contracts": "`## Contracts`",
+    "Risks": "`## Risks and anti-patterns`",
+    "Validation": "`## Verification`",
+    "Adaptation notes": "`## Adaptation points`",
+}
 
 
 @dataclass(frozen=True)
@@ -28,6 +41,8 @@ class RefreshResult:
     proposed_text: str
     changed: bool
     diff: str
+    bridge_coverage_complete: bool
+    coverage_gaps: tuple[str, ...]
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -142,6 +157,50 @@ def replace_traceability_section(body_text: str, techniques: list[dict[str, Any]
     return "\n".join(updated_lines).strip() + "\n"
 
 
+def extract_heading_names(body_text: str) -> set[str]:
+    headings: set[str] = set()
+    for line in body_text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("## "):
+            headings.add(stripped.removeprefix("## ").strip())
+    return headings
+
+
+def build_bridge_coverage_gaps(
+    metadata: dict[str, Any],
+    body_text: str,
+    techniques: list[dict[str, Any]],
+) -> tuple[str, ...]:
+    headings = extract_heading_names(body_text)
+    gaps: list[str] = []
+
+    for technique in techniques:
+        technique_id = technique["id"]
+        for section in technique["use_sections"]:
+            location = BRIDGE_SECTION_LOCATIONS.get(section)
+            if location is None:
+                gaps.append(
+                    f"{technique_id}: section `{section}` has no bridge mapping"
+                )
+                continue
+
+            if section == "summary":
+                summary = metadata.get("summary")
+                if not isinstance(summary, str) or not summary.strip():
+                    gaps.append(
+                        f"{technique_id}: missing `{section}` coverage via {location}"
+                    )
+                continue
+
+            required_heading = location.removeprefix("`## ").removesuffix("`")
+            if required_heading not in headings:
+                gaps.append(
+                    f"{technique_id}: missing `{section}` coverage via {location}"
+                )
+
+    return tuple(gaps)
+
+
 def render_skill_document(frontmatter_lines: list[str], body_text: str) -> str:
     return (
         "---\n"
@@ -169,7 +228,7 @@ def build_refresh_result(repo_root: Path, skill_name: str) -> RefreshResult:
     skill_md_path = skill_dir / "SKILL.md"
     manifest_path = skill_dir / "techniques.yaml"
 
-    _, frontmatter_lines, body_text = parse_skill_document(skill_md_path)
+    metadata, frontmatter_lines, body_text = parse_skill_document(skill_md_path)
     manifest = load_yaml(manifest_path)
     if not isinstance(manifest, dict) or not isinstance(manifest.get("techniques"), list):
         raise ValueError(f"{manifest_path} must contain a techniques list")
@@ -183,6 +242,11 @@ def build_refresh_result(repo_root: Path, skill_name: str) -> RefreshResult:
     proposed_body = replace_traceability_section(body_text, manifest["techniques"])
     current_text = skill_md_path.read_text(encoding="utf-8")
     proposed_text = render_skill_document(proposed_frontmatter_lines, proposed_body)
+    coverage_gaps = build_bridge_coverage_gaps(
+        metadata,
+        body_text,
+        manifest["techniques"],
+    )
 
     diff_lines = list(
         difflib.unified_diff(
@@ -199,29 +263,54 @@ def build_refresh_result(repo_root: Path, skill_name: str) -> RefreshResult:
         proposed_text=proposed_text,
         changed=bool(diff_lines),
         diff="\n".join(diff_lines),
+        bridge_coverage_complete=not coverage_gaps,
+        coverage_gaps=coverage_gaps,
     )
 
 
 def build_report(results: list[RefreshResult]) -> str:
     blocks: list[str] = []
     for result in results:
+        block_lines = [
+            f"Skill: {result.skill_name}",
+            (
+                "Alignment: needs refresh"
+                if result.changed
+                else "Alignment: already aligned"
+            ),
+            (
+                "Bridge coverage: complete"
+                if result.bridge_coverage_complete
+                else "Bridge coverage: gaps detected"
+            ),
+        ]
+        if result.coverage_gaps:
+            block_lines.append("Coverage gaps:")
+            block_lines.extend(f"- {gap}" for gap in result.coverage_gaps)
         if result.changed:
-            blocks.append(
-                f"Skill: {result.skill_name}\nStatus: needs refresh\n{result.diff}"
-            )
+            block_lines.append(result.diff)
         else:
-            blocks.append(f"Skill: {result.skill_name}\nStatus: already aligned")
+            block_lines.append("Status: already aligned")
+        blocks.append("\n".join(block_lines))
     return "\n\n".join(blocks)
 
 
 def build_write_report(result: RefreshResult, repo_root: Path) -> str:
+    lines = [
+        f"Skill: {result.skill_name}",
+        "Write result: refreshed" if result.changed else "Write result: already aligned",
+        (
+            "Bridge coverage: complete"
+            if result.bridge_coverage_complete
+            else "Bridge coverage: gaps detected"
+        ),
+    ]
+    if result.coverage_gaps:
+        lines.append("Coverage gaps:")
+        lines.extend(f"- {gap}" for gap in result.coverage_gaps)
     if result.changed:
-        return (
-            f"Skill: {result.skill_name}\n"
-            "Status: refreshed\n"
-            f"Updated: {relative_path(result.skill_md_path, repo_root)}"
-        )
-    return f"Skill: {result.skill_name}\nStatus: already aligned"
+        lines.append(f"Updated: {relative_path(result.skill_md_path, repo_root)}")
+    return "\n".join(lines)
 
 
 def run_refresh_preview(repo_root: Path, skill_name: str | None = None) -> list[RefreshResult]:
