@@ -23,6 +23,18 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-bounded-context-map
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-property-invariants
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-dry-run-first
     forbidden_runtime_terms:
       - aoa-techniques
@@ -98,6 +110,46 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the change is entirely local and does not affect a meaningful boundary
+
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_semantic_confusion
+    prompt: Clarify domain language and subsystem boundaries before coding because adjacent concepts are being mixed together.
+    expected: use
+    required_phrases:
+      - naming is drifting or overloaded
+      - the task needs a clearer boundary before coding safely
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_tiny_local_change
+    prompt: Make a tiny local edit in a file where the boundary is already obvious and no context confusion exists.
+    expected: do_not_use
+    required_phrases:
+      - the change is tiny and fully local
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_contract_validation_boundary
+    prompt: The interface boundary is already clear; the main task is to validate the contract rather than carve contexts.
+    expected: do_not_use
+    required_phrases:
+      - the boundary is already clear and agreed on
+
+  - skill: aoa-property-invariants
+    case_id: property_invariants_broad_rule
+    prompt: Capture a rule that must hold across many inputs because example tests feel too narrow for the safety risk.
+    expected: use
+    required_phrases:
+      - a rule should hold across many inputs or states
+      - safety or correctness depends on broad input coverage
+  - skill: aoa-property-invariants
+    case_id: property_invariants_snapshot_preference
+    prompt: Check presentation-oriented formatting where concrete examples or snapshots are clearer than property thinking.
+    expected: do_not_use
+    required_phrases:
+      - the behavior is mostly about presentation details or narrow snapshots
+  - skill: aoa-property-invariants
+    case_id: property_invariants_no_real_invariant
+    prompt: Explore behavior before any meaningful invariant has been identified.
+    expected: do_not_use
+    required_phrases:
+      - no meaningful invariant is yet understood
 
   - skill: aoa-dry-run-first
     case_id: dry_run_first_previewable_operation
