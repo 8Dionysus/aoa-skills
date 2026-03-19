@@ -11,6 +11,7 @@
 - `docs/reviews/status-promotions/` — review records for non-canonical promotion steps
 - `templates/` — templates for authoring skills and related files
 - `skills/` — skill bundles
+- `generated/` — derived reader catalogs generated from committed skill markdown and manifests
 - `scripts/` — optional generation or validation helpers
 - `schemas/` — optional machine-readable schemas
 
@@ -59,6 +60,11 @@ Belong in `techniques.yaml`:
 - source paths and pinned source refs
 - selected sections
 - composition notes
+
+Belong in `generated/skill_catalog*.json`:
+- derived routing and reader surfaces
+- deterministic projections of committed `SKILL.md` and `techniques.yaml`
+- no new authority beyond the source files
 
 Belong in `agents/openai.yaml`:
 - invocation mode

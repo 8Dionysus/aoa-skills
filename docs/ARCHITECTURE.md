@@ -26,6 +26,9 @@ It packages:
 - invocation policy
 - technique composition metadata
 
+The repository may also publish derived reader surfaces in `generated/`.
+Those catalogs are built from committed `SKILL.md` and `techniques.yaml` files and are meant to help routing and indexing without becoming a second source of truth.
+
 A skill may rely on one technique or on several techniques.
 
 ## Layering
@@ -80,6 +83,7 @@ Operational or destructive workflows that should require explicit invocation and
 
 Skills should be reviewable artifacts.
 They can be generated or assembled from technique references, but the committed `SKILL.md` should remain understandable to a human reviewer without additional hidden state.
+Derived catalogs should stay deterministic and disposable: if a reader surface drifts, regenerate it from the authoritative markdown and manifest inputs.
 
 ## Versioning direction
 

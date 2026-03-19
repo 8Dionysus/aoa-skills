@@ -36,7 +36,8 @@
             "pattern": "^AOA-T-[A-Z0-9-]+$"
           },
           "repo": {
-            "const": "8Dionysus/aoa-techniques"
+            "type": "string",
+            "minLength": 3
           },
           "path": {
             "type": "string",
