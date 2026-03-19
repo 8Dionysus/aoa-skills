@@ -2,8 +2,8 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
-- canonical decision status: ready for a separate `canonical` promotion PR
+- current maturity status: `canonical`
+- canonical promotion decision: completed in this pass
 - candidate set: first canonical-candidate review pass
 - scope: `core`
 - current lineage: manifest-aligned to published techniques `AOA-T-0001` and `AOA-T-0002`
@@ -36,11 +36,11 @@
 
 ## Gaps and blockers
 
-- no current blocker remains for opening a separate `canonical` promotion PR
-- the promotion PR should still record explicit default-use rationale, even though the mechanical gate is already passing
-- the historical first cohort should still be documented comparatively rather than treated as an automatic gate consequence
+- no current blocker remains at the repository gate level
+- future follow-up should focus on preserving default-use clarity and reviewing drift rather than reopening the initial gate decision
+- the historical first cohort should remain documented comparatively rather than rewritten as if canonical status had been automatic
 
 ## Recommendation
 
-Treat `aoa-change-protocol` as ready for the next separate `canonical` promotion PR.
-No additional review refresh is needed before that PR; the remaining work is the explicit promotion decision itself and its recorded default-use rationale.
+Canonical promotion landed in this pass.
+Keep this review record as the historical decision surface for why `aoa-change-protocol` became part of the first canonical pair, and use future reviews only if its default-use rationale or bounded meaning starts to drift.

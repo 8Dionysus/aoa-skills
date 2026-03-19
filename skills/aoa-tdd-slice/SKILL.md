@@ -1,7 +1,7 @@
 ---
 name: aoa-tdd-slice
 scope: core
-status: evaluated
+status: canonical
 summary: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries.
 invocation_mode: explicit-preferred
 technique_dependencies:

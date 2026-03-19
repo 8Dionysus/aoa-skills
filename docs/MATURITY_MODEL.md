@@ -89,17 +89,17 @@ Use this checklist when proposing any status change beyond `scaffold`:
 
 ## First canonical candidates
 
-The first review set for future canonical promotion is:
-- `aoa-change-protocol`
-- `aoa-tdd-slice`
-- `aoa-approval-gate-check`
+The first canonical cohort was:
+- `aoa-change-protocol` — promoted to `canonical`
+- `aoa-tdd-slice` — promoted to `canonical`
+- `aoa-approval-gate-check` — still blocked on pending upstream lineage
 
-These skills are candidates only.
-They should not be promoted until review and evaluation evidence is captured explicitly.
+This first cohort is no longer uniformly candidate-only.
+Two members have landed as `canonical`, while `aoa-approval-gate-check` remains blocked until its upstream technique lineage is published and refreshed.
 
 ## Review guidance for current candidates
 
-For the first canonical-candidate pass, reviewers should explicitly assess:
+For remaining canonical-candidate work, reviewers should explicitly assess:
 - whether the trigger boundary is easy to apply correctly
 - whether traceability and runtime wording still align
 - whether the current fixtures catch meaningful misuse
