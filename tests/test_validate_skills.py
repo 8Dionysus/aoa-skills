@@ -889,6 +889,16 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn("repo must resolve to 'aoa-techniques'", messages)
 
+    def test_malformed_manifest_techniques_list_reports_issue_without_crashing(self) -> None:
+        repo_root = self.make_repo()
+        manifest = self.load_manifest(repo_root)
+        manifest["techniques"] = "broken"
+        self.write_manifest(repo_root, manifest)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("techniques.yaml must contain a techniques list", messages)
+
     def test_published_technique_requires_repo_relative_path(self) -> None:
         repo_root = self.make_repo()
         manifest = self.load_manifest(repo_root)
@@ -957,6 +967,34 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "min catalog must be an exact projection of the full catalog",
+            messages,
+        )
+
+    def test_malformed_full_catalog_reports_projection_issue_without_crashing(self) -> None:
+        repo_root = self.make_repo()
+        full_path = repo_root / "generated" / "skill_catalog.json"
+        full_catalog = json.loads(full_path.read_text(encoding="utf-8"))
+        del full_catalog["skills"]
+        full_path.write_text(json.dumps(full_catalog), encoding="utf-8")
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated catalog is malformed; min projection could not be computed",
+            messages,
+        )
+
+    def test_targeted_validation_reports_malformed_catalog_entry_projection(self) -> None:
+        repo_root = self.make_repo()
+        full_path = repo_root / "generated" / "skill_catalog.json"
+        full_catalog = json.loads(full_path.read_text(encoding="utf-8"))
+        del full_catalog["skills"][0]["summary"]
+        full_path.write_text(json.dumps(full_catalog), encoding="utf-8")
+
+        issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated catalog entry for 'aoa-test-skill' is malformed; min projection could not be computed",
             messages,
         )
 
