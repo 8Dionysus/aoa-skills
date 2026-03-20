@@ -162,20 +162,86 @@ class BuildCatalogTests(unittest.TestCase):
             full_catalog["skills"][0]["technique_refs"][0]["repo"],
         )
 
+    def test_write_capsules_generates_runtime_cards(self) -> None:
+        repo_root = self.make_repo()
+
+        capsule_path = build_catalog.write_capsules(repo_root)
+
+        capsules = json.loads(capsule_path.read_text(encoding="utf-8"))
+        self.assertEqual(1, capsules["capsule_version"])
+        self.assertEqual(
+            {
+                "skill_markdown": "skills/*/SKILL.md",
+                "frontmatter_fields": [
+                    "name",
+                    "scope",
+                    "status",
+                    "summary",
+                    "invocation_mode",
+                    "technique_dependencies",
+                ],
+                "sections": [
+                    "Intent",
+                    "Trigger boundary",
+                    "Inputs",
+                    "Outputs",
+                    "Procedure",
+                    "Risks and anti-patterns",
+                    "Verification",
+                ],
+            },
+            capsules["source_of_truth"],
+        )
+        self.assertEqual(
+            {
+                "name": "aoa-test-skill",
+                "scope": "core",
+                "status": "scaffold",
+                "summary": "Test skill summary.",
+                "trigger_boundary_short": "Use when needed.",
+                "inputs_short": "Needs: input.",
+                "outputs_short": "Produces: output.",
+                "workflow_short": "Purpose: Intent text. Flow: step.",
+                "main_anti_patterns_short": "Avoid: risk.",
+                "verification_short": "Checks: verify.",
+                "invocation_mode": "explicit-preferred",
+                "technique_dependencies": ["AOA-T-0001"],
+                "skill_path": "skills/aoa-test-skill/SKILL.md",
+            },
+            capsules["skills"][0],
+        )
+
     def test_check_mode_passes_after_write(self) -> None:
         repo_root = self.make_repo()
         build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
 
         self.assertEqual(0, self.run_main(repo_root, ["--check"]))
 
     def test_check_mode_fails_when_catalog_is_stale(self) -> None:
         repo_root = self.make_repo()
         build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
                 "Test skill summary.",
                 "Changed summary.",
+            ),
+            encoding="utf-8",
+        )
+
+        self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
+    def test_check_mode_fails_when_capsules_are_stale(self) -> None:
+        repo_root = self.make_repo()
+        build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "- verify",
+                "- verify harder",
             ),
             encoding="utf-8",
         )
@@ -211,6 +277,23 @@ class BuildCatalogTests(unittest.TestCase):
         )
 
         self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
+    def test_write_capsules_rejects_missing_required_source_section(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "## Verification\n\n- verify\n\n",
+                "",
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(
+            ValueError,
+            "capsule source section 'Verification' is missing",
+        ):
+            build_catalog.write_capsules(repo_root)
 
 
 if __name__ == "__main__":
