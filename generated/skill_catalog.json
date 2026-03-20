@@ -7,7 +7,7 @@
       "name": "aoa-adr-write",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.",
       "technique_dependencies": [
         "AOA-T-PENDING-ADR-WRITE"
@@ -37,7 +37,7 @@
       "name": "aoa-approval-gate-check",
       "scope": "risk",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "technique_dependencies": [
         "AOA-T-PENDING-APPROVAL-GATE-CHECK"
@@ -187,7 +187,7 @@
       "name": "aoa-core-logic-boundary",
       "scope": "core",
       "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.",
       "technique_dependencies": [
         "AOA-T-PENDING-CORE-LOGIC-BOUNDARY"
@@ -261,7 +261,7 @@
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.",
       "technique_dependencies": [
         "AOA-T-PENDING-PORT-ADAPTER-REFACTOR"
@@ -406,7 +406,7 @@
       "name": "aoa-source-of-truth-check",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.",
       "technique_dependencies": [
         "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",

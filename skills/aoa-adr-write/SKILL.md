@@ -1,7 +1,7 @@
 ---
 name: aoa-adr-write
 scope: core
-status: scaffold
+status: evaluated
 summary: Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.
 invocation_mode: explicit-preferred
 technique_dependencies:

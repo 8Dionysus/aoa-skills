@@ -1,7 +1,7 @@
 ---
 name: aoa-core-logic-boundary
 scope: core
-status: scaffold
+status: evaluated
 summary: Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.
 invocation_mode: explicit-preferred
 technique_dependencies:

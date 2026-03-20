@@ -1,7 +1,7 @@
 ---
 name: aoa-approval-gate-check
 scope: risk
-status: scaffold
+status: evaluated
 summary: Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.
 invocation_mode: explicit-only
 technique_dependencies:

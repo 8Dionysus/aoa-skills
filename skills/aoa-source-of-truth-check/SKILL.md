@@ -1,7 +1,7 @@
 ---
 name: aoa-source-of-truth-check
 scope: core
-status: scaffold
+status: evaluated
 summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.
 invocation_mode: explicit-preferred
 technique_dependencies:
@@ -20,13 +20,14 @@ Use this skill to clarify which files are authoritative for status, architecture
 Use this skill when:
 - a repository has several docs that may overlap or conflict
 - contributors may not know which file to trust first
-- a change touches docs, process, or operational guidance
+- a change touches docs, process, or operational guidance and the question is which file is authoritative
 - confusion exists between overview docs and authoritative docs
 
 Do not use this skill when:
 - the repository is tiny and has no meaningful source-of-truth ambiguity
 - the task is purely code-local with no documentation or policy impact
 - the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`
+- the main problem is broader policy design rather than document authority or ownership
 
 ## Inputs
 
