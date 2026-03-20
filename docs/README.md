@@ -24,7 +24,7 @@ an executable workflow for Codex.
 - skills should be self-contained at runtime
 - technique composition should happen at build time, not by live remote fetch
 - project-specific overlays belong in project repositories, not in the public core
-- generated catalogs are derived reader surfaces, not source-of-truth artifacts
+- generated catalogs and capsules are derived reader surfaces, not source-of-truth artifacts
 
 ## Layers
 

@@ -309,6 +309,7 @@ class ValidateSkillsTests(unittest.TestCase):
 
     def write_catalogs(self, repo_root: Path) -> None:
         build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
 
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
@@ -354,6 +355,17 @@ class ValidateSkillsTests(unittest.TestCase):
         policy_path.parent.mkdir(parents=True, exist_ok=True)
         policy_path.write_text(
             yaml.safe_dump(policy, sort_keys=False),
+            encoding="utf-8",
+        )
+
+    def load_capsules(self, repo_root: Path) -> dict:
+        capsule_path = repo_root / "generated" / "skill_capsules.json"
+        return json.loads(capsule_path.read_text(encoding="utf-8"))
+
+    def write_capsules(self, repo_root: Path, payload: dict) -> None:
+        capsule_path = repo_root / "generated" / "skill_capsules.json"
+        capsule_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
             encoding="utf-8",
         )
 
@@ -438,6 +450,27 @@ class ValidateSkillsTests(unittest.TestCase):
                 ],
             },
             min_catalog,
+        )
+
+        capsules = build_catalog.build_capsules_payload(repo_root)
+        self.assertEqual(1, capsules["capsule_version"])
+        self.assertEqual(
+            {
+                "name": "aoa-test-skill",
+                "scope": "core",
+                "status": "scaffold",
+                "summary": "Test skill summary.",
+                "trigger_boundary_short": "Use when needed; Avoid when not needed.",
+                "inputs_short": "Needs: input.",
+                "outputs_short": "Produces: output.",
+                "workflow_short": "Purpose: Intent text. Flow: step.",
+                "main_anti_patterns_short": "Avoid: risk.",
+                "verification_short": "Checks: verify.",
+                "invocation_mode": "explicit-preferred",
+                "technique_dependencies": ["AOA-T-0001", "AOA-T-0002"],
+                "skill_path": "skills/aoa-test-skill/SKILL.md",
+            },
+            capsules["skills"][0],
         )
 
     def test_future_traceability_heading_is_allowed(self) -> None:
@@ -596,6 +629,21 @@ class ValidateSkillsTests(unittest.TestCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn("missing support artifact under examples/*.md or checks/*.md", messages)
+
+    def test_empty_capsule_source_section_fails(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "## Verification\n\n- verify\n\n",
+                "## Verification\n\n",
+            ),
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("capsule source section 'Verification' must not be empty", messages)
 
     def test_explicit_only_without_policy_fails(self) -> None:
         repo_root = self.make_repo(invocation_mode="explicit-only")
@@ -861,6 +909,7 @@ class ValidateSkillsTests(unittest.TestCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn("generated catalog is missing", messages)
+        self.assertIn("generated capsules are missing", messages)
 
     def test_stale_generated_catalogs_fail(self) -> None:
         repo_root = self.make_repo()
@@ -892,6 +941,10 @@ class ValidateSkillsTests(unittest.TestCase):
             "generated min catalog entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
             messages,
         )
+        self.assertIn(
+            "generated capsule entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
 
     def test_min_catalog_must_match_full_projection(self) -> None:
         repo_root = self.make_repo()
@@ -904,6 +957,37 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "min catalog must be an exact projection of the full catalog",
+            messages,
+        )
+
+    def test_stale_generated_capsules_fail(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "- verify",
+                "- verify harder",
+            ),
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated capsules are out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_generated_capsules_must_align_with_full_catalog(self) -> None:
+        repo_root = self.make_repo()
+        capsules = self.load_capsules(repo_root)
+        capsules["skills"][0]["scope"] = "risk"
+        self.write_capsules(repo_root, capsules)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated capsule entry for 'aoa-test-skill' must align with full catalog field 'scope'",
             messages,
         )
 

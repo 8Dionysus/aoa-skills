@@ -129,12 +129,12 @@ def validate_against_schema(
 def parse_skill_markdown(
     skill_md_path: Path,
     issues: list[ValidationIssue],
-) -> tuple[dict[str, Any] | None, set[str]]:
+) -> tuple[dict[str, Any] | None, dict[str, str]]:
     try:
         text = skill_md_path.read_text(encoding="utf-8")
     except FileNotFoundError:
         issues.append(ValidationIssue(relative_location(skill_md_path), "file is missing"))
-        return None, set()
+        return None, {}
 
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
@@ -144,7 +144,7 @@ def parse_skill_markdown(
                 "missing YAML frontmatter opening delimiter",
             )
         )
-        return None, set()
+        return None, {}
 
     closing_index = None
     for index in range(1, len(lines)):
@@ -159,7 +159,7 @@ def parse_skill_markdown(
                 "missing YAML frontmatter closing delimiter",
             )
         )
-        return None, set()
+        return None, {}
 
     frontmatter_text = "\n".join(lines[1:closing_index])
     body = "\n".join(lines[closing_index + 1 :])
@@ -173,7 +173,7 @@ def parse_skill_markdown(
                 f"invalid frontmatter YAML: {exc}",
             )
         )
-        return None, set()
+        return None, {}
 
     if not isinstance(metadata, dict):
         issues.append(
@@ -182,13 +182,10 @@ def parse_skill_markdown(
                 "frontmatter must parse to a mapping",
             )
         )
-        return None, set()
+        return None, {}
 
-    headings = set(
-        match.group(1).strip()
-        for match in re.finditer(r"^##\s+(.+?)\s*$", body, flags=re.MULTILINE)
-    )
-    return metadata, headings
+    sections = build_catalog.parse_skill_sections(body)
+    return metadata, sections
 
 
 def find_support_artifacts(skill_dir: Path) -> list[Path]:
@@ -230,13 +227,15 @@ def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIs
         )
 
     metadata: dict[str, Any] | None = None
-    headings: set[str] = set()
+    sections: dict[str, str] = {}
     techniques_data: dict[str, Any] | None = None
     if skill_md_path.is_file():
-        metadata, headings = parse_skill_markdown(skill_md_path, issues)
+        metadata, sections = parse_skill_markdown(skill_md_path, issues)
         if metadata is not None:
+            headings = set(sections)
             validate_skill_frontmatter(skill_name, metadata, skill_md_path, issues)
             validate_skill_headings(headings, skill_md_path, issues)
+            validate_capsule_source_sections(sections, skill_md_path, issues)
 
     if techniques_path.is_file():
         techniques_data = load_yaml_file(techniques_path, issues)
@@ -269,7 +268,7 @@ def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIs
             repo_root,
             skill_name,
             metadata,
-            headings,
+            set(sections),
             techniques_data,
             skill_dir,
             skill_md_path,
@@ -313,6 +312,24 @@ def validate_skill_headings(
                 "'Future traceability'",
             )
         )
+
+
+def validate_capsule_source_sections(
+    sections: dict[str, str],
+    skill_md_path: Path,
+    issues: list[ValidationIssue],
+) -> None:
+    location = relative_location(skill_md_path)
+    for section_name in build_catalog.CAPSULE_REQUIRED_SECTIONS:
+        if section_name not in sections:
+            continue
+        if not sections[section_name].strip():
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"capsule source section '{section_name}' must not be empty",
+                )
+            )
 
 
 def validate_techniques_manifest(
@@ -609,7 +626,7 @@ def validate_evaluation_floors(
     skills_requiring_evaluation: dict[str, str] = {}
 
     for skill_name in target_skills:
-        metadata, _ = parse_skill_markdown(
+        metadata, _sections = parse_skill_markdown(
             repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md",
             [],
         )
@@ -977,6 +994,215 @@ def validate_generated_catalogs(
     return issues
 
 
+def validate_capsule_catalog_alignment(
+    catalog_data: dict[str, Any],
+    capsule_data: dict[str, Any],
+    *,
+    skill_names: Sequence[str] | None,
+    issues: list[ValidationIssue],
+    catalog_location: str,
+    capsule_location: str,
+) -> None:
+    starting_issue_count = len(issues)
+    catalog_entries = catalog_entries_by_name(
+        catalog_data,
+        array_key="skills",
+        key_name="name",
+        location=catalog_location,
+        issues=issues,
+    )
+    capsule_entries = catalog_entries_by_name(
+        capsule_data,
+        array_key="skills",
+        key_name="name",
+        location=capsule_location,
+        issues=issues,
+    )
+    if len(issues) != starting_issue_count:
+        return
+
+    if skill_names is None:
+        missing = sorted(set(catalog_entries) - set(capsule_entries))
+        extra = sorted(set(capsule_entries) - set(catalog_entries))
+        for skill_name in missing:
+            issues.append(
+                ValidationIssue(
+                    capsule_location,
+                    f"generated capsules are missing skill '{skill_name}'",
+                )
+            )
+        for skill_name in extra:
+            issues.append(
+                ValidationIssue(
+                    capsule_location,
+                    f"generated capsules include unknown skill '{skill_name}'",
+                )
+            )
+        target_names = sorted(set(catalog_entries) & set(capsule_entries))
+    else:
+        target_names = list(skill_names)
+
+    shared_fields = (
+        "scope",
+        "status",
+        "summary",
+        "invocation_mode",
+        "technique_dependencies",
+        "skill_path",
+    )
+    for skill_name in target_names:
+        catalog_entry = catalog_entries.get(skill_name)
+        capsule_entry = capsule_entries.get(skill_name)
+        if catalog_entry is None or capsule_entry is None:
+            continue
+        for field_name in shared_fields:
+            if capsule_entry.get(field_name) != catalog_entry.get(field_name):
+                issues.append(
+                    ValidationIssue(
+                        capsule_location,
+                        f"generated capsule entry for '{skill_name}' must align with full catalog field '{field_name}'",
+                    )
+                )
+
+
+def validate_generated_capsules(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    capsule_path = repo_root / build_catalog.CAPSULE_PATH
+
+    capsule_text: str | None = None
+    capsule_data: dict[str, Any] | None = None
+
+    if not capsule_path.is_file():
+        issues.append(
+            ValidationIssue(relative_location(capsule_path), "generated capsules are missing")
+        )
+        return issues
+
+    capsule_text = capsule_path.read_text(encoding="utf-8")
+    try:
+        parsed = json.loads(capsule_text)
+    except json.JSONDecodeError as exc:
+        issues.append(
+            ValidationIssue(
+                relative_location(capsule_path),
+                f"invalid JSON: {exc.msg}",
+            )
+        )
+        return issues
+
+    if not isinstance(parsed, dict):
+        issues.append(
+            ValidationIssue(
+                relative_location(capsule_path),
+                "capsules must parse to an object",
+            )
+        )
+        return issues
+
+    capsule_data = parsed
+    if capsule_data.get("capsule_version") != build_catalog.CAPSULE_VERSION:
+        issues.append(
+            ValidationIssue(
+                relative_location(capsule_path),
+                f"capsule_version must be {build_catalog.CAPSULE_VERSION}",
+            )
+        )
+    if capsule_data.get("source_of_truth") != build_catalog.CAPSULE_SOURCE_OF_TRUTH:
+        issues.append(
+            ValidationIssue(
+                relative_location(capsule_path),
+                "capsule source_of_truth does not match the expected contract",
+            )
+        )
+    if not isinstance(capsule_data.get("skills"), list):
+        issues.append(
+            ValidationIssue(
+                relative_location(capsule_path),
+                "capsules field 'skills' must be a list",
+            )
+        )
+        return issues
+
+    if skill_names is None:
+        try:
+            expected_capsule_text = build_catalog.build_capsule_text(repo_root)
+        except (FileNotFoundError, ValueError) as exc:
+            issues.append(
+                ValidationIssue(
+                    relative_location(capsule_path),
+                    f"capsule source validation failed: {exc}",
+                )
+            )
+            return issues
+
+        if capsule_text != expected_capsule_text:
+            issues.append(
+                ValidationIssue(
+                    relative_location(capsule_path),
+                    "generated capsules are out of date; run python scripts/build_catalog.py",
+                )
+            )
+    else:
+        capsule_entries = catalog_entries_by_name(
+            capsule_data,
+            array_key="skills",
+            key_name="name",
+            location=relative_location(capsule_path),
+            issues=issues,
+        )
+        for skill_name in skill_names:
+            try:
+                expected_capsule_entry = build_catalog.build_skill_capsule_entry(
+                    repo_root, skill_name
+                )
+            except (FileNotFoundError, ValueError) as exc:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(capsule_path),
+                        f"capsule source validation failed for '{skill_name}': {exc}",
+                    )
+                )
+                continue
+
+            actual_capsule_entry = capsule_entries.get(skill_name)
+            if actual_capsule_entry is None:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(capsule_path),
+                        f"generated capsules are missing skill '{skill_name}'",
+                    )
+                )
+                continue
+            if actual_capsule_entry != expected_capsule_entry:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(capsule_path),
+                        f"generated capsule entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                    )
+                )
+
+    full_catalog_path = repo_root / build_catalog.FULL_CATALOG_PATH
+    if full_catalog_path.is_file():
+        try:
+            full_catalog_data = json.loads(full_catalog_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return issues
+        if isinstance(full_catalog_data, dict):
+            validate_capsule_catalog_alignment(
+                full_catalog_data,
+                capsule_data,
+                skill_names=skill_names,
+                issues=issues,
+                catalog_location=relative_location(full_catalog_path),
+                capsule_location=relative_location(capsule_path),
+            )
+
+    return issues
+
+
 def format_issues(issues: Sequence[ValidationIssue]) -> str:
     lines = [f"- {issue.location}: {issue.message}" for issue in issues]
     return "\n".join(lines)
@@ -1004,8 +1230,10 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
     if skill_name is None:
         issues.extend(validate_generated_catalogs(repo_root))
+        issues.extend(validate_generated_capsules(repo_root))
     elif all(not bundle_issues_by_name[name] for name in target_skills):
         issues.extend(validate_generated_catalogs(repo_root, skill_names=target_skills))
+        issues.extend(validate_generated_capsules(repo_root, skill_names=target_skills))
     return issues
 
 
