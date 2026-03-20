@@ -106,7 +106,7 @@ honest bridge manifests with pinned source refs, and local validation for bundle
 The repository now also has its first `canonical` skills, an expanded `evaluated` core surface, an expanded `evaluated` risk surface, and autonomy and trigger-boundary evaluation checks across representative skills.
 The repository now also has a documented maturity ladder and promotion guidance.
 The repository now also has a documented public promotion path in `docs/PROMOTION_PATH.md`.
-The next focus is bridge-composer hardening and clearer public governance around that core.
+The current focus is bridge-composer hardening, cross-repo drift reporting, and clearer public governance around that core.
 
 ## Local validation
 
@@ -151,6 +151,29 @@ python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --writ
 ```
 
 The first write mode is intentionally bounded to a single skill per run.
+
+Check whether published technique refs have drifted against a local `aoa-techniques` checkout:
+
+```bash
+python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques
+```
+
+Preview an upstream-driven refresh for explicitly named skills:
+
+```bash
+python scripts/refresh_skill_from_techniques.py --skill aoa-change-protocol --techniques-repo ../aoa-techniques
+```
+
+Recommended bridge refresh order:
+
+1. `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques`
+2. `python scripts/refresh_skill_from_techniques.py --skill aoa-change-protocol --techniques-repo ../aoa-techniques`
+3. manually review whether upstream technique drift requires runtime wording changes beyond traceability and pinned refs
+4. `python scripts/build_catalog.py`
+5. `python scripts/validate_skills.py`
+
+The drift and refresh tools intentionally use CLI output and git diff as the review surface.
+They do not add committed drift-report artifacts, and the upstream refresh flow remains bounded to explicitly named skills.
 
 ## Contribution model
 
