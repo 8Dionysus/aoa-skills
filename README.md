@@ -22,6 +22,14 @@ If you are new to this repository, follow this short path:
 5. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
 6. Use `templates/SKILL.template.md` when authoring a new skill.
 
+## Quick routes
+
+- if you need the upstream reusable practice canon, go to [aoa-techniques](https://github.com/8Dionysus/aoa-techniques)
+- if you need portable proof surfaces for skill quality, boundaries, or regressions, go to [aoa-evals](https://github.com/8Dionysus/aoa-evals)
+- if you need the smallest next object by task type, go to [aoa-routing](https://github.com/8Dionysus/aoa-routing)
+- if you need explicit role contracts, handoff posture, or persona surfaces, go to [aoa-agents](https://github.com/8Dionysus/aoa-agents)
+- if you need higher-level scenario composition, go to [aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)
+
 ## What belongs here
 
 Good candidates:
@@ -101,12 +109,21 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 13 skills with first support artifacts,
-honest bridge manifests with pinned source refs, and local validation for bundle shape and policy coherence.
-The repository now also has its first `canonical` skills, an expanded `evaluated` core surface, an expanded `evaluated` risk surface, and autonomy and trigger-boundary evaluation checks across representative skills.
-The repository now also has a documented maturity ladder and promotion guidance.
-The repository now also has a documented public promotion path in `docs/PROMOTION_PATH.md`.
+This repository now has a mixed-status public core of 13 skills with first support artifacts, pinned bridge manifests, and local validation for bundle shape and policy coherence.
+It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, and documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`.
 The current focus is bridge-composer hardening, cross-repo drift reporting, and clearer public governance around that core.
+
+## When not to use this repository
+
+Do not use `aoa-skills` as:
+
+- the source canon for reusable techniques
+- the proof layer for quality claims
+- the memory layer
+- the role-contract layer
+- the scenario-composition layer
+
+Use it when you need a bounded, reviewable workflow bundle that an agent can execute.
 
 ## Local validation
 

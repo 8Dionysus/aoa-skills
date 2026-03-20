@@ -239,7 +239,11 @@ def collect_skill_parity_issues(
         )
         return issues
 
-    manifest_ids = technique_ids_from_manifest(manifest)
+    try:
+        manifest_ids = technique_ids_from_manifest(manifest)
+    except ValueError as exc:
+        issues.append(ContractIssue(location, str(exc)))
+        return issues
     if dependencies != manifest_ids:
         issues.append(
             ContractIssue(
