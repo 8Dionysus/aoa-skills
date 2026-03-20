@@ -9,7 +9,7 @@
       "outputs_short": "Produces: concise decision note or ADR draft; statement of rationale; consequence notes; verification that the note matches the actual change.",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.",
       "technique_dependencies": [
         "AOA-T-PENDING-ADR-WRITE"
@@ -26,7 +26,7 @@
       "outputs_short": "Produces: classification of the action: safe to proceed, explicit approval required, or do not execute; note on whether explicit approval is needed; bounded next-step recommendation; report of unresolved authority...",
       "scope": "risk",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "technique_dependencies": [
         "AOA-T-PENDING-APPROVAL-GATE-CHECK"
@@ -97,7 +97,7 @@
       "outputs_short": "Produces: clarified boundary between core logic and surrounding glue; notes on what should stay reusable versus edge-specific; small refactor proposal or bounded implementation; verification summary.",
       "scope": "core",
       "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.",
       "technique_dependencies": [
         "AOA-T-PENDING-CORE-LOGIC-BOUNDARY"
@@ -132,7 +132,7 @@
       "outputs_short": "Produces: clearer boundary between logic and infrastructure; proposed or implemented port shape; proposed or implemented adapter shape; verification summary.",
       "scope": "core",
       "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.",
       "technique_dependencies": [
         "AOA-T-PENDING-PORT-ADAPTER-REFACTOR"
@@ -202,7 +202,7 @@
       "outputs_short": "Produces: clearer source-of-truth map; note of overlaps or conflicts; proposed or implemented document role clarification; verification summary.",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.",
       "technique_dependencies": [
         "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",

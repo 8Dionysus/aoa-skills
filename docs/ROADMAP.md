@@ -4,14 +4,14 @@
 
 Current public foundation:
 - coherent docs surface
-- 13 public skills across core and risk categories, including the first `canonical` skills, an expanded `evaluated` core surface, an expanded `evaluated` risk surface, and the remaining scaffold surface
+- 13 public skills across core and risk categories, including the first `canonical` skills and evaluated coverage across the rest of the current public surface
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
 - local validator for bundle shape, policy, and `SKILL_INDEX.md` coverage
-- autonomy and trigger-boundary evaluation checks across representative core and risk skills
+- autonomy and trigger-boundary evaluation checks across the full current skill surface
 - documented maturity ladder and promotion guidance for future status changes
 
-The next steps should deepen autonomy, evaluation, and governance rather than only increase skill count.
+The next steps should deepen governance, release signaling, and public product-surface clarity rather than only increase skill count.
 
 ## v0.3 public core hardening
 

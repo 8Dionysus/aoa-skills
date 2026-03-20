@@ -2,7 +2,7 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
+- current maturity status: `evaluated`
 - candidate set: first canonical-candidate review pass
 - scope: `risk`
 - current lineage: manifest-aligned, but still depends on pending technique `AOA-T-PENDING-APPROVAL-GATE-CHECK`
@@ -30,12 +30,14 @@
 - explicit-only policy is consistent with the operational risk surface
 - evaluation coverage exists for both use and do-not-use cases
 - runtime wording and manifest-backed traceability are aligned as far as the current pending lineage allows
+- the skill is now evaluated, but that does not change the canonical blocker imposed by pending lineage
 
 ## Gaps and blockers
 
 - hard blocker: `technique_dependencies` still contains `AOA-T-PENDING-APPROVAL-GATE-CHECK`
 - hard blocker: `techniques.yaml` still contains pending lineage with `path: TBD` and `source_ref: TBD`
 - until the upstream approval-gate technique is published in `aoa-techniques`, this skill cannot satisfy the current canonical gate rules
+- canonical readiness remains blocked until the upstream approval-gate technique is published and refreshed into the skill
 
 ## Recommendation
 

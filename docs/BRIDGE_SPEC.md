@@ -91,6 +91,22 @@ Those gaps are review signals, not auto-generated content.
 Single-skill write mode may refresh `technique_dependencies` and the traceability block,
 but it must not invent missing runtime sections on behalf of the author.
 
+Current cross-repo hardening helpers:
+
+```bash
+python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques
+python scripts/refresh_skill_from_techniques.py --skill aoa-change-protocol --techniques-repo ../aoa-techniques
+```
+
+`report_technique_drift.py` compares published `source_ref` values against a chosen local
+`aoa-techniques` ref and reports `clean`, `drifted`, or `pending` technique refs per skill.
+With `--fail-on-drift`, it becomes a CI-facing signal without changing the default repo-local validator.
+
+`refresh_skill_from_techniques.py` is dry-run-first and bounded to explicitly named skills.
+It updates published `source_ref` values in `techniques.yaml`, then regenerates
+`technique_dependencies` and the `## Technique traceability` block in `SKILL.md`.
+It must not invent missing runtime sections on behalf of the author.
+
 Bridge-coverage mapping in the current pass:
 
 - `summary` -> frontmatter `summary`
@@ -127,11 +143,16 @@ Project overlays should not fork the core meaning of a technique unless they exp
 
 If a technique changes materially in `aoa-techniques`, dependent skills should be reviewed and refreshed.
 
-A future automation flow may:
-- detect changed technique IDs
-- compare pinned source refs against newer upstream refs
-- list dependent skills
-- produce a refresh report
+Recommended local workflow:
+
+1. run `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques`
+2. run `python scripts/refresh_skill_from_techniques.py --skill <skill-name> --techniques-repo ../aoa-techniques`
+3. manually review whether the upstream drift changes runtime meaning or only pinned refs and traceability
+4. rebuild generated reader surfaces with `python scripts/build_catalog.py`
+5. re-run `python scripts/validate_skills.py`
+
+The bridge/drift flow uses CLI output and ordinary git diff as the review surface.
+It does not add committed drift-report artifacts.
 
 ## Invocation policy
 

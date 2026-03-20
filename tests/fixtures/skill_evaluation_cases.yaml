@@ -1,4 +1,28 @@
 autonomy_checks:
+  - skill: aoa-adr-write
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-core-logic-boundary
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-port-adapter-refactor
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-source-of-truth-check
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-change-protocol
     forbidden_runtime_terms:
       - aoa-techniques
@@ -55,6 +79,64 @@ autonomy_checks:
       - live dependency resolution
 
 trigger_cases:
+  - skill: aoa-adr-write
+    case_id: adr_write_meaningful_decision
+    prompt: Record a decision that changes workflow structure and has multiple plausible options, so future contributors need the rationale.
+    expected: use
+    required_phrases:
+      - a decision changes structure, boundaries, tooling, or workflow expectations
+      - future contributors will need to know why a path was chosen
+  - skill: aoa-adr-write
+    case_id: adr_write_tiny_obvious_change
+    prompt: Add a short note for a tiny self-evident edit where the diff already explains everything.
+    expected: do_not_use
+    required_phrases:
+      - the change is tiny and self-evident
+      - the note would only restate an obvious diff with no real decision content
+
+  - skill: aoa-core-logic-boundary
+    case_id: core_logic_boundary_mixed_responsibilities
+    prompt: Clarify whether reusable rules belong in the core or at the edges because a module mixes domain logic with wiring detail.
+    expected: use
+    required_phrases:
+      - a module mixes stable rules with wiring or execution detail
+      - you need to decide whether something belongs in the core or at the edges
+  - skill: aoa-core-logic-boundary
+    case_id: core_logic_boundary_port_adapter_case
+    prompt: The core-versus-edge split is already clear; the real task is introducing a port around a concrete dependency.
+    expected: do_not_use
+    required_phrases:
+      - the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use `aoa-port-adapter-refactor`
+
+  - skill: aoa-port-adapter-refactor
+    case_id: port_adapter_refactor_dependency_pressure
+    prompt: Introduce a seam around a concrete dependency because business logic is tightly coupled to infrastructure and testing is hard.
+    expected: use
+    required_phrases:
+      - business or domain logic is tightly coupled to a concrete dependency
+      - tests are hard to write because external concerns leak into the core logic
+  - skill: aoa-port-adapter-refactor
+    case_id: port_adapter_refactor_docs_ownership
+    prompt: Clarify which documentation file is authoritative rather than refactoring a code dependency seam.
+    expected: do_not_use
+    required_phrases:
+      - the main problem is clarifying repository docs or source-of-truth ownership; use `aoa-source-of-truth-check` first
+
+  - skill: aoa-source-of-truth-check
+    case_id: source_of_truth_check_authority_confusion
+    prompt: Clarify which file is authoritative because several docs overlap and contributors do not know what to trust first.
+    expected: use
+    required_phrases:
+      - a repository has several docs that may overlap or conflict
+      - contributors may not know which file to trust first
+      - a change touches docs, process, or operational guidance and the question is which file is authoritative
+  - skill: aoa-source-of-truth-check
+    case_id: source_of_truth_check_broader_policy_design
+    prompt: Design a broader policy framework rather than clarifying document authority or ownership for existing files.
+    expected: do_not_use
+    required_phrases:
+      - the main problem is broader policy design rather than document authority or ownership
+
   - skill: aoa-change-protocol
     case_id: change_protocol_non_trivial_change
     prompt: Update code and config for a non-trivial change with an explicit validation path.

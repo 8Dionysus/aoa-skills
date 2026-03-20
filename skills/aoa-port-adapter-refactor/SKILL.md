@@ -1,7 +1,7 @@
 ---
 name: aoa-port-adapter-refactor
 scope: core
-status: scaffold
+status: evaluated
 summary: Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.
 invocation_mode: explicit-preferred
 technique_dependencies:
@@ -27,6 +27,7 @@ Do not use this skill when:
 - there is no meaningful boundary to clarify yet
 - the code would become more ceremonial than useful after extraction
 - the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first
+- the main problem is clarifying repository docs or source-of-truth ownership; use `aoa-source-of-truth-check` first
 
 ## Inputs
 
