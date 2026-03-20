@@ -129,7 +129,7 @@ def parse_skill_sections(body: str) -> dict[str, str]:
         current_lines = []
 
     for line in body.splitlines():
-        heading_match = SECTION_HEADING_PATTERN.match(line.strip())
+        heading_match = SECTION_HEADING_PATTERN.match(line)
         if heading_match:
             flush_current()
             current_heading = heading_match.group(1).strip()
