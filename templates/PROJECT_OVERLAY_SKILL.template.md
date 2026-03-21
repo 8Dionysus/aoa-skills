@@ -65,7 +65,8 @@ Do not use this skill when:
 
 ## Technique traceability
 
-List the upstream techniques that shape the base skill and any local overlay notes that matter for this repository family.
+Mirror the base skill's `technique_dependencies` and `techniques.yaml` entries in the same order.
+Keep any pending lineage visible instead of inventing empty manifests.
 
 ## Adaptation points
 

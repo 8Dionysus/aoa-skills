@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: true
+notes:
+  - This thin atm10 overlay stays explicit-preferred while local repo paths, commands, and approval notes still need review.

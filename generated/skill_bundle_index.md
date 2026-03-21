@@ -19,4 +19,6 @@ It is repo-local packaging metadata, not a release or registry surface.
 | aoa-sanitized-share | 5e4228a6591c | evaluated | risk | explicit-only | pending | false | true | 3 |
 | aoa-source-of-truth-check | e65a2452165a | evaluated | core | explicit-preferred | pending | false | true | 2 |
 | aoa-tdd-slice | cae37a872acb | canonical | core | explicit-preferred | published | true | true | 2 |
+| atm10-change-protocol | dc445a211221 | scaffold | project | explicit-preferred | published | false | true | 1 |
+| atm10-source-of-truth-check | 188ff1aefc39 | scaffold | project | explicit-preferred | pending | false | true | 1 |
 

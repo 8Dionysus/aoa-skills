@@ -384,6 +384,30 @@
       "scope": "core",
       "skill_path": "skills/aoa-tdd-slice/SKILL.md",
       "status": "canonical"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "name": "atm10-change-protocol",
+      "required_adjacency_coverage": false,
+      "scope": "project",
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "name": "atm10-source-of-truth-check",
+      "required_adjacency_coverage": false,
+      "scope": "project",
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold"
     }
   ],
   "source_of_truth": {

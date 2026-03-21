@@ -1,0 +1,31 @@
+skill_name: atm10-source-of-truth-check
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0002
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
+    source_ref: ea49abf4f7e96506feed56eb87a9052cbe4408a5
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Replace AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

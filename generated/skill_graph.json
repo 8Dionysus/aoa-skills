@@ -389,6 +389,66 @@
       "kind": "depends_on",
       "source": "skill_aoa_tdd_slice",
       "target": "technique_AOA_T_0001"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_atm10_change_protocol",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_atm10_change_protocol",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_atm10_change_protocol",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_atm10_change_protocol",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_atm10_change_protocol",
+      "target": "technique_AOA_T_0001"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_atm10_change_protocol",
+      "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "technique_AOA_T_PENDING_SOURCE_OF_TRUTH_CHECK"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "technique_AOA_T_0002"
     }
   ],
   "nodes": [
@@ -586,6 +646,26 @@
       "id": "technique_AOA_T_0014",
       "label": "AOA-T-0014",
       "type": "technique"
+    },
+    {
+      "id": "skill_atm10_change_protocol",
+      "label": "atm10-change-protocol",
+      "type": "skill"
+    },
+    {
+      "id": "status_scaffold",
+      "label": "status: scaffold",
+      "type": "status"
+    },
+    {
+      "id": "scope_project",
+      "label": "scope: project",
+      "type": "scope"
+    },
+    {
+      "id": "skill_atm10_source_of_truth_check",
+      "label": "atm10-source-of-truth-check",
+      "type": "skill"
     }
   ],
   "skill_graph_version": 1,
@@ -1342,6 +1422,94 @@
       "technique_dependencies": [
         "AOA-T-0014",
         "AOA-T-0001"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/atm10-change-protocol/SKILL.md",
+        "skills/atm10-change-protocol/techniques.yaml",
+        "skills/atm10-change-protocol/agents/openai.yaml",
+        "skills/atm10-change-protocol/examples/example.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "dc445a2112212add99b8481c1b4eefb2296a5416c2b0374f4863828891afb627",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "atm10-change-protocol",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "skill_revision": "dc445a211221",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/atm10-change-protocol/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/atm10-source-of-truth-check/SKILL.md",
+        "skills/atm10-source-of-truth-check/techniques.yaml",
+        "skills/atm10-source-of-truth-check/agents/openai.yaml",
+        "skills/atm10-source-of-truth-check/examples/example.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "188ff1aefc3956cb7a47b33f1ef7a3c5d53c8613fb17045539fc2ca016a3fd27",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "pending",
+      "name": "atm10-source-of-truth-check",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "skill_revision": "188ff1aefc39",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/atm10-source-of-truth-check/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0002"
       ]
     }
   ],

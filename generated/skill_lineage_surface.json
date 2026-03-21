@@ -8,7 +8,8 @@
       "aoa-port-adapter-refactor",
       "aoa-safe-infra-change",
       "aoa-sanitized-share",
-      "aoa-source-of-truth-check"
+      "aoa-source-of-truth-check",
+      "atm10-source-of-truth-check"
     ],
     "published_lineage": [
       "aoa-bounded-context-map",
@@ -16,7 +17,8 @@
       "aoa-contract-test",
       "aoa-invariant-coverage-audit",
       "aoa-property-invariants",
-      "aoa-tdd-slice"
+      "aoa-tdd-slice",
+      "atm10-change-protocol"
     ]
   },
   "lineage_surface_version": 1,
@@ -220,6 +222,34 @@
       "skill_path": "skills/aoa-tdd-slice/SKILL.md",
       "status": "canonical",
       "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "atm10-change-protocol",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "project",
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "atm10-source-of-truth-check",
+      "pending_technique_count": 2,
+      "published_technique_count": 1,
+      "scope": "project",
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 1
     }
   ],
   "source_of_truth": {

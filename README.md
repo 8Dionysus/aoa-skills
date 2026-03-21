@@ -25,10 +25,11 @@ If you are new to this repository, follow this short path:
 8. Read `generated/skill_evaluation_matrix.md` for the current derived evaluation evidence surface.
 9. Read `docs/ARCHITECTURE.md` for the high-level model.
 10. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-11. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or stub-only adaptation.
-12. Read `SKILL_INDEX.md` for the current skill surface.
-13. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-14. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, and `templates/EVALUATION_SNAPSHOT.template.md` when authoring new skill surfaces.
+11. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or live exemplar overlay packs.
+12. Read `docs/overlays/atm10/PROJECT_OVERLAY.md` for the first live exemplar family overlay pack.
+13. Read `SKILL_INDEX.md` for the current skill surface.
+14. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+15. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, and `templates/PROJECT_OVERLAY.template.md` when authoring new overlay surfaces.
 
 ## Quick routes
 
@@ -78,7 +79,7 @@ The current repo-local surface stack is:
 - runtime selection and object use: `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, `scripts/inspect_skill.py`
 - evaluation evidence and matrix reading: `docs/EVALUATION_PATH.md`, `generated/skill_evaluation_matrix.*`, `tests/fixtures/skill_evaluation_cases.yaml`, `scripts/report_skill_evaluation.py`
 - public-product and governance signals: `docs/PUBLIC_SURFACE.md`, `generated/public_surface.*`, `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, `generated/skill_graph.*`
-- overlay preparation and thin downstream adaptation: `docs/OVERLAY_SPEC.md`, `templates/PROJECT_OVERLAY.template.md`, `templates/PROJECT_OVERLAY_SKILL.template.md`
+- overlay preparation and thin downstream adaptation: `docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, `templates/PROJECT_OVERLAY.template.md`, `templates/PROJECT_OVERLAY_SKILL.template.md`
 
 The runtime path for public skill use is:
 
@@ -138,7 +139,8 @@ This repository now has a mixed-status public core of 14 skills with first suppo
 It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, a separate evaluation evidence layer in `docs/EVALUATION_PATH.md` and `generated/skill_evaluation_matrix.*`, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
 It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the evaluation evidence and governance/public-surface layers.
 The current focus is keeping runtime selection, evaluation evidence, and public status readable as separate derived layers while using the governance surface to clarify default references, candidate-ready skills, pending-lineage blockers, and derived maintenance surfaces such as `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`.
-Overlay preparation is intentionally repo-local and thin: `docs/OVERLAY_SPEC.md` and the overlay templates describe future-facing downstream adaptation, not a live project integration.
+Overlay preparation remains intentionally repo-local and thin.
+`docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, and the overlay templates now describe exemplar overlay adoption without pretending to be a live downstream integration.
 
 ## When not to use this repository
 

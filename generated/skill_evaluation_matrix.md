@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 14
+- total skills: 16
 - canonical skills: 6
 - canonical skills with eval gaps: 0
 
@@ -26,6 +26,8 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-sanitized-share | evaluated | risk | explicit-only | 1 | 1 | 3 | 1 | 1 | `skills/aoa-sanitized-share/examples/runtime.md` | `docs/reviews/status-promotions/aoa-sanitized-share.md` | - | true | - |
 | aoa-source-of-truth-check | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | - | true | - |
 | aoa-tdd-slice | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-tdd-slice/examples/example.md` | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` | true | - |
+| atm10-change-protocol | scaffold | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-change-protocol/examples/example.md` | - | - | true | - |
+| atm10-source-of-truth-check | scaffold | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-source-of-truth-check/examples/example.md` | - | - | true | - |
 
 ## Reading notes
 

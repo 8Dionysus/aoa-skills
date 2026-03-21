@@ -1,7 +1,8 @@
 # Overlay Spec
 
 `OVERLAY_SPEC.md` defines the repo-local contract for thin project overlays in `aoa-skills`.
-It is for downstream repository adaptation only. It does not redefine techniques, status floors, or public skill meaning.
+It now covers both fixture stubs and live exemplar overlay packs.
+It does not redefine techniques, status floors, or public skill meaning.
 
 ## Purpose
 
@@ -14,6 +15,8 @@ Project overlays exist so a downstream repo can adapt a public skill bundle to i
 - verification steps
 
 An overlay is thin by design. It should explain how a skill changes shape in a target repository without silently widening the skill into a playbook.
+Live overlay packs in this repository are exemplar surfaces only.
+They are not downstream integrations and they do not replace project-local authority.
 
 ## What an overlay may change
 
@@ -33,27 +36,35 @@ An overlay may not:
 - depend on live remote fetches
 - store private project instructions or secrets
 
-## Contract shape
+## Two-tier contract shape
 
-A thin overlay pack should normally include:
+Fixture-only stubs remain under `tests/fixtures/overlay_stubs/`.
+They exist to keep the stub contract small, explicit, and validator-backed.
 
-- a project overlay document
-- one or more overlayed skill documents
-- optional stubs that show how the overlay stays bounded
+Live exemplar packs now live under `docs/overlays/<family>/`.
 
-This repository keeps those examples local and public-safe. The examples are fixtures, not live project integrations.
+A live thin overlay pack should normally include:
+
+- `docs/overlays/<family>/PROJECT_OVERLAY.md`
+- one or more matching `skills/<family>-*` bundles
+- repo-relative commands, paths, approval posture, and verification notes that stay public-safe
+
+The project overlay document is the family-level entrypoint.
+The matching `skills/<family>-*` bundles are the executable thin overlays.
+Fixture stubs remain separate from live overlay packs and do not imply project adoption.
 
 ## Validation intent
 
-Future overlay validation should be able to answer these questions:
+Overlay validation should answer these questions:
 
 1. Is the overlay named explicitly and repo-locally?
 2. Does the overlay preserve the base skill boundary?
 3. Are authority and approval rules clear?
 4. Are all paths and commands repository-relative and public-safe?
-5. Are any cross-repo ideas clearly marked as stubs only?
+5. Does the live family overlay document match the committed `skills/<family>-*` bundles?
+6. Are fixture-only cross-repo ideas still clearly marked as stubs?
 
-## Recommended fixture layout
+## Fixture layout
 
 The current fixture packs in `tests/fixtures/overlay_stubs/` show the expected minimum shape:
 
@@ -62,7 +73,30 @@ The current fixture packs in `tests/fixtures/overlay_stubs/` show the expected m
 - `tests/fixtures/overlay_stubs/abyss-demo/PROJECT_OVERLAY.md`
 - `tests/fixtures/overlay_stubs/abyss-demo/PROJECT_OVERLAY_SKILL.md`
 
-These packs are intentionally small. They exist to support validator coverage without adding real project-family skills.
+These packs are intentionally small. They exist to support validator coverage for stub-only overlays without implying live family skills.
+
+## Live exemplar layout
+
+The current live family overlay layout is:
+
+- `docs/overlays/atm10/PROJECT_OVERLAY.md`
+- `skills/atm10-change-protocol/`
+- `skills/atm10-source-of-truth-check/`
+
+Future live packs should keep the same shape:
+
+- `docs/overlays/<family>/PROJECT_OVERLAY.md`
+- `skills/<family>-*/SKILL.md`
+- `skills/<family>-*/techniques.yaml`
+- optional `skills/<family>-*/agents/openai.yaml`
+- at least one support artifact under the matching `skills/<family>-*/`
+
+Live exemplar packs must:
+
+- explicitly say that they do not change the base skill boundary
+- list the matching `skills/<family>-*` bundles
+- stay repo-local, public-safe, and reviewable
+- avoid pretending to be a downstream integration or playbook
 
 ## Future stubs
 

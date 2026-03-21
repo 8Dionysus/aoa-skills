@@ -1,7 +1,9 @@
 # Overlay readiness
 
-This derived file summarizes whether the current skill surface already exposes the minimum hooks for thin project overlays.
-It does not add real project-family skills; it only reflects repo-local readiness.
+This derived file summarizes whether the current skill surface already exposes the minimum hooks for thin project overlays
+and which live exemplar overlay packs are committed in this repository.
+
+- live exemplar overlay packs: atm10
 
 | name | adaptation points | invocation stub |
 |---|---|---|
@@ -19,4 +21,6 @@ It does not add real project-family skills; it only reflects repo-local readines
 | aoa-sanitized-share | yes | yes |
 | aoa-source-of-truth-check | yes | yes |
 | aoa-tdd-slice | yes | yes |
+| atm10-change-protocol | yes | yes |
+| atm10-source-of-truth-check | yes | yes |
 

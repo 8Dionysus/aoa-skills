@@ -43,6 +43,10 @@ graph TD
   technique_AOA_T_PENDING_SOURCE_OF_TRUTH_CHECK["AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK"]
   skill_aoa_tdd_slice["aoa-tdd-slice"]
   technique_AOA_T_0014["AOA-T-0014"]
+  skill_atm10_change_protocol["atm10-change-protocol"]
+  status_scaffold["status: scaffold"]
+  scope_project["scope: project"]
+  skill_atm10_source_of_truth_check["atm10-source-of-truth-check"]
   skill_aoa_adr_write -->|maturity| status_evaluated
   skill_aoa_adr_write -->|scope| scope_core
   skill_aoa_adr_write -->|lineage| lineage_pending
@@ -121,6 +125,18 @@ graph TD
   skill_aoa_tdd_slice -->|invocation_policy| policy_explicit_preferred
   skill_aoa_tdd_slice -->|depends_on| technique_AOA_T_0014
   skill_aoa_tdd_slice -->|depends_on| technique_AOA_T_0001
+  skill_atm10_change_protocol -->|maturity| status_scaffold
+  skill_atm10_change_protocol -->|scope| scope_project
+  skill_atm10_change_protocol -->|lineage| lineage_published
+  skill_atm10_change_protocol -->|invocation_policy| policy_explicit_preferred
+  skill_atm10_change_protocol -->|depends_on| technique_AOA_T_0001
+  skill_atm10_change_protocol -->|depends_on| technique_AOA_T_0002
+  skill_atm10_source_of_truth_check -->|maturity| status_scaffold
+  skill_atm10_source_of_truth_check -->|scope| scope_project
+  skill_atm10_source_of_truth_check -->|lineage| lineage_pending
+  skill_atm10_source_of_truth_check -->|invocation_policy| policy_explicit_preferred
+  skill_atm10_source_of_truth_check -->|depends_on| technique_AOA_T_PENDING_SOURCE_OF_TRUTH_CHECK
+  skill_atm10_source_of_truth_check -->|depends_on| technique_AOA_T_0002
 ```
 
 | name | status | scope | invocation | lineage | techniques |
@@ -139,4 +155,6 @@ graph TD
 | aoa-sanitized-share | evaluated | risk | explicit-only | pending | AOA-T-PENDING-SANITIZED-SHARE |
 | aoa-source-of-truth-check | evaluated | core | explicit-preferred | pending | AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK, AOA-T-0002 |
 | aoa-tdd-slice | canonical | core | explicit-preferred | published | AOA-T-0014, AOA-T-0001 |
+| atm10-change-protocol | scaffold | project | explicit-preferred | published | AOA-T-0001, AOA-T-0002 |
+| atm10-source-of-truth-check | scaffold | project | explicit-preferred | pending | AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK, AOA-T-0002 |
 

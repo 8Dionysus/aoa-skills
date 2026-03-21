@@ -8,7 +8,8 @@
       "aoa-port-adapter-refactor",
       "aoa-safe-infra-change",
       "aoa-sanitized-share",
-      "aoa-source-of-truth-check"
+      "aoa-source-of-truth-check",
+      "atm10-source-of-truth-check"
     ],
     "candidate_ready_without_review": [],
     "canonical_maintenance": [
@@ -250,6 +251,41 @@
       "scope": "core",
       "skill_path": "skills/aoa-tdd-slice/SKILL.md",
       "status": "canonical"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "published",
+      "name": "atm10-change-protocol",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "project",
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "atm10-source-of-truth-check",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "project",
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold"
     }
   ],
   "source_of_truth": {

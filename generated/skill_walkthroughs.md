@@ -506,3 +506,67 @@ Common expand sections:
 - `runtime_example` (selected): `skills/aoa-tdd-slice/examples/example.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-tdd-slice.md`
 
+## atm10-change-protocol
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/atm10-change-protocol/SKILL.md`
+- pick summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes.
+
+### Use when
+
+- the base aoa-change-protocol workflow is already correct, but an atm10- repo needs repo-relative paths, commands, or local approval notes
+- a bounded non-trivial change still needs an explicit plan and verification path inside the local repo
+- a contributor needs a thin local overlay rather than a fresh workflow design
+
+### Do not use when
+
+- the task really needs a broader playbook or scenario bundle rather than a thin overlay
+- the work would introduce new upstream technique meaning instead of adapting the local repo surface
+- a more specific risk skill is still the clearer fit, such as aoa-dry-run-first, aoa-safe-infra-change, or aoa-approval-gate-check
+- the task does not need repo-relative local adaptation and the base skill can be used directly
+
+### Object use shape
+
+- bounded local change plan
+- repo-relative command or path sketch
+- verification note for the local repo surface
+- concise handoff on what stays downstream and explicit
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/atm10-change-protocol/examples/example.md`
+
+## atm10-source-of-truth-check
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/atm10-source-of-truth-check/SKILL.md`
+- pick summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.
+
+### Use when
+
+- the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules
+- contributors need a thin overlay that maps repo-relative docs such as README.md, docs/ARCHITECTURE.md, or docs/[canonical-guide].md
+- confusion exists between overview docs and authoritative files inside one local repo
+
+### Do not use when
+
+- the main need is broader policy design rather than local document authority mapping
+- the task is purely code-local and has no meaningful docs or guidance ambiguity
+- the work would introduce new upstream technique meaning instead of thin local adaptation
+- the main need is recording rationale for a decision rather than clarifying authority; use aoa-adr-write
+
+### Object use shape
+
+- local source-of-truth map
+- bounded clarification note
+- repo-relative canonical-file pattern
+- verification summary for the local docs surface
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/atm10-source-of-truth-check/examples/example.md`
+
