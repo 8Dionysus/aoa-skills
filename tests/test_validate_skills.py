@@ -310,6 +310,7 @@ class ValidateSkillsTests(unittest.TestCase):
     def write_catalogs(self, repo_root: Path) -> None:
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
 
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
@@ -365,6 +366,17 @@ class ValidateSkillsTests(unittest.TestCase):
     def write_capsules(self, repo_root: Path, payload: dict) -> None:
         capsule_path = repo_root / "generated" / "skill_capsules.json"
         capsule_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+    def load_sections(self, repo_root: Path) -> dict:
+        sections_path = repo_root / "generated" / "skill_sections.full.json"
+        return json.loads(sections_path.read_text(encoding="utf-8"))
+
+    def write_sections(self, repo_root: Path, payload: dict) -> None:
+        sections_path = repo_root / "generated" / "skill_sections.full.json"
+        sections_path.write_text(
             json.dumps(payload, sort_keys=True, indent=2) + "\n",
             encoding="utf-8",
         )
@@ -473,9 +485,13 @@ class ValidateSkillsTests(unittest.TestCase):
             capsules["skills"][0],
         )
 
-    def test_future_traceability_heading_is_allowed(self) -> None:
+    def test_future_traceability_heading_is_rejected(self) -> None:
         repo_root = self.make_repo(traceability_heading="Future traceability")
-        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn("missing required section 'Technique traceability'", messages)
+        self.assertIn("unexpected top-level section 'Future traceability'", messages)
 
     def test_linked_status_is_allowed(self) -> None:
         repo_root = self.make_repo(status="linked")
@@ -920,6 +936,7 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn("generated catalog is missing", messages)
         self.assertIn("generated capsules are missing", messages)
+        self.assertIn("generated sections are missing", messages)
 
     def test_stale_generated_catalogs_fail(self) -> None:
         repo_root = self.make_repo()
@@ -1026,6 +1043,55 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated capsule entry for 'aoa-test-skill' must align with full catalog field 'scope'",
+            messages,
+        )
+
+    def test_stale_generated_sections_fail(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "## Adaptation points\n\n- adapt\n",
+                "## Adaptation points\n\n- adapt\n- adapt more\n",
+            ),
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated sections are out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_generated_sections_must_align_with_full_catalog(self) -> None:
+        repo_root = self.make_repo()
+        sections = self.load_sections(repo_root)
+        sections["skills"][0]["status"] = "promoted"
+        self.write_sections(repo_root, sections)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated section entry for 'aoa-test-skill' must align with full catalog field 'status'",
+            messages,
+        )
+
+    def test_targeted_validation_catches_stale_generated_section_for_selected_skill(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "## Adaptation points\n\n- adapt\n",
+                "## Adaptation points\n\n- adapt\n- adapt more\n",
+            ),
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated section entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
             messages,
         )
 

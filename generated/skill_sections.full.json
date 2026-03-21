@@ -1,0 +1,774 @@
+{
+  "section_version": 1,
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to capture an architectural, structural, or workflow decision in a concise reviewable note that preserves rationale and tradeoffs.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a decision changes structure, boundaries, tooling, or workflow expectations\n- future contributors will need to know why a path was chosen\n- several plausible options existed and the reasoning matters\n- the team or project risks repeating the same debate later\n\nDo not use this skill when:\n- the change is tiny and self-evident\n- the note would only restate an obvious diff with no real decision content\n- the main problem is unclear authoritative documentation rather than decision rationale; use `aoa-source-of-truth-check` first",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- decision to record\n- context and problem statement\n- relevant options or alternatives\n- chosen path and rationale\n- known consequences or tradeoffs",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- concise decision note or ADR draft\n- statement of rationale\n- consequence notes\n- verification that the note matches the actual change",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. state the context and the problem the decision addresses\n2. list the main options if they meaningfully shaped the choice\n3. record the chosen decision in clear language\n4. note why it was chosen and what tradeoffs it introduces\n5. connect the note to the actual change surface when relevant\n6. verify that the note explains the decision rather than narrating the diff only",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- the note should explain why, not just what changed\n- the decision should be bounded and understandable\n- tradeoffs should not be hidden behind certainty theater\n- the note should help future reviewers, not merely satisfy process",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- writing an ADR for a trivial edit with no real decision\n- using inflated language to mask weak reasoning\n- recording the chosen path without naming consequences\n- letting the ADR drift away from the actual change",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the decision was meaningful enough to record\n- confirm the rationale is explicit\n- confirm consequences or tradeoffs are named\n- confirm the note aligns with the real change surface",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-ADR-WRITE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local ADR templates\n- local placement rules\n- architecture review expectations\n- repository-specific examples",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "scope": "risk",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to determine whether a task crosses an approval boundary and what should happen before any execution proceeds.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a task may be destructive, operationally sensitive, or security-relevant\n- the current authority level is unclear\n- the agent needs to classify whether the next step is safe, explicit-only, or out of bounds\n\nDo not use this skill when:\n- the task is clearly low-risk and already bounded by an ordinary workflow\n- no meaningful approval boundary exists in the current context\n- the authority is already clear and the main need is choosing a preview path before execution; use `aoa-dry-run-first`\n- the task is only about preparing a public-safe artifact for sharing; use `aoa-sanitized-share`",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- requested action\n- touched surfaces\n- known approval state\n- risk signals\n- possible fallback or inspect-only path",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- classification of the action: safe to proceed, explicit approval required, or do not execute\n- note on whether explicit approval is needed\n- bounded next-step recommendation\n- report of unresolved authority assumptions",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify the requested action and touched surfaces\n2. assess whether the action could be destructive, sensitive, or authority-gated\n3. classify the action as safe to proceed, explicit-approval required, or not appropriate to execute\n4. prefer inspect-only or bounded alternatives when authority is insufficient\n5. report the classification and the reason for it",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- unclear authority should not be silently interpreted as permission\n- classification should be explicit and reviewable\n- safer bounded alternatives should be preferred when possible\n- the result should reduce accidental overreach",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- assuming approval because a task sounds routine\n- collapsing several risk levels into a single vague warning\n- using approval logic to avoid useful bounded analysis\n- hiding destructive steps behind innocent labels",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the touched surfaces were identified\n- confirm the approval need was classified explicitly rather than as a vague warning\n- confirm the next step fits the stated authority level\n- confirm uncertainty was not masked as permission",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-APPROVAL-GATE-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local authority models\n- local risk categories\n- approval examples\n- repository-specific explicit-only rules",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use bounded-context thinking to reduce semantic drift, mixed responsibilities, and unclear interfaces.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a project mixes several domains or subsystems\n- naming is drifting or overloaded\n- the task needs a clearer boundary before coding safely\n- an agent is likely to confuse nearby concepts without sharper separation\n\nDo not use this skill when:\n- the change is tiny and fully local\n- the boundary is already clear and agreed on",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target area or subsystem\n- current naming and responsibilities\n- known neighboring contexts\n- ambiguous or overloaded terms",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- named contexts or subsystems\n- rough boundary map\n- interface notes between contexts\n- ambiguity notes and recommended vocabulary",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify the target area and the terms people use for it\n2. separate responsibilities into bounded contexts or subsystems\n3. name what belongs inside each context and what stays outside\n4. describe the interfaces or translations between contexts\n5. note ambiguous terms and propose clearer language\n6. report how the new boundary should shape future changes",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- boundaries should reduce semantic confusion, not create ceremony for its own sake\n- neighboring contexts should be named explicitly when relevant\n- interface or translation points should be visible",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- inventing too many contexts for a small problem\n- renaming concepts without reducing confusion\n- treating context maps as proof of good architecture when interfaces remain muddy",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the main ambiguity was reduced\n- confirm interfaces or handoff points are named\n- confirm the output helps future scoped changes",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0016 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays should add:\n- local domain vocabulary\n- canonical docs that define terminology\n- local examples of context boundaries",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-change-protocol",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use a visible, bounded workflow for non-trivial changes so the result remains reviewable and safer.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the change affects code, config, docs, or operational surfaces in a meaningful way\n- the task benefits from an explicit plan and verification path\n- the task touches more than a trivial wording fix\n\nDo not use this skill when:\n- the edit is tiny and has no meaningful review or operational consequence\n- a more specific risk skill should be used instead",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target goal\n- touched files or surfaces\n- main risk\n- intended validation path\n- rollback idea",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- explicit plan\n- scoped change\n- named verification result\n- concise final report",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. state the goal and touched surfaces\n2. identify the main risk and think about rollback before editing\n3. prepare the smallest reviewable change\n4. avoid unrelated cleanup or opportunistic refactors\n5. apply the change inside the declared scope\n6. run or name explicit verification\n7. report what changed, what was verified, and what remains risky",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- the change must remain reviewable\n- verification must be explicit, not implied\n- the change should stay inside the declared scope\n- rollback thinking should exist before apply",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- over-formalizing trivial edits\n- symbolic verification that creates false safety\n- using the report as a substitute for a readable diff\n- silently expanding the task during implementation",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm a plan existed before apply\n- confirm the change stayed scoped\n- confirm at least one explicit verification step was run or intentionally skipped with explanation\n- confirm the report includes outcome and rollback thinking",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays should add:\n- local source-of-truth files\n- local validation commands\n- local risk tiers\n- approval or review rules",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "status": "canonical"
+    },
+    {
+      "name": "aoa-contract-test",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Strengthen boundary reliability by making expected inputs, outputs, and validation summaries explicit.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- two modules or services interact across a meaningful boundary\n- a smoke path or interface needs a stable validation contract\n- a change risks breaking downstream assumptions\n\nDo not use this skill when:\n- the change is entirely local and does not affect a meaningful boundary\n- a broad system rewrite is needed before the boundary itself is stable",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- boundary under review\n- expected inputs and outputs\n- current verification surface\n- known downstream dependencies",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- explicit contract assumptions\n- tests or smoke summary changes\n- verification notes\n- downstream impact notes",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify the boundary and its consumers\n2. state the expected input/output behavior\n3. express the contract in tests, smoke summaries, or structured checks\n4. verify both the boundary behavior and the reporting shape\n5. report what became explicit and what remains weak",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- the contract should be visible to another human or agent\n- verification should be tied to the boundary, not only to internals\n- downstream assumptions should be named when relevant",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- vague contracts that do not actually constrain behavior\n- treating a smoke summary as proof when it does not cover the real boundary\n- changing interface behavior without downstream impact notes",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the contract is visible and reviewable\n- confirm validation is tied to the interface or boundary\n- confirm downstream impact was considered when relevant",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0003 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays should add:\n- local endpoints or module boundaries\n- local smoke or test commands\n- boundary-specific invariants",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to separate reusable core logic from surrounding glue, orchestration, or infrastructure detail so future changes land in the right place.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a module mixes stable rules with wiring or execution detail\n- the same logic is starting to appear in several places\n- tests or reviews are muddy because the center of responsibility is unclear\n- you need to decide whether something belongs in the core or at the edges\n\nDo not use this skill when:\n- the task is a tiny isolated fix with no meaningful boundary ambiguity\n- the code is already clearly partitioned\n- the result would only rename folders without improving understanding\n- the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use `aoa-port-adapter-refactor`",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target module, service, or slice\n- current responsibilities\n- repeated or reusable logic candidates\n- surrounding glue or orchestration context",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- clarified boundary between core logic and surrounding glue\n- notes on what should stay reusable versus edge-specific\n- small refactor proposal or bounded implementation\n- verification summary",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify which rules or behaviors are stable enough to count as reusable core logic\n2. identify which parts are mostly wiring, orchestration, I/O, or environment detail\n3. separate the concerns conceptually before moving code\n4. move or propose moving only the bounded subset that clearly belongs in the core\n5. avoid renaming or restructuring for ceremony alone\n6. verify that the new boundary improves changeability and review clarity",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- reusable logic should not stay trapped in glue if that blocks testing or reuse\n- glue should not be over-promoted into domain logic without reason\n- the boundary should improve clarity, not just aesthetics\n- the change should remain reviewable and bounded",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating all logic as core logic and over-abstracting the system\n- moving orchestration detail into the core under the label of purity\n- renaming layers without reducing actual confusion\n- hiding a broad rewrite inside a boundary-cleanup task",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the core candidate is genuinely reusable or stability-shaped\n- confirm edge-specific code remains at the edge when appropriate\n- confirm the refactor improved clarity for future changes\n- confirm no unrelated structural churn was introduced",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-CORE-LOGIC-BOUNDARY from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local layering conventions\n- preferred directories or module boundaries\n- repository-specific examples of core versus glue\n- local verification commands",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "scope": "risk",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to force a preview-first mindset before executing changes that may be destructive, irreversible, or operationally meaningful.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the task can be simulated, previewed, or inspected before real execution\n- the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface\n- the cost of a mistaken execution is meaningfully higher than the cost of a preview step\n\nDo not use this skill when:\n- no meaningful dry-run or preview path exists and the task is already clearly bounded and harmless\n- the task is purely analytical and does not approach execution at all\n- the central question is whether execution is authorized at all rather than how to preview it; use `aoa-approval-gate-check`\n- the task is only about preparing a sanitized artifact for sharing; use `aoa-sanitized-share`",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- requested action\n- available preview or dry-run mechanisms\n- touched surfaces\n- known limits of the preview path",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- dry-run or preview recommendation\n- bounded preview result or plan\n- note on what the preview does and does not prove\n- recommendation for next step",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify whether a preview, simulation, inspect-only, or dry-run path exists\n2. prefer the safest bounded preview path before real execution\n3. make explicit what the preview covers and what it cannot guarantee\n4. avoid treating dry-run output as proof of total safety\n5. recommend the next step only after the preview has been interpreted",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- dry-run should reduce uncertainty before execution\n- preview results should not be overstated\n- lack of a dry-run path should be named as a risk, not hidden\n- real execution should not be smuggled into a preview step",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating a preview as complete validation\n- skipping preview because the real change looks small\n- using a fake or weak preview path that does not touch the real risk surface\n- blurring inspect-only and execute behavior",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm a preview or dry-run path was considered first\n- confirm the preview scope was named honestly\n- confirm unresolved risk after preview was not hidden\n- confirm the preview step did not silently perform the real action\n- confirm the recommended next step matches the preview confidence",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-DRY-RUN-FIRST from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0004 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local preview commands\n- dry-run limitations\n- restore or recovery expectations\n- project-specific inspect-only patterns",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to separate domain or application logic from concrete infrastructure details by introducing or clarifying ports and adapters.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- business or domain logic is tightly coupled to a concrete dependency\n- tests are hard to write because external concerns leak into the core logic\n- the same dependency pattern is beginning to repeat across modules\n- a module needs a clearer seam before further change\n\nDo not use this skill when:\n- the task is a tiny local fix with no architectural pressure\n- there is no meaningful boundary to clarify yet\n- the code would become more ceremonial than useful after extraction\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first\n- the main problem is clarifying repository docs or source-of-truth ownership; use `aoa-source-of-truth-check` first",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target module or slice\n- concrete dependency that currently leaks into the core logic\n- desired scope of refactor\n- validation expectations",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- clearer boundary between logic and infrastructure\n- proposed or implemented port shape\n- proposed or implemented adapter shape\n- verification summary",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify the concrete dependency that is making change or testing harder\n2. isolate the reusable logic from the infrastructure-specific behavior\n3. define a narrow port around what the core actually needs\n4. move infrastructure-specific behavior behind an adapter or equivalent seam\n5. keep the refactor bounded and avoid unrelated cleanup\n6. verify that the new boundary improves clarity and does not silently change behavior",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- the extracted boundary should reduce coupling, not add decorative abstraction\n- the port should stay narrow and purpose-shaped\n- the refactor should not widen into a hidden rewrite\n- the final result should remain understandable to another human or agent",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- introducing empty abstractions with no real boundary value\n- extracting a port that mirrors an overgrown concrete dependency instead of narrowing it\n- using the refactor as a pretext for unrelated architectural churn\n- making tests more indirect without improving clarity",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the concrete dependency pressure was real\n- confirm the new boundary is narrower and clearer than before\n- confirm behavior did not drift silently\n- confirm the refactor stayed inside the declared scope",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-PORT-ADAPTER-REFACTOR from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local architecture conventions\n- preferred adapter locations\n- local test commands\n- repository-specific review rules",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-property-invariants",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use invariant-oriented thinking to test broad behavior through properties rather than only through a short list of fixed examples.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a rule should hold across many inputs or states\n- examples alone feel too narrow\n- the system has conservation, monotonicity, idempotency, or structural invariants\n- safety or correctness depends on broad input coverage\n\nDo not use this skill when:\n- the behavior is mostly about presentation details or narrow snapshots\n- no meaningful invariant is yet understood",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target rule or domain truth\n- current examples or tests\n- input space or generators\n- known edge cases",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- explicit invariants\n- property-oriented tests or checks\n- notes on generator assumptions\n- verification summary",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify what must remain true across many cases\n2. separate strong invariants from weak hopes or vague expectations\n3. express those invariants as property-oriented tests or repeated checks\n4. keep the generators or inputs bounded and reviewable\n5. run the checks and report what properties now constrain behavior",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- each property should express a real invariant, not a wish\n- the test should broaden coverage beyond a small handpicked set\n- generator assumptions should remain understandable",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- writing weak properties that prove almost nothing\n- confusing random data with meaningful coverage\n- using property checks where a small set of concrete examples would be clearer\n- hiding domain confusion behind fancy generator logic",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the property expresses a meaningful invariant\n- confirm the invariant broadens coverage beyond fixed examples\n- confirm the result is understandable to another human or agent",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0007 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays should add:\n- local generator tools\n- domain-specific invariants\n- rules for when property-based checks are mandatory, optional, or out of scope",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "scope": "risk",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to shape infrastructure, service, configuration, or operational changes into a safer bounded workflow.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the task changes infrastructure, services, configuration, orchestration, or operational surfaces\n- the change has runtime, safety, or deployment implications\n- the task needs stronger verification and rollback thinking than a normal code edit\n\nDo not use this skill when:\n- the task is a purely local code change with no operational implications\n- a more specific risk skill should be used instead\n- the operator has not provided enough authority for the requested action\n- the main question is whether authority exists at all; use `aoa-approval-gate-check`\n- the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target change\n- touched operational surfaces\n- stated authority or approval state\n- validation path\n- rollback idea",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- explicit risk-aware plan\n- bounded infrastructure or config change, or bounded execution recommendation\n- verification result\n- report with remaining risk notes",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify the operational surface and main risk\n2. confirm whether the change belongs to a high-risk or explicit-only category\n3. keep the change small and reviewable\n4. avoid unrelated cleanup or hidden expansion of scope\n5. verify the result using the strongest practical bounded checks available\n6. report what changed, what was verified, and what remains risky or deferred",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- infrastructure changes should stay explicit and reviewable\n- risk should be named before apply, not after failure\n- verification should be stronger than symbolic confidence\n- rollback thinking should exist before execution",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating infra edits like ordinary code edits\n- making broad config or orchestration changes under a narrow task label\n- relying on weak verification for changes with real runtime impact\n- skipping explicit risk framing because the diff looks small",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the operational surface was named clearly\n- confirm the change stayed bounded\n- confirm verification was explicit and proportional to the risk\n- confirm rollback or recovery thinking was present before execution or recommendation\n- confirm the report includes unresolved risk or recovery notes",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-SAFE-INFRA-CHANGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local risk classifications\n- approval rules\n- preferred validation commands\n- rollback or recovery expectations",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "scope": "risk",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to turn potentially sensitive technical material into a shareable, reviewable, public-safe form.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- logs, configs, diagnostics, reports, or examples may contain sensitive details\n- a result needs to be shared publicly or with a broader audience\n- raw material may reveal secrets, topology, internal identifiers, or unsafe context\n\nDo not use this skill when:\n- the material is already clearly public-safe and minimal\n- the task is to perform the underlying operational change rather than prepare a shareable surface\n- the main task is deciding whether the underlying action should be allowed; use `aoa-approval-gate-check`\n- the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- material to be shared\n- sharing audience or context\n- known sensitive surfaces\n- acceptable level of abstraction",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly\n- note on what was generalized or removed\n- warning about any remaining ambiguity or sensitive edge",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. inspect the material for secrets, tokens, private paths, topology, internal identifiers, or unsafe operational detail\n2. remove, redact, or generalize sensitive details\n3. preserve the technical lesson or signal without preserving the sensitive surface\n4. note what kind of sanitization was applied when that matters for interpretation\n5. verify that the shared result remains useful without revealing what should stay private",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- shareable output should not leak secrets or private infrastructure detail\n- sanitization should preserve meaning where possible\n- generalization should not silently change the core lesson beyond recognition\n- uncertainty about sensitivity should lean toward caution",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- over-sanitizing until the artifact becomes meaningless\n- under-sanitizing because a value looks harmless in isolation\n- forgetting that topology and naming can be sensitive even without tokens\n- sharing raw excerpts when a bounded summary would be safer",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm obvious sensitive surfaces were checked\n- confirm the resulting artifact is still understandable\n- confirm the sanitization level matches the intended audience\n- confirm raw sensitive detail was not preserved by accident\n- confirm remaining uncertainty is named rather than ignored",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-SANITIZED-SHARE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local sanitization rules\n- examples of sensitive surfaces\n- public versus private sharing thresholds\n- project-specific reporting conventions",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a repository has several docs that may overlap or conflict\n- contributors may not know which file to trust first\n- a change touches docs, process, or operational guidance and the question is which file is authoritative\n- confusion exists between overview docs and authoritative docs\n\nDo not use this skill when:\n- the repository is tiny and has no meaningful source-of-truth ambiguity\n- the task is purely code-local with no documentation or policy impact\n- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`\n- the main problem is broader policy design rather than document authority or ownership",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- repository docs surface\n- target area of ambiguity or overlap\n- known canonical files if any\n- current contributor confusion points",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- clearer source-of-truth map\n- note of overlaps or conflicts\n- proposed or implemented document role clarification\n- verification summary",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. identify the main docs or guidance files involved in the target area\n2. determine which file should be authoritative for each concern\n3. note any overlap, contradiction, or role ambiguity\n4. clarify or propose clarifying document ownership and purpose\n5. keep the change bounded to the guidance surface under review\n6. verify that the result reduces ambiguity for future changes",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- authoritative sources should be visible and named explicitly\n- overview documents should not silently replace canonical ones\n- role separation should reduce confusion, not create extra ceremony\n- the resulting guidance should be understandable to another human or agent",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- over-formalizing a tiny docs surface\n- creating many labels without reducing ambiguity\n- moving truth across files without clearly signaling the change\n- letting summaries masquerade as canonical instructions",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the main source-of-truth ambiguity was reduced\n- confirm authoritative files are named explicitly\n- confirm overlaps or conflicts were surfaced rather than hidden\n- confirm the result helps future contributors orient faster",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Future project overlays may add:\n- local doc hierarchies\n- preferred canonical-file patterns\n- local review rules for doc changes\n- repository-specific examples of authoritative surfaces",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use test-first discipline to implement a small feature slice with a clear behavioral target and explicit verification.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a behavior change can be expressed as tests before implementation\n- the task fits a bounded slice rather than a broad rewrite\n- confidence and regression resistance matter\n\nDo not use this skill when:\n- the task is purely exploratory and behavior is still undefined\n- the task is mostly one-off glue with no reusable logic\n- broader architectural restructuring is the real need",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- desired behavior\n- target module or slice\n- constraints and non-goals\n- available test surface",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- new or updated tests\n- minimal implementation\n- small refactor if needed\n- verification summary",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. define the desired behavior in a bounded way\n2. add or update tests before implementation\n3. make the smallest change that satisfies the tests\n4. refactor only inside the declared slice\n5. run the tests and record the result\n6. report what behavior is now specified and what remains out of scope",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- behavior should be made explicit before implementation when reasonably possible\n- the implementation should stay bounded to the slice\n- unrelated refactors should be avoided\n- tests should express behavior, not incidental implementation detail",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- writing tests that merely mirror the implementation\n- turning a small slice into a hidden architectural rewrite\n- using TDD ritualistically where the problem is not well-shaped yet\n- overfitting tests to brittle internal details",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm tests were added or updated first when the task was suitable for TDD\n- confirm the implementation stayed bounded\n- confirm the relevant test suite passed\n- confirm the report names the covered behavior and the untouched behavior",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0014 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/tdd-slice/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Contracts, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays should add:\n- local test commands\n- local module boundaries\n- guidance for when TDD is mandatory versus optional",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "status": "canonical"
+    }
+  ],
+  "source_of_truth": {
+    "sections": [
+      "Intent",
+      "Trigger boundary",
+      "Inputs",
+      "Outputs",
+      "Procedure",
+      "Contracts",
+      "Risks and anti-patterns",
+      "Verification",
+      "Technique traceability",
+      "Adaptation points"
+    ],
+    "skill_markdown": "skills/*/SKILL.md"
+  }
+}

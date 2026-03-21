@@ -13,6 +13,7 @@ from typing import Any, Sequence
 import yaml
 
 import skill_catalog_contract
+import skill_section_contract
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -21,8 +22,10 @@ GENERATED_DIR_NAME = "generated"
 FULL_CATALOG_PATH = Path(GENERATED_DIR_NAME) / "skill_catalog.json"
 MIN_CATALOG_PATH = Path(GENERATED_DIR_NAME) / "skill_catalog.min.json"
 CAPSULE_PATH = Path(GENERATED_DIR_NAME) / "skill_capsules.json"
+SECTIONS_PATH = Path(GENERATED_DIR_NAME) / skill_section_contract.SECTIONS_NAME
 CATALOG_VERSION = 1
 CAPSULE_VERSION = 1
+SECTION_VERSION = skill_section_contract.SECTION_VERSION
 SOURCE_OF_TRUTH = {
     "skill_markdown": "skills/*/SKILL.md",
     "technique_manifest": "skills/*/techniques.yaml",
@@ -48,7 +51,6 @@ CAPSULE_SOURCE_OF_TRUTH = {
     ],
 }
 CAPSULE_REQUIRED_SECTIONS = tuple(CAPSULE_SOURCE_OF_TRUTH["sections"])
-SECTION_HEADING_PATTERN = re.compile(r"^##\s+(.+?)\s*$")
 LIST_ITEM_PATTERN = re.compile(r"^(?:[-*]|\d+\.)\s+(.*)$")
 MARKDOWN_LINK_PATTERN = re.compile(r"\[([^\]]+)\]\([^)]+\)")
 INLINE_CODE_PATTERN = re.compile(r"`([^`]+)`")
@@ -116,29 +118,10 @@ def parse_skill_document(path: Path) -> tuple[dict[str, Any], str]:
 
 
 def parse_skill_sections(body: str) -> dict[str, str]:
-    sections: dict[str, str] = {}
-    current_heading: str | None = None
-    current_lines: list[str] = []
-
-    def flush_current() -> None:
-        nonlocal current_heading, current_lines
-        if current_heading is None:
-            return
-        sections[current_heading] = "\n".join(current_lines).strip()
-        current_heading = None
-        current_lines = []
-
-    for line in body.splitlines():
-        heading_match = SECTION_HEADING_PATTERN.match(line)
-        if heading_match:
-            flush_current()
-            current_heading = heading_match.group(1).strip()
-            continue
-        if current_heading is not None:
-            current_lines.append(line)
-
-    flush_current()
-    return sections
+    return {
+        heading: content_markdown
+        for heading, content_markdown in skill_section_contract.extract_top_level_sections(body)
+    }
 
 
 def normalize_inline_markdown(text: str) -> str:
@@ -475,6 +458,32 @@ def build_capsules_payload(repo_root: Path) -> dict[str, Any]:
     }
 
 
+def build_sections_payload(repo_root: Path) -> dict[str, Any]:
+    skills: list[dict[str, Any]] = []
+    issues: list[skill_section_contract.ContractIssue] = []
+    for skill_name in discover_skill_names(repo_root):
+        skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
+        metadata, body = parse_skill_document(skill_md_path)
+        entry, entry_issues = skill_section_contract.build_sections_entry(
+            repo_root,
+            metadata,
+            skill_md_path,
+            body,
+        )
+        issues.extend(entry_issues)
+        if entry is not None:
+            skills.append(entry)
+
+    if issues:
+        raise ValueError(skill_section_contract.format_issues(issues))
+
+    return {
+        "section_version": SECTION_VERSION,
+        "source_of_truth": skill_section_contract.SECTION_SOURCE_OF_TRUTH,
+        "skills": skills,
+    }
+
+
 def render_json(payload: dict[str, Any], *, indent: int | None) -> str:
     kwargs: dict[str, Any] = {
         "ensure_ascii": True,
@@ -497,6 +506,10 @@ def build_capsule_text(repo_root: Path) -> str:
     return render_json(build_capsules_payload(repo_root), indent=2)
 
 
+def build_sections_text(repo_root: Path) -> str:
+    return render_json(build_sections_payload(repo_root), indent=2)
+
+
 def write_catalogs(repo_root: Path) -> tuple[Path, Path]:
     generated_dir = repo_root / GENERATED_DIR_NAME
     generated_dir.mkdir(exist_ok=True)
@@ -515,6 +528,15 @@ def write_capsules(repo_root: Path) -> Path:
     capsule_path = repo_root / CAPSULE_PATH
     capsule_path.write_text(capsule_text, encoding="utf-8", newline="\n")
     return capsule_path
+
+
+def write_sections(repo_root: Path) -> Path:
+    generated_dir = repo_root / GENERATED_DIR_NAME
+    generated_dir.mkdir(exist_ok=True)
+    sections_text = build_sections_text(repo_root)
+    sections_path = repo_root / SECTIONS_PATH
+    sections_path.write_text(sections_text, encoding="utf-8", newline="\n")
+    return sections_path
 
 
 def check_catalogs(repo_root: Path) -> list[str]:
@@ -556,12 +578,29 @@ def check_capsules(repo_root: Path) -> list[str]:
     return problems
 
 
+def check_sections(repo_root: Path) -> list[str]:
+    problems: list[str] = []
+    sections_path = repo_root / SECTIONS_PATH
+    try:
+        expected_sections = build_sections_text(repo_root)
+    except ValueError as exc:
+        return [f"section source validation failed:\n{exc}"]
+
+    if not sections_path.is_file():
+        problems.append(f"missing {relative_path(sections_path, repo_root)}")
+        return problems
+
+    if sections_path.read_text(encoding="utf-8") != expected_sections:
+        problems.append(f"stale {relative_path(sections_path, repo_root)}")
+    return problems
+
+
 def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> int:
     repo_root = repo_root or REPO_ROOT
     try:
         args = parse_args(argv)
         if args.check:
-            problems = check_catalogs(repo_root) + check_capsules(repo_root)
+            problems = check_catalogs(repo_root) + check_capsules(repo_root) + check_sections(repo_root)
             if problems:
                 print("Generated surface check failed.")
                 for problem in problems:
@@ -574,6 +613,7 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
 
         full_path, min_path = write_catalogs(repo_root)
         capsule_path = write_capsules(repo_root)
+        sections_path = write_sections(repo_root)
     except (FileNotFoundError, ValueError) as exc:
         print(f"Runtime error: {exc}", file=sys.stderr)
         return 2
@@ -585,7 +625,8 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         "Generated surface build wrote "
         f"{relative_path(full_path, repo_root)}, "
         f"{relative_path(min_path, repo_root)}, and "
-        f"{relative_path(capsule_path, repo_root)}."
+        f"{relative_path(capsule_path, repo_root)}, and "
+        f"{relative_path(sections_path, repo_root)}."
     )
     return 0
 

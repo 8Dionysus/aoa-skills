@@ -211,10 +211,57 @@ class BuildCatalogTests(unittest.TestCase):
             capsules["skills"][0],
         )
 
+    def test_write_sections_generates_source_owned_section_surface(self) -> None:
+        repo_root = self.make_repo()
+
+        sections_path = build_catalog.write_sections(repo_root)
+
+        sections_payload = json.loads(sections_path.read_text(encoding="utf-8"))
+        assert_entry = sections_payload["skills"][0]
+        self.assertEqual(1, sections_payload["section_version"])
+        self.assertEqual(
+            {
+                "skill_markdown": "skills/*/SKILL.md",
+                "sections": [
+                    "Intent",
+                    "Trigger boundary",
+                    "Inputs",
+                    "Outputs",
+                    "Procedure",
+                    "Contracts",
+                    "Risks and anti-patterns",
+                    "Verification",
+                    "Technique traceability",
+                    "Adaptation points",
+                ],
+            },
+            sections_payload["source_of_truth"],
+        )
+        self.assertEqual("aoa-test-skill", assert_entry["name"])
+        self.assertEqual("skills/aoa-test-skill/SKILL.md", assert_entry["skill_path"])
+        self.assertEqual(
+            [
+                "intent",
+                "trigger_boundary",
+                "inputs",
+                "outputs",
+                "procedure",
+                "contracts",
+                "risks_and_anti_patterns",
+                "verification",
+                "technique_traceability",
+                "adaptation_points",
+            ],
+            [section["key"] for section in assert_entry["sections"]],
+        )
+        self.assertEqual("Intent text.", assert_entry["sections"][0]["content_markdown"])
+        self.assertIn("1. step", assert_entry["sections"][4]["content_markdown"])
+
     def test_check_mode_passes_after_write(self) -> None:
         repo_root = self.make_repo()
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
 
         self.assertEqual(0, self.run_main(repo_root, ["--check"]))
 
@@ -222,6 +269,7 @@ class BuildCatalogTests(unittest.TestCase):
         repo_root = self.make_repo()
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -237,11 +285,28 @@ class BuildCatalogTests(unittest.TestCase):
         repo_root = self.make_repo()
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
                 "- verify",
                 "- verify harder",
+            ),
+            encoding="utf-8",
+        )
+
+        self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
+    def test_check_mode_fails_when_sections_are_stale(self) -> None:
+        repo_root = self.make_repo()
+        build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "## Adaptation points\n\n- adapt\n",
+                "## Adaptation points\n\n- adapt\n- adapt more\n",
             ),
             encoding="utf-8",
         )
@@ -311,6 +376,23 @@ class BuildCatalogTests(unittest.TestCase):
             "capsule source section 'Verification' is missing",
         ):
             build_catalog.write_capsules(repo_root)
+
+    def test_write_sections_rejects_reordered_top_level_sections(self) -> None:
+        repo_root = self.make_repo()
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "## Outputs\n\n- output\n\n## Procedure\n\n1. step\n",
+                "## Procedure\n\n1. step\n\n## Outputs\n\n- output\n",
+            ),
+            encoding="utf-8",
+        )
+
+        with self.assertRaisesRegex(
+            ValueError,
+            "top-level sections must match the canonical order exactly",
+        ):
+            build_catalog.write_sections(repo_root)
 
 
 if __name__ == "__main__":
