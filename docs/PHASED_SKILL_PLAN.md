@@ -1,6 +1,6 @@
 # Phased skill plan
 
-This document records the scaffold expansion that established the current 13-skill public core.
+This document records the scaffold expansion that established the original 13-skill public core.
 It is now primarily a phase record rather than the main source of next-step planning.
 
 ## Principle for this pass

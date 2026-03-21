@@ -13,6 +13,7 @@
     "candidate_ready": [
       "aoa-bounded-context-map",
       "aoa-contract-test",
+      "aoa-invariant-coverage-audit",
       "aoa-property-invariants"
     ],
     "default_references": [
@@ -141,6 +142,20 @@
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
       "status": "evaluated",
       "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "name": "aoa-invariant-coverage-audit",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated",
+      "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin."
     },
     {
       "candidate_review_path": null,

@@ -1,0 +1,17 @@
+skill_name: aoa-invariant-coverage-audit
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0017
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/evaluation/property-invariants/TECHNIQUE.md
+    source_ref: d9f1f1da968b1449d3c2702792cac794b36573c3
+    use_sections:
+      - Intent
+      - When to use
+      - When not to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
