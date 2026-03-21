@@ -19,6 +19,7 @@ from jsonschema import Draft202012Validator
 import build_catalog
 import skill_artifact_contract
 import skill_catalog_contract
+import skill_evaluation_contract
 import skill_governance_surface
 import skill_section_contract
 
@@ -34,6 +35,10 @@ EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.
 
 REQUIRED_HEADINGS = set(skill_section_contract.CANONICAL_HEADINGS)
 EXPECTED_TECHNIQUE_REPO = skill_catalog_contract.EXPECTED_TECHNIQUE_REPO
+EVALUATION_MATRIX_LOCATION = build_catalog.EVALUATION_MATRIX_JSON_PATH.as_posix()
+EVALUATION_MATRIX_MARKDOWN_LOCATION = (
+    build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH.as_posix()
+)
 
 
 @dataclass(frozen=True)
@@ -602,18 +607,50 @@ def load_evaluation_fixtures(
     issues: list[ValidationIssue],
 ) -> dict[str, Any] | None:
     fixtures_path = repo_root / EVALUATION_FIXTURES_PATH
-    data = load_yaml_file(fixtures_path, issues)
-    if data is None:
+    if not fixtures_path.is_file():
+        issues.append(ValidationIssue(relative_location(fixtures_path), "file is missing"))
         return None
-    if not isinstance(data, dict):
+    try:
+        data = skill_evaluation_contract.load_evaluation_fixtures(repo_root)
+    except yaml.YAMLError as exc:
         issues.append(
             ValidationIssue(
                 relative_location(fixtures_path),
-                "evaluation fixtures must parse to a mapping",
+                f"invalid YAML: {exc}",
             )
         )
         return None
+    except ValueError as exc:
+        issues.append(
+            ValidationIssue(
+                relative_location(fixtures_path),
+                str(exc),
+            )
+        )
+        return None
+    if data is None:
+        return None
     return data
+
+
+def validate_snapshot_fixture_contract(repo_root: Path) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    fixtures_path = repo_root / EVALUATION_FIXTURES_PATH
+    if not fixtures_path.is_file():
+        return issues
+
+    fixtures = load_evaluation_fixtures(repo_root, issues)
+    if fixtures is None:
+        return issues
+
+    for contract_issue in skill_evaluation_contract.validate_snapshot_case_contract(fixtures):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    for contract_issue in skill_evaluation_contract.collect_snapshot_file_issues(
+        repo_root,
+        fixtures,
+    ):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    return issues
 
 
 def validate_evaluation_floors(
@@ -710,6 +747,12 @@ def validate_canonical_status_floors(
 
     fixtures = load_evaluation_fixtures(repo_root, [])
     coverage_by_skill = skill_governance_surface.collect_evaluation_coverage(fixtures)
+    snapshot_coverage_by_skill = skill_evaluation_contract.collect_snapshot_coverage(
+        repo_root,
+        fixtures,
+    )
+    fixtures_location = EVALUATION_FIXTURES_PATH.as_posix()
+    snapshots_location = skill_evaluation_contract.EVALUATION_SNAPSHOTS_DIR.as_posix()
 
     for (
         skill_name,
@@ -765,6 +808,52 @@ def validate_canonical_status_floors(
                 ValidationIssue(
                     techniques_location,
                     "status 'canonical' requires concrete path and source_ref for every technique",
+                )
+            )
+        eval_blockers = skill_evaluation_contract.derive_canonical_eval_blockers(
+            snapshot_coverage_by_skill,
+            skill_name,
+        )
+        if skill_evaluation_contract.BLOCKER_MISSING_USE_SNAPSHOT in eval_blockers:
+            issues.append(
+                ValidationIssue(
+                    fixtures_location,
+                    "status 'canonical' requires at least one 'use' snapshot case",
+                )
+            )
+        if skill_evaluation_contract.BLOCKER_MISSING_DO_NOT_USE_SNAPSHOT in eval_blockers:
+            issues.append(
+                ValidationIssue(
+                    fixtures_location,
+                    "status 'canonical' requires at least one 'do_not_use' snapshot case",
+                )
+            )
+        if skill_evaluation_contract.BLOCKER_MISSING_SNAPSHOT_FILE in eval_blockers:
+            issues.append(
+                ValidationIssue(
+                    snapshots_location,
+                    "status 'canonical' requires referenced snapshot files to exist",
+                )
+            )
+        if skill_evaluation_contract.BLOCKER_SNAPSHOT_HEADING_CONTRACT_VIOLATION in eval_blockers:
+            issues.append(
+                ValidationIssue(
+                    snapshots_location,
+                    "status 'canonical' requires snapshot files to satisfy the canonical heading contract",
+                )
+            )
+        if skill_evaluation_contract.BLOCKER_SNAPSHOT_MISSING_REQUIRED_PHRASE in eval_blockers:
+            issues.append(
+                ValidationIssue(
+                    snapshots_location,
+                    "status 'canonical' requires snapshot files to contain every required output phrase",
+                )
+            )
+        if skill_evaluation_contract.BLOCKER_SNAPSHOT_CONTAINS_FORBIDDEN_PHRASE in eval_blockers:
+            issues.append(
+                ValidationIssue(
+                    snapshots_location,
+                    "status 'canonical' requires snapshot files to avoid forbidden output phrases",
                 )
             )
 
@@ -1845,6 +1934,157 @@ def validate_generated_public_surface(
     return issues
 
 
+def validate_generated_evaluation_matrix(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    matrix_path = repo_root / build_catalog.EVALUATION_MATRIX_JSON_PATH
+    matrix_markdown_path = repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH
+    matrix_location = relative_location(matrix_path)
+    matrix_markdown_location = relative_location(matrix_markdown_path)
+
+    if not matrix_path.is_file():
+        issues.append(
+            ValidationIssue(
+                matrix_location,
+                "generated evaluation matrix is missing",
+            )
+        )
+        if not matrix_markdown_path.is_file():
+            issues.append(
+                ValidationIssue(
+                    matrix_markdown_location,
+                    "generated evaluation matrix markdown is missing",
+                )
+            )
+        return issues
+
+    if not matrix_markdown_path.is_file():
+        issues.append(
+            ValidationIssue(
+                matrix_markdown_location,
+                "generated evaluation matrix markdown is missing",
+            )
+        )
+        return issues
+
+    matrix_text = matrix_path.read_text(encoding="utf-8")
+    matrix_markdown_text = matrix_markdown_path.read_text(encoding="utf-8")
+    try:
+        parsed = json.loads(matrix_text)
+    except json.JSONDecodeError as exc:
+        issues.append(
+            ValidationIssue(
+                matrix_location,
+                f"invalid JSON: {exc.msg}",
+            )
+        )
+        return issues
+
+    if not isinstance(parsed, dict):
+        issues.append(
+            ValidationIssue(
+                matrix_location,
+                "evaluation matrix must parse to an object",
+            )
+        )
+        return issues
+
+    matrix_data = parsed
+    if matrix_data.get("evaluation_matrix_version") != build_catalog.EVALUATION_MATRIX_VERSION:
+        issues.append(
+            ValidationIssue(
+                matrix_location,
+                f"evaluation_matrix_version must be {build_catalog.EVALUATION_MATRIX_VERSION}",
+            )
+        )
+    if matrix_data.get("source_of_truth") != build_catalog.EVALUATION_MATRIX_SOURCE_OF_TRUTH:
+        issues.append(
+            ValidationIssue(
+                matrix_location,
+                "evaluation matrix source_of_truth does not match the expected contract",
+            )
+        )
+    if not isinstance(matrix_data.get("skills"), list):
+        issues.append(
+            ValidationIssue(
+                matrix_location,
+                "evaluation matrix field 'skills' must be a list",
+            )
+        )
+        return issues
+
+    try:
+        expected_matrix_text, expected_matrix_markdown_text = (
+            build_catalog.build_evaluation_matrix_texts(repo_root)
+        )
+        expected_matrix_payload = build_catalog.build_evaluation_matrix_payload(repo_root)
+    except (FileNotFoundError, ValueError) as exc:
+        issues.append(
+            ValidationIssue(
+                matrix_location,
+                f"evaluation matrix source validation failed: {exc}",
+            )
+        )
+        return issues
+
+    if skill_names is None:
+        if matrix_text != expected_matrix_text:
+            issues.append(
+                ValidationIssue(
+                    matrix_location,
+                    "generated evaluation matrix is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        if matrix_markdown_text != expected_matrix_markdown_text:
+            issues.append(
+                ValidationIssue(
+                    matrix_markdown_location,
+                    "generated evaluation matrix markdown is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        return issues
+
+    actual_entries = catalog_entries_by_name(
+        matrix_data,
+        array_key="skills",
+        key_name="name",
+        location=matrix_location,
+        issues=issues,
+    )
+    expected_entries = catalog_entries_by_name(
+        expected_matrix_payload,
+        array_key="skills",
+        key_name="name",
+        location=matrix_location,
+        issues=[],
+    )
+
+    for skill_name in skill_names:
+        actual_entry = actual_entries.get(skill_name)
+        expected_entry = expected_entries.get(skill_name)
+        if actual_entry is None:
+            issues.append(
+                ValidationIssue(
+                    matrix_location,
+                    f"generated evaluation matrix is missing skill '{skill_name}'",
+                )
+            )
+            continue
+        if expected_entry is None:
+            continue
+        if actual_entry != expected_entry:
+            issues.append(
+                ValidationIssue(
+                    matrix_location,
+                    f"generated evaluation matrix entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                )
+            )
+
+    return issues
+
+
 def format_issues(issues: Sequence[ValidationIssue]) -> str:
     lines = [f"- {issue.location}: {issue.message}" for issue in issues]
     return "\n".join(lines)
@@ -1868,6 +2108,7 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         bundle_issues_by_name[name] = bundle_issues
         issues.extend(bundle_issues)
 
+    issues.extend(validate_snapshot_fixture_contract(repo_root))
     issues.extend(validate_evaluation_floors(repo_root, target_skills))
     issues.extend(validate_canonical_status_floors(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
@@ -1877,12 +2118,14 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         issues.extend(validate_generated_sections(repo_root))
         issues.extend(validate_generated_walkthroughs(repo_root))
         issues.extend(validate_generated_public_surface(repo_root))
+        issues.extend(validate_generated_evaluation_matrix(repo_root))
     elif all(not bundle_issues_by_name[name] for name in target_skills):
         issues.extend(validate_generated_catalogs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_capsules(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_sections(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_walkthroughs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_public_surface(repo_root, skill_names=target_skills))
+        issues.extend(validate_generated_evaluation_matrix(repo_root, skill_names=target_skills))
     return issues
 
 

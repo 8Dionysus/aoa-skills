@@ -62,6 +62,15 @@ class CanonicalGateChecksTests(unittest.TestCase):
             expected = case["expected"]
             counts = trigger_case_counts.setdefault(skill_name, {"use": 0, "do_not_use": 0})
             counts[expected] += 1
+        snapshot_case_counts: dict[str, dict[str, int]] = {}
+        for case in self.fixtures.get("snapshot_cases", []):
+            skill_name = case["skill"]
+            expected = case["expected"]
+            counts = snapshot_case_counts.setdefault(
+                skill_name,
+                {"use": 0, "do_not_use": 0},
+            )
+            counts[expected] += 1
 
         for skill_name in canonical_skills:
             with self.subTest(skill=skill_name):
@@ -90,4 +99,12 @@ class CanonicalGateChecksTests(unittest.TestCase):
                 self.assertGreaterEqual(trigger_case_counts.get(skill_name, {}).get("use", 0), 1)
                 self.assertGreaterEqual(
                     trigger_case_counts.get(skill_name, {}).get("do_not_use", 0), 1
+                )
+                self.assertGreaterEqual(
+                    snapshot_case_counts.get(skill_name, {}).get("use", 0),
+                    1,
+                )
+                self.assertGreaterEqual(
+                    snapshot_case_counts.get(skill_name, {}).get("do_not_use", 0),
+                    1,
                 )

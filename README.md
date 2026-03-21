@@ -17,14 +17,16 @@ If you are new to this repository, follow this short path:
 
 1. Read `docs/README.md` for the docs map.
 2. Read `docs/RUNTIME_PATH.md` for the runtime path: `pick -> inspect -> expand -> object use`.
-3. Read `generated/skill_walkthroughs.md` for the current derived walkthrough surface.
-4. Read `docs/PUBLIC_SURFACE.md` for the public-product and governance signals.
-5. Read `docs/ARCHITECTURE.md` for the high-level model.
-6. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-7. Read `generated/public_surface.md` for the current derived cohort split.
-8. Read `SKILL_INDEX.md` for the current skill surface.
-9. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-10. Use `templates/SKILL.template.md` and `templates/RUNTIME_EXAMPLE.template.md` when authoring new skill surfaces.
+3. Read `docs/EVALUATION_PATH.md` for evaluation evidence, matrix outputs, and snapshot-backed coverage.
+4. Read `generated/skill_walkthroughs.md` for the current derived runtime walkthrough surface.
+5. Read `generated/skill_evaluation_matrix.md` for the current derived evaluation evidence surface.
+6. Read `docs/PUBLIC_SURFACE.md` for the public-product and governance signals.
+7. Read `docs/ARCHITECTURE.md` for the high-level model.
+8. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
+9. Read `generated/public_surface.md` for the current derived cohort split.
+10. Read `SKILL_INDEX.md` for the current skill surface.
+11. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+12. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, and `templates/EVALUATION_SNAPSHOT.template.md` when authoring new skill surfaces.
 
 ## Quick routes
 
@@ -69,14 +71,15 @@ In short:
 
 `origin project -> technique canon -> skill canon -> project overlay`
 
-The current runtime path for public skill use is:
+The current repo-local surface stack is:
+
+- runtime selection and object use: `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, `scripts/inspect_skill.py`
+- evaluation evidence and matrix reading: `docs/EVALUATION_PATH.md`, `generated/skill_evaluation_matrix.*`, `tests/fixtures/skill_evaluation_cases.yaml`, `scripts/report_skill_evaluation.py`
+- public-product and governance signals: `docs/PUBLIC_SURFACE.md`, `generated/public_surface.*`
+
+The runtime path for public skill use is:
 
 `pick -> inspect -> expand -> object use`
-
-That runtime path is now productized locally through:
-- `docs/RUNTIME_PATH.md` as the human guide
-- `generated/skill_walkthroughs.md` as the derived walkthrough matrix
-- `python scripts/inspect_skill.py --skill <name>` as the read-only inspect CLI
 
 For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metadata spine and `AOA-T-0018` is the bounded section-lift layer. The authored markdown bundle still owns the meaning; derived metadata and section surfaces only help routing.
 
@@ -97,7 +100,7 @@ For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metada
 - `docs/` — architecture, bridge rules, roadmap, conventions
 - `templates/` — templates for skill authoring and composition metadata
 - `skills/` — skill bundles
-- `generated/` — derived reader catalogs, local runtime cards, section surfaces, walkthrough surfaces, and public-product surfaces built from committed skill markdown, manifests, support artifacts, review records, and evaluation fixtures
+- `generated/` — derived reader catalogs, local runtime cards, section surfaces, walkthrough surfaces, snapshot-backed evaluation matrix surfaces, and public-product surfaces built from committed skill markdown, manifests, support artifacts, review records, and evaluation fixtures
 - `scripts/` — local validation and refresh helpers
 - `schemas/` — machine-readable bundle contracts
 - `tests/` — local validator and evaluation tests
@@ -117,6 +120,7 @@ A typical skill bundle contains:
 `generated/skill_capsules.json` is a derived local runtime-card surface with bounded per-skill summaries.
 `generated/skill_sections.full.json` is the source-owned section payload surface for bounded expand-time reads.
 `generated/skill_walkthroughs.json` and `generated/skill_walkthroughs.md` are derived runtime inspect surfaces built from skill markdown and support artifacts.
+`generated/skill_evaluation_matrix.json` and `generated/skill_evaluation_matrix.md` are derived evaluation evidence surfaces built from committed fixtures, snapshot cases, runtime artifacts, and review records.
 `generated/public_surface.json` and `generated/public_surface.md` are derived governance and public-product surfaces.
 
 ## Skill categories
@@ -128,9 +132,9 @@ A typical skill bundle contains:
 ## Current repository phase
 
 This repository now has a mixed-status public core of 14 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
-It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
-It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the derived governance/public-surface layer.
-The current focus is keeping runtime selection inspectable without introducing a second source of truth, while using the derived governance surface to clarify default references, candidate-ready skills, and pending-lineage blockers.
+It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, a separate evaluation evidence layer in `docs/EVALUATION_PATH.md` and `generated/skill_evaluation_matrix.*`, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
+It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the evaluation evidence and governance/public-surface layers.
+The current focus is keeping runtime selection, evaluation evidence, and public status readable as separate derived layers while using the governance surface to clarify default references, candidate-ready skills, pending-lineage blockers, and newer evaluated consumers such as invariant coverage audits.
 
 ## When not to use this repository
 
@@ -164,7 +168,7 @@ Check that all generated surfaces are current:
 python scripts/build_catalog.py --check
 ```
 
-Refresh the derived catalogs, capsules, sections, walkthroughs, and public surface:
+Refresh the derived catalogs, capsules, sections, walkthroughs, evaluation matrix, and public surface:
 
 ```bash
 python scripts/build_catalog.py
@@ -190,7 +194,19 @@ python scripts/validate_skills.py --skill aoa-change-protocol
 
 The validator now uses repository schemas from `schemas/` as the contract layer for
 front matter, `techniques.yaml`, and `agents/openai.yaml`.
-It also checks that the generated catalogs, capsules, full section surfaces, walkthrough surfaces, and derived public-surface JSON/Markdown exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules, sections, and walkthroughs stay aligned with the same source bundles.
+It also checks that the generated catalogs, capsules, full section surfaces, walkthrough surfaces, evaluation matrix surfaces, and derived public-surface JSON/Markdown exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules, sections, walkthroughs, and evaluation surfaces stay aligned with the same source bundles.
+
+Read the derived evaluation matrix directly:
+
+```bash
+python scripts/report_skill_evaluation.py
+```
+
+Fail fast if any canonical skill has snapshot-backed evaluation gaps:
+
+```bash
+python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
+```
 
 Preview a manifest-driven `SKILL.md` refresh without rewriting files:
 

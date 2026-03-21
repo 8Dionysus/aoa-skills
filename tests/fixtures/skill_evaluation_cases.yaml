@@ -319,3 +319,257 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`
+
+snapshot_cases:
+  - skill: aoa-adr-write
+    case_id: adr_write_meaningful_decision
+    prompt: Record a decision that changes workflow structure and has multiple plausible options, so future contributors need the rationale.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-adr-write/adr_write_meaningful_decision.md
+    required_output_phrases:
+      - use
+      - A short ADR-style note that states the context, chosen path, tradeoffs, and why the decision was made.
+    forbidden_output_phrases: []
+  - skill: aoa-adr-write
+    case_id: adr_write_tiny_obvious_change
+    prompt: Add a short note for a tiny self-evident edit where the diff already explains everything.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-adr-write/adr_write_tiny_obvious_change.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that recommends a simpler edit or no ADR at all because the change does not justify decision documentation.
+    forbidden_output_phrases: []
+  - skill: aoa-approval-gate-check
+    case_id: approval_gate_low_risk_task
+    prompt: Handle a clearly low-risk task already bounded by an ordinary workflow.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_low_risk_task.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that says the task is already low-risk and does not need approval-gate classification.
+    forbidden_output_phrases: []
+  - skill: aoa-approval-gate-check
+    case_id: approval_gate_sensitive_action
+    prompt: Classify whether an operationally sensitive action can proceed under unclear authority.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_sensitive_action.md
+    required_output_phrases:
+      - use
+      - A clear classification that says explicit approval is required, plus a bounded next step that waits for authority or uses an inspect-only path.
+    forbidden_output_phrases: []
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_semantic_confusion
+    prompt: Clarify domain language and subsystem boundaries before coding because adjacent concepts are being mixed together.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_semantic_confusion.md
+    required_output_phrases:
+      - use
+      - A bounded context map or boundary clarification that separates overlapping concepts before implementation continues.
+    forbidden_output_phrases: []
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_tiny_local_change
+    prompt: Make a tiny local edit in a file where the boundary is already obvious and no context confusion exists.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_tiny_local_change.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward the simpler local-edit path, with no attempt to invent a context map.
+    forbidden_output_phrases: []
+  - skill: aoa-change-protocol
+    case_id: change_protocol_non_trivial_change
+    prompt: Update code and config for a non-trivial change with an explicit validation path.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-change-protocol/change_protocol_non_trivial_change.md
+    required_output_phrases:
+      - use
+      - A scoped change plan with a stated risk, bounded edit, and named verification step.
+    forbidden_output_phrases: []
+  - skill: aoa-change-protocol
+    case_id: change_protocol_tiny_edit
+    prompt: Fix a tiny wording typo with no operational consequence.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-change-protocol/change_protocol_tiny_edit.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that treats the edit as a simple local fix rather than a scoped change workflow.
+    forbidden_output_phrases: []
+  - skill: aoa-contract-test
+    case_id: contract_test_meaningful_boundary
+    prompt: Tighten validation on a service boundary where downstream consumers rely on a stable response shape.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-contract-test/contract_test_meaningful_boundary.md
+    required_output_phrases:
+      - use
+      - A contract-style test or boundary assertion that captures the expected shape or behavior across the interface.
+    forbidden_output_phrases: []
+  - skill: aoa-contract-test
+    case_id: contract_test_purely_local_change
+    prompt: Refactor a local helper with no downstream boundary or interface change.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-contract-test/contract_test_purely_local_change.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward an ordinary local refactor rather than a boundary contract.
+    forbidden_output_phrases: []
+  - skill: aoa-core-logic-boundary
+    case_id: core_logic_boundary_mixed_responsibilities
+    prompt: Clarify whether reusable rules belong in the core or at the edges because a module mixes domain logic with wiring detail.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_mixed_responsibilities.md
+    required_output_phrases:
+      - use
+      - A boundary judgment that separates reusable core logic from adapter or wiring responsibilities.
+    forbidden_output_phrases: []
+  - skill: aoa-core-logic-boundary
+    case_id: core_logic_boundary_port_adapter_case
+    prompt: The core-versus-edge split is already clear; the real task is introducing a port around a concrete dependency.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_port_adapter_case.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward the port/adapter refactor skill rather than a new boundary analysis.
+    forbidden_output_phrases: []
+  - skill: aoa-dry-run-first
+    case_id: dry_run_first_authority_boundary
+    prompt: Decide whether execution is authorized before choosing any preview path.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_authority_boundary.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that sends the request to approval-gate logic instead of dry-run planning.
+    forbidden_output_phrases: []
+  - skill: aoa-dry-run-first
+    case_id: dry_run_first_previewable_operation
+    prompt: Preview a configuration migration before applying it to a live service.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_previewable_operation.md
+    required_output_phrases:
+      - use
+      - A preview-first recommendation that explains how to inspect the change before it touches the live surface.
+    forbidden_output_phrases: []
+  - skill: aoa-port-adapter-refactor
+    case_id: port_adapter_refactor_dependency_pressure
+    prompt: Introduce a seam around a concrete dependency because business logic is tightly coupled to infrastructure and testing is hard.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-port-adapter-refactor/port_adapter_refactor_dependency_pressure.md
+    required_output_phrases:
+      - use
+      - A seam, port, or adapter boundary that reduces coupling to the concrete dependency.
+    forbidden_output_phrases: []
+  - skill: aoa-port-adapter-refactor
+    case_id: port_adapter_refactor_docs_ownership
+    prompt: Clarify which documentation file is authoritative rather than refactoring a code dependency seam.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-port-adapter-refactor/port_adapter_refactor_docs_ownership.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward source-of-truth clarification instead of a port or adapter refactor.
+    forbidden_output_phrases: []
+  - skill: aoa-property-invariants
+    case_id: property_invariants_broad_rule
+    prompt: Capture a rule that must hold across many inputs because example tests feel too narrow for the safety risk.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-property-invariants/property_invariants_broad_rule.md
+    required_output_phrases:
+      - use
+      - A property or invariant statement that can be checked across a wide range of inputs.
+    forbidden_output_phrases: []
+  - skill: aoa-property-invariants
+    case_id: property_invariants_snapshot_preference
+    prompt: Check presentation-oriented formatting where concrete examples or snapshots are clearer than property thinking.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-property-invariants/property_invariants_snapshot_preference.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward example-based or snapshot-based validation instead of property reasoning.
+    forbidden_output_phrases: []
+  - skill: aoa-invariant-coverage-audit
+    case_id: invariant_coverage_audit_existing_surface
+    prompt: Review an existing validation surface to see whether it really constrains the stable rule or only repeats examples.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-invariant-coverage-audit/invariant_coverage_audit_existing_surface.md
+    required_output_phrases:
+      - use
+      - An invariant coverage audit that names the stable truth, maps current checks to it, and isolates the smallest bounded gaps.
+    forbidden_output_phrases: []
+  - skill: aoa-invariant-coverage-audit
+    case_id: invariant_coverage_audit_invariant_not_known
+    prompt: Search for the invariant itself before trying to audit the coverage around it.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-invariant-coverage-audit/invariant_coverage_audit_invariant_not_known.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward invariant discovery work before any coverage audit.
+    forbidden_output_phrases: []
+  - skill: aoa-safe-infra-change
+    case_id: safe_infra_change_authority_boundary
+    prompt: First decide whether enough authority exists before any operational action proceeds.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_authority_boundary.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that points to approval-gate logic instead of trying to plan the infra change itself.
+    forbidden_output_phrases: []
+  - skill: aoa-safe-infra-change
+    case_id: safe_infra_change_bounded_operational_change
+    prompt: Apply a bounded configuration change with explicit validation and rollback thinking on an operational surface.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_bounded_operational_change.md
+    required_output_phrases:
+      - use
+      - A bounded change plan or recommendation that names the operational surface, the validation path, and rollback or recovery notes.
+    forbidden_output_phrases: []
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_already_public_safe
+    prompt: Share a short public-safe snippet that is already minimal and contains no sensitive context.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_already_public_safe.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that says no extra sanitization work is needed because the content is already public-safe.
+    forbidden_output_phrases: []
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_sensitive_material
+    prompt: Prepare logs and diagnostics for a broader audience without leaking secrets or private topology.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_sensitive_material.md
+    required_output_phrases:
+      - use
+      - A public-safe summary or redacted version that preserves the lesson while removing sensitive surfaces.
+    forbidden_output_phrases: []
+  - skill: aoa-source-of-truth-check
+    case_id: source_of_truth_check_authority_confusion
+    prompt: Clarify which file is authoritative because several docs overlap and contributors do not know what to trust first.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/source_of_truth_check_authority_confusion.md
+    required_output_phrases:
+      - use
+      - A source-of-truth decision that names the authoritative file and explains the relationship to overlapping documents.
+    forbidden_output_phrases: []
+  - skill: aoa-source-of-truth-check
+    case_id: source_of_truth_check_broader_policy_design
+    prompt: Design a broader policy framework rather than clarifying document authority or ownership for existing files.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/source_of_truth_check_broader_policy_design.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward a policy-design or planning skill, not a source-of-truth decision.
+    forbidden_output_phrases: []
+  - skill: aoa-tdd-slice
+    case_id: tdd_slice_bounded_behavior
+    prompt: Add a small behavior change that can be specified in tests before coding.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-tdd-slice/tdd_slice_bounded_behavior.md
+    required_output_phrases:
+      - use
+      - A small test-first slice with clear acceptance checks and a limited implementation surface.
+    forbidden_output_phrases: []
+  - skill: aoa-tdd-slice
+    case_id: tdd_slice_exploratory_work
+    prompt: Explore an undefined problem where the behavior is still unclear.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-tdd-slice/tdd_slice_exploratory_work.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward exploration or discovery rather than test-first implementation.
+    forbidden_output_phrases: []

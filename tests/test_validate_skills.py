@@ -275,13 +275,18 @@ class ValidateSkillsTests(unittest.TestCase):
         include_autonomy: bool = True,
         use_cases: int = 1,
         do_not_use_cases: int = 1,
+        use_snapshots: int = 1,
+        do_not_use_snapshots: int = 1,
     ) -> None:
         fixtures_dir = repo_root / "tests" / "fixtures"
         fixtures_dir.mkdir(parents=True, exist_ok=True)
+        snapshots_dir = fixtures_dir / "skill_evaluation_snapshots" / skill_name
+        snapshots_dir.mkdir(parents=True, exist_ok=True)
 
         data: dict[str, list[dict]] = {
             "autonomy_checks": [],
             "trigger_cases": [],
+            "snapshot_cases": [],
         }
         if include_autonomy:
             data["autonomy_checks"].append(
@@ -309,6 +314,110 @@ class ValidateSkillsTests(unittest.TestCase):
                     "prompt": "do not use case",
                     "expected": "do_not_use",
                     "required_phrases": ["not needed"],
+                }
+            )
+
+        for index in range(use_snapshots):
+            case_id = f"{skill_name.replace('-', '_')}_use_snapshot_{index + 1}"
+            snapshot_path = (
+                snapshots_dir / f"{case_id}.md"
+            )
+            snapshot_path.write_text(
+                textwrap.dedent(
+                    f"""\
+                    # Evaluation Snapshot
+
+                    ## Prompt
+
+                    use case
+
+                    ## Expected selection
+
+                    Decision: use `{skill_name}`.
+
+                    ## Why
+
+                    - the bounded trigger is needed
+
+                    ## Expected object
+
+                    - output
+
+                    ## Boundary notes
+
+                    - stay inside the bounded surface
+
+                    ## Verification hooks
+
+                    - verify the output
+                    """
+                ),
+                encoding="utf-8",
+            )
+            data["snapshot_cases"].append(
+                {
+                    "skill": skill_name,
+                    "case_id": case_id,
+                    "prompt": "use case",
+                    "expected": "use",
+                    "snapshot_path": snapshot_path.relative_to(repo_root).as_posix(),
+                    "required_output_phrases": [
+                        f"Decision: use `{skill_name}`.",
+                        "output",
+                    ],
+                    "forbidden_output_phrases": [
+                        f"Decision: do_not_use `{skill_name}`."
+                    ],
+                }
+            )
+
+        for index in range(do_not_use_snapshots):
+            case_id = f"{skill_name.replace('-', '_')}_do_not_use_snapshot_{index + 1}"
+            snapshot_path = snapshots_dir / f"{case_id}.md"
+            snapshot_path.write_text(
+                textwrap.dedent(
+                    f"""\
+                    # Evaluation Snapshot
+
+                    ## Prompt
+
+                    do not use case
+
+                    ## Expected selection
+
+                    Decision: do_not_use `{skill_name}`.
+
+                    ## Why
+
+                    - the task is not needed here
+
+                    ## Expected object
+
+                    - redirect to a better fit
+
+                    ## Boundary notes
+
+                    - keep the decision bounded
+
+                    ## Verification hooks
+
+                    - confirm the deflection is explicit
+                    """
+                ),
+                encoding="utf-8",
+            )
+            data["snapshot_cases"].append(
+                {
+                    "skill": skill_name,
+                    "case_id": case_id,
+                    "prompt": "do not use case",
+                    "expected": "do_not_use",
+                    "snapshot_path": snapshot_path.relative_to(repo_root).as_posix(),
+                    "required_output_phrases": [
+                        f"Decision: do_not_use `{skill_name}`.",
+                        "redirect",
+                    ],
+                    "forbidden_output_phrases": [f"Decision: use `{skill_name}`."],
                 }
             )
 
@@ -341,6 +450,7 @@ class ValidateSkillsTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
 
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
@@ -429,6 +539,17 @@ class ValidateSkillsTests(unittest.TestCase):
     def write_walkthroughs(self, repo_root: Path, payload: dict) -> None:
         walkthrough_path = repo_root / "generated" / "skill_walkthroughs.json"
         walkthrough_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+    def load_evaluation_matrix(self, repo_root: Path) -> dict:
+        matrix_path = repo_root / "generated" / "skill_evaluation_matrix.json"
+        return json.loads(matrix_path.read_text(encoding="utf-8"))
+
+    def write_evaluation_matrix(self, repo_root: Path, payload: dict) -> None:
+        matrix_path = repo_root / "generated" / "skill_evaluation_matrix.json"
+        matrix_path.write_text(
             json.dumps(payload, sort_keys=True, indent=2) + "\n",
             encoding="utf-8",
         )
@@ -940,6 +1061,66 @@ class ValidateSkillsTests(unittest.TestCase):
         self.write_catalogs(repo_root)
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
+    def test_evaluated_status_allows_reportable_snapshot_gaps(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(
+            repo_root,
+            use_snapshots=0,
+            do_not_use_snapshots=0,
+        )
+        self.write_catalogs(repo_root)
+
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+        matrix = self.load_evaluation_matrix(repo_root)
+        self.assertEqual(
+            [
+                "missing_use_snapshot",
+                "missing_do_not_use_snapshot",
+            ],
+            matrix["skills"][0]["canonical_eval_blockers"],
+        )
+
+    def test_canonical_status_requires_use_snapshot(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+        )
+        self.write_evaluation_fixtures_for_skill(
+            repo_root,
+            use_snapshots=0,
+            do_not_use_snapshots=1,
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "status 'canonical' requires at least one 'use' snapshot case",
+            messages,
+        )
+
+    def test_canonical_status_requires_do_not_use_snapshot(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+        )
+        self.write_evaluation_fixtures_for_skill(
+            repo_root,
+            use_snapshots=1,
+            do_not_use_snapshots=0,
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "status 'canonical' requires at least one 'do_not_use' snapshot case",
+            messages,
+        )
+
     def test_skill_index_mismatch_fails(self) -> None:
         repo_root = self.make_repo(index_names=["aoa-other-skill"])
         issues = validate_skills.run_validation(repo_root)
@@ -1022,6 +1203,100 @@ class ValidateSkillsTests(unittest.TestCase):
             messages,
         )
 
+    def test_invalid_snapshot_headings_fail(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        snapshot_path = (
+            repo_root
+            / "tests"
+            / "fixtures"
+            / "skill_evaluation_snapshots"
+            / "aoa-test-skill"
+            / "aoa_test_skill_use_snapshot_1.md"
+        )
+        snapshot_path.write_text(
+            snapshot_path.read_text(encoding="utf-8").replace(
+                "## Expected object\n\n- output\n\n",
+                "",
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "evaluation snapshot missing required section 'Expected object'",
+            messages,
+        )
+        self.assertIn(
+            "evaluation snapshot top-level sections must match the canonical order exactly",
+            messages,
+        )
+
+    def test_snapshot_missing_required_phrase_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        snapshot_path = (
+            repo_root
+            / "tests"
+            / "fixtures"
+            / "skill_evaluation_snapshots"
+            / "aoa-test-skill"
+            / "aoa_test_skill_use_snapshot_1.md"
+        )
+        snapshot_path.write_text(
+            snapshot_path.read_text(encoding="utf-8").replace(
+                "Decision: use `aoa-test-skill`.",
+                "Decision: inspect `aoa-test-skill`.",
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "evaluation snapshot is missing required output phrase 'Decision: use `aoa-test-skill`.'",
+            messages,
+        )
+
+    def test_snapshot_forbidden_phrase_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        snapshot_path = (
+            repo_root
+            / "tests"
+            / "fixtures"
+            / "skill_evaluation_snapshots"
+            / "aoa-test-skill"
+            / "aoa_test_skill_do_not_use_snapshot_1.md"
+        )
+        snapshot_path.write_text(
+            snapshot_path.read_text(encoding="utf-8").replace(
+                "- confirm the deflection is explicit",
+                "- confirm the deflection is explicit\n- Decision: use `aoa-test-skill`.",
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "evaluation snapshot contains forbidden output phrase 'Decision: use `aoa-test-skill`.'",
+            messages,
+        )
+
     def test_technique_dependencies_must_match_manifest_order(self) -> None:
         repo_root = self.make_repo(
             techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
@@ -1086,6 +1361,8 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertIn("generated walkthrough markdown is missing", messages)
         self.assertIn("generated public surface is missing", messages)
         self.assertIn("generated public surface markdown is missing", messages)
+        self.assertIn("generated evaluation matrix is missing", messages)
+        self.assertIn("generated evaluation matrix markdown is missing", messages)
 
     def test_stale_generated_catalogs_fail(self) -> None:
         repo_root = self.make_repo()
@@ -1309,6 +1586,43 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated walkthrough markdown is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_stale_generated_evaluation_matrix_json_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
+
+        matrix = self.load_evaluation_matrix(repo_root)
+        matrix["skills"][0]["use_snapshot_count"] = 0
+        self.write_evaluation_matrix(repo_root, matrix)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated evaluation matrix is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_stale_generated_evaluation_matrix_markdown_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_record_surface="canonical-candidates",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
+
+        matrix_markdown_path = repo_root / "generated" / "skill_evaluation_matrix.md"
+        matrix_markdown_path.write_text("stale evaluation matrix markdown\n", encoding="utf-8")
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated evaluation matrix markdown is out of date; run python scripts/build_catalog.py",
             messages,
         )
 

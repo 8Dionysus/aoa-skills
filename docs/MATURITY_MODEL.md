@@ -40,7 +40,11 @@ The skill has behavior-oriented evidence beyond static shape checks.
 Typical characteristics:
 - autonomy or self-contained runtime checks exist
 - trigger-boundary fixtures or similar evaluation evidence exist
+- snapshot-backed coverage or equivalent matrix-backed evidence exists
 - evidence is strong enough to catch boundary mistakes, not only formatting drift
+
+For reading the evidence itself, use `docs/EVALUATION_PATH.md`.
+For the current derived evidence surface, read `../generated/skill_evaluation_matrix.md`.
 
 ### `canonical`
 
@@ -92,6 +96,8 @@ That does not replace human review or promotion judgment.
 Use this checklist when proposing any status change beyond `scaffold`:
 - bridge metadata is current and honest
 - runtime `SKILL.md` remains self-contained
+- evaluation evidence is readable in `docs/EVALUATION_PATH.md`
+- the derived evaluation matrix in `../generated/skill_evaluation_matrix.md` matches the current fixtures and snapshot cases
 - trigger boundary is still crisp
 - contracts, risks, and verification guidance are still coherent
 - support artifacts and evaluation evidence match the promoted claim

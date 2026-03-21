@@ -219,6 +219,76 @@ class BuildCatalogTests(unittest.TestCase):
         if include_evaluation_fixtures:
             fixtures_dir = repo_root / "tests" / "fixtures"
             fixtures_dir.mkdir(parents=True, exist_ok=True)
+            snapshots_dir = fixtures_dir / "skill_evaluation_snapshots" / "aoa-test-skill"
+            snapshots_dir.mkdir(parents=True, exist_ok=True)
+            use_snapshot_path = snapshots_dir / "aoa_test_skill_use_snapshot_1.md"
+            use_snapshot_path.write_text(
+                textwrap.dedent(
+                    """\
+                    # Evaluation Snapshot
+
+                    ## Prompt
+
+                    use case
+
+                    ## Expected selection
+
+                    Decision: use `aoa-test-skill`.
+
+                    ## Why
+
+                    - the bounded trigger is needed
+
+                    ## Expected object
+
+                    - output
+
+                    ## Boundary notes
+
+                    - keep the scope bounded
+
+                    ## Verification hooks
+
+                    - verify the output
+                    """
+                ),
+                encoding="utf-8",
+            )
+            do_not_use_snapshot_path = (
+                snapshots_dir / "aoa_test_skill_do_not_use_snapshot_1.md"
+            )
+            do_not_use_snapshot_path.write_text(
+                textwrap.dedent(
+                    """\
+                    # Evaluation Snapshot
+
+                    ## Prompt
+
+                    do not use case
+
+                    ## Expected selection
+
+                    Decision: do_not_use `aoa-test-skill`.
+
+                    ## Why
+
+                    - the task is not needed here
+
+                    ## Expected object
+
+                    - redirect to a better fit
+
+                    ## Boundary notes
+
+                    - keep the decision bounded
+
+                    ## Verification hooks
+
+                    - confirm the deflection is explicit
+                    """
+                ),
+                encoding="utf-8",
+            )
             (fixtures_dir / "skill_evaluation_cases.yaml").write_text(
                 yaml.safe_dump(
                     {
@@ -242,6 +312,36 @@ class BuildCatalogTests(unittest.TestCase):
                                 "prompt": "do not use case",
                                 "expected": "do_not_use",
                                 "required_phrases": ["not needed"],
+                            },
+                        ],
+                        "snapshot_cases": [
+                            {
+                                "skill": "aoa-test-skill",
+                                "case_id": "aoa_test_skill_use_snapshot_1",
+                                "prompt": "use case",
+                                "expected": "use",
+                                "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-test-skill/aoa_test_skill_use_snapshot_1.md",
+                                "required_output_phrases": [
+                                    "Decision: use `aoa-test-skill`.",
+                                    "output",
+                                ],
+                                "forbidden_output_phrases": [
+                                    "Decision: do_not_use `aoa-test-skill`."
+                                ],
+                            },
+                            {
+                                "skill": "aoa-test-skill",
+                                "case_id": "aoa_test_skill_do_not_use_snapshot_1",
+                                "prompt": "do not use case",
+                                "expected": "do_not_use",
+                                "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-test-skill/aoa_test_skill_do_not_use_snapshot_1.md",
+                                "required_output_phrases": [
+                                    "Decision: do_not_use `aoa-test-skill`.",
+                                    "redirect",
+                                ],
+                                "forbidden_output_phrases": [
+                                    "Decision: use `aoa-test-skill`."
+                                ],
                             },
                         ],
                     },
@@ -272,6 +372,14 @@ class BuildCatalogTests(unittest.TestCase):
 
     def load_walkthroughs_markdown(self, repo_root: Path) -> str:
         path = repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH
+        return path.read_text(encoding="utf-8")
+
+    def load_evaluation_matrix(self, repo_root: Path) -> dict:
+        path = repo_root / build_catalog.EVALUATION_MATRIX_JSON_PATH
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def load_evaluation_matrix_markdown(self, repo_root: Path) -> str:
+        path = repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH
         return path.read_text(encoding="utf-8")
 
     def test_write_catalogs_generates_full_and_min_projection(self) -> None:
@@ -666,6 +774,56 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertIn("## Candidate-ready cohort", markdown)
         self.assertIn("| aoa-test-skill | evaluated | core | explicit-preferred | published | - |", markdown)
 
+    def test_write_evaluation_matrix_generates_snapshot_backed_surface(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_surfaces=("canonical-candidates",),
+            include_evaluation_fixtures=True,
+        )
+
+        matrix_json_path, matrix_markdown_path = build_catalog.write_evaluation_matrix(repo_root)
+
+        payload = self.load_evaluation_matrix(repo_root)
+        markdown = self.load_evaluation_matrix_markdown(repo_root)
+        self.assertEqual(
+            build_catalog.EVALUATION_MATRIX_VERSION,
+            payload["evaluation_matrix_version"],
+        )
+        self.assertEqual(
+            build_catalog.EVALUATION_MATRIX_SOURCE_OF_TRUTH,
+            payload["source_of_truth"],
+        )
+        self.assertEqual(
+            matrix_json_path,
+            repo_root / build_catalog.EVALUATION_MATRIX_JSON_PATH,
+        )
+        self.assertEqual(
+            matrix_markdown_path,
+            repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH,
+        )
+        self.assertEqual(
+            {
+                "name": "aoa-test-skill",
+                "status": "canonical",
+                "scope": "core",
+                "invocation_mode": "explicit-preferred",
+                "skill_path": "skills/aoa-test-skill/SKILL.md",
+                "autonomy_check_count": 1,
+                "use_case_count": 1,
+                "do_not_use_case_count": 1,
+                "use_snapshot_count": 1,
+                "do_not_use_snapshot_count": 1,
+                "selected_runtime_artifact_path": "skills/aoa-test-skill/examples/example.md",
+                "promotion_review_path": None,
+                "candidate_review_path": "docs/reviews/canonical-candidates/aoa-test-skill.md",
+                "canonical_eval_ready": True,
+                "canonical_eval_blockers": [],
+            },
+            payload["skills"][0],
+        )
+        self.assertIn("# Skill evaluation matrix", markdown)
+        self.assertIn("| aoa-test-skill | canonical | core | explicit-preferred |", markdown)
+
     def test_check_mode_passes_after_write(self) -> None:
         repo_root = self.make_repo(
             status="evaluated",
@@ -677,6 +835,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
 
         self.assertEqual(0, self.run_main(repo_root, ["--check"]))
 
@@ -691,6 +850,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -713,6 +873,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -735,6 +896,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -757,6 +919,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
 
         public_surface_markdown_path = repo_root / build_catalog.PUBLIC_SURFACE_MARKDOWN_PATH
         public_surface_markdown_path.write_text(
@@ -780,6 +943,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -802,9 +966,28 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_sections(repo_root)
         build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
 
         (repo_root / build_catalog.WALKTHROUGHS_JSON_PATH).unlink()
         (repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH).unlink()
+
+        self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
+    def test_check_mode_fails_when_evaluation_matrix_is_stale(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_surfaces=("canonical-candidates",),
+            include_evaluation_fixtures=True,
+        )
+        build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
+        build_catalog.write_public_surface(repo_root)
+        build_catalog.write_evaluation_matrix(repo_root)
+
+        matrix_markdown_path = repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH
+        matrix_markdown_path.write_text("stale matrix markdown\n", encoding="utf-8")
 
         self.assertEqual(1, self.run_main(repo_root, ["--check"]))
 
