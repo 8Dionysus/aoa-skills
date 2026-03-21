@@ -33,6 +33,14 @@ Sections usually not copied verbatim into runtime skill content:
 - Public sanitization notes
 - repository-internal evidence notes
 
+## KAG/source-lift posture
+
+For KAG/source-lift consumers:
+- use `AOA-T-0019` as the canonical bundle-level metadata spine for lookup, review posture, and direct adjacency
+- use `AOA-T-0018` as the bounded section-lift layer when section-level navigation is needed
+- keep the authored `TECHNIQUE.md` markdown authoritative for meaning; derived catalogs, manifests, and section surfaces stay subordinate
+- do not widen the metadata spine into all-docs authority, schema-first meaning, or a replacement for markdown sections
+
 ## Recommended file: `techniques.yaml`
 
 Each skill directory may contain a `techniques.yaml` manifest.

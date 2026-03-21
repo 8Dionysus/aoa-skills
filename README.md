@@ -69,6 +69,8 @@ The current runtime path for public skill use is:
 
 `pick -> inspect -> expand -> object use`
 
+For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metadata spine and `AOA-T-0018` is the bounded section-lift layer. The authored markdown bundle still owns the meaning; derived metadata and section surfaces only help routing.
+
 ## Core principles
 
 - techniques are the source of truth for reusable practice
