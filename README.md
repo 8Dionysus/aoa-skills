@@ -16,13 +16,15 @@ explicit contracts, risks, verification guidance, and technique traceability.
 If you are new to this repository, follow this short path:
 
 1. Read `docs/README.md` for the docs map.
-2. Read `docs/PUBLIC_SURFACE.md` for the public-product and governance signals.
-3. Read `docs/ARCHITECTURE.md` for the high-level model.
-4. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-5. Read `generated/public_surface.md` for the current derived cohort split.
-6. Read `SKILL_INDEX.md` for the current skill surface.
-7. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-8. Use `templates/SKILL.template.md` when authoring a new skill.
+2. Read `docs/RUNTIME_PATH.md` for the runtime path: `pick -> inspect -> expand -> object use`.
+3. Read `generated/skill_walkthroughs.md` for the current derived walkthrough surface.
+4. Read `docs/PUBLIC_SURFACE.md` for the public-product and governance signals.
+5. Read `docs/ARCHITECTURE.md` for the high-level model.
+6. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
+7. Read `generated/public_surface.md` for the current derived cohort split.
+8. Read `SKILL_INDEX.md` for the current skill surface.
+9. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+10. Use `templates/SKILL.template.md` and `templates/RUNTIME_EXAMPLE.template.md` when authoring new skill surfaces.
 
 ## Quick routes
 
@@ -71,6 +73,11 @@ The current runtime path for public skill use is:
 
 `pick -> inspect -> expand -> object use`
 
+That runtime path is now productized locally through:
+- `docs/RUNTIME_PATH.md` as the human guide
+- `generated/skill_walkthroughs.md` as the derived walkthrough matrix
+- `python scripts/inspect_skill.py --skill <name>` as the read-only inspect CLI
+
 For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metadata spine and `AOA-T-0018` is the bounded section-lift layer. The authored markdown bundle still owns the meaning; derived metadata and section surfaces only help routing.
 
 ## Core principles
@@ -90,7 +97,7 @@ For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metada
 - `docs/` — architecture, bridge rules, roadmap, conventions
 - `templates/` — templates for skill authoring and composition metadata
 - `skills/` — skill bundles
-- `generated/` — derived reader catalogs, local runtime cards, section surfaces, and public-product surfaces built from committed skill markdown, manifests, review records, and evaluation fixtures
+- `generated/` — derived reader catalogs, local runtime cards, section surfaces, walkthrough surfaces, and public-product surfaces built from committed skill markdown, manifests, support artifacts, review records, and evaluation fixtures
 - `scripts/` — local validation and refresh helpers
 - `schemas/` — machine-readable bundle contracts
 - `tests/` — local validator and evaluation tests
@@ -109,6 +116,7 @@ A typical skill bundle contains:
 `generated/skill_catalog.json` and `generated/skill_catalog.min.json` are derived reader surfaces for routing and indexing.
 `generated/skill_capsules.json` is a derived local runtime-card surface with bounded per-skill summaries.
 `generated/skill_sections.full.json` is the source-owned section payload surface for bounded expand-time reads.
+`generated/skill_walkthroughs.json` and `generated/skill_walkthroughs.md` are derived runtime inspect surfaces built from skill markdown and support artifacts.
 `generated/public_surface.json` and `generated/public_surface.md` are derived governance and public-product surfaces.
 
 ## Skill categories
@@ -121,7 +129,8 @@ A typical skill bundle contains:
 
 This repository now has a mixed-status public core of 13 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
 It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
-The current focus is using that derived governance surface to clarify default references, candidate-ready skills, and pending-lineage blockers without introducing a second source of truth.
+It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the derived governance/public-surface layer.
+The current focus is keeping runtime selection inspectable without introducing a second source of truth, while using the derived governance surface to clarify default references, candidate-ready skills, and pending-lineage blockers.
 
 ## When not to use this repository
 
@@ -149,10 +158,28 @@ Run the full repository check:
 python scripts/validate_skills.py
 ```
 
-Refresh the derived catalogs, capsules, sections, and public surface:
+Check that all generated surfaces are current:
+
+```bash
+python scripts/build_catalog.py --check
+```
+
+Refresh the derived catalogs, capsules, sections, walkthroughs, and public surface:
 
 ```bash
 python scripts/build_catalog.py
+```
+
+Inspect a skill through the runtime path:
+
+```bash
+python scripts/inspect_skill.py --skill aoa-change-protocol
+```
+
+Inspect the same skill's support artifacts and review evidence:
+
+```bash
+python scripts/inspect_skill.py --skill aoa-change-protocol --view evidence
 ```
 
 Run a single skill check:
@@ -163,7 +190,7 @@ python scripts/validate_skills.py --skill aoa-change-protocol
 
 The validator now uses repository schemas from `schemas/` as the contract layer for
 front matter, `techniques.yaml`, and `agents/openai.yaml`.
-It also checks that the generated catalogs, capsules, full section surfaces, and derived public-surface JSON/Markdown exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules and sections stay aligned with the full catalog.
+It also checks that the generated catalogs, capsules, full section surfaces, walkthrough surfaces, and derived public-surface JSON/Markdown exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules, sections, and walkthroughs stay aligned with the same source bundles.
 
 Preview a manifest-driven `SKILL.md` refresh without rewriting files:
 

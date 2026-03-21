@@ -1,7 +1,12 @@
 # Public surface
 
-This document explains how to read the public-product surface of `aoa-skills`
+This document explains how to read the derived public-product surface of `aoa-skills`
 without assuming hidden release metadata or private repository state.
+
+For runtime inspection and skill selection, use `RUNTIME_PATH.md` first.
+That guide covers the `pick -> inspect -> expand -> object use` path.
+This document stays separate and only explains derived governance/public-surface signals.
+If you are trying to choose or execute an object, this is the wrong layer.
 
 The current signaling layer is intentionally derived from facts that already exist:
 - skill `status`
@@ -51,16 +56,25 @@ It means the skill is reviewed and tested at the skill layer, but the upstream t
 `explicit-only` is an invocation posture, not a maturity status.
 It means the skill requires explicit invocation and matching policy posture.
 
+## Runtime boundary
+
+This surface does not tell you how to select or inspect a skill at runtime.
+It only explains the derived governance and public-product signals that already exist in the repository.
+
+If you are choosing a skill, start with `docs/RUNTIME_PATH.md`.
+If you are reading status or release signals, stay here and in `generated/public_surface.md`.
+
 ## Current reading order
 
 Use this order when orienting in the public surface:
 
 1. `README.md`
 2. `docs/README.md`
-3. `docs/PUBLIC_SURFACE.md`
-4. `generated/public_surface.md`
-5. `SKILL_INDEX.md`
-6. the target `skills/<skill-name>/SKILL.md`
+3. `docs/RUNTIME_PATH.md`
+4. `docs/PUBLIC_SURFACE.md`
+5. `generated/public_surface.md`
+6. `SKILL_INDEX.md`
+7. the target `skills/<skill-name>/SKILL.md`
 
 ## What this layer does not do
 
@@ -72,3 +86,11 @@ This wave does not introduce:
 - implicit promotions
 
 The public-product surface remains repo-local and derived.
+
+Future stubs:
+
+TODO: if the derived public-product layer ever needs a richer release summary, keep it generated and separate from runtime inspection.
+
+TODO: if cross-repo public-surface signals become necessary, derive them from existing repo facts rather than live fetches.
+
+TODO: if the runtime path ever needs a routing index, keep that in `RUNTIME_PATH.md` or a separate runtime helper rather than blending it into this derived surface.

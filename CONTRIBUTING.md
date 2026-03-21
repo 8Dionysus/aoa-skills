@@ -30,6 +30,7 @@ Please make sure:
 - invocation policy is stated clearly when the skill is risky or operationally sensitive
 - risks and anti-patterns are documented
 - verification expectations are explicit
+- runtime examples and review checklists use the repository artifact contract when present
 - examples and references are public-safe
 - project-shaped overlays do not silently change the core meaning of the skill
 
@@ -37,13 +38,22 @@ Run the local validator before opening a PR:
 
 ```bash
 python -m pip install -r requirements-dev.txt
+python scripts/build_catalog.py
 python scripts/validate_skills.py
 ```
+
+`python scripts/build_catalog.py --check` should also pass before you open a PR.
 
 To focus on one bundle while iterating:
 
 ```bash
 python scripts/validate_skills.py --skill aoa-change-protocol
+```
+
+To inspect the current runtime path for one skill while authoring or reviewing:
+
+```bash
+python scripts/inspect_skill.py --skill aoa-change-protocol
 ```
 
 To preview a manifest-driven `SKILL.md` refresh without rewriting files:
@@ -59,6 +69,21 @@ python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --writ
 ```
 
 The helper does not support repo-wide write mode in this pass.
+
+If you add a new runtime example, start from `templates/RUNTIME_EXAMPLE.template.md`
+and keep the canonical headings exactly:
+- `Scenario`
+- `Why this skill fits`
+- `Expected inputs`
+- `Expected outputs`
+- `Boundary notes`
+- `Verification notes`
+
+If you add `checks/review.md`, keep the canonical checklist headings exactly:
+- `Purpose`
+- `When it applies`
+- `Review checklist`
+- `Not a fit`
 
 ## Core distinction
 
@@ -132,6 +157,8 @@ A good PR should make it clear:
 - whether the skill meaning changed
 - whether only metadata changed
 - whether project overlays also require updates
+
+If you think a richer integration would need another repository, leave a local stub or TODO note instead of adding live cross-repo behavior in this repository wave.
 
 ## Public hygiene
 

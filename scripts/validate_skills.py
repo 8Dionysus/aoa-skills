@@ -17,6 +17,7 @@ import yaml
 from jsonschema import Draft202012Validator
 
 import build_catalog
+import skill_artifact_contract
 import skill_catalog_contract
 import skill_governance_surface
 import skill_section_contract
@@ -179,13 +180,11 @@ def parse_skill_markdown(
     return metadata, section_pairs
 
 
-def find_support_artifacts(skill_dir: Path) -> list[Path]:
-    artifacts: list[Path] = []
-    for folder_name in ("examples", "checks"):
-        folder = skill_dir / folder_name
-        if folder.is_dir():
-            artifacts.extend(sorted(folder.glob("*.md")))
-    return artifacts
+def find_support_artifacts(
+    repo_root: Path,
+    skill_name: str,
+) -> list[dict[str, Any]]:
+    return skill_artifact_contract.collect_support_artifacts(repo_root, skill_name)
 
 
 def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIssue]:
@@ -209,13 +208,21 @@ def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIs
             ValidationIssue(relative_location(techniques_path), "file is missing")
         )
 
-    if not find_support_artifacts(skill_dir):
+    if not find_support_artifacts(repo_root, skill_name):
         issues.append(
             ValidationIssue(
                 relative_location(skill_dir),
-                "missing support artifact under examples/*.md or checks/*.md",
+                "missing support artifact under examples/*.md, checks/review.md, or docs/reviews/*",
             )
         )
+    else:
+        for artifact_issue in skill_artifact_contract.collect_skill_artifact_issues(
+            repo_root,
+            skill_name,
+        ):
+            issues.append(
+                ValidationIssue(artifact_issue.location, artifact_issue.message)
+            )
 
     metadata: dict[str, Any] | None = None
     sections: dict[str, str] = {}
@@ -1510,6 +1517,157 @@ def validate_generated_sections(
     return issues
 
 
+def validate_generated_walkthroughs(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    walkthrough_path = repo_root / build_catalog.WALKTHROUGHS_JSON_PATH
+    walkthrough_markdown_path = repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH
+    walkthrough_location = relative_location(walkthrough_path)
+    walkthrough_markdown_location = relative_location(walkthrough_markdown_path)
+
+    if not walkthrough_path.is_file():
+        issues.append(
+            ValidationIssue(
+                walkthrough_location,
+                "generated walkthrough surface is missing",
+            )
+        )
+        if not walkthrough_markdown_path.is_file():
+            issues.append(
+                ValidationIssue(
+                    walkthrough_markdown_location,
+                    "generated walkthrough markdown is missing",
+                )
+            )
+        return issues
+
+    if not walkthrough_markdown_path.is_file():
+        issues.append(
+            ValidationIssue(
+                walkthrough_markdown_location,
+                "generated walkthrough markdown is missing",
+            )
+        )
+        return issues
+
+    walkthrough_text = walkthrough_path.read_text(encoding="utf-8")
+    walkthrough_markdown_text = walkthrough_markdown_path.read_text(encoding="utf-8")
+    try:
+        parsed = json.loads(walkthrough_text)
+    except json.JSONDecodeError as exc:
+        issues.append(
+            ValidationIssue(
+                walkthrough_location,
+                f"invalid JSON: {exc.msg}",
+            )
+        )
+        return issues
+
+    if not isinstance(parsed, dict):
+        issues.append(
+            ValidationIssue(
+                walkthrough_location,
+                "walkthrough surface must parse to an object",
+            )
+        )
+        return issues
+
+    walkthrough_data = parsed
+    if walkthrough_data.get("walkthrough_version") != build_catalog.WALKTHROUGH_VERSION:
+        issues.append(
+            ValidationIssue(
+                walkthrough_location,
+                f"walkthrough_version must be {build_catalog.WALKTHROUGH_VERSION}",
+            )
+        )
+    if walkthrough_data.get("source_of_truth") != build_catalog.WALKTHROUGH_SOURCE_OF_TRUTH:
+        issues.append(
+            ValidationIssue(
+                walkthrough_location,
+                "walkthrough source_of_truth does not match the expected contract",
+            )
+        )
+    if not isinstance(walkthrough_data.get("skills"), list):
+        issues.append(
+            ValidationIssue(
+                walkthrough_location,
+                "walkthrough surface field 'skills' must be a list",
+            )
+        )
+        return issues
+
+    try:
+        expected_walkthrough_text, expected_walkthrough_markdown_text = (
+            build_catalog.build_walkthrough_texts(repo_root)
+        )
+        expected_walkthrough_payload = build_catalog.build_walkthrough_payload(repo_root)
+    except (FileNotFoundError, ValueError) as exc:
+        issues.append(
+            ValidationIssue(
+                walkthrough_location,
+                f"walkthrough source validation failed: {exc}",
+            )
+        )
+        return issues
+
+    if skill_names is None:
+        if walkthrough_text != expected_walkthrough_text:
+            issues.append(
+                ValidationIssue(
+                    walkthrough_location,
+                    "generated walkthrough surface is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        if walkthrough_markdown_text != expected_walkthrough_markdown_text:
+            issues.append(
+                ValidationIssue(
+                    walkthrough_markdown_location,
+                    "generated walkthrough markdown is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        return issues
+
+    actual_entries = catalog_entries_by_name(
+        walkthrough_data,
+        array_key="skills",
+        key_name="name",
+        location=walkthrough_location,
+        issues=issues,
+    )
+    expected_entries = catalog_entries_by_name(
+        expected_walkthrough_payload,
+        array_key="skills",
+        key_name="name",
+        location=walkthrough_location,
+        issues=[],
+    )
+
+    for skill_name in skill_names:
+        actual_entry = actual_entries.get(skill_name)
+        expected_entry = expected_entries.get(skill_name)
+        if actual_entry is None:
+            issues.append(
+                ValidationIssue(
+                    walkthrough_location,
+                    f"generated walkthrough surface is missing skill '{skill_name}'",
+                )
+            )
+            continue
+        if expected_entry is None:
+            continue
+        if actual_entry != expected_entry:
+            issues.append(
+                ValidationIssue(
+                    walkthrough_location,
+                    f"generated walkthrough entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                )
+            )
+
+    return issues
+
+
 def validate_generated_public_surface(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
@@ -1717,11 +1875,13 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         issues.extend(validate_generated_catalogs(repo_root))
         issues.extend(validate_generated_capsules(repo_root))
         issues.extend(validate_generated_sections(repo_root))
+        issues.extend(validate_generated_walkthroughs(repo_root))
         issues.extend(validate_generated_public_surface(repo_root))
     elif all(not bundle_issues_by_name[name] for name in target_skills):
         issues.extend(validate_generated_catalogs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_capsules(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_sections(repo_root, skill_names=target_skills))
+        issues.extend(validate_generated_walkthroughs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_public_surface(repo_root, skill_names=target_skills))
     return issues
 
