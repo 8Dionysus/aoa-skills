@@ -5,10 +5,10 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 14
+- total skills: 16
 - default references: 6
 - candidate-ready skills: 0
-- blocked by pending lineage: 8
+- blocked by pending lineage: 9
 - risk surfaces: 4
 
 ## Default references
@@ -40,6 +40,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 | aoa-safe-infra-change | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | - |
 | aoa-sanitized-share | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-sanitized-share.md` | - |
 | aoa-source-of-truth-check | evaluated | core | explicit-preferred | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | - |
+| atm10-source-of-truth-check | scaffold | project | explicit-preferred | pending | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 
 ## Risk surfaces
 

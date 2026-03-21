@@ -29,6 +29,18 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: atm10-change-protocol
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: atm10-source-of-truth-check
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-tdd-slice
     forbidden_runtime_terms:
       - aoa-techniques
@@ -142,6 +154,20 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the main problem is broader policy design rather than document authority or ownership
+  - skill: atm10-source-of-truth-check
+    case_id: atm10_source_of_truth_local_authority
+    prompt: Clarify which repo-relative atm10 docs are authoritative for one local workflow because overview docs and canonical guides are drifting apart.
+    expected: use
+    required_phrases:
+      - the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules
+      - confusion exists between overview docs and authoritative files inside one local repo
+  - skill: atm10-source-of-truth-check
+    case_id: atm10_source_of_truth_code_only_change
+    prompt: Make a code-only change that has no meaningful documentation ambiguity or source-of-truth question.
+    expected: do_not_use
+    required_phrases:
+      - the main need is broader policy design rather than local document authority mapping
+      - the task is purely code-local and has no meaningful docs or guidance ambiguity
 
   - skill: aoa-change-protocol
     case_id: change_protocol_non_trivial_change
@@ -156,6 +182,20 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the edit is tiny and has no meaningful review or operational consequence
+  - skill: atm10-change-protocol
+    case_id: atm10_change_protocol_local_overlay
+    prompt: Apply a bounded non-trivial change in an atm10 repository where local files, commands, and approval notes still need to be named explicitly.
+    expected: use
+    required_phrases:
+      - the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes
+      - a bounded non-trivial change still needs an explicit plan and verification path inside the local repo
+  - skill: atm10-change-protocol
+    case_id: atm10_change_protocol_broader_playbook
+    prompt: Run a broader family scenario that needs cross-repo coordination rather than a thin local overlay.
+    expected: do_not_use
+    required_phrases:
+      - the task really needs a broader playbook or scenario bundle rather than a thin overlay
+      - the work would introduce new upstream technique meaning instead of adapting the local repo surface
 
   - skill: aoa-tdd-slice
     case_id: tdd_slice_bounded_behavior
@@ -595,6 +635,24 @@ snapshot_cases:
       - do_not_use
       - A deflection that treats the edit as a simple local fix rather than a scoped change workflow.
     forbidden_output_phrases: []
+  - skill: atm10-change-protocol
+    case_id: atm10_change_protocol_local_overlay
+    prompt: Apply a bounded non-trivial change in an atm10 repository where local files, commands, and approval notes still need to be named explicitly.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/atm10-change-protocol/atm10_change_protocol_local_overlay.md
+    required_output_phrases:
+      - use
+      - A bounded local change note that keeps repo-relative paths, commands, and verification explicit.
+    forbidden_output_phrases: []
+  - skill: atm10-change-protocol
+    case_id: atm10_change_protocol_broader_playbook
+    prompt: Run a broader family scenario that needs cross-repo coordination rather than a thin local overlay.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/atm10-change-protocol/atm10_change_protocol_broader_playbook.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that says the request needs a broader playbook or a different base skill, not a thin atm10 overlay.
+    forbidden_output_phrases: []
   - skill: aoa-contract-test
     case_id: contract_test_meaningful_boundary
     prompt: Tighten validation on a service boundary where downstream consumers rely on a stable response shape.
@@ -756,6 +814,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection toward a policy-design or planning skill, not a source-of-truth decision.
+    forbidden_output_phrases: []
+  - skill: atm10-source-of-truth-check
+    case_id: atm10_source_of_truth_local_authority
+    prompt: Clarify which repo-relative atm10 docs are authoritative for one local workflow because overview docs and canonical guides are drifting apart.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/atm10-source-of-truth-check/atm10_source_of_truth_local_authority.md
+    required_output_phrases:
+      - use
+      - A local source-of-truth map that names the authoritative repo-relative file and the matching review posture.
+    forbidden_output_phrases: []
+  - skill: atm10-source-of-truth-check
+    case_id: atm10_source_of_truth_code_only_change
+    prompt: Make a code-only change that has no meaningful documentation ambiguity or source-of-truth question.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/atm10-source-of-truth-check/atm10_source_of_truth_code_only_change.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that says there is no meaningful local document-authority problem to solve with this overlay.
     forbidden_output_phrases: []
   - skill: aoa-tdd-slice
     case_id: tdd_slice_bounded_behavior

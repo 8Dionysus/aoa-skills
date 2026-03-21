@@ -238,6 +238,40 @@
       "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
+    },
+    {
+      "autonomy_check_count": 1,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "do_not_use_case_count": 1,
+      "do_not_use_snapshot_count": 1,
+      "invocation_mode": "explicit-preferred",
+      "name": "atm10-change-protocol",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/atm10-change-protocol/examples/example.md",
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 1,
+      "use_snapshot_count": 1
+    },
+    {
+      "autonomy_check_count": 1,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "do_not_use_case_count": 1,
+      "do_not_use_snapshot_count": 1,
+      "invocation_mode": "explicit-preferred",
+      "name": "atm10-source-of-truth-check",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/atm10-source-of-truth-check/examples/example.md",
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 1,
+      "use_snapshot_count": 1
     }
   ],
   "source_of_truth": {

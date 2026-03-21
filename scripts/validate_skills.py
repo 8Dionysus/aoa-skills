@@ -658,9 +658,11 @@ def validate_snapshot_fixture_contract(repo_root: Path) -> list[ValidationIssue]
     return issues
 
 
-def validate_overlay_stub_contract(repo_root: Path) -> list[ValidationIssue]:
+def validate_overlay_contract(repo_root: Path) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     for contract_issue in skill_overlay_contract.collect_overlay_stub_issues(repo_root):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    for contract_issue in skill_overlay_contract.collect_live_overlay_issues(repo_root):
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
     return issues
 
@@ -2258,7 +2260,7 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         issues.extend(bundle_issues)
 
     issues.extend(validate_snapshot_fixture_contract(repo_root))
-    issues.extend(validate_overlay_stub_contract(repo_root))
+    issues.extend(validate_overlay_contract(repo_root))
     issues.extend(validate_evaluation_floors(repo_root, target_skills))
     issues.extend(validate_canonical_status_floors(repo_root, target_skills))
     issues.extend(validate_required_adjacency_coverage(repo_root, target_skills))

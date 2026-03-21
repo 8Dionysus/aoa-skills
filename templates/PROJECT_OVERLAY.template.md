@@ -1,13 +1,15 @@
-# project-overlay-name overlay
+# family-name overlay
 
 ## Purpose
 
-Describe the downstream repository or project family this overlay adapts to.
-Keep the description public-safe and explicit.
+Describe the project family this live exemplar overlay pack adapts to.
+Keep the description public-safe, repo-local, and explicit.
+State that the overlay does not change the base skill boundary.
 
 ## Authority
 
-- overlay repository or workspace: `[repo-relative path or short name]`
+- overlay family: `[atm10|abyss|other repo-local family name]`
+- canonical overlay doc: `docs/overlays/[family-name]/PROJECT_OVERLAY.md`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
 - explicit approval rules: `[state the local rule]`
@@ -21,8 +23,8 @@ Keep the description public-safe and explicit.
 
 ## Overlayed skills
 
-- `[skill-name]` - `[what changes in this repository]`
-- `[skill-name]` - `[what changes in this repository]`
+- `[family-skill-name]` - `[what changes in this repository and which base skill it adapts]`
+- `[family-skill-name]` - `[what changes in this repository and which base skill it adapts]`
 
 ## Risks and anti-patterns
 
@@ -30,10 +32,11 @@ Keep the description public-safe and explicit.
 - do not hide authority in prose that should be explicit
 - do not copy upstream technique prose into the overlay
 - do not depend on live remote fetches during runtime use
+- do not present this exemplar pack as a downstream integration
 
 ## Validation
 
 - confirm all paths are repository-relative
 - confirm all commands are local and reviewable
 - confirm the overlay preserves the base skill boundary
-- confirm any cross-repo idea is clearly marked as a stub
+- confirm the overlayed skills section exactly matches the committed `skills/<family>-*` bundles

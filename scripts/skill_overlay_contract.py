@@ -1,17 +1,21 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Sequence
 
 import skill_artifact_contract
 import skill_catalog_contract
+import yaml
 
 
 OVERLAY_STUBS_DIR = Path("tests") / "fixtures" / "overlay_stubs"
+LIVE_OVERLAYS_DIR = Path("docs") / "overlays"
 PROJECT_OVERLAY_FILE = "PROJECT_OVERLAY.md"
 PROJECT_OVERLAY_SKILL_FILE = "PROJECT_OVERLAY_SKILL.md"
-OVERLAY_DIR_PREFIXES = ("atm10-", "abyss-")
+LIVE_OVERLAY_FAMILIES = ("atm10", "abyss")
+OVERLAY_DIR_PREFIXES = tuple(f"{family}-" for family in LIVE_OVERLAY_FAMILIES)
 PROJECT_OVERLAY_HEADINGS = (
     "Overlay target",
     "Base skill surface",
@@ -30,6 +34,15 @@ PROJECT_OVERLAY_SKILL_HEADINGS = (
     "Verification notes",
     "Stub-only notes",
 )
+LIVE_PROJECT_OVERLAY_HEADINGS = (
+    "Purpose",
+    "Authority",
+    "Local surface",
+    "Overlayed skills",
+    "Risks and anti-patterns",
+    "Validation",
+)
+OVERLAY_SKILL_BULLET_PATTERN = re.compile(r"^\s*-\s*`([a-z0-9-]+)`")
 
 
 @dataclass(frozen=True)
@@ -45,6 +58,50 @@ def relative_location(path: Path, repo_root: Path) -> str:
 def contains_phrase(text: str, phrases: Sequence[str]) -> bool:
     normalized = " ".join(text.lower().split())
     return any(" ".join(phrase.lower().split()) in normalized for phrase in phrases)
+
+
+def load_skill_scope(skill_path: Path) -> str | None:
+    try:
+        text = skill_path.read_text(encoding="utf-8")
+    except OSError:
+        return None
+    if not text.startswith("---"):
+        return None
+    try:
+        _, frontmatter, _ = text.split("---", 2)
+    except ValueError:
+        return None
+    try:
+        metadata = yaml.safe_load(frontmatter)
+    except yaml.YAMLError:
+        return None
+    if not isinstance(metadata, dict):
+        return None
+    scope = metadata.get("scope")
+    return scope if isinstance(scope, str) else None
+
+
+def family_skill_names(repo_root: Path, family: str) -> list[str]:
+    prefix = f"{family}-"
+    skills_dir = repo_root / "skills"
+    if not skills_dir.is_dir():
+        return []
+    return sorted(
+        path.name
+        for path in skills_dir.iterdir()
+        if path.is_dir()
+        and path.name.startswith(prefix)
+        and load_skill_scope(path / "SKILL.md") == "project"
+    )
+
+
+def extract_overlay_skill_names(section_text: str) -> list[str]:
+    skill_names: list[str] = []
+    for raw_line in section_text.splitlines():
+        match = OVERLAY_SKILL_BULLET_PATTERN.match(raw_line)
+        if match is not None:
+            skill_names.append(match.group(1))
+    return skill_names
 
 
 def collect_overlay_heading_issues(
@@ -163,6 +220,123 @@ def collect_overlay_stub_issues(repo_root: Path) -> list[OverlayContractIssue]:
     return issues
 
 
+def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
+    root = repo_root / LIVE_OVERLAYS_DIR
+    issues: list[OverlayContractIssue] = []
+
+    if root.is_dir():
+        for overlay_dir in sorted(path for path in root.iterdir() if path.is_dir()):
+            if overlay_dir.name not in LIVE_OVERLAY_FAMILIES:
+                issues.append(
+                    OverlayContractIssue(
+                        relative_location(overlay_dir, repo_root),
+                        "live overlay directories must be named 'atm10' or 'abyss'",
+                    )
+                )
+
+    for family in LIVE_OVERLAY_FAMILIES:
+        skill_names = family_skill_names(repo_root, family)
+        overlay_path = root / family / PROJECT_OVERLAY_FILE
+
+        if not skill_names:
+            if overlay_path.is_file():
+                issues.append(
+                    OverlayContractIssue(
+                        relative_location(overlay_path, repo_root),
+                        f"live overlay '{family}' requires at least one matching skills/{family}-* bundle",
+                    )
+                )
+            continue
+
+        if not overlay_path.is_file():
+            issues.append(
+                OverlayContractIssue(
+                    relative_location(overlay_path, repo_root),
+                    f"live overlay family '{family}' is missing docs/overlays/{family}/PROJECT_OVERLAY.md",
+                )
+            )
+            continue
+
+        issues.extend(
+            collect_overlay_heading_issues(
+                overlay_path,
+                repo_root,
+                artifact_label="live project overlay",
+                expected_headings=LIVE_PROJECT_OVERLAY_HEADINGS,
+            )
+        )
+
+        overlay_text = overlay_path.read_text(encoding="utf-8")
+        if not contains_phrase(
+            overlay_text,
+            (
+                "does not change the base skill boundary",
+                "does not redefine the base skill",
+            ),
+        ):
+            issues.append(
+                OverlayContractIssue(
+                    relative_location(overlay_path, repo_root),
+                    "live project overlay must explicitly say that it does not change the base skill boundary",
+                )
+            )
+
+        sections = {
+            heading: content
+            for heading, content in skill_artifact_contract.extract_artifact_sections(overlay_text)
+        }
+        overlayed_skills = extract_overlay_skill_names(sections.get("Overlayed skills", ""))
+        if not overlayed_skills:
+            issues.append(
+                OverlayContractIssue(
+                    relative_location(overlay_path, repo_root),
+                    f"live project overlay '{family}' must list matching skills/{family}-* bundles under 'Overlayed skills'",
+                )
+            )
+            continue
+
+        for skill_name in overlayed_skills:
+            if not skill_name.startswith(f"{family}-"):
+                issues.append(
+                    OverlayContractIssue(
+                        relative_location(overlay_path, repo_root),
+                        f"live project overlay '{family}' may only list skills/{family}-* bundles under 'Overlayed skills'",
+                    )
+                )
+                break
+
+        listed = sorted(set(overlayed_skills))
+        actual = sorted(skill_names)
+        if listed != actual:
+            missing = [name for name in actual if name not in listed]
+            extra = [name for name in listed if name not in actual]
+            if missing:
+                issues.append(
+                    OverlayContractIssue(
+                        relative_location(overlay_path, repo_root),
+                        f"live project overlay '{family}' must list matching skill bundle(s): {', '.join(missing)}",
+                    )
+                )
+            if extra:
+                issues.append(
+                    OverlayContractIssue(
+                        relative_location(overlay_path, repo_root),
+                        f"live project overlay '{family}' lists unknown skill bundle(s): {', '.join(extra)}",
+                    )
+                )
+
+    return issues
+
+
+def live_overlay_families(repo_root: Path) -> list[str]:
+    root = repo_root / LIVE_OVERLAYS_DIR
+    return [
+        family
+        for family in LIVE_OVERLAY_FAMILIES
+        if (root / family / PROJECT_OVERLAY_FILE).is_file()
+    ]
+
+
 def overlay_readiness_rows(repo_root: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     skills_dir = repo_root / "skills"
@@ -188,11 +362,14 @@ def overlay_readiness_rows(repo_root: Path) -> list[dict[str, str]]:
 
 def render_overlay_readiness_markdown(repo_root: Path) -> str:
     rows = overlay_readiness_rows(repo_root)
+    families = live_overlay_families(repo_root)
     lines = [
         "# Overlay readiness",
         "",
-        "This derived file summarizes whether the current skill surface already exposes the minimum hooks for thin project overlays.",
-        "It does not add real project-family skills; it only reflects repo-local readiness.",
+        "This derived file summarizes whether the current skill surface already exposes the minimum hooks for thin project overlays",
+        "and which live exemplar overlay packs are committed in this repository.",
+        "",
+        f"- live exemplar overlay packs: {', '.join(families) if families else '-'}",
         "",
         "| name | adaptation points | invocation stub |",
         "|---|---|---|",

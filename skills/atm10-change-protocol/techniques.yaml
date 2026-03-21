@@ -1,0 +1,22 @@
+skill_name: atm10-change-protocol
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0001
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
+    source_ref: ea49abf4f7e96506feed56eb87a9052cbe4408a5
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0002
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
+    source_ref: ea49abf4f7e96506feed56eb87a9052cbe4408a5
+    use_sections:
+      - summary

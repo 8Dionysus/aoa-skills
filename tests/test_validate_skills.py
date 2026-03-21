@@ -61,6 +61,7 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root: Path,
         *,
         skill_name: str,
+        scope: str = "core",
         traceability_heading: str = "Technique traceability",
         invocation_mode: str = "explicit-preferred",
         status: str = "scaffold",
@@ -78,7 +79,7 @@ class ValidateSkillsTests(unittest.TestCase):
             f"""\
             ---
             name: {skill_name}
-            scope: core
+            scope: {scope}
             status: {status}
             summary: Test skill summary.
             invocation_mode: {invocation_mode}
@@ -206,6 +207,7 @@ class ValidateSkillsTests(unittest.TestCase):
         self,
         *,
         skill_name: str = "aoa-test-skill",
+        scope: str = "core",
         traceability_heading: str = "Technique traceability",
         invocation_mode: str = "explicit-preferred",
         status: str = "scaffold",
@@ -227,6 +229,7 @@ class ValidateSkillsTests(unittest.TestCase):
         self.add_skill_bundle(
             repo_root,
             skill_name=skill_name,
+            scope=scope,
             traceability_heading=traceability_heading,
             invocation_mode=invocation_mode,
             status=status,
@@ -766,6 +769,79 @@ class ValidateSkillsTests(unittest.TestCase):
         self.write_skill_index(repo_root, skill_names)
         for skill_name in skill_names:
             self.add_skill_bundle(repo_root, skill_name=skill_name)
+        self.write_catalogs(repo_root)
+
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_live_project_overlay_pack_passes(self) -> None:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+        (repo_root / "SKILL_INDEX.md").write_text(
+            textwrap.dedent(
+                """\
+                # SKILL_INDEX
+
+                | name | scope | status | summary |
+                |---|---|---|---|
+                | atm10-change-protocol | project | scaffold | Test summary. |
+                | atm10-source-of-truth-check | project | scaffold | Test summary. |
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="atm10-change-protocol",
+            scope="project",
+            policy_allow_implicit=True,
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="atm10-source-of-truth-check",
+            scope="project",
+            policy_allow_implicit=True,
+            techniques=[PENDING_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+            notes=[PENDING_NOTE],
+        )
+        overlay_path = repo_root / "docs" / "overlays" / "atm10" / "PROJECT_OVERLAY.md"
+        overlay_path.parent.mkdir(parents=True, exist_ok=True)
+        overlay_path.write_text(
+            textwrap.dedent(
+                """\
+                # atm10 overlay
+
+                ## Purpose
+
+                This exemplar overlay pack keeps repo-relative local adaptation explicit.
+                It does not change the base skill boundary.
+
+                ## Authority
+
+                - overlay family: `atm10`
+                - local maintainers own repo-relative authority
+
+                ## Local surface
+
+                - repo-relative docs and commands remain explicit
+
+                ## Overlayed skills
+
+                - `atm10-change-protocol`
+                - `atm10-source-of-truth-check`
+
+                ## Risks and anti-patterns
+
+                - do not widen the pack into a playbook
+
+                ## Validation
+
+                - confirm both `skills/atm10-*` bundles stay aligned
+                """
+            ),
+            encoding="utf-8",
+        )
         self.write_catalogs(repo_root)
 
         self.assertEqual([], validate_skills.run_validation(repo_root))

@@ -5,9 +5,9 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 
 ## Summary
 
-- total skills: 14
-- published lineage: 6
-- pending lineage: 8
+- total skills: 16
+- published lineage: 7
+- pending lineage: 9
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
@@ -25,6 +25,8 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-sanitized-share | evaluated | risk | pending | 0 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-source-of-truth-check | evaluated | core | pending | 1 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-tdd-slice | canonical | core | published | 2 | 0 | 0 | true | - |
+| atm10-change-protocol | scaffold | project | published | 2 | 0 | 0 | true | - |
+| atm10-source-of-truth-check | scaffold | project | pending | 1 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 
 ## Reading notes
 

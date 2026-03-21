@@ -246,6 +246,42 @@
       "trigger_boundary_short": "Use when a behavior change can be expressed as tests before implementation; the task fits a bounded slice rather than a broad rewrite; Avoid when the task is purely exploratory and behavior is still undefined; the...",
       "verification_short": "Checks: confirm tests were added or updated first when the task was suitable for TDD; confirm the implementation stayed bounded; confirm the relevant test suite passed; confirm the report names the covered behavior...",
       "workflow_short": "Purpose: test-first discipline to implement a small feature slice with a clear behavioral target and explicit verification. Flow: define the desired behavior in a bounded way -> add or update tests before implementation -> make the smallest change that..."
+    },
+    {
+      "inputs_short": "Needs: target goal and touched local surface; repo-relative source-of-truth files; repo-relative commands or checks; local approval or review rules.",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: hiding downstream authority inside vague local notes; turning a thin overlay into repo doctrine or a scenario bundle; naming local commands without enough verification context; silently changing the base...",
+      "name": "atm10-change-protocol",
+      "outputs_short": "Produces: bounded local change plan; repo-relative command or path sketch; verification note for the local repo surface; concise handoff on what stays downstream and explicit.",
+      "scope": "project",
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold",
+      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes.",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ],
+      "trigger_boundary_short": "Use when the base aoa-change-protocol workflow is already correct, but an atm10- repo needs repo-relative paths, commands, or local approval notes; a bounded non-trivial change still needs an explicit plan and...",
+      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly; confirm approval posture is still downstream and explicit; confirm the adaptation remains...",
+      "workflow_short": "Purpose: adapt aoa-change-protocol to an atm10- repository without changing the base workflow meaning. Flow: start from aoa-change-protocol rather than rewriting the workflow -> name the repo-relative files, commands, and approval posture that matter..."
+    },
+    {
+      "inputs_short": "Needs: repo-relative docs or guidance surfaces; local canonical-file candidates; local review rules for doc changes; contributor confusion points.",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: inventing a broader docs governance framework inside a thin overlay; using family labels without reducing local ambiguity; hiding local review rules in prose that looks canonical; silently replacing the base...",
+      "name": "atm10-source-of-truth-check",
+      "outputs_short": "Produces: local source-of-truth map; bounded clarification note; repo-relative canonical-file pattern; verification summary for the local docs surface.",
+      "scope": "project",
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold",
+      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0002"
+      ],
+      "trigger_boundary_short": "Use when the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps...",
+      "verification_short": "Checks: confirm the base skill is still the right workflow; confirm authoritative repo-relative files are named explicitly; confirm local review posture is visible rather than implied; confirm the adaptation reduces...",
+      "workflow_short": "Purpose: adapt aoa-source-of-truth-check to an atm10- repository when the base workflow is right but the local doc map needs repo-relative detail. Flow: start from aoa-source-of-truth-check instead of inventing a family-specific docs doctrine -> name the..."
     }
   ],
   "source_of_truth": {

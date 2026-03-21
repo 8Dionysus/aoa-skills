@@ -812,6 +812,122 @@
       ],
       "skill_path": "skills/aoa-tdd-slice/SKILL.md",
       "status": "canonical"
+    },
+    {
+      "name": "atm10-change-protocol",
+      "scope": "project",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes\n- a bounded non-trivial change still needs an explicit plan and verification path inside the local repo\n- a contributor needs a thin local overlay rather than a fresh workflow design\n\nDo not use this skill when:\n- the task really needs a broader playbook or scenario bundle rather than a thin overlay\n- the work would introduce new upstream technique meaning instead of adapting the local repo surface\n- a more specific risk skill is still the clearer fit, such as `aoa-dry-run-first`, `aoa-safe-infra-change`, or `aoa-approval-gate-check`\n- the task does not need repo-relative local adaptation and the base skill can be used directly",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target goal and touched local surface\n- repo-relative source-of-truth files\n- repo-relative commands or checks\n- local approval or review rules\n- base skill reference",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- bounded local change plan\n- repo-relative command or path sketch\n- verification note for the local repo surface\n- concise handoff on what stays downstream and explicit",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. start from `aoa-change-protocol` rather than rewriting the workflow\n2. name the repo-relative files, commands, and approval posture that matter locally\n3. keep the adaptation bounded to the local repo surface under change\n4. preserve the base `plan -> scoped change -> verify -> report` shape\n5. make explicit what still requires downstream human approval or repo-specific judgment",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- preserve the base skill meaning\n- keep paths and commands repo-relative\n- keep local authority explicit\n- keep the overlay reviewable and public-safe",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- hiding downstream authority inside vague local notes\n- turning a thin overlay into repo doctrine or a scenario bundle\n- naming local commands without enough verification context\n- silently changing the base workflow instead of adapting it",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths and commands are named explicitly\n- confirm approval posture is still downstream and explicit\n- confirm the adaptation remains bounded to the local repo surface",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- repo-relative change surfaces\n- local commands and verification steps\n- local source-of-truth files\n- local approval or review notes",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "scope": "project",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local doc map needs repo-relative detail.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules\n- contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `docs/[canonical-guide].md`\n- confusion exists between overview docs and authoritative files inside one local repo\n\nDo not use this skill when:\n- the main need is broader policy design rather than local document authority mapping\n- the task is purely code-local and has no meaningful docs or guidance ambiguity\n- the work would introduce new upstream technique meaning instead of thin local adaptation\n- the main need is recording rationale for a decision rather than clarifying authority; use `aoa-adr-write`",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- repo-relative docs or guidance surfaces\n- local canonical-file candidates\n- local review rules for doc changes\n- contributor confusion points\n- base skill reference",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- local source-of-truth map\n- bounded clarification note\n- repo-relative canonical-file pattern\n- verification summary for the local docs surface",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine\n2. name the repo-relative docs and guidance files involved in the ambiguity\n3. map which file should stay authoritative for each local concern\n4. keep the adaptation bounded to the local repo surface under review\n5. make explicit what still depends on downstream human review or unpublished local policy",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- preserve the base skill meaning\n- keep local file maps repo-relative and explicit\n- surface local authority and review posture without hiding it\n- keep the overlay public-safe and reviewable",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- inventing a broader docs governance framework inside a thin overlay\n- using family labels without reducing local ambiguity\n- hiding local review rules in prose that looks canonical\n- silently replacing the base skill with project doctrine",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the base skill is still the right workflow\n- confirm authoritative repo-relative files are named explicitly\n- confirm local review posture is visible rather than implied\n- confirm the adaptation reduces ambiguity without widening scope",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- local doc hierarchies\n- repo-relative canonical-file patterns\n- local review rules for doc changes\n- repository-specific authority examples",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold"
     }
   ],
   "source_of_truth": {

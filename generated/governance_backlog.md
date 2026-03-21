@@ -5,9 +5,9 @@ It is a backlog/maintenance view, not a promotion decision surface.
 
 ## Summary
 
-- total skills: 14
+- total skills: 16
 - candidate ready without review: 0
-- blocked by pending lineage: 8
+- blocked by pending lineage: 9
 - canonical maintenance cohort: 6
 - docs truth-sync issues: 0
 
@@ -27,11 +27,13 @@ It is a backlog/maintenance view, not a promotion decision surface.
 | aoa-sanitized-share | evaluated | pending | false | true | eval_ready_but_governance_blocked | - | docs/reviews/status-promotions/aoa-sanitized-share.md |
 | aoa-source-of-truth-check | evaluated | pending | false | true | eval_ready_but_governance_blocked | - | docs/reviews/status-promotions/aoa-source-of-truth-check.md |
 | aoa-tdd-slice | canonical | published | true | true | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
+| atm10-change-protocol | scaffold | published | false | true | eval_ready_but_governance_blocked | - | - |
+| atm10-source-of-truth-check | scaffold | pending | false | true | eval_ready_but_governance_blocked | - | - |
 
 ## Cohorts
 
 - `candidate_ready_without_review`: -
-- `blocked_by_pending_lineage`: aoa-adr-write, aoa-approval-gate-check, aoa-core-logic-boundary, aoa-dry-run-first, aoa-port-adapter-refactor, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check
+- `blocked_by_pending_lineage`: aoa-adr-write, aoa-approval-gate-check, aoa-core-logic-boundary, aoa-dry-run-first, aoa-port-adapter-refactor, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, atm10-source-of-truth-check
 - `canonical_maintenance`: aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-tdd-slice
 - `docs_truth_sync`: -
 

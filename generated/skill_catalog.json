@@ -518,6 +518,93 @@
           ]
         }
       ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
+      "name": "atm10-change-protocol",
+      "scope": "project",
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold",
+      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes.",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0001",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "ea49abf4f7e96506feed56eb87a9052cbe4408a5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "ea49abf4f7e96506feed56eb87a9052cbe4408a5",
+          "use_sections": [
+            "summary"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
+      "name": "atm10-source-of-truth-check",
+      "scope": "project",
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold",
+      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0002"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "ea49abf4f7e96506feed56eb87a9052cbe4408a5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
     }
   ],
   "source_of_truth": {
