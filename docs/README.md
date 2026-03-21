@@ -24,7 +24,11 @@ an executable workflow for Codex.
 - skills should be self-contained at runtime
 - technique composition should happen at build time, not by live remote fetch
 - project-specific overlays belong in project repositories, not in the public core
-- generated catalogs and capsules are derived reader surfaces, not source-of-truth artifacts
+- generated catalogs, capsules, and full sections are derived reader/runtime surfaces, not source-of-truth artifacts
+
+The current runtime path is:
+
+`pick -> inspect -> expand -> object use`
 
 ## Layers
 

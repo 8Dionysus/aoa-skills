@@ -18,6 +18,7 @@ from jsonschema import Draft202012Validator
 
 import build_catalog
 import skill_catalog_contract
+import skill_section_contract
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -29,18 +30,7 @@ STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
 CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
 EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.yaml"
 
-REQUIRED_HEADINGS = {
-    "Intent",
-    "Trigger boundary",
-    "Inputs",
-    "Outputs",
-    "Procedure",
-    "Contracts",
-    "Risks and anti-patterns",
-    "Verification",
-    "Adaptation points",
-}
-TRACEABILITY_HEADINGS = {"Technique traceability", "Future traceability"}
+REQUIRED_HEADINGS = set(skill_section_contract.CANONICAL_HEADINGS)
 EXPECTED_TECHNIQUE_REPO = skill_catalog_contract.EXPECTED_TECHNIQUE_REPO
 
 
@@ -129,12 +119,12 @@ def validate_against_schema(
 def parse_skill_markdown(
     skill_md_path: Path,
     issues: list[ValidationIssue],
-) -> tuple[dict[str, Any] | None, dict[str, str]]:
+) -> tuple[dict[str, Any] | None, list[tuple[str, str]]]:
     try:
         text = skill_md_path.read_text(encoding="utf-8")
     except FileNotFoundError:
         issues.append(ValidationIssue(relative_location(skill_md_path), "file is missing"))
-        return None, {}
+        return None, []
 
     lines = text.splitlines()
     if not lines or lines[0].strip() != "---":
@@ -144,7 +134,7 @@ def parse_skill_markdown(
                 "missing YAML frontmatter opening delimiter",
             )
         )
-        return None, {}
+        return None, []
 
     closing_index = None
     for index in range(1, len(lines)):
@@ -159,7 +149,7 @@ def parse_skill_markdown(
                 "missing YAML frontmatter closing delimiter",
             )
         )
-        return None, {}
+        return None, []
 
     frontmatter_text = "\n".join(lines[1:closing_index])
     body = "\n".join(lines[closing_index + 1 :])
@@ -173,7 +163,7 @@ def parse_skill_markdown(
                 f"invalid frontmatter YAML: {exc}",
             )
         )
-        return None, {}
+        return None, []
 
     if not isinstance(metadata, dict):
         issues.append(
@@ -182,10 +172,10 @@ def parse_skill_markdown(
                 "frontmatter must parse to a mapping",
             )
         )
-        return None, {}
+        return None, []
 
-    sections = build_catalog.parse_skill_sections(body)
-    return metadata, sections
+    section_pairs = skill_section_contract.extract_top_level_sections(body)
+    return metadata, section_pairs
 
 
 def find_support_artifacts(skill_dir: Path) -> list[Path]:
@@ -230,11 +220,11 @@ def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIs
     sections: dict[str, str] = {}
     techniques_data: dict[str, Any] | None = None
     if skill_md_path.is_file():
-        metadata, sections = parse_skill_markdown(skill_md_path, issues)
+        metadata, section_pairs = parse_skill_markdown(skill_md_path, issues)
+        sections = {heading: content for heading, content in section_pairs}
         if metadata is not None:
-            headings = set(sections)
             validate_skill_frontmatter(skill_name, metadata, skill_md_path, issues)
-            validate_skill_headings(headings, skill_md_path, issues)
+            validate_section_contract(section_pairs, skill_md_path, issues)
             validate_capsule_source_sections(sections, skill_md_path, issues)
 
     if techniques_path.is_file():
@@ -295,23 +285,17 @@ def validate_skill_frontmatter(
         )
 
 
-def validate_skill_headings(
-    headings: set[str],
+def validate_section_contract(
+    section_pairs: list[tuple[str, str]],
     skill_md_path: Path,
     issues: list[ValidationIssue],
 ) -> None:
     location = relative_location(skill_md_path)
-    for heading in sorted(REQUIRED_HEADINGS - headings):
-        issues.append(ValidationIssue(location, f"missing required section '{heading}'"))
-
-    if not TRACEABILITY_HEADINGS.intersection(headings):
-        issues.append(
-            ValidationIssue(
-                location,
-                "missing traceability section; expected 'Technique traceability' or "
-                "'Future traceability'",
-            )
-        )
+    for contract_issue in skill_section_contract.collect_section_contract_issues(
+        section_pairs,
+        location=location,
+    ):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
 
 
 def validate_capsule_source_sections(
@@ -1203,6 +1187,207 @@ def validate_generated_capsules(
     return issues
 
 
+def validate_sections_catalog_alignment(
+    full_catalog_data: dict[str, Any],
+    sections_data: dict[str, Any],
+    *,
+    skill_names: Sequence[str] | None,
+    issues: list[ValidationIssue],
+    catalog_location: str,
+    sections_location: str,
+) -> None:
+    starting_issue_count = len(issues)
+    catalog_entries = catalog_entries_by_name(
+        full_catalog_data,
+        array_key="skills",
+        key_name="name",
+        location=catalog_location,
+        issues=issues,
+    )
+    section_entries = catalog_entries_by_name(
+        sections_data,
+        array_key="skills",
+        key_name="name",
+        location=sections_location,
+        issues=issues,
+    )
+    if len(issues) != starting_issue_count:
+        return
+
+    if skill_names is None:
+        missing = sorted(set(catalog_entries) - set(section_entries))
+        extra = sorted(set(section_entries) - set(catalog_entries))
+        for skill_name in missing:
+            issues.append(
+                ValidationIssue(
+                    sections_location,
+                    f"generated sections are missing skill '{skill_name}'",
+                )
+            )
+        for skill_name in extra:
+            issues.append(
+                ValidationIssue(
+                    sections_location,
+                    f"generated sections include unknown skill '{skill_name}'",
+                )
+            )
+        target_names = sorted(set(catalog_entries) & set(section_entries))
+    else:
+        target_names = list(skill_names)
+
+    shared_fields = ("scope", "status", "skill_path")
+    for skill_name in target_names:
+        catalog_entry = catalog_entries.get(skill_name)
+        section_entry = section_entries.get(skill_name)
+        if catalog_entry is None or section_entry is None:
+            continue
+        for field_name in shared_fields:
+            if section_entry.get(field_name) != catalog_entry.get(field_name):
+                issues.append(
+                    ValidationIssue(
+                        sections_location,
+                        f"generated section entry for '{skill_name}' must align with full catalog field '{field_name}'",
+                    )
+                )
+
+
+def validate_generated_sections(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    sections_path = repo_root / build_catalog.SECTIONS_PATH
+    sections_location = relative_location(sections_path)
+
+    if not sections_path.is_file():
+        issues.append(
+            ValidationIssue(sections_location, "generated sections are missing")
+        )
+        return issues
+
+    sections_text = sections_path.read_text(encoding="utf-8")
+    try:
+        parsed = json.loads(sections_text)
+    except json.JSONDecodeError as exc:
+        issues.append(ValidationIssue(sections_location, f"invalid JSON: {exc.msg}"))
+        return issues
+
+    if not isinstance(parsed, dict):
+        issues.append(
+            ValidationIssue(sections_location, "sections must parse to an object")
+        )
+        return issues
+
+    sections_data = parsed
+    if sections_data.get("section_version") != build_catalog.SECTION_VERSION:
+        issues.append(
+            ValidationIssue(
+                sections_location,
+                f"section_version must be {build_catalog.SECTION_VERSION}",
+            )
+        )
+    if sections_data.get("source_of_truth") != skill_section_contract.SECTION_SOURCE_OF_TRUTH:
+        issues.append(
+            ValidationIssue(
+                sections_location,
+                "section source_of_truth does not match the expected contract",
+            )
+        )
+    if not isinstance(sections_data.get("skills"), list):
+        issues.append(
+            ValidationIssue(sections_location, "sections field 'skills' must be a list")
+        )
+        return issues
+
+    if skill_names is None:
+        try:
+            expected_sections_text = build_catalog.build_sections_text(repo_root)
+        except (FileNotFoundError, ValueError) as exc:
+            issues.append(
+                ValidationIssue(
+                    sections_location,
+                    f"section source validation failed: {exc}",
+                )
+            )
+            return issues
+
+        if sections_text != expected_sections_text:
+            issues.append(
+                ValidationIssue(
+                    sections_location,
+                    "generated sections are out of date; run python scripts/build_catalog.py",
+                )
+            )
+    else:
+        section_entries = catalog_entries_by_name(
+            sections_data,
+            array_key="skills",
+            key_name="name",
+            location=sections_location,
+            issues=issues,
+        )
+        for skill_name in skill_names:
+            skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
+            try:
+                metadata, body = build_catalog.parse_skill_document(skill_md_path)
+                expected_section_entry, contract_issues = skill_section_contract.build_sections_entry(
+                    repo_root,
+                    metadata,
+                    skill_md_path,
+                    body,
+                )
+            except (FileNotFoundError, ValueError) as exc:
+                issues.append(
+                    ValidationIssue(
+                        sections_location,
+                        f"section source validation failed for '{skill_name}': {exc}",
+                    )
+                )
+                continue
+
+            for contract_issue in contract_issues:
+                issues.append(
+                    ValidationIssue(contract_issue.location, contract_issue.message)
+                )
+            if contract_issues or expected_section_entry is None:
+                continue
+
+            actual_section_entry = section_entries.get(skill_name)
+            if actual_section_entry is None:
+                issues.append(
+                    ValidationIssue(
+                        sections_location,
+                        f"generated sections are missing skill '{skill_name}'",
+                    )
+                )
+                continue
+            if actual_section_entry != expected_section_entry:
+                issues.append(
+                    ValidationIssue(
+                        sections_location,
+                        f"generated section entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                    )
+                )
+
+    full_catalog_path = repo_root / build_catalog.FULL_CATALOG_PATH
+    if full_catalog_path.is_file():
+        try:
+            full_catalog_data = json.loads(full_catalog_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return issues
+        if isinstance(full_catalog_data, dict):
+            validate_sections_catalog_alignment(
+                full_catalog_data,
+                sections_data,
+                skill_names=skill_names,
+                issues=issues,
+                catalog_location=relative_location(full_catalog_path),
+                sections_location=sections_location,
+            )
+
+    return issues
+
+
 def format_issues(issues: Sequence[ValidationIssue]) -> str:
     lines = [f"- {issue.location}: {issue.message}" for issue in issues]
     return "\n".join(lines)
@@ -1231,9 +1416,11 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
     if skill_name is None:
         issues.extend(validate_generated_catalogs(repo_root))
         issues.extend(validate_generated_capsules(repo_root))
+        issues.extend(validate_generated_sections(repo_root))
     elif all(not bundle_issues_by_name[name] for name in target_skills):
         issues.extend(validate_generated_catalogs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_capsules(repo_root, skill_names=target_skills))
+        issues.extend(validate_generated_sections(repo_root, skill_names=target_skills))
     return issues
 
 

@@ -57,6 +57,10 @@ In short:
 
 `origin project -> technique canon -> skill canon -> project overlay`
 
+The current runtime path for public skill use is:
+
+`pick -> inspect -> expand -> object use`
+
 ## Core principles
 
 - techniques are the source of truth for reusable practice
@@ -92,6 +96,7 @@ A typical skill bundle contains:
 `SKILL.md` and `techniques.yaml` remain authoritative.
 `generated/skill_catalog.json` and `generated/skill_catalog.min.json` are derived reader surfaces for routing and indexing.
 `generated/skill_capsules.json` is a derived local runtime-card surface with bounded per-skill summaries.
+`generated/skill_sections.full.json` is the source-owned section payload surface for bounded expand-time reads.
 
 ## Skill categories
 
@@ -136,7 +141,7 @@ python scripts/validate_skills.py --skill aoa-change-protocol
 
 The validator now uses repository schemas from `schemas/` as the contract layer for
 front matter, `techniques.yaml`, and `agents/openai.yaml`.
-It also checks that the generated catalogs and capsules exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules stay aligned with the full catalog.
+It also checks that the generated catalogs, capsules, and full section surfaces exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules and sections stay aligned with the full catalog.
 
 Preview a manifest-driven `SKILL.md` refresh without rewriting files:
 
