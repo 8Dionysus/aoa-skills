@@ -72,8 +72,8 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0016 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary
+- AOA-T-0016 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary
 
 ## Adaptation points
 

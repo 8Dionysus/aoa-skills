@@ -76,7 +76,7 @@ Do not use this skill when:
 
 Manifest-backed techniques:
 - AOA-T-PENDING-DRY-RUN-FIRST from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0004 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation
+- AOA-T-0004 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation
 
 ## Adaptation points
 

@@ -71,7 +71,7 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0017 from `8Dionysus/aoa-techniques` at `d9f1f1da968b1449d3c2702792cac794b36573c3` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0017 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 
