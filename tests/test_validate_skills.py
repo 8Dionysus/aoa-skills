@@ -311,6 +311,7 @@ class ValidateSkillsTests(unittest.TestCase):
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
         build_catalog.write_sections(repo_root)
+        build_catalog.write_public_surface(repo_root)
 
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
@@ -377,6 +378,17 @@ class ValidateSkillsTests(unittest.TestCase):
     def write_sections(self, repo_root: Path, payload: dict) -> None:
         sections_path = repo_root / "generated" / "skill_sections.full.json"
         sections_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+    def load_public_surface(self, repo_root: Path) -> dict:
+        public_surface_path = repo_root / "generated" / "public_surface.json"
+        return json.loads(public_surface_path.read_text(encoding="utf-8"))
+
+    def write_public_surface(self, repo_root: Path, payload: dict) -> None:
+        public_surface_path = repo_root / "generated" / "public_surface.json"
+        public_surface_path.write_text(
             json.dumps(payload, sort_keys=True, indent=2) + "\n",
             encoding="utf-8",
         )
@@ -849,6 +861,7 @@ class ValidateSkillsTests(unittest.TestCase):
             review_record_surface="status-promotions",
         )
         self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
     def test_canonical_status_passes_with_full_evaluation_coverage(self) -> None:
@@ -857,6 +870,7 @@ class ValidateSkillsTests(unittest.TestCase):
             review_record_surface="canonical-candidates",
         )
         self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
     def test_skill_index_mismatch_fails(self) -> None:
@@ -937,6 +951,8 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertIn("generated catalog is missing", messages)
         self.assertIn("generated capsules are missing", messages)
         self.assertIn("generated sections are missing", messages)
+        self.assertIn("generated public surface is missing", messages)
+        self.assertIn("generated public surface markdown is missing", messages)
 
     def test_stale_generated_catalogs_fail(self) -> None:
         repo_root = self.make_repo()
@@ -1092,6 +1108,46 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated section entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_stale_generated_public_surface_json_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
+
+        public_surface = self.load_public_surface(repo_root)
+        public_surface["skills"][0]["summary"] = "tampered"
+        self.write_public_surface(repo_root, public_surface)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated public surface is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_stale_generated_public_surface_markdown_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
+
+        public_surface_markdown_path = repo_root / "generated" / "public_surface.md"
+        public_surface_markdown_path.write_text(
+            "stale markdown\n",
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated public surface markdown is out of date; run python scripts/build_catalog.py",
             messages,
         )
 

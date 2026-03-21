@@ -5,6 +5,7 @@
 - `README.md` — project entry point
 - `SKILL_INDEX.md` — public map of current skills and their maturity
 - `docs/` — architecture, bridge rules, roadmap, conventions
+- `docs/PUBLIC_SURFACE.md` — public guide to the current governance and product-signaling layer
 - `docs/PROMOTION_PATH.md` — public repository convention for maturity transitions
 - `docs/reviews/` — public review records for candidate and promotion work
 - `docs/reviews/canonical-candidates/` — canonical-candidate review records
@@ -65,6 +66,11 @@ Belong in `generated/skill_catalog*.json`:
 - derived routing and reader surfaces
 - deterministic projections of committed `SKILL.md` and `techniques.yaml`
 - no new authority beyond the source files
+
+Belong in `generated/public_surface.json` and `generated/public_surface.md`:
+- derived governance and public-product signaling
+- cohort views such as default references, candidate-ready skills, and pending-lineage blockers
+- no status change authority beyond the source files, review records, and evaluation fixtures
 
 Belong in `agents/openai.yaml`:
 - invocation mode

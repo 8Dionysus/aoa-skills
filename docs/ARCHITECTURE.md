@@ -27,7 +27,7 @@ It packages:
 - technique composition metadata
 
 The repository may also publish derived reader surfaces in `generated/`.
-Those catalogs are built from committed `SKILL.md` and `techniques.yaml` files and are meant to help routing and indexing without becoming a second source of truth.
+Those surfaces are built from committed `SKILL.md`, `techniques.yaml`, review records, and evaluation fixtures and are meant to help routing, indexing, and public governance signaling without becoming a second source of truth.
 
 A skill may rely on one technique or on several techniques.
 
@@ -84,6 +84,7 @@ Operational or destructive workflows that should require explicit invocation and
 Skills should be reviewable artifacts.
 They can be generated or assembled from technique references, but the committed `SKILL.md` should remain understandable to a human reviewer without additional hidden state.
 Derived catalogs should stay deterministic and disposable: if a reader surface drifts, regenerate it from the authoritative markdown and manifest inputs.
+The current repo-local governance and release signaling layer should also stay derived rather than introducing a second explicit skill-metadata contract.
 
 ## Versioning direction
 
@@ -91,3 +92,6 @@ A skill should eventually record:
 - its own version or revision
 - the technique IDs it depends on
 - optionally the source technique commit or release reference used when the skill was generated or updated
+
+That future versioning direction is separate from the current public-surface layer.
+In the current pass, `aoa-skills` does not add GitHub releases, tags, or explicit per-skill release metadata; it publishes derived public-product signals instead.
