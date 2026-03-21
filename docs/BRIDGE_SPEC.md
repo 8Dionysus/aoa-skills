@@ -147,6 +147,44 @@ One upstream source technique can stay aligned across multiple skill bundles wit
 This is the current donor evidence shape for one-source to many-target distribution:
 one pinned source ref, multiple committed consumer surfaces, and explicit refresh tooling when the upstream source changes.
 
+## Current refresh-wave examples
+
+Published-ref refresh waves stay repo-local and reviewable.
+They resolve one local `aoa-techniques` ref, apply it to an explicit skill cohort,
+and use ordinary diff plus bridge-coverage output as the review surface.
+
+Shared-donor refresh example:
+
+- shared upstream donor:
+  - `AOA-T-0017` from `aoa-techniques`
+- target consumer surfaces:
+  - `skills/aoa-invariant-coverage-audit/techniques.yaml`
+  - `skills/aoa-invariant-coverage-audit/SKILL.md`
+  - `skills/aoa-property-invariants/techniques.yaml`
+  - `skills/aoa-property-invariants/SKILL.md`
+- review posture:
+  - both bundles may be refreshed against the same resolved local target ref in one bounded wave
+  - the refresh remains acceptable even when only one referenced technique in the bundle is currently `drifted`
+
+Mixed-lineage refresh example:
+
+- target skill:
+  - `aoa-dry-run-first`
+- published technique ref:
+  - `AOA-T-0004` may refresh to the resolved local target ref
+- pending technique ref:
+  - `AOA-T-PENDING-DRY-RUN-FIRST` stays `path: TBD` and `source_ref: TBD`
+
+Bounded repo-local wave example:
+
+```bash
+python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --skill aoa-bounded-context-map --skill aoa-contract-test --skill aoa-dry-run-first --skill aoa-invariant-coverage-audit --skill aoa-property-invariants --skill aoa-tdd-slice
+python scripts/refresh_skill_from_techniques.py --skill aoa-bounded-context-map --skill aoa-contract-test --skill aoa-dry-run-first --skill aoa-invariant-coverage-audit --skill aoa-property-invariants --skill aoa-tdd-slice --techniques-repo ../aoa-techniques
+```
+
+This kind of wave refreshes already published refs and the traceability surfaces that depend on them.
+It does not close pending lineage and does not widen into upstream publication work inside `aoa-techniques`.
+
 ## Runtime expectations
 
 At runtime, Codex should be able to use the committed `SKILL.md` without requiring live dependency resolution.
@@ -179,6 +217,8 @@ Recommended local workflow:
 
 The bridge/drift flow uses CLI output and ordinary git diff as the review surface.
 It does not add committed drift-report artifacts.
+For multi-skill refreshes, prefer explicit `--skill` lists against a local `../aoa-techniques` checkout rather than a broad repin.
+If a selected skill is mixed-lineage, refresh only its published refs and keep pending entries at `TBD` until the upstream technique is published.
 
 ## Invocation policy
 

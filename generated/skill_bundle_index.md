@@ -7,16 +7,16 @@ It is repo-local packaging metadata, not a release or registry surface.
 |---|---|---|---|---|---|---|---|---:|
 | aoa-adr-write | 37cffa640250 | evaluated | core | explicit-preferred | pending | false | true | 2 |
 | aoa-approval-gate-check | c33c95187a37 | evaluated | risk | explicit-only | pending | false | true | 4 |
-| aoa-bounded-context-map | 4fad59da4661 | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-bounded-context-map | 9b6fb9a98829 | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-change-protocol | 3713c7302589 | canonical | core | explicit-preferred | published | true | true | 3 |
-| aoa-contract-test | 6652fc7ee6b5 | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-contract-test | 251de9e9888c | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-core-logic-boundary | 6b9ecd96d923 | evaluated | core | explicit-preferred | pending | false | true | 2 |
-| aoa-dry-run-first | ea1aeb4e553d | evaluated | risk | explicit-only | pending | false | true | 3 |
-| aoa-invariant-coverage-audit | 1fc643d545df | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-dry-run-first | 0e95b4b336fa | evaluated | risk | explicit-only | pending | false | true | 3 |
+| aoa-invariant-coverage-audit | e5d9e14d6c28 | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-port-adapter-refactor | fd718946fc41 | evaluated | core | explicit-preferred | pending | false | true | 2 |
-| aoa-property-invariants | 4fbee0eb6bae | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-property-invariants | ff74b1736f35 | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-safe-infra-change | 6bcd14e30f21 | evaluated | risk | explicit-only | pending | false | true | 3 |
 | aoa-sanitized-share | 5e4228a6591c | evaluated | risk | explicit-only | pending | false | true | 3 |
 | aoa-source-of-truth-check | e65a2452165a | evaluated | core | explicit-preferred | pending | false | true | 2 |
-| aoa-tdd-slice | 8d7caed9e1c1 | canonical | core | explicit-preferred | published | true | true | 2 |
+| aoa-tdd-slice | cae37a872acb | canonical | core | explicit-preferred | published | true | true | 2 |
 
