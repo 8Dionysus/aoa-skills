@@ -8,6 +8,7 @@ import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 FIXTURES_PATH = REPO_ROOT / "tests" / "fixtures" / "skill_evaluation_cases.yaml"
+SNAPSHOTS_DIR = REPO_ROOT / "tests" / "fixtures" / "skill_evaluation_snapshots"
 RUNTIME_SECTIONS = [
     "Intent",
     "Trigger boundary",
@@ -17,6 +18,14 @@ RUNTIME_SECTIONS = [
     "Contracts",
     "Risks and anti-patterns",
     "Verification",
+]
+SNAPSHOT_SECTIONS = [
+    "Prompt",
+    "Expected selection",
+    "Why",
+    "Expected object",
+    "Boundary notes",
+    "Verification hooks",
 ]
 
 
@@ -93,3 +102,33 @@ class SkillEvaluationTests(unittest.TestCase):
                 self.assertIn(case["expected"], {"use", "do_not_use"})
                 for phrase in case["required_phrases"]:
                     self.assertIn(phrase.lower(), combined)
+
+    def test_snapshot_cases_cover_every_skill_in_both_directions(self) -> None:
+        counts: dict[str, dict[str, int]] = {}
+        for case in self.fixtures["snapshot_cases"]:
+            counts.setdefault(case["skill"], {"use": 0, "do_not_use": 0})[case["expected"]] += 1
+
+        self.assertEqual(26, len(self.fixtures["snapshot_cases"]))
+        for skill_dir in sorted(path for path in (REPO_ROOT / "skills").iterdir() if path.is_dir()):
+            with self.subTest(skill=skill_dir.name):
+                self.assertGreaterEqual(counts.get(skill_dir.name, {}).get("use", 0), 1)
+                self.assertGreaterEqual(counts.get(skill_dir.name, {}).get("do_not_use", 0), 1)
+
+    def test_snapshot_files_follow_heading_contract_and_exist(self) -> None:
+        for case in self.fixtures["snapshot_cases"]:
+            with self.subTest(case=case["case_id"], skill=case["skill"]):
+                snapshot_path = REPO_ROOT / case["snapshot_path"]
+                self.assertTrue(snapshot_path.is_file())
+                self.assertEqual(
+                    SNAPSHOTS_DIR / case["skill"],
+                    snapshot_path.parent,
+                )
+                snapshot_text = snapshot_path.read_text(encoding="utf-8")
+                for heading in SNAPSHOT_SECTIONS:
+                    self.assertIn(f"## {heading}", snapshot_text)
+
+                normalized = " ".join(snapshot_text.lower().split())
+                for phrase in case["required_output_phrases"]:
+                    self.assertIn(" ".join(phrase.lower().split()), normalized)
+                for phrase in case["forbidden_output_phrases"]:
+                    self.assertNotIn(" ".join(phrase.lower().split()), normalized)

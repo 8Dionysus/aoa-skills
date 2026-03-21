@@ -9,6 +9,7 @@ Use this guide when you are deciding what to do next inside the repository.
 It is about runtime selection and bounded execution, not status signaling or derived governance.
 
 If you need maturity, promotion, or public-product state, switch to `PUBLIC_SURFACE.md`.
+If you need to judge behavior evidence, switch to `EVALUATION_PATH.md`.
 
 The runtime path also has two derived local helpers:
 - `../generated/skill_walkthroughs.md` for the human-readable walkthrough matrix
@@ -103,12 +104,13 @@ This guide covers runtime questions such as:
 This guide does not cover:
 - public status
 - promotion rules
+- evaluation evidence
 - evaluated/canonical signaling
 - derived review surfaces
 - release metadata
 - generated public-product summaries
 
-Those belong in `PUBLIC_SURFACE.md` and the generated surface docs.
+Those belong in `EVALUATION_PATH.md`, `PUBLIC_SURFACE.md`, and the generated surface docs.
 
 ## Practical check
 

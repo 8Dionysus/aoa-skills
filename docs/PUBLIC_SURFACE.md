@@ -4,8 +4,8 @@ This document explains how to read the derived public-product surface of `aoa-sk
 without assuming hidden release metadata or private repository state.
 
 For runtime inspection and skill selection, use `RUNTIME_PATH.md` first.
-That guide covers the `pick -> inspect -> expand -> object use` path.
-This document stays separate and only explains derived governance/public-surface signals.
+For evaluation evidence and matrix reading, use `EVALUATION_PATH.md` first.
+This guide stays separate and only explains derived governance/public-surface signals.
 If you are trying to choose or execute an object, this is the wrong layer.
 
 The current signaling layer is intentionally derived from facts that already exist:
@@ -58,10 +58,11 @@ It means the skill requires explicit invocation and matching policy posture.
 
 ## Runtime boundary
 
-This surface does not tell you how to select or inspect a skill at runtime.
+This surface does not tell you how to select, inspect, or evaluate a skill at runtime.
 It only explains the derived governance and public-product signals that already exist in the repository.
 
 If you are choosing a skill, start with `docs/RUNTIME_PATH.md`.
+If you are reading matrix evidence, start with `docs/EVALUATION_PATH.md`.
 If you are reading status or release signals, stay here and in `generated/public_surface.md`.
 
 ## Current reading order
@@ -71,10 +72,11 @@ Use this order when orienting in the public surface:
 1. `README.md`
 2. `docs/README.md`
 3. `docs/RUNTIME_PATH.md`
-4. `docs/PUBLIC_SURFACE.md`
-5. `generated/public_surface.md`
-6. `SKILL_INDEX.md`
-7. the target `skills/<skill-name>/SKILL.md`
+4. `docs/EVALUATION_PATH.md`
+5. `docs/PUBLIC_SURFACE.md`
+6. `generated/public_surface.md`
+7. `SKILL_INDEX.md`
+8. the target `skills/<skill-name>/SKILL.md`
 
 ## What this layer does not do
 
@@ -94,3 +96,5 @@ TODO: if the derived public-product layer ever needs a richer release summary, k
 TODO: if cross-repo public-surface signals become necessary, derive them from existing repo facts rather than live fetches.
 
 TODO: if the runtime path ever needs a routing index, keep that in `RUNTIME_PATH.md` or a separate runtime helper rather than blending it into this derived surface.
+
+TODO: if the evaluation matrix ever needs a richer public-facing overlay, keep it in a separate repo-local evidence surface rather than folding it into public status signaling.

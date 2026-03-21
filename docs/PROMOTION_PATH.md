@@ -26,11 +26,16 @@ Machine-checkable floors make promotion safer, but they do not replace human rev
 ## `reviewed -> evaluated`
 
 - machine-checkable floor:
-  the skill passes the lower floors and has evaluation coverage with one autonomy check, at least one `use` trigger case, and at least one `do_not_use` trigger case
+  the skill passes the lower floors and has evaluation coverage with one autonomy check, at least one `use` trigger case, at least one `do_not_use` trigger case, and snapshot-backed matrix coverage that can be read in `docs/EVALUATION_PATH.md`
 - required public review surface:
   `docs/reviews/status-promotions/<skill-name>.md`
 - still requires human judgment:
   whether the evidence demonstrates real behavioral trust rather than nominal fixture coverage, and whether the runtime `SKILL.md` meaning changed during the reviewed/evaluated work
+
+Read the current derived evidence layer with:
+
+- `generated/skill_evaluation_matrix.md`
+- `python scripts/report_skill_evaluation.py`
 
 ## `evaluated -> canonical`
 
@@ -48,6 +53,7 @@ Public review records should say:
 - whether the current machine-checkable floors pass
 - whether the runtime `SKILL.md` meaning changed or only metadata/evidence changed
 - what still blocks the next status step after the current decision
+- where to read the evaluation matrix and snapshot-backed coverage before making the promotion claim
 
 Use:
 

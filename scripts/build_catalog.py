@@ -13,6 +13,7 @@ from typing import Any, Sequence
 import yaml
 
 import skill_catalog_contract
+import skill_evaluation_surface
 import skill_governance_surface
 import skill_runtime_surface
 import skill_section_contract
@@ -36,6 +37,10 @@ WALKTHROUGHS_JSON_PATH = skill_runtime_surface.WALKTHROUGHS_JSON_PATH
 WALKTHROUGHS_MARKDOWN_PATH = skill_runtime_surface.WALKTHROUGHS_MARKDOWN_PATH
 WALKTHROUGH_VERSION = skill_runtime_surface.WALKTHROUGH_VERSION
 WALKTHROUGH_SOURCE_OF_TRUTH = skill_runtime_surface.WALKTHROUGH_SOURCE_OF_TRUTH
+EVALUATION_MATRIX_JSON_PATH = skill_evaluation_surface.EVALUATION_MATRIX_JSON_PATH
+EVALUATION_MATRIX_MARKDOWN_PATH = skill_evaluation_surface.EVALUATION_MATRIX_MARKDOWN_PATH
+EVALUATION_MATRIX_VERSION = skill_evaluation_surface.EVALUATION_MATRIX_VERSION
+EVALUATION_MATRIX_SOURCE_OF_TRUTH = skill_evaluation_surface.EVALUATION_MATRIX_SOURCE_OF_TRUTH
 SOURCE_OF_TRUTH = {
     "skill_markdown": "skills/*/SKILL.md",
     "technique_manifest": "skills/*/techniques.yaml",
@@ -655,6 +660,27 @@ def build_walkthrough_texts(repo_root: Path) -> tuple[str, str]:
     )
 
 
+def build_evaluation_matrix_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_evaluation_surface.build_evaluation_matrix_payload(
+        repo_root,
+        selected_skill_names,
+    )
+
+
+def build_evaluation_matrix_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_evaluation_matrix_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_evaluation_surface.render_evaluation_matrix_markdown(payload) + "\n",
+    )
+
+
 def render_json(payload: dict[str, Any], *, indent: int | None) -> str:
     kwargs: dict[str, Any] = {
         "ensure_ascii": True,
@@ -700,6 +726,17 @@ def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
     markdown_path = repo_root / PUBLIC_SURFACE_MARKDOWN_PATH
     json_path.write_text(public_surface_json, encoding="utf-8", newline="\n")
     markdown_path.write_text(public_surface_markdown, encoding="utf-8", newline="\n")
+    return json_path, markdown_path
+
+
+def write_evaluation_matrix(repo_root: Path) -> tuple[Path, Path]:
+    generated_dir = repo_root / GENERATED_DIR_NAME
+    generated_dir.mkdir(exist_ok=True)
+    matrix_json, matrix_markdown = build_evaluation_matrix_texts(repo_root)
+    json_path = repo_root / EVALUATION_MATRIX_JSON_PATH
+    markdown_path = repo_root / EVALUATION_MATRIX_MARKDOWN_PATH
+    json_path.write_text(matrix_json, encoding="utf-8", newline="\n")
+    markdown_path.write_text(matrix_markdown, encoding="utf-8", newline="\n")
     return json_path, markdown_path
 
 
@@ -830,6 +867,27 @@ def check_public_surface(repo_root: Path) -> list[str]:
     return problems
 
 
+def check_evaluation_matrix(repo_root: Path) -> list[str]:
+    problems: list[str] = []
+    json_path = repo_root / EVALUATION_MATRIX_JSON_PATH
+    markdown_path = repo_root / EVALUATION_MATRIX_MARKDOWN_PATH
+    try:
+        expected_json, expected_markdown = build_evaluation_matrix_texts(repo_root)
+    except ValueError as exc:
+        return [f"evaluation matrix source validation failed:\n{exc}"]
+
+    if not json_path.is_file():
+        problems.append(f"missing {relative_path(json_path, repo_root)}")
+    if not markdown_path.is_file():
+        problems.append(f"missing {relative_path(markdown_path, repo_root)}")
+
+    if json_path.is_file() and json_path.read_text(encoding="utf-8") != expected_json:
+        problems.append(f"stale {relative_path(json_path, repo_root)}")
+    if markdown_path.is_file() and markdown_path.read_text(encoding="utf-8") != expected_markdown:
+        problems.append(f"stale {relative_path(markdown_path, repo_root)}")
+    return problems
+
+
 def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> int:
     repo_root = repo_root or REPO_ROOT
     try:
@@ -841,6 +899,7 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
                 + check_sections(repo_root)
                 + check_walkthroughs(repo_root)
                 + check_public_surface(repo_root)
+                + check_evaluation_matrix(repo_root)
             )
             if problems:
                 print("Generated surface check failed.")
@@ -857,6 +916,9 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         sections_path = write_sections(repo_root)
         walkthrough_json_path, walkthrough_markdown_path = write_walkthroughs(repo_root)
         public_surface_json_path, public_surface_markdown_path = write_public_surface(repo_root)
+        evaluation_matrix_json_path, evaluation_matrix_markdown_path = write_evaluation_matrix(
+            repo_root
+        )
     except (FileNotFoundError, ValueError) as exc:
         print(f"Runtime error: {exc}", file=sys.stderr)
         return 2
@@ -873,7 +935,9 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         f"{relative_path(walkthrough_json_path, repo_root)}, "
         f"{relative_path(walkthrough_markdown_path, repo_root)}, "
         f"{relative_path(public_surface_json_path, repo_root)}, and "
-        f"{relative_path(public_surface_markdown_path, repo_root)}."
+        f"{relative_path(public_surface_markdown_path, repo_root)}, "
+        f"{relative_path(evaluation_matrix_json_path, repo_root)}, and "
+        f"{relative_path(evaluation_matrix_markdown_path, repo_root)}."
     )
     return 0
 
