@@ -92,6 +92,33 @@
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_approval_gate_boundary.md"
     },
     {
+      "adjacent_skill": "aoa-approval-gate-check",
+      "blockers": [],
+      "case_id": "sanitized_share_vs_approval_gate_boundary",
+      "expected": "use",
+      "prompt": "Compare sanitizing a sensitive artifact for broader sharing with authority classification and choose the clearer fit.",
+      "skill": "aoa-sanitized-share",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_approval_gate_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-dry-run-first",
+      "blockers": [],
+      "case_id": "sanitized_share_vs_dry_run_first_boundary",
+      "expected": "use",
+      "prompt": "Compare preparing a shareable redaction with preview-first planning and choose the clearer fit.",
+      "skill": "aoa-sanitized-share",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_dry_run_first_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-safe-infra-change",
+      "blockers": [],
+      "case_id": "sanitized_share_vs_safe_infra_change_boundary",
+      "expected": "use",
+      "prompt": "Compare preparing a sanitized share with planning a bounded infrastructure change and choose the clearer fit.",
+      "skill": "aoa-sanitized-share",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_safe_infra_change_boundary.md"
+    },
+    {
       "adjacent_skill": "aoa-adr-write",
       "blockers": [],
       "case_id": "source_of_truth_check_vs_adr_write_boundary",
@@ -170,7 +197,7 @@
       "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -198,7 +225,7 @@
       "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -240,7 +267,7 @@
       "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -268,7 +295,7 @@
       "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -287,9 +314,13 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 3,
+      "adjacent_skill_names": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-safe-infra-change"
+      ],
       "name": "aoa-sanitized-share",
       "required_adjacency_coverage": false,
       "scope": "risk",

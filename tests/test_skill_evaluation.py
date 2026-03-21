@@ -37,6 +37,11 @@ ADJACENCY_EXPECTATIONS = {
     "aoa-approval-gate-check": ["aoa-dry-run-first", "aoa-safe-infra-change"],
     "aoa-dry-run-first": ["aoa-approval-gate-check"],
     "aoa-safe-infra-change": ["aoa-approval-gate-check"],
+    "aoa-sanitized-share": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-safe-infra-change",
+    ],
     "aoa-source-of-truth-check": ["aoa-adr-write"],
     "aoa-adr-write": ["aoa-source-of-truth-check"],
     "aoa-invariant-coverage-audit": ["aoa-property-invariants"],

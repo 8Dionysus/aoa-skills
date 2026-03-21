@@ -15,11 +15,11 @@ graph TD
   policy_explicit_only["invocation: explicit-only"]
   technique_AOA_T_PENDING_APPROVAL_GATE_CHECK["AOA-T-PENDING-APPROVAL-GATE-CHECK"]
   skill_aoa_bounded_context_map["aoa-bounded-context-map"]
+  status_canonical["status: canonical"]
   lineage_published["lineage: published"]
   technique_AOA_T_0016["AOA-T-0016"]
   technique_AOA_T_0002["AOA-T-0002"]
   skill_aoa_change_protocol["aoa-change-protocol"]
-  status_canonical["status: canonical"]
   technique_AOA_T_0001["AOA-T-0001"]
   skill_aoa_contract_test["aoa-contract-test"]
   technique_AOA_T_0003["AOA-T-0003"]
@@ -53,7 +53,7 @@ graph TD
   skill_aoa_approval_gate_check -->|lineage| lineage_pending
   skill_aoa_approval_gate_check -->|invocation_policy| policy_explicit_only
   skill_aoa_approval_gate_check -->|depends_on| technique_AOA_T_PENDING_APPROVAL_GATE_CHECK
-  skill_aoa_bounded_context_map -->|maturity| status_evaluated
+  skill_aoa_bounded_context_map -->|maturity| status_canonical
   skill_aoa_bounded_context_map -->|scope| scope_core
   skill_aoa_bounded_context_map -->|lineage| lineage_published
   skill_aoa_bounded_context_map -->|invocation_policy| policy_explicit_preferred
@@ -65,7 +65,7 @@ graph TD
   skill_aoa_change_protocol -->|invocation_policy| policy_explicit_preferred
   skill_aoa_change_protocol -->|depends_on| technique_AOA_T_0001
   skill_aoa_change_protocol -->|depends_on| technique_AOA_T_0002
-  skill_aoa_contract_test -->|maturity| status_evaluated
+  skill_aoa_contract_test -->|maturity| status_canonical
   skill_aoa_contract_test -->|scope| scope_core
   skill_aoa_contract_test -->|lineage| lineage_published
   skill_aoa_contract_test -->|invocation_policy| policy_explicit_preferred
@@ -82,7 +82,7 @@ graph TD
   skill_aoa_dry_run_first -->|invocation_policy| policy_explicit_only
   skill_aoa_dry_run_first -->|depends_on| technique_AOA_T_PENDING_DRY_RUN_FIRST
   skill_aoa_dry_run_first -->|depends_on| technique_AOA_T_0004
-  skill_aoa_invariant_coverage_audit -->|maturity| status_evaluated
+  skill_aoa_invariant_coverage_audit -->|maturity| status_canonical
   skill_aoa_invariant_coverage_audit -->|scope| scope_core
   skill_aoa_invariant_coverage_audit -->|lineage| lineage_published
   skill_aoa_invariant_coverage_audit -->|invocation_policy| policy_explicit_preferred
@@ -92,7 +92,7 @@ graph TD
   skill_aoa_port_adapter_refactor -->|lineage| lineage_pending
   skill_aoa_port_adapter_refactor -->|invocation_policy| policy_explicit_preferred
   skill_aoa_port_adapter_refactor -->|depends_on| technique_AOA_T_PENDING_PORT_ADAPTER_REFACTOR
-  skill_aoa_property_invariants -->|maturity| status_evaluated
+  skill_aoa_property_invariants -->|maturity| status_canonical
   skill_aoa_property_invariants -->|scope| scope_core
   skill_aoa_property_invariants -->|lineage| lineage_published
   skill_aoa_property_invariants -->|invocation_policy| policy_explicit_preferred
@@ -127,14 +127,14 @@ graph TD
 |---|---|---|---|---|---|
 | aoa-adr-write | evaluated | core | explicit-preferred | pending | AOA-T-PENDING-ADR-WRITE |
 | aoa-approval-gate-check | evaluated | risk | explicit-only | pending | AOA-T-PENDING-APPROVAL-GATE-CHECK |
-| aoa-bounded-context-map | evaluated | core | explicit-preferred | published | AOA-T-0016, AOA-T-0002 |
+| aoa-bounded-context-map | canonical | core | explicit-preferred | published | AOA-T-0016, AOA-T-0002 |
 | aoa-change-protocol | canonical | core | explicit-preferred | published | AOA-T-0001, AOA-T-0002 |
-| aoa-contract-test | evaluated | core | explicit-preferred | published | AOA-T-0003, AOA-T-0015 |
+| aoa-contract-test | canonical | core | explicit-preferred | published | AOA-T-0003, AOA-T-0015 |
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | pending | AOA-T-PENDING-CORE-LOGIC-BOUNDARY |
 | aoa-dry-run-first | evaluated | risk | explicit-only | pending | AOA-T-PENDING-DRY-RUN-FIRST, AOA-T-0004 |
-| aoa-invariant-coverage-audit | evaluated | core | explicit-preferred | published | AOA-T-0017 |
+| aoa-invariant-coverage-audit | canonical | core | explicit-preferred | published | AOA-T-0017 |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | pending | AOA-T-PENDING-PORT-ADAPTER-REFACTOR |
-| aoa-property-invariants | evaluated | core | explicit-preferred | published | AOA-T-0017, AOA-T-0007 |
+| aoa-property-invariants | canonical | core | explicit-preferred | published | AOA-T-0017, AOA-T-0007 |
 | aoa-safe-infra-change | evaluated | risk | explicit-only | pending | AOA-T-PENDING-SAFE-INFRA-CHANGE, AOA-T-0001 |
 | aoa-sanitized-share | evaluated | risk | explicit-only | pending | AOA-T-PENDING-SANITIZED-SHARE |
 | aoa-source-of-truth-check | evaluated | core | explicit-preferred | pending | AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK, AOA-T-0002 |

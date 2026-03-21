@@ -13,14 +13,14 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 |---|---|---|---|---:|---:|---:|---|---|
 | aoa-adr-write | evaluated | core | pending | 0 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-approval-gate-check | evaluated | risk | pending | 0 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
-| aoa-bounded-context-map | evaluated | core | published | 2 | 0 | 0 | true | - |
+| aoa-bounded-context-map | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-change-protocol | canonical | core | published | 2 | 0 | 0 | true | - |
-| aoa-contract-test | evaluated | core | published | 2 | 0 | 0 | true | - |
+| aoa-contract-test | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-core-logic-boundary | evaluated | core | pending | 0 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-dry-run-first | evaluated | risk | pending | 1 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
-| aoa-invariant-coverage-audit | evaluated | core | published | 1 | 0 | 0 | true | - |
+| aoa-invariant-coverage-audit | canonical | core | published | 1 | 0 | 0 | true | - |
 | aoa-port-adapter-refactor | evaluated | core | pending | 0 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
-| aoa-property-invariants | evaluated | core | published | 2 | 0 | 0 | true | - |
+| aoa-property-invariants | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-safe-infra-change | evaluated | risk | pending | 1 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-sanitized-share | evaluated | risk | pending | 0 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-source-of-truth-check | evaluated | core | pending | 1 | 2 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |

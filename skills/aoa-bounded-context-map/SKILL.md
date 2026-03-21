@@ -1,7 +1,7 @@
 ---
 name: aoa-bounded-context-map
 scope: core
-status: evaluated
+status: canonical
 summary: Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.
 invocation_mode: explicit-preferred
 technique_dependencies:

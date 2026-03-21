@@ -67,7 +67,7 @@
       "name": "aoa-bounded-context-map",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.",
       "technique_dependencies": [
         "AOA-T-0016",
@@ -147,7 +147,7 @@
       "name": "aoa-contract-test",
       "scope": "core",
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries.",
       "technique_dependencies": [
         "AOA-T-0003",
@@ -261,7 +261,7 @@
       "name": "aoa-invariant-coverage-audit",
       "scope": "core",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
       "technique_dependencies": [
         "AOA-T-0017"
@@ -322,7 +322,7 @@
       "name": "aoa-property-invariants",
       "scope": "core",
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.",
       "technique_dependencies": [
         "AOA-T-0017",

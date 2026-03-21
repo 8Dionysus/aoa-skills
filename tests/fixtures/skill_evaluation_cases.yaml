@@ -421,6 +421,36 @@ adjacency_cases:
       - This is a safe-infra-change case, not an approval-gate-check case.
       - A bounded change plan or recommendation that names the operational surface, the validation path, and rollback or recovery notes.
     forbidden_output_phrases: []
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_vs_approval_gate_boundary
+    prompt: Compare sanitizing a sensitive artifact for broader sharing with authority classification and choose the clearer fit.
+    expected: use
+    adjacent_skill: aoa-approval-gate-check
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_approval_gate_boundary.md
+    required_output_phrases:
+      - This is a sanitized-share case, not an approval-gate-check case.
+      - A public-safe summary or redacted version that removes sensitive detail before sharing.
+    forbidden_output_phrases: []
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_vs_dry_run_first_boundary
+    prompt: Compare preparing a shareable redaction with preview-first planning and choose the clearer fit.
+    expected: use
+    adjacent_skill: aoa-dry-run-first
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_dry_run_first_boundary.md
+    required_output_phrases:
+      - This is a sanitized-share case, not a dry-run-first case.
+      - A shareable summary that preserves the lesson while removing sensitive surfaces.
+    forbidden_output_phrases: []
+  - skill: aoa-sanitized-share
+    case_id: sanitized_share_vs_safe_infra_change_boundary
+    prompt: Compare preparing a sanitized share with planning a bounded infrastructure change and choose the clearer fit.
+    expected: use
+    adjacent_skill: aoa-safe-infra-change
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_safe_infra_change_boundary.md
+    required_output_phrases:
+      - This is a sanitized-share case, not a safe-infra-change case.
+      - A public-safe shareable artifact that strips or generalizes operational detail before circulation.
+    forbidden_output_phrases: []
   - skill: aoa-source-of-truth-check
     case_id: source_of_truth_check_vs_adr_write_boundary
     prompt: Compare document-authority clarification with decision rationale recording and choose the clearer fit for a docs overlap problem.

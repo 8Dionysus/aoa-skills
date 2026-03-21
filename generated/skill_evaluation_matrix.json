@@ -48,7 +48,7 @@
       "scope": "core",
       "selected_runtime_artifact_path": "skills/aoa-bounded-context-map/examples/example.md",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -82,7 +82,7 @@
       "scope": "core",
       "selected_runtime_artifact_path": "skills/aoa-contract-test/examples/example.md",
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -133,7 +133,7 @@
       "scope": "core",
       "selected_runtime_artifact_path": "skills/aoa-invariant-coverage-audit/examples/example.md",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -167,7 +167,7 @@
       "scope": "core",
       "selected_runtime_artifact_path": "skills/aoa-property-invariants/examples/example.md",
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },

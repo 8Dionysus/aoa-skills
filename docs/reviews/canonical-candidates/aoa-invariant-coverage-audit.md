@@ -2,9 +2,9 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
-- canonical promotion decision: not taken in this pass
-- candidate set: current canonical-candidate review pass
+- current maturity status: `canonical`
+- canonical promotion decision: promoted in this pass
+- review set: current canonical promotion review pass
 - scope: `core`
 - current lineage: manifest-aligned to published technique `AOA-T-0017`
 
@@ -32,15 +32,16 @@
 - the example keeps the audit posture bounded and reviewable instead of expanding into a generic quality review
 - linked evidence is already covered by manifest-aligned published technique lineage and pinned source refs
 - reviewed evidence is already covered by this explicit candidate review pass and the aligned example artifact
-- the skill reads like a stable default-reference candidate for invariant coverage auditing
+- the skill now reads as a stable default reference for invariant coverage auditing
+- runtime `SKILL.md` meaning did not change; this pass only elevated the repository status and review framing
 
 ## Gaps and blockers
 
 - no current blocker remains at the repository gate level
-- future follow-up should preserve audit clarity and review drift rather than reopen the initial gate decision
-- the record should stay comparative instead of being rewritten as if promotion had already happened
+- future follow-up should preserve audit clarity and maintenance drift rather than reopen the initial gate decision
+- the record now serves as the canonical maintenance reference instead of a candidate comparison
 
 ## Recommendation
 
-Keep `aoa-invariant-coverage-audit` in the candidate-ready cohort.
-Use this review record as the human decision surface if canonical promotion is proposed later.
+Keep `aoa-invariant-coverage-audit` as the canonical reference for invariant coverage auditing.
+Use this review record as the maintenance decision surface after promotion.

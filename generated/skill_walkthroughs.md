@@ -96,7 +96,7 @@ Common expand sections:
 ## aoa-bounded-context-map
 
 - scope: `core`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-bounded-context-map/SKILL.md`
 - pick summary: Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.
@@ -162,7 +162,7 @@ Common expand sections:
 ## aoa-contract-test
 
 - scope: `core`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-contract-test/SKILL.md`
 - pick summary: Design or extend contract-oriented validation at module, service, or workflow boundaries.
@@ -266,7 +266,7 @@ Common expand sections:
 ## aoa-invariant-coverage-audit
 
 - scope: `core`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-invariant-coverage-audit/SKILL.md`
 - pick summary: Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.
@@ -335,7 +335,7 @@ Common expand sections:
 ## aoa-property-invariants
 
 - scope: `core`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-property-invariants/SKILL.md`
 - pick summary: Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.

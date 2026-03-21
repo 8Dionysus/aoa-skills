@@ -38,6 +38,9 @@ an executable workflow for Codex.
 - `scripts/report_technique_drift.py` is a related bridge report CLI when upstream technique drift must be checked before interpreting skill evidence
 - `tests/fixtures/skill_evaluation_cases.yaml` is the committed evaluation matrix input
 - public-product and governance signals live in `PUBLIC_SURFACE.md`
+- `../generated/public_surface.md` is the derived status and promotion surface
+- `../generated/governance_backlog.md` is the maintenance and readiness surface
+- `../generated/skill_bundle_index.md` and `../generated/skill_graph.md` are packaging and relationship surfaces
 - the three layers are intentionally separate: one is for selecting and using an object, one is for reading evaluation evidence, and one is for reading derived public state
 - generated catalogs, capsules, and full sections are derived reader/runtime surfaces, not source-of-truth artifacts
 - public governance and release signaling should stay derived from existing status, review, lineage, and evaluation facts
@@ -56,7 +59,7 @@ The repository now also has its first `canonical` skills, evaluated coverage acr
 The repository now also has a documented maturity ladder and promotion guidance.
 The repository now also has a documented public promotion path in `PROMOTION_PATH.md`.
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
-The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive pending-lineage closure, candidate review, and stronger public product-surface clarity.
+The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive pending-lineage closure, candidate review, and stronger public product-surface clarity through `../generated/governance_backlog.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
 Overlay preparation and packaging remain future-facing, repo-local waves rather than live downstream integrations.
 `ROADMAP.md` remains the canonical public roadmap.
 `PHASED_SKILL_PLAN.md` records the scaffold expansion that established the original skill-core rollout.
