@@ -66,7 +66,35 @@ class BuildCatalogTests(unittest.TestCase):
         skill_dir.mkdir()
         (skill_dir / "examples").mkdir()
         (skill_dir / "examples" / "example.md").write_text(
-            "# Example\n\nSupport artifact.\n",
+            textwrap.dedent(
+                """\
+                # Example
+
+                ## Scenario
+
+                Example scenario.
+
+                ## Why this skill fits
+
+                - the workflow is bounded
+
+                ## Expected inputs
+
+                - input
+
+                ## Expected outputs
+
+                - output
+
+                ## Boundary notes
+
+                - keep the task bounded
+
+                ## Verification notes
+
+                - verify the result
+                """
+            ),
             encoding="utf-8",
         )
 
@@ -238,6 +266,14 @@ class BuildCatalogTests(unittest.TestCase):
         path = repo_root / build_catalog.PUBLIC_SURFACE_MARKDOWN_PATH
         return path.read_text(encoding="utf-8")
 
+    def load_walkthroughs(self, repo_root: Path) -> dict:
+        path = repo_root / build_catalog.WALKTHROUGHS_JSON_PATH
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def load_walkthroughs_markdown(self, repo_root: Path) -> str:
+        path = repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH
+        return path.read_text(encoding="utf-8")
+
     def test_write_catalogs_generates_full_and_min_projection(self) -> None:
         repo_root = self.make_repo()
 
@@ -361,6 +397,166 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertEqual("Intent text.", assert_entry["sections"][0]["content_markdown"])
         self.assertIn("1. step", assert_entry["sections"][4]["content_markdown"])
 
+    def test_write_walkthroughs_generates_runtime_inspect_surface(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+
+        walkthrough_json_path, walkthrough_markdown_path = build_catalog.write_walkthroughs(
+            repo_root
+        )
+
+        payload = self.load_walkthroughs(repo_root)
+        markdown = self.load_walkthroughs_markdown(repo_root)
+        self.assertEqual(build_catalog.WALKTHROUGH_VERSION, payload["walkthrough_version"])
+        self.assertEqual(
+            build_catalog.WALKTHROUGH_SOURCE_OF_TRUTH,
+            payload["source_of_truth"],
+        )
+        self.assertEqual(walkthrough_json_path, repo_root / build_catalog.WALKTHROUGHS_JSON_PATH)
+        self.assertEqual(
+            walkthrough_markdown_path,
+            repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH,
+        )
+        self.assertEqual(
+            {
+                "name": "aoa-test-skill",
+                "scope": "core",
+                "status": "evaluated",
+                "invocation_mode": "explicit-preferred",
+                "skill_path": "skills/aoa-test-skill/SKILL.md",
+                "pick_summary": "Test skill summary.",
+                "use_when": ["needed"],
+                "do_not_use_when": ["not needed"],
+                "inspection_order": ["capsule", "sections", "full", "evidence"],
+                "expand_sections": [
+                    "Procedure",
+                    "Contracts",
+                    "Risks and anti-patterns",
+                    "Verification",
+                ],
+                "object_use_shape": ["output"],
+                "support_artifacts": [
+                    {
+                        "type": "runtime_example",
+                        "path": "skills/aoa-test-skill/examples/example.md",
+                        "selected_for_runtime_inspection": True,
+                    },
+                    {
+                        "type": "promotion_review",
+                        "path": "docs/reviews/status-promotions/aoa-test-skill.md",
+                        "selected_for_runtime_inspection": False,
+                    },
+                ],
+            },
+            payload["skills"][0],
+        )
+        self.assertIn("## Shared inspection path", markdown)
+        self.assertIn("## aoa-test-skill", markdown)
+        self.assertIn("`runtime_example` (selected)", markdown)
+
+    def test_walkthrough_support_artifact_precedence_prefers_runtime_example_then_review(self) -> None:
+        repo_root = self.make_repo()
+        skill_dir = repo_root / "skills" / "aoa-test-skill"
+        checks_dir = skill_dir / "checks"
+        checks_dir.mkdir()
+        (checks_dir / "review.md").write_text(
+            textwrap.dedent(
+                """\
+                # Review Checklist
+
+                ## Purpose
+
+                Review purpose.
+
+                ## When it applies
+
+                - when bounded review is needed
+
+                ## Review checklist
+
+                - [ ] confirm scope
+
+                ## Not a fit
+
+                - not for unrelated rewrites
+                """
+            ),
+            encoding="utf-8",
+        )
+        (skill_dir / "examples" / "runtime.md").write_text(
+            textwrap.dedent(
+                """\
+                # Runtime Example
+
+                ## Scenario
+
+                Runtime scenario.
+
+                ## Why this skill fits
+
+                - explicit runtime example
+
+                ## Expected inputs
+
+                - input
+
+                ## Expected outputs
+
+                - output
+
+                ## Boundary notes
+
+                - keep scope bounded
+
+                ## Verification notes
+
+                - verify the outcome
+                """
+            ),
+            encoding="utf-8",
+        )
+
+        payload = build_catalog.build_walkthrough_payload(repo_root)
+        support_artifacts = payload["skills"][0]["support_artifacts"]
+        selected_paths = [
+            artifact["path"]
+            for artifact in support_artifacts
+            if artifact["selected_for_runtime_inspection"]
+        ]
+        self.assertEqual(
+            ["skills/aoa-test-skill/examples/runtime.md"],
+            selected_paths,
+        )
+
+        (skill_dir / "examples" / "runtime.md").unlink()
+        payload = build_catalog.build_walkthrough_payload(repo_root)
+        support_artifacts = payload["skills"][0]["support_artifacts"]
+        selected_paths = [
+            artifact["path"]
+            for artifact in support_artifacts
+            if artifact["selected_for_runtime_inspection"]
+        ]
+        self.assertEqual(
+            ["skills/aoa-test-skill/examples/example.md"],
+            selected_paths,
+        )
+
+        shutil.rmtree(skill_dir / "examples")
+        payload = build_catalog.build_walkthrough_payload(repo_root)
+        support_artifacts = payload["skills"][0]["support_artifacts"]
+        selected_paths = [
+            artifact["path"]
+            for artifact in support_artifacts
+            if artifact["selected_for_runtime_inspection"]
+        ]
+        self.assertEqual(
+            ["skills/aoa-test-skill/checks/review.md"],
+            selected_paths,
+        )
+
     def test_write_public_surface_marks_canonical_skill_as_default_reference(self) -> None:
         repo_root = self.make_repo(
             status="canonical",
@@ -479,6 +675,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
         build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
 
         self.assertEqual(0, self.run_main(repo_root, ["--check"]))
@@ -492,6 +689,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
         build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
@@ -513,6 +711,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
         build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
@@ -534,6 +733,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
         build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
@@ -555,6 +755,7 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
         build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
 
         public_surface_markdown_path = repo_root / build_catalog.PUBLIC_SURFACE_MARKDOWN_PATH
@@ -565,6 +766,45 @@ class BuildCatalogTests(unittest.TestCase):
             ),
             encoding="utf-8",
         )
+
+        self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
+    def test_check_mode_fails_when_walkthroughs_are_stale(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+        build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
+        build_catalog.write_public_surface(repo_root)
+        skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
+        skill_md_path.write_text(
+            skill_md_path.read_text(encoding="utf-8").replace(
+                "- output",
+                "- output\n- output detail",
+            ),
+            encoding="utf-8",
+        )
+
+        self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
+    def test_check_mode_fails_when_walkthroughs_are_missing(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+        build_catalog.write_catalogs(repo_root)
+        build_catalog.write_capsules(repo_root)
+        build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
+        build_catalog.write_public_surface(repo_root)
+
+        (repo_root / build_catalog.WALKTHROUGHS_JSON_PATH).unlink()
+        (repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH).unlink()
 
         self.assertEqual(1, self.run_main(repo_root, ["--check"]))
 

@@ -14,6 +14,7 @@ import yaml
 
 import skill_catalog_contract
 import skill_governance_surface
+import skill_runtime_surface
 import skill_section_contract
 
 
@@ -31,6 +32,10 @@ PUBLIC_SURFACE_JSON_PATH = skill_governance_surface.PUBLIC_SURFACE_JSON_PATH
 PUBLIC_SURFACE_MARKDOWN_PATH = skill_governance_surface.PUBLIC_SURFACE_MARKDOWN_PATH
 PUBLIC_SURFACE_VERSION = skill_governance_surface.PUBLIC_SURFACE_VERSION
 PUBLIC_SURFACE_SOURCE_OF_TRUTH = skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH
+WALKTHROUGHS_JSON_PATH = skill_runtime_surface.WALKTHROUGHS_JSON_PATH
+WALKTHROUGHS_MARKDOWN_PATH = skill_runtime_surface.WALKTHROUGHS_MARKDOWN_PATH
+WALKTHROUGH_VERSION = skill_runtime_surface.WALKTHROUGH_VERSION
+WALKTHROUGH_SOURCE_OF_TRUTH = skill_runtime_surface.WALKTHROUGH_SOURCE_OF_TRUTH
 SOURCE_OF_TRUTH = {
     "skill_markdown": "skills/*/SKILL.md",
     "technique_manifest": "skills/*/techniques.yaml",
@@ -632,6 +637,24 @@ def build_public_surface_texts(repo_root: Path) -> tuple[str, str]:
     )
 
 
+def build_walkthrough_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_runtime_surface.build_walkthrough_payload(repo_root, selected_skill_names)
+
+
+def build_walkthrough_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_walkthrough_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_runtime_surface.render_walkthrough_markdown(payload) + "\n",
+    )
+
+
 def render_json(payload: dict[str, Any], *, indent: int | None) -> str:
     kwargs: dict[str, Any] = {
         "ensure_ascii": True,
@@ -656,6 +679,17 @@ def build_capsule_text(repo_root: Path) -> str:
 
 def build_sections_text(repo_root: Path) -> str:
     return render_json(build_sections_payload(repo_root), indent=2)
+
+
+def write_walkthroughs(repo_root: Path) -> tuple[Path, Path]:
+    generated_dir = repo_root / GENERATED_DIR_NAME
+    generated_dir.mkdir(exist_ok=True)
+    walkthrough_json, walkthrough_markdown = build_walkthrough_texts(repo_root)
+    json_path = repo_root / WALKTHROUGHS_JSON_PATH
+    markdown_path = repo_root / WALKTHROUGHS_MARKDOWN_PATH
+    json_path.write_text(walkthrough_json, encoding="utf-8", newline="\n")
+    markdown_path.write_text(walkthrough_markdown, encoding="utf-8", newline="\n")
+    return json_path, markdown_path
 
 
 def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
@@ -754,6 +788,27 @@ def check_sections(repo_root: Path) -> list[str]:
     return problems
 
 
+def check_walkthroughs(repo_root: Path) -> list[str]:
+    problems: list[str] = []
+    json_path = repo_root / WALKTHROUGHS_JSON_PATH
+    markdown_path = repo_root / WALKTHROUGHS_MARKDOWN_PATH
+    try:
+        expected_json, expected_markdown = build_walkthrough_texts(repo_root)
+    except ValueError as exc:
+        return [f"walkthrough source validation failed:\n{exc}"]
+
+    if not json_path.is_file():
+        problems.append(f"missing {relative_path(json_path, repo_root)}")
+    if not markdown_path.is_file():
+        problems.append(f"missing {relative_path(markdown_path, repo_root)}")
+
+    if json_path.is_file() and json_path.read_text(encoding="utf-8") != expected_json:
+        problems.append(f"stale {relative_path(json_path, repo_root)}")
+    if markdown_path.is_file() and markdown_path.read_text(encoding="utf-8") != expected_markdown:
+        problems.append(f"stale {relative_path(markdown_path, repo_root)}")
+    return problems
+
+
 def check_public_surface(repo_root: Path) -> list[str]:
     problems: list[str] = []
     json_path = repo_root / PUBLIC_SURFACE_JSON_PATH
@@ -784,6 +839,7 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
                 check_catalogs(repo_root)
                 + check_capsules(repo_root)
                 + check_sections(repo_root)
+                + check_walkthroughs(repo_root)
                 + check_public_surface(repo_root)
             )
             if problems:
@@ -799,6 +855,7 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         full_path, min_path = write_catalogs(repo_root)
         capsule_path = write_capsules(repo_root)
         sections_path = write_sections(repo_root)
+        walkthrough_json_path, walkthrough_markdown_path = write_walkthroughs(repo_root)
         public_surface_json_path, public_surface_markdown_path = write_public_surface(repo_root)
     except (FileNotFoundError, ValueError) as exc:
         print(f"Runtime error: {exc}", file=sys.stderr)
@@ -813,6 +870,8 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         f"{relative_path(min_path, repo_root)}, "
         f"{relative_path(capsule_path, repo_root)}, "
         f"{relative_path(sections_path, repo_root)}, "
+        f"{relative_path(walkthrough_json_path, repo_root)}, "
+        f"{relative_path(walkthrough_markdown_path, repo_root)}, "
         f"{relative_path(public_surface_json_path, repo_root)}, and "
         f"{relative_path(public_surface_markdown_path, repo_root)}."
     )

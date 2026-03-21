@@ -145,7 +145,35 @@ class ValidateSkillsTests(unittest.TestCase):
             examples_dir = skill_dir / "examples"
             examples_dir.mkdir()
             (examples_dir / "example.md").write_text(
-                "# Example\n\nSupport artifact.\n",
+                textwrap.dedent(
+                    """\
+                    # Example
+
+                    ## Scenario
+
+                    Example scenario.
+
+                    ## Why this skill fits
+
+                    - the workflow is bounded
+
+                    ## Expected inputs
+
+                    - input
+
+                    ## Expected outputs
+
+                    - output
+
+                    ## Boundary notes
+
+                    - keep the task bounded
+
+                    ## Verification notes
+
+                    - verify the result
+                    """
+                ),
                 encoding="utf-8",
             )
 
@@ -311,6 +339,7 @@ class ValidateSkillsTests(unittest.TestCase):
         build_catalog.write_catalogs(repo_root)
         build_catalog.write_capsules(repo_root)
         build_catalog.write_sections(repo_root)
+        build_catalog.write_walkthroughs(repo_root)
         build_catalog.write_public_surface(repo_root)
 
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
@@ -389,6 +418,17 @@ class ValidateSkillsTests(unittest.TestCase):
     def write_public_surface(self, repo_root: Path, payload: dict) -> None:
         public_surface_path = repo_root / "generated" / "public_surface.json"
         public_surface_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+    def load_walkthroughs(self, repo_root: Path) -> dict:
+        walkthrough_path = repo_root / "generated" / "skill_walkthroughs.json"
+        return json.loads(walkthrough_path.read_text(encoding="utf-8"))
+
+    def write_walkthroughs(self, repo_root: Path, payload: dict) -> None:
+        walkthrough_path = repo_root / "generated" / "skill_walkthroughs.json"
+        walkthrough_path.write_text(
             json.dumps(payload, sort_keys=True, indent=2) + "\n",
             encoding="utf-8",
         )
@@ -542,7 +582,31 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root = self.make_repo(status="reviewed")
         review_check = repo_root / "skills" / "aoa-test-skill" / "checks" / "review.md"
         review_check.parent.mkdir(parents=True, exist_ok=True)
-        review_check.write_text("# Review\n\n- ok\n", encoding="utf-8")
+        review_check.write_text(
+            textwrap.dedent(
+                """\
+                # Review Checklist
+
+                ## Purpose
+
+                Review purpose.
+
+                ## When it applies
+
+                - when bounded review is needed
+
+                ## Review checklist
+
+                - [ ] confirm scope
+
+                ## Not a fit
+
+                - not for unrelated rewrites
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
     def test_reviewed_status_passes_with_status_promotion_review_record(self) -> None:
@@ -656,7 +720,10 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root = self.make_repo(include_support_artifact=False)
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
-        self.assertIn("missing support artifact under examples/*.md or checks/*.md", messages)
+        self.assertIn(
+            "missing support artifact under examples/*.md, checks/review.md, or docs/reviews/*",
+            messages,
+        )
 
     def test_empty_capsule_source_section_fails(self) -> None:
         repo_root = self.make_repo()
@@ -891,6 +958,70 @@ class ValidateSkillsTests(unittest.TestCase):
         self.write_catalogs(repo_root)
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
+    def test_invalid_runtime_example_headings_fail(self) -> None:
+        repo_root = self.make_repo()
+        example_path = repo_root / "skills" / "aoa-test-skill" / "examples" / "example.md"
+        example_path.write_text(
+            textwrap.dedent(
+                """\
+                # Example
+
+                ## Scenario
+
+                Example scenario.
+
+                ## Inputs
+
+                - input
+                """
+            ),
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "runtime example missing required section 'Why this skill fits'",
+            messages,
+        )
+        self.assertIn(
+            "runtime example top-level sections must match the canonical order exactly",
+            messages,
+        )
+
+    def test_invalid_review_checklist_headings_fail(self) -> None:
+        repo_root = self.make_repo(include_support_artifact=False)
+        review_path = repo_root / "skills" / "aoa-test-skill" / "checks" / "review.md"
+        review_path.parent.mkdir(parents=True, exist_ok=True)
+        review_path.write_text(
+            textwrap.dedent(
+                """\
+                # Review Checklist
+
+                ## Purpose
+
+                Review purpose.
+
+                ## Checklist
+
+                - [ ] confirm scope
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "review checklist missing required section 'When it applies'",
+            messages,
+        )
+        self.assertIn(
+            "review checklist top-level sections must match the canonical order exactly",
+            messages,
+        )
+
     def test_technique_dependencies_must_match_manifest_order(self) -> None:
         repo_root = self.make_repo(
             techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
@@ -951,6 +1082,8 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertIn("generated catalog is missing", messages)
         self.assertIn("generated capsules are missing", messages)
         self.assertIn("generated sections are missing", messages)
+        self.assertIn("generated walkthrough surface is missing", messages)
+        self.assertIn("generated walkthrough markdown is missing", messages)
         self.assertIn("generated public surface is missing", messages)
         self.assertIn("generated public surface markdown is missing", messages)
 
@@ -1148,6 +1281,34 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated public surface markdown is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_stale_generated_walkthrough_surface_fails(self) -> None:
+        repo_root = self.make_repo()
+        walkthroughs = self.load_walkthroughs(repo_root)
+        walkthroughs["skills"][0]["pick_summary"] = "tampered"
+        self.write_walkthroughs(repo_root, walkthroughs)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated walkthrough surface is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+
+    def test_stale_generated_walkthrough_markdown_fails(self) -> None:
+        repo_root = self.make_repo()
+        walkthrough_markdown_path = repo_root / "generated" / "skill_walkthroughs.md"
+        walkthrough_markdown_path.write_text(
+            "stale walkthrough markdown\n",
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated walkthrough markdown is out of date; run python scripts/build_catalog.py",
             messages,
         )
 
