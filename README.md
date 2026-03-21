@@ -131,10 +131,10 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 13 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
-It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, a separate evaluation evidence layer in `docs/EVALUATION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
-It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, with `docs/EVALUATION_PATH.md` and `tests/fixtures/skill_evaluation_cases.yaml` carrying the separate evaluation evidence layer that stays distinct from the derived governance/public-surface layer.
-The current focus is keeping runtime selection, evaluation evidence, and public status readable as separate derived layers while using the governance surface to clarify default references, candidate-ready skills, and pending-lineage blockers.
+This repository now has a mixed-status public core of 14 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
+It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, a separate evaluation evidence layer in `docs/EVALUATION_PATH.md` and `generated/skill_evaluation_matrix.*`, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
+It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the evaluation evidence and governance/public-surface layers.
+The current focus is keeping runtime selection, evaluation evidence, and public status readable as separate derived layers while using the governance surface to clarify default references, candidate-ready skills, pending-lineage blockers, and newer evaluated consumers such as invariant coverage audits.
 
 ## When not to use this repository
 

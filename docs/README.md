@@ -48,7 +48,7 @@ an executable workflow for Codex.
 
 ## Current repository phase
 
-This repository now has a non-scaffold public core of 13 skills with first support artifacts,
+This repository now has a non-scaffold public core of 14 skills with first support artifacts,
 honest bridge manifests with pinned source refs, and local validation coverage.
 The repository now also has its first `canonical` skills, evaluated coverage across the remaining current skill surface, and autonomy and trigger-boundary evaluation checks across that public core.
 The repository now also has a documented maturity ladder and promotion guidance.
@@ -56,4 +56,4 @@ The repository now also has a documented public promotion path in `PROMOTION_PAT
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
 The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive pending-lineage closure, candidate review, and stronger public product-surface clarity.
 `ROADMAP.md` remains the canonical public roadmap.
-`PHASED_SKILL_PLAN.md` records the scaffold expansion that established the current 13-skill surface.
+`PHASED_SKILL_PLAN.md` records the scaffold expansion that established the original 13-skill surface.

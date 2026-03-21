@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 13
+- total skills: 14
 - canonical skills: 2
 - canonical skills with eval gaps: 0
 
@@ -19,6 +19,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-contract-test | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-contract-test/examples/example.md` | `docs/reviews/status-promotions/aoa-contract-test.md` | - | true | - |
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-core-logic-boundary/examples/example.md` | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | - | true | - |
 | aoa-dry-run-first | evaluated | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/aoa-dry-run-first/examples/runtime.md` | `docs/reviews/status-promotions/aoa-dry-run-first.md` | - | true | - |
+| aoa-invariant-coverage-audit | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-invariant-coverage-audit/examples/example.md` | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | - | true | - |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-port-adapter-refactor/examples/example.md` | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | - | true | - |
 | aoa-property-invariants | evaluated | core | explicit-preferred | 1 | 1 | 2 | 1 | 1 | `skills/aoa-property-invariants/examples/example.md` | `docs/reviews/status-promotions/aoa-property-invariants.md` | - | true | - |
 | aoa-safe-infra-change | evaluated | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/aoa-safe-infra-change/examples/runtime.md` | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | - | true | - |

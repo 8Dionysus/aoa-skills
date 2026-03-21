@@ -5,9 +5,9 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 13
+- total skills: 14
 - default references: 2
-- candidate-ready skills: 3
+- candidate-ready skills: 4
 - blocked by pending lineage: 8
 - risk surfaces: 4
 
@@ -24,6 +24,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 |---|---|---|---|---|---|---|---|
 | aoa-bounded-context-map | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-bounded-context-map.md` | - |
 | aoa-contract-test | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-contract-test.md` | - |
+| aoa-invariant-coverage-audit | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | - |
 | aoa-property-invariants | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-property-invariants.md` | - |
 
 ## Blocked by pending lineage

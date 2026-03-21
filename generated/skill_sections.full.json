@@ -408,6 +408,64 @@
       "status": "evaluated"
     },
     {
+      "name": "aoa-invariant-coverage-audit",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, instead of only repeating examples.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- an existing test or check surface needs a review for invariant strength\n- the question is whether current checks really constrain the stable rule\n- you need to turn a loose example set into a bounded coverage audit\n\nDo not use this skill when:\n- the invariant itself is still unknown and you need discovery work first\n- the task is mostly about presentation details or a narrow snapshot\n- you need a full boundary contract review rather than a coverage audit",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target rule or stable truth\n- current tests, checks, or examples\n- known edge cases and stress cases\n- the input space or states that matter most",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- invariant coverage map\n- gap list for weak or missing checks\n- bounded follow-up checks or revisions\n- concise verification summary",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. name the stable truth in plain language\n2. map each existing check to the invariant it constrains\n3. mark weak, redundant, or missing coverage\n4. add only bounded cases that strengthen the weakest invariant first\n5. report what the suite now proves and what it still does not",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- every claimed invariant must be traceable to at least one check\n- the audit should distinguish real constraint from mere example repetition\n- the result should stay reviewable without sprawling into a full test strategy",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- counting examples as if they were invariants\n- letting random data hide thin coverage\n- widening into generic test design or full suite architecture\n- making the audit so abstract that no one can act on it",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm each core invariant is named and mapped to a check\n- confirm the coverage gap list is specific and bounded\n- confirm another human can follow why the existing surface is or is not sufficient",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `d9f1f1da968b1449d3c2702792cac794b36573c3` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays should add:\n- local test or check commands\n- domain-specific invariants and edge cases\n- notes on where coverage gaps are recorded\n- rules for when a coverage audit should escalate into a deeper review",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated"
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "sections": [

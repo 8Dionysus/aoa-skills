@@ -108,8 +108,9 @@ class SkillEvaluationTests(unittest.TestCase):
         for case in self.fixtures["snapshot_cases"]:
             counts.setdefault(case["skill"], {"use": 0, "do_not_use": 0})[case["expected"]] += 1
 
-        self.assertEqual(26, len(self.fixtures["snapshot_cases"]))
-        for skill_dir in sorted(path for path in (REPO_ROOT / "skills").iterdir() if path.is_dir()):
+        skill_dirs = sorted(path for path in (REPO_ROOT / "skills").iterdir() if path.is_dir())
+        self.assertEqual(len(skill_dirs) * 2, len(self.fixtures["snapshot_cases"]))
+        for skill_dir in skill_dirs:
             with self.subTest(skill=skill_dir.name):
                 self.assertGreaterEqual(counts.get(skill_dir.name, {}).get("use", 0), 1)
                 self.assertGreaterEqual(counts.get(skill_dir.name, {}).get("do_not_use", 0), 1)

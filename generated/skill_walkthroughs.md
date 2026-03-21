@@ -255,6 +255,38 @@ Common expand sections:
 - `review_checklist`: `skills/aoa-dry-run-first/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-dry-run-first.md`
 
+## aoa-invariant-coverage-audit
+
+- scope: `core`
+- status: `evaluated`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/aoa-invariant-coverage-audit/SKILL.md`
+- pick summary: Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.
+
+### Use when
+
+- an existing test or check surface needs a review for invariant strength
+- the question is whether current checks really constrain the stable rule
+- you need to turn a loose example set into a bounded coverage audit
+
+### Do not use when
+
+- the invariant itself is still unknown and you need discovery work first
+- the task is mostly about presentation details or a narrow snapshot
+- you need a full boundary contract review rather than a coverage audit
+
+### Object use shape
+
+- invariant coverage map
+- gap list for weak or missing checks
+- bounded follow-up checks or revisions
+- concise verification summary
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-invariant-coverage-audit/examples/example.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md`
+
 ## aoa-port-adapter-refactor
 
 - scope: `core`
