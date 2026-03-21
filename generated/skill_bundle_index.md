@@ -16,7 +16,7 @@ It is repo-local packaging metadata, not a release or registry surface.
 | aoa-port-adapter-refactor | fd718946fc41 | evaluated | core | explicit-preferred | pending | false | true | 2 |
 | aoa-property-invariants | 4fbee0eb6bae | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-safe-infra-change | 6bcd14e30f21 | evaluated | risk | explicit-only | pending | false | true | 3 |
-| aoa-sanitized-share | fd7d1b08ba94 | evaluated | risk | explicit-only | pending | false | true | 3 |
-| aoa-source-of-truth-check | 377336ff4b8c | evaluated | core | explicit-preferred | pending | false | true | 2 |
+| aoa-sanitized-share | 5e4228a6591c | evaluated | risk | explicit-only | pending | false | true | 3 |
+| aoa-source-of-truth-check | e65a2452165a | evaluated | core | explicit-preferred | pending | false | true | 2 |
 | aoa-tdd-slice | 8d7caed9e1c1 | canonical | core | explicit-preferred | published | true | true | 2 |
 
