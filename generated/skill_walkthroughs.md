@@ -449,6 +449,7 @@ Common expand sections:
 - contributors may not know which file to trust first
 - a change touches docs, process, or operational guidance and the question is which file is authoritative
 - confusion exists between overview docs and authoritative docs
+- one authoritative source must stay aligned across multiple downstream consumer surfaces
 
 ### Do not use when
 
@@ -461,6 +462,7 @@ Common expand sections:
 ### Object use shape
 
 - clearer source-of-truth map
+- fan-out map when one source feeds multiple downstream consumers
 - note of overlaps or conflicts
 - proposed or implemented document role clarification
 - verification summary

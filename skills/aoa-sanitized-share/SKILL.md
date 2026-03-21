@@ -57,10 +57,32 @@ Do not use this skill when:
 
 ## Risks and anti-patterns
 
+### Failure modes
+
 - over-sanitizing until the artifact becomes meaningless
 - under-sanitizing because a value looks harmless in isolation
-- forgetting that topology and naming can be sensitive even without tokens
+
+### Negative effects
+
+- the shared artifact becomes hard to reuse or verify
+- sensitivity leaks through topology, naming, or surrounding context even when tokens are removed
+
+### Misuse patterns
+
 - sharing raw excerpts when a bounded summary would be safer
+- treating a small harmless-looking field as proof that the full material is safe
+
+### Detection signals
+
+- the sanitized output still points too directly to private topology or naming
+- a reviewer cannot tell what was generalized or removed
+- the artifact no longer communicates the lesson it was meant to preserve
+
+### Mitigations
+
+- generalize paths, hostnames, and private identifiers when needed
+- name the sanitization level and the remaining uncertainty
+- verify the shared result remains useful without preserving the sensitive surface
 
 ## Verification
 

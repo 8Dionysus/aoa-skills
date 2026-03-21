@@ -129,6 +129,24 @@ Bridge-coverage mapping in the current pass:
 - `Validation` -> `## Verification`
 - `Adaptation notes` -> `## Adaptation points`
 
+## Current fan-out proof
+
+One upstream source technique can stay aligned across multiple skill bundles without hand-copied divergence.
+
+- source:
+  - `AOA-T-0001` from `aoa-techniques`
+- target consumer surfaces:
+  - `skills/aoa-change-protocol/techniques.yaml`
+  - `skills/aoa-change-protocol/SKILL.md`
+  - `skills/aoa-safe-infra-change/techniques.yaml`
+  - `skills/aoa-safe-infra-change/SKILL.md`
+- drift control:
+  - `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --skill aoa-change-protocol --skill aoa-safe-infra-change`
+  - `python scripts/refresh_skill_from_techniques.py --skill aoa-change-protocol --skill aoa-safe-infra-change --techniques-repo ../aoa-techniques`
+
+This is the current donor evidence shape for one-source to many-target distribution:
+one pinned source ref, multiple committed consumer surfaces, and explicit refresh tooling when the upstream source changes.
+
 ## Runtime expectations
 
 At runtime, Codex should be able to use the committed `SKILL.md` without requiring live dependency resolution.

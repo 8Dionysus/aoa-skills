@@ -674,7 +674,7 @@
           "key": "contracts"
         },
         {
-          "content_markdown": "- over-sanitizing until the artifact becomes meaningless\n- under-sanitizing because a value looks harmless in isolation\n- forgetting that topology and naming can be sensitive even without tokens\n- sharing raw excerpts when a bounded summary would be safer",
+          "content_markdown": "### Failure modes\n\n- over-sanitizing until the artifact becomes meaningless\n- under-sanitizing because a value looks harmless in isolation\n\n### Negative effects\n\n- the shared artifact becomes hard to reuse or verify\n- sensitivity leaks through topology, naming, or surrounding context even when tokens are removed\n\n### Misuse patterns\n\n- sharing raw excerpts when a bounded summary would be safer\n- treating a small harmless-looking field as proof that the full material is safe\n\n### Detection signals\n\n- the sanitized output still points too directly to private topology or naming\n- a reviewer cannot tell what was generalized or removed\n- the artifact no longer communicates the lesson it was meant to preserve\n\n### Mitigations\n\n- generalize paths, hostnames, and private identifiers when needed\n- name the sanitization level and the remaining uncertainty\n- verify the shared result remains useful without preserving the sensitive surface",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
@@ -707,7 +707,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a repository has several docs that may overlap or conflict\n- contributors may not know which file to trust first\n- a change touches docs, process, or operational guidance and the question is which file is authoritative\n- confusion exists between overview docs and authoritative docs\n\nDo not use this skill when:\n- the repository is tiny and has no meaningful source-of-truth ambiguity\n- the task is purely code-local with no documentation or policy impact\n- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first\n- the main problem is broader policy design rather than document authority or ownership",
+          "content_markdown": "Use this skill when:\n- a repository has several docs that may overlap or conflict\n- contributors may not know which file to trust first\n- a change touches docs, process, or operational guidance and the question is which file is authoritative\n- confusion exists between overview docs and authoritative docs\n- one authoritative source must stay aligned across multiple downstream consumer surfaces\n\nDo not use this skill when:\n- the repository is tiny and has no meaningful source-of-truth ambiguity\n- the task is purely code-local with no documentation or policy impact\n- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first\n- the main problem is broader policy design rather than document authority or ownership",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -717,12 +717,12 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- clearer source-of-truth map\n- note of overlaps or conflicts\n- proposed or implemented document role clarification\n- verification summary",
+          "content_markdown": "- clearer source-of-truth map\n- fan-out map when one source feeds multiple downstream consumers\n- note of overlaps or conflicts\n- proposed or implemented document role clarification\n- verification summary",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. identify the main docs or guidance files involved in the target area\n2. determine which file should be authoritative for each concern\n3. note any overlap, contradiction, or role ambiguity\n4. clarify or propose clarifying document ownership and purpose\n5. keep the change bounded to the guidance surface under review\n6. verify that the result reduces ambiguity for future changes",
+          "content_markdown": "1. identify the main docs or guidance files involved in the target area\n2. determine which file should be authoritative for each concern\n3. note any overlap, contradiction, or role ambiguity\n4. if one source feeds multiple consumers, name each consumer and refresh them from the same source\n5. clarify or propose clarifying document ownership and purpose\n6. keep the change bounded to the guidance surface under review\n7. verify that the result reduces ambiguity for future changes",
           "heading": "Procedure",
           "key": "procedure"
         },
