@@ -34,9 +34,13 @@ ADJACENCY_EXPECTATIONS = {
     "aoa-tdd-slice": ["aoa-change-protocol"],
     "aoa-core-logic-boundary": ["aoa-port-adapter-refactor"],
     "aoa-port-adapter-refactor": ["aoa-core-logic-boundary"],
-    "aoa-approval-gate-check": ["aoa-dry-run-first", "aoa-safe-infra-change"],
-    "aoa-dry-run-first": ["aoa-approval-gate-check"],
-    "aoa-safe-infra-change": ["aoa-approval-gate-check"],
+    "aoa-approval-gate-check": [
+        "aoa-dry-run-first",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share",
+    ],
+    "aoa-dry-run-first": ["aoa-approval-gate-check", "aoa-sanitized-share"],
+    "aoa-safe-infra-change": ["aoa-approval-gate-check", "aoa-sanitized-share"],
     "aoa-sanitized-share": [
         "aoa-approval-gate-check",
         "aoa-dry-run-first",
