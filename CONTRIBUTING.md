@@ -10,6 +10,7 @@ Good contributions:
 - skill templates and repository conventions
 - validation or review helpers for skill bundles
 - thin project overlay examples that clarify how a core skill adapts to a real repository
+- docs-only truth sync that keeps the current 14-skill surface and derived layers readable
 
 Bad contributions:
 - private operational context
@@ -33,6 +34,7 @@ Please make sure:
 - runtime examples and review checklists use the repository artifact contract when present
 - examples and references are public-safe
 - project-shaped overlays do not silently change the core meaning of the skill
+- runtime, evaluation, and public-surface layers stay distinct from one another
 
 Run the local validator before opening a PR:
 
@@ -111,6 +113,7 @@ and `docs/PROMOTION_PATH.md`, and make the supporting evidence explicit.
 - `skill: add project overlay <skill-name>`
 - `docs: refine repo guidance`
 - `repo: improve templates or validation`
+- `docs: truth-sync roadmap and phase guidance`
 
 ## Review criteria
 
@@ -137,6 +140,7 @@ When proposing a promotion step:
 - add or update the public review record under `docs/reviews/status-promotions/`
 - use `templates/STATUS_PROMOTION_REVIEW.template.md` for non-canonical promotion reviews
 - make the review record explicit about machine-checkable floors and what still blocks the next status step
+- keep governance review records separate from runtime walkthroughs and evaluation evidence
 
 When proposing `canonical` specifically:
 - ensure the skill uses `## Technique traceability`, not `## Future traceability`
@@ -146,6 +150,7 @@ When proposing `canonical` specifically:
 - add or update the public review record under `docs/reviews/canonical-candidates/`
 - use `templates/CANDIDATE_REVIEW.template.md` for new candidate-review records
 - make the review record explicit about machine floors, whether the runtime meaning changed, and what still blocks the next maintenance step
+- keep canonical-candidate records aligned with the current 14-skill public surface rather than historical scaffold wording
 
 ## Drift and refresh
 
@@ -157,6 +162,7 @@ A good PR should make it clear:
 - whether the skill meaning changed
 - whether only metadata changed
 - whether project overlays also require updates
+- whether the change belongs in `docs/OVERLAY_SPEC.md` as a future-facing contract rather than in a skill bundle
 
 If you think a richer integration would need another repository, leave a local stub or TODO note instead of adding live cross-repo behavior in this repository wave.
 

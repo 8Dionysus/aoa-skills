@@ -2,6 +2,7 @@
 
 This document explains how to read the derived public-product surface of `aoa-skills`
 without assuming hidden release metadata or private repository state.
+The current repository state covers 14 skills, with 2 canonical references, 4 candidate-ready skills, 8 pending-lineage blockers, and 4 risk surfaces.
 
 For runtime inspection and skill selection, use `RUNTIME_PATH.md` first.
 For evaluation evidence and matrix reading, use `EVALUATION_PATH.md` first.
@@ -88,6 +89,7 @@ This wave does not introduce:
 - implicit promotions
 
 The public-product surface remains repo-local and derived.
+Overlay preparation is also separate from this layer; the thin contract lives in `docs/OVERLAY_SPEC.md`, but actual project adoption stays downstream.
 
 Future stubs:
 

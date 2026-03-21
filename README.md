@@ -23,10 +23,11 @@ If you are new to this repository, follow this short path:
 6. Read `docs/PUBLIC_SURFACE.md` for the public-product and governance signals.
 7. Read `docs/ARCHITECTURE.md` for the high-level model.
 8. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-9. Read `generated/public_surface.md` for the current derived cohort split.
-10. Read `SKILL_INDEX.md` for the current skill surface.
-11. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-12. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, and `templates/EVALUATION_SNAPSHOT.template.md` when authoring new skill surfaces.
+9. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or stub-only adaptation.
+10. Read `generated/public_surface.md` for the current derived cohort split.
+11. Read `SKILL_INDEX.md` for the current skill surface.
+12. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+13. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, and `templates/EVALUATION_SNAPSHOT.template.md` when authoring new skill surfaces.
 
 ## Quick routes
 
@@ -76,6 +77,7 @@ The current repo-local surface stack is:
 - runtime selection and object use: `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, `scripts/inspect_skill.py`
 - evaluation evidence and matrix reading: `docs/EVALUATION_PATH.md`, `generated/skill_evaluation_matrix.*`, `tests/fixtures/skill_evaluation_cases.yaml`, `scripts/report_skill_evaluation.py`
 - public-product and governance signals: `docs/PUBLIC_SURFACE.md`, `generated/public_surface.*`
+- overlay preparation and thin downstream adaptation: `docs/OVERLAY_SPEC.md`, `templates/PROJECT_OVERLAY.template.md`, `templates/PROJECT_OVERLAY_SKILL.template.md`
 
 The runtime path for public skill use is:
 
@@ -135,6 +137,7 @@ This repository now has a mixed-status public core of 14 skills with first suppo
 It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, a separate evaluation evidence layer in `docs/EVALUATION_PATH.md` and `generated/skill_evaluation_matrix.*`, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
 It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the evaluation evidence and governance/public-surface layers.
 The current focus is keeping runtime selection, evaluation evidence, and public status readable as separate derived layers while using the governance surface to clarify default references, candidate-ready skills, pending-lineage blockers, and newer evaluated consumers such as invariant coverage audits.
+Overlay preparation is intentionally repo-local and thin: `docs/OVERLAY_SPEC.md` and the overlay templates describe future-facing downstream adaptation, not a live project integration.
 
 ## When not to use this repository
 

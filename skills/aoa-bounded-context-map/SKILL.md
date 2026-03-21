@@ -25,7 +25,8 @@ Use this skill when:
 
 Do not use this skill when:
 - the change is tiny and fully local
-- the boundary is already clear and agreed on
+- the boundary is already clear and agreed on, and the real task is validating the interface contract; use `aoa-contract-test`
+- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first
 
 ## Inputs
 

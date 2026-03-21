@@ -49,7 +49,7 @@
         "AOA-T-0016",
         "AOA-T-0002"
       ],
-      "trigger_boundary_short": "Use when a project mixes several domains or subsystems; naming is drifting or overloaded; Avoid when the change is tiny and fully local; the boundary is already clear and agreed on.",
+      "trigger_boundary_short": "Use when a project mixes several domains or subsystems; naming is drifting or overloaded; Avoid when the change is tiny and fully local; the boundary is already clear and agreed on, and the real task is validating...",
       "verification_short": "Checks: confirm the main ambiguity was reduced; confirm interfaces or handoff points are named; confirm the output helps future scoped changes.",
       "workflow_short": "Purpose: bounded-context thinking to reduce semantic drift, mixed responsibilities, and unclear interfaces. Flow: identify the target area and the terms people use for it -> separate responsibilities into bounded contexts or subsystems -> name what..."
     },
@@ -137,7 +137,7 @@
       "technique_dependencies": [
         "AOA-T-0017"
       ],
-      "trigger_boundary_short": "Use when an existing test or check surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule; Avoid when the invariant itself is still unknown and you...",
+      "trigger_boundary_short": "Use when an existing test or check surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule; Avoid when the main problem is defining the invariant itself...",
       "verification_short": "Checks: confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded; confirm another human can follow why the existing surface is or is not sufficient.",
       "workflow_short": "Purpose: invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, instead of only repeating examples. Flow: name the stable truth in plain language -> map each existing check to the invariant it..."
     },
@@ -172,7 +172,7 @@
         "AOA-T-0017",
         "AOA-T-0007"
       ],
-      "trigger_boundary_short": "Use when a rule should hold across many inputs or states; examples alone feel too narrow; Avoid when the behavior is mostly about presentation details or narrow snapshots; no meaningful invariant is yet understood.",
+      "trigger_boundary_short": "Use when a rule should hold across many inputs or states; examples alone feel too narrow; Avoid when the behavior is mostly about presentation details or narrow snapshots; the main problem is checking whether...",
       "verification_short": "Checks: confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples; confirm the result is understandable to another human or agent.",
       "workflow_short": "Purpose: invariant-oriented thinking to test broad behavior through properties rather than only through a short list of fixed examples. Flow: identify what must remain true across many cases -> separate strong invariants from weak hopes or vague..."
     },

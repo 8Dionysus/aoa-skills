@@ -66,7 +66,7 @@
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
@@ -94,7 +94,7 @@
       "summary": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
@@ -144,7 +144,7 @@
       "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
@@ -176,7 +176,7 @@
       "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",

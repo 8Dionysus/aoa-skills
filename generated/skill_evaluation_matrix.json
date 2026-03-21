@@ -37,7 +37,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 2,
@@ -71,7 +71,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,
@@ -122,7 +122,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,
@@ -156,7 +156,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 2,

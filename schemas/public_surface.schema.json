@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills public surface",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["public_surface_version", "source_of_truth", "cohorts", "skills"],
+  "properties": {
+    "public_surface_version": { "type": "integer", "minimum": 1 },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill_markdown",
+        "technique_manifest",
+        "status_promotion_reviews",
+        "canonical_candidate_reviews",
+        "evaluation_fixtures"
+      ],
+      "properties": {
+        "skill_markdown": { "type": "string", "minLength": 1 },
+        "technique_manifest": { "type": "string", "minLength": 1 },
+        "status_promotion_reviews": { "type": "string", "minLength": 1 },
+        "canonical_candidate_reviews": { "type": "string", "minLength": 1 },
+        "evaluation_fixtures": { "type": "string", "minLength": 1 }
+      }
+    },
+    "cohorts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default_references", "candidate_ready", "blocked_by_pending_lineage", "risk_surfaces"],
+      "properties": {
+        "default_references": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "candidate_ready": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "blocked_by_pending_lineage": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "risk_surfaces": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "scope",
+          "status",
+          "summary",
+          "invocation_mode",
+          "skill_path",
+          "lineage_state",
+          "is_default_reference",
+          "canonical_candidate_ready",
+          "canonical_candidate_blockers",
+          "promotion_review_path",
+          "candidate_review_path"
+        ],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "scope": { "type": "string", "enum": ["core", "project", "risk"] },
+          "status": {
+            "type": "string",
+            "enum": ["scaffold", "linked", "reviewed", "evaluated", "canonical", "deprecated"]
+          },
+          "summary": { "type": "string", "minLength": 1 },
+          "invocation_mode": {
+            "type": "string",
+            "enum": ["implicit-friendly", "explicit-preferred", "explicit-only"]
+          },
+          "skill_path": { "type": "string", "minLength": 1 },
+          "lineage_state": { "type": "string", "enum": ["published", "pending"] },
+          "is_default_reference": { "type": "boolean" },
+          "canonical_candidate_ready": { "type": "boolean" },
+          "canonical_candidate_blockers": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "promotion_review_path": { "type": ["string", "null"] },
+          "candidate_review_path": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

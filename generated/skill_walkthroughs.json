@@ -4,7 +4,8 @@
       "do_not_use_when": [
         "the change is tiny and self-evident",
         "the note would only restate an obvious diff with no real decision content",
-        "the main problem is unclear authoritative documentation rather than decision rationale; use aoa-source-of-truth-check first"
+        "the main problem is unclear authoritative documentation rather than decision rationale; use aoa-source-of-truth-check first",
+        "the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first"
       ],
       "expand_sections": [
         "Procedure",
@@ -111,7 +112,8 @@
     {
       "do_not_use_when": [
         "the change is tiny and fully local",
-        "the boundary is already clear and agreed on"
+        "the boundary is already clear and agreed on, and the real task is validating the interface contract; use aoa-contract-test",
+        "the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first"
       ],
       "expand_sections": [
         "Procedure",
@@ -147,6 +149,11 @@
           "path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -211,6 +218,9 @@
     {
       "do_not_use_when": [
         "the change is entirely local and does not affect a meaningful boundary",
+        "the boundary itself is still semantically unclear and naming is drifting; use aoa-bounded-context-map",
+        "the main problem is expressing a broad invariant rather than a boundary contract; use aoa-property-invariants",
+        "the main problem is auditing whether existing checks really cover a stable rule; use aoa-invariant-coverage-audit",
         "a broad system rewrite is needed before the boundary itself is stable"
       ],
       "expand_sections": [
@@ -247,6 +257,11 @@
           "path": "docs/reviews/status-promotions/aoa-contract-test.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -260,6 +275,7 @@
         "the task is a tiny isolated fix with no meaningful boundary ambiguity",
         "the code is already clearly partitioned",
         "the result would only rename folders without improving understanding",
+        "the main problem is recording decision rationale rather than boundary placement; use aoa-adr-write first",
         "the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use aoa-port-adapter-refactor"
       ],
       "expand_sections": [
@@ -361,6 +377,7 @@
     },
     {
       "do_not_use_when": [
+        "the main problem is defining the invariant itself rather than auditing coverage; use aoa-property-invariants first",
         "the invariant itself is still unknown and you need discovery work first",
         "the task is mostly about presentation details or a narrow snapshot",
         "you need a full boundary contract review rather than a coverage audit"
@@ -399,6 +416,11 @@
           "path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -461,6 +483,8 @@
     {
       "do_not_use_when": [
         "the behavior is mostly about presentation details or narrow snapshots",
+        "the main problem is checking whether existing checks really cover the invariant; use aoa-invariant-coverage-audit first",
+        "the main problem is a boundary contract rather than a stable invariant; use aoa-contract-test",
         "no meaningful invariant is yet understood"
       ],
       "expand_sections": [
@@ -497,6 +521,11 @@
           "path": "docs/reviews/status-promotions/aoa-property-invariants.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -619,6 +648,7 @@
         "the repository is tiny and has no meaningful source-of-truth ambiguity",
         "the task is purely code-local with no documentation or policy impact",
         "the authoritative files are already clear and the main need is recording rationale for a decision; use aoa-adr-write",
+        "the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first",
         "the main problem is broader policy design rather than document authority or ownership"
       ],
       "expand_sections": [
@@ -668,6 +698,8 @@
       "do_not_use_when": [
         "the task is purely exploratory and behavior is still undefined",
         "the task is mostly one-off glue with no reusable logic",
+        "the main problem is a stable interface or boundary contract rather than a feature slice; use aoa-contract-test",
+        "the main problem is invariant coverage rather than slice implementation; use aoa-property-invariants",
         "broader architectural restructuring is the real need"
       ],
       "expand_sections": [

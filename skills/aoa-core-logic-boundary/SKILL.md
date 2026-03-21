@@ -26,6 +26,7 @@ Do not use this skill when:
 - the task is a tiny isolated fix with no meaningful boundary ambiguity
 - the code is already clearly partitioned
 - the result would only rename folders without improving understanding
+- the main problem is recording decision rationale rather than boundary placement; use `aoa-adr-write` first
 - the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use `aoa-port-adapter-refactor`
 
 ## Inputs

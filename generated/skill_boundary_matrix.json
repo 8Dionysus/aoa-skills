@@ -1,0 +1,334 @@
+{
+  "boundary_matrix_version": 1,
+  "cases": [
+    {
+      "adjacent_skill": "aoa-contract-test",
+      "blockers": [],
+      "case_id": "bounded_context_map_vs_contract_test_boundary",
+      "expected": "use",
+      "prompt": "Compare semantic boundary clarification with interface-contract validation and choose the clearer fit before coding.",
+      "skill": "aoa-bounded-context-map",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_vs_contract_test_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-tdd-slice",
+      "blockers": [],
+      "case_id": "change_protocol_vs_tdd_slice_boundary",
+      "expected": "use",
+      "prompt": "Compare a bounded change workflow with a test-first slice and choose the clearer fit for a non-trivial repo change.",
+      "skill": "aoa-change-protocol",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-change-protocol/change_protocol_vs_tdd_slice_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-change-protocol",
+      "blockers": [],
+      "case_id": "tdd_slice_vs_change_protocol_boundary",
+      "expected": "use",
+      "prompt": "Compare a test-first feature slice with a general change workflow and choose the clearer fit for a small behavior change.",
+      "skill": "aoa-tdd-slice",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-tdd-slice/tdd_slice_vs_change_protocol_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-port-adapter-refactor",
+      "blockers": [],
+      "case_id": "core_logic_boundary_vs_port_adapter_refactor",
+      "expected": "use",
+      "prompt": "Compare a boundary-clarity task with a port/adapter refactor and choose the clearer fit for a mixed core and wiring module.",
+      "skill": "aoa-core-logic-boundary",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_vs_port_adapter_refactor.md"
+    },
+    {
+      "adjacent_skill": "aoa-core-logic-boundary",
+      "blockers": [],
+      "case_id": "port_adapter_refactor_vs_core_logic_boundary",
+      "expected": "use",
+      "prompt": "Compare a seam-making refactor with a core-versus-edge analysis and choose the clearer fit for a coupled dependency.",
+      "skill": "aoa-port-adapter-refactor",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-port-adapter-refactor/port_adapter_refactor_vs_core_logic_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-dry-run-first",
+      "blockers": [],
+      "case_id": "approval_gate_vs_preview_and_infra_boundary",
+      "expected": "use",
+      "prompt": "Compare authority classification with preview-first and safe-change paths for an operationally sensitive request.",
+      "skill": "aoa-approval-gate-check",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_preview_and_infra_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-safe-infra-change",
+      "blockers": [],
+      "case_id": "approval_gate_vs_safe_infra_boundary",
+      "expected": "use",
+      "prompt": "Compare authority classification with bounded infrastructure change planning for a risky operational request.",
+      "skill": "aoa-approval-gate-check",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_safe_infra_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-bounded-context-map",
+      "blockers": [],
+      "case_id": "contract_test_vs_bounded_context_map_boundary",
+      "expected": "use",
+      "prompt": "Compare interface-contract validation with context-carving work and choose the clearer fit when the boundary is already clear.",
+      "skill": "aoa-contract-test",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-contract-test/contract_test_vs_bounded_context_map_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-approval-gate-check",
+      "blockers": [],
+      "case_id": "dry_run_first_vs_approval_gate_boundary",
+      "expected": "use",
+      "prompt": "Compare preview-first planning with authority classification for a potentially risky operational change.",
+      "skill": "aoa-dry-run-first",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_approval_gate_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-approval-gate-check",
+      "blockers": [],
+      "case_id": "safe_infra_change_vs_approval_gate_boundary",
+      "expected": "use",
+      "prompt": "Compare a bounded infrastructure change with authority classification for the same operational surface.",
+      "skill": "aoa-safe-infra-change",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_approval_gate_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-adr-write",
+      "blockers": [],
+      "case_id": "source_of_truth_check_vs_adr_write_boundary",
+      "expected": "use",
+      "prompt": "Compare document-authority clarification with decision rationale recording and choose the clearer fit for a docs overlap problem.",
+      "skill": "aoa-source-of-truth-check",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/source_of_truth_check_vs_adr_write_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-source-of-truth-check",
+      "blockers": [],
+      "case_id": "adr_write_vs_source_of_truth_check_boundary",
+      "expected": "use",
+      "prompt": "Compare decision documentation with source-of-truth clarification and choose the clearer fit for a meaningful architectural choice.",
+      "skill": "aoa-adr-write",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-adr-write/adr_write_vs_source_of_truth_check_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-property-invariants",
+      "blockers": [],
+      "case_id": "invariant_coverage_audit_vs_property_invariants_boundary",
+      "expected": "use",
+      "prompt": "Compare auditing existing checks with authoring property invariants and choose the clearer fit for a coverage review.",
+      "skill": "aoa-invariant-coverage-audit",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-invariant-coverage-audit/invariant_coverage_audit_vs_property_invariants_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-invariant-coverage-audit",
+      "blockers": [],
+      "case_id": "property_invariants_vs_invariant_coverage_audit_boundary",
+      "expected": "use",
+      "prompt": "Compare authoring invariant-based tests with auditing existing invariant coverage and choose the clearer fit for a behavior rule.",
+      "skill": "aoa-property-invariants",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-property-invariants/property_invariants_vs_invariant_coverage_audit_boundary.md"
+    }
+  ],
+  "skills": [
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-source-of-truth-check"
+      ],
+      "name": "aoa-adr-write",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 2,
+      "adjacent_skill_names": [
+        "aoa-dry-run-first",
+        "aoa-safe-infra-change"
+      ],
+      "name": "aoa-approval-gate-check",
+      "required_adjacency_coverage": false,
+      "scope": "risk",
+      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-contract-test"
+      ],
+      "name": "aoa-bounded-context-map",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-tdd-slice"
+      ],
+      "name": "aoa-change-protocol",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "status": "canonical"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-bounded-context-map"
+      ],
+      "name": "aoa-contract-test",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-port-adapter-refactor"
+      ],
+      "name": "aoa-core-logic-boundary",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-approval-gate-check"
+      ],
+      "name": "aoa-dry-run-first",
+      "required_adjacency_coverage": false,
+      "scope": "risk",
+      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-property-invariants"
+      ],
+      "name": "aoa-invariant-coverage-audit",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-core-logic-boundary"
+      ],
+      "name": "aoa-port-adapter-refactor",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-invariant-coverage-audit"
+      ],
+      "name": "aoa-property-invariants",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-approval-gate-check"
+      ],
+      "name": "aoa-safe-infra-change",
+      "required_adjacency_coverage": false,
+      "scope": "risk",
+      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "name": "aoa-sanitized-share",
+      "required_adjacency_coverage": false,
+      "scope": "risk",
+      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-adr-write"
+      ],
+      "name": "aoa-source-of-truth-check",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-change-protocol"
+      ],
+      "name": "aoa-tdd-slice",
+      "required_adjacency_coverage": true,
+      "scope": "core",
+      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "status": "canonical"
+    }
+  ],
+  "source_of_truth": {
+    "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
+    "evaluation_snapshots": "tests/fixtures/skill_evaluation_snapshots/*/*.md",
+    "skill_markdown": "skills/*/SKILL.md",
+    "technique_manifest": "skills/*/techniques.yaml"
+  }
+}

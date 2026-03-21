@@ -374,6 +374,10 @@ class BuildCatalogTests(unittest.TestCase):
         path = repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH
         return path.read_text(encoding="utf-8")
 
+    def write_all_surfaces(self, repo_root: Path) -> None:
+        for spec in build_catalog.generated_surface_specs():
+            build_catalog.write_generated_surface(repo_root, spec)
+
     def load_evaluation_matrix(self, repo_root: Path) -> dict:
         path = repo_root / build_catalog.EVALUATION_MATRIX_JSON_PATH
         return json.loads(path.read_text(encoding="utf-8"))
@@ -830,12 +834,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("status-promotions",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
 
         self.assertEqual(0, self.run_main(repo_root, ["--check"]))
 
@@ -845,12 +844,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("status-promotions",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -868,12 +862,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("status-promotions",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -891,12 +880,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("status-promotions",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -914,12 +898,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("status-promotions",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
 
         public_surface_markdown_path = repo_root / build_catalog.PUBLIC_SURFACE_MARKDOWN_PATH
         public_surface_markdown_path.write_text(
@@ -938,12 +917,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("status-promotions",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
         skill_md_path = repo_root / "skills" / "aoa-test-skill" / "SKILL.md"
         skill_md_path.write_text(
             skill_md_path.read_text(encoding="utf-8").replace(
@@ -961,12 +935,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("status-promotions",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
 
         (repo_root / build_catalog.WALKTHROUGHS_JSON_PATH).unlink()
         (repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH).unlink()
@@ -979,12 +948,7 @@ class BuildCatalogTests(unittest.TestCase):
             review_surfaces=("canonical-candidates",),
             include_evaluation_fixtures=True,
         )
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        self.write_all_surfaces(repo_root)
 
         matrix_markdown_path = repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH
         matrix_markdown_path.write_text("stale matrix markdown\n", encoding="utf-8")

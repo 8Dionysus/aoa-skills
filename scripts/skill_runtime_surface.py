@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 import re
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping, Sequence
-
-import yaml
 
 import skill_artifact_contract
 import skill_catalog_contract
 import skill_section_contract
+import skill_source_model
 
 
 SKILLS_DIR_NAME = "skills"
@@ -38,6 +38,14 @@ LIST_ITEM_PATTERN = re.compile(r"^(?:[-*]|\d+\.)\s+(.*)$")
 MARKDOWN_LINK_PATTERN = re.compile(r"\[([^\]]+)\]\([^)]+\)")
 INLINE_CODE_PATTERN = re.compile(r"`([^`]+)`")
 EMPHASIS_PATTERN = re.compile(r"(\*\*|\*|__|_)")
+USE_HEADING = "Use this skill when:"
+DO_NOT_USE_HEADING = "Do not use this skill when:"
+
+
+@dataclass(frozen=True)
+class RuntimeSurfaceIssue:
+    location: str
+    message: str
 
 
 def relative_location(path: Path, repo_root: Path) -> str:
@@ -45,33 +53,11 @@ def relative_location(path: Path, repo_root: Path) -> str:
 
 
 def parse_skill_document(path: Path) -> tuple[dict[str, Any], str]:
-    text = path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-    if not lines or lines[0].strip() != "---":
-        raise ValueError(f"{path} is missing frontmatter")
-
-    closing_index = None
-    for index in range(1, len(lines)):
-        if lines[index].strip() == "---":
-            closing_index = index
-            break
-
-    if closing_index is None:
-        raise ValueError(f"{path} is missing a closing frontmatter delimiter")
-
-    frontmatter_text = "\n".join(lines[1:closing_index])
-    metadata = yaml.safe_load(frontmatter_text) or {}
-    if not isinstance(metadata, dict):
-        raise ValueError(f"{path} frontmatter must parse to a mapping")
-    body = "\n".join(lines[closing_index + 1 :])
-    return metadata, body
+    return skill_source_model.parse_skill_document(path)
 
 
 def parse_skill_sections(body: str) -> dict[str, str]:
-    return {
-        heading: content_markdown
-        for heading, content_markdown in skill_section_contract.extract_top_level_sections(body)
-    }
+    return skill_source_model.parse_skill_sections(body)
 
 
 def normalize_inline_markdown(text: str) -> str:
@@ -170,6 +156,77 @@ def extract_trigger_boundary_items(section_text: str) -> tuple[list[str], list[s
     return [item for item in use_items if item], [item for item in do_not_use_items if item]
 
 
+def count_markdown_list_items(section_text: str) -> int:
+    return sum(
+        1
+        for raw_line in section_text.splitlines()
+        if LIST_ITEM_PATTERN.match(raw_line.strip())
+    )
+
+
+def collect_runtime_surface_issues(
+    *,
+    location: str,
+    trigger_boundary_text: str,
+    outputs_text: str,
+) -> list[RuntimeSurfaceIssue]:
+    issues: list[RuntimeSurfaceIssue] = []
+    if USE_HEADING not in trigger_boundary_text:
+        issues.append(
+            RuntimeSurfaceIssue(
+                location,
+                f"runtime trigger boundary must include exact heading '{USE_HEADING}'",
+            )
+        )
+    if DO_NOT_USE_HEADING not in trigger_boundary_text:
+        issues.append(
+            RuntimeSurfaceIssue(
+                location,
+                f"runtime trigger boundary must include exact heading '{DO_NOT_USE_HEADING}'",
+            )
+        )
+
+    use_when, do_not_use_when = extract_trigger_boundary_items(trigger_boundary_text)
+    if not use_when:
+        issues.append(
+            RuntimeSurfaceIssue(
+                location,
+                "runtime trigger boundary must define at least one use bullet",
+            )
+        )
+    if not do_not_use_when:
+        issues.append(
+            RuntimeSurfaceIssue(
+                location,
+                "runtime trigger boundary must define at least one do_not_use bullet",
+            )
+        )
+    if count_markdown_list_items(outputs_text) < 1:
+        issues.append(
+            RuntimeSurfaceIssue(
+                location,
+                "runtime outputs must use at least one markdown bullet item",
+            )
+        )
+    return issues
+
+
+def enforce_runtime_surface_contract(
+    *,
+    location: str,
+    trigger_boundary_text: str,
+    outputs_text: str,
+) -> None:
+    issues = collect_runtime_surface_issues(
+        location=location,
+        trigger_boundary_text=trigger_boundary_text,
+        outputs_text=outputs_text,
+    )
+    if issues:
+        joined = "\n".join(f"- {issue.location}: {issue.message}" for issue in issues)
+        raise ValueError(joined)
+
+
 def build_skill_walkthrough_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
     skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
     metadata, body = parse_skill_document(skill_md_path)
@@ -180,6 +237,11 @@ def build_skill_walkthrough_entry(repo_root: Path, skill_name: str) -> dict[str,
     if "Outputs" not in sections:
         raise ValueError(f"{skill_md_path} is missing section 'Outputs'")
 
+    enforce_runtime_surface_contract(
+        location=relative_location(skill_md_path, repo_root),
+        trigger_boundary_text=sections["Trigger boundary"],
+        outputs_text=sections["Outputs"],
+    )
     use_when, do_not_use_when = extract_trigger_boundary_items(sections["Trigger boundary"])
     object_use_shape = extract_markdown_items(sections["Outputs"])
 
