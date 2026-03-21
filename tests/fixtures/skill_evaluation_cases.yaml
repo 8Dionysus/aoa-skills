@@ -391,6 +391,16 @@ adjacency_cases:
       - This is an approval-gate case, not a safe-infra-change case.
       - A clear classification that names explicit approval or a bounded next step.
     forbidden_output_phrases: []
+  - skill: aoa-approval-gate-check
+    case_id: approval_gate_vs_sanitized_share_boundary
+    prompt: Compare deciding whether a sensitive incident artifact may be shared at all with preparing a sanitized version for broader circulation.
+    expected: use
+    adjacent_skill: aoa-sanitized-share
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_sanitized_share_boundary.md
+    required_output_phrases:
+      - This is an approval-gate case, not a sanitized-share case.
+      - A clear classification that names explicit approval or a bounded next step.
+    forbidden_output_phrases: []
   - skill: aoa-contract-test
     case_id: contract_test_vs_bounded_context_map_boundary
     prompt: Compare interface-contract validation with context-carving work and choose the clearer fit when the boundary is already clear.
@@ -411,6 +421,16 @@ adjacency_cases:
       - This is a dry-run-first case, not an approval-gate-check case.
       - A preview-first recommendation that explains how to inspect the change before it touches the live surface.
     forbidden_output_phrases: []
+  - skill: aoa-dry-run-first
+    case_id: dry_run_first_vs_sanitized_share_boundary
+    prompt: Compare preview-first planning for a risky operational change with preparing a sanitized share of the same change and choose the clearer fit before execution.
+    expected: use
+    adjacent_skill: aoa-sanitized-share
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_sanitized_share_boundary.md
+    required_output_phrases:
+      - This is a dry-run-first case, not a sanitized-share case.
+      - A preview-first recommendation that explains how to inspect the change before it touches the live surface.
+    forbidden_output_phrases: []
   - skill: aoa-safe-infra-change
     case_id: safe_infra_change_vs_approval_gate_boundary
     prompt: Compare a bounded infrastructure change with authority classification for the same operational surface.
@@ -419,6 +439,16 @@ adjacency_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_approval_gate_boundary.md
     required_output_phrases:
       - This is a safe-infra-change case, not an approval-gate-check case.
+      - A bounded change plan or recommendation that names the operational surface, the validation path, and rollback or recovery notes.
+    forbidden_output_phrases: []
+  - skill: aoa-safe-infra-change
+    case_id: safe_infra_change_vs_sanitized_share_boundary
+    prompt: Compare planning a bounded operational change with preparing a sanitized share of it and choose the clearer fit when the system still needs the change itself.
+    expected: use
+    adjacent_skill: aoa-sanitized-share
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_sanitized_share_boundary.md
+    required_output_phrases:
+      - This is a safe-infra-change case, not a sanitized-share case.
       - A bounded change plan or recommendation that names the operational surface, the validation path, and rollback or recovery notes.
     forbidden_output_phrases: []
   - skill: aoa-sanitized-share

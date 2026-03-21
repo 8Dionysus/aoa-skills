@@ -6,23 +6,23 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 ## Summary
 
 - total skills: 14
-- adjacency cases: 17
+- adjacency cases: 20
 - skills with required adjacency coverage: 6
 - required adjacency gaps: 0
 
 | name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | ready | blockers |
 |---|---|---|---|---:|---:|---|---|---|
 | aoa-adr-write | evaluated | core | false | 1 | 0 | aoa-source-of-truth-check | true | - |
-| aoa-approval-gate-check | evaluated | risk | false | 2 | 0 | aoa-dry-run-first, aoa-safe-infra-change | true | - |
+| aoa-approval-gate-check | evaluated | risk | false | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | true | - |
 | aoa-bounded-context-map | canonical | core | true | 1 | 0 | aoa-contract-test | true | - |
 | aoa-change-protocol | canonical | core | true | 1 | 0 | aoa-tdd-slice | true | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | true | - |
 | aoa-core-logic-boundary | evaluated | core | false | 1 | 0 | aoa-port-adapter-refactor | true | - |
-| aoa-dry-run-first | evaluated | risk | false | 1 | 0 | aoa-approval-gate-check | true | - |
+| aoa-dry-run-first | evaluated | risk | false | 2 | 0 | aoa-approval-gate-check, aoa-sanitized-share | true | - |
 | aoa-invariant-coverage-audit | canonical | core | true | 1 | 0 | aoa-property-invariants | true | - |
 | aoa-port-adapter-refactor | evaluated | core | false | 1 | 0 | aoa-core-logic-boundary | true | - |
 | aoa-property-invariants | canonical | core | true | 1 | 0 | aoa-invariant-coverage-audit | true | - |
-| aoa-safe-infra-change | evaluated | risk | false | 1 | 0 | aoa-approval-gate-check | true | - |
+| aoa-safe-infra-change | evaluated | risk | false | 2 | 0 | aoa-approval-gate-check, aoa-sanitized-share | true | - |
 | aoa-sanitized-share | evaluated | risk | false | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | true | - |
 | aoa-source-of-truth-check | evaluated | core | false | 1 | 0 | aoa-adr-write | true | - |
 | aoa-tdd-slice | canonical | core | true | 1 | 0 | aoa-change-protocol | true | - |
@@ -38,9 +38,12 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-port-adapter-refactor | aoa-core-logic-boundary | port_adapter_refactor_vs_core_logic_boundary | use | - |
 | aoa-approval-gate-check | aoa-dry-run-first | approval_gate_vs_preview_and_infra_boundary | use | - |
 | aoa-approval-gate-check | aoa-safe-infra-change | approval_gate_vs_safe_infra_boundary | use | - |
+| aoa-approval-gate-check | aoa-sanitized-share | approval_gate_vs_sanitized_share_boundary | use | - |
 | aoa-contract-test | aoa-bounded-context-map | contract_test_vs_bounded_context_map_boundary | use | - |
 | aoa-dry-run-first | aoa-approval-gate-check | dry_run_first_vs_approval_gate_boundary | use | - |
+| aoa-dry-run-first | aoa-sanitized-share | dry_run_first_vs_sanitized_share_boundary | use | - |
 | aoa-safe-infra-change | aoa-approval-gate-check | safe_infra_change_vs_approval_gate_boundary | use | - |
+| aoa-safe-infra-change | aoa-sanitized-share | safe_infra_change_vs_sanitized_share_boundary | use | - |
 | aoa-sanitized-share | aoa-approval-gate-check | sanitized_share_vs_approval_gate_boundary | use | - |
 | aoa-sanitized-share | aoa-dry-run-first | sanitized_share_vs_dry_run_first_boundary | use | - |
 | aoa-sanitized-share | aoa-safe-infra-change | sanitized_share_vs_safe_infra_change_boundary | use | - |

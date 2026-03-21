@@ -65,6 +65,15 @@
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_safe_infra_boundary.md"
     },
     {
+      "adjacent_skill": "aoa-sanitized-share",
+      "blockers": [],
+      "case_id": "approval_gate_vs_sanitized_share_boundary",
+      "expected": "use",
+      "prompt": "Compare deciding whether a sensitive incident artifact may be shared at all with preparing a sanitized version for broader circulation.",
+      "skill": "aoa-approval-gate-check",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_sanitized_share_boundary.md"
+    },
+    {
       "adjacent_skill": "aoa-bounded-context-map",
       "blockers": [],
       "case_id": "contract_test_vs_bounded_context_map_boundary",
@@ -83,6 +92,15 @@
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_approval_gate_boundary.md"
     },
     {
+      "adjacent_skill": "aoa-sanitized-share",
+      "blockers": [],
+      "case_id": "dry_run_first_vs_sanitized_share_boundary",
+      "expected": "use",
+      "prompt": "Compare preview-first planning for a risky operational change with preparing a sanitized share of the same change and choose the clearer fit before execution.",
+      "skill": "aoa-dry-run-first",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_sanitized_share_boundary.md"
+    },
+    {
       "adjacent_skill": "aoa-approval-gate-check",
       "blockers": [],
       "case_id": "safe_infra_change_vs_approval_gate_boundary",
@@ -90,6 +108,15 @@
       "prompt": "Compare a bounded infrastructure change with authority classification for the same operational surface.",
       "skill": "aoa-safe-infra-change",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_approval_gate_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-sanitized-share",
+      "blockers": [],
+      "case_id": "safe_infra_change_vs_sanitized_share_boundary",
+      "expected": "use",
+      "prompt": "Compare planning a bounded operational change with preparing a sanitized share of it and choose the clearer fit when the system still needs the change itself.",
+      "skill": "aoa-safe-infra-change",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_sanitized_share_boundary.md"
     },
     {
       "adjacent_skill": "aoa-approval-gate-check",
@@ -174,10 +201,11 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 2,
+      "adjacency_use_count": 3,
       "adjacent_skill_names": [
         "aoa-dry-run-first",
-        "aoa-safe-infra-change"
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share"
       ],
       "name": "aoa-approval-gate-check",
       "required_adjacency_coverage": false,
@@ -245,9 +273,10 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 1,
+      "adjacency_use_count": 2,
       "adjacent_skill_names": [
-        "aoa-approval-gate-check"
+        "aoa-approval-gate-check",
+        "aoa-sanitized-share"
       ],
       "name": "aoa-dry-run-first",
       "required_adjacency_coverage": false,
@@ -301,9 +330,10 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 1,
+      "adjacency_use_count": 2,
       "adjacent_skill_names": [
-        "aoa-approval-gate-check"
+        "aoa-approval-gate-check",
+        "aoa-sanitized-share"
       ],
       "name": "aoa-safe-infra-change",
       "required_adjacency_coverage": false,
