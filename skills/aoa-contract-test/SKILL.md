@@ -24,6 +24,9 @@ Use this skill when:
 
 Do not use this skill when:
 - the change is entirely local and does not affect a meaningful boundary
+- the boundary itself is still semantically unclear and naming is drifting; use `aoa-bounded-context-map`
+- the main problem is expressing a broad invariant rather than a boundary contract; use `aoa-property-invariants`
+- the main problem is auditing whether existing checks really cover a stable rule; use `aoa-invariant-coverage-audit`
 - a broad system rewrite is needed before the boundary itself is stable
 
 ## Inputs

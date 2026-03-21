@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills runtime walkthrough surface",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["walkthrough_version", "source_of_truth", "skills"],
+  "properties": {
+    "walkthrough_version": { "type": "integer", "minimum": 1 },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill_markdown",
+        "runtime_examples",
+        "review_checks",
+        "status_promotion_reviews",
+        "canonical_candidate_reviews"
+      ],
+      "properties": {
+        "skill_markdown": { "type": "string", "minLength": 1 },
+        "runtime_examples": { "type": "string", "minLength": 1 },
+        "review_checks": { "type": "string", "minLength": 1 },
+        "status_promotion_reviews": { "type": "string", "minLength": 1 },
+        "canonical_candidate_reviews": { "type": "string", "minLength": 1 }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "scope",
+          "status",
+          "invocation_mode",
+          "skill_path",
+          "pick_summary",
+          "use_when",
+          "do_not_use_when",
+          "inspection_order",
+          "expand_sections",
+          "object_use_shape",
+          "support_artifacts"
+        ],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "scope": { "type": "string", "enum": ["core", "project", "risk"] },
+          "status": {
+            "type": "string",
+            "enum": ["scaffold", "linked", "reviewed", "evaluated", "canonical", "deprecated"]
+          },
+          "invocation_mode": {
+            "type": "string",
+            "enum": ["implicit-friendly", "explicit-preferred", "explicit-only"]
+          },
+          "skill_path": { "type": "string", "minLength": 1 },
+          "pick_summary": { "type": "string", "minLength": 1 },
+          "use_when": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "do_not_use_when": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "inspection_order": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "prefixItems": [
+              { "const": "capsule" },
+              { "const": "sections" },
+              { "const": "full" },
+              { "const": "evidence" }
+            ],
+            "items": false
+          },
+          "expand_sections": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "prefixItems": [
+              { "const": "Procedure" },
+              { "const": "Contracts" },
+              { "const": "Risks and anti-patterns" },
+              { "const": "Verification" }
+            ],
+            "items": false
+          },
+          "object_use_shape": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "support_artifacts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "path", "selected_for_runtime_inspection"],
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "runtime_example",
+                    "review_checklist",
+                    "promotion_review",
+                    "candidate_review"
+                  ]
+                },
+                "path": { "type": "string", "minLength": 1 },
+                "selected_for_runtime_inspection": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

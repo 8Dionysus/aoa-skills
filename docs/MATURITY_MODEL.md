@@ -2,6 +2,7 @@
 
 This document defines the current public maturity ladder for `aoa-skills`
 and the minimum evidence expected before a skill changes status.
+The repository currently has 14 public skills, with canonical, evaluated, and pending-lineage surfaces already represented.
 
 ## Status ladder
 
@@ -95,6 +96,7 @@ That does not replace human review or promotion judgment.
 
 Use this checklist when proposing any status change beyond `scaffold`:
 - bridge metadata is current and honest
+- runtime selection and inspection stay separate from public-product signaling
 - runtime `SKILL.md` remains self-contained
 - evaluation evidence is readable in `docs/EVALUATION_PATH.md`
 - the derived evaluation matrix in `../generated/skill_evaluation_matrix.md` matches the current fixtures and snapshot cases
@@ -102,6 +104,7 @@ Use this checklist when proposing any status change beyond `scaffold`:
 - contracts, risks, and verification guidance are still coherent
 - support artifacts and evaluation evidence match the promoted claim
 - invocation policy still matches the skill's risk surface
+- public-product and governance signals remain readable in `docs/PUBLIC_SURFACE.md`
 
 ## First canonical candidates
 
@@ -122,3 +125,4 @@ For remaining canonical-candidate work, reviewers should explicitly assess:
 - whether the policy stance is appropriate for the operational surface
 - whether the skill is reusable beyond one project family without hidden assumptions
 - whether the canonical gate checks are already satisfied without exceptions
+- whether the review record clearly separates promotion blockers from drift-review follow-up

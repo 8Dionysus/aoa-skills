@@ -25,6 +25,8 @@ Use this skill when:
 
 Do not use this skill when:
 - the behavior is mostly about presentation details or narrow snapshots
+- the main problem is checking whether existing checks really cover the invariant; use `aoa-invariant-coverage-audit` first
+- the main problem is a boundary contract rather than a stable invariant; use `aoa-contract-test`
 - no meaningful invariant is yet understood
 
 ## Inputs

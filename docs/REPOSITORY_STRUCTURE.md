@@ -8,11 +8,14 @@
 - `docs/RUNTIME_PATH.md` — main runtime guide for `pick -> inspect -> expand -> object use`
 - `docs/PUBLIC_SURFACE.md` — public guide to the current governance and product-signaling layer
 - `docs/PROMOTION_PATH.md` — public repository convention for maturity transitions
+- `docs/OVERLAY_SPEC.md` — repo-local contract for thin project overlays and stub-only downstream adaptation
 - `docs/reviews/` — public review records for candidate and promotion work
 - `docs/reviews/canonical-candidates/` — canonical-candidate review records
 - `docs/reviews/status-promotions/` — review records for non-canonical promotion steps
 - `templates/` — templates for authoring skills and related files
 - `templates/RUNTIME_EXAMPLE.template.md` — canonical runtime example scaffold
+- `templates/PROJECT_OVERLAY.template.md` — canonical project overlay scaffold
+- `templates/PROJECT_OVERLAY_SKILL.template.md` — canonical overlayed skill scaffold
 - `skills/` — skill bundles
 - `generated/` — derived reader catalogs generated from committed skill markdown and manifests
 - `scripts/` — optional generation or validation helpers

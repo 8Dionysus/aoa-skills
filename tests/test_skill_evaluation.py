@@ -27,6 +27,21 @@ SNAPSHOT_SECTIONS = [
     "Boundary notes",
     "Verification hooks",
 ]
+ADJACENCY_EXPECTATIONS = {
+    "aoa-bounded-context-map": ["aoa-contract-test"],
+    "aoa-change-protocol": ["aoa-tdd-slice"],
+    "aoa-contract-test": ["aoa-bounded-context-map"],
+    "aoa-tdd-slice": ["aoa-change-protocol"],
+    "aoa-core-logic-boundary": ["aoa-port-adapter-refactor"],
+    "aoa-port-adapter-refactor": ["aoa-core-logic-boundary"],
+    "aoa-approval-gate-check": ["aoa-dry-run-first", "aoa-safe-infra-change"],
+    "aoa-dry-run-first": ["aoa-approval-gate-check"],
+    "aoa-safe-infra-change": ["aoa-approval-gate-check"],
+    "aoa-source-of-truth-check": ["aoa-adr-write"],
+    "aoa-adr-write": ["aoa-source-of-truth-check"],
+    "aoa-invariant-coverage-audit": ["aoa-property-invariants"],
+    "aoa-property-invariants": ["aoa-invariant-coverage-audit"],
+}
 
 
 def load_fixtures() -> dict:
@@ -117,6 +132,50 @@ class SkillEvaluationTests(unittest.TestCase):
 
     def test_snapshot_files_follow_heading_contract_and_exist(self) -> None:
         for case in self.fixtures["snapshot_cases"]:
+            with self.subTest(case=case["case_id"], skill=case["skill"]):
+                snapshot_path = REPO_ROOT / case["snapshot_path"]
+                self.assertTrue(snapshot_path.is_file())
+                self.assertEqual(
+                    SNAPSHOTS_DIR / case["skill"],
+                    snapshot_path.parent,
+                )
+                snapshot_text = snapshot_path.read_text(encoding="utf-8")
+                for heading in SNAPSHOT_SECTIONS:
+                    self.assertIn(f"## {heading}", snapshot_text)
+
+                normalized = " ".join(snapshot_text.lower().split())
+                for phrase in case["required_output_phrases"]:
+                    self.assertIn(" ".join(phrase.lower().split()), normalized)
+                for phrase in case["forbidden_output_phrases"]:
+                    self.assertNotIn(" ".join(phrase.lower().split()), normalized)
+
+    def test_adjacency_cases_cover_requested_cohorts(self) -> None:
+        adjacency_cases = self.fixtures["adjacency_cases"]
+        actual_by_skill: dict[str, list[dict]] = {}
+        for case in adjacency_cases:
+            actual_by_skill.setdefault(case["skill"], []).append(case)
+
+        self.assertEqual(set(ADJACENCY_EXPECTATIONS), set(actual_by_skill))
+        self.assertEqual(
+            sum(len(adjacent_skills) for adjacent_skills in ADJACENCY_EXPECTATIONS.values()),
+            len(adjacency_cases),
+        )
+
+        for skill_name, adjacent_skills in ADJACENCY_EXPECTATIONS.items():
+            with self.subTest(skill=skill_name):
+                skill_cases = actual_by_skill[skill_name]
+                self.assertEqual(
+                    sorted(adjacent_skills),
+                    sorted(case["adjacent_skill"] for case in skill_cases),
+                )
+                for case in skill_cases:
+                    self.assertTrue(case["case_id"])
+                    self.assertTrue(case["prompt"].strip())
+                    self.assertEqual("use", case["expected"])
+                    self.assertTrue(case["snapshot_path"].endswith(".md"))
+
+    def test_adjacency_snapshots_follow_heading_contract_and_exist(self) -> None:
+        for case in self.fixtures["adjacency_cases"]:
             with self.subTest(case=case["case_id"], skill=case["skill"]):
                 snapshot_path = REPO_ROOT / case["snapshot_path"]
                 self.assertTrue(snapshot_path.is_file())

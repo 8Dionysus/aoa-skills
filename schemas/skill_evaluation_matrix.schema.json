@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills evaluation evidence matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["evaluation_matrix_version", "source_of_truth", "skills"],
+  "properties": {
+    "evaluation_matrix_version": { "type": "integer", "minimum": 1 },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill_markdown",
+        "runtime_examples",
+        "review_checks",
+        "status_promotion_reviews",
+        "canonical_candidate_reviews",
+        "evaluation_fixtures",
+        "evaluation_snapshots"
+      ],
+      "properties": {
+        "skill_markdown": { "type": "string", "minLength": 1 },
+        "runtime_examples": { "type": "string", "minLength": 1 },
+        "review_checks": { "type": "string", "minLength": 1 },
+        "status_promotion_reviews": { "type": "string", "minLength": 1 },
+        "canonical_candidate_reviews": { "type": "string", "minLength": 1 },
+        "evaluation_fixtures": { "type": "string", "minLength": 1 },
+        "evaluation_snapshots": { "type": "string", "minLength": 1 }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "scope",
+          "invocation_mode",
+          "skill_path",
+          "autonomy_check_count",
+          "use_case_count",
+          "do_not_use_case_count",
+          "use_snapshot_count",
+          "do_not_use_snapshot_count",
+          "selected_runtime_artifact_path",
+          "promotion_review_path",
+          "candidate_review_path",
+          "canonical_eval_ready",
+          "canonical_eval_blockers"
+        ],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "status": {
+            "type": "string",
+            "enum": ["scaffold", "linked", "reviewed", "evaluated", "canonical", "deprecated"]
+          },
+          "scope": { "type": "string", "enum": ["core", "project", "risk"] },
+          "invocation_mode": {
+            "type": "string",
+            "enum": ["implicit-friendly", "explicit-preferred", "explicit-only"]
+          },
+          "skill_path": { "type": "string", "minLength": 1 },
+          "autonomy_check_count": { "type": "integer", "minimum": 0 },
+          "use_case_count": { "type": "integer", "minimum": 0 },
+          "do_not_use_case_count": { "type": "integer", "minimum": 0 },
+          "use_snapshot_count": { "type": "integer", "minimum": 0 },
+          "do_not_use_snapshot_count": { "type": "integer", "minimum": 0 },
+          "selected_runtime_artifact_path": { "type": ["string", "null"] },
+          "promotion_review_path": { "type": ["string", "null"] },
+          "candidate_review_path": { "type": ["string", "null"] },
+          "canonical_eval_ready": { "type": "boolean" },
+          "canonical_eval_blockers": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

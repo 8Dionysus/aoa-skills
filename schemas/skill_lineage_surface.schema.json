@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills lineage readiness surface",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lineage_surface_version", "source_of_truth", "cohorts", "skills"],
+  "properties": {
+    "lineage_surface_version": { "type": "integer", "minimum": 1 },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skill_markdown", "technique_manifest"],
+      "properties": {
+        "skill_markdown": { "type": "string", "minLength": 1 },
+        "technique_manifest": { "type": "string", "minLength": 1 }
+      }
+    },
+    "cohorts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["published_lineage", "pending_lineage"],
+      "properties": {
+        "published_lineage": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "pending_lineage": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "scope",
+          "skill_path",
+          "lineage_state",
+          "published_technique_count",
+          "pending_technique_count",
+          "tbd_ref_count",
+          "manifest_canonical_path_ready",
+          "lineage_blockers"
+        ],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "status": {
+            "type": "string",
+            "enum": ["scaffold", "linked", "reviewed", "evaluated", "canonical", "deprecated"]
+          },
+          "scope": { "type": "string", "enum": ["core", "project", "risk"] },
+          "skill_path": { "type": "string", "minLength": 1 },
+          "lineage_state": { "type": "string", "enum": ["published", "pending"] },
+          "published_technique_count": { "type": "integer", "minimum": 0 },
+          "pending_technique_count": { "type": "integer", "minimum": 0 },
+          "tbd_ref_count": { "type": "integer", "minimum": 0 },
+          "manifest_canonical_path_ready": { "type": "boolean" },
+          "lineage_blockers": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

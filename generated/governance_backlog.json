@@ -1,0 +1,260 @@
+{
+  "cohorts": {
+    "blocked_by_pending_lineage": [
+      "aoa-adr-write",
+      "aoa-approval-gate-check",
+      "aoa-core-logic-boundary",
+      "aoa-dry-run-first",
+      "aoa-port-adapter-refactor",
+      "aoa-safe-infra-change",
+      "aoa-sanitized-share",
+      "aoa-source-of-truth-check"
+    ],
+    "candidate_ready_without_review": [],
+    "canonical_maintenance": [
+      "aoa-change-protocol",
+      "aoa-tdd-slice"
+    ],
+    "docs_truth_sync": []
+  },
+  "governance_backlog_version": 1,
+  "skills": [
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-adr-write",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-approval-gate-check",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "risk",
+      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "published",
+      "name": "aoa-bounded-context-map",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "published",
+      "name": "aoa-change-protocol",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "status": "canonical"
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "published",
+      "name": "aoa-contract-test",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-core-logic-boundary",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-dry-run-first",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "risk",
+      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "published",
+      "name": "aoa-invariant-coverage-audit",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-port-adapter-refactor",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "published",
+      "name": "aoa-property-invariants",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-safe-infra-change",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "risk",
+      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-sanitized-share",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "risk",
+      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "pending",
+      "name": "aoa-source-of-truth-check",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "lineage_state": "published",
+      "name": "aoa-tdd-slice",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "scope": "core",
+      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "status": "canonical"
+    }
+  ],
+  "source_of_truth": {
+    "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
+    "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
+    "evaluation_matrix": "generated/skill_evaluation_matrix.json",
+    "public_surface": "generated/public_surface.json",
+    "skill_markdown": "skills/*/SKILL.md",
+    "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
+    "technique_manifest": "skills/*/techniques.yaml"
+  }
+}

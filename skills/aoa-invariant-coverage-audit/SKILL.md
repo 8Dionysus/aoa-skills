@@ -22,6 +22,7 @@ Use this skill when:
 - you need to turn a loose example set into a bounded coverage audit
 
 Do not use this skill when:
+- the main problem is defining the invariant itself rather than auditing coverage; use `aoa-property-invariants` first
 - the invariant itself is still unknown and you need discovery work first
 - the task is mostly about presentation details or a narrow snapshot
 - you need a full boundary contract review rather than a coverage audit

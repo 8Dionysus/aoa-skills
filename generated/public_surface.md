@@ -22,10 +22,10 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | status | scope | invocation | lineage | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|
-| aoa-bounded-context-map | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-bounded-context-map.md` | - |
-| aoa-contract-test | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-contract-test.md` | - |
-| aoa-invariant-coverage-audit | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | - |
-| aoa-property-invariants | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-property-invariants.md` | - |
+| aoa-bounded-context-map | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-bounded-context-map.md` | `docs/reviews/canonical-candidates/aoa-bounded-context-map.md` |
+| aoa-contract-test | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-contract-test.md` | `docs/reviews/canonical-candidates/aoa-contract-test.md` |
+| aoa-invariant-coverage-audit | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md` |
+| aoa-property-invariants | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-property-invariants.md` | `docs/reviews/canonical-candidates/aoa-property-invariants.md` |
 
 ## Blocked by pending lineage
 

@@ -11,7 +11,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a decision changes structure, boundaries, tooling, or workflow expectations\n- future contributors will need to know why a path was chosen\n- several plausible options existed and the reasoning matters\n- the team or project risks repeating the same debate later\n\nDo not use this skill when:\n- the change is tiny and self-evident\n- the note would only restate an obvious diff with no real decision content\n- the main problem is unclear authoritative documentation rather than decision rationale; use `aoa-source-of-truth-check` first",
+          "content_markdown": "Use this skill when:\n- a decision changes structure, boundaries, tooling, or workflow expectations\n- future contributors will need to know why a path was chosen\n- several plausible options existed and the reasoning matters\n- the team or project risks repeating the same debate later\n\nDo not use this skill when:\n- the change is tiny and self-evident\n- the note would only restate an obvious diff with no real decision content\n- the main problem is unclear authoritative documentation rather than decision rationale; use `aoa-source-of-truth-check` first\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -127,7 +127,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a project mixes several domains or subsystems\n- naming is drifting or overloaded\n- the task needs a clearer boundary before coding safely\n- an agent is likely to confuse nearby concepts without sharper separation\n\nDo not use this skill when:\n- the change is tiny and fully local\n- the boundary is already clear and agreed on",
+          "content_markdown": "Use this skill when:\n- a project mixes several domains or subsystems\n- naming is drifting or overloaded\n- the task needs a clearer boundary before coding safely\n- an agent is likely to confuse nearby concepts without sharper separation\n\nDo not use this skill when:\n- the change is tiny and fully local\n- the boundary is already clear and agreed on, and the real task is validating the interface contract; use `aoa-contract-test`\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -243,7 +243,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- two modules or services interact across a meaningful boundary\n- a smoke path or interface needs a stable validation contract\n- a change risks breaking downstream assumptions\n\nDo not use this skill when:\n- the change is entirely local and does not affect a meaningful boundary\n- a broad system rewrite is needed before the boundary itself is stable",
+          "content_markdown": "Use this skill when:\n- two modules or services interact across a meaningful boundary\n- a smoke path or interface needs a stable validation contract\n- a change risks breaking downstream assumptions\n\nDo not use this skill when:\n- the change is entirely local and does not affect a meaningful boundary\n- the boundary itself is still semantically unclear and naming is drifting; use `aoa-bounded-context-map`\n- the main problem is expressing a broad invariant rather than a boundary contract; use `aoa-property-invariants`\n- the main problem is auditing whether existing checks really cover a stable rule; use `aoa-invariant-coverage-audit`\n- a broad system rewrite is needed before the boundary itself is stable",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -301,7 +301,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a module mixes stable rules with wiring or execution detail\n- the same logic is starting to appear in several places\n- tests or reviews are muddy because the center of responsibility is unclear\n- you need to decide whether something belongs in the core or at the edges\n\nDo not use this skill when:\n- the task is a tiny isolated fix with no meaningful boundary ambiguity\n- the code is already clearly partitioned\n- the result would only rename folders without improving understanding\n- the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use `aoa-port-adapter-refactor`",
+          "content_markdown": "Use this skill when:\n- a module mixes stable rules with wiring or execution detail\n- the same logic is starting to appear in several places\n- tests or reviews are muddy because the center of responsibility is unclear\n- you need to decide whether something belongs in the core or at the edges\n\nDo not use this skill when:\n- the task is a tiny isolated fix with no meaningful boundary ambiguity\n- the code is already clearly partitioned\n- the result would only rename folders without improving understanding\n- the main problem is recording decision rationale rather than boundary placement; use `aoa-adr-write` first\n- the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use `aoa-port-adapter-refactor`",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -417,7 +417,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- an existing test or check surface needs a review for invariant strength\n- the question is whether current checks really constrain the stable rule\n- you need to turn a loose example set into a bounded coverage audit\n\nDo not use this skill when:\n- the invariant itself is still unknown and you need discovery work first\n- the task is mostly about presentation details or a narrow snapshot\n- you need a full boundary contract review rather than a coverage audit",
+          "content_markdown": "Use this skill when:\n- an existing test or check surface needs a review for invariant strength\n- the question is whether current checks really constrain the stable rule\n- you need to turn a loose example set into a bounded coverage audit\n\nDo not use this skill when:\n- the main problem is defining the invariant itself rather than auditing coverage; use `aoa-property-invariants` first\n- the invariant itself is still unknown and you need discovery work first\n- the task is mostly about presentation details or a narrow snapshot\n- you need a full boundary contract review rather than a coverage audit",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -533,7 +533,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a rule should hold across many inputs or states\n- examples alone feel too narrow\n- the system has conservation, monotonicity, idempotency, or structural invariants\n- safety or correctness depends on broad input coverage\n\nDo not use this skill when:\n- the behavior is mostly about presentation details or narrow snapshots\n- no meaningful invariant is yet understood",
+          "content_markdown": "Use this skill when:\n- a rule should hold across many inputs or states\n- examples alone feel too narrow\n- the system has conservation, monotonicity, idempotency, or structural invariants\n- safety or correctness depends on broad input coverage\n\nDo not use this skill when:\n- the behavior is mostly about presentation details or narrow snapshots\n- the main problem is checking whether existing checks really cover the invariant; use `aoa-invariant-coverage-audit` first\n- the main problem is a boundary contract rather than a stable invariant; use `aoa-contract-test`\n- no meaningful invariant is yet understood",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -707,7 +707,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a repository has several docs that may overlap or conflict\n- contributors may not know which file to trust first\n- a change touches docs, process, or operational guidance and the question is which file is authoritative\n- confusion exists between overview docs and authoritative docs\n\nDo not use this skill when:\n- the repository is tiny and has no meaningful source-of-truth ambiguity\n- the task is purely code-local with no documentation or policy impact\n- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`\n- the main problem is broader policy design rather than document authority or ownership",
+          "content_markdown": "Use this skill when:\n- a repository has several docs that may overlap or conflict\n- contributors may not know which file to trust first\n- a change touches docs, process, or operational guidance and the question is which file is authoritative\n- confusion exists between overview docs and authoritative docs\n\nDo not use this skill when:\n- the repository is tiny and has no meaningful source-of-truth ambiguity\n- the task is purely code-local with no documentation or policy impact\n- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first\n- the main problem is broader policy design rather than document authority or ownership",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -765,7 +765,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a behavior change can be expressed as tests before implementation\n- the task fits a bounded slice rather than a broad rewrite\n- confidence and regression resistance matter\n\nDo not use this skill when:\n- the task is purely exploratory and behavior is still undefined\n- the task is mostly one-off glue with no reusable logic\n- broader architectural restructuring is the real need",
+          "content_markdown": "Use this skill when:\n- a behavior change can be expressed as tests before implementation\n- the task fits a bounded slice rather than a broad rewrite\n- confidence and regression resistance matter\n\nDo not use this skill when:\n- the task is purely exploratory and behavior is still undefined\n- the task is mostly one-off glue with no reusable logic\n- the main problem is a stable interface or boundary contract rather than a feature slice; use `aoa-contract-test`\n- the main problem is invariant coverage rather than slice implementation; use `aoa-property-invariants`\n- broader architectural restructuring is the real need",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },

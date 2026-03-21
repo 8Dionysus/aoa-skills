@@ -1,0 +1,1356 @@
+{
+  "edges": [
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_adr_write",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_adr_write",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_adr_write",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_adr_write",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_adr_write",
+      "target": "technique_AOA_T_PENDING_ADR_WRITE"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "scope_risk"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "technique_AOA_T_PENDING_APPROVAL_GATE_CHECK"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "technique_AOA_T_0016"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_change_protocol",
+      "target": "status_canonical"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_change_protocol",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_change_protocol",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_change_protocol",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_change_protocol",
+      "target": "technique_AOA_T_0001"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_change_protocol",
+      "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_contract_test",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_contract_test",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_contract_test",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_contract_test",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_contract_test",
+      "target": "technique_AOA_T_0003"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_contract_test",
+      "target": "technique_AOA_T_0015"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "technique_AOA_T_PENDING_CORE_LOGIC_BOUNDARY"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_dry_run_first",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_dry_run_first",
+      "target": "scope_risk"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_dry_run_first",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_dry_run_first",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_dry_run_first",
+      "target": "technique_AOA_T_PENDING_DRY_RUN_FIRST"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_dry_run_first",
+      "target": "technique_AOA_T_0004"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "technique_AOA_T_0017"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "technique_AOA_T_PENDING_PORT_ADAPTER_REFACTOR"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_property_invariants",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_property_invariants",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_property_invariants",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_property_invariants",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_property_invariants",
+      "target": "technique_AOA_T_0017"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_property_invariants",
+      "target": "technique_AOA_T_0007"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "scope_risk"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "technique_AOA_T_PENDING_SAFE_INFRA_CHANGE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "technique_AOA_T_0001"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_sanitized_share",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_sanitized_share",
+      "target": "scope_risk"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_sanitized_share",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_sanitized_share",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_sanitized_share",
+      "target": "technique_AOA_T_PENDING_SANITIZED_SHARE"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "technique_AOA_T_PENDING_SOURCE_OF_TRUTH_CHECK"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_tdd_slice",
+      "target": "status_canonical"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_tdd_slice",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_tdd_slice",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_tdd_slice",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_tdd_slice",
+      "target": "technique_AOA_T_0014"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_tdd_slice",
+      "target": "technique_AOA_T_0001"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "skill_aoa_adr_write",
+      "label": "aoa-adr-write",
+      "type": "skill"
+    },
+    {
+      "id": "status_evaluated",
+      "label": "status: evaluated",
+      "type": "status"
+    },
+    {
+      "id": "scope_core",
+      "label": "scope: core",
+      "type": "scope"
+    },
+    {
+      "id": "lineage_pending",
+      "label": "lineage: pending",
+      "type": "lineage"
+    },
+    {
+      "id": "policy_explicit_preferred",
+      "label": "invocation: explicit-preferred",
+      "type": "policy"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_ADR_WRITE",
+      "label": "AOA-T-PENDING-ADR-WRITE",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_approval_gate_check",
+      "label": "aoa-approval-gate-check",
+      "type": "skill"
+    },
+    {
+      "id": "scope_risk",
+      "label": "scope: risk",
+      "type": "scope"
+    },
+    {
+      "id": "policy_explicit_only",
+      "label": "invocation: explicit-only",
+      "type": "policy"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_APPROVAL_GATE_CHECK",
+      "label": "AOA-T-PENDING-APPROVAL-GATE-CHECK",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_bounded_context_map",
+      "label": "aoa-bounded-context-map",
+      "type": "skill"
+    },
+    {
+      "id": "lineage_published",
+      "label": "lineage: published",
+      "type": "lineage"
+    },
+    {
+      "id": "technique_AOA_T_0016",
+      "label": "AOA-T-0016",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0002",
+      "label": "AOA-T-0002",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_change_protocol",
+      "label": "aoa-change-protocol",
+      "type": "skill"
+    },
+    {
+      "id": "status_canonical",
+      "label": "status: canonical",
+      "type": "status"
+    },
+    {
+      "id": "technique_AOA_T_0001",
+      "label": "AOA-T-0001",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_contract_test",
+      "label": "aoa-contract-test",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_0003",
+      "label": "AOA-T-0003",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0015",
+      "label": "AOA-T-0015",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_core_logic_boundary",
+      "label": "aoa-core-logic-boundary",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_CORE_LOGIC_BOUNDARY",
+      "label": "AOA-T-PENDING-CORE-LOGIC-BOUNDARY",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_dry_run_first",
+      "label": "aoa-dry-run-first",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_DRY_RUN_FIRST",
+      "label": "AOA-T-PENDING-DRY-RUN-FIRST",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0004",
+      "label": "AOA-T-0004",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_invariant_coverage_audit",
+      "label": "aoa-invariant-coverage-audit",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_0017",
+      "label": "AOA-T-0017",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_port_adapter_refactor",
+      "label": "aoa-port-adapter-refactor",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_PORT_ADAPTER_REFACTOR",
+      "label": "AOA-T-PENDING-PORT-ADAPTER-REFACTOR",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_property_invariants",
+      "label": "aoa-property-invariants",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_0007",
+      "label": "AOA-T-0007",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_safe_infra_change",
+      "label": "aoa-safe-infra-change",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_SAFE_INFRA_CHANGE",
+      "label": "AOA-T-PENDING-SAFE-INFRA-CHANGE",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_sanitized_share",
+      "label": "aoa-sanitized-share",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_SANITIZED_SHARE",
+      "label": "AOA-T-PENDING-SANITIZED-SHARE",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_source_of_truth_check",
+      "label": "aoa-source-of-truth-check",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_SOURCE_OF_TRUTH_CHECK",
+      "label": "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_tdd_slice",
+      "label": "aoa-tdd-slice",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_0014",
+      "label": "AOA-T-0014",
+      "type": "technique"
+    }
+  ],
+  "skill_graph_version": 1,
+  "skills": [
+    {
+      "bundle_files": [
+        "skills/aoa-adr-write/SKILL.md",
+        "skills/aoa-adr-write/techniques.yaml",
+        "skills/aoa-adr-write/agents/openai.yaml",
+        "skills/aoa-adr-write/examples/example.md",
+        "docs/reviews/status-promotions/aoa-adr-write.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "37cffa64025055da49db8806a1d432354a3b3e7d8ff058cab390c90b0d8256d4",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "pending",
+      "name": "aoa-adr-write",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "skill_revision": "37cffa640250",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-adr-write/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-adr-write.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-ADR-WRITE"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-approval-gate-check/SKILL.md",
+        "skills/aoa-approval-gate-check/techniques.yaml",
+        "skills/aoa-approval-gate-check/agents/openai.yaml",
+        "skills/aoa-approval-gate-check/examples/runtime.md",
+        "skills/aoa-approval-gate-check/checks/review.md",
+        "docs/reviews/status-promotions/aoa-approval-gate-check.md",
+        "docs/reviews/canonical-candidates/aoa-approval-gate-check.md"
+      ],
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "c33c95187a37af21a7d7d3ad0091b697b30a37e6abaa4d3c7635d89f92d3bf93",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-approval-gate-check",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "skill_revision": "c33c95187a37",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-approval-gate-check/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-approval-gate-check/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-APPROVAL-GATE-CHECK"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-bounded-context-map/SKILL.md",
+        "skills/aoa-bounded-context-map/techniques.yaml",
+        "skills/aoa-bounded-context-map/agents/openai.yaml",
+        "skills/aoa-bounded-context-map/examples/example.md",
+        "docs/reviews/status-promotions/aoa-bounded-context-map.md",
+        "docs/reviews/canonical-candidates/aoa-bounded-context-map.md"
+      ],
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "7472939c1a70720fe91e082050bd1afd1b74e9a359248e8c93d71410079d9e24",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-bounded-context-map",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "skill_revision": "7472939c1a70",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-bounded-context-map/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0016",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-change-protocol/SKILL.md",
+        "skills/aoa-change-protocol/techniques.yaml",
+        "skills/aoa-change-protocol/agents/openai.yaml",
+        "skills/aoa-change-protocol/examples/runtime.md",
+        "skills/aoa-change-protocol/checks/review.md",
+        "docs/reviews/canonical-candidates/aoa-change-protocol.md"
+      ],
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "3713c73025896ecf8697936de0d7f112d8fc761610b10dfbca7fc2b5169c397c",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-change-protocol",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "skill_revision": "3713c7302589",
+      "status": "canonical",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-change-protocol/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-change-protocol/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-contract-test/SKILL.md",
+        "skills/aoa-contract-test/techniques.yaml",
+        "skills/aoa-contract-test/agents/openai.yaml",
+        "skills/aoa-contract-test/examples/example.md",
+        "docs/reviews/status-promotions/aoa-contract-test.md",
+        "docs/reviews/canonical-candidates/aoa-contract-test.md"
+      ],
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "71ab98f05f4ebf30ff2700543fff26b8828c8140342cef51717ff05225e2d486",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-contract-test",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "skill_revision": "71ab98f05f4e",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-contract-test/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-contract-test.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0003",
+        "AOA-T-0015"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-core-logic-boundary/SKILL.md",
+        "skills/aoa-core-logic-boundary/techniques.yaml",
+        "skills/aoa-core-logic-boundary/agents/openai.yaml",
+        "skills/aoa-core-logic-boundary/examples/example.md",
+        "docs/reviews/status-promotions/aoa-core-logic-boundary.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "6b9ecd96d9237cdde43d183a92b72895da656bdd8396f7055df5056990dfde72",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "pending",
+      "name": "aoa-core-logic-boundary",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "skill_revision": "6b9ecd96d923",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-core-logic-boundary/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-CORE-LOGIC-BOUNDARY"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-dry-run-first/SKILL.md",
+        "skills/aoa-dry-run-first/techniques.yaml",
+        "skills/aoa-dry-run-first/agents/openai.yaml",
+        "skills/aoa-dry-run-first/examples/runtime.md",
+        "skills/aoa-dry-run-first/checks/review.md",
+        "docs/reviews/status-promotions/aoa-dry-run-first.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "ea1aeb4e553db0aacd7d96ec1abee69f294d58688d317ad076be5ad4f62706ec",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-dry-run-first",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "skill_revision": "ea1aeb4e553d",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-dry-run-first/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-dry-run-first/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-DRY-RUN-FIRST",
+        "AOA-T-0004"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-invariant-coverage-audit/SKILL.md",
+        "skills/aoa-invariant-coverage-audit/techniques.yaml",
+        "skills/aoa-invariant-coverage-audit/agents/openai.yaml",
+        "skills/aoa-invariant-coverage-audit/examples/example.md",
+        "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
+        "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md"
+      ],
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "01449f2922af4a319a8ab37b74922bc29ee49f98d5fd35f64b9aea30134d8792",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-invariant-coverage-audit",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "skill_revision": "01449f2922af",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-invariant-coverage-audit/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0017"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-port-adapter-refactor/SKILL.md",
+        "skills/aoa-port-adapter-refactor/techniques.yaml",
+        "skills/aoa-port-adapter-refactor/agents/openai.yaml",
+        "skills/aoa-port-adapter-refactor/examples/example.md",
+        "docs/reviews/status-promotions/aoa-port-adapter-refactor.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "fd718946fc415be52c0422d525fe490684e46ae524fd5fe5bf401991489ef092",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "pending",
+      "name": "aoa-port-adapter-refactor",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "skill_revision": "fd718946fc41",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-port-adapter-refactor/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-PORT-ADAPTER-REFACTOR"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-property-invariants/SKILL.md",
+        "skills/aoa-property-invariants/techniques.yaml",
+        "skills/aoa-property-invariants/agents/openai.yaml",
+        "skills/aoa-property-invariants/examples/example.md",
+        "docs/reviews/status-promotions/aoa-property-invariants.md",
+        "docs/reviews/canonical-candidates/aoa-property-invariants.md"
+      ],
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "27f2a4efc2014f1007898cbba38cf5ce547e7c64139196f93f5b9d28e5b1a1df",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-property-invariants",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "skill_revision": "27f2a4efc201",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-property-invariants/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-property-invariants.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0017",
+        "AOA-T-0007"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-safe-infra-change/SKILL.md",
+        "skills/aoa-safe-infra-change/techniques.yaml",
+        "skills/aoa-safe-infra-change/agents/openai.yaml",
+        "skills/aoa-safe-infra-change/examples/runtime.md",
+        "skills/aoa-safe-infra-change/checks/review.md",
+        "docs/reviews/status-promotions/aoa-safe-infra-change.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "6bcd14e30f21b2c78ef7f6164db586f72defc80699c6398a18bc76b42e9de1e7",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-safe-infra-change",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "skill_revision": "6bcd14e30f21",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-safe-infra-change/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-safe-infra-change/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SAFE-INFRA-CHANGE",
+        "AOA-T-0001"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-sanitized-share/SKILL.md",
+        "skills/aoa-sanitized-share/techniques.yaml",
+        "skills/aoa-sanitized-share/agents/openai.yaml",
+        "skills/aoa-sanitized-share/examples/runtime.md",
+        "skills/aoa-sanitized-share/checks/review.md",
+        "docs/reviews/status-promotions/aoa-sanitized-share.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "fd7d1b08ba94c48f073af6d9923ed75cdf0712f9616e7099a846e3cf25957b07",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-sanitized-share",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "skill_revision": "fd7d1b08ba94",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-sanitized-share/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-sanitized-share/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SANITIZED-SHARE"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-source-of-truth-check/SKILL.md",
+        "skills/aoa-source-of-truth-check/techniques.yaml",
+        "skills/aoa-source-of-truth-check/agents/openai.yaml",
+        "skills/aoa-source-of-truth-check/examples/example.md",
+        "docs/reviews/status-promotions/aoa-source-of-truth-check.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "377336ff4b8c71e706146a32fec24e1724f768920af04827c0dfbce806308a02",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "pending",
+      "name": "aoa-source-of-truth-check",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "skill_revision": "377336ff4b8c",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-source-of-truth-check/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-tdd-slice/SKILL.md",
+        "skills/aoa-tdd-slice/techniques.yaml",
+        "skills/aoa-tdd-slice/agents/openai.yaml",
+        "skills/aoa-tdd-slice/examples/example.md",
+        "docs/reviews/canonical-candidates/aoa-tdd-slice.md"
+      ],
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
+      "canonical_candidate_ready": true,
+      "canonical_eval_ready": true,
+      "content_hash": "8d7caed9e1c1de711aa6de2a6fe99c026bf26236ff90824860c68860debba3d8",
+      "generated_surface_versions": {
+        "boundary_matrix": 1,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 1,
+        "lineage_surface": 1,
+        "public_surface": 1,
+        "sections": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-tdd-slice",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "skill_revision": "8d7caed9e1c1",
+      "status": "canonical",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-tdd-slice/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0014",
+        "AOA-T-0001"
+      ]
+    }
+  ],
+  "source_of_truth": {
+    "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
+    "review_checks": "skills/*/checks/review.md",
+    "runtime_examples": "skills/*/examples/*.md",
+    "skill_markdown": "skills/*/SKILL.md",
+    "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
+    "technique_manifest": "skills/*/techniques.yaml"
+  }
+}

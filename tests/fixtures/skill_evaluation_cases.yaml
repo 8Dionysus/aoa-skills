@@ -320,6 +320,148 @@ trigger_cases:
     required_phrases:
       - the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`
 
+adjacency_cases:
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_vs_contract_test_boundary
+    prompt: Compare semantic boundary clarification with interface-contract validation and choose the clearer fit before coding.
+    expected: use
+    adjacent_skill: aoa-contract-test
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_vs_contract_test_boundary.md
+    required_output_phrases:
+      - This is a bounded-context-map case, not a contract-test case.
+      - A boundary clarification that separates overlapping concepts before interface validation starts.
+    forbidden_output_phrases: []
+  - skill: aoa-change-protocol
+    case_id: change_protocol_vs_tdd_slice_boundary
+    prompt: Compare a bounded change workflow with a test-first slice and choose the clearer fit for a non-trivial repo change.
+    expected: use
+    adjacent_skill: aoa-tdd-slice
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-change-protocol/change_protocol_vs_tdd_slice_boundary.md
+    required_output_phrases:
+      - This is a change-protocol case, not a tdd-slice case.
+      - An explicit plan and verification summary for the named change.
+    forbidden_output_phrases: []
+  - skill: aoa-tdd-slice
+    case_id: tdd_slice_vs_change_protocol_boundary
+    prompt: Compare a test-first feature slice with a general change workflow and choose the clearer fit for a small behavior change.
+    expected: use
+    adjacent_skill: aoa-change-protocol
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-tdd-slice/tdd_slice_vs_change_protocol_boundary.md
+    required_output_phrases:
+      - This is a tdd-slice case, not a change-protocol case.
+      - A small test-first slice with a limited implementation surface.
+    forbidden_output_phrases: []
+  - skill: aoa-core-logic-boundary
+    case_id: core_logic_boundary_vs_port_adapter_refactor
+    prompt: Compare a boundary-clarity task with a port/adapter refactor and choose the clearer fit for a mixed core and wiring module.
+    expected: use
+    adjacent_skill: aoa-port-adapter-refactor
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_vs_port_adapter_refactor.md
+    required_output_phrases:
+      - This is a core-logic-boundary case, not a port-adapter-refactor case.
+      - A boundary judgment that separates reusable core logic from adapter or wiring responsibilities.
+    forbidden_output_phrases: []
+  - skill: aoa-port-adapter-refactor
+    case_id: port_adapter_refactor_vs_core_logic_boundary
+    prompt: Compare a seam-making refactor with a core-versus-edge analysis and choose the clearer fit for a coupled dependency.
+    expected: use
+    adjacent_skill: aoa-core-logic-boundary
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-port-adapter-refactor/port_adapter_refactor_vs_core_logic_boundary.md
+    required_output_phrases:
+      - This is a port-adapter-refactor case, not a core-logic-boundary case.
+      - A seam, port, or adapter boundary that reduces coupling to the concrete dependency.
+    forbidden_output_phrases: []
+  - skill: aoa-approval-gate-check
+    case_id: approval_gate_vs_preview_and_infra_boundary
+    prompt: Compare authority classification with preview-first and safe-change paths for an operationally sensitive request.
+    expected: use
+    adjacent_skill: aoa-dry-run-first
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_preview_and_infra_boundary.md
+    required_output_phrases:
+      - This is an approval-gate case, not a dry-run-first or safe-infra-change case.
+      - A clear classification that names explicit approval or a bounded next step.
+    forbidden_output_phrases: []
+  - skill: aoa-approval-gate-check
+    case_id: approval_gate_vs_safe_infra_boundary
+    prompt: Compare authority classification with bounded infrastructure change planning for a risky operational request.
+    expected: use
+    adjacent_skill: aoa-safe-infra-change
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_safe_infra_boundary.md
+    required_output_phrases:
+      - This is an approval-gate case, not a safe-infra-change case.
+      - A clear classification that names explicit approval or a bounded next step.
+    forbidden_output_phrases: []
+  - skill: aoa-contract-test
+    case_id: contract_test_vs_bounded_context_map_boundary
+    prompt: Compare interface-contract validation with context-carving work and choose the clearer fit when the boundary is already clear.
+    expected: use
+    adjacent_skill: aoa-bounded-context-map
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-contract-test/contract_test_vs_bounded_context_map_boundary.md
+    required_output_phrases:
+      - This is a contract-test case, not a bounded-context-map case.
+      - A contract-style test or boundary assertion that captures the expected shape or behavior across the interface.
+    forbidden_output_phrases: []
+  - skill: aoa-dry-run-first
+    case_id: dry_run_first_vs_approval_gate_boundary
+    prompt: Compare preview-first planning with authority classification for a potentially risky operational change.
+    expected: use
+    adjacent_skill: aoa-approval-gate-check
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_approval_gate_boundary.md
+    required_output_phrases:
+      - This is a dry-run-first case, not an approval-gate-check case.
+      - A preview-first recommendation that explains how to inspect the change before it touches the live surface.
+    forbidden_output_phrases: []
+  - skill: aoa-safe-infra-change
+    case_id: safe_infra_change_vs_approval_gate_boundary
+    prompt: Compare a bounded infrastructure change with authority classification for the same operational surface.
+    expected: use
+    adjacent_skill: aoa-approval-gate-check
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_approval_gate_boundary.md
+    required_output_phrases:
+      - This is a safe-infra-change case, not an approval-gate-check case.
+      - A bounded change plan or recommendation that names the operational surface, the validation path, and rollback or recovery notes.
+    forbidden_output_phrases: []
+  - skill: aoa-source-of-truth-check
+    case_id: source_of_truth_check_vs_adr_write_boundary
+    prompt: Compare document-authority clarification with decision rationale recording and choose the clearer fit for a docs overlap problem.
+    expected: use
+    adjacent_skill: aoa-adr-write
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/source_of_truth_check_vs_adr_write_boundary.md
+    required_output_phrases:
+      - This is a source-of-truth-check case, not an adr-write case.
+      - A source-of-truth decision that names the authoritative file and explains the relationship to overlapping documents.
+    forbidden_output_phrases: []
+  - skill: aoa-adr-write
+    case_id: adr_write_vs_source_of_truth_check_boundary
+    prompt: Compare decision documentation with source-of-truth clarification and choose the clearer fit for a meaningful architectural choice.
+    expected: use
+    adjacent_skill: aoa-source-of-truth-check
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-adr-write/adr_write_vs_source_of_truth_check_boundary.md
+    required_output_phrases:
+      - This is an adr-write case, not a source-of-truth-check case.
+      - A concise decision note or ADR draft that explains the rationale rather than only the outcome.
+    forbidden_output_phrases: []
+  - skill: aoa-invariant-coverage-audit
+    case_id: invariant_coverage_audit_vs_property_invariants_boundary
+    prompt: Compare auditing existing checks with authoring property invariants and choose the clearer fit for a coverage review.
+    expected: use
+    adjacent_skill: aoa-property-invariants
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-invariant-coverage-audit/invariant_coverage_audit_vs_property_invariants_boundary.md
+    required_output_phrases:
+      - This is an invariant-coverage-audit case, not a property-invariants case.
+      - An invariant coverage audit that names the stable truth, maps current checks to it, and isolates the smallest bounded gaps.
+    forbidden_output_phrases: []
+  - skill: aoa-property-invariants
+    case_id: property_invariants_vs_invariant_coverage_audit_boundary
+    prompt: Compare authoring invariant-based tests with auditing existing invariant coverage and choose the clearer fit for a behavior rule.
+    expected: use
+    adjacent_skill: aoa-invariant-coverage-audit
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-property-invariants/property_invariants_vs_invariant_coverage_audit_boundary.md
+    required_output_phrases:
+      - This is a property-invariants case, not an invariant-coverage-audit case.
+      - A property or invariant statement that can be checked across a wide range of inputs.
+    forbidden_output_phrases: []
+
 snapshot_cases:
   - skill: aoa-adr-write
     case_id: adr_write_meaningful_decision

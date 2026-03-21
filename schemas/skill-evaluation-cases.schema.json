@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/aoa-skills/schemas/skill-evaluation-cases.schema.json",
+  "title": "aoa-skills evaluation cases",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "autonomy_checks",
+    "trigger_cases",
+    "snapshot_cases",
+    "adjacency_cases"
+  ],
+  "properties": {
+    "autonomy_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "skill",
+          "forbidden_runtime_terms"
+        ],
+        "properties": {
+          "skill": {
+            "type": "string",
+            "minLength": 1
+          },
+          "forbidden_runtime_terms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "trigger_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "skill",
+          "case_id",
+          "prompt",
+          "expected",
+          "required_phrases"
+        ],
+        "properties": {
+          "skill": {
+            "type": "string",
+            "minLength": 1
+          },
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected": {
+            "type": "string",
+            "enum": [
+              "use",
+              "do_not_use"
+            ]
+          },
+          "required_phrases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "snapshot_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "skill",
+          "case_id",
+          "prompt",
+          "expected",
+          "snapshot_path",
+          "required_output_phrases",
+          "forbidden_output_phrases"
+        ],
+        "properties": {
+          "skill": {
+            "type": "string",
+            "minLength": 1
+          },
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected": {
+            "type": "string",
+            "enum": [
+              "use",
+              "do_not_use"
+            ]
+          },
+          "snapshot_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required_output_phrases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "forbidden_output_phrases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "adjacency_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "skill",
+          "adjacent_skill",
+          "case_id",
+          "prompt",
+          "expected",
+          "snapshot_path",
+          "required_output_phrases",
+          "forbidden_output_phrases"
+        ],
+        "properties": {
+          "skill": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adjacent_skill": {
+            "type": "string",
+            "minLength": 1
+          },
+          "case_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected": {
+            "type": "string",
+            "enum": [
+              "use",
+              "do_not_use"
+            ]
+          },
+          "snapshot_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required_output_phrases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "forbidden_output_phrases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

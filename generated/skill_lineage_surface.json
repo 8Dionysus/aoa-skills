@@ -1,0 +1,229 @@
+{
+  "cohorts": {
+    "pending_lineage": [
+      "aoa-adr-write",
+      "aoa-approval-gate-check",
+      "aoa-core-logic-boundary",
+      "aoa-dry-run-first",
+      "aoa-port-adapter-refactor",
+      "aoa-safe-infra-change",
+      "aoa-sanitized-share",
+      "aoa-source-of-truth-check"
+    ],
+    "published_lineage": [
+      "aoa-bounded-context-map",
+      "aoa-change-protocol",
+      "aoa-contract-test",
+      "aoa-invariant-coverage-audit",
+      "aoa-property-invariants",
+      "aoa-tdd-slice"
+    ]
+  },
+  "lineage_surface_version": 1,
+  "skills": [
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-adr-write",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "core",
+      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-approval-gate-check",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "risk",
+      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-bounded-context-map",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "core",
+      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-change-protocol",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "core",
+      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "status": "canonical",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-contract-test",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "core",
+      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-core-logic-boundary",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "core",
+      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-dry-run-first",
+      "pending_technique_count": 2,
+      "published_technique_count": 1,
+      "scope": "risk",
+      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-invariant-coverage-audit",
+      "pending_technique_count": 0,
+      "published_technique_count": 1,
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-port-adapter-refactor",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "core",
+      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-property-invariants",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "core",
+      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-safe-infra-change",
+      "pending_technique_count": 2,
+      "published_technique_count": 1,
+      "scope": "risk",
+      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-sanitized-share",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "risk",
+      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-source-of-truth-check",
+      "pending_technique_count": 2,
+      "published_technique_count": 1,
+      "scope": "core",
+      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 1
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-tdd-slice",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "core",
+      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "status": "canonical",
+      "tbd_ref_count": 0
+    }
+  ],
+  "source_of_truth": {
+    "skill_markdown": "skills/*/SKILL.md",
+    "technique_manifest": "skills/*/techniques.yaml"
+  }
+}

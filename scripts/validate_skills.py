@@ -18,10 +18,17 @@ from jsonschema import Draft202012Validator
 
 import build_catalog
 import skill_artifact_contract
+import skill_boundary_surface
 import skill_catalog_contract
 import skill_evaluation_contract
+import skill_governance_backlog_surface
 import skill_governance_surface
+import skill_lineage_surface
+import skill_overlay_contract
+import skill_runtime_surface
 import skill_section_contract
+import skill_source_model
+import skill_bundle_surface
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -32,6 +39,16 @@ SKILL_NAME_PATTERN = r"(?:aoa|atm10|abyss)-[a-z0-9-]+"
 STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
 CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
 EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.yaml"
+GENERATED_SURFACE_SCHEMA_BY_PATH = {
+    build_catalog.PUBLIC_SURFACE_JSON_PATH: "public_surface.schema.json",
+    build_catalog.WALKTHROUGHS_JSON_PATH: "skill_walkthroughs.schema.json",
+    build_catalog.EVALUATION_MATRIX_JSON_PATH: "skill_evaluation_matrix.schema.json",
+    build_catalog.LINEAGE_SURFACE_JSON_PATH: "skill_lineage_surface.schema.json",
+    build_catalog.BOUNDARY_MATRIX_JSON_PATH: "skill_boundary_matrix.schema.json",
+    build_catalog.GOVERNANCE_BACKLOG_JSON_PATH: "governance_backlog.schema.json",
+    build_catalog.BUNDLE_INDEX_JSON_PATH: "skill_bundle_index.schema.json",
+    build_catalog.SKILL_GRAPH_JSON_PATH: "skill_graph.schema.json",
+}
 
 REQUIRED_HEADINGS = set(skill_section_contract.CANONICAL_HEADINGS)
 EXPECTED_TECHNIQUE_REPO = skill_catalog_contract.EXPECTED_TECHNIQUE_REPO
@@ -128,41 +145,10 @@ def parse_skill_markdown(
     issues: list[ValidationIssue],
 ) -> tuple[dict[str, Any] | None, list[tuple[str, str]]]:
     try:
-        text = skill_md_path.read_text(encoding="utf-8")
+        metadata, body = skill_source_model.parse_skill_document(skill_md_path)
     except FileNotFoundError:
         issues.append(ValidationIssue(relative_location(skill_md_path), "file is missing"))
         return None, []
-
-    lines = text.splitlines()
-    if not lines or lines[0].strip() != "---":
-        issues.append(
-            ValidationIssue(
-                relative_location(skill_md_path),
-                "missing YAML frontmatter opening delimiter",
-            )
-        )
-        return None, []
-
-    closing_index = None
-    for index in range(1, len(lines)):
-        if lines[index].strip() == "---":
-            closing_index = index
-            break
-
-    if closing_index is None:
-        issues.append(
-            ValidationIssue(
-                relative_location(skill_md_path),
-                "missing YAML frontmatter closing delimiter",
-            )
-        )
-        return None, []
-
-    frontmatter_text = "\n".join(lines[1:closing_index])
-    body = "\n".join(lines[closing_index + 1 :])
-
-    try:
-        metadata = yaml.safe_load(frontmatter_text) or {}
     except yaml.YAMLError as exc:
         issues.append(
             ValidationIssue(
@@ -171,14 +157,31 @@ def parse_skill_markdown(
             )
         )
         return None, []
-
-    if not isinstance(metadata, dict):
-        issues.append(
-            ValidationIssue(
-                relative_location(skill_md_path),
-                "frontmatter must parse to a mapping",
+    except ValueError as exc:
+        message = str(exc)
+        if "missing frontmatter" in message:
+            issues.append(
+                ValidationIssue(
+                    relative_location(skill_md_path),
+                    "missing YAML frontmatter opening delimiter",
+                )
             )
-        )
+        elif "missing a closing frontmatter delimiter" in message:
+            issues.append(
+                ValidationIssue(
+                    relative_location(skill_md_path),
+                    "missing YAML frontmatter closing delimiter",
+                )
+            )
+        elif "frontmatter must parse to a mapping" in message:
+            issues.append(
+                ValidationIssue(
+                    relative_location(skill_md_path),
+                    "frontmatter must parse to a mapping",
+                )
+            )
+        else:
+            issues.append(ValidationIssue(relative_location(skill_md_path), message))
         return None, []
 
     section_pairs = skill_section_contract.extract_top_level_sections(body)
@@ -239,6 +242,7 @@ def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIs
             validate_skill_frontmatter(skill_name, metadata, skill_md_path, issues)
             validate_section_contract(section_pairs, skill_md_path, issues)
             validate_capsule_source_sections(sections, skill_md_path, issues)
+            validate_runtime_surface_contract(sections, skill_md_path, issues)
 
     if techniques_path.is_file():
         techniques_data = load_yaml_file(techniques_path, issues)
@@ -454,19 +458,7 @@ def validate_explicit_only_policy(
 
 
 def load_policy_signal(repo_root: Path, skill_name: str) -> tuple[bool, Any]:
-    policy_path = repo_root / SKILLS_DIR_NAME / skill_name / "agents" / "openai.yaml"
-    if not policy_path.is_file():
-        return False, None
-
-    policy_issues: list[ValidationIssue] = []
-    policy_data = load_yaml_file(policy_path, policy_issues)
-    if policy_issues or not isinstance(policy_data, dict):
-        return True, None
-
-    policy = policy_data.get("policy")
-    if not isinstance(policy, dict):
-        return True, None
-    return True, policy.get("allow_implicit_invocation")
+    return skill_source_model.load_policy_signal(repo_root, skill_name)
 
 
 def status_requires_floor(status: str, floor: str) -> bool:
@@ -643,13 +635,70 @@ def validate_snapshot_fixture_contract(repo_root: Path) -> list[ValidationIssue]
     if fixtures is None:
         return issues
 
+    validate_against_schema(
+        fixtures,
+        skill_evaluation_contract.EVALUATION_FIXTURES_SCHEMA,
+        relative_location(fixtures_path),
+        issues,
+    )
     for contract_issue in skill_evaluation_contract.validate_snapshot_case_contract(fixtures):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    for contract_issue in skill_evaluation_contract.validate_adjacency_case_contract(fixtures):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    for contract_issue in skill_evaluation_contract.validate_fixture_integrity(
+        repo_root,
+        fixtures,
+    ):
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
     for contract_issue in skill_evaluation_contract.collect_snapshot_file_issues(
         repo_root,
         fixtures,
     ):
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    return issues
+
+
+def validate_overlay_stub_contract(repo_root: Path) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    for contract_issue in skill_overlay_contract.collect_overlay_stub_issues(repo_root):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    return issues
+
+
+def validate_required_adjacency_coverage(
+    repo_root: Path,
+    target_skills: Sequence[str],
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    try:
+        payload = skill_boundary_surface.build_boundary_matrix_payload(repo_root, target_skills)
+    except (FileNotFoundError, ValueError) as exc:
+        issues.append(
+            ValidationIssue(
+                build_catalog.BOUNDARY_MATRIX_JSON_PATH.as_posix(),
+                f"boundary matrix source validation failed: {exc}",
+            )
+        )
+        return issues
+
+    if not payload.get("cases"):
+        return issues
+
+    for entry in payload.get("skills", []):
+        if not isinstance(entry, dict):
+            continue
+        if not entry.get("required_adjacency_coverage"):
+            continue
+        if entry.get("adjacency_ready"):
+            continue
+        blockers = entry.get("adjacency_blockers", [])
+        blocker_suffix = f" ({', '.join(blockers)})" if blockers else ""
+        issues.append(
+            ValidationIssue(
+                EVALUATION_FIXTURES_PATH.as_posix(),
+                f"skill '{entry.get('name')}' requires adjacency coverage for canonical/candidate-ready boundary evidence{blocker_suffix}",
+            )
+        )
     return issues
 
 
@@ -860,6 +909,24 @@ def validate_canonical_status_floors(
     return issues
 
 
+def validate_runtime_surface_contract(
+    sections: dict[str, str],
+    skill_md_path: Path,
+    issues: list[ValidationIssue],
+) -> None:
+    location = relative_location(skill_md_path)
+    trigger_boundary_text = sections.get("Trigger boundary")
+    outputs_text = sections.get("Outputs")
+    if trigger_boundary_text is None or outputs_text is None:
+        return
+    for contract_issue in skill_runtime_surface.collect_runtime_surface_issues(
+        location=location,
+        trigger_boundary_text=trigger_boundary_text,
+        outputs_text=outputs_text,
+    ):
+        issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+
+
 def validate_skill_index(
     repo_root: Path,
     selected_skills: set[str] | None = None,
@@ -922,10 +989,7 @@ def validate_skill_index(
 
 
 def discover_skill_names(repo_root: Path) -> list[str]:
-    skills_dir = repo_root / SKILLS_DIR_NAME
-    if not skills_dir.is_dir():
-        raise FileNotFoundError(f"missing skills directory at {skills_dir}")
-    return sorted(path.name for path in skills_dir.iterdir() if path.is_dir())
+    return skill_source_model.discover_skill_names(repo_root)
 
 
 def technique_ids_from_manifest(manifest: dict[str, Any]) -> list[str]:
@@ -1664,6 +1728,12 @@ def validate_generated_walkthroughs(
         return issues
 
     walkthrough_data = parsed
+    validate_against_schema(
+        walkthrough_data,
+        GENERATED_SURFACE_SCHEMA_BY_PATH[build_catalog.WALKTHROUGHS_JSON_PATH],
+        walkthrough_location,
+        issues,
+    )
     if walkthrough_data.get("walkthrough_version") != build_catalog.WALKTHROUGH_VERSION:
         issues.append(
             ValidationIssue(
@@ -1815,6 +1885,12 @@ def validate_generated_public_surface(
         return issues
 
     public_surface_data = parsed
+    validate_against_schema(
+        public_surface_data,
+        GENERATED_SURFACE_SCHEMA_BY_PATH[build_catalog.PUBLIC_SURFACE_JSON_PATH],
+        public_surface_location,
+        issues,
+    )
     if public_surface_data.get("public_surface_version") != build_catalog.PUBLIC_SURFACE_VERSION:
         issues.append(
             ValidationIssue(
@@ -1992,6 +2068,12 @@ def validate_generated_evaluation_matrix(
         return issues
 
     matrix_data = parsed
+    validate_against_schema(
+        matrix_data,
+        GENERATED_SURFACE_SCHEMA_BY_PATH[build_catalog.EVALUATION_MATRIX_JSON_PATH],
+        matrix_location,
+        issues,
+    )
     if matrix_data.get("evaluation_matrix_version") != build_catalog.EVALUATION_MATRIX_VERSION:
         issues.append(
             ValidationIssue(
@@ -2085,6 +2167,73 @@ def validate_generated_evaluation_matrix(
     return issues
 
 
+def validate_generated_surface_from_spec(
+    repo_root: Path,
+    spec: build_catalog.GeneratedSurfaceSpec,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    try:
+        expected_texts = build_catalog.build_surface_text_map(repo_root, spec)
+    except (FileNotFoundError, ValueError) as exc:
+        for output in spec.outputs:
+            issues.append(
+                ValidationIssue(
+                    output.path.as_posix(),
+                    f"{spec.key} source validation failed: {exc}",
+                )
+            )
+        return issues
+
+    for output in spec.outputs:
+        path = repo_root / output.path
+        location = relative_location(path)
+        if not path.is_file():
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"generated {spec.key.replace('_', ' ')} artifact is missing",
+                )
+            )
+            continue
+
+        text = path.read_text(encoding="utf-8")
+        schema_name = GENERATED_SURFACE_SCHEMA_BY_PATH.get(output.path)
+        if output.is_json and schema_name is not None:
+            try:
+                payload = json.loads(text)
+            except json.JSONDecodeError as exc:
+                issues.append(ValidationIssue(location, f"invalid JSON: {exc.msg}"))
+            else:
+                validate_against_schema(payload, schema_name, location, issues)
+
+        if text != expected_texts[output.path]:
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"generated {spec.key.replace('_', ' ')} artifact is out of date; run python scripts/build_catalog.py",
+                )
+            )
+
+    return issues
+
+
+def validate_additional_generated_surfaces(repo_root: Path) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    skipped_keys = {
+        "catalogs",
+        "capsules",
+        "sections",
+        "walkthroughs",
+        "public_surface",
+        "evaluation_matrix",
+    }
+    for spec in build_catalog.generated_surface_specs():
+        if spec.key in skipped_keys:
+            continue
+        issues.extend(validate_generated_surface_from_spec(repo_root, spec))
+    return issues
+
+
 def format_issues(issues: Sequence[ValidationIssue]) -> str:
     lines = [f"- {issue.location}: {issue.message}" for issue in issues]
     return "\n".join(lines)
@@ -2109,8 +2258,10 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         issues.extend(bundle_issues)
 
     issues.extend(validate_snapshot_fixture_contract(repo_root))
+    issues.extend(validate_overlay_stub_contract(repo_root))
     issues.extend(validate_evaluation_floors(repo_root, target_skills))
     issues.extend(validate_canonical_status_floors(repo_root, target_skills))
+    issues.extend(validate_required_adjacency_coverage(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
     if skill_name is None:
         issues.extend(validate_generated_catalogs(repo_root))
@@ -2119,6 +2270,7 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         issues.extend(validate_generated_walkthroughs(repo_root))
         issues.extend(validate_generated_public_surface(repo_root))
         issues.extend(validate_generated_evaluation_matrix(repo_root))
+        issues.extend(validate_additional_generated_surfaces(repo_root))
     elif all(not bundle_issues_by_name[name] for name in target_skills):
         issues.extend(validate_generated_catalogs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_capsules(repo_root, skill_names=target_skills))

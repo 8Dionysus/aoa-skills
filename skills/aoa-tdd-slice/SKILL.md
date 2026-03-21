@@ -25,6 +25,8 @@ Use this skill when:
 Do not use this skill when:
 - the task is purely exploratory and behavior is still undefined
 - the task is mostly one-off glue with no reusable logic
+- the main problem is a stable interface or boundary contract rather than a feature slice; use `aoa-contract-test`
+- the main problem is invariant coverage rather than slice implementation; use `aoa-property-invariants`
 - broader architectural restructuring is the real need
 
 ## Inputs

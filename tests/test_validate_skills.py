@@ -287,6 +287,7 @@ class ValidateSkillsTests(unittest.TestCase):
             "autonomy_checks": [],
             "trigger_cases": [],
             "snapshot_cases": [],
+            "adjacency_cases": [],
         }
         if include_autonomy:
             data["autonomy_checks"].append(
@@ -318,7 +319,7 @@ class ValidateSkillsTests(unittest.TestCase):
             )
 
         for index in range(use_snapshots):
-            case_id = f"{skill_name.replace('-', '_')}_use_snapshot_{index + 1}"
+            case_id = f"{skill_name.replace('-', '_')}_use_{index + 1}"
             snapshot_path = (
                 snapshots_dir / f"{case_id}.md"
             )
@@ -372,7 +373,7 @@ class ValidateSkillsTests(unittest.TestCase):
             )
 
         for index in range(do_not_use_snapshots):
-            case_id = f"{skill_name.replace('-', '_')}_do_not_use_snapshot_{index + 1}"
+            case_id = f"{skill_name.replace('-', '_')}_do_not_use_{index + 1}"
             snapshot_path = snapshots_dir / f"{case_id}.md"
             snapshot_path.write_text(
                 textwrap.dedent(
@@ -445,12 +446,8 @@ class ValidateSkillsTests(unittest.TestCase):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
     def write_catalogs(self, repo_root: Path) -> None:
-        build_catalog.write_catalogs(repo_root)
-        build_catalog.write_capsules(repo_root)
-        build_catalog.write_sections(repo_root)
-        build_catalog.write_walkthroughs(repo_root)
-        build_catalog.write_public_surface(repo_root)
-        build_catalog.write_evaluation_matrix(repo_root)
+        for spec in build_catalog.generated_surface_specs():
+            build_catalog.write_generated_surface(repo_root, spec)
 
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
@@ -1215,7 +1212,7 @@ class ValidateSkillsTests(unittest.TestCase):
             / "fixtures"
             / "skill_evaluation_snapshots"
             / "aoa-test-skill"
-            / "aoa_test_skill_use_snapshot_1.md"
+            / "aoa_test_skill_use_1.md"
         )
         snapshot_path.write_text(
             snapshot_path.read_text(encoding="utf-8").replace(
@@ -1249,7 +1246,7 @@ class ValidateSkillsTests(unittest.TestCase):
             / "fixtures"
             / "skill_evaluation_snapshots"
             / "aoa-test-skill"
-            / "aoa_test_skill_use_snapshot_1.md"
+            / "aoa_test_skill_use_1.md"
         )
         snapshot_path.write_text(
             snapshot_path.read_text(encoding="utf-8").replace(
@@ -1279,7 +1276,7 @@ class ValidateSkillsTests(unittest.TestCase):
             / "fixtures"
             / "skill_evaluation_snapshots"
             / "aoa-test-skill"
-            / "aoa_test_skill_do_not_use_snapshot_1.md"
+            / "aoa_test_skill_do_not_use_1.md"
         )
         snapshot_path.write_text(
             snapshot_path.read_text(encoding="utf-8").replace(

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build deterministic derived skill catalogs and capsules for reader surfaces."""
+"""Build deterministic derived skill catalogs and reader/runtime surfaces."""
 
 from __future__ import annotations
 
@@ -7,16 +7,21 @@ import argparse
 import json
 import re
 import sys
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any, Callable, Mapping, Sequence
 
-import yaml
-
+import skill_boundary_surface
+import skill_bundle_surface
 import skill_catalog_contract
 import skill_evaluation_surface
+import skill_governance_backlog_surface
 import skill_governance_surface
+import skill_lineage_surface
+import skill_overlay_contract
 import skill_runtime_surface
 import skill_section_contract
+import skill_source_model
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -26,21 +31,42 @@ FULL_CATALOG_PATH = Path(GENERATED_DIR_NAME) / "skill_catalog.json"
 MIN_CATALOG_PATH = Path(GENERATED_DIR_NAME) / "skill_catalog.min.json"
 CAPSULE_PATH = Path(GENERATED_DIR_NAME) / "skill_capsules.json"
 SECTIONS_PATH = Path(GENERATED_DIR_NAME) / skill_section_contract.SECTIONS_NAME
+PUBLIC_SURFACE_JSON_PATH = skill_governance_surface.PUBLIC_SURFACE_JSON_PATH
+PUBLIC_SURFACE_MARKDOWN_PATH = skill_governance_surface.PUBLIC_SURFACE_MARKDOWN_PATH
+WALKTHROUGHS_JSON_PATH = skill_runtime_surface.WALKTHROUGHS_JSON_PATH
+WALKTHROUGHS_MARKDOWN_PATH = skill_runtime_surface.WALKTHROUGHS_MARKDOWN_PATH
+EVALUATION_MATRIX_JSON_PATH = skill_evaluation_surface.EVALUATION_MATRIX_JSON_PATH
+EVALUATION_MATRIX_MARKDOWN_PATH = skill_evaluation_surface.EVALUATION_MATRIX_MARKDOWN_PATH
+LINEAGE_SURFACE_JSON_PATH = skill_lineage_surface.LINEAGE_SURFACE_JSON_PATH
+LINEAGE_SURFACE_MARKDOWN_PATH = skill_lineage_surface.LINEAGE_SURFACE_MARKDOWN_PATH
+BOUNDARY_MATRIX_JSON_PATH = skill_boundary_surface.BOUNDARY_MATRIX_JSON_PATH
+BOUNDARY_MATRIX_MARKDOWN_PATH = skill_boundary_surface.BOUNDARY_MATRIX_MARKDOWN_PATH
+GOVERNANCE_BACKLOG_JSON_PATH = (
+    skill_governance_backlog_surface.GOVERNANCE_BACKLOG_JSON_PATH
+)
+GOVERNANCE_BACKLOG_MARKDOWN_PATH = (
+    skill_governance_backlog_surface.GOVERNANCE_BACKLOG_MARKDOWN_PATH
+)
+OVERLAY_READINESS_MARKDOWN_PATH = Path(GENERATED_DIR_NAME) / "overlay_readiness.md"
+BUNDLE_INDEX_JSON_PATH = skill_bundle_surface.BUNDLE_INDEX_JSON_PATH
+BUNDLE_INDEX_MARKDOWN_PATH = skill_bundle_surface.BUNDLE_INDEX_MARKDOWN_PATH
+SKILL_GRAPH_JSON_PATH = skill_bundle_surface.SKILL_GRAPH_JSON_PATH
+SKILL_GRAPH_MARKDOWN_PATH = skill_bundle_surface.SKILL_GRAPH_MARKDOWN_PATH
+
 CATALOG_VERSION = 1
 CAPSULE_VERSION = 1
 SECTION_VERSION = skill_section_contract.SECTION_VERSION
-PUBLIC_SURFACE_JSON_PATH = skill_governance_surface.PUBLIC_SURFACE_JSON_PATH
-PUBLIC_SURFACE_MARKDOWN_PATH = skill_governance_surface.PUBLIC_SURFACE_MARKDOWN_PATH
 PUBLIC_SURFACE_VERSION = skill_governance_surface.PUBLIC_SURFACE_VERSION
-PUBLIC_SURFACE_SOURCE_OF_TRUTH = skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH
-WALKTHROUGHS_JSON_PATH = skill_runtime_surface.WALKTHROUGHS_JSON_PATH
-WALKTHROUGHS_MARKDOWN_PATH = skill_runtime_surface.WALKTHROUGHS_MARKDOWN_PATH
 WALKTHROUGH_VERSION = skill_runtime_surface.WALKTHROUGH_VERSION
-WALKTHROUGH_SOURCE_OF_TRUTH = skill_runtime_surface.WALKTHROUGH_SOURCE_OF_TRUTH
-EVALUATION_MATRIX_JSON_PATH = skill_evaluation_surface.EVALUATION_MATRIX_JSON_PATH
-EVALUATION_MATRIX_MARKDOWN_PATH = skill_evaluation_surface.EVALUATION_MATRIX_MARKDOWN_PATH
 EVALUATION_MATRIX_VERSION = skill_evaluation_surface.EVALUATION_MATRIX_VERSION
-EVALUATION_MATRIX_SOURCE_OF_TRUTH = skill_evaluation_surface.EVALUATION_MATRIX_SOURCE_OF_TRUTH
+LINEAGE_SURFACE_VERSION = skill_lineage_surface.LINEAGE_SURFACE_VERSION
+BOUNDARY_MATRIX_VERSION = skill_boundary_surface.BOUNDARY_MATRIX_VERSION
+GOVERNANCE_BACKLOG_VERSION = (
+    skill_governance_backlog_surface.GOVERNANCE_BACKLOG_VERSION
+)
+BUNDLE_INDEX_VERSION = skill_bundle_surface.BUNDLE_INDEX_VERSION
+SKILL_GRAPH_VERSION = skill_bundle_surface.SKILL_GRAPH_VERSION
+
 SOURCE_OF_TRUTH = {
     "skill_markdown": "skills/*/SKILL.md",
     "technique_manifest": "skills/*/techniques.yaml",
@@ -66,12 +92,32 @@ CAPSULE_SOURCE_OF_TRUTH = {
     ],
 }
 CAPSULE_REQUIRED_SECTIONS = tuple(CAPSULE_SOURCE_OF_TRUTH["sections"])
+PUBLIC_SURFACE_SOURCE_OF_TRUTH = skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH
+WALKTHROUGH_SOURCE_OF_TRUTH = skill_runtime_surface.WALKTHROUGH_SOURCE_OF_TRUTH
+EVALUATION_MATRIX_SOURCE_OF_TRUTH = skill_evaluation_surface.EVALUATION_MATRIX_SOURCE_OF_TRUTH
 LIST_ITEM_PATTERN = re.compile(r"^(?:[-*]|\d+\.)\s+(.*)$")
 MARKDOWN_LINK_PATTERN = re.compile(r"\[([^\]]+)\]\([^)]+\)")
 INLINE_CODE_PATTERN = re.compile(r"`([^`]+)`")
 EMPHASIS_PATTERN = re.compile(r"(\*\*|\*|__|_)")
 MAX_SHORT_FIELD_LENGTH = 220
 MAX_WORKFLOW_SHORT_LENGTH = 260
+
+
+@dataclass(frozen=True)
+class GeneratedSurfaceOutput:
+    path: Path
+    is_json: bool = False
+    item_collection_key: str | None = None
+    item_key: str = "name"
+    aggregate_sensitive: bool = False
+
+
+@dataclass(frozen=True)
+class GeneratedSurfaceSpec:
+    key: str
+    outputs: tuple[GeneratedSurfaceOutput, ...]
+    build_texts: Callable[[Path], dict[Path, str]]
+
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -80,72 +126,29 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--check",
         action="store_true",
-        help="Check whether generated catalogs are present and current.",
+        help="Check whether generated surfaces are present and current.",
     )
     return parser.parse_args(argv)
 
 
 def discover_skill_names(repo_root: Path) -> list[str]:
-    skills_dir = repo_root / SKILLS_DIR_NAME
-    if not skills_dir.is_dir():
-        raise FileNotFoundError(f"missing skills directory at {skills_dir}")
-    return sorted(path.name for path in skills_dir.iterdir() if path.is_dir())
-
-
-def relative_path(path: Path, repo_root: Path) -> str:
-    return skill_catalog_contract.relative_location(path, repo_root)
-
-
-def is_repo_relative_path(path_value: Any) -> bool:
-    return skill_catalog_contract.is_repo_relative_path(path_value)
-
-
-def normalize_repo_name(raw_repo: Any) -> str:
-    return skill_catalog_contract.normalize_repo_name(raw_repo)
-
-
-def load_yaml(path: Path) -> Any:
-    with path.open(encoding="utf-8") as handle:
-        return yaml.safe_load(handle)
-
-
-def load_optional_yaml(path: Path) -> Any | None:
-    if not path.is_file():
-        return None
-    try:
-        return load_yaml(path)
-    except yaml.YAMLError:
-        return None
+    return skill_source_model.discover_skill_names(repo_root)
 
 
 def parse_skill_document(path: Path) -> tuple[dict[str, Any], str]:
-    text = path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-    if not lines or lines[0].strip() != "---":
-        raise ValueError(f"{path} is missing frontmatter")
-
-    closing_index = None
-    for index in range(1, len(lines)):
-        if lines[index].strip() == "---":
-            closing_index = index
-            break
-
-    if closing_index is None:
-        raise ValueError(f"{path} is missing a closing frontmatter delimiter")
-
-    frontmatter_text = "\n".join(lines[1:closing_index])
-    metadata = yaml.safe_load(frontmatter_text) or {}
-    if not isinstance(metadata, dict):
-        raise ValueError(f"{path} frontmatter must parse to a mapping")
-    body = "\n".join(lines[closing_index + 1 :])
-    return metadata, body
+    return skill_source_model.parse_skill_document(path)
 
 
 def parse_skill_sections(body: str) -> dict[str, str]:
-    return {
-        heading: content_markdown
-        for heading, content_markdown in skill_section_contract.extract_top_level_sections(body)
-    }
+    return skill_source_model.parse_skill_sections(body)
+
+
+def load_yaml(path: Path) -> Any:
+    return skill_source_model.load_yaml(path)
+
+
+def relative_path(path: Path, repo_root: Path) -> str:
+    return skill_source_model.relative_location(path, repo_root)
 
 
 def normalize_inline_markdown(text: str) -> str:
@@ -225,57 +228,6 @@ def extract_first_sentence(section_text: str) -> str:
     return normalized.strip(" .!?")
 
 
-def extract_trigger_boundary_items(section_text: str) -> tuple[list[str], list[str]]:
-    use_items: list[str] = []
-    avoid_items: list[str] = []
-    current_bucket: list[str] | None = None
-    current_item: str | None = None
-
-    def flush_current_item() -> None:
-        nonlocal current_item
-        if current_item is None or current_bucket is None:
-            current_item = None
-            return
-        current_bucket.append(current_item)
-        current_item = None
-
-    for raw_line in section_text.splitlines():
-        line = raw_line.rstrip()
-        stripped = line.strip()
-        if not stripped:
-            continue
-
-        normalized = normalize_inline_markdown(stripped)
-        lowered = normalized.rstrip(":").lower()
-        if lowered.startswith("use this skill when") or lowered.startswith("use when"):
-            flush_current_item()
-            current_bucket = use_items
-            continue
-        if lowered.startswith("do not use this skill when") or lowered.startswith("avoid when"):
-            flush_current_item()
-            current_bucket = avoid_items
-            continue
-
-        match = LIST_ITEM_PATTERN.match(stripped)
-        if match:
-            flush_current_item()
-            current_item = normalize_phrase(match.group(1))
-            continue
-
-        if current_item is not None and raw_line[:1].isspace():
-            continuation = normalize_phrase(stripped)
-            if continuation:
-                current_item = f"{current_item} {continuation}".strip()
-            continue
-
-        flush_current_item()
-        if current_bucket is not None:
-            current_bucket.append(normalize_phrase(normalized))
-
-    flush_current_item()
-    return [item for item in use_items if item], [item for item in avoid_items if item]
-
-
 def build_compact_list_summary(
     prefix: str,
     section_text: str,
@@ -293,7 +245,9 @@ def build_compact_list_summary(
 
 
 def build_trigger_boundary_summary(section_text: str) -> str:
-    use_items, avoid_items = extract_trigger_boundary_items(section_text)
+    use_items, avoid_items = skill_runtime_surface.extract_trigger_boundary_items(
+        section_text
+    )
     parts: list[str] = []
     if use_items:
         parts.append(f"Use when {'; '.join(use_items[:2])}")
@@ -349,72 +303,67 @@ def build_workflow_summary(intent_text: str, procedure_text: str) -> str:
     return ensure_sentence(". ".join(parts), MAX_WORKFLOW_SHORT_LENGTH)
 
 
-def require_capsule_sections(skill_md_path: Path, body: str) -> dict[str, str]:
-    sections = parse_skill_sections(body)
+def require_capsule_sections(source: skill_source_model.SkillSource) -> dict[str, str]:
     for section_name in CAPSULE_REQUIRED_SECTIONS:
-        if section_name not in sections:
+        if section_name not in source.sections:
             raise ValueError(
-                f"{skill_md_path} capsule source section '{section_name}' is missing"
+                f"{source.skill_md_path} capsule source section '{section_name}' is missing"
             )
-        if not sections[section_name].strip():
+        if not source.sections[section_name].strip():
             raise ValueError(
-                f"{skill_md_path} capsule source section '{section_name}' must not be empty"
+                f"{source.skill_md_path} capsule source section '{section_name}' must not be empty"
             )
-    return sections
+    return source.sections
 
 
-def technique_ids_from_manifest(manifest: dict[str, Any]) -> list[str]:
-    return skill_catalog_contract.technique_ids_from_manifest(manifest)
-
-
-def normalize_technique_refs(manifest: dict[str, Any]) -> list[dict[str, Any]]:
-    return skill_catalog_contract.normalize_technique_refs(manifest)
-
-
-def build_skill_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-    skill_md_path = skill_dir / "SKILL.md"
-    techniques_path = skill_dir / "techniques.yaml"
-    metadata, _body = parse_skill_document(skill_md_path)
-    manifest = load_yaml(techniques_path)
-
-    if not isinstance(manifest, dict):
-        raise ValueError(f"{techniques_path} must parse to a mapping")
-
+def build_skill_entry_from_source(
+    source: skill_source_model.SkillSource,
+    repo_root: Path,
+) -> dict[str, Any]:
     entry, issues = skill_catalog_contract.build_skill_entry_from_sources(
         repo_root,
-        skill_name,
-        metadata,
-        manifest,
-        skill_md_path,
-        techniques_path,
+        source.name,
+        source.metadata,
+        source.manifest,
+        source.skill_md_path,
+        source.techniques_path,
     )
     if issues:
         raise ValueError(skill_catalog_contract.format_issues(issues))
     if entry is None:
-        raise ValueError(f"failed to build routing entry for {skill_name}")
+        raise ValueError(f"failed to build routing entry for {source.name}")
     return entry
 
 
-def build_skill_capsule_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-    skill_md_path = skill_dir / "SKILL.md"
-    metadata, body = parse_skill_document(skill_md_path)
-    sections = require_capsule_sections(skill_md_path, body)
-
-    technique_dependencies = metadata.get("technique_dependencies")
+def build_skill_capsule_entry(
+    source: skill_source_model.SkillSource | Path,
+    repo_root: Path | str,
+) -> dict[str, Any]:
+    if isinstance(source, skill_source_model.SkillSource):
+        resolved_source = source
+        resolved_repo_root = Path(repo_root)
+    else:
+        resolved_repo_root = Path(source)
+        resolved_source = skill_source_model.load_skill_source(
+            resolved_repo_root,
+            str(repo_root),
+        )
+    source = resolved_source
+    repo_root = resolved_repo_root
+    sections = require_capsule_sections(source)
+    technique_dependencies = source.metadata.get("technique_dependencies")
     if not isinstance(technique_dependencies, list) or not all(
         isinstance(item, str) for item in technique_dependencies
     ):
         raise ValueError(
-            f"{skill_md_path} frontmatter 'technique_dependencies' must be a list of strings"
+            f"{source.skill_md_path} frontmatter 'technique_dependencies' must be a list of strings"
         )
 
     return {
-        "name": metadata.get("name"),
-        "scope": metadata.get("scope"),
-        "status": metadata.get("status"),
-        "summary": metadata.get("summary"),
+        "name": source.metadata.get("name"),
+        "scope": source.metadata.get("scope"),
+        "status": source.metadata.get("status"),
+        "summary": source.metadata.get("summary"),
         "trigger_boundary_short": build_trigger_boundary_summary(
             sections["Trigger boundary"]
         ),
@@ -432,16 +381,28 @@ def build_skill_capsule_entry(repo_root: Path, skill_name: str) -> dict[str, Any
             "Checks",
             sections["Verification"],
         ),
-        "invocation_mode": metadata.get("invocation_mode"),
+        "invocation_mode": source.metadata.get("invocation_mode"),
         "technique_dependencies": list(technique_dependencies),
-        "skill_path": relative_path(skill_md_path, repo_root),
+        "skill_path": relative_path(source.skill_md_path, repo_root),
     }
+
+
+def render_json(payload: dict[str, Any], *, indent: int | None) -> str:
+    kwargs: dict[str, Any] = {
+        "ensure_ascii": True,
+        "sort_keys": True,
+    }
+    if indent is None:
+        kwargs["separators"] = (",", ":")
+    else:
+        kwargs["indent"] = indent
+    return json.dumps(payload, **kwargs) + "\n"
 
 
 def build_full_catalog(repo_root: Path) -> dict[str, Any]:
     skills = [
-        build_skill_entry(repo_root, skill_name)
-        for skill_name in discover_skill_names(repo_root)
+        build_skill_entry_from_source(source, repo_root)
+        for source in skill_source_model.load_skill_sources(repo_root)
     ]
     return {
         "catalog_version": CATALOG_VERSION,
@@ -471,36 +432,53 @@ def project_min_catalog(full_catalog: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def build_catalog_texts(repo_root: Path) -> tuple[str, str]:
+    full_catalog = build_full_catalog(repo_root)
+    min_catalog = project_min_catalog(full_catalog)
+    return render_json(full_catalog, indent=2), render_json(min_catalog, indent=None)
+
+
+def build_skill_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
+    for entry in build_full_catalog(repo_root)["skills"]:
+        if entry.get("name") == skill_name:
+            return entry
+    raise KeyError(skill_name)
+
+
+def build_min_skill_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
+    return project_min_catalog({"catalog_version": CATALOG_VERSION, "source_of_truth": SOURCE_OF_TRUTH, "skills": [build_skill_entry(repo_root, skill_name)]})["skills"][0]
+
+
 def build_capsules_payload(repo_root: Path) -> dict[str, Any]:
     return {
         "capsule_version": CAPSULE_VERSION,
         "source_of_truth": CAPSULE_SOURCE_OF_TRUTH,
         "skills": [
-            build_skill_capsule_entry(repo_root, skill_name)
-            for skill_name in discover_skill_names(repo_root)
+            build_skill_capsule_entry(source, repo_root)
+            for source in skill_source_model.load_skill_sources(repo_root)
         ],
     }
+
+
+def build_capsule_text(repo_root: Path) -> str:
+    return render_json(build_capsules_payload(repo_root), indent=2)
 
 
 def build_sections_payload(repo_root: Path) -> dict[str, Any]:
     skills: list[dict[str, Any]] = []
     issues: list[skill_section_contract.ContractIssue] = []
-    for skill_name in discover_skill_names(repo_root):
-        skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
-        metadata, body = parse_skill_document(skill_md_path)
+    for source in skill_source_model.load_skill_sources(repo_root):
         entry, entry_issues = skill_section_contract.build_sections_entry(
             repo_root,
-            metadata,
-            skill_md_path,
-            body,
+            source.metadata,
+            source.skill_md_path,
+            source.body,
         )
         issues.extend(entry_issues)
         if entry is not None:
             skills.append(entry)
-
     if issues:
         raise ValueError(skill_section_contract.format_issues(issues))
-
     return {
         "section_version": SECTION_VERSION,
         "source_of_truth": skill_section_contract.SECTION_SOURCE_OF_TRUTH,
@@ -508,75 +486,20 @@ def build_sections_payload(repo_root: Path) -> dict[str, Any]:
     }
 
 
-def evaluation_coverage_by_skill(repo_root: Path) -> dict[str, skill_governance_surface.EvaluationCoverage]:
-    fixtures = load_optional_yaml(
-        repo_root / skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH["evaluation_fixtures"]
+def build_sections_text(repo_root: Path) -> str:
+    return render_json(build_sections_payload(repo_root), indent=2)
+
+
+def evaluation_coverage_by_skill(
+    repo_root: Path,
+) -> dict[str, skill_governance_surface.EvaluationCoverage]:
+    fixtures = skill_source_model.load_optional_yaml(
+        repo_root
+        / skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH["evaluation_fixtures"]
     )
-    if not isinstance(fixtures, dict):
+    if not isinstance(fixtures, Mapping):
         return {}
     return skill_governance_surface.collect_evaluation_coverage(fixtures)
-
-
-def review_record_path(
-    repo_root: Path,
-    reviews_dir: Path,
-    skill_name: str,
-) -> str | None:
-    review_path = repo_root / reviews_dir / f"{skill_name}.md"
-    if review_path.is_file():
-        return relative_path(review_path, repo_root)
-    return None
-
-
-def load_policy_signal(repo_root: Path, skill_name: str) -> tuple[bool, Any]:
-    policy_path = repo_root / SKILLS_DIR_NAME / skill_name / "agents" / "openai.yaml"
-    policy_data = load_optional_yaml(policy_path)
-    if not isinstance(policy_data, dict):
-        return policy_path.is_file(), None
-    policy = policy_data.get("policy")
-    if not isinstance(policy, dict):
-        return True, None
-    return True, policy.get("allow_implicit_invocation")
-
-
-def build_public_surface_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-    skill_md_path = skill_dir / "SKILL.md"
-    techniques_path = skill_dir / "techniques.yaml"
-    metadata, body = parse_skill_document(skill_md_path)
-    manifest = load_yaml(techniques_path)
-
-    if not isinstance(manifest, dict):
-        raise ValueError(f"{techniques_path} must parse to a mapping")
-
-    policy_exists, policy_allow_implicit_invocation = load_policy_signal(repo_root, skill_name)
-    coverage = skill_governance_surface.coverage_for_skill(
-        evaluation_coverage_by_skill(repo_root),
-        skill_name,
-    )
-    headings = set(parse_skill_sections(body))
-    techniques = skill_catalog_contract.normalize_technique_refs(manifest)
-
-    return skill_governance_surface.derive_public_surface_skill_entry(
-        skill_name=skill_name,
-        metadata=metadata,
-        headings=headings,
-        techniques=techniques,
-        evaluation_coverage=coverage,
-        policy_exists=policy_exists,
-        policy_allow_implicit_invocation=policy_allow_implicit_invocation,
-        promotion_review_path=review_record_path(
-            repo_root,
-            Path("docs") / "reviews" / "status-promotions",
-            skill_name,
-        ),
-        candidate_review_path=review_record_path(
-            repo_root,
-            Path("docs") / "reviews" / "canonical-candidates",
-            skill_name,
-        ),
-        skill_path=relative_path(skill_md_path, repo_root),
-    )
 
 
 def build_public_surface_payload(
@@ -584,48 +507,27 @@ def build_public_surface_payload(
     skill_names: Sequence[str] | None = None,
 ) -> dict[str, Any]:
     coverage_by_skill = evaluation_coverage_by_skill(repo_root)
-    selected_skill_names = (
-        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
-    )
+    sources = skill_source_model.load_skill_sources(repo_root, skill_names)
     skills: list[dict[str, Any]] = []
-
-    for skill_name in selected_skill_names:
-        skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-        skill_md_path = skill_dir / "SKILL.md"
-        techniques_path = skill_dir / "techniques.yaml"
-        metadata, body = parse_skill_document(skill_md_path)
-        manifest = load_yaml(techniques_path)
-
-        if not isinstance(manifest, dict):
-            raise ValueError(f"{techniques_path} must parse to a mapping")
-
-        policy_exists, policy_allow_implicit_invocation = load_policy_signal(repo_root, skill_name)
-        techniques = skill_catalog_contract.normalize_technique_refs(manifest)
-        entry = skill_governance_surface.derive_public_surface_skill_entry(
-            skill_name=skill_name,
-            metadata=metadata,
-            headings=set(parse_skill_sections(body)),
-            techniques=techniques,
-            evaluation_coverage=skill_governance_surface.coverage_for_skill(
-                coverage_by_skill,
-                skill_name,
-            ),
-            policy_exists=policy_exists,
-            policy_allow_implicit_invocation=policy_allow_implicit_invocation,
-            promotion_review_path=review_record_path(
-                repo_root,
-                Path("docs") / "reviews" / "status-promotions",
-                skill_name,
-            ),
-            candidate_review_path=review_record_path(
-                repo_root,
-                Path("docs") / "reviews" / "canonical-candidates",
-                skill_name,
-            ),
-            skill_path=relative_path(skill_md_path, repo_root),
+    for source in sources:
+        techniques = skill_catalog_contract.normalize_technique_refs(source.manifest)
+        skills.append(
+            skill_governance_surface.derive_public_surface_skill_entry(
+                skill_name=source.name,
+                metadata=source.metadata,
+                headings=set(source.sections),
+                techniques=techniques,
+                evaluation_coverage=skill_governance_surface.coverage_for_skill(
+                    coverage_by_skill,
+                    source.name,
+                ),
+                policy_exists=source.policy_exists,
+                policy_allow_implicit_invocation=source.policy_allow_implicit_invocation,
+                promotion_review_path=source.promotion_review_path,
+                candidate_review_path=source.candidate_review_path,
+                skill_path=relative_path(source.skill_md_path, repo_root),
+            )
         )
-        skills.append(entry)
-
     return {
         "public_surface_version": PUBLIC_SURFACE_VERSION,
         "source_of_truth": PUBLIC_SURFACE_SOURCE_OF_TRUTH,
@@ -681,211 +583,524 @@ def build_evaluation_matrix_texts(repo_root: Path) -> tuple[str, str]:
     )
 
 
-def render_json(payload: dict[str, Any], *, indent: int | None) -> str:
-    kwargs: dict[str, Any] = {
-        "ensure_ascii": True,
-        "sort_keys": True,
+def build_lineage_surface_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_lineage_surface.build_lineage_surface_payload(
+        repo_root,
+        selected_skill_names,
+    )
+
+
+def build_lineage_surface_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_lineage_surface_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_lineage_surface.render_lineage_surface_markdown(payload) + "\n",
+    )
+
+
+def build_boundary_matrix_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_boundary_surface.build_boundary_matrix_payload(
+        repo_root,
+        selected_skill_names,
+    )
+
+
+def build_boundary_matrix_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_boundary_matrix_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_boundary_surface.render_boundary_matrix_markdown(payload) + "\n",
+    )
+
+
+def build_governance_backlog_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_governance_backlog_surface.build_governance_backlog_payload(
+        repo_root,
+        selected_skill_names,
+    )
+
+
+def build_governance_backlog_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_governance_backlog_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_governance_backlog_surface.render_governance_backlog_markdown(payload)
+        + "\n",
+    )
+
+
+def generated_surface_versions() -> dict[str, int]:
+    return {
+        "catalog": CATALOG_VERSION,
+        "capsule": CAPSULE_VERSION,
+        "sections": SECTION_VERSION,
+        "walkthrough": WALKTHROUGH_VERSION,
+        "public_surface": PUBLIC_SURFACE_VERSION,
+        "evaluation_matrix": EVALUATION_MATRIX_VERSION,
+        "lineage_surface": LINEAGE_SURFACE_VERSION,
+        "boundary_matrix": BOUNDARY_MATRIX_VERSION,
+        "governance_backlog": GOVERNANCE_BACKLOG_VERSION,
+        "bundle_index": BUNDLE_INDEX_VERSION,
+        "skill_graph": SKILL_GRAPH_VERSION,
     }
-    if indent is None:
-        kwargs["separators"] = (",", ":")
-    else:
-        kwargs["indent"] = indent
-    return json.dumps(payload, **kwargs) + "\n"
 
 
-def build_catalog_texts(repo_root: Path) -> tuple[str, str]:
-    full_catalog = build_full_catalog(repo_root)
-    min_catalog = project_min_catalog(full_catalog)
-    return render_json(full_catalog, indent=2), render_json(min_catalog, indent=None)
+def build_bundle_index_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_bundle_surface.build_bundle_index_payload(
+        repo_root,
+        selected_skill_names,
+        generated_surface_versions=generated_surface_versions(),
+    )
 
 
-def build_capsule_text(repo_root: Path) -> str:
-    return render_json(build_capsules_payload(repo_root), indent=2)
+def build_bundle_index_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_bundle_index_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_bundle_surface.render_bundle_index_markdown(payload) + "\n",
+    )
 
 
-def build_sections_text(repo_root: Path) -> str:
-    return render_json(build_sections_payload(repo_root), indent=2)
+def build_skill_graph_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_bundle_surface.build_skill_graph_payload(
+        repo_root,
+        selected_skill_names,
+        generated_surface_versions=generated_surface_versions(),
+    )
 
 
-def write_walkthroughs(repo_root: Path) -> tuple[Path, Path]:
+def build_skill_graph_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_skill_graph_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_bundle_surface.render_skill_graph_markdown(payload) + "\n",
+    )
+
+
+def build_overlay_readiness_text(repo_root: Path) -> str:
+    return skill_overlay_contract.render_overlay_readiness_markdown(repo_root) + "\n"
+
+
+def build_catalog_surface_texts(repo_root: Path) -> dict[Path, str]:
+    full_text, min_text = build_catalog_texts(repo_root)
+    return {
+        FULL_CATALOG_PATH: full_text,
+        MIN_CATALOG_PATH: min_text,
+    }
+
+
+def build_capsule_surface_texts(repo_root: Path) -> dict[Path, str]:
+    return {CAPSULE_PATH: build_capsule_text(repo_root)}
+
+
+def build_sections_surface_texts(repo_root: Path) -> dict[Path, str]:
+    return {SECTIONS_PATH: build_sections_text(repo_root)}
+
+
+def build_walkthrough_surface_texts(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_walkthrough_texts(repo_root)
+    return {
+        WALKTHROUGHS_JSON_PATH: json_text,
+        WALKTHROUGHS_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def build_public_surface_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_public_surface_texts(repo_root)
+    return {
+        PUBLIC_SURFACE_JSON_PATH: json_text,
+        PUBLIC_SURFACE_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def build_evaluation_matrix_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_evaluation_matrix_texts(repo_root)
+    return {
+        EVALUATION_MATRIX_JSON_PATH: json_text,
+        EVALUATION_MATRIX_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def build_lineage_surface_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_lineage_surface_texts(repo_root)
+    return {
+        LINEAGE_SURFACE_JSON_PATH: json_text,
+        LINEAGE_SURFACE_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def build_boundary_matrix_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_boundary_matrix_texts(repo_root)
+    return {
+        BOUNDARY_MATRIX_JSON_PATH: json_text,
+        BOUNDARY_MATRIX_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def build_governance_backlog_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_governance_backlog_texts(repo_root)
+    return {
+        GOVERNANCE_BACKLOG_JSON_PATH: json_text,
+        GOVERNANCE_BACKLOG_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def build_overlay_readiness_outputs(repo_root: Path) -> dict[Path, str]:
+    return {OVERLAY_READINESS_MARKDOWN_PATH: build_overlay_readiness_text(repo_root)}
+
+
+def build_bundle_index_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_bundle_index_texts(repo_root)
+    return {
+        BUNDLE_INDEX_JSON_PATH: json_text,
+        BUNDLE_INDEX_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def build_skill_graph_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_skill_graph_texts(repo_root)
+    return {
+        SKILL_GRAPH_JSON_PATH: json_text,
+        SKILL_GRAPH_MARKDOWN_PATH: markdown_text,
+    }
+
+
+def generated_surface_specs() -> tuple[GeneratedSurfaceSpec, ...]:
+    return (
+        GeneratedSurfaceSpec(
+            key="catalogs",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=FULL_CATALOG_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+                GeneratedSurfaceOutput(
+                    path=MIN_CATALOG_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+            ),
+            build_texts=build_catalog_surface_texts,
+        ),
+        GeneratedSurfaceSpec(
+            key="capsules",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=CAPSULE_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+            ),
+            build_texts=build_capsule_surface_texts,
+        ),
+        GeneratedSurfaceSpec(
+            key="sections",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=SECTIONS_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+            ),
+            build_texts=build_sections_surface_texts,
+        ),
+        GeneratedSurfaceSpec(
+            key="walkthroughs",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=WALKTHROUGHS_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+                GeneratedSurfaceOutput(path=WALKTHROUGHS_MARKDOWN_PATH),
+            ),
+            build_texts=build_walkthrough_surface_texts,
+        ),
+        GeneratedSurfaceSpec(
+            key="public_surface",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=PUBLIC_SURFACE_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                    aggregate_sensitive=True,
+                ),
+                GeneratedSurfaceOutput(
+                    path=PUBLIC_SURFACE_MARKDOWN_PATH,
+                    aggregate_sensitive=True,
+                ),
+            ),
+            build_texts=build_public_surface_outputs,
+        ),
+        GeneratedSurfaceSpec(
+            key="evaluation_matrix",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=EVALUATION_MATRIX_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+                GeneratedSurfaceOutput(path=EVALUATION_MATRIX_MARKDOWN_PATH),
+            ),
+            build_texts=build_evaluation_matrix_outputs,
+        ),
+        GeneratedSurfaceSpec(
+            key="lineage_surface",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=LINEAGE_SURFACE_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                    aggregate_sensitive=True,
+                ),
+                GeneratedSurfaceOutput(
+                    path=LINEAGE_SURFACE_MARKDOWN_PATH,
+                    aggregate_sensitive=True,
+                ),
+            ),
+            build_texts=build_lineage_surface_outputs,
+        ),
+        GeneratedSurfaceSpec(
+            key="boundary_matrix",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=BOUNDARY_MATRIX_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                    aggregate_sensitive=True,
+                ),
+                GeneratedSurfaceOutput(
+                    path=BOUNDARY_MATRIX_MARKDOWN_PATH,
+                    aggregate_sensitive=True,
+                ),
+            ),
+            build_texts=build_boundary_matrix_outputs,
+        ),
+        GeneratedSurfaceSpec(
+            key="governance_backlog",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=GOVERNANCE_BACKLOG_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                    aggregate_sensitive=True,
+                ),
+                GeneratedSurfaceOutput(
+                    path=GOVERNANCE_BACKLOG_MARKDOWN_PATH,
+                    aggregate_sensitive=True,
+                ),
+            ),
+            build_texts=build_governance_backlog_outputs,
+        ),
+        GeneratedSurfaceSpec(
+            key="overlay_readiness",
+            outputs=(GeneratedSurfaceOutput(path=OVERLAY_READINESS_MARKDOWN_PATH),),
+            build_texts=build_overlay_readiness_outputs,
+        ),
+        GeneratedSurfaceSpec(
+            key="bundle_index",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=BUNDLE_INDEX_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                    aggregate_sensitive=True,
+                ),
+                GeneratedSurfaceOutput(
+                    path=BUNDLE_INDEX_MARKDOWN_PATH,
+                    aggregate_sensitive=True,
+                ),
+            ),
+            build_texts=build_bundle_index_outputs,
+        ),
+        GeneratedSurfaceSpec(
+            key="skill_graph",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=SKILL_GRAPH_JSON_PATH,
+                    is_json=True,
+                    aggregate_sensitive=True,
+                ),
+                GeneratedSurfaceOutput(
+                    path=SKILL_GRAPH_MARKDOWN_PATH,
+                    aggregate_sensitive=True,
+                ),
+            ),
+            build_texts=build_skill_graph_outputs,
+        ),
+    )
+
+
+def build_surface_text_map(repo_root: Path, spec: GeneratedSurfaceSpec) -> dict[Path, str]:
+    return spec.build_texts(repo_root)
+
+
+def write_generated_surface(
+    repo_root: Path,
+    spec: GeneratedSurfaceSpec,
+) -> tuple[Path, ...]:
     generated_dir = repo_root / GENERATED_DIR_NAME
     generated_dir.mkdir(exist_ok=True)
-    walkthrough_json, walkthrough_markdown = build_walkthrough_texts(repo_root)
-    json_path = repo_root / WALKTHROUGHS_JSON_PATH
-    markdown_path = repo_root / WALKTHROUGHS_MARKDOWN_PATH
-    json_path.write_text(walkthrough_json, encoding="utf-8", newline="\n")
-    markdown_path.write_text(walkthrough_markdown, encoding="utf-8", newline="\n")
-    return json_path, markdown_path
+    texts = build_surface_text_map(repo_root, spec)
+    written_paths: list[Path] = []
+    for output in spec.outputs:
+        target_path = repo_root / output.path
+        target_path.write_text(texts[output.path], encoding="utf-8", newline="\n")
+        written_paths.append(target_path)
+    return tuple(written_paths)
 
 
-def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
-    generated_dir = repo_root / GENERATED_DIR_NAME
-    generated_dir.mkdir(exist_ok=True)
-    public_surface_json, public_surface_markdown = build_public_surface_texts(repo_root)
-    json_path = repo_root / PUBLIC_SURFACE_JSON_PATH
-    markdown_path = repo_root / PUBLIC_SURFACE_MARKDOWN_PATH
-    json_path.write_text(public_surface_json, encoding="utf-8", newline="\n")
-    markdown_path.write_text(public_surface_markdown, encoding="utf-8", newline="\n")
-    return json_path, markdown_path
+def check_generated_surface(repo_root: Path, spec: GeneratedSurfaceSpec) -> list[str]:
+    problems: list[str] = []
+    try:
+        expected_texts = build_surface_text_map(repo_root, spec)
+    except ValueError as exc:
+        return [f"{spec.key} source validation failed:\n{exc}"]
 
-
-def write_evaluation_matrix(repo_root: Path) -> tuple[Path, Path]:
-    generated_dir = repo_root / GENERATED_DIR_NAME
-    generated_dir.mkdir(exist_ok=True)
-    matrix_json, matrix_markdown = build_evaluation_matrix_texts(repo_root)
-    json_path = repo_root / EVALUATION_MATRIX_JSON_PATH
-    markdown_path = repo_root / EVALUATION_MATRIX_MARKDOWN_PATH
-    json_path.write_text(matrix_json, encoding="utf-8", newline="\n")
-    markdown_path.write_text(matrix_markdown, encoding="utf-8", newline="\n")
-    return json_path, markdown_path
+    for output in spec.outputs:
+        path = repo_root / output.path
+        if not path.is_file():
+            problems.append(f"missing {relative_path(path, repo_root)}")
+            continue
+        if path.read_text(encoding="utf-8") != expected_texts[output.path]:
+            problems.append(f"stale {relative_path(path, repo_root)}")
+    return problems
 
 
 def write_catalogs(repo_root: Path) -> tuple[Path, Path]:
-    generated_dir = repo_root / GENERATED_DIR_NAME
-    generated_dir.mkdir(exist_ok=True)
-    full_text, min_text = build_catalog_texts(repo_root)
-    full_path = repo_root / FULL_CATALOG_PATH
-    min_path = repo_root / MIN_CATALOG_PATH
-    full_path.write_text(full_text, encoding="utf-8", newline="\n")
-    min_path.write_text(min_text, encoding="utf-8", newline="\n")
-    return full_path, min_path
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[0])
+    return written_paths[0], written_paths[1]
 
 
 def write_capsules(repo_root: Path) -> Path:
-    generated_dir = repo_root / GENERATED_DIR_NAME
-    generated_dir.mkdir(exist_ok=True)
-    capsule_text = build_capsule_text(repo_root)
-    capsule_path = repo_root / CAPSULE_PATH
-    capsule_path.write_text(capsule_text, encoding="utf-8", newline="\n")
-    return capsule_path
+    return write_generated_surface(repo_root, generated_surface_specs()[1])[0]
 
 
 def write_sections(repo_root: Path) -> Path:
-    generated_dir = repo_root / GENERATED_DIR_NAME
-    generated_dir.mkdir(exist_ok=True)
-    sections_text = build_sections_text(repo_root)
-    sections_path = repo_root / SECTIONS_PATH
-    sections_path.write_text(sections_text, encoding="utf-8", newline="\n")
-    return sections_path
+    return write_generated_surface(repo_root, generated_surface_specs()[2])[0]
+
+
+def write_walkthroughs(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[3])
+    return written_paths[0], written_paths[1]
+
+
+def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[4])
+    return written_paths[0], written_paths[1]
+
+
+def write_evaluation_matrix(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[5])
+    return written_paths[0], written_paths[1]
+
+
+def write_lineage_surface(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[6])
+    return written_paths[0], written_paths[1]
+
+
+def write_boundary_matrix(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[7])
+    return written_paths[0], written_paths[1]
+
+
+def write_governance_backlog(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[8])
+    return written_paths[0], written_paths[1]
+
+
+def write_overlay_readiness(repo_root: Path) -> Path:
+    return write_generated_surface(repo_root, generated_surface_specs()[9])[0]
+
+
+def write_bundle_index(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[10])
+    return written_paths[0], written_paths[1]
+
+
+def write_skill_graph(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(repo_root, generated_surface_specs()[11])
+    return written_paths[0], written_paths[1]
 
 
 def check_catalogs(repo_root: Path) -> list[str]:
-    problems: list[str] = []
-    full_path = repo_root / FULL_CATALOG_PATH
-    min_path = repo_root / MIN_CATALOG_PATH
-    try:
-        expected_full, expected_min = build_catalog_texts(repo_root)
-    except ValueError as exc:
-        return [f"source validation failed:\n{exc}"]
-
-    for path in (full_path, min_path):
-        if not path.is_file():
-            problems.append(f"missing {relative_path(path, repo_root)}")
-
-    if full_path.is_file() and full_path.read_text(encoding="utf-8") != expected_full:
-        problems.append(f"stale {relative_path(full_path, repo_root)}")
-
-    if min_path.is_file() and min_path.read_text(encoding="utf-8") != expected_min:
-        problems.append(f"stale {relative_path(min_path, repo_root)}")
-
-    return problems
+    return check_generated_surface(repo_root, generated_surface_specs()[0])
 
 
 def check_capsules(repo_root: Path) -> list[str]:
-    problems: list[str] = []
-    capsule_path = repo_root / CAPSULE_PATH
-    try:
-        expected_capsule = build_capsule_text(repo_root)
-    except ValueError as exc:
-        return [f"capsule source validation failed:\n{exc}"]
-
-    if not capsule_path.is_file():
-        problems.append(f"missing {relative_path(capsule_path, repo_root)}")
-        return problems
-
-    if capsule_path.read_text(encoding="utf-8") != expected_capsule:
-        problems.append(f"stale {relative_path(capsule_path, repo_root)}")
-    return problems
+    return check_generated_surface(repo_root, generated_surface_specs()[1])
 
 
 def check_sections(repo_root: Path) -> list[str]:
-    problems: list[str] = []
-    sections_path = repo_root / SECTIONS_PATH
-    try:
-        expected_sections = build_sections_text(repo_root)
-    except ValueError as exc:
-        return [f"section source validation failed:\n{exc}"]
-
-    if not sections_path.is_file():
-        problems.append(f"missing {relative_path(sections_path, repo_root)}")
-        return problems
-
-    if sections_path.read_text(encoding="utf-8") != expected_sections:
-        problems.append(f"stale {relative_path(sections_path, repo_root)}")
-    return problems
+    return check_generated_surface(repo_root, generated_surface_specs()[2])
 
 
 def check_walkthroughs(repo_root: Path) -> list[str]:
-    problems: list[str] = []
-    json_path = repo_root / WALKTHROUGHS_JSON_PATH
-    markdown_path = repo_root / WALKTHROUGHS_MARKDOWN_PATH
-    try:
-        expected_json, expected_markdown = build_walkthrough_texts(repo_root)
-    except ValueError as exc:
-        return [f"walkthrough source validation failed:\n{exc}"]
-
-    if not json_path.is_file():
-        problems.append(f"missing {relative_path(json_path, repo_root)}")
-    if not markdown_path.is_file():
-        problems.append(f"missing {relative_path(markdown_path, repo_root)}")
-
-    if json_path.is_file() and json_path.read_text(encoding="utf-8") != expected_json:
-        problems.append(f"stale {relative_path(json_path, repo_root)}")
-    if markdown_path.is_file() and markdown_path.read_text(encoding="utf-8") != expected_markdown:
-        problems.append(f"stale {relative_path(markdown_path, repo_root)}")
-    return problems
+    return check_generated_surface(repo_root, generated_surface_specs()[3])
 
 
 def check_public_surface(repo_root: Path) -> list[str]:
-    problems: list[str] = []
-    json_path = repo_root / PUBLIC_SURFACE_JSON_PATH
-    markdown_path = repo_root / PUBLIC_SURFACE_MARKDOWN_PATH
-    try:
-        expected_json, expected_markdown = build_public_surface_texts(repo_root)
-    except ValueError as exc:
-        return [f"public surface source validation failed:\n{exc}"]
-
-    if not json_path.is_file():
-        problems.append(f"missing {relative_path(json_path, repo_root)}")
-    if not markdown_path.is_file():
-        problems.append(f"missing {relative_path(markdown_path, repo_root)}")
-
-    if json_path.is_file() and json_path.read_text(encoding="utf-8") != expected_json:
-        problems.append(f"stale {relative_path(json_path, repo_root)}")
-    if markdown_path.is_file() and markdown_path.read_text(encoding="utf-8") != expected_markdown:
-        problems.append(f"stale {relative_path(markdown_path, repo_root)}")
-    return problems
+    return check_generated_surface(repo_root, generated_surface_specs()[4])
 
 
 def check_evaluation_matrix(repo_root: Path) -> list[str]:
-    problems: list[str] = []
-    json_path = repo_root / EVALUATION_MATRIX_JSON_PATH
-    markdown_path = repo_root / EVALUATION_MATRIX_MARKDOWN_PATH
-    try:
-        expected_json, expected_markdown = build_evaluation_matrix_texts(repo_root)
-    except ValueError as exc:
-        return [f"evaluation matrix source validation failed:\n{exc}"]
+    return check_generated_surface(repo_root, generated_surface_specs()[5])
 
-    if not json_path.is_file():
-        problems.append(f"missing {relative_path(json_path, repo_root)}")
-    if not markdown_path.is_file():
-        problems.append(f"missing {relative_path(markdown_path, repo_root)}")
 
-    if json_path.is_file() and json_path.read_text(encoding="utf-8") != expected_json:
-        problems.append(f"stale {relative_path(json_path, repo_root)}")
-    if markdown_path.is_file() and markdown_path.read_text(encoding="utf-8") != expected_markdown:
-        problems.append(f"stale {relative_path(markdown_path, repo_root)}")
-    return problems
+def check_lineage_surface(repo_root: Path) -> list[str]:
+    return check_generated_surface(repo_root, generated_surface_specs()[6])
+
+
+def check_boundary_matrix(repo_root: Path) -> list[str]:
+    return check_generated_surface(repo_root, generated_surface_specs()[7])
+
+
+def check_governance_backlog(repo_root: Path) -> list[str]:
+    return check_generated_surface(repo_root, generated_surface_specs()[8])
+
+
+def check_overlay_readiness(repo_root: Path) -> list[str]:
+    return check_generated_surface(repo_root, generated_surface_specs()[9])
+
+
+def check_bundle_index(repo_root: Path) -> list[str]:
+    return check_generated_surface(repo_root, generated_surface_specs()[10])
+
+
+def check_skill_graph(repo_root: Path) -> list[str]:
+    return check_generated_surface(repo_root, generated_surface_specs()[11])
 
 
 def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> int:
@@ -893,14 +1108,9 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
     try:
         args = parse_args(argv)
         if args.check:
-            problems = (
-                check_catalogs(repo_root)
-                + check_capsules(repo_root)
-                + check_sections(repo_root)
-                + check_walkthroughs(repo_root)
-                + check_public_surface(repo_root)
-                + check_evaluation_matrix(repo_root)
-            )
+            problems: list[str] = []
+            for spec in generated_surface_specs():
+                problems.extend(check_generated_surface(repo_root, spec))
             if problems:
                 print("Generated surface check failed.")
                 for problem in problems:
@@ -911,14 +1121,9 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
             )
             return 0
 
-        full_path, min_path = write_catalogs(repo_root)
-        capsule_path = write_capsules(repo_root)
-        sections_path = write_sections(repo_root)
-        walkthrough_json_path, walkthrough_markdown_path = write_walkthroughs(repo_root)
-        public_surface_json_path, public_surface_markdown_path = write_public_surface(repo_root)
-        evaluation_matrix_json_path, evaluation_matrix_markdown_path = write_evaluation_matrix(
-            repo_root
-        )
+        written_paths: list[Path] = []
+        for spec in generated_surface_specs():
+            written_paths.extend(write_generated_surface(repo_root, spec))
     except (FileNotFoundError, ValueError) as exc:
         print(f"Runtime error: {exc}", file=sys.stderr)
         return 2
@@ -926,19 +1131,8 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         print(f"Runtime error: {exc}", file=sys.stderr)
         return 2
 
-    print(
-        "Generated surface build wrote "
-        f"{relative_path(full_path, repo_root)}, "
-        f"{relative_path(min_path, repo_root)}, "
-        f"{relative_path(capsule_path, repo_root)}, "
-        f"{relative_path(sections_path, repo_root)}, "
-        f"{relative_path(walkthrough_json_path, repo_root)}, "
-        f"{relative_path(walkthrough_markdown_path, repo_root)}, "
-        f"{relative_path(public_surface_json_path, repo_root)}, and "
-        f"{relative_path(public_surface_markdown_path, repo_root)}, "
-        f"{relative_path(evaluation_matrix_json_path, repo_root)}, and "
-        f"{relative_path(evaluation_matrix_markdown_path, repo_root)}."
-    )
+    relative_paths = [relative_path(path, repo_root) for path in written_paths]
+    print("Generated surface build wrote " + ", ".join(relative_paths) + ".")
     return 0
 
 

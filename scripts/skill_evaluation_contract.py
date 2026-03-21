@@ -12,6 +12,7 @@ import skill_catalog_contract
 
 EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.yaml"
 EVALUATION_SNAPSHOTS_DIR = Path("tests") / "fixtures" / "skill_evaluation_snapshots"
+EVALUATION_FIXTURES_SCHEMA = "skill-evaluation-cases.schema.json"
 EVALUATION_SNAPSHOT_HEADINGS = (
     "Prompt",
     "Expected selection",
@@ -29,6 +30,22 @@ SNAPSHOT_TOP_LEVEL_KEYS = (
     "snapshot_path",
     "required_output_phrases",
     "forbidden_output_phrases",
+)
+ADJACENCY_TOP_LEVEL_KEYS = (
+    "skill",
+    "adjacent_skill",
+    "case_id",
+    "prompt",
+    "expected",
+    "snapshot_path",
+    "required_output_phrases",
+    "forbidden_output_phrases",
+)
+TOP_LEVEL_FIXTURE_KEYS = (
+    "autonomy_checks",
+    "trigger_cases",
+    "snapshot_cases",
+    "adjacency_cases",
 )
 OUTPUT_SECTION_NAMES = (
     "Expected selection",
@@ -125,6 +142,31 @@ def snapshot_cases(fixtures: Mapping[str, Any] | None) -> list[Mapping[str, Any]
     if not isinstance(raw_cases, list):
         return []
     return [case for case in raw_cases if isinstance(case, Mapping)]
+
+
+def adjacency_cases(fixtures: Mapping[str, Any] | None) -> list[Mapping[str, Any]]:
+    if not isinstance(fixtures, Mapping):
+        return []
+    raw_cases = fixtures.get("adjacency_cases", [])
+    if not isinstance(raw_cases, list):
+        return []
+    return [case for case in raw_cases if isinstance(case, Mapping)]
+
+
+def trigger_cases(fixtures: Mapping[str, Any] | None) -> list[Mapping[str, Any]]:
+    if not isinstance(fixtures, Mapping):
+        return []
+    raw_cases = fixtures.get("trigger_cases", [])
+    if not isinstance(raw_cases, list):
+        return []
+    return [case for case in raw_cases if isinstance(case, Mapping)]
+
+
+def discover_skill_names(repo_root: Path) -> list[str]:
+    skills_dir = repo_root / "skills"
+    if not skills_dir.is_dir():
+        return []
+    return sorted(path.name for path in skills_dir.iterdir() if path.is_dir())
 
 
 def fixture_location_with_case(index: int, field_name: str | None = None) -> str:
@@ -247,6 +289,106 @@ def validate_snapshot_case_contract(
                     EvaluationContractIssue(
                         fixture_location_with_case(index, field_name),
                         f"snapshot case field '{field_name}' must be a list of non-empty strings",
+                    )
+                )
+
+    return issues
+
+
+def validate_adjacency_case_contract(
+    fixtures: Mapping[str, Any] | None,
+) -> list[EvaluationContractIssue]:
+    issues: list[EvaluationContractIssue] = []
+    if not isinstance(fixtures, Mapping):
+        return issues
+
+    raw_cases = fixtures.get("adjacency_cases")
+    if raw_cases is None:
+        issues.append(
+            EvaluationContractIssue(
+                EVALUATION_FIXTURES_PATH.as_posix(),
+                "evaluation fixtures must define top-level 'adjacency_cases'",
+            )
+        )
+        return issues
+
+    if not isinstance(raw_cases, list):
+        issues.append(
+            EvaluationContractIssue(
+                EVALUATION_FIXTURES_PATH.as_posix(),
+                "evaluation fixtures field 'adjacency_cases' must be a list",
+            )
+        )
+        return issues
+
+    for index, raw_case in enumerate(raw_cases):
+        location = f"{EVALUATION_FIXTURES_PATH.as_posix()}:adjacency_cases[{index}]"
+        if not isinstance(raw_case, Mapping):
+            issues.append(EvaluationContractIssue(location, "adjacency case must be a mapping"))
+            continue
+
+        for key in ADJACENCY_TOP_LEVEL_KEYS:
+            if key not in raw_case:
+                issues.append(
+                    EvaluationContractIssue(
+                        location,
+                        f"adjacency case missing required field '{key}'",
+                    )
+                )
+
+        for field_name in ("skill", "adjacent_skill", "case_id", "prompt", "snapshot_path"):
+            field_value = raw_case.get(field_name)
+            if not isinstance(field_value, str) or not field_value.strip():
+                issues.append(
+                    EvaluationContractIssue(
+                        f"{location}.{field_name}",
+                        f"adjacency case field '{field_name}' must be a non-empty string",
+                    )
+                )
+
+        if raw_case.get("skill") == raw_case.get("adjacent_skill"):
+            issues.append(
+                EvaluationContractIssue(
+                    f"{location}.adjacent_skill",
+                    "adjacency case must compare against a different adjacent_skill",
+                )
+            )
+
+        expected = raw_case.get("expected")
+        if expected not in SNAPSHOT_EXPECTED_VALUES:
+            issues.append(
+                EvaluationContractIssue(
+                    f"{location}.expected",
+                    "adjacency case field 'expected' must be 'use' or 'do_not_use'",
+                )
+            )
+
+        snapshot_path = raw_case.get("snapshot_path")
+        if isinstance(snapshot_path, str) and snapshot_path.strip():
+            snapshot_path_value = Path(snapshot_path)
+            skill_name = str(raw_case.get("skill") or "")
+            expected_dir = EVALUATION_SNAPSHOTS_DIR / skill_name
+            if (
+                not skill_catalog_contract.is_repo_relative_path(snapshot_path)
+                or snapshot_path_value.suffix.lower() != ".md"
+                or expected_dir not in snapshot_path_value.parents
+            ):
+                issues.append(
+                    EvaluationContractIssue(
+                        f"{location}.snapshot_path",
+                        "adjacency snapshot paths must stay under tests/fixtures/skill_evaluation_snapshots/<skill>/*.md",
+                    )
+                )
+
+        for field_name in ("required_output_phrases", "forbidden_output_phrases"):
+            field_value = raw_case.get(field_name)
+            if not isinstance(field_value, list) or not all(
+                isinstance(item, str) and item.strip() for item in field_value
+            ):
+                issues.append(
+                    EvaluationContractIssue(
+                        f"{location}.{field_name}",
+                        f"adjacency case field '{field_name}' must be a list of non-empty strings",
                     )
                 )
 
@@ -408,6 +550,131 @@ def collect_snapshot_coverage(
             blockers=ordered_blockers(sorted(blockers)),
         )
     return result
+
+
+def snapshot_reference_cases(fixtures: Mapping[str, Any] | None) -> list[Mapping[str, Any]]:
+    return list(snapshot_cases(fixtures)) + list(adjacency_cases(fixtures))
+
+
+def validate_fixture_integrity(
+    repo_root: Path,
+    fixtures: Mapping[str, Any] | None,
+) -> list[EvaluationContractIssue]:
+    issues: list[EvaluationContractIssue] = []
+    if not isinstance(fixtures, Mapping):
+        return issues
+
+    available_skills = set(discover_skill_names(repo_root))
+    seen_case_ids: dict[str, str] = {}
+    seen_snapshot_paths: dict[str, str] = {}
+    trigger_by_case_id: dict[str, Mapping[str, Any]] = {}
+
+    for top_level_key in TOP_LEVEL_FIXTURE_KEYS:
+        if top_level_key not in fixtures:
+            issues.append(
+                EvaluationContractIssue(
+                    EVALUATION_FIXTURES_PATH.as_posix(),
+                    f"evaluation fixtures must define top-level '{top_level_key}'",
+                )
+            )
+
+    for case in trigger_cases(fixtures):
+        case_id = case.get("case_id")
+        skill_name = case.get("skill")
+        location = EVALUATION_FIXTURES_PATH.as_posix()
+        if isinstance(skill_name, str) and skill_name not in available_skills:
+            issues.append(
+                EvaluationContractIssue(
+                    location,
+                    f"trigger case references unknown skill '{skill_name}'",
+                )
+            )
+        if isinstance(case_id, str):
+            trigger_by_case_id[case_id] = case
+
+    for case in snapshot_reference_cases(fixtures):
+        case_id = case.get("case_id")
+        snapshot_path = case.get("snapshot_path")
+        skill_name = case.get("skill")
+        expected = case.get("expected")
+
+        if isinstance(skill_name, str) and skill_name not in available_skills:
+            issues.append(
+                EvaluationContractIssue(
+                    EVALUATION_FIXTURES_PATH.as_posix(),
+                    f"snapshot-backed case references unknown skill '{skill_name}'",
+                )
+            )
+
+        if isinstance(case_id, str):
+            if case_id in seen_case_ids:
+                issues.append(
+                    EvaluationContractIssue(
+                        EVALUATION_FIXTURES_PATH.as_posix(),
+                        f"duplicate snapshot-backed case_id '{case_id}'",
+                    )
+                )
+            seen_case_ids[case_id] = str(case.get("skill") or "")
+            if case in snapshot_cases(fixtures):
+                trigger_case = trigger_by_case_id.get(case_id)
+                if trigger_case is None:
+                    issues.append(
+                        EvaluationContractIssue(
+                            EVALUATION_FIXTURES_PATH.as_posix(),
+                            f"snapshot case '{case_id}' must have a matching trigger case",
+                        )
+                    )
+                else:
+                    if trigger_case.get("expected") != expected:
+                        issues.append(
+                            EvaluationContractIssue(
+                                EVALUATION_FIXTURES_PATH.as_posix(),
+                                f"snapshot case '{case_id}' must match trigger-case expected value",
+                            )
+                        )
+                    if trigger_case.get("prompt") != case.get("prompt"):
+                        issues.append(
+                            EvaluationContractIssue(
+                                EVALUATION_FIXTURES_PATH.as_posix(),
+                                f"snapshot case '{case_id}' must keep prompt aligned with its trigger case",
+                            )
+                        )
+
+        if isinstance(snapshot_path, str):
+            if snapshot_path in seen_snapshot_paths:
+                issues.append(
+                    EvaluationContractIssue(
+                        EVALUATION_FIXTURES_PATH.as_posix(),
+                        f"duplicate snapshot_path '{snapshot_path}'",
+                    )
+                )
+            seen_snapshot_paths[snapshot_path] = str(case_id or "")
+            if isinstance(case_id, str) and Path(snapshot_path).name != f"{case_id}.md":
+                issues.append(
+                    EvaluationContractIssue(
+                        EVALUATION_FIXTURES_PATH.as_posix(),
+                        f"snapshot_path '{snapshot_path}' must match case_id '{case_id}.md'",
+                    )
+                )
+
+    referenced_paths = {
+        str(case.get("snapshot_path"))
+        for case in snapshot_reference_cases(fixtures)
+        if isinstance(case.get("snapshot_path"), str)
+    }
+    snapshots_root = repo_root / EVALUATION_SNAPSHOTS_DIR
+    if snapshots_root.is_dir():
+        for snapshot_path in sorted(snapshots_root.rglob("*.md")):
+            relative = relative_location(snapshot_path, repo_root)
+            if relative not in referenced_paths:
+                issues.append(
+                    EvaluationContractIssue(
+                        relative,
+                        "evaluation snapshot file is orphaned and not referenced by snapshot_cases or adjacency_cases",
+                    )
+                )
+
+    return issues
 
 
 def derive_canonical_eval_blockers(

@@ -4,7 +4,7 @@
 
 Current public foundation:
 - coherent docs surface
-- 13 public skills across core and risk categories, including the first `canonical` skills and evaluated coverage across the rest of the current public surface
+- 14 public skills across core and risk categories, including the first `canonical` skills and evaluated coverage across the rest of the current public surface
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
 - local validator for bundle shape, policy, and `SKILL_INDEX.md` coverage
@@ -13,6 +13,7 @@ Current public foundation:
 - derived public-surface signaling in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`
 
 The next steps should use that derived governance layer to drive pending-lineage closure, candidate review, and stronger public product-surface clarity rather than only increase skill count.
+Overlay preparation and packaging are intentionally repo-local and future-facing: they should surface contracts and export primitives without introducing live downstream integrations, releases, or registries.
 
 ## v0.3 public core hardening
 
@@ -24,6 +25,7 @@ Continue the public core hardening pass with:
 - stronger build-time refresh helpers that move from alignment-only toward reviewable bridge composition
 - drift detection when a referenced technique changes materially
 - stronger autonomy checks for self-contained runtime use without live remote dependency
+- this phase is now residual hardening, not initial scaffold growth
 
 ## v0.4 evaluation harness
 
@@ -35,6 +37,7 @@ Add:
 - explicit evaluation-coverage enforcement for `evaluated` and `canonical` skills
 - review checklists and behavior evidence for risk-heavy skills
 - end-to-end walkthroughs that show how selected skills look in real use
+- deeper boundary evidence and fixture integrity checks are preferred over adding more raw count coverage
 
 ## v0.5 maturity and governance
 
@@ -46,6 +49,7 @@ Add:
 - a more explicit public promotion path that explains what evidence and review surface is expected at each maturity step
 - clearer public product surface for external readers, including stronger entry points and usage-oriented documentation
 - derived public-surface views should remain preferred over introducing a second explicit skill metadata layer in the public core
+- candidate review records and governance backlog surfaces belong here, not in the runtime layer
 
 ## v0.6 project overlays
 
@@ -58,6 +62,7 @@ Target shape:
 - explicit local authority and approval rules
 - local validation commands and evidence paths
 - no silent fork of the public core meaning
+- `docs/OVERLAY_SPEC.md` should define the repo-local overlay contract before any real downstream overlay bundle is added
 
 ## v0.7 packaging and distribution
 
@@ -67,6 +72,7 @@ Explore:
 - skill graph views for dependency, maturity, and policy relationships
 - import/export and offline bundle use
 - verifiable distribution of reusable public skill bundles
+- keep this wave repo-local and read-only for the public core; no GitHub releases, tags, or remote registries are implied
 
 ## Long-term direction
 

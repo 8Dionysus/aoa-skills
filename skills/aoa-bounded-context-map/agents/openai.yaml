@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: true
+notes:
+  - This skill is explicit-preferred, but may later be allowed implicitly for bounded non-trivial changes.
