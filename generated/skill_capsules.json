@@ -197,7 +197,7 @@
     {
       "inputs_short": "Needs: material to be shared; sharing audience or context; known sensitive surfaces; acceptable level of abstraction.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: over-sanitizing until the artifact becomes meaningless; under-sanitizing because a value looks harmless in isolation; forgetting that topology and naming can be sensitive even without tokens; sharing raw...",
+      "main_anti_patterns_short": "Avoid: ### Failure modes; over-sanitizing until the artifact becomes meaningless; under-sanitizing because a value looks harmless in isolation; ### Negative effects.",
       "name": "aoa-sanitized-share",
       "outputs_short": "Produces: sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly; note on what was generalized or removed; warning about any remaining ambiguity or sensitive edge.",
       "scope": "risk",
@@ -216,7 +216,7 @@
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: over-formalizing a tiny docs surface; creating many labels without reducing ambiguity; moving truth across files without clearly signaling the change; letting summaries masquerade as canonical instructions.",
       "name": "aoa-source-of-truth-check",
-      "outputs_short": "Produces: clearer source-of-truth map; note of overlaps or conflicts; proposed or implemented document role clarification; verification summary.",
+      "outputs_short": "Produces: clearer source-of-truth map; fan-out map when one source feeds multiple downstream consumers; note of overlaps or conflicts; proposed or implemented document role clarification.",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "evaluated",

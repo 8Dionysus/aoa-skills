@@ -22,6 +22,7 @@ Use this skill when:
 - contributors may not know which file to trust first
 - a change touches docs, process, or operational guidance and the question is which file is authoritative
 - confusion exists between overview docs and authoritative docs
+- one authoritative source must stay aligned across multiple downstream consumer surfaces
 
 Do not use this skill when:
 - the repository is tiny and has no meaningful source-of-truth ambiguity
@@ -40,6 +41,7 @@ Do not use this skill when:
 ## Outputs
 
 - clearer source-of-truth map
+- fan-out map when one source feeds multiple downstream consumers
 - note of overlaps or conflicts
 - proposed or implemented document role clarification
 - verification summary
@@ -49,9 +51,10 @@ Do not use this skill when:
 1. identify the main docs or guidance files involved in the target area
 2. determine which file should be authoritative for each concern
 3. note any overlap, contradiction, or role ambiguity
-4. clarify or propose clarifying document ownership and purpose
-5. keep the change bounded to the guidance surface under review
-6. verify that the result reduces ambiguity for future changes
+4. if one source feeds multiple consumers, name each consumer and refresh them from the same source
+5. clarify or propose clarifying document ownership and purpose
+6. keep the change bounded to the guidance surface under review
+7. verify that the result reduces ambiguity for future changes
 
 ## Contracts
 
