@@ -361,6 +361,54 @@
     },
     {
       "do_not_use_when": [
+        "the invariant itself is still unknown and you need discovery work first",
+        "the task is mostly about presentation details or a narrow snapshot",
+        "you need a full boundary contract review rather than a coverage audit"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-invariant-coverage-audit",
+      "object_use_shape": [
+        "invariant coverage map",
+        "gap list for weak or missing checks",
+        "bounded follow-up checks or revisions",
+        "concise verification summary"
+      ],
+      "pick_summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-invariant-coverage-audit/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "use_when": [
+        "an existing test or check surface needs a review for invariant strength",
+        "the question is whether current checks really constrain the stable rule",
+        "you need to turn a loose example set into a bounded coverage audit"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the task is a tiny local fix with no architectural pressure",
         "there is no meaningful boundary to clarify yet",
         "the code would become more ceremonial than useful after extraction",

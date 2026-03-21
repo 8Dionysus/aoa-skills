@@ -127,7 +127,7 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 13 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
+This repository now has a mixed-status public core of 14 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
 It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
 It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the derived governance/public-surface layer.
 The current focus is keeping runtime selection inspectable without introducing a second source of truth, while using the derived governance surface to clarify default references, candidate-ready skills, and pending-lineage blockers.

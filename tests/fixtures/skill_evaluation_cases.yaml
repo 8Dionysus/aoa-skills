@@ -59,6 +59,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-invariant-coverage-audit
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-dry-run-first
     forbidden_runtime_terms:
       - aoa-techniques
@@ -232,6 +238,20 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - no meaningful invariant is yet understood
+
+  - skill: aoa-invariant-coverage-audit
+    case_id: invariant_coverage_audit_existing_surface
+    prompt: Review an existing validation surface to see whether it really constrains the stable rule or only repeats examples.
+    expected: use
+    required_phrases:
+      - an existing test or check surface needs a review for invariant strength
+      - the question is whether current checks really constrain the stable rule
+  - skill: aoa-invariant-coverage-audit
+    case_id: invariant_coverage_audit_invariant_not_known
+    prompt: Search for the invariant itself before trying to audit the coverage around it.
+    expected: do_not_use
+    required_phrases:
+      - the invariant itself is still unknown and you need discovery work first
 
   - skill: aoa-dry-run-first
     case_id: dry_run_first_previewable_operation

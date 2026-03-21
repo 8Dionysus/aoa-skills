@@ -125,6 +125,23 @@
       "workflow_short": "Purpose: force a preview-first mindset before executing changes that may be destructive, irreversible, or operationally meaningful. Flow: identify whether a preview, simulation, inspect-only, or dry-run path exists -> prefer the safest bounded preview..."
     },
     {
+      "inputs_short": "Needs: target rule or stable truth; current tests, checks, or examples; known edge cases and stress cases; the input space or states that matter most.",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: counting examples as if they were invariants; letting random data hide thin coverage; widening into generic test design or full suite architecture; making the audit so abstract that no one can act on it.",
+      "name": "aoa-invariant-coverage-audit",
+      "outputs_short": "Produces: invariant coverage map; gap list for weak or missing checks; bounded follow-up checks or revisions; concise verification summary.",
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated",
+      "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
+      "technique_dependencies": [
+        "AOA-T-0017"
+      ],
+      "trigger_boundary_short": "Use when an existing test or check surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule; Avoid when the invariant itself is still unknown and you...",
+      "verification_short": "Checks: confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded; confirm another human can follow why the existing surface is or is not sufficient.",
+      "workflow_short": "Purpose: invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, instead of only repeating examples. Flow: name the stable truth in plain language -> map each existing check to the invariant it..."
+    },
+    {
       "inputs_short": "Needs: target module or slice; concrete dependency that currently leaks into the core logic; desired scope of refactor; validation expectations.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it; using the refactor as a pretext for unrelated architectural...",

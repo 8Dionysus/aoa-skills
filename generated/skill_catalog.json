@@ -258,6 +258,37 @@
     {
       "composition_mode": "bounded",
       "invocation_mode": "explicit-preferred",
+      "name": "aoa-invariant-coverage-audit",
+      "scope": "core",
+      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "evaluated",
+      "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
+      "technique_dependencies": [
+        "AOA-T-0017"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0017",
+          "path": "techniques/evaluation/property-invariants/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "d9f1f1da968b1449d3c2702792cac794b36573c3",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
