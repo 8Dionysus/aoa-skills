@@ -16,11 +16,13 @@ explicit contracts, risks, verification guidance, and technique traceability.
 If you are new to this repository, follow this short path:
 
 1. Read `docs/README.md` for the docs map.
-2. Read `docs/ARCHITECTURE.md` for the high-level model.
-3. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-4. Read `SKILL_INDEX.md` for the current skill surface.
-5. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-6. Use `templates/SKILL.template.md` when authoring a new skill.
+2. Read `docs/PUBLIC_SURFACE.md` for the public-product and governance signals.
+3. Read `docs/ARCHITECTURE.md` for the high-level model.
+4. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
+5. Read `generated/public_surface.md` for the current derived cohort split.
+6. Read `SKILL_INDEX.md` for the current skill surface.
+7. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+8. Use `templates/SKILL.template.md` when authoring a new skill.
 
 ## Quick routes
 
@@ -88,7 +90,7 @@ For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metada
 - `docs/` — architecture, bridge rules, roadmap, conventions
 - `templates/` — templates for skill authoring and composition metadata
 - `skills/` — skill bundles
-- `generated/` — derived reader catalogs and local runtime cards built from committed skill markdown and manifests
+- `generated/` — derived reader catalogs, local runtime cards, section surfaces, and public-product surfaces built from committed skill markdown, manifests, review records, and evaluation fixtures
 - `scripts/` — local validation and refresh helpers
 - `schemas/` — machine-readable bundle contracts
 - `tests/` — local validator and evaluation tests
@@ -107,6 +109,7 @@ A typical skill bundle contains:
 `generated/skill_catalog.json` and `generated/skill_catalog.min.json` are derived reader surfaces for routing and indexing.
 `generated/skill_capsules.json` is a derived local runtime-card surface with bounded per-skill summaries.
 `generated/skill_sections.full.json` is the source-owned section payload surface for bounded expand-time reads.
+`generated/public_surface.json` and `generated/public_surface.md` are derived governance and public-product surfaces.
 
 ## Skill categories
 
@@ -116,9 +119,9 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 13 skills with first support artifacts, pinned bridge manifests, and local validation for bundle shape and policy coherence.
-It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, and documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`.
-The current focus is bridge-composer hardening, cross-repo drift reporting, and clearer public governance around that core.
+This repository now has a mixed-status public core of 13 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
+It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
+The current focus is using that derived governance surface to clarify default references, candidate-ready skills, and pending-lineage blockers without introducing a second source of truth.
 
 ## When not to use this repository
 
@@ -146,7 +149,7 @@ Run the full repository check:
 python scripts/validate_skills.py
 ```
 
-Refresh the derived reader catalogs and capsules:
+Refresh the derived catalogs, capsules, sections, and public surface:
 
 ```bash
 python scripts/build_catalog.py
@@ -160,7 +163,7 @@ python scripts/validate_skills.py --skill aoa-change-protocol
 
 The validator now uses repository schemas from `schemas/` as the contract layer for
 front matter, `techniques.yaml`, and `agents/openai.yaml`.
-It also checks that the generated catalogs, capsules, and full section surfaces exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules and sections stay aligned with the full catalog.
+It also checks that the generated catalogs, capsules, full section surfaces, and derived public-surface JSON/Markdown exist, stay current, that the min catalog is an exact projection of the full catalog, and that capsules and sections stay aligned with the full catalog.
 
 Preview a manifest-driven `SKILL.md` refresh without rewriting files:
 

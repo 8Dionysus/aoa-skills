@@ -10,8 +10,9 @@ Current public foundation:
 - local validator for bundle shape, policy, and `SKILL_INDEX.md` coverage
 - autonomy and trigger-boundary evaluation checks across the full current skill surface
 - documented maturity ladder and promotion guidance for future status changes
+- derived public-surface signaling in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`
 
-The next steps should deepen governance, release signaling, and public product-surface clarity rather than only increase skill count.
+The next steps should use that derived governance layer to drive pending-lineage closure, candidate review, and stronger public product-surface clarity rather than only increase skill count.
 
 ## v0.3 public core hardening
 
@@ -44,6 +45,7 @@ Add:
 - clearer release and stability signaling for reusable versus experimental surfaces
 - a more explicit public promotion path that explains what evidence and review surface is expected at each maturity step
 - clearer public product surface for external readers, including stronger entry points and usage-oriented documentation
+- derived public-surface views should remain preferred over introducing a second explicit skill metadata layer in the public core
 
 ## v0.6 project overlays
 

@@ -13,6 +13,7 @@ from typing import Any, Sequence
 import yaml
 
 import skill_catalog_contract
+import skill_governance_surface
 import skill_section_contract
 
 
@@ -26,6 +27,10 @@ SECTIONS_PATH = Path(GENERATED_DIR_NAME) / skill_section_contract.SECTIONS_NAME
 CATALOG_VERSION = 1
 CAPSULE_VERSION = 1
 SECTION_VERSION = skill_section_contract.SECTION_VERSION
+PUBLIC_SURFACE_JSON_PATH = skill_governance_surface.PUBLIC_SURFACE_JSON_PATH
+PUBLIC_SURFACE_MARKDOWN_PATH = skill_governance_surface.PUBLIC_SURFACE_MARKDOWN_PATH
+PUBLIC_SURFACE_VERSION = skill_governance_surface.PUBLIC_SURFACE_VERSION
+PUBLIC_SURFACE_SOURCE_OF_TRUTH = skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH
 SOURCE_OF_TRUTH = {
     "skill_markdown": "skills/*/SKILL.md",
     "technique_manifest": "skills/*/techniques.yaml",
@@ -92,6 +97,15 @@ def normalize_repo_name(raw_repo: Any) -> str:
 def load_yaml(path: Path) -> Any:
     with path.open(encoding="utf-8") as handle:
         return yaml.safe_load(handle)
+
+
+def load_optional_yaml(path: Path) -> Any | None:
+    if not path.is_file():
+        return None
+    try:
+        return load_yaml(path)
+    except yaml.YAMLError:
+        return None
 
 
 def parse_skill_document(path: Path) -> tuple[dict[str, Any], str]:
@@ -484,6 +498,140 @@ def build_sections_payload(repo_root: Path) -> dict[str, Any]:
     }
 
 
+def evaluation_coverage_by_skill(repo_root: Path) -> dict[str, skill_governance_surface.EvaluationCoverage]:
+    fixtures = load_optional_yaml(
+        repo_root / skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH["evaluation_fixtures"]
+    )
+    if not isinstance(fixtures, dict):
+        return {}
+    return skill_governance_surface.collect_evaluation_coverage(fixtures)
+
+
+def review_record_path(
+    repo_root: Path,
+    reviews_dir: Path,
+    skill_name: str,
+) -> str | None:
+    review_path = repo_root / reviews_dir / f"{skill_name}.md"
+    if review_path.is_file():
+        return relative_path(review_path, repo_root)
+    return None
+
+
+def load_policy_signal(repo_root: Path, skill_name: str) -> tuple[bool, Any]:
+    policy_path = repo_root / SKILLS_DIR_NAME / skill_name / "agents" / "openai.yaml"
+    policy_data = load_optional_yaml(policy_path)
+    if not isinstance(policy_data, dict):
+        return policy_path.is_file(), None
+    policy = policy_data.get("policy")
+    if not isinstance(policy, dict):
+        return True, None
+    return True, policy.get("allow_implicit_invocation")
+
+
+def build_public_surface_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
+    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
+    skill_md_path = skill_dir / "SKILL.md"
+    techniques_path = skill_dir / "techniques.yaml"
+    metadata, body = parse_skill_document(skill_md_path)
+    manifest = load_yaml(techniques_path)
+
+    if not isinstance(manifest, dict):
+        raise ValueError(f"{techniques_path} must parse to a mapping")
+
+    policy_exists, policy_allow_implicit_invocation = load_policy_signal(repo_root, skill_name)
+    coverage = skill_governance_surface.coverage_for_skill(
+        evaluation_coverage_by_skill(repo_root),
+        skill_name,
+    )
+    headings = set(parse_skill_sections(body))
+    techniques = skill_catalog_contract.normalize_technique_refs(manifest)
+
+    return skill_governance_surface.derive_public_surface_skill_entry(
+        skill_name=skill_name,
+        metadata=metadata,
+        headings=headings,
+        techniques=techniques,
+        evaluation_coverage=coverage,
+        policy_exists=policy_exists,
+        policy_allow_implicit_invocation=policy_allow_implicit_invocation,
+        promotion_review_path=review_record_path(
+            repo_root,
+            Path("docs") / "reviews" / "status-promotions",
+            skill_name,
+        ),
+        candidate_review_path=review_record_path(
+            repo_root,
+            Path("docs") / "reviews" / "canonical-candidates",
+            skill_name,
+        ),
+        skill_path=relative_path(skill_md_path, repo_root),
+    )
+
+
+def build_public_surface_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    coverage_by_skill = evaluation_coverage_by_skill(repo_root)
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    skills: list[dict[str, Any]] = []
+
+    for skill_name in selected_skill_names:
+        skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
+        skill_md_path = skill_dir / "SKILL.md"
+        techniques_path = skill_dir / "techniques.yaml"
+        metadata, body = parse_skill_document(skill_md_path)
+        manifest = load_yaml(techniques_path)
+
+        if not isinstance(manifest, dict):
+            raise ValueError(f"{techniques_path} must parse to a mapping")
+
+        policy_exists, policy_allow_implicit_invocation = load_policy_signal(repo_root, skill_name)
+        techniques = skill_catalog_contract.normalize_technique_refs(manifest)
+        entry = skill_governance_surface.derive_public_surface_skill_entry(
+            skill_name=skill_name,
+            metadata=metadata,
+            headings=set(parse_skill_sections(body)),
+            techniques=techniques,
+            evaluation_coverage=skill_governance_surface.coverage_for_skill(
+                coverage_by_skill,
+                skill_name,
+            ),
+            policy_exists=policy_exists,
+            policy_allow_implicit_invocation=policy_allow_implicit_invocation,
+            promotion_review_path=review_record_path(
+                repo_root,
+                Path("docs") / "reviews" / "status-promotions",
+                skill_name,
+            ),
+            candidate_review_path=review_record_path(
+                repo_root,
+                Path("docs") / "reviews" / "canonical-candidates",
+                skill_name,
+            ),
+            skill_path=relative_path(skill_md_path, repo_root),
+        )
+        skills.append(entry)
+
+    return {
+        "public_surface_version": PUBLIC_SURFACE_VERSION,
+        "source_of_truth": PUBLIC_SURFACE_SOURCE_OF_TRUTH,
+        "cohorts": skill_governance_surface.derive_public_surface_cohorts(skills),
+        "skills": skills,
+    }
+
+
+def build_public_surface_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_public_surface_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_governance_surface.render_public_surface_markdown(payload) + "\n",
+    )
+
+
 def render_json(payload: dict[str, Any], *, indent: int | None) -> str:
     kwargs: dict[str, Any] = {
         "ensure_ascii": True,
@@ -508,6 +656,17 @@ def build_capsule_text(repo_root: Path) -> str:
 
 def build_sections_text(repo_root: Path) -> str:
     return render_json(build_sections_payload(repo_root), indent=2)
+
+
+def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
+    generated_dir = repo_root / GENERATED_DIR_NAME
+    generated_dir.mkdir(exist_ok=True)
+    public_surface_json, public_surface_markdown = build_public_surface_texts(repo_root)
+    json_path = repo_root / PUBLIC_SURFACE_JSON_PATH
+    markdown_path = repo_root / PUBLIC_SURFACE_MARKDOWN_PATH
+    json_path.write_text(public_surface_json, encoding="utf-8", newline="\n")
+    markdown_path.write_text(public_surface_markdown, encoding="utf-8", newline="\n")
+    return json_path, markdown_path
 
 
 def write_catalogs(repo_root: Path) -> tuple[Path, Path]:
@@ -595,12 +754,38 @@ def check_sections(repo_root: Path) -> list[str]:
     return problems
 
 
+def check_public_surface(repo_root: Path) -> list[str]:
+    problems: list[str] = []
+    json_path = repo_root / PUBLIC_SURFACE_JSON_PATH
+    markdown_path = repo_root / PUBLIC_SURFACE_MARKDOWN_PATH
+    try:
+        expected_json, expected_markdown = build_public_surface_texts(repo_root)
+    except ValueError as exc:
+        return [f"public surface source validation failed:\n{exc}"]
+
+    if not json_path.is_file():
+        problems.append(f"missing {relative_path(json_path, repo_root)}")
+    if not markdown_path.is_file():
+        problems.append(f"missing {relative_path(markdown_path, repo_root)}")
+
+    if json_path.is_file() and json_path.read_text(encoding="utf-8") != expected_json:
+        problems.append(f"stale {relative_path(json_path, repo_root)}")
+    if markdown_path.is_file() and markdown_path.read_text(encoding="utf-8") != expected_markdown:
+        problems.append(f"stale {relative_path(markdown_path, repo_root)}")
+    return problems
+
+
 def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> int:
     repo_root = repo_root or REPO_ROOT
     try:
         args = parse_args(argv)
         if args.check:
-            problems = check_catalogs(repo_root) + check_capsules(repo_root) + check_sections(repo_root)
+            problems = (
+                check_catalogs(repo_root)
+                + check_capsules(repo_root)
+                + check_sections(repo_root)
+                + check_public_surface(repo_root)
+            )
             if problems:
                 print("Generated surface check failed.")
                 for problem in problems:
@@ -614,6 +799,7 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         full_path, min_path = write_catalogs(repo_root)
         capsule_path = write_capsules(repo_root)
         sections_path = write_sections(repo_root)
+        public_surface_json_path, public_surface_markdown_path = write_public_surface(repo_root)
     except (FileNotFoundError, ValueError) as exc:
         print(f"Runtime error: {exc}", file=sys.stderr)
         return 2
@@ -624,9 +810,11 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
     print(
         "Generated surface build wrote "
         f"{relative_path(full_path, repo_root)}, "
-        f"{relative_path(min_path, repo_root)}, and "
-        f"{relative_path(capsule_path, repo_root)}, and "
-        f"{relative_path(sections_path, repo_root)}."
+        f"{relative_path(min_path, repo_root)}, "
+        f"{relative_path(capsule_path, repo_root)}, "
+        f"{relative_path(sections_path, repo_root)}, "
+        f"{relative_path(public_surface_json_path, repo_root)}, and "
+        f"{relative_path(public_surface_markdown_path, repo_root)}."
     )
     return 0
 

@@ -18,6 +18,7 @@ from jsonschema import Draft202012Validator
 
 import build_catalog
 import skill_catalog_contract
+import skill_governance_surface
 import skill_section_contract
 
 
@@ -440,6 +441,22 @@ def validate_explicit_only_policy(
         )
 
 
+def load_policy_signal(repo_root: Path, skill_name: str) -> tuple[bool, Any]:
+    policy_path = repo_root / SKILLS_DIR_NAME / skill_name / "agents" / "openai.yaml"
+    if not policy_path.is_file():
+        return False, None
+
+    policy_issues: list[ValidationIssue] = []
+    policy_data = load_yaml_file(policy_path, policy_issues)
+    if policy_issues or not isinstance(policy_data, dict):
+        return True, None
+
+    policy = policy_data.get("policy")
+    if not isinstance(policy, dict):
+        return True, None
+    return True, policy.get("allow_implicit_invocation")
+
+
 def status_requires_floor(status: str, floor: str) -> bool:
     floors = {
         "linked": {"linked", "reviewed", "evaluated", "canonical"},
@@ -470,16 +487,6 @@ def validate_status_floors(
 
     if status_requires_floor(status, "reviewed"):
         validate_reviewed_floor(repo_root, status, skill_name, skill_dir, skill_md_path, issues)
-
-    if status_requires_floor(status, "canonical"):
-        validate_canonical_floor(
-            metadata,
-            headings,
-            techniques_data,
-            skill_md_path,
-            techniques_path,
-            issues,
-        )
 
 
 def validate_linked_floor(
@@ -627,43 +634,130 @@ def validate_evaluation_floors(
     if fixtures is None:
         return issues
 
-    autonomy_skills = {
-        check["skill"]
-        for check in fixtures.get("autonomy_checks", [])
-        if isinstance(check, dict) and isinstance(check.get("skill"), str)
-    }
-    trigger_case_counts: dict[str, dict[str, int]] = {}
-    for case in fixtures.get("trigger_cases", []):
-        if not isinstance(case, dict):
-            continue
-        skill_name = case.get("skill")
-        expected = case.get("expected")
-        if not isinstance(skill_name, str) or expected not in {"use", "do_not_use"}:
-            continue
-        counts = trigger_case_counts.setdefault(skill_name, {"use": 0, "do_not_use": 0})
-        counts[expected] += 1
-
+    coverage_by_skill = skill_governance_surface.collect_evaluation_coverage(fixtures)
     fixtures_location = EVALUATION_FIXTURES_PATH.as_posix()
     for skill_name, status in skills_requiring_evaluation.items():
-        if skill_name not in autonomy_skills:
+        coverage = skill_governance_surface.coverage_for_skill(
+            coverage_by_skill,
+            skill_name,
+        )
+        if not coverage.has_autonomy_check:
             issues.append(
                 ValidationIssue(
                     fixtures_location,
                     f"skill '{skill_name}' with status '{status}' requires an autonomy_check entry",
                 )
             )
-        if trigger_case_counts.get(skill_name, {}).get("use", 0) < 1:
+        if coverage.use_case_count < 1:
             issues.append(
                 ValidationIssue(
                     fixtures_location,
                     f"skill '{skill_name}' with status '{status}' requires at least one 'use' trigger case",
                 )
             )
-        if trigger_case_counts.get(skill_name, {}).get("do_not_use", 0) < 1:
+        if coverage.do_not_use_case_count < 1:
             issues.append(
                 ValidationIssue(
                     fixtures_location,
                     f"skill '{skill_name}' with status '{status}' requires at least one 'do_not_use' trigger case",
+                )
+            )
+
+    return issues
+
+
+def validate_canonical_status_floors(
+    repo_root: Path,
+    target_skills: Sequence[str],
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    canonical_skills: list[
+        tuple[str, dict[str, Any], set[str], dict[str, Any], Path, Path]
+    ] = []
+
+    for skill_name in target_skills:
+        skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
+        techniques_path = repo_root / SKILLS_DIR_NAME / skill_name / "techniques.yaml"
+        metadata, section_pairs = parse_skill_markdown(skill_md_path, [])
+        if metadata is None or metadata.get("status") != "canonical":
+            continue
+
+        manifest_issues: list[ValidationIssue] = []
+        techniques_data = load_yaml_file(techniques_path, manifest_issues)
+        if manifest_issues or not isinstance(techniques_data, dict):
+            continue
+
+        canonical_skills.append(
+            (
+                skill_name,
+                metadata,
+                {heading for heading, _content in section_pairs},
+                techniques_data,
+                skill_md_path,
+                techniques_path,
+            )
+        )
+
+    if not canonical_skills:
+        return issues
+
+    fixtures = load_evaluation_fixtures(repo_root, [])
+    coverage_by_skill = skill_governance_surface.collect_evaluation_coverage(fixtures)
+
+    for (
+        skill_name,
+        metadata,
+        headings,
+        techniques_data,
+        skill_md_path,
+        techniques_path,
+    ) in canonical_skills:
+        policy_exists, policy_allow_implicit_invocation = load_policy_signal(
+            repo_root,
+            skill_name,
+        )
+        blockers = skill_governance_surface.derive_canonical_candidate_blockers(
+            status="canonical",
+            headings=headings,
+            technique_dependencies=list(metadata.get("technique_dependencies", [])),
+            techniques=skill_catalog_contract.normalize_technique_refs(techniques_data),
+            evaluation_coverage=skill_governance_surface.coverage_for_skill(
+                coverage_by_skill,
+                skill_name,
+            ),
+            invocation_mode=metadata.get("invocation_mode"),
+            policy_exists=policy_exists,
+            policy_allow_implicit_invocation=policy_allow_implicit_invocation,
+        )
+        skill_location = relative_location(skill_md_path)
+        techniques_location = relative_location(techniques_path)
+
+        if skill_governance_surface.BLOCKER_PENDING_TECHNIQUE_DEPENDENCIES in blockers:
+            issues.append(
+                ValidationIssue(
+                    skill_location,
+                    "status 'canonical' cannot use pending technique_dependencies",
+                )
+            )
+        if skill_governance_surface.BLOCKER_MISSING_TRACEABILITY_HEADING in blockers:
+            issues.append(
+                ValidationIssue(
+                    skill_location,
+                    "status 'canonical' requires 'Technique traceability' and forbids legacy 'Future traceability'",
+                )
+            )
+        if skill_governance_surface.BLOCKER_PENDING_TECHNIQUE_ENTRIES in blockers:
+            issues.append(
+                ValidationIssue(
+                    techniques_location,
+                    "status 'canonical' cannot use pending techniques in techniques.yaml",
+                )
+            )
+        if skill_governance_surface.BLOCKER_TBD_TECHNIQUE_REFS in blockers:
+            issues.append(
+                ValidationIssue(
+                    techniques_location,
+                    "status 'canonical' requires concrete path and source_ref for every technique",
                 )
             )
 
@@ -1416,6 +1510,183 @@ def validate_generated_sections(
     return issues
 
 
+def validate_generated_public_surface(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    public_surface_path = repo_root / build_catalog.PUBLIC_SURFACE_JSON_PATH
+    public_surface_markdown_path = repo_root / build_catalog.PUBLIC_SURFACE_MARKDOWN_PATH
+    public_surface_location = relative_location(public_surface_path)
+    public_surface_markdown_location = relative_location(public_surface_markdown_path)
+
+    if not public_surface_path.is_file():
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                "generated public surface is missing",
+            )
+        )
+        if not public_surface_markdown_path.is_file():
+            issues.append(
+                ValidationIssue(
+                    public_surface_markdown_location,
+                    "generated public surface markdown is missing",
+                )
+            )
+        return issues
+
+    if not public_surface_markdown_path.is_file():
+        issues.append(
+            ValidationIssue(
+                public_surface_markdown_location,
+                "generated public surface markdown is missing",
+            )
+        )
+        return issues
+
+    public_surface_text = public_surface_path.read_text(encoding="utf-8")
+    public_surface_markdown_text = public_surface_markdown_path.read_text(encoding="utf-8")
+    try:
+        parsed = json.loads(public_surface_text)
+    except json.JSONDecodeError as exc:
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                f"invalid JSON: {exc.msg}",
+            )
+        )
+        return issues
+
+    if not isinstance(parsed, dict):
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                "public surface must parse to an object",
+            )
+        )
+        return issues
+
+    public_surface_data = parsed
+    if public_surface_data.get("public_surface_version") != build_catalog.PUBLIC_SURFACE_VERSION:
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                f"public_surface_version must be {build_catalog.PUBLIC_SURFACE_VERSION}",
+            )
+        )
+    if public_surface_data.get("source_of_truth") != build_catalog.PUBLIC_SURFACE_SOURCE_OF_TRUTH:
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                "public surface source_of_truth does not match the expected contract",
+            )
+        )
+    if not isinstance(public_surface_data.get("cohorts"), dict):
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                "public surface field 'cohorts' must be an object",
+            )
+        )
+    if not isinstance(public_surface_data.get("skills"), list):
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                "public surface field 'skills' must be a list",
+            )
+        )
+        return issues
+
+    try:
+        expected_public_surface_text, expected_public_surface_markdown_text = (
+            build_catalog.build_public_surface_texts(repo_root)
+        )
+        expected_public_surface_payload = build_catalog.build_public_surface_payload(repo_root)
+    except (FileNotFoundError, ValueError) as exc:
+        issues.append(
+            ValidationIssue(
+                public_surface_location,
+                f"public surface source validation failed: {exc}",
+            )
+        )
+        return issues
+
+    if skill_names is None:
+        if public_surface_text != expected_public_surface_text:
+            issues.append(
+                ValidationIssue(
+                    public_surface_location,
+                    "generated public surface is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        if public_surface_markdown_text != expected_public_surface_markdown_text:
+            issues.append(
+                ValidationIssue(
+                    public_surface_markdown_location,
+                    "generated public surface markdown is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        return issues
+
+    actual_entries = catalog_entries_by_name(
+        public_surface_data,
+        array_key="skills",
+        key_name="name",
+        location=public_surface_location,
+        issues=issues,
+    )
+    expected_entries = catalog_entries_by_name(
+        expected_public_surface_payload,
+        array_key="skills",
+        key_name="name",
+        location=public_surface_location,
+        issues=[],
+    )
+    actual_cohorts = public_surface_data.get("cohorts", {})
+    expected_cohorts = expected_public_surface_payload.get("cohorts", {})
+    cohort_names = (
+        skill_governance_surface.DEFAULT_REFERENCES_COHORT,
+        skill_governance_surface.CANDIDATE_READY_COHORT,
+        skill_governance_surface.PENDING_LINEAGE_COHORT,
+        skill_governance_surface.RISK_SURFACES_COHORT,
+    )
+
+    for skill_name in skill_names:
+        actual_entry = actual_entries.get(skill_name)
+        expected_entry = expected_entries.get(skill_name)
+        if actual_entry is None:
+            issues.append(
+                ValidationIssue(
+                    public_surface_location,
+                    f"generated public surface is missing skill '{skill_name}'",
+                )
+            )
+            continue
+        if expected_entry is None:
+            continue
+        if actual_entry != expected_entry:
+            issues.append(
+                ValidationIssue(
+                    public_surface_location,
+                    f"generated public surface entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                )
+            )
+        for cohort_name in cohort_names:
+            actual_members = actual_cohorts.get(cohort_name, [])
+            expected_members = expected_cohorts.get(cohort_name, [])
+            if (skill_name in actual_members) != (skill_name in expected_members):
+                issues.append(
+                    ValidationIssue(
+                        public_surface_location,
+                        f"generated public surface cohorts for '{skill_name}' are out of date; run python scripts/build_catalog.py",
+                    )
+                )
+                break
+
+    return issues
+
+
 def format_issues(issues: Sequence[ValidationIssue]) -> str:
     lines = [f"- {issue.location}: {issue.message}" for issue in issues]
     return "\n".join(lines)
@@ -1440,15 +1711,18 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         issues.extend(bundle_issues)
 
     issues.extend(validate_evaluation_floors(repo_root, target_skills))
+    issues.extend(validate_canonical_status_floors(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
     if skill_name is None:
         issues.extend(validate_generated_catalogs(repo_root))
         issues.extend(validate_generated_capsules(repo_root))
         issues.extend(validate_generated_sections(repo_root))
+        issues.extend(validate_generated_public_surface(repo_root))
     elif all(not bundle_issues_by_name[name] for name in target_skills):
         issues.extend(validate_generated_catalogs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_capsules(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_sections(repo_root, skill_names=target_skills))
+        issues.extend(validate_generated_public_surface(repo_root, skill_names=target_skills))
     return issues
 
 

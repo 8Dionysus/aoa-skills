@@ -1,0 +1,253 @@
+{
+  "cohorts": {
+    "blocked_by_pending_lineage": [
+      "aoa-adr-write",
+      "aoa-approval-gate-check",
+      "aoa-core-logic-boundary",
+      "aoa-dry-run-first",
+      "aoa-port-adapter-refactor",
+      "aoa-safe-infra-change",
+      "aoa-sanitized-share",
+      "aoa-source-of-truth-check"
+    ],
+    "candidate_ready": [
+      "aoa-bounded-context-map",
+      "aoa-contract-test",
+      "aoa-property-invariants"
+    ],
+    "default_references": [
+      "aoa-change-protocol",
+      "aoa-tdd-slice"
+    ],
+    "risk_surfaces": [
+      "aoa-approval-gate-check",
+      "aoa-dry-run-first",
+      "aoa-safe-infra-change",
+      "aoa-sanitized-share"
+    ]
+  },
+  "public_surface_version": 1,
+  "skills": [
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-adr-write",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "status": "evaluated",
+      "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome."
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-approval-gate-check",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "status": "evaluated",
+      "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "name": "aoa-bounded-context-map",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "status": "evaluated",
+      "summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware."
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": true,
+      "lineage_state": "published",
+      "name": "aoa-change-protocol",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "status": "canonical",
+      "summary": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "name": "aoa-contract-test",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "status": "evaluated",
+      "summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-core-logic-boundary",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated",
+      "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-dry-run-first",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "status": "evaluated",
+      "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-port-adapter-refactor",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "status": "evaluated",
+      "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "name": "aoa-property-invariants",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "status": "evaluated",
+      "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-safe-infra-change",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "status": "evaluated",
+      "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-sanitized-share",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
+      "scope": "risk",
+      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "status": "evaluated",
+      "summary": "Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-source-of-truth-check",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
+      "scope": "core",
+      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "status": "evaluated",
+      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict."
+    },
+    {
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": true,
+      "lineage_state": "published",
+      "name": "aoa-tdd-slice",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "status": "canonical",
+      "summary": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries."
+    }
+  ],
+  "source_of_truth": {
+    "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
+    "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
+    "skill_markdown": "skills/*/SKILL.md",
+    "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
+    "technique_manifest": "skills/*/techniques.yaml"
+  }
+}
