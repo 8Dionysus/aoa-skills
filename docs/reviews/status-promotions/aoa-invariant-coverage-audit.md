@@ -2,16 +2,16 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
-- current machine-checkable floor: not yet established
+- current maturity status: `canonical`
+- current machine-checkable floor: `evaluated` floor achieved in this record, later superseded by the canonical floor
 - scope: `core`
 - current lineage: manifest-aligned with published technique `AOA-T-0017`
 
 ## Target status
 
-- target maturity status: `evaluated`
+- target maturity status: `evaluated` (historical target achieved before the later canonical promotion)
 - why this target now: the repository now has a second committed consumer for invariant-oriented coverage, with a bounded trigger boundary, explicit traceability, and evaluation fixtures
-- next status after this step: `canonical` deferred
+- next status after this step: later promoted to `canonical`
 
 ## Evidence reviewed
 
@@ -29,9 +29,9 @@
 ## Gaps and blockers
 
 - no technical blocker remains for `evaluated`
-- `canonical` is deferred because this pass establishes a second consumer, not a default reference
+- this record no longer blocks the next step; the later canonical decision now lives in `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md`
 
 ## Recommendation
 
-Promotion to `evaluated` is justified in this pass.
-Keep `canonical` deferred until there is clearer reuse evidence or an explicit reason to make this workflow the default public reference for coverage audits.
+Keep this record as the historical `evaluated` promotion surface.
+Use the canonical-candidate review record for the current default-reference maintenance decision.

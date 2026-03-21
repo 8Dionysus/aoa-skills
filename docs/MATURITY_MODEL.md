@@ -113,8 +113,14 @@ The first canonical cohort was:
 - `aoa-tdd-slice` — promoted to `canonical`
 - `aoa-approval-gate-check` — still blocked on pending upstream lineage
 
-This first cohort is no longer uniformly candidate-only.
-Two members have landed as `canonical`, while `aoa-approval-gate-check` remains blocked until its upstream technique lineage is published and refreshed.
+The next published-lineage promotion wave added:
+- `aoa-bounded-context-map` — promoted to `canonical`
+- `aoa-contract-test` — promoted to `canonical`
+- `aoa-invariant-coverage-audit` — promoted to `canonical`
+- `aoa-property-invariants` — promoted to `canonical`
+
+The early canonical-candidate set is therefore no longer uniformly candidate-only.
+Six published-lineage core skills now serve as `canonical` references, while `aoa-approval-gate-check` remains blocked until its upstream technique lineage is published and refreshed.
 
 ## Review guidance for current candidates
 

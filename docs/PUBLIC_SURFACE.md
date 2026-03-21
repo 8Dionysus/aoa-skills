@@ -2,11 +2,11 @@
 
 This document explains how to read the derived public-product surface of `aoa-skills`
 without assuming hidden release metadata or private repository state.
-The current repository state covers 14 skills, with 2 canonical references, 4 candidate-ready skills, 8 pending-lineage blockers, and 4 risk surfaces.
+The current repository state covers 14 skills, with 6 canonical references, 0 candidate-ready skills, 8 pending-lineage blockers, and 4 risk surfaces.
 
+Use this guide when you need status, promotion, or governance signals.
 For runtime inspection and skill selection, use `RUNTIME_PATH.md` first.
 For evaluation evidence and matrix reading, use `EVALUATION_PATH.md` first.
-This guide stays separate and only explains derived governance/public-surface signals.
 If you are trying to choose or execute an object, this is the wrong layer.
 
 The current signaling layer is intentionally derived from facts that already exist:
@@ -23,6 +23,20 @@ The current human-readable matrix is generated in:
 The machine-readable companion is:
 
 - `generated/public_surface.json`
+
+The maintenance and readiness companion is:
+
+- `generated/governance_backlog.md`
+
+The packaging and relationship companions are:
+
+- `generated/skill_bundle_index.md`
+- `generated/skill_graph.md`
+
+These derived surfaces stay separate on purpose:
+- `generated/public_surface.*` is the status and promotion readout
+- `generated/governance_backlog.*` is the maintenance and readiness queue
+- `generated/skill_bundle_index.*` and `generated/skill_graph.*` are packaging and relationship views
 
 ## How to read the signals
 
@@ -65,6 +79,8 @@ It only explains the derived governance and public-product signals that already 
 If you are choosing a skill, start with `docs/RUNTIME_PATH.md`.
 If you are reading matrix evidence, start with `docs/EVALUATION_PATH.md`.
 If you are reading status or release signals, stay here and in `generated/public_surface.md`.
+If you are reading maintenance readiness, use `generated/governance_backlog.md`.
+If you are reading bundle shape or adjacency, use `generated/skill_bundle_index.md` and `generated/skill_graph.md`.
 
 ## Current reading order
 
@@ -76,8 +92,11 @@ Use this order when orienting in the public surface:
 4. `docs/EVALUATION_PATH.md`
 5. `docs/PUBLIC_SURFACE.md`
 6. `generated/public_surface.md`
-7. `SKILL_INDEX.md`
-8. the target `skills/<skill-name>/SKILL.md`
+7. `generated/governance_backlog.md`
+8. `generated/skill_bundle_index.md`
+9. `generated/skill_graph.md`
+10. `SKILL_INDEX.md`
+11. the target `skills/<skill-name>/SKILL.md`
 
 ## What this layer does not do
 
@@ -90,6 +109,7 @@ This wave does not introduce:
 
 The public-product surface remains repo-local and derived.
 Overlay preparation is also separate from this layer; the thin contract lives in `docs/OVERLAY_SPEC.md`, but actual project adoption stays downstream.
+If you need the human review records behind a candidate or promotion decision, use `docs/reviews/README.md` and the matching file in `docs/reviews/canonical-candidates/` or `docs/reviews/status-promotions/`.
 
 Future stubs:
 

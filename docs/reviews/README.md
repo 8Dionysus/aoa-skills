@@ -6,6 +6,7 @@ This folder stores public review records for repository-level skill review work.
 
 - `canonical-candidates/` stores the current review records for skills being considered as future canonical references
 - `status-promotions/` stores public review records for non-canonical status promotions such as `scaffold -> evaluated`
+- the review records here are the human decision companion to `docs/PUBLIC_SURFACE.md` and the derived governance surfaces in `generated/public_surface.md` and `generated/governance_backlog.md`
 
 ## Conventions
 

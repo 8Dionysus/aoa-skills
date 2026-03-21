@@ -173,7 +173,7 @@
         }
       ],
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-change-protocol",
@@ -289,7 +289,7 @@
         }
       ],
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-core-logic-boundary",
@@ -463,7 +463,7 @@
         }
       ],
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-port-adapter-refactor",
@@ -579,7 +579,7 @@
         }
       ],
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-safe-infra-change",

@@ -62,7 +62,7 @@
       "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "tbd_ref_count": 0
     },
     {
@@ -86,7 +86,7 @@
       "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "tbd_ref_count": 0
     },
     {
@@ -130,7 +130,7 @@
       "published_technique_count": 1,
       "scope": "core",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "tbd_ref_count": 0
     },
     {
@@ -158,7 +158,7 @@
       "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "tbd_ref_count": 0
     },
     {

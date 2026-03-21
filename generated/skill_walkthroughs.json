@@ -138,7 +138,7 @@
       "pick_summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-bounded-context-map/examples/example.md",
@@ -246,7 +246,7 @@
       "pick_summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries.",
       "scope": "core",
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-contract-test/examples/example.md",
@@ -405,7 +405,7 @@
       "pick_summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
       "scope": "core",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-invariant-coverage-audit/examples/example.md",
@@ -510,7 +510,7 @@
       "pick_summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.",
       "scope": "core",
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-property-invariants/examples/example.md",

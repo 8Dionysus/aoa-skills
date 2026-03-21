@@ -53,7 +53,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_bounded_context_map",
-      "target": "status_evaluated"
+      "target": "status_canonical"
     },
     {
       "kind": "scope",
@@ -113,7 +113,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_contract_test",
-      "target": "status_evaluated"
+      "target": "status_canonical"
     },
     {
       "kind": "scope",
@@ -198,7 +198,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_invariant_coverage_audit",
-      "target": "status_evaluated"
+      "target": "status_canonical"
     },
     {
       "kind": "scope",
@@ -248,7 +248,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_property_invariants",
-      "target": "status_evaluated"
+      "target": "status_canonical"
     },
     {
       "kind": "scope",
@@ -448,6 +448,11 @@
       "type": "skill"
     },
     {
+      "id": "status_canonical",
+      "label": "status: canonical",
+      "type": "status"
+    },
+    {
       "id": "lineage_published",
       "label": "lineage: published",
       "type": "lineage"
@@ -466,11 +471,6 @@
       "id": "skill_aoa_change_protocol",
       "label": "aoa-change-protocol",
       "type": "skill"
-    },
-    {
-      "id": "status_canonical",
-      "label": "status: canonical",
-      "type": "status"
     },
     {
       "id": "technique_AOA_T_0001",
@@ -712,7 +712,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "7472939c1a70720fe91e082050bd1afd1b74e9a359248e8c93d71410079d9e24",
+      "content_hash": "4fad59da466160b849785a2d61bdda7af6eab37a50b3c2f9fa30a596658e8a51",
       "generated_surface_versions": {
         "boundary_matrix": 1,
         "bundle_index": 1,
@@ -732,8 +732,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "skill_revision": "7472939c1a70",
-      "status": "evaluated",
+      "skill_revision": "4fad59da4661",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-bounded-context-map/examples/example.md",
@@ -824,7 +824,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "71ab98f05f4ebf30ff2700543fff26b8828c8140342cef51717ff05225e2d486",
+      "content_hash": "6652fc7ee6b5f8933e6854da8dfe35848a0decf64acfee7e083b7299b77497ca",
       "generated_surface_versions": {
         "boundary_matrix": 1,
         "bundle_index": 1,
@@ -844,8 +844,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
       "scope": "core",
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "skill_revision": "71ab98f05f4e",
-      "status": "evaluated",
+      "skill_revision": "6652fc7ee6b5",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-contract-test/examples/example.md",
@@ -985,7 +985,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "01449f2922af4a319a8ab37b74922bc29ee49f98d5fd35f64b9aea30134d8792",
+      "content_hash": "1fc643d545df5c6e95a4657b0389906048ed41b7627d4ad9118692e2f6734fb0",
       "generated_surface_versions": {
         "boundary_matrix": 1,
         "bundle_index": 1,
@@ -1005,8 +1005,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
       "scope": "core",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "skill_revision": "01449f2922af",
-      "status": "evaluated",
+      "skill_revision": "1fc643d545df",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-invariant-coverage-audit/examples/example.md",
@@ -1089,7 +1089,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "27f2a4efc2014f1007898cbba38cf5ce547e7c64139196f93f5b9d28e5b1a1df",
+      "content_hash": "4fbee0eb6bae8eb69994a26c2706653d2a77e38dd5f7f8828a55d629fbc470d8",
       "generated_surface_versions": {
         "boundary_matrix": 1,
         "bundle_index": 1,
@@ -1109,8 +1109,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
       "scope": "core",
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "skill_revision": "27f2a4efc201",
-      "status": "evaluated",
+      "skill_revision": "4fbee0eb6bae",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-property-invariants/examples/example.md",

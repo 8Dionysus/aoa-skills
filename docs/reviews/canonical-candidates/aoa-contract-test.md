@@ -2,9 +2,9 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
-- canonical promotion decision: not taken in this pass
-- candidate set: current canonical-candidate review pass
+- current maturity status: `canonical`
+- canonical promotion decision: promoted in this pass
+- candidate set: canonical promotion completed
 - scope: `core`
 - current lineage: manifest-aligned to published techniques `AOA-T-0003` and `AOA-T-0015`
 
@@ -30,17 +30,15 @@
 - contracts and verification guidance stay coherent with the skill's boundary-oriented purpose
 - manifest-backed traceability and runtime wording are aligned
 - the example keeps the same contract-testing posture without turning the skill into a generic test strategy
-- linked evidence is already covered by manifest-aligned published technique lineage and pinned source refs
-- reviewed evidence is already covered by this explicit candidate review pass and the aligned example artifact
-- the skill reads like a stable default-reference candidate for contract-oriented validation work
+- linked evidence, review evidence, and evaluation evidence are already covered by the repo-local canonical floor
+- the skill now reads like a stable default-reference for contract-oriented validation work
 
 ## Gaps and blockers
 
 - no current blocker remains at the repository gate level
-- future follow-up should preserve contract clarity and review drift rather than reopen the initial gate decision
-- the record should stay comparative instead of being rewritten as if promotion had already happened
+- future follow-up should preserve contract clarity and review drift rather than reopen the promotion decision
+- maintenance should stay comparative and not widen into generic test strategy
 
 ## Recommendation
 
-Keep `aoa-contract-test` in the candidate-ready cohort.
-Use this review record as the human decision surface if canonical promotion is proposed later.
+Keep `aoa-contract-test` as a canonical default reference and use this review record as the maintenance surface for future drift checks.

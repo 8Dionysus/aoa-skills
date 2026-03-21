@@ -1,7 +1,7 @@
 ---
 name: aoa-contract-test
 scope: core
-status: evaluated
+status: canonical
 summary: Design or extend contract-oriented validation at module, service, or workflow boundaries.
 invocation_mode: explicit-preferred
 technique_dependencies:

@@ -8,10 +8,10 @@ This file is the repository-wide map of public skills.
 |---|---|---|---|
 | aoa-change-protocol | core | canonical | Codex skill for bounded change execution using plan, scoped edits, validation, and concise reporting. |
 | aoa-tdd-slice | core | canonical | Codex skill for implementing a small feature slice through test-first change discipline. |
-| aoa-contract-test | core | evaluated | Codex skill for designing or extending contract-oriented validation at service or module boundaries. |
-| aoa-bounded-context-map | core | evaluated | Codex skill for carving or clarifying domain or system boundaries and their interfaces. |
-| aoa-property-invariants | core | evaluated | Codex skill for expressing domain or system invariants as property-oriented tests and checks. |
-| aoa-invariant-coverage-audit | core | evaluated | Codex skill for auditing whether existing checks actually constrain the stable invariants that matter, and for reporting the smallest bounded gaps. |
+| aoa-contract-test | core | canonical | Codex skill for designing or extending contract-oriented validation at service or module boundaries. |
+| aoa-bounded-context-map | core | canonical | Codex skill for carving or clarifying domain or system boundaries and their interfaces. |
+| aoa-property-invariants | core | canonical | Codex skill for expressing domain or system invariants as property-oriented tests and checks. |
+| aoa-invariant-coverage-audit | core | canonical | Codex skill for auditing whether existing checks actually constrain the stable invariants that matter, and for reporting the smallest bounded gaps. |
 | aoa-adr-write | core | evaluated | Codex skill for recording a meaningful architectural or workflow decision with rationale and tradeoffs. |
 | aoa-core-logic-boundary | core | evaluated | Codex skill for clarifying which logic belongs in the reusable core versus glue, orchestration, or infrastructure detail. |
 | aoa-port-adapter-refactor | core | evaluated | Codex skill for refactoring toward clearer ports and adapters so reusable logic is less entangled with infrastructure details. |

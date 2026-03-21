@@ -2,13 +2,13 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
+- current maturity status: `canonical`
 - scope: `core`
 - current lineage: manifest-aligned with published techniques `AOA-T-0003` and `AOA-T-0015`
 
 ## Target status
 
-- target maturity status: `evaluated` (achieved in this pass)
+- target maturity status: `evaluated` (historical target achieved before the later canonical promotion)
 - why this target now: published lineage, support-example guidance, and behavior-oriented evaluation coverage already exist together
 
 ## Evidence reviewed
@@ -28,9 +28,9 @@
 ## Gaps and blockers
 
 - no technical blocker remains for `evaluated`
-- `canonical` is still a separate decision because this pass does not claim that `aoa-contract-test` is the default public reference for its workflow class
+- this record no longer blocks the next step; the later canonical decision now lives in `docs/reviews/canonical-candidates/aoa-contract-test.md`
 
 ## Recommendation
 
-Promotion to `evaluated` is complete in this pass.
-Keep `canonical` deferred to a separate review and promotion decision.
+Keep this record as the historical `evaluated` promotion surface.
+Use the canonical-candidate review record for the current default-reference maintenance decision.

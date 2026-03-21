@@ -10,14 +10,13 @@
       "aoa-sanitized-share",
       "aoa-source-of-truth-check"
     ],
-    "candidate_ready": [
+    "candidate_ready": [],
+    "default_references": [
       "aoa-bounded-context-map",
+      "aoa-change-protocol",
       "aoa-contract-test",
       "aoa-invariant-coverage-audit",
-      "aoa-property-invariants"
-    ],
-    "default_references": [
-      "aoa-change-protocol",
+      "aoa-property-invariants",
       "aoa-tdd-slice"
     ],
     "risk_surfaces": [
@@ -70,13 +69,13 @@
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware."
     },
     {
@@ -98,13 +97,13 @@
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
       "scope": "core",
       "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries."
     },
     {
@@ -148,13 +147,13 @@
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
       "scope": "core",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin."
     },
     {
@@ -180,13 +179,13 @@
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
       "scope": "core",
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples."
     },
     {

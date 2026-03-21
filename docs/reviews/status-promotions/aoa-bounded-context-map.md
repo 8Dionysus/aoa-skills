@@ -2,13 +2,13 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
+- current maturity status: `canonical`
 - scope: `core`
 - current lineage: manifest-aligned with published techniques `AOA-T-0016` and `AOA-T-0002`
 
 ## Target status
 
-- target maturity status: `evaluated` (achieved in this pass)
+- target maturity status: `evaluated` (historical target achieved before the later canonical promotion)
 - why this target now: published lineage, support-example guidance, and behavior-oriented evaluation coverage now exist together
 
 ## Evidence reviewed
@@ -28,9 +28,9 @@
 ## Gaps and blockers
 
 - no technical blocker remains for `evaluated`
-- `canonical` is still deferred because this pass does not establish that `aoa-bounded-context-map` should yet be the default public reference for boundary-mapping work
+- this record no longer blocks the next step; the later canonical decision now lives in `docs/reviews/canonical-candidates/aoa-bounded-context-map.md`
 
 ## Recommendation
 
-Promotion to `evaluated` is complete in this pass.
-Keep `canonical` deferred to a separate review and promotion decision.
+Keep this record as the historical `evaluated` promotion surface.
+Use the canonical-candidate review record for the current default-reference maintenance decision.

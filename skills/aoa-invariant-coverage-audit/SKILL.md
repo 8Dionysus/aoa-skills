@@ -1,7 +1,7 @@
 ---
 name: aoa-invariant-coverage-audit
 scope: core
-status: evaluated
+status: canonical
 summary: Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.
 invocation_mode: explicit-preferred
 technique_dependencies:
