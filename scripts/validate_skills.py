@@ -869,8 +869,31 @@ def validate_generated_catalogs(
     if full_data is None or min_data is None:
         return issues
 
+    def project_min_catalog_safely(
+        full_catalog: dict[str, Any],
+        *,
+        location: str,
+        label: str,
+    ) -> dict[str, Any] | None:
+        try:
+            return build_catalog.project_min_catalog(full_catalog)
+        except (KeyError, TypeError):
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"{label} is malformed; min projection could not be computed",
+                )
+            )
+            return None
+
     if skill_names is None:
-        projected_min = build_catalog.project_min_catalog(full_data)
+        projected_min = project_min_catalog_safely(
+            full_data,
+            location=relative_location(full_path),
+            label="generated catalog",
+        )
+        if projected_min is None:
+            return issues
         if min_data != projected_min:
             issues.append(
                 ValidationIssue(
@@ -960,13 +983,18 @@ def validate_generated_catalogs(
                     f"generated min catalog entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
                 )
             )
-        projected_min_entry = build_catalog.project_min_catalog(
+        projected_min_catalog_payload = project_min_catalog_safely(
             {
                 "catalog_version": full_data.get("catalog_version"),
                 "source_of_truth": full_data.get("source_of_truth"),
                 "skills": [actual_full_entry],
-            }
-        )["skills"][0]
+            },
+            location=full_location,
+            label=f"generated catalog entry for '{skill_name}'",
+        )
+        if projected_min_catalog_payload is None:
+            continue
+        projected_min_entry = projected_min_catalog_payload["skills"][0]
         if actual_min_entry != projected_min_entry:
             issues.append(
                 ValidationIssue(
