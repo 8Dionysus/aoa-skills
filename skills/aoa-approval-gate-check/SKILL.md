@@ -5,7 +5,7 @@ status: evaluated
 summary: Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-APPROVAL-GATE-CHECK
+  - AOA-T-0028
 ---
 
 # aoa-approval-gate-check
@@ -74,7 +74,7 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-APPROVAL-GATE-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0028 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 

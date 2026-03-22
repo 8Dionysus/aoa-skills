@@ -7,24 +7,24 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 - total skills: 16
 - adjacency cases: 20
-- skills with required adjacency coverage: 6
+- skills with required adjacency coverage: 14
 - required adjacency gaps: 0
 
 | name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | ready | blockers |
 |---|---|---|---|---:|---:|---|---|---|
-| aoa-adr-write | evaluated | core | false | 1 | 0 | aoa-source-of-truth-check | true | - |
-| aoa-approval-gate-check | evaluated | risk | false | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | true | - |
+| aoa-adr-write | evaluated | core | true | 1 | 0 | aoa-source-of-truth-check | true | - |
+| aoa-approval-gate-check | evaluated | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | true | - |
 | aoa-bounded-context-map | canonical | core | true | 1 | 0 | aoa-contract-test | true | - |
 | aoa-change-protocol | canonical | core | true | 1 | 0 | aoa-tdd-slice | true | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | true | - |
-| aoa-core-logic-boundary | evaluated | core | false | 1 | 0 | aoa-port-adapter-refactor | true | - |
-| aoa-dry-run-first | evaluated | risk | false | 2 | 0 | aoa-approval-gate-check, aoa-sanitized-share | true | - |
+| aoa-core-logic-boundary | evaluated | core | true | 1 | 0 | aoa-port-adapter-refactor | true | - |
+| aoa-dry-run-first | evaluated | risk | true | 2 | 0 | aoa-approval-gate-check, aoa-sanitized-share | true | - |
 | aoa-invariant-coverage-audit | canonical | core | true | 1 | 0 | aoa-property-invariants | true | - |
-| aoa-port-adapter-refactor | evaluated | core | false | 1 | 0 | aoa-core-logic-boundary | true | - |
+| aoa-port-adapter-refactor | evaluated | core | true | 1 | 0 | aoa-core-logic-boundary | true | - |
 | aoa-property-invariants | canonical | core | true | 1 | 0 | aoa-invariant-coverage-audit | true | - |
-| aoa-safe-infra-change | evaluated | risk | false | 2 | 0 | aoa-approval-gate-check, aoa-sanitized-share | true | - |
-| aoa-sanitized-share | evaluated | risk | false | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | true | - |
-| aoa-source-of-truth-check | evaluated | core | false | 1 | 0 | aoa-adr-write | true | - |
+| aoa-safe-infra-change | evaluated | risk | true | 2 | 0 | aoa-approval-gate-check, aoa-sanitized-share | true | - |
+| aoa-sanitized-share | evaluated | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | true | - |
+| aoa-source-of-truth-check | evaluated | core | true | 1 | 0 | aoa-adr-write | true | - |
 | aoa-tdd-slice | canonical | core | true | 1 | 0 | aoa-change-protocol | true | - |
 | atm10-change-protocol | scaffold | project | false | 0 | 0 | - | false | - |
 | atm10-source-of-truth-check | scaffold | project | false | 0 | 0 | - | false | - |

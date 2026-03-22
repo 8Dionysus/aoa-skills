@@ -1,10 +1,10 @@
 skill_name: aoa-approval-gate-check
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-APPROVAL-GATE-CHECK
+  - id: AOA-T-0028
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md
+    source_ref: 4f0153e6cee7cd132cd386f75d103cb31a4959c0
     use_sections:
       - Intent
       - When to use
@@ -14,5 +14,3 @@ techniques:
       - Contracts
       - Risks
       - Validation
-notes:
-  - Replace AOA-T-PENDING-APPROVAL-GATE-CHECK, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

@@ -7,8 +7,8 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 - total skills: 16
 - default references: 6
-- candidate-ready skills: 0
-- blocked by pending lineage: 9
+- candidate-ready skills: 8
+- blocked by pending lineage: 1
 - risk surfaces: 4
 
 ## Default references
@@ -26,30 +26,29 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | status | scope | invocation | lineage | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|
-| - | - | - | - | - | - | - | - |
+| aoa-adr-write | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-adr-write.md` | - |
+| aoa-approval-gate-check | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
+| aoa-core-logic-boundary | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | - |
+| aoa-dry-run-first | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | - |
+| aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | - |
+| aoa-safe-infra-change | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | - |
+| aoa-sanitized-share | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | - |
+| aoa-source-of-truth-check | evaluated | core | explicit-preferred | published | - | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | - |
 
 ## Blocked by pending lineage
 
 | name | status | scope | invocation | lineage | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|
-| aoa-adr-write | evaluated | core | explicit-preferred | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-adr-write.md` | - |
-| aoa-approval-gate-check | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
-| aoa-core-logic-boundary | evaluated | core | explicit-preferred | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | - |
-| aoa-dry-run-first | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-dry-run-first.md` | - |
-| aoa-port-adapter-refactor | evaluated | core | explicit-preferred | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | - |
-| aoa-safe-infra-change | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | - |
-| aoa-sanitized-share | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-sanitized-share.md` | - |
-| aoa-source-of-truth-check | evaluated | core | explicit-preferred | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | - |
 | atm10-source-of-truth-check | scaffold | project | explicit-preferred | pending | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 
 ## Risk surfaces
 
 | name | status | scope | invocation | lineage | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|
-| aoa-approval-gate-check | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
-| aoa-dry-run-first | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-dry-run-first.md` | - |
-| aoa-safe-infra-change | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | - |
-| aoa-sanitized-share | evaluated | risk | explicit-only | pending | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-sanitized-share.md` | - |
+| aoa-approval-gate-check | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
+| aoa-dry-run-first | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | - |
+| aoa-safe-infra-change | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | - |
+| aoa-sanitized-share | evaluated | risk | explicit-only | published | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | - |
 
 ## Legend
 

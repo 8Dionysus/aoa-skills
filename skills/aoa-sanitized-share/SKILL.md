@@ -5,7 +5,7 @@ status: evaluated
 summary: Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-SANITIZED-SHARE
+  - AOA-T-0034
 ---
 
 # aoa-sanitized-share
@@ -95,7 +95,7 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-SANITIZED-SHARE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0034 from `8Dionysus/aoa-techniques` at `5a905099726792c3680244042ca0840115a4ebcd` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 

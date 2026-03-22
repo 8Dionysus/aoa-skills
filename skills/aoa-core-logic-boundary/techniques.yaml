@@ -1,10 +1,21 @@
 skill_name: aoa-core-logic-boundary
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-CORE-LOGIC-BOUNDARY
+  - id: AOA-T-0016
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/docs/bounded-context-map/TECHNIQUE.md
+    source_ref: 4f0153e6cee7cd132cd386f75d103cb31a4959c0
+    use_sections:
+      - Intent
+      - When to use
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+  - id: AOA-T-0015
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/evaluation/contract-test-design/TECHNIQUE.md
+    source_ref: 4f0153e6cee7cd132cd386f75d103cb31a4959c0
     use_sections:
       - Intent
       - When to use
@@ -14,5 +25,3 @@ techniques:
       - Contracts
       - Risks
       - Validation
-notes:
-  - Replace AOA-T-PENDING-CORE-LOGIC-BOUNDARY, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

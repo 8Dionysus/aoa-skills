@@ -10,17 +10,18 @@
       "status": "evaluated",
       "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.",
       "technique_dependencies": [
-        "AOA-T-PENDING-ADR-WRITE"
+        "AOA-T-0033"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-ADR-WRITE",
-          "path": "TBD",
+          "id": "AOA-T-0033",
+          "path": "techniques/docs/decision-rationale-recording/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "5a905099726792c3680244042ca0840115a4ebcd",
           "use_sections": [
             "Intent",
             "When to use",
+            "When not to use",
             "Inputs",
             "Outputs",
             "Core procedure",
@@ -40,14 +41,14 @@
       "status": "evaluated",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "technique_dependencies": [
-        "AOA-T-PENDING-APPROVAL-GATE-CHECK"
+        "AOA-T-0028"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-APPROVAL-GATE-CHECK",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
           "use_sections": [
             "Intent",
             "When to use",
@@ -190,14 +191,29 @@
       "status": "evaluated",
       "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.",
       "technique_dependencies": [
-        "AOA-T-PENDING-CORE-LOGIC-BOUNDARY"
+        "AOA-T-0016",
+        "AOA-T-0015"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-CORE-LOGIC-BOUNDARY",
-          "path": "TBD",
+          "id": "AOA-T-0016",
+          "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0015",
+          "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
           "use_sections": [
             "Intent",
             "When to use",
@@ -220,26 +236,9 @@
       "status": "evaluated",
       "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences.",
       "technique_dependencies": [
-        "AOA-T-PENDING-DRY-RUN-FIRST",
         "AOA-T-0004"
       ],
       "technique_refs": [
-        {
-          "id": "AOA-T-PENDING-DRY-RUN-FIRST",
-          "path": "TBD",
-          "repo": "aoa-techniques",
-          "source_ref": "TBD",
-          "use_sections": [
-            "Intent",
-            "When to use",
-            "Inputs",
-            "Outputs",
-            "Core procedure",
-            "Contracts",
-            "Risks",
-            "Validation"
-          ]
-        },
         {
           "id": "AOA-T-0004",
           "path": "techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
@@ -295,14 +294,29 @@
       "status": "evaluated",
       "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.",
       "technique_dependencies": [
-        "AOA-T-PENDING-PORT-ADAPTER-REFACTOR"
+        "AOA-T-0016",
+        "AOA-T-0015"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-PORT-ADAPTER-REFACTOR",
-          "path": "TBD",
+          "id": "AOA-T-0016",
+          "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0015",
+          "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
           "use_sections": [
             "Intent",
             "When to use",
@@ -366,15 +380,15 @@
       "status": "evaluated",
       "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SAFE-INFRA-CHANGE",
+        "AOA-T-0028",
         "AOA-T-0001"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-SAFE-INFRA-CHANGE",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
           "use_sections": [
             "Intent",
             "When to use",
@@ -410,17 +424,18 @@
       "status": "evaluated",
       "summary": "Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SANITIZED-SHARE"
+        "AOA-T-0034"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-SANITIZED-SHARE",
-          "path": "TBD",
+          "id": "AOA-T-0034",
+          "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "5a905099726792c3680244042ca0840115a4ebcd",
           "use_sections": [
             "Intent",
             "When to use",
+            "When not to use",
             "Inputs",
             "Outputs",
             "Core procedure",
@@ -440,15 +455,15 @@
       "status": "evaluated",
       "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0013",
         "AOA-T-0002"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
-          "path": "TBD",
+          "id": "AOA-T-0013",
+          "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
           "use_sections": [
             "Intent",
             "When to use",

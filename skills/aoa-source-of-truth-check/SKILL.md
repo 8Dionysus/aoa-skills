@@ -5,7 +5,7 @@ status: evaluated
 summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.
 invocation_mode: explicit-preferred
 technique_dependencies:
-  - AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK
+  - AOA-T-0013
   - AOA-T-0002
 ---
 
@@ -80,7 +80,7 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0013 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 - AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points

@@ -1,19 +1,6 @@
 skill_name: aoa-dry-run-first
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-DRY-RUN-FIRST
-    repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
-    use_sections:
-      - Intent
-      - When to use
-      - Inputs
-      - Outputs
-      - Core procedure
-      - Contracts
-      - Risks
-      - Validation
   - id: AOA-T-0004
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md
@@ -24,5 +11,3 @@ techniques:
       - Outputs
       - Core procedure
       - Validation
-notes:
-  - Replace AOA-T-PENDING-DRY-RUN-FIRST, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.

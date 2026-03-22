@@ -5,7 +5,8 @@ status: evaluated
 summary: Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.
 invocation_mode: explicit-preferred
 technique_dependencies:
-  - AOA-T-PENDING-PORT-ADAPTER-REFACTOR
+  - AOA-T-0016
+  - AOA-T-0015
 ---
 
 # aoa-port-adapter-refactor
@@ -76,7 +77,8 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-PORT-ADAPTER-REFACTOR from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0016 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0015 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 

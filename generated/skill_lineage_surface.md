@@ -6,24 +6,24 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 ## Summary
 
 - total skills: 16
-- published lineage: 7
-- pending lineage: 9
+- published lineage: 15
+- pending lineage: 1
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
-| aoa-adr-write | evaluated | core | pending | 0 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
-| aoa-approval-gate-check | evaluated | risk | pending | 0 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-adr-write | evaluated | core | published | 1 | 0 | 0 | true | - |
+| aoa-approval-gate-check | evaluated | risk | published | 1 | 0 | 0 | true | - |
 | aoa-bounded-context-map | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-change-protocol | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-contract-test | canonical | core | published | 2 | 0 | 0 | true | - |
-| aoa-core-logic-boundary | evaluated | core | pending | 0 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
-| aoa-dry-run-first | evaluated | risk | pending | 1 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-core-logic-boundary | evaluated | core | published | 2 | 0 | 0 | true | - |
+| aoa-dry-run-first | evaluated | risk | published | 1 | 0 | 0 | true | - |
 | aoa-invariant-coverage-audit | canonical | core | published | 1 | 0 | 0 | true | - |
-| aoa-port-adapter-refactor | evaluated | core | pending | 0 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-port-adapter-refactor | evaluated | core | published | 2 | 0 | 0 | true | - |
 | aoa-property-invariants | canonical | core | published | 2 | 0 | 0 | true | - |
-| aoa-safe-infra-change | evaluated | risk | pending | 1 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
-| aoa-sanitized-share | evaluated | risk | pending | 0 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
-| aoa-source-of-truth-check | evaluated | core | pending | 1 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-safe-infra-change | evaluated | risk | published | 2 | 0 | 0 | true | - |
+| aoa-sanitized-share | evaluated | risk | published | 1 | 0 | 0 | true | - |
+| aoa-source-of-truth-check | evaluated | core | published | 2 | 0 | 0 | true | - |
 | aoa-tdd-slice | canonical | core | published | 2 | 0 | 0 | true | - |
 | atm10-change-protocol | scaffold | project | published | 2 | 0 | 0 | true | - |
 | atm10-source-of-truth-check | scaffold | project | pending | 1 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |

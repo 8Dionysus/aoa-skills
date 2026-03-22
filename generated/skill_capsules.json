@@ -12,7 +12,7 @@
       "status": "evaluated",
       "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.",
       "technique_dependencies": [
-        "AOA-T-PENDING-ADR-WRITE"
+        "AOA-T-0033"
       ],
       "trigger_boundary_short": "Use when a decision changes structure, boundaries, tooling, or workflow expectations; future contributors will need to know why a path was chosen; Avoid when the change is tiny and self-evident; the note would only...",
       "verification_short": "Checks: confirm the decision was meaningful enough to record; confirm the rationale is explicit; confirm consequences or tradeoffs are named; confirm the note aligns with the real change surface.",
@@ -29,7 +29,7 @@
       "status": "evaluated",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "technique_dependencies": [
-        "AOA-T-PENDING-APPROVAL-GATE-CHECK"
+        "AOA-T-0028"
       ],
       "trigger_boundary_short": "Use when a task may be destructive, operationally sensitive, or security-relevant; the current authority level is unclear; Avoid when the task is clearly low-risk and already bounded by an ordinary workflow; no...",
       "verification_short": "Checks: confirm the touched surfaces were identified; confirm the approval need was classified explicitly rather than as a vague warning; confirm the next step fits the stated authority level; confirm uncertainty...",
@@ -100,7 +100,8 @@
       "status": "evaluated",
       "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.",
       "technique_dependencies": [
-        "AOA-T-PENDING-CORE-LOGIC-BOUNDARY"
+        "AOA-T-0016",
+        "AOA-T-0015"
       ],
       "trigger_boundary_short": "Use when a module mixes stable rules with wiring or execution detail; the same logic is starting to appear in several places; Avoid when the task is a tiny isolated fix with no meaningful boundary ambiguity; the...",
       "verification_short": "Checks: confirm the core candidate is genuinely reusable or stability-shaped; confirm edge-specific code remains at the edge when appropriate; confirm the refactor improved clarity for future changes; confirm no...",
@@ -117,7 +118,6 @@
       "status": "evaluated",
       "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences.",
       "technique_dependencies": [
-        "AOA-T-PENDING-DRY-RUN-FIRST",
         "AOA-T-0004"
       ],
       "trigger_boundary_short": "Use when the task can be simulated, previewed, or inspected before real execution; the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface; Avoid when no meaningful dry-run or preview...",
@@ -152,7 +152,8 @@
       "status": "evaluated",
       "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.",
       "technique_dependencies": [
-        "AOA-T-PENDING-PORT-ADAPTER-REFACTOR"
+        "AOA-T-0016",
+        "AOA-T-0015"
       ],
       "trigger_boundary_short": "Use when business or domain logic is tightly coupled to a concrete dependency; tests are hard to write because external concerns leak into the core logic; Avoid when the task is a tiny local fix with no...",
       "verification_short": "Checks: confirm the concrete dependency pressure was real; confirm the new boundary is narrower and clearer than before; confirm behavior did not drift silently; confirm the refactor stayed inside the declared scope.",
@@ -187,7 +188,7 @@
       "status": "evaluated",
       "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SAFE-INFRA-CHANGE",
+        "AOA-T-0028",
         "AOA-T-0001"
       ],
       "trigger_boundary_short": "Use when the task changes infrastructure, services, configuration, orchestration, or operational surfaces; the change has runtime, safety, or deployment implications; Avoid when the task is a purely local code...",
@@ -205,7 +206,7 @@
       "status": "evaluated",
       "summary": "Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SANITIZED-SHARE"
+        "AOA-T-0034"
       ],
       "trigger_boundary_short": "Use when logs, configs, diagnostics, reports, or examples may contain sensitive details; a result needs to be shared publicly or with a broader audience; Avoid when the material is already clearly public-safe and...",
       "verification_short": "Checks: confirm obvious sensitive surfaces were checked; confirm the resulting artifact is still understandable; confirm the sanitization level matches the intended audience; confirm raw sensitive detail was not...",
@@ -222,7 +223,7 @@
       "status": "evaluated",
       "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0013",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when a repository has several docs that may overlap or conflict; contributors may not know which file to trust first; Avoid when the repository is tiny and has no meaningful source-of-truth ambiguity; the task...",

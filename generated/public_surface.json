@@ -1,6 +1,9 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [
+      "atm10-source-of-truth-check"
+    ],
+    "candidate_ready": [
       "aoa-adr-write",
       "aoa-approval-gate-check",
       "aoa-core-logic-boundary",
@@ -8,10 +11,8 @@
       "aoa-port-adapter-refactor",
       "aoa-safe-infra-change",
       "aoa-sanitized-share",
-      "aoa-source-of-truth-check",
-      "atm10-source-of-truth-check"
+      "aoa-source-of-truth-check"
     ],
-    "candidate_ready": [],
     "default_references": [
       "aoa-bounded-context-map",
       "aoa-change-protocol",
@@ -31,15 +32,11 @@
   "skills": [
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-adr-write",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
       "scope": "core",
@@ -49,15 +46,11 @@
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-approval-gate-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
       "scope": "risk",
@@ -109,15 +102,11 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
       "scope": "core",
@@ -127,15 +116,11 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
       "scope": "risk",
@@ -159,15 +144,11 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
       "scope": "core",
@@ -191,15 +172,11 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
       "scope": "risk",
@@ -209,15 +186,11 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
       "scope": "risk",
@@ -227,15 +200,11 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "scope": "core",

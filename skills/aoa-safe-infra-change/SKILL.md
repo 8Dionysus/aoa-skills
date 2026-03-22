@@ -5,7 +5,7 @@ status: evaluated
 summary: Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-SAFE-INFRA-CHANGE
+  - AOA-T-0028
   - AOA-T-0001
 ---
 
@@ -78,7 +78,7 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-SAFE-INFRA-CHANGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0028 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 - AOA-T-0001 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, Outputs, Contracts, Risks, Validation
 
 ## Adaptation points

@@ -192,7 +192,7 @@
         "aoa-source-of-truth-check"
       ],
       "name": "aoa-adr-write",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
       "status": "evaluated"
@@ -208,7 +208,7 @@
         "aoa-sanitized-share"
       ],
       "name": "aoa-approval-gate-check",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
       "status": "evaluated"
@@ -264,7 +264,7 @@
         "aoa-port-adapter-refactor"
       ],
       "name": "aoa-core-logic-boundary",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated"
@@ -279,7 +279,7 @@
         "aoa-sanitized-share"
       ],
       "name": "aoa-dry-run-first",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
       "status": "evaluated"
@@ -307,7 +307,7 @@
         "aoa-core-logic-boundary"
       ],
       "name": "aoa-port-adapter-refactor",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated"
@@ -336,7 +336,7 @@
         "aoa-sanitized-share"
       ],
       "name": "aoa-safe-infra-change",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
       "status": "evaluated"
@@ -352,7 +352,7 @@
         "aoa-safe-infra-change"
       ],
       "name": "aoa-sanitized-share",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
       "status": "evaluated"
@@ -366,7 +366,7 @@
         "aoa-adr-write"
       ],
       "name": "aoa-source-of-truth-check",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "evaluated"

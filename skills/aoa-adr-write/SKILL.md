@@ -5,7 +5,7 @@ status: evaluated
 summary: Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.
 invocation_mode: explicit-preferred
 technique_dependencies:
-  - AOA-T-PENDING-ADR-WRITE
+  - AOA-T-0033
 ---
 
 # aoa-adr-write
@@ -76,7 +76,7 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-ADR-WRITE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0033 from `8Dionysus/aoa-techniques` at `5a905099726792c3680244042ca0840115a4ebcd` using path `techniques/docs/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 

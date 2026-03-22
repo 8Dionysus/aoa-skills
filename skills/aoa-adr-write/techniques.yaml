@@ -1,18 +1,17 @@
 skill_name: aoa-adr-write
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-ADR-WRITE
+  - id: AOA-T-0033
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/docs/decision-rationale-recording/TECHNIQUE.md
+    source_ref: 5a905099726792c3680244042ca0840115a4ebcd
     use_sections:
       - Intent
       - When to use
+      - When not to use
       - Inputs
       - Outputs
       - Core procedure
       - Contracts
       - Risks
       - Validation
-notes:
-  - Replace AOA-T-PENDING-ADR-WRITE, path TBD, and source_ref TBD after the upstream technique is published in aoa-techniques.
