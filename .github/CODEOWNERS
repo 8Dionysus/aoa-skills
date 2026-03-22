@@ -1,0 +1,8 @@
+# Narrow ownership map for governance-critical skill surfaces.
+/.github/ @8Dionysus
+/scripts/ @8Dionysus
+/docs/ @8Dionysus
+/generated/ @8Dionysus
+/schemas/ @8Dionysus
+/skills/ @8Dionysus
+/templates/ @8Dionysus
