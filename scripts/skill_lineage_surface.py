@@ -42,41 +42,25 @@ def technique_counts(
     techniques: Sequence[Mapping[str, Any]],
 ) -> tuple[int, int, int]:
     published_count = 0
-    pending_count = 0
-    tbd_ref_count = 0
-
-    if any(
-        isinstance(dependency, str) and dependency.startswith("AOA-T-PENDING-")
+    pending_ids: set[str] = {
+        dependency
         for dependency in technique_dependencies
-    ):
-        pending_count += sum(
-            1
-            for dependency in technique_dependencies
-            if isinstance(dependency, str) and dependency.startswith("AOA-T-PENDING-")
-        )
+        if isinstance(dependency, str) and dependency.startswith("AOA-T-PENDING-")
+    }
+    tbd_ref_count = 0
 
     for technique in techniques:
         technique_id = technique.get("id")
         path_value = technique.get("path")
         source_ref = technique.get("source_ref")
         if isinstance(technique_id, str) and technique_id.startswith("AOA-T-PENDING-"):
-            pending_count += 1
+            pending_ids.add(technique_id)
         else:
             published_count += 1
         if path_value == "TBD" or source_ref == "TBD":
             tbd_ref_count += 1
 
-    # The frontmatter dependency count and manifest count may overlap for pending IDs.
-    pending_count = max(
-        pending_count,
-        sum(
-            1
-            for technique in techniques
-            if isinstance(technique.get("id"), str)
-            and technique["id"].startswith("AOA-T-PENDING-")
-        ),
-    )
-    return published_count, pending_count, tbd_ref_count
+    return published_count, len(pending_ids), tbd_ref_count
 
 
 def build_skill_lineage_entry(source: skill_source_model.SkillSource) -> dict[str, Any]:

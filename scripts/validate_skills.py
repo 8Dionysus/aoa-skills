@@ -2280,6 +2280,7 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         issues.extend(validate_generated_walkthroughs(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_public_surface(repo_root, skill_names=target_skills))
         issues.extend(validate_generated_evaluation_matrix(repo_root, skill_names=target_skills))
+        issues.extend(validate_additional_generated_surfaces(repo_root))
     return issues
 
 

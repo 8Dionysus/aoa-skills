@@ -280,6 +280,19 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
                     "live project overlay must explicitly say that it does not change the base skill boundary",
                 )
             )
+        if not contains_phrase(
+            overlay_text,
+            (
+                "repository-relative",
+                "repo-relative",
+            ),
+        ):
+            issues.append(
+                OverlayContractIssue(
+                    relative_location(overlay_path, repo_root),
+                    "live project overlay must explicitly keep paths or commands repository-relative",
+                )
+            )
 
         sections = {
             heading: content

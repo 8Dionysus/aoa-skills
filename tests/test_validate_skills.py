@@ -20,6 +20,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 import validate_skills
 import build_catalog
+import skill_lineage_surface
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {
@@ -561,6 +562,19 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertEqual(0, self.run_main(repo_root))
         self.assertEqual(0, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
 
+    def test_pending_technique_count_deduplicates_manifest_and_frontmatter_ids(self) -> None:
+        published_count, pending_count, tbd_ref_count = skill_lineage_surface.technique_counts(
+            ["AOA-T-PENDING-TEST"],
+            [
+                {"id": "AOA-T-PENDING-TEST", "path": "TBD", "source_ref": "TBD"},
+                PRIMARY_PUBLISHED_TECHNIQUE,
+            ],
+        )
+
+        self.assertEqual(1, published_count)
+        self.assertEqual(1, pending_count)
+        self.assertEqual(1, tbd_ref_count)
+
     def test_build_catalog_projects_routing_surface(self) -> None:
         repo_root = self.make_repo(
             techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
@@ -845,6 +859,94 @@ class ValidateSkillsTests(unittest.TestCase):
         self.write_catalogs(repo_root)
 
         self.assertEqual([], validate_skills.run_validation(repo_root))
+
+    def test_live_project_overlay_requires_repo_relative_language(self) -> None:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+        (repo_root / "SKILL_INDEX.md").write_text(
+            textwrap.dedent(
+                """\
+                # SKILL_INDEX
+
+                | name | scope | status | summary |
+                |---|---|---|---|
+                | atm10-change-protocol | project | scaffold | Test summary. |
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="atm10-change-protocol",
+            scope="project",
+            policy_allow_implicit=True,
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        overlay_path = repo_root / "docs" / "overlays" / "atm10" / "PROJECT_OVERLAY.md"
+        overlay_path.parent.mkdir(parents=True, exist_ok=True)
+        overlay_path.write_text(
+            textwrap.dedent(
+                """\
+                # atm10 overlay
+
+                ## Purpose
+
+                This exemplar overlay pack keeps local adaptation explicit.
+                It does not change the base skill boundary.
+
+                ## Authority
+
+                - overlay family: `atm10`
+                - local maintainers own authority
+
+                ## Local surface
+
+                - keep commands and paths explicit
+
+                ## Overlayed skills
+
+                - `atm10-change-protocol`
+
+                ## Risks and anti-patterns
+
+                - do not widen the pack into a playbook
+
+                ## Validation
+
+                - confirm `skills/atm10-*` bundles stay aligned
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "live project overlay must explicitly keep paths or commands repository-relative",
+            messages,
+        )
+
+    def test_single_skill_validation_checks_additional_generated_surfaces(self) -> None:
+        repo_root = self.make_repo()
+        self.write_catalogs(repo_root)
+
+        lineage_path = repo_root / "generated" / "skill_lineage_surface.json"
+        payload = json.loads(lineage_path.read_text(encoding="utf-8"))
+        payload["skills"][0]["pending_technique_count"] = 99
+        lineage_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated lineage surface artifact is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
+        self.assertEqual(1, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
 
     def test_mixed_family_index_duplicate_fails(self) -> None:
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
