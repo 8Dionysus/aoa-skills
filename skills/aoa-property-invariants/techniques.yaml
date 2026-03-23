@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0017
     repo: 8Dionysus/aoa-techniques
     path: techniques/evaluation/property-invariants/TECHNIQUE.md
-    source_ref: fe7df9aba3937435b431489ed0f9c5d52690a37c
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
     use_sections:
       - Intent
       - When to use
@@ -17,7 +17,7 @@ techniques:
   - id: AOA-T-0007
     repo: 8Dionysus/aoa-techniques
     path: techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md
-    source_ref: fe7df9aba3937435b431489ed0f9c5d52690a37c
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
     use_sections:
       - summary
       - Validation

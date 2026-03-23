@@ -6,7 +6,7 @@
 - current machine-checkable floor: published lineage plus example-backed evaluation coverage
 - candidate set: post-lineage conservative review wave
 - scope: `core`
-- current lineage: manifest-aligned with published techniques `AOA-T-0013` and `AOA-T-0002`
+- current lineage: manifest-aligned with published techniques `AOA-T-0013`, `AOA-T-0002`, and `AOA-T-0009`
 
 ## Canonical gate check
 
@@ -24,11 +24,13 @@
 - `skills/aoa-source-of-truth-check/examples/example.md`
 - `skills/aoa-source-of-truth-check/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
+- `tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/*`
 
 ## Findings
 
+- runtime `SKILL.md` meaning changed: `yes`
 - the trigger boundary stays focused on document authority, ownership, and overlap rather than broad policy design
-- the example keeps the workflow centered on authoritative file mapping and conflict reduction
+- the example keeps the workflow centered on authoritative file mapping, conflict reduction, and lightweight snapshot discipline for top-level status docs when canonical homes already exist
 - published lineage, runtime wording, and evaluation coverage are aligned
 - the bundle is candidate-ready at the repository gate level
 

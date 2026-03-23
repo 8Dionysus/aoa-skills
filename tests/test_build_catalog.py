@@ -37,6 +37,13 @@ PRIMARY_PUBLISHED_TECHNIQUE = {
         "Validation",
     ],
 }
+SECONDARY_PUBLISHED_TECHNIQUE = {
+    "id": "AOA-T-0002",
+    "repo": "8Dionysus/aoa-techniques",
+    "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+    "source_ref": "0123456789abcdef0123456789abcdef01234567",
+    "use_sections": ["summary"],
+}
 PENDING_TECHNIQUE = {
     "id": "AOA-T-PENDING-TEST",
     "repo": "8Dionysus/aoa-techniques",
@@ -358,6 +365,180 @@ class BuildCatalogTests(unittest.TestCase):
         with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
             return build_catalog.main(argv or [], repo_root=repo_root)
 
+    def add_skill_bundle(
+        self,
+        repo_root: Path,
+        *,
+        skill_name: str,
+        scope: str = "core",
+        status: str = "scaffold",
+        invocation_mode: str = "explicit-preferred",
+        techniques: list[dict] | None = None,
+        policy_allow_implicit: bool | None = None,
+        include_review_check: bool = False,
+    ) -> None:
+        skill_dir = repo_root / "skills" / skill_name
+        skill_dir.mkdir()
+        (skill_dir / "examples").mkdir()
+        (skill_dir / "examples" / "example.md").write_text(
+            textwrap.dedent(
+                """\
+                # Example
+
+                ## Scenario
+
+                Example scenario.
+
+                ## Why this skill fits
+
+                - the workflow is bounded
+
+                ## Expected inputs
+
+                - input
+
+                ## Expected outputs
+
+                - output
+
+                ## Boundary notes
+
+                - keep the task bounded
+
+                ## Verification notes
+
+                - verify the result
+                """
+            ),
+            encoding="utf-8",
+        )
+
+        resolved_techniques = techniques or [PRIMARY_PUBLISHED_TECHNIQUE]
+        technique_ids = [entry["id"] for entry in resolved_techniques]
+        (skill_dir / "SKILL.md").write_text(
+            textwrap.dedent(
+                f"""\
+                ---
+                name: {skill_name}
+                scope: {scope}
+                status: {status}
+                summary: Test skill summary.
+                invocation_mode: {invocation_mode}
+                technique_dependencies:
+                """
+            )
+            + "".join(f"  - {technique_id}\n" for technique_id in technique_ids)
+            + textwrap.dedent(
+                """\
+
+                ---
+
+                # {skill_name}
+
+                ## Intent
+
+                Intent text.
+
+                ## Trigger boundary
+
+                Use this skill when:
+                - needed
+
+                Do not use this skill when:
+                - not needed
+
+                ## Inputs
+
+                - input
+
+                ## Outputs
+
+                - output
+
+                ## Procedure
+
+                1. step
+
+                ## Contracts
+
+                - contract
+
+                ## Risks and anti-patterns
+
+                - risk
+
+                ## Verification
+
+                - verify
+
+                ## Technique traceability
+
+                Traceability text.
+
+                ## Adaptation points
+
+                - adapt
+                """.format(skill_name=skill_name)
+            ),
+            encoding="utf-8",
+        )
+        (skill_dir / "techniques.yaml").write_text(
+            yaml.safe_dump(
+                {
+                    "skill_name": skill_name,
+                    "composition_mode": "bounded",
+                    "techniques": resolved_techniques,
+                },
+                sort_keys=False,
+            ),
+            encoding="utf-8",
+        )
+
+        if policy_allow_implicit is not None:
+            agents_dir = skill_dir / "agents"
+            agents_dir.mkdir()
+            (agents_dir / "openai.yaml").write_text(
+                yaml.safe_dump(
+                    {
+                        "policy": {
+                            "allow_implicit_invocation": policy_allow_implicit,
+                        },
+                        "notes": ["Test policy."],
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+
+        if include_review_check:
+            checks_dir = skill_dir / "checks"
+            checks_dir.mkdir()
+            (checks_dir / "review.md").write_text(
+                textwrap.dedent(
+                    f"""\
+                    # Review Checklist
+
+                    ## Purpose
+
+                    Review checklist for `{skill_name}`.
+
+                    ## When it applies
+
+                    - when a repo-relative project overlay needs review evidence
+
+                    ## Review checklist
+
+                    - [ ] confirm the local overlay wording stays bounded
+                    - [ ] confirm repo-relative files and commands stay explicit
+
+                    ## Not a fit
+
+                    - not for broad playbooks or scenario bundles
+                    """
+                ),
+                encoding="utf-8",
+            )
+
     def load_public_surface(self, repo_root: Path) -> dict:
         path = repo_root / build_catalog.PUBLIC_SURFACE_JSON_PATH
         return json.loads(path.read_text(encoding="utf-8"))
@@ -394,6 +575,64 @@ class BuildCatalogTests(unittest.TestCase):
         path = repo_root / build_catalog.GOVERNANCE_BACKLOG_MARKDOWN_PATH
         return path.read_text(encoding="utf-8")
 
+    def load_overlay_readiness(self, repo_root: Path) -> dict:
+        path = repo_root / build_catalog.OVERLAY_READINESS_JSON_PATH
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def load_overlay_readiness_markdown(self, repo_root: Path) -> str:
+        path = repo_root / build_catalog.OVERLAY_READINESS_MARKDOWN_PATH
+        return path.read_text(encoding="utf-8")
+
+    def load_skill_composition_audit(self, repo_root: Path) -> dict:
+        path = repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_JSON_PATH
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def load_skill_composition_audit_markdown(self, repo_root: Path) -> str:
+        path = repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_MARKDOWN_PATH
+        return path.read_text(encoding="utf-8")
+
+    def write_skill_composition_exception_review(
+        self,
+        repo_root: Path,
+        *,
+        skill_name: str = "aoa-test-skill",
+        recommendation: str = "keep_exception",
+    ) -> None:
+        review_dir = repo_root / "docs" / "reviews" / "skill-composition-exceptions"
+        review_dir.mkdir(parents=True, exist_ok=True)
+        (review_dir / f"{skill_name}.md").write_text(
+            textwrap.dedent(
+                f"""\
+                # {skill_name}
+
+                ## Current shape
+
+                - skill: `{skill_name}`
+                - technique_count: `1`
+                - technique_ids:
+                  - `AOA-T-0001`
+                - composition_class: `single_technique_exception`
+
+                ## Package rationale
+
+                This stays in the skill layer because it packages a bounded workflow.
+
+                ## Why this is not just the technique
+
+                The skill adds invocation and reporting boundaries around the technique.
+
+                ## Adjacent skills considered
+
+                - `aoa-other-skill`
+
+                ## Recommendation
+
+                - `{recommendation}`
+                """
+            ),
+            encoding="utf-8",
+        )
+
     def write_governance_lanes(self, repo_root: Path, lanes: list[dict]) -> None:
         governance_dir = repo_root / "docs" / "governance"
         governance_dir.mkdir(parents=True, exist_ok=True)
@@ -416,6 +655,237 @@ class BuildCatalogTests(unittest.TestCase):
                 },
                 sort_keys=False,
             ),
+            encoding="utf-8",
+        )
+
+    def write_evaluation_fixtures_for_skills(
+        self,
+        repo_root: Path,
+        skill_names: list[str],
+    ) -> None:
+        fixtures_dir = repo_root / "tests" / "fixtures"
+        fixtures_dir.mkdir(parents=True, exist_ok=True)
+        payload: dict[str, list[dict]] = {
+            "autonomy_checks": [],
+            "trigger_cases": [],
+            "snapshot_cases": [],
+            "adjacency_cases": [],
+        }
+
+        for skill_name in skill_names:
+            snapshots_dir = fixtures_dir / "skill_evaluation_snapshots" / skill_name
+            snapshots_dir.mkdir(parents=True, exist_ok=True)
+            slug = skill_name.replace("-", "_")
+            payload["autonomy_checks"].append(
+                {
+                    "skill": skill_name,
+                    "forbidden_runtime_terms": ["aoa-techniques"],
+                }
+            )
+            payload["trigger_cases"].extend(
+                [
+                    {
+                        "skill": skill_name,
+                        "case_id": f"{slug}_use_1",
+                        "prompt": "use case",
+                        "expected": "use",
+                        "required_phrases": ["needed"],
+                    },
+                    {
+                        "skill": skill_name,
+                        "case_id": f"{slug}_do_not_use_1",
+                        "prompt": "do not use case",
+                        "expected": "do_not_use",
+                        "required_phrases": ["not needed"],
+                    },
+                ]
+            )
+
+            use_snapshot_path = snapshots_dir / f"{slug}_use_1.md"
+            use_snapshot_path.write_text(
+                textwrap.dedent(
+                    f"""\
+                    # Evaluation Snapshot
+
+                    ## Prompt
+
+                    use case
+
+                    ## Expected selection
+
+                    Decision: use `{skill_name}`.
+
+                    ## Why
+
+                    - the bounded trigger is needed
+
+                    ## Expected object
+
+                    - output
+
+                    ## Boundary notes
+
+                    - keep the scope bounded
+
+                    ## Verification hooks
+
+                    - verify the output
+                    """
+                ),
+                encoding="utf-8",
+            )
+            do_not_use_snapshot_path = snapshots_dir / f"{slug}_do_not_use_1.md"
+            do_not_use_snapshot_path.write_text(
+                textwrap.dedent(
+                    f"""\
+                    # Evaluation Snapshot
+
+                    ## Prompt
+
+                    do not use case
+
+                    ## Expected selection
+
+                    Decision: do_not_use `{skill_name}`.
+
+                    ## Why
+
+                    - the task is not needed here
+
+                    ## Expected object
+
+                    - redirect to a better fit
+
+                    ## Boundary notes
+
+                    - keep the decision bounded
+
+                    ## Verification hooks
+
+                    - confirm the deflection is explicit
+                    """
+                ),
+                encoding="utf-8",
+            )
+            payload["snapshot_cases"].extend(
+                [
+                    {
+                        "skill": skill_name,
+                        "case_id": f"{slug}_use_1",
+                        "prompt": "use case",
+                        "expected": "use",
+                        "snapshot_path": use_snapshot_path.relative_to(repo_root).as_posix(),
+                        "required_output_phrases": [
+                            f"Decision: use `{skill_name}`.",
+                            "output",
+                        ],
+                        "forbidden_output_phrases": [
+                            f"Decision: do_not_use `{skill_name}`."
+                        ],
+                    },
+                    {
+                        "skill": skill_name,
+                        "case_id": f"{slug}_do_not_use_1",
+                        "prompt": "do not use case",
+                        "expected": "do_not_use",
+                        "snapshot_path": (
+                            do_not_use_snapshot_path.relative_to(repo_root).as_posix()
+                        ),
+                        "required_output_phrases": [
+                            f"Decision: do_not_use `{skill_name}`.",
+                            "redirect",
+                        ],
+                        "forbidden_output_phrases": [
+                            f"Decision: use `{skill_name}`."
+                        ],
+                    },
+                ]
+            )
+
+        (fixtures_dir / "skill_evaluation_cases.yaml").write_text(
+            yaml.safe_dump(payload, sort_keys=False),
+            encoding="utf-8",
+        )
+
+    def write_live_overlay_pack(
+        self,
+        repo_root: Path,
+        *,
+        family: str,
+        skill_names: list[str],
+    ) -> None:
+        overlay_dir = repo_root / "docs" / "overlays" / family
+        overlay_dir.mkdir(parents=True, exist_ok=True)
+        checklist_refs = ", ".join(
+            f"`skills/{skill_name}/checks/review.md`" for skill_name in skill_names
+        )
+        overlay_lines = [
+            f"# {family} overlay",
+            "",
+            "## Purpose",
+            "",
+            "This live exemplar overlay pack keeps repo-relative local adaptation explicit.",
+            "It does not change the base skill boundary.",
+            "",
+            "## Authority",
+            "",
+            f"- overlay family: `{family}`",
+            "- local maintainers own repo-relative authority",
+            "",
+            "## Local surface",
+            "",
+            "- repo-relative docs and commands remain explicit",
+            f"- family review doc: `docs/overlays/{family}/REVIEW.md`",
+            f"- bundle-local review checklists: {checklist_refs}",
+            "",
+            "## Overlayed skills",
+            "",
+            *[f"- `{skill_name}`" for skill_name in skill_names],
+            "",
+            "## Risks and anti-patterns",
+            "",
+            "- do not widen the pack into a playbook",
+            "",
+            "## Validation",
+            "",
+            f"- confirm both `skills/{family}-*` bundles stay aligned",
+            "",
+        ]
+        (overlay_dir / "PROJECT_OVERLAY.md").write_text(
+            "\n".join(overlay_lines),
+            encoding="utf-8",
+        )
+        review_lines = [
+            f"# {family} overlay family review",
+            "",
+            "## Current status",
+            "",
+            f"- overlay family: `{family}`",
+            f"- reviewed skills: {', '.join(f'`{skill_name}`' for skill_name in skill_names)}",
+            "",
+            "## Evidence reviewed",
+            "",
+            f"- `docs/overlays/{family}/PROJECT_OVERLAY.md`",
+            f"- bundle-local review checklists under `skills/{family}-*/checks/review.md`",
+            "",
+            "## Findings",
+            "",
+            *[
+                f"- reviewed `{skill_name}` against the family overlay contract"
+                for skill_name in skill_names
+            ],
+            "",
+            "## Gaps and blockers",
+            "",
+            "- no blocker identified in this bounded test fixture",
+            "",
+            "## Recommendation",
+            "",
+            f"Keep `{family}` as a thin reviewable overlay family.",
+            "",
+        ]
+        (overlay_dir / "REVIEW.md").write_text(
+            "\n".join(review_lines),
             encoding="utf-8",
         )
 
@@ -882,10 +1352,183 @@ class BuildCatalogTests(unittest.TestCase):
         payload = self.load_governance_backlog(repo_root)
         markdown = self.load_governance_backlog_markdown(repo_root)
         self.assertEqual(["aoa-test-skill"], payload["cohorts"]["comparative_pending"])
+        self.assertEqual(["aoa-test-skill"], payload["cohorts"]["review_truth_sync"])
+        self.assertFalse(payload["review_truth_sync"][0]["truth_synced"])
         self.assertEqual("stay_evaluated", payload["skills"][0]["governance_decision"])
         self.assertEqual(["test_lane"], payload["skills"][0]["governance_lane_ids"])
         self.assertIn("comparative pending cohort: 1", markdown)
+        self.assertIn("## Review truth sync", markdown)
         self.assertIn("`comparative_pending`: aoa-test-skill", markdown)
+
+    def test_write_overlay_readiness_generates_reviewable_family_surface(self) -> None:
+        repo_root = self.make_repo()
+        skill_names = [
+            "atm10-change-protocol",
+            "atm10-source-of-truth-check",
+        ]
+        for skill_name in skill_names:
+            self.add_skill_bundle(
+                repo_root,
+                skill_name=skill_name,
+                scope="project",
+                techniques=[PRIMARY_PUBLISHED_TECHNIQUE],
+                policy_allow_implicit=True,
+                include_review_check=True,
+            )
+        self.write_evaluation_fixtures_for_skills(repo_root, skill_names)
+        self.write_live_overlay_pack(
+            repo_root,
+            family="atm10",
+            skill_names=skill_names,
+        )
+
+        overlay_json_path, overlay_markdown_path = build_catalog.write_overlay_readiness(
+            repo_root
+        )
+
+        payload = self.load_overlay_readiness(repo_root)
+        markdown = self.load_overlay_readiness_markdown(repo_root)
+        self.assertEqual(
+            build_catalog.OVERLAY_READINESS_VERSION,
+            payload["overlay_readiness_version"],
+        )
+        self.assertEqual(
+            build_catalog.skill_overlay_contract.OVERLAY_READINESS_SOURCE_OF_TRUTH,
+            payload["source_of_truth"],
+        )
+        self.assertEqual(
+            repo_root / build_catalog.OVERLAY_READINESS_JSON_PATH,
+            overlay_json_path,
+        )
+        self.assertEqual(
+            repo_root / build_catalog.OVERLAY_READINESS_MARKDOWN_PATH,
+            overlay_markdown_path,
+        )
+        self.assertEqual(
+            {
+                "live_overlay_family_count": 1,
+                "reviewable_family_count": 1,
+                "project_skill_count": 2,
+                "project_skill_review_check_count": 2,
+                "eval_ready_project_skill_count": 2,
+            },
+            payload["summary"],
+        )
+        self.assertEqual(1, len(payload["families"]))
+        self.assertEqual(
+            {
+                "family": "atm10",
+                "project_overlay_path": "docs/overlays/atm10/PROJECT_OVERLAY.md",
+                "review_path": "docs/overlays/atm10/REVIEW.md",
+                "project_skill_names": skill_names,
+                "listed_skill_names": skill_names,
+                "listed_matches_actual": True,
+                "project_skill_count": 2,
+                "bundle_review_check_count": 2,
+                "eval_ready_skill_count": 2,
+                "boundary_statement_present": True,
+                "repo_relative_statement_present": True,
+                "authority_section_present": True,
+                "review_mentions_all_skills": True,
+                "readiness_state": "reviewable",
+            },
+            payload["families"][0],
+        )
+        self.assertEqual(
+            skill_names,
+            [entry["name"] for entry in payload["skills"]],
+        )
+        self.assertTrue(all(entry["eval_ready"] for entry in payload["skills"]))
+        self.assertIn("# Overlay readiness", markdown)
+        self.assertIn(
+            "| atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            markdown,
+        )
+        self.assertIn(
+            "skills/atm10-change-protocol/checks/review.md",
+            markdown,
+        )
+
+    def test_write_skill_composition_audit_marks_multi_technique_skill(self) -> None:
+        repo_root = self.make_repo(
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+
+        audit_json_path, audit_markdown_path = build_catalog.write_skill_composition_audit(
+            repo_root
+        )
+
+        payload = self.load_skill_composition_audit(repo_root)
+        markdown = self.load_skill_composition_audit_markdown(repo_root)
+        self.assertEqual(
+            build_catalog.SKILL_COMPOSITION_AUDIT_VERSION,
+            payload["skill_composition_version"],
+        )
+        self.assertEqual(
+            build_catalog.skill_composition_audit.SKILL_COMPOSITION_SOURCE_OF_TRUTH,
+            payload["source_of_truth"],
+        )
+        self.assertEqual(
+            repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_JSON_PATH,
+            audit_json_path,
+        )
+        self.assertEqual(
+            repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_MARKDOWN_PATH,
+            audit_markdown_path,
+        )
+        self.assertEqual(
+            {
+                "total_skill_count": 1,
+                "multi_technique_skill_count": 1,
+                "single_technique_skill_count": 0,
+                "approved_exception_count": 0,
+                "needs_reframe_count": 0,
+            },
+            payload["summary"],
+        )
+        self.assertEqual(
+            {
+                "name": "aoa-test-skill",
+                "technique_count": 2,
+                "technique_ids": ["AOA-T-0001", "AOA-T-0002"],
+                "composition_class": "multi_technique",
+                "exception_review_path": None,
+                "recommended_action": "keep_multi_technique",
+            },
+            payload["skills"][0],
+        )
+        self.assertIn("# Skill composition audit", markdown)
+        self.assertIn("| aoa-test-skill | 2 | multi_technique | keep_multi_technique | - |", markdown)
+
+    def test_write_skill_composition_audit_marks_reviewed_exception(self) -> None:
+        repo_root = self.make_repo()
+        self.write_skill_composition_exception_review(repo_root)
+
+        build_catalog.write_skill_composition_audit(repo_root)
+
+        payload = self.load_skill_composition_audit(repo_root)
+        self.assertEqual(
+            {
+                "total_skill_count": 1,
+                "multi_technique_skill_count": 0,
+                "single_technique_skill_count": 1,
+                "approved_exception_count": 1,
+                "needs_reframe_count": 0,
+            },
+            payload["summary"],
+        )
+        self.assertEqual(
+            "single_technique_exception",
+            payload["skills"][0]["composition_class"],
+        )
+        self.assertEqual(
+            "docs/reviews/skill-composition-exceptions/aoa-test-skill.md",
+            payload["skills"][0]["exception_review_path"],
+        )
+        self.assertEqual(
+            "keep_exception",
+            payload["skills"][0]["recommended_action"],
+        )
 
     def test_write_evaluation_matrix_generates_snapshot_backed_surface(self) -> None:
         repo_root = self.make_repo(
@@ -1061,6 +1704,16 @@ class BuildCatalogTests(unittest.TestCase):
 
         matrix_markdown_path = repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH
         matrix_markdown_path.write_text("stale matrix markdown\n", encoding="utf-8")
+
+        self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+
+    def test_check_mode_fails_when_skill_composition_audit_is_stale(self) -> None:
+        repo_root = self.make_repo()
+        self.write_skill_composition_exception_review(repo_root)
+        self.write_all_surfaces(repo_root)
+
+        audit_markdown_path = repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_MARKDOWN_PATH
+        audit_markdown_path.write_text("stale composition audit\n", encoding="utf-8")
 
         self.assertEqual(1, self.run_main(repo_root, ["--check"]))
 

@@ -19,8 +19,9 @@ an executable workflow for Codex.
 9. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
 10. `OVERLAY_SPEC.md` — repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
 11. `overlays/atm10/PROJECT_OVERLAY.md` — first live exemplar family overlay pack.
-12. `reviews/README.md` — public review-record conventions and review surfaces.
-13. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
+12. `overlays/atm10/REVIEW.md` — family-level review surface for the live exemplar pack.
+13. `reviews/README.md` — public review-record conventions and review surfaces.
+14. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
@@ -29,6 +30,7 @@ an executable workflow for Codex.
 - skills should be self-contained at runtime
 - technique composition should happen at build time, not by live remote fetch
 - live exemplar overlay packs may live here as repo-local examples
+- live exemplar overlay packs should include a family-level review doc and bundle-local review checklists
 - real downstream overlay adoption still belongs in downstream repositories
 - runtime inspection lives in `RUNTIME_PATH.md`
 - `scripts/inspect_skill.py` is the read-only CLI entrypoint for the same runtime path
@@ -62,6 +64,7 @@ The repository now also has a documented public promotion path in `PROMOTION_PAT
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
 The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive candidate review, overlay maturity, stronger public product-surface clarity, and packaging prep through `../generated/governance_backlog.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md` and matching `skills/atm10-*` bundles.
+Those live exemplar packs also have a family-level review doc at `docs/overlays/atm10/REVIEW.md`.
 Those overlays remain repo-local examples rather than live downstream integrations.
 `ROADMAP.md` remains the canonical public roadmap.
 `PHASED_SKILL_PLAN.md` records the scaffold expansion that established the original skill-core rollout.

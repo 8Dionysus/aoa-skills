@@ -1,0 +1,68 @@
+{
+  "families": [
+    {
+      "authority_section_present": true,
+      "boundary_statement_present": true,
+      "bundle_review_check_count": 2,
+      "eval_ready_skill_count": 2,
+      "family": "atm10",
+      "listed_matches_actual": true,
+      "listed_skill_names": [
+        "atm10-change-protocol",
+        "atm10-source-of-truth-check"
+      ],
+      "project_overlay_path": "docs/overlays/atm10/PROJECT_OVERLAY.md",
+      "project_skill_count": 2,
+      "project_skill_names": [
+        "atm10-change-protocol",
+        "atm10-source-of-truth-check"
+      ],
+      "readiness_state": "reviewable",
+      "repo_relative_statement_present": true,
+      "review_mentions_all_skills": true,
+      "review_path": "docs/overlays/atm10/REVIEW.md"
+    }
+  ],
+  "overlay_readiness_version": 1,
+  "skills": [
+    {
+      "eval_blockers": [],
+      "eval_ready": true,
+      "family": "atm10",
+      "has_adaptation_points": true,
+      "has_policy_file": true,
+      "name": "atm10-change-protocol",
+      "review_check_path": "skills/atm10-change-protocol/checks/review.md",
+      "runtime_example_count": 1,
+      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "eval_blockers": [],
+      "eval_ready": true,
+      "family": "atm10",
+      "has_adaptation_points": true,
+      "has_policy_file": true,
+      "name": "atm10-source-of-truth-check",
+      "review_check_path": "skills/atm10-source-of-truth-check/checks/review.md",
+      "runtime_example_count": 1,
+      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "status": "scaffold"
+    }
+  ],
+  "source_of_truth": {
+    "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
+    "overlay_docs": "docs/overlays/*/PROJECT_OVERLAY.md",
+    "overlay_reviews": "docs/overlays/*/REVIEW.md",
+    "review_checks": "skills/*/checks/review.md",
+    "runtime_examples": "skills/*/examples/*.md",
+    "skill_markdown": "skills/*/SKILL.md"
+  },
+  "summary": {
+    "eval_ready_project_skill_count": 2,
+    "live_overlay_family_count": 1,
+    "project_skill_count": 2,
+    "project_skill_review_check_count": 2,
+    "reviewable_family_count": 1
+  }
+}

@@ -2,11 +2,12 @@
 name: aoa-source-of-truth-check
 scope: core
 status: evaluated
-summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.
+summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0013
   - AOA-T-0002
+  - AOA-T-0009
 ---
 
 # aoa-source-of-truth-check
@@ -23,6 +24,8 @@ Use this skill when:
 - a change touches docs, process, or operational guidance and the question is which file is authoritative
 - confusion exists between overview docs and authoritative docs
 - one authoritative source must stay aligned across multiple downstream consumer surfaces
+- top-level status docs such as `README` or `MANIFEST` are accumulating status/history that should live in canonical homes instead
+- the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven
 
 Do not use this skill when:
 - the repository is tiny and has no meaningful source-of-truth ambiguity
@@ -30,6 +33,7 @@ Do not use this skill when:
 - the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`
 - the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first
 - the main problem is broader policy design rather than document authority or ownership
+- the task is only about building or maintaining a derived docs surface; that belongs in a separate review-surface workflow
 
 ## Inputs
 
@@ -44,6 +48,7 @@ Do not use this skill when:
 - fan-out map when one source feeds multiple downstream consumers
 - note of overlaps or conflicts
 - proposed or implemented document role clarification
+- lightweight snapshot guidance for entrypoint docs when canonical homes already exist
 - verification summary
 
 ## Procedure
@@ -52,14 +57,16 @@ Do not use this skill when:
 2. determine which file should be authoritative for each concern
 3. note any overlap, contradiction, or role ambiguity
 4. if one source feeds multiple consumers, name each consumer and refresh them from the same source
-5. clarify or propose clarifying document ownership and purpose
-6. keep the change bounded to the guidance surface under review
-7. verify that the result reduces ambiguity for future changes
+5. if top-level status docs are bloating, trim them into short snapshots and route detail to canonical homes
+6. clarify or propose clarifying document ownership and purpose
+7. keep the change bounded to the guidance surface under review
+8. verify that the result reduces ambiguity for future changes
 
 ## Contracts
 
 - authoritative sources should be visible and named explicitly
 - overview documents should not silently replace canonical ones
+- lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters
 - role separation should reduce confusion, not create extra ceremony
 - the resulting guidance should be understandable to another human or agent
 
@@ -69,19 +76,23 @@ Do not use this skill when:
 - creating many labels without reducing ambiguity
 - moving truth across files without clearly signaling the change
 - letting summaries masquerade as canonical instructions
+- trimming top-level docs too aggressively before canonical homes are actually available
+- widening the skill into generic docs hygiene or derived surface maintenance
 
 ## Verification
 
 - confirm the main source-of-truth ambiguity was reduced
 - confirm authoritative files are named explicitly
 - confirm overlaps or conflicts were surfaced rather than hidden
+- confirm summary docs stay short and route detail to canonical homes where those already exist
 - confirm the result helps future contributors orient faster
 
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0013 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0013 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0009 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/lightweight-status-snapshot/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 
@@ -90,3 +101,4 @@ Future project overlays may add:
 - preferred canonical-file patterns
 - local review rules for doc changes
 - repository-specific examples of authoritative surfaces
+- lightweight snapshot rules for README or MANIFEST surfaces

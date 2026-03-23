@@ -110,6 +110,8 @@
               "lineage_surface",
               "boundary_matrix",
               "governance_backlog",
+              "skill_composition_audit",
+              "overlay_readiness",
               "bundle_index",
               "skill_graph"
             ],
@@ -123,6 +125,8 @@
               "lineage_surface": { "type": "integer", "minimum": 1 },
               "boundary_matrix": { "type": "integer", "minimum": 1 },
               "governance_backlog": { "type": "integer", "minimum": 1 },
+              "skill_composition_audit": { "type": "integer", "minimum": 1 },
+              "overlay_readiness": { "type": "integer", "minimum": 1 },
               "bundle_index": { "type": "integer", "minimum": 1 },
               "skill_graph": { "type": "integer", "minimum": 1 }
             }

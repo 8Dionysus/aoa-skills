@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills overlay readiness",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "overlay_readiness_version",
+    "source_of_truth",
+    "summary",
+    "families",
+    "skills"
+  ],
+  "properties": {
+    "overlay_readiness_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill_markdown",
+        "runtime_examples",
+        "review_checks",
+        "overlay_docs",
+        "overlay_reviews",
+        "evaluation_fixtures"
+      ],
+      "properties": {
+        "skill_markdown": { "type": "string", "minLength": 1 },
+        "runtime_examples": { "type": "string", "minLength": 1 },
+        "review_checks": { "type": "string", "minLength": 1 },
+        "overlay_docs": { "type": "string", "minLength": 1 },
+        "overlay_reviews": { "type": "string", "minLength": 1 },
+        "evaluation_fixtures": { "type": "string", "minLength": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_overlay_family_count",
+        "reviewable_family_count",
+        "project_skill_count",
+        "project_skill_review_check_count",
+        "eval_ready_project_skill_count"
+      ],
+      "properties": {
+        "live_overlay_family_count": { "type": "integer", "minimum": 0 },
+        "reviewable_family_count": { "type": "integer", "minimum": 0 },
+        "project_skill_count": { "type": "integer", "minimum": 0 },
+        "project_skill_review_check_count": { "type": "integer", "minimum": 0 },
+        "eval_ready_project_skill_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "family",
+          "project_overlay_path",
+          "review_path",
+          "project_skill_names",
+          "listed_skill_names",
+          "listed_matches_actual",
+          "project_skill_count",
+          "bundle_review_check_count",
+          "eval_ready_skill_count",
+          "boundary_statement_present",
+          "repo_relative_statement_present",
+          "authority_section_present",
+          "review_mentions_all_skills",
+          "readiness_state"
+        ],
+        "properties": {
+          "family": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "project_overlay_path": { "type": ["string", "null"] },
+          "review_path": { "type": ["string", "null"] },
+          "project_skill_names": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "listed_skill_names": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "listed_matches_actual": { "type": "boolean" },
+          "project_skill_count": { "type": "integer", "minimum": 0 },
+          "bundle_review_check_count": { "type": "integer", "minimum": 0 },
+          "eval_ready_skill_count": { "type": "integer", "minimum": 0 },
+          "boundary_statement_present": { "type": "boolean" },
+          "repo_relative_statement_present": { "type": "boolean" },
+          "authority_section_present": { "type": "boolean" },
+          "review_mentions_all_skills": { "type": "boolean" },
+          "readiness_state": {
+            "type": "string",
+            "enum": ["baseline", "reviewable"]
+          }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "family",
+          "status",
+          "skill_path",
+          "review_check_path",
+          "runtime_example_count",
+          "has_adaptation_points",
+          "has_policy_file",
+          "eval_ready",
+          "eval_blockers"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "family": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "status": {
+            "type": ["string", "null"],
+            "enum": [
+              "scaffold",
+              "linked",
+              "reviewed",
+              "evaluated",
+              "canonical",
+              "deprecated",
+              null
+            ]
+          },
+          "skill_path": { "type": "string", "minLength": 1 },
+          "review_check_path": { "type": ["string", "null"] },
+          "runtime_example_count": { "type": "integer", "minimum": 0 },
+          "has_adaptation_points": { "type": "boolean" },
+          "has_policy_file": { "type": "boolean" },
+          "eval_ready": { "type": "boolean" },
+          "eval_blockers": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

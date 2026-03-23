@@ -29,6 +29,8 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
             ("skill_lineage_surface.schema.json", "skill_lineage_surface.json"),
             ("skill_boundary_matrix.schema.json", "skill_boundary_matrix.json"),
             ("governance_backlog.schema.json", "governance_backlog.json"),
+            ("skill_composition_audit.schema.json", "skill_composition_audit.json"),
+            ("overlay_readiness.schema.json", "overlay_readiness.json"),
             ("skill_bundle_index.schema.json", "skill_bundle_index.json"),
             ("skill_graph.schema.json", "skill_graph.json"),
         ]:

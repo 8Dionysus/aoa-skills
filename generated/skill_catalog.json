@@ -8,16 +8,34 @@
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
       "status": "evaluated",
-      "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.",
+      "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.",
       "technique_dependencies": [
-        "AOA-T-0033"
+        "AOA-T-0033",
+        "AOA-T-0002"
       ],
       "technique_refs": [
         {
           "id": "AOA-T-0033",
           "path": "techniques/docs/decision-rationale-recording/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -48,7 +66,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -79,7 +97,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -95,7 +113,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "summary"
           ]
@@ -119,7 +137,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -135,7 +153,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "summary"
           ]
@@ -159,7 +177,7 @@
           "id": "AOA-T-0003",
           "path": "techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -172,7 +190,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -199,7 +217,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -213,7 +231,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -234,16 +252,30 @@
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
       "status": "evaluated",
-      "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences.",
+      "summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.",
       "technique_dependencies": [
-        "AOA-T-0004"
+        "AOA-T-0004",
+        "AOA-T-0028"
       ],
       "technique_refs": [
         {
           "id": "AOA-T-0004",
           "path": "techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fe7df9aba3937435b431489ed0f9c5d52690a37c",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Outputs",
+            "Core procedure",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0028",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -270,7 +302,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/evaluation/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fe7df9aba3937435b431489ed0f9c5d52690a37c",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -302,7 +334,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -316,7 +348,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -347,7 +379,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/evaluation/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fe7df9aba3937435b431489ed0f9c5d52690a37c",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -363,7 +395,7 @@
           "id": "AOA-T-0007",
           "path": "techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fe7df9aba3937435b431489ed0f9c5d52690a37c",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "summary",
             "Validation"
@@ -388,7 +420,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -404,7 +436,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -422,16 +454,34 @@
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
       "status": "evaluated",
-      "summary": "Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.",
+      "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.",
       "technique_dependencies": [
-        "AOA-T-0034"
+        "AOA-T-0034",
+        "AOA-T-0002"
       ],
       "technique_refs": [
         {
           "id": "AOA-T-0034",
           "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -453,17 +503,18 @@
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "evaluated",
-      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.",
+      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.",
       "technique_dependencies": [
         "AOA-T-0013",
-        "AOA-T-0002"
+        "AOA-T-0002",
+        "AOA-T-0009"
       ],
       "technique_refs": [
         {
           "id": "AOA-T-0013",
           "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -479,7 +530,23 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0009",
+          "path": "techniques/docs/lightweight-status-snapshot/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -510,7 +577,7 @@
           "id": "AOA-T-0014",
           "path": "techniques/agent-workflows/tdd-slice/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -526,7 +593,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Contracts",
             "Validation"
@@ -541,7 +608,7 @@
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
       "status": "scaffold",
-      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes.",
+      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
@@ -551,7 +618,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -567,7 +634,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "summary"
           ]
@@ -581,7 +648,7 @@
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
       "status": "scaffold",
-      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.",
+      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
       "technique_dependencies": [
         "AOA-T-0013",
         "AOA-T-0002"
@@ -591,7 +658,7 @@
           "id": "AOA-T-0013",
           "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",
@@ -607,7 +674,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
           "use_sections": [
             "Intent",
             "When to use",

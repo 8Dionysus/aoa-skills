@@ -3,35 +3,37 @@
 ## Current status
 
 - current maturity status: `evaluated`
+- current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
+- current governance lane decision: `stay_evaluated`
 - scope: `risk`
-- current lineage: manifest-aligned, but still depends on pending technique `AOA-T-PENDING-SANITIZED-SHARE`
+- current lineage: `published`
+- reviewed revision: `24296c3b55d7`
 
 ## Target status
 
-- target maturity status: `evaluated` (achieved in this pass)
-- why this target now: evaluation coverage, explicit-only policy, and support-checklist guidance now exist together and are coherent enough for a non-canonical promotion decision
+- target maturity status: `evaluated`
+- why this target now: the live bundle remains evaluation-backed and bounded around Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail, so this record should stay aligned with the current evaluated state.
+- next status after this step: `canonical` through `docs/reviews/canonical-candidates/aoa-sanitized-share.md` once comparative default-reference rationale is refreshed.
 
 ## Evidence reviewed
 
 - `skills/aoa-sanitized-share/SKILL.md`
 - `skills/aoa-sanitized-share/techniques.yaml`
 - `skills/aoa-sanitized-share/checks/review.md`
-- `skills/aoa-sanitized-share/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
 
-- the trigger boundary is crisp between sanitization work and adjacent authority, preview, or execution workflows
-- the explicit-only policy is coherent with the risk that a supposedly safe share can still leak sensitive detail
-- evaluation coverage now exists for runtime self-containment, one `use` case, and multiple `do_not_use` boundaries
-- the checklist reinforces the same bounded sanitization contract rather than widening the skill into incident handling or execution
+- machine-checkable floor result: `pass`
+- recorded governance outcome: `stay_evaluated`
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the composition-boundary wave reframed the bundle into a clearer sanitization-plus-placement package while keeping the current governance decision at `stay_evaluated`.
 
 ## Gaps and blockers
 
-- pending lineage blocks a future `canonical` path, but it does not block `evaluated`
-- the skill still lacks a public default-use rationale strong enough for `canonical`, even if the current bounded workflow is reviewable
+- blockers for this target status: none at the current bundle gate.
+- blockers for the next status step: comparative default-reference rationale remains tracked in `docs/reviews/canonical-candidates/aoa-sanitized-share.md` and `docs/governance/lanes.md`.
 
 ## Recommendation
 
-Promotion to `evaluated` is complete in this pass.
-Keep `canonical` deferred until published technique lineage exists and a separate default-use decision is recorded.
+Keep this status-promotion record aligned with the live evaluated bundle and use the canonical-candidate record for any future default-reference decision.

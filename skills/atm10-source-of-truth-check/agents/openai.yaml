@@ -1,4 +1,4 @@
 policy:
   allow_implicit_invocation: true
 notes:
-  - This thin atm10 overlay stays explicit-preferred while local document authority, repo-relative paths, and review rules still need inspection.
+  - This thin atm10 overlay stays explicit-preferred while local document authority, repo-relative paths, review checklists, and review rules still need inspection.

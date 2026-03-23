@@ -61,20 +61,23 @@ Do not use this skill when:
 
 - writing weak properties that prove almost nothing
 - confusing random data with meaningful coverage
+- letting overly broad generators or harness complexity hide the protected domain truth
+- using polished invariant language while the actual stable truth remains underspecified
 - using property checks where a small set of concrete examples would be clearer
-- hiding domain confusion behind fancy generator logic
+- using invariant language to avoid naming the actual rule or boundary that matters
 
 ## Verification
 
 - confirm the property expresses a meaningful invariant
 - confirm the invariant broadens coverage beyond fixed examples
+- confirm the report names which stable truth was violated or protected, not only that generated inputs failed
 - confirm the result is understandable to another human or agent
 
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0017 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0007 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation
+- AOA-T-0017 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0007 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation
 
 ## Adaptation points
 

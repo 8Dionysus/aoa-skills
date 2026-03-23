@@ -6,7 +6,7 @@
 It is the operational companion to `aoa-techniques`.
 
 - `aoa-techniques` answers: what is the technique, when should it be used, what are its invariants, risks, and validation rules?
-- `aoa-skills` answers: how should Codex apply one or more techniques in a concrete agent workflow?
+- `aoa-skills` answers: how should Codex apply techniques in a concrete agent workflow?
 
 ## Conceptual model
 
@@ -29,7 +29,8 @@ It packages:
 The repository may also publish derived reader surfaces in `generated/`.
 Those surfaces are built from committed `SKILL.md`, `techniques.yaml`, review records, and evaluation fixtures and are meant to help routing, indexing, and public governance signaling without becoming a second source of truth.
 
-A skill may rely on one technique or on several techniques.
+A skill normally relies on several techniques and/or several bounded actions.
+A single-technique skill is allowed only as an explicit reviewed exception.
 
 ## Layering
 
@@ -40,7 +41,9 @@ A technique is born in a real project such as `atm10-agent` or `abyss-stack`.
 The technique is sanitized, generalized, validated, and promoted into `aoa-techniques`.
 
 ### Layer 3: skill canon
-A skill in `aoa-skills` references one or more techniques and composes them into a Codex-usable workflow.
+A skill in `aoa-skills` references one or more techniques and composes them into
+a Codex-usable workflow. The expected shape is a package, not a 1:1 mirror of
+one technique.
 
 ### Layer 4: project overlay
 A project-local overlay adds:
@@ -59,6 +62,7 @@ A project-local overlay adds:
 4. build-time composition is preferred over runtime remote dependency
 5. project overlays should remain thin
 6. dangerous or operationally sensitive skills should default to explicit invocation
+7. a single-technique skill needs an explicit exception review that justifies the skill layer
 
 ## Skill categories
 

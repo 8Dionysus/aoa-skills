@@ -2,7 +2,7 @@
 name: atm10-change-protocol
 scope: project
 status: scaffold
-summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes.
+summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0001
@@ -21,6 +21,7 @@ Use this skill when:
 - the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes
 - a bounded non-trivial change still needs an explicit plan and verification path inside the local repo
 - a contributor needs a thin local overlay rather than a fresh workflow design
+- the family review doc and bundle-local checklist still need to stay aligned
 
 Do not use this skill when:
 - the task really needs a broader playbook or scenario bundle rather than a thin overlay
@@ -40,6 +41,7 @@ Do not use this skill when:
 
 - bounded local change plan
 - repo-relative command or path sketch
+- pointer to the family review surface
 - verification note for the local repo surface
 - concise handoff on what stays downstream and explicit
 
@@ -71,12 +73,13 @@ Do not use this skill when:
 - confirm repo-relative paths and commands are named explicitly
 - confirm approval posture is still downstream and explicit
 - confirm the adaptation remains bounded to the local repo surface
+- confirm the family review doc and bundle-local checklist stay aligned
 
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0001 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary
+- AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary
 
 ## Adaptation points
 
@@ -84,3 +87,4 @@ Manifest-backed techniques:
 - local commands and verification steps
 - local source-of-truth files
 - local approval or review notes
+- family review doc and bundle-local review checklist

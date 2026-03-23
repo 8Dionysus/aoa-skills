@@ -3,7 +3,13 @@
   "title": "aoa-skills governance backlog",
   "type": "object",
   "additionalProperties": false,
-  "required": ["governance_backlog_version", "source_of_truth", "cohorts", "skills"],
+  "required": [
+    "governance_backlog_version",
+    "source_of_truth",
+    "cohorts",
+    "review_truth_sync",
+    "skills"
+  ],
   "properties": {
     "governance_backlog_version": { "type": "integer", "minimum": 1 },
     "source_of_truth": {
@@ -17,7 +23,8 @@
         "evaluation_fixtures",
         "governance_lanes",
         "evaluation_matrix",
-        "public_surface"
+        "public_surface",
+        "review_truth_sync"
       ],
       "properties": {
         "skill_markdown": { "type": "string", "minLength": 1 },
@@ -27,7 +34,8 @@
         "evaluation_fixtures": { "type": "string", "minLength": 1 },
         "governance_lanes": { "type": "string", "minLength": 1 },
         "evaluation_matrix": { "type": "string", "minLength": 1 },
-        "public_surface": { "type": "string", "minLength": 1 }
+        "public_surface": { "type": "string", "minLength": 1 },
+        "review_truth_sync": { "type": "string", "minLength": 1 }
       }
     },
     "cohorts": {
@@ -38,6 +46,7 @@
         "blocked_by_pending_lineage",
         "canonical_maintenance",
         "comparative_pending",
+        "review_truth_sync",
         "docs_truth_sync"
       ],
       "properties": {
@@ -61,10 +70,61 @@
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true
         },
+        "review_truth_sync": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
         "docs_truth_sync": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true
+        }
+      }
+    },
+    "review_truth_sync": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "status",
+          "lineage_state",
+          "governance_decision",
+          "review_path",
+          "reviewed_revision",
+          "current_revision",
+          "runtime_skill_md_meaning_changed",
+          "issues",
+          "truth_synced"
+        ],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": {
+            "type": ["string", "null"],
+            "enum": ["scaffold", "linked", "reviewed", "evaluated", "canonical", "deprecated", null]
+          },
+          "lineage_state": {
+            "type": ["string", "null"],
+            "enum": ["published", "pending", null]
+          },
+          "governance_decision": {
+            "type": ["string", "null"],
+            "enum": ["default_reference", "stay_evaluated", null]
+          },
+          "review_path": { "type": ["string", "null"] },
+          "reviewed_revision": { "type": ["string", "null"] },
+          "current_revision": { "type": ["string", "null"] },
+          "runtime_skill_md_meaning_changed": {
+            "type": ["boolean", "null"]
+          },
+          "issues": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "truth_synced": { "type": "boolean" }
         }
       }
     },

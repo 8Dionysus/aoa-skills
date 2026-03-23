@@ -3,15 +3,17 @@
 ## Current status
 
 - current maturity status: `canonical`
-- current machine-checkable floor: `evaluated` floor achieved in this record, later superseded by the canonical floor
+- current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
+- current governance lane decision: `default_reference`
 - scope: `core`
-- current lineage: manifest-aligned with published technique `AOA-T-0017`
+- current lineage: `published`
+- reviewed revision: `d5dd537fbc0d`
 
 ## Target status
 
-- target maturity status: `evaluated` (historical target achieved before the later canonical promotion)
-- why this target now: the repository now has a second committed consumer for invariant-oriented coverage, with a bounded trigger boundary, explicit traceability, and evaluation fixtures
-- next status after this step: later promoted to `canonical`
+- target maturity status: `evaluated`
+- why this target now: this historical non-canonical promotion record remains useful because the live bundle still satisfies the evaluated floor underneath the current canonical/default-reference status.
+- next status after this step: canonical maintenance now lives in `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md` and `docs/governance/lanes.md`.
 
 ## Evidence reviewed
 
@@ -22,16 +24,16 @@
 
 ## Findings
 
-- the trigger boundary is coherent around reviewing invariant strength rather than discovering the invariant itself
-- the runtime wording stays self-contained and reviewable
-- the technique dependency is pinned and singular, so the skill reads as a direct consumer of `AOA-T-0017`
+- machine-checkable floor result: `pass`
+- recorded governance outcome: `default_reference`
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the composition-boundary wave clarified why this remains a reviewed single-technique exception while the bundle still clears the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 
-- no technical blocker remains for `evaluated`
-- this record no longer blocks the next step; the later canonical decision now lives in `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md`
+- blockers for this target status: none at the current bundle gate.
+- blockers for the next status step: none for the current status; maintain default-reference drift through `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md` and `docs/governance/lanes.md`.
 
 ## Recommendation
 
-Keep this record as the historical `evaluated` promotion surface.
-Use the canonical-candidate review record for the current default-reference maintenance decision.
+Keep this historical status-promotion record aligned with the live canonical bundle and use the canonical-candidate record for default-reference maintenance.

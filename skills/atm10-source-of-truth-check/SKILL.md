@@ -2,7 +2,7 @@
 name: atm10-source-of-truth-check
 scope: project
 status: scaffold
-summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.
+summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0013
@@ -21,6 +21,7 @@ Use this skill when:
 - the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules
 - contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `docs/[canonical-guide].md`
 - confusion exists between overview docs and authoritative files inside one local repo
+- the family review doc and bundle-local checklist still need to stay aligned
 
 Do not use this skill when:
 - the main need is broader policy design rather than local document authority mapping
@@ -41,6 +42,7 @@ Do not use this skill when:
 - local source-of-truth map
 - bounded clarification note
 - repo-relative canonical-file pattern
+- pointer to the family review surface
 - verification summary for the local docs surface
 
 ## Procedure
@@ -71,12 +73,13 @@ Do not use this skill when:
 - confirm authoritative repo-relative files are named explicitly
 - confirm local review posture is visible rather than implied
 - confirm the adaptation reduces ambiguity without widening scope
+- confirm the family review doc and bundle-local checklist stay aligned
 
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0013 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0013 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 
@@ -84,3 +87,4 @@ Manifest-backed techniques:
 - repo-relative canonical-file patterns
 - local review rules for doc changes
 - repository-specific authority examples
+- family review doc and bundle-local review checklist

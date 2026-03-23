@@ -11,19 +11,19 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
-| aoa-adr-write | evaluated | core | published | 1 | 0 | 0 | true | - |
+| aoa-adr-write | evaluated | core | published | 2 | 0 | 0 | true | - |
 | aoa-approval-gate-check | canonical | risk | published | 1 | 0 | 0 | true | - |
 | aoa-bounded-context-map | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-change-protocol | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-contract-test | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-core-logic-boundary | evaluated | core | published | 2 | 0 | 0 | true | - |
-| aoa-dry-run-first | evaluated | risk | published | 1 | 0 | 0 | true | - |
+| aoa-dry-run-first | evaluated | risk | published | 2 | 0 | 0 | true | - |
 | aoa-invariant-coverage-audit | canonical | core | published | 1 | 0 | 0 | true | - |
 | aoa-port-adapter-refactor | evaluated | core | published | 2 | 0 | 0 | true | - |
 | aoa-property-invariants | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-safe-infra-change | evaluated | risk | published | 2 | 0 | 0 | true | - |
-| aoa-sanitized-share | evaluated | risk | published | 1 | 0 | 0 | true | - |
-| aoa-source-of-truth-check | evaluated | core | published | 2 | 0 | 0 | true | - |
+| aoa-sanitized-share | evaluated | risk | published | 2 | 0 | 0 | true | - |
+| aoa-source-of-truth-check | evaluated | core | published | 3 | 0 | 0 | true | - |
 | aoa-tdd-slice | canonical | core | published | 2 | 0 | 0 | true | - |
 | atm10-change-protocol | scaffold | project | published | 2 | 0 | 0 | true | - |
 | atm10-source-of-truth-check | scaffold | project | published | 2 | 0 | 0 | true | - |

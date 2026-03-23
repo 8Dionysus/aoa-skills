@@ -6,7 +6,10 @@ Guidance for coding agents and humans contributing to `aoa-skills`.
 
 `aoa-skills` is the bounded execution canon of AoA.
 
-It stores public, reusable, Codex-facing skill bundles that package reusable practice into reviewable workflows an agent can execute.
+It stores public, reusable, Codex-facing skill bundles that package reusable
+practice into reviewable workflows an agent can execute. A skill is normally a
+multi-technique or multi-action package; a single-technique skill is allowed
+only as an explicit reviewed exception.
 
 A skill here is not the origin of practice. It is the bounded execution form of practice.
 
@@ -119,7 +122,8 @@ Do not:
 - `aoa-techniques` stores reusable engineering techniques
 - `aoa-skills` stores agent-facing skill bundles
 
-A skill may depend on one or more techniques.
+A skill may depend on one or more techniques, but the default shape is a
+composed package rather than a one-technique lift.
 A technique should not be copied here as a shallow duplicate.
 
 ## Required for every skill bundle
@@ -135,6 +139,7 @@ Each skill should include:
 - verification guidance
 - technique traceability when relevant
 - adaptation points for project overlays
+- an explicit exception review when the skill is intentionally single-technique
 
 Recommended when relevant:
 

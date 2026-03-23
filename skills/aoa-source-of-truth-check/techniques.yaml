@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0013
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/single-source-rule-distribution/TECHNIQUE.md
-    source_ref: 4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
     use_sections:
       - Intent
       - When to use
@@ -17,7 +17,20 @@ techniques:
   - id: AOA-T-0002
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
-    source_ref: 4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0009
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/docs/lightweight-status-snapshot/TECHNIQUE.md
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
     use_sections:
       - Intent
       - When to use

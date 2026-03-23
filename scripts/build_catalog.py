@@ -14,6 +14,7 @@ from typing import Any, Callable, Mapping, Sequence
 import skill_boundary_surface
 import skill_bundle_surface
 import skill_catalog_contract
+import skill_composition_audit
 import skill_evaluation_surface
 import skill_governance_backlog_surface
 import skill_governance_lane_contract
@@ -48,7 +49,12 @@ GOVERNANCE_BACKLOG_JSON_PATH = (
 GOVERNANCE_BACKLOG_MARKDOWN_PATH = (
     skill_governance_backlog_surface.GOVERNANCE_BACKLOG_MARKDOWN_PATH
 )
-OVERLAY_READINESS_MARKDOWN_PATH = Path(GENERATED_DIR_NAME) / "overlay_readiness.md"
+SKILL_COMPOSITION_AUDIT_JSON_PATH = skill_composition_audit.SKILL_COMPOSITION_JSON_PATH
+SKILL_COMPOSITION_AUDIT_MARKDOWN_PATH = (
+    skill_composition_audit.SKILL_COMPOSITION_MARKDOWN_PATH
+)
+OVERLAY_READINESS_JSON_PATH = skill_overlay_contract.OVERLAY_READINESS_JSON_PATH
+OVERLAY_READINESS_MARKDOWN_PATH = skill_overlay_contract.OVERLAY_READINESS_MARKDOWN_PATH
 BUNDLE_INDEX_JSON_PATH = skill_bundle_surface.BUNDLE_INDEX_JSON_PATH
 BUNDLE_INDEX_MARKDOWN_PATH = skill_bundle_surface.BUNDLE_INDEX_MARKDOWN_PATH
 SKILL_GRAPH_JSON_PATH = skill_bundle_surface.SKILL_GRAPH_JSON_PATH
@@ -65,6 +71,8 @@ BOUNDARY_MATRIX_VERSION = skill_boundary_surface.BOUNDARY_MATRIX_VERSION
 GOVERNANCE_BACKLOG_VERSION = (
     skill_governance_backlog_surface.GOVERNANCE_BACKLOG_VERSION
 )
+SKILL_COMPOSITION_AUDIT_VERSION = skill_composition_audit.SKILL_COMPOSITION_VERSION
+OVERLAY_READINESS_VERSION = skill_overlay_contract.OVERLAY_READINESS_VERSION
 BUNDLE_INDEX_VERSION = skill_bundle_surface.BUNDLE_INDEX_VERSION
 SKILL_GRAPH_VERSION = skill_bundle_surface.SKILL_GRAPH_VERSION
 
@@ -660,6 +668,27 @@ def build_governance_backlog_texts(repo_root: Path) -> tuple[str, str]:
     )
 
 
+def build_skill_composition_audit_payload(
+    repo_root: Path,
+    skill_names: Sequence[str] | None = None,
+) -> dict[str, Any]:
+    selected_skill_names = (
+        list(skill_names) if skill_names is not None else discover_skill_names(repo_root)
+    )
+    return skill_composition_audit.build_skill_composition_audit_payload(
+        repo_root,
+        selected_skill_names,
+    )
+
+
+def build_skill_composition_audit_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_skill_composition_audit_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_composition_audit.render_skill_composition_audit_markdown(payload) + "\n",
+    )
+
+
 def generated_surface_versions() -> dict[str, int]:
     return {
         "catalog": CATALOG_VERSION,
@@ -671,6 +700,8 @@ def generated_surface_versions() -> dict[str, int]:
         "lineage_surface": LINEAGE_SURFACE_VERSION,
         "boundary_matrix": BOUNDARY_MATRIX_VERSION,
         "governance_backlog": GOVERNANCE_BACKLOG_VERSION,
+        "skill_composition_audit": SKILL_COMPOSITION_AUDIT_VERSION,
+        "overlay_readiness": OVERLAY_READINESS_VERSION,
         "bundle_index": BUNDLE_INDEX_VERSION,
         "skill_graph": SKILL_GRAPH_VERSION,
     }
@@ -720,8 +751,16 @@ def build_skill_graph_texts(repo_root: Path) -> tuple[str, str]:
     )
 
 
-def build_overlay_readiness_text(repo_root: Path) -> str:
-    return skill_overlay_contract.render_overlay_readiness_markdown(repo_root) + "\n"
+def build_overlay_readiness_payload(repo_root: Path) -> dict[str, Any]:
+    return skill_overlay_contract.build_overlay_readiness_payload(repo_root)
+
+
+def build_overlay_readiness_texts(repo_root: Path) -> tuple[str, str]:
+    payload = build_overlay_readiness_payload(repo_root)
+    return (
+        render_json(payload, indent=2),
+        skill_overlay_contract.render_overlay_readiness_markdown(payload) + "\n",
+    )
 
 
 def build_catalog_surface_texts(repo_root: Path) -> dict[Path, str]:
@@ -788,8 +827,20 @@ def build_governance_backlog_outputs(repo_root: Path) -> dict[Path, str]:
     }
 
 
+def build_skill_composition_audit_outputs(repo_root: Path) -> dict[Path, str]:
+    json_text, markdown_text = build_skill_composition_audit_texts(repo_root)
+    return {
+        SKILL_COMPOSITION_AUDIT_JSON_PATH: json_text,
+        SKILL_COMPOSITION_AUDIT_MARKDOWN_PATH: markdown_text,
+    }
+
+
 def build_overlay_readiness_outputs(repo_root: Path) -> dict[Path, str]:
-    return {OVERLAY_READINESS_MARKDOWN_PATH: build_overlay_readiness_text(repo_root)}
+    json_text, markdown_text = build_overlay_readiness_texts(repo_root)
+    return {
+        OVERLAY_READINESS_JSON_PATH: json_text,
+        OVERLAY_READINESS_MARKDOWN_PATH: markdown_text,
+    }
 
 
 def build_bundle_index_outputs(repo_root: Path) -> dict[Path, str]:
@@ -937,8 +988,27 @@ def generated_surface_specs() -> tuple[GeneratedSurfaceSpec, ...]:
             build_texts=build_governance_backlog_outputs,
         ),
         GeneratedSurfaceSpec(
+            key="skill_composition_audit",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=SKILL_COMPOSITION_AUDIT_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+                GeneratedSurfaceOutput(path=SKILL_COMPOSITION_AUDIT_MARKDOWN_PATH),
+            ),
+            build_texts=build_skill_composition_audit_outputs,
+        ),
+        GeneratedSurfaceSpec(
             key="overlay_readiness",
-            outputs=(GeneratedSurfaceOutput(path=OVERLAY_READINESS_MARKDOWN_PATH),),
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=OVERLAY_READINESS_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                ),
+                GeneratedSurfaceOutput(path=OVERLAY_READINESS_MARKDOWN_PATH),
+            ),
             build_texts=build_overlay_readiness_outputs,
         ),
         GeneratedSurfaceSpec(
@@ -973,6 +1043,13 @@ def generated_surface_specs() -> tuple[GeneratedSurfaceSpec, ...]:
             build_texts=build_skill_graph_outputs,
         ),
     )
+
+
+def generated_surface_spec(key: str) -> GeneratedSurfaceSpec:
+    for spec in generated_surface_specs():
+        if spec.key == key:
+            return spec
+    raise KeyError(key)
 
 
 def build_surface_text_map(repo_root: Path, spec: GeneratedSurfaceSpec) -> dict[Path, str]:
@@ -1012,108 +1089,157 @@ def check_generated_surface(repo_root: Path, spec: GeneratedSurfaceSpec) -> list
 
 
 def write_catalogs(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[0])
+    written_paths = write_generated_surface(repo_root, generated_surface_spec("catalogs"))
     return written_paths[0], written_paths[1]
 
 
 def write_capsules(repo_root: Path) -> Path:
-    return write_generated_surface(repo_root, generated_surface_specs()[1])[0]
+    return write_generated_surface(repo_root, generated_surface_spec("capsules"))[0]
 
 
 def write_sections(repo_root: Path) -> Path:
-    return write_generated_surface(repo_root, generated_surface_specs()[2])[0]
+    return write_generated_surface(repo_root, generated_surface_spec("sections"))[0]
 
 
 def write_walkthroughs(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[3])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("walkthroughs"),
+    )
     return written_paths[0], written_paths[1]
 
 
 def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[4])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("public_surface"),
+    )
     return written_paths[0], written_paths[1]
 
 
 def write_evaluation_matrix(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[5])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("evaluation_matrix"),
+    )
     return written_paths[0], written_paths[1]
 
 
 def write_lineage_surface(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[6])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("lineage_surface"),
+    )
     return written_paths[0], written_paths[1]
 
 
 def write_boundary_matrix(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[7])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("boundary_matrix"),
+    )
     return written_paths[0], written_paths[1]
 
 
 def write_governance_backlog(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[8])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("governance_backlog"),
+    )
     return written_paths[0], written_paths[1]
 
 
-def write_overlay_readiness(repo_root: Path) -> Path:
-    return write_generated_surface(repo_root, generated_surface_specs()[9])[0]
+def write_skill_composition_audit(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("skill_composition_audit"),
+    )
+    return written_paths[0], written_paths[1]
+
+
+def write_overlay_readiness(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("overlay_readiness"),
+    )
+    return written_paths[0], written_paths[1]
 
 
 def write_bundle_index(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[10])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("bundle_index"),
+    )
     return written_paths[0], written_paths[1]
 
 
 def write_skill_graph(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_specs()[11])
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("skill_graph"),
+    )
     return written_paths[0], written_paths[1]
 
 
 def check_catalogs(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[0])
+    return check_generated_surface(repo_root, generated_surface_spec("catalogs"))
 
 
 def check_capsules(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[1])
+    return check_generated_surface(repo_root, generated_surface_spec("capsules"))
 
 
 def check_sections(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[2])
+    return check_generated_surface(repo_root, generated_surface_spec("sections"))
 
 
 def check_walkthroughs(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[3])
+    return check_generated_surface(repo_root, generated_surface_spec("walkthroughs"))
 
 
 def check_public_surface(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[4])
+    return check_generated_surface(repo_root, generated_surface_spec("public_surface"))
 
 
 def check_evaluation_matrix(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[5])
+    return check_generated_surface(
+        repo_root,
+        generated_surface_spec("evaluation_matrix"),
+    )
 
 
 def check_lineage_surface(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[6])
+    return check_generated_surface(repo_root, generated_surface_spec("lineage_surface"))
 
 
 def check_boundary_matrix(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[7])
+    return check_generated_surface(repo_root, generated_surface_spec("boundary_matrix"))
 
 
 def check_governance_backlog(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[8])
+    return check_generated_surface(
+        repo_root,
+        generated_surface_spec("governance_backlog"),
+    )
+
+
+def check_skill_composition_audit(repo_root: Path) -> list[str]:
+    return check_generated_surface(
+        repo_root,
+        generated_surface_spec("skill_composition_audit"),
+    )
 
 
 def check_overlay_readiness(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[9])
+    return check_generated_surface(repo_root, generated_surface_spec("overlay_readiness"))
 
 
 def check_bundle_index(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[10])
+    return check_generated_surface(repo_root, generated_surface_spec("bundle_index"))
 
 
 def check_skill_graph(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_specs()[11])
+    return check_generated_surface(repo_root, generated_surface_spec("skill_graph"))
 
 
 def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> int:
