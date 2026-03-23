@@ -583,15 +583,15 @@
       "status": "scaffold",
       "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0013",
         "AOA-T-0002"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
-          "path": "TBD",
+          "id": "AOA-T-0013",
+          "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "4f0153e6cee7cd132cd386f75d103cb31a4959c0",
           "use_sections": [
             "Intent",
             "When to use",

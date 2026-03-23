@@ -8,7 +8,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 - total skills: 16
 - default references: 6
 - candidate-ready skills: 8
-- blocked by pending lineage: 1
+- blocked by pending lineage: 0
 - risk surfaces: 4
 
 ## Default references
@@ -39,7 +39,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | status | scope | invocation | lineage | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|
-| atm10-source-of-truth-check | scaffold | project | explicit-preferred | pending | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
+| - | - | - | - | - | - | - | - |
 
 ## Risk surfaces
 

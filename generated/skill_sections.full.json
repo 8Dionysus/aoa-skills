@@ -916,7 +916,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0013 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `ea49abf4f7e96506feed56eb87a9052cbe4408a5` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },

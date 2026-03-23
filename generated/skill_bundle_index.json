@@ -810,7 +810,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "f8a6c8befb8fa3139cf259ffc0f748d8cb444965a0028b5a4bd9ce9e7fec2288",
+      "content_hash": "b2612c3de330953889672fea72bafd1c20ad8f18b95915a667c0ad149f034d34",
       "generated_surface_versions": {
         "boundary_matrix": 1,
         "bundle_index": 1,
@@ -825,12 +825,12 @@
         "walkthrough": 1
       },
       "invocation_mode": "explicit-preferred",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "skill_revision": "f8a6c8befb8f",
+      "skill_revision": "b2612c3de330",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -840,7 +840,7 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0013",
         "AOA-T-0002"
       ]
     }

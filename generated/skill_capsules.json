@@ -277,7 +277,7 @@
       "status": "scaffold",
       "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK",
+        "AOA-T-0013",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps...",

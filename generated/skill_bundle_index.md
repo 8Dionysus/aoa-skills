@@ -20,5 +20,5 @@ It is repo-local packaging metadata, not a release or registry surface.
 | aoa-source-of-truth-check | 1e686359fd6a | evaluated | core | explicit-preferred | published | true | true | 2 |
 | aoa-tdd-slice | 5a0b5218653b | canonical | core | explicit-preferred | published | true | true | 2 |
 | atm10-change-protocol | acc0c6431f17 | scaffold | project | explicit-preferred | published | false | true | 1 |
-| atm10-source-of-truth-check | f8a6c8befb8f | scaffold | project | explicit-preferred | pending | false | true | 1 |
+| atm10-source-of-truth-check | b2612c3de330 | scaffold | project | explicit-preferred | published | false | true | 1 |
 
