@@ -22,6 +22,7 @@
     "risk_surfaces": [
       "aoa-approval-gate-check",
       "aoa-dry-run-first",
+      "aoa-local-stack-bringup",
       "aoa-safe-infra-change",
       "aoa-sanitized-share"
     ]
@@ -222,6 +223,25 @@
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical",
       "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "name": "aoa-local-stack-bringup",
+      "promotion_review_path": null,
+      "scope": "risk",
+      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "status": "scaffold",
+      "summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",

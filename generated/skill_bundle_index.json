@@ -477,6 +477,60 @@
     },
     {
       "bundle_files": [
+        "skills/aoa-local-stack-bringup/SKILL.md",
+        "skills/aoa-local-stack-bringup/techniques.yaml",
+        "skills/aoa-local-stack-bringup/agents/openai.yaml",
+        "skills/aoa-local-stack-bringup/examples/runtime.md",
+        "skills/aoa-local-stack-bringup/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "15faa3ac59f27c774d79d099ad195ffa3aee452b71afd4a400f99b21d75b6523",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 3,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-local-stack-bringup",
+      "promotion_review_path": null,
+      "scope": "risk",
+      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "skill_revision": "15faa3ac59f2",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-local-stack-bringup/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-local-stack-bringup/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0036",
+        "AOA-T-0037",
+        "AOA-T-0028",
+        "AOA-T-0038"
+      ]
+    },
+    {
+      "bundle_files": [
         "skills/aoa-port-adapter-refactor/SKILL.md",
         "skills/aoa-port-adapter-refactor/techniques.yaml",
         "skills/aoa-port-adapter-refactor/agents/openai.yaml",

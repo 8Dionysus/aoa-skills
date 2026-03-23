@@ -319,6 +319,87 @@
     },
     {
       "composition_mode": "bounded",
+      "invocation_mode": "explicit-only",
+      "name": "aoa-local-stack-bringup",
+      "scope": "risk",
+      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "status": "scaffold",
+      "summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.",
+      "technique_dependencies": [
+        "AOA-T-0036",
+        "AOA-T-0037",
+        "AOA-T-0028",
+        "AOA-T-0038"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0036",
+          "path": "techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0037",
+          "path": "techniques/evaluation/contextual-host-doctor/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0028",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0038",
+          "path": "techniques/agent-workflows/one-command-service-lifecycle/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
       "invocation_mode": "explicit-preferred",
       "name": "aoa-port-adapter-refactor",
       "scope": "core",

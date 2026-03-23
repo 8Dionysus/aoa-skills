@@ -10,6 +10,7 @@
       "aoa-core-logic-boundary",
       "aoa-dry-run-first",
       "aoa-invariant-coverage-audit",
+      "aoa-local-stack-bringup",
       "aoa-port-adapter-refactor",
       "aoa-property-invariants",
       "aoa-safe-infra-change",
@@ -116,6 +117,18 @@
       "scope": "core",
       "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-local-stack-bringup",
+      "pending_technique_count": 0,
+      "published_technique_count": 4,
+      "scope": "risk",
+      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "status": "scaffold",
       "tbd_ref_count": 0
     },
     {

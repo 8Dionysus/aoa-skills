@@ -455,6 +455,59 @@
     },
     {
       "do_not_use_when": [
+        "the main task is remote deployment, continuous monitoring, or fleet orchestration",
+        "the task is only to inspect rendered runtime truth without any launch decision",
+        "the task is only to diagnose readiness without planning a bounded local bring-up",
+        "the main question is whether authority exists at all; use aoa-approval-gate-check",
+        "the task is a broader operational or configuration change with no bounded local stack bring-up; use aoa-safe-infra-change"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-only",
+      "name": "aoa-local-stack-bringup",
+      "object_use_shape": [
+        "rendered runtime truth summary for what would actually start",
+        "selector-aware readiness verdict with named blockers or warnings",
+        "explicit go, hold, or confirm-before-launch recommendation",
+        "started bounded local stack with visible stop path, or a deferred-start report",
+        "concise runtime report with unresolved warnings, blockers, or cleanup notes"
+      ],
+      "pick_summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.",
+      "scope": "risk",
+      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-local-stack-bringup/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-local-stack-bringup/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "use_when": [
+        "a local stack has more than one meaningful service or runtime layer",
+        "the selected profile, preset, or overlay can change what will actually start",
+        "startup depends on host readiness signals that should be checked before launch",
+        "the operator needs one explicit launch path and stop path after pre-start review",
+        "a plain infrastructure change workflow would miss the local runtime selection, preflight, or lifecycle seam"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the task is a tiny local fix with no architectural pressure",
         "there is no meaningful boundary to clarify yet",
         "the code would become more ceremonial than useful after extraction",

@@ -5,7 +5,7 @@ It is a backlog/maintenance view, not a promotion decision surface.
 
 ## Summary
 
-- total skills: 16
+- total skills: 17
 - candidate ready without review: 0
 - blocked by pending lineage: 0
 - canonical maintenance cohort: 7
@@ -23,6 +23,7 @@ It is a backlog/maintenance view, not a promotion decision surface.
 | aoa-core-logic-boundary | evaluated | published | true | true | stay_evaluated | core_boundary_refactor | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-core-logic-boundary.md | docs/reviews/status-promotions/aoa-core-logic-boundary.md |
 | aoa-dry-run-first | evaluated | published | true | true | stay_evaluated | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-dry-run-first.md | docs/reviews/status-promotions/aoa-dry-run-first.md |
 | aoa-invariant-coverage-audit | canonical | published | true | true | default_reference | invariant_authoring_vs_audit | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md |
+| aoa-local-stack-bringup | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-port-adapter-refactor | evaluated | published | true | true | stay_evaluated | core_boundary_refactor | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md | docs/reviews/status-promotions/aoa-port-adapter-refactor.md |
 | aoa-property-invariants | canonical | published | true | true | default_reference | invariant_authoring_vs_audit | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-property-invariants.md | docs/reviews/status-promotions/aoa-property-invariants.md |
 | aoa-safe-infra-change | evaluated | published | true | true | stay_evaluated | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-safe-infra-change.md | docs/reviews/status-promotions/aoa-safe-infra-change.md |

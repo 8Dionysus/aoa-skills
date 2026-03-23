@@ -5,11 +5,11 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 16
+- total skills: 17
 - default references: 7
 - candidate-ready skills: 7
 - blocked by pending lineage: 0
-- risk surfaces: 4
+- risk surfaces: 5
 
 ## Default references
 
@@ -47,6 +47,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 |---|---|---|---|---|---|---|---|---|---|
 | aoa-approval-gate-check | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
 | aoa-dry-run-first | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` |
+| aoa-local-stack-bringup | scaffold | risk | explicit-only | published | - | - | status_below_evaluated | - | - |
 | aoa-safe-infra-change | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` |
 | aoa-sanitized-share | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` |
 

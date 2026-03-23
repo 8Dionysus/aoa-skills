@@ -19,6 +19,7 @@ This file is the repository-wide map of public skills.
 | aoa-source-of-truth-check | core | evaluated | Codex skill for checking whether canonical docs and repository guidance have clear ownership and do not silently conflict. |
 | atm10-change-protocol | project | scaffold | Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes. |
 | atm10-source-of-truth-check | project | scaffold | Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow. |
+| aoa-local-stack-bringup | risk | scaffold | Codex skill for reviewable local multi-service bring-up through rendered runtime truth, readiness checks, and one explicit lifecycle path. |
 | aoa-dry-run-first | risk | evaluated | Codex skill for preferring simulation, inspection, or preview paths before real execution with operational consequences. |
 | aoa-safe-infra-change | risk | evaluated | Codex skill for making bounded infrastructure or configuration changes with explicit risk framing and reversible execution discipline. |
 | aoa-sanitized-share | risk | evaluated | Codex skill for preparing findings, logs, or diagnostics for sharing without leaking secrets or private operational detail. |

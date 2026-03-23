@@ -13,6 +13,7 @@ It is repo-local packaging metadata, not a release or registry surface.
 | aoa-core-logic-boundary | c61543101291 | evaluated | core | explicit-preferred | published | true | true | 3 |
 | aoa-dry-run-first | 833f70007895 | evaluated | risk | explicit-only | published | true | true | 4 |
 | aoa-invariant-coverage-audit | c444d18828bc | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-local-stack-bringup | 15faa3ac59f2 | scaffold | risk | explicit-only | published | false | true | 2 |
 | aoa-port-adapter-refactor | ce4b0b880ed6 | evaluated | core | explicit-preferred | published | true | true | 3 |
 | aoa-property-invariants | bc8289e7ae09 | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-safe-infra-change | b8681b0118d9 | evaluated | risk | explicit-only | published | true | true | 4 |
