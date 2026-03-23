@@ -13,7 +13,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | ready | blockers |
 |---|---|---|---|---:|---:|---|---|---|
 | aoa-adr-write | evaluated | core | true | 1 | 0 | aoa-source-of-truth-check | true | - |
-| aoa-approval-gate-check | evaluated | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | true | - |
+| aoa-approval-gate-check | canonical | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | true | - |
 | aoa-bounded-context-map | canonical | core | true | 1 | 0 | aoa-contract-test | true | - |
 | aoa-change-protocol | canonical | core | true | 1 | 0 | aoa-tdd-slice | true | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | true | - |

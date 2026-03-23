@@ -12,7 +12,7 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
 | aoa-adr-write | evaluated | core | published | 1 | 0 | 0 | true | - |
-| aoa-approval-gate-check | evaluated | risk | published | 1 | 0 | 0 | true | - |
+| aoa-approval-gate-check | canonical | risk | published | 1 | 0 | 0 | true | - |
 | aoa-bounded-context-map | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-change-protocol | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-contract-test | canonical | core | published | 2 | 0 | 0 | true | - |

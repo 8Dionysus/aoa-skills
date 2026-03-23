@@ -57,11 +57,12 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/aoa-adr-write/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-adr-write.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-adr-write.md`
 
 ## aoa-approval-gate-check
 
 - scope: `risk`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-approval-gate-check/SKILL.md`
 - pick summary: Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.
@@ -228,6 +229,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/aoa-core-logic-boundary/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-core-logic-boundary.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md`
 
 ## aoa-dry-run-first
 
@@ -262,6 +264,7 @@ Common expand sections:
 - `runtime_example` (selected): `skills/aoa-dry-run-first/examples/runtime.md`
 - `review_checklist`: `skills/aoa-dry-run-first/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-dry-run-first.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-dry-run-first.md`
 
 ## aoa-invariant-coverage-audit
 
@@ -331,6 +334,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/aoa-port-adapter-refactor/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-port-adapter-refactor.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md`
 
 ## aoa-property-invariants
 
@@ -401,6 +405,7 @@ Common expand sections:
 - `runtime_example` (selected): `skills/aoa-safe-infra-change/examples/runtime.md`
 - `review_checklist`: `skills/aoa-safe-infra-change/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-safe-infra-change.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`
 
 ## aoa-sanitized-share
 
@@ -434,6 +439,7 @@ Common expand sections:
 - `runtime_example` (selected): `skills/aoa-sanitized-share/examples/runtime.md`
 - `review_checklist`: `skills/aoa-sanitized-share/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-sanitized-share.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-sanitized-share.md`
 
 ## aoa-source-of-truth-check
 
@@ -471,6 +477,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/aoa-source-of-truth-check/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-source-of-truth-check.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md`
 
 ## aoa-tdd-slice
 

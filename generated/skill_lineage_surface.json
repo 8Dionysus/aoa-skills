@@ -43,7 +43,7 @@
       "published_technique_count": 1,
       "scope": "risk",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "tbd_ref_count": 0
     },
     {
