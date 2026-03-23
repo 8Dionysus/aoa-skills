@@ -3,7 +3,8 @@
 ## Current status
 
 - current maturity status:
-- current machine-checkable floor:
+- current machine-checkable floor (`candidate_ready` gate only):
+- current governance lane decision:
 - candidate set:
 - scope:
 - current lineage:
@@ -26,6 +27,7 @@
 ## Findings
 
 - machine-checkable floor result:
+- recorded governance outcome (`default_reference` or `stay_evaluated`):
 - runtime `SKILL.md` meaning changed:
 
 ## Gaps and blockers
@@ -36,4 +38,4 @@
 ## Recommendation
 
 Write a clear recommendation that states whether the skill should remain a candidate,
-needs upstream or evidence work first, or is ready for a separate promotion-focused decision.
+remain explicitly `stay_evaluated`, needs upstream or evidence work first, or is ready for a separate promotion-focused decision.

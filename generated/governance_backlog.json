@@ -11,9 +11,18 @@
       "aoa-property-invariants",
       "aoa-tdd-slice"
     ],
+    "comparative_pending": [
+      "aoa-adr-write",
+      "aoa-core-logic-boundary",
+      "aoa-dry-run-first",
+      "aoa-port-adapter-refactor",
+      "aoa-safe-infra-change",
+      "aoa-sanitized-share",
+      "aoa-source-of-truth-check"
+    ],
     "docs_truth_sync": []
   },
-  "governance_backlog_version": 1,
+  "governance_backlog_version": 2,
   "skills": [
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
@@ -21,6 +30,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "adr_write_vs_source_of_truth_check_boundary",
+        "source_of_truth_check_vs_adr_write_boundary"
+      ],
+      "governance_lane_ids": [
+        "decision_docs_authority"
+      ],
       "lineage_state": "published",
       "name": "aoa-adr-write",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
@@ -35,6 +52,22 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "default_reference",
+      "governance_evidence_case_ids": [
+        "approval_gate_vs_preview_and_infra_boundary",
+        "approval_gate_vs_safe_infra_boundary",
+        "approval_gate_vs_sanitized_share_boundary",
+        "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_sanitized_share_boundary",
+        "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_sanitized_share_boundary",
+        "sanitized_share_vs_approval_gate_boundary",
+        "sanitized_share_vs_dry_run_first_boundary",
+        "sanitized_share_vs_safe_infra_change_boundary"
+      ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "lineage_state": "published",
       "name": "aoa-approval-gate-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
@@ -49,6 +82,17 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "default_reference",
+      "governance_evidence_case_ids": [
+        "bounded_context_map_vs_contract_test_boundary",
+        "contract_test_vs_bounded_context_map_boundary",
+        "core_logic_boundary_vs_port_adapter_refactor",
+        "port_adapter_refactor_vs_core_logic_boundary"
+      ],
+      "governance_lane_ids": [
+        "context_vs_contract",
+        "core_boundary_refactor"
+      ],
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
@@ -63,6 +107,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "default_reference",
+      "governance_evidence_case_ids": [
+        "change_protocol_vs_tdd_slice_boundary",
+        "tdd_slice_vs_change_protocol_boundary"
+      ],
+      "governance_lane_ids": [
+        "change_workflows"
+      ],
       "lineage_state": "published",
       "name": "aoa-change-protocol",
       "promotion_review_path": null,
@@ -77,6 +129,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "default_reference",
+      "governance_evidence_case_ids": [
+        "bounded_context_map_vs_contract_test_boundary",
+        "contract_test_vs_bounded_context_map_boundary"
+      ],
+      "governance_lane_ids": [
+        "context_vs_contract"
+      ],
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
@@ -91,6 +151,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "core_logic_boundary_vs_port_adapter_refactor",
+        "port_adapter_refactor_vs_core_logic_boundary"
+      ],
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
       "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
@@ -105,6 +173,22 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "approval_gate_vs_preview_and_infra_boundary",
+        "approval_gate_vs_safe_infra_boundary",
+        "approval_gate_vs_sanitized_share_boundary",
+        "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_sanitized_share_boundary",
+        "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_sanitized_share_boundary",
+        "sanitized_share_vs_approval_gate_boundary",
+        "sanitized_share_vs_dry_run_first_boundary",
+        "sanitized_share_vs_safe_infra_change_boundary"
+      ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
@@ -119,6 +203,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "default_reference",
+      "governance_evidence_case_ids": [
+        "invariant_coverage_audit_vs_property_invariants_boundary",
+        "property_invariants_vs_invariant_coverage_audit_boundary"
+      ],
+      "governance_lane_ids": [
+        "invariant_authoring_vs_audit"
+      ],
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
@@ -133,6 +225,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "core_logic_boundary_vs_port_adapter_refactor",
+        "port_adapter_refactor_vs_core_logic_boundary"
+      ],
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
       "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
@@ -147,6 +247,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "default_reference",
+      "governance_evidence_case_ids": [
+        "invariant_coverage_audit_vs_property_invariants_boundary",
+        "property_invariants_vs_invariant_coverage_audit_boundary"
+      ],
+      "governance_lane_ids": [
+        "invariant_authoring_vs_audit"
+      ],
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
@@ -161,6 +269,22 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "approval_gate_vs_preview_and_infra_boundary",
+        "approval_gate_vs_safe_infra_boundary",
+        "approval_gate_vs_sanitized_share_boundary",
+        "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_sanitized_share_boundary",
+        "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_sanitized_share_boundary",
+        "sanitized_share_vs_approval_gate_boundary",
+        "sanitized_share_vs_dry_run_first_boundary",
+        "sanitized_share_vs_safe_infra_change_boundary"
+      ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
@@ -175,6 +299,22 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "approval_gate_vs_preview_and_infra_boundary",
+        "approval_gate_vs_safe_infra_boundary",
+        "approval_gate_vs_sanitized_share_boundary",
+        "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_sanitized_share_boundary",
+        "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_sanitized_share_boundary",
+        "sanitized_share_vs_approval_gate_boundary",
+        "sanitized_share_vs_dry_run_first_boundary",
+        "sanitized_share_vs_safe_infra_change_boundary"
+      ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
@@ -189,6 +329,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "adr_write_vs_source_of_truth_check_boundary",
+        "source_of_truth_check_vs_adr_write_boundary"
+      ],
+      "governance_lane_ids": [
+        "decision_docs_authority"
+      ],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
@@ -203,6 +351,14 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": "default_reference",
+      "governance_evidence_case_ids": [
+        "change_protocol_vs_tdd_slice_boundary",
+        "tdd_slice_vs_change_protocol_boundary"
+      ],
+      "governance_lane_ids": [
+        "change_workflows"
+      ],
       "lineage_state": "published",
       "name": "aoa-tdd-slice",
       "promotion_review_path": null,
@@ -219,6 +375,9 @@
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
       "lineage_state": "published",
       "name": "atm10-change-protocol",
       "promotion_review_path": null,
@@ -235,6 +394,9 @@
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
       "promotion_review_path": null,
@@ -248,6 +410,7 @@
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
     "evaluation_matrix": "generated/skill_evaluation_matrix.json",
+    "governance_lanes": "docs/governance/lanes.yaml",
     "public_surface": "generated/public_surface.json",
     "skill_markdown": "skills/*/SKILL.md",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",

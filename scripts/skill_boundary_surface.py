@@ -5,11 +5,12 @@ from typing import Any, Mapping, Sequence
 
 import skill_catalog_contract
 import skill_evaluation_contract
+import skill_governance_lane_contract
 import skill_governance_surface
 import skill_source_model
 
 
-BOUNDARY_MATRIX_VERSION = 1
+BOUNDARY_MATRIX_VERSION = 2
 BOUNDARY_MATRIX_JSON_PATH = Path("generated") / "skill_boundary_matrix.json"
 BOUNDARY_MATRIX_MARKDOWN_PATH = Path("generated") / "skill_boundary_matrix.md"
 BOUNDARY_MATRIX_SOURCE_OF_TRUTH = {
@@ -17,6 +18,7 @@ BOUNDARY_MATRIX_SOURCE_OF_TRUTH = {
     "technique_manifest": "skills/*/techniques.yaml",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
     "evaluation_snapshots": "tests/fixtures/skill_evaluation_snapshots/*/*.md",
+    "governance_lanes": skill_governance_lane_contract.GOVERNANCE_LANES_PATH.as_posix(),
 }
 ADJACENCY_REQUIRED_BLOCKER = "missing_required_adjacency_coverage"
 
@@ -51,7 +53,12 @@ def case_blockers(repo_root: Path, case: Mapping[str, Any]) -> list[str]:
     return sorted(skill_evaluation_contract.snapshot_blockers_for_case(repo_root, case))
 
 
-def build_case_entry(repo_root: Path, case: Mapping[str, Any]) -> dict[str, Any]:
+def build_case_entry(
+    repo_root: Path,
+    case: Mapping[str, Any],
+    *,
+    case_lane_ids: Sequence[str],
+) -> dict[str, Any]:
     return {
         "skill": case.get("skill"),
         "adjacent_skill": case.get("adjacent_skill"),
@@ -59,6 +66,7 @@ def build_case_entry(repo_root: Path, case: Mapping[str, Any]) -> dict[str, Any]
         "expected": case.get("expected"),
         "prompt": case.get("prompt"),
         "snapshot_path": case.get("snapshot_path"),
+        "governance_lane_ids": list(case_lane_ids),
         "blockers": case_blockers(repo_root, case),
     }
 
@@ -69,6 +77,9 @@ def build_skill_entry(
     repo_root: Path,
     evaluation_coverage_by_skill: Mapping[str, skill_governance_surface.EvaluationCoverage],
     case_entries: Sequence[Mapping[str, Any]],
+    governance_signals_by_skill: Mapping[
+        str, skill_governance_lane_contract.GovernanceSkillSignals
+    ],
 ) -> dict[str, Any]:
     evaluation_coverage = skill_governance_surface.coverage_for_skill(
         evaluation_coverage_by_skill,
@@ -114,6 +125,12 @@ def build_skill_entry(
         "adjacent_skill_names": adjacent_skill_names,
         "adjacency_ready": adjacency_ready,
         "adjacency_blockers": blockers,
+        "governance_lane_ids": list(
+            skill_governance_lane_contract.governance_signals_for_skill(
+                governance_signals_by_skill,
+                source.name,
+            ).governance_lane_ids
+        ),
     }
 
 
@@ -122,7 +139,21 @@ def build_boundary_matrix_payload(
     skill_names: Sequence[str],
 ) -> dict[str, Any]:
     fixtures = skill_evaluation_contract.load_evaluation_fixtures(repo_root) or {}
-    case_entries = [build_case_entry(repo_root, case) for case in adjacency_cases(fixtures)]
+    lanes = skill_governance_lane_contract.load_governance_lanes(repo_root)
+    case_lane_ids_by_case = skill_governance_lane_contract.governance_lane_ids_by_case(
+        lanes
+    )
+    governance_signals_by_skill = skill_governance_lane_contract.governance_skill_signals(
+        lanes
+    )
+    case_entries = [
+        build_case_entry(
+            repo_root,
+            case,
+            case_lane_ids=case_lane_ids_by_case.get(str(case.get("case_id")), ()),
+        )
+        for case in adjacency_cases(fixtures)
+    ]
     evaluation_coverage_by_skill = skill_governance_surface.collect_evaluation_coverage(
         fixtures
     )
@@ -133,6 +164,7 @@ def build_boundary_matrix_payload(
             repo_root=repo_root,
             evaluation_coverage_by_skill=evaluation_coverage_by_skill,
             case_entries=case_entries,
+            governance_signals_by_skill=governance_signals_by_skill,
         )
         for source in sources
     ]
@@ -176,11 +208,11 @@ def render_boundary_matrix_markdown(payload: Mapping[str, Any]) -> str:
         f"- skills with required adjacency coverage: {len(required_skills)}",
         f"- required adjacency gaps: {len(required_gap_skills)}",
         "",
-        "| name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | ready | blockers |",
-        "|---|---|---|---|---:|---:|---|---|---|",
+        "| name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | lane ids | ready | blockers |",
+        "|---|---|---|---|---:|---:|---|---|---|---|",
     ]
     if not skill_entries:
-        lines.append("| - | - | - | - | - | - | - | - | - |")
+        lines.append("| - | - | - | - | - | - | - | - | - | - |")
     else:
         for entry in skill_entries:
             if not isinstance(entry, Mapping):
@@ -188,6 +220,7 @@ def render_boundary_matrix_markdown(payload: Mapping[str, Any]) -> str:
             blockers = entry.get("adjacency_blockers", [])
             blocker_text = ", ".join(blockers) if blockers else "-"
             adjacent_skill_text = ", ".join(entry.get("adjacent_skill_names", [])) or "-"
+            governance_lane_text = ", ".join(entry.get("governance_lane_ids", [])) or "-"
             lines.append(
                 "| "
                 + " | ".join(
@@ -199,6 +232,7 @@ def render_boundary_matrix_markdown(payload: Mapping[str, Any]) -> str:
                         str(entry["adjacency_use_count"]),
                         str(entry["adjacency_do_not_use_count"]),
                         adjacent_skill_text,
+                        governance_lane_text,
                         "true" if entry["adjacency_ready"] else "false",
                         blocker_text,
                     ]
@@ -211,19 +245,20 @@ def render_boundary_matrix_markdown(payload: Mapping[str, Any]) -> str:
             "",
             "## Adjacency cases",
             "",
-            "| skill | adjacent skill | case id | expected | blockers |",
-            "|---|---|---|---|---|",
+            "| skill | adjacent skill | case id | expected | lane ids | blockers |",
+            "|---|---|---|---|---|---|",
         ]
     )
     if not case_entries:
-        lines.append("| - | - | - | - | - |")
+        lines.append("| - | - | - | - | - | - |")
     else:
         for case in case_entries:
             if not isinstance(case, Mapping):
                 continue
             blocker_text = ", ".join(case.get("blockers", [])) or "-"
+            governance_lane_text = ", ".join(case.get("governance_lane_ids", [])) or "-"
             lines.append(
-                f"| {case.get('skill')} | {case.get('adjacent_skill')} | {case.get('case_id')} | {case.get('expected')} | {blocker_text} |"
+                f"| {case.get('skill')} | {case.get('adjacent_skill')} | {case.get('case_id')} | {case.get('expected')} | {governance_lane_text} | {blocker_text} |"
             )
     lines.append("")
     return "\n".join(lines)

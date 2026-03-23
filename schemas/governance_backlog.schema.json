@@ -15,6 +15,7 @@
         "status_promotion_reviews",
         "canonical_candidate_reviews",
         "evaluation_fixtures",
+        "governance_lanes",
         "evaluation_matrix",
         "public_surface"
       ],
@@ -24,6 +25,7 @@
         "status_promotion_reviews": { "type": "string", "minLength": 1 },
         "canonical_candidate_reviews": { "type": "string", "minLength": 1 },
         "evaluation_fixtures": { "type": "string", "minLength": 1 },
+        "governance_lanes": { "type": "string", "minLength": 1 },
         "evaluation_matrix": { "type": "string", "minLength": 1 },
         "public_surface": { "type": "string", "minLength": 1 }
       }
@@ -35,6 +37,7 @@
         "candidate_ready_without_review",
         "blocked_by_pending_lineage",
         "canonical_maintenance",
+        "comparative_pending",
         "docs_truth_sync"
       ],
       "properties": {
@@ -49,6 +52,11 @@
           "uniqueItems": true
         },
         "canonical_maintenance": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "comparative_pending": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true
@@ -77,6 +85,9 @@
           "canonical_eval_blockers",
           "promotion_review_path",
           "candidate_review_path",
+          "governance_decision",
+          "governance_lane_ids",
+          "governance_evidence_case_ids",
           "readiness_reconciliation"
         ],
         "properties": {
@@ -102,6 +113,20 @@
           },
           "promotion_review_path": { "type": ["string", "null"] },
           "candidate_review_path": { "type": ["string", "null"] },
+          "governance_decision": {
+            "type": ["string", "null"],
+            "enum": ["default_reference", "stay_evaluated", null]
+          },
+          "governance_lane_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "governance_evidence_case_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
           "readiness_reconciliation": {
             "type": "string",
             "enum": [

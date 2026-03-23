@@ -1,11 +1,14 @@
 {
-  "boundary_matrix_version": 1,
+  "boundary_matrix_version": 2,
   "cases": [
     {
       "adjacent_skill": "aoa-contract-test",
       "blockers": [],
       "case_id": "bounded_context_map_vs_contract_test_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "context_vs_contract"
+      ],
       "prompt": "Compare semantic boundary clarification with interface-contract validation and choose the clearer fit before coding.",
       "skill": "aoa-bounded-context-map",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_vs_contract_test_boundary.md"
@@ -15,6 +18,9 @@
       "blockers": [],
       "case_id": "change_protocol_vs_tdd_slice_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "change_workflows"
+      ],
       "prompt": "Compare a bounded change workflow with a test-first slice and choose the clearer fit for a non-trivial repo change.",
       "skill": "aoa-change-protocol",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-change-protocol/change_protocol_vs_tdd_slice_boundary.md"
@@ -24,6 +30,9 @@
       "blockers": [],
       "case_id": "tdd_slice_vs_change_protocol_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "change_workflows"
+      ],
       "prompt": "Compare a test-first feature slice with a general change workflow and choose the clearer fit for a small behavior change.",
       "skill": "aoa-tdd-slice",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-tdd-slice/tdd_slice_vs_change_protocol_boundary.md"
@@ -33,6 +42,9 @@
       "blockers": [],
       "case_id": "core_logic_boundary_vs_port_adapter_refactor",
       "expected": "use",
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
       "prompt": "Compare a boundary-clarity task with a port/adapter refactor and choose the clearer fit for a mixed core and wiring module.",
       "skill": "aoa-core-logic-boundary",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_vs_port_adapter_refactor.md"
@@ -42,6 +54,9 @@
       "blockers": [],
       "case_id": "port_adapter_refactor_vs_core_logic_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
       "prompt": "Compare a seam-making refactor with a core-versus-edge analysis and choose the clearer fit for a coupled dependency.",
       "skill": "aoa-port-adapter-refactor",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-port-adapter-refactor/port_adapter_refactor_vs_core_logic_boundary.md"
@@ -51,6 +66,9 @@
       "blockers": [],
       "case_id": "approval_gate_vs_preview_and_infra_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare authority classification with preview-first and safe-change paths for an operationally sensitive request.",
       "skill": "aoa-approval-gate-check",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_preview_and_infra_boundary.md"
@@ -60,6 +78,9 @@
       "blockers": [],
       "case_id": "approval_gate_vs_safe_infra_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare authority classification with bounded infrastructure change planning for a risky operational request.",
       "skill": "aoa-approval-gate-check",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_safe_infra_boundary.md"
@@ -69,6 +90,9 @@
       "blockers": [],
       "case_id": "approval_gate_vs_sanitized_share_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare deciding whether a sensitive incident artifact may be shared at all with preparing a sanitized version for broader circulation.",
       "skill": "aoa-approval-gate-check",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-approval-gate-check/approval_gate_vs_sanitized_share_boundary.md"
@@ -78,6 +102,9 @@
       "blockers": [],
       "case_id": "contract_test_vs_bounded_context_map_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "context_vs_contract"
+      ],
       "prompt": "Compare interface-contract validation with context-carving work and choose the clearer fit when the boundary is already clear.",
       "skill": "aoa-contract-test",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-contract-test/contract_test_vs_bounded_context_map_boundary.md"
@@ -87,6 +114,9 @@
       "blockers": [],
       "case_id": "dry_run_first_vs_approval_gate_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare preview-first planning with authority classification for a potentially risky operational change.",
       "skill": "aoa-dry-run-first",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_approval_gate_boundary.md"
@@ -96,6 +126,9 @@
       "blockers": [],
       "case_id": "dry_run_first_vs_sanitized_share_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare preview-first planning for a risky operational change with preparing a sanitized share of the same change and choose the clearer fit before execution.",
       "skill": "aoa-dry-run-first",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_sanitized_share_boundary.md"
@@ -105,6 +138,9 @@
       "blockers": [],
       "case_id": "safe_infra_change_vs_approval_gate_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare a bounded infrastructure change with authority classification for the same operational surface.",
       "skill": "aoa-safe-infra-change",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_approval_gate_boundary.md"
@@ -114,6 +150,9 @@
       "blockers": [],
       "case_id": "safe_infra_change_vs_sanitized_share_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare planning a bounded operational change with preparing a sanitized share of it and choose the clearer fit when the system still needs the change itself.",
       "skill": "aoa-safe-infra-change",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_sanitized_share_boundary.md"
@@ -123,6 +162,9 @@
       "blockers": [],
       "case_id": "sanitized_share_vs_approval_gate_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare sanitizing a sensitive artifact for broader sharing with authority classification and choose the clearer fit.",
       "skill": "aoa-sanitized-share",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_approval_gate_boundary.md"
@@ -132,6 +174,9 @@
       "blockers": [],
       "case_id": "sanitized_share_vs_dry_run_first_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare preparing a shareable redaction with preview-first planning and choose the clearer fit.",
       "skill": "aoa-sanitized-share",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_dry_run_first_boundary.md"
@@ -141,6 +186,9 @@
       "blockers": [],
       "case_id": "sanitized_share_vs_safe_infra_change_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "prompt": "Compare preparing a sanitized share with planning a bounded infrastructure change and choose the clearer fit.",
       "skill": "aoa-sanitized-share",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-sanitized-share/sanitized_share_vs_safe_infra_change_boundary.md"
@@ -150,6 +198,9 @@
       "blockers": [],
       "case_id": "source_of_truth_check_vs_adr_write_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "decision_docs_authority"
+      ],
       "prompt": "Compare document-authority clarification with decision rationale recording and choose the clearer fit for a docs overlap problem.",
       "skill": "aoa-source-of-truth-check",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/source_of_truth_check_vs_adr_write_boundary.md"
@@ -159,6 +210,9 @@
       "blockers": [],
       "case_id": "adr_write_vs_source_of_truth_check_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "decision_docs_authority"
+      ],
       "prompt": "Compare decision documentation with source-of-truth clarification and choose the clearer fit for a meaningful architectural choice.",
       "skill": "aoa-adr-write",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-adr-write/adr_write_vs_source_of_truth_check_boundary.md"
@@ -168,6 +222,9 @@
       "blockers": [],
       "case_id": "invariant_coverage_audit_vs_property_invariants_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "invariant_authoring_vs_audit"
+      ],
       "prompt": "Compare auditing existing checks with authoring property invariants and choose the clearer fit for a coverage review.",
       "skill": "aoa-invariant-coverage-audit",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-invariant-coverage-audit/invariant_coverage_audit_vs_property_invariants_boundary.md"
@@ -177,6 +234,9 @@
       "blockers": [],
       "case_id": "property_invariants_vs_invariant_coverage_audit_boundary",
       "expected": "use",
+      "governance_lane_ids": [
+        "invariant_authoring_vs_audit"
+      ],
       "prompt": "Compare authoring invariant-based tests with auditing existing invariant coverage and choose the clearer fit for a behavior rule.",
       "skill": "aoa-property-invariants",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-property-invariants/property_invariants_vs_invariant_coverage_audit_boundary.md"
@@ -190,6 +250,9 @@
       "adjacency_use_count": 1,
       "adjacent_skill_names": [
         "aoa-source-of-truth-check"
+      ],
+      "governance_lane_ids": [
+        "decision_docs_authority"
       ],
       "name": "aoa-adr-write",
       "required_adjacency_coverage": true,
@@ -207,6 +270,9 @@
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "name": "aoa-approval-gate-check",
       "required_adjacency_coverage": true,
       "scope": "risk",
@@ -220,6 +286,10 @@
       "adjacency_use_count": 1,
       "adjacent_skill_names": [
         "aoa-contract-test"
+      ],
+      "governance_lane_ids": [
+        "context_vs_contract",
+        "core_boundary_refactor"
       ],
       "name": "aoa-bounded-context-map",
       "required_adjacency_coverage": true,
@@ -235,6 +305,9 @@
       "adjacent_skill_names": [
         "aoa-tdd-slice"
       ],
+      "governance_lane_ids": [
+        "change_workflows"
+      ],
       "name": "aoa-change-protocol",
       "required_adjacency_coverage": true,
       "scope": "core",
@@ -249,6 +322,9 @@
       "adjacent_skill_names": [
         "aoa-bounded-context-map"
       ],
+      "governance_lane_ids": [
+        "context_vs_contract"
+      ],
       "name": "aoa-contract-test",
       "required_adjacency_coverage": true,
       "scope": "core",
@@ -262,6 +338,9 @@
       "adjacency_use_count": 1,
       "adjacent_skill_names": [
         "aoa-port-adapter-refactor"
+      ],
+      "governance_lane_ids": [
+        "core_boundary_refactor"
       ],
       "name": "aoa-core-logic-boundary",
       "required_adjacency_coverage": true,
@@ -278,6 +357,9 @@
         "aoa-approval-gate-check",
         "aoa-sanitized-share"
       ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "name": "aoa-dry-run-first",
       "required_adjacency_coverage": true,
       "scope": "risk",
@@ -291,6 +373,9 @@
       "adjacency_use_count": 1,
       "adjacent_skill_names": [
         "aoa-property-invariants"
+      ],
+      "governance_lane_ids": [
+        "invariant_authoring_vs_audit"
       ],
       "name": "aoa-invariant-coverage-audit",
       "required_adjacency_coverage": true,
@@ -306,6 +391,9 @@
       "adjacent_skill_names": [
         "aoa-core-logic-boundary"
       ],
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
       "name": "aoa-port-adapter-refactor",
       "required_adjacency_coverage": true,
       "scope": "core",
@@ -319,6 +407,9 @@
       "adjacency_use_count": 1,
       "adjacent_skill_names": [
         "aoa-invariant-coverage-audit"
+      ],
+      "governance_lane_ids": [
+        "invariant_authoring_vs_audit"
       ],
       "name": "aoa-property-invariants",
       "required_adjacency_coverage": true,
@@ -334,6 +425,9 @@
       "adjacent_skill_names": [
         "aoa-approval-gate-check",
         "aoa-sanitized-share"
+      ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
       ],
       "name": "aoa-safe-infra-change",
       "required_adjacency_coverage": true,
@@ -351,6 +445,9 @@
         "aoa-dry-run-first",
         "aoa-safe-infra-change"
       ],
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
       "name": "aoa-sanitized-share",
       "required_adjacency_coverage": true,
       "scope": "risk",
@@ -364,6 +461,9 @@
       "adjacency_use_count": 1,
       "adjacent_skill_names": [
         "aoa-adr-write"
+      ],
+      "governance_lane_ids": [
+        "decision_docs_authority"
       ],
       "name": "aoa-source-of-truth-check",
       "required_adjacency_coverage": true,
@@ -379,6 +479,9 @@
       "adjacent_skill_names": [
         "aoa-change-protocol"
       ],
+      "governance_lane_ids": [
+        "change_workflows"
+      ],
       "name": "aoa-tdd-slice",
       "required_adjacency_coverage": true,
       "scope": "core",
@@ -391,6 +494,7 @@
       "adjacency_ready": false,
       "adjacency_use_count": 0,
       "adjacent_skill_names": [],
+      "governance_lane_ids": [],
       "name": "atm10-change-protocol",
       "required_adjacency_coverage": false,
       "scope": "project",
@@ -403,6 +507,7 @@
       "adjacency_ready": false,
       "adjacency_use_count": 0,
       "adjacent_skill_names": [],
+      "governance_lane_ids": [],
       "name": "atm10-source-of-truth-check",
       "required_adjacency_coverage": false,
       "scope": "project",
@@ -413,6 +518,7 @@
   "source_of_truth": {
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
     "evaluation_snapshots": "tests/fixtures/skill_evaluation_snapshots/*/*.md",
+    "governance_lanes": "docs/governance/lanes.yaml",
     "skill_markdown": "skills/*/SKILL.md",
     "technique_manifest": "skills/*/techniques.yaml"
   }

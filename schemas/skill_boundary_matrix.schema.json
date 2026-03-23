@@ -9,12 +9,13 @@
     "source_of_truth": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["skill_markdown", "technique_manifest", "evaluation_fixtures", "evaluation_snapshots"],
+      "required": ["skill_markdown", "technique_manifest", "evaluation_fixtures", "evaluation_snapshots", "governance_lanes"],
       "properties": {
         "skill_markdown": { "type": "string", "minLength": 1 },
         "technique_manifest": { "type": "string", "minLength": 1 },
         "evaluation_fixtures": { "type": "string", "minLength": 1 },
-        "evaluation_snapshots": { "type": "string", "minLength": 1 }
+        "evaluation_snapshots": { "type": "string", "minLength": 1 },
+        "governance_lanes": { "type": "string", "minLength": 1 }
       }
     },
     "skills": {
@@ -31,6 +32,7 @@
           "adjacency_use_count",
           "adjacency_do_not_use_count",
           "adjacent_skill_names",
+          "governance_lane_ids",
           "adjacency_ready",
           "adjacency_blockers"
         ],
@@ -50,6 +52,11 @@
             "items": { "type": "string", "minLength": 1 },
             "uniqueItems": true
           },
+          "governance_lane_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
           "adjacency_ready": { "type": "boolean" },
           "adjacency_blockers": {
             "type": "array",
@@ -64,7 +71,7 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["skill", "adjacent_skill", "case_id", "expected", "prompt", "snapshot_path", "blockers"],
+        "required": ["skill", "adjacent_skill", "case_id", "expected", "prompt", "snapshot_path", "governance_lane_ids", "blockers"],
         "properties": {
           "skill": { "type": "string", "pattern": "^[a-z0-9-]+$" },
           "adjacent_skill": { "type": "string", "pattern": "^[a-z0-9-]+$" },
@@ -72,6 +79,11 @@
           "expected": { "type": "string", "enum": ["use", "do_not_use"] },
           "prompt": { "type": "string", "minLength": 1 },
           "snapshot_path": { "type": "string", "minLength": 1 },
+          "governance_lane_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
           "blockers": {
             "type": "array",
             "items": { "type": "string", "minLength": 1 },

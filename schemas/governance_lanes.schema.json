@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills governance lanes",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["governance_lanes_version", "lanes"],
+  "properties": {
+    "governance_lanes_version": { "type": "integer", "minimum": 1 },
+    "lanes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "scope",
+          "state",
+          "skills",
+          "review_path",
+          "evidence_case_ids"
+        ],
+        "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_-]+$" },
+          "title": { "type": "string", "minLength": 1 },
+          "scope": { "type": "string", "enum": ["core", "risk"] },
+          "state": {
+            "type": "string",
+            "enum": ["stable_defaults", "comparative_pending"]
+          },
+          "skills": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "decision"],
+              "properties": {
+                "name": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+                "decision": {
+                  "type": "string",
+                  "enum": ["default_reference", "stay_evaluated"]
+                }
+              }
+            }
+          },
+          "review_path": { "type": "string", "minLength": 1 },
+          "evidence_case_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        }
+      }
+    }
+  }
+}

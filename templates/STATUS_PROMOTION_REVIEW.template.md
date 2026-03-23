@@ -3,7 +3,8 @@
 ## Current status
 
 - current maturity status:
-- current machine-checkable floor:
+- current machine-checkable floor (`candidate_ready` gate only when applicable):
+- current governance lane decision:
 - scope:
 - current lineage:
 
@@ -22,6 +23,7 @@
 ## Findings
 
 - machine-checkable floor result:
+- recorded governance outcome:
 - runtime `SKILL.md` meaning changed:
 
 ## Gaps and blockers

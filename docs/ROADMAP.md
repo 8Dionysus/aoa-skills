@@ -16,6 +16,26 @@ Current public foundation:
 The next steps should use that derived governance layer to drive candidate review and promotion decisions, overlay maturity, stronger public product-surface clarity, and packaging prep rather than only increase skill count.
 Overlay preparation and packaging remain intentionally repo-local and thin: they should surface contracts and export primitives without introducing live downstream integrations, releases, or registries.
 
+## Near-term sequence
+
+The nearest waves should now be read in this order:
+
+1. `v0.5` maturity and governance consolidation
+2. `v0.6` project-overlay maturity
+3. `v0.7` packaging and distribution prep
+
+`v0.3` and `v0.4` are no longer the main expansion frontier.
+They remain active as maintenance and depth-improvement lanes, but the repository already has:
+- schema-backed validation
+- pinned lineage and drift tooling
+- autonomy and trigger-boundary evaluation coverage
+- derived runtime, evaluation, and public-surface layers
+
+The main near-term risk is no longer missing baseline scaffolding.
+It is ambiguity about which skills are the default references in adjacent workflow lanes,
+how thin project overlays should mature without widening scope,
+and how the public bundle surface should eventually package for portable reuse.
+
 ## v0.3 public core hardening
 
 Continue the public core hardening pass with:
@@ -30,21 +50,29 @@ Continue the public core hardening pass with:
 
 ## v0.4 evaluation harness
 
-Add:
-- prompt fixtures for selected core and risk skills
-- trigger-boundary tests
-- expected output snapshots for selected skills
-- autonomy and verification checks for runtime self-containment
-- explicit evaluation-coverage enforcement for `evaluated` and `canonical` skills
-- review checklists and behavior evidence for risk-heavy skills
-- end-to-end walkthroughs that show how selected skills look in real use
-- deeper boundary evidence and fixture integrity checks are preferred over adding more raw count coverage
+The baseline evaluation harness now exists across the current public surface through:
+- prompt-fixture coverage in `tests/fixtures/skill_evaluation_cases.yaml`
+- autonomy and trigger-boundary checks
+- snapshot-backed use and `do_not_use` coverage
+- derived evidence reporting in `generated/skill_evaluation_matrix.*`
+- review checklists or support artifacts for risk-heavy surfaces
+
+The next evaluation-depth pass should add:
+- deeper comparative boundary fixtures for adjacent skills that are easy to confuse
+- stronger fixture integrity checks for overlay-shaped bundles
+- richer end-to-end walkthrough evidence where canonical/default-reference decisions still need comparative proof
+- maintenance-oriented evidence refresh rules so canonical bundles keep their reference quality without widening into bureaucracy
 
 ## v0.5 maturity and governance
 
 Add:
-- explicit promotion decisions within the formal maturity ladder
-- promotion criteria for moving from `scaffold` toward `evaluated` or `canonical` states
+- explicit default-reference rationale across adjacent workflow lanes rather than promotion-by-gate-pass
+- maintenance reviews for the current canonical cohort so default-reference drift stays visible
+- explicit stay-`evaluated` or promote-to-`canonical` decisions for the current candidate-ready cohort
+- stronger comparative guidance for neighboring skills such as:
+  - `aoa-core-logic-boundary` vs `aoa-port-adapter-refactor` vs `aoa-bounded-context-map`
+  - `aoa-dry-run-first` vs `aoa-safe-infra-change` vs `aoa-approval-gate-check`
+  - `aoa-adr-write` vs `aoa-source-of-truth-check`
 - governance-oriented skill and policy checks
 - clearer release and stability signaling for reusable versus experimental surfaces
 - a more explicit public promotion path that explains what evidence and review surface is expected at each maturity step
@@ -55,7 +83,8 @@ Add:
 ## v0.6 project overlays
 
 Continue thin project-shaped overlays now that the public core has a first live exemplar pack:
-- deepen `atm10-*` from initial scaffold overlays into a clearer project-family surface
+- deepen `atm10-*` from initial scaffold overlays into a clearer project-family surface with explicit maturity goals
+- move `atm10-*` from "exists and evaluates" toward reviewable overlay-family guidance that can justify status advancement
 - add first `abyss-*` exemplar overlays after the `atm10` pattern is stable
 
 Target shape:
@@ -64,6 +93,11 @@ Target shape:
 - local validation commands and evidence paths
 - no silent fork of the public core meaning
 - `docs/OVERLAY_SPEC.md` and `docs/overlays/atm10/PROJECT_OVERLAY.md` define the repo-local overlay contract for live exemplar packs without turning them into downstream integrations
+
+Recommended sequencing inside this wave:
+- finish the `atm10` maturity pattern first
+- only then add the first `abyss-*` exemplar family
+- prefer a second family only if it clarifies the overlay contract rather than merely increasing bundle count
 
 ## v0.7 packaging and distribution
 
