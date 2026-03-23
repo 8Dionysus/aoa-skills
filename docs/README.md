@@ -54,13 +54,13 @@ an executable workflow for Codex.
 
 ## Current repository phase
 
-This repository now has a non-scaffold public core of 14 skills with first support artifacts,
+This repository now has a non-scaffold public core of 16 skills with first support artifacts,
 honest bridge manifests with pinned source refs, and local validation coverage.
-The repository now also has its first `canonical` skills, evaluated coverage across the remaining current skill surface, and autonomy and trigger-boundary evaluation checks across that public core.
+The live governance counts now belong to `../generated/public_surface.md` and `../generated/governance_backlog.md`, while this docs map stays focused on how to read the layers.
 The repository now also has a documented maturity ladder and promotion guidance.
 The repository now also has a documented public promotion path in `PROMOTION_PATH.md`.
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
-The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive pending-lineage closure, candidate review, and stronger public product-surface clarity through `../generated/governance_backlog.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
+The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive candidate review, overlay maturity, stronger public product-surface clarity, and packaging prep through `../generated/governance_backlog.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md` and matching `skills/atm10-*` bundles.
 Those overlays remain repo-local examples rather than live downstream integrations.
 `ROADMAP.md` remains the canonical public roadmap.

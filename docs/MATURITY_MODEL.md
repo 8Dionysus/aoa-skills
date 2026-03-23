@@ -2,7 +2,7 @@
 
 This document defines the current public maturity ladder for `aoa-skills`
 and the minimum evidence expected before a skill changes status.
-The repository currently has 14 public skills, with canonical, evaluated, and pending-lineage surfaces already represented.
+The repository currently has a mixed-status public surface with canonical, evaluated, scaffold, and overlay-shaped surfaces already represented.
 
 ## Status ladder
 
@@ -111,7 +111,7 @@ Use this checklist when proposing any status change beyond `scaffold`:
 The first canonical cohort was:
 - `aoa-change-protocol` — promoted to `canonical`
 - `aoa-tdd-slice` — promoted to `canonical`
-- `aoa-approval-gate-check` — still blocked on pending upstream lineage
+- `aoa-approval-gate-check` — lineage-cleared and awaiting an explicit default-reference decision
 
 The next published-lineage promotion wave added:
 - `aoa-bounded-context-map` — promoted to `canonical`
@@ -120,7 +120,7 @@ The next published-lineage promotion wave added:
 - `aoa-property-invariants` — promoted to `canonical`
 
 The early canonical-candidate set is therefore no longer uniformly candidate-only.
-Six published-lineage core skills now serve as `canonical` references, while `aoa-approval-gate-check` remains blocked until its upstream technique lineage is published and refreshed.
+Six published-lineage core skills now serve as `canonical` references, while `aoa-approval-gate-check` remains in the candidate-ready cohort until a repo-level promotion decision is made.
 
 ## Review guidance for current candidates
 

@@ -2,7 +2,6 @@
 
 This document explains how to read the derived public-product surface of `aoa-skills`
 without assuming hidden release metadata or private repository state.
-The current repository state covers 14 skills, with 6 canonical references, 0 candidate-ready skills, 8 pending-lineage blockers, and 4 risk surfaces.
 
 Use this guide when you need status, promotion, or governance signals.
 For runtime inspection and skill selection, use `RUNTIME_PATH.md` first.
@@ -32,6 +31,9 @@ The packaging and relationship companions are:
 
 - `generated/skill_bundle_index.md`
 - `generated/skill_graph.md`
+
+Read the live counts in those derived surfaces instead of treating this guide as a second status ledger.
+`generated/public_surface.md` and `generated/governance_backlog.md` are the authoritative readouts for the current total-skill count, default-reference cohort, candidate-ready cohort, pending-lineage state, and maintenance/readiness view.
 
 These derived surfaces stay separate on purpose:
 - `generated/public_surface.*` is the status and promotion readout
@@ -108,7 +110,7 @@ This wave does not introduce:
 - implicit promotions
 
 The public-product surface remains repo-local and derived.
-Overlay preparation is also separate from this layer; the thin contract lives in `docs/OVERLAY_SPEC.md`, but actual project adoption stays downstream.
+Overlay preparation is also separate from this layer; the thin contract lives in `docs/OVERLAY_SPEC.md`, and repo-local live exemplar packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md` stay distinct from downstream adoption.
 If you need the human review records behind a candidate or promotion decision, use `docs/reviews/README.md` and the matching file in `docs/reviews/canonical-candidates/` or `docs/reviews/status-promotions/`.
 
 Future stubs:
