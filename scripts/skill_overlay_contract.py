@@ -3,16 +3,19 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Sequence
+from typing import Any, Mapping, Sequence
 
 import skill_artifact_contract
 import skill_catalog_contract
+import skill_evaluation_surface
+import skill_source_model
 import yaml
 
 
 OVERLAY_STUBS_DIR = Path("tests") / "fixtures" / "overlay_stubs"
 LIVE_OVERLAYS_DIR = Path("docs") / "overlays"
 PROJECT_OVERLAY_FILE = "PROJECT_OVERLAY.md"
+LIVE_OVERLAY_REVIEW_FILE = "REVIEW.md"
 PROJECT_OVERLAY_SKILL_FILE = "PROJECT_OVERLAY_SKILL.md"
 LIVE_OVERLAY_FAMILIES = ("atm10", "abyss")
 OVERLAY_DIR_PREFIXES = tuple(f"{family}-" for family in LIVE_OVERLAY_FAMILIES)
@@ -42,6 +45,24 @@ LIVE_PROJECT_OVERLAY_HEADINGS = (
     "Risks and anti-patterns",
     "Validation",
 )
+LIVE_OVERLAY_REVIEW_HEADINGS = (
+    "Current status",
+    "Evidence reviewed",
+    "Findings",
+    "Gaps and blockers",
+    "Recommendation",
+)
+OVERLAY_READINESS_VERSION = 1
+OVERLAY_READINESS_JSON_PATH = Path("generated") / "overlay_readiness.json"
+OVERLAY_READINESS_MARKDOWN_PATH = Path("generated") / "overlay_readiness.md"
+OVERLAY_READINESS_SOURCE_OF_TRUTH = {
+    "skill_markdown": "skills/*/SKILL.md",
+    "runtime_examples": "skills/*/examples/*.md",
+    "review_checks": "skills/*/checks/review.md",
+    "overlay_docs": "docs/overlays/*/PROJECT_OVERLAY.md",
+    "overlay_reviews": "docs/overlays/*/REVIEW.md",
+    "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
+}
 OVERLAY_SKILL_BULLET_PATTERN = re.compile(r"^\s*-\s*`([a-z0-9-]+)`")
 
 
@@ -237,6 +258,7 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
     for family in LIVE_OVERLAY_FAMILIES:
         skill_names = family_skill_names(repo_root, family)
         overlay_path = root / family / PROJECT_OVERLAY_FILE
+        review_path = root / family / LIVE_OVERLAY_REVIEW_FILE
 
         if not skill_names:
             if overlay_path.is_file():
@@ -256,6 +278,31 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
                 )
             )
             continue
+
+        if not review_path.is_file():
+            issues.append(
+                OverlayContractIssue(
+                    relative_location(review_path, repo_root),
+                    f"live overlay family '{family}' is missing docs/overlays/{family}/REVIEW.md",
+                )
+            )
+        else:
+            issues.extend(
+                collect_overlay_heading_issues(
+                    review_path,
+                    repo_root,
+                    artifact_label="live overlay family review",
+                    expected_headings=LIVE_OVERLAY_REVIEW_HEADINGS,
+                )
+            )
+            review_text = review_path.read_text(encoding="utf-8")
+            if not _review_mentions_all_skills(review_text, skill_names):
+                issues.append(
+                    OverlayContractIssue(
+                        relative_location(review_path, repo_root),
+                        f"live overlay family review '{family}' must mention every matching skills/{family}-* bundle",
+                    )
+                )
 
         issues.extend(
             collect_overlay_heading_issues(
@@ -338,6 +385,18 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
                     )
                 )
 
+        for skill_name in actual:
+            review_check_path = (
+                repo_root / "skills" / skill_name / "checks" / "review.md"
+            )
+            if not review_check_path.is_file():
+                issues.append(
+                    OverlayContractIssue(
+                        relative_location(review_check_path, repo_root),
+                        f"live overlay family '{family}' requires skills/{skill_name}/checks/review.md",
+                    )
+                )
+
     return issues
 
 
@@ -350,49 +409,278 @@ def live_overlay_families(repo_root: Path) -> list[str]:
     ]
 
 
-def overlay_readiness_rows(repo_root: Path) -> list[dict[str, str]]:
-    rows: list[dict[str, str]] = []
-    skills_dir = repo_root / "skills"
-    if not skills_dir.is_dir():
-        return rows
+def _overlay_path(repo_root: Path, family: str) -> Path:
+    return repo_root / LIVE_OVERLAYS_DIR / family / PROJECT_OVERLAY_FILE
 
-    for skill_dir in sorted(path for path in skills_dir.iterdir() if path.is_dir()):
-        skill_path = skill_dir / "SKILL.md"
-        if not skill_path.is_file():
-            continue
-        text = skill_path.read_text(encoding="utf-8")
-        has_adaptation_points = "## Adaptation points" in text
-        has_overlay_policy = (skill_dir / "agents" / "openai.yaml").is_file()
-        rows.append(
+
+def _overlay_review_path(repo_root: Path, family: str) -> Path:
+    return repo_root / LIVE_OVERLAYS_DIR / family / LIVE_OVERLAY_REVIEW_FILE
+
+
+def _overlay_sections(path: Path) -> dict[str, str]:
+    return {
+        heading: content
+        for heading, content in skill_artifact_contract.extract_artifact_sections(
+            path.read_text(encoding="utf-8")
+        )
+    }
+
+
+def _review_mentions_all_skills(review_text: str, skill_names: Sequence[str]) -> bool:
+    normalized = " ".join(review_text.lower().split())
+    return all(skill_name.lower() in normalized for skill_name in skill_names)
+
+
+def _evaluation_entry_by_name(
+    payload: Mapping[str, Any],
+    skill_name: str,
+) -> Mapping[str, Any]:
+    for entry in payload.get("skills", []):
+        if isinstance(entry, Mapping) and entry.get("name") == skill_name:
+            return entry
+    raise KeyError(skill_name)
+
+
+def _project_skill_sources(repo_root: Path) -> list[skill_source_model.SkillSource]:
+    return [
+        source
+        for source in skill_source_model.load_skill_sources(repo_root)
+        if source.metadata.get("scope") == "project"
+    ]
+
+
+def _project_skill_entry(
+    repo_root: Path,
+    source: skill_source_model.SkillSource,
+    evaluation_entry: Mapping[str, Any],
+) -> dict[str, Any]:
+    review_check_path = source.skill_dir / "checks" / "review.md"
+    runtime_examples = [
+        artifact
+        for artifact in source.support_artifacts
+        if artifact.get("type") == skill_artifact_contract.RUNTIME_EXAMPLE_TYPE
+    ]
+    return {
+        "name": source.name,
+        "family": source.name.split("-", 1)[0],
+        "status": source.metadata.get("status"),
+        "skill_path": relative_location(source.skill_md_path, repo_root),
+        "review_check_path": (
+            relative_location(review_check_path, repo_root)
+            if review_check_path.is_file()
+            else None
+        ),
+        "runtime_example_count": len(runtime_examples),
+        "has_adaptation_points": "Adaptation points" in source.sections,
+        "has_policy_file": source.policy_exists,
+        "eval_ready": bool(evaluation_entry.get("canonical_eval_ready")),
+        "eval_blockers": list(evaluation_entry.get("canonical_eval_blockers", [])),
+    }
+
+
+def build_overlay_readiness_payload(repo_root: Path) -> dict[str, Any]:
+    project_sources = _project_skill_sources(repo_root)
+    evaluation_payload = skill_evaluation_surface.build_evaluation_matrix_payload(
+        repo_root,
+        [source.name for source in project_sources],
+    )
+    skills = [
+        _project_skill_entry(
+            repo_root,
+            source,
+            _evaluation_entry_by_name(evaluation_payload, source.name),
+        )
+        for source in project_sources
+    ]
+
+    families: list[dict[str, Any]] = []
+    for family in sorted({entry["family"] for entry in skills}):
+        overlay_path = _overlay_path(repo_root, family)
+        review_path = _overlay_review_path(repo_root, family)
+        project_skill_names = sorted(
+            entry["name"] for entry in skills if entry["family"] == family
+        )
+
+        listed_skill_names: list[str] = []
+        boundary_statement_present = False
+        repo_relative_statement_present = False
+        authority_section_present = False
+        if overlay_path.is_file():
+            overlay_text = overlay_path.read_text(encoding="utf-8")
+            sections = _overlay_sections(overlay_path)
+            listed_skill_names = extract_overlay_skill_names(
+                sections.get("Overlayed skills", "")
+            )
+            boundary_statement_present = contains_phrase(
+                overlay_text,
+                (
+                    "does not change the base skill boundary",
+                    "does not redefine the base skill",
+                ),
+            )
+            repo_relative_statement_present = contains_phrase(
+                overlay_text,
+                (
+                    "repository-relative",
+                    "repo-relative",
+                ),
+            )
+            authority_section_present = "Authority" in sections
+
+        review_mentions_all_skills = False
+        if review_path.is_file():
+            review_mentions_all_skills = _review_mentions_all_skills(
+                review_path.read_text(encoding="utf-8"),
+                project_skill_names,
+            )
+
+        bundle_review_check_count = sum(
+            1
+            for entry in skills
+            if entry["family"] == family and entry["review_check_path"] is not None
+        )
+        eval_ready_skill_count = sum(
+            1
+            for entry in skills
+            if entry["family"] == family and entry["eval_ready"]
+        )
+        listed_matches_actual = sorted(set(listed_skill_names)) == project_skill_names
+        readiness_state = (
+            "reviewable"
+            if review_path.is_file()
+            and listed_matches_actual
+            and bundle_review_check_count == len(project_skill_names)
+            and eval_ready_skill_count == len(project_skill_names)
+            and boundary_statement_present
+            and repo_relative_statement_present
+            and review_mentions_all_skills
+            else "baseline"
+        )
+
+        families.append(
             {
-                "name": skill_dir.name,
-                "overlay_hooks": "yes" if has_adaptation_points else "no",
-                "invocation_stub": "yes" if has_overlay_policy else "no",
+                "family": family,
+                "project_overlay_path": (
+                    relative_location(overlay_path, repo_root)
+                    if overlay_path.is_file()
+                    else None
+                ),
+                "review_path": (
+                    relative_location(review_path, repo_root)
+                    if review_path.is_file()
+                    else None
+                ),
+                "project_skill_names": project_skill_names,
+                "listed_skill_names": sorted(set(listed_skill_names)),
+                "listed_matches_actual": listed_matches_actual,
+                "project_skill_count": len(project_skill_names),
+                "bundle_review_check_count": bundle_review_check_count,
+                "eval_ready_skill_count": eval_ready_skill_count,
+                "boundary_statement_present": boundary_statement_present,
+                "repo_relative_statement_present": repo_relative_statement_present,
+                "authority_section_present": authority_section_present,
+                "review_mentions_all_skills": review_mentions_all_skills,
+                "readiness_state": readiness_state,
             }
         )
-    return rows
+
+    reviewable_families = [
+        entry for entry in families if entry.get("readiness_state") == "reviewable"
+    ]
+    skills_with_review_checks = [
+        entry for entry in skills if entry.get("review_check_path") is not None
+    ]
+    eval_ready_skills = [entry for entry in skills if entry.get("eval_ready")]
+
+    return {
+        "overlay_readiness_version": OVERLAY_READINESS_VERSION,
+        "source_of_truth": OVERLAY_READINESS_SOURCE_OF_TRUTH,
+        "summary": {
+            "live_overlay_family_count": len(families),
+            "reviewable_family_count": len(reviewable_families),
+            "project_skill_count": len(skills),
+            "project_skill_review_check_count": len(skills_with_review_checks),
+            "eval_ready_project_skill_count": len(eval_ready_skills),
+        },
+        "families": families,
+        "skills": skills,
+    }
 
 
-def render_overlay_readiness_markdown(repo_root: Path) -> str:
-    rows = overlay_readiness_rows(repo_root)
-    families = live_overlay_families(repo_root)
+def render_overlay_readiness_markdown(payload: Mapping[str, Any]) -> str:
+    families = payload.get("families", [])
+    skills = payload.get("skills", [])
+    summary = payload.get("summary", {})
     lines = [
         "# Overlay readiness",
         "",
-        "This derived file summarizes whether the current skill surface already exposes the minimum hooks for thin project overlays",
-        "and which live exemplar overlay packs are committed in this repository.",
+        "This derived file summarizes live overlay-family maturity and project-skill readiness",
+        "for the thin overlay layer in `aoa-skills`.",
         "",
-        f"- live exemplar overlay packs: {', '.join(families) if families else '-'}",
+        "## Summary",
         "",
-        "| name | adaptation points | invocation stub |",
-        "|---|---|---|",
+        f"- live overlay families: {summary.get('live_overlay_family_count', 0)}",
+        f"- reviewable families: {summary.get('reviewable_family_count', 0)}",
+        f"- project overlay skills: {summary.get('project_skill_count', 0)}",
+        f"- project skills with review checklists: {summary.get('project_skill_review_check_count', 0)}",
+        f"- eval-ready project skills: {summary.get('eval_ready_project_skill_count', 0)}",
+        "",
+        "## Families",
+        "",
+        "| family | skills | listed parity | family review | bundle review checks | eval-ready skills | repo-relative evidence | boundary evidence | readiness |",
+        "|---|---:|---|---|---:|---:|---|---|---|",
     ]
-    if not rows:
-        lines.append("| - | - | - |")
+    if not families:
+        lines.append("| - | - | - | - | - | - | - | - | - |")
     else:
-        for row in rows:
+        for row in families:
             lines.append(
-                f"| {row['name']} | {row['overlay_hooks']} | {row['invocation_stub']} |"
+                "| "
+                + " | ".join(
+                    [
+                        str(row["family"]),
+                        str(row["project_skill_count"]),
+                        "true" if row["listed_matches_actual"] else "false",
+                        str(row["review_path"] or "-"),
+                        str(row["bundle_review_check_count"]),
+                        str(row["eval_ready_skill_count"]),
+                        "true" if row["repo_relative_statement_present"] else "false",
+                        "true" if row["boundary_statement_present"] else "false",
+                        str(row["readiness_state"]),
+                    ]
+                )
+                + " |"
+            )
+    lines.extend(
+        [
+            "",
+            "## Project skills",
+            "",
+            "| name | family | status | review checklist | runtime examples | adaptation points | policy file | eval ready | blockers |",
+            "|---|---|---|---|---:|---|---|---|---|",
+        ]
+    )
+    if not skills:
+        lines.append("| - | - | - | - | - | - | - | - | - |")
+    else:
+        for entry in skills:
+            blockers = ", ".join(entry.get("eval_blockers", [])) or "-"
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        str(entry["name"]),
+                        str(entry["family"]),
+                        str(entry["status"]),
+                        str(entry["review_check_path"] or "-"),
+                        str(entry["runtime_example_count"]),
+                        "true" if entry["has_adaptation_points"] else "false",
+                        "true" if entry["has_policy_file"] else "false",
+                        "true" if entry["eval_ready"] else "false",
+                        blockers,
+                    ]
+                )
+                + " |"
             )
     lines.append("")
     return "\n".join(lines)

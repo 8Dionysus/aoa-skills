@@ -3,6 +3,7 @@ from __future__ import annotations
 import contextlib
 import io
 import json
+import re
 import shutil
 import sys
 import tempfile
@@ -21,6 +22,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 import validate_skills
 import build_catalog
 import skill_lineage_surface
+import skill_review_surface
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {
@@ -71,11 +73,13 @@ class ValidateSkillsTests(unittest.TestCase):
         policy_allow_implicit: bool | None = None,
         techniques: list[dict] | None = None,
         notes: list[str] | None = None,
+        include_composition_exception_review: bool | None = None,
     ) -> None:
         skill_dir = repo_root / "skills" / skill_name
         skill_dir.mkdir()
 
-        technique_ids = [entry["id"] for entry in (techniques or [PRIMARY_PUBLISHED_TECHNIQUE])]
+        resolved_techniques = techniques or [PRIMARY_PUBLISHED_TECHNIQUE]
+        technique_ids = [entry["id"] for entry in resolved_techniques]
         skill_md = textwrap.dedent(
             f"""\
             ---
@@ -183,7 +187,7 @@ class ValidateSkillsTests(unittest.TestCase):
             manifest = {
                 "skill_name": skill_name,
                 "composition_mode": "bounded",
-                "techniques": techniques or [PRIMARY_PUBLISHED_TECHNIQUE],
+                "techniques": resolved_techniques,
             }
             if notes is not None:
                 manifest["notes"] = notes
@@ -204,6 +208,15 @@ class ValidateSkillsTests(unittest.TestCase):
                 encoding="utf-8",
             )
 
+        if include_composition_exception_review is None:
+            include_composition_exception_review = len(technique_ids) == 1
+        if include_composition_exception_review:
+            self.write_skill_composition_exception_review(
+                repo_root,
+                skill_name=skill_name,
+                technique_ids=technique_ids,
+            )
+
     def make_repo(
         self,
         *,
@@ -219,6 +232,7 @@ class ValidateSkillsTests(unittest.TestCase):
         notes: list[str] | None = None,
         index_names: list[str] | None = None,
         review_record_surface: str | None = None,
+        include_composition_exception_review: bool | None = None,
     ) -> Path:
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
         self.addCleanup(shutil.rmtree, repo_root, True)
@@ -239,6 +253,7 @@ class ValidateSkillsTests(unittest.TestCase):
             policy_allow_implicit=policy_allow_implicit,
             techniques=techniques,
             notes=notes,
+            include_composition_exception_review=include_composition_exception_review,
         )
         if review_record_surface is not None:
             self.add_public_review_record(repo_root, skill_name, review_record_surface)
@@ -525,6 +540,225 @@ class ValidateSkillsTests(unittest.TestCase):
         for spec in build_catalog.generated_surface_specs():
             build_catalog.write_generated_surface(repo_root, spec)
 
+    def write_skill_composition_exception_review(
+        self,
+        repo_root: Path,
+        *,
+        skill_name: str = "aoa-test-skill",
+        technique_ids: list[str] | None = None,
+        recommendation: str = "keep_exception",
+        malformed: bool = False,
+    ) -> None:
+        review_path = (
+            repo_root
+            / "docs"
+            / "reviews"
+            / "skill-composition-exceptions"
+            / f"{skill_name}.md"
+        )
+        review_path.parent.mkdir(parents=True, exist_ok=True)
+        technique_ids = technique_ids or ["AOA-T-0001"]
+        if malformed:
+            review_path.write_text(
+                textwrap.dedent(
+                    f"""\
+                    # {skill_name}
+
+                    ## Current shape
+
+                    - skill: `{skill_name}`
+
+                    ## Recommendation
+
+                    - `{recommendation}`
+                    """
+                ),
+                encoding="utf-8",
+            )
+            return
+
+        technique_lines = "\n".join(f"  - `{technique_id}`" for technique_id in technique_ids)
+        review_path.write_text(
+            textwrap.dedent(
+                f"""\
+                # {skill_name}
+
+                ## Current shape
+
+                - skill: `{skill_name}`
+                - technique_count: `{len(technique_ids)}`
+                - technique_ids:
+                {technique_lines}
+                - composition_class: `single_technique_exception`
+
+                ## Package rationale
+
+                This stays in the skill layer because it packages a bounded workflow.
+
+                ## Why this is not just the technique
+
+                The skill adds invocation, output, and review boundaries around the technique.
+
+                ## Adjacent skills considered
+
+                - `aoa-other-skill`
+
+                ## Recommendation
+
+                - `{recommendation}`
+                """
+            ),
+            encoding="utf-8",
+        )
+
+    def write_review_checklist(self, repo_root: Path, skill_name: str) -> None:
+        review_path = repo_root / "skills" / skill_name / "checks" / "review.md"
+        review_path.parent.mkdir(parents=True, exist_ok=True)
+        review_path.write_text(
+            textwrap.dedent(
+                f"""\
+                # Review Checklist
+
+                ## Purpose
+
+                Review checklist for `{skill_name}`.
+
+                ## When it applies
+
+                - when a live overlay family needs review evidence
+
+                ## Review checklist
+
+                - [ ] confirm the local overlay wording stays bounded
+                - [ ] confirm repo-relative files and commands stay explicit
+
+                ## Not a fit
+
+                - not for broad playbooks or scenario bundles
+                """
+            ),
+            encoding="utf-8",
+        )
+
+    def write_live_overlay_pack(
+        self,
+        repo_root: Path,
+        *,
+        family: str,
+        skill_names: list[str],
+        repo_relative_language: bool = True,
+        include_review_doc: bool = True,
+        review_check_skill_names: list[str] | None = None,
+        review_mentions_skill_names: list[str] | None = None,
+    ) -> None:
+        overlay_dir = repo_root / "docs" / "overlays" / family
+        overlay_dir.mkdir(parents=True, exist_ok=True)
+        overlayed_skill_lines = "\n".join(f"- `{skill_name}`" for skill_name in skill_names)
+        review_check_skill_names = (
+            skill_names if review_check_skill_names is None else review_check_skill_names
+        )
+        review_mentions_skill_names = (
+            skill_names
+            if review_mentions_skill_names is None
+            else review_mentions_skill_names
+        )
+        local_surface_line = (
+            "- repo-relative docs and commands remain explicit"
+            if repo_relative_language
+            else "- keep commands and paths explicit"
+        )
+        authority_line = (
+            "- local maintainers own repo-relative authority"
+            if repo_relative_language
+            else "- local maintainers own authority"
+        )
+        review_refs = ", ".join(
+            f"`skills/{skill_name}/checks/review.md`"
+            for skill_name in review_check_skill_names
+        )
+        if not review_refs:
+            review_refs = "- no bundle-local review checklists authored"
+        else:
+            review_refs = f"- bundle-local review checklists: {review_refs}"
+        overlay_lines = [
+            f"# {family} overlay",
+            "",
+            "## Purpose",
+            "",
+            (
+                "This exemplar overlay pack keeps repo-relative local adaptation explicit."
+                if repo_relative_language
+                else "This exemplar overlay pack keeps local adaptation explicit."
+            ),
+            "It does not change the base skill boundary.",
+            "",
+            "## Authority",
+            "",
+            f"- overlay family: `{family}`",
+            authority_line,
+            "",
+            "## Local surface",
+            "",
+            local_surface_line,
+            f"- family review doc: `docs/overlays/{family}/REVIEW.md`",
+            review_refs,
+            "",
+            "## Overlayed skills",
+            "",
+            *[f"- `{skill_name}`" for skill_name in skill_names],
+            "",
+            "## Risks and anti-patterns",
+            "",
+            "- do not widen the pack into a playbook",
+            "",
+            "## Validation",
+            "",
+            f"- confirm `skills/{family}-*` bundles stay aligned",
+            "",
+        ]
+        (overlay_dir / "PROJECT_OVERLAY.md").write_text(
+            "\n".join(overlay_lines),
+            encoding="utf-8",
+        )
+
+        if include_review_doc:
+            review_lines = [
+                f"# {family} overlay family review",
+                "",
+                "## Current status",
+                "",
+                f"- overlay family: `{family}`",
+                f"- reviewed skills: {', '.join(f'`{skill_name}`' for skill_name in review_mentions_skill_names)}",
+                "",
+                "## Evidence reviewed",
+                "",
+                f"- `docs/overlays/{family}/PROJECT_OVERLAY.md`",
+                f"- bundle-local review checklists under `skills/{family}-*/checks/review.md`",
+                "",
+                "## Findings",
+                "",
+                *[
+                    f"- reviewed `{skill_name}` against the family overlay contract"
+                    for skill_name in review_mentions_skill_names
+                ],
+                "",
+                "## Gaps and blockers",
+                "",
+                "- no blocker identified in this bounded test fixture",
+                "",
+                "## Recommendation",
+                "",
+                f"Keep `{family}` as a thin reviewable overlay family.",
+                "",
+            ]
+            (overlay_dir / "REVIEW.md").write_text(
+                "\n".join(review_lines),
+                encoding="utf-8",
+            )
+
+        for skill_name in review_check_skill_names:
+            self.write_review_checklist(repo_root, skill_name)
+
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
         text = skill_md_path.read_text(encoding="utf-8")
@@ -627,12 +861,52 @@ class ValidateSkillsTests(unittest.TestCase):
             encoding="utf-8",
         )
 
+    def load_skill_composition_audit(self, repo_root: Path) -> dict:
+        audit_path = repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_JSON_PATH
+        return json.loads(audit_path.read_text(encoding="utf-8"))
+
+    def write_skill_composition_audit(self, repo_root: Path, payload: dict) -> None:
+        audit_path = repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_JSON_PATH
+        audit_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
     def test_clean_fixture_passes(self) -> None:
         repo_root = self.make_repo()
         issues = validate_skills.run_validation(repo_root)
         self.assertEqual([], issues)
         self.assertEqual(0, self.run_main(repo_root))
         self.assertEqual(0, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
+
+    def test_single_technique_skill_without_exception_review_fails(self) -> None:
+        repo_root = self.make_repo(include_composition_exception_review=False)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "single-technique skill requires a valid docs/reviews/skill-composition-exceptions/aoa-test-skill.md review record",
+            messages,
+        )
+
+    def test_malformed_skill_composition_exception_review_fails(self) -> None:
+        repo_root = self.make_repo(include_composition_exception_review=False)
+        self.write_skill_composition_exception_review(
+            repo_root,
+            malformed=True,
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "skill composition exception review missing required section 'Package rationale'",
+            messages,
+        )
+        self.assertIn(
+            "skill composition exception review top-level sections must match the canonical order exactly",
+            messages,
+        )
 
     def test_governance_lane_unknown_skill_fails(self) -> None:
         repo_root = self.make_repo(
@@ -1053,6 +1327,111 @@ class ValidateSkillsTests(unittest.TestCase):
         )
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
+    def test_review_truth_sync_can_be_strictly_validated(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
+        review_path = repo_root / "docs" / "reviews" / "status-promotions" / "aoa-test-skill.md"
+        review_path.write_text(
+            textwrap.dedent(
+                f"""\
+                ---
+                name: aoa-test-skill
+                ---
+
+                # aoa-test-skill status promotion review
+
+                ## Current status
+
+                - current maturity status: evaluated
+                - current machine-checkable floor: pass
+                - current governance lane decision: stay_evaluated
+                - scope: core
+                - current lineage: published
+                - reviewed revision: placeholder
+
+                ## Target status
+
+                - target maturity status: evaluated
+                - machine-checkable floor result: pass
+                - recorded governance outcome: stay_evaluated
+
+                ## Evidence reviewed
+
+                - `skills/aoa-test-skill/SKILL.md`
+
+                ## Findings
+
+                - runtime skill.md meaning changed: no
+
+                ## Gaps and blockers
+
+                - blockers for this target status: none
+                - blockers for the next status step: none
+
+                ## Recommendation
+
+                Stay evaluated.
+                """
+            ),
+            encoding="utf-8",
+        )
+
+        first_pass = validate_skills.run_validation(
+            repo_root,
+            fail_on_review_truth_sync=True,
+        )
+        mismatch_issue = next(
+            issue
+            for issue in first_pass
+            if issue.message.startswith("reviewed_revision_mismatch(expected=")
+        )
+        expected_revision = re.search(
+            r"expected=([^,]+), recorded=",
+            mismatch_issue.message,
+        ).group(1)
+        review_path.write_text(
+            review_path.read_text(encoding="utf-8").replace(
+                "- reviewed revision: placeholder",
+                f"- reviewed revision: {expected_revision}",
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
+
+        self.assertEqual(
+            [],
+            validate_skills.run_validation(
+                repo_root,
+                fail_on_review_truth_sync=True,
+            ),
+        )
+
+    def test_review_truth_sync_revision_excludes_review_surface_files(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        review_path = (
+            repo_root / "docs" / "reviews" / "status-promotions" / "aoa-test-skill.md"
+        )
+        revision_before = skill_review_surface.current_bundle_revision(
+            repo_root,
+            "aoa-test-skill",
+        )
+        review_path.write_text(
+            "# aoa-test-skill status promotion review\n\n## Findings\n\n- changed.\n",
+            encoding="utf-8",
+        )
+        revision_after = skill_review_surface.current_bundle_revision(
+            repo_root,
+            "aoa-test-skill",
+        )
+        self.assertEqual(revision_before, revision_after)
+
     def test_reviewed_status_passes_with_canonical_candidate_review_record(self) -> None:
         repo_root = self.make_repo(
             status="reviewed",
@@ -1121,42 +1500,13 @@ class ValidateSkillsTests(unittest.TestCase):
             techniques=[PENDING_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
             notes=[PENDING_NOTE],
         )
-        overlay_path = repo_root / "docs" / "overlays" / "atm10" / "PROJECT_OVERLAY.md"
-        overlay_path.parent.mkdir(parents=True, exist_ok=True)
-        overlay_path.write_text(
-            textwrap.dedent(
-                """\
-                # atm10 overlay
-
-                ## Purpose
-
-                This exemplar overlay pack keeps repo-relative local adaptation explicit.
-                It does not change the base skill boundary.
-
-                ## Authority
-
-                - overlay family: `atm10`
-                - local maintainers own repo-relative authority
-
-                ## Local surface
-
-                - repo-relative docs and commands remain explicit
-
-                ## Overlayed skills
-
-                - `atm10-change-protocol`
-                - `atm10-source-of-truth-check`
-
-                ## Risks and anti-patterns
-
-                - do not widen the pack into a playbook
-
-                ## Validation
-
-                - confirm both `skills/atm10-*` bundles stay aligned
-                """
-            ),
-            encoding="utf-8",
+        self.write_live_overlay_pack(
+            repo_root,
+            family="atm10",
+            skill_names=[
+                "atm10-change-protocol",
+                "atm10-source-of-truth-check",
+            ],
         )
         self.write_catalogs(repo_root)
 
@@ -1185,41 +1535,11 @@ class ValidateSkillsTests(unittest.TestCase):
             policy_allow_implicit=True,
             techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
         )
-        overlay_path = repo_root / "docs" / "overlays" / "atm10" / "PROJECT_OVERLAY.md"
-        overlay_path.parent.mkdir(parents=True, exist_ok=True)
-        overlay_path.write_text(
-            textwrap.dedent(
-                """\
-                # atm10 overlay
-
-                ## Purpose
-
-                This exemplar overlay pack keeps local adaptation explicit.
-                It does not change the base skill boundary.
-
-                ## Authority
-
-                - overlay family: `atm10`
-                - local maintainers own authority
-
-                ## Local surface
-
-                - keep commands and paths explicit
-
-                ## Overlayed skills
-
-                - `atm10-change-protocol`
-
-                ## Risks and anti-patterns
-
-                - do not widen the pack into a playbook
-
-                ## Validation
-
-                - confirm `skills/atm10-*` bundles stay aligned
-                """
-            ),
-            encoding="utf-8",
+        self.write_live_overlay_pack(
+            repo_root,
+            family="atm10",
+            skill_names=["atm10-change-protocol"],
+            repo_relative_language=False,
         )
         self.write_catalogs(repo_root)
 
@@ -1227,6 +1547,93 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "live project overlay must explicitly keep paths or commands repository-relative",
+            messages,
+        )
+
+    def test_live_project_overlay_requires_family_review_doc(self) -> None:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+        (repo_root / "SKILL_INDEX.md").write_text(
+            textwrap.dedent(
+                """\
+                # SKILL_INDEX
+
+                | name | scope | status | summary |
+                |---|---|---|---|
+                | atm10-change-protocol | project | scaffold | Test summary. |
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="atm10-change-protocol",
+            scope="project",
+            policy_allow_implicit=True,
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        self.write_live_overlay_pack(
+            repo_root,
+            family="atm10",
+            skill_names=["atm10-change-protocol"],
+            include_review_doc=False,
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "live overlay family 'atm10' is missing docs/overlays/atm10/REVIEW.md",
+            messages,
+        )
+
+    def test_live_project_overlay_requires_bundle_review_checklist(self) -> None:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+        (repo_root / "SKILL_INDEX.md").write_text(
+            textwrap.dedent(
+                """\
+                # SKILL_INDEX
+
+                | name | scope | status | summary |
+                |---|---|---|---|
+                | atm10-change-protocol | project | scaffold | Test summary. |
+                | atm10-source-of-truth-check | project | scaffold | Test summary. |
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="atm10-change-protocol",
+            scope="project",
+            policy_allow_implicit=True,
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="atm10-source-of-truth-check",
+            scope="project",
+            policy_allow_implicit=True,
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        self.write_live_overlay_pack(
+            repo_root,
+            family="atm10",
+            skill_names=[
+                "atm10-change-protocol",
+                "atm10-source-of-truth-check",
+            ],
+            review_check_skill_names=["atm10-change-protocol"],
+        )
+        self.write_catalogs(repo_root)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "live overlay family 'atm10' requires skills/atm10-source-of-truth-check/checks/review.md",
             messages,
         )
 
@@ -1249,6 +1656,21 @@ class ValidateSkillsTests(unittest.TestCase):
             messages,
         )
         self.assertEqual(1, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
+
+    def test_stale_skill_composition_audit_surface_fails(self) -> None:
+        repo_root = self.make_repo()
+        self.write_catalogs(repo_root)
+
+        audit = self.load_skill_composition_audit(repo_root)
+        audit["summary"]["approved_exception_count"] = 99
+        self.write_skill_composition_audit(repo_root, audit)
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "generated skill composition audit artifact is out of date; run python scripts/build_catalog.py",
+            messages,
+        )
 
     def test_mixed_family_index_duplicate_fails(self) -> None:
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))

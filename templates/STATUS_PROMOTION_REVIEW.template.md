@@ -7,6 +7,7 @@
 - current governance lane decision:
 - scope:
 - current lineage:
+- reviewed revision:
 
 ## Target status
 
@@ -33,5 +34,5 @@
 
 ## Recommendation
 
-Write a clear recommendation that states whether the skill should remain at its current status,
-is ready for the named non-canonical promotion, or needs more evidence before that promotion.
+State whether the skill should remain at its current status, is ready for the named non-canonical
+promotion, or needs more evidence before that promotion.

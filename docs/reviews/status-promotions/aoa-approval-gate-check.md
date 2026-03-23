@@ -3,35 +3,37 @@
 ## Current status
 
 - current maturity status: `canonical`
+- current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
+- current governance lane decision: `default_reference`
 - scope: `risk`
-- current lineage: manifest-aligned with published technique `AOA-T-0028`
+- current lineage: `published`
+- reviewed revision: `9a2ba5f066fd`
 
 ## Target status
 
-- target maturity status: `evaluated` (historical target achieved before the later canonical promotion)
-- why this target now: evaluation coverage, explicit-only policy, and bounded review/check support already justified a non-canonical promotion before the later default-reference decision
+- target maturity status: `evaluated`
+- why this target now: this historical non-canonical promotion record remains useful because the live bundle still satisfies the evaluated floor underneath the current canonical/default-reference status.
+- next status after this step: canonical maintenance now lives in `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` and `docs/governance/lanes.md`.
 
 ## Evidence reviewed
 
 - `skills/aoa-approval-gate-check/SKILL.md`
 - `skills/aoa-approval-gate-check/techniques.yaml`
 - `skills/aoa-approval-gate-check/checks/review.md`
-- `skills/aoa-approval-gate-check/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
 
-- the trigger boundary cleanly separates approval classification from preview-first and sanitized-sharing workflows
-- the explicit-only policy matches the operational risk surface and does not silently widen permission
-- evaluation coverage exists for runtime self-containment, one `use` case, and one `do_not_use` boundary case
-- the bounded review/check support keeps the workflow reviewable without turning it into a generic approval policy engine
+- machine-checkable floor result: `pass`
+- recorded governance outcome: `default_reference`
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the composition-boundary wave clarified why this remains a reviewed single-technique exception while the bundle still clears the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 
-- no technical blocker remains for `evaluated`
-- this record no longer blocks the next step; the later canonical decision now lives in `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`
+- blockers for this target status: none at the current bundle gate.
+- blockers for the next status step: none for the current status; maintain default-reference drift through `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` and `docs/governance/lanes.md`.
 
 ## Recommendation
 
-Keep this record as the historical `evaluated` promotion surface.
-Use the canonical-candidate review record for the current default-reference maintenance decision.
+Keep this historical status-promotion record aligned with the live canonical bundle and use the canonical-candidate record for default-reference maintenance.

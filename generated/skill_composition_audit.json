@@ -1,0 +1,192 @@
+{
+  "skill_composition_version": 1,
+  "skills": [
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-adr-write",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "single_technique_exception",
+      "exception_review_path": "docs/reviews/skill-composition-exceptions/aoa-approval-gate-check.md",
+      "name": "aoa-approval-gate-check",
+      "recommended_action": "keep_exception",
+      "technique_count": 1,
+      "technique_ids": [
+        "AOA-T-0028"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-bounded-context-map",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0016",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-change-protocol",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-contract-test",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0003",
+        "AOA-T-0015"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-core-logic-boundary",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0016",
+        "AOA-T-0015"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-dry-run-first",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0004",
+        "AOA-T-0028"
+      ]
+    },
+    {
+      "composition_class": "single_technique_exception",
+      "exception_review_path": "docs/reviews/skill-composition-exceptions/aoa-invariant-coverage-audit.md",
+      "name": "aoa-invariant-coverage-audit",
+      "recommended_action": "keep_exception",
+      "technique_count": 1,
+      "technique_ids": [
+        "AOA-T-0017"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-port-adapter-refactor",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0016",
+        "AOA-T-0015"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-property-invariants",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0017",
+        "AOA-T-0007"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-safe-infra-change",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0028",
+        "AOA-T-0001"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-sanitized-share",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0034",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-source-of-truth-check",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 3,
+      "technique_ids": [
+        "AOA-T-0013",
+        "AOA-T-0002",
+        "AOA-T-0009"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "aoa-tdd-slice",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0014",
+        "AOA-T-0001"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "atm10-change-protocol",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "atm10-source-of-truth-check",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0013",
+        "AOA-T-0002"
+      ]
+    }
+  ],
+  "source_of_truth": {
+    "exception_reviews": "docs/reviews/skill-composition-exceptions/*.md",
+    "skill_markdown": "skills/*/SKILL.md",
+    "technique_manifest": "skills/*/techniques.yaml"
+  },
+  "summary": {
+    "approved_exception_count": 2,
+    "multi_technique_skill_count": 14,
+    "needs_reframe_count": 0,
+    "single_technique_skill_count": 2,
+    "total_skill_count": 16
+  }
+}

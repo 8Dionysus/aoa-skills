@@ -2,16 +2,18 @@
 
 ## Current status
 
-- current maturity status: `scaffold`
-- current machine-checkable floor: document-authority clarification with example coverage
+- current maturity status: `evaluated`
+- current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
+- current governance lane decision: `stay_evaluated`
 - scope: `core`
-- current lineage: manifest-aligned with pending technique `AOA-T-PENDING-SOURCE-OF-TRUTH-CHECK` plus published technique `AOA-T-0002`
+- current lineage: `published`
+- reviewed revision: `a1d77ad6faab`
 
 ## Target status
 
 - target maturity status: `evaluated`
-- why this target now: the trigger boundary is bounded around doc authority and ownership, and the skill has evaluation coverage for self-containment and trigger behavior
-- next status after this step: `canonical` remains a separate decision because the pending lineage still blocks that path
+- why this target now: the live bundle remains evaluation-backed and bounded around Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and now keeps top-level status docs short and link-driven once canonical homes already exist, so this record should stay aligned with the current evaluated state.
+- next status after this step: `canonical` through `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` once comparative default-reference rationale is refreshed.
 
 ## Evidence reviewed
 
@@ -19,20 +21,20 @@
 - `skills/aoa-source-of-truth-check/techniques.yaml`
 - `skills/aoa-source-of-truth-check/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
+- `tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/*`
 
 ## Findings
 
-- the trigger boundary stays focused on document authority, ownership, and overlap rather than broad governance or product-surface design
-- the mixed lineage shape is honest because the pending technique remains pending while the published `AOA-T-0002` ref stays pinned
-- the example keeps the workflow centered on authority mapping and conflict reduction instead of turning the skill into a general documentation policy system
-- evaluation coverage is expected to satisfy the repository floor once the shared fixture lane is integrated
+- machine-checkable floor result: `pass`
+- recorded governance outcome: `stay_evaluated`
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the current governance decision keeps the bundle evaluated until a stronger comparative default-reference rationale is recorded, and the skill now also covers lightweight snapshot discipline for top-level status docs when canonical homes already exist.
 
 ## Gaps and blockers
 
-- shared evaluated-floor wiring is owned by the integrator lane and is not part of this bundle-specific edit
-- `canonical` remains blocked until the pending upstream technique is published and refreshed
+- blockers for this target status: none at the current bundle gate.
+- blockers for the next status step: comparative default-reference rationale remains tracked in `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` and `docs/governance/lanes.md`.
 
 ## Recommendation
 
-Promotion to `evaluated` is ready at the bundle level.
-Keep `canonical` deferred until upstream pending lineage is resolved and the repo-level evaluated-floor wiring is integrated.
+Keep this status-promotion record aligned with the live evaluated bundle and use the canonical-candidate record for any future default-reference decision.

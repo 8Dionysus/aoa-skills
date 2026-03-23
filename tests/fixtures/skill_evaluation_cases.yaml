@@ -142,18 +142,21 @@ trigger_cases:
 
   - skill: aoa-source-of-truth-check
     case_id: source_of_truth_check_authority_confusion
-    prompt: Clarify which file is authoritative because several docs overlap and contributors do not know what to trust first.
+    prompt: Clarify which file is authoritative because several docs overlap, and keep top-level status docs short and link-driven once canonical homes already exist.
     expected: use
     required_phrases:
       - a repository has several docs that may overlap or conflict
       - contributors may not know which file to trust first
       - a change touches docs, process, or operational guidance and the question is which file is authoritative
+      - top-level status docs such as `README` or `MANIFEST` are accumulating status/history that should live in canonical homes instead
+      - the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven
   - skill: aoa-source-of-truth-check
     case_id: source_of_truth_check_broader_policy_design
-    prompt: Design a broader policy framework rather than clarifying document authority or ownership for existing files.
+    prompt: Design a broader policy framework for a repository that does not yet have canonical homes for status or history detail.
     expected: do_not_use
     required_phrases:
       - the main problem is broader policy design rather than document authority or ownership
+      - the task is only about building or maintaining a derived docs surface; that belongs in a separate review-surface workflow
   - skill: atm10-source-of-truth-check
     case_id: atm10_source_of_truth_local_authority
     prompt: Clarify which repo-relative atm10 docs are authoritative for one local workflow because overview docs and canonical guides are drifting apart.
@@ -799,21 +802,23 @@ snapshot_cases:
     forbidden_output_phrases: []
   - skill: aoa-source-of-truth-check
     case_id: source_of_truth_check_authority_confusion
-    prompt: Clarify which file is authoritative because several docs overlap and contributors do not know what to trust first.
+    prompt: Clarify which file is authoritative because several docs overlap, and keep top-level status docs short and link-driven once canonical homes already exist.
     expected: use
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/source_of_truth_check_authority_confusion.md
     required_output_phrases:
       - use
       - A source-of-truth decision that names the authoritative file and explains the relationship to overlapping documents.
+      - lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters
     forbidden_output_phrases: []
   - skill: aoa-source-of-truth-check
     case_id: source_of_truth_check_broader_policy_design
-    prompt: Design a broader policy framework rather than clarifying document authority or ownership for existing files.
+    prompt: Design a broader policy framework for a repository that does not yet have canonical homes for status or history detail.
     expected: do_not_use
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/source_of_truth_check_broader_policy_design.md
     required_output_phrases:
       - do_not_use
       - A deflection toward a policy-design or planning skill, not a source-of-truth decision.
+      - the task is only about building or maintaining a derived docs surface; that belongs in a separate review-surface workflow
     forbidden_output_phrases: []
   - skill: atm10-source-of-truth-check
     case_id: atm10_source_of_truth_local_authority

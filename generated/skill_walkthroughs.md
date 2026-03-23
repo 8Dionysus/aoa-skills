@@ -30,7 +30,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-adr-write/SKILL.md`
-- pick summary: Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.
+- pick summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.
 
 ### Use when
 
@@ -38,6 +38,7 @@ Common expand sections:
 - future contributors will need to know why a path was chosen
 - several plausible options existed and the reasoning matters
 - the team or project risks repeating the same debate later
+- the note needs a clear canonical home, not just a one-off comment
 
 ### Do not use when
 
@@ -51,6 +52,8 @@ Common expand sections:
 - concise decision note or ADR draft
 - statement of rationale
 - consequence notes
+- canonical placement or reference for the note
+- verification that the note landed in the expected decision surface
 - verification that the note matches the actual change
 
 ### Support artifacts
@@ -72,6 +75,7 @@ Common expand sections:
 - a task may be destructive, operationally sensitive, or security-relevant
 - the current authority level is unclear
 - the agent needs to classify whether the next step is safe, explicit-only, or out of bounds
+- the task needs an operational gate decision rather than a broader workflow plan
 
 ### Do not use when
 
@@ -86,6 +90,7 @@ Common expand sections:
 - note on whether explicit approval is needed
 - bounded next-step recommendation
 - report of unresolved authority assumptions
+- a reviewable gate decision that can be passed to the next workflow step
 
 ### Support artifacts
 
@@ -237,13 +242,14 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-dry-run-first/SKILL.md`
-- pick summary: Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences.
+- pick summary: Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.
 
 ### Use when
 
 - the task can be simulated, previewed, or inspected before real execution
 - the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface
 - the cost of a mistaken execution is meaningfully higher than the cost of a preview step
+- the task needs a clear seam between dry-run evidence and the one confirmed mutating action
 
 ### Do not use when
 
@@ -257,6 +263,7 @@ Common expand sections:
 - dry-run or preview recommendation
 - bounded preview result or plan
 - note on what the preview does and does not prove
+- explicit confirmation request for the mutating step when the preview is complete
 - recommendation for next step
 
 ### Support artifacts
@@ -279,6 +286,7 @@ Common expand sections:
 - an existing test or check surface needs a review for invariant strength
 - the question is whether current checks really constrain the stable rule
 - you need to turn a loose example set into a bounded coverage audit
+- you want an audit result that names the gap, not just the invariant
 
 ### Do not use when
 
@@ -293,6 +301,7 @@ Common expand sections:
 - gap list for weak or missing checks
 - bounded follow-up checks or revisions
 - concise verification summary
+- audit verdict on whether coverage is strong enough for the current stable truth
 
 ### Support artifacts
 
@@ -413,13 +422,14 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-sanitized-share/SKILL.md`
-- pick summary: Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.
+- pick summary: Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.
 
 ### Use when
 
 - logs, configs, diagnostics, reports, or examples may contain sensitive details
 - a result needs to be shared publicly or with a broader audience
 - raw material may reveal secrets, topology, internal identifiers, or unsafe context
+- the output needs a canonical public-safe home rather than an ad hoc pasted summary
 
 ### Do not use when
 
@@ -433,6 +443,7 @@ Common expand sections:
 - sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly
 - note on what was generalized or removed
 - warning about any remaining ambiguity or sensitive edge
+- canonical public-safe output location or reference
 
 ### Support artifacts
 
@@ -447,7 +458,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-source-of-truth-check/SKILL.md`
-- pick summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.
+- pick summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.
 
 ### Use when
 
@@ -456,6 +467,8 @@ Common expand sections:
 - a change touches docs, process, or operational guidance and the question is which file is authoritative
 - confusion exists between overview docs and authoritative docs
 - one authoritative source must stay aligned across multiple downstream consumer surfaces
+- top-level status docs such as README or MANIFEST are accumulating status/history that should live in canonical homes instead
+- the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven
 
 ### Do not use when
 
@@ -464,6 +477,7 @@ Common expand sections:
 - the authoritative files are already clear and the main need is recording rationale for a decision; use aoa-adr-write
 - the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first
 - the main problem is broader policy design rather than document authority or ownership
+- the task is only about building or maintaining a derived docs surface; that belongs in a separate review-surface workflow
 
 ### Object use shape
 
@@ -471,6 +485,7 @@ Common expand sections:
 - fan-out map when one source feeds multiple downstream consumers
 - note of overlaps or conflicts
 - proposed or implemented document role clarification
+- lightweight snapshot guidance for entrypoint docs when canonical homes already exist
 - verification summary
 
 ### Support artifacts
@@ -519,13 +534,14 @@ Common expand sections:
 - status: `scaffold`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/atm10-change-protocol/SKILL.md`
-- pick summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes.
+- pick summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.
 
 ### Use when
 
 - the base aoa-change-protocol workflow is already correct, but an atm10- repo needs repo-relative paths, commands, or local approval notes
 - a bounded non-trivial change still needs an explicit plan and verification path inside the local repo
 - a contributor needs a thin local overlay rather than a fresh workflow design
+- the family review doc and bundle-local checklist still need to stay aligned
 
 ### Do not use when
 
@@ -538,12 +554,14 @@ Common expand sections:
 
 - bounded local change plan
 - repo-relative command or path sketch
+- pointer to the family review surface
 - verification note for the local repo surface
 - concise handoff on what stays downstream and explicit
 
 ### Support artifacts
 
 - `runtime_example` (selected): `skills/atm10-change-protocol/examples/example.md`
+- `review_checklist`: `skills/atm10-change-protocol/checks/review.md`
 
 ## atm10-source-of-truth-check
 
@@ -551,13 +569,14 @@ Common expand sections:
 - status: `scaffold`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/atm10-source-of-truth-check/SKILL.md`
-- pick summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.
+- pick summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.
 
 ### Use when
 
 - the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules
 - contributors need a thin overlay that maps repo-relative docs such as README.md, docs/ARCHITECTURE.md, or docs/[canonical-guide].md
 - confusion exists between overview docs and authoritative files inside one local repo
+- the family review doc and bundle-local checklist still need to stay aligned
 
 ### Do not use when
 
@@ -571,9 +590,11 @@ Common expand sections:
 - local source-of-truth map
 - bounded clarification note
 - repo-relative canonical-file pattern
+- pointer to the family review surface
 - verification summary for the local docs surface
 
 ### Support artifacts
 
 - `runtime_example` (selected): `skills/atm10-source-of-truth-check/examples/example.md`
+- `review_checklist`: `skills/atm10-source-of-truth-check/checks/review.md`
 

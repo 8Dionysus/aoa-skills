@@ -3,35 +3,37 @@
 ## Current status
 
 - current maturity status: `evaluated`
+- current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
+- current governance lane decision: `stay_evaluated`
 - scope: `risk`
-- current lineage: manifest-aligned with pending technique `AOA-T-PENDING-DRY-RUN-FIRST` plus published complement `AOA-T-0004`
+- current lineage: `published`
+- reviewed revision: `1416f2480434`
 
 ## Target status
 
-- target maturity status: `evaluated` (achieved in this pass)
-- why this target now: evaluation coverage, explicit-only policy, and review-checklist guidance are already strong enough for a non-canonical promotion
+- target maturity status: `evaluated`
+- why this target now: the live bundle remains evaluation-backed and bounded around Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences, so this record should stay aligned with the current evaluated state.
+- next status after this step: `canonical` through `docs/reviews/canonical-candidates/aoa-dry-run-first.md` once comparative default-reference rationale is refreshed.
 
 ## Evidence reviewed
 
 - `skills/aoa-dry-run-first/SKILL.md`
 - `skills/aoa-dry-run-first/techniques.yaml`
 - `skills/aoa-dry-run-first/checks/review.md`
-- `skills/aoa-dry-run-first/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
 
-- the trigger boundary is crisp between preview-path selection, authority classification, and sanitized sharing
-- the explicit-only policy matches the operational risk surface and does not silently widen permission
-- evaluation coverage exists for runtime self-containment, one `use` case, and multiple `do_not_use` boundary cases
-- the checklist reinforces bounded preview discipline instead of widening the skill into generic operational execution
+- machine-checkable floor result: `pass`
+- recorded governance outcome: `stay_evaluated`
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the composition-boundary wave reframed the bundle into a clearer preview-plus-confirmation package while keeping the current governance decision at `stay_evaluated`.
 
 ## Gaps and blockers
 
-- pending lineage does not block `evaluated`, but it still blocks a future `canonical` path
-- this pass does not establish that `aoa-dry-run-first` should yet be the default public reference for preview-first workflows
+- blockers for this target status: none at the current bundle gate.
+- blockers for the next status step: comparative default-reference rationale remains tracked in `docs/reviews/canonical-candidates/aoa-dry-run-first.md` and `docs/governance/lanes.md`.
 
 ## Recommendation
 
-Promotion to `evaluated` is complete in this pass.
-Keep `canonical` deferred until published lineage exists and a separate default-use decision is recorded.
+Keep this status-promotion record aligned with the live evaluated bundle and use the canonical-candidate record for any future default-reference decision.

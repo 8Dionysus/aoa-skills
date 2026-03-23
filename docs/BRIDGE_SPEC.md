@@ -4,7 +4,10 @@ This document defines how `aoa-skills` should consume and compose techniques fro
 
 ## Goal
 
-Keep techniques as the canonical source of reusable engineering practice while allowing skills to package those practices into Codex-friendly workflows.
+Keep techniques as the canonical source of reusable engineering practice while
+allowing skills to package those practices into Codex-friendly workflows.
+Skills are expected to act as composition packages, not as thin mirrors of a
+single technique.
 
 ## Non-goal
 
@@ -13,7 +16,10 @@ The runtime artifact should remain self-contained enough to execute reviewably.
 
 ## Composition model
 
-Each skill may reference one or more techniques by ID.
+Each skill may reference one or more techniques by ID, but the default shape is
+multi-technique and/or multi-action composition.
+A skill that references only one technique must carry an explicit exception
+review explaining why it still deserves a skill boundary.
 A skill can use selected sections from each referenced technique.
 
 Recommended source sections:
@@ -74,9 +80,12 @@ Pending techniques should use `path: TBD` and `source_ref: TBD` until the upstre
 Preferred model:
 1. read one or more techniques from `aoa-techniques`
 1. resolve them at the pinned `source_ref`
-2. extract selected sections
-3. generate or refresh `SKILL.md`
-4. keep the final committed `SKILL.md` human-reviewable
+2. apply a composition filter to decide whether the input should refresh an
+   existing skill, become a new multi-technique skill, require an explicit
+   single-technique exception review, or be deferred
+3. extract selected sections
+4. generate or refresh `SKILL.md`
+5. keep the final committed `SKILL.md` human-reviewable
 
 This keeps skill execution stable and reproducible.
 
@@ -202,6 +211,8 @@ Project overlays may add:
 - examples shaped for the local repository
 
 Project overlays should not fork the core meaning of a technique unless they explicitly document the divergence.
+They are not a reason to collapse a technique into a thin one-technique skill
+when the skill layer does not add a real package boundary.
 
 ## Drift policy
 
@@ -219,6 +230,8 @@ The bridge/drift flow uses CLI output and ordinary git diff as the review surfac
 It does not add committed drift-report artifacts.
 For multi-skill refreshes, prefer explicit `--skill` lists against a local `../aoa-techniques` checkout rather than a broad repin.
 If a selected skill is mixed-lineage, refresh only its published refs and keep pending entries at `TBD` until the upstream technique is published.
+Future technique harvests should pass through the composition filter above
+before any skill file is created or refreshed.
 
 ## Invocation policy
 

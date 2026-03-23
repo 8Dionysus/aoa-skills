@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills skill composition audit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "skill_composition_version",
+    "source_of_truth",
+    "summary",
+    "skills"
+  ],
+  "properties": {
+    "skill_composition_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_of_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill_markdown",
+        "technique_manifest",
+        "exception_reviews"
+      ],
+      "properties": {
+        "skill_markdown": { "type": "string", "minLength": 1 },
+        "technique_manifest": { "type": "string", "minLength": 1 },
+        "exception_reviews": { "type": "string", "minLength": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_skill_count",
+        "multi_technique_skill_count",
+        "single_technique_skill_count",
+        "approved_exception_count",
+        "needs_reframe_count"
+      ],
+      "properties": {
+        "total_skill_count": { "type": "integer", "minimum": 0 },
+        "multi_technique_skill_count": { "type": "integer", "minimum": 0 },
+        "single_technique_skill_count": { "type": "integer", "minimum": 0 },
+        "approved_exception_count": { "type": "integer", "minimum": 0 },
+        "needs_reframe_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "technique_count",
+          "technique_ids",
+          "composition_class",
+          "exception_review_path",
+          "recommended_action"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "technique_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "technique_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "composition_class": {
+            "type": "string",
+            "enum": [
+              "multi_technique",
+              "single_technique_exception",
+              "single_technique_needs_reframe"
+            ]
+          },
+          "exception_review_path": {
+            "type": ["string", "null"]
+          },
+          "recommended_action": {
+            "type": "string",
+            "enum": [
+              "keep_multi_technique",
+              "keep_exception",
+              "reframe_multi_technique",
+              "merge_or_remove"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

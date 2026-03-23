@@ -20,6 +20,8 @@ It does not change the base skill boundary.
 - commands: repo-relative checks such as `python -m pytest`, `python scripts/[local-check].py`, or another local validator chosen downstream
 - rollback path: revert the bounded local change and re-run the smallest relevant local check
 - verification path: use the smallest repo-relative check that matches the touched surface
+- family review doc: `docs/overlays/atm10/REVIEW.md`
+- bundle-local review checklists: `skills/atm10-change-protocol/checks/review.md`, `skills/atm10-source-of-truth-check/checks/review.md`
 
 ## Overlayed skills
 
@@ -37,5 +39,6 @@ It does not change the base skill boundary.
 
 - confirm the overlay does not change the base skill boundary
 - confirm every listed overlay skill has a matching `skills/atm10-*` bundle
+- confirm the family review doc and bundle-local review checklists stay aligned
 - confirm repo-relative paths and commands stay public-safe and reviewable
 - confirm downstream authority remains explicit

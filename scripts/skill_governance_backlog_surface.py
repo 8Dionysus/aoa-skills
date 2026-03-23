@@ -7,10 +7,11 @@ import skill_catalog_contract
 import skill_evaluation_surface
 import skill_governance_lane_contract
 import skill_governance_surface
+import skill_review_surface
 import skill_source_model
 
 
-GOVERNANCE_BACKLOG_VERSION = 2
+GOVERNANCE_BACKLOG_VERSION = 3
 GOVERNANCE_BACKLOG_JSON_PATH = Path("generated") / "governance_backlog.json"
 GOVERNANCE_BACKLOG_MARKDOWN_PATH = Path("generated") / "governance_backlog.md"
 GOVERNANCE_BACKLOG_SOURCE_OF_TRUTH = {
@@ -22,11 +23,13 @@ GOVERNANCE_BACKLOG_SOURCE_OF_TRUTH = {
     "governance_lanes": skill_governance_lane_contract.GOVERNANCE_LANES_PATH.as_posix(),
     "evaluation_matrix": "generated/skill_evaluation_matrix.json",
     "public_surface": "generated/public_surface.json",
+    "review_truth_sync": "docs/reviews/status-promotions/*.md",
 }
 CANDIDATE_READY_WITHOUT_REVIEW = "candidate_ready_without_review"
 BLOCKED_BY_PENDING_LINEAGE = "blocked_by_pending_lineage"
 CANONICAL_MAINTENANCE = "canonical_maintenance"
 COMPARATIVE_PENDING = "comparative_pending"
+REVIEW_TRUTH_SYNC = "review_truth_sync"
 DOCS_TRUTH_SYNC = "docs_truth_sync"
 DOCS_TRUTH_PATHS = (
     Path("README.md"),
@@ -84,10 +87,12 @@ def build_governance_backlog_payload(
     repo_root: Path,
     skill_names: Sequence[str],
 ) -> dict[str, Any]:
-    public_payload = {
-        "skills": [],
-        "cohorts": {},
-    }
+    review_truth_sync_entries = (
+        skill_review_surface.build_status_promotion_review_truth_sync_entries(
+            repo_root,
+            skill_names,
+        )
+    )
     evaluation_payload = skill_evaluation_surface.build_evaluation_matrix_payload(
         repo_root,
         skill_names,
@@ -161,6 +166,11 @@ def build_governance_backlog_payload(
         )
 
     docs_truth = docs_truth_sync_issues(repo_root)
+    review_truth_sync = [
+        entry
+        for entry in review_truth_sync_entries
+        if isinstance(entry, Mapping) and not entry.get("truth_synced")
+    ]
     cohorts = {
         CANDIDATE_READY_WITHOUT_REVIEW: sorted(
             [
@@ -188,6 +198,13 @@ def build_governance_backlog_payload(
                 == skill_governance_lane_contract.GOVERNANCE_DECISION_STAY_EVALUATED
             ]
         ),
+        REVIEW_TRUTH_SYNC: sorted(
+            [
+                str(entry["name"])
+                for entry in review_truth_sync
+                if isinstance(entry.get("name"), str)
+            ]
+        ),
         DOCS_TRUTH_SYNC: docs_truth,
     }
 
@@ -195,6 +212,7 @@ def build_governance_backlog_payload(
         "governance_backlog_version": GOVERNANCE_BACKLOG_VERSION,
         "source_of_truth": GOVERNANCE_BACKLOG_SOURCE_OF_TRUTH,
         "cohorts": cohorts,
+        "review_truth_sync": review_truth_sync_entries,
         "skills": skills,
     }
 
@@ -205,6 +223,9 @@ def render_governance_backlog_markdown(payload: Mapping[str, Any]) -> str:
         raise ValueError("governance backlog field 'skills' must be a list")
     cohorts = payload.get("cohorts", {})
     docs_truth = cohorts.get(DOCS_TRUTH_SYNC, [])
+    review_truth_sync = payload.get("review_truth_sync", [])
+    if not isinstance(review_truth_sync, list):
+        raise ValueError("governance backlog field 'review_truth_sync' must be a list")
 
     lines = [
         "# Governance backlog",
@@ -219,6 +240,7 @@ def render_governance_backlog_markdown(payload: Mapping[str, Any]) -> str:
         f"- blocked by pending lineage: {len(cohorts.get(BLOCKED_BY_PENDING_LINEAGE, []))}",
         f"- canonical maintenance cohort: {len(cohorts.get(CANONICAL_MAINTENANCE, []))}",
         f"- comparative pending cohort: {len(cohorts.get(COMPARATIVE_PENDING, []))}",
+        f"- review truth-sync gaps: {len(cohorts.get(REVIEW_TRUTH_SYNC, []))}",
         f"- docs truth-sync issues: {len(docs_truth)}",
         "",
         "| name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |",
@@ -254,12 +276,50 @@ def render_governance_backlog_markdown(payload: Mapping[str, Any]) -> str:
     lines.extend(
         [
             "",
+            "## Review truth sync",
+            "",
+            "| name | status | lineage | governance decision | review path | reviewed revision | current revision | meaning changed | issues | synced |",
+            "|---|---|---|---|---|---|---|---|---|---|",
+        ]
+    )
+    if not review_truth_sync:
+        lines.append("| - | - | - | - | - | - | - | - | - | - |")
+    else:
+        for entry in review_truth_sync:
+            if not isinstance(entry, Mapping):
+                continue
+            issues = ", ".join(
+                str(issue) for issue in entry.get("issues", []) if isinstance(issue, str)
+            ) or "-"
+            meaning_changed = entry.get("runtime_skill_md_meaning_changed")
+            lines.append(
+                "| "
+                + " | ".join(
+                    [
+                        str(entry.get("name")),
+                        str(entry.get("status")),
+                        str(entry.get("lineage_state")),
+                        str(entry.get("governance_decision") or "-"),
+                        str(entry.get("review_path") or "-"),
+                        str(entry.get("reviewed_revision") or "-"),
+                        str(entry.get("current_revision") or "-"),
+                        str(meaning_changed) if meaning_changed is not None else "-",
+                        issues,
+                        "true" if entry.get("truth_synced") else "false",
+                    ]
+                )
+                + " |"
+            )
+    lines.extend(
+        [
+            "",
             "## Cohorts",
             "",
             f"- `{CANDIDATE_READY_WITHOUT_REVIEW}`: {', '.join(cohorts.get(CANDIDATE_READY_WITHOUT_REVIEW, [])) or '-'}",
             f"- `{BLOCKED_BY_PENDING_LINEAGE}`: {', '.join(cohorts.get(BLOCKED_BY_PENDING_LINEAGE, [])) or '-'}",
             f"- `{CANONICAL_MAINTENANCE}`: {', '.join(cohorts.get(CANONICAL_MAINTENANCE, [])) or '-'}",
             f"- `{COMPARATIVE_PENDING}`: {', '.join(cohorts.get(COMPARATIVE_PENDING, [])) or '-'}",
+            f"- `{REVIEW_TRUTH_SYNC}`: {', '.join(cohorts.get(REVIEW_TRUTH_SYNC, [])) or '-'}",
             f"- `{DOCS_TRUTH_SYNC}`: {', '.join(docs_truth) or '-'}",
             "",
         ]

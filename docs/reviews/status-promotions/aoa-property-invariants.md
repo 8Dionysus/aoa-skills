@@ -3,13 +3,17 @@
 ## Current status
 
 - current maturity status: `canonical`
+- current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
+- current governance lane decision: `default_reference`
 - scope: `core`
-- current lineage: manifest-aligned with published techniques `AOA-T-0017` and `AOA-T-0007`
+- current lineage: `published`
+- reviewed revision: `280478cb5b3d`
 
 ## Target status
 
-- target maturity status: `evaluated` (historical target achieved before the later canonical promotion)
-- why this target now: published lineage, support-example guidance, and behavior-oriented evaluation coverage now exist together
+- target maturity status: `evaluated`
+- why this target now: this historical non-canonical promotion record remains useful because the live bundle still satisfies the evaluated floor underneath the current canonical/default-reference status.
+- next status after this step: canonical maintenance now lives in `docs/reviews/canonical-candidates/aoa-property-invariants.md` and `docs/governance/lanes.md`.
 
 ## Evidence reviewed
 
@@ -20,17 +24,16 @@
 
 ## Findings
 
-- the trigger boundary is coherent around broad behavioral truths and meaningful invariants rather than narrow snapshots
-- published lineage is already clean, pinned, and free of placeholder metadata
-- evaluation coverage exists for runtime self-containment, one `use` case, and multiple `do_not_use` boundary cases
-- the example reinforces invariant-oriented coverage instead of widening the skill into generic exploratory testing
+- machine-checkable floor result: `pass`
+- recorded governance outcome: `default_reference`
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the technique-refresh wave tightened the invariant wording around underspecified stable truth, generator complexity, and failure reporting while the bundle still clears the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 
-- no technical blocker remains for `evaluated`
-- this record no longer blocks the next step; the later canonical decision now lives in `docs/reviews/canonical-candidates/aoa-property-invariants.md`
+- blockers for this target status: none at the current bundle gate.
+- blockers for the next status step: none for the current status; maintain default-reference drift through `docs/reviews/canonical-candidates/aoa-property-invariants.md` and `docs/governance/lanes.md`.
 
 ## Recommendation
 
-Keep this record as the historical `evaluated` promotion surface.
-Use the canonical-candidate review record for the current default-reference maintenance decision.
+Keep this historical status-promotion record aligned with the live canonical bundle and use the canonical-candidate record for default-reference maintenance.

@@ -48,7 +48,7 @@
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
       "status": "evaluated",
-      "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome."
+      "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
@@ -199,7 +199,7 @@
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
       "status": "evaluated",
-      "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences."
+      "summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
@@ -325,7 +325,7 @@
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
       "status": "evaluated",
-      "summary": "Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail."
+      "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
@@ -347,7 +347,7 @@
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "evaluated",
-      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict."
+      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
@@ -388,7 +388,7 @@
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
       "status": "scaffold",
-      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes."
+      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes."
     },
     {
       "candidate_review_path": null,
@@ -407,7 +407,7 @@
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
       "status": "scaffold",
-      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow."
+      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow."
     }
   ],
   "source_of_truth": {

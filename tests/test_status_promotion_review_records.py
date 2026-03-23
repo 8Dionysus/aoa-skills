@@ -1,10 +1,18 @@
 from __future__ import annotations
 
+import textwrap
 import unittest
+import sys
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import skill_review_surface
+
+
 REVIEW_DIR = REPO_ROOT / "docs" / "reviews" / "status-promotions"
 README_PATH = REVIEW_DIR / "README.md"
 TEMPLATE_PATH = REPO_ROOT / "templates" / "STATUS_PROMOTION_REVIEW.template.md"
@@ -45,6 +53,68 @@ class StatusPromotionReviewRecordsTests(unittest.TestCase):
                 )
                 for section in REQUIRED_SECTIONS:
                     self.assertIn(f"## {section}", review_text)
+
+    def test_status_promotion_review_parser_reads_labelled_bullets(self) -> None:
+        review_text = textwrap.dedent(
+            """\
+            ---
+            name: demo-skill
+            ---
+
+            # demo-skill status promotion review
+
+            ## Current status
+
+            - current maturity status: evaluated
+            - current machine-checkable floor: pass
+            - current governance lane decision: stay_evaluated
+            - scope: core
+            - current lineage: published
+            - reviewed revision: abc123
+
+            ## Target status
+
+            - target maturity status: evaluated
+            - machine-checkable floor result: pass
+            - recorded governance outcome: stay_evaluated
+
+            ## Evidence reviewed
+
+            - `skills/demo-skill/SKILL.md`
+
+            ## Findings
+
+            - runtime skill.md meaning changed: yes
+
+            ## Gaps and blockers
+
+            - blockers for this target status: missing comparative rationale
+            - blockers for the next status step: none
+
+            ## Recommendation
+
+            Keep the skill evaluated.
+            """
+        )
+
+        record = skill_review_surface.parse_status_promotion_review_text(
+            skill_name="demo-skill",
+            review_path="docs/reviews/status-promotions/demo-skill.md",
+            review_text=review_text,
+        )
+
+        self.assertEqual("evaluated", record.current_maturity_status)
+        self.assertEqual("pass", record.current_machine_checkable_floor)
+        self.assertEqual("stay_evaluated", record.current_governance_lane_decision)
+        self.assertEqual("core", record.scope)
+        self.assertEqual("published", record.current_lineage)
+        self.assertEqual("abc123", record.reviewed_revision)
+        self.assertEqual("evaluated", record.target_maturity_status)
+        self.assertEqual("pass", record.machine_checkable_floor_result)
+        self.assertEqual("stay_evaluated", record.recorded_governance_outcome)
+        self.assertTrue(record.runtime_skill_md_meaning_changed)
+        self.assertEqual(("missing comparative rationale",), record.blockers_for_target_status)
+        self.assertEqual(("none",), record.blockers_for_next_status_step)
 
 
 if __name__ == "__main__":

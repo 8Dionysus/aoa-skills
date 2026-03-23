@@ -72,8 +72,8 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0003 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation
-- AOA-T-0015 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks
+- AOA-T-0003 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation
+- AOA-T-0015 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks
 
 ## Adaptation points
 

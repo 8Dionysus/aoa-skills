@@ -4,8 +4,10 @@ Public library of reusable Codex-facing skills for coding agents and humans.
 
 `aoa-skills` is the operational companion to `aoa-techniques`.
 Where `aoa-techniques` stores public, reusable, validated engineering techniques,
-`aoa-skills` stores **skill bundles** that compose one or more techniques into
-bounded, reviewable workflows for Codex.
+`aoa-skills` stores **skill bundles** that compose techniques and bounded
+actions into reviewable workflows for Codex. Skills normally package multiple
+techniques and/or multiple operational steps; a single-technique skill is an
+explicit reviewed exception, not the default shape.
 
 A skill here is not a random prompt and not a hidden project hack.
 It is a reusable agent-facing workflow with clear trigger boundaries,
@@ -20,16 +22,17 @@ If you are new to this repository, follow this short path:
 3. Read `docs/EVALUATION_PATH.md` for evaluation evidence, matrix outputs, and snapshot-backed coverage.
 4. Read `docs/PUBLIC_SURFACE.md` for status, promotion, and governance entrypoints.
 5. Read `generated/public_surface.md` and `generated/governance_backlog.md` for the current derived governance readout.
-6. Read `generated/skill_bundle_index.md` and `generated/skill_graph.md` if you want packaging or relationship views.
-7. Read `generated/skill_walkthroughs.md` for the current derived runtime walkthrough surface.
-8. Read `generated/skill_evaluation_matrix.md` for the current derived evaluation evidence surface.
-9. Read `docs/ARCHITECTURE.md` for the high-level model.
-10. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-11. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or live exemplar overlay packs.
-12. Read `docs/overlays/atm10/PROJECT_OVERLAY.md` for the first live exemplar family overlay pack.
-13. Read `SKILL_INDEX.md` for the current skill surface.
-14. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-15. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, and `templates/PROJECT_OVERLAY.template.md` when authoring new overlay surfaces.
+6. Read `generated/skill_composition_audit.md` if you want the current skill-vs-technique composition readout.
+7. Read `generated/skill_bundle_index.md` and `generated/skill_graph.md` if you want packaging or relationship views.
+8. Read `generated/skill_walkthroughs.md` for the current derived runtime walkthrough surface.
+9. Read `generated/skill_evaluation_matrix.md` for the current derived evaluation evidence surface.
+10. Read `docs/ARCHITECTURE.md` for the high-level model.
+11. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
+12. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or live exemplar overlay packs.
+13. Read `docs/overlays/atm10/PROJECT_OVERLAY.md` for the first live exemplar family overlay pack.
+14. Read `SKILL_INDEX.md` for the current skill surface.
+15. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+16. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
 
 ## Quick routes
 
@@ -67,8 +70,10 @@ A technique is a minimal reproducible unit of engineering practice.
 
 ### `aoa-skills`
 Stores the Codex-facing execution layer.
-A skill may depend on one or more techniques and package them into
-an executable workflow for agents.
+A skill may depend on one or more techniques and package them into an
+executable workflow for agents. When a skill is only a lift of one technique,
+it should carry an explicit exception review explaining why it still needs a
+skill layer.
 
 In short:
 
@@ -79,6 +84,7 @@ The current repo-local surface stack is:
 - runtime selection and object use: `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, `scripts/inspect_skill.py`
 - evaluation evidence and matrix reading: `docs/EVALUATION_PATH.md`, `generated/skill_evaluation_matrix.*`, `tests/fixtures/skill_evaluation_cases.yaml`, `scripts/report_skill_evaluation.py`
 - public-product and governance signals: `docs/PUBLIC_SURFACE.md`, `generated/public_surface.*`, `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, `generated/skill_graph.*`
+- composition-boundary and exception-review signals: `generated/skill_composition_audit.*`, `docs/reviews/skill-composition-exceptions/*.md`, `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md`
 - overlay preparation and thin downstream adaptation: `docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, `templates/PROJECT_OVERLAY.template.md`, `templates/PROJECT_OVERLAY_SKILL.template.md`
 
 The runtime path for public skill use is:
@@ -253,7 +259,9 @@ They do not add committed drift-report artifacts, and the upstream refresh flow 
 
 ## Contribution model
 
-A skill is usually shaped from one or more real techniques.
+A skill is usually shaped from one or more real techniques and a bounded
+sequence of actions. Thin one-technique imports should be the exception, not
+the norm.
 Those techniques are first born and validated in a real project,
 then promoted into `aoa-techniques`, and only then packaged here
 into a Codex-facing skill.

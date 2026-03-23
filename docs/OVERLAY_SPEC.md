@@ -46,10 +46,13 @@ Live exemplar packs now live under `docs/overlays/<family>/`.
 A live thin overlay pack should normally include:
 
 - `docs/overlays/<family>/PROJECT_OVERLAY.md`
+- `docs/overlays/<family>/REVIEW.md`
 - one or more matching `skills/<family>-*` bundles
+- bundle-local `checks/review.md` artifacts for each overlay skill
 - repo-relative commands, paths, approval posture, and verification notes that stay public-safe
 
 The project overlay document is the family-level entrypoint.
+The family review document is the bounded review surface for overlay maturity.
 The matching `skills/<family>-*` bundles are the executable thin overlays.
 Fixture stubs remain separate from live overlay packs and do not imply project adoption.
 
@@ -62,7 +65,8 @@ Overlay validation should answer these questions:
 3. Are authority and approval rules clear?
 4. Are all paths and commands repository-relative and public-safe?
 5. Does the live family overlay document match the committed `skills/<family>-*` bundles?
-6. Are fixture-only cross-repo ideas still clearly marked as stubs?
+6. Does the family review doc agree with the bundle-local review checklists?
+7. Are fixture-only cross-repo ideas still clearly marked as stubs?
 
 ## Fixture layout
 
@@ -86,9 +90,11 @@ The current live family overlay layout is:
 Future live packs should keep the same shape:
 
 - `docs/overlays/<family>/PROJECT_OVERLAY.md`
+- `docs/overlays/<family>/REVIEW.md`
 - `skills/<family>-*/SKILL.md`
 - `skills/<family>-*/techniques.yaml`
 - optional `skills/<family>-*/agents/openai.yaml`
+- `skills/<family>-*/checks/review.md` when a family review checklist is useful
 - at least one support artifact under the matching `skills/<family>-*/`
 
 Live exemplar packs must:

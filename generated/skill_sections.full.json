@@ -6,12 +6,12 @@
       "scope": "core",
       "sections": [
         {
-          "content_markdown": "Use this skill to capture an architectural, structural, or workflow decision in a concise reviewable note that preserves rationale and tradeoffs.",
+          "content_markdown": "Use this skill to capture an architectural, structural, or workflow decision in a concise reviewable note, then place and verify that note in the canonical repo surface so the rationale stays findable.",
           "heading": "Intent",
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a decision changes structure, boundaries, tooling, or workflow expectations\n- future contributors will need to know why a path was chosen\n- several plausible options existed and the reasoning matters\n- the team or project risks repeating the same debate later\n\nDo not use this skill when:\n- the change is tiny and self-evident\n- the note would only restate an obvious diff with no real decision content\n- the main problem is unclear authoritative documentation rather than decision rationale; use `aoa-source-of-truth-check` first\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first",
+          "content_markdown": "Use this skill when:\n- a decision changes structure, boundaries, tooling, or workflow expectations\n- future contributors will need to know why a path was chosen\n- several plausible options existed and the reasoning matters\n- the team or project risks repeating the same debate later\n- the note needs a clear canonical home, not just a one-off comment\n\nDo not use this skill when:\n- the change is tiny and self-evident\n- the note would only restate an obvious diff with no real decision content\n- the main problem is unclear authoritative documentation rather than decision rationale; use `aoa-source-of-truth-check` first\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -21,32 +21,32 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- concise decision note or ADR draft\n- statement of rationale\n- consequence notes\n- verification that the note matches the actual change",
+          "content_markdown": "- concise decision note or ADR draft\n- statement of rationale\n- consequence notes\n- canonical placement or reference for the note\n- verification that the note landed in the expected decision surface\n- verification that the note matches the actual change",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. state the context and the problem the decision addresses\n2. list the main options if they meaningfully shaped the choice\n3. record the chosen decision in clear language\n4. note why it was chosen and what tradeoffs it introduces\n5. connect the note to the actual change surface when relevant\n6. verify that the note explains the decision rather than narrating the diff only",
+          "content_markdown": "1. state the context and the problem the decision addresses\n2. list the main options if they meaningfully shaped the choice\n3. record the chosen decision in clear language\n4. note why it was chosen and what tradeoffs it introduces\n5. place the note in the canonical decision surface or repo-local home that future reviewers should use\n6. connect the note to the actual change surface when relevant\n7. verify that the note explains the decision rather than narrating the diff only\n8. verify that the note is reachable from the intended canonical location",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- the note should explain why, not just what changed\n- the decision should be bounded and understandable\n- tradeoffs should not be hidden behind certainty theater\n- the note should help future reviewers, not merely satisfy process",
+          "content_markdown": "- the note should explain why, not just what changed\n- the decision should be bounded and understandable\n- tradeoffs should not be hidden behind certainty theater\n- the note should help future reviewers, not merely satisfy process\n- the note should have an explicit canonical placement, not a hidden or implied home\n- verification should check both rationale quality and note placement",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- writing an ADR for a trivial edit with no real decision\n- using inflated language to mask weak reasoning\n- recording the chosen path without naming consequences\n- letting the ADR drift away from the actual change",
+          "content_markdown": "- writing an ADR for a trivial edit with no real decision\n- using inflated language to mask weak reasoning\n- recording the chosen path without naming consequences\n- letting the ADR drift away from the actual change\n- treating placement as optional after the note is written\n- using the skill when the main work is still source-of-truth clarification",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the decision was meaningful enough to record\n- confirm the rationale is explicit\n- confirm consequences or tradeoffs are named\n- confirm the note aligns with the real change surface",
+          "content_markdown": "- confirm the decision was meaningful enough to record\n- confirm the rationale is explicit\n- confirm consequences or tradeoffs are named\n- confirm the note aligns with the real change surface\n- confirm the note is placed where future reviewers will look for it\n- confirm the canonical location or reference is part of the result, not an afterthought",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0033 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0033 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -64,12 +64,12 @@
       "scope": "risk",
       "sections": [
         {
-          "content_markdown": "Use this skill to determine whether a task crosses an approval boundary and what should happen before any execution proceeds.",
+          "content_markdown": "Use this skill to classify whether a requested action crosses an approval boundary and to return a bounded next step that keeps authority explicit before any execution proceeds.",
           "heading": "Intent",
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a task may be destructive, operationally sensitive, or security-relevant\n- the current authority level is unclear\n- the agent needs to classify whether the next step is safe, explicit-only, or out of bounds\n\nDo not use this skill when:\n- the task is clearly low-risk and already bounded by an ordinary workflow\n- no meaningful approval boundary exists in the current context\n- the authority is already clear and the main need is choosing a preview path before execution; use `aoa-dry-run-first`\n- the task is only about preparing a public-safe artifact for sharing; use `aoa-sanitized-share`",
+          "content_markdown": "Use this skill when:\n- a task may be destructive, operationally sensitive, or security-relevant\n- the current authority level is unclear\n- the agent needs to classify whether the next step is safe, explicit-only, or out of bounds\n- the task needs an operational gate decision rather than a broader workflow plan\n\nDo not use this skill when:\n- the task is clearly low-risk and already bounded by an ordinary workflow\n- no meaningful approval boundary exists in the current context\n- the authority is already clear and the main need is choosing a preview path before execution; use `aoa-dry-run-first`\n- the task is only about preparing a public-safe artifact for sharing; use `aoa-sanitized-share`",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -79,32 +79,32 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- classification of the action: safe to proceed, explicit approval required, or do not execute\n- note on whether explicit approval is needed\n- bounded next-step recommendation\n- report of unresolved authority assumptions",
+          "content_markdown": "- classification of the action: safe to proceed, explicit approval required, or do not execute\n- note on whether explicit approval is needed\n- bounded next-step recommendation\n- report of unresolved authority assumptions\n- a reviewable gate decision that can be passed to the next workflow step",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. identify the requested action and touched surfaces\n2. assess whether the action could be destructive, sensitive, or authority-gated\n3. classify the action as safe to proceed, explicit-approval required, or not appropriate to execute\n4. prefer inspect-only or bounded alternatives when authority is insufficient\n5. report the classification and the reason for it",
+          "content_markdown": "1. identify the requested action and touched surfaces\n2. assess whether the action could be destructive, sensitive, or authority-gated\n3. classify the action as safe to proceed, explicit-approval required, or not appropriate to execute\n4. prefer inspect-only or bounded alternatives when authority is insufficient\n5. name the concrete next action or refusal in terms another agent can execute\n6. report the classification and the reason for it",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- unclear authority should not be silently interpreted as permission\n- classification should be explicit and reviewable\n- safer bounded alternatives should be preferred when possible\n- the result should reduce accidental overreach",
+          "content_markdown": "- unclear authority should not be silently interpreted as permission\n- classification should be explicit and reviewable\n- safer bounded alternatives should be preferred when possible\n- the result should reduce accidental overreach\n- the gate decision should be concrete enough to hand to the next step without ambiguity\n- the skill remains a bounded operational package, not just a policy label",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- assuming approval because a task sounds routine\n- collapsing several risk levels into a single vague warning\n- using approval logic to avoid useful bounded analysis\n- hiding destructive steps behind innocent labels",
+          "content_markdown": "- assuming approval because a task sounds routine\n- collapsing several risk levels into a single vague warning\n- using approval logic to avoid useful bounded analysis\n- hiding destructive steps behind innocent labels\n- returning a generic caution instead of a real gate classification\n- widening into a general workflow planner instead of a gate checker",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the touched surfaces were identified\n- confirm the approval need was classified explicitly rather than as a vague warning\n- confirm the next step fits the stated authority level\n- confirm uncertainty was not masked as permission",
+          "content_markdown": "- confirm the touched surfaces were identified\n- confirm the approval need was classified explicitly rather than as a vague warning\n- confirm the next step fits the stated authority level\n- confirm uncertainty was not masked as permission\n- confirm the gate decision is actionable and bounded\n- confirm the skill still reads as an approval-classification package",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -162,7 +162,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0016 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0016 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -220,7 +220,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -278,7 +278,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0003 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0003 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -336,7 +336,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0016 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0016 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -354,12 +354,12 @@
       "scope": "risk",
       "sections": [
         {
-          "content_markdown": "Use this skill to force a preview-first mindset before executing changes that may be destructive, irreversible, or operationally meaningful.",
+          "content_markdown": "Use this skill to run a preview-first workflow that stops at inspection until one concrete mutation is ready, then asks for a visible confirmation before the real action proceeds.",
           "heading": "Intent",
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the task can be simulated, previewed, or inspected before real execution\n- the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface\n- the cost of a mistaken execution is meaningfully higher than the cost of a preview step\n\nDo not use this skill when:\n- no meaningful dry-run or preview path exists and the task is already clearly bounded and harmless\n- the task is purely analytical and does not approach execution at all\n- the central question is whether execution is authorized at all rather than how to preview it; use `aoa-approval-gate-check`\n- the task is only about preparing a sanitized artifact for sharing; use `aoa-sanitized-share`",
+          "content_markdown": "Use this skill when:\n- the task can be simulated, previewed, or inspected before real execution\n- the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface\n- the cost of a mistaken execution is meaningfully higher than the cost of a preview step\n- the task needs a clear seam between dry-run evidence and the one confirmed mutating action\n\nDo not use this skill when:\n- no meaningful dry-run or preview path exists and the task is already clearly bounded and harmless\n- the task is purely analytical and does not approach execution at all\n- the central question is whether execution is authorized at all rather than how to preview it; use `aoa-approval-gate-check`\n- the task is only about preparing a sanitized artifact for sharing; use `aoa-sanitized-share`",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -369,32 +369,32 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- dry-run or preview recommendation\n- bounded preview result or plan\n- note on what the preview does and does not prove\n- recommendation for next step",
+          "content_markdown": "- dry-run or preview recommendation\n- bounded preview result or plan\n- note on what the preview does and does not prove\n- explicit confirmation request for the mutating step when the preview is complete\n- recommendation for next step",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. identify whether a preview, simulation, inspect-only, or dry-run path exists\n2. prefer the safest bounded preview path before real execution\n3. make explicit what the preview covers and what it cannot guarantee\n4. avoid treating dry-run output as proof of total safety\n5. recommend the next step only after the preview has been interpreted",
+          "content_markdown": "1. identify whether a preview, simulation, inspect-only, or dry-run path exists\n2. prefer the safest bounded preview path before real execution\n3. make explicit what the preview covers and what it cannot guarantee\n4. stop at inspection until the mutating step is concrete enough to name\n5. require one explicit confirmation before any state-changing action runs\n6. avoid treating dry-run output as proof of total safety\n7. recommend the next step only after the preview and confirmation seam have both been interpreted",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- dry-run should reduce uncertainty before execution\n- preview results should not be overstated\n- lack of a dry-run path should be named as a risk, not hidden\n- real execution should not be smuggled into a preview step",
+          "content_markdown": "- dry-run should reduce uncertainty before execution\n- preview results should not be overstated\n- lack of a dry-run path should be named as a risk, not hidden\n- real execution should not be smuggled into a preview step\n- confirmation must name the concrete mutation, not just generic permission\n- the mutating step stays singular and bounded after the gate",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating a preview as complete validation\n- skipping preview because the real change looks small\n- using a fake or weak preview path that does not touch the real risk surface\n- blurring inspect-only and execute behavior",
+          "content_markdown": "- treating a preview as complete validation\n- skipping preview because the real change looks small\n- using a fake or weak preview path that does not touch the real risk surface\n- blurring inspect-only and execute behavior\n- turning the confirmation seam into a vague caution prompt\n- chaining extra mutations after the confirmed step without a fresh gate",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm a preview or dry-run path was considered first\n- confirm the preview scope was named honestly\n- confirm unresolved risk after preview was not hidden\n- confirm the preview step did not silently perform the real action\n- confirm the recommended next step matches the preview confidence",
+          "content_markdown": "- confirm a preview or dry-run path was considered first\n- confirm the preview scope was named honestly\n- confirm unresolved risk after preview was not hidden\n- confirm the preview step did not silently perform the real action\n- confirm the explicit confirmation names the exact mutating step\n- confirm the recommended next step matches the preview confidence\n- confirm the workflow stops after the confirmed mutation instead of widening into a loop",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0004 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0004 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -412,12 +412,12 @@
       "scope": "core",
       "sections": [
         {
-          "content_markdown": "Use invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, instead of only repeating examples.",
+          "content_markdown": "Use invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, and turn that judgment into a bounded audit package instead of a loose example review.",
           "heading": "Intent",
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- an existing test or check surface needs a review for invariant strength\n- the question is whether current checks really constrain the stable rule\n- you need to turn a loose example set into a bounded coverage audit\n\nDo not use this skill when:\n- the main problem is defining the invariant itself rather than auditing coverage; use `aoa-property-invariants` first\n- the invariant itself is still unknown and you need discovery work first\n- the task is mostly about presentation details or a narrow snapshot\n- you need a full boundary contract review rather than a coverage audit",
+          "content_markdown": "Use this skill when:\n- an existing test or check surface needs a review for invariant strength\n- the question is whether current checks really constrain the stable rule\n- you need to turn a loose example set into a bounded coverage audit\n- you want an audit result that names the gap, not just the invariant\n\nDo not use this skill when:\n- the main problem is defining the invariant itself rather than auditing coverage; use `aoa-property-invariants` first\n- the invariant itself is still unknown and you need discovery work first\n- the task is mostly about presentation details or a narrow snapshot\n- you need a full boundary contract review rather than a coverage audit",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -427,32 +427,32 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- invariant coverage map\n- gap list for weak or missing checks\n- bounded follow-up checks or revisions\n- concise verification summary",
+          "content_markdown": "- invariant coverage map\n- gap list for weak or missing checks\n- bounded follow-up checks or revisions\n- concise verification summary\n- audit verdict on whether coverage is strong enough for the current stable truth",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. name the stable truth in plain language\n2. map each existing check to the invariant it constrains\n3. mark weak, redundant, or missing coverage\n4. add only bounded cases that strengthen the weakest invariant first\n5. report what the suite now proves and what it still does not",
+          "content_markdown": "1. name the stable truth in plain language\n2. map each existing check to the invariant it constrains\n3. mark weak, redundant, or missing coverage\n4. add only bounded cases that strengthen the weakest invariant first\n5. separate the audit result from any invariant-authoring work that should happen elsewhere\n6. report what the suite now proves and what it still does not",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- every claimed invariant must be traceable to at least one check\n- the audit should distinguish real constraint from mere example repetition\n- the result should stay reviewable without sprawling into a full test strategy",
+          "content_markdown": "- every claimed invariant must be traceable to at least one check\n- the audit should distinguish real constraint from mere example repetition\n- the result should stay reviewable without sprawling into a full test strategy\n- the skill should stay an audit package rather than a general testing doctrine\n- the output should make the next coverage move obvious",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- counting examples as if they were invariants\n- letting random data hide thin coverage\n- widening into generic test design or full suite architecture\n- making the audit so abstract that no one can act on it",
+          "content_markdown": "- counting examples as if they were invariants\n- letting random data hide thin coverage\n- widening into generic test design or full suite architecture\n- making the audit so abstract that no one can act on it\n- drifting into invariant authoring when the task is really coverage review\n- turning the audit into a generic quality sermon instead of a bounded package",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm each core invariant is named and mapped to a check\n- confirm the coverage gap list is specific and bounded\n- confirm another human can follow why the existing surface is or is not sufficient",
+          "content_markdown": "- confirm each core invariant is named and mapped to a check\n- confirm the coverage gap list is specific and bounded\n- confirm another human can follow why the existing surface is or is not sufficient\n- confirm the result names the next bounded follow-up, if one is needed\n- confirm the skill reads like an operational audit rather than a plain technique lift",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -510,7 +510,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0016 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `4f0153e6cee7cd132cd386f75d103cb31a4959c0` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0016 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contract-test-design/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -558,17 +558,17 @@
           "key": "contracts"
         },
         {
-          "content_markdown": "- writing weak properties that prove almost nothing\n- confusing random data with meaningful coverage\n- using property checks where a small set of concrete examples would be clearer\n- hiding domain confusion behind fancy generator logic",
+          "content_markdown": "- writing weak properties that prove almost nothing\n- confusing random data with meaningful coverage\n- letting overly broad generators or harness complexity hide the protected domain truth\n- using polished invariant language while the actual stable truth remains underspecified\n- using property checks where a small set of concrete examples would be clearer\n- using invariant language to avoid naming the actual rule or boundary that matters",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the property expresses a meaningful invariant\n- confirm the invariant broadens coverage beyond fixed examples\n- confirm the result is understandable to another human or agent",
+          "content_markdown": "- confirm the property expresses a meaningful invariant\n- confirm the invariant broadens coverage beyond fixed examples\n- confirm the report names which stable truth was violated or protected, not only that generated inputs failed\n- confirm the result is understandable to another human or agent",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0007 from `8Dionysus/aoa-techniques` at `fe7df9aba3937435b431489ed0f9c5d52690a37c` using path `techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0007 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -626,7 +626,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, Outputs, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -644,12 +644,12 @@
       "scope": "risk",
       "sections": [
         {
-          "content_markdown": "Use this skill to turn potentially sensitive technical material into a shareable, reviewable, public-safe form.",
+          "content_markdown": "Use this skill to turn potentially sensitive technical material into a shareable, reviewable, public-safe form, keeping the raw source distinct from the final public-safe output and placing that output where reviewers expect it.",
           "heading": "Intent",
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- logs, configs, diagnostics, reports, or examples may contain sensitive details\n- a result needs to be shared publicly or with a broader audience\n- raw material may reveal secrets, topology, internal identifiers, or unsafe context\n\nDo not use this skill when:\n- the material is already clearly public-safe and minimal\n- the task is to perform the underlying operational change rather than prepare a shareable surface\n- the main task is deciding whether the underlying action should be allowed; use `aoa-approval-gate-check`\n- the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`",
+          "content_markdown": "Use this skill when:\n- logs, configs, diagnostics, reports, or examples may contain sensitive details\n- a result needs to be shared publicly or with a broader audience\n- raw material may reveal secrets, topology, internal identifiers, or unsafe context\n- the output needs a canonical public-safe home rather than an ad hoc pasted summary\n\nDo not use this skill when:\n- the material is already clearly public-safe and minimal\n- the task is to perform the underlying operational change rather than prepare a shareable surface\n- the main task is deciding whether the underlying action should be allowed; use `aoa-approval-gate-check`\n- the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -659,32 +659,32 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly\n- note on what was generalized or removed\n- warning about any remaining ambiguity or sensitive edge",
+          "content_markdown": "- sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly\n- note on what was generalized or removed\n- warning about any remaining ambiguity or sensitive edge\n- canonical public-safe output location or reference",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. inspect the material for secrets, tokens, private paths, topology, internal identifiers, or unsafe operational detail\n2. remove, redact, or generalize sensitive details\n3. preserve the technical lesson or signal without preserving the sensitive surface\n4. note what kind of sanitization was applied when that matters for interpretation\n5. verify that the shared result remains useful without revealing what should stay private",
+          "content_markdown": "1. inspect the material for secrets, tokens, private paths, topology, internal identifiers, or unsafe operational detail\n2. separate raw source material from the shareable surface before rewriting anything\n3. remove, redact, or generalize sensitive details\n4. preserve the technical lesson or signal without preserving the sensitive surface\n5. place the sanitized output in the canonical public-safe location or repo surface\n6. note what kind of sanitization was applied when that matters for interpretation\n7. verify that the shared result remains useful without revealing what should stay private",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- shareable output should not leak secrets or private infrastructure detail\n- sanitization should preserve meaning where possible\n- generalization should not silently change the core lesson beyond recognition\n- uncertainty about sensitivity should lean toward caution",
+          "content_markdown": "- shareable output should not leak secrets or private infrastructure detail\n- sanitization should preserve meaning where possible\n- generalization should not silently change the core lesson beyond recognition\n- uncertainty about sensitivity should lean toward caution\n- raw material and shareable output should remain clearly separated\n- the sanitized artifact should be discoverable from the expected public-safe surface",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "### Failure modes\n\n- over-sanitizing until the artifact becomes meaningless\n- under-sanitizing because a value looks harmless in isolation\n\n### Negative effects\n\n- the shared artifact becomes hard to reuse or verify\n- sensitivity leaks through topology, naming, or surrounding context even when tokens are removed\n\n### Misuse patterns\n\n- sharing raw excerpts when a bounded summary would be safer\n- treating a small harmless-looking field as proof that the full material is safe\n\n### Detection signals\n\n- the sanitized output still points too directly to private topology or naming\n- a reviewer cannot tell what was generalized or removed\n- the artifact no longer communicates the lesson it was meant to preserve\n\n### Mitigations\n\n- generalize paths, hostnames, and private identifiers when needed\n- name the sanitization level and the remaining uncertainty\n- verify the shared result remains useful without preserving the sensitive surface",
+          "content_markdown": "### Failure modes\n\n- over-sanitizing until the artifact becomes meaningless\n- under-sanitizing because a value looks harmless in isolation\n- collapsing raw and shareable surfaces into one note or transcript\n\n### Negative effects\n\n- the shared artifact becomes hard to reuse or verify\n- sensitivity leaks through topology, naming, or surrounding context even when tokens are removed\n- reviewers cannot tell where the canonical public-safe version lives\n\n### Misuse patterns\n\n- sharing raw excerpts when a bounded summary would be safer\n- treating a small harmless-looking field as proof that the full material is safe\n- using the shareable surface as a substitute for the raw source or vice versa\n\n### Detection signals\n\n- the sanitized output still points too directly to private topology or naming\n- a reviewer cannot tell what was generalized or removed\n- the artifact no longer communicates the lesson it was meant to preserve\n- the output has no clear canonical place for future reuse\n\n### Mitigations\n\n- generalize paths, hostnames, and private identifiers when needed\n- name the sanitization level and the remaining uncertainty\n- verify the shared result remains useful without preserving the sensitive surface\n- keep a visible boundary between raw input, sanitized output, and published placement",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm obvious sensitive surfaces were checked\n- confirm the resulting artifact is still understandable\n- confirm the sanitization level matches the intended audience\n- confirm raw sensitive detail was not preserved by accident\n- confirm remaining uncertainty is named rather than ignored",
+          "content_markdown": "- confirm obvious sensitive surfaces were checked\n- confirm the resulting artifact is still understandable\n- confirm the sanitization level matches the intended audience\n- confirm raw sensitive detail was not preserved by accident\n- confirm remaining uncertainty is named rather than ignored\n- confirm the sanitized output lives in the expected public-safe location or reference\n- confirm the raw/shareable split is still obvious after editing",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0034 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0034 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -707,7 +707,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a repository has several docs that may overlap or conflict\n- contributors may not know which file to trust first\n- a change touches docs, process, or operational guidance and the question is which file is authoritative\n- confusion exists between overview docs and authoritative docs\n- one authoritative source must stay aligned across multiple downstream consumer surfaces\n\nDo not use this skill when:\n- the repository is tiny and has no meaningful source-of-truth ambiguity\n- the task is purely code-local with no documentation or policy impact\n- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first\n- the main problem is broader policy design rather than document authority or ownership",
+          "content_markdown": "Use this skill when:\n- a repository has several docs that may overlap or conflict\n- contributors may not know which file to trust first\n- a change touches docs, process, or operational guidance and the question is which file is authoritative\n- confusion exists between overview docs and authoritative docs\n- one authoritative source must stay aligned across multiple downstream consumer surfaces\n- top-level status docs such as `README` or `MANIFEST` are accumulating status/history that should live in canonical homes instead\n- the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven\n\nDo not use this skill when:\n- the repository is tiny and has no meaningful source-of-truth ambiguity\n- the task is purely code-local with no documentation or policy impact\n- the authoritative files are already clear and the main need is recording rationale for a decision; use `aoa-adr-write`\n- the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first\n- the main problem is broader policy design rather than document authority or ownership\n- the task is only about building or maintaining a derived docs surface; that belongs in a separate review-surface workflow",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -717,37 +717,37 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- clearer source-of-truth map\n- fan-out map when one source feeds multiple downstream consumers\n- note of overlaps or conflicts\n- proposed or implemented document role clarification\n- verification summary",
+          "content_markdown": "- clearer source-of-truth map\n- fan-out map when one source feeds multiple downstream consumers\n- note of overlaps or conflicts\n- proposed or implemented document role clarification\n- lightweight snapshot guidance for entrypoint docs when canonical homes already exist\n- verification summary",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. identify the main docs or guidance files involved in the target area\n2. determine which file should be authoritative for each concern\n3. note any overlap, contradiction, or role ambiguity\n4. if one source feeds multiple consumers, name each consumer and refresh them from the same source\n5. clarify or propose clarifying document ownership and purpose\n6. keep the change bounded to the guidance surface under review\n7. verify that the result reduces ambiguity for future changes",
+          "content_markdown": "1. identify the main docs or guidance files involved in the target area\n2. determine which file should be authoritative for each concern\n3. note any overlap, contradiction, or role ambiguity\n4. if one source feeds multiple consumers, name each consumer and refresh them from the same source\n5. if top-level status docs are bloating, trim them into short snapshots and route detail to canonical homes\n6. clarify or propose clarifying document ownership and purpose\n7. keep the change bounded to the guidance surface under review\n8. verify that the result reduces ambiguity for future changes",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- authoritative sources should be visible and named explicitly\n- overview documents should not silently replace canonical ones\n- role separation should reduce confusion, not create extra ceremony\n- the resulting guidance should be understandable to another human or agent",
+          "content_markdown": "- authoritative sources should be visible and named explicitly\n- overview documents should not silently replace canonical ones\n- lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters\n- role separation should reduce confusion, not create extra ceremony\n- the resulting guidance should be understandable to another human or agent",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- over-formalizing a tiny docs surface\n- creating many labels without reducing ambiguity\n- moving truth across files without clearly signaling the change\n- letting summaries masquerade as canonical instructions",
+          "content_markdown": "- over-formalizing a tiny docs surface\n- creating many labels without reducing ambiguity\n- moving truth across files without clearly signaling the change\n- letting summaries masquerade as canonical instructions\n- trimming top-level docs too aggressively before canonical homes are actually available\n- widening the skill into generic docs hygiene or derived surface maintenance",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the main source-of-truth ambiguity was reduced\n- confirm authoritative files are named explicitly\n- confirm overlaps or conflicts were surfaced rather than hidden\n- confirm the result helps future contributors orient faster",
+          "content_markdown": "- confirm the main source-of-truth ambiguity was reduced\n- confirm authoritative files are named explicitly\n- confirm overlaps or conflicts were surfaced rather than hidden\n- confirm summary docs stay short and route detail to canonical homes where those already exist\n- confirm the result helps future contributors orient faster",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0013 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0013 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0009 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/lightweight-status-snapshot/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "Future project overlays may add:\n- local doc hierarchies\n- preferred canonical-file patterns\n- local review rules for doc changes\n- repository-specific examples of authoritative surfaces",
+          "content_markdown": "Future project overlays may add:\n- local doc hierarchies\n- preferred canonical-file patterns\n- local review rules for doc changes\n- repository-specific examples of authoritative surfaces\n- lightweight snapshot rules for README or MANIFEST surfaces",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -800,7 +800,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0014 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/agent-workflows/tdd-slice/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Contracts, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0014 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/tdd-slice/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -823,7 +823,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes\n- a bounded non-trivial change still needs an explicit plan and verification path inside the local repo\n- a contributor needs a thin local overlay rather than a fresh workflow design\n\nDo not use this skill when:\n- the task really needs a broader playbook or scenario bundle rather than a thin overlay\n- the work would introduce new upstream technique meaning instead of adapting the local repo surface\n- a more specific risk skill is still the clearer fit, such as `aoa-dry-run-first`, `aoa-safe-infra-change`, or `aoa-approval-gate-check`\n- the task does not need repo-relative local adaptation and the base skill can be used directly",
+          "content_markdown": "Use this skill when:\n- the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes\n- a bounded non-trivial change still needs an explicit plan and verification path inside the local repo\n- a contributor needs a thin local overlay rather than a fresh workflow design\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the task really needs a broader playbook or scenario bundle rather than a thin overlay\n- the work would introduce new upstream technique meaning instead of adapting the local repo surface\n- a more specific risk skill is still the clearer fit, such as `aoa-dry-run-first`, `aoa-safe-infra-change`, or `aoa-approval-gate-check`\n- the task does not need repo-relative local adaptation and the base skill can be used directly",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -833,7 +833,7 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- bounded local change plan\n- repo-relative command or path sketch\n- verification note for the local repo surface\n- concise handoff on what stays downstream and explicit",
+          "content_markdown": "- bounded local change plan\n- repo-relative command or path sketch\n- pointer to the family review surface\n- verification note for the local repo surface\n- concise handoff on what stays downstream and explicit",
           "heading": "Outputs",
           "key": "outputs"
         },
@@ -853,17 +853,17 @@
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths and commands are named explicitly\n- confirm approval posture is still downstream and explicit\n- confirm the adaptation remains bounded to the local repo surface",
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths and commands are named explicitly\n- confirm approval posture is still downstream and explicit\n- confirm the adaptation remains bounded to the local repo surface\n- confirm the family review doc and bundle-local checklist stay aligned",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- repo-relative change surfaces\n- local commands and verification steps\n- local source-of-truth files\n- local approval or review notes",
+          "content_markdown": "- repo-relative change surfaces\n- local commands and verification steps\n- local source-of-truth files\n- local approval or review notes\n- family review doc and bundle-local review checklist",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -881,7 +881,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules\n- contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `docs/[canonical-guide].md`\n- confusion exists between overview docs and authoritative files inside one local repo\n\nDo not use this skill when:\n- the main need is broader policy design rather than local document authority mapping\n- the task is purely code-local and has no meaningful docs or guidance ambiguity\n- the work would introduce new upstream technique meaning instead of thin local adaptation\n- the main need is recording rationale for a decision rather than clarifying authority; use `aoa-adr-write`",
+          "content_markdown": "Use this skill when:\n- the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules\n- contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `docs/[canonical-guide].md`\n- confusion exists between overview docs and authoritative files inside one local repo\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the main need is broader policy design rather than local document authority mapping\n- the task is purely code-local and has no meaningful docs or guidance ambiguity\n- the work would introduce new upstream technique meaning instead of thin local adaptation\n- the main need is recording rationale for a decision rather than clarifying authority; use `aoa-adr-write`",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -891,7 +891,7 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- local source-of-truth map\n- bounded clarification note\n- repo-relative canonical-file pattern\n- verification summary for the local docs surface",
+          "content_markdown": "- local source-of-truth map\n- bounded clarification note\n- repo-relative canonical-file pattern\n- pointer to the family review surface\n- verification summary for the local docs surface",
           "heading": "Outputs",
           "key": "outputs"
         },
@@ -911,17 +911,17 @@
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the base skill is still the right workflow\n- confirm authoritative repo-relative files are named explicitly\n- confirm local review posture is visible rather than implied\n- confirm the adaptation reduces ambiguity without widening scope",
+          "content_markdown": "- confirm the base skill is still the right workflow\n- confirm authoritative repo-relative files are named explicitly\n- confirm local review posture is visible rather than implied\n- confirm the adaptation reduces ambiguity without widening scope\n- confirm the family review doc and bundle-local checklist stay aligned",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0013 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0013 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- local doc hierarchies\n- repo-relative canonical-file patterns\n- local review rules for doc changes\n- repository-specific authority examples",
+          "content_markdown": "- local doc hierarchies\n- repo-relative canonical-file patterns\n- local review rules for doc changes\n- repository-specific authority examples\n- family review doc and bundle-local review checklist",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }

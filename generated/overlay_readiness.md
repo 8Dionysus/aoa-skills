@@ -1,26 +1,26 @@
 # Overlay readiness
 
-This derived file summarizes whether the current skill surface already exposes the minimum hooks for thin project overlays
-and which live exemplar overlay packs are committed in this repository.
+This derived file summarizes live overlay-family maturity and project-skill readiness
+for the thin overlay layer in `aoa-skills`.
 
-- live exemplar overlay packs: atm10
+## Summary
 
-| name | adaptation points | invocation stub |
-|---|---|---|
-| aoa-adr-write | yes | yes |
-| aoa-approval-gate-check | yes | yes |
-| aoa-bounded-context-map | yes | yes |
-| aoa-change-protocol | yes | yes |
-| aoa-contract-test | yes | yes |
-| aoa-core-logic-boundary | yes | yes |
-| aoa-dry-run-first | yes | yes |
-| aoa-invariant-coverage-audit | yes | yes |
-| aoa-port-adapter-refactor | yes | yes |
-| aoa-property-invariants | yes | yes |
-| aoa-safe-infra-change | yes | yes |
-| aoa-sanitized-share | yes | yes |
-| aoa-source-of-truth-check | yes | yes |
-| aoa-tdd-slice | yes | yes |
-| atm10-change-protocol | yes | yes |
-| atm10-source-of-truth-check | yes | yes |
+- live overlay families: 1
+- reviewable families: 1
+- project overlay skills: 2
+- project skills with review checklists: 2
+- eval-ready project skills: 2
+
+## Families
+
+| family | skills | listed parity | family review | bundle review checks | eval-ready skills | repo-relative evidence | boundary evidence | readiness |
+|---|---:|---|---|---:|---:|---|---|---|
+| atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |
+
+## Project skills
+
+| name | family | status | review checklist | runtime examples | adaptation points | policy file | eval ready | blockers |
+|---|---|---|---|---:|---|---|---|---|
+| atm10-change-protocol | atm10 | scaffold | skills/atm10-change-protocol/checks/review.md | 1 | true | true | true | - |
+| atm10-source-of-truth-check | atm10 | scaffold | skills/atm10-source-of-truth-check/checks/review.md | 1 | true | true | true | - |
 

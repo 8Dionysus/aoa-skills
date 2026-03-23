@@ -20,12 +20,14 @@ import build_catalog
 import skill_artifact_contract
 import skill_boundary_surface
 import skill_catalog_contract
+import skill_composition_audit
 import skill_evaluation_contract
 import skill_governance_backlog_surface
 import skill_governance_lane_contract
 import skill_governance_surface
 import skill_lineage_surface
 import skill_overlay_contract
+import skill_review_surface
 import skill_runtime_surface
 import skill_section_contract
 import skill_source_model
@@ -47,6 +49,8 @@ GENERATED_SURFACE_SCHEMA_BY_PATH = {
     build_catalog.LINEAGE_SURFACE_JSON_PATH: "skill_lineage_surface.schema.json",
     build_catalog.BOUNDARY_MATRIX_JSON_PATH: "skill_boundary_matrix.schema.json",
     build_catalog.GOVERNANCE_BACKLOG_JSON_PATH: "governance_backlog.schema.json",
+    build_catalog.SKILL_COMPOSITION_AUDIT_JSON_PATH: "skill_composition_audit.schema.json",
+    build_catalog.OVERLAY_READINESS_JSON_PATH: "overlay_readiness.schema.json",
     build_catalog.BUNDLE_INDEX_JSON_PATH: "skill_bundle_index.schema.json",
     build_catalog.SKILL_GRAPH_JSON_PATH: "skill_graph.schema.json",
 }
@@ -82,6 +86,11 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--skill",
         help="Validate a single skill bundle by directory name.",
+    )
+    parser.add_argument(
+        "--fail-on-review-truth-sync",
+        action="store_true",
+        help="Fail when status-promotion review records are not in sync with the current bundle facts.",
     )
     return parser.parse_args(argv)
 
@@ -541,6 +550,94 @@ def validate_reviewed_floor(
             f"status '{status}' requires review evidence via checks/review.md or a public review record",
         )
     )
+
+
+def validate_review_truth_sync(
+    repo_root: Path,
+    skill_name: str,
+    issues: list[ValidationIssue],
+) -> None:
+    if skill_review_surface.review_record_path(repo_root, skill_name) is None:
+        return
+    truth_sync = skill_review_surface.status_promotion_review_truth_sync(repo_root, skill_name)
+    if truth_sync.issues:
+        review_path = truth_sync.review_path or skill_review_surface.review_record_path(
+            repo_root,
+            skill_name,
+        )
+        location = review_path or relative_location(
+            repo_root / STATUS_PROMOTION_REVIEWS_DIR / f"{skill_name}.md"
+        )
+        for issue in truth_sync.issues:
+            issues.append(ValidationIssue(location, issue))
+
+
+def validate_skill_composition_contract(
+    repo_root: Path,
+    target_skills: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    selected_skill_names = (
+        list(target_skills) if target_skills is not None else discover_skill_names(repo_root)
+    )
+    sources: list[skill_source_model.SkillSource] = []
+    source_by_name: dict[str, skill_source_model.SkillSource] = {}
+    for skill_name in selected_skill_names:
+        try:
+            source = skill_source_model.load_skill_source(repo_root, skill_name)
+        except (FileNotFoundError, ValueError):
+            continue
+        sources.append(source)
+        source_by_name[source.name] = source
+
+    for source in sources:
+        try:
+            technique_ids = skill_composition_audit.technique_ids_from_source(source)
+        except ValueError as exc:
+            issues.append(
+                ValidationIssue(relative_location(source.techniques_path), str(exc))
+            )
+            continue
+
+        review = skill_composition_audit.analyze_exception_review(repo_root, source.name)
+        expected_review_location = (
+            skill_composition_audit.COMPOSITION_EXCEPTION_REVIEWS_DIR
+            / f"{source.name}.md"
+        ).as_posix()
+        if len(technique_ids) == 1:
+            if review.review_path is None:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(source.skill_md_path),
+                        f"single-technique skill requires a valid {expected_review_location} review record",
+                    )
+                )
+            else:
+                for issue in review.issues:
+                    issues.append(ValidationIssue(review.review_path, issue))
+        elif review.review_path is not None:
+            issues.append(
+                ValidationIssue(
+                    review.review_path,
+                    "skill composition exception review is only allowed for single-technique skills",
+                )
+            )
+            for issue in review.issues:
+                issues.append(ValidationIssue(review.review_path, issue))
+
+    if target_skills is None:
+        reviews_dir = repo_root / skill_composition_audit.COMPOSITION_EXCEPTION_REVIEWS_DIR
+        if reviews_dir.is_dir():
+            for review_path in sorted(reviews_dir.glob("*.md")):
+                skill_name = review_path.stem
+                if skill_name not in source_by_name:
+                    issues.append(
+                        ValidationIssue(
+                            relative_location(review_path),
+                            f"skill composition exception review references unknown skill '{skill_name}'",
+                        )
+                    )
+    return issues
 
 
 def validate_canonical_floor(
@@ -2275,7 +2372,12 @@ def format_issues(issues: Sequence[ValidationIssue]) -> str:
     return "\n".join(lines)
 
 
-def run_validation(repo_root: Path, skill_name: str | None = None) -> list[ValidationIssue]:
+def run_validation(
+    repo_root: Path,
+    skill_name: str | None = None,
+    *,
+    fail_on_review_truth_sync: bool = False,
+) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     all_skill_names = discover_skill_names(repo_root)
     bundle_issues_by_name: dict[str, list[ValidationIssue]] = {}
@@ -2293,6 +2395,7 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
         bundle_issues_by_name[name] = bundle_issues
         issues.extend(bundle_issues)
 
+    issues.extend(validate_skill_composition_contract(repo_root, target_skills))
     issues.extend(validate_snapshot_fixture_contract(repo_root))
     issues.extend(validate_overlay_contract(repo_root))
     issues.extend(validate_governance_lane_contract(repo_root, target_skills))
@@ -2300,6 +2403,9 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
     issues.extend(validate_canonical_status_floors(repo_root, target_skills))
     issues.extend(validate_required_adjacency_coverage(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
+    if fail_on_review_truth_sync:
+        for name in target_skills:
+            validate_review_truth_sync(repo_root, name, issues)
     if skill_name is None:
         issues.extend(validate_generated_catalogs(repo_root))
         issues.extend(validate_generated_capsules(repo_root))
@@ -2323,7 +2429,11 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
     repo_root = repo_root or REPO_ROOT
     try:
         args = parse_args(argv)
-        issues = run_validation(repo_root, skill_name=args.skill)
+        issues = run_validation(
+            repo_root,
+            skill_name=args.skill,
+            fail_on_review_truth_sync=args.fail_on_review_truth_sync,
+        )
     except ValueError as exc:
         print(f"Argument error: {exc}", file=sys.stderr)
         return 2

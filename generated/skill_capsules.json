@@ -6,17 +6,18 @@
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning; recording the chosen path without naming consequences; letting the ADR drift away from the actual change.",
       "name": "aoa-adr-write",
-      "outputs_short": "Produces: concise decision note or ADR draft; statement of rationale; consequence notes; verification that the note matches the actual change.",
+      "outputs_short": "Produces: concise decision note or ADR draft; statement of rationale; consequence notes; canonical placement or reference for the note.",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
       "status": "evaluated",
-      "summary": "Record a meaningful architectural or workflow decision so future changes can understand the rationale rather than only the outcome.",
+      "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.",
       "technique_dependencies": [
-        "AOA-T-0033"
+        "AOA-T-0033",
+        "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when a decision changes structure, boundaries, tooling, or workflow expectations; future contributors will need to know why a path was chosen; Avoid when the change is tiny and self-evident; the note would only...",
       "verification_short": "Checks: confirm the decision was meaningful enough to record; confirm the rationale is explicit; confirm consequences or tradeoffs are named; confirm the note aligns with the real change surface.",
-      "workflow_short": "Purpose: capture an architectural, structural, or workflow decision in a concise reviewable note that preserves rationale and tradeoffs. Flow: state the context and the problem the decision addresses -> list the main options if they meaningfully shaped..."
+      "workflow_short": "Purpose: capture an architectural, structural, or workflow decision in a concise reviewable note, then place and verify that note in the canonical repo surface to the rationale stays findable. Flow: state the context and the problem the decision..."
     },
     {
       "inputs_short": "Needs: requested action; touched surfaces; known approval state; risk signals.",
@@ -33,7 +34,7 @@
       ],
       "trigger_boundary_short": "Use when a task may be destructive, operationally sensitive, or security-relevant; the current authority level is unclear; Avoid when the task is clearly low-risk and already bounded by an ordinary workflow; no...",
       "verification_short": "Checks: confirm the touched surfaces were identified; confirm the approval need was classified explicitly rather than as a vague warning; confirm the next step fits the stated authority level; confirm uncertainty...",
-      "workflow_short": "Purpose: determine whether a task crosses an approval boundary and what should happen before any execution proceeds. Flow: identify the requested action and touched surfaces -> assess whether the action could be destructive, sensitive, or authority-gated..."
+      "workflow_short": "Purpose: classify whether a requested action crosses an approval boundary and to return a bounded next step that keeps authority explicit before any execution proceeds. Flow: identify the requested action and touched surfaces -> assess whether the action..."
     },
     {
       "inputs_short": "Needs: target area or subsystem; current naming and responsibilities; known neighboring contexts; ambiguous or overloaded terms.",
@@ -112,17 +113,18 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: treating a preview as complete validation; skipping preview because the real change looks small; using a fake or weak preview path that does not touch the real risk surface; blurring inspect-only and execute...",
       "name": "aoa-dry-run-first",
-      "outputs_short": "Produces: dry-run or preview recommendation; bounded preview result or plan; note on what the preview does and does not prove; recommendation for next step.",
+      "outputs_short": "Produces: dry-run or preview recommendation; bounded preview result or plan; note on what the preview does and does not prove; explicit confirmation request for the mutating step when the preview is complete.",
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
       "status": "evaluated",
-      "summary": "Prefer simulation, inspection, or preview paths before real execution for changes that can have meaningful operational consequences.",
+      "summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.",
       "technique_dependencies": [
-        "AOA-T-0004"
+        "AOA-T-0004",
+        "AOA-T-0028"
       ],
       "trigger_boundary_short": "Use when the task can be simulated, previewed, or inspected before real execution; the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface; Avoid when no meaningful dry-run or preview...",
       "verification_short": "Checks: confirm a preview or dry-run path was considered first; confirm the preview scope was named honestly; confirm unresolved risk after preview was not hidden; confirm the preview step did not silently perform...",
-      "workflow_short": "Purpose: force a preview-first mindset before executing changes that may be destructive, irreversible, or operationally meaningful. Flow: identify whether a preview, simulation, inspect-only, or dry-run path exists -> prefer the safest bounded preview..."
+      "workflow_short": "Purpose: run a preview-first workflow that stops at inspection until one concrete mutation is ready, then asks for a visible confirmation before the real action proceeds. Flow: identify whether a preview, simulation, inspect-only, or dry-run path exists..."
     },
     {
       "inputs_short": "Needs: target rule or stable truth; current tests, checks, or examples; known edge cases and stress cases; the input space or states that matter most.",
@@ -138,8 +140,8 @@
         "AOA-T-0017"
       ],
       "trigger_boundary_short": "Use when an existing test or check surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule; Avoid when the main problem is defining the invariant itself...",
-      "verification_short": "Checks: confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded; confirm another human can follow why the existing surface is or is not sufficient.",
-      "workflow_short": "Purpose: invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, instead of only repeating examples. Flow: name the stable truth in plain language -> map each existing check to the invariant it..."
+      "verification_short": "Checks: confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded; confirm another human can follow why the existing surface is or is not sufficient; confirm...",
+      "workflow_short": "Purpose: invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, and turn that judgment into a bounded audit package instead of a loose example review. Flow: name the stable truth in plain language..."
     },
     {
       "inputs_short": "Needs: target module or slice; concrete dependency that currently leaks into the core logic; desired scope of refactor; validation expectations.",
@@ -162,7 +164,7 @@
     {
       "inputs_short": "Needs: target rule or domain truth; current examples or tests; input space or generators; known edge cases.",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: writing weak properties that prove almost nothing; confusing random data with meaningful coverage; using property checks where a small set of concrete examples would be clearer; hiding domain confusion behind...",
+      "main_anti_patterns_short": "Avoid: writing weak properties that prove almost nothing; confusing random data with meaningful coverage; letting overly broad generators or harness complexity hide the protected domain truth; using polished...",
       "name": "aoa-property-invariants",
       "outputs_short": "Produces: explicit invariants; property-oriented tests or checks; notes on generator assumptions; verification summary.",
       "scope": "core",
@@ -174,7 +176,7 @@
         "AOA-T-0007"
       ],
       "trigger_boundary_short": "Use when a rule should hold across many inputs or states; examples alone feel too narrow; Avoid when the behavior is mostly about presentation details or narrow snapshots; the main problem is checking whether...",
-      "verification_short": "Checks: confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples; confirm the result is understandable to another human or agent.",
+      "verification_short": "Checks: confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples; confirm the report names which stable truth was violated or protected, not only that...",
       "workflow_short": "Purpose: invariant-oriented thinking to test broad behavior through properties rather than only through a short list of fixed examples. Flow: identify what must remain true across many cases -> separate strong invariants from weak hopes or vague..."
     },
     {
@@ -198,19 +200,20 @@
     {
       "inputs_short": "Needs: material to be shared; sharing audience or context; known sensitive surfaces; acceptable level of abstraction.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: ### Failure modes; over-sanitizing until the artifact becomes meaningless; under-sanitizing because a value looks harmless in isolation; ### Negative effects.",
+      "main_anti_patterns_short": "Avoid: ### Failure modes; over-sanitizing until the artifact becomes meaningless; under-sanitizing because a value looks harmless in isolation; collapsing raw and shareable surfaces into one note or transcript.",
       "name": "aoa-sanitized-share",
-      "outputs_short": "Produces: sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly; note on what was generalized or removed; warning about any remaining ambiguity or sensitive edge.",
+      "outputs_short": "Produces: sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly; note on what was generalized or removed; warning about any remaining ambiguity or sensitive edge;...",
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
       "status": "evaluated",
-      "summary": "Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail.",
+      "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.",
       "technique_dependencies": [
-        "AOA-T-0034"
+        "AOA-T-0034",
+        "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when logs, configs, diagnostics, reports, or examples may contain sensitive details; a result needs to be shared publicly or with a broader audience; Avoid when the material is already clearly public-safe and...",
       "verification_short": "Checks: confirm obvious sensitive surfaces were checked; confirm the resulting artifact is still understandable; confirm the sanitization level matches the intended audience; confirm raw sensitive detail was not...",
-      "workflow_short": "Purpose: turn potentially sensitive technical material into a shareable, reviewable, public-safe form. Flow: inspect the material for secrets, tokens, private paths, topology, internal identifiers, or unsafe operational detail -> remove, redact, or..."
+      "workflow_short": "Purpose: turn potentially sensitive technical material into a shareable, reviewable, public-safe form, keeping the raw source distinct from the final public-safe output and placing that output where reviewers expect it. Flow: inspect the material for..."
     },
     {
       "inputs_short": "Needs: repository docs surface; target area of ambiguity or overlap; known canonical files if any; current contributor confusion points.",
@@ -221,13 +224,14 @@
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "evaluated",
-      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership and do not silently conflict.",
+      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.",
       "technique_dependencies": [
         "AOA-T-0013",
-        "AOA-T-0002"
+        "AOA-T-0002",
+        "AOA-T-0009"
       ],
       "trigger_boundary_short": "Use when a repository has several docs that may overlap or conflict; contributors may not know which file to trust first; Avoid when the repository is tiny and has no meaningful source-of-truth ambiguity; the task...",
-      "verification_short": "Checks: confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly; confirm overlaps or conflicts were surfaced rather than hidden; confirm the result helps future...",
+      "verification_short": "Checks: confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly; confirm overlaps or conflicts were surfaced rather than hidden; confirm summary docs stay short and...",
       "workflow_short": "Purpose: clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance. Flow: identify the main docs or guidance files involved in the target area -> determine which file should be authoritative for each..."
     },
     {
@@ -253,11 +257,11 @@
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: hiding downstream authority inside vague local notes; turning a thin overlay into repo doctrine or a scenario bundle; naming local commands without enough verification context; silently changing the base...",
       "name": "atm10-change-protocol",
-      "outputs_short": "Produces: bounded local change plan; repo-relative command or path sketch; verification note for the local repo surface; concise handoff on what stays downstream and explicit.",
+      "outputs_short": "Produces: bounded local change plan; repo-relative command or path sketch; pointer to the family review surface; verification note for the local repo surface.",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
       "status": "scaffold",
-      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes.",
+      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
@@ -271,11 +275,11 @@
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: inventing a broader docs governance framework inside a thin overlay; using family labels without reducing local ambiguity; hiding local review rules in prose that looks canonical; silently replacing the base...",
       "name": "atm10-source-of-truth-check",
-      "outputs_short": "Produces: local source-of-truth map; bounded clarification note; repo-relative canonical-file pattern; verification summary for the local docs surface.",
+      "outputs_short": "Produces: local source-of-truth map; bounded clarification note; repo-relative canonical-file pattern; pointer to the family review surface.",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
       "status": "scaffold",
-      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow.",
+      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
       "technique_dependencies": [
         "AOA-T-0013",
         "AOA-T-0002"
