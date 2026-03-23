@@ -13,6 +13,7 @@ The current signaling layer is intentionally derived from facts that already exi
 - technique lineage in `techniques.yaml`
 - public review records
 - evaluation fixtures
+- governance lane decisions in `docs/governance/lanes.yaml`
 - explicit-only policy files where relevant
 
 The current human-readable matrix is generated in:
@@ -23,6 +24,11 @@ The machine-readable companion is:
 
 - `generated/public_surface.json`
 
+The explicit governance-decision companion is:
+
+- `docs/governance/lanes.yaml`
+- `docs/governance/lanes.md`
+
 The maintenance and readiness companion is:
 
 - `generated/governance_backlog.md`
@@ -31,6 +37,7 @@ The packaging and relationship companions are:
 
 - `generated/skill_bundle_index.md`
 - `generated/skill_graph.md`
+- `generated/skill_boundary_matrix.md`
 
 Read the live counts in those derived surfaces instead of treating this guide as a second status ledger.
 `generated/public_surface.md` and `generated/governance_backlog.md` are the authoritative readouts for the current total-skill count, default-reference cohort, candidate-ready cohort, pending-lineage state, and maintenance/readiness view.
@@ -38,6 +45,7 @@ Read the live counts in those derived surfaces instead of treating this guide as
 These derived surfaces stay separate on purpose:
 - `generated/public_surface.*` is the status and promotion readout
 - `generated/governance_backlog.*` is the maintenance and readiness queue
+- `generated/skill_boundary_matrix.*` cross-links adjacency evidence to governance lanes
 - `generated/skill_bundle_index.*` and `generated/skill_graph.*` are packaging and relationship views
 
 ## How to read the signals
@@ -54,13 +62,23 @@ It is trustworthy enough to use, but it is not automatically the default public 
 
 ### `candidate_ready`
 
-`candidate_ready` is a derived governance signal.
-It means the current machine-readable canonical gate checks pass, but no promotion happened yet.
+`candidate_ready` is a derived machine gate-pass signal.
+It means the current canonical gate checks pass, but no promotion happened yet.
 
 It does not:
 - change `status`
+- decide default-reference authority
 - replace review judgment
 - imply that promotion is automatic
+
+### `governance decision`
+
+`governance_decision` is the explicit repo-local governance outcome attached through a lane.
+
+- `default_reference` means the skill is the recorded default reference in that lane
+- `stay_evaluated` means the skill is candidate-ready or otherwise well-evidenced, but the recorded governance outcome is to keep it at `evaluated`
+
+This is why `candidate_ready` and `stay_evaluated` can coexist without contradiction.
 
 ### `pending lineage`
 
@@ -82,7 +100,7 @@ If you are choosing a skill, start with `docs/RUNTIME_PATH.md`.
 If you are reading matrix evidence, start with `docs/EVALUATION_PATH.md`.
 If you are reading status or release signals, stay here and in `generated/public_surface.md`.
 If you are reading maintenance readiness, use `generated/governance_backlog.md`.
-If you are reading bundle shape or adjacency, use `generated/skill_bundle_index.md` and `generated/skill_graph.md`.
+If you are reading bundle shape or adjacency, use `generated/skill_bundle_index.md`, `generated/skill_graph.md`, and `generated/skill_boundary_matrix.md`.
 
 ## Current reading order
 
@@ -95,10 +113,11 @@ Use this order when orienting in the public surface:
 5. `docs/PUBLIC_SURFACE.md`
 6. `generated/public_surface.md`
 7. `generated/governance_backlog.md`
-8. `generated/skill_bundle_index.md`
-9. `generated/skill_graph.md`
-10. `SKILL_INDEX.md`
-11. the target `skills/<skill-name>/SKILL.md`
+8. `generated/skill_boundary_matrix.md`
+9. `generated/skill_bundle_index.md`
+10. `generated/skill_graph.md`
+11. `SKILL_INDEX.md`
+12. the target `skills/<skill-name>/SKILL.md`
 
 ## What this layer does not do
 

@@ -14,14 +14,16 @@
         "technique_manifest",
         "status_promotion_reviews",
         "canonical_candidate_reviews",
-        "evaluation_fixtures"
+        "evaluation_fixtures",
+        "governance_lanes"
       ],
       "properties": {
         "skill_markdown": { "type": "string", "minLength": 1 },
         "technique_manifest": { "type": "string", "minLength": 1 },
         "status_promotion_reviews": { "type": "string", "minLength": 1 },
         "canonical_candidate_reviews": { "type": "string", "minLength": 1 },
-        "evaluation_fixtures": { "type": "string", "minLength": 1 }
+        "evaluation_fixtures": { "type": "string", "minLength": 1 },
+        "governance_lanes": { "type": "string", "minLength": 1 }
       }
     },
     "cohorts": {
@@ -65,6 +67,9 @@
           "skill_path",
           "lineage_state",
           "is_default_reference",
+          "governance_decision",
+          "governance_lane_ids",
+          "governance_evidence_case_ids",
           "canonical_candidate_ready",
           "canonical_candidate_blockers",
           "promotion_review_path",
@@ -85,6 +90,20 @@
           "skill_path": { "type": "string", "minLength": 1 },
           "lineage_state": { "type": "string", "enum": ["published", "pending"] },
           "is_default_reference": { "type": "boolean" },
+          "governance_decision": {
+            "type": ["string", "null"],
+            "enum": ["default_reference", "stay_evaluated", null]
+          },
+          "governance_lane_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "governance_evidence_case_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
           "canonical_candidate_ready": { "type": "boolean" },
           "canonical_candidate_blockers": {
             "type": "array",

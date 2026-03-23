@@ -386,6 +386,39 @@ class BuildCatalogTests(unittest.TestCase):
         path = repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH
         return path.read_text(encoding="utf-8")
 
+    def load_governance_backlog(self, repo_root: Path) -> dict:
+        path = repo_root / build_catalog.GOVERNANCE_BACKLOG_JSON_PATH
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def load_governance_backlog_markdown(self, repo_root: Path) -> str:
+        path = repo_root / build_catalog.GOVERNANCE_BACKLOG_MARKDOWN_PATH
+        return path.read_text(encoding="utf-8")
+
+    def write_governance_lanes(self, repo_root: Path, lanes: list[dict]) -> None:
+        governance_dir = repo_root / "docs" / "governance"
+        governance_dir.mkdir(parents=True, exist_ok=True)
+        headings = "\n\n".join(
+            f"## {lane['id']}\n\nLane notes.\n" for lane in lanes
+        )
+        if not headings:
+            headings = "## governance\n\nLane notes.\n"
+        (governance_dir / "lanes.md").write_text(
+            "# Governance lanes\n\n"
+            "Candidate-ready is a gate-pass signal only.\n\n"
+            + headings,
+            encoding="utf-8",
+        )
+        (governance_dir / "lanes.yaml").write_text(
+            yaml.safe_dump(
+                {
+                    "governance_lanes_version": 1,
+                    "lanes": lanes,
+                },
+                sort_keys=False,
+            ),
+            encoding="utf-8",
+        )
+
     def test_write_catalogs_generates_full_and_min_projection(self) -> None:
         repo_root = self.make_repo()
 
@@ -706,6 +739,43 @@ class BuildCatalogTests(unittest.TestCase):
             payload["cohorts"]["candidate_ready"],
         )
 
+    def test_write_public_surface_preserves_candidate_ready_while_recording_stay_evaluated(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#test_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        build_catalog.write_public_surface(repo_root)
+
+        payload = self.load_public_surface(repo_root)
+        skill_entry = payload["skills"][0]
+        self.assertTrue(skill_entry["canonical_candidate_ready"])
+        self.assertEqual("stay_evaluated", skill_entry["governance_decision"])
+        self.assertEqual(["test_lane"], skill_entry["governance_lane_ids"])
+        self.assertEqual([], skill_entry["governance_evidence_case_ids"])
+        self.assertFalse(skill_entry["is_default_reference"])
+        self.assertEqual(["aoa-test-skill"], payload["cohorts"]["candidate_ready"])
+
     def test_write_public_surface_marks_pending_lineage_and_resolves_both_review_paths(self) -> None:
         repo_root = self.make_repo(
             status="evaluated",
@@ -776,7 +846,46 @@ class BuildCatalogTests(unittest.TestCase):
 
         markdown = self.load_public_surface_markdown(repo_root)
         self.assertIn("## Candidate-ready cohort", markdown)
-        self.assertIn("| aoa-test-skill | evaluated | core | explicit-preferred | published | - |", markdown)
+        self.assertIn(
+            "| aoa-test-skill | evaluated | core | explicit-preferred | published | - | - | - | `docs/reviews/status-promotions/aoa-test-skill.md` | - |",
+            markdown,
+        )
+
+    def test_governance_backlog_renders_comparative_pending_cohort(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#test_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        build_catalog.write_governance_backlog(repo_root)
+
+        payload = self.load_governance_backlog(repo_root)
+        markdown = self.load_governance_backlog_markdown(repo_root)
+        self.assertEqual(["aoa-test-skill"], payload["cohorts"]["comparative_pending"])
+        self.assertEqual("stay_evaluated", payload["skills"][0]["governance_decision"])
+        self.assertEqual(["test_lane"], payload["skills"][0]["governance_lane_ids"])
+        self.assertIn("comparative pending cohort: 1", markdown)
+        self.assertIn("`comparative_pending`: aoa-test-skill", markdown)
 
     def test_write_evaluation_matrix_generates_snapshot_backed_surface(self) -> None:
         repo_root = self.make_repo(

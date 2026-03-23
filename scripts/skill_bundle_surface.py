@@ -6,6 +6,7 @@ from typing import Any, Mapping, Sequence
 
 import skill_catalog_contract
 import skill_evaluation_surface
+import skill_governance_lane_contract
 import skill_governance_surface
 import skill_lineage_surface
 import skill_runtime_surface
@@ -122,6 +123,9 @@ def build_bundle_index_payload(
         repo_root / skill_governance_surface.PUBLIC_SURFACE_SOURCE_OF_TRUTH["evaluation_fixtures"]
     )
     coverage_by_skill = skill_governance_surface.collect_evaluation_coverage(fixtures)
+    governance_signals = skill_governance_lane_contract.governance_skill_signals(
+        skill_governance_lane_contract.load_governance_lanes(repo_root)
+    )
     public_entries: list[dict[str, Any]] = []
     for source in skill_source_model.load_skill_sources(repo_root, skill_names):
         techniques = skill_catalog_contract.normalize_technique_refs(source.manifest)
@@ -140,6 +144,10 @@ def build_bundle_index_payload(
                 promotion_review_path=source.promotion_review_path,
                 candidate_review_path=source.candidate_review_path,
                 skill_path=relative_location(source.skill_md_path, repo_root),
+                governance_signals=skill_governance_lane_contract.governance_signals_for_skill(
+                    governance_signals,
+                    source.name,
+                ),
             )
         )
     public_payload = {"skills": public_entries}

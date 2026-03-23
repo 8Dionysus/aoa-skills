@@ -22,6 +22,7 @@ import skill_boundary_surface
 import skill_catalog_contract
 import skill_evaluation_contract
 import skill_governance_backlog_surface
+import skill_governance_lane_contract
 import skill_governance_surface
 import skill_lineage_surface
 import skill_overlay_contract
@@ -664,6 +665,39 @@ def validate_overlay_contract(repo_root: Path) -> list[ValidationIssue]:
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
     for contract_issue in skill_overlay_contract.collect_live_overlay_issues(repo_root):
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
+    return issues
+
+
+def validate_governance_lane_contract(
+    repo_root: Path,
+    target_skills: Sequence[str] | None = None,
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    manifest_path = repo_root / skill_governance_lane_contract.GOVERNANCE_LANES_PATH
+    location = relative_location(manifest_path)
+    if manifest_path.is_file():
+        payload = load_yaml_file(manifest_path, issues)
+        if payload is not None:
+            validate_against_schema(
+                payload,
+                skill_governance_lane_contract.GOVERNANCE_LANES_SCHEMA,
+                location,
+                issues,
+            )
+
+    try:
+        contract_issues = skill_governance_lane_contract.validate_governance_lanes(
+            repo_root,
+            skill_names=target_skills,
+        )
+    except (ValueError, yaml.YAMLError) as exc:
+        issues.append(ValidationIssue(location, str(exc)))
+        return issues
+
+    for contract_issue in contract_issues:
+        issues.append(
+            ValidationIssue(contract_issue.location, contract_issue.message)
+        )
     return issues
 
 
@@ -2261,6 +2295,7 @@ def run_validation(repo_root: Path, skill_name: str | None = None) -> list[Valid
 
     issues.extend(validate_snapshot_fixture_contract(repo_root))
     issues.extend(validate_overlay_contract(repo_root))
+    issues.extend(validate_governance_lane_contract(repo_root, target_skills))
     issues.extend(validate_evaluation_floors(repo_root, target_skills))
     issues.extend(validate_canonical_status_floors(repo_root, target_skills))
     issues.extend(validate_required_adjacency_coverage(repo_root, target_skills))

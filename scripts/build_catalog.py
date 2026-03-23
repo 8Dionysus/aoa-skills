@@ -16,6 +16,7 @@ import skill_bundle_surface
 import skill_catalog_contract
 import skill_evaluation_surface
 import skill_governance_backlog_surface
+import skill_governance_lane_contract
 import skill_governance_surface
 import skill_lineage_surface
 import skill_overlay_contract
@@ -502,11 +503,19 @@ def evaluation_coverage_by_skill(
     return skill_governance_surface.collect_evaluation_coverage(fixtures)
 
 
+def governance_signals_by_skill(
+    repo_root: Path,
+) -> dict[str, skill_governance_lane_contract.GovernanceSkillSignals]:
+    lanes = skill_governance_lane_contract.load_governance_lanes(repo_root)
+    return skill_governance_lane_contract.governance_skill_signals(lanes)
+
+
 def build_public_surface_payload(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
 ) -> dict[str, Any]:
     coverage_by_skill = evaluation_coverage_by_skill(repo_root)
+    signals_by_skill = governance_signals_by_skill(repo_root)
     sources = skill_source_model.load_skill_sources(repo_root, skill_names)
     skills: list[dict[str, Any]] = []
     for source in sources:
@@ -526,6 +535,10 @@ def build_public_surface_payload(
                 promotion_review_path=source.promotion_review_path,
                 candidate_review_path=source.candidate_review_path,
                 skill_path=relative_path(source.skill_md_path, repo_root),
+                governance_signals=skill_governance_lane_contract.governance_signals_for_skill(
+                    signals_by_skill,
+                    source.name,
+                ),
             )
         )
     return {

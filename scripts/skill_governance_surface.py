@@ -5,9 +5,10 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 import skill_catalog_contract
+import skill_governance_lane_contract
 
 
-PUBLIC_SURFACE_VERSION = 1
+PUBLIC_SURFACE_VERSION = 2
 PUBLIC_SURFACE_JSON_PATH = Path("generated") / "public_surface.json"
 PUBLIC_SURFACE_MARKDOWN_PATH = Path("generated") / "public_surface.md"
 PUBLIC_SURFACE_SOURCE_OF_TRUTH = {
@@ -16,6 +17,7 @@ PUBLIC_SURFACE_SOURCE_OF_TRUTH = {
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
+    "governance_lanes": skill_governance_lane_contract.GOVERNANCE_LANES_PATH.as_posix(),
 }
 
 BLOCKER_STATUS_BELOW_EVALUATED = "status_below_evaluated"
@@ -221,6 +223,7 @@ def derive_public_surface_skill_entry(
     promotion_review_path: str | None,
     candidate_review_path: str | None,
     skill_path: str,
+    governance_signals: skill_governance_lane_contract.GovernanceSkillSignals,
 ) -> dict[str, Any]:
     technique_dependencies = list(metadata.get("technique_dependencies", []))
     blockers = derive_canonical_candidate_blockers(
@@ -234,7 +237,12 @@ def derive_public_surface_skill_entry(
         policy_allow_implicit_invocation=policy_allow_implicit_invocation,
     )
     status = metadata.get("status")
-    is_default_reference = status == "canonical"
+    is_default_reference = (
+        governance_signals.governance_decision
+        == skill_governance_lane_contract.GOVERNANCE_DECISION_DEFAULT_REFERENCE
+    )
+    if governance_signals.governance_decision is None:
+        is_default_reference = status == "canonical"
 
     return {
         "name": skill_name,
@@ -245,6 +253,11 @@ def derive_public_surface_skill_entry(
         "skill_path": skill_path,
         "lineage_state": derive_lineage_state(technique_dependencies, techniques),
         "is_default_reference": is_default_reference,
+        "governance_decision": governance_signals.governance_decision,
+        "governance_lane_ids": list(governance_signals.governance_lane_ids),
+        "governance_evidence_case_ids": list(
+            governance_signals.governance_evidence_case_ids
+        ),
         "canonical_candidate_ready": not blockers,
         "canonical_candidate_blockers": blockers,
         "promotion_review_path": promotion_review_path,
@@ -301,6 +314,13 @@ def format_blockers_or_dash(blockers: Sequence[Any]) -> str:
     return "-"
 
 
+def format_values_or_dash(values: Sequence[Any]) -> str:
+    formatted_values = [value for value in values if isinstance(value, str) and value]
+    if formatted_values:
+        return ", ".join(formatted_values)
+    return "-"
+
+
 def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
     skill_entries = payload["skills"]
     cohorts = payload["cohorts"]
@@ -342,12 +362,12 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
             [
                 f"## {title}",
                 "",
-                "| name | status | scope | invocation | lineage | blockers | promotion review | candidate review |",
-                "|---|---|---|---|---|---|---|---|",
+                "| name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |",
+                "|---|---|---|---|---|---|---|---|---|---|",
             ]
         )
         if not entries:
-            lines.append("| - | - | - | - | - | - | - | - |")
+            lines.append("| - | - | - | - | - | - | - | - | - | - |")
         else:
             for entry in entries:
                 lines.append(
@@ -359,6 +379,8 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
                             str(entry["scope"]),
                             str(entry["invocation_mode"]),
                             str(entry["lineage_state"]),
+                            str(entry.get("governance_decision") or "-"),
+                            format_values_or_dash(entry.get("governance_lane_ids", [])),
                             format_blockers_or_dash(entry["canonical_candidate_blockers"]),
                             format_path_or_dash(entry["promotion_review_path"]),
                             format_path_or_dash(entry["candidate_review_path"]),
@@ -379,7 +401,8 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
             "",
             "- `canonical` means the skill is the current default public reference for its workflow class.",
             "- `evaluated` means behavior-oriented evidence exists, but it is not automatically a default reference.",
-            "- `candidate_ready` means the current machine-readable canonical gate checks pass without implying promotion.",
+            "- `candidate_ready` means the current machine-readable canonical gate checks pass without implying promotion or overriding the lane decision.",
+            "- `stay_evaluated` means the current governance lane decision is to keep the skill evaluated in this wave even though its canonical gate checks may already pass.",
             "- `pending lineage` means upstream technique publication or refresh still blocks the canonical path.",
             "- `explicit-only` means the skill requires an explicit invocation posture and policy alignment.",
             "",

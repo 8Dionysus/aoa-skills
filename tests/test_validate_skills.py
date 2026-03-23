@@ -242,6 +242,14 @@ class ValidateSkillsTests(unittest.TestCase):
         )
         if review_record_surface is not None:
             self.add_public_review_record(repo_root, skill_name, review_record_surface)
+        self.write_governance_lanes(
+            repo_root,
+            self.default_governance_lanes(
+                skill_name=skill_name,
+                scope=scope,
+                status=status,
+            ),
+        )
         if include_techniques_manifest:
             try:
                 self.write_catalogs(repo_root)
@@ -268,6 +276,70 @@ class ValidateSkillsTests(unittest.TestCase):
         review_dir.mkdir(parents=True, exist_ok=True)
         (review_dir / f"{skill_name}.md").write_text(
             title + "\n## Findings\n\n- Evidence exists.\n",
+            encoding="utf-8",
+        )
+
+    def default_governance_lanes(
+        self,
+        *,
+        skill_name: str,
+        scope: str,
+        status: str,
+    ) -> list[dict]:
+        if not skill_name.startswith("aoa-"):
+            return []
+        if scope == "project":
+            return []
+        if status not in {"evaluated", "canonical"}:
+            return []
+        lane_id = f"{skill_name.replace('-', '_')}_lane"
+        return [
+            {
+                "id": lane_id,
+                "title": f"{skill_name} governance lane",
+                "scope": "risk" if scope == "risk" else "core",
+                "state": (
+                    "stable_defaults"
+                    if status == "canonical"
+                    else "comparative_pending"
+                ),
+                "skills": [
+                    {
+                        "name": skill_name,
+                        "decision": (
+                            "default_reference"
+                            if status == "canonical"
+                            else "stay_evaluated"
+                        ),
+                    }
+                ],
+                "review_path": f"docs/governance/lanes.md#{lane_id}",
+                "evidence_case_ids": [],
+            }
+        ]
+
+    def write_governance_lanes(self, repo_root: Path, lanes: list[dict]) -> None:
+        governance_dir = repo_root / "docs" / "governance"
+        governance_dir.mkdir(parents=True, exist_ok=True)
+        headings = "\n\n".join(
+            f"## {lane['id']}\n\nLane notes.\n" for lane in lanes
+        )
+        if not headings:
+            headings = "## governance\n\nLane notes.\n"
+        (governance_dir / "lanes.md").write_text(
+            "# Governance lanes\n\n"
+            "Candidate-ready is a gate-pass signal only.\n\n"
+            + headings,
+            encoding="utf-8",
+        )
+        (governance_dir / "lanes.yaml").write_text(
+            yaml.safe_dump(
+                {
+                    "governance_lanes_version": 1,
+                    "lanes": lanes,
+                },
+                sort_keys=False,
+            ),
             encoding="utf-8",
         )
 
@@ -561,6 +633,236 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertEqual([], issues)
         self.assertEqual(0, self.run_main(repo_root))
         self.assertEqual(0, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
+
+    def test_governance_lane_unknown_skill_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-ghost-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#test_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "governance lane references unknown skill 'aoa-ghost-skill'",
+            messages,
+        )
+
+    def test_governance_lane_overlay_skill_fails(self) -> None:
+        repo_root = self.make_repo()
+        self.write_skill_index(repo_root, ["aoa-test-skill", "atm10-test-skill"])
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="atm10-test-skill",
+            scope="project",
+            status="scaffold",
+        )
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "atm10-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#test_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "governance lanes may only reference aoa-* public skills, not 'atm10-test-skill'",
+            messages,
+        )
+
+    def test_governance_lane_missing_review_path_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/missing.md#test_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "governance lane review_path 'docs/governance/missing.md#test_lane' must reference an existing file",
+            messages,
+        )
+
+    def test_governance_lane_missing_adjacency_case_id_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#test_lane",
+                    "evidence_case_ids": ["missing_case"],
+                }
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "governance lane evidence_case_id 'missing_case' must reference an existing adjacency case",
+            messages,
+        )
+
+    def test_governance_lane_conflicting_decisions_fail(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "lane_one",
+                    "title": "Lane one",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#lane_one",
+                    "evidence_case_ids": [],
+                },
+                {
+                    "id": "lane_two",
+                    "title": "Lane two",
+                    "scope": "core",
+                    "state": "stable_defaults",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "default_reference",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#lane_two",
+                    "evidence_case_ids": [],
+                },
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "skill 'aoa-test-skill' has conflicting governance decisions ('stay_evaluated' vs 'default_reference') across lanes",
+            messages,
+        )
+
+    def test_governance_lane_decision_status_mismatch_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "stable_defaults",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "default_reference",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#test_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "skill 'aoa-test-skill' uses decision 'default_reference' but is not currently 'canonical'",
+            messages,
+        )
+
+    def test_governance_lane_missing_coverage_for_evaluated_skill_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(repo_root, [])
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "skill 'aoa-test-skill' with status 'evaluated' requires governance lane coverage",
+            messages,
+        )
 
     def test_pending_technique_count_deduplicates_manifest_and_frontmatter_ids(self) -> None:
         published_count, pending_count, tbd_ref_count = skill_lineage_surface.technique_counts(

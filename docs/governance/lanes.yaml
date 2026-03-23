@@ -1,0 +1,94 @@
+governance_lanes_version: 1
+lanes:
+  - id: change_workflows
+    title: Change workflows
+    scope: core
+    state: stable_defaults
+    review_path: docs/governance/lanes.md#change_workflows
+    evidence_case_ids:
+      - change_protocol_vs_tdd_slice_boundary
+      - tdd_slice_vs_change_protocol_boundary
+    skills:
+      - name: aoa-change-protocol
+        decision: default_reference
+      - name: aoa-tdd-slice
+        decision: default_reference
+  - id: context_vs_contract
+    title: Context versus contract
+    scope: core
+    state: stable_defaults
+    review_path: docs/governance/lanes.md#context_vs_contract
+    evidence_case_ids:
+      - bounded_context_map_vs_contract_test_boundary
+      - contract_test_vs_bounded_context_map_boundary
+    skills:
+      - name: aoa-bounded-context-map
+        decision: default_reference
+      - name: aoa-contract-test
+        decision: default_reference
+  - id: core_boundary_refactor
+    title: Core boundary refactor
+    scope: core
+    state: comparative_pending
+    review_path: docs/governance/lanes.md#core_boundary_refactor
+    evidence_case_ids:
+      - core_logic_boundary_vs_port_adapter_refactor
+      - port_adapter_refactor_vs_core_logic_boundary
+    skills:
+      - name: aoa-bounded-context-map
+        decision: default_reference
+      - name: aoa-core-logic-boundary
+        decision: stay_evaluated
+      - name: aoa-port-adapter-refactor
+        decision: stay_evaluated
+  - id: decision_docs_authority
+    title: Decision docs versus authority docs
+    scope: core
+    state: comparative_pending
+    review_path: docs/governance/lanes.md#decision_docs_authority
+    evidence_case_ids:
+      - source_of_truth_check_vs_adr_write_boundary
+      - adr_write_vs_source_of_truth_check_boundary
+    skills:
+      - name: aoa-adr-write
+        decision: stay_evaluated
+      - name: aoa-source-of-truth-check
+        decision: stay_evaluated
+  - id: risk_authority_preview_execution
+    title: Risk authority preview and execution
+    scope: risk
+    state: comparative_pending
+    review_path: docs/governance/lanes.md#risk_authority_preview_execution
+    evidence_case_ids:
+      - approval_gate_vs_preview_and_infra_boundary
+      - approval_gate_vs_safe_infra_boundary
+      - approval_gate_vs_sanitized_share_boundary
+      - dry_run_first_vs_approval_gate_boundary
+      - dry_run_first_vs_sanitized_share_boundary
+      - safe_infra_change_vs_approval_gate_boundary
+      - safe_infra_change_vs_sanitized_share_boundary
+      - sanitized_share_vs_approval_gate_boundary
+      - sanitized_share_vs_dry_run_first_boundary
+      - sanitized_share_vs_safe_infra_change_boundary
+    skills:
+      - name: aoa-approval-gate-check
+        decision: default_reference
+      - name: aoa-dry-run-first
+        decision: stay_evaluated
+      - name: aoa-safe-infra-change
+        decision: stay_evaluated
+      - name: aoa-sanitized-share
+        decision: stay_evaluated
+  - id: invariant_authoring_vs_audit
+    title: Invariant authoring versus audit
+    scope: core
+    state: stable_defaults
+    review_path: docs/governance/lanes.md#invariant_authoring_vs_audit
+    evidence_case_ids:
+      - invariant_coverage_audit_vs_property_invariants_boundary
+      - property_invariants_vs_invariant_coverage_audit_boundary
+    skills:
+      - name: aoa-invariant-coverage-audit
+        decision: default_reference
+      - name: aoa-property-invariants
+        decision: default_reference
