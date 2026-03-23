@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0028
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md
-    source_ref: 4f0153e6cee7cd132cd386f75d103cb31a4959c0
+    source_ref: 4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b
     use_sections:
       - Intent
       - When to use
@@ -17,7 +17,7 @@ techniques:
   - id: AOA-T-0001
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
-    source_ref: ea49abf4f7e96506feed56eb87a9052cbe4408a5
+    source_ref: 4ba05b5b1d902f7b64e1933a2f6618f1832d2b0b
     use_sections:
       - Intent
       - Outputs
