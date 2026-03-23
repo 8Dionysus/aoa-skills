@@ -10,7 +10,7 @@ Good contributions:
 - skill templates and repository conventions
 - validation or review helpers for skill bundles
 - thin project overlay examples that clarify how a core skill adapts to a real repository
-- docs-only truth sync that keeps the current 14-skill surface and derived layers readable
+- docs-only truth sync that keeps the current public surface and derived layers readable
 
 Bad contributions:
 - private operational context
@@ -150,7 +150,7 @@ When proposing `canonical` specifically:
 - add or update the public review record under `docs/reviews/canonical-candidates/`
 - use `templates/CANDIDATE_REVIEW.template.md` for new candidate-review records
 - make the review record explicit about machine floors, whether the runtime meaning changed, and what still blocks the next maintenance step
-- keep canonical-candidate records aligned with the current 14-skill public surface rather than historical scaffold wording
+- keep canonical-candidate records aligned with the current public surface rather than historical scaffold wording
 
 ## Drift and refresh
 
@@ -162,7 +162,7 @@ A good PR should make it clear:
 - whether the skill meaning changed
 - whether only metadata changed
 - whether project overlays also require updates
-- whether the change belongs in `docs/OVERLAY_SPEC.md` as a future-facing contract rather than in a skill bundle
+- whether the change belongs in `docs/OVERLAY_SPEC.md` as a repo-local overlay contract clarification or in a live exemplar skill bundle
 
 If you think a richer integration would need another repository, leave a local stub or TODO note instead of adding live cross-repo behavior in this repository wave.
 

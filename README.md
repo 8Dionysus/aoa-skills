@@ -135,12 +135,12 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 14 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
-It now includes first `canonical` skills, expanded `evaluated` core and risk surfaces, autonomy and trigger-boundary evaluation checks, a separate evaluation evidence layer in `docs/EVALUATION_PATH.md` and `generated/skill_evaluation_matrix.*`, documented maturity and promotion guidance through `docs/PROMOTION_PATH.md`, and a derived public-surface layer in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`.
+This repository now has a mixed-status public core of 16 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
+The current derived baseline in `generated/public_surface.md` and `generated/governance_backlog.md` tracks the live default-reference cohort, candidate-review cohort, and zero pending-lineage blockers.
 It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the evaluation evidence and governance/public-surface layers.
-The current focus is keeping runtime selection, evaluation evidence, and public status readable as separate derived layers while using the governance surface to clarify default references, candidate-ready skills, pending-lineage blockers, and derived maintenance surfaces such as `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`.
-Overlay preparation remains intentionally repo-local and thin.
-`docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, and the overlay templates now describe exemplar overlay adoption without pretending to be a live downstream integration.
+The current focus is candidate review and promotion decisions, overlay maturity, public/docs clarity, and packaging prep through derived maintenance surfaces such as `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`.
+Overlay adoption remains intentionally thin, public-safe, and repo-local.
+`docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, and the overlay templates now describe live exemplar overlay packs without pretending to be live downstream integrations.
 
 ## When not to use this repository
 

@@ -4,7 +4,8 @@
 
 Current public foundation:
 - coherent docs surface
-- 14 public skills across core and risk categories, including the first `canonical` skills and evaluated coverage across the rest of the current public surface
+- 16 public skills across core, risk, and first live project-overlay categories
+- live governance counts kept in `generated/public_surface.md` and `generated/governance_backlog.md` rather than duplicated in source docs
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
 - local validator for bundle shape, policy, and `SKILL_INDEX.md` coverage
@@ -12,8 +13,8 @@ Current public foundation:
 - documented maturity ladder and promotion guidance for future status changes
 - derived public-surface signaling in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`
 
-The next steps should use that derived governance layer to drive pending-lineage closure, candidate review, and stronger public product-surface clarity rather than only increase skill count.
-Overlay preparation and packaging are intentionally repo-local and future-facing: they should surface contracts and export primitives without introducing live downstream integrations, releases, or registries.
+The next steps should use that derived governance layer to drive candidate review and promotion decisions, overlay maturity, stronger public product-surface clarity, and packaging prep rather than only increase skill count.
+Overlay preparation and packaging remain intentionally repo-local and thin: they should surface contracts and export primitives without introducing live downstream integrations, releases, or registries.
 
 ## v0.3 public core hardening
 
@@ -53,16 +54,16 @@ Add:
 
 ## v0.6 project overlays
 
-Add first thin project-shaped overlays only after the public core is more stable:
-- `atm10-*`
-- `abyss-*`
+Continue thin project-shaped overlays now that the public core has a first live exemplar pack:
+- deepen `atm10-*` from initial scaffold overlays into a clearer project-family surface
+- add first `abyss-*` exemplar overlays after the `atm10` pattern is stable
 
 Target shape:
 - repository-local commands and source-of-truth files
 - explicit local authority and approval rules
 - local validation commands and evidence paths
 - no silent fork of the public core meaning
-- `docs/OVERLAY_SPEC.md` should define the repo-local overlay contract before any real downstream overlay bundle is added
+- `docs/OVERLAY_SPEC.md` and `docs/overlays/atm10/PROJECT_OVERLAY.md` define the repo-local overlay contract for live exemplar packs without turning them into downstream integrations
 
 ## v0.7 packaging and distribution
 
