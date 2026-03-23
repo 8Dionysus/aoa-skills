@@ -309,6 +309,43 @@ Common expand sections:
 - `promotion_review`: `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md`
 
+## aoa-local-stack-bringup
+
+- scope: `risk`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-local-stack-bringup/SKILL.md`
+- pick summary: Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.
+
+### Use when
+
+- a local stack has more than one meaningful service or runtime layer
+- the selected profile, preset, or overlay can change what will actually start
+- startup depends on host readiness signals that should be checked before launch
+- the operator needs one explicit launch path and stop path after pre-start review
+- a plain infrastructure change workflow would miss the local runtime selection, preflight, or lifecycle seam
+
+### Do not use when
+
+- the main task is remote deployment, continuous monitoring, or fleet orchestration
+- the task is only to inspect rendered runtime truth without any launch decision
+- the task is only to diagnose readiness without planning a bounded local bring-up
+- the main question is whether authority exists at all; use aoa-approval-gate-check
+- the task is a broader operational or configuration change with no bounded local stack bring-up; use aoa-safe-infra-change
+
+### Object use shape
+
+- rendered runtime truth summary for what would actually start
+- selector-aware readiness verdict with named blockers or warnings
+- explicit go, hold, or confirm-before-launch recommendation
+- started bounded local stack with visible stop path, or a deferred-start report
+- concise runtime report with unresolved warnings, blockers, or cleanup notes
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-local-stack-bringup/examples/runtime.md`
+- `review_checklist`: `skills/aoa-local-stack-bringup/checks/review.md`
+
 ## aoa-port-adapter-refactor
 
 - scope: `core`

@@ -1,0 +1,55 @@
+skill_name: aoa-local-stack-bringup
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0036
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0037
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/evaluation/contextual-host-doctor/TECHNIQUE.md
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0028
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0038
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/one-command-service-lifecycle/TECHNIQUE.md
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation

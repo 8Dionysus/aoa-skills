@@ -232,6 +232,46 @@
     },
     {
       "kind": "maturity",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "scope_risk"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "technique_AOA_T_0036"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "technique_AOA_T_0037"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "technique_AOA_T_0028"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "technique_AOA_T_0038"
+    },
+    {
+      "kind": "maturity",
       "source": "skill_aoa_port_adapter_refactor",
       "target": "status_evaluated"
     },
@@ -598,6 +638,31 @@
       "type": "technique"
     },
     {
+      "id": "skill_aoa_local_stack_bringup",
+      "label": "aoa-local-stack-bringup",
+      "type": "skill"
+    },
+    {
+      "id": "status_scaffold",
+      "label": "status: scaffold",
+      "type": "status"
+    },
+    {
+      "id": "technique_AOA_T_0036",
+      "label": "AOA-T-0036",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0037",
+      "label": "AOA-T-0037",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0038",
+      "label": "AOA-T-0038",
+      "type": "technique"
+    },
+    {
       "id": "skill_aoa_port_adapter_refactor",
       "label": "aoa-port-adapter-refactor",
       "type": "skill"
@@ -656,11 +721,6 @@
       "id": "skill_atm10_change_protocol",
       "label": "atm10-change-protocol",
       "type": "skill"
-    },
-    {
-      "id": "status_scaffold",
-      "label": "status: scaffold",
-      "type": "status"
     },
     {
       "id": "scope_project",
@@ -1147,6 +1207,60 @@
       ],
       "technique_dependencies": [
         "AOA-T-0017"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/aoa-local-stack-bringup/SKILL.md",
+        "skills/aoa-local-stack-bringup/techniques.yaml",
+        "skills/aoa-local-stack-bringup/agents/openai.yaml",
+        "skills/aoa-local-stack-bringup/examples/runtime.md",
+        "skills/aoa-local-stack-bringup/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "15faa3ac59f27c774d79d099ad195ffa3aee452b71afd4a400f99b21d75b6523",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 3,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-local-stack-bringup",
+      "promotion_review_path": null,
+      "scope": "risk",
+      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "skill_revision": "15faa3ac59f2",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-local-stack-bringup/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-local-stack-bringup/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0036",
+        "AOA-T-0037",
+        "AOA-T-0028",
+        "AOA-T-0038"
       ]
     },
     {

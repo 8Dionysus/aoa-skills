@@ -466,6 +466,64 @@
       "status": "canonical"
     },
     {
+      "name": "aoa-local-stack-bringup",
+      "scope": "risk",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to turn local multi-service startup into a reviewable bring-up workflow with a visible pre-start seam and one explicit launch path.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a local stack has more than one meaningful service or runtime layer\n- the selected profile, preset, or overlay can change what will actually start\n- startup depends on host readiness signals that should be checked before launch\n- the operator needs one explicit launch path and stop path after pre-start review\n- a plain infrastructure change workflow would miss the local runtime selection, preflight, or lifecycle seam\n\nDo not use this skill when:\n- the main task is remote deployment, continuous monitoring, or fleet orchestration\n- the task is only to inspect rendered runtime truth without any launch decision\n- the task is only to diagnose readiness without planning a bounded local bring-up\n- the main question is whether authority exists at all; use `aoa-approval-gate-check`\n- the task is a broader operational or configuration change with no bounded local stack bring-up; use `aoa-safe-infra-change`",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- selected local runtime, profile, or preset\n- available render-truth surface for the chosen runtime\n- available readiness or doctor surface for the chosen runtime\n- one explicit local lifecycle entrypoint\n- intended stop path or cleanup path",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- rendered runtime truth summary for what would actually start\n- selector-aware readiness verdict with named blockers or warnings\n- explicit go, hold, or confirm-before-launch recommendation\n- started bounded local stack with visible stop path, or a deferred-start report\n- concise runtime report with unresolved warnings, blockers, or cleanup notes",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. name the selected runtime, the expected service set, and the explicit launch surface before starting anything\n2. render the effective service list or composed runtime truth before startup, and keep any full rendered config local and controlled\n3. run the selector-aware doctor or readiness surface for the same selected runtime and note `ok`, `warn`, or `fail` items\n4. stop and report if the render or readiness step exposes a blocker or unresolved ambiguity that should be fixed before launch\n5. require explicit operator confirmation before launch when startup would materially mutate the local runtime or when warnings remain\n6. launch the bounded stack through one operator-facing lifecycle entrypoint and keep the stop path visible\n7. report what was rendered, what the readiness verdict said, what started, and what remains risky, deferred, or cleanup-sensitive",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- render review happens before startup\n- readiness checks stay tied to the selected runtime rather than acting like one global score\n- startup remains explicit and reviewable rather than hiding behind ambient background state\n- the skill uses one bounded lifecycle entrypoint and one visible stop path\n- rendered truth, readiness, confirmation, and lifecycle remain distinct steps even when one script wraps parts of them together\n- the workflow stays local-stack oriented and does not widen into generic bootstrap, deployment, or monitoring doctrine",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating rendered truth as proof that the host is ready or that startup will succeed\n- treating a passing doctor result as proof of post-start health\n- skipping the pre-start review seam because the launch command feels convenient\n- leaking full rendered config or other sensitive local runtime material\n- hiding startup in background helpers that obscure what started or how to stop it\n- widening the bundle into generic install, bootstrap, or platform-management doctrine",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the rendered output answered what would actually start before launch\n- confirm the readiness verdict was selector-aware and itemized with visible severity\n- confirm blockers stopped the launch path or were explicitly deferred with explanation\n- confirm explicit operator intent or confirmation existed before the mutating launch step\n- confirm startup status named what started and how to stop it\n- confirm unresolved warnings, sensitive rendered material handling, and cleanup notes were reported clearly",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0036 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0037 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contextual-host-doctor/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0038 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/one-command-service-lifecycle/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays should add:\n- local render commands and safe storage rules for rendered config\n- local runtime selectors, profiles, or presets\n- local readiness checks and strictness policy\n- local lifecycle entrypoints, stop commands, and cleanup expectations",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "sections": [

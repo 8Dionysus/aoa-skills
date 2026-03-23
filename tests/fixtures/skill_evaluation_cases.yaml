@@ -89,6 +89,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-local-stack-bringup
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-sanitized-share
     forbidden_runtime_terms:
       - aoa-techniques
@@ -335,6 +341,21 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`
+
+  - skill: aoa-local-stack-bringup
+    case_id: local_stack_bringup_reviewable_runtime
+    prompt: Bring up a local multi-service stack after choosing a profile that changes what starts and requires host readiness checks before launch.
+    expected: use
+    required_phrases:
+      - a local stack has more than one meaningful service or runtime layer
+      - the selected profile, preset, or overlay can change what will actually start
+      - startup depends on host readiness signals that should be checked before launch
+  - skill: aoa-local-stack-bringup
+    case_id: local_stack_bringup_render_only
+    prompt: Only render the composed local runtime for review; do not plan or start the stack yet.
+    expected: do_not_use
+    required_phrases:
+      - the task is only to inspect rendered runtime truth without any launch decision
 
   - skill: aoa-sanitized-share
     case_id: sanitized_share_sensitive_material
@@ -781,6 +802,24 @@ snapshot_cases:
     required_output_phrases:
       - use
       - A bounded change plan or recommendation that names the operational surface, the validation path, and rollback or recovery notes.
+    forbidden_output_phrases: []
+  - skill: aoa-local-stack-bringup
+    case_id: local_stack_bringup_render_only
+    prompt: Only render the composed local runtime for review; do not plan or start the stack yet.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-local-stack-bringup/local_stack_bringup_render_only.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that keeps the work at render-only inspection or another narrower pre-start surface instead of a full bring-up workflow.
+    forbidden_output_phrases: []
+  - skill: aoa-local-stack-bringup
+    case_id: local_stack_bringup_reviewable_runtime
+    prompt: Bring up a local multi-service stack after choosing a profile that changes what starts and requires host readiness checks before launch.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-local-stack-bringup/local_stack_bringup_reviewable_runtime.md
+    required_output_phrases:
+      - use
+      - Rendered runtime truth, a readiness verdict, and one explicit launch recommendation for the selected local stack.
     forbidden_output_phrases: []
   - skill: aoa-sanitized-share
     case_id: sanitized_share_already_public_safe

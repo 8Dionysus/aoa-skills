@@ -28,6 +28,11 @@ graph TD
   technique_AOA_T_0004["AOA-T-0004"]
   skill_aoa_invariant_coverage_audit["aoa-invariant-coverage-audit"]
   technique_AOA_T_0017["AOA-T-0017"]
+  skill_aoa_local_stack_bringup["aoa-local-stack-bringup"]
+  status_scaffold["status: scaffold"]
+  technique_AOA_T_0036["AOA-T-0036"]
+  technique_AOA_T_0037["AOA-T-0037"]
+  technique_AOA_T_0038["AOA-T-0038"]
   skill_aoa_port_adapter_refactor["aoa-port-adapter-refactor"]
   skill_aoa_property_invariants["aoa-property-invariants"]
   technique_AOA_T_0007["AOA-T-0007"]
@@ -40,7 +45,6 @@ graph TD
   skill_aoa_tdd_slice["aoa-tdd-slice"]
   technique_AOA_T_0014["AOA-T-0014"]
   skill_atm10_change_protocol["atm10-change-protocol"]
-  status_scaffold["status: scaffold"]
   scope_project["scope: project"]
   skill_atm10_source_of_truth_check["atm10-source-of-truth-check"]
   skill_aoa_adr_write -->|maturity| status_evaluated
@@ -89,6 +93,14 @@ graph TD
   skill_aoa_invariant_coverage_audit -->|lineage| lineage_published
   skill_aoa_invariant_coverage_audit -->|invocation_policy| policy_explicit_preferred
   skill_aoa_invariant_coverage_audit -->|depends_on| technique_AOA_T_0017
+  skill_aoa_local_stack_bringup -->|maturity| status_scaffold
+  skill_aoa_local_stack_bringup -->|scope| scope_risk
+  skill_aoa_local_stack_bringup -->|lineage| lineage_published
+  skill_aoa_local_stack_bringup -->|invocation_policy| policy_explicit_only
+  skill_aoa_local_stack_bringup -->|depends_on| technique_AOA_T_0036
+  skill_aoa_local_stack_bringup -->|depends_on| technique_AOA_T_0037
+  skill_aoa_local_stack_bringup -->|depends_on| technique_AOA_T_0028
+  skill_aoa_local_stack_bringup -->|depends_on| technique_AOA_T_0038
   skill_aoa_port_adapter_refactor -->|maturity| status_evaluated
   skill_aoa_port_adapter_refactor -->|scope| scope_core
   skill_aoa_port_adapter_refactor -->|lineage| lineage_published
@@ -150,6 +162,7 @@ graph TD
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | published | AOA-T-0016, AOA-T-0015 |
 | aoa-dry-run-first | evaluated | risk | explicit-only | published | AOA-T-0004, AOA-T-0028 |
 | aoa-invariant-coverage-audit | canonical | core | explicit-preferred | published | AOA-T-0017 |
+| aoa-local-stack-bringup | scaffold | risk | explicit-only | published | AOA-T-0036, AOA-T-0037, AOA-T-0028, AOA-T-0038 |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | AOA-T-0016, AOA-T-0015 |
 | aoa-property-invariants | canonical | core | explicit-preferred | published | AOA-T-0017, AOA-T-0007 |
 | aoa-safe-infra-change | evaluated | risk | explicit-only | published | AOA-T-0028, AOA-T-0001 |
