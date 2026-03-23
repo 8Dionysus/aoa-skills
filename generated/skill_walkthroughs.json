@@ -41,6 +41,11 @@
           "path": "docs/reviews/status-promotions/aoa-adr-write.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -80,7 +85,7 @@
       "pick_summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "scope": "risk",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-approval-gate-check/examples/runtime.md",
@@ -312,6 +317,11 @@
           "path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -367,6 +377,11 @@
           "path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-dry-run-first.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -471,6 +486,11 @@
           "path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -582,6 +602,11 @@
           "path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -635,6 +660,11 @@
           "path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [
@@ -686,6 +716,11 @@
           "path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [

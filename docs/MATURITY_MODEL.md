@@ -111,7 +111,7 @@ Use this checklist when proposing any status change beyond `scaffold`:
 The first canonical cohort was:
 - `aoa-change-protocol` — promoted to `canonical`
 - `aoa-tdd-slice` — promoted to `canonical`
-- `aoa-approval-gate-check` — lineage-cleared and awaiting an explicit default-reference decision
+- `aoa-approval-gate-check` — promoted to `canonical` after lineage closure and a separate default-reference decision
 
 The next published-lineage promotion wave added:
 - `aoa-bounded-context-map` — promoted to `canonical`
@@ -120,7 +120,8 @@ The next published-lineage promotion wave added:
 - `aoa-property-invariants` — promoted to `canonical`
 
 The early canonical-candidate set is therefore no longer uniformly candidate-only.
-Six published-lineage core skills now serve as `canonical` references, while `aoa-approval-gate-check` remains in the candidate-ready cohort until a repo-level promotion decision is made.
+Seven published-lineage core and risk skills now serve as `canonical` references.
+The remaining candidate-ready skills stay `evaluated` until separate default-reference decisions are recorded.
 
 ## Review guidance for current candidates
 

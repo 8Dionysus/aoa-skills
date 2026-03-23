@@ -26,7 +26,7 @@
       "outputs_short": "Produces: classification of the action: safe to proceed, explicit approval required, or do not execute; note on whether explicit approval is needed; bounded next-step recommendation; report of unresolved authority...",
       "scope": "risk",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "technique_dependencies": [
         "AOA-T-0028"

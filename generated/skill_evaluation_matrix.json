@@ -3,7 +3,7 @@
   "skills": [
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,
@@ -31,7 +31,7 @@
       "scope": "risk",
       "selected_runtime_artifact_path": "skills/aoa-approval-gate-check/examples/runtime.md",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -88,7 +88,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,
@@ -105,7 +105,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-dry-run-first.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 2,
@@ -139,7 +139,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,
@@ -173,7 +173,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 2,
@@ -190,7 +190,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 3,
@@ -207,7 +207,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,

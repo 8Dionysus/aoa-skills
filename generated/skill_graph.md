@@ -11,11 +11,11 @@ graph TD
   policy_explicit_preferred["invocation: explicit-preferred"]
   technique_AOA_T_0033["AOA-T-0033"]
   skill_aoa_approval_gate_check["aoa-approval-gate-check"]
+  status_canonical["status: canonical"]
   scope_risk["scope: risk"]
   policy_explicit_only["invocation: explicit-only"]
   technique_AOA_T_0028["AOA-T-0028"]
   skill_aoa_bounded_context_map["aoa-bounded-context-map"]
-  status_canonical["status: canonical"]
   technique_AOA_T_0016["AOA-T-0016"]
   technique_AOA_T_0002["AOA-T-0002"]
   skill_aoa_change_protocol["aoa-change-protocol"]
@@ -47,7 +47,7 @@ graph TD
   skill_aoa_adr_write -->|lineage| lineage_published
   skill_aoa_adr_write -->|invocation_policy| policy_explicit_preferred
   skill_aoa_adr_write -->|depends_on| technique_AOA_T_0033
-  skill_aoa_approval_gate_check -->|maturity| status_evaluated
+  skill_aoa_approval_gate_check -->|maturity| status_canonical
   skill_aoa_approval_gate_check -->|scope| scope_risk
   skill_aoa_approval_gate_check -->|lineage| lineage_published
   skill_aoa_approval_gate_check -->|invocation_policy| policy_explicit_only
@@ -138,7 +138,7 @@ graph TD
 | name | status | scope | invocation | lineage | techniques |
 |---|---|---|---|---|---|
 | aoa-adr-write | evaluated | core | explicit-preferred | published | AOA-T-0033 |
-| aoa-approval-gate-check | evaluated | risk | explicit-only | published | AOA-T-0028 |
+| aoa-approval-gate-check | canonical | risk | explicit-only | published | AOA-T-0028 |
 | aoa-bounded-context-map | canonical | core | explicit-preferred | published | AOA-T-0016, AOA-T-0002 |
 | aoa-change-protocol | canonical | core | explicit-preferred | published | AOA-T-0001, AOA-T-0002 |
 | aoa-contract-test | canonical | core | explicit-preferred | published | AOA-T-0003, AOA-T-0015 |

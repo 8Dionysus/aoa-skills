@@ -3,7 +3,6 @@
     "blocked_by_pending_lineage": [],
     "candidate_ready": [
       "aoa-adr-write",
-      "aoa-approval-gate-check",
       "aoa-core-logic-boundary",
       "aoa-dry-run-first",
       "aoa-port-adapter-refactor",
@@ -12,6 +11,7 @@
       "aoa-source-of-truth-check"
     ],
     "default_references": [
+      "aoa-approval-gate-check",
       "aoa-bounded-context-map",
       "aoa-change-protocol",
       "aoa-contract-test",
@@ -29,7 +29,7 @@
   "public_surface_version": 1,
   "skills": [
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
@@ -47,13 +47,13 @@
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-approval-gate-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
       "scope": "risk",
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level."
     },
     {
@@ -99,7 +99,7 @@
       "summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
@@ -113,7 +113,7 @@
       "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-dry-run-first.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
@@ -141,7 +141,7 @@
       "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",
@@ -169,7 +169,7 @@
       "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
@@ -183,7 +183,7 @@
       "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-only",
@@ -197,7 +197,7 @@
       "summary": "Prepare findings, logs, examples, or diagnostics for sharing without leaking secrets, private topology, or unsafe operational detail."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "invocation_mode": "explicit-preferred",

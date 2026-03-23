@@ -2,16 +2,14 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
-- current machine-checkable floor: review evidence plus evaluation coverage
+- current maturity status: `canonical`
 - scope: `risk`
-- current lineage: manifest-aligned, but still depends on pending technique `AOA-T-PENDING-APPROVAL-GATE-CHECK`
+- current lineage: manifest-aligned with published technique `AOA-T-0028`
 
 ## Target status
 
-- target maturity status: `evaluated` (achieved in this pass)
-- why this target now: evaluation coverage, explicit-only policy, and bounded review/check support are already strong enough for a non-canonical promotion
-- next status after this step: `canonical`, but only after upstream lineage is published and refreshed
+- target maturity status: `evaluated` (historical target achieved before the later canonical promotion)
+- why this target now: evaluation coverage, explicit-only policy, and bounded review/check support already justified a non-canonical promotion before the later default-reference decision
 
 ## Evidence reviewed
 
@@ -30,10 +28,10 @@
 
 ## Gaps and blockers
 
-- pending lineage does not block `evaluated`, but it still blocks a future `canonical` path
-- the skill still depends on `AOA-T-PENDING-APPROVAL-GATE-CHECK`, so canonical readiness remains blocked until upstream publication and refresh
+- no technical blocker remains for `evaluated`
+- this record no longer blocks the next step; the later canonical decision now lives in `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`
 
 ## Recommendation
 
-Promotion to `evaluated` is complete in this pass.
-Keep `canonical` deferred until published lineage exists and a separate default-use decision is recorded.
+Keep this record as the historical `evaluated` promotion surface.
+Use the canonical-candidate review record for the current default-reference maintenance decision.
