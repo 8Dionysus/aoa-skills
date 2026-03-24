@@ -21,160 +21,153 @@
       "aoa-source-of-truth-check"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": [
-      "aoa-sanitized-share",
-      "aoa-source-of-truth-check"
-    ]
+    "review_truth_sync": []
   },
   "governance_backlog_version": 3,
   "review_truth_sync": [
     {
-      "current_revision": "a35e75e48ceb",
+      "current_revision": "0309a890f50e",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-adr-write",
       "review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
-      "reviewed_revision": "a35e75e48ceb",
+      "reviewed_revision": "0309a890f50e",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "9a2ba5f066fd",
+      "current_revision": "c40906ab85f7",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-approval-gate-check",
       "review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
-      "reviewed_revision": "9a2ba5f066fd",
+      "reviewed_revision": "c40906ab85f7",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "6a49a4dfd942",
+      "current_revision": "54dac4ff2176",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
-      "reviewed_revision": "6a49a4dfd942",
+      "reviewed_revision": "54dac4ff2176",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "86fbe86efb98",
+      "current_revision": "afa2aca6eaed",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
-      "reviewed_revision": "86fbe86efb98",
+      "reviewed_revision": "afa2aca6eaed",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "2bc30564a6a9",
+      "current_revision": "ee2eb1cc6aa9",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
       "review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
-      "reviewed_revision": "2bc30564a6a9",
+      "reviewed_revision": "ee2eb1cc6aa9",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "1416f2480434",
+      "current_revision": "c7a12458152b",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
-      "reviewed_revision": "1416f2480434",
+      "reviewed_revision": "c7a12458152b",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "d5dd537fbc0d",
+      "current_revision": "97ce3d068b91",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
       "review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
-      "reviewed_revision": "d5dd537fbc0d",
+      "reviewed_revision": "97ce3d068b91",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "d516d300a3a5",
+      "current_revision": "9f787dcdf31a",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
       "review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
-      "reviewed_revision": "d516d300a3a5",
+      "reviewed_revision": "9f787dcdf31a",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "280478cb5b3d",
+      "current_revision": "3f8c54b28ddd",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
-      "reviewed_revision": "280478cb5b3d",
+      "reviewed_revision": "3f8c54b28ddd",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "b3c9f8099ddc",
+      "current_revision": "18039d4a9fe6",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
-      "reviewed_revision": "b3c9f8099ddc",
+      "reviewed_revision": "18039d4a9fe6",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "28afc3bf1f4b",
+      "current_revision": "7d5d0fd798bf",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=28afc3bf1f4b, recorded=24296c3b55d7)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
-      "reviewed_revision": "24296c3b55d7",
+      "reviewed_revision": "7d5d0fd798bf",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
-      "current_revision": "9d5933ad4d06",
+      "current_revision": "20158c186555",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=9d5933ad4d06, recorded=a1d77ad6faab)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
-      "reviewed_revision": "a1d77ad6faab",
+      "reviewed_revision": "20158c186555",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     }
   ],
   "skills": [

@@ -10,7 +10,7 @@ It is a backlog/maintenance view, not a promotion decision surface.
 - blocked by pending lineage: 0
 - canonical maintenance cohort: 7
 - comparative pending cohort: 7
-- review truth-sync gaps: 2
+- review truth-sync gaps: 0
 - docs truth-sync issues: 0
 
 | name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |
@@ -37,18 +37,18 @@ It is a backlog/maintenance view, not a promotion decision surface.
 
 | name | status | lineage | governance decision | review path | reviewed revision | current revision | meaning changed | issues | synced |
 |---|---|---|---|---|---|---|---|---|---|
-| aoa-adr-write | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-adr-write.md | a35e75e48ceb | a35e75e48ceb | True | - | true |
-| aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | 9a2ba5f066fd | 9a2ba5f066fd | True | - | true |
-| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 6a49a4dfd942 | 6a49a4dfd942 | False | - | true |
-| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 86fbe86efb98 | 86fbe86efb98 | False | - | true |
-| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 2bc30564a6a9 | 2bc30564a6a9 | False | - | true |
-| aoa-dry-run-first | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-dry-run-first.md | 1416f2480434 | 1416f2480434 | True | - | true |
-| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | d5dd537fbc0d | d5dd537fbc0d | True | - | true |
-| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | d516d300a3a5 | d516d300a3a5 | False | - | true |
-| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 280478cb5b3d | 280478cb5b3d | True | - | true |
-| aoa-safe-infra-change | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-safe-infra-change.md | b3c9f8099ddc | b3c9f8099ddc | False | - | true |
-| aoa-sanitized-share | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-sanitized-share.md | 24296c3b55d7 | 28afc3bf1f4b | True | reviewed_revision_mismatch(expected=28afc3bf1f4b, recorded=24296c3b55d7) | false |
-| aoa-source-of-truth-check | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-source-of-truth-check.md | a1d77ad6faab | 9d5933ad4d06 | True | reviewed_revision_mismatch(expected=9d5933ad4d06, recorded=a1d77ad6faab) | false |
+| aoa-adr-write | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-adr-write.md | 0309a890f50e | 0309a890f50e | True | - | true |
+| aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | c40906ab85f7 | c40906ab85f7 | True | - | true |
+| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 54dac4ff2176 | 54dac4ff2176 | False | - | true |
+| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | afa2aca6eaed | afa2aca6eaed | False | - | true |
+| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | ee2eb1cc6aa9 | ee2eb1cc6aa9 | False | - | true |
+| aoa-dry-run-first | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-dry-run-first.md | c7a12458152b | c7a12458152b | True | - | true |
+| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | 97ce3d068b91 | 97ce3d068b91 | True | - | true |
+| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | 9f787dcdf31a | 9f787dcdf31a | False | - | true |
+| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 3f8c54b28ddd | 3f8c54b28ddd | True | - | true |
+| aoa-safe-infra-change | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-safe-infra-change.md | 18039d4a9fe6 | 18039d4a9fe6 | False | - | true |
+| aoa-sanitized-share | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-sanitized-share.md | 7d5d0fd798bf | 7d5d0fd798bf | True | - | true |
+| aoa-source-of-truth-check | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-source-of-truth-check.md | 20158c186555 | 20158c186555 | True | - | true |
 
 ## Cohorts
 
@@ -56,6 +56,6 @@ It is a backlog/maintenance view, not a promotion decision surface.
 - `blocked_by_pending_lineage`: -
 - `canonical_maintenance`: aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-tdd-slice
 - `comparative_pending`: aoa-adr-write, aoa-core-logic-boundary, aoa-dry-run-first, aoa-port-adapter-refactor, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check
-- `review_truth_sync`: aoa-sanitized-share, aoa-source-of-truth-check
+- `review_truth_sync`: -
 - `docs_truth_sync`: -
 

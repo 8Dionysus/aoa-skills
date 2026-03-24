@@ -5,21 +5,21 @@ It is repo-local packaging metadata, not a release or registry surface.
 
 | name | revision | status | scope | invocation | lineage | candidate ready | eval ready | support artifacts |
 |---|---|---|---|---|---|---|---|---:|
-| aoa-adr-write | 5b68ff157a4a | evaluated | core | explicit-preferred | published | true | true | 3 |
-| aoa-approval-gate-check | ca6671547e1c | canonical | risk | explicit-only | published | true | true | 4 |
-| aoa-bounded-context-map | 926362055399 | canonical | core | explicit-preferred | published | true | true | 3 |
-| aoa-change-protocol | 7deaba788f5d | canonical | core | explicit-preferred | published | true | true | 3 |
-| aoa-contract-test | 4119a0c1c2f6 | canonical | core | explicit-preferred | published | true | true | 3 |
-| aoa-core-logic-boundary | c61543101291 | evaluated | core | explicit-preferred | published | true | true | 3 |
-| aoa-dry-run-first | 833f70007895 | evaluated | risk | explicit-only | published | true | true | 4 |
-| aoa-invariant-coverage-audit | c444d18828bc | canonical | core | explicit-preferred | published | true | true | 3 |
-| aoa-local-stack-bringup | 15faa3ac59f2 | scaffold | risk | explicit-only | published | false | true | 2 |
-| aoa-port-adapter-refactor | ce4b0b880ed6 | evaluated | core | explicit-preferred | published | true | true | 3 |
-| aoa-property-invariants | bc8289e7ae09 | canonical | core | explicit-preferred | published | true | true | 3 |
-| aoa-safe-infra-change | b8681b0118d9 | evaluated | risk | explicit-only | published | true | true | 4 |
-| aoa-sanitized-share | 598387a28037 | evaluated | risk | explicit-only | published | true | true | 4 |
-| aoa-source-of-truth-check | dea947a2f103 | evaluated | core | explicit-preferred | published | true | true | 3 |
-| aoa-tdd-slice | 83a94957ce93 | canonical | core | explicit-preferred | published | true | true | 2 |
-| atm10-change-protocol | 8dc9c2d23dcf | scaffold | project | explicit-preferred | published | false | true | 2 |
-| atm10-source-of-truth-check | 3dbef51f9b05 | scaffold | project | explicit-preferred | published | false | true | 2 |
+| aoa-adr-write | 765ec00d0087 | evaluated | core | explicit-preferred | published | true | true | 3 |
+| aoa-approval-gate-check | 0721ff9daa5f | canonical | risk | explicit-only | published | true | true | 4 |
+| aoa-bounded-context-map | d30b34e184aa | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-change-protocol | b16d2bb862ed | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-contract-test | ee840b7a57d3 | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-core-logic-boundary | 04034d71eed1 | evaluated | core | explicit-preferred | published | true | true | 3 |
+| aoa-dry-run-first | ea1e31129f14 | evaluated | risk | explicit-only | published | true | true | 4 |
+| aoa-invariant-coverage-audit | 24523847392c | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-local-stack-bringup | 436b10b7af1e | scaffold | risk | explicit-only | published | false | true | 2 |
+| aoa-port-adapter-refactor | 042beb07f187 | evaluated | core | explicit-preferred | published | true | true | 3 |
+| aoa-property-invariants | 0b79b6884ab3 | canonical | core | explicit-preferred | published | true | true | 3 |
+| aoa-safe-infra-change | b6bffd33fd81 | evaluated | risk | explicit-only | published | true | true | 4 |
+| aoa-sanitized-share | 6c6d71aa880b | evaluated | risk | explicit-only | published | true | true | 4 |
+| aoa-source-of-truth-check | 617505946835 | evaluated | core | explicit-preferred | published | true | true | 3 |
+| aoa-tdd-slice | bfa806f1adef | canonical | core | explicit-preferred | published | true | true | 2 |
+| atm10-change-protocol | ff9fe6ad4aec | scaffold | project | explicit-preferred | published | false | true | 2 |
+| atm10-source-of-truth-check | c59dc0b815fd | scaffold | project | explicit-preferred | published | false | true | 2 |
 
