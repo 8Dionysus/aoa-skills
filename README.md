@@ -21,22 +21,24 @@ If you are new to this repository, follow this short path:
 2. Read `docs/RUNTIME_PATH.md` for the runtime path: `pick -> inspect -> expand -> object use`.
 3. Read `docs/EVALUATION_PATH.md` for evaluation evidence, matrix outputs, and snapshot-backed coverage.
 4. Read `docs/PUBLIC_SURFACE.md` for status, promotion, and governance entrypoints.
-5. Read `generated/public_surface.md` and `generated/governance_backlog.md` for the current derived governance readout.
-6. Read `generated/skill_composition_audit.md` if you want the current skill-vs-technique composition readout.
-7. Read `generated/skill_bundle_index.md` and `generated/skill_graph.md` if you want packaging or relationship views.
-8. Read `generated/skill_walkthroughs.md` for the current derived runtime walkthrough surface.
-9. Read `generated/skill_evaluation_matrix.md` for the current derived evaluation evidence surface.
-10. Read `docs/ARCHITECTURE.md` for the high-level model.
-11. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-12. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or live exemplar overlay packs.
-13. Read `docs/overlays/atm10/PROJECT_OVERLAY.md` for the first live exemplar family overlay pack.
-14. Read `docs/RELEASING.md` if you need the bounded repo-level release flow.
-15. Read `SKILL_INDEX.md` for the current skill surface.
-16. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-17. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
+5. Read `docs/LAYER_POSITION.md` for the repo's place in the AoA layer map and the boundary between skills, techniques, and playbooks.
+6. Read `generated/public_surface.md` and `generated/governance_backlog.md` for the current derived governance readout.
+7. Read `generated/skill_composition_audit.md` if you want the current skill-vs-technique composition readout.
+8. Read `generated/skill_bundle_index.md` and `generated/skill_graph.md` if you want packaging or relationship views.
+9. Read `generated/skill_walkthroughs.md` for the current derived runtime walkthrough surface.
+10. Read `generated/skill_evaluation_matrix.md` for the current derived evaluation evidence surface.
+11. Read `docs/ARCHITECTURE.md` for the high-level model.
+12. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
+13. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or live exemplar overlay packs.
+14. Read `docs/overlays/atm10/PROJECT_OVERLAY.md` for the first live exemplar family overlay pack.
+15. Read `docs/RELEASING.md` if you need the bounded repo-level release flow.
+16. Read `SKILL_INDEX.md` for the current skill surface.
+17. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+18. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
 
 ## Quick routes
 
+- if you need the shortest repo-owned explanation of how skills relate to techniques and playbooks, open `docs/LAYER_POSITION.md`
 - if you need the upstream reusable practice canon, go to [aoa-techniques](https://github.com/8Dionysus/aoa-techniques)
 - if you need portable proof surfaces for skill quality, boundaries, or regressions, go to [aoa-evals](https://github.com/8Dionysus/aoa-evals)
 - if you need the smallest next object by task type, go to [aoa-routing](https://github.com/8Dionysus/aoa-routing)

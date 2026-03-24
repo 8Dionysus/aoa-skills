@@ -11,23 +11,25 @@ an executable workflow for Codex.
 1. `RUNTIME_PATH.md` — the runtime inspection guide for `pick -> inspect -> expand -> object use`.
 2. `EVALUATION_PATH.md` — the evaluation evidence guide for matrix outputs and snapshot-backed coverage.
 3. `PUBLIC_SURFACE.md` — the derived public-product and governance layer, kept separate from runtime inspection and evaluation evidence.
-4. `ARCHITECTURE.md` — high-level model of the repository.
-5. `BRIDGE_SPEC.md` — how skills reference and compose techniques.
-6. `REPOSITORY_STRUCTURE.md` — folder layout and conventions.
-7. `ROADMAP.md` — canonical public roadmap for repository evolution.
-8. `RELEASING.md` — bounded release flow, release note shape, and repo-level validation path.
-9. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
-10. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
-11. `OVERLAY_SPEC.md` — repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-12. `overlays/atm10/PROJECT_OVERLAY.md` — first live exemplar family overlay pack.
-13. `overlays/atm10/REVIEW.md` — family-level review surface for the live exemplar pack.
-14. `reviews/README.md` — public review-record conventions and review surfaces.
-15. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
+4. `LAYER_POSITION.md` — repo-owned layer-position note for the boundary between techniques, skills, and playbooks.
+5. `ARCHITECTURE.md` — high-level model of the repository.
+6. `BRIDGE_SPEC.md` — how skills reference and compose techniques.
+7. `REPOSITORY_STRUCTURE.md` — folder layout and conventions.
+8. `ROADMAP.md` — canonical public roadmap for repository evolution.
+9. `RELEASING.md` — bounded release flow, release note shape, and repo-level validation path.
+10. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
+11. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
+12. `OVERLAY_SPEC.md` — repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+13. `overlays/atm10/PROJECT_OVERLAY.md` — first live exemplar family overlay pack.
+14. `overlays/atm10/REVIEW.md` — family-level review surface for the live exemplar pack.
+15. `reviews/README.md` — public review-record conventions and review surfaces.
+16. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
 - techniques are the canonical source of reusable engineering knowledge
 - skills are the agent-facing operational interface
+- `LAYER_POSITION.md` is the repo-owned boundary note for how skills inherit reusable practice from `aoa-techniques` while recurring scenario method stays in `aoa-playbooks`
 - skills should be self-contained at runtime
 - technique composition should happen at build time, not by live remote fetch
 - live exemplar overlay packs may live here as repo-local examples
@@ -54,6 +56,7 @@ an executable workflow for Codex.
 
 - `aoa-techniques` — technique canon
 - `aoa-skills` — Codex skill canon
+- `aoa-playbooks` — recurring scenario method and executable route canon
 - project `.agents/skills` — repo-specific overlays and risk policies
 
 ## Current repository phase
