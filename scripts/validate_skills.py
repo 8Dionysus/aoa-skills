@@ -39,6 +39,9 @@ SKILLS_DIR_NAME = "skills"
 SKILL_INDEX_NAME = "SKILL_INDEX.md"
 SCHEMAS_DIR_NAME = "schemas"
 SKILL_NAME_PATTERN = r"(?:aoa|atm10|abyss)-[a-z0-9-]+"
+LAYER_POSITION_DOC = Path("docs") / "LAYER_POSITION.md"
+README_PATH = Path("README.md")
+DOCS_README_PATH = Path("docs") / "README.md"
 STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
 CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
 EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.yaml"
@@ -1117,6 +1120,46 @@ def validate_skill_index(
                         f"skill '{name}' appears {count} times in the index",
                     )
                 )
+
+    return issues
+
+
+def validate_repo_doc_entrypoints(repo_root: Path) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    layer_position_path = repo_root / LAYER_POSITION_DOC
+    readme_path = repo_root / README_PATH
+    docs_readme_path = repo_root / DOCS_README_PATH
+
+    readme_exists = readme_path.is_file()
+    docs_readme_exists = docs_readme_path.is_file()
+    if not readme_exists and not docs_readme_exists:
+        return issues
+
+    if not layer_position_path.is_file():
+        issues.append(
+            ValidationIssue(relative_location(layer_position_path), "file is missing")
+        )
+        return issues
+
+    if readme_exists:
+        readme_text = readme_path.read_text(encoding="utf-8")
+        if "docs/LAYER_POSITION.md" not in readme_text:
+            issues.append(
+                ValidationIssue(
+                    relative_location(readme_path),
+                    "README.md must link to docs/LAYER_POSITION.md from the public entrypoint",
+                )
+            )
+
+    if docs_readme_exists:
+        docs_readme_text = docs_readme_path.read_text(encoding="utf-8")
+        if "LAYER_POSITION.md" not in docs_readme_text:
+            issues.append(
+                ValidationIssue(
+                    relative_location(docs_readme_path),
+                    "docs/README.md must link to LAYER_POSITION.md from the docs map",
+                )
+            )
 
     return issues
 
@@ -2403,6 +2446,7 @@ def run_validation(
     issues.extend(validate_canonical_status_floors(repo_root, target_skills))
     issues.extend(validate_required_adjacency_coverage(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
+    issues.extend(validate_repo_doc_entrypoints(repo_root))
     if fail_on_review_truth_sync:
         for name in target_skills:
             validate_review_truth_sync(repo_root, name, issues)

@@ -4,6 +4,8 @@
 
 `aoa-skills` is a public repository of reusable Codex skills.
 It is the operational companion to `aoa-techniques`.
+It is one bounded execution layer in the AoA ontology spine; see
+`docs/LAYER_POSITION.md` for the repo-owned boundary note.
 
 - `aoa-techniques` answers: what is the technique, when should it be used, what are its invariants, risks, and validation rules?
 - `aoa-skills` answers: how should Codex apply techniques in a concrete agent workflow?
@@ -31,6 +33,8 @@ Those surfaces are built from committed `SKILL.md`, `techniques.yaml`, review re
 
 A skill normally relies on several techniques and/or several bounded actions.
 A single-technique skill is allowed only as an explicit reviewed exception.
+A skill is not the home of recurring scenario method; that boundary stays in
+`aoa-playbooks`.
 
 ## Layering
 
@@ -58,11 +62,12 @@ A project-local overlay adds:
 
 1. techniques are the source of truth for reusable practice
 2. skills are allowed to summarize or compose techniques, but should not silently drift from them
-3. runtime skill execution should not depend on live remote fetches
-4. build-time composition is preferred over runtime remote dependency
-5. project overlays should remain thin
-6. dangerous or operationally sensitive skills should default to explicit invocation
-7. a single-technique skill needs an explicit exception review that justifies the skill layer
+3. recurring scenario method stays in `aoa-playbooks`, even when a skill is executable
+4. runtime skill execution should not depend on live remote fetches
+5. build-time composition is preferred over runtime remote dependency
+6. project overlays should remain thin
+7. dangerous or operationally sensitive skills should default to explicit invocation
+8. a single-technique skill needs an explicit exception review that justifies the skill layer
 
 ## Skill categories
 

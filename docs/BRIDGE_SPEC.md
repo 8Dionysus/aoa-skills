@@ -8,6 +8,8 @@ Keep techniques as the canonical source of reusable engineering practice while
 allowing skills to package those practices into Codex-friendly workflows.
 Skills are expected to act as composition packages, not as thin mirrors of a
 single technique.
+`docs/LAYER_POSITION.md` is the repo-owned boundary note for where this bridge
+fits in the wider AoA layer map.
 
 ## Non-goal
 
@@ -21,6 +23,8 @@ multi-technique and/or multi-action composition.
 A skill that references only one technique must carry an explicit exception
 review explaining why it still deserves a skill boundary.
 A skill can use selected sections from each referenced technique.
+This bridge does not move recurring scenario method into `aoa-skills`; that
+canon remains in `aoa-playbooks`.
 
 Recommended source sections:
 - Intent
