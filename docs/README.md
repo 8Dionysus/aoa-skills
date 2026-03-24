@@ -15,13 +15,14 @@ an executable workflow for Codex.
 5. `BRIDGE_SPEC.md` — how skills reference and compose techniques.
 6. `REPOSITORY_STRUCTURE.md` — folder layout and conventions.
 7. `ROADMAP.md` — canonical public roadmap for repository evolution.
-8. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
-9. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
-10. `OVERLAY_SPEC.md` — repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-11. `overlays/atm10/PROJECT_OVERLAY.md` — first live exemplar family overlay pack.
-12. `overlays/atm10/REVIEW.md` — family-level review surface for the live exemplar pack.
-13. `reviews/README.md` — public review-record conventions and review surfaces.
-14. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
+8. `RELEASING.md` — bounded release flow, release note shape, and repo-level validation path.
+9. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
+10. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
+11. `OVERLAY_SPEC.md` — repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+12. `overlays/atm10/PROJECT_OVERLAY.md` — first live exemplar family overlay pack.
+13. `overlays/atm10/REVIEW.md` — family-level review surface for the live exemplar pack.
+14. `reviews/README.md` — public review-record conventions and review surfaces.
+15. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
@@ -46,7 +47,8 @@ an executable workflow for Codex.
 - `../generated/skill_bundle_index.md` and `../generated/skill_graph.md` are packaging and relationship surfaces
 - the three layers are intentionally separate: one is for selecting and using an object, one is for reading evaluation evidence, and one is for reading derived public state
 - generated catalogs, capsules, and full sections are derived reader/runtime surfaces, not source-of-truth artifacts
-- public governance and release signaling should stay derived from existing status, review, lineage, and evaluation facts
+- public governance signaling should stay derived from existing status, review, lineage, and evaluation facts
+- repo-level release identity lives separately in `../CHANGELOG.md`, `RELEASING.md`, the Git tag, and the GitHub release body
 
 ## Layers
 
@@ -56,11 +58,12 @@ an executable workflow for Codex.
 
 ## Current repository phase
 
-This repository now has a non-scaffold public core of 16 skills with first support artifacts,
+This repository now has a mixed-status public core of 17 skills with first support artifacts,
 honest bridge manifests with pinned source refs, and local validation coverage.
 The live governance counts now belong to `../generated/public_surface.md` and `../generated/governance_backlog.md`, while this docs map stays focused on how to read the layers.
 The repository now also has a documented maturity ladder and promotion guidance.
 The repository now also has a documented public promotion path in `PROMOTION_PATH.md`.
+The repository now also has a repo-level release runbook in `RELEASING.md` and a bounded release-check CLI at `../scripts/release_check.py`.
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
 The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive candidate review, overlay maturity, stronger public product-surface clarity, and packaging prep through `../generated/governance_backlog.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md` and matching `skills/atm10-*` bundles.

@@ -16,11 +16,13 @@ explicit contracts, risks, verification guidance, and technique traceability.
 If you are new to this repository, follow this short path:
 
 1. Read `docs/README.md` for the docs map.
-2. Read `docs/ARCHITECTURE.md` for the high-level model.
-3. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
-4. Read `SKILL_INDEX.md` for the current skill surface.
-5. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-6. Use `templates/SKILL.template.md` when authoring a new skill.
+2. Read `docs/RUNTIME_PATH.md`, `docs/EVALUATION_PATH.md`, and `docs/PUBLIC_SURFACE.md` for the three current reader layers.
+3. Read `docs/ARCHITECTURE.md` for the high-level model.
+4. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
+5. Read `docs/RELEASING.md` for the bounded repo-level release flow.
+6. Read `SKILL_INDEX.md` for the current skill surface.
+7. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+8. Use `templates/SKILL.template.md` when authoring a new skill.
 
 ## What belongs here
 
@@ -90,13 +92,9 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository is in bootstrap mode.
-The current goal is to establish:
-- docs and repository doctrine
-- bridge rules between techniques and skills
-- templates and conventions
-- first starter core skills
-- the path toward thin project overlays
+This repository now has a mixed-status public core of 17 skills, first live derived reader/runtime/governance surfaces, and a first repo-level baseline release path.
+The public baseline release is `v0.1.0`.
+Release identity lives in `CHANGELOG.md`, `docs/RELEASING.md`, the Git tag, and the GitHub release body, while derived public-surface status remains separate.
 
 ## Contribution model
 

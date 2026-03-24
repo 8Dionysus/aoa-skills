@@ -10,7 +10,7 @@ It is a backlog/maintenance view, not a promotion decision surface.
 - blocked by pending lineage: 0
 - canonical maintenance cohort: 7
 - comparative pending cohort: 7
-- review truth-sync gaps: 0
+- review truth-sync gaps: 2
 - docs truth-sync issues: 0
 
 | name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |
@@ -47,8 +47,8 @@ It is a backlog/maintenance view, not a promotion decision surface.
 | aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | d516d300a3a5 | d516d300a3a5 | False | - | true |
 | aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 280478cb5b3d | 280478cb5b3d | True | - | true |
 | aoa-safe-infra-change | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-safe-infra-change.md | b3c9f8099ddc | b3c9f8099ddc | False | - | true |
-| aoa-sanitized-share | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-sanitized-share.md | 24296c3b55d7 | 24296c3b55d7 | True | - | true |
-| aoa-source-of-truth-check | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-source-of-truth-check.md | a1d77ad6faab | a1d77ad6faab | True | - | true |
+| aoa-sanitized-share | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-sanitized-share.md | 24296c3b55d7 | 28afc3bf1f4b | True | reviewed_revision_mismatch(expected=28afc3bf1f4b, recorded=24296c3b55d7) | false |
+| aoa-source-of-truth-check | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-source-of-truth-check.md | a1d77ad6faab | 9d5933ad4d06 | True | reviewed_revision_mismatch(expected=9d5933ad4d06, recorded=a1d77ad6faab) | false |
 
 ## Cohorts
 
@@ -56,6 +56,6 @@ It is a backlog/maintenance view, not a promotion decision surface.
 - `blocked_by_pending_lineage`: -
 - `canonical_maintenance`: aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-tdd-slice
 - `comparative_pending`: aoa-adr-write, aoa-core-logic-boundary, aoa-dry-run-first, aoa-port-adapter-refactor, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check
-- `review_truth_sync`: -
+- `review_truth_sync`: aoa-sanitized-share, aoa-source-of-truth-check
 - `docs_truth_sync`: -
 

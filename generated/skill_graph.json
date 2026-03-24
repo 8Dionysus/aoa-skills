@@ -1456,7 +1456,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "9d0fa8ffb3b878a3d06638e8065d08b9eff30afba5b5ad974b46947dd0da39e8",
+      "content_hash": "598387a2803705e5ebe64ea9567c8eef7156bd6121c4cb53f2a4c2d06a77b236",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -1478,7 +1478,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "skill_revision": "9d0fa8ffb3b8",
+      "skill_revision": "598387a28037",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1519,7 +1519,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "10ed9be52d475ac0ed5216e17f1161bda524bca2217947db8e13ffe224fd0818",
+      "content_hash": "dea947a2f1035d4aab52563181e4f4150487ca2c62a0ec66f12523f57162b7fd",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -1541,7 +1541,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "skill_revision": "10ed9be52d47",
+      "skill_revision": "dea947a2f103",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1681,7 +1681,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "9e2a21ab7b7c7deb179d324c5bf62d90fb6858b6620f36e33e2df75073f442d8",
+      "content_hash": "3dbef51f9b05b4a43a53ce7eae20a8042a671fae9c5f7555c595e236d667d86a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -1703,7 +1703,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "skill_revision": "9e2a21ab7b7c",
+      "skill_revision": "3dbef51f9b05",
       "status": "scaffold",
       "support_artifacts": [
         {

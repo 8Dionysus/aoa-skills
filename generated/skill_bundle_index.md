@@ -17,9 +17,9 @@ It is repo-local packaging metadata, not a release or registry surface.
 | aoa-port-adapter-refactor | ce4b0b880ed6 | evaluated | core | explicit-preferred | published | true | true | 3 |
 | aoa-property-invariants | bc8289e7ae09 | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-safe-infra-change | b8681b0118d9 | evaluated | risk | explicit-only | published | true | true | 4 |
-| aoa-sanitized-share | 9d0fa8ffb3b8 | evaluated | risk | explicit-only | published | true | true | 4 |
-| aoa-source-of-truth-check | 10ed9be52d47 | evaluated | core | explicit-preferred | published | true | true | 3 |
+| aoa-sanitized-share | 598387a28037 | evaluated | risk | explicit-only | published | true | true | 4 |
+| aoa-source-of-truth-check | dea947a2f103 | evaluated | core | explicit-preferred | published | true | true | 3 |
 | aoa-tdd-slice | 83a94957ce93 | canonical | core | explicit-preferred | published | true | true | 2 |
 | atm10-change-protocol | 8dc9c2d23dcf | scaffold | project | explicit-preferred | published | false | true | 2 |
-| atm10-source-of-truth-check | 9e2a21ab7b7c | scaffold | project | explicit-preferred | published | false | true | 2 |
+| atm10-source-of-truth-check | 3dbef51f9b05 | scaffold | project | explicit-preferred | published | false | true | 2 |
 

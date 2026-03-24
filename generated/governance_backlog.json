@@ -21,7 +21,10 @@
       "aoa-source-of-truth-check"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": []
+    "review_truth_sync": [
+      "aoa-sanitized-share",
+      "aoa-source-of-truth-check"
+    ]
   },
   "governance_backlog_version": 3,
   "review_truth_sync": [
@@ -146,28 +149,32 @@
       "truth_synced": true
     },
     {
-      "current_revision": "24296c3b55d7",
+      "current_revision": "28afc3bf1f4b",
       "governance_decision": "stay_evaluated",
-      "issues": [],
+      "issues": [
+        "reviewed_revision_mismatch(expected=28afc3bf1f4b, recorded=24296c3b55d7)"
+      ],
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
       "reviewed_revision": "24296c3b55d7",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": true
+      "truth_synced": false
     },
     {
-      "current_revision": "a1d77ad6faab",
+      "current_revision": "9d5933ad4d06",
       "governance_decision": "stay_evaluated",
-      "issues": [],
+      "issues": [
+        "reviewed_revision_mismatch(expected=9d5933ad4d06, recorded=a1d77ad6faab)"
+      ],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "reviewed_revision": "a1d77ad6faab",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": true
+      "truth_synced": false
     }
   ],
   "skills": [

@@ -545,7 +545,7 @@
           "id": "AOA-T-0034",
           "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
           "use_sections": [
             "Intent",
             "When to use",
@@ -562,7 +562,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
           "use_sections": [
             "Intent",
             "When to use",
@@ -595,7 +595,7 @@
           "id": "AOA-T-0013",
           "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
           "use_sections": [
             "Intent",
             "When to use",
@@ -611,7 +611,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
           "use_sections": [
             "Intent",
             "When to use",
@@ -627,7 +627,7 @@
           "id": "AOA-T-0009",
           "path": "techniques/docs/lightweight-status-snapshot/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
           "use_sections": [
             "Intent",
             "When to use",
@@ -739,7 +739,7 @@
           "id": "AOA-T-0013",
           "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
           "use_sections": [
             "Intent",
             "When to use",
@@ -755,7 +755,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
           "use_sections": [
             "Intent",
             "When to use",
