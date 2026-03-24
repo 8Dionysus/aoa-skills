@@ -30,9 +30,10 @@ If you are new to this repository, follow this short path:
 11. Read `docs/BRIDGE_SPEC.md` to understand how skills relate to `aoa-techniques`.
 12. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or live exemplar overlay packs.
 13. Read `docs/overlays/atm10/PROJECT_OVERLAY.md` for the first live exemplar family overlay pack.
-14. Read `SKILL_INDEX.md` for the current skill surface.
-15. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-16. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
+14. Read `docs/RELEASING.md` if you need the bounded repo-level release flow.
+15. Read `SKILL_INDEX.md` for the current skill surface.
+16. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+17. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
 
 ## Quick routes
 
@@ -142,6 +143,7 @@ A typical skill bundle contains:
 ## Current repository phase
 
 This repository now has a mixed-status public core of 17 skills with first support artifacts, pinned bridge manifests, local validation for bundle shape and policy coherence, and source-owned section surfaces for bounded expand-time reads.
+The first public baseline release is `v0.1.0`, and repo-level release identity now lives in `CHANGELOG.md`, `docs/RELEASING.md`, the Git tag, and the GitHub release body rather than in per-skill metadata.
 The current derived baseline in `generated/public_surface.md` and `generated/governance_backlog.md` tracks the live default-reference cohort, candidate-review cohort, and zero pending-lineage blockers.
 It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, and `scripts/inspect_skill.py`, kept separate from the evaluation evidence and governance/public-surface layers.
 The current focus is candidate review and promotion decisions, overlay maturity, public/docs clarity, and packaging prep through derived maintenance surfaces such as `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`.
@@ -171,16 +173,18 @@ python -m pip install -r requirements-dev.txt
 Run the full repository check:
 
 ```bash
-python scripts/validate_skills.py
+python scripts/release_check.py
 ```
 
-Check that all generated surfaces are current:
+For day-to-day iteration, the underlying commands remain available:
 
 ```bash
+python scripts/build_catalog.py
+python scripts/validate_skills.py
 python scripts/build_catalog.py --check
 ```
 
-Refresh the derived catalogs, capsules, sections, walkthroughs, evaluation matrix, and public surface:
+Refresh the derived catalogs, capsules, sections, walkthroughs, evaluation matrix, and public surface directly:
 
 ```bash
 python scripts/build_catalog.py

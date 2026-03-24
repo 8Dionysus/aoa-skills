@@ -4,7 +4,7 @@
 
 Current public foundation:
 - coherent docs surface
-- 16 public skills across core, risk, and first live project-overlay categories
+- 17 public skills across core, risk, and first live project-overlay categories
 - live governance counts kept in `generated/public_surface.md` and `generated/governance_backlog.md` rather than duplicated in source docs
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
@@ -12,9 +12,11 @@ Current public foundation:
 - autonomy and trigger-boundary evaluation checks across the full current skill surface
 - documented maturity ladder and promotion guidance for future status changes
 - derived public-surface signaling in `docs/PUBLIC_SURFACE.md` and `generated/public_surface.*`
+- repo-level baseline release identity in `CHANGELOG.md`, `docs/RELEASING.md`, tags, and GitHub release notes
+- bounded release validation in `scripts/release_check.py`
 
 The next steps should use that derived governance layer to drive candidate review and promotion decisions, overlay maturity, stronger public product-surface clarity, and packaging prep rather than only increase skill count.
-Overlay preparation and packaging remain intentionally repo-local and thin: they should surface contracts and export primitives without introducing live downstream integrations, releases, or registries.
+Overlay preparation and packaging remain intentionally repo-local and thin: they should surface contracts and export primitives without introducing live downstream integrations or registries.
 
 ## Near-term sequence
 
@@ -23,6 +25,9 @@ The nearest waves should now be read in this order:
 1. `v0.5` maturity and governance consolidation
 2. `v0.6` project-overlay maturity
 3. `v0.7` packaging and distribution prep
+
+Repo-level semver releases such as `v0.1.0` describe bounded public baselines.
+The wave labels below still describe internal maturity and packaging lanes rather than replacing that release identity.
 
 `v0.3` and `v0.4` are no longer the main expansion frontier.
 They remain active as maintenance and depth-improvement lanes, but the repository already has:
@@ -107,7 +112,7 @@ Explore:
 - skill graph views for dependency, maturity, and policy relationships
 - import/export and offline bundle use
 - verifiable distribution of reusable public skill bundles
-- keep this wave repo-local and read-only for the public core; no GitHub releases, tags, or remote registries are implied
+- keep this wave repo-local for the public core; GitHub releases and tags may continue for bounded repository baselines, while remote registries remain out of scope
 
 ## Long-term direction
 

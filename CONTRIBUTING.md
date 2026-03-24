@@ -36,15 +36,20 @@ Please make sure:
 - project-shaped overlays do not silently change the core meaning of the skill
 - runtime, evaluation, and public-surface layers stay distinct from one another
 
-Run the local validator before opening a PR:
+Run the full bounded repository check before opening a PR:
 
 ```bash
 python -m pip install -r requirements-dev.txt
-python scripts/build_catalog.py
-python scripts/validate_skills.py
+python scripts/release_check.py
 ```
 
-`python scripts/build_catalog.py --check` should also pass before you open a PR.
+For day-to-day iteration, the underlying commands remain available:
+
+```bash
+python scripts/build_catalog.py
+python scripts/validate_skills.py
+python scripts/build_catalog.py --check
+```
 
 To focus on one bundle while iterating:
 

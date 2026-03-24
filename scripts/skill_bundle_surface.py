@@ -39,7 +39,8 @@ def hash_files(repo_root: Path, file_paths: Sequence[Path]) -> str:
         relative_path = relative_location(path, repo_root).encode("utf-8")
         digest.update(relative_path)
         digest.update(b"\0")
-        digest.update(path.read_bytes())
+        normalized_text = path.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        digest.update(normalized_text.encode("utf-8"))
         digest.update(b"\0")
     return digest.hexdigest()
 

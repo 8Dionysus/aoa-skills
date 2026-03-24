@@ -98,4 +98,4 @@ A skill should eventually record:
 - optionally the source technique commit or release reference used when the skill was generated or updated
 
 That future versioning direction is separate from the current public-surface layer.
-In the current pass, `aoa-skills` does not add GitHub releases, tags, or explicit per-skill release metadata; it publishes derived public-product signals instead.
+In the current pass, `aoa-skills` can publish repo-level GitHub releases and tags for bounded baseline cuts, but it still does not add explicit per-skill release metadata; derived public-product signals remain separate from release identity.

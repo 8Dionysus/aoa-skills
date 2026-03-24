@@ -121,13 +121,14 @@ Use this order when orienting in the public surface:
 
 ## What this layer does not do
 
-This wave does not introduce:
-- GitHub releases
-- tags
-- changelog workflow
+This layer does not own:
+- GitHub release identity
+- tag creation
+- changelog authorship
 - new skill frontmatter metadata
 - implicit promotions
 
+Repo-level release identity now lives in `CHANGELOG.md`, `docs/RELEASING.md`, the Git tag, and the GitHub release body.
 The public-product surface remains repo-local and derived.
 Overlay preparation is also separate from this layer; the thin contract lives in `docs/OVERLAY_SPEC.md`, and repo-local live exemplar packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md` stay distinct from downstream adoption.
 If you need the human review records behind a candidate or promotion decision, use `docs/reviews/README.md` and the matching file in `docs/reviews/canonical-candidates/` or `docs/reviews/status-promotions/`.
