@@ -10,7 +10,7 @@ metadata:
   aoa_source_skill_path: skills/aoa-bounded-context-map/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0016,AOA-T-0002
-  aoa_portable_profile: codex-facing-wave-2
+  aoa_portable_profile: codex-facing-wave-3
 ---
 
 # aoa-bounded-context-map

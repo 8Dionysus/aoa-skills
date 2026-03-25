@@ -1,5 +1,5 @@
 {
-  "profile": "codex-facing-agent-skills-wave-2",
+  "profile": "codex-facing-wave-3",
   "compatibility_default": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
   "skills": {
     "aoa-adr-write": {

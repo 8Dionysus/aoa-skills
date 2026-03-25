@@ -1,5 +1,5 @@
 {
-  "manifest_version": 1,
+  "manifest_version": 2,
   "profile": "codex-facing-local-adapter",
   "root": ".agents/skills",
   "activation_tool": "scripts/activate_skill.py",
@@ -7,6 +7,11 @@
   "permission_allowlist": [
     ".agents/skills"
   ],
+  "contracts": {
+    "runtime": "generated/skill_runtime_contracts.json",
+    "context_retention": "generated/context_retention_manifest.json",
+    "trust_policy": "generated/trust_policy_matrix.json"
+  },
   "source_of_truth": {
     "portable_export_root": ".agents/skills",
     "portable_catalog": "generated/agent_skill_catalog.json",
@@ -26,7 +31,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -35,8 +43,10 @@
         "aoa_source_skill_path": "skills/aoa-adr-write/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0033,AOA-T-0002",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-adr-write"
     },
     {
       "name": "aoa-approval-gate-check",
@@ -51,7 +61,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "risk",
@@ -60,8 +73,10 @@
         "aoa_source_skill_path": "skills/aoa-approval-gate-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0028",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-approval-gate-check"
     },
     {
       "name": "aoa-bounded-context-map",
@@ -76,7 +91,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -85,8 +103,10 @@
         "aoa_source_skill_path": "skills/aoa-bounded-context-map/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0002",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-bounded-context-map"
     },
     {
       "name": "aoa-change-protocol",
@@ -101,7 +121,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -110,8 +133,10 @@
         "aoa_source_skill_path": "skills/aoa-change-protocol/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-change-protocol"
     },
     {
       "name": "aoa-contract-test",
@@ -126,7 +151,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -135,8 +163,10 @@
         "aoa_source_skill_path": "skills/aoa-contract-test/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0003,AOA-T-0015",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-contract-test"
     },
     {
       "name": "aoa-core-logic-boundary",
@@ -151,7 +181,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -160,8 +193,10 @@
         "aoa_source_skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-core-logic-boundary"
     },
     {
       "name": "aoa-dry-run-first",
@@ -176,7 +211,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "risk",
@@ -185,8 +223,10 @@
         "aoa_source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0004,AOA-T-0028",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-dry-run-first"
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -201,7 +241,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -210,8 +253,10 @@
         "aoa_source_skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0017",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-invariant-coverage-audit"
     },
     {
       "name": "aoa-local-stack-bringup",
@@ -226,7 +271,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "risk",
@@ -235,8 +283,10 @@
         "aoa_source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0036,AOA-T-0037,AOA-T-0028,AOA-T-0038",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-local-stack-bringup"
     },
     {
       "name": "aoa-port-adapter-refactor",
@@ -251,7 +301,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -260,8 +313,10 @@
         "aoa_source_skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-port-adapter-refactor"
     },
     {
       "name": "aoa-property-invariants",
@@ -276,7 +331,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -285,8 +343,10 @@
         "aoa_source_skill_path": "skills/aoa-property-invariants/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0017,AOA-T-0007",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-property-invariants"
     },
     {
       "name": "aoa-safe-infra-change",
@@ -301,7 +361,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "risk",
@@ -310,8 +373,10 @@
         "aoa_source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0001",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-safe-infra-change"
     },
     {
       "name": "aoa-sanitized-share",
@@ -326,7 +391,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "risk",
@@ -335,8 +403,10 @@
         "aoa_source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0034,AOA-T-0002",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-sanitized-share"
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -351,7 +421,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -360,8 +433,10 @@
         "aoa_source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002,AOA-T-0009",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check"
     },
     {
       "name": "aoa-tdd-slice",
@@ -376,7 +451,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "core",
@@ -385,8 +463,10 @@
         "aoa_source_skill_path": "skills/aoa-tdd-slice/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0014,AOA-T-0001",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-tdd-slice"
     },
     {
       "name": "atm10-change-protocol",
@@ -401,7 +481,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "project",
@@ -410,8 +493,10 @@
         "aoa_source_skill_path": "skills/atm10-change-protocol/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "project-overlay",
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-change-protocol"
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -426,7 +511,10 @@
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
       "metadata": {
         "aoa_scope": "project",
@@ -435,8 +523,10 @@
         "aoa_source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002",
-        "aoa_portable_profile": "codex-facing-wave-2"
-      }
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "project-overlay",
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-source-of-truth-check"
     }
   ]
 }

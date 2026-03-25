@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-3",
+  "skills": {
+    "aoa-adr-write": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Writes bounded decision artifacts into canonical repository surfaces."
+    },
+    "aoa-approval-gate-check": {
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Explicit-only because it classifies authority boundaries before risky work."
+    },
+    "aoa-bounded-context-map": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Analytical boundary-mapping skill with no direct runtime mutation."
+    },
+    "aoa-change-protocol": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "General bounded change workflow for non-trivial code, config, and docs work."
+    },
+    "aoa-contract-test": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Writes boundary checks or tests without requiring elevated runtime authority."
+    },
+    "aoa-core-logic-boundary": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Refactoring guidance for separating reusable logic from glue code."
+    },
+    "aoa-dry-run-first": {
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": true,
+      "notes": "Preview-first workflow that should remain explicit because it fronts mutating operations."
+    },
+    "aoa-invariant-coverage-audit": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Audit-only skill for checking whether invariants are truly covered."
+    },
+    "aoa-local-stack-bringup": {
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": true,
+      "notes": "Explicit-only because local stack launch can create side effects beyond simple file edits."
+    },
+    "aoa-port-adapter-refactor": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Architecture refactor skill for isolating concrete dependencies."
+    },
+    "aoa-property-invariants": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Adds invariant-oriented tests or checks to a codebase."
+    },
+    "aoa-safe-infra-change": {
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": true,
+      "notes": "Infrastructure and configuration changes remain explicit-only with rollback discipline."
+    },
+    "aoa-sanitized-share": {
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "sharing",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Explicit-only because it handles potentially sensitive raw technical material."
+    },
+    "aoa-source-of-truth-check": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Maps authoritative documentation surfaces and entrypoints."
+    },
+    "aoa-tdd-slice": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Bounded test-first change workflow with explicit refactor limits."
+    },
+    "atm10-change-protocol": {
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Project overlay for atm10 repositories only."
+    },
+    "atm10-source-of-truth-check": {
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Project overlay for atm10 repository document authority."
+    }
+  }
+}

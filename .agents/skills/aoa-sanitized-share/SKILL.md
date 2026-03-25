@@ -10,7 +10,7 @@ metadata:
   aoa_source_skill_path: skills/aoa-sanitized-share/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0034,AOA-T-0002
-  aoa_portable_profile: codex-facing-wave-2
+  aoa_portable_profile: codex-facing-wave-3
 ---
 
 # aoa-sanitized-share

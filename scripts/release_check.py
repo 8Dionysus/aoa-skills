@@ -17,6 +17,7 @@ RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/validate_skills.py"),
     ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),
     ("python", "scripts/lint_trigger_evals.py", "--repo-root", "."),
+    ("python", "scripts/lint_pack_profiles.py", "--repo-root", "."),
     ("python", "scripts/build_catalog.py", "--check"),
 )
 WORKTREE_SNAPSHOT_COMMAND = ("git", "status", "--porcelain=v1", "--untracked-files=all")

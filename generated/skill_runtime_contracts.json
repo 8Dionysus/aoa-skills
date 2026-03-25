@@ -1,0 +1,478 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-3",
+  "root": ".agents/skills",
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "display_name": "AoA ADR Write",
+      "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
+      "short_description": "Record architecture decisions clearly",
+      "path": ".agents/skills/aoa-adr-write/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-adr-write to record a meaningful architectural or workflow decision, place it in the canonical decision surface, and verify the rationale is easy to find.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-adr-write",
+      "notes": "Writes bounded decision artifacts into canonical repository surfaces."
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "display_name": "AoA Approval Gate Check",
+      "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
+      "short_description": "Classify approval boundaries",
+      "path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-approval-gate-check",
+      "notes": "Explicit-only because it classifies authority boundaries before risky work."
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "display_name": "AoA Bounded Context Map",
+      "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
+      "short_description": "Map contexts and interfaces",
+      "path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-bounded-context-map",
+      "notes": "Analytical boundary-mapping skill with no direct runtime mutation."
+    },
+    {
+      "name": "aoa-change-protocol",
+      "display_name": "AoA Change Protocol",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "short_description": "Plan, scope, verify, report",
+      "path": ".agents/skills/aoa-change-protocol/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-change-protocol to plan, apply, verify, and report a bounded non-trivial repository change.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-change-protocol",
+      "notes": "General bounded change workflow for non-trivial code, config, and docs work."
+    },
+    {
+      "name": "aoa-contract-test",
+      "display_name": "AoA Contract Test",
+      "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
+      "short_description": "Strengthen interface contracts",
+      "path": ".agents/skills/aoa-contract-test/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-contract-test",
+      "notes": "Writes boundary checks or tests without requiring elevated runtime authority."
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "display_name": "AoA Core Logic Boundary",
+      "description": "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.",
+      "short_description": "Separate core logic from glue",
+      "path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-core-logic-boundary to decide what belongs in reusable core logic versus glue or infrastructure detail, then keep the refactor bounded.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-core-logic-boundary",
+      "notes": "Refactoring guidance for separating reusable logic from glue code."
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "display_name": "AoA Dry Run First",
+      "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
+      "short_description": "Preview before real mutation",
+      "path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $aoa-dry-run-first to find the safest preview path, interpret what it proves, and stop for explicit confirmation before the real mutation.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-dry-run-first",
+      "notes": "Preview-first workflow that should remain explicit because it fronts mutating operations."
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "display_name": "AoA Invariant Coverage Audit",
+      "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
+      "short_description": "Audit invariant coverage",
+      "path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-invariant-coverage-audit",
+      "notes": "Audit-only skill for checking whether invariants are truly covered."
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "display_name": "AoA Local Stack Bringup",
+      "description": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
+      "short_description": "Bring up local stacks safely",
+      "path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $aoa-local-stack-bringup to review what would start, run readiness checks for the selected runtime, and launch the local stack through one explicit entrypoint.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-local-stack-bringup",
+      "notes": "Explicit-only because local stack launch can create side effects beyond simple file edits."
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "display_name": "AoA Port Adapter Refactor",
+      "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
+      "short_description": "Refactor toward ports/adapters",
+      "path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-port-adapter-refactor to isolate a concrete dependency behind a narrow port and adapter without turning the change into a hidden rewrite.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-port-adapter-refactor",
+      "notes": "Architecture refactor skill for isolating concrete dependencies."
+    },
+    {
+      "name": "aoa-property-invariants",
+      "display_name": "AoA Property Invariants",
+      "description": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.",
+      "short_description": "Write property-based invariants",
+      "path": ".agents/skills/aoa-property-invariants/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-property-invariants",
+      "notes": "Adds invariant-oriented tests or checks to a codebase."
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "display_name": "AoA Safe Infra Change",
+      "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
+      "short_description": "Make bounded infra changes safely",
+      "path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $aoa-safe-infra-change to plan and verify a bounded infrastructure or configuration change with explicit risk and rollback thinking.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-safe-infra-change",
+      "notes": "Infrastructure and configuration changes remain explicit-only with rollback discipline."
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "display_name": "AoA Sanitized Share",
+      "description": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
+      "short_description": "Sanitize tech artifacts for sharing",
+      "path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "sharing",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-sanitized-share to separate raw technical material from a public-safe artifact and verify the sanitized version still preserves the lesson.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-sanitized-share",
+      "notes": "Explicit-only because it handles potentially sensitive raw technical material."
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "display_name": "AoA Source Of Truth Check",
+      "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
+      "short_description": "Clarify authoritative docs",
+      "path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check",
+      "notes": "Maps authoritative documentation surfaces and entrypoints."
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "display_name": "AoA TDD Slice",
+      "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
+      "short_description": "Build slices test-first",
+      "path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-tdd-slice to define behavior in tests first, make the smallest implementation change, and report what stays out of scope.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-tdd-slice",
+      "notes": "Bounded test-first change workflow with explicit refactor limits."
+    },
+    {
+      "name": "atm10-change-protocol",
+      "display_name": "ATM10 Change Protocol",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "short_description": "ATM10 bounded change overlay",
+      "path": ".agents/skills/atm10-change-protocol/SKILL.md",
+      "openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-change-protocol",
+      "notes": "Project overlay for atm10 repositories only."
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "display_name": "ATM10 Source Of Truth Check",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "short_description": "ATM10 source-of-truth overlay",
+      "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
+      "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-source-of-truth-check",
+      "notes": "Project overlay for atm10 repository document authority."
+    }
+  ]
+}

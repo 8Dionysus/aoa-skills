@@ -1,13 +1,15 @@
 {
   "catalog_version": 2,
-  "profile": "codex-facing-agent-skills-wave-2",
+  "profile": "codex-facing-wave-3",
   "root": ".agents/skills",
   "source_repo": "8Dionysus/aoa-skills",
   "source_of_truth": {
     "skill_sections": "generated/skill_sections.full.json",
     "skill_catalog": "generated/skill_catalog.min.json",
     "portable_overrides": "config/portable_skill_overrides.json",
-    "openai_extensions": "config/openai_skill_extensions.json"
+    "openai_extensions": "config/openai_skill_extensions.json",
+    "policy_matrix": "config/skill_policy_matrix.json",
+    "profile_matrix": "config/skill_pack_profiles.json"
   },
   "skills": [
     {
@@ -26,12 +28,25 @@
         "AOA-T-0033",
         "AOA-T-0002"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-approval-gate-check",
@@ -48,12 +63,25 @@
       "technique_dependencies": [
         "AOA-T-0028"
       ],
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#B45309",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-bounded-context-map",
@@ -71,12 +99,25 @@
         "AOA-T-0016",
         "AOA-T-0002"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-change-protocol",
@@ -94,12 +135,25 @@
         "AOA-T-0001",
         "AOA-T-0002"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-contract-test",
@@ -117,12 +171,25 @@
         "AOA-T-0003",
         "AOA-T-0015"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-core-logic-boundary",
@@ -140,12 +207,25 @@
         "AOA-T-0016",
         "AOA-T-0015"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-dry-run-first",
@@ -163,12 +243,24 @@
         "AOA-T-0004",
         "AOA-T-0028"
       ],
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#B45309",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -185,12 +277,25 @@
       "technique_dependencies": [
         "AOA-T-0017"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-local-stack-bringup",
@@ -210,12 +315,24 @@
         "AOA-T-0028",
         "AOA-T-0038"
       ],
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#B45309",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-port-adapter-refactor",
@@ -233,12 +350,25 @@
         "AOA-T-0016",
         "AOA-T-0015"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-property-invariants",
@@ -256,12 +386,25 @@
         "AOA-T-0017",
         "AOA-T-0007"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-safe-infra-change",
@@ -279,12 +422,24 @@
         "AOA-T-0028",
         "AOA-T-0001"
       ],
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#B45309",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-sanitized-share",
@@ -302,12 +457,25 @@
         "AOA-T-0034",
         "AOA-T-0002"
       ],
+      "trust_posture": "explicit-risk",
+      "mutation_surface": "sharing",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#B45309",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -326,12 +494,25 @@
         "AOA-T-0002",
         "AOA-T-0009"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "aoa-tdd-slice",
@@ -349,12 +530,25 @@
         "AOA-T-0014",
         "AOA-T-0001"
       ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "atm10-change-protocol",
@@ -372,12 +566,24 @@
         "AOA-T-0001",
         "AOA-T-0002"
       ],
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#6D28D9",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -395,12 +601,24 @@
         "AOA-T-0013",
         "AOA-T-0002"
       ],
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
       "resource_inventory": {
         "scripts": [],
         "references": [],
-        "assets": []
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
       },
-      "dependency_tools": []
+      "ui": {
+        "brand_color": "#6D28D9",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
     }
   ]
 }

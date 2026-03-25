@@ -30,8 +30,28 @@ jobs:
       - name: Lint trigger evals
         run: python scripts/lint_trigger_evals.py --repo-root .
 
+      - name: Lint pack profiles
+        run: python scripts/lint_pack_profiles.py --repo-root .
+
       - name: Contract tests
-        run: python -m unittest tests/test_codex_portable_contract.py
+        run: |
+          python -m unittest tests/test_codex_portable_contract.py
+          python -m unittest tests/test_install_profiles.py
+          python -m unittest tests/test_wave3_runtime_contract.py
 
       - name: Check generated drift
-        run: git diff --exit-code -- .agents/skills generated/agent_skill_catalog.json generated/agent_skill_catalog.min.json generated/portable_export_map.json generated/local_adapter_manifest.json generated/local_adapter_manifest.min.json
+        run: |
+          git diff --exit-code -- \
+            .agents/skills \
+            generated/agent_skill_catalog.json \
+            generated/agent_skill_catalog.min.json \
+            generated/portable_export_map.json \
+            generated/local_adapter_manifest.json \
+            generated/local_adapter_manifest.min.json \
+            generated/context_retention_manifest.json \
+            generated/trust_policy_matrix.json \
+            generated/skill_runtime_contracts.json \
+            generated/skill_pack_profiles.resolved.json \
+            generated/codex_config_snippets.json \
+            generated/mcp_dependency_manifest.json \
+            generated/release_manifest.json

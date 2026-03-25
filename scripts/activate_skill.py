@@ -27,6 +27,10 @@ def parse_frontmatter(path: pathlib.Path) -> tuple[dict[str, Any], str]:
     return data, body
 
 
+def load_json(path: pathlib.Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def inventory_resources(skill_dir: pathlib.Path) -> dict[str, list[str]]:
     inventory: dict[str, list[str]] = {}
     for resource_dir_name in RESOURCE_DIR_NAMES:
@@ -50,6 +54,7 @@ def main() -> int:
     args = parser.parse_args()
 
     repo_root = pathlib.Path(args.repo_root).resolve()
+    generated_dir = repo_root / "generated"
     skill_dir = repo_root / ".agents" / "skills" / args.skill
     skill_md = skill_dir / "SKILL.md"
     openai_yaml = skill_dir / "agents" / "openai.yaml"
@@ -59,6 +64,12 @@ def main() -> int:
     frontmatter, body = parse_frontmatter(skill_md)
     openai_doc = yaml.safe_load(openai_yaml.read_text(encoding="utf-8")) or {}
     inventory = inventory_resources(skill_dir)
+    runtime_doc = load_json(generated_dir / "skill_runtime_contracts.json")
+    context_doc = load_json(generated_dir / "context_retention_manifest.json")
+    trust_doc = load_json(generated_dir / "trust_policy_matrix.json")
+    runtime_by_name = {entry["name"]: entry for entry in runtime_doc.get("skills", [])}
+    context_by_name = {entry["name"]: entry for entry in context_doc.get("skills", [])}
+    trust_by_name = {entry["name"]: entry for entry in trust_doc.get("skills", [])}
 
     payload: dict[str, Any] = {
         "skill": {
@@ -73,6 +84,9 @@ def main() -> int:
             "allowlist_paths": [str(skill_dir.relative_to(repo_root).as_posix())],
             "inventory": inventory,
         },
+        "runtime_contract": runtime_by_name.get(frontmatter["name"]),
+        "context_retention": context_by_name.get(frontmatter["name"]),
+        "trust_policy": trust_by_name.get(frontmatter["name"]),
         "openai": openai_doc,
         "instructions_markdown": body.strip(),
     }
@@ -88,6 +102,7 @@ def main() -> int:
         f"Invocation mode: {payload['skill']['invocation_mode']}",
         f"Allow implicit invocation: {payload['skill']['allow_implicit_invocation']}",
         f"Path: {payload['skill']['path']}",
+        f"Trust posture: {payload['trust_policy'].get('trust_posture') if payload['trust_policy'] else '(unknown)'}",
         "",
         "## Allowlist paths",
         *[f"- {path}" for path in payload["resources"]["allowlist_paths"]],
@@ -103,6 +118,16 @@ def main() -> int:
         else:
             lines.append("- (none)")
         lines.append("")
+    if payload["context_retention"]:
+        lines.extend(
+            [
+                "## Context retention",
+                "",
+                f"- Compact summary: {payload['context_retention']['compact_summary']}",
+                f"- Retain sections: {', '.join(payload['context_retention']['retain_sections'])}",
+                "",
+            ]
+        )
     lines.extend(["## Instructions", "", payload["instructions_markdown"]])
     print("\n".join(lines).rstrip())
     return 0

@@ -35,11 +35,15 @@ def inventory_resources(skill_dir: pathlib.Path) -> dict[str, list[str]]:
             inventory[resource_dir_name] = []
             continue
         inventory[resource_dir_name] = sorted(
-            str(path.relative_to(resource_dir).as_posix())
+            str(path.relative_to(skill_dir).as_posix())
             for path in resource_dir.rglob("*")
             if path.is_file()
         )
     return inventory
+
+
+def load_json(path: pathlib.Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def main() -> int:
@@ -51,14 +55,22 @@ def main() -> int:
     skills_root = repo_root / ".agents" / "skills"
     generated_dir = repo_root / "generated"
     generated_dir.mkdir(exist_ok=True)
+    runtime_doc = load_json(generated_dir / "skill_runtime_contracts.json")
+    runtime_by_name = {entry["name"]: entry for entry in runtime_doc.get("skills", [])}
 
+    contracts = {
+        "runtime": "generated/skill_runtime_contracts.json",
+        "context_retention": "generated/context_retention_manifest.json",
+        "trust_policy": "generated/trust_policy_matrix.json",
+    }
     manifest: dict[str, Any] = {
-        "manifest_version": 1,
+        "manifest_version": 2,
         "profile": "codex-facing-local-adapter",
         "root": ".agents/skills",
         "activation_tool": "scripts/activate_skill.py",
         "discovery_view": "generated/local_adapter_manifest.min.json",
         "permission_allowlist": [".agents/skills"],
+        "contracts": contracts,
         "source_of_truth": {
             "portable_export_root": ".agents/skills",
             "portable_catalog": "generated/agent_skill_catalog.json",
@@ -67,10 +79,11 @@ def main() -> int:
         "skills": [],
     }
     manifest_min: dict[str, Any] = {
-        "manifest_version": 1,
+        "manifest_version": 2,
         "profile": "codex-facing-local-adapter",
         "root": ".agents/skills",
         "activation_tool": "scripts/activate_skill.py",
+        "contracts": contracts,
         "skills": [],
     }
 
@@ -82,6 +95,7 @@ def main() -> int:
         policy = openai_doc.get("policy", {}) if isinstance(openai_doc, dict) else {}
         allow_implicit = policy.get("allow_implicit_invocation")
         inventory = inventory_resources(skill_dir)
+        runtime = runtime_by_name.get(frontmatter["name"], {})
 
         manifest["skills"].append(
             {
@@ -94,6 +108,8 @@ def main() -> int:
                 "allowlist_paths": [str(skill_dir.relative_to(repo_root).as_posix())],
                 "resource_inventory": inventory,
                 "metadata": frontmatter.get("metadata", {}),
+                "trust_posture": runtime.get("trust_posture"),
+                "context_retention_ref": runtime.get("context_retention_ref"),
             }
         )
         manifest_min["skills"].append(
@@ -102,6 +118,7 @@ def main() -> int:
                 "description": frontmatter["description"],
                 "path": str(skill_md.relative_to(repo_root).as_posix()),
                 "allow_implicit_invocation": allow_implicit,
+                "trust_posture": runtime.get("trust_posture"),
             }
         )
 

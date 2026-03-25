@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-3",
+  "snippets": {
+    "repo-default": {
+      "scope": "repo",
+      "disable_profile_toml": "[[skills.config]]\npath = \".agents/skills/aoa-adr-write/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-approval-gate-check/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-bounded-context-map/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-change-protocol/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-contract-test/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-core-logic-boundary/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-dry-run-first/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-invariant-coverage-audit/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-local-stack-bringup/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-port-adapter-refactor/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-property-invariants/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-safe-infra-change/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-sanitized-share/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-source-of-truth-check/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-tdd-slice/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/atm10-change-protocol/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/atm10-source-of-truth-check/SKILL.md\"\nenabled = false\n"
+    },
+    "repo-core-only": {
+      "scope": "repo",
+      "disable_profile_toml": "[[skills.config]]\npath = \".agents/skills/aoa-adr-write/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-bounded-context-map/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-change-protocol/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-contract-test/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-core-logic-boundary/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-invariant-coverage-audit/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-port-adapter-refactor/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-property-invariants/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-source-of-truth-check/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-tdd-slice/SKILL.md\"\nenabled = false\n"
+    },
+    "repo-risk-explicit": {
+      "scope": "repo",
+      "disable_profile_toml": "[[skills.config]]\npath = \".agents/skills/aoa-approval-gate-check/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-dry-run-first/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-local-stack-bringup/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-safe-infra-change/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-sanitized-share/SKILL.md\"\nenabled = false\n"
+    },
+    "repo-atm10-overlay": {
+      "scope": "repo",
+      "disable_profile_toml": "[[skills.config]]\npath = \".agents/skills/atm10-change-protocol/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/atm10-source-of-truth-check/SKILL.md\"\nenabled = false\n"
+    },
+    "user-curated-core": {
+      "scope": "user",
+      "disable_profile_toml": "[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-adr-write/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-bounded-context-map/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-change-protocol/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-contract-test/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-core-logic-boundary/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-port-adapter-refactor/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-property-invariants/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-source-of-truth-check/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \"$HOME/.agents/skills/aoa-tdd-slice/SKILL.md\"\nenabled = false\n"
+    }
+  },
+  "project_root_markers_example": "project_root_markers = [\".git\", \".hg\", \".sl\"]"
+}

@@ -52,12 +52,13 @@ python scripts/validate_skills.py
 python scripts/build_catalog.py --check
 ```
 
-For portable export work, or after changing canonical skill bodies, invocation modes, description overrides, or OpenAI export metadata, also run:
+For portable export work, or after changing canonical skill bodies, invocation modes, description overrides, OpenAI export metadata, pack profiles, policy posture, or skill assets, also run:
 
 ```bash
 python scripts/build_agent_skills.py --repo-root .
 python scripts/validate_agent_skills.py --repo-root .
 python scripts/lint_trigger_evals.py --repo-root .
+python scripts/lint_pack_profiles.py --repo-root .
 ```
 
 To focus on one bundle while iterating:
@@ -177,7 +178,7 @@ A good PR should make it clear:
 - whether only metadata changed
 - whether project overlays also require updates
 - whether the change belongs in `docs/OVERLAY_SPEC.md` as a repo-local overlay contract clarification or in a live exemplar skill bundle
-- whether `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/local_adapter_manifest*.json`, or trigger-eval seed data changed
+- whether `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, or trigger-eval seed data changed
 
 If you think a richer integration would need another repository, leave a local stub or TODO note instead of adding live cross-repo behavior in this repository wave.
 

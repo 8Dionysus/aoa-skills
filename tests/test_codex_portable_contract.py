@@ -29,6 +29,21 @@ class CodexPortableContractTests(unittest.TestCase):
         catalog_names = {entry["name"] for entry in catalog["skills"]}
         self.assertEqual(manifest_names, catalog_names)
 
+    def test_runtime_contracts_match_catalog(self):
+        runtime_doc = load_json(REPO_ROOT / "generated" / "skill_runtime_contracts.json")
+        trust_doc = load_json(REPO_ROOT / "generated" / "trust_policy_matrix.json")
+        context_doc = load_json(REPO_ROOT / "generated" / "context_retention_manifest.json")
+        catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
+        catalog_names = {entry["name"] for entry in catalog["skills"]}
+        self.assertEqual({entry["name"] for entry in runtime_doc["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in trust_doc["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in context_doc["skills"]}, catalog_names)
+
+    def test_resolved_profiles_and_snippets_match(self):
+        profiles = load_json(REPO_ROOT / "generated" / "skill_pack_profiles.resolved.json")
+        snippets = load_json(REPO_ROOT / "generated" / "codex_config_snippets.json")
+        self.assertEqual(set(profiles["profiles"]), set(snippets["snippets"]))
+
     def test_explicit_only_skills_have_no_implicit_positive_cases(self):
         source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
         cases = load_jsonl(REPO_ROOT / "generated" / "skill_trigger_eval_cases.jsonl")
@@ -49,6 +64,7 @@ class CodexPortableContractTests(unittest.TestCase):
         commands = [
             [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
+            [sys.executable, "scripts/lint_pack_profiles.py", "--repo-root", "."],
         ]
         for command in commands:
             completed = subprocess.run(

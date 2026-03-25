@@ -12,6 +12,7 @@ Each entry gives:
 - `description`
 - `path`
 - `allow_implicit_invocation`
+- `trust_posture`
 
 This is enough for a local router or preselector to choose which skill to activate.
 
@@ -31,6 +32,9 @@ The activation payload returns:
 - `agents/openai.yaml` content
 - bundled resource inventory
 - allowlist paths
+- `runtime_contract`
+- `context_retention`
+- `trust_policy`
 - the full markdown instructions body
 
 This gives local runtimes a dedicated tool seam instead of requiring direct file reading in the model loop.
@@ -57,6 +61,7 @@ Once a skill is activated:
 - keep the activation payload stable through the task
 - avoid re-injecting the same skill repeatedly
 - do not drop the active skill during context compaction unless the task clearly moved away from it
+- prefer `context_retention` and `runtime_contract` over ad hoc wrapper notes
 
 ## Intended layering
 

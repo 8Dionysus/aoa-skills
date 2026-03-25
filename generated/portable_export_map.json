@@ -1,13 +1,15 @@
 {
   "export_version": 2,
-  "profile": "codex-facing-agent-skills-wave-2",
+  "profile": "codex-facing-wave-3",
   "root": ".agents/skills",
   "source_repo": "8Dionysus/aoa-skills",
   "source_of_truth": {
     "skill_sections": "generated/skill_sections.full.json",
     "skill_catalog": "generated/skill_catalog.min.json",
     "portable_overrides": "config/portable_skill_overrides.json",
-    "openai_extensions": "config/openai_skill_extensions.json"
+    "openai_extensions": "config/openai_skill_extensions.json",
+    "policy_matrix": "config/skill_policy_matrix.json",
+    "profile_matrix": "config/skill_pack_profiles.json"
   },
   "exports": [
     {
@@ -16,9 +18,16 @@
       "target_dir": ".agents/skills/aoa-adr-write",
       "target_skill_path": ".agents/skills/aoa-adr-write/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-approval-gate-check",
@@ -26,9 +35,16 @@
       "target_dir": ".agents/skills/aoa-approval-gate-check",
       "target_skill_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-only",
-      "allow_implicit_invocation": false
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-bounded-context-map",
@@ -36,9 +52,16 @@
       "target_dir": ".agents/skills/aoa-bounded-context-map",
       "target_skill_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-change-protocol",
@@ -46,9 +69,16 @@
       "target_dir": ".agents/skills/aoa-change-protocol",
       "target_skill_path": ".agents/skills/aoa-change-protocol/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-contract-test",
@@ -56,9 +86,16 @@
       "target_dir": ".agents/skills/aoa-contract-test",
       "target_skill_path": ".agents/skills/aoa-contract-test/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-core-logic-boundary",
@@ -66,9 +103,16 @@
       "target_dir": ".agents/skills/aoa-core-logic-boundary",
       "target_skill_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-dry-run-first",
@@ -76,9 +120,16 @@
       "target_dir": ".agents/skills/aoa-dry-run-first",
       "target_skill_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-only",
-      "allow_implicit_invocation": false
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -86,9 +137,16 @@
       "target_dir": ".agents/skills/aoa-invariant-coverage-audit",
       "target_skill_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-local-stack-bringup",
@@ -96,9 +154,16 @@
       "target_dir": ".agents/skills/aoa-local-stack-bringup",
       "target_skill_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-only",
-      "allow_implicit_invocation": false
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-port-adapter-refactor",
@@ -106,9 +171,16 @@
       "target_dir": ".agents/skills/aoa-port-adapter-refactor",
       "target_skill_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-property-invariants",
@@ -116,9 +188,16 @@
       "target_dir": ".agents/skills/aoa-property-invariants",
       "target_skill_path": ".agents/skills/aoa-property-invariants/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-safe-infra-change",
@@ -126,9 +205,16 @@
       "target_dir": ".agents/skills/aoa-safe-infra-change",
       "target_skill_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-only",
-      "allow_implicit_invocation": false
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-sanitized-share",
@@ -136,9 +222,16 @@
       "target_dir": ".agents/skills/aoa-sanitized-share",
       "target_skill_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-only",
-      "allow_implicit_invocation": false
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -146,9 +239,16 @@
       "target_dir": ".agents/skills/aoa-source-of-truth-check",
       "target_skill_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "aoa-tdd-slice",
@@ -156,9 +256,16 @@
       "target_dir": ".agents/skills/aoa-tdd-slice",
       "target_skill_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "atm10-change-protocol",
@@ -166,9 +273,16 @@
       "target_dir": ".agents/skills/atm10-change-protocol",
       "target_skill_path": ".agents/skills/atm10-change-protocol/SKILL.md",
       "target_openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -176,9 +290,16 @@
       "target_dir": ".agents/skills/atm10-source-of-truth-check",
       "target_skill_path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
       "target_openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
-      "copied_resource_dirs": [],
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     }
   ]
 }

@@ -1,6 +1,7 @@
 # Trigger evals and collision tests
 
-This wave replaces the first-wave trigger CSV with a richer JSONL dataset.
+Wave 2 replaced the first-wave trigger CSV with a richer JSONL dataset.
+Wave 3 keeps that dataset separate from install profiles and trust policy.
 
 ## Why the format changed
 
@@ -51,11 +52,17 @@ When any of these change, update the trigger evals in the same pull request:
 - skill description
 - invocation mode
 - a major trigger boundary
-- a major “do not use” boundary
+- a major `do not use` boundary
 - overlay activation conditions
 
 Then run:
 
 ```bash
 python scripts/lint_trigger_evals.py --repo-root .
+```
+
+Pack profiles and trust posture live in separate wave-3 surfaces and should be checked with:
+
+```bash
+python scripts/lint_pack_profiles.py --repo-root .
 ```

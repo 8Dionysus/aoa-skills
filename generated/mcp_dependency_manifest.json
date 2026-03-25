@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-3",
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "tools": []
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "tools": []
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "tools": []
+    },
+    {
+      "name": "aoa-change-protocol",
+      "tools": []
+    },
+    {
+      "name": "aoa-contract-test",
+      "tools": []
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "tools": []
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "tools": []
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "tools": []
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "tools": []
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "tools": []
+    },
+    {
+      "name": "aoa-property-invariants",
+      "tools": []
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "tools": []
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "tools": []
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "tools": []
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "tools": []
+    },
+    {
+      "name": "atm10-change-protocol",
+      "tools": []
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "tools": []
+    }
+  ]
+}

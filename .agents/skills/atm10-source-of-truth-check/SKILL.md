@@ -10,7 +10,7 @@ metadata:
   aoa_source_skill_path: skills/atm10-source-of-truth-check/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0013,AOA-T-0002
-  aoa_portable_profile: codex-facing-wave-2
+  aoa_portable_profile: codex-facing-wave-3
 ---
 
 # atm10-source-of-truth-check
