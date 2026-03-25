@@ -1,0 +1,6 @@
+interface:
+  display_name: ATM10 Source Of Truth Check
+  short_description: ATM10 source-of-truth overlay
+  default_prompt: Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.
+policy:
+  allow_implicit_invocation: true

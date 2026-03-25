@@ -32,9 +32,11 @@ If you are new to this repository, follow this short path:
 13. Read `docs/OVERLAY_SPEC.md` if you are thinking about thin downstream overlays or live exemplar overlay packs.
 14. Read `docs/overlays/atm10/PROJECT_OVERLAY.md` for the first live exemplar family overlay pack.
 15. Read `docs/RELEASING.md` if you need the bounded repo-level release flow.
-16. Read `SKILL_INDEX.md` for the current skill surface.
-17. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-18. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
+16. Read `docs/CODEX_PORTABLE_LAYER.md` for the generated Codex-facing export under `.agents/skills/`.
+17. Read `docs/LOCAL_ADAPTER_CONTRACT.md` if you need the local activation seam around that export.
+18. Read `SKILL_INDEX.md` for the current skill surface.
+19. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+20. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
 
 ## Quick routes
 
@@ -87,6 +89,7 @@ The current repo-local surface stack is:
 - runtime selection and object use: `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, `scripts/inspect_skill.py`
 - evaluation evidence and matrix reading: `docs/EVALUATION_PATH.md`, `generated/skill_evaluation_matrix.*`, `tests/fixtures/skill_evaluation_cases.yaml`, `scripts/report_skill_evaluation.py`
 - public-product and governance signals: `docs/PUBLIC_SURFACE.md`, `generated/public_surface.*`, `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, `generated/skill_graph.*`
+- Codex-facing portable export and local activation seam: `docs/CODEX_PORTABLE_LAYER.md`, `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/local_adapter_manifest*.json`, `scripts/build_agent_skills.py`, `scripts/activate_skill.py`
 - composition-boundary and exception-review signals: `generated/skill_composition_audit.*`, `docs/reviews/skill-composition-exceptions/*.md`, `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md`
 - overlay preparation and thin downstream adaptation: `docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, `templates/PROJECT_OVERLAY.template.md`, `templates/PROJECT_OVERLAY_SKILL.template.md`
 
@@ -110,10 +113,12 @@ For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metada
 
 ## Repository structure
 
+- `.agents/` — generated Codex-facing export layer built from canonical skill surfaces
+- `config/` — portable export description overrides and optional OpenAI metadata extensions
 - `docs/` — architecture, bridge rules, roadmap, conventions
 - `templates/` — templates for skill authoring and composition metadata
 - `skills/` — skill bundles
-- `generated/` — derived reader catalogs, local runtime cards, section surfaces, walkthrough surfaces, snapshot-backed evaluation matrix surfaces, and public-product surfaces built from committed skill markdown, manifests, support artifacts, review records, and evaluation fixtures
+- `generated/` — derived reader catalogs, local runtime cards, section surfaces, walkthrough surfaces, snapshot-backed evaluation matrix surfaces, public-product surfaces, and portable export/adaptation manifests built from committed skill markdown, manifests, support artifacts, review records, evaluation fixtures, and portable-layer config
 - `scripts/` — local validation and refresh helpers
 - `schemas/` — machine-readable bundle contracts
 - `tests/` — local validator and evaluation tests
@@ -135,6 +140,9 @@ A typical skill bundle contains:
 `generated/skill_walkthroughs.json` and `generated/skill_walkthroughs.md` are derived runtime inspect surfaces built from skill markdown and support artifacts.
 `generated/skill_evaluation_matrix.json` and `generated/skill_evaluation_matrix.md` are derived evaluation evidence surfaces built from committed fixtures, snapshot cases, runtime artifacts, and review records.
 `generated/public_surface.json` and `generated/public_surface.md` are derived governance and public-product surfaces.
+`.agents/skills/*` is a generated Codex-facing export layer built from canonical skill bundles plus `config/portable_skill_overrides.json` and optional `config/openai_skill_extensions.json`.
+`generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, and `generated/local_adapter_manifest*.json` are derived portable discovery and activation surfaces.
+`generated/skill_trigger_eval_cases.jsonl` and `generated/skill_trigger_collision_matrix.json` are versioned trigger-eval seed data validated against the canonical invocation policy.
 
 ## Skill categories
 
@@ -151,6 +159,7 @@ It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `gene
 The current focus is candidate review and promotion decisions, overlay maturity, public/docs clarity, and packaging prep through derived maintenance surfaces such as `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`.
 Overlay adoption remains intentionally thin, public-safe, and repo-local.
 `docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, and the overlay templates now describe live exemplar overlay packs without pretending to be live downstream integrations.
+The repo now also publishes a generated Codex-facing export under `.agents/skills/*`, a local adapter seam in `generated/local_adapter_manifest*.json` and `scripts/activate_skill.py`, and policy-aware trigger-eval data in `generated/skill_trigger_eval_cases.jsonl` and `generated/skill_trigger_collision_matrix.json`.
 
 ## When not to use this repository
 
@@ -186,10 +195,24 @@ python scripts/validate_skills.py
 python scripts/build_catalog.py --check
 ```
 
+For portable export work or any change to skill bodies, invocation modes, portable overrides, or OpenAI extensions, also use:
+
+```bash
+python scripts/build_agent_skills.py --repo-root .
+python scripts/validate_agent_skills.py --repo-root .
+python scripts/lint_trigger_evals.py --repo-root .
+```
+
 Refresh the derived catalogs, capsules, sections, walkthroughs, evaluation matrix, and public surface directly:
 
 ```bash
 python scripts/build_catalog.py
+```
+
+Refresh the generated Codex-facing export and local-adapter manifests directly:
+
+```bash
+python scripts/build_agent_skills.py --repo-root .
 ```
 
 Inspect a skill through the runtime path:
@@ -202,6 +225,12 @@ Inspect the same skill's support artifacts and review evidence:
 
 ```bash
 python scripts/inspect_skill.py --skill aoa-change-protocol --view evidence
+```
+
+Inspect the corresponding local activation payload for the generated portable export:
+
+```bash
+python scripts/activate_skill.py --repo-root . --skill aoa-change-protocol --format json
 ```
 
 Run a single skill check:

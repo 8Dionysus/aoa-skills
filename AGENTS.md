@@ -23,7 +23,7 @@ This repository is the source of truth for:
 - skill-level inputs and outputs
 - reviewability and anti-pattern language at the skill layer
 - technique dependency declaration at the skill layer
-- generated skill catalogs and capsules
+- generated skill catalogs, capsules, and portable export surfaces
 
 ## Does not own
 
@@ -68,6 +68,9 @@ The most important objects in this repository are:
 
 - `skills/*/SKILL.md`
 - `skills/*/techniques.yaml` or the current dependency source for the skill
+- `config/portable_skill_overrides.json`
+- optional `config/openai_skill_extensions.json`
+- generated `.agents/skills/*` export files
 - generated skill catalogs
 - generated skill capsules
 - architecture and bridge docs referenced by the README
@@ -158,6 +161,19 @@ Write for portability:
 - strip secrets
 - keep runtime assumptions explicit
 - prefer small explicit workflow contracts
+
+## Codex-facing portable skills
+
+- `.agents/skills/*` is a generated Codex-facing export layer. Do not hand-edit exported skill files unless the task is explicitly about export debugging.
+- Canonical authoring remains in `skills/*/SKILL.md`, `generated/skill_sections.full.json`, `generated/skill_catalog.min.json`, and `config/portable_skill_overrides.json`.
+- Optional per-skill OpenAI metadata extensions live in `config/openai_skill_extensions.json`.
+- After changing canonical skill bodies, invocation modes, description overrides, or skill resources, run:
+  - `python scripts/build_agent_skills.py --repo-root .`
+  - `python scripts/validate_agent_skills.py --repo-root .`
+  - `python scripts/lint_trigger_evals.py --repo-root .`
+- For local-adapter testing, use `python scripts/activate_skill.py --repo-root . --skill <skill-name> --format json`.
+- Respect `policy.allow_implicit_invocation`: explicit-only skills must not be auto-selected by local wrappers.
+- When descriptions or trigger boundaries change, update `generated/skill_trigger_eval_cases.jsonl` and `generated/skill_trigger_collision_matrix.json` in the same change.
 
 ## Local working notes
 

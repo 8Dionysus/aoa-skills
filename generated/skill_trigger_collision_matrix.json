@@ -1,0 +1,284 @@
+{
+  "matrix_version": 1,
+  "profile": "codex-facing-trigger-collisions",
+  "families": [
+    {
+      "family": "decision-and-doc-authority",
+      "skills": [
+        "aoa-adr-write",
+        "aoa-source-of-truth-check"
+      ],
+      "notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap."
+      ]
+    },
+    {
+      "family": "boundary-shaping",
+      "skills": [
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor"
+      ],
+      "notes": [
+        "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
+        "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
+        "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ]
+    },
+    {
+      "family": "change-execution-vs-test-first",
+      "skills": [
+        "aoa-change-protocol",
+        "aoa-tdd-slice",
+        "aoa-contract-test"
+      ],
+      "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-tdd-slice is specifically test-first feature slicing.",
+        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+      ]
+    },
+    {
+      "family": "property-authoring-vs-coverage-audit",
+      "skills": [
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit"
+      ],
+      "notes": [
+        "aoa-property-invariants authors new invariant or property checks.",
+        "aoa-invariant-coverage-audit inspects whether current tests already prove the relevant invariants."
+      ]
+    },
+    {
+      "family": "safety-and-mutation-gating",
+      "skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-safe-infra-change",
+        "aoa-local-stack-bringup",
+        "aoa-sanitized-share"
+      ],
+      "notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ]
+    },
+    {
+      "family": "overlay-vs-base-skill",
+      "skills": [
+        "aoa-change-protocol",
+        "atm10-change-protocol",
+        "aoa-source-of-truth-check",
+        "atm10-source-of-truth-check"
+      ],
+      "notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "collision-01",
+      "skill_name": "aoa-invariant-coverage-audit",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-invariant-coverage-audit",
+      "competing_skills": [
+        "aoa-property-invariants"
+      ],
+      "prompt": "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps.",
+      "note": "This is an audit of existing coverage, not authoring new properties."
+    },
+    {
+      "case_id": "collision-02",
+      "skill_name": "aoa-property-invariants",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-property-invariants",
+      "competing_skills": [
+        "aoa-invariant-coverage-audit"
+      ],
+      "prompt": "Write invariant-oriented checks for this parser so we verify idempotency and structural preservation across many generated inputs.",
+      "note": "This authors new property checks instead of auditing existing coverage."
+    },
+    {
+      "case_id": "collision-03",
+      "skill_name": "aoa-bounded-context-map",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-bounded-context-map",
+      "competing_skills": [
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor"
+      ],
+      "prompt": "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code.",
+      "note": "This is primarily semantic boundary mapping at the context level."
+    },
+    {
+      "case_id": "collision-04",
+      "skill_name": "aoa-core-logic-boundary",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-core-logic-boundary",
+      "competing_skills": [
+        "aoa-bounded-context-map",
+        "aoa-port-adapter-refactor"
+      ],
+      "prompt": "The discount rules are mixed into orchestration code and cron wiring. Separate reusable business rules from glue without widening the refactor.",
+      "note": "This is about rule-vs-glue separation, not system context mapping or a dependency seam."
+    },
+    {
+      "case_id": "collision-05",
+      "skill_name": "aoa-port-adapter-refactor",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-port-adapter-refactor",
+      "competing_skills": [
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary"
+      ],
+      "prompt": "Our service layer is tightly coupled to the concrete Stripe client. Introduce a narrow port and adapter so tests stop depending on the live SDK shape.",
+      "note": "This is dependency isolation behind a port and adapter."
+    },
+    {
+      "case_id": "collision-06",
+      "skill_name": "aoa-tdd-slice",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-tdd-slice",
+      "competing_skills": [
+        "aoa-change-protocol",
+        "aoa-contract-test"
+      ],
+      "prompt": "Add the new password-reset behavior test-first: define the expected flow in tests, implement the smallest passing slice, and keep the refactor bounded.",
+      "note": "This is specifically a test-first feature slice."
+    },
+    {
+      "case_id": "collision-07",
+      "skill_name": "aoa-contract-test",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-contract-test",
+      "competing_skills": [
+        "aoa-change-protocol",
+        "aoa-tdd-slice"
+      ],
+      "prompt": "The webhook producer and consumer disagree on payload shape. Add contract-oriented validation so the boundary is explicit and regressions are obvious.",
+      "note": "Boundary contract validation is the center of gravity here."
+    },
+    {
+      "case_id": "collision-08",
+      "skill_name": "aoa-change-protocol",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-change-protocol",
+      "competing_skills": [
+        "aoa-tdd-slice",
+        "aoa-safe-infra-change"
+      ],
+      "prompt": "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it.",
+      "note": "General bounded change workflow, not specifically test-first or infra-heavy."
+    },
+    {
+      "case_id": "collision-09",
+      "skill_name": "aoa-approval-gate-check",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-safe-infra-change",
+        "aoa-dry-run-first"
+      ],
+      "prompt": "Before touching production DNS records, classify whether this request is safe, approval-gated, or out of bounds.",
+      "note": "Even though the prompt matches the domain strongly, this skill is explicit-only and should require a manual $skill invocation."
+    },
+    {
+      "case_id": "collision-10",
+      "skill_name": "aoa-dry-run-first",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-approval-gate-check",
+        "aoa-safe-infra-change"
+      ],
+      "prompt": "Find the safest preview path for this delete or restore operation, show what the preview proves, and stop before any real mutation.",
+      "note": "This skill is explicit-only; implicit routing should not auto-select it."
+    },
+    {
+      "case_id": "collision-11",
+      "skill_name": "aoa-safe-infra-change",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup"
+      ],
+      "prompt": "Plan and verify a bounded Kubernetes configuration change with rollback thinking and proportional checks.",
+      "note": "Strong semantic match, but implicit routing must stay off because this skill is explicit-only."
+    },
+    {
+      "case_id": "collision-12",
+      "skill_name": "aoa-local-stack-bringup",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-safe-infra-change"
+      ],
+      "prompt": "Show what this docker-compose plus background worker stack would start, run host readiness checks, then launch it through one explicit entrypoint.",
+      "note": "This is an explicit-only operational skill and should not auto-trigger."
+    },
+    {
+      "case_id": "collision-13",
+      "skill_name": "aoa-sanitized-share",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-safe-infra-change"
+      ],
+      "prompt": "Turn these raw logs and config snippets into a public-safe incident appendix while keeping the raw material separate.",
+      "note": "This skill is explicit-only because sanitized sharing is safety-sensitive and should be invoked intentionally."
+    },
+    {
+      "case_id": "collision-14",
+      "skill_name": "atm10-change-protocol",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "atm10-change-protocol",
+      "competing_skills": [
+        "aoa-change-protocol"
+      ],
+      "prompt": "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes.",
+      "note": "The overlay should win only when the repo is actually an atm10-* repo and the project-specific overlay matters."
+    },
+    {
+      "case_id": "collision-15",
+      "skill_name": "aoa-change-protocol",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-change-protocol",
+      "competing_skills": [
+        "atm10-change-protocol"
+      ],
+      "prompt": "Apply the bounded change workflow in this generic service repo. There is no atm10 overlay or project-specific path layer here.",
+      "note": "The base skill should win when no ATM10 overlay is needed."
+    },
+    {
+      "case_id": "collision-16",
+      "skill_name": "atm10-source-of-truth-check",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "atm10-source-of-truth-check",
+      "competing_skills": [
+        "aoa-source-of-truth-check"
+      ],
+      "prompt": "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture.",
+      "note": "Overlay-specific source-of-truth mapping inside an ATM10 repo."
+    },
+    {
+      "case_id": "collision-17",
+      "skill_name": "aoa-source-of-truth-check",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-source-of-truth-check",
+      "competing_skills": [
+        "atm10-source-of-truth-check",
+        "aoa-adr-write"
+      ],
+      "prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
+      "note": "Document authority mapping for a generic repo, not an overlay-specific ATM10 case and not a decision record task."
+    }
+  ]
+}

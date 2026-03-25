@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA TDD Slice
+  short_description: Build slices test-first
+  default_prompt: Use $aoa-tdd-slice to define behavior in tests first, make the smallest implementation change, and report what stays out of scope.
+policy:
+  allow_implicit_invocation: true

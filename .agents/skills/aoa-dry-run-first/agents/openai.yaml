@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Dry Run First
+  short_description: Preview before real mutation
+  default_prompt: Use $aoa-dry-run-first to find the safest preview path, interpret what it proves, and stop for explicit confirmation before the real mutation.
+policy:
+  allow_implicit_invocation: false

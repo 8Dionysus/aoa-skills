@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Port Adapter Refactor
+  short_description: Refactor toward ports/adapters
+  default_prompt: Use $aoa-port-adapter-refactor to isolate a concrete dependency behind a narrow port and adapter without turning the change into a hidden rewrite.
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Property Invariants
+  short_description: Write property-based invariants
+  default_prompt: Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks.
+policy:
+  allow_implicit_invocation: true

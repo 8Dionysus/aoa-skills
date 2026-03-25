@@ -11,9 +11,12 @@ from pathlib import Path
 
 RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/build_catalog.py"),
+    ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
     ("python", "-m", "unittest", "discover", "-s", "tests"),
     ("python", "scripts/validate_nested_agents.py"),
     ("python", "scripts/validate_skills.py"),
+    ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),
+    ("python", "scripts/lint_trigger_evals.py", "--repo-root", "."),
     ("python", "scripts/build_catalog.py", "--check"),
 )
 WORKTREE_SNAPSHOT_COMMAND = ("git", "status", "--porcelain=v1", "--untracked-files=all")
@@ -63,6 +66,10 @@ def repo_state_changed(before: RepoStateSnapshot, after: RepoStateSnapshot) -> b
     return before != after
 
 
+def repo_started_without_tracked_diff(snapshot: RepoStateSnapshot) -> bool:
+    return not snapshot.tracked_diff.strip() and not snapshot.cached_diff.strip()
+
+
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     before_state = capture_repo_state(repo_root)
@@ -85,7 +92,7 @@ def main() -> int:
             print(stabilized_state, file=sys.stderr)
             return 1
 
-    if not before_state.worktree_status.strip():
+    if repo_started_without_tracked_diff(before_state):
         run_command(CLEAN_REPO_DIFF_COMMAND, repo_root)
 
     print("[ok] release check completed")

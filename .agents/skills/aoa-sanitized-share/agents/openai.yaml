@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Sanitized Share
+  short_description: Sanitize tech artifacts for sharing
+  default_prompt: Use $aoa-sanitized-share to separate raw technical material from a public-safe artifact and verify the sanitized version still preserves the lesson.
+policy:
+  allow_implicit_invocation: false

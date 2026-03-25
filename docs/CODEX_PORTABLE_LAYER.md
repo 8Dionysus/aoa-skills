@@ -1,0 +1,83 @@
+# Codex portable layer for aoa-skills
+
+This document defines the portable Agent Skills layer that makes `aoa-skills` directly discoverable by Codex under `.agents/skills/`.
+
+## Intent
+
+The target shape is:
+
+- canonical AoA authoring remains in `skills/*/SKILL.md` plus generated AoA catalogs
+- Codex-facing export lives in `.agents/skills/*`
+- local-friendly runtimes wrap or mirror the Codex-facing export rather than replacing it
+
+## Source surfaces
+
+The builder reads:
+
+- `generated/skill_sections.full.json`
+- `generated/skill_catalog.min.json`
+- `config/portable_skill_overrides.json`
+- optional `config/openai_skill_extensions.json`
+
+These files supply the current instruction body, scope, status, invocation mode, technique dependencies, trigger descriptions, and optional OpenAI-facing metadata for each AoA skill.
+
+## Mapping rules
+
+### SKILL.md frontmatter
+
+Portable `SKILL.md` files use standard Agent Skills frontmatter:
+
+- `name`: identical to the AoA skill directory name
+- `description`: curated Codex trigger text describing what the skill does and when to use it
+- `license`: `Apache-2.0`
+- `compatibility`: generic compatibility note for Codex or similar coding agents
+- `metadata`: AoA-specific fields moved under namespaced keys
+
+### AoA metadata mapping
+
+- `scope` -> `metadata.aoa_scope`
+- `status` -> `metadata.aoa_status`
+- `invocation_mode` -> `metadata.aoa_invocation_mode`
+- `skill_path` -> `metadata.aoa_source_skill_path`
+- `technique_dependencies[]` -> `metadata.aoa_technique_dependencies` as a comma-separated string
+- source repo marker -> `metadata.aoa_source_repo`
+
+### Invocation policy
+
+The portable layer mirrors AoA invocation mode in `agents/openai.yaml`:
+
+- `explicit-only` -> `policy.allow_implicit_invocation: false`
+- `explicit-preferred` -> `policy.allow_implicit_invocation: true`
+
+This preserves risk posture for approval-gated and mutation-sensitive skills.
+
+## Why this shape
+
+Codex discovers skills from `.agents/skills`, loads `name` and `description` first, and then loads full `SKILL.md` bodies only when a skill is selected. This layer therefore optimizes the first-contact metadata without discarding the richer AoA instruction body.
+
+## Build and validation
+
+Rebuild the portable layer from repo root:
+
+    python scripts/build_agent_skills.py --repo-root .
+
+Validate the result:
+
+    python scripts/validate_agent_skills.py --repo-root .
+
+Lint the policy-aware trigger dataset:
+
+    python scripts/lint_trigger_evals.py --repo-root .
+
+Inspect one activated local-adapter payload:
+
+    python scripts/activate_skill.py --repo-root . --skill aoa-change-protocol --format json
+
+## Future local-friendly path
+
+The Codex-facing layer is the common portable surface. Local runtimes should adapt around it by:
+
+- reading `generated/agent_skill_catalog*.json` for discovery
+- loading `.agents/skills/<name>/SKILL.md` on activation
+- respecting `policy.allow_implicit_invocation`
+- preserving AoA metadata from frontmatter `metadata`

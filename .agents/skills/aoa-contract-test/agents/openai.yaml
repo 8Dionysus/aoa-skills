@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Contract Test
+  short_description: Strengthen interface contracts
+  default_prompt: Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves.
+policy:
+  allow_implicit_invocation: true

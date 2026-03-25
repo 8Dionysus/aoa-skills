@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Bounded Context Map
+  short_description: Map contexts and interfaces
+  default_prompt: Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them.
+policy:
+  allow_implicit_invocation: true

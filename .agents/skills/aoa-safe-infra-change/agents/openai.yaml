@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Safe Infra Change
+  short_description: Make bounded infra changes safely
+  default_prompt: Use $aoa-safe-infra-change to plan and verify a bounded infrastructure or configuration change with explicit risk and rollback thinking.
+policy:
+  allow_implicit_invocation: false

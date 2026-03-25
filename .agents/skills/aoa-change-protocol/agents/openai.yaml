@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Change Protocol
+  short_description: Plan, scope, verify, report
+  default_prompt: Use $aoa-change-protocol to plan, apply, verify, and report a bounded non-trivial repository change.
+policy:
+  allow_implicit_invocation: true

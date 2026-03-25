@@ -37,6 +37,11 @@ This directory contains derived surfaces such as:
 - `skill_lineage_surface.json` and `skill_lineage_surface.md`
 - `overlay_readiness.json` and `overlay_readiness.md`
 - `skill_composition_audit.json` and `skill_composition_audit.md`
+- `agent_skill_catalog.json` and `agent_skill_catalog.min.json`
+- `portable_export_map.json`
+- `local_adapter_manifest.json` and `local_adapter_manifest.min.json`
+- `skill_trigger_eval_cases.csv` and `skill_trigger_eval_cases.jsonl`
+- `skill_trigger_collision_matrix.json`
 
 Do not hand-author files in `generated/` as if they were canonical prose. Change the owning source or the generator, then regenerate.
 
@@ -72,8 +77,11 @@ Do not:
 For changes that affect derived outputs, run:
 
 - `python scripts/build_catalog.py`
+- `python scripts/build_agent_skills.py --repo-root .`
 - `python scripts/validate_nested_agents.py`
 - `python scripts/validate_skills.py`
+- `python scripts/validate_agent_skills.py --repo-root .`
+- `python scripts/lint_trigger_evals.py --repo-root .`
 - `python scripts/build_catalog.py --check`
 
 If a generated file changed unexpectedly, inspect the owning source before accepting the diff.

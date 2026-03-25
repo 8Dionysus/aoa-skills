@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Core Logic Boundary
+  short_description: Separate core logic from glue
+  default_prompt: Use $aoa-core-logic-boundary to decide what belongs in reusable core logic versus glue or infrastructure detail, then keep the refactor bounded.
+policy:
+  allow_implicit_invocation: true

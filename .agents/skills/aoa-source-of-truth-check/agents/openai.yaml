@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Source Of Truth Check
+  short_description: Clarify authoritative docs
+  default_prompt: Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.
+policy:
+  allow_implicit_invocation: true

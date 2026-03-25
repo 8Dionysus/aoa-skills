@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Approval Gate Check
+  short_description: Classify approval boundaries
+  default_prompt: Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.
+policy:
+  allow_implicit_invocation: false

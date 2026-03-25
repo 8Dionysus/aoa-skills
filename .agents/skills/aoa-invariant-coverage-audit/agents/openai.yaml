@@ -1,0 +1,6 @@
+interface:
+  display_name: AoA Invariant Coverage Audit
+  short_description: Audit invariant coverage
+  default_prompt: Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove.
+policy:
+  allow_implicit_invocation: true
