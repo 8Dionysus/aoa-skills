@@ -16,8 +16,11 @@
 - `templates/RUNTIME_EXAMPLE.template.md` — canonical runtime example scaffold
 - `templates/PROJECT_OVERLAY.template.md` — canonical project overlay scaffold
 - `templates/PROJECT_OVERLAY_SKILL.template.md` — canonical overlayed skill scaffold
+- `.agents/` — generated Codex-facing export layer
+- `config/` — portable export description overrides, optional OpenAI metadata extensions, and wave-3 pack/trust authoring inputs
+- `examples/` — sample Codex config snippets for profile disable and install scenarios
 - `skills/` — skill bundles
-- `generated/` — derived reader catalogs generated from committed skill markdown and manifests
+- `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, and trigger-eval seed data
 - `scripts/` — optional generation or validation helpers
 - `schemas/` — optional machine-readable schemas
 
@@ -72,6 +75,11 @@ Belong in `generated/skill_catalog*.json`:
 - deterministic projections of committed `SKILL.md` and `techniques.yaml`
 - no new authority beyond the source files
 
+Belong in `.agents/skills/*`:
+- generated Codex-facing skill export files
+- frontmatter and `agents/openai.yaml` derived from canonical skills plus portable export config
+- no new authority beyond the source files and portable export config
+
 Belong in `generated/skill_walkthroughs.json` and `generated/skill_walkthroughs.md`:
 - derived runtime inspect surfaces
 - support-artifact aware entry points for `pick -> inspect -> expand -> object use`
@@ -81,6 +89,11 @@ Belong in `generated/public_surface.json` and `generated/public_surface.md`:
 - derived governance and public-product signaling
 - cohort views such as default references, candidate-ready skills, and pending-lineage blockers
 - no status change authority beyond the source files, review records, and evaluation fixtures
+
+Belong in `generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, and `generated/release_manifest.json`:
+- portable discovery, activation, install, and trust surfaces
+- deterministic projections of `.agents/skills/*`, canonical invocation policy, and repo-owned portable-layer config
+- no new authority beyond source bundles and portable export config
 
 Belong in `agents/openai.yaml`:
 - invocation mode

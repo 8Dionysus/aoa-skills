@@ -1,0 +1,532 @@
+{
+  "manifest_version": 2,
+  "profile": "codex-facing-local-adapter",
+  "root": ".agents/skills",
+  "activation_tool": "scripts/activate_skill.py",
+  "discovery_view": "generated/local_adapter_manifest.min.json",
+  "permission_allowlist": [
+    ".agents/skills"
+  ],
+  "contracts": {
+    "runtime": "generated/skill_runtime_contracts.json",
+    "context_retention": "generated/context_retention_manifest.json",
+    "trust_policy": "generated/trust_policy_matrix.json"
+  },
+  "source_of_truth": {
+    "portable_export_root": ".agents/skills",
+    "portable_catalog": "generated/agent_skill_catalog.json",
+    "policy_source": "agents/openai.yaml"
+  },
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
+      "path": ".agents/skills/aoa-adr-write/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-adr-write"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-adr-write/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0033,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-adr-write"
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
+      "path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
+      "allowlist_paths": [
+        ".agents/skills/aoa-approval-gate-check"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0028",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-approval-gate-check"
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
+      "path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-bounded-context-map"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-bounded-context-map"
+    },
+    {
+      "name": "aoa-change-protocol",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "path": ".agents/skills/aoa-change-protocol/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-change-protocol"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-change-protocol/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-change-protocol"
+    },
+    {
+      "name": "aoa-contract-test",
+      "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
+      "path": ".agents/skills/aoa-contract-test/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-contract-test"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-contract-test/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0003,AOA-T-0015",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-contract-test"
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "description": "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.",
+      "path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-core-logic-boundary"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-core-logic-boundary"
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
+      "path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
+      "allowlist_paths": [
+        ".agents/skills/aoa-dry-run-first"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0004,AOA-T-0028",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-dry-run-first"
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
+      "path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-invariant-coverage-audit"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0017",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-invariant-coverage-audit"
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "description": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
+      "path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
+      "allowlist_paths": [
+        ".agents/skills/aoa-local-stack-bringup"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0036,AOA-T-0037,AOA-T-0028,AOA-T-0038",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-local-stack-bringup"
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
+      "path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-port-adapter-refactor"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-port-adapter-refactor"
+    },
+    {
+      "name": "aoa-property-invariants",
+      "description": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.",
+      "path": ".agents/skills/aoa-property-invariants/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-property-invariants"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-property-invariants/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0017,AOA-T-0007",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-property-invariants"
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
+      "path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
+      "allowlist_paths": [
+        ".agents/skills/aoa-safe-infra-change"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0001",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-safe-infra-change"
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "description": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
+      "path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
+      "allowlist_paths": [
+        ".agents/skills/aoa-sanitized-share"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0034,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "explicit-risk",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-sanitized-share"
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
+      "path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-source-of-truth-check"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002,AOA-T-0009",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check"
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
+      "path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-tdd-slice"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-tdd-slice/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0014,AOA-T-0001",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-tdd-slice"
+    },
+    {
+      "name": "atm10-change-protocol",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "path": ".agents/skills/atm10-change-protocol/SKILL.md",
+      "openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/atm10-change-protocol"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/atm10-change-protocol/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "project-overlay",
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-change-protocol"
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
+      "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/atm10-source-of-truth-check"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "project-overlay",
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-source-of-truth-check"
+    }
+  ]
+}

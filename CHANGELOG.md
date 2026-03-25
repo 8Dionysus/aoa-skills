@@ -7,6 +7,10 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+### Changed
+
+- hardened the generated Codex-facing portable layer with wave-3 install profiles, trust policy, context-retention metadata, runtime contracts, UI assets, and config snippets while keeping repo-level release identity separate from seed-pack metadata
+
 ## [0.1.0] - 2026-03-23
 
 First public baseline release.

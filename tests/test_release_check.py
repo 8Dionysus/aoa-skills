@@ -35,9 +35,41 @@ class ReleaseCheckTests(unittest.TestCase):
         self.assertFalse(release_check.repo_state_changed(before, same))
         self.assertTrue(release_check.repo_state_changed(before, changed))
 
+    def test_repo_started_without_tracked_diff_ignores_untracked_only_status(self) -> None:
+        snapshot = release_check.RepoStateSnapshot("?? seed.zip\n", "", "")
+        dirty_snapshot = release_check.RepoStateSnapshot(" M generated/file.json\n", "diff", "")
+
+        self.assertTrue(release_check.repo_started_without_tracked_diff(snapshot))
+        self.assertFalse(release_check.repo_started_without_tracked_diff(dirty_snapshot))
+
     def test_main_runs_release_commands_in_order_and_enforces_clean_diff(self) -> None:
         before = release_check.RepoStateSnapshot("", "", "")
         after = release_check.RepoStateSnapshot("", "", "")
+        calls: list[tuple[str, ...]] = []
+
+        def fake_run(command: tuple[str, ...], repo_root: Path) -> None:
+            calls.append(command)
+
+        stdout = io.StringIO()
+        with (
+            mock.patch.object(release_check, "capture_repo_state", side_effect=[before, after]),
+            mock.patch.object(release_check, "run_command", side_effect=fake_run),
+            contextlib.redirect_stdout(stdout),
+        ):
+            exit_code = release_check.main()
+
+        self.assertEqual(0, exit_code)
+        self.assertEqual(
+            [
+                *release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+                release_check.CLEAN_REPO_DIFF_COMMAND,
+            ],
+            calls,
+        )
+
+    def test_main_enforces_clean_diff_when_only_untracked_files_exist_initially(self) -> None:
+        before = release_check.RepoStateSnapshot("?? aoa-skills-codex-seed.zip\n", "", "")
+        after = release_check.RepoStateSnapshot("?? aoa-skills-codex-seed.zip\n", "", "")
         calls: list[tuple[str, ...]] = []
 
         def fake_run(command: tuple[str, ...], repo_root: Path) -> None:

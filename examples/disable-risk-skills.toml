@@ -1,0 +1,22 @@
+# Example disable snippet for explicit-only risk skills.
+# Merge into an existing Codex config when that profile should stay installed but disabled.
+
+[[skills.config]]
+path = ".agents/skills/aoa-approval-gate-check/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = ".agents/skills/aoa-dry-run-first/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = ".agents/skills/aoa-local-stack-bringup/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = ".agents/skills/aoa-safe-infra-change/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = ".agents/skills/aoa-sanitized-share/SKILL.md"
+enabled = false

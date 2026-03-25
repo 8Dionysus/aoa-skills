@@ -1,0 +1,39 @@
+# Example user-level Codex config
+# Merge into ~/.codex/config.toml and adapt to taste.
+
+# Disable the user-curated AoA core pack without deleting the installed files.
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-adr-write/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-bounded-context-map/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-change-protocol/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-contract-test/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-core-logic-boundary/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-port-adapter-refactor/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-property-invariants/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-source-of-truth-check/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "$HOME/.agents/skills/aoa-tdd-slice/SKILL.md"
+enabled = false

@@ -28,8 +28,19 @@ It packages:
 - invocation policy
 - technique composition metadata
 
+The repository may also publish a generated Codex-facing export under `.agents/skills/*`.
+That export is built from the canonical authored bundle plus portable export config,
+and exists to make skill discovery and activation work cleanly in Codex-compatible runtimes.
+It does not replace the authored bundle as the source of truth.
+
 The repository may also publish derived reader surfaces in `generated/`.
 Those surfaces are built from committed `SKILL.md`, `techniques.yaml`, review records, and evaluation fixtures and are meant to help routing, indexing, and public governance signaling without becoming a second source of truth.
+The same derived posture now applies to `.agents/skills/*`, `generated/agent_skill_catalog*.json`,
+`generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`,
+`generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`,
+`generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`,
+`generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, and `generated/release_manifest.json`:
+they are generated operational interfaces, not authored meaning.
 
 A skill normally relies on several techniques and/or several bounded actions.
 A single-technique skill is allowed only as an explicit reviewed exception.
@@ -94,6 +105,8 @@ Skills should be reviewable artifacts.
 They can be generated or assembled from technique references, but the committed `SKILL.md` should remain understandable to a human reviewer without additional hidden state.
 Derived catalogs should stay deterministic and disposable: if a reader surface drifts, regenerate it from the authoritative markdown and manifest inputs.
 The current repo-local governance and release signaling layer should also stay derived rather than introducing a second explicit skill-metadata contract.
+The Codex-facing portable layer follows the same rule: `.agents/skills/*` is a generated export,
+`config/portable_skill_overrides.json`, `config/openai_skill_extensions.json`, `config/skill_pack_profiles.json`, and `config/skill_policy_matrix.json` are the repo-owned configuration seams for that export, and local-friendly runtimes should wrap the export rather than inventing a second canonical skill format.
 
 ## Versioning direction
 

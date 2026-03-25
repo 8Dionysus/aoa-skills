@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-3",
+  "source_config": "config/skill_pack_profiles.json",
+  "profiles": {
+    "repo-default": {
+      "description": "Install the full AoA Codex-facing export into a repository root so every repo-local and overlay skill is available.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-adr-write",
+          "source_path": ".agents/skills/aoa-adr-write/SKILL.md",
+          "target_path": ".agents/skills/aoa-adr-write/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-approval-gate-check",
+          "source_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "target_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-bounded-context-map",
+          "source_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+          "target_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-change-protocol",
+          "source_path": ".agents/skills/aoa-change-protocol/SKILL.md",
+          "target_path": ".agents/skills/aoa-change-protocol/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-contract-test",
+          "source_path": ".agents/skills/aoa-contract-test/SKILL.md",
+          "target_path": ".agents/skills/aoa-contract-test/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-core-logic-boundary",
+          "source_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "target_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-dry-run-first",
+          "source_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "target_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-invariant-coverage-audit",
+          "source_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+          "target_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-local-stack-bringup",
+          "source_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "target_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-port-adapter-refactor",
+          "source_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "target_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-property-invariants",
+          "source_path": ".agents/skills/aoa-property-invariants/SKILL.md",
+          "target_path": ".agents/skills/aoa-property-invariants/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-safe-infra-change",
+          "source_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "target_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-sanitized-share",
+          "source_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "target_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-source-of-truth-check",
+          "source_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "target_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-tdd-slice",
+          "source_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+          "target_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "atm10-change-protocol",
+          "source_path": ".agents/skills/atm10-change-protocol/SKILL.md",
+          "target_path": ".agents/skills/atm10-change-protocol/SKILL.md",
+          "openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "atm10-source-of-truth-check",
+          "source_path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
+          "target_path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
+          "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "project-overlay"
+        }
+      ]
+    },
+    "repo-core-only": {
+      "description": "Install only core, reusable AoA skills into a repository root.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-adr-write",
+          "source_path": ".agents/skills/aoa-adr-write/SKILL.md",
+          "target_path": ".agents/skills/aoa-adr-write/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-bounded-context-map",
+          "source_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+          "target_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-change-protocol",
+          "source_path": ".agents/skills/aoa-change-protocol/SKILL.md",
+          "target_path": ".agents/skills/aoa-change-protocol/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-contract-test",
+          "source_path": ".agents/skills/aoa-contract-test/SKILL.md",
+          "target_path": ".agents/skills/aoa-contract-test/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-core-logic-boundary",
+          "source_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "target_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-invariant-coverage-audit",
+          "source_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+          "target_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-port-adapter-refactor",
+          "source_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "target_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-property-invariants",
+          "source_path": ".agents/skills/aoa-property-invariants/SKILL.md",
+          "target_path": ".agents/skills/aoa-property-invariants/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-source-of-truth-check",
+          "source_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "target_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-tdd-slice",
+          "source_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+          "target_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        }
+      ]
+    },
+    "repo-risk-explicit": {
+      "description": "Install only explicit-only risk skills for repositories that want bounded operational workflows available by explicit mention.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-approval-gate-check",
+          "source_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "target_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-dry-run-first",
+          "source_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "target_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-local-stack-bringup",
+          "source_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "target_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-safe-infra-change",
+          "source_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "target_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-sanitized-share",
+          "source_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "target_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        }
+      ]
+    },
+    "repo-atm10-overlay": {
+      "description": "Install only the ATM10 project overlays into a repository root.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "atm10-change-protocol",
+          "source_path": ".agents/skills/atm10-change-protocol/SKILL.md",
+          "target_path": ".agents/skills/atm10-change-protocol/SKILL.md",
+          "openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "atm10-source-of-truth-check",
+          "source_path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
+          "target_path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
+          "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "project-overlay"
+        }
+      ]
+    },
+    "user-curated-core": {
+      "description": "Install a portable personal set of reusable AoA skills into the user's home skills directory.",
+      "scope": "user",
+      "install_mode": "symlink-preferred",
+      "install_root": "$HOME/.agents/skills",
+      "skills": [
+        {
+          "name": "aoa-adr-write",
+          "source_path": ".agents/skills/aoa-adr-write/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-adr-write/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-adr-write/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-bounded-context-map",
+          "source_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-bounded-context-map/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-bounded-context-map/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-change-protocol",
+          "source_path": ".agents/skills/aoa-change-protocol/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-change-protocol/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-change-protocol/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-contract-test",
+          "source_path": ".agents/skills/aoa-contract-test/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-contract-test/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-contract-test/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-core-logic-boundary",
+          "source_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-port-adapter-refactor",
+          "source_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-property-invariants",
+          "source_path": ".agents/skills/aoa-property-invariants/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-property-invariants/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-property-invariants/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-source-of-truth-check",
+          "source_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-tdd-slice",
+          "source_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-tdd-slice/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-tdd-slice/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        }
+      ]
+    }
+  }
+}

@@ -26,13 +26,19 @@ A release should make it easy to answer:
    - `python scripts/release_check.py`
    - the current script runs:
      - `python scripts/build_catalog.py`
-     - `python -m unittest discover -s tests`
-     - `python scripts/validate_skills.py`
-     - `python scripts/build_catalog.py --check`
+   - `python scripts/build_agent_skills.py --repo-root .`
+   - `python -m unittest discover -s tests`
+   - `python scripts/validate_nested_agents.py`
+   - `python scripts/validate_skills.py`
+   - `python scripts/validate_agent_skills.py --repo-root .`
+   - `python scripts/lint_trigger_evals.py --repo-root .`
+   - `python scripts/lint_pack_profiles.py --repo-root .`
+   - `python scripts/build_catalog.py --check`
    - if the first pass materializes tracked updates, the script reruns the same bounded sequence once and requires the second pass to leave the git-backed worktree snapshot unchanged
-   - when the repo starts clean, that same bounded drift check also confirms `git diff --exit-code`
+   - when the repo starts with no tracked diff, that same bounded drift check also confirms `git diff --exit-code`
 4. Confirm `SKILL_INDEX.md` still matches the current public skill surface.
-5. Confirm generated surfaces are current if the release includes skill or generated-surface changes.
+5. Confirm generated surfaces are current if the release includes skill, portable export, or generated-surface changes.
+   - this includes `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, `generated/release_manifest.json`, and trigger-eval seed data when trigger boundaries changed
 6. Review public-safety hygiene:
    - no secrets
    - no internal-only URLs
@@ -79,5 +85,5 @@ Right now, `aoa-skills` is best released as:
 
 - a curated public skill corpus
 - a self-serve repo with one bounded repo-owned release-check entrypoint
-- a validated repository structure with generated reader/runtime/governance surfaces
+- a validated repository structure with generated reader/runtime/governance surfaces plus a generated Codex-facing portable export and local adapter seam
 - a repo-level release identity separate from per-skill status and derived public-surface signaling

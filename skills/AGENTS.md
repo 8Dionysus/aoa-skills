@@ -29,6 +29,7 @@ Treat these as the canonical bundle surfaces when present:
 - optional `checks/`, `examples/`, and `references/`
 
 `SKILL.md` and `techniques.yaml` remain the canonical pair. Support artifacts should clarify, constrain, or verify the bundle. They should not silently override it.
+The generated Codex-facing export lives separately under `.agents/skills/*`; edit the canonical bundle first, then regenerate the export.
 
 Do not add per-bundle `AGENTS.md` by default. A skill bundle already carries its own contract surface, and a deeper `AGENTS.md` only makes sense when there is a real local conflict that cannot be stated cleanly in the bundle itself.
 
@@ -69,9 +70,12 @@ Do not:
 When bundle sources change, run the bounded repository flow:
 
 - `python scripts/build_catalog.py`
+- `python scripts/build_agent_skills.py --repo-root .`
 - `python -m unittest discover -s tests`
 - `python scripts/validate_nested_agents.py`
 - `python scripts/validate_skills.py`
+- `python scripts/validate_agent_skills.py --repo-root .`
+- `python scripts/lint_trigger_evals.py --repo-root .`
 - `python scripts/build_catalog.py --check`
 
 If only a subset of surfaces changed, still make sure the affected bundle remains bounded, public-safe, and reviewable.
