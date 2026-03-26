@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import re
 from typing import Any, Mapping, Sequence
 
 import yaml
@@ -64,6 +65,17 @@ def relative_location(path: Path, repo_root: Path) -> str:
 
 def strip_anchor(path_value: str) -> str:
     return path_value.split("#", 1)[0]
+
+
+def normalize_repo_relative_path(path_value: str) -> str | None:
+    normalized = strip_anchor(path_value).replace("\\", "/")
+    if not normalized:
+        return None
+    if re.match(r"^[A-Za-z]:/", normalized) or normalized.startswith(("/", "//")):
+        return None
+    if ".." in Path(normalized).parts:
+        return None
+    return normalized
 
 
 def load_governance_lane_document(repo_root: Path) -> dict[str, Any] | None:
@@ -274,10 +286,21 @@ def validate_governance_lanes(
     }
     governed_skill_names: set[str] = set()
     decision_by_skill: dict[str, str] = {}
+    seen_lane_ids: set[str] = set()
 
     for lane_index, lane in enumerate(lanes):
         lane_location = f"{location}:lanes[{lane_index}]"
         lane_skill_names = {lane_skill.name for lane_skill in lane.skills}
+
+        if lane.lane_id in seen_lane_ids:
+            issues.append(
+                GovernanceLaneIssue(
+                    location=f"{lane_location}.id",
+                    message=f"governance lane id '{lane.lane_id}' must be unique",
+                )
+            )
+        else:
+            seen_lane_ids.add(lane.lane_id)
 
         if lane.state not in ALLOWED_GOVERNANCE_LANE_STATES:
             issues.append(
@@ -287,14 +310,23 @@ def validate_governance_lanes(
                 )
             )
 
-        review_path = repo_root / strip_anchor(lane.review_path)
-        if not review_path.is_file():
+        relative_review_path = normalize_repo_relative_path(lane.review_path)
+        if relative_review_path is None:
             issues.append(
                 GovernanceLaneIssue(
                     location=f"{lane_location}.review_path",
-                    message=f"governance lane review_path '{lane.review_path}' must reference an existing file",
+                    message=f"governance lane review_path '{lane.review_path}' must be repo-relative",
                 )
             )
+        else:
+            review_path = repo_root / relative_review_path
+            if not review_path.is_file():
+                issues.append(
+                    GovernanceLaneIssue(
+                        location=f"{lane_location}.review_path",
+                        message=f"governance lane review_path '{lane.review_path}' must reference an existing file",
+                    )
+                )
 
         has_stay_evaluated = False
         for skill_index, lane_skill in enumerate(lane.skills):

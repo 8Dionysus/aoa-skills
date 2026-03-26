@@ -79,6 +79,7 @@ def main() -> int:
         run_command(command, repo_root)
 
     after_state = capture_repo_state(repo_root)
+    final_state = after_state
     if repo_state_changed(before_state, after_state):
         print("[info] worktree changed during release check; rerunning once to confirm stable outputs")
         for command in RELEASE_CHECK_COMMAND_SEQUENCE:
@@ -92,9 +93,18 @@ def main() -> int:
             print("[after second pass]", file=sys.stderr)
             print(stabilized_state, file=sys.stderr)
             return 1
+        final_state = stabilized_state
 
-    if repo_started_without_tracked_diff(before_state):
-        run_command(CLEAN_REPO_DIFF_COMMAND, repo_root)
+    if repo_started_without_tracked_diff(before_state) and repo_state_changed(before_state, final_state):
+        print(
+            "[error] release check changed the worktree snapshot despite starting without tracked diff",
+            file=sys.stderr,
+        )
+        print("[before release check]", file=sys.stderr)
+        print(before_state, file=sys.stderr)
+        print("[after release check]", file=sys.stderr)
+        print(final_state, file=sys.stderr)
+        return 1
 
     print("[ok] release check completed")
     return 0

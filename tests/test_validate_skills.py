@@ -1010,6 +1010,39 @@ class ValidateSkillsTests(unittest.TestCase):
             messages,
         )
 
+    def test_governance_lane_absolute_review_path_fails(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "test_lane",
+                    "title": "Test lane",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "/tmp/test_lane.md#test_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "governance lane review_path '/tmp/test_lane.md#test_lane' must be repo-relative",
+            messages,
+        )
+
     def test_governance_lane_missing_adjacency_case_id_fails(self) -> None:
         repo_root = self.make_repo(
             status="evaluated",
@@ -1087,6 +1120,53 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn(
             "skill 'aoa-test-skill' has conflicting governance decisions ('stay_evaluated' vs 'default_reference') across lanes",
+            messages,
+        )
+
+    def test_governance_lane_duplicate_ids_fail(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "shared_lane",
+                    "title": "Lane one",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#shared_lane",
+                    "evidence_case_ids": [],
+                },
+                {
+                    "id": "shared_lane",
+                    "title": "Lane two",
+                    "scope": "core",
+                    "state": "comparative_pending",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "stay_evaluated",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#shared_lane_two",
+                    "evidence_case_ids": [],
+                },
+            ],
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            "governance lane id 'shared_lane' must be unique",
             messages,
         )
 
@@ -1409,6 +1489,35 @@ class ValidateSkillsTests(unittest.TestCase):
                 fail_on_review_truth_sync=True,
             ),
         )
+
+    def test_review_truth_sync_reports_malformed_review_doc_as_issue(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_evaluation_fixtures_for_skill(repo_root)
+        self.write_catalogs(repo_root)
+        review_path = repo_root / "docs" / "reviews" / "status-promotions" / "aoa-test-skill.md"
+        review_path.write_text(
+            textwrap.dedent(
+                """\
+                ---
+                name: aoa-test-skill
+                """
+            ),
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(
+            repo_root,
+            fail_on_review_truth_sync=True,
+        )
+        malformed_issue = next(
+            issue
+            for issue in issues
+            if issue.location == "docs/reviews/status-promotions/aoa-test-skill.md"
+        )
+        self.assertIn("missing a closing frontmatter delimiter", malformed_issue.message)
 
     def test_review_truth_sync_revision_excludes_review_surface_files(self) -> None:
         repo_root = self.make_repo(
