@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-4-runtime-seam",
+  "session_file_hint": ".aoa/skill-runtime-session.json",
+  "description": "Session contract for the dedicated-tool runtime seam that sits downstream of the Codex-facing export.",
+  "behaviors": [
+    "deduplicate activations by skill name within one session",
+    "mark activated skills as protected_from_compaction",
+    "preserve must_keep items and retain_sections during compaction",
+    "retain allowlist_paths so bundled resources remain readable without extra approval prompts"
+  ],
+  "state_schema": {
+    "required": [
+      "schema_version",
+      "profile",
+      "session_id",
+      "created_at",
+      "updated_at",
+      "active_skills",
+      "activation_log"
+    ],
+    "active_skill_record": {
+      "required": [
+        "name",
+        "activated_at",
+        "activation_count",
+        "protected_from_compaction",
+        "allowlist_paths",
+        "compact_summary",
+        "must_keep",
+        "rehydration_hint"
+      ]
+    }
+  },
+  "compact_output": {
+    "required": [
+      "session_id",
+      "active_skill_packets",
+      "reactivation_instructions"
+    ]
+  }
+}

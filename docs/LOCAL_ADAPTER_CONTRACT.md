@@ -1,6 +1,7 @@
 # Local adapter contract around the Codex-facing export
 
 This document defines the smallest adapter seam for runtimes that want to consume `aoa-skills` without implementing native Codex skill discovery.
+It now sits alongside the wave-4 dedicated-tool runtime seam and remains the backward-compatible path for older wrappers.
 
 ## Discovery
 
@@ -18,7 +19,13 @@ This is enough for a local router or preselector to choose which skill to activa
 
 ## Activation
 
-Use:
+Primary runtime wrappers should prefer:
+
+```bash
+python scripts/skill_runtime_seam.py activate --repo-root . --skill <skill-name> --format json
+```
+
+Legacy local wrappers may continue to use:
 
 ```bash
 python scripts/activate_skill.py --repo-root . --skill <skill-name> --format json
@@ -37,7 +44,7 @@ The activation payload returns:
 - `trust_policy`
 - the full markdown instructions body
 
-This gives local runtimes a dedicated tool seam instead of requiring direct file reading in the model loop.
+The legacy activation payload is now backed by the wave-4 runtime seam, so it stays compatible while sharing the same generated contracts and export root.
 
 ## Policy rules
 
@@ -62,6 +69,8 @@ Once a skill is activated:
 - avoid re-injecting the same skill repeatedly
 - do not drop the active skill during context compaction unless the task clearly moved away from it
 - prefer `context_retention` and `runtime_contract` over ad hoc wrapper notes
+
+For long-running local agents, prefer the explicit session path in `scripts/skill_runtime_seam.py status|compact|deactivate` instead of maintaining parallel compaction notes outside the repo-owned seam.
 
 ## Intended layering
 

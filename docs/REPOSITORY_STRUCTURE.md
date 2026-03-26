@@ -20,7 +20,7 @@
 - `config/` — portable export description overrides, optional OpenAI metadata extensions, and wave-3 pack/trust authoring inputs
 - `examples/` — sample Codex config snippets for profile disable and install scenarios
 - `skills/` — skill bundles
-- `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, and trigger-eval seed data
+- `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, wave-4 runtime seam surfaces, and trigger-eval seed data
 - `scripts/` — optional generation or validation helpers
 - `schemas/` — optional machine-readable schemas
 
@@ -90,7 +90,7 @@ Belong in `generated/public_surface.json` and `generated/public_surface.md`:
 - cohort views such as default references, candidate-ready skills, and pending-lineage blockers
 - no status change authority beyond the source files, review records, and evaluation fixtures
 
-Belong in `generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, and `generated/release_manifest.json`:
+Belong in `generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, `generated/runtime_discovery_index*.json`, `generated/runtime_disclosure_index.json`, `generated/runtime_activation_aliases.json`, `generated/runtime_tool_schemas.json`, `generated/runtime_session_contract.json`, `generated/runtime_prompt_blocks.json`, `generated/runtime_router_hints.json`, `generated/runtime_seam_manifest.json`, and `generated/release_manifest.json`:
 - portable discovery, activation, install, and trust surfaces
 - deterministic projections of `.agents/skills/*`, canonical invocation policy, and repo-owned portable-layer config
 - no new authority beyond source bundles and portable export config

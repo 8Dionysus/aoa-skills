@@ -171,12 +171,14 @@ Write for portability:
 - Optional per-skill OpenAI metadata extensions live in `config/openai_skill_extensions.json`.
 - After changing canonical skill bodies, invocation modes, description overrides, pack profiles, policy posture, or skill resources, run:
   - `python scripts/build_agent_skills.py --repo-root .`
+  - `python scripts/build_runtime_seam.py --repo-root .`
   - `python scripts/validate_agent_skills.py --repo-root .`
   - `python scripts/lint_trigger_evals.py --repo-root .`
   - `python scripts/lint_pack_profiles.py --repo-root .`
-- For local-adapter testing, use `python scripts/activate_skill.py --repo-root . --skill <skill-name> --format json`.
+- Use `python scripts/skill_runtime_seam.py discover|disclose|activate --repo-root . ...` as the primary dedicated-tool runtime path.
+- `python scripts/activate_skill.py --repo-root . --skill <skill-name> --format json` remains the backward-compatible legacy shim for older local wrappers.
 - Respect `policy.allow_implicit_invocation`: explicit-only skills must not be auto-selected by local wrappers.
-- `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, and `generated/skill_pack_profiles.resolved.json` are generated support layers around the same export, not a second source of truth.
+- `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, and `generated/runtime_*.json` are generated support layers around the same export, not a second source of truth.
 - When descriptions or trigger boundaries change, update `generated/skill_trigger_eval_cases.jsonl` and `generated/skill_trigger_collision_matrix.json` in the same change.
 
 ## Local working notes

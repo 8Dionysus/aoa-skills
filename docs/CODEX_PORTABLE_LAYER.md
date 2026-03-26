@@ -79,6 +79,19 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 
 These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
 
+Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
+
+- `generated/runtime_discovery_index*.json`
+- `generated/runtime_disclosure_index.json`
+- `generated/runtime_activation_aliases.json`
+- `generated/runtime_tool_schemas.json`
+- `generated/runtime_session_contract.json`
+- `generated/runtime_prompt_blocks.json`
+- `generated/runtime_router_hints.json`
+- `generated/runtime_seam_manifest.json`
+
+Those runtime files still sit downstream of `.agents/skills/*` and do not introduce a second authoring format.
+
 ## Build and validation
 
 Rebuild the portable layer from repo root:
@@ -97,7 +110,15 @@ Lint pack-profile authoring:
 
     python scripts/lint_pack_profiles.py --repo-root .
 
-Inspect one activated local-adapter payload:
+Build the wave-4 runtime seam:
+
+    python scripts/build_runtime_seam.py --repo-root .
+
+Inspect one activated runtime-seam payload:
+
+    python scripts/skill_runtime_seam.py activate --repo-root . --skill aoa-change-protocol --format json
+
+Inspect one activated local-adapter compatibility payload:
 
     python scripts/activate_skill.py --repo-root . --skill aoa-change-protocol --format json
 
@@ -106,7 +127,9 @@ Inspect one activated local-adapter payload:
 The Codex-facing layer is the common portable surface. Local runtimes should adapt around it by:
 
 - reading `generated/agent_skill_catalog*.json` for discovery
-- loading `.agents/skills/<name>/SKILL.md` on activation
+- using `generated/runtime_discovery_index*.json` and `generated/runtime_disclosure_index.json` for shortlist and preview
+- using `scripts/skill_runtime_seam.py activate` for full runtime activation
 - respecting `policy.allow_implicit_invocation`
 - preserving AoA metadata from frontmatter `metadata`
 - consulting runtime/context/trust contracts instead of inventing a second local format
+- treating `scripts/activate_skill.py` as the legacy compatibility shim for older local wrappers

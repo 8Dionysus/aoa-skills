@@ -39,6 +39,30 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in trust_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in context_doc["skills"]}, catalog_names)
 
+    def test_runtime_seam_indexes_match_catalog(self):
+        catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
+        discovery = load_json(REPO_ROOT / "generated" / "runtime_discovery_index.json")
+        discovery_min = load_json(REPO_ROOT / "generated" / "runtime_discovery_index.min.json")
+        disclosure = load_json(REPO_ROOT / "generated" / "runtime_disclosure_index.json")
+        router = load_json(REPO_ROOT / "generated" / "runtime_router_hints.json")
+        aliases = load_json(REPO_ROOT / "generated" / "runtime_activation_aliases.json")
+        catalog_names = {entry["name"] for entry in catalog["skills"]}
+
+        self.assertEqual({entry["name"] for entry in discovery["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in discovery_min["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in disclosure["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in router["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in aliases["aliases"]}, catalog_names)
+
+    def test_discovery_and_disclosure_do_not_expose_full_instructions(self):
+        discovery = load_json(REPO_ROOT / "generated" / "runtime_discovery_index.json")
+        disclosure = load_json(REPO_ROOT / "generated" / "runtime_disclosure_index.json")
+
+        for entry in discovery["skills"]:
+            self.assertNotIn("instructions_markdown", entry)
+        for entry in disclosure["skills"]:
+            self.assertNotIn("instructions_markdown", entry)
+
     def test_resolved_profiles_and_snippets_match(self):
         profiles = load_json(REPO_ROOT / "generated" / "skill_pack_profiles.resolved.json")
         snippets = load_json(REPO_ROOT / "generated" / "codex_config_snippets.json")
@@ -62,6 +86,7 @@ class CodexPortableContractTests(unittest.TestCase):
 
     def test_validation_scripts_pass(self):
         commands = [
+            [sys.executable, "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_pack_profiles.py", "--repo-root", "."],

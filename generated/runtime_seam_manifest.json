@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-4-runtime-seam",
+  "common_surface": ".agents/skills",
+  "dedicated_tool_pattern": true,
+  "tools": {
+    "discover": "scripts/skill_runtime_seam.py discover",
+    "disclose": "scripts/skill_runtime_seam.py disclose",
+    "activate": "scripts/skill_runtime_seam.py activate",
+    "status": "scripts/skill_runtime_seam.py status",
+    "deactivate": "scripts/skill_runtime_seam.py deactivate",
+    "compact": "scripts/skill_runtime_seam.py compact"
+  },
+  "generated": {
+    "discovery_index": "generated/runtime_discovery_index.json",
+    "discovery_index_min": "generated/runtime_discovery_index.min.json",
+    "disclosure_index": "generated/runtime_disclosure_index.json",
+    "aliases": "generated/runtime_activation_aliases.json",
+    "tool_schemas": "generated/runtime_tool_schemas.json",
+    "session_contract": "generated/runtime_session_contract.json",
+    "prompt_blocks": "generated/runtime_prompt_blocks.json",
+    "router_hints": "generated/runtime_router_hints.json"
+  },
+  "session_file_hint": ".aoa/skill-runtime-session.json",
+  "backward_compatibility": {
+    "legacy_activation_tool": "scripts/activate_skill.py"
+  }
+}

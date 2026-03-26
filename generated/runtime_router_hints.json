@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-4-runtime-seam",
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
+      "collision_family": "decision-and-doc-authority",
+      "competing_skills": [],
+      "should_trigger": [
+        "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The change is tiny and self-evident, with no durable decision or rationale that future contributors would need to find."
+      ],
+      "notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap."
+      ]
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
+      "collision_family": "safety-and-mutation-gating",
+      "competing_skills": [
+        "aoa-safe-infra-change",
+        "aoa-dry-run-first"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear.",
+        "Before touching production DNS records, classify whether this request is safe, approval-gated, or out of bounds."
+      ],
+      "negative_controls": [
+        "The task is clearly low-risk, already bounded, and does not look destructive, security-sensitive, or operationally sensitive."
+      ],
+      "notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ]
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
+      "collision_family": "boundary-shaping",
+      "competing_skills": [
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor"
+      ],
+      "should_trigger": [
+        "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The edit is tiny, fully local, and there is no meaningful ambiguity about boundaries or interfaces.",
+        "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code."
+      ],
+      "notes": [
+        "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
+        "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
+        "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ]
+    },
+    {
+      "name": "aoa-change-protocol",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "collision_family": "overlay-vs-base-skill",
+      "competing_skills": [
+        "aoa-tdd-slice",
+        "aoa-safe-infra-change",
+        "atm10-change-protocol"
+      ],
+      "should_trigger": [
+        "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "This is just a trivial wording fix with no meaningful review, verification, or operational consequence.",
+        "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it.",
+        "Apply the bounded change workflow in this generic service repo. There is no atm10 overlay or project-specific path layer here."
+      ],
+      "notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    },
+    {
+      "name": "aoa-contract-test",
+      "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
+      "collision_family": "change-execution-vs-test-first",
+      "competing_skills": [
+        "aoa-change-protocol",
+        "aoa-tdd-slice"
+      ],
+      "should_trigger": [
+        "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The change is entirely local and does not cross or exercise any meaningful module, service, or workflow boundary.",
+        "The webhook producer and consumer disagree on payload shape. Add contract-oriented validation so the boundary is explicit and regressions are obvious."
+      ],
+      "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-tdd-slice is specifically test-first feature slicing.",
+        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+      ]
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "description": "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.",
+      "collision_family": "boundary-shaping",
+      "competing_skills": [
+        "aoa-bounded-context-map",
+        "aoa-port-adapter-refactor"
+      ],
+      "should_trigger": [
+        "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The task is a tiny isolated fix and there is no meaningful confusion between reusable rules and glue code.",
+        "The discount rules are mixed into orchestration code and cron wiring. Separate reusable business rules from glue without widening the refactor."
+      ],
+      "notes": [
+        "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
+        "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
+        "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ]
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
+      "collision_family": "safety-and-mutation-gating",
+      "competing_skills": [
+        "aoa-approval-gate-check",
+        "aoa-safe-infra-change"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations.",
+        "Find the safest preview path for this delete or restore operation, show what the preview proves, and stop before any real mutation."
+      ],
+      "negative_controls": [
+        "There is no meaningful preview path here, and the task is already clearly harmless and bounded."
+      ],
+      "notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ]
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
+      "collision_family": "property-authoring-vs-coverage-audit",
+      "competing_skills": [
+        "aoa-property-invariants"
+      ],
+      "should_trigger": [
+        "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The real problem is that we have not identified the invariant yet, so this is not an audit of existing coverage.",
+        "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps."
+      ],
+      "notes": [
+        "aoa-property-invariants authors new invariant or property checks.",
+        "aoa-invariant-coverage-audit inspects whether current tests already prove the relevant invariants."
+      ]
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "description": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
+      "collision_family": "safety-and-mutation-gating",
+      "competing_skills": [
+        "aoa-safe-infra-change"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch.",
+        "Show what this docker-compose plus background worker stack would start, run host readiness checks, then launch it through one explicit entrypoint."
+      ],
+      "negative_controls": [
+        "This is about remote deployment and fleet operations rather than launching a bounded local multi-service stack."
+      ],
+      "notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ]
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
+      "collision_family": "boundary-shaping",
+      "competing_skills": [
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary"
+      ],
+      "should_trigger": [
+        "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "This is a tiny local fix with no architectural pressure to isolate a concrete dependency behind a port or adapter.",
+        "Our service layer is tightly coupled to the concrete Stripe client. Introduce a narrow port and adapter so tests stop depending on the live SDK shape."
+      ],
+      "notes": [
+        "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
+        "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
+        "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ]
+    },
+    {
+      "name": "aoa-property-invariants",
+      "description": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.",
+      "collision_family": "property-authoring-vs-coverage-audit",
+      "competing_skills": [
+        "aoa-invariant-coverage-audit"
+      ],
+      "should_trigger": [
+        "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases.",
+        "Write invariant-oriented checks for this parser so we verify idempotency and structural preservation across many generated inputs."
+      ],
+      "notes": [
+        "aoa-property-invariants authors new invariant or property checks.",
+        "aoa-invariant-coverage-audit inspects whether current tests already prove the relevant invariants."
+      ]
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
+      "collision_family": "safety-and-mutation-gating",
+      "competing_skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit.",
+        "Plan and verify a bounded Kubernetes configuration change with rollback thinking and proportional checks."
+      ],
+      "negative_controls": [
+        "This is a purely local code edit with no runtime, deployment, configuration, or operational implications."
+      ],
+      "notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ]
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "description": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
+      "collision_family": "safety-and-mutation-gating",
+      "competing_skills": [
+        "aoa-safe-infra-change"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers.",
+        "Turn these raw logs and config snippets into a public-safe incident appendix while keeping the raw material separate."
+      ],
+      "negative_controls": [
+        "The material is already clearly public-safe and minimal, so there is nothing to sanitize or separate."
+      ],
+      "notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ]
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
+      "collision_family": "overlay-vs-base-skill",
+      "competing_skills": [
+        "atm10-source-of-truth-check",
+        "aoa-adr-write"
+      ],
+      "should_trigger": [
+        "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
+        "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
+      ],
+      "notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
+      "collision_family": "change-execution-vs-test-first",
+      "competing_skills": [
+        "aoa-change-protocol",
+        "aoa-contract-test"
+      ],
+      "should_trigger": [
+        "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The work is still exploratory and the behavior is not defined enough to drive implementation from tests first.",
+        "Add the new password-reset behavior test-first: define the expected flow in tests, implement the smallest passing slice, and keep the refactor bounded."
+      ],
+      "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-tdd-slice is specifically test-first feature slicing.",
+        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+      ]
+    },
+    {
+      "name": "atm10-change-protocol",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "collision_family": "overlay-vs-base-skill",
+      "competing_skills": [
+        "aoa-change-protocol"
+      ],
+      "should_trigger": [
+        "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough.",
+        "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
+      ],
+      "notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "collision_family": "overlay-vs-base-skill",
+      "competing_skills": [
+        "aoa-source-of-truth-check"
+      ],
+      "should_trigger": [
+        "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository.",
+        "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
+      ],
+      "notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    }
+  ]
+}

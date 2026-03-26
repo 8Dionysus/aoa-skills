@@ -7,9 +7,14 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+### Added
+
+- wave-4 dedicated-tool runtime seam around the generated Codex-facing export, including discover, disclose, activate, session-status, deactivate, and compaction-safe rehydration surfaces
+
 ### Changed
 
 - hardened the generated Codex-facing portable layer with wave-3 install profiles, trust policy, context-retention metadata, runtime contracts, UI assets, and config snippets while keeping repo-level release identity separate from seed-pack metadata
+- promoted `scripts/skill_runtime_seam.py` to the primary local runtime path while keeping `scripts/activate_skill.py` as the backward-compatible shim
 
 ## [0.1.0] - 2026-03-23
 

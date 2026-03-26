@@ -27,6 +27,16 @@ class ReleaseCheckTests(unittest.TestCase):
             release_check.resolve_command(("git", "status")),
         )
 
+    def test_release_sequence_includes_runtime_seam_build_and_check(self) -> None:
+        self.assertIn(
+            ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
+            ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+
     def test_repo_state_changed_compares_full_snapshot(self) -> None:
         before = release_check.RepoStateSnapshot(" M file\n", "tracked-a", "cached-a")
         same = release_check.RepoStateSnapshot(" M file\n", "tracked-a", "cached-a")
