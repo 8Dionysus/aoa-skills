@@ -63,8 +63,22 @@ def capture_repo_state(repo_root: Path) -> RepoStateSnapshot:
     )
 
 
+def normalized_worktree_status(snapshot: RepoStateSnapshot) -> str:
+    if snapshot.tracked_diff.strip() or snapshot.cached_diff.strip():
+        return snapshot.worktree_status
+    return "".join(
+        line
+        for line in snapshot.worktree_status.splitlines(keepends=True)
+        if line.startswith("?? ")
+    )
+
+
 def repo_state_changed(before: RepoStateSnapshot, after: RepoStateSnapshot) -> bool:
-    return before != after
+    return (
+        normalized_worktree_status(before) != normalized_worktree_status(after)
+        or before.tracked_diff != after.tracked_diff
+        or before.cached_diff != after.cached_diff
+    )
 
 
 def repo_started_without_tracked_diff(snapshot: RepoStateSnapshot) -> bool:
@@ -79,6 +93,7 @@ def main() -> int:
         run_command(command, repo_root)
 
     after_state = capture_repo_state(repo_root)
+    final_state = after_state
     if repo_state_changed(before_state, after_state):
         print("[info] worktree changed during release check; rerunning once to confirm stable outputs")
         for command in RELEASE_CHECK_COMMAND_SEQUENCE:
@@ -92,9 +107,18 @@ def main() -> int:
             print("[after second pass]", file=sys.stderr)
             print(stabilized_state, file=sys.stderr)
             return 1
+        final_state = stabilized_state
 
-    if repo_started_without_tracked_diff(before_state):
-        run_command(CLEAN_REPO_DIFF_COMMAND, repo_root)
+    if repo_started_without_tracked_diff(before_state) and repo_state_changed(before_state, final_state):
+        print(
+            "[error] release check changed the worktree snapshot despite starting without tracked diff",
+            file=sys.stderr,
+        )
+        print("[before release check]", file=sys.stderr)
+        print(before_state, file=sys.stderr)
+        print("[after release check]", file=sys.stderr)
+        print(final_state, file=sys.stderr)
+        return 1
 
     print("[ok] release check completed")
     return 0

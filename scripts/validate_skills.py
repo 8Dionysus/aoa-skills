@@ -560,15 +560,16 @@ def validate_review_truth_sync(
     skill_name: str,
     issues: list[ValidationIssue],
 ) -> None:
-    if skill_review_surface.review_record_path(repo_root, skill_name) is None:
+    review_path = skill_review_surface.review_record_path(repo_root, skill_name)
+    if review_path is None:
         return
-    truth_sync = skill_review_surface.status_promotion_review_truth_sync(repo_root, skill_name)
+    try:
+        truth_sync = skill_review_surface.status_promotion_review_truth_sync(repo_root, skill_name)
+    except ValueError as exc:
+        issues.append(ValidationIssue(review_path, str(exc)))
+        return
     if truth_sync.issues:
-        review_path = truth_sync.review_path or skill_review_surface.review_record_path(
-            repo_root,
-            skill_name,
-        )
-        location = review_path or relative_location(
+        location = truth_sync.review_path or review_path or relative_location(
             repo_root / STATUS_PROMOTION_REVIEWS_DIR / f"{skill_name}.md"
         )
         for issue in truth_sync.issues:

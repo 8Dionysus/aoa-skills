@@ -813,6 +813,7 @@ class BuildCatalogTests(unittest.TestCase):
         *,
         family: str,
         skill_names: list[str],
+        include_authority_section: bool = True,
     ) -> None:
         overlay_dir = repo_root / "docs" / "overlays" / family
         overlay_dir.mkdir(parents=True, exist_ok=True)
@@ -826,11 +827,6 @@ class BuildCatalogTests(unittest.TestCase):
             "",
             "This live exemplar overlay pack keeps repo-relative local adaptation explicit.",
             "It does not change the base skill boundary.",
-            "",
-            "## Authority",
-            "",
-            f"- overlay family: `{family}`",
-            "- local maintainers own repo-relative authority",
             "",
             "## Local surface",
             "",
@@ -851,6 +847,14 @@ class BuildCatalogTests(unittest.TestCase):
             f"- confirm both `skills/{family}-*` bundles stay aligned",
             "",
         ]
+        if include_authority_section:
+            overlay_lines[7:7] = [
+                "## Authority",
+                "",
+                f"- overlay family: `{family}`",
+                "- local maintainers own repo-relative authority",
+                "",
+            ]
         (overlay_dir / "PROJECT_OVERLAY.md").write_text(
             "\n".join(overlay_lines),
             encoding="utf-8",
@@ -1448,6 +1452,36 @@ class BuildCatalogTests(unittest.TestCase):
             "skills/atm10-change-protocol/checks/review.md",
             markdown,
         )
+
+    def test_write_overlay_readiness_requires_authority_section_for_reviewable_family(self) -> None:
+        repo_root = self.make_repo()
+        skill_names = [
+            "atm10-change-protocol",
+            "atm10-source-of-truth-check",
+        ]
+        for skill_name in skill_names:
+            self.add_skill_bundle(
+                repo_root,
+                skill_name=skill_name,
+                scope="project",
+                techniques=[PRIMARY_PUBLISHED_TECHNIQUE],
+                policy_allow_implicit=True,
+                include_review_check=True,
+            )
+        self.write_evaluation_fixtures_for_skills(repo_root, skill_names)
+        self.write_live_overlay_pack(
+            repo_root,
+            family="atm10",
+            skill_names=skill_names,
+            include_authority_section=False,
+        )
+
+        build_catalog.write_overlay_readiness(repo_root)
+
+        payload = self.load_overlay_readiness(repo_root)
+        self.assertEqual(0, payload["summary"]["reviewable_family_count"])
+        self.assertFalse(payload["families"][0]["authority_section_present"])
+        self.assertEqual("baseline", payload["families"][0]["readiness_state"])
 
     def test_write_skill_composition_audit_marks_multi_technique_skill(self) -> None:
         repo_root = self.make_repo(

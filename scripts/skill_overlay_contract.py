@@ -553,6 +553,7 @@ def build_overlay_readiness_payload(repo_root: Path) -> dict[str, Any]:
             and eval_ready_skill_count == len(project_skill_names)
             and boundary_statement_present
             and repo_relative_statement_present
+            and authority_section_present
             and review_mentions_all_skills
             else "baseline"
         )
