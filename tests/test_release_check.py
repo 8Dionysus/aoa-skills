@@ -35,6 +35,12 @@ class ReleaseCheckTests(unittest.TestCase):
         self.assertFalse(release_check.repo_state_changed(before, same))
         self.assertTrue(release_check.repo_state_changed(before, changed))
 
+    def test_repo_state_changed_ignores_status_only_drift_without_diff(self) -> None:
+        before = release_check.RepoStateSnapshot("", "", "")
+        after = release_check.RepoStateSnapshot(" M generated/file.json\n", "", "")
+
+        self.assertFalse(release_check.repo_state_changed(before, after))
+
     def test_repo_started_without_tracked_diff_ignores_untracked_only_status(self) -> None:
         snapshot = release_check.RepoStateSnapshot("?? seed.zip\n", "", "")
         dirty_snapshot = release_check.RepoStateSnapshot(" M generated/file.json\n", "diff", "")

@@ -63,8 +63,22 @@ def capture_repo_state(repo_root: Path) -> RepoStateSnapshot:
     )
 
 
+def normalized_worktree_status(snapshot: RepoStateSnapshot) -> str:
+    if snapshot.tracked_diff.strip() or snapshot.cached_diff.strip():
+        return snapshot.worktree_status
+    return "".join(
+        line
+        for line in snapshot.worktree_status.splitlines(keepends=True)
+        if line.startswith("?? ")
+    )
+
+
 def repo_state_changed(before: RepoStateSnapshot, after: RepoStateSnapshot) -> bool:
-    return before != after
+    return (
+        normalized_worktree_status(before) != normalized_worktree_status(after)
+        or before.tracked_diff != after.tracked_diff
+        or before.cached_diff != after.cached_diff
+    )
 
 
 def repo_started_without_tracked_diff(snapshot: RepoStateSnapshot) -> bool:
