@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-4-runtime-seam",
+  "tools": [
+    {
+      "name": "discover_skills",
+      "description": "Shortlist AoA skills by name, description, trust posture, or invocation mode before activation.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Optional free-text query over skill name, description, or tags."
+          },
+          "trust_posture": {
+            "type": "string",
+            "enum": [
+              "explicit-risk",
+              "portable-core",
+              "project-overlay"
+            ]
+          },
+          "invocation_mode": {
+            "type": "string",
+            "enum": [
+              "explicit-only",
+              "explicit-preferred"
+            ]
+          },
+          "mutation_surface": {
+            "type": "string",
+            "enum": [
+              "none",
+              "repo",
+              "runtime",
+              "sharing"
+            ]
+          },
+          "allow_implicit_invocation": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "additionalProperties": false
+      },
+      "output_ref": "generated/runtime_discovery_index.json"
+    },
+    {
+      "name": "disclose_skill",
+      "description": "Preview a specific AoA skill without injecting the full instructions. Use for policy, resource, and verification preview.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "enum": [
+              "aoa-adr-write",
+              "aoa-approval-gate-check",
+              "aoa-bounded-context-map",
+              "aoa-change-protocol",
+              "aoa-contract-test",
+              "aoa-core-logic-boundary",
+              "aoa-dry-run-first",
+              "aoa-invariant-coverage-audit",
+              "aoa-local-stack-bringup",
+              "aoa-port-adapter-refactor",
+              "aoa-property-invariants",
+              "aoa-safe-infra-change",
+              "aoa-sanitized-share",
+              "aoa-source-of-truth-check",
+              "aoa-tdd-slice",
+              "atm10-change-protocol",
+              "atm10-source-of-truth-check"
+            ]
+          }
+        },
+        "required": [
+          "skill_name"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "generated/runtime_disclosure_index.json"
+    },
+    {
+      "name": "activate_skill",
+      "description": "Load the full instructions for a specific AoA skill, wrapped with runtime metadata and bundled-resource inventory.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "enum": [
+              "aoa-adr-write",
+              "aoa-approval-gate-check",
+              "aoa-bounded-context-map",
+              "aoa-change-protocol",
+              "aoa-contract-test",
+              "aoa-core-logic-boundary",
+              "aoa-dry-run-first",
+              "aoa-invariant-coverage-audit",
+              "aoa-local-stack-bringup",
+              "aoa-port-adapter-refactor",
+              "aoa-property-invariants",
+              "aoa-safe-infra-change",
+              "aoa-sanitized-share",
+              "aoa-source-of-truth-check",
+              "aoa-tdd-slice",
+              "atm10-change-protocol",
+              "atm10-source-of-truth-check"
+            ]
+          },
+          "session_file": {
+            "type": "string",
+            "description": "Optional path to a JSON session file that tracks active skills."
+          },
+          "explicit_handle": {
+            "type": "string",
+            "description": "Optional handle that caused activation, such as $skill-name or /skills."
+          },
+          "include_frontmatter": {
+            "type": "boolean",
+            "description": "Include parsed frontmatter alongside stripped instructions."
+          },
+          "wrap_mode": {
+            "type": "string",
+            "enum": [
+              "structured",
+              "markdown",
+              "raw"
+            ]
+          }
+        },
+        "required": [
+          "skill_name"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_seam.py activate"
+    },
+    {
+      "name": "skill_session_status",
+      "description": "Show which skills are currently active in the runtime session and whether they are protected from compaction.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "session_file": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_file"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "generated/runtime_session_contract.json"
+    },
+    {
+      "name": "deactivate_skill",
+      "description": "Remove a skill from the current runtime session state without deleting the underlying skill files.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "enum": [
+              "aoa-adr-write",
+              "aoa-approval-gate-check",
+              "aoa-bounded-context-map",
+              "aoa-change-protocol",
+              "aoa-contract-test",
+              "aoa-core-logic-boundary",
+              "aoa-dry-run-first",
+              "aoa-invariant-coverage-audit",
+              "aoa-local-stack-bringup",
+              "aoa-port-adapter-refactor",
+              "aoa-property-invariants",
+              "aoa-safe-infra-change",
+              "aoa-sanitized-share",
+              "aoa-source-of-truth-check",
+              "aoa-tdd-slice",
+              "atm10-change-protocol",
+              "atm10-source-of-truth-check"
+            ]
+          },
+          "session_file": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "skill_name",
+          "session_file"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_seam.py deactivate"
+    },
+    {
+      "name": "compact_skill_session",
+      "description": "Emit a compaction packet that preserves the active skills' must-keep state and rehydration hints for long-running sessions.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "session_file": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_file"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_seam.py compact"
+    }
+  ]
+}

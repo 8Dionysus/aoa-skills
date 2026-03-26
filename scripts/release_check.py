@@ -12,12 +12,14 @@ from pathlib import Path
 RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/build_catalog.py"),
     ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
+    ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
     ("python", "-m", "unittest", "discover", "-s", "tests"),
     ("python", "scripts/validate_nested_agents.py"),
     ("python", "scripts/validate_skills.py"),
     ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),
     ("python", "scripts/lint_trigger_evals.py", "--repo-root", "."),
     ("python", "scripts/lint_pack_profiles.py", "--repo-root", "."),
+    ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_catalog.py", "--check"),
 )
 WORKTREE_SNAPSHOT_COMMAND = ("git", "status", "--porcelain=v1", "--untracked-files=all")

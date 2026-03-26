@@ -24,6 +24,9 @@ jobs:
       - name: Build Codex-facing export
         run: python scripts/build_agent_skills.py --repo-root .
 
+      - name: Build runtime seam
+        run: python scripts/build_runtime_seam.py --repo-root .
+
       - name: Validate export
         run: python scripts/validate_agent_skills.py --repo-root .
 
@@ -38,6 +41,8 @@ jobs:
           python -m unittest tests/test_codex_portable_contract.py
           python -m unittest tests/test_install_profiles.py
           python -m unittest tests/test_wave3_runtime_contract.py
+          python -m unittest tests/test_wave4_runtime_seam_toolchain.py
+          python -m unittest tests/test_wave4_runtime_session.py
 
       - name: Check generated drift
         run: |
@@ -54,4 +59,13 @@ jobs:
             generated/skill_pack_profiles.resolved.json \
             generated/codex_config_snippets.json \
             generated/mcp_dependency_manifest.json \
+            generated/runtime_discovery_index.json \
+            generated/runtime_discovery_index.min.json \
+            generated/runtime_disclosure_index.json \
+            generated/runtime_activation_aliases.json \
+            generated/runtime_tool_schemas.json \
+            generated/runtime_session_contract.json \
+            generated/runtime_prompt_blocks.json \
+            generated/runtime_router_hints.json \
+            generated/runtime_seam_manifest.json \
             generated/release_manifest.json

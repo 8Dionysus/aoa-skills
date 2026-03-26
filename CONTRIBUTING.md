@@ -56,6 +56,7 @@ For portable export work, or after changing canonical skill bodies, invocation m
 
 ```bash
 python scripts/build_agent_skills.py --repo-root .
+python scripts/build_runtime_seam.py --repo-root .
 python scripts/validate_agent_skills.py --repo-root .
 python scripts/lint_trigger_evals.py --repo-root .
 python scripts/lint_pack_profiles.py --repo-root .

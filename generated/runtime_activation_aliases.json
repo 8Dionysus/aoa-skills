@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-4-runtime-seam",
+  "aliases": [
+    {
+      "name": "aoa-adr-write",
+      "codex_mention": "$aoa-adr-write",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-adr-write",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-adr-write"
+        }
+      }
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "codex_mention": "$aoa-approval-gate-check",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-approval-gate-check",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-approval-gate-check"
+        }
+      }
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "codex_mention": "$aoa-bounded-context-map",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-bounded-context-map",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-bounded-context-map"
+        }
+      }
+    },
+    {
+      "name": "aoa-change-protocol",
+      "codex_mention": "$aoa-change-protocol",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-change-protocol",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-change-protocol"
+        }
+      }
+    },
+    {
+      "name": "aoa-contract-test",
+      "codex_mention": "$aoa-contract-test",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-contract-test",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-contract-test"
+        }
+      }
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "codex_mention": "$aoa-core-logic-boundary",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-core-logic-boundary",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-core-logic-boundary"
+        }
+      }
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "codex_mention": "$aoa-dry-run-first",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-dry-run-first",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-dry-run-first"
+        }
+      }
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "codex_mention": "$aoa-invariant-coverage-audit",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-invariant-coverage-audit",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-invariant-coverage-audit"
+        }
+      }
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "codex_mention": "$aoa-local-stack-bringup",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-local-stack-bringup",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-local-stack-bringup"
+        }
+      }
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "codex_mention": "$aoa-port-adapter-refactor",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-port-adapter-refactor",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-port-adapter-refactor"
+        }
+      }
+    },
+    {
+      "name": "aoa-property-invariants",
+      "codex_mention": "$aoa-property-invariants",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-property-invariants",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-property-invariants"
+        }
+      }
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "codex_mention": "$aoa-safe-infra-change",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-safe-infra-change",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-safe-infra-change"
+        }
+      }
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "codex_mention": "$aoa-sanitized-share",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-sanitized-share",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-sanitized-share"
+        }
+      }
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "codex_mention": "$aoa-source-of-truth-check",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-source-of-truth-check",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-source-of-truth-check"
+        }
+      }
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "codex_mention": "$aoa-tdd-slice",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-tdd-slice",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-tdd-slice"
+        }
+      }
+    },
+    {
+      "name": "atm10-change-protocol",
+      "codex_mention": "$atm10-change-protocol",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/atm10-change-protocol",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "atm10-change-protocol"
+        }
+      }
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "codex_mention": "$atm10-source-of-truth-check",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/atm10-source-of-truth-check",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "atm10-source-of-truth-check"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1753 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-4-runtime-seam",
+  "root": ".agents/skills",
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "display_name": "AoA ADR Write",
+      "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
+      "short_description": "Record architecture decisions clearly",
+      "path": ".agents/skills/aoa-adr-write/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-adr-write",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-adr-write/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0033,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to capture an architectural, structural, or workflow decision in a concise reviewable note, then place and verify that note in the canonical repo surface so the rationale stays findable.",
+        "Trigger boundary": "a decision changes structure, boundaries, tooling, or workflow expectations; future contributors will need to know why a path was chosen",
+        "Inputs": "decision to record; context and problem statement",
+        "Outputs": "concise decision note or ADR draft; statement of rationale",
+        "Procedure": "state the context and the problem the decision addresses; list the main options if they meaningfully shaped the choice",
+        "Contracts": "the note should explain why, not just what changed; the decision should be bounded and understandable",
+        "Risks and anti-patterns": "writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning",
+        "Verification": "confirm the decision was meaningful enough to record; confirm the rationale is explicit",
+        "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AO...",
+        "Adaptation points": "local ADR templates; local placement rules"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA ADR Write",
+        "short_description": "Record architecture decisions clearly",
+        "default_prompt": "Use $aoa-adr-write to record a meaningful architectural or workflow decision, place it in the canonical decision surface, and verify the rationale is easy to find.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-adr-write",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-adr-write",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-adr-write",
+      "collision_family": "decision-and-doc-authority",
+      "collision_notes": [
+        "Use aoa-adr-write when the task is to capture a concrete architectural or workflow decision.",
+        "Use aoa-source-of-truth-check when the task is to identify which documents are authoritative and reduce overlap."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-adr-write to record a meaningful architectural or workflow decision, place it in the canonical decision surface, and verify the rationale is easy to find."
+        ],
+        "implicit": [
+          "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The change is tiny and self-evident, with no durable decision or rationale that future contributors would need to find."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-adr-write",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-adr-write",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-adr-write"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-adr-write\n- Summary: Record architecture decisions clearly\n- Use when: Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "display_name": "AoA Approval Gate Check",
+      "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
+      "short_description": "Classify approval boundaries",
+      "path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-approval-gate-check",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0028",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to classify whether a requested action crosses an approval boundary and to return a bounded next step that keeps authority explicit before any execution proceeds.",
+        "Trigger boundary": "a task may be destructive, operationally sensitive, or security-relevant; the current authority level is unclear",
+        "Inputs": "requested action; touched surfaces",
+        "Outputs": "classification of the action: safe to proceed, explicit approval required, or do not execute; note on whether explicit approval is needed",
+        "Procedure": "identify the requested action and touched surfaces; assess whether the action could be destructive, sensitive, or authority-gated",
+        "Contracts": "unclear authority should not be silently interpreted as permission; classification should be explicit and reviewable",
+        "Risks and anti-patterns": "assuming approval because a task sounds routine; collapsing several risk levels into a single vague warning",
+        "Verification": "confirm the touched surfaces were identified; confirm the approval need was classified explicitly rather than as a vague warning",
+        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+        "Adaptation points": "local authority models; local risk categories"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Approval Gate Check",
+        "short_description": "Classify approval boundaries",
+        "default_prompt": "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#B45309"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-approval-gate-check",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-approval-gate-check",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-approval-gate-check",
+      "collision_family": "safety-and-mutation-gating",
+      "collision_notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ],
+      "competing_skills": [
+        "aoa-safe-infra-change",
+        "aoa-dry-run-first"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear.",
+          "Before touching production DNS records, classify whether this request is safe, approval-gated, or out of bounds."
+        ],
+        "negative": [
+          "The task is clearly low-risk, already bounded, and does not look destructive, security-sensitive, or operationally sensitive."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-approval-gate-check",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-approval-gate-check",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-approval-gate-check"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-approval-gate-check\n- Summary: Classify approval boundaries\n- Use when: Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.\n- Trust posture: explicit-risk\n- Mutation surface: none\n"
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "display_name": "AoA Bounded Context Map",
+      "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
+      "short_description": "Map contexts and interfaces",
+      "path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-bounded-context-map",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use bounded-context thinking to reduce semantic drift, mixed responsibilities, and unclear interfaces.",
+        "Trigger boundary": "a project mixes several domains or subsystems; naming is drifting or overloaded",
+        "Inputs": "target area or subsystem; current naming and responsibilities",
+        "Outputs": "named contexts or subsystems; rough boundary map",
+        "Procedure": "identify the target area and the terms people use for it; separate responsibilities into bounded contexts or subsystems",
+        "Contracts": "boundaries should reduce semantic confusion, not create ceremony for its own sake; neighboring contexts should be named explicitly when relevant",
+        "Risks and anti-patterns": "inventing too many contexts for a small problem; renaming concepts without reducing confusion",
+        "Verification": "confirm the main ambiguity was reduced; confirm interfaces or handoff points are named",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 from `8Dionysus/a...",
+        "Adaptation points": "local domain vocabulary; canonical docs that define terminology"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Bounded Context Map",
+        "short_description": "Map contexts and interfaces",
+        "default_prompt": "Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-bounded-context-map",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-bounded-context-map",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-bounded-context-map",
+      "collision_family": "boundary-shaping",
+      "collision_notes": [
+        "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
+        "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
+        "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ],
+      "competing_skills": [
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them."
+        ],
+        "implicit": [
+          "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The edit is tiny, fully local, and there is no meaningful ambiguity about boundaries or interfaces.",
+          "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-bounded-context-map",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-bounded-context-map",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-bounded-context-map"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-bounded-context-map\n- Summary: Map contexts and interfaces\n- Use when: Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+    },
+    {
+      "name": "aoa-change-protocol",
+      "display_name": "AoA Change Protocol",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "short_description": "Plan, scope, verify, report",
+      "path": ".agents/skills/aoa-change-protocol/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-change-protocol",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-change-protocol/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use a visible, bounded workflow for non-trivial changes so the result remains reviewable and safer.",
+        "Trigger boundary": "the change affects code, config, docs, or operational surfaces in a meaningful way; the task benefits from an explicit plan and verification path",
+        "Inputs": "target goal; touched files or surfaces",
+        "Outputs": "explicit plan; scoped change",
+        "Procedure": "state the goal and touched surfaces; identify the main risk and think about rollback before editing",
+        "Contracts": "the change must remain reviewable; verification must be explicit, not implied",
+        "Risks and anti-patterns": "over-formalizing trivial edits; symbolic verification that creates false safety",
+        "Verification": "confirm a plan existed before apply; confirm the change stayed scoped",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
+        "Adaptation points": "local source-of-truth files; local validation commands"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Change Protocol",
+        "short_description": "Plan, scope, verify, report",
+        "default_prompt": "Use $aoa-change-protocol to plan, apply, verify, and report a bounded non-trivial repository change.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-change-protocol",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-change-protocol",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-change-protocol",
+      "collision_family": "overlay-vs-base-skill",
+      "collision_notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ],
+      "competing_skills": [
+        "aoa-tdd-slice",
+        "aoa-safe-infra-change",
+        "atm10-change-protocol"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-change-protocol to plan, apply, verify, and report a bounded non-trivial repository change."
+        ],
+        "implicit": [
+          "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "This is just a trivial wording fix with no meaningful review, verification, or operational consequence.",
+          "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-change-protocol",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-change-protocol",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-change-protocol"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-change-protocol\n- Summary: Plan, scope, verify, report\n- Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-contract-test",
+      "display_name": "AoA Contract Test",
+      "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
+      "short_description": "Strengthen interface contracts",
+      "path": ".agents/skills/aoa-contract-test/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-contract-test",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-contract-test/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0003,AOA-T-0015",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Strengthen boundary reliability by making expected inputs, outputs, and validation summaries explicit.",
+        "Trigger boundary": "two modules or services interact across a meaningful boundary; a smoke path or interface needs a stable validation contract",
+        "Inputs": "boundary under review; expected inputs and outputs",
+        "Outputs": "explicit contract assumptions; tests or smoke summary changes",
+        "Procedure": "identify the boundary and its consumers; state the expected input/output behavior",
+        "Contracts": "the contract should be visible to another human or agent; verification should be tied to the boundary, not only to internals",
+        "Risks and anti-patterns": "vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary",
+        "Verification": "confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary",
+        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-techniques` a...",
+        "Adaptation points": "local endpoints or module boundaries; local smoke or test commands"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Contract Test",
+        "short_description": "Strengthen interface contracts",
+        "default_prompt": "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-contract-test",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-contract-test",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-contract-test",
+      "collision_family": "change-execution-vs-test-first",
+      "collision_notes": [
+        "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-tdd-slice is specifically test-first feature slicing.",
+        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+      ],
+      "competing_skills": [
+        "aoa-change-protocol",
+        "aoa-tdd-slice"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves."
+        ],
+        "implicit": [
+          "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The change is entirely local and does not cross or exercise any meaningful module, service, or workflow boundary.",
+          "The webhook producer and consumer disagree on payload shape. Add contract-oriented validation so the boundary is explicit and regressions are obvious."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-contract-test",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-contract-test",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-contract-test"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-contract-test\n- Summary: Strengthen interface contracts\n- Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "display_name": "AoA Core Logic Boundary",
+      "description": "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.",
+      "short_description": "Separate core logic from glue",
+      "path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-core-logic-boundary",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to separate reusable core logic from surrounding glue, orchestration, or infrastructure detail so future changes land in the right place.",
+        "Trigger boundary": "a module mixes stable rules with wiring or execution detail; the same logic is starting to appear in several places",
+        "Inputs": "target module, service, or slice; current responsibilities",
+        "Outputs": "clarified boundary between core logic and surrounding glue; notes on what should stay reusable versus edge-specific",
+        "Procedure": "identify which rules or behaviors are stable enough to count as reusable core logic; identify which parts are mostly wiring, orchestration, I/O, or environment detail",
+        "Contracts": "reusable logic should not stay trapped in glue if that blocks testing or reuse; glue should not be over-promoted into domain logic without reason",
+        "Risks and anti-patterns": "treating all logic as core logic and over-abstracting the system; moving orchestration detail into the core under the label of purity",
+        "Verification": "confirm the core candidate is genuinely reusable or stability-shaped; confirm edge-specific code remains at the edge when appropriate",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-techniques`...",
+        "Adaptation points": "local layering conventions; preferred directories or module boundaries"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Core Logic Boundary",
+        "short_description": "Separate core logic from glue",
+        "default_prompt": "Use $aoa-core-logic-boundary to decide what belongs in reusable core logic versus glue or infrastructure detail, then keep the refactor bounded.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-core-logic-boundary",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-core-logic-boundary",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-core-logic-boundary",
+      "collision_family": "boundary-shaping",
+      "collision_notes": [
+        "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
+        "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
+        "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ],
+      "competing_skills": [
+        "aoa-bounded-context-map",
+        "aoa-port-adapter-refactor"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-core-logic-boundary to decide what belongs in reusable core logic versus glue or infrastructure detail, then keep the refactor bounded."
+        ],
+        "implicit": [
+          "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The task is a tiny isolated fix and there is no meaningful confusion between reusable rules and glue code.",
+          "The discount rules are mixed into orchestration code and cron wiring. Separate reusable business rules from glue without widening the refactor."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-core-logic-boundary",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-core-logic-boundary",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-core-logic-boundary"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-core-logic-boundary\n- Summary: Separate core logic from glue\n- Use when: Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "display_name": "AoA Dry Run First",
+      "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
+      "short_description": "Preview before real mutation",
+      "path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-dry-run-first",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0004,AOA-T-0028",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to run a preview-first workflow that stops at inspection until one concrete mutation is ready, then asks for a visible confirmation before the real action proceeds.",
+        "Trigger boundary": "the task can be simulated, previewed, or inspected before real execution; the action may delete, restore, migrate, reconfigure, or otherwise alter a live surface",
+        "Inputs": "requested action; available preview or dry-run mechanisms",
+        "Outputs": "dry-run or preview recommendation; bounded preview result or plan",
+        "Procedure": "identify whether a preview, simulation, inspect-only, or dry-run path exists; prefer the safest bounded preview path before real execution",
+        "Contracts": "dry-run should reduce uncertainty before execution; preview results should not be overstated",
+        "Risks and anti-patterns": "treating a preview as complete validation; skipping preview because the real change looks small",
+        "Verification": "confirm a preview or dry-run path was considered first; confirm the preview scope was named honestly",
+        "Technique traceability": "AOA-T-0004 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation; AOA-T-0028 from `8Dionysus/a...",
+        "Adaptation points": "local preview commands; dry-run limitations"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Dry Run First",
+        "short_description": "Preview before real mutation",
+        "default_prompt": "Use $aoa-dry-run-first to find the safest preview path, interpret what it proves, and stop for explicit confirmation before the real mutation.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#B45309"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-dry-run-first",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-dry-run-first",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-dry-run-first",
+      "collision_family": "safety-and-mutation-gating",
+      "collision_notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ],
+      "competing_skills": [
+        "aoa-approval-gate-check",
+        "aoa-safe-infra-change"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-dry-run-first to find the safest preview path, interpret what it proves, and stop for explicit confirmation before the real mutation."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations.",
+          "Find the safest preview path for this delete or restore operation, show what the preview proves, and stop before any real mutation."
+        ],
+        "negative": [
+          "There is no meaningful preview path here, and the task is already clearly harmless and bounded."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-dry-run-first",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-dry-run-first",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-dry-run-first"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-dry-run-first\n- Summary: Preview before real mutation\n- Use when: Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.\n- Trust posture: explicit-risk\n- Mutation surface: runtime\n"
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "display_name": "AoA Invariant Coverage Audit",
+      "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
+      "short_description": "Audit invariant coverage",
+      "path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-invariant-coverage-audit",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0017",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, and turn that judgment into a bounded audit package instead of a loose example review.",
+        "Trigger boundary": "an existing test or check surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule",
+        "Inputs": "target rule or stable truth; current tests, checks, or examples",
+        "Outputs": "invariant coverage map; gap list for weak or missing checks",
+        "Procedure": "name the stable truth in plain language; map each existing check to the invariant it constrains",
+        "Contracts": "every claimed invariant must be traceable to at least one check; the audit should distinguish real constraint from mere example repetition",
+        "Risks and anti-patterns": "counting examples as if they were invariants; letting random data hide thin coverage",
+        "Verification": "confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+        "Adaptation points": "local test or check commands; domain-specific invariants and edge cases"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Invariant Coverage Audit",
+        "short_description": "Audit invariant coverage",
+        "default_prompt": "Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-invariant-coverage-audit",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-invariant-coverage-audit",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-invariant-coverage-audit",
+      "collision_family": "property-authoring-vs-coverage-audit",
+      "collision_notes": [
+        "aoa-property-invariants authors new invariant or property checks.",
+        "aoa-invariant-coverage-audit inspects whether current tests already prove the relevant invariants."
+      ],
+      "competing_skills": [
+        "aoa-property-invariants"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove."
+        ],
+        "implicit": [
+          "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The real problem is that we have not identified the invariant yet, so this is not an audit of existing coverage.",
+          "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-invariant-coverage-audit",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-invariant-coverage-audit",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-invariant-coverage-audit"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-invariant-coverage-audit\n- Summary: Audit invariant coverage\n- Use when: Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "display_name": "AoA Local Stack Bringup",
+      "description": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
+      "short_description": "Bring up local stacks safely",
+      "path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-local-stack-bringup",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0036,AOA-T-0037,AOA-T-0028,AOA-T-0038",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to turn local multi-service startup into a reviewable bring-up workflow with a visible pre-start seam and one explicit launch path.",
+        "Trigger boundary": "a local stack has more than one meaningful service or runtime layer; the selected profile, preset, or overlay can change what will actually start",
+        "Inputs": "selected local runtime, profile, or preset; available render-truth surface for the chosen runtime",
+        "Outputs": "rendered runtime truth summary for what would actually start; selector-aware readiness verdict with named blockers or warnings",
+        "Procedure": "name the selected runtime, the expected service set, and the explicit launch surface before starting anything; render the effective service list or composed runtime truth before startup, and keep any full rendered config local and controlled",
+        "Contracts": "render review happens before startup; readiness checks stay tied to the selected runtime rather than acting like one global score",
+        "Risks and anti-patterns": "treating rendered truth as proof that the host is ready or that startup will succeed; treating a passing doctor result as proof of post-start health",
+        "Verification": "confirm the rendered output answered what would actually start before launch; confirm the readiness verdict was selector-aware and itemized with visible severity",
+        "Technique traceability": "AOA-T-0036 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-003...",
+        "Adaptation points": "local render commands and safe storage rules for rendered config; local runtime selectors, profiles, or presets"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Local Stack Bringup",
+        "short_description": "Bring up local stacks safely",
+        "default_prompt": "Use $aoa-local-stack-bringup to review what would start, run readiness checks for the selected runtime, and launch the local stack through one explicit entrypoint.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#B45309"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-local-stack-bringup",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-local-stack-bringup",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-local-stack-bringup",
+      "collision_family": "safety-and-mutation-gating",
+      "collision_notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ],
+      "competing_skills": [
+        "aoa-safe-infra-change"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-local-stack-bringup to review what would start, run readiness checks for the selected runtime, and launch the local stack through one explicit entrypoint."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch.",
+          "Show what this docker-compose plus background worker stack would start, run host readiness checks, then launch it through one explicit entrypoint."
+        ],
+        "negative": [
+          "This is about remote deployment and fleet operations rather than launching a bounded local multi-service stack."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-local-stack-bringup",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-local-stack-bringup",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-local-stack-bringup"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-local-stack-bringup\n- Summary: Bring up local stacks safely\n- Use when: Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.\n- Trust posture: explicit-risk\n- Mutation surface: runtime\n"
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "display_name": "AoA Port Adapter Refactor",
+      "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
+      "short_description": "Refactor toward ports/adapters",
+      "path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-port-adapter-refactor",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to separate domain or application logic from concrete infrastructure details by introducing or clarifying ports and adapters.",
+        "Trigger boundary": "business or domain logic is tightly coupled to a concrete dependency; tests are hard to write because external concerns leak into the core logic",
+        "Inputs": "target module or slice; concrete dependency that currently leaks into the core logic",
+        "Outputs": "clearer boundary between logic and infrastructure; proposed or implemented port shape",
+        "Procedure": "identify the concrete dependency that is making change or testing harder; isolate the reusable logic from the infrastructure-specific behavior",
+        "Contracts": "the extracted boundary should reduce coupling, not add decorative abstraction; the port should stay narrow and purpose-shaped",
+        "Risks and anti-patterns": "introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it",
+        "Verification": "confirm the concrete dependency pressure was real; confirm the new boundary is narrower and clearer than before",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-techniques`...",
+        "Adaptation points": "local architecture conventions; preferred adapter locations"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Port Adapter Refactor",
+        "short_description": "Refactor toward ports/adapters",
+        "default_prompt": "Use $aoa-port-adapter-refactor to isolate a concrete dependency behind a narrow port and adapter without turning the change into a hidden rewrite.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-port-adapter-refactor",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-port-adapter-refactor",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-port-adapter-refactor",
+      "collision_family": "boundary-shaping",
+      "collision_notes": [
+        "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
+        "aoa-core-logic-boundary is about separating reusable rules from glue or orchestration.",
+        "aoa-port-adapter-refactor is about isolating a concrete dependency behind a port or adapter."
+      ],
+      "competing_skills": [
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-port-adapter-refactor to isolate a concrete dependency behind a narrow port and adapter without turning the change into a hidden rewrite."
+        ],
+        "implicit": [
+          "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "This is a tiny local fix with no architectural pressure to isolate a concrete dependency behind a port or adapter.",
+          "Our service layer is tightly coupled to the concrete Stripe client. Introduce a narrow port and adapter so tests stop depending on the live SDK shape."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-port-adapter-refactor",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-port-adapter-refactor",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-port-adapter-refactor"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-port-adapter-refactor\n- Summary: Refactor toward ports/adapters\n- Use when: Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-property-invariants",
+      "display_name": "AoA Property Invariants",
+      "description": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.",
+      "short_description": "Write property-based invariants",
+      "path": ".agents/skills/aoa-property-invariants/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-property-invariants",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-property-invariants/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0017,AOA-T-0007",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use invariant-oriented thinking to test broad behavior through properties rather than only through a short list of fixed examples.",
+        "Trigger boundary": "a rule should hold across many inputs or states; examples alone feel too narrow",
+        "Inputs": "target rule or domain truth; current examples or tests",
+        "Outputs": "explicit invariants; property-oriented tests or checks",
+        "Procedure": "identify what must remain true across many cases; separate strong invariants from weak hopes or vague expectations",
+        "Contracts": "each property should express a real invariant, not a wish; the test should broaden coverage beyond a small handpicked set",
+        "Risks and anti-patterns": "writing weak properties that prove almost nothing; confusing random data with meaningful coverage",
+        "Verification": "confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 from `8Dion...",
+        "Adaptation points": "local generator tools; domain-specific invariants"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Property Invariants",
+        "short_description": "Write property-based invariants",
+        "default_prompt": "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-property-invariants",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-property-invariants",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-property-invariants",
+      "collision_family": "property-authoring-vs-coverage-audit",
+      "collision_notes": [
+        "aoa-property-invariants authors new invariant or property checks.",
+        "aoa-invariant-coverage-audit inspects whether current tests already prove the relevant invariants."
+      ],
+      "competing_skills": [
+        "aoa-invariant-coverage-audit"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks."
+        ],
+        "implicit": [
+          "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases.",
+          "Write invariant-oriented checks for this parser so we verify idempotency and structural preservation across many generated inputs."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-property-invariants",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-property-invariants",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-property-invariants"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-property-invariants\n- Summary: Write property-based invariants\n- Use when: Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "display_name": "AoA Safe Infra Change",
+      "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
+      "short_description": "Make bounded infra changes safely",
+      "path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-safe-infra-change",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0001",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to shape infrastructure, service, configuration, or operational changes into a safer bounded workflow.",
+        "Trigger boundary": "the task changes infrastructure, services, configuration, orchestration, or operational surfaces; the change has runtime, safety, or deployment implications",
+        "Inputs": "target change; touched operational surfaces",
+        "Outputs": "explicit risk-aware plan; bounded infrastructure or config change, or bounded execution recommendation",
+        "Procedure": "identify the operational surface and main risk; confirm whether the change belongs to a high-risk or explicit-only category",
+        "Contracts": "infrastructure changes should stay explicit and reviewable; risk should be named before apply, not after failure",
+        "Risks and anti-patterns": "treating infra edits like ordinary code edits; making broad config or orchestration changes under a narrow task label",
+        "Verification": "confirm the operational surface was named clearly; confirm the change stayed bounded",
+        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AO...",
+        "Adaptation points": "local risk classifications; approval rules"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Safe Infra Change",
+        "short_description": "Make bounded infra changes safely",
+        "default_prompt": "Use $aoa-safe-infra-change to plan and verify a bounded infrastructure or configuration change with explicit risk and rollback thinking.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#B45309"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-safe-infra-change",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-safe-infra-change",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-safe-infra-change",
+      "collision_family": "safety-and-mutation-gating",
+      "collision_notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ],
+      "competing_skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-safe-infra-change to plan and verify a bounded infrastructure or configuration change with explicit risk and rollback thinking."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit.",
+          "Plan and verify a bounded Kubernetes configuration change with rollback thinking and proportional checks."
+        ],
+        "negative": [
+          "This is a purely local code edit with no runtime, deployment, configuration, or operational implications."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-safe-infra-change",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-safe-infra-change",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-safe-infra-change"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-safe-infra-change\n- Summary: Make bounded infra changes safely\n- Use when: Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.\n- Trust posture: explicit-risk\n- Mutation surface: runtime\n"
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "display_name": "AoA Sanitized Share",
+      "description": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
+      "short_description": "Sanitize tech artifacts for sharing",
+      "path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-sanitized-share",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "risk",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0034,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to turn potentially sensitive technical material into a shareable, reviewable, public-safe form, keeping the raw source distinct from the final public-safe output and placing that output where reviewers expect it.",
+        "Trigger boundary": "logs, configs, diagnostics, reports, or examples may contain sensitive details; a result needs to be shared publicly or with a broader audience",
+        "Inputs": "material to be shared; sharing audience or context",
+        "Outputs": "sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly; note on what was generalized or removed",
+        "Procedure": "inspect the material for secrets, tokens, private paths, topology, internal identifiers, or unsafe operational detail; separate raw source material from the shareable surface before rewriting anything",
+        "Contracts": "shareable output should not leak secrets or private infrastructure detail; sanitization should preserve meaning where possible",
+        "Risks and anti-patterns": "over-sanitizing until the artifact becomes meaningless; under-sanitizing because a value looks harmless in isolation",
+        "Verification": "confirm obvious sensitive surfaces were checked; confirm the resulting artifact is still understandable",
+        "Technique traceability": "AOA-T-0034 from `8Dionysus/aoa-techniques` at `06303d62e9cd614295a63b6543a4191e808e879c` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validatio...",
+        "Adaptation points": "local sanitization rules; examples of sensitive surfaces"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Sanitized Share",
+        "short_description": "Sanitize tech artifacts for sharing",
+        "default_prompt": "Use $aoa-sanitized-share to separate raw technical material from a public-safe artifact and verify the sanitized version still preserves the lesson.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#B45309"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-sanitized-share",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-sanitized-share",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-sanitized-share",
+      "collision_family": "safety-and-mutation-gating",
+      "collision_notes": [
+        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
+        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
+        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
+        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
+        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+      ],
+      "competing_skills": [
+        "aoa-safe-infra-change"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-sanitized-share to separate raw technical material from a public-safe artifact and verify the sanitized version still preserves the lesson."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers.",
+          "Turn these raw logs and config snippets into a public-safe incident appendix while keeping the raw material separate."
+        ],
+        "negative": [
+          "The material is already clearly public-safe and minimal, so there is nothing to sanitize or separate."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-sanitized-share",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-sanitized-share",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-sanitized-share"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-sanitized-share\n- Summary: Sanitize tech artifacts for sharing\n- Use when: Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.\n- Trust posture: explicit-risk\n- Mutation surface: sharing\n"
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "display_name": "AoA Source Of Truth Check",
+      "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
+      "short_description": "Clarify authoritative docs",
+      "path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-source-of-truth-check",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002,AOA-T-0009",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance.",
+        "Trigger boundary": "a repository has several docs that may overlap or conflict; contributors may not know which file to trust first",
+        "Inputs": "repository docs surface; target area of ambiguity or overlap",
+        "Outputs": "clearer source-of-truth map; fan-out map when one source feeds multiple downstream consumers",
+        "Procedure": "identify the main docs or guidance files involved in the target area; determine which file should be authoritative for each concern",
+        "Contracts": "authoritative sources should be visible and named explicitly; overview documents should not silently replace canonical ones",
+        "Risks and anti-patterns": "over-formalizing a tiny docs surface; creating many labels without reducing ambiguity",
+        "Verification": "confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly",
+        "Technique traceability": "AOA-T-0013 from `8Dionysus/aoa-techniques` at `06303d62e9cd614295a63b6543a4191e808e879c` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 from...",
+        "Adaptation points": "local doc hierarchies; preferred canonical-file patterns"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Source Of Truth Check",
+        "short_description": "Clarify authoritative docs",
+        "default_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-source-of-truth-check",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-source-of-truth-check",
+      "collision_family": "overlay-vs-base-skill",
+      "collision_notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ],
+      "competing_skills": [
+        "atm10-source-of-truth-check",
+        "aoa-adr-write"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven."
+        ],
+        "implicit": [
+          "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
+          "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-source-of-truth-check",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-source-of-truth-check",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-source-of-truth-check"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-source-of-truth-check\n- Summary: Clarify authoritative docs\n- Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "display_name": "AoA TDD Slice",
+      "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
+      "short_description": "Build slices test-first",
+      "path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-tdd-slice",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "canonical",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-tdd-slice/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0014,AOA-T-0001",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use test-first discipline to implement a small feature slice with a clear behavioral target and explicit verification.",
+        "Trigger boundary": "a behavior change can be expressed as tests before implementation; the task fits a bounded slice rather than a broad rewrite",
+        "Inputs": "desired behavior; target module or slice",
+        "Outputs": "new or updated tests; minimal implementation",
+        "Procedure": "define the desired behavior in a bounded way; add or update tests before implementation",
+        "Contracts": "behavior should be made explicit before implementation when reasonably possible; the implementation should stay bounded to the slice",
+        "Risks and anti-patterns": "writing tests that merely mirror the implementation; turning a small slice into a hidden architectural rewrite",
+        "Verification": "confirm tests were added or updated first when the task was suitable for TDD; confirm the implementation stayed bounded",
+        "Technique traceability": "AOA-T-0014 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/tdd-slice/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0001 from `8Dionysus/...",
+        "Adaptation points": "local test commands; local module boundaries"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA TDD Slice",
+        "short_description": "Build slices test-first",
+        "default_prompt": "Use $aoa-tdd-slice to define behavior in tests first, make the smallest implementation change, and report what stays out of scope.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-tdd-slice",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-tdd-slice",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-tdd-slice",
+      "collision_family": "change-execution-vs-test-first",
+      "collision_notes": [
+        "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-tdd-slice is specifically test-first feature slicing.",
+        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+      ],
+      "competing_skills": [
+        "aoa-change-protocol",
+        "aoa-contract-test"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-tdd-slice to define behavior in tests first, make the smallest implementation change, and report what stays out of scope."
+        ],
+        "implicit": [
+          "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The work is still exploratory and the behavior is not defined enough to drive implementation from tests first.",
+          "Add the new password-reset behavior test-first: define the expected flow in tests, implement the smallest passing slice, and keep the refactor bounded."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-tdd-slice",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-tdd-slice",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-tdd-slice"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-tdd-slice\n- Summary: Build slices test-first\n- Use when: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "atm10-change-protocol",
+      "display_name": "ATM10 Change Protocol",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "short_description": "ATM10 bounded change overlay",
+      "path": ".agents/skills/atm10-change-protocol/SKILL.md",
+      "skill_dir": ".agents/skills/atm10-change-protocol",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/atm10-change-protocol/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning.",
+        "Trigger boundary": "the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes; a bounded non-trivial change still needs an explicit plan and verification path inside the local repo",
+        "Inputs": "target goal and touched local surface; repo-relative source-of-truth files",
+        "Outputs": "bounded local change plan; repo-relative command or path sketch",
+        "Procedure": "start from `aoa-change-protocol` rather than rewriting the workflow; name the repo-relative files, commands, and approval posture that matter locally",
+        "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
+        "Risks and anti-patterns": "hiding downstream authority inside vague local notes; turning a thin overlay into repo doctrine or a scenario bundle",
+        "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
+        "Adaptation points": "repo-relative change surfaces; local commands and verification steps"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "ATM10 Change Protocol",
+        "short_description": "ATM10 bounded change overlay",
+        "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#atm10-change-protocol",
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-change-protocol",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#atm10-change-protocol",
+      "collision_family": "overlay-vs-base-skill",
+      "collision_notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ],
+      "competing_skills": [
+        "aoa-change-protocol"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes."
+        ],
+        "implicit": [
+          "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough.",
+          "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$atm10-change-protocol",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/atm10-change-protocol",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "atm10-change-protocol"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### atm10-change-protocol\n- Summary: ATM10 bounded change overlay\n- Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "display_name": "ATM10 Source Of Truth Check",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "short_description": "ATM10 source-of-truth overlay",
+      "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
+      "skill_dir": ".agents/skills/atm10-source-of-truth-check",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local doc map needs repo-relative detail.",
+        "Trigger boundary": "the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `...",
+        "Inputs": "repo-relative docs or guidance surfaces; local canonical-file candidates",
+        "Outputs": "local source-of-truth map; bounded clarification note",
+        "Procedure": "start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine; name the repo-relative docs and guidance files involved in the ambiguity",
+        "Contracts": "preserve the base skill meaning; keep local file maps repo-relative and explicit",
+        "Risks and anti-patterns": "inventing a broader docs governance framework inside a thin overlay; using family labels without reducing local ambiguity",
+        "Verification": "confirm the base skill is still the right workflow; confirm authoritative repo-relative files are named explicitly",
+        "Technique traceability": "AOA-T-0013 from `8Dionysus/aoa-techniques` at `06303d62e9cd614295a63b6543a4191e808e879c` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 from...",
+        "Adaptation points": "local doc hierarchies; repo-relative canonical-file patterns"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "ATM10 Source Of Truth Check",
+        "short_description": "ATM10 source-of-truth overlay",
+        "default_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#atm10-source-of-truth-check",
+      "context_retention_ref": "generated/context_retention_manifest.json#atm10-source-of-truth-check",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#atm10-source-of-truth-check",
+      "collision_family": "overlay-vs-base-skill",
+      "collision_notes": [
+        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ],
+      "competing_skills": [
+        "aoa-source-of-truth-check"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture."
+        ],
+        "implicit": [
+          "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository.",
+          "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$atm10-source-of-truth-check",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/atm10-source-of-truth-check",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "atm10-source-of-truth-check"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### atm10-source-of-truth-check\n- Summary: ATM10 source-of-truth overlay\n- Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the cumulative Codex-facing Agent Skills export and wave-3 support artifacts."""
+"""Build the cumulative Codex-facing Agent Skills export and support artifacts."""
 
 from __future__ import annotations
 
@@ -48,6 +48,15 @@ GENERATED_PORTABLE_FILES = [
     "generated/skill_pack_profiles.resolved.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
+    "generated/runtime_discovery_index.json",
+    "generated/runtime_discovery_index.min.json",
+    "generated/runtime_disclosure_index.json",
+    "generated/runtime_activation_aliases.json",
+    "generated/runtime_tool_schemas.json",
+    "generated/runtime_session_contract.json",
+    "generated/runtime_prompt_blocks.json",
+    "generated/runtime_router_hints.json",
+    "generated/runtime_seam_manifest.json",
     "generated/release_manifest.json",
 ]
 
@@ -486,7 +495,7 @@ def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict
     return {
         "schema_version": 1,
         "profile": EXPORT_PROFILE,
-        "included_waves": [1, 2, 3],
+        "included_waves": [1, 2, 3, 4],
         "skill_root": ".agents/skills",
         "skill_count": len(catalog_full["skills"]),
         "explicit_only_count": sum(1 for entry in catalog_full["skills"] if not entry["allow_implicit_invocation"]),

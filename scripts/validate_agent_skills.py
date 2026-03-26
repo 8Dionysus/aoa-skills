@@ -13,6 +13,7 @@ from typing import Any
 import yaml
 
 EXPORT_PROFILE = "codex-facing-wave-3"
+RUNTIME_PROFILE = "codex-facing-wave-4-runtime-seam"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 HEX_COLOR_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 REQUIRED_METADATA = {
@@ -38,6 +39,15 @@ REQUIRED_GENERATED_FILES = [
     "generated/skill_pack_profiles.resolved.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
+    "generated/runtime_discovery_index.json",
+    "generated/runtime_discovery_index.min.json",
+    "generated/runtime_disclosure_index.json",
+    "generated/runtime_activation_aliases.json",
+    "generated/runtime_tool_schemas.json",
+    "generated/runtime_session_contract.json",
+    "generated/runtime_prompt_blocks.json",
+    "generated/runtime_router_hints.json",
+    "generated/runtime_seam_manifest.json",
     "generated/release_manifest.json",
 ]
 RELEASE_MANIFEST_GENERATED_FILES = [
@@ -52,6 +62,15 @@ RELEASE_MANIFEST_GENERATED_FILES = [
     "generated/skill_pack_profiles.resolved.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
+    "generated/runtime_discovery_index.json",
+    "generated/runtime_discovery_index.min.json",
+    "generated/runtime_disclosure_index.json",
+    "generated/runtime_activation_aliases.json",
+    "generated/runtime_tool_schemas.json",
+    "generated/runtime_session_contract.json",
+    "generated/runtime_prompt_blocks.json",
+    "generated/runtime_router_hints.json",
+    "generated/runtime_seam_manifest.json",
     "generated/release_manifest.json",
 ]
 REQUIRED_CONFIG_FILES = [
@@ -112,6 +131,15 @@ def main() -> int:
     resolved_profiles = load_json(generated_dir / "skill_pack_profiles.resolved.json")
     snippets_doc = load_json(generated_dir / "codex_config_snippets.json")
     mcp_doc = load_json(generated_dir / "mcp_dependency_manifest.json")
+    runtime_discovery = load_json(generated_dir / "runtime_discovery_index.json")
+    runtime_discovery_min = load_json(generated_dir / "runtime_discovery_index.min.json")
+    runtime_disclosure = load_json(generated_dir / "runtime_disclosure_index.json")
+    runtime_aliases = load_json(generated_dir / "runtime_activation_aliases.json")
+    runtime_tool_schemas = load_json(generated_dir / "runtime_tool_schemas.json")
+    runtime_session_contract = load_json(generated_dir / "runtime_session_contract.json")
+    runtime_prompt_blocks = load_json(generated_dir / "runtime_prompt_blocks.json")
+    runtime_router_hints = load_json(generated_dir / "runtime_router_hints.json")
+    runtime_seam_manifest = load_json(generated_dir / "runtime_seam_manifest.json")
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
@@ -127,6 +155,11 @@ def main() -> int:
     trust_by_name = {entry["name"]: entry for entry in trust_doc.get("skills", [])}
     context_by_name = {entry["name"]: entry for entry in context_doc.get("skills", [])}
     mcp_by_name = {entry["name"]: entry for entry in mcp_doc.get("skills", [])}
+    discovery_by_name = {entry["name"]: entry for entry in runtime_discovery.get("skills", [])}
+    discovery_min_by_name = {entry["name"]: entry for entry in runtime_discovery_min.get("skills", [])}
+    disclosure_by_name = {entry["name"]: entry for entry in runtime_disclosure.get("skills", [])}
+    router_by_name = {entry["name"]: entry for entry in runtime_router_hints.get("skills", [])}
+    alias_by_name = {entry["name"]: entry for entry in runtime_aliases.get("aliases", [])}
 
     if overrides_doc.get("profile") != EXPORT_PROFILE:
         errors.append(f"config/portable_skill_overrides.json profile must be {EXPORT_PROFILE!r}")
@@ -136,6 +169,19 @@ def main() -> int:
         errors.append(f"generated/codex_config_snippets.json profile must be {EXPORT_PROFILE!r}")
     if release_manifest.get("profile") != EXPORT_PROFILE:
         errors.append(f"generated/release_manifest.json profile must be {EXPORT_PROFILE!r}")
+    for label, doc in {
+        "generated/runtime_discovery_index.json": runtime_discovery,
+        "generated/runtime_discovery_index.min.json": runtime_discovery_min,
+        "generated/runtime_disclosure_index.json": runtime_disclosure,
+        "generated/runtime_activation_aliases.json": runtime_aliases,
+        "generated/runtime_tool_schemas.json": runtime_tool_schemas,
+        "generated/runtime_session_contract.json": runtime_session_contract,
+        "generated/runtime_prompt_blocks.json": runtime_prompt_blocks,
+        "generated/runtime_router_hints.json": runtime_router_hints,
+        "generated/runtime_seam_manifest.json": runtime_seam_manifest,
+    }.items():
+        if doc.get("profile") != RUNTIME_PROFILE:
+            errors.append(f"{label} profile must be {RUNTIME_PROFILE!r}")
 
     if not skills_root.exists():
         errors.append(f"missing skills root: {skills_root}")
@@ -154,6 +200,11 @@ def main() -> int:
         "generated/trust_policy_matrix.json": set(trust_by_name),
         "generated/context_retention_manifest.json": set(context_by_name),
         "generated/mcp_dependency_manifest.json": set(mcp_by_name),
+        "generated/runtime_discovery_index.json": set(discovery_by_name),
+        "generated/runtime_discovery_index.min.json": set(discovery_min_by_name),
+        "generated/runtime_disclosure_index.json": set(disclosure_by_name),
+        "generated/runtime_router_hints.json": set(router_by_name),
+        "generated/runtime_activation_aliases.json": set(alias_by_name),
         "config/skill_policy_matrix.json": set((policy_doc.get("skills") or {}).keys()),
     }
     for label, names in expected_sets.items():
@@ -345,6 +396,61 @@ def main() -> int:
             if mcp_entry.get("tools", []) != dependency_tools:
                 errors.append(f"generated/mcp_dependency_manifest.json tools mismatch for {skill_dir.name}")
 
+        discovery_entry = discovery_by_name.get(skill_dir.name)
+        if discovery_entry is None:
+            errors.append(f"generated/runtime_discovery_index.json missing {skill_dir.name}")
+        else:
+            if discovery_entry.get("path") != skill_md.relative_to(repo_root).as_posix():
+                errors.append(f"generated/runtime_discovery_index.json path mismatch for {skill_dir.name}")
+            if discovery_entry.get("allow_implicit_invocation") != allow_implicit:
+                errors.append(f"generated/runtime_discovery_index.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if discovery_entry.get("invocation_mode") != frontmatter.get("metadata", {}).get("aoa_invocation_mode"):
+                errors.append(f"generated/runtime_discovery_index.json invocation_mode mismatch for {skill_dir.name}")
+            if "instructions_markdown" in discovery_entry:
+                errors.append(f"generated/runtime_discovery_index.json must not expose instructions_markdown for {skill_dir.name}")
+            if discovery_entry.get("explicit_handles", {}).get("codex", {}).get("mention") != f"${skill_dir.name}":
+                errors.append(f"generated/runtime_discovery_index.json explicit handle mismatch for {skill_dir.name}")
+
+        discovery_min_entry = discovery_min_by_name.get(skill_dir.name)
+        if discovery_min_entry is None:
+            errors.append(f"generated/runtime_discovery_index.min.json missing {skill_dir.name}")
+        else:
+            if discovery_min_entry.get("allow_implicit_invocation") != allow_implicit:
+                errors.append(f"generated/runtime_discovery_index.min.json allow_implicit_invocation mismatch for {skill_dir.name}")
+
+        disclosure_entry = disclosure_by_name.get(skill_dir.name)
+        if disclosure_entry is None:
+            errors.append(f"generated/runtime_disclosure_index.json missing {skill_dir.name}")
+        else:
+            if disclosure_entry.get("path") != skill_md.relative_to(repo_root).as_posix():
+                errors.append(f"generated/runtime_disclosure_index.json path mismatch for {skill_dir.name}")
+            if disclosure_entry.get("skill_dir") != skill_dir.relative_to(repo_root).as_posix():
+                errors.append(f"generated/runtime_disclosure_index.json skill_dir mismatch for {skill_dir.name}")
+            if "instructions_markdown" in disclosure_entry:
+                errors.append(f"generated/runtime_disclosure_index.json must not expose instructions_markdown for {skill_dir.name}")
+            if disclosure_entry.get("runtime_contract_ref") != f"generated/skill_runtime_contracts.json#{skill_dir.name}":
+                errors.append(f"generated/runtime_disclosure_index.json runtime_contract_ref mismatch for {skill_dir.name}")
+            if disclosure_entry.get("context_retention_ref") != f"generated/context_retention_manifest.json#{skill_dir.name}":
+                errors.append(f"generated/runtime_disclosure_index.json context_retention_ref mismatch for {skill_dir.name}")
+            if disclosure_entry.get("trust_policy_ref") != f"generated/trust_policy_matrix.json#{skill_dir.name}":
+                errors.append(f"generated/runtime_disclosure_index.json trust_policy_ref mismatch for {skill_dir.name}")
+
+        router_entry = router_by_name.get(skill_dir.name)
+        if router_entry is None:
+            errors.append(f"generated/runtime_router_hints.json missing {skill_dir.name}")
+        else:
+            if router_entry.get("description") != description:
+                errors.append(f"generated/runtime_router_hints.json description mismatch for {skill_dir.name}")
+
+        alias_entry = alias_by_name.get(skill_dir.name)
+        if alias_entry is None:
+            errors.append(f"generated/runtime_activation_aliases.json missing {skill_dir.name}")
+        else:
+            if alias_entry.get("codex_mention") != f"${skill_dir.name}":
+                errors.append(f"generated/runtime_activation_aliases.json codex_mention mismatch for {skill_dir.name}")
+            if alias_entry.get("tool_call", {}).get("arguments", {}).get("skill_name") != skill_dir.name:
+                errors.append(f"generated/runtime_activation_aliases.json tool_call mismatch for {skill_dir.name}")
+
     config_profile_names = set((profile_doc.get("profiles") or {}).keys())
     resolved_profile_names = set((resolved_profiles.get("profiles") or {}).keys())
     snippet_profile_names = set((snippets_doc.get("snippets") or {}).keys())
@@ -387,6 +493,53 @@ def main() -> int:
         errors.append("generated/release_manifest.json must reference CHANGELOG.md")
     if release_identity.get("releasing_doc") != "docs/RELEASING.md":
         errors.append("generated/release_manifest.json must reference docs/RELEASING.md")
+    if release_manifest.get("included_waves") != [1, 2, 3, 4]:
+        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4]")
+
+    if runtime_discovery.get("root") != ".agents/skills":
+        errors.append("generated/runtime_discovery_index.json root mismatch")
+    if runtime_discovery_min.get("root") != ".agents/skills":
+        errors.append("generated/runtime_discovery_index.min.json root mismatch")
+    if runtime_disclosure.get("root") != ".agents/skills":
+        errors.append("generated/runtime_disclosure_index.json root mismatch")
+
+    tool_names = [tool.get("name") for tool in runtime_tool_schemas.get("tools", [])]
+    if tool_names != [
+        "discover_skills",
+        "disclose_skill",
+        "activate_skill",
+        "skill_session_status",
+        "deactivate_skill",
+        "compact_skill_session",
+    ]:
+        errors.append("generated/runtime_tool_schemas.json tool set mismatch")
+    if not runtime_prompt_blocks.get("system_prompt_block"):
+        errors.append("generated/runtime_prompt_blocks.json missing system_prompt_block")
+    if not runtime_prompt_blocks.get("tool_description_block"):
+        errors.append("generated/runtime_prompt_blocks.json missing tool_description_block")
+    if runtime_session_contract.get("session_file_hint") != ".aoa/skill-runtime-session.json":
+        errors.append("generated/runtime_session_contract.json session_file_hint mismatch")
+
+    manifest_tools = runtime_seam_manifest.get("tools", {})
+    expected_manifest_tools = {
+        "discover": "scripts/skill_runtime_seam.py discover",
+        "disclose": "scripts/skill_runtime_seam.py disclose",
+        "activate": "scripts/skill_runtime_seam.py activate",
+        "status": "scripts/skill_runtime_seam.py status",
+        "deactivate": "scripts/skill_runtime_seam.py deactivate",
+        "compact": "scripts/skill_runtime_seam.py compact",
+    }
+    if manifest_tools != expected_manifest_tools:
+        errors.append("generated/runtime_seam_manifest.json tools mismatch")
+    if runtime_seam_manifest.get("common_surface") != ".agents/skills":
+        errors.append("generated/runtime_seam_manifest.json common_surface mismatch")
+    if runtime_seam_manifest.get("backward_compatibility", {}).get("legacy_activation_tool") != "scripts/activate_skill.py":
+        errors.append("generated/runtime_seam_manifest.json legacy activation tool mismatch")
+    generated_refs = runtime_seam_manifest.get("generated", {})
+    if generated_refs.get("discovery_index") != "generated/runtime_discovery_index.json":
+        errors.append("generated/runtime_seam_manifest.json discovery_index mismatch")
+    if generated_refs.get("disclosure_index") != "generated/runtime_disclosure_index.json":
+        errors.append("generated/runtime_seam_manifest.json disclosure_index mismatch")
 
     if errors:
         for error in errors:
