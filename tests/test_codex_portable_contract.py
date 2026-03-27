@@ -37,6 +37,9 @@ class CodexPortableContractTests(unittest.TestCase):
         guardrail_trust = load_json(REPO_ROOT / "generated" / "repo_trust_gate_manifest.json")
         guardrail_allowlist = load_json(REPO_ROOT / "generated" / "permission_allowlist_manifest.json")
         guardrail_context = load_json(REPO_ROOT / "generated" / "skill_context_guard_manifest.json")
+        description_signals = load_json(REPO_ROOT / "generated" / "skill_description_signals.json")
+        description_manifest = load_json(REPO_ROOT / "generated" / "description_trigger_eval_manifest.json")
+        skills_ref_manifest = load_json(REPO_ROOT / "generated" / "skills_ref_validation_manifest.json")
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
         catalog_names = {entry["name"] for entry in catalog["skills"]}
         self.assertEqual({entry["name"] for entry in handoff_doc["skills"]}, catalog_names)
@@ -46,6 +49,9 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in guardrail_trust["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in guardrail_allowlist["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in guardrail_context["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in description_signals["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in description_manifest["skills"]}, catalog_names)
+        self.assertEqual({entry["skill_name"] for entry in skills_ref_manifest["targets"]}, catalog_names)
 
     def test_handoff_contracts_expose_compact_packet_templates(self):
         handoff_doc = load_json(REPO_ROOT / "generated" / "skill_handoff_contracts.json")
@@ -101,13 +107,28 @@ class CodexPortableContractTests(unittest.TestCase):
                 offenders.append(case["case_id"])
         self.assertEqual(offenders, [])
 
+    def test_description_trigger_suite_respects_explicit_only_policy(self):
+        source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
+        cases = load_jsonl(REPO_ROOT / "generated" / "description_trigger_eval_cases.jsonl")
+        explicit_only = {
+            entry["name"] for entry in source_catalog["skills"] if entry["invocation_mode"] == "explicit-only"
+        }
+        offenders = []
+        for case in cases:
+            if case["skill_name"] in explicit_only and case["case_class"] == "should-trigger":
+                offenders.append(case["case_id"])
+        self.assertEqual(offenders, [])
+
     def test_validation_scripts_pass(self):
         commands = [
             [sys.executable, "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"],
+            [sys.executable, "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
+            [sys.executable, "scripts/lint_description_trigger_evals.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_pack_profiles.py", "--repo-root", "."],
+            [sys.executable, "scripts/run_skills_ref_validation.py", "--repo-root", "."],
         ]
         for command in commands:
             completed = subprocess.run(

@@ -30,14 +30,29 @@ jobs:
       - name: Build runtime guardrails
         run: python scripts/build_runtime_guardrails.py --repo-root .
 
+      - name: Build description-trigger eval layer
+        run: python scripts/build_description_trigger_evals.py --repo-root .
+
       - name: Validate export
         run: python scripts/validate_agent_skills.py --repo-root .
 
       - name: Lint trigger evals
         run: python scripts/lint_trigger_evals.py --repo-root .
 
+      - name: Lint description-trigger evals
+        run: python scripts/lint_description_trigger_evals.py --repo-root .
+
       - name: Lint pack profiles
         run: python scripts/lint_pack_profiles.py --repo-root .
+
+      - name: Install skills-ref reference validator
+        continue-on-error: true
+        run: |
+          git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills
+          python -m pip install -e /tmp/agentskills/skills-ref
+
+      - name: Validate portable export with skills-ref
+        run: python scripts/run_skills_ref_validation.py --repo-root .
 
       - name: Contract tests
         run: |
@@ -48,6 +63,8 @@ jobs:
           python -m unittest tests/test_wave4_runtime_session.py
           python -m unittest tests/test_wave6_runtime_guardrails_builder.py
           python -m unittest tests/test_wave6_runtime_guardrails.py
+          python -m unittest tests/test_wave7_description_trigger_builder.py
+          python -m unittest tests/test_wave7_skills_ref_validation.py
 
       - name: Check generated drift
         run: |
@@ -79,6 +96,11 @@ jobs:
             generated/runtime_guardrail_tool_schemas.json \
             generated/runtime_guardrail_prompt_blocks.json \
             generated/runtime_guardrail_manifest.json \
+            generated/skill_description_signals.json \
+            generated/description_trigger_eval_cases.jsonl \
+            generated/description_trigger_eval_cases.csv \
+            generated/description_trigger_eval_manifest.json \
+            generated/skills_ref_validation_manifest.json \
             examples/repo-trust-store.json \
             examples/permission-allowlist.json \
             examples/guardrailed-runtime-config.json \

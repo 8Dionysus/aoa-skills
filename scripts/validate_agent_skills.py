@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import pathlib
 import re
@@ -23,6 +24,8 @@ from skill_runtime_guardrails import (
 EXPORT_PROFILE = "codex-facing-wave-3"
 RUNTIME_PROFILE = "codex-facing-wave-4-runtime-seam"
 GUARDRAIL_PROFILE = "codex-facing-wave-6-runtime-guardrails"
+DESCRIPTION_TRIGGER_PROFILE = "codex-facing-wave-7-description-trigger-evals"
+SKILLS_REF_PROFILE = "codex-facing-wave-7-standard-validation"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 HEX_COLOR_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 REQUIRED_METADATA = {
@@ -64,6 +67,11 @@ REQUIRED_GENERATED_FILES = [
     "generated/runtime_guardrail_tool_schemas.json",
     "generated/runtime_guardrail_prompt_blocks.json",
     "generated/runtime_guardrail_manifest.json",
+    "generated/skill_description_signals.json",
+    "generated/description_trigger_eval_cases.jsonl",
+    "generated/description_trigger_eval_cases.csv",
+    "generated/description_trigger_eval_manifest.json",
+    "generated/skills_ref_validation_manifest.json",
     "generated/release_manifest.json",
 ]
 RELEASE_MANIFEST_GENERATED_FILES = [
@@ -94,6 +102,11 @@ RELEASE_MANIFEST_GENERATED_FILES = [
     "generated/runtime_guardrail_tool_schemas.json",
     "generated/runtime_guardrail_prompt_blocks.json",
     "generated/runtime_guardrail_manifest.json",
+    "generated/skill_description_signals.json",
+    "generated/description_trigger_eval_cases.jsonl",
+    "generated/description_trigger_eval_cases.csv",
+    "generated/description_trigger_eval_manifest.json",
+    "generated/skills_ref_validation_manifest.json",
     "generated/release_manifest.json",
 ]
 REQUIRED_CONFIG_FILES = [
@@ -102,6 +115,7 @@ REQUIRED_CONFIG_FILES = [
     "config/skill_pack_profiles.json",
     "config/skill_policy_matrix.json",
     "config/runtime_guardrail_policy.json",
+    "config/description_trigger_eval_policy.json",
 ]
 
 
@@ -121,6 +135,10 @@ def parse_frontmatter(path: pathlib.Path) -> tuple[dict[str, Any], str]:
 
 def load_json(path: pathlib.Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_jsonl(path: pathlib.Path) -> list[dict[str, Any]]:
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
 def append_missing_files(errors: list[str], repo_root: pathlib.Path, rel_paths: list[str]) -> None:
@@ -164,6 +182,7 @@ def main() -> int:
     runtime_session_contract = load_json(generated_dir / "runtime_session_contract.json")
     runtime_prompt_blocks = load_json(generated_dir / "runtime_prompt_blocks.json")
     runtime_router_hints = load_json(generated_dir / "runtime_router_hints.json")
+    collision_doc = load_json(generated_dir / "skill_trigger_collision_matrix.json")
     runtime_seam_manifest = load_json(generated_dir / "runtime_seam_manifest.json")
     guardrail_trust_gate = load_json(generated_dir / "repo_trust_gate_manifest.json")
     guardrail_allowlist = load_json(generated_dir / "permission_allowlist_manifest.json")
@@ -171,11 +190,16 @@ def main() -> int:
     guardrail_tool_schemas = load_json(generated_dir / "runtime_guardrail_tool_schemas.json")
     guardrail_prompt_blocks = load_json(generated_dir / "runtime_guardrail_prompt_blocks.json")
     guardrail_manifest = load_json(generated_dir / "runtime_guardrail_manifest.json")
+    description_signals = load_json(generated_dir / "skill_description_signals.json")
+    description_cases = load_jsonl(generated_dir / "description_trigger_eval_cases.jsonl")
+    description_manifest = load_json(generated_dir / "description_trigger_eval_manifest.json")
+    skills_ref_manifest = load_json(generated_dir / "skills_ref_validation_manifest.json")
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
     guardrail_policy = load_json(config_dir / "runtime_guardrail_policy.json")
+    description_eval_policy = load_json(config_dir / "description_trigger_eval_policy.json")
 
     source_by_name = {entry["name"]: entry for entry in source_catalog.get("skills", [])}
     agent_by_name = {entry["name"]: entry for entry in agent_catalog.get("skills", [])}
@@ -196,6 +220,32 @@ def main() -> int:
     guardrail_trust_by_name = {entry["name"]: entry for entry in guardrail_trust_gate.get("skills", [])}
     guardrail_allowlist_by_name = {entry["name"]: entry for entry in guardrail_allowlist.get("skills", [])}
     guardrail_context_by_name = {entry["name"]: entry for entry in guardrail_context.get("skills", [])}
+    description_signal_by_name = {entry["name"]: entry for entry in description_signals.get("skills", [])}
+    description_manifest_by_name = {entry["name"]: entry for entry in description_manifest.get("skills", [])}
+    skills_ref_target_by_name = {entry["skill_name"]: entry for entry in skills_ref_manifest.get("targets", [])}
+    description_cases_by_skill: dict[str, list[dict[str, Any]]] = {name: [] for name in source_by_name}
+    for case in description_cases:
+        skill_name = case.get("skill_name")
+        if skill_name in description_cases_by_skill:
+            description_cases_by_skill[skill_name].append(case)
+    description_families_by_skill: dict[str, list[str]] = {name: [] for name in source_by_name}
+    description_neighbors_by_skill: dict[str, set[str]] = {name: set() for name in source_by_name}
+    for family in collision_doc.get("families", []):
+        members = family.get("skills", [])
+        for skill_name in members:
+            description_families_by_skill.setdefault(skill_name, []).append(family["family"])
+            description_neighbors_by_skill.setdefault(skill_name, set()).update(
+                name for name in members if name != skill_name
+            )
+    for collision_case in collision_doc.get("cases", []):
+        skill_name = collision_case.get("skill_name")
+        competing = collision_case.get("competing_skills", [])
+        description_neighbors_by_skill.setdefault(skill_name, set()).update(competing)
+        for competing_skill in competing:
+            description_neighbors_by_skill.setdefault(competing_skill, set()).add(skill_name)
+            description_neighbors_by_skill.setdefault(competing_skill, set()).update(
+                name for name in competing if name != competing_skill
+            )
 
     if overrides_doc.get("profile") != EXPORT_PROFILE:
         errors.append(f"config/portable_skill_overrides.json profile must be {EXPORT_PROFILE!r}")
@@ -231,6 +281,15 @@ def main() -> int:
     }.items():
         if doc.get("profile") != GUARDRAIL_PROFILE:
             errors.append(f"{label} profile must be {GUARDRAIL_PROFILE!r}")
+    for label, doc in {
+        "config/description_trigger_eval_policy.json": description_eval_policy,
+        "generated/skill_description_signals.json": description_signals,
+        "generated/description_trigger_eval_manifest.json": description_manifest,
+    }.items():
+        if doc.get("profile") != DESCRIPTION_TRIGGER_PROFILE:
+            errors.append(f"{label} profile must be {DESCRIPTION_TRIGGER_PROFILE!r}")
+    if skills_ref_manifest.get("profile") != SKILLS_REF_PROFILE:
+        errors.append(f"generated/skills_ref_validation_manifest.json profile must be {SKILLS_REF_PROFILE!r}")
 
     if not skills_root.exists():
         errors.append(f"missing skills root: {skills_root}")
@@ -258,6 +317,9 @@ def main() -> int:
         "generated/repo_trust_gate_manifest.json": set(guardrail_trust_by_name),
         "generated/permission_allowlist_manifest.json": set(guardrail_allowlist_by_name),
         "generated/skill_context_guard_manifest.json": set(guardrail_context_by_name),
+        "generated/skill_description_signals.json": set(description_signal_by_name),
+        "generated/description_trigger_eval_manifest.json": set(description_manifest_by_name),
+        "generated/skills_ref_validation_manifest.json": set(skills_ref_target_by_name),
         "config/skill_policy_matrix.json": set((policy_doc.get("skills") or {}).keys()),
     }
     for label, names in expected_sets.items():
@@ -584,6 +646,77 @@ def main() -> int:
             if alias_entry.get("tool_call", {}).get("arguments", {}).get("skill_name") != skill_dir.name:
                 errors.append(f"generated/runtime_activation_aliases.json tool_call mismatch for {skill_dir.name}")
 
+        description_signal = description_signal_by_name.get(skill_dir.name)
+        description_manifest_entry = description_manifest_by_name.get(skill_dir.name)
+        skills_ref_target = skills_ref_target_by_name.get(skill_dir.name)
+        skill_description_cases = description_cases_by_skill.get(skill_dir.name, [])
+        if description_signal is None:
+            errors.append(f"generated/skill_description_signals.json missing {skill_dir.name}")
+        else:
+            description_sha = hashlib.sha256(description.encode("utf-8")).hexdigest()
+            expected_families = sorted(description_families_by_skill.get(skill_dir.name, []))
+            expected_family = expected_families[0] if expected_families else None
+            if description_signal.get("description") != description:
+                errors.append(f"generated/skill_description_signals.json description mismatch for {skill_dir.name}")
+            if description_signal.get("description_sha256") != description_sha:
+                errors.append(f"generated/skill_description_signals.json description_sha256 mismatch for {skill_dir.name}")
+            if description_signal.get("invocation_mode") != source_entry.get("invocation_mode"):
+                errors.append(f"generated/skill_description_signals.json invocation_mode mismatch for {skill_dir.name}")
+            if description_signal.get("allow_implicit_invocation") != allow_implicit:
+                errors.append(f"generated/skill_description_signals.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if description_signal.get("family") != expected_family:
+                errors.append(f"generated/skill_description_signals.json family mismatch for {skill_dir.name}")
+            if set(description_signal.get("families", [])) != set(expected_families):
+                errors.append(f"generated/skill_description_signals.json families mismatch for {skill_dir.name}")
+            if set(description_signal.get("adjacent_skills", [])) != description_neighbors_by_skill.get(skill_dir.name, set()):
+                errors.append(f"generated/skill_description_signals.json adjacent_skills mismatch for {skill_dir.name}")
+            if "Use when" in description and not description_signal.get("use_when_clause"):
+                errors.append(f"generated/skill_description_signals.json missing use_when_clause for {skill_dir.name}")
+            if "Do not use" in description and not description_signal.get("do_not_use_clause"):
+                errors.append(f"generated/skill_description_signals.json missing do_not_use_clause for {skill_dir.name}")
+
+        if description_manifest_entry is None:
+            errors.append(f"generated/description_trigger_eval_manifest.json missing {skill_dir.name}")
+        else:
+            required_classes = description_eval_policy["required_case_classes"][source_entry.get("invocation_mode")]
+            if description_manifest_entry.get("required_case_classes") != required_classes:
+                errors.append(f"generated/description_trigger_eval_manifest.json required_case_classes mismatch for {skill_dir.name}")
+            if description_signal is not None and description_manifest_entry.get("description_sha256") != description_signal.get("description_sha256"):
+                errors.append(f"generated/description_trigger_eval_manifest.json description_sha256 mismatch for {skill_dir.name}")
+            if description_manifest_entry.get("coverage_ok") is not True:
+                errors.append(f"generated/description_trigger_eval_manifest.json coverage_ok mismatch for {skill_dir.name}")
+            if description_manifest_entry.get("total_cases") != len(skill_description_cases):
+                errors.append(f"generated/description_trigger_eval_manifest.json total_cases mismatch for {skill_dir.name}")
+
+        if skills_ref_target is None:
+            errors.append(f"generated/skills_ref_validation_manifest.json missing {skill_dir.name}")
+        else:
+            if skills_ref_target.get("path") != f".agents/skills/{skill_dir.name}":
+                errors.append(f"generated/skills_ref_validation_manifest.json path mismatch for {skill_dir.name}")
+            if skills_ref_target.get("command") != ["skills-ref", "validate", f".agents/skills/{skill_dir.name}"]:
+                errors.append(f"generated/skills_ref_validation_manifest.json command mismatch for {skill_dir.name}")
+            if description_signal is not None and skills_ref_target.get("description_sha256") != description_signal.get("description_sha256"):
+                errors.append(f"generated/skills_ref_validation_manifest.json description_sha256 mismatch for {skill_dir.name}")
+
+        class_totals: dict[str, int] = {}
+        for case in skill_description_cases:
+            class_totals[case["case_class"]] = class_totals.get(case["case_class"], 0) + 1
+            if description_signal is not None and case.get("description_sha256") != description_signal.get("description_sha256"):
+                errors.append(f"{case['case_id']}: description trigger case hash mismatch for {skill_dir.name}")
+            if case.get("case_class") == "should-trigger" and source_entry.get("invocation_mode") == "explicit-only":
+                errors.append(f"{case['case_id']}: explicit-only skill must not have should-trigger cases")
+            if case.get("case_class") == "prefer-other-skill":
+                expected_skill = case.get("expected_skill")
+                if expected_skill == skill_dir.name:
+                    errors.append(f"{case['case_id']}: prefer-other-skill must defer to another skill")
+        required_classes = description_eval_policy["required_case_classes"][source_entry.get("invocation_mode")]
+        for case_class in required_classes:
+            if class_totals.get(case_class, 0) < 1:
+                errors.append(f"{skill_dir.name}: missing description-trigger class {case_class!r}")
+        if router_entry is not None and router_entry.get("collision_family") and source_entry.get("invocation_mode") != "explicit-only":
+            if class_totals.get("prefer-other-skill", 0) < 1:
+                errors.append(f"{skill_dir.name}: missing mirrored defer coverage in description-trigger cases")
+
     config_profile_names = set((profile_doc.get("profiles") or {}).keys())
     resolved_profile_names = set((resolved_profiles.get("profiles") or {}).keys())
     snippet_profile_names = set((snippets_doc.get("snippets") or {}).keys())
@@ -611,6 +744,22 @@ def main() -> int:
             if entry["target_path"] not in disable_profile_toml:
                 errors.append(f"generated/codex_config_snippets.json missing {entry['target_path']!r} in {profile_name}")
 
+    description_case_totals: dict[str, int] = {}
+    for case in description_cases:
+        description_case_totals[case["case_class"]] = description_case_totals.get(case["case_class"], 0) + 1
+    if description_manifest.get("skill_count") != len(actual_names):
+        errors.append("generated/description_trigger_eval_manifest.json skill_count mismatch")
+    if description_manifest.get("total_cases") != len(description_cases):
+        errors.append("generated/description_trigger_eval_manifest.json total_cases mismatch")
+    if description_manifest.get("case_class_totals") != dict(sorted(description_case_totals.items())):
+        errors.append("generated/description_trigger_eval_manifest.json case_class_totals mismatch")
+    if skills_ref_manifest.get("validator") != "skills-ref":
+        errors.append("generated/skills_ref_validation_manifest.json validator mismatch")
+    if skills_ref_manifest.get("mode") != "soft-conformance-lane":
+        errors.append("generated/skills_ref_validation_manifest.json mode mismatch")
+    if len(skills_ref_manifest.get("targets", [])) != len(actual_names):
+        errors.append("generated/skills_ref_validation_manifest.json target count mismatch")
+
     expected_generated_files = set(RELEASE_MANIFEST_GENERATED_FILES)
     if set(release_manifest.get("generated_files", [])) != expected_generated_files:
         errors.append("generated/release_manifest.json generated_files mismatch")
@@ -626,8 +775,10 @@ def main() -> int:
         errors.append("generated/release_manifest.json must reference CHANGELOG.md")
     if release_identity.get("releasing_doc") != "docs/RELEASING.md":
         errors.append("generated/release_manifest.json must reference docs/RELEASING.md")
-    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6]:
-        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6]")
+    if "config/description_trigger_eval_policy.json" not in release_manifest.get("authoring_inputs", []):
+        errors.append("generated/release_manifest.json must include config/description_trigger_eval_policy.json")
+    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6, 7]:
+        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6, 7]")
 
     if runtime_discovery.get("root") != ".agents/skills":
         errors.append("generated/runtime_discovery_index.json root mismatch")

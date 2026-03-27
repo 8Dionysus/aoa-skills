@@ -65,6 +65,11 @@ GENERATED_PORTABLE_FILES = [
     "generated/runtime_guardrail_tool_schemas.json",
     "generated/runtime_guardrail_prompt_blocks.json",
     "generated/runtime_guardrail_manifest.json",
+    "generated/skill_description_signals.json",
+    "generated/description_trigger_eval_cases.jsonl",
+    "generated/description_trigger_eval_cases.csv",
+    "generated/description_trigger_eval_manifest.json",
+    "generated/skills_ref_validation_manifest.json",
     "generated/release_manifest.json",
 ]
 
@@ -570,7 +575,7 @@ def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict
     return {
         "schema_version": 1,
         "profile": EXPORT_PROFILE,
-        "included_waves": [1, 2, 3, 4, 6],
+        "included_waves": [1, 2, 3, 4, 6, 7],
         "skill_root": ".agents/skills",
         "skill_count": len(catalog_full["skills"]),
         "explicit_only_count": sum(1 for entry in catalog_full["skills"] if not entry["allow_implicit_invocation"]),
@@ -582,6 +587,7 @@ def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict
             "config/openai_skill_extensions.json",
             "config/skill_pack_profiles.json",
             "config/skill_policy_matrix.json",
+            "config/description_trigger_eval_policy.json",
         ],
         "generated_files": GENERATED_PORTABLE_FILES,
         "release_identity": {
