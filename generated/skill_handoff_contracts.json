@@ -1,0 +1,1129 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-3",
+  "source_of_truth": "generated/skill_sections.full.json",
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "display_name": "AoA ADR Write",
+      "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "decision to record",
+        "context and problem statement",
+        "relevant options or alternatives",
+        "chosen path and rationale",
+        "known consequences or tradeoffs"
+      ],
+      "outputs": [
+        "concise decision note or ADR draft",
+        "statement of rationale",
+        "consequence notes",
+        "canonical placement or reference for the note",
+        "verification that the note landed in the expected decision surface",
+        "verification that the note matches the actual change"
+      ],
+      "verification": [
+        "confirm the decision was meaningful enough to record",
+        "confirm the rationale is explicit",
+        "confirm consequences or tradeoffs are named",
+        "confirm the note aligns with the real change surface",
+        "confirm the note is placed where future reviewers will look for it",
+        "confirm the canonical location or reference is part of the result, not an afterthought"
+      ],
+      "contracts": [
+        "the note should explain why, not just what changed",
+        "the decision should be bounded and understandable",
+        "tradeoffs should not be hidden behind certainty theater",
+        "the note should help future reviewers, not merely satisfy process",
+        "the note should have an explicit canonical placement, not a hidden or implied home",
+        "verification should check both rationale quality and note placement"
+      ],
+      "consumes_artifact_tags": [
+        "decision-to-record",
+        "context-and-problem-statement",
+        "relevant-options-or-alternatives",
+        "chosen-path-and-rationale",
+        "known-consequences-or-tradeoffs"
+      ],
+      "provides_artifact_tags": [
+        "concise-decision-note-or-adr-draft",
+        "statement-of-rationale",
+        "consequence-notes",
+        "canonical-placement-or-reference-for-the-note",
+        "verification-that-the-note-landed-in-the-expected-decision-surfa",
+        "verification-that-the-note-matches-the-actual-change"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-adr-write",
+        "produced_artifacts": [
+          "concise-decision-note-or-adr-draft",
+          "statement-of-rationale",
+          "consequence-notes",
+          "canonical-placement-or-reference-for-the-note",
+          "verification-that-the-note-landed-in-the-expected-decision-surfa",
+          "verification-that-the-note-matches-the-actual-change"
+        ],
+        "verification_notes": [
+          "confirm the decision was meaningful enough to record",
+          "confirm the rationale is explicit",
+          "confirm consequences or tradeoffs are named"
+        ],
+        "contract_notes": [
+          "the note should explain why, not just what changed",
+          "the decision should be bounded and understandable",
+          "tradeoffs should not be hidden behind certainty theater"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "display_name": "AoA Approval Gate Check",
+      "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "requested action",
+        "touched surfaces",
+        "known approval state",
+        "risk signals",
+        "possible fallback or inspect-only path"
+      ],
+      "outputs": [
+        "classification of the action: safe to proceed, explicit approval required, or do not execute",
+        "note on whether explicit approval is needed",
+        "bounded next-step recommendation",
+        "report of unresolved authority assumptions",
+        "a reviewable gate decision that can be passed to the next workflow step"
+      ],
+      "verification": [
+        "confirm the touched surfaces were identified",
+        "confirm the approval need was classified explicitly rather than as a vague warning",
+        "confirm the next step fits the stated authority level",
+        "confirm uncertainty was not masked as permission",
+        "confirm the gate decision is actionable and bounded",
+        "confirm the skill still reads as an approval-classification package"
+      ],
+      "contracts": [
+        "unclear authority should not be silently interpreted as permission",
+        "classification should be explicit and reviewable",
+        "safer bounded alternatives should be preferred when possible",
+        "the result should reduce accidental overreach",
+        "the gate decision should be concrete enough to hand to the next step without ambiguity",
+        "the skill remains a bounded operational package, not just a policy label"
+      ],
+      "consumes_artifact_tags": [
+        "requested-action",
+        "touched-surfaces",
+        "known-approval-state",
+        "risk-signals",
+        "possible-fallback-or-inspect-only-path"
+      ],
+      "provides_artifact_tags": [
+        "classification-of-the-action-safe-to-proceed-explicit-approval-r",
+        "note-on-whether-explicit-approval-is-needed",
+        "bounded-next-step-recommendation",
+        "report-of-unresolved-authority-assumptions",
+        "a-reviewable-gate-decision-that-can-be-passed-to-the-next-workfl"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-approval-gate-check",
+        "produced_artifacts": [
+          "classification-of-the-action-safe-to-proceed-explicit-approval-r",
+          "note-on-whether-explicit-approval-is-needed",
+          "bounded-next-step-recommendation",
+          "report-of-unresolved-authority-assumptions",
+          "a-reviewable-gate-decision-that-can-be-passed-to-the-next-workfl"
+        ],
+        "verification_notes": [
+          "confirm the touched surfaces were identified",
+          "confirm the approval need was classified explicitly rather than as a vague warning",
+          "confirm the next step fits the stated authority level"
+        ],
+        "contract_notes": [
+          "unclear authority should not be silently interpreted as permission",
+          "classification should be explicit and reviewable",
+          "safer bounded alternatives should be preferred when possible"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "display_name": "AoA Bounded Context Map",
+      "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target area or subsystem",
+        "current naming and responsibilities",
+        "known neighboring contexts",
+        "ambiguous or overloaded terms"
+      ],
+      "outputs": [
+        "named contexts or subsystems",
+        "rough boundary map",
+        "interface notes between contexts",
+        "ambiguity notes and recommended vocabulary"
+      ],
+      "verification": [
+        "confirm the main ambiguity was reduced",
+        "confirm interfaces or handoff points are named",
+        "confirm the output helps future scoped changes"
+      ],
+      "contracts": [
+        "boundaries should reduce semantic confusion, not create ceremony for its own sake",
+        "neighboring contexts should be named explicitly when relevant",
+        "interface or translation points should be visible"
+      ],
+      "consumes_artifact_tags": [
+        "target-area-or-subsystem",
+        "current-naming-and-responsibilities",
+        "known-neighboring-contexts",
+        "ambiguous-or-overloaded-terms"
+      ],
+      "provides_artifact_tags": [
+        "named-contexts-or-subsystems",
+        "rough-boundary-map",
+        "interface-notes-between-contexts",
+        "ambiguity-notes-and-recommended-vocabulary"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-bounded-context-map",
+        "produced_artifacts": [
+          "named-contexts-or-subsystems",
+          "rough-boundary-map",
+          "interface-notes-between-contexts",
+          "ambiguity-notes-and-recommended-vocabulary"
+        ],
+        "verification_notes": [
+          "confirm the main ambiguity was reduced",
+          "confirm interfaces or handoff points are named",
+          "confirm the output helps future scoped changes"
+        ],
+        "contract_notes": [
+          "boundaries should reduce semantic confusion, not create ceremony for its own sake",
+          "neighboring contexts should be named explicitly when relevant",
+          "interface or translation points should be visible"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-change-protocol",
+      "display_name": "AoA Change Protocol",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target goal",
+        "touched files or surfaces",
+        "main risk",
+        "intended validation path",
+        "rollback idea"
+      ],
+      "outputs": [
+        "explicit plan",
+        "scoped change",
+        "named verification result",
+        "concise final report"
+      ],
+      "verification": [
+        "confirm a plan existed before apply",
+        "confirm the change stayed scoped",
+        "confirm at least one explicit verification step was run or intentionally skipped with explanation",
+        "confirm the report includes outcome and rollback thinking"
+      ],
+      "contracts": [
+        "the change must remain reviewable",
+        "verification must be explicit, not implied",
+        "the change should stay inside the declared scope",
+        "rollback thinking should exist before apply"
+      ],
+      "consumes_artifact_tags": [
+        "target-goal",
+        "touched-files-or-surfaces",
+        "main-risk",
+        "intended-validation-path",
+        "rollback-idea"
+      ],
+      "provides_artifact_tags": [
+        "explicit-plan",
+        "scoped-change",
+        "named-verification-result",
+        "concise-final-report"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-change-protocol",
+        "produced_artifacts": [
+          "explicit-plan",
+          "scoped-change",
+          "named-verification-result",
+          "concise-final-report"
+        ],
+        "verification_notes": [
+          "confirm a plan existed before apply",
+          "confirm the change stayed scoped",
+          "confirm at least one explicit verification step was run or intentionally skipped with explanation"
+        ],
+        "contract_notes": [
+          "the change must remain reviewable",
+          "verification must be explicit, not implied",
+          "the change should stay inside the declared scope"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-contract-test",
+      "display_name": "AoA Contract Test",
+      "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "boundary under review",
+        "expected inputs and outputs",
+        "current verification surface",
+        "known downstream dependencies"
+      ],
+      "outputs": [
+        "explicit contract assumptions",
+        "tests or smoke summary changes",
+        "verification notes",
+        "downstream impact notes"
+      ],
+      "verification": [
+        "confirm the contract is visible and reviewable",
+        "confirm validation is tied to the interface or boundary",
+        "confirm downstream impact was considered when relevant"
+      ],
+      "contracts": [
+        "the contract should be visible to another human or agent",
+        "verification should be tied to the boundary, not only to internals",
+        "downstream assumptions should be named when relevant"
+      ],
+      "consumes_artifact_tags": [
+        "boundary-under-review",
+        "expected-inputs-and-outputs",
+        "current-verification-surface",
+        "known-downstream-dependencies"
+      ],
+      "provides_artifact_tags": [
+        "explicit-contract-assumptions",
+        "tests-or-smoke-summary-changes",
+        "verification-notes",
+        "downstream-impact-notes"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-contract-test",
+        "produced_artifacts": [
+          "explicit-contract-assumptions",
+          "tests-or-smoke-summary-changes",
+          "verification-notes",
+          "downstream-impact-notes"
+        ],
+        "verification_notes": [
+          "confirm the contract is visible and reviewable",
+          "confirm validation is tied to the interface or boundary",
+          "confirm downstream impact was considered when relevant"
+        ],
+        "contract_notes": [
+          "the contract should be visible to another human or agent",
+          "verification should be tied to the boundary, not only to internals",
+          "downstream assumptions should be named when relevant"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "display_name": "AoA Core Logic Boundary",
+      "description": "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target module, service, or slice",
+        "current responsibilities",
+        "repeated or reusable logic candidates",
+        "surrounding glue or orchestration context"
+      ],
+      "outputs": [
+        "clarified boundary between core logic and surrounding glue",
+        "notes on what should stay reusable versus edge-specific",
+        "small refactor proposal or bounded implementation",
+        "verification summary"
+      ],
+      "verification": [
+        "confirm the core candidate is genuinely reusable or stability-shaped",
+        "confirm edge-specific code remains at the edge when appropriate",
+        "confirm the refactor improved clarity for future changes",
+        "confirm no unrelated structural churn was introduced"
+      ],
+      "contracts": [
+        "reusable logic should not stay trapped in glue if that blocks testing or reuse",
+        "glue should not be over-promoted into domain logic without reason",
+        "the boundary should improve clarity, not just aesthetics",
+        "the change should remain reviewable and bounded"
+      ],
+      "consumes_artifact_tags": [
+        "target-module-service-or-slice",
+        "current-responsibilities",
+        "repeated-or-reusable-logic-candidates",
+        "surrounding-glue-or-orchestration-context"
+      ],
+      "provides_artifact_tags": [
+        "clarified-boundary-between-core-logic-and-surrounding-glue",
+        "notes-on-what-should-stay-reusable-versus-edge-specific",
+        "small-refactor-proposal-or-bounded-implementation",
+        "verification-summary"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-core-logic-boundary",
+        "produced_artifacts": [
+          "clarified-boundary-between-core-logic-and-surrounding-glue",
+          "notes-on-what-should-stay-reusable-versus-edge-specific",
+          "small-refactor-proposal-or-bounded-implementation",
+          "verification-summary"
+        ],
+        "verification_notes": [
+          "confirm the core candidate is genuinely reusable or stability-shaped",
+          "confirm edge-specific code remains at the edge when appropriate",
+          "confirm the refactor improved clarity for future changes"
+        ],
+        "contract_notes": [
+          "reusable logic should not stay trapped in glue if that blocks testing or reuse",
+          "glue should not be over-promoted into domain logic without reason",
+          "the boundary should improve clarity, not just aesthetics"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "display_name": "AoA Dry Run First",
+      "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "requested action",
+        "available preview or dry-run mechanisms",
+        "touched surfaces",
+        "known limits of the preview path"
+      ],
+      "outputs": [
+        "dry-run or preview recommendation",
+        "bounded preview result or plan",
+        "note on what the preview does and does not prove",
+        "explicit confirmation request for the mutating step when the preview is complete",
+        "recommendation for next step"
+      ],
+      "verification": [
+        "confirm a preview or dry-run path was considered first",
+        "confirm the preview scope was named honestly",
+        "confirm unresolved risk after preview was not hidden",
+        "confirm the preview step did not silently perform the real action",
+        "confirm the explicit confirmation names the exact mutating step",
+        "confirm the recommended next step matches the preview confidence",
+        "confirm the workflow stops after the confirmed mutation instead of widening into a loop"
+      ],
+      "contracts": [
+        "dry-run should reduce uncertainty before execution",
+        "preview results should not be overstated",
+        "lack of a dry-run path should be named as a risk, not hidden",
+        "real execution should not be smuggled into a preview step",
+        "confirmation must name the concrete mutation, not just generic permission",
+        "the mutating step stays singular and bounded after the gate"
+      ],
+      "consumes_artifact_tags": [
+        "requested-action",
+        "available-preview-or-dry-run-mechanisms",
+        "touched-surfaces",
+        "known-limits-of-the-preview-path"
+      ],
+      "provides_artifact_tags": [
+        "dry-run-or-preview-recommendation",
+        "bounded-preview-result-or-plan",
+        "note-on-what-the-preview-does-and-does-not-prove",
+        "explicit-confirmation-request-for-the-mutating-step-when-the-pre",
+        "recommendation-for-next-step"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-dry-run-first",
+        "produced_artifacts": [
+          "dry-run-or-preview-recommendation",
+          "bounded-preview-result-or-plan",
+          "note-on-what-the-preview-does-and-does-not-prove",
+          "explicit-confirmation-request-for-the-mutating-step-when-the-pre",
+          "recommendation-for-next-step"
+        ],
+        "verification_notes": [
+          "confirm a preview or dry-run path was considered first",
+          "confirm the preview scope was named honestly",
+          "confirm unresolved risk after preview was not hidden"
+        ],
+        "contract_notes": [
+          "dry-run should reduce uncertainty before execution",
+          "preview results should not be overstated",
+          "lack of a dry-run path should be named as a risk, not hidden"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "display_name": "AoA Invariant Coverage Audit",
+      "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target rule or stable truth",
+        "current tests, checks, or examples",
+        "known edge cases and stress cases",
+        "the input space or states that matter most"
+      ],
+      "outputs": [
+        "invariant coverage map",
+        "gap list for weak or missing checks",
+        "bounded follow-up checks or revisions",
+        "concise verification summary",
+        "audit verdict on whether coverage is strong enough for the current stable truth"
+      ],
+      "verification": [
+        "confirm each core invariant is named and mapped to a check",
+        "confirm the coverage gap list is specific and bounded",
+        "confirm another human can follow why the existing surface is or is not sufficient",
+        "confirm the result names the next bounded follow-up, if one is needed",
+        "confirm the skill reads like an operational audit rather than a plain technique lift"
+      ],
+      "contracts": [
+        "every claimed invariant must be traceable to at least one check",
+        "the audit should distinguish real constraint from mere example repetition",
+        "the result should stay reviewable without sprawling into a full test strategy",
+        "the skill should stay an audit package rather than a general testing doctrine",
+        "the output should make the next coverage move obvious"
+      ],
+      "consumes_artifact_tags": [
+        "target-rule-or-stable-truth",
+        "current-tests-checks-or-examples",
+        "known-edge-cases-and-stress-cases",
+        "the-input-space-or-states-that-matter-most"
+      ],
+      "provides_artifact_tags": [
+        "invariant-coverage-map",
+        "gap-list-for-weak-or-missing-checks",
+        "bounded-follow-up-checks-or-revisions",
+        "concise-verification-summary",
+        "audit-verdict-on-whether-coverage-is-strong-enough-for-the-curre"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-invariant-coverage-audit",
+        "produced_artifacts": [
+          "invariant-coverage-map",
+          "gap-list-for-weak-or-missing-checks",
+          "bounded-follow-up-checks-or-revisions",
+          "concise-verification-summary",
+          "audit-verdict-on-whether-coverage-is-strong-enough-for-the-curre"
+        ],
+        "verification_notes": [
+          "confirm each core invariant is named and mapped to a check",
+          "confirm the coverage gap list is specific and bounded",
+          "confirm another human can follow why the existing surface is or is not sufficient"
+        ],
+        "contract_notes": [
+          "every claimed invariant must be traceable to at least one check",
+          "the audit should distinguish real constraint from mere example repetition",
+          "the result should stay reviewable without sprawling into a full test strategy"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "display_name": "AoA Local Stack Bringup",
+      "description": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "selected local runtime, profile, or preset",
+        "available render-truth surface for the chosen runtime",
+        "available readiness or doctor surface for the chosen runtime",
+        "one explicit local lifecycle entrypoint",
+        "intended stop path or cleanup path"
+      ],
+      "outputs": [
+        "rendered runtime truth summary for what would actually start",
+        "selector-aware readiness verdict with named blockers or warnings",
+        "explicit go, hold, or confirm-before-launch recommendation",
+        "started bounded local stack with visible stop path, or a deferred-start report",
+        "concise runtime report with unresolved warnings, blockers, or cleanup notes"
+      ],
+      "verification": [
+        "confirm the rendered output answered what would actually start before launch",
+        "confirm the readiness verdict was selector-aware and itemized with visible severity",
+        "confirm blockers stopped the launch path or were explicitly deferred with explanation",
+        "confirm explicit operator intent or confirmation existed before the mutating launch step",
+        "confirm startup status named what started and how to stop it",
+        "confirm unresolved warnings, sensitive rendered material handling, and cleanup notes were reported clearly"
+      ],
+      "contracts": [
+        "render review happens before startup",
+        "readiness checks stay tied to the selected runtime rather than acting like one global score",
+        "startup remains explicit and reviewable rather than hiding behind ambient background state",
+        "the skill uses one bounded lifecycle entrypoint and one visible stop path",
+        "rendered truth, readiness, confirmation, and lifecycle remain distinct steps even when one script wraps parts of them together",
+        "the workflow stays local-stack oriented and does not widen into generic bootstrap, deployment, or monitoring doctrine"
+      ],
+      "consumes_artifact_tags": [
+        "selected-local-runtime-profile-or-preset",
+        "available-render-truth-surface-for-the-chosen-runtime",
+        "available-readiness-or-doctor-surface-for-the-chosen-runtime",
+        "one-explicit-local-lifecycle-entrypoint",
+        "intended-stop-path-or-cleanup-path"
+      ],
+      "provides_artifact_tags": [
+        "rendered-runtime-truth-summary-for-what-would-actually-start",
+        "selector-aware-readiness-verdict-with-named-blockers-or-warnings",
+        "explicit-go-hold-or-confirm-before-launch-recommendation",
+        "started-bounded-local-stack-with-visible-stop-path-or-a-deferred",
+        "concise-runtime-report-with-unresolved-warnings-blockers-or-clea"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-local-stack-bringup",
+        "produced_artifacts": [
+          "rendered-runtime-truth-summary-for-what-would-actually-start",
+          "selector-aware-readiness-verdict-with-named-blockers-or-warnings",
+          "explicit-go-hold-or-confirm-before-launch-recommendation",
+          "started-bounded-local-stack-with-visible-stop-path-or-a-deferred",
+          "concise-runtime-report-with-unresolved-warnings-blockers-or-clea"
+        ],
+        "verification_notes": [
+          "confirm the rendered output answered what would actually start before launch",
+          "confirm the readiness verdict was selector-aware and itemized with visible severity",
+          "confirm blockers stopped the launch path or were explicitly deferred with explanation"
+        ],
+        "contract_notes": [
+          "render review happens before startup",
+          "readiness checks stay tied to the selected runtime rather than acting like one global score",
+          "startup remains explicit and reviewable rather than hiding behind ambient background state"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "display_name": "AoA Port Adapter Refactor",
+      "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target module or slice",
+        "concrete dependency that currently leaks into the core logic",
+        "desired scope of refactor",
+        "validation expectations"
+      ],
+      "outputs": [
+        "clearer boundary between logic and infrastructure",
+        "proposed or implemented port shape",
+        "proposed or implemented adapter shape",
+        "verification summary"
+      ],
+      "verification": [
+        "confirm the concrete dependency pressure was real",
+        "confirm the new boundary is narrower and clearer than before",
+        "confirm behavior did not drift silently",
+        "confirm the refactor stayed inside the declared scope"
+      ],
+      "contracts": [
+        "the extracted boundary should reduce coupling, not add decorative abstraction",
+        "the port should stay narrow and purpose-shaped",
+        "the refactor should not widen into a hidden rewrite",
+        "the final result should remain understandable to another human or agent"
+      ],
+      "consumes_artifact_tags": [
+        "target-module-or-slice",
+        "concrete-dependency-that-currently-leaks-into-the-core-logic",
+        "desired-scope-of-refactor",
+        "validation-expectations"
+      ],
+      "provides_artifact_tags": [
+        "clearer-boundary-between-logic-and-infrastructure",
+        "proposed-or-implemented-port-shape",
+        "proposed-or-implemented-adapter-shape",
+        "verification-summary"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-port-adapter-refactor",
+        "produced_artifacts": [
+          "clearer-boundary-between-logic-and-infrastructure",
+          "proposed-or-implemented-port-shape",
+          "proposed-or-implemented-adapter-shape",
+          "verification-summary"
+        ],
+        "verification_notes": [
+          "confirm the concrete dependency pressure was real",
+          "confirm the new boundary is narrower and clearer than before",
+          "confirm behavior did not drift silently"
+        ],
+        "contract_notes": [
+          "the extracted boundary should reduce coupling, not add decorative abstraction",
+          "the port should stay narrow and purpose-shaped",
+          "the refactor should not widen into a hidden rewrite"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-property-invariants",
+      "display_name": "AoA Property Invariants",
+      "description": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target rule or domain truth",
+        "current examples or tests",
+        "input space or generators",
+        "known edge cases"
+      ],
+      "outputs": [
+        "explicit invariants",
+        "property-oriented tests or checks",
+        "notes on generator assumptions",
+        "verification summary"
+      ],
+      "verification": [
+        "confirm the property expresses a meaningful invariant",
+        "confirm the invariant broadens coverage beyond fixed examples",
+        "confirm the report names which stable truth was violated or protected, not only that generated inputs failed",
+        "confirm the result is understandable to another human or agent"
+      ],
+      "contracts": [
+        "each property should express a real invariant, not a wish",
+        "the test should broaden coverage beyond a small handpicked set",
+        "generator assumptions should remain understandable"
+      ],
+      "consumes_artifact_tags": [
+        "target-rule-or-domain-truth",
+        "current-examples-or-tests",
+        "input-space-or-generators",
+        "known-edge-cases"
+      ],
+      "provides_artifact_tags": [
+        "explicit-invariants",
+        "property-oriented-tests-or-checks",
+        "notes-on-generator-assumptions",
+        "verification-summary"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-property-invariants",
+        "produced_artifacts": [
+          "explicit-invariants",
+          "property-oriented-tests-or-checks",
+          "notes-on-generator-assumptions",
+          "verification-summary"
+        ],
+        "verification_notes": [
+          "confirm the property expresses a meaningful invariant",
+          "confirm the invariant broadens coverage beyond fixed examples",
+          "confirm the report names which stable truth was violated or protected, not only that generated inputs failed"
+        ],
+        "contract_notes": [
+          "each property should express a real invariant, not a wish",
+          "the test should broaden coverage beyond a small handpicked set",
+          "generator assumptions should remain understandable"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "display_name": "AoA Safe Infra Change",
+      "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "target change",
+        "touched operational surfaces",
+        "stated authority or approval state",
+        "validation path",
+        "rollback idea"
+      ],
+      "outputs": [
+        "explicit risk-aware plan",
+        "bounded infrastructure or config change, or bounded execution recommendation",
+        "verification result",
+        "report with remaining risk notes"
+      ],
+      "verification": [
+        "confirm the operational surface was named clearly",
+        "confirm the change stayed bounded",
+        "confirm verification was explicit and proportional to the risk",
+        "confirm rollback or recovery thinking was present before execution or recommendation",
+        "confirm the report includes unresolved risk or recovery notes"
+      ],
+      "contracts": [
+        "infrastructure changes should stay explicit and reviewable",
+        "risk should be named before apply, not after failure",
+        "verification should be stronger than symbolic confidence",
+        "rollback thinking should exist before execution"
+      ],
+      "consumes_artifact_tags": [
+        "target-change",
+        "touched-operational-surfaces",
+        "stated-authority-or-approval-state",
+        "validation-path",
+        "rollback-idea"
+      ],
+      "provides_artifact_tags": [
+        "explicit-risk-aware-plan",
+        "bounded-infrastructure-or-config-change-or-bounded-execution-rec",
+        "verification-result",
+        "report-with-remaining-risk-notes"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-safe-infra-change",
+        "produced_artifacts": [
+          "explicit-risk-aware-plan",
+          "bounded-infrastructure-or-config-change-or-bounded-execution-rec",
+          "verification-result",
+          "report-with-remaining-risk-notes"
+        ],
+        "verification_notes": [
+          "confirm the operational surface was named clearly",
+          "confirm the change stayed bounded",
+          "confirm verification was explicit and proportional to the risk"
+        ],
+        "contract_notes": [
+          "infrastructure changes should stay explicit and reviewable",
+          "risk should be named before apply, not after failure",
+          "verification should be stronger than symbolic confidence"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "display_name": "AoA Sanitized Share",
+      "description": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "material to be shared",
+        "sharing audience or context",
+        "known sensitive surfaces",
+        "acceptable level of abstraction"
+      ],
+      "outputs": [
+        "sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly",
+        "note on what was generalized or removed",
+        "warning about any remaining ambiguity or sensitive edge",
+        "canonical public-safe output location or reference"
+      ],
+      "verification": [
+        "confirm obvious sensitive surfaces were checked",
+        "confirm the resulting artifact is still understandable",
+        "confirm the sanitization level matches the intended audience",
+        "confirm raw sensitive detail was not preserved by accident",
+        "confirm remaining uncertainty is named rather than ignored",
+        "confirm the sanitized output lives in the expected public-safe location or reference",
+        "confirm the raw/shareable split is still obvious after editing"
+      ],
+      "contracts": [
+        "shareable output should not leak secrets or private infrastructure detail",
+        "sanitization should preserve meaning where possible",
+        "generalization should not silently change the core lesson beyond recognition",
+        "uncertainty about sensitivity should lean toward caution",
+        "raw material and shareable output should remain clearly separated",
+        "the sanitized artifact should be discoverable from the expected public-safe surface"
+      ],
+      "consumes_artifact_tags": [
+        "material-to-be-shared",
+        "sharing-audience-or-context",
+        "known-sensitive-surfaces",
+        "acceptable-level-of-abstraction"
+      ],
+      "provides_artifact_tags": [
+        "sanitized-shareable-artifact-abstract-summary-or-recommendation-",
+        "note-on-what-was-generalized-or-removed",
+        "warning-about-any-remaining-ambiguity-or-sensitive-edge",
+        "canonical-public-safe-output-location-or-reference"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-sanitized-share",
+        "produced_artifacts": [
+          "sanitized-shareable-artifact-abstract-summary-or-recommendation-",
+          "note-on-what-was-generalized-or-removed",
+          "warning-about-any-remaining-ambiguity-or-sensitive-edge",
+          "canonical-public-safe-output-location-or-reference"
+        ],
+        "verification_notes": [
+          "confirm obvious sensitive surfaces were checked",
+          "confirm the resulting artifact is still understandable",
+          "confirm the sanitization level matches the intended audience"
+        ],
+        "contract_notes": [
+          "shareable output should not leak secrets or private infrastructure detail",
+          "sanitization should preserve meaning where possible",
+          "generalization should not silently change the core lesson beyond recognition"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "display_name": "AoA Source Of Truth Check",
+      "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "repository docs surface",
+        "target area of ambiguity or overlap",
+        "known canonical files if any",
+        "current contributor confusion points"
+      ],
+      "outputs": [
+        "clearer source-of-truth map",
+        "fan-out map when one source feeds multiple downstream consumers",
+        "note of overlaps or conflicts",
+        "proposed or implemented document role clarification",
+        "lightweight snapshot guidance for entrypoint docs when canonical homes already exist",
+        "verification summary"
+      ],
+      "verification": [
+        "confirm the main source-of-truth ambiguity was reduced",
+        "confirm authoritative files are named explicitly",
+        "confirm overlaps or conflicts were surfaced rather than hidden",
+        "confirm summary docs stay short and route detail to canonical homes where those already exist",
+        "confirm the result helps future contributors orient faster"
+      ],
+      "contracts": [
+        "authoritative sources should be visible and named explicitly",
+        "overview documents should not silently replace canonical ones",
+        "lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters",
+        "role separation should reduce confusion, not create extra ceremony",
+        "the resulting guidance should be understandable to another human or agent"
+      ],
+      "consumes_artifact_tags": [
+        "repository-docs-surface",
+        "target-area-of-ambiguity-or-overlap",
+        "known-canonical-files-if-any",
+        "current-contributor-confusion-points"
+      ],
+      "provides_artifact_tags": [
+        "clearer-source-of-truth-map",
+        "fan-out-map-when-one-source-feeds-multiple-downstream-consumers",
+        "note-of-overlaps-or-conflicts",
+        "proposed-or-implemented-document-role-clarification",
+        "lightweight-snapshot-guidance-for-entrypoint-docs-when-canonical",
+        "verification-summary"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-source-of-truth-check",
+        "produced_artifacts": [
+          "clearer-source-of-truth-map",
+          "fan-out-map-when-one-source-feeds-multiple-downstream-consumers",
+          "note-of-overlaps-or-conflicts",
+          "proposed-or-implemented-document-role-clarification",
+          "lightweight-snapshot-guidance-for-entrypoint-docs-when-canonical",
+          "verification-summary"
+        ],
+        "verification_notes": [
+          "confirm the main source-of-truth ambiguity was reduced",
+          "confirm authoritative files are named explicitly",
+          "confirm overlaps or conflicts were surfaced rather than hidden"
+        ],
+        "contract_notes": [
+          "authoritative sources should be visible and named explicitly",
+          "overview documents should not silently replace canonical ones",
+          "lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "display_name": "AoA TDD Slice",
+      "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "desired behavior",
+        "target module or slice",
+        "constraints and non-goals",
+        "available test surface"
+      ],
+      "outputs": [
+        "new or updated tests",
+        "minimal implementation",
+        "small refactor if needed",
+        "verification summary"
+      ],
+      "verification": [
+        "confirm tests were added or updated first when the task was suitable for TDD",
+        "confirm the implementation stayed bounded",
+        "confirm the relevant test suite passed",
+        "confirm the report names the covered behavior and the untouched behavior"
+      ],
+      "contracts": [
+        "behavior should be made explicit before implementation when reasonably possible",
+        "the implementation should stay bounded to the slice",
+        "unrelated refactors should be avoided",
+        "tests should express behavior, not incidental implementation detail"
+      ],
+      "consumes_artifact_tags": [
+        "desired-behavior",
+        "target-module-or-slice",
+        "constraints-and-non-goals",
+        "available-test-surface"
+      ],
+      "provides_artifact_tags": [
+        "new-or-updated-tests",
+        "minimal-implementation",
+        "small-refactor-if-needed",
+        "verification-summary"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-tdd-slice",
+        "produced_artifacts": [
+          "new-or-updated-tests",
+          "minimal-implementation",
+          "small-refactor-if-needed",
+          "verification-summary"
+        ],
+        "verification_notes": [
+          "confirm tests were added or updated first when the task was suitable for TDD",
+          "confirm the implementation stayed bounded",
+          "confirm the relevant test suite passed"
+        ],
+        "contract_notes": [
+          "behavior should be made explicit before implementation when reasonably possible",
+          "the implementation should stay bounded to the slice",
+          "unrelated refactors should be avoided"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "atm10-change-protocol",
+      "display_name": "ATM10 Change Protocol",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "target goal and touched local surface",
+        "repo-relative source-of-truth files",
+        "repo-relative commands or checks",
+        "local approval or review rules",
+        "base skill reference"
+      ],
+      "outputs": [
+        "bounded local change plan",
+        "repo-relative command or path sketch",
+        "pointer to the family review surface",
+        "verification note for the local repo surface",
+        "concise handoff on what stays downstream and explicit"
+      ],
+      "verification": [
+        "confirm the base skill is still the correct workflow",
+        "confirm repo-relative paths and commands are named explicitly",
+        "confirm approval posture is still downstream and explicit",
+        "confirm the adaptation remains bounded to the local repo surface",
+        "confirm the family review doc and bundle-local checklist stay aligned"
+      ],
+      "contracts": [
+        "preserve the base skill meaning",
+        "keep paths and commands repo-relative",
+        "keep local authority explicit",
+        "keep the overlay reviewable and public-safe"
+      ],
+      "consumes_artifact_tags": [
+        "target-goal-and-touched-local-surface",
+        "repo-relative-source-of-truth-files",
+        "repo-relative-commands-or-checks",
+        "local-approval-or-review-rules",
+        "base-skill-reference"
+      ],
+      "provides_artifact_tags": [
+        "bounded-local-change-plan",
+        "repo-relative-command-or-path-sketch",
+        "pointer-to-the-family-review-surface",
+        "verification-note-for-the-local-repo-surface",
+        "concise-handoff-on-what-stays-downstream-and-explicit"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "atm10-change-protocol",
+        "produced_artifacts": [
+          "bounded-local-change-plan",
+          "repo-relative-command-or-path-sketch",
+          "pointer-to-the-family-review-surface",
+          "verification-note-for-the-local-repo-surface",
+          "concise-handoff-on-what-stays-downstream-and-explicit"
+        ],
+        "verification_notes": [
+          "confirm the base skill is still the correct workflow",
+          "confirm repo-relative paths and commands are named explicitly",
+          "confirm approval posture is still downstream and explicit"
+        ],
+        "contract_notes": [
+          "preserve the base skill meaning",
+          "keep paths and commands repo-relative",
+          "keep local authority explicit"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "display_name": "ATM10 Source Of Truth Check",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "repo-relative docs or guidance surfaces",
+        "local canonical-file candidates",
+        "local review rules for doc changes",
+        "contributor confusion points",
+        "base skill reference"
+      ],
+      "outputs": [
+        "local source-of-truth map",
+        "bounded clarification note",
+        "repo-relative canonical-file pattern",
+        "pointer to the family review surface",
+        "verification summary for the local docs surface"
+      ],
+      "verification": [
+        "confirm the base skill is still the right workflow",
+        "confirm authoritative repo-relative files are named explicitly",
+        "confirm local review posture is visible rather than implied",
+        "confirm the adaptation reduces ambiguity without widening scope",
+        "confirm the family review doc and bundle-local checklist stay aligned"
+      ],
+      "contracts": [
+        "preserve the base skill meaning",
+        "keep local file maps repo-relative and explicit",
+        "surface local authority and review posture without hiding it",
+        "keep the overlay public-safe and reviewable"
+      ],
+      "consumes_artifact_tags": [
+        "repo-relative-docs-or-guidance-surfaces",
+        "local-canonical-file-candidates",
+        "local-review-rules-for-doc-changes",
+        "contributor-confusion-points",
+        "base-skill-reference"
+      ],
+      "provides_artifact_tags": [
+        "local-source-of-truth-map",
+        "bounded-clarification-note",
+        "repo-relative-canonical-file-pattern",
+        "pointer-to-the-family-review-surface",
+        "verification-summary-for-the-local-docs-surface"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "atm10-source-of-truth-check",
+        "produced_artifacts": [
+          "local-source-of-truth-map",
+          "bounded-clarification-note",
+          "repo-relative-canonical-file-pattern",
+          "pointer-to-the-family-review-surface",
+          "verification-summary-for-the-local-docs-surface"
+        ],
+        "verification_notes": [
+          "confirm the base skill is still the right workflow",
+          "confirm authoritative repo-relative files are named explicitly",
+          "confirm local review posture is visible rather than implied"
+        ],
+        "contract_notes": [
+          "preserve the base skill meaning",
+          "keep local file maps repo-relative and explicit",
+          "surface local authority and review posture without hiding it"
+        ],
+        "next_recommended_skills": []
+      }
+    }
+  ]
+}

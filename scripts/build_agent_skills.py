@@ -7,6 +7,7 @@ import argparse
 import copy
 import json
 import pathlib
+import re
 import shutil
 from typing import Any
 
@@ -42,6 +43,7 @@ GENERATED_PORTABLE_FILES = [
     "generated/portable_export_map.json",
     "generated/local_adapter_manifest.json",
     "generated/local_adapter_manifest.min.json",
+    "generated/skill_handoff_contracts.json",
     "generated/context_retention_manifest.json",
     "generated/trust_policy_matrix.json",
     "generated/skill_runtime_contracts.json",
@@ -115,19 +117,52 @@ def parse_frontmatter(path: pathlib.Path) -> tuple[dict[str, Any], str]:
     return data, body
 
 
-def extract_bullets(markdown: str, limit: int = 3) -> list[str]:
+def normalize_space(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip()
+
+
+TOKEN_RE = re.compile(r"[a-z0-9]+")
+
+
+def slugify(text: str) -> str:
+    value = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    value = re.sub(r"-+", "-", value)
+    return value or "artifact"
+
+
+def unique_preserve(items: list[str]) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in items:
+        if item not in seen:
+            seen.add(item)
+            out.append(item)
+    return out
+
+
+def artifact_tags(items: list[str], limit: int = 8) -> list[str]:
+    tags = [slugify(item)[:64] for item in items if item]
+    tags = [tag for tag in tags if tag]
+    return unique_preserve(tags)[:limit]
+
+
+def section_map(skill: dict[str, Any]) -> dict[str, str]:
+    return {section["heading"]: section["content_markdown"] for section in skill["sections"]}
+
+
+def extract_bullets(markdown: str, limit: int | None = 3) -> list[str]:
     items: list[str] = []
     for raw_line in markdown.splitlines():
         line = raw_line.strip()
         if not line:
             continue
         if line.startswith("- "):
-            items.append(line[2:].strip())
+            items.append(normalize_space(line[2:]))
         elif line[:2].isdigit() and ". " in line[:4]:
-            items.append(line.split(". ", 1)[1].strip())
+            items.append(normalize_space(line.split(". ", 1)[1]))
         elif line[:1].isdigit() and ". " in line[:3]:
-            items.append(line.split(". ", 1)[1].strip())
-        if len(items) >= limit:
+            items.append(normalize_space(line.split(". ", 1)[1]))
+        if limit is not None and len(items) >= limit:
             break
     return items
 
@@ -342,6 +377,40 @@ def build_runtime_entry(
         "resource_inventory": inventory,
         "context_retention_ref": f"generated/context_retention_manifest.json#{skill['name']}",
         "notes": policy_entry["notes"],
+    }
+
+
+def build_handoff_entry(
+    *,
+    skill: dict[str, Any],
+    catalog_entry: dict[str, Any],
+    override: dict[str, Any],
+) -> dict[str, Any]:
+    sections = section_map(skill)
+    inputs = extract_bullets(sections.get("Inputs", ""), limit=None)
+    outputs = extract_bullets(sections.get("Outputs", ""), limit=None)
+    verification = extract_bullets(sections.get("Verification", ""), limit=None)
+    contracts = extract_bullets(sections.get("Contracts", ""), limit=None)
+    consumes = artifact_tags(inputs)
+    provides = artifact_tags(outputs)
+    return {
+        "name": skill["name"],
+        "display_name": titleize_skill_name(skill["name"]),
+        "description": override["description"],
+        "invocation_mode": catalog_entry["invocation_mode"],
+        "inputs": inputs,
+        "outputs": outputs,
+        "verification": verification,
+        "contracts": contracts,
+        "consumes_artifact_tags": consumes,
+        "provides_artifact_tags": provides,
+        "handoff_packet_template": {
+            "from_skill": skill["name"],
+            "produced_artifacts": provides,
+            "verification_notes": verification[:3],
+            "contract_notes": contracts[:3],
+            "next_recommended_skills": [],
+        },
     }
 
 
@@ -586,6 +655,12 @@ def main() -> int:
         "profile": EXPORT_PROFILE,
         "skills": [],
     }
+    handoff_contracts = {
+        "schema_version": 1,
+        "profile": EXPORT_PROFILE,
+        "source_of_truth": "generated/skill_sections.full.json",
+        "skills": [],
+    }
     trust_matrix = {
         "schema_version": 1,
         "profile": EXPORT_PROFILE,
@@ -688,6 +763,13 @@ def main() -> int:
             policy_entry=policy_entry,
         )
         context_manifest["skills"].append(context_entry)
+        handoff_contracts["skills"].append(
+            build_handoff_entry(
+                skill=skill,
+                catalog_entry=catalog_entry,
+                override=override,
+            )
+        )
         trust_matrix["skills"].append(trust_entry)
         runtime_contracts["skills"].append(runtime_entry)
 
@@ -707,6 +789,7 @@ def main() -> int:
     (generated_dir / "portable_export_map.json").write_text(json.dumps(export_map, indent=2) + "\n", encoding="utf-8")
     (generated_dir / "local_adapter_manifest.json").write_text(json.dumps(local_manifest, indent=2) + "\n", encoding="utf-8")
     (generated_dir / "local_adapter_manifest.min.json").write_text(json.dumps(local_manifest_min, indent=2) + "\n", encoding="utf-8")
+    (generated_dir / "skill_handoff_contracts.json").write_text(json.dumps(handoff_contracts, indent=2) + "\n", encoding="utf-8")
     (generated_dir / "context_retention_manifest.json").write_text(json.dumps(context_manifest, indent=2) + "\n", encoding="utf-8")
     (generated_dir / "trust_policy_matrix.json").write_text(json.dumps(trust_matrix, indent=2) + "\n", encoding="utf-8")
     (generated_dir / "skill_runtime_contracts.json").write_text(json.dumps(runtime_contracts, indent=2) + "\n", encoding="utf-8")
