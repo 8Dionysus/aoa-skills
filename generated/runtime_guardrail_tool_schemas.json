@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-6-runtime-guardrails",
+  "tools": [
+    {
+      "name": "guarded_discover_skills",
+      "description": "Discover AoA skills through a trust-gated catalog. Repo-scoped skills stay hidden until the repository is trusted.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "trust_store": {
+            "type": "string"
+          },
+          "repo_trusted": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "true",
+              "false"
+            ]
+          },
+          "include_blocked": {
+            "type": "boolean"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py discover"
+    },
+    {
+      "name": "guarded_disclose_skill",
+      "description": "Preview a skill through the trust gate. Returns a blocked payload instead of disclosing skill internals when the repo is untrusted.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "enum": [
+              "aoa-adr-write",
+              "aoa-approval-gate-check",
+              "aoa-bounded-context-map",
+              "aoa-change-protocol",
+              "aoa-contract-test",
+              "aoa-core-logic-boundary",
+              "aoa-dry-run-first",
+              "aoa-invariant-coverage-audit",
+              "aoa-local-stack-bringup",
+              "aoa-port-adapter-refactor",
+              "aoa-property-invariants",
+              "aoa-safe-infra-change",
+              "aoa-sanitized-share",
+              "aoa-source-of-truth-check",
+              "aoa-tdd-slice",
+              "atm10-change-protocol",
+              "atm10-source-of-truth-check"
+            ]
+          },
+          "trust_store": {
+            "type": "string"
+          },
+          "repo_trusted": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "true",
+              "false"
+            ]
+          }
+        },
+        "required": [
+          "skill_name"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py disclose"
+    },
+    {
+      "name": "guarded_activate_skill",
+      "description": "Activate a skill with repo trust enforcement, read-only allowlist resolution, and compaction-safe session tracking.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "enum": [
+              "aoa-adr-write",
+              "aoa-approval-gate-check",
+              "aoa-bounded-context-map",
+              "aoa-change-protocol",
+              "aoa-contract-test",
+              "aoa-core-logic-boundary",
+              "aoa-dry-run-first",
+              "aoa-invariant-coverage-audit",
+              "aoa-local-stack-bringup",
+              "aoa-port-adapter-refactor",
+              "aoa-property-invariants",
+              "aoa-safe-infra-change",
+              "aoa-sanitized-share",
+              "aoa-source-of-truth-check",
+              "aoa-tdd-slice",
+              "atm10-change-protocol",
+              "atm10-source-of-truth-check"
+            ]
+          },
+          "session_file": {
+            "type": "string"
+          },
+          "explicit_handle": {
+            "type": "string"
+          },
+          "trust_store": {
+            "type": "string"
+          },
+          "repo_trusted": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "true",
+              "false"
+            ]
+          },
+          "include_frontmatter": {
+            "type": "boolean"
+          },
+          "wrap_mode": {
+            "type": "string",
+            "enum": [
+              "structured",
+              "markdown",
+              "raw"
+            ]
+          }
+        },
+        "required": [
+          "skill_name"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py activate"
+    },
+    {
+      "name": "guarded_skill_session_status",
+      "description": "Show the current governed skill session, including trust state, pinned skill packets, and allowlist coverage.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "session_file": {
+            "type": "string"
+          },
+          "trust_store": {
+            "type": "string"
+          },
+          "repo_trusted": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "true",
+              "false"
+            ]
+          }
+        },
+        "required": [
+          "session_file"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py status"
+    },
+    {
+      "name": "repo_trust_gate",
+      "description": "Read or update the trust decision for the current repository before repo-scoped skills become visible.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "trust_store": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "trusted",
+              "untrusted",
+              "clear"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py trust"
+    },
+    {
+      "name": "resolve_skill_allowlist",
+      "description": "Resolve the read-only allowlist paths for one skill or the currently active governed skill session.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "enum": [
+              "aoa-adr-write",
+              "aoa-approval-gate-check",
+              "aoa-bounded-context-map",
+              "aoa-change-protocol",
+              "aoa-contract-test",
+              "aoa-core-logic-boundary",
+              "aoa-dry-run-first",
+              "aoa-invariant-coverage-audit",
+              "aoa-local-stack-bringup",
+              "aoa-port-adapter-refactor",
+              "aoa-property-invariants",
+              "aoa-safe-infra-change",
+              "aoa-sanitized-share",
+              "aoa-source-of-truth-check",
+              "aoa-tdd-slice",
+              "atm10-change-protocol",
+              "atm10-source-of-truth-check"
+            ]
+          },
+          "session_file": {
+            "type": "string"
+          },
+          "adapter": {
+            "type": "string",
+            "enum": [
+              "generic",
+              "local-shell",
+              "codex-local",
+              "codex-worktree"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py allowlist"
+    },
+    {
+      "name": "guarded_compact_skill_session",
+      "description": "Emit protected compaction packets for the governed skill session, carrying trust state, allowlist paths, and dedupe keys.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "session_file": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "session_file"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py compact"
+    },
+    {
+      "name": "rehydrate_skill_context",
+      "description": "Rebuild the minimal rehydration packets and suggested activation calls for active governed skills after compaction.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "session_file": {
+            "type": "string"
+          },
+          "skill_name": {
+            "type": "string",
+            "enum": [
+              "aoa-adr-write",
+              "aoa-approval-gate-check",
+              "aoa-bounded-context-map",
+              "aoa-change-protocol",
+              "aoa-contract-test",
+              "aoa-core-logic-boundary",
+              "aoa-dry-run-first",
+              "aoa-invariant-coverage-audit",
+              "aoa-local-stack-bringup",
+              "aoa-port-adapter-refactor",
+              "aoa-property-invariants",
+              "aoa-safe-infra-change",
+              "aoa-sanitized-share",
+              "aoa-source-of-truth-check",
+              "aoa-tdd-slice",
+              "atm10-change-protocol",
+              "atm10-source-of-truth-check"
+            ]
+          },
+          "include_activation_call": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "session_file"
+        ],
+        "additionalProperties": false
+      },
+      "output_ref": "scripts/skill_runtime_guardrails.py rehydrate"
+    }
+  ]
+}

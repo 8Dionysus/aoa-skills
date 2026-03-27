@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "description": "Example trust store for guarded AoA runtime skill loading.",
+  "entries": [
+    {
+      "repo_root": "/absolute/path/to/repository",
+      "git_origin_url": "git@github.com:8Dionysus/aoa-skills.git",
+      "repo_id": "replace-with-runtime-computed-id",
+      "decision": "trusted",
+      "reason": "Reviewed repo-local skills and accepted them for activation.",
+      "updated_at": "2026-03-26T00:00:00Z"
+    }
+  ]
+}

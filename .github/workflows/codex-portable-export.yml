@@ -27,6 +27,9 @@ jobs:
       - name: Build runtime seam
         run: python scripts/build_runtime_seam.py --repo-root .
 
+      - name: Build runtime guardrails
+        run: python scripts/build_runtime_guardrails.py --repo-root .
+
       - name: Validate export
         run: python scripts/validate_agent_skills.py --repo-root .
 
@@ -43,6 +46,8 @@ jobs:
           python -m unittest tests/test_wave3_runtime_contract.py
           python -m unittest tests/test_wave4_runtime_seam_toolchain.py
           python -m unittest tests/test_wave4_runtime_session.py
+          python -m unittest tests/test_wave6_runtime_guardrails_builder.py
+          python -m unittest tests/test_wave6_runtime_guardrails.py
 
       - name: Check generated drift
         run: |
@@ -68,4 +73,13 @@ jobs:
             generated/runtime_prompt_blocks.json \
             generated/runtime_router_hints.json \
             generated/runtime_seam_manifest.json \
+            generated/repo_trust_gate_manifest.json \
+            generated/permission_allowlist_manifest.json \
+            generated/skill_context_guard_manifest.json \
+            generated/runtime_guardrail_tool_schemas.json \
+            generated/runtime_guardrail_prompt_blocks.json \
+            generated/runtime_guardrail_manifest.json \
+            examples/repo-trust-store.json \
+            examples/permission-allowlist.json \
+            examples/guardrailed-runtime-config.json \
             generated/release_manifest.json

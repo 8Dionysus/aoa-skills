@@ -59,6 +59,12 @@ GENERATED_PORTABLE_FILES = [
     "generated/runtime_prompt_blocks.json",
     "generated/runtime_router_hints.json",
     "generated/runtime_seam_manifest.json",
+    "generated/repo_trust_gate_manifest.json",
+    "generated/permission_allowlist_manifest.json",
+    "generated/skill_context_guard_manifest.json",
+    "generated/runtime_guardrail_tool_schemas.json",
+    "generated/runtime_guardrail_prompt_blocks.json",
+    "generated/runtime_guardrail_manifest.json",
     "generated/release_manifest.json",
 ]
 
@@ -564,7 +570,7 @@ def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict
     return {
         "schema_version": 1,
         "profile": EXPORT_PROFILE,
-        "included_waves": [1, 2, 3, 4],
+        "included_waves": [1, 2, 3, 4, 6],
         "skill_root": ".agents/skills",
         "skill_count": len(catalog_full["skills"]),
         "explicit_only_count": sum(1 for entry in catalog_full["skills"] if not entry["allow_implicit_invocation"]),

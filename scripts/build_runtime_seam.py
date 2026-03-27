@@ -373,7 +373,17 @@ def build_session_contract() -> dict[str, Any]:
 
 def build_release_manifest(existing: dict[str, Any], generated_files: list[str], skill_count: int, explicit_only_count: int, profile_count: int) -> dict[str, Any]:
     release_doc = dict(existing)
-    release_doc["included_waves"] = [1, 2, 3, 4]
+    waves: list[int] = []
+    for wave in existing.get("included_waves", []):
+        if wave == 5:
+            continue
+        if wave not in waves:
+            waves.append(wave)
+    if 4 not in waves:
+        waves.append(4)
+    if 6 in existing.get("included_waves", []) and 6 not in waves:
+        waves.append(6)
+    release_doc["included_waves"] = waves
     release_doc["skill_count"] = skill_count
     release_doc["explicit_only_count"] = explicit_only_count
     release_doc["profile_count"] = profile_count

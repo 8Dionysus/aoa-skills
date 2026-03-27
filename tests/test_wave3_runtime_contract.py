@@ -17,6 +17,8 @@ class Wave3RuntimeContractTests(unittest.TestCase):
             ".",
             "--skill",
             "aoa-change-protocol",
+            "--repo-trusted",
+            "true",
             "--format",
             "json",
         ]
@@ -38,6 +40,8 @@ class Wave3RuntimeContractTests(unittest.TestCase):
         self.assertIn("context_retention", payload)
         self.assertIn("trust_policy", payload)
         self.assertEqual(payload["runtime_contract"]["name"], "aoa-change-protocol")
+        self.assertIn("trust_status", payload)
+        self.assertIn("governance", payload)
 
 
 if __name__ == "__main__":

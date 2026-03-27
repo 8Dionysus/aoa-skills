@@ -1,0 +1,744 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-6-runtime-guardrails",
+  "description": "Read-only path allowlists for skill resource directories. Union the paths for active skills and keep them readable without per-file prompts.",
+  "adapter_notes": {
+    "read_access": "read-only",
+    "merge_strategy": "union-active-skills",
+    "eager_read": false,
+    "adapter_expectation": "local wrappers should allow read access to skill directories before file-level prompts fire"
+  },
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "display_name": "AoA ADR Write",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-adr-write",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-adr-write",
+          "$REPO_ROOT/.agents/skills/aoa-adr-write/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-adr-write/references",
+          "$REPO_ROOT/.agents/skills/aoa-adr-write/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-adr-write",
+          "$HOME/.agents/skills/aoa-adr-write/scripts",
+          "$HOME/.agents/skills/aoa-adr-write/references",
+          "$HOME/.agents/skills/aoa-adr-write/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-adr-write",
+          "/etc/codex/skills/aoa-adr-write/scripts",
+          "/etc/codex/skills/aoa-adr-write/references",
+          "/etc/codex/skills/aoa-adr-write/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-adr-write",
+        ".agents/skills/aoa-adr-write/scripts",
+        ".agents/skills/aoa-adr-write/references",
+        ".agents/skills/aoa-adr-write/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "display_name": "AoA Approval Gate Check",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-approval-gate-check",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check",
+          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/references",
+          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-approval-gate-check",
+          "$HOME/.agents/skills/aoa-approval-gate-check/scripts",
+          "$HOME/.agents/skills/aoa-approval-gate-check/references",
+          "$HOME/.agents/skills/aoa-approval-gate-check/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-approval-gate-check",
+          "/etc/codex/skills/aoa-approval-gate-check/scripts",
+          "/etc/codex/skills/aoa-approval-gate-check/references",
+          "/etc/codex/skills/aoa-approval-gate-check/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-approval-gate-check",
+        ".agents/skills/aoa-approval-gate-check/scripts",
+        ".agents/skills/aoa-approval-gate-check/references",
+        ".agents/skills/aoa-approval-gate-check/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "display_name": "AoA Bounded Context Map",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-bounded-context-map",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map",
+          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/references",
+          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-bounded-context-map",
+          "$HOME/.agents/skills/aoa-bounded-context-map/scripts",
+          "$HOME/.agents/skills/aoa-bounded-context-map/references",
+          "$HOME/.agents/skills/aoa-bounded-context-map/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-bounded-context-map",
+          "/etc/codex/skills/aoa-bounded-context-map/scripts",
+          "/etc/codex/skills/aoa-bounded-context-map/references",
+          "/etc/codex/skills/aoa-bounded-context-map/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-bounded-context-map",
+        ".agents/skills/aoa-bounded-context-map/scripts",
+        ".agents/skills/aoa-bounded-context-map/references",
+        ".agents/skills/aoa-bounded-context-map/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-change-protocol",
+      "display_name": "AoA Change Protocol",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-change-protocol",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-change-protocol",
+          "$REPO_ROOT/.agents/skills/aoa-change-protocol/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-change-protocol/references",
+          "$REPO_ROOT/.agents/skills/aoa-change-protocol/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-change-protocol",
+          "$HOME/.agents/skills/aoa-change-protocol/scripts",
+          "$HOME/.agents/skills/aoa-change-protocol/references",
+          "$HOME/.agents/skills/aoa-change-protocol/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-change-protocol",
+          "/etc/codex/skills/aoa-change-protocol/scripts",
+          "/etc/codex/skills/aoa-change-protocol/references",
+          "/etc/codex/skills/aoa-change-protocol/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-change-protocol",
+        ".agents/skills/aoa-change-protocol/scripts",
+        ".agents/skills/aoa-change-protocol/references",
+        ".agents/skills/aoa-change-protocol/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-contract-test",
+      "display_name": "AoA Contract Test",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-contract-test",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-contract-test",
+          "$REPO_ROOT/.agents/skills/aoa-contract-test/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-contract-test/references",
+          "$REPO_ROOT/.agents/skills/aoa-contract-test/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-contract-test",
+          "$HOME/.agents/skills/aoa-contract-test/scripts",
+          "$HOME/.agents/skills/aoa-contract-test/references",
+          "$HOME/.agents/skills/aoa-contract-test/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-contract-test",
+          "/etc/codex/skills/aoa-contract-test/scripts",
+          "/etc/codex/skills/aoa-contract-test/references",
+          "/etc/codex/skills/aoa-contract-test/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-contract-test",
+        ".agents/skills/aoa-contract-test/scripts",
+        ".agents/skills/aoa-contract-test/references",
+        ".agents/skills/aoa-contract-test/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "display_name": "AoA Core Logic Boundary",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-core-logic-boundary",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary",
+          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/references",
+          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-core-logic-boundary",
+          "$HOME/.agents/skills/aoa-core-logic-boundary/scripts",
+          "$HOME/.agents/skills/aoa-core-logic-boundary/references",
+          "$HOME/.agents/skills/aoa-core-logic-boundary/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-core-logic-boundary",
+          "/etc/codex/skills/aoa-core-logic-boundary/scripts",
+          "/etc/codex/skills/aoa-core-logic-boundary/references",
+          "/etc/codex/skills/aoa-core-logic-boundary/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-core-logic-boundary",
+        ".agents/skills/aoa-core-logic-boundary/scripts",
+        ".agents/skills/aoa-core-logic-boundary/references",
+        ".agents/skills/aoa-core-logic-boundary/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "display_name": "AoA Dry Run First",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-dry-run-first",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-dry-run-first",
+          "$REPO_ROOT/.agents/skills/aoa-dry-run-first/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-dry-run-first/references",
+          "$REPO_ROOT/.agents/skills/aoa-dry-run-first/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-dry-run-first",
+          "$HOME/.agents/skills/aoa-dry-run-first/scripts",
+          "$HOME/.agents/skills/aoa-dry-run-first/references",
+          "$HOME/.agents/skills/aoa-dry-run-first/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-dry-run-first",
+          "/etc/codex/skills/aoa-dry-run-first/scripts",
+          "/etc/codex/skills/aoa-dry-run-first/references",
+          "/etc/codex/skills/aoa-dry-run-first/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-dry-run-first",
+        ".agents/skills/aoa-dry-run-first/scripts",
+        ".agents/skills/aoa-dry-run-first/references",
+        ".agents/skills/aoa-dry-run-first/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "display_name": "AoA Invariant Coverage Audit",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-invariant-coverage-audit",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit",
+          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/references",
+          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-invariant-coverage-audit",
+          "$HOME/.agents/skills/aoa-invariant-coverage-audit/scripts",
+          "$HOME/.agents/skills/aoa-invariant-coverage-audit/references",
+          "$HOME/.agents/skills/aoa-invariant-coverage-audit/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-invariant-coverage-audit",
+          "/etc/codex/skills/aoa-invariant-coverage-audit/scripts",
+          "/etc/codex/skills/aoa-invariant-coverage-audit/references",
+          "/etc/codex/skills/aoa-invariant-coverage-audit/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-invariant-coverage-audit",
+        ".agents/skills/aoa-invariant-coverage-audit/scripts",
+        ".agents/skills/aoa-invariant-coverage-audit/references",
+        ".agents/skills/aoa-invariant-coverage-audit/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "display_name": "AoA Local Stack Bringup",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-local-stack-bringup",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup",
+          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/references",
+          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-local-stack-bringup",
+          "$HOME/.agents/skills/aoa-local-stack-bringup/scripts",
+          "$HOME/.agents/skills/aoa-local-stack-bringup/references",
+          "$HOME/.agents/skills/aoa-local-stack-bringup/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-local-stack-bringup",
+          "/etc/codex/skills/aoa-local-stack-bringup/scripts",
+          "/etc/codex/skills/aoa-local-stack-bringup/references",
+          "/etc/codex/skills/aoa-local-stack-bringup/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-local-stack-bringup",
+        ".agents/skills/aoa-local-stack-bringup/scripts",
+        ".agents/skills/aoa-local-stack-bringup/references",
+        ".agents/skills/aoa-local-stack-bringup/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "display_name": "AoA Port Adapter Refactor",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-port-adapter-refactor",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor",
+          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/references",
+          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-port-adapter-refactor",
+          "$HOME/.agents/skills/aoa-port-adapter-refactor/scripts",
+          "$HOME/.agents/skills/aoa-port-adapter-refactor/references",
+          "$HOME/.agents/skills/aoa-port-adapter-refactor/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-port-adapter-refactor",
+          "/etc/codex/skills/aoa-port-adapter-refactor/scripts",
+          "/etc/codex/skills/aoa-port-adapter-refactor/references",
+          "/etc/codex/skills/aoa-port-adapter-refactor/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-port-adapter-refactor",
+        ".agents/skills/aoa-port-adapter-refactor/scripts",
+        ".agents/skills/aoa-port-adapter-refactor/references",
+        ".agents/skills/aoa-port-adapter-refactor/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-property-invariants",
+      "display_name": "AoA Property Invariants",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-property-invariants",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-property-invariants",
+          "$REPO_ROOT/.agents/skills/aoa-property-invariants/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-property-invariants/references",
+          "$REPO_ROOT/.agents/skills/aoa-property-invariants/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-property-invariants",
+          "$HOME/.agents/skills/aoa-property-invariants/scripts",
+          "$HOME/.agents/skills/aoa-property-invariants/references",
+          "$HOME/.agents/skills/aoa-property-invariants/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-property-invariants",
+          "/etc/codex/skills/aoa-property-invariants/scripts",
+          "/etc/codex/skills/aoa-property-invariants/references",
+          "/etc/codex/skills/aoa-property-invariants/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-property-invariants",
+        ".agents/skills/aoa-property-invariants/scripts",
+        ".agents/skills/aoa-property-invariants/references",
+        ".agents/skills/aoa-property-invariants/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "display_name": "AoA Safe Infra Change",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-safe-infra-change",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change",
+          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/references",
+          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-safe-infra-change",
+          "$HOME/.agents/skills/aoa-safe-infra-change/scripts",
+          "$HOME/.agents/skills/aoa-safe-infra-change/references",
+          "$HOME/.agents/skills/aoa-safe-infra-change/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-safe-infra-change",
+          "/etc/codex/skills/aoa-safe-infra-change/scripts",
+          "/etc/codex/skills/aoa-safe-infra-change/references",
+          "/etc/codex/skills/aoa-safe-infra-change/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-safe-infra-change",
+        ".agents/skills/aoa-safe-infra-change/scripts",
+        ".agents/skills/aoa-safe-infra-change/references",
+        ".agents/skills/aoa-safe-infra-change/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "display_name": "AoA Sanitized Share",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-sanitized-share",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-sanitized-share",
+          "$REPO_ROOT/.agents/skills/aoa-sanitized-share/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-sanitized-share/references",
+          "$REPO_ROOT/.agents/skills/aoa-sanitized-share/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-sanitized-share",
+          "$HOME/.agents/skills/aoa-sanitized-share/scripts",
+          "$HOME/.agents/skills/aoa-sanitized-share/references",
+          "$HOME/.agents/skills/aoa-sanitized-share/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-sanitized-share",
+          "/etc/codex/skills/aoa-sanitized-share/scripts",
+          "/etc/codex/skills/aoa-sanitized-share/references",
+          "/etc/codex/skills/aoa-sanitized-share/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-sanitized-share",
+        ".agents/skills/aoa-sanitized-share/scripts",
+        ".agents/skills/aoa-sanitized-share/references",
+        ".agents/skills/aoa-sanitized-share/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "display_name": "AoA Source Of Truth Check",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-source-of-truth-check",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check",
+          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/references",
+          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-source-of-truth-check",
+          "$HOME/.agents/skills/aoa-source-of-truth-check/scripts",
+          "$HOME/.agents/skills/aoa-source-of-truth-check/references",
+          "$HOME/.agents/skills/aoa-source-of-truth-check/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-source-of-truth-check",
+          "/etc/codex/skills/aoa-source-of-truth-check/scripts",
+          "/etc/codex/skills/aoa-source-of-truth-check/references",
+          "/etc/codex/skills/aoa-source-of-truth-check/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-source-of-truth-check",
+        ".agents/skills/aoa-source-of-truth-check/scripts",
+        ".agents/skills/aoa-source-of-truth-check/references",
+        ".agents/skills/aoa-source-of-truth-check/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "display_name": "AoA TDD Slice",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-tdd-slice",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-tdd-slice",
+          "$REPO_ROOT/.agents/skills/aoa-tdd-slice/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-tdd-slice/references",
+          "$REPO_ROOT/.agents/skills/aoa-tdd-slice/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-tdd-slice",
+          "$HOME/.agents/skills/aoa-tdd-slice/scripts",
+          "$HOME/.agents/skills/aoa-tdd-slice/references",
+          "$HOME/.agents/skills/aoa-tdd-slice/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-tdd-slice",
+          "/etc/codex/skills/aoa-tdd-slice/scripts",
+          "/etc/codex/skills/aoa-tdd-slice/references",
+          "/etc/codex/skills/aoa-tdd-slice/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-tdd-slice",
+        ".agents/skills/aoa-tdd-slice/scripts",
+        ".agents/skills/aoa-tdd-slice/references",
+        ".agents/skills/aoa-tdd-slice/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "atm10-change-protocol",
+      "display_name": "ATM10 Change Protocol",
+      "source_scope": "repo",
+      "allowlist_id": "skill:atm10-change-protocol",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/atm10-change-protocol",
+          "$REPO_ROOT/.agents/skills/atm10-change-protocol/scripts",
+          "$REPO_ROOT/.agents/skills/atm10-change-protocol/references",
+          "$REPO_ROOT/.agents/skills/atm10-change-protocol/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/atm10-change-protocol",
+          "$HOME/.agents/skills/atm10-change-protocol/scripts",
+          "$HOME/.agents/skills/atm10-change-protocol/references",
+          "$HOME/.agents/skills/atm10-change-protocol/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/atm10-change-protocol",
+          "/etc/codex/skills/atm10-change-protocol/scripts",
+          "/etc/codex/skills/atm10-change-protocol/references",
+          "/etc/codex/skills/atm10-change-protocol/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/atm10-change-protocol",
+        ".agents/skills/atm10-change-protocol/scripts",
+        ".agents/skills/atm10-change-protocol/references",
+        ".agents/skills/atm10-change-protocol/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "display_name": "ATM10 Source Of Truth Check",
+      "source_scope": "repo",
+      "allowlist_id": "skill:atm10-source-of-truth-check",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check",
+          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/scripts",
+          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/references",
+          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/atm10-source-of-truth-check",
+          "$HOME/.agents/skills/atm10-source-of-truth-check/scripts",
+          "$HOME/.agents/skills/atm10-source-of-truth-check/references",
+          "$HOME/.agents/skills/atm10-source-of-truth-check/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/atm10-source-of-truth-check",
+          "/etc/codex/skills/atm10-source-of-truth-check/scripts",
+          "/etc/codex/skills/atm10-source-of-truth-check/references",
+          "/etc/codex/skills/atm10-source-of-truth-check/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/atm10-source-of-truth-check",
+        ".agents/skills/atm10-source-of-truth-check/scripts",
+        ".agents/skills/atm10-source-of-truth-check/references",
+        ".agents/skills/atm10-source-of-truth-check/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    }
+  ]
+}

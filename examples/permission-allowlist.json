@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "description": "Example merged read-only allowlist for two active skills.",
+  "adapter": "generic",
+  "skills": [
+    "aoa-change-protocol",
+    "aoa-contract-test"
+  ],
+  "paths": [
+    "$REPO_ROOT/.agents/skills/aoa-change-protocol",
+    "$REPO_ROOT/.agents/skills/aoa-change-protocol/scripts",
+    "$REPO_ROOT/.agents/skills/aoa-change-protocol/references",
+    "$REPO_ROOT/.agents/skills/aoa-contract-test",
+    "$REPO_ROOT/.agents/skills/aoa-contract-test/scripts",
+    "$REPO_ROOT/.agents/skills/aoa-contract-test/references"
+  ],
+  "read_access": "read-only"
+}

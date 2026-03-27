@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-6-runtime-guardrails",
+  "description": "Compaction-safe skill packets and reinjection dedupe rules for long-running local sessions.",
+  "policy": {
+    "protect_from_compaction": true,
+    "pin_strategy": "protected-tool-output",
+    "dedupe_key": "skill-name-plus-instruction-sha256",
+    "rehydration_strategy": "compact-packet-then-activate"
+  },
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "display_name": "AoA ADR Write",
+      "source_scope": "repo",
+      "instruction_sha256": "9e04d37b19581b62215ffd523d4671f79599ce55e9c6d3712ade8103027103ce",
+      "dedupe_key": "aoa-adr-write:9e04d37b19581b62215ffd523d4671f79599ce55e9c6d3712ade8103027103ce",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Record architecture decisions clearly",
+      "must_keep": [
+        "decision to record",
+        "context and problem statement",
+        "concise decision note or ADR draft",
+        "statement of rationale"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.\n\nKeep in memory: decision to record, context and problem statement, concise decision note or ADR draft, statement of rationale.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-adr-write",
+          "explicit_handle": "$aoa-adr-write",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "display_name": "AoA Approval Gate Check",
+      "source_scope": "repo",
+      "instruction_sha256": "0415da55d30fd6e00110bc72c6ef6565ea698731a6ff7d69f718e5b13a4d9e30",
+      "dedupe_key": "aoa-approval-gate-check:0415da55d30fd6e00110bc72c6ef6565ea698731a6ff7d69f718e5b13a4d9e30",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Classify approval boundaries",
+      "must_keep": [
+        "requested action",
+        "touched surfaces",
+        "classification of the action: safe to proceed, explicit approval required, or do not execute",
+        "note on whether explicit approval is needed"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.\n\nKeep in memory: requested action, touched surfaces, classification of the action: safe to proceed, explicit approval required, or do not execute, note on whether explicit approval is needed.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-approval-gate-check",
+          "explicit_handle": "$aoa-approval-gate-check",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "display_name": "AoA Bounded Context Map",
+      "source_scope": "repo",
+      "instruction_sha256": "00fc79a881b0af8ed5355ba736830b7d5c0ff11cf0e7dad3588079e9b9ecdefb",
+      "dedupe_key": "aoa-bounded-context-map:00fc79a881b0af8ed5355ba736830b7d5c0ff11cf0e7dad3588079e9b9ecdefb",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Map contexts and interfaces",
+      "must_keep": [
+        "target area or subsystem",
+        "current naming and responsibilities",
+        "named contexts or subsystems",
+        "rough boundary map"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.\n\nKeep in memory: target area or subsystem, current naming and responsibilities, named contexts or subsystems, rough boundary map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-bounded-context-map",
+          "explicit_handle": "$aoa-bounded-context-map",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-change-protocol",
+      "display_name": "AoA Change Protocol",
+      "source_scope": "repo",
+      "instruction_sha256": "cddd2abb8b8849a6b315169a634e9a19dd2fbf3b14226f6844a74f2faf5325cc",
+      "dedupe_key": "aoa-change-protocol:cddd2abb8b8849a6b315169a634e9a19dd2fbf3b14226f6844a74f2faf5325cc",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Plan, scope, verify, report",
+      "must_keep": [
+        "target goal",
+        "touched files or surfaces",
+        "explicit plan",
+        "scoped change"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n\nKeep in memory: target goal, touched files or surfaces, explicit plan, scoped change.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-change-protocol",
+          "explicit_handle": "$aoa-change-protocol",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-contract-test",
+      "display_name": "AoA Contract Test",
+      "source_scope": "repo",
+      "instruction_sha256": "73cc131998ccc2c5eae7de2ba224c6315499cd11fd7d4eee47afd2ba00572ba8",
+      "dedupe_key": "aoa-contract-test:73cc131998ccc2c5eae7de2ba224c6315499cd11fd7d4eee47afd2ba00572ba8",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Strengthen interface contracts",
+      "must_keep": [
+        "boundary under review",
+        "expected inputs and outputs",
+        "explicit contract assumptions",
+        "tests or smoke summary changes"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n\nKeep in memory: boundary under review, expected inputs and outputs, explicit contract assumptions, tests or smoke summary changes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-contract-test",
+          "explicit_handle": "$aoa-contract-test",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "display_name": "AoA Core Logic Boundary",
+      "source_scope": "repo",
+      "instruction_sha256": "2a1991ef795219fecff0f4eb93a68227bba36dcc4444ad5501b33843cfe93d56",
+      "dedupe_key": "aoa-core-logic-boundary:2a1991ef795219fecff0f4eb93a68227bba36dcc4444ad5501b33843cfe93d56",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Separate core logic from glue",
+      "must_keep": [
+        "target module, service, or slice",
+        "current responsibilities",
+        "clarified boundary between core logic and surrounding glue",
+        "notes on what should stay reusable versus edge-specific"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.\n\nKeep in memory: target module, service, or slice, current responsibilities, clarified boundary between core logic and surrounding glue, notes on what should stay reusable versus edge-specific.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-core-logic-boundary",
+          "explicit_handle": "$aoa-core-logic-boundary",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "display_name": "AoA Dry Run First",
+      "source_scope": "repo",
+      "instruction_sha256": "8a48a679598a2a8700f7f26edc5a0e35bb838cfc48d8206ec262ce07bca85ab0",
+      "dedupe_key": "aoa-dry-run-first:8a48a679598a2a8700f7f26edc5a0e35bb838cfc48d8206ec262ce07bca85ab0",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Preview before real mutation",
+      "must_keep": [
+        "requested action",
+        "available preview or dry-run mechanisms",
+        "dry-run or preview recommendation",
+        "bounded preview result or plan"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.\n\nKeep in memory: requested action, available preview or dry-run mechanisms, dry-run or preview recommendation, bounded preview result or plan.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-dry-run-first",
+          "explicit_handle": "$aoa-dry-run-first",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "display_name": "AoA Invariant Coverage Audit",
+      "source_scope": "repo",
+      "instruction_sha256": "9f5e45311220aa749d002002bf5f4179b5430e518e70379c0f4f3092b53f6fba",
+      "dedupe_key": "aoa-invariant-coverage-audit:9f5e45311220aa749d002002bf5f4179b5430e518e70379c0f4f3092b53f6fba",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Audit invariant coverage",
+      "must_keep": [
+        "target rule or stable truth",
+        "current tests, checks, or examples",
+        "invariant coverage map",
+        "gap list for weak or missing checks"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.\n\nKeep in memory: target rule or stable truth, current tests, checks, or examples, invariant coverage map, gap list for weak or missing checks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-invariant-coverage-audit",
+          "explicit_handle": "$aoa-invariant-coverage-audit",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "display_name": "AoA Local Stack Bringup",
+      "source_scope": "repo",
+      "instruction_sha256": "09c1ec2de3a07b257d8b25868df6bdce3493d77a9e6eb1b796acc30d8afe2b80",
+      "dedupe_key": "aoa-local-stack-bringup:09c1ec2de3a07b257d8b25868df6bdce3493d77a9e6eb1b796acc30d8afe2b80",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Bring up local stacks safely",
+      "must_keep": [
+        "selected local runtime, profile, or preset",
+        "available render-truth surface for the chosen runtime",
+        "rendered runtime truth summary for what would actually start",
+        "selector-aware readiness verdict with named blockers or warnings"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.\n\nKeep in memory: selected local runtime, profile, or preset, available render-truth surface for the chosen runtime, rendered runtime truth summary for what would actually start, selector-aware readiness verdict with named blockers or warnings.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-local-stack-bringup",
+          "explicit_handle": "$aoa-local-stack-bringup",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "display_name": "AoA Port Adapter Refactor",
+      "source_scope": "repo",
+      "instruction_sha256": "79294a835f6390b352c67dd7ef1fa85627089f50d77465d5b3571a6e91233be6",
+      "dedupe_key": "aoa-port-adapter-refactor:79294a835f6390b352c67dd7ef1fa85627089f50d77465d5b3571a6e91233be6",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Refactor toward ports/adapters",
+      "must_keep": [
+        "target module or slice",
+        "concrete dependency that currently leaks into the core logic",
+        "clearer boundary between logic and infrastructure",
+        "proposed or implemented port shape"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.\n\nKeep in memory: target module or slice, concrete dependency that currently leaks into the core logic, clearer boundary between logic and infrastructure, proposed or implemented port shape.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-port-adapter-refactor",
+          "explicit_handle": "$aoa-port-adapter-refactor",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-property-invariants",
+      "display_name": "AoA Property Invariants",
+      "source_scope": "repo",
+      "instruction_sha256": "b8ed2201eb92d092a136f8633382aecd83f1effbabf771aad038fbef8fe37b2f",
+      "dedupe_key": "aoa-property-invariants:b8ed2201eb92d092a136f8633382aecd83f1effbabf771aad038fbef8fe37b2f",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Write property-based invariants",
+      "must_keep": [
+        "target rule or domain truth",
+        "current examples or tests",
+        "explicit invariants",
+        "property-oriented tests or checks"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.\n\nKeep in memory: target rule or domain truth, current examples or tests, explicit invariants, property-oriented tests or checks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-property-invariants",
+          "explicit_handle": "$aoa-property-invariants",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "display_name": "AoA Safe Infra Change",
+      "source_scope": "repo",
+      "instruction_sha256": "2785322a01d11659ccd5ee411861c6ff3b003dcdde2959ee963a681c1cc77eb5",
+      "dedupe_key": "aoa-safe-infra-change:2785322a01d11659ccd5ee411861c6ff3b003dcdde2959ee963a681c1cc77eb5",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Make bounded infra changes safely",
+      "must_keep": [
+        "target change",
+        "touched operational surfaces",
+        "explicit risk-aware plan",
+        "bounded infrastructure or config change, or bounded execution recommendation"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.\n\nKeep in memory: target change, touched operational surfaces, explicit risk-aware plan, bounded infrastructure or config change, or bounded execution recommendation.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-safe-infra-change",
+          "explicit_handle": "$aoa-safe-infra-change",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "display_name": "AoA Sanitized Share",
+      "source_scope": "repo",
+      "instruction_sha256": "a749d485feaf3730e4e5845860938d8a68ce59c5510080013e45c1a5d9f57b6d",
+      "dedupe_key": "aoa-sanitized-share:a749d485feaf3730e4e5845860938d8a68ce59c5510080013e45c1a5d9f57b6d",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Sanitize tech artifacts for sharing",
+      "must_keep": [
+        "material to be shared",
+        "sharing audience or context",
+        "sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly",
+        "note on what was generalized or removed"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.\n\nKeep in memory: material to be shared, sharing audience or context, sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly, note on what was generalized or removed.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-sanitized-share",
+          "explicit_handle": "$aoa-sanitized-share",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "display_name": "AoA Source Of Truth Check",
+      "source_scope": "repo",
+      "instruction_sha256": "9d1bb80e08ec27c9ff07e0fb7ea81b8a34a707cd096fbcf38e2ab5868c23af66",
+      "dedupe_key": "aoa-source-of-truth-check:9d1bb80e08ec27c9ff07e0fb7ea81b8a34a707cd096fbcf38e2ab5868c23af66",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Clarify authoritative docs",
+      "must_keep": [
+        "repository docs surface",
+        "target area of ambiguity or overlap",
+        "clearer source-of-truth map",
+        "fan-out map when one source feeds multiple downstream consumers"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository docs surface, target area of ambiguity or overlap, clearer source-of-truth map, fan-out map when one source feeds multiple downstream consumers.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-source-of-truth-check",
+          "explicit_handle": "$aoa-source-of-truth-check",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "display_name": "AoA TDD Slice",
+      "source_scope": "repo",
+      "instruction_sha256": "732016ccf7cec16f1c899cf0b1bcecdbe1fe497efad9b606ab3c16c5c4cdf95b",
+      "dedupe_key": "aoa-tdd-slice:732016ccf7cec16f1c899cf0b1bcecdbe1fe497efad9b606ab3c16c5c4cdf95b",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Build slices test-first",
+      "must_keep": [
+        "desired behavior",
+        "target module or slice",
+        "new or updated tests",
+        "minimal implementation"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.\n\nKeep in memory: desired behavior, target module or slice, new or updated tests, minimal implementation.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-tdd-slice",
+          "explicit_handle": "$aoa-tdd-slice",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "atm10-change-protocol",
+      "display_name": "ATM10 Change Protocol",
+      "source_scope": "repo",
+      "instruction_sha256": "d7090da711837e0c4248efacf08b58aa3d59586a97fcaae0de72b5fc4710b691",
+      "dedupe_key": "atm10-change-protocol:d7090da711837e0c4248efacf08b58aa3d59586a97fcaae0de72b5fc4710b691",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "ATM10 bounded change overlay",
+      "must_keep": [
+        "target goal and touched local surface",
+        "repo-relative source-of-truth files",
+        "bounded local change plan",
+        "repo-relative command or path sketch"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.\n\nKeep in memory: target goal and touched local surface, repo-relative source-of-truth files, bounded local change plan, repo-relative command or path sketch.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "atm10-change-protocol",
+          "explicit_handle": "$atm10-change-protocol",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "display_name": "ATM10 Source Of Truth Check",
+      "source_scope": "repo",
+      "instruction_sha256": "39ff2a875b2c25f0d63cb944eb01cd546c89496032f992d670bf1eb0b29f15f9",
+      "dedupe_key": "atm10-source-of-truth-check:39ff2a875b2c25f0d63cb944eb01cd546c89496032f992d670bf1eb0b29f15f9",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "ATM10 source-of-truth overlay",
+      "must_keep": [
+        "repo-relative docs or guidance surfaces",
+        "local canonical-file candidates",
+        "local source-of-truth map",
+        "bounded clarification note"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.\n\nKeep in memory: repo-relative docs or guidance surfaces, local canonical-file candidates, local source-of-truth map, bounded clarification note.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "atm10-source-of-truth-check",
+          "explicit_handle": "$atm10-source-of-truth-check",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    }
+  ]
+}

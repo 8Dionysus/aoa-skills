@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-6-runtime-guardrails",
+  "common_surface": ".agents/skills",
+  "downstream_of": {
+    "runtime_seam": "scripts/skill_runtime_seam.py",
+    "legacy_activation_shim": "scripts/activate_skill.py"
+  },
+  "tools": {
+    "discover": "scripts/skill_runtime_guardrails.py discover",
+    "disclose": "scripts/skill_runtime_guardrails.py disclose",
+    "activate": "scripts/skill_runtime_guardrails.py activate",
+    "status": "scripts/skill_runtime_guardrails.py status",
+    "trust": "scripts/skill_runtime_guardrails.py trust",
+    "allowlist": "scripts/skill_runtime_guardrails.py allowlist",
+    "compact": "scripts/skill_runtime_guardrails.py compact",
+    "rehydrate": "scripts/skill_runtime_guardrails.py rehydrate"
+  },
+  "generated": {
+    "repo_trust_gate": "generated/repo_trust_gate_manifest.json",
+    "permission_allowlist": "generated/permission_allowlist_manifest.json",
+    "skill_context_guard": "generated/skill_context_guard_manifest.json",
+    "tool_schemas": "generated/runtime_guardrail_tool_schemas.json",
+    "prompt_blocks": "generated/runtime_guardrail_prompt_blocks.json",
+    "manifest": "generated/runtime_guardrail_manifest.json"
+  },
+  "trust_store_hint": ".aoa/repo-trust-store.json",
+  "session_file_hint": ".aoa/skill-runtime-session.json",
+  "notes": [
+    "Use this governance layer for local-friendly adapters that need repo trust, permission allowlists, and compaction-safe skill retention.",
+    "The raw runtime seam remains available for debugging and backward compatibility."
+  ]
+}

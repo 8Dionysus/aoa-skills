@@ -94,6 +94,17 @@ Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 
 Those runtime files still sit downstream of `.agents/skills/*` and do not introduce a second authoring format.
 
+Wave 6 adds a governed runtime layer above the raw seam:
+
+- `generated/repo_trust_gate_manifest.json`
+- `generated/permission_allowlist_manifest.json`
+- `generated/skill_context_guard_manifest.json`
+- `generated/runtime_guardrail_tool_schemas.json`
+- `generated/runtime_guardrail_prompt_blocks.json`
+- `generated/runtime_guardrail_manifest.json`
+
+Those guardrail files keep trust, allowlists, and compaction-safe reuse repo-owned and still subordinate to the same export.
+
 ## Build and validation
 
 Rebuild the portable layer from repo root:
@@ -116,9 +127,17 @@ Build the wave-4 runtime seam:
 
     python scripts/build_runtime_seam.py --repo-root .
 
-Inspect one activated runtime-seam payload:
+Build the wave-6 runtime guardrails:
+
+    python scripts/build_runtime_guardrails.py --repo-root .
+
+Inspect one activated raw runtime-seam payload:
 
     python scripts/skill_runtime_seam.py activate --repo-root . --skill aoa-change-protocol --format json
+
+Inspect one activated governed runtime payload:
+
+    python scripts/skill_runtime_guardrails.py activate --repo-root . --skill aoa-change-protocol --trust-store .aoa/repo-trust-store.json --format json
 
 Inspect one activated local-adapter compatibility payload:
 
@@ -130,7 +149,8 @@ The Codex-facing layer is the common portable surface. Local runtimes should ada
 
 - reading `generated/agent_skill_catalog*.json` for discovery
 - using `generated/runtime_discovery_index*.json` and `generated/runtime_disclosure_index.json` for shortlist and preview
-- using `scripts/skill_runtime_seam.py activate` for full runtime activation
+- using `scripts/skill_runtime_guardrails.py` as the default runtime path for trust-gated discover, disclose, activate, allowlist, compact, and rehydrate
+- using `scripts/skill_runtime_seam.py` only as the raw/debug seam
 - respecting `policy.allow_implicit_invocation`
 - preserving AoA metadata from frontmatter `metadata`
 - consulting runtime/context/trust contracts instead of inventing a second local format
