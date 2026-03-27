@@ -20,6 +20,7 @@ PROFILE = "codex-facing-wave-8-support-bundles"
 JSON_INDENT = 2
 STANDARD_DIRS = ("scripts", "references", "assets")
 LEGACY_DIRS = ("agents", "checks", "examples")
+TEXT_FILE_SUFFIXES = {".json", ".jsonl", ".md", ".py", ".svg", ".txt", ".yaml", ".yml"}
 TARGETED_SKILLS = {
     "aoa-safe-infra-change": "high-risk infra/config mutation",
     "aoa-local-stack-bringup": "bounded local runtime bring-up with explicit lifecycle",
@@ -44,15 +45,15 @@ EXPECTED_EXISTING_AOA_SUPPORT = {
 }
 
 
+def normalized_file_bytes(path: Path) -> bytes:
+    if path.suffix.lower() in TEXT_FILE_SUFFIXES:
+        normalized_text = path.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        return normalized_text.encode("utf-8")
+    return path.read_bytes()
+
+
 def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        while True:
-            chunk = handle.read(65536)
-            if not chunk:
-                break
-            digest.update(chunk)
-    return digest.hexdigest()
+    return hashlib.sha256(normalized_file_bytes(path)).hexdigest()
 
 
 def collect_files(base: Path) -> list[dict[str, str]]:
@@ -63,7 +64,7 @@ def collect_files(base: Path) -> list[dict[str, str]]:
             {
                 "path": rel,
                 "sha256": sha256(path),
-                "bytes": str(path.stat().st_size),
+                "bytes": str(len(normalized_file_bytes(path))),
             }
         )
     return results
@@ -84,7 +85,7 @@ def render_or_check(path: Path, text: str, check: bool, repo_root: Path) -> None
             raise SystemExit(f"{path.relative_to(repo_root).as_posix()} is out of date")
         return
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding="utf-8")
+    path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def build_documents(repo_root: Path) -> dict[Path, str]:

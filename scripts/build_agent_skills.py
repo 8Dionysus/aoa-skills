@@ -80,6 +80,11 @@ GENERATED_PORTABLE_FILES = [
 ]
 
 
+def write_text_file(path: pathlib.Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8", newline="\n")
+
+
 def titleize_skill_name(name: str) -> str:
     parts = name.split("-")
     out: list[str] = []
@@ -223,9 +228,9 @@ def ensure_scope_assets(skill_dir: pathlib.Path, scope: str) -> dict[str, str]:
     small_path = assets_dir / "small-logo.svg"
     large_path = assets_dir / "large-logo.svg"
     if not small_path.exists():
-        small_path.write_text(skill_svg(scope, 32), encoding="utf-8")
+        write_text_file(small_path, skill_svg(scope, 32))
     if not large_path.exists():
-        large_path.write_text(skill_svg(scope, 128), encoding="utf-8")
+        write_text_file(large_path, skill_svg(scope, 128))
     return {
         "icon_small": "./assets/small-logo.svg",
         "icon_large": "./assets/large-logo.svg",
@@ -704,16 +709,16 @@ def main() -> int:
         icon_paths = ensure_scope_assets(skill_dir, skill["scope"])
 
         skill_md_path = skill_dir / "SKILL.md"
-        skill_md_path.write_text(
+        write_text_file(
+            skill_md_path,
             build_markdown(skill, catalog_entry, override, compatibility_default, source_repo),
-            encoding="utf-8",
         )
 
         openai_doc = build_openai_yaml(skill, catalog_entry, override, extension_doc, icon_paths)
         openai_docs[skill["name"]] = openai_doc
-        (skill_dir / "agents" / "openai.yaml").write_text(
+        write_text_file(
+            skill_dir / "agents" / "openai.yaml",
             yaml.safe_dump(openai_doc, sort_keys=False, allow_unicode=True, width=1000),
-            encoding="utf-8",
         )
 
         inventory["assets"] = sorted(
@@ -802,19 +807,19 @@ def main() -> int:
     release_manifest = build_release_manifest(catalog_full, resolved_profiles)
 
     generated_dir.mkdir(exist_ok=True)
-    (generated_dir / "agent_skill_catalog.json").write_text(json.dumps(catalog_full, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "agent_skill_catalog.min.json").write_text(json.dumps(catalog_min, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "portable_export_map.json").write_text(json.dumps(export_map, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "local_adapter_manifest.json").write_text(json.dumps(local_manifest, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "local_adapter_manifest.min.json").write_text(json.dumps(local_manifest_min, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "skill_handoff_contracts.json").write_text(json.dumps(handoff_contracts, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "context_retention_manifest.json").write_text(json.dumps(context_manifest, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "trust_policy_matrix.json").write_text(json.dumps(trust_matrix, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "skill_runtime_contracts.json").write_text(json.dumps(runtime_contracts, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "skill_pack_profiles.resolved.json").write_text(json.dumps(resolved_profiles, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "codex_config_snippets.json").write_text(json.dumps(config_snippets, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "mcp_dependency_manifest.json").write_text(json.dumps(mcp_manifest, indent=2) + "\n", encoding="utf-8")
-    (generated_dir / "release_manifest.json").write_text(json.dumps(release_manifest, indent=2) + "\n", encoding="utf-8")
+    write_text_file(generated_dir / "agent_skill_catalog.json", json.dumps(catalog_full, indent=2) + "\n")
+    write_text_file(generated_dir / "agent_skill_catalog.min.json", json.dumps(catalog_min, indent=2) + "\n")
+    write_text_file(generated_dir / "portable_export_map.json", json.dumps(export_map, indent=2) + "\n")
+    write_text_file(generated_dir / "local_adapter_manifest.json", json.dumps(local_manifest, indent=2) + "\n")
+    write_text_file(generated_dir / "local_adapter_manifest.min.json", json.dumps(local_manifest_min, indent=2) + "\n")
+    write_text_file(generated_dir / "skill_handoff_contracts.json", json.dumps(handoff_contracts, indent=2) + "\n")
+    write_text_file(generated_dir / "context_retention_manifest.json", json.dumps(context_manifest, indent=2) + "\n")
+    write_text_file(generated_dir / "trust_policy_matrix.json", json.dumps(trust_matrix, indent=2) + "\n")
+    write_text_file(generated_dir / "skill_runtime_contracts.json", json.dumps(runtime_contracts, indent=2) + "\n")
+    write_text_file(generated_dir / "skill_pack_profiles.resolved.json", json.dumps(resolved_profiles, indent=2) + "\n")
+    write_text_file(generated_dir / "codex_config_snippets.json", json.dumps(config_snippets, indent=2) + "\n")
+    write_text_file(generated_dir / "mcp_dependency_manifest.json", json.dumps(mcp_manifest, indent=2) + "\n")
+    write_text_file(generated_dir / "release_manifest.json", json.dumps(release_manifest, indent=2) + "\n")
     print(f"built {len(catalog_full['skills'])} skills into {skills_root}")
     return 0
 
