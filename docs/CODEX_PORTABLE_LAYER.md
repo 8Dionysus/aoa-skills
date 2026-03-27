@@ -116,6 +116,18 @@ Wave 7 adds an activation-quality layer above the same export:
 
 Those files make description quality and open-surface conformance testable without introducing a second authoring format or a second release identity.
 
+Wave 8 adds a deterministic support-resource bridge for three high-risk skills:
+
+- `generated/deterministic_resource_manifest.json`
+- `generated/support_resource_index.json`
+- `generated/structured_output_schema_index.json`
+- `generated/support_resource_bridge_map.json`
+- `generated/deterministic_resource_eval_cases.jsonl`
+- `generated/expected_existing_aoa_support_dirs.json`
+
+Those files describe canonical `skills/*/{scripts,references,assets}` resources and their bridge back to existing AoA support dirs.
+The portable export still stays generated from canonical skill roots; `scripts/build_support_resources.py` records the support layer, but it does not become a second portable-sync authority.
+
 ## Build and validation
 
 Rebuild the portable layer from repo root:
@@ -146,9 +158,21 @@ Build the wave-7 description-trigger suite:
 
     python scripts/build_description_trigger_evals.py --repo-root .
 
+Build the wave-8 support-resource manifests:
+
+    python scripts/build_support_resources.py --repo-root .
+
 Lint the wave-7 description-trigger suite:
 
     python scripts/lint_description_trigger_evals.py --repo-root .
+
+Validate the wave-8 support-resource bridge:
+
+    python scripts/validate_support_resources.py --repo-root . --check-portable
+
+Lint the wave-8 support-resource bridge:
+
+    python scripts/lint_support_resources.py --repo-root .
 
 Run the soft standards-conformance wrapper:
 

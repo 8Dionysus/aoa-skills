@@ -60,7 +60,7 @@ def main() -> int:
         if args.summary_file:
             summary_path = pathlib.Path(args.summary_file)
             summary_path.parent.mkdir(parents=True, exist_ok=True)
-            summary_path.write_text(dump_json(payload), encoding="utf-8")
+            summary_path.write_text(dump_json(payload), encoding="utf-8", newline="\n")
         if args.format == "json":
             print(dump_json(payload), end="")
         else:
@@ -104,7 +104,7 @@ def main() -> int:
     if args.summary_file:
         summary_path = pathlib.Path(args.summary_file)
         summary_path.parent.mkdir(parents=True, exist_ok=True)
-        summary_path.write_text(dump_json(payload), encoding="utf-8")
+        summary_path.write_text(dump_json(payload), encoding="utf-8", newline="\n")
 
     if args.format == "json":
         print(dump_json(payload), end="")

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-8-support-bundles",
+  "schemas": [
+    {
+      "skill": "aoa-safe-infra-change",
+      "path": "skills/aoa-safe-infra-change/assets/infra_change_report.schema.json",
+      "title": "SafeInfraChangeReport",
+      "required_count": 10
+    },
+    {
+      "skill": "aoa-local-stack-bringup",
+      "path": "skills/aoa-local-stack-bringup/assets/local_stack_report.schema.json",
+      "title": "LocalStackBringupReport",
+      "required_count": 13
+    },
+    {
+      "skill": "aoa-dry-run-first",
+      "path": "skills/aoa-dry-run-first/assets/dry_run_report.schema.json",
+      "title": "DryRunFirstReport",
+      "required_count": 10
+    }
+  ]
+}

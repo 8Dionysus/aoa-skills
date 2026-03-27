@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-8-support-bundles",
+  "skills": {
+    "aoa-safe-infra-change": {
+      "canonical_root": "skills/aoa-safe-infra-change",
+      "legacy_support_dirs": {
+        "agents": [
+          "openai.yaml"
+        ],
+        "checks": [
+          "review.md"
+        ],
+        "examples": [
+          "runtime.md"
+        ]
+      },
+      "standard_support_dirs": {
+        "scripts": [
+          "infra_change_contract.py",
+          "risk_surface_scan.py"
+        ],
+        "references": [
+          "risk_surface_matrix.md",
+          "verification_and_rollback_ladder.md"
+        ],
+        "assets": [
+          "infra_change_contract.template.json",
+          "infra_change_report.schema.json"
+        ]
+      }
+    },
+    "aoa-local-stack-bringup": {
+      "canonical_root": "skills/aoa-local-stack-bringup",
+      "legacy_support_dirs": {
+        "agents": [
+          "openai.yaml"
+        ],
+        "checks": [
+          "review.md"
+        ],
+        "examples": [
+          "runtime.md"
+        ]
+      },
+      "standard_support_dirs": {
+        "scripts": [
+          "bringup_contract.py",
+          "readiness_summary.py"
+        ],
+        "references": [
+          "bounded_lifecycle_visibility.md",
+          "render_truth_before_start.md"
+        ],
+        "assets": [
+          "local_stack_bringup.template.json",
+          "local_stack_report.schema.json"
+        ]
+      }
+    },
+    "aoa-dry-run-first": {
+      "canonical_root": "skills/aoa-dry-run-first",
+      "legacy_support_dirs": {
+        "agents": [
+          "openai.yaml"
+        ],
+        "checks": [
+          "review.md"
+        ],
+        "examples": [
+          "runtime.md"
+        ]
+      },
+      "standard_support_dirs": {
+        "scripts": [
+          "dry_run_contract.py",
+          "preview_gap_check.py"
+        ],
+        "references": [
+          "confirmation_seam.md",
+          "dry_run_limitations.md"
+        ],
+        "assets": [
+          "dry_run_contract.template.json",
+          "dry_run_report.schema.json"
+        ]
+      }
+    }
+  }
+}

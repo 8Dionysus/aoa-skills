@@ -47,7 +47,7 @@ def render_or_check(path: pathlib.Path, text: str, check: bool) -> None:
             raise SystemExit(f"wave-7 description-trigger drift: {path}")
         return
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding="utf-8")
+    path.write_text(text, encoding="utf-8", newline="\n")
 
 
 def parse_frontmatter(path: pathlib.Path) -> tuple[dict[str, Any], str]:

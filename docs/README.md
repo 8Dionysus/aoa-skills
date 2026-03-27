@@ -30,13 +30,19 @@ an executable workflow for Codex.
 20. `RUNTIME_TOOL_CONTRACTS.md` — tool-shaped contract for the wave-4 runtime seam.
 21. `SESSION_COMPACTION.md` — session state and compaction behavior for long-running local wrappers.
 22. `TRIGGER_EVALS.md` — policy-aware trigger-eval dataset and collision-family guidance.
-23. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
-24. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
-25. `OVERLAY_SPEC.md` — repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-26. `overlays/atm10/PROJECT_OVERLAY.md` — first live exemplar family overlay pack.
-27. `overlays/atm10/REVIEW.md` — family-level review surface for the live exemplar pack.
-28. `reviews/README.md` — public review-record conventions and review surfaces.
-29. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
+23. `SEVENTH_WAVE.md` — activation-quality wave for description-first evals and soft standards-conformance.
+24. `DESCRIPTION_TRIGGER_EVALS.md` — description-first activation-contract dataset and coverage rules.
+25. `SKILLS_REF_VALIDATION.md` — soft standards-conformance lane for the generated export.
+26. `EIGHTH_WAVE.md` — deterministic support-bundle wave for three high-risk skills.
+27. `DETERMINISTIC_RESOURCE_BUNDLES.md` — support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
+28. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` — bridge posture between existing AoA support dirs and the wave-8 standard dirs.
+29. `MATURITY_MODEL.md` — documented status ladder, promotion rules, and canonical-candidate review guidance.
+30. `PROMOTION_PATH.md` — public convention for moving skills through the maturity ladder.
+31. `OVERLAY_SPEC.md` — repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+32. `overlays/atm10/PROJECT_OVERLAY.md` — first live exemplar family overlay pack.
+33. `overlays/atm10/REVIEW.md` — family-level review surface for the live exemplar pack.
+34. `reviews/README.md` — public review-record conventions and review surfaces.
+35. `PHASED_SKILL_PLAN.md` — supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
@@ -81,7 +87,7 @@ The repository now also has a documented maturity ladder and promotion guidance.
 The repository now also has a documented public promotion path in `PROMOTION_PATH.md`.
 The repository now also has a repo-level release runbook in `RELEASING.md` and a bounded release-check CLI at `../scripts/release_check.py`.
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
-The repository now also has a generated Codex-facing export in `../.agents/skills/`, portable discovery surfaces in `../generated/agent_skill_catalog*.json`, a legacy-compatible local adapter seam in `LOCAL_ADAPTER_CONTRACT.md` and `../generated/local_adapter_manifest*.json`, a wave-4 runtime seam in `FOURTH_WAVE.md`, `RUNTIME_SEAM_SECOND_PATH.md`, `RUNTIME_TOOL_CONTRACTS.md`, `SESSION_COMPACTION.md`, and `../generated/runtime_*.json`, wave-3 install and trust surfaces in `INSTALL_AND_PROFILES.md`, `CONTEXT_RETENTION.md`, `UI_METADATA_AND_ASSETS.md`, `CODEX_CONFIG_SNIPPETS.md`, and policy-aware trigger-eval data documented in `TRIGGER_EVALS.md`.
+The repository now also has a generated Codex-facing export in `../.agents/skills/`, portable discovery surfaces in `../generated/agent_skill_catalog*.json`, a legacy-compatible local adapter seam in `LOCAL_ADAPTER_CONTRACT.md` and `../generated/local_adapter_manifest*.json`, a wave-4 runtime seam in `FOURTH_WAVE.md`, `RUNTIME_SEAM_SECOND_PATH.md`, `RUNTIME_TOOL_CONTRACTS.md`, `SESSION_COMPACTION.md`, and `../generated/runtime_*.json`, wave-3 install and trust surfaces in `INSTALL_AND_PROFILES.md`, `CONTEXT_RETENTION.md`, `UI_METADATA_AND_ASSETS.md`, `CODEX_CONFIG_SNIPPETS.md`, policy-aware trigger-eval data documented in `TRIGGER_EVALS.md`, and a wave-8 deterministic support-resource bridge documented in `EIGHTH_WAVE.md`, `DETERMINISTIC_RESOURCE_BUNDLES.md`, `BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `../generated/deterministic_resource_manifest.json`.
 The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive candidate review, overlay maturity, stronger public product-surface clarity, and packaging prep through `../generated/governance_backlog.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md` and matching `skills/atm10-*` bundles.
 Those live exemplar packs also have a family-level review doc at `docs/overlays/atm10/REVIEW.md`.

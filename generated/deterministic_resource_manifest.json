@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-8-support-bundles",
+  "targeted_skills": {
+    "aoa-safe-infra-change": "high-risk infra/config mutation",
+    "aoa-local-stack-bringup": "bounded local runtime bring-up with explicit lifecycle",
+    "aoa-dry-run-first": "preview-first mutation discipline"
+  },
+  "skills": [
+    {
+      "name": "aoa-safe-infra-change",
+      "targeted": true,
+      "canonical_root": "skills/aoa-safe-infra-change",
+      "standard_dirs": {
+        "scripts": [
+          {
+            "path": "infra_change_contract.py",
+            "sha256": "6ced68f93019372fa3bf2984f56d5c27458a2978a5a784022caad311b2b1095a",
+            "bytes": "6290"
+          },
+          {
+            "path": "risk_surface_scan.py",
+            "sha256": "88b6260627a9c15f75fb58d38d55a506f9230ba2cef1940e8ea09fd70bd417a5",
+            "bytes": "3175"
+          }
+        ],
+        "references": [
+          {
+            "path": "risk_surface_matrix.md",
+            "sha256": "6e6e1387bde97f0b0a6aa8b2348698d1a2c0ff654231febe15210a2d38d9ee43",
+            "bytes": "406"
+          },
+          {
+            "path": "verification_and_rollback_ladder.md",
+            "sha256": "dea9c168056d0338c5ed512845e2736c8d9bef84aafae2c375344c4e42600fab",
+            "bytes": "419"
+          }
+        ],
+        "assets": [
+          {
+            "path": "infra_change_contract.template.json",
+            "sha256": "3f03ae71abdcd3f79903fc2c0e49ac6499efebc9910d2c05d5d7e2ea2fd4ba64",
+            "bytes": "680"
+          },
+          {
+            "path": "infra_change_report.schema.json",
+            "sha256": "c40d431e09eddc6c188d20fe2c8d75822b8bac6be473da369715acc913f4badc",
+            "bytes": "1678"
+          }
+        ]
+      },
+      "legacy_dirs": {
+        "agents": [
+          {
+            "path": "openai.yaml",
+            "sha256": "2867453909e8897dfcc963fee94f5c3a1d8e0a36981550871c459473ee57b1b9",
+            "bytes": "165"
+          }
+        ],
+        "checks": [
+          {
+            "path": "review.md",
+            "sha256": "f279ebe32fcac7f3014b30f966c593886788025fd4d78a619eb9855a48776fcc",
+            "bytes": "1041"
+          }
+        ],
+        "examples": [
+          {
+            "path": "runtime.md",
+            "sha256": "937f0fa236f5266f407dfcbcca46e969b6d342c292515af6e2247416b2ed3126",
+            "bytes": "1203"
+          }
+        ]
+      }
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "targeted": true,
+      "canonical_root": "skills/aoa-local-stack-bringup",
+      "standard_dirs": {
+        "scripts": [
+          {
+            "path": "bringup_contract.py",
+            "sha256": "928bad58017a91aa6d0d53606db0b4087238d2a339b08094c3c4379a00b28417",
+            "bytes": "3756"
+          },
+          {
+            "path": "readiness_summary.py",
+            "sha256": "3f94093e6a15978e26cf717e2cc9525deb14f6fedaba795ce9cd531f9fd9e705",
+            "bytes": "2596"
+          }
+        ],
+        "references": [
+          {
+            "path": "bounded_lifecycle_visibility.md",
+            "sha256": "38e5c080beddc2d7a1681268cf0b422698eb04ba420506b0571edfc15a77b319",
+            "bytes": "463"
+          },
+          {
+            "path": "render_truth_before_start.md",
+            "sha256": "44d74089c50f419080661c9bdc4d5cc0fb10a1960f32a7322ecd6cda463f0183",
+            "bytes": "323"
+          }
+        ],
+        "assets": [
+          {
+            "path": "local_stack_bringup.template.json",
+            "sha256": "3a7acf4aeebcb2cec01bde28ab5380dfe19fbd6f85daaa9cbd3d822dd5656288",
+            "bytes": "557"
+          },
+          {
+            "path": "local_stack_report.schema.json",
+            "sha256": "a8d4cf1ae3160118d0cb2985ad7d23a6ca37bae3ece369419dd5721183f54684",
+            "bytes": "1358"
+          }
+        ]
+      },
+      "legacy_dirs": {
+        "agents": [
+          {
+            "path": "openai.yaml",
+            "sha256": "99c31f0f7f9b19fbe4b3819b26dafb900d75217a109d0eca3f7d59bdecf97241",
+            "bytes": "212"
+          }
+        ],
+        "checks": [
+          {
+            "path": "review.md",
+            "sha256": "765995cb6df99aec197beb6db4cf168f7a13a3ec418a217790b63ca83c384f4c",
+            "bytes": "1250"
+          }
+        ],
+        "examples": [
+          {
+            "path": "runtime.md",
+            "sha256": "4fbe1a35fec00e8e973afd354eba175928a2c500a773e19d69a84bf4f5fcb9c7",
+            "bytes": "1637"
+          }
+        ]
+      }
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "targeted": true,
+      "canonical_root": "skills/aoa-dry-run-first",
+      "standard_dirs": {
+        "scripts": [
+          {
+            "path": "dry_run_contract.py",
+            "sha256": "acd9853080141ee2e25bbd48e0bd0db8d44476e721fb28d89a094afaa7439c15",
+            "bytes": "5173"
+          },
+          {
+            "path": "preview_gap_check.py",
+            "sha256": "c91fb01e74c94dbcd2a17e65cae30d5bd5672ce597b0757a69ad66756793293d",
+            "bytes": "2755"
+          }
+        ],
+        "references": [
+          {
+            "path": "confirmation_seam.md",
+            "sha256": "e4b614e2654a77cb7e67cb8f1348cd7d20aaed8a930b4fd8e503cd2166ebe614",
+            "bytes": "449"
+          },
+          {
+            "path": "dry_run_limitations.md",
+            "sha256": "b131942c6b4bccf003eb946a9ba7abfb15d35bd9f817a3c9487e15831e3f6356",
+            "bytes": "538"
+          }
+        ],
+        "assets": [
+          {
+            "path": "dry_run_contract.template.json",
+            "sha256": "4ecd683e8503fcb63f15b254aacf1c1194f4178cd5c433a38bfd135513e2de8b",
+            "bytes": "745"
+          },
+          {
+            "path": "dry_run_report.schema.json",
+            "sha256": "aa51b7dcb6bea8c4ebcdeac246393d9a2d5f012b78f3562ec7941f03f8d00b4f",
+            "bytes": "1377"
+          }
+        ]
+      },
+      "legacy_dirs": {
+        "agents": [
+          {
+            "path": "openai.yaml",
+            "sha256": "cf787ec2104b1ca7c2b70e28e1ebe98598e68c3197e2a5af66e9f7cc503277f9",
+            "bytes": "180"
+          }
+        ],
+        "checks": [
+          {
+            "path": "review.md",
+            "sha256": "6db3f939b7b19e4ba8d91673eae4e8ea74bf4e0df298ef660c869a2a302944fd",
+            "bytes": "962"
+          }
+        ],
+        "examples": [
+          {
+            "path": "runtime.md",
+            "sha256": "1321fc858d8d92f93c74c784b4abc1c2859c3d61a1607deb525456fb04bbb70d",
+            "bytes": "1138"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -73,10 +73,12 @@ The most important objects in this repository are:
 - `config/skill_pack_profiles.json`
 - `config/skill_policy_matrix.json`
 - `config/description_trigger_eval_policy.json`
+- targeted canonical support resources under `skills/*/{scripts,references,assets}` when a skill owns deterministic helpers
 - generated `.agents/skills/*` export files
 - generated portable catalogs and manifests
 - `generated/skill_handoff_contracts.json` as a skill-derived downstream bridge for playbooks
 - generated description-trigger eval and conformance manifests
+- generated wave-8 support-resource manifests
 - generated skill capsules
 - architecture and bridge docs referenced by the README
 
@@ -172,21 +174,25 @@ Write for portability:
 - `.agents/skills/*` is a generated Codex-facing export layer. Do not hand-edit exported skill files unless the task is explicitly about export debugging.
 - Canonical authoring remains in `skills/*/SKILL.md`, `generated/skill_sections.full.json`, `generated/skill_catalog.min.json`, `config/portable_skill_overrides.json`, `config/skill_pack_profiles.json`, and `config/skill_policy_matrix.json`.
 - Optional per-skill OpenAI metadata extensions live in `config/openai_skill_extensions.json`.
+- Canonical `scripts/`, `references/`, and `assets/` live under `skills/*`; `.agents/skills/*/{scripts,references,assets}` remains a generated mirror owned by `scripts/build_agent_skills.py`.
 - After changing canonical skill bodies, invocation modes, description overrides, pack profiles, policy posture, or skill resources, run:
   - `python scripts/build_agent_skills.py --repo-root .`
   - `python scripts/build_runtime_seam.py --repo-root .`
   - `python scripts/build_runtime_guardrails.py --repo-root .`
   - `python scripts/build_description_trigger_evals.py --repo-root .`
+  - `python scripts/build_support_resources.py --repo-root .`
   - `python scripts/validate_agent_skills.py --repo-root .`
+  - `python scripts/validate_support_resources.py --repo-root . --check-portable`
   - `python scripts/lint_trigger_evals.py --repo-root .`
   - `python scripts/lint_description_trigger_evals.py --repo-root .`
   - `python scripts/lint_pack_profiles.py --repo-root .`
+  - `python scripts/lint_support_resources.py --repo-root .`
   - `python scripts/run_skills_ref_validation.py --repo-root .`
 - Use `python scripts/skill_runtime_guardrails.py discover|disclose|activate --repo-root . ...` as the primary local-friendly runtime path.
 - `python scripts/skill_runtime_seam.py discover|disclose|activate --repo-root . ...` remains the raw/debug runtime seam.
 - `python scripts/activate_skill.py --repo-root . --skill <skill-name> --format json` remains the backward-compatible legacy shim for older local wrappers.
 - Respect `policy.allow_implicit_invocation`: explicit-only skills must not be auto-selected by local wrappers.
-- `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/runtime_*.json`, `generated/*guardrail*.json`, `generated/skill_description_signals.json`, `generated/description_trigger_eval_cases.*`, and `generated/skills_ref_validation_manifest.json` are generated support layers around the same export, not a second source of truth.
+- `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/runtime_*.json`, `generated/*guardrail*.json`, `generated/skill_description_signals.json`, `generated/description_trigger_eval_cases.*`, `generated/skills_ref_validation_manifest.json`, and the wave-8 support-resource manifests are generated support layers around the same export, not a second source of truth.
 - `generated/skill_handoff_contracts.json` is a skill-derived downstream bridge for `aoa-playbooks`; it must stay extracted from canonical skill sections and must not become authored scenario composition inside this repo.
 - When descriptions or trigger boundaries change, update `generated/skill_trigger_eval_cases.jsonl`, `generated/skill_trigger_collision_matrix.json`, and the wave-7 description-trigger outputs in the same change.
 

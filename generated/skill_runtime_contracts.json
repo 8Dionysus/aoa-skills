@@ -188,9 +188,17 @@
       ],
       "default_prompt": "Use $aoa-dry-run-first to find the safest preview path, interpret what it proves, and stop for explicit confirmation before the real mutation.",
       "resource_inventory": {
-        "scripts": [],
-        "references": [],
+        "scripts": [
+          "scripts/dry_run_contract.py",
+          "scripts/preview_gap_check.py"
+        ],
+        "references": [
+          "references/confirmation_seam.md",
+          "references/dry_run_limitations.md"
+        ],
         "assets": [
+          "assets/dry_run_contract.template.json",
+          "assets/dry_run_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
         ]
@@ -243,10 +251,18 @@
       ],
       "default_prompt": "Use $aoa-local-stack-bringup to review what would start, run readiness checks for the selected runtime, and launch the local stack through one explicit entrypoint.",
       "resource_inventory": {
-        "scripts": [],
-        "references": [],
+        "scripts": [
+          "scripts/bringup_contract.py",
+          "scripts/readiness_summary.py"
+        ],
+        "references": [
+          "references/bounded_lifecycle_visibility.md",
+          "references/render_truth_before_start.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
+          "assets/local_stack_bringup.template.json",
+          "assets/local_stack_report.schema.json",
           "assets/small-logo.svg"
         ]
       },
@@ -326,9 +342,17 @@
       ],
       "default_prompt": "Use $aoa-safe-infra-change to plan and verify a bounded infrastructure or configuration change with explicit risk and rollback thinking.",
       "resource_inventory": {
-        "scripts": [],
-        "references": [],
+        "scripts": [
+          "scripts/infra_change_contract.py",
+          "scripts/risk_surface_scan.py"
+        ],
+        "references": [
+          "references/risk_surface_matrix.md",
+          "references/verification_and_rollback_ladder.md"
+        ],
         "assets": [
+          "assets/infra_change_contract.template.json",
+          "assets/infra_change_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
         ]
