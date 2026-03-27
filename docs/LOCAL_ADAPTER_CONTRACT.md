@@ -51,6 +51,7 @@ The activation payload returns:
 - the full markdown instructions body
 
 The legacy activation payload is now backed by the governed seam, so it stays compatible while sharing the same generated contracts and export root.
+For `aoa-dry-run-first`, `aoa-safe-infra-change`, and `aoa-local-stack-bringup`, the bundled resource inventory now also includes deterministic helper scripts, bounded references, and structured templates or schemas mirrored from canonical `skills/*/{scripts,references,assets}`.
 
 ## Policy rules
 

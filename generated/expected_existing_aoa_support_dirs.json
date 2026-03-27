@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-8-support-bundles",
+  "skills": {
+    "aoa-safe-infra-change": {
+      "agents": [
+        "openai.yaml"
+      ],
+      "checks": [
+        "review.md"
+      ],
+      "examples": [
+        "runtime.md"
+      ]
+    },
+    "aoa-local-stack-bringup": {
+      "agents": [
+        "openai.yaml"
+      ],
+      "checks": [
+        "review.md"
+      ],
+      "examples": [
+        "runtime.md"
+      ]
+    },
+    "aoa-dry-run-first": {
+      "agents": [
+        "openai.yaml"
+      ],
+      "checks": [
+        "review.md"
+      ],
+      "examples": [
+        "runtime.md"
+      ]
+    }
+  }
+}

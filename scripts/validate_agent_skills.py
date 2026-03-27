@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the cumulative Codex-facing Agent Skills export and wave-3 support artifacts."""
+"""Validate the cumulative Codex-facing Agent Skills export and portable support artifacts."""
 
 from __future__ import annotations
 
@@ -26,6 +26,14 @@ RUNTIME_PROFILE = "codex-facing-wave-4-runtime-seam"
 GUARDRAIL_PROFILE = "codex-facing-wave-6-runtime-guardrails"
 DESCRIPTION_TRIGGER_PROFILE = "codex-facing-wave-7-description-trigger-evals"
 SKILLS_REF_PROFILE = "codex-facing-wave-7-standard-validation"
+SUPPORT_RESOURCE_PROFILE = "codex-facing-wave-8-support-bundles"
+TARGETED_SUPPORT_SKILLS = {
+    "aoa-dry-run-first",
+    "aoa-safe-infra-change",
+    "aoa-local-stack-bringup",
+}
+SUPPORT_STANDARD_DIRS = ("scripts", "references", "assets")
+SUPPORT_LEGACY_DIRS = ("agents", "checks", "examples")
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 HEX_COLOR_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 REQUIRED_METADATA = {
@@ -72,6 +80,12 @@ REQUIRED_GENERATED_FILES = [
     "generated/description_trigger_eval_cases.csv",
     "generated/description_trigger_eval_manifest.json",
     "generated/skills_ref_validation_manifest.json",
+    "generated/deterministic_resource_manifest.json",
+    "generated/support_resource_index.json",
+    "generated/structured_output_schema_index.json",
+    "generated/support_resource_bridge_map.json",
+    "generated/deterministic_resource_eval_cases.jsonl",
+    "generated/expected_existing_aoa_support_dirs.json",
     "generated/release_manifest.json",
 ]
 RELEASE_MANIFEST_GENERATED_FILES = [
@@ -107,6 +121,12 @@ RELEASE_MANIFEST_GENERATED_FILES = [
     "generated/description_trigger_eval_cases.csv",
     "generated/description_trigger_eval_manifest.json",
     "generated/skills_ref_validation_manifest.json",
+    "generated/deterministic_resource_manifest.json",
+    "generated/support_resource_index.json",
+    "generated/structured_output_schema_index.json",
+    "generated/support_resource_bridge_map.json",
+    "generated/deterministic_resource_eval_cases.jsonl",
+    "generated/expected_existing_aoa_support_dirs.json",
     "generated/release_manifest.json",
 ]
 REQUIRED_CONFIG_FILES = [
@@ -139,6 +159,17 @@ def load_json(path: pathlib.Path) -> Any:
 
 def load_jsonl(path: pathlib.Path) -> list[dict[str, Any]]:
     return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def file_sha256(path: pathlib.Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while True:
+            chunk = handle.read(65536)
+            if not chunk:
+                break
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def append_missing_files(errors: list[str], repo_root: pathlib.Path, rel_paths: list[str]) -> None:
@@ -194,6 +225,12 @@ def main() -> int:
     description_cases = load_jsonl(generated_dir / "description_trigger_eval_cases.jsonl")
     description_manifest = load_json(generated_dir / "description_trigger_eval_manifest.json")
     skills_ref_manifest = load_json(generated_dir / "skills_ref_validation_manifest.json")
+    support_manifest = load_json(generated_dir / "deterministic_resource_manifest.json")
+    support_index = load_json(generated_dir / "support_resource_index.json")
+    support_schema_index = load_json(generated_dir / "structured_output_schema_index.json")
+    support_bridge_map = load_json(generated_dir / "support_resource_bridge_map.json")
+    support_eval_cases = load_jsonl(generated_dir / "deterministic_resource_eval_cases.jsonl")
+    expected_support_dirs = load_json(generated_dir / "expected_existing_aoa_support_dirs.json")
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
@@ -223,6 +260,10 @@ def main() -> int:
     description_signal_by_name = {entry["name"]: entry for entry in description_signals.get("skills", [])}
     description_manifest_by_name = {entry["name"]: entry for entry in description_manifest.get("skills", [])}
     skills_ref_target_by_name = {entry["skill_name"]: entry for entry in skills_ref_manifest.get("targets", [])}
+    support_manifest_by_name = {entry["name"]: entry for entry in support_manifest.get("skills", [])}
+    support_index_by_name = {entry["name"]: entry for entry in support_index.get("skills", [])}
+    support_bridge_by_name = support_bridge_map.get("skills", {})
+    expected_support_by_name = expected_support_dirs.get("skills", {})
     description_cases_by_skill: dict[str, list[dict[str, Any]]] = {name: [] for name in source_by_name}
     for case in description_cases:
         skill_name = case.get("skill_name")
@@ -290,6 +331,15 @@ def main() -> int:
             errors.append(f"{label} profile must be {DESCRIPTION_TRIGGER_PROFILE!r}")
     if skills_ref_manifest.get("profile") != SKILLS_REF_PROFILE:
         errors.append(f"generated/skills_ref_validation_manifest.json profile must be {SKILLS_REF_PROFILE!r}")
+    for label, doc in {
+        "generated/deterministic_resource_manifest.json": support_manifest,
+        "generated/support_resource_index.json": support_index,
+        "generated/structured_output_schema_index.json": support_schema_index,
+        "generated/support_resource_bridge_map.json": support_bridge_map,
+        "generated/expected_existing_aoa_support_dirs.json": expected_support_dirs,
+    }.items():
+        if doc.get("profile") != SUPPORT_RESOURCE_PROFILE:
+            errors.append(f"{label} profile must be {SUPPORT_RESOURCE_PROFILE!r}")
 
     if not skills_root.exists():
         errors.append(f"missing skills root: {skills_root}")
@@ -325,6 +375,16 @@ def main() -> int:
     for label, names in expected_sets.items():
         if names != actual_names:
             errors.append(f"{label} skill set {sorted(names)!r} does not match export {sorted(actual_names)!r}")
+    if set(support_manifest_by_name) != TARGETED_SUPPORT_SKILLS:
+        errors.append("generated/deterministic_resource_manifest.json skill set mismatch for wave-8 targeted skills")
+    if set(support_index_by_name) != TARGETED_SUPPORT_SKILLS:
+        errors.append("generated/support_resource_index.json skill set mismatch for wave-8 targeted skills")
+    if set(support_bridge_by_name) != TARGETED_SUPPORT_SKILLS:
+        errors.append("generated/support_resource_bridge_map.json skill set mismatch for wave-8 targeted skills")
+    if set(expected_support_by_name) != TARGETED_SUPPORT_SKILLS:
+        errors.append("generated/expected_existing_aoa_support_dirs.json skill set mismatch for wave-8 targeted skills")
+    if {case.get('skill_name') for case in support_eval_cases} != TARGETED_SUPPORT_SKILLS:
+        errors.append("generated/deterministic_resource_eval_cases.jsonl skill set mismatch for wave-8 targeted skills")
 
     for skill_dir in sorted(path for path in skills_root.iterdir() if path.is_dir()):
         skill_md = skill_dir / "SKILL.md"
@@ -477,6 +537,71 @@ def main() -> int:
             for allowlist_path in manifest_entry.get("allowlist_paths", []):
                 if not (repo_root / allowlist_path).exists():
                     errors.append(f"generated/local_adapter_manifest.json allowlist path does not exist: {allowlist_path}")
+
+        if skill_dir.name in TARGETED_SUPPORT_SKILLS:
+            source_skill_root = repo_root / "skills" / skill_dir.name
+            support_manifest_entry = support_manifest_by_name.get(skill_dir.name)
+            support_index_entry = support_index_by_name.get(skill_dir.name)
+            support_bridge_entry = support_bridge_by_name.get(skill_dir.name)
+            expected_support_entry = expected_support_by_name.get(skill_dir.name)
+            if support_manifest_entry is None:
+                errors.append(f"generated/deterministic_resource_manifest.json missing {skill_dir.name}")
+            if support_index_entry is None:
+                errors.append(f"generated/support_resource_index.json missing {skill_dir.name}")
+            if support_bridge_entry is None:
+                errors.append(f"generated/support_resource_bridge_map.json missing {skill_dir.name}")
+            if expected_support_entry is None:
+                errors.append(f"generated/expected_existing_aoa_support_dirs.json missing {skill_dir.name}")
+
+            for dirname in SUPPORT_STANDARD_DIRS:
+                canonical_dir = source_skill_root / dirname
+                if not canonical_dir.exists():
+                    errors.append(f"{source_skill_root}: missing canonical {dirname}/")
+                    continue
+                rel_paths = [path.relative_to(canonical_dir).as_posix() for path in sorted(p for p in canonical_dir.rglob('*') if p.is_file())]
+                expected_inventory_paths = [f"{dirname}/{path}" for path in rel_paths]
+                portable_dir = skill_dir / dirname
+                if not portable_dir.exists():
+                    errors.append(f"{skill_dir}: missing portable support dir {dirname}/")
+                else:
+                    for rel_path in rel_paths:
+                        canonical_path = canonical_dir / rel_path
+                        portable_path = portable_dir / rel_path
+                        if not portable_path.exists():
+                            errors.append(f"{skill_dir.name}: missing portable support file {dirname}/{rel_path}")
+                        elif file_sha256(canonical_path) != file_sha256(portable_path):
+                            errors.append(f"{skill_dir.name}: portable support drift in {dirname}/{rel_path}")
+
+                if support_manifest_entry is not None:
+                    manifest_paths = [item["path"] for item in support_manifest_entry["standard_dirs"].get(dirname, [])]
+                    if manifest_paths != rel_paths:
+                        errors.append(f"generated/deterministic_resource_manifest.json {skill_dir.name} {dirname} mismatch")
+                if support_bridge_entry is not None and support_bridge_entry.get("standard_support_dirs", {}).get(dirname) != rel_paths:
+                    errors.append(f"generated/support_resource_bridge_map.json {skill_dir.name} {dirname} mismatch")
+                if support_index_entry is not None and support_index_entry.get("standard_dir_counts", {}).get(dirname) != len(rel_paths):
+                    errors.append(f"generated/support_resource_index.json {skill_dir.name} {dirname} count mismatch")
+                if manifest_entry is not None:
+                    inventory_paths = manifest_entry.get("resource_inventory", {}).get(dirname, [])
+                    for rel_path in expected_inventory_paths:
+                        if rel_path not in inventory_paths:
+                            errors.append(f"generated/local_adapter_manifest.json missing support resource {rel_path} for {skill_dir.name}")
+
+            for dirname in SUPPORT_LEGACY_DIRS:
+                canonical_dir = source_skill_root / dirname
+                if not canonical_dir.exists():
+                    errors.append(f"{source_skill_root}: missing legacy {dirname}/")
+                    continue
+                rel_paths = [path.relative_to(canonical_dir).as_posix() for path in sorted(p for p in canonical_dir.rglob('*') if p.is_file())]
+                if expected_support_entry is not None and expected_support_entry.get(dirname) != rel_paths:
+                    errors.append(f"generated/expected_existing_aoa_support_dirs.json {skill_dir.name} {dirname} mismatch")
+                if support_manifest_entry is not None:
+                    manifest_paths = [item["path"] for item in support_manifest_entry["legacy_dirs"].get(dirname, [])]
+                    if manifest_paths != rel_paths:
+                        errors.append(f"generated/deterministic_resource_manifest.json legacy {dirname} mismatch for {skill_dir.name}")
+                if support_bridge_entry is not None and support_bridge_entry.get("legacy_support_dirs", {}).get(dirname) != rel_paths:
+                    errors.append(f"generated/support_resource_bridge_map.json legacy {dirname} mismatch for {skill_dir.name}")
+                if support_index_entry is not None and support_index_entry.get("legacy_dir_counts", {}).get(dirname) != len(rel_paths):
+                    errors.append(f"generated/support_resource_index.json legacy {dirname} count mismatch for {skill_dir.name}")
 
         handoff_entry = handoff_by_name.get(skill_dir.name)
         if handoff_entry is None:
@@ -759,6 +884,11 @@ def main() -> int:
         errors.append("generated/skills_ref_validation_manifest.json mode mismatch")
     if len(skills_ref_manifest.get("targets", [])) != len(actual_names):
         errors.append("generated/skills_ref_validation_manifest.json target count mismatch")
+    support_schema_entries = support_schema_index.get("schemas", [])
+    if len(support_schema_entries) != len(TARGETED_SUPPORT_SKILLS):
+        errors.append("generated/structured_output_schema_index.json schema count mismatch")
+    if {entry.get("skill") for entry in support_schema_entries} != TARGETED_SUPPORT_SKILLS:
+        errors.append("generated/structured_output_schema_index.json skill set mismatch")
 
     expected_generated_files = set(RELEASE_MANIFEST_GENERATED_FILES)
     if set(release_manifest.get("generated_files", [])) != expected_generated_files:
@@ -777,8 +907,8 @@ def main() -> int:
         errors.append("generated/release_manifest.json must reference docs/RELEASING.md")
     if "config/description_trigger_eval_policy.json" not in release_manifest.get("authoring_inputs", []):
         errors.append("generated/release_manifest.json must include config/description_trigger_eval_policy.json")
-    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6, 7]:
-        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6, 7]")
+    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6, 7, 8]:
+        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6, 7, 8]")
 
     if runtime_discovery.get("root") != ".agents/skills":
         errors.append("generated/runtime_discovery_index.json root mismatch")

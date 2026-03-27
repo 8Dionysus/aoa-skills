@@ -70,6 +70,12 @@ GENERATED_PORTABLE_FILES = [
     "generated/description_trigger_eval_cases.csv",
     "generated/description_trigger_eval_manifest.json",
     "generated/skills_ref_validation_manifest.json",
+    "generated/deterministic_resource_manifest.json",
+    "generated/support_resource_index.json",
+    "generated/structured_output_schema_index.json",
+    "generated/support_resource_bridge_map.json",
+    "generated/deterministic_resource_eval_cases.jsonl",
+    "generated/expected_existing_aoa_support_dirs.json",
     "generated/release_manifest.json",
 ]
 
@@ -575,7 +581,7 @@ def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict
     return {
         "schema_version": 1,
         "profile": EXPORT_PROFILE,
-        "included_waves": [1, 2, 3, 4, 6, 7],
+        "included_waves": [1, 2, 3, 4, 6, 7, 8],
         "skill_root": ".agents/skills",
         "skill_count": len(catalog_full["skills"]),
         "explicit_only_count": sum(1 for entry in catalog_full["skills"] if not entry["allow_implicit_invocation"]),

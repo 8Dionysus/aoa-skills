@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-8-support-bundles",
+  "skills": [
+    {
+      "name": "aoa-safe-infra-change",
+      "targeted": true,
+      "standard_dir_counts": {
+        "scripts": 2,
+        "references": 2,
+        "assets": 2
+      },
+      "legacy_dir_counts": {
+        "agents": 1,
+        "checks": 1,
+        "examples": 1
+      }
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "targeted": true,
+      "standard_dir_counts": {
+        "scripts": 2,
+        "references": 2,
+        "assets": 2
+      },
+      "legacy_dir_counts": {
+        "agents": 1,
+        "checks": 1,
+        "examples": 1
+      }
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "targeted": true,
+      "standard_dir_counts": {
+        "scripts": 2,
+        "references": 2,
+        "assets": 2
+      },
+      "legacy_dir_counts": {
+        "agents": 1,
+        "checks": 1,
+        "examples": 1
+      }
+    }
+  ]
+}

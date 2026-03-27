@@ -40,8 +40,13 @@ class CodexPortableContractTests(unittest.TestCase):
         description_signals = load_json(REPO_ROOT / "generated" / "skill_description_signals.json")
         description_manifest = load_json(REPO_ROOT / "generated" / "description_trigger_eval_manifest.json")
         skills_ref_manifest = load_json(REPO_ROOT / "generated" / "skills_ref_validation_manifest.json")
+        support_manifest = load_json(REPO_ROOT / "generated" / "deterministic_resource_manifest.json")
+        support_index = load_json(REPO_ROOT / "generated" / "support_resource_index.json")
+        support_bridge = load_json(REPO_ROOT / "generated" / "support_resource_bridge_map.json")
+        expected_support = load_json(REPO_ROOT / "generated" / "expected_existing_aoa_support_dirs.json")
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
         catalog_names = {entry["name"] for entry in catalog["skills"]}
+        support_names = {"aoa-dry-run-first", "aoa-safe-infra-change", "aoa-local-stack-bringup"}
         self.assertEqual({entry["name"] for entry in handoff_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in runtime_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in trust_doc["skills"]}, catalog_names)
@@ -52,6 +57,35 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in description_signals["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in description_manifest["skills"]}, catalog_names)
         self.assertEqual({entry["skill_name"] for entry in skills_ref_manifest["targets"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in support_manifest["skills"]}, support_names)
+        self.assertEqual({entry["name"] for entry in support_index["skills"]}, support_names)
+        self.assertEqual(set(support_bridge["skills"]), support_names)
+        self.assertEqual(set(expected_support["skills"]), support_names)
+
+    def test_support_resource_manifests_match_exported_resources(self):
+        support_manifest = load_json(REPO_ROOT / "generated" / "deterministic_resource_manifest.json")
+        support_bridge = load_json(REPO_ROOT / "generated" / "support_resource_bridge_map.json")
+        support_index = load_json(REPO_ROOT / "generated" / "support_resource_index.json")
+        catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
+        catalog_by_name = {entry["name"]: entry for entry in catalog["skills"]}
+
+        for entry in support_manifest["skills"]:
+            name = entry["name"]
+            catalog_entry = catalog_by_name[name]
+            bridge_entry = support_bridge["skills"][name]
+            index_entry = next(item for item in support_index["skills"] if item["name"] == name)
+            inventory = catalog_entry["resource_inventory"]
+
+            for dirname in ("scripts", "references", "assets"):
+                manifest_paths = [item["path"] for item in entry["standard_dirs"][dirname]]
+                inventory_paths = [
+                    path.removeprefix(f"{dirname}/")
+                    for path in inventory.get(dirname, [])
+                    if not path.endswith("small-logo.svg") and not path.endswith("large-logo.svg")
+                ]
+                self.assertTrue(set(manifest_paths).issubset(set(inventory_paths)))
+                self.assertEqual(bridge_entry["standard_support_dirs"][dirname], manifest_paths)
+                self.assertEqual(index_entry["standard_dir_counts"][dirname], len(manifest_paths))
 
     def test_handoff_contracts_expose_compact_packet_templates(self):
         handoff_doc = load_json(REPO_ROOT / "generated" / "skill_handoff_contracts.json")
@@ -124,10 +158,13 @@ class CodexPortableContractTests(unittest.TestCase):
             [sys.executable, "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"],
+            [sys.executable, "scripts/build_support_resources.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
+            [sys.executable, "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"],
             [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_description_trigger_evals.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_pack_profiles.py", "--repo-root", "."],
+            [sys.executable, "scripts/lint_support_resources.py", "--repo-root", "."],
             [sys.executable, "scripts/run_skills_ref_validation.py", "--repo-root", "."],
         ]
         for command in commands:

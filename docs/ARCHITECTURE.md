@@ -25,6 +25,7 @@ It packages:
 - output expectations
 - references
 - optional scripts
+- optional assets
 - invocation policy
 - technique composition metadata
 
@@ -43,7 +44,10 @@ The same derived posture now applies to `.agents/skills/*`, `generated/agent_ski
 `generated/runtime_discovery_index*.json`, `generated/runtime_disclosure_index.json`,
 `generated/runtime_activation_aliases.json`, `generated/runtime_tool_schemas.json`,
 `generated/runtime_session_contract.json`, `generated/runtime_prompt_blocks.json`,
-`generated/runtime_router_hints.json`, `generated/runtime_seam_manifest.json`, and `generated/release_manifest.json`:
+`generated/runtime_router_hints.json`, `generated/runtime_seam_manifest.json`,
+`generated/deterministic_resource_manifest.json`, `generated/support_resource_index.json`,
+`generated/structured_output_schema_index.json`, `generated/support_resource_bridge_map.json`,
+`generated/expected_existing_aoa_support_dirs.json`, and `generated/release_manifest.json`:
 they are generated operational interfaces, not authored meaning.
 
 A skill normally relies on several techniques and/or several bounded actions.
@@ -112,6 +116,7 @@ The current repo-local governance and release signaling layer should also stay d
 The Codex-facing portable layer follows the same rule: `.agents/skills/*` is a generated export,
 `config/portable_skill_overrides.json`, `config/openai_skill_extensions.json`, `config/skill_pack_profiles.json`, and `config/skill_policy_matrix.json` are the repo-owned configuration seams for that export, and local-friendly runtimes should wrap the export rather than inventing a second canonical skill format.
 Wave 4 extends that same layer with a dedicated-tool runtime seam; `scripts/skill_runtime_seam.py` is now the primary runtime path, while `scripts/activate_skill.py` remains the compatibility shim.
+Wave 8 extends the same repo-owned posture with deterministic support bundles under canonical skill roots; `scripts/build_support_resources.py` records those resources and their bridge back to AoA-native support dirs without becoming a second portable-sync authority.
 
 ## Versioning direction
 

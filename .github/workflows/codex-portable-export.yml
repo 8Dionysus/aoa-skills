@@ -33,8 +33,14 @@ jobs:
       - name: Build description-trigger eval layer
         run: python scripts/build_description_trigger_evals.py --repo-root .
 
+      - name: Build deterministic support bundles
+        run: python scripts/build_support_resources.py --repo-root .
+
       - name: Validate export
         run: python scripts/validate_agent_skills.py --repo-root .
+
+      - name: Validate deterministic support bundles
+        run: python scripts/validate_support_resources.py --repo-root . --check-portable
 
       - name: Lint trigger evals
         run: python scripts/lint_trigger_evals.py --repo-root .
@@ -44,6 +50,9 @@ jobs:
 
       - name: Lint pack profiles
         run: python scripts/lint_pack_profiles.py --repo-root .
+
+      - name: Lint deterministic support bundles
+        run: python scripts/lint_support_resources.py --repo-root .
 
       - name: Install skills-ref reference validator
         continue-on-error: true
@@ -65,6 +74,8 @@ jobs:
           python -m unittest tests/test_wave6_runtime_guardrails.py
           python -m unittest tests/test_wave7_description_trigger_builder.py
           python -m unittest tests/test_wave7_skills_ref_validation.py
+          python -m unittest tests/test_support_resource_bundles.py
+          python -m unittest tests/test_support_resource_schemas.py
 
       - name: Check generated drift
         run: |
@@ -101,6 +112,12 @@ jobs:
             generated/description_trigger_eval_cases.csv \
             generated/description_trigger_eval_manifest.json \
             generated/skills_ref_validation_manifest.json \
+            generated/deterministic_resource_manifest.json \
+            generated/support_resource_index.json \
+            generated/structured_output_schema_index.json \
+            generated/support_resource_bridge_map.json \
+            generated/deterministic_resource_eval_cases.jsonl \
+            generated/expected_existing_aoa_support_dirs.json \
             examples/repo-trust-store.json \
             examples/permission-allowlist.json \
             examples/guardrailed-runtime-config.json \
