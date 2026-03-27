@@ -34,12 +34,18 @@ class CodexPortableContractTests(unittest.TestCase):
         runtime_doc = load_json(REPO_ROOT / "generated" / "skill_runtime_contracts.json")
         trust_doc = load_json(REPO_ROOT / "generated" / "trust_policy_matrix.json")
         context_doc = load_json(REPO_ROOT / "generated" / "context_retention_manifest.json")
+        guardrail_trust = load_json(REPO_ROOT / "generated" / "repo_trust_gate_manifest.json")
+        guardrail_allowlist = load_json(REPO_ROOT / "generated" / "permission_allowlist_manifest.json")
+        guardrail_context = load_json(REPO_ROOT / "generated" / "skill_context_guard_manifest.json")
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
         catalog_names = {entry["name"] for entry in catalog["skills"]}
         self.assertEqual({entry["name"] for entry in handoff_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in runtime_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in trust_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in context_doc["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in guardrail_trust["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in guardrail_allowlist["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in guardrail_context["skills"]}, catalog_names)
 
     def test_handoff_contracts_expose_compact_packet_templates(self):
         handoff_doc = load_json(REPO_ROOT / "generated" / "skill_handoff_contracts.json")
@@ -98,6 +104,7 @@ class CodexPortableContractTests(unittest.TestCase):
     def test_validation_scripts_pass(self):
         commands = [
             [sys.executable, "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"],
+            [sys.executable, "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_pack_profiles.py", "--repo-root", "."],

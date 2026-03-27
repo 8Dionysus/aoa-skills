@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "description": "Example local adapter config for the governed seam.",
+  "repo_trust_store": ".aoa/repo-trust-store.json",
+  "skill_session_file": ".aoa/skill-runtime-session.json",
+  "trust_gate_mode": "enforce",
+  "allowlist_mode": "read-only",
+  "context_guard_mode": "protect-and-rehydrate"
+}

@@ -5,7 +5,8 @@
     1,
     2,
     3,
-    4
+    4,
+    6
   ],
   "skill_root": ".agents/skills",
   "skill_count": 17,
@@ -41,6 +42,12 @@
     "generated/runtime_prompt_blocks.json",
     "generated/runtime_router_hints.json",
     "generated/runtime_seam_manifest.json",
+    "generated/repo_trust_gate_manifest.json",
+    "generated/permission_allowlist_manifest.json",
+    "generated/skill_context_guard_manifest.json",
+    "generated/runtime_guardrail_tool_schemas.json",
+    "generated/runtime_guardrail_prompt_blocks.json",
+    "generated/runtime_guardrail_manifest.json",
     "generated/release_manifest.json"
   ],
   "release_identity": {

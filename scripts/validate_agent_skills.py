@@ -8,12 +8,21 @@ import json
 import pathlib
 import re
 import sys
+import tempfile
 from typing import Any
 
 import yaml
 
+from skill_runtime_guardrails import (
+    activate_guarded_payload,
+    discover_guarded_payload,
+    load_guardrails,
+    trust_payload,
+)
+
 EXPORT_PROFILE = "codex-facing-wave-3"
 RUNTIME_PROFILE = "codex-facing-wave-4-runtime-seam"
+GUARDRAIL_PROFILE = "codex-facing-wave-6-runtime-guardrails"
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 HEX_COLOR_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 REQUIRED_METADATA = {
@@ -49,6 +58,12 @@ REQUIRED_GENERATED_FILES = [
     "generated/runtime_prompt_blocks.json",
     "generated/runtime_router_hints.json",
     "generated/runtime_seam_manifest.json",
+    "generated/repo_trust_gate_manifest.json",
+    "generated/permission_allowlist_manifest.json",
+    "generated/skill_context_guard_manifest.json",
+    "generated/runtime_guardrail_tool_schemas.json",
+    "generated/runtime_guardrail_prompt_blocks.json",
+    "generated/runtime_guardrail_manifest.json",
     "generated/release_manifest.json",
 ]
 RELEASE_MANIFEST_GENERATED_FILES = [
@@ -73,6 +88,12 @@ RELEASE_MANIFEST_GENERATED_FILES = [
     "generated/runtime_prompt_blocks.json",
     "generated/runtime_router_hints.json",
     "generated/runtime_seam_manifest.json",
+    "generated/repo_trust_gate_manifest.json",
+    "generated/permission_allowlist_manifest.json",
+    "generated/skill_context_guard_manifest.json",
+    "generated/runtime_guardrail_tool_schemas.json",
+    "generated/runtime_guardrail_prompt_blocks.json",
+    "generated/runtime_guardrail_manifest.json",
     "generated/release_manifest.json",
 ]
 REQUIRED_CONFIG_FILES = [
@@ -80,6 +101,7 @@ REQUIRED_CONFIG_FILES = [
     "config/openai_skill_extensions.json",
     "config/skill_pack_profiles.json",
     "config/skill_policy_matrix.json",
+    "config/runtime_guardrail_policy.json",
 ]
 
 
@@ -143,10 +165,17 @@ def main() -> int:
     runtime_prompt_blocks = load_json(generated_dir / "runtime_prompt_blocks.json")
     runtime_router_hints = load_json(generated_dir / "runtime_router_hints.json")
     runtime_seam_manifest = load_json(generated_dir / "runtime_seam_manifest.json")
+    guardrail_trust_gate = load_json(generated_dir / "repo_trust_gate_manifest.json")
+    guardrail_allowlist = load_json(generated_dir / "permission_allowlist_manifest.json")
+    guardrail_context = load_json(generated_dir / "skill_context_guard_manifest.json")
+    guardrail_tool_schemas = load_json(generated_dir / "runtime_guardrail_tool_schemas.json")
+    guardrail_prompt_blocks = load_json(generated_dir / "runtime_guardrail_prompt_blocks.json")
+    guardrail_manifest = load_json(generated_dir / "runtime_guardrail_manifest.json")
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
+    guardrail_policy = load_json(config_dir / "runtime_guardrail_policy.json")
 
     source_by_name = {entry["name"]: entry for entry in source_catalog.get("skills", [])}
     agent_by_name = {entry["name"]: entry for entry in agent_catalog.get("skills", [])}
@@ -164,6 +193,9 @@ def main() -> int:
     disclosure_by_name = {entry["name"]: entry for entry in runtime_disclosure.get("skills", [])}
     router_by_name = {entry["name"]: entry for entry in runtime_router_hints.get("skills", [])}
     alias_by_name = {entry["name"]: entry for entry in runtime_aliases.get("aliases", [])}
+    guardrail_trust_by_name = {entry["name"]: entry for entry in guardrail_trust_gate.get("skills", [])}
+    guardrail_allowlist_by_name = {entry["name"]: entry for entry in guardrail_allowlist.get("skills", [])}
+    guardrail_context_by_name = {entry["name"]: entry for entry in guardrail_context.get("skills", [])}
 
     if overrides_doc.get("profile") != EXPORT_PROFILE:
         errors.append(f"config/portable_skill_overrides.json profile must be {EXPORT_PROFILE!r}")
@@ -188,6 +220,17 @@ def main() -> int:
     }.items():
         if doc.get("profile") != RUNTIME_PROFILE:
             errors.append(f"{label} profile must be {RUNTIME_PROFILE!r}")
+    for label, doc in {
+        "config/runtime_guardrail_policy.json": guardrail_policy,
+        "generated/repo_trust_gate_manifest.json": guardrail_trust_gate,
+        "generated/permission_allowlist_manifest.json": guardrail_allowlist,
+        "generated/skill_context_guard_manifest.json": guardrail_context,
+        "generated/runtime_guardrail_tool_schemas.json": guardrail_tool_schemas,
+        "generated/runtime_guardrail_prompt_blocks.json": guardrail_prompt_blocks,
+        "generated/runtime_guardrail_manifest.json": guardrail_manifest,
+    }.items():
+        if doc.get("profile") != GUARDRAIL_PROFILE:
+            errors.append(f"{label} profile must be {GUARDRAIL_PROFILE!r}")
 
     if not skills_root.exists():
         errors.append(f"missing skills root: {skills_root}")
@@ -212,6 +255,9 @@ def main() -> int:
         "generated/runtime_disclosure_index.json": set(disclosure_by_name),
         "generated/runtime_router_hints.json": set(router_by_name),
         "generated/runtime_activation_aliases.json": set(alias_by_name),
+        "generated/repo_trust_gate_manifest.json": set(guardrail_trust_by_name),
+        "generated/permission_allowlist_manifest.json": set(guardrail_allowlist_by_name),
+        "generated/skill_context_guard_manifest.json": set(guardrail_context_by_name),
         "config/skill_policy_matrix.json": set((policy_doc.get("skills") or {}).keys()),
     }
     for label, names in expected_sets.items():
@@ -439,6 +485,43 @@ def main() -> int:
             if not context_entry.get("retain_sections"):
                 errors.append(f"generated/context_retention_manifest.json retain_sections missing for {skill_dir.name}")
 
+        guardrail_trust_entry = guardrail_trust_by_name.get(skill_dir.name)
+        if guardrail_trust_entry is None:
+            errors.append(f"generated/repo_trust_gate_manifest.json missing {skill_dir.name}")
+        else:
+            if source_entry and guardrail_trust_entry.get("invocation_mode") != source_entry.get("invocation_mode"):
+                errors.append(f"generated/repo_trust_gate_manifest.json invocation_mode mismatch for {skill_dir.name}")
+            if trust_entry is not None and guardrail_trust_entry.get("trust_posture") != trust_entry.get("trust_posture"):
+                errors.append(f"generated/repo_trust_gate_manifest.json trust_posture mismatch for {skill_dir.name}")
+            if guardrail_trust_entry.get("source_scope") != "repo":
+                errors.append(f"generated/repo_trust_gate_manifest.json source_scope mismatch for {skill_dir.name}")
+
+        guardrail_allowlist_entry = guardrail_allowlist_by_name.get(skill_dir.name)
+        if guardrail_allowlist_entry is None:
+            errors.append(f"generated/permission_allowlist_manifest.json missing {skill_dir.name}")
+        else:
+            if guardrail_allowlist_entry.get("source_scope") != "repo":
+                errors.append(f"generated/permission_allowlist_manifest.json source_scope mismatch for {skill_dir.name}")
+            if guardrail_allowlist_entry.get("resource_inventory") != manifest_entry.get("resource_inventory"):
+                errors.append(f"generated/permission_allowlist_manifest.json resource_inventory mismatch for {skill_dir.name}")
+            if guardrail_allowlist_entry.get("allowlist_id") != f"skill:{skill_dir.name}":
+                errors.append(f"generated/permission_allowlist_manifest.json allowlist_id mismatch for {skill_dir.name}")
+
+        guardrail_context_entry = guardrail_context_by_name.get(skill_dir.name)
+        if guardrail_context_entry is None:
+            errors.append(f"generated/skill_context_guard_manifest.json missing {skill_dir.name}")
+        else:
+            if guardrail_context_entry.get("source_scope") != "repo":
+                errors.append(f"generated/skill_context_guard_manifest.json source_scope mismatch for {skill_dir.name}")
+            if context_entry is not None and guardrail_context_entry.get("must_keep") != context_entry.get("must_keep"):
+                errors.append(f"generated/skill_context_guard_manifest.json must_keep mismatch for {skill_dir.name}")
+            if context_entry is not None and guardrail_context_entry.get("retain_sections") != context_entry.get("retain_sections"):
+                errors.append(f"generated/skill_context_guard_manifest.json retain_sections mismatch for {skill_dir.name}")
+            if not isinstance(guardrail_context_entry.get("instruction_sha256"), str) or len(guardrail_context_entry["instruction_sha256"]) != 64:
+                errors.append(f"generated/skill_context_guard_manifest.json instruction_sha256 mismatch for {skill_dir.name}")
+            if guardrail_context_entry.get("dedupe_key") != f"{skill_dir.name}:{guardrail_context_entry.get('instruction_sha256')}":
+                errors.append(f"generated/skill_context_guard_manifest.json dedupe_key mismatch for {skill_dir.name}")
+
         mcp_entry = mcp_by_name.get(skill_dir.name)
         if mcp_entry is None:
             errors.append(f"generated/mcp_dependency_manifest.json missing {skill_dir.name}")
@@ -543,8 +626,8 @@ def main() -> int:
         errors.append("generated/release_manifest.json must reference CHANGELOG.md")
     if release_identity.get("releasing_doc") != "docs/RELEASING.md":
         errors.append("generated/release_manifest.json must reference docs/RELEASING.md")
-    if release_manifest.get("included_waves") != [1, 2, 3, 4]:
-        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4]")
+    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6]:
+        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6]")
 
     if runtime_discovery.get("root") != ".agents/skills":
         errors.append("generated/runtime_discovery_index.json root mismatch")
@@ -590,6 +673,84 @@ def main() -> int:
         errors.append("generated/runtime_seam_manifest.json discovery_index mismatch")
     if generated_refs.get("disclosure_index") != "generated/runtime_disclosure_index.json":
         errors.append("generated/runtime_seam_manifest.json disclosure_index mismatch")
+
+    guardrail_tool_names = [tool.get("name") for tool in guardrail_tool_schemas.get("tools", [])]
+    if guardrail_tool_names != [
+        "guarded_discover_skills",
+        "guarded_disclose_skill",
+        "guarded_activate_skill",
+        "guarded_skill_session_status",
+        "repo_trust_gate",
+        "resolve_skill_allowlist",
+        "guarded_compact_skill_session",
+        "rehydrate_skill_context",
+    ]:
+        errors.append("generated/runtime_guardrail_tool_schemas.json tool set mismatch")
+    if not guardrail_prompt_blocks.get("system_prompt_block"):
+        errors.append("generated/runtime_guardrail_prompt_blocks.json missing system_prompt_block")
+    if not guardrail_prompt_blocks.get("tool_description_block"):
+        errors.append("generated/runtime_guardrail_prompt_blocks.json missing tool_description_block")
+    if guardrail_manifest.get("common_surface") != ".agents/skills":
+        errors.append("generated/runtime_guardrail_manifest.json common_surface mismatch")
+    if guardrail_manifest.get("trust_store_hint") != ".aoa/repo-trust-store.json":
+        errors.append("generated/runtime_guardrail_manifest.json trust_store_hint mismatch")
+    if guardrail_manifest.get("session_file_hint") != ".aoa/skill-runtime-session.json":
+        errors.append("generated/runtime_guardrail_manifest.json session_file_hint mismatch")
+    if guardrail_manifest.get("downstream_of", {}).get("runtime_seam") != "scripts/skill_runtime_seam.py":
+        errors.append("generated/runtime_guardrail_manifest.json runtime_seam mismatch")
+    if guardrail_manifest.get("downstream_of", {}).get("legacy_activation_shim") != "scripts/activate_skill.py":
+        errors.append("generated/runtime_guardrail_manifest.json legacy_activation_shim mismatch")
+
+    repo_scoped_skills = sorted(
+        name for name, entry in guardrail_trust_by_name.items() if entry.get("source_scope") == "repo"
+    )
+    if repo_scoped_skills:
+        guarded_docs = load_guardrails(repo_root)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            trust_store = pathlib.Path(tmpdir) / "repo-trust-store.json"
+            blocked_discovery = discover_guarded_payload(
+                repo_root,
+                guarded_docs,
+                trust_store_path=trust_store,
+                repo_trusted="auto",
+            )
+            expected_visible = len(actual_names) - len(repo_scoped_skills)
+            if blocked_discovery.get("count") != expected_visible:
+                errors.append("guarded discover count mismatch for untrusted repo")
+            if blocked_discovery.get("blocked_count") != len(repo_scoped_skills):
+                errors.append("guarded discover blocked_count mismatch for untrusted repo")
+
+            blocked_activate = activate_guarded_payload(
+                repo_root,
+                guarded_docs,
+                skill_name=repo_scoped_skills[0],
+                trust_store_path=trust_store,
+                repo_trusted="auto",
+            )
+            if blocked_activate.get("stage") != "activate_blocked":
+                errors.append("guarded activate must block repo-scoped skills when repo is untrusted")
+            if "instructions_markdown" in blocked_activate:
+                errors.append("guarded blocked payload must not expose instructions_markdown")
+
+            trust_result = trust_payload(
+                repo_root,
+                decision="trusted",
+                reason="validation smoke",
+                trust_store_path=trust_store,
+            )
+            if not trust_result.get("trust_status", {}).get("repo_trusted"):
+                errors.append("guarded trust payload failed to mark repo trusted")
+
+            trusted_discovery = discover_guarded_payload(
+                repo_root,
+                guarded_docs,
+                trust_store_path=trust_store,
+                repo_trusted="auto",
+            )
+            if trusted_discovery.get("count") != len(actual_names):
+                errors.append("guarded discover must expose all skills after trusting repo")
+            if trusted_discovery.get("blocked_count") != 0:
+                errors.append("guarded discover blocked_count must be 0 after trusting repo")
 
     if errors:
         for error in errors:

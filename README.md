@@ -37,9 +37,10 @@ If you are new to this repository, follow this short path:
 18. Read `docs/INSTALL_AND_PROFILES.md`, `docs/CONTEXT_RETENTION.md`, `docs/UI_METADATA_AND_ASSETS.md`, and `docs/CODEX_CONFIG_SNIPPETS.md` if you are touching portable install, runtime-contract, or UI surfaces.
 19. Read `docs/THIRD_WAVE.md` for the portable-layer hardening that added install, trust, and config surfaces.
 20. Read `docs/FOURTH_WAVE.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `docs/RUNTIME_TOOL_CONTRACTS.md`, and `docs/SESSION_COMPACTION.md` if you are touching dedicated-tool runtime activation or long-running local wrappers.
-21. Read `SKILL_INDEX.md` for the current skill surface.
-22. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
-23. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
+21. Read `docs/SIXTH_WAVE.md`, `docs/TRUST_GATE_AND_ALLOWLIST.md`, `docs/SKILL_CONTEXT_GUARD.md`, and `docs/RUNTIME_GOVERNANCE_LAYER.md` if you are touching trust-gated activation, allowlists, or governed compaction/rehydration.
+22. Read `SKILL_INDEX.md` for the current skill surface.
+23. Open `skills/aoa-change-protocol/SKILL.md` as the first starter skill.
+24. Use `templates/SKILL.template.md`, `templates/RUNTIME_EXAMPLE.template.md`, `templates/EVALUATION_SNAPSHOT.template.md`, `templates/PROJECT_OVERLAY.template.md`, and `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md` when authoring new review surfaces.
 
 ## Quick routes
 
@@ -92,7 +93,7 @@ The current repo-local surface stack is:
 - runtime selection and object use: `docs/RUNTIME_PATH.md`, `generated/skill_walkthroughs.*`, `scripts/inspect_skill.py`
 - evaluation evidence and matrix reading: `docs/EVALUATION_PATH.md`, `generated/skill_evaluation_matrix.*`, `tests/fixtures/skill_evaluation_cases.yaml`, `scripts/report_skill_evaluation.py`
 - public-product and governance signals: `docs/PUBLIC_SURFACE.md`, `generated/public_surface.*`, `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, `generated/skill_graph.*`
-- Codex-facing portable export and runtime seams: `docs/CODEX_PORTABLE_LAYER.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/local_adapter_manifest*.json`, `generated/skill_handoff_contracts.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/runtime_*.json`, `scripts/build_agent_skills.py`, `scripts/build_runtime_seam.py`, `scripts/skill_runtime_seam.py`, `scripts/activate_skill.py`, `scripts/install_skill_pack.py`, `scripts/render_codex_config.py`
+- Codex-facing portable export and runtime seams: `docs/CODEX_PORTABLE_LAYER.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `docs/SIXTH_WAVE.md`, `docs/TRUST_GATE_AND_ALLOWLIST.md`, `docs/SKILL_CONTEXT_GUARD.md`, `docs/RUNTIME_GOVERNANCE_LAYER.md`, `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/local_adapter_manifest*.json`, `generated/skill_handoff_contracts.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/runtime_*.json`, `generated/*guardrail*.json`, `scripts/build_agent_skills.py`, `scripts/build_runtime_seam.py`, `scripts/build_runtime_guardrails.py`, `scripts/skill_runtime_seam.py`, `scripts/skill_runtime_guardrails.py`, `scripts/activate_skill.py`, `scripts/install_skill_pack.py`, `scripts/render_codex_config.py`
 - composition-boundary and exception-review signals: `generated/skill_composition_audit.*`, `docs/reviews/skill-composition-exceptions/*.md`, `templates/SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md`
 - overlay preparation and thin downstream adaptation: `docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, `templates/PROJECT_OVERLAY.template.md`, `templates/PROJECT_OVERLAY_SKILL.template.md`
 
@@ -164,7 +165,7 @@ It now also includes a runtime inspection layer in `docs/RUNTIME_PATH.md`, `gene
 The current focus is candidate review and promotion decisions, overlay maturity, public/docs clarity, and packaging prep through derived maintenance surfaces such as `generated/governance_backlog.*`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`.
 Overlay adoption remains intentionally thin, public-safe, and repo-local.
 `docs/OVERLAY_SPEC.md`, `docs/overlays/atm10/PROJECT_OVERLAY.md`, and the overlay templates now describe live exemplar overlay packs without pretending to be live downstream integrations.
-The repo now also publishes a generated Codex-facing export under `.agents/skills/*`, a legacy-compatible local adapter seam in `generated/local_adapter_manifest*.json` and `scripts/activate_skill.py`, a primary wave-4 dedicated-tool runtime seam in `scripts/skill_runtime_seam.py` plus `generated/runtime_*.json`, a skill-derived handoff bridge for downstream playbook layers in `generated/skill_handoff_contracts.json`, wave-3 install and trust surfaces in `generated/skill_pack_profiles.resolved.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, and policy-aware trigger-eval data in `generated/skill_trigger_eval_cases.jsonl` and `generated/skill_trigger_collision_matrix.json`.
+The repo now also publishes a generated Codex-facing export under `.agents/skills/*`, a legacy-compatible local adapter seam in `generated/local_adapter_manifest*.json` and `scripts/activate_skill.py`, a wave-4 raw runtime seam in `scripts/skill_runtime_seam.py` plus `generated/runtime_*.json`, a wave-6 governed runtime layer in `scripts/skill_runtime_guardrails.py` plus `generated/*guardrail*.json`, a skill-derived handoff bridge for downstream playbook layers in `generated/skill_handoff_contracts.json`, wave-3 install and trust surfaces in `generated/skill_pack_profiles.resolved.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, and policy-aware trigger-eval data in `generated/skill_trigger_eval_cases.jsonl` and `generated/skill_trigger_collision_matrix.json`.
 
 ## When not to use this repository
 
@@ -205,6 +206,7 @@ For portable export work or any change to skill bodies, invocation modes, portab
 ```bash
 python scripts/build_agent_skills.py --repo-root .
 python scripts/build_runtime_seam.py --repo-root .
+python scripts/build_runtime_guardrails.py --repo-root .
 python scripts/validate_agent_skills.py --repo-root .
 python scripts/lint_trigger_evals.py --repo-root .
 python scripts/lint_pack_profiles.py --repo-root .
@@ -216,11 +218,12 @@ Refresh the derived catalogs, capsules, sections, walkthroughs, evaluation matri
 python scripts/build_catalog.py
 ```
 
-Refresh the generated Codex-facing export, runtime seam, and local-adapter manifests directly:
+Refresh the generated Codex-facing export, raw runtime seam, governed runtime layer, and local-adapter manifests directly:
 
 ```bash
 python scripts/build_agent_skills.py --repo-root .
 python scripts/build_runtime_seam.py --repo-root .
+python scripts/build_runtime_guardrails.py --repo-root .
 ```
 
 Inspect a skill through the runtime path:

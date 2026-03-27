@@ -27,13 +27,21 @@ class ReleaseCheckTests(unittest.TestCase):
             release_check.resolve_command(("git", "status")),
         )
 
-    def test_release_sequence_includes_runtime_seam_build_and_check(self) -> None:
+    def test_release_sequence_includes_runtime_seam_and_guardrail_builds_and_checks(self) -> None:
         self.assertIn(
             ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
             ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
+            ("python", "scripts/build_runtime_guardrails.py", "--repo-root", "."),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
+            ("python", "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
 

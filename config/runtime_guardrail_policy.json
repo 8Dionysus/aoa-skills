@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-6-runtime-guardrails",
+  "trust_gate": {
+    "repo": "require-trusted-repo",
+    "user": "allow",
+    "admin": "allow",
+    "system": "allow",
+    "default_repo_decision": "untrusted",
+    "explicit_override": false
+  },
+  "permission_allowlist": {
+    "read_access": "read-only",
+    "merge_strategy": "union-active-skills",
+    "eager_read": false,
+    "adapter_expectation": "local wrappers should allow read access to skill directories before file-level prompts fire"
+  },
+  "context_guard": {
+    "protect_from_compaction": true,
+    "pin_strategy": "protected-tool-output",
+    "dedupe_key": "skill-name-plus-instruction-sha256",
+    "rehydration_strategy": "compact-packet-then-activate"
+  }
+}

@@ -22,6 +22,12 @@ This is enough for a local router or preselector to choose which skill to activa
 Primary runtime wrappers should prefer:
 
 ```bash
+python scripts/skill_runtime_guardrails.py activate --repo-root . --skill <skill-name> --trust-store .aoa/repo-trust-store.json --format json
+```
+
+Raw/debug runtime wrappers may still use:
+
+```bash
 python scripts/skill_runtime_seam.py activate --repo-root . --skill <skill-name> --format json
 ```
 
@@ -44,7 +50,7 @@ The activation payload returns:
 - `trust_policy`
 - the full markdown instructions body
 
-The legacy activation payload is now backed by the wave-4 runtime seam, so it stays compatible while sharing the same generated contracts and export root.
+The legacy activation payload is now backed by the governed seam, so it stays compatible while sharing the same generated contracts and export root.
 
 ## Policy rules
 
@@ -57,9 +63,11 @@ Do not silently relax this policy in downstream wrappers.
 
 ## Resource access
 
-Allowlist the activated skill directory so bundled `scripts/`, `references/`, and `assets/` can be read without extra prompts.
+Allow trust-gated activation first, then allowlist the activated skill directory so bundled `scripts/`, `references/`, and `assets/` can be read without extra prompts.
 
+The trust-store hint lives at `.aoa/repo-trust-store.json`.
 The allowlist root for each activated skill is emitted in the activation payload and repeated in `generated/local_adapter_manifest.json`.
+Use `python scripts/skill_runtime_guardrails.py allowlist --repo-root . --session-file .aoa/skill-runtime-session.json --format json` to resolve the merged read-only paths for active skills.
 
 ## Context rules
 
@@ -70,7 +78,7 @@ Once a skill is activated:
 - do not drop the active skill during context compaction unless the task clearly moved away from it
 - prefer `context_retention` and `runtime_contract` over ad hoc wrapper notes
 
-For long-running local agents, prefer the explicit session path in `scripts/skill_runtime_seam.py status|compact|deactivate` instead of maintaining parallel compaction notes outside the repo-owned seam.
+For long-running local agents, prefer the explicit governed session path in `scripts/skill_runtime_guardrails.py status|compact|rehydrate` instead of maintaining parallel compaction notes outside the repo-owned seam.
 
 ## Intended layering
 
