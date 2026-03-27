@@ -33,6 +33,7 @@ REQUIRED_GENERATED_FILES = [
     "generated/portable_export_map.json",
     "generated/local_adapter_manifest.json",
     "generated/local_adapter_manifest.min.json",
+    "generated/skill_handoff_contracts.json",
     "generated/context_retention_manifest.json",
     "generated/trust_policy_matrix.json",
     "generated/skill_runtime_contracts.json",
@@ -56,6 +57,7 @@ RELEASE_MANIFEST_GENERATED_FILES = [
     "generated/portable_export_map.json",
     "generated/local_adapter_manifest.json",
     "generated/local_adapter_manifest.min.json",
+    "generated/skill_handoff_contracts.json",
     "generated/context_retention_manifest.json",
     "generated/trust_policy_matrix.json",
     "generated/skill_runtime_contracts.json",
@@ -125,6 +127,7 @@ def main() -> int:
     export_map = load_json(generated_dir / "portable_export_map.json")
     local_manifest = load_json(generated_dir / "local_adapter_manifest.json")
     local_manifest_min = load_json(generated_dir / "local_adapter_manifest.min.json")
+    handoff_doc = load_json(generated_dir / "skill_handoff_contracts.json")
     runtime_doc = load_json(generated_dir / "skill_runtime_contracts.json")
     trust_doc = load_json(generated_dir / "trust_policy_matrix.json")
     context_doc = load_json(generated_dir / "context_retention_manifest.json")
@@ -151,6 +154,7 @@ def main() -> int:
     export_by_name = {entry["name"]: entry for entry in export_map.get("exports", [])}
     manifest_by_name = {entry["name"]: entry for entry in local_manifest.get("skills", [])}
     manifest_min_by_name = {entry["name"]: entry for entry in local_manifest_min.get("skills", [])}
+    handoff_by_name = {entry["name"]: entry for entry in handoff_doc.get("skills", [])}
     runtime_by_name = {entry["name"]: entry for entry in runtime_doc.get("skills", [])}
     trust_by_name = {entry["name"]: entry for entry in trust_doc.get("skills", [])}
     context_by_name = {entry["name"]: entry for entry in context_doc.get("skills", [])}
@@ -169,6 +173,8 @@ def main() -> int:
         errors.append(f"generated/codex_config_snippets.json profile must be {EXPORT_PROFILE!r}")
     if release_manifest.get("profile") != EXPORT_PROFILE:
         errors.append(f"generated/release_manifest.json profile must be {EXPORT_PROFILE!r}")
+    if handoff_doc.get("profile") != EXPORT_PROFILE:
+        errors.append(f"generated/skill_handoff_contracts.json profile must be {EXPORT_PROFILE!r}")
     for label, doc in {
         "generated/runtime_discovery_index.json": runtime_discovery,
         "generated/runtime_discovery_index.min.json": runtime_discovery_min,
@@ -196,6 +202,7 @@ def main() -> int:
         "generated/portable_export_map.json": set(export_by_name),
         "generated/local_adapter_manifest.json": set(manifest_by_name),
         "generated/local_adapter_manifest.min.json": set(manifest_min_by_name),
+        "generated/skill_handoff_contracts.json": set(handoff_by_name),
         "generated/skill_runtime_contracts.json": set(runtime_by_name),
         "generated/trust_policy_matrix.json": set(trust_by_name),
         "generated/context_retention_manifest.json": set(context_by_name),
@@ -362,6 +369,49 @@ def main() -> int:
             for allowlist_path in manifest_entry.get("allowlist_paths", []):
                 if not (repo_root / allowlist_path).exists():
                     errors.append(f"generated/local_adapter_manifest.json allowlist path does not exist: {allowlist_path}")
+
+        handoff_entry = handoff_by_name.get(skill_dir.name)
+        if handoff_entry is None:
+            errors.append(f"generated/skill_handoff_contracts.json missing {skill_dir.name}")
+        else:
+            for field_name in (
+                "inputs",
+                "outputs",
+                "verification",
+                "contracts",
+                "consumes_artifact_tags",
+                "provides_artifact_tags",
+            ):
+                value = handoff_entry.get(field_name)
+                if not isinstance(value, list):
+                    errors.append(
+                        f"generated/skill_handoff_contracts.json {skill_dir.name} field {field_name!r} must be a list"
+                    )
+                    continue
+                if any(not isinstance(item, str) or not item.strip() for item in value):
+                    errors.append(
+                        f"generated/skill_handoff_contracts.json {skill_dir.name} field {field_name!r} must contain non-empty strings"
+                    )
+            packet = handoff_entry.get("handoff_packet_template")
+            if not isinstance(packet, dict):
+                errors.append(
+                    f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template must be a mapping"
+                )
+            else:
+                if packet.get("from_skill") != skill_dir.name:
+                    errors.append(
+                        f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template.from_skill mismatch"
+                    )
+                for field_name in ("produced_artifacts", "verification_notes", "contract_notes", "next_recommended_skills"):
+                    value = packet.get(field_name)
+                    if not isinstance(value, list):
+                        errors.append(
+                            f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template.{field_name} must be a list"
+                        )
+                    elif any(not isinstance(item, str) or not item.strip() for item in value):
+                        errors.append(
+                            f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template.{field_name} must contain non-empty strings"
+                        )
 
         runtime_entry = runtime_by_name.get(skill_dir.name)
         if runtime_entry is None:

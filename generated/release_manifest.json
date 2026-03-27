@@ -25,6 +25,7 @@
     "generated/portable_export_map.json",
     "generated/local_adapter_manifest.json",
     "generated/local_adapter_manifest.min.json",
+    "generated/skill_handoff_contracts.json",
     "generated/context_retention_manifest.json",
     "generated/trust_policy_matrix.json",
     "generated/skill_runtime_contracts.json",

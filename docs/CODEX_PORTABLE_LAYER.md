@@ -69,6 +69,7 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 - `generated/agent_skill_catalog*.json`
 - `generated/portable_export_map.json`
 - `generated/local_adapter_manifest*.json`
+- `generated/skill_handoff_contracts.json`
 - `generated/context_retention_manifest.json`
 - `generated/trust_policy_matrix.json`
 - `generated/skill_runtime_contracts.json`
@@ -78,6 +79,7 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 - `generated/release_manifest.json`
 
 These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
+`generated/skill_handoff_contracts.json` is the only wave-5 bridge kept in `aoa-skills`: it remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
 
 Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 

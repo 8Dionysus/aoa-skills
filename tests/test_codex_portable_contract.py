@@ -30,14 +30,25 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual(manifest_names, catalog_names)
 
     def test_runtime_contracts_match_catalog(self):
+        handoff_doc = load_json(REPO_ROOT / "generated" / "skill_handoff_contracts.json")
         runtime_doc = load_json(REPO_ROOT / "generated" / "skill_runtime_contracts.json")
         trust_doc = load_json(REPO_ROOT / "generated" / "trust_policy_matrix.json")
         context_doc = load_json(REPO_ROOT / "generated" / "context_retention_manifest.json")
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
         catalog_names = {entry["name"] for entry in catalog["skills"]}
+        self.assertEqual({entry["name"] for entry in handoff_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in runtime_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in trust_doc["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in context_doc["skills"]}, catalog_names)
+
+    def test_handoff_contracts_expose_compact_packet_templates(self):
+        handoff_doc = load_json(REPO_ROOT / "generated" / "skill_handoff_contracts.json")
+        for entry in handoff_doc["skills"]:
+            packet = entry["handoff_packet_template"]
+            self.assertEqual(packet["from_skill"], entry["name"])
+            self.assertIsInstance(packet["produced_artifacts"], list)
+            self.assertIsInstance(packet["verification_notes"], list)
+            self.assertIsInstance(packet["contract_notes"], list)
 
     def test_runtime_seam_indexes_match_catalog(self):
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
