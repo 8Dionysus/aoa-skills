@@ -1,0 +1,649 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-7-description-trigger-evals",
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
+      "description_sha256": "f1f4cb3d68b8da03557ea671e72452a3e883eb989f7e093686eee8b1dd73fc94",
+      "summary_clause": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable",
+      "use_when_clause": "structure, boundaries, tooling, or workflow expectations change and future contributors need to know why",
+      "do_not_use_clause": "for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "decision-and-doc-authority",
+      "families": [
+        "decision-and-doc-authority"
+      ],
+      "adjacent_skills": [
+        "aoa-source-of-truth-check",
+        "atm10-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-adr-write to record a meaningful architectural or workflow decision, place it in the canonical decision surface, and verify the rationale is easy to find.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "01-explicit",
+        "01-implicit",
+        "01-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": [
+        "desc-mirror-019-aoa-adr-write"
+      ]
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
+      "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c",
+      "summary_clause": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed",
+      "use_when_clause": "a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear",
+      "do_not_use_clause": "for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "safety-and-mutation-gating",
+      "families": [
+        "safety-and-mutation-gating"
+      ],
+      "adjacent_skills": [
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share"
+      ],
+      "default_prompt": "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "02-explicit",
+        "02-implicit-manual",
+        "02-adjacent-negative",
+        "collision-09"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-09"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
+      "description_sha256": "735d43d6ab5652fb304178f0e2c746584bbc1a7455aa2f63fbfac82688dd6a06",
+      "summary_clause": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped",
+      "use_when_clause": "naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding",
+      "do_not_use_clause": "for tiny local edits or when the boundary is already clear and the real task is contract validation",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "boundary-shaping",
+      "families": [
+        "boundary-shaping"
+      ],
+      "adjacent_skills": [
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor"
+      ],
+      "default_prompt": "Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "03-explicit",
+        "03-implicit",
+        "03-adjacent-negative",
+        "collision-03"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-03"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-005-aoa-bounded-context-map",
+        "desc-mirror-007-aoa-bounded-context-map"
+      ]
+    },
+    {
+      "name": "aoa-change-protocol",
+      "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
+      "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
+      "summary_clause": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting",
+      "use_when_clause": "code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan",
+      "do_not_use_clause": "for trivial wording fixes or when a more specific risk skill fits better",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "change-execution-vs-test-first",
+      "families": [
+        "change-execution-vs-test-first",
+        "overlay-vs-base-skill"
+      ],
+      "adjacent_skills": [
+        "aoa-contract-test",
+        "aoa-safe-infra-change",
+        "aoa-source-of-truth-check",
+        "aoa-tdd-slice",
+        "atm10-change-protocol",
+        "atm10-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-change-protocol to plan, apply, verify, and report a bounded non-trivial repository change.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "04-explicit",
+        "04-implicit",
+        "04-adjacent-negative",
+        "collision-08",
+        "collision-15"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-08",
+        "desc-collision-collision-15"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-009-aoa-change-protocol",
+        "desc-mirror-011-aoa-change-protocol",
+        "desc-mirror-015-aoa-change-protocol"
+      ]
+    },
+    {
+      "name": "aoa-contract-test",
+      "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
+      "description_sha256": "9bc2710777cc9b6a70a74df503ba7925b7dace767ee141b879357cd3106d440e",
+      "summary_clause": "Design or extend contract-oriented validation at module, service, or workflow boundaries",
+      "use_when_clause": "two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract",
+      "do_not_use_clause": "for purely local changes or when the real need is invariant or property testing instead of boundary validation",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "change-execution-vs-test-first",
+      "families": [
+        "change-execution-vs-test-first"
+      ],
+      "adjacent_skills": [
+        "aoa-change-protocol",
+        "aoa-tdd-slice"
+      ],
+      "default_prompt": "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "05-explicit",
+        "05-implicit",
+        "05-adjacent-negative",
+        "collision-07"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-07"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-010-aoa-contract-test"
+      ]
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "description": "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.",
+      "description_sha256": "664701e603b988ed90f66e269c021c532c9c0b6b02a3f03b21d71fc4e7ced112",
+      "summary_clause": "Separate reusable core logic from glue, orchestration, and infrastructure detail",
+      "use_when_clause": "stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear",
+      "do_not_use_clause": "for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "boundary-shaping",
+      "families": [
+        "boundary-shaping"
+      ],
+      "adjacent_skills": [
+        "aoa-bounded-context-map",
+        "aoa-port-adapter-refactor"
+      ],
+      "default_prompt": "Use $aoa-core-logic-boundary to decide what belongs in reusable core logic versus glue or infrastructure detail, then keep the refactor bounded.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "06-explicit",
+        "06-implicit",
+        "06-adjacent-negative",
+        "collision-04"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-04"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-003-aoa-core-logic-boundary",
+        "desc-mirror-008-aoa-core-logic-boundary"
+      ]
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "description": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step. Use when the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations. Do not use for purely analytical tasks or when the primary question is whether execution is authorized at all.",
+      "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc",
+      "summary_clause": "Prefer simulation, preview, or inspect-only paths before any real mutation, then require one explicit confirmation for the concrete mutating step",
+      "use_when_clause": "the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations",
+      "do_not_use_clause": "for purely analytical tasks or when the primary question is whether execution is authorized at all",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "safety-and-mutation-gating",
+      "families": [
+        "safety-and-mutation-gating"
+      ],
+      "adjacent_skills": [
+        "aoa-approval-gate-check",
+        "aoa-local-stack-bringup",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share"
+      ],
+      "default_prompt": "Use $aoa-dry-run-first to find the safest preview path, interpret what it proves, and stop for explicit confirmation before the real mutation.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "07-explicit",
+        "07-implicit-manual",
+        "07-adjacent-negative",
+        "collision-10"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-10"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "description": "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.",
+      "description_sha256": "65f3dc67fa694db586e881ca32ed304a246225c9fc3f3539094c3cd3115a8158",
+      "summary_clause": "Audit whether existing tests and checks actually constrain the stable invariants that matter",
+      "use_when_clause": "you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps",
+      "do_not_use_clause": "when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "property-authoring-vs-coverage-audit",
+      "families": [
+        "property-authoring-vs-coverage-audit"
+      ],
+      "adjacent_skills": [
+        "aoa-property-invariants"
+      ],
+      "default_prompt": "Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "08-explicit",
+        "08-implicit",
+        "08-adjacent-negative",
+        "collision-01"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-01"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-002-aoa-invariant-coverage-audit"
+      ]
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "description": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.",
+      "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516",
+      "summary_clause": "Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path",
+      "use_when_clause": "profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch",
+      "do_not_use_clause": "for remote deployment, pure diagnostics without launch intent, or generic infra-change work",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "safety-and-mutation-gating",
+      "families": [
+        "safety-and-mutation-gating"
+      ],
+      "adjacent_skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share"
+      ],
+      "default_prompt": "Use $aoa-local-stack-bringup to review what would start, run readiness checks for the selected runtime, and launch the local stack through one explicit entrypoint.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "09-explicit",
+        "09-implicit-manual",
+        "09-adjacent-negative",
+        "collision-12"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-12"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
+      "description_sha256": "e47ea2a0e2307feeff4d3c14974e7115fbb99a6cf81a1a86c1514aa24055b508",
+      "summary_clause": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details",
+      "use_when_clause": "concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change",
+      "do_not_use_clause": "for tiny local fixes or when there is no meaningful boundary to clarify",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "boundary-shaping",
+      "families": [
+        "boundary-shaping"
+      ],
+      "adjacent_skills": [
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary"
+      ],
+      "default_prompt": "Use $aoa-port-adapter-refactor to isolate a concrete dependency behind a narrow port and adapter without turning the change into a hidden rewrite.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "10-explicit",
+        "10-implicit",
+        "10-adjacent-negative",
+        "collision-05"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-05"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-004-aoa-port-adapter-refactor",
+        "desc-mirror-006-aoa-port-adapter-refactor"
+      ]
+    },
+    {
+      "name": "aoa-property-invariants",
+      "description": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.",
+      "description_sha256": "2bf02fb83803f295670eb33af7b09d7dac89afd32857f82eb477db6f11dd2839",
+      "summary_clause": "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples",
+      "use_when_clause": "correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules",
+      "do_not_use_clause": "when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "property-authoring-vs-coverage-audit",
+      "families": [
+        "property-authoring-vs-coverage-audit"
+      ],
+      "adjacent_skills": [
+        "aoa-invariant-coverage-audit"
+      ],
+      "default_prompt": "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "11-explicit",
+        "11-implicit",
+        "11-adjacent-negative",
+        "collision-02"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-02"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-001-aoa-property-invariants"
+      ]
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
+      "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a",
+      "summary_clause": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking",
+      "use_when_clause": "a change has runtime or deployment implications and needs stronger discipline than a normal code edit",
+      "do_not_use_clause": "for purely local code changes, or when the main need is approval classification or preview-first execution",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "safety-and-mutation-gating",
+      "families": [
+        "safety-and-mutation-gating"
+      ],
+      "adjacent_skills": [
+        "aoa-approval-gate-check",
+        "aoa-change-protocol",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
+        "aoa-sanitized-share",
+        "aoa-tdd-slice"
+      ],
+      "default_prompt": "Use $aoa-safe-infra-change to plan and verify a bounded infrastructure or configuration change with explicit risk and rollback thinking.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "12-explicit",
+        "12-implicit-manual",
+        "12-adjacent-negative",
+        "collision-11"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-11"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-014-aoa-safe-infra-change"
+      ]
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "description": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.",
+      "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae",
+      "summary_clause": "Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction",
+      "use_when_clause": "logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers",
+      "do_not_use_clause": "when the material is already clearly public-safe or when the task is to perform the underlying operational change",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "safety-and-mutation-gating",
+      "families": [
+        "safety-and-mutation-gating"
+      ],
+      "adjacent_skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
+        "aoa-safe-infra-change"
+      ],
+      "default_prompt": "Use $aoa-sanitized-share to separate raw technical material from a public-safe artifact and verify the sanitized version still preserves the lesson.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "13-explicit",
+        "13-implicit-manual",
+        "13-adjacent-negative",
+        "collision-13"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-13"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
+      "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0",
+      "summary_clause": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist",
+      "use_when_clause": "docs overlap, conflict, or confuse contributors about which file to trust",
+      "do_not_use_clause": "for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "decision-and-doc-authority",
+      "families": [
+        "decision-and-doc-authority",
+        "overlay-vs-base-skill"
+      ],
+      "adjacent_skills": [
+        "aoa-adr-write",
+        "aoa-change-protocol",
+        "atm10-change-protocol",
+        "atm10-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "14-explicit",
+        "14-implicit",
+        "14-adjacent-negative",
+        "collision-17"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-17"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-017-aoa-source-of-truth-check"
+      ]
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
+      "description_sha256": "0e24f2dda744301b9c7f5c75b499a1a15c1f754b41d90e6c1e4abd09547dbeb9",
+      "summary_clause": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries",
+      "use_when_clause": "a behavior change can be specified in tests before code and confidence or regression resistance matters",
+      "do_not_use_clause": "for undefined exploratory work, one-off glue, or broader architectural restructuring",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "change-execution-vs-test-first",
+      "families": [
+        "change-execution-vs-test-first"
+      ],
+      "adjacent_skills": [
+        "aoa-change-protocol",
+        "aoa-contract-test",
+        "aoa-safe-infra-change"
+      ],
+      "default_prompt": "Use $aoa-tdd-slice to define behavior in tests first, make the smallest implementation change, and report what stays out of scope.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "15-explicit",
+        "15-implicit",
+        "15-adjacent-negative",
+        "collision-06"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-06"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-012-aoa-tdd-slice",
+        "desc-mirror-013-aoa-tdd-slice"
+      ]
+    },
+    {
+      "name": "atm10-change-protocol",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "description_sha256": "e0f5533ad013bea96c55ee9d27f0cee6e1ccd9a0f7e88fc3466c5aa1f5cfe4ea",
+      "summary_clause": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes",
+      "use_when_clause": "the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces",
+      "do_not_use_clause": "when the base skill is sufficient without local adaptation or when a broader playbook is needed",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "overlay-vs-base-skill",
+      "families": [
+        "overlay-vs-base-skill"
+      ],
+      "adjacent_skills": [
+        "aoa-change-protocol",
+        "aoa-source-of-truth-check",
+        "atm10-source-of-truth-check"
+      ],
+      "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "16-explicit",
+        "16-implicit",
+        "16-adjacent-negative",
+        "collision-14"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-14"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-016-atm10-change-protocol"
+      ]
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "description_sha256": "e0c744178c0b7c1f9e4f1bb39dc6b3b1338f8c77b8d1f66e5d989a8724a046d4",
+      "summary_clause": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture",
+      "use_when_clause": "contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo",
+      "do_not_use_clause": "when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "overlay-vs-base-skill",
+      "families": [
+        "overlay-vs-base-skill"
+      ],
+      "adjacent_skills": [
+        "aoa-adr-write",
+        "aoa-change-protocol",
+        "aoa-source-of-truth-check",
+        "atm10-change-protocol"
+      ],
+      "default_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "17-explicit",
+        "17-implicit",
+        "17-adjacent-negative",
+        "collision-16"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-16"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-018-atm10-source-of-truth-check"
+      ]
+    }
+  ]
+}

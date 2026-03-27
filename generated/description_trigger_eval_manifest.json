@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-7-description-trigger-evals",
+  "source_files": [
+    "config/portable_skill_overrides.json",
+    "config/description_trigger_eval_policy.json",
+    "generated/skill_trigger_eval_cases.jsonl",
+    "generated/skill_trigger_collision_matrix.json",
+    "generated/agent_skill_catalog.json",
+    "generated/skill_runtime_contracts.json",
+    "generated/runtime_router_hints.json",
+    ".agents/skills/*/SKILL.md"
+  ],
+  "skill_count": 17,
+  "total_cases": 87,
+  "case_class_totals": {
+    "explicit-handle": 17,
+    "manual-invocation-required": 10,
+    "prefer-other-skill": 19,
+    "should-not-trigger": 17,
+    "should-trigger": 24
+  },
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "f1f4cb3d68b8da03557ea671e72452a3e883eb989f7e093686eee8b1dd73fc94",
+      "family": "decision-and-doc-authority",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c",
+      "family": "safety-and-mutation-gating",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "735d43d6ab5652fb304178f0e2c746584bbc1a7455aa2f63fbfac82688dd6a06",
+      "family": "boundary-shaping",
+      "total_cases": 6,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 2,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-change-protocol",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
+      "family": "change-execution-vs-test-first",
+      "total_cases": 8,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 3,
+        "should-not-trigger": 1,
+        "should-trigger": 3
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-contract-test",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "9bc2710777cc9b6a70a74df503ba7925b7dace767ee141b879357cd3106d440e",
+      "family": "change-execution-vs-test-first",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "664701e603b988ed90f66e269c021c532c9c0b6b02a3f03b21d71fc4e7ced112",
+      "family": "boundary-shaping",
+      "total_cases": 6,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 2,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc",
+      "family": "safety-and-mutation-gating",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "65f3dc67fa694db586e881ca32ed304a246225c9fc3f3539094c3cd3115a8158",
+      "family": "property-authoring-vs-coverage-audit",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516",
+      "family": "safety-and-mutation-gating",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "e47ea2a0e2307feeff4d3c14974e7115fbb99a6cf81a1a86c1514aa24055b508",
+      "family": "boundary-shaping",
+      "total_cases": 6,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 2,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-property-invariants",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "2bf02fb83803f295670eb33af7b09d7dac89afd32857f82eb477db6f11dd2839",
+      "family": "property-authoring-vs-coverage-audit",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a",
+      "family": "safety-and-mutation-gating",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae",
+      "family": "safety-and-mutation-gating",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0",
+      "family": "decision-and-doc-authority",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "0e24f2dda744301b9c7f5c75b499a1a15c1f754b41d90e6c1e4abd09547dbeb9",
+      "family": "change-execution-vs-test-first",
+      "total_cases": 6,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 2,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "atm10-change-protocol",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "e0f5533ad013bea96c55ee9d27f0cee6e1ccd9a0f7e88fc3466c5aa1f5cfe4ea",
+      "family": "overlay-vs-base-skill",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "e0c744178c0b7c1f9e4f1bb39dc6b3b1338f8c77b8d1f66e5d989a8724a046d4",
+      "family": "overlay-vs-base-skill",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    }
+  ]
+}

@@ -6,7 +6,8 @@
     2,
     3,
     4,
-    6
+    6,
+    7
   ],
   "skill_root": ".agents/skills",
   "skill_count": 17,
@@ -18,7 +19,8 @@
     "config/portable_skill_overrides.json",
     "config/openai_skill_extensions.json",
     "config/skill_pack_profiles.json",
-    "config/skill_policy_matrix.json"
+    "config/skill_policy_matrix.json",
+    "config/description_trigger_eval_policy.json"
   ],
   "generated_files": [
     "generated/agent_skill_catalog.json",
@@ -48,6 +50,11 @@
     "generated/runtime_guardrail_tool_schemas.json",
     "generated/runtime_guardrail_prompt_blocks.json",
     "generated/runtime_guardrail_manifest.json",
+    "generated/skill_description_signals.json",
+    "generated/description_trigger_eval_cases.jsonl",
+    "generated/description_trigger_eval_cases.csv",
+    "generated/description_trigger_eval_manifest.json",
+    "generated/skills_ref_validation_manifest.json",
     "generated/release_manifest.json"
   ],
   "release_identity": {

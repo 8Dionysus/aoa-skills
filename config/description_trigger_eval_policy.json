@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-7-description-trigger-evals",
+  "required_case_classes": {
+    "explicit-preferred": [
+      "explicit-handle",
+      "should-trigger",
+      "should-not-trigger",
+      "prefer-other-skill"
+    ],
+    "explicit-only": [
+      "explicit-handle",
+      "manual-invocation-required",
+      "should-not-trigger"
+    ]
+  },
+  "mirror_collision_cases": true,
+  "max_prefer_other_cases_per_skill": 4,
+  "notes": [
+    "Descriptions are the primary activation surface. Every skill must have description-grounded positive and negative cases.",
+    "Explicit-only skills may match semantically but must resolve to manual invocation instead of implicit activation.",
+    "Collision prompts should create mirror defer cases for competing skills so near-neighbor misfires are tested directly."
+  ]
+}

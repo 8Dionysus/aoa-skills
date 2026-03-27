@@ -20,6 +20,7 @@ The builder reads:
 - optional `config/openai_skill_extensions.json`
 - `config/skill_pack_profiles.json`
 - `config/skill_policy_matrix.json`
+- `config/description_trigger_eval_policy.json`
 
 These files supply the current instruction body, scope, status, invocation mode,
 technique dependencies, trigger descriptions, optional OpenAI-facing metadata,
@@ -105,6 +106,16 @@ Wave 6 adds a governed runtime layer above the raw seam:
 
 Those guardrail files keep trust, allowlists, and compaction-safe reuse repo-owned and still subordinate to the same export.
 
+Wave 7 adds an activation-quality layer above the same export:
+
+- `generated/skill_description_signals.json`
+- `generated/description_trigger_eval_cases.jsonl`
+- `generated/description_trigger_eval_cases.csv`
+- `generated/description_trigger_eval_manifest.json`
+- `generated/skills_ref_validation_manifest.json`
+
+Those files make description quality and open-surface conformance testable without introducing a second authoring format or a second release identity.
+
 ## Build and validation
 
 Rebuild the portable layer from repo root:
@@ -130,6 +141,18 @@ Build the wave-4 runtime seam:
 Build the wave-6 runtime guardrails:
 
     python scripts/build_runtime_guardrails.py --repo-root .
+
+Build the wave-7 description-trigger suite:
+
+    python scripts/build_description_trigger_evals.py --repo-root .
+
+Lint the wave-7 description-trigger suite:
+
+    python scripts/lint_description_trigger_evals.py --repo-root .
+
+Run the soft standards-conformance wrapper:
+
+    python scripts/run_skills_ref_validation.py --repo-root .
 
 Inspect one activated raw runtime-seam payload:
 
