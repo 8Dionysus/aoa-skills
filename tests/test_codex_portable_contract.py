@@ -2,6 +2,7 @@ import json
 import pathlib
 import subprocess
 import sys
+import tempfile
 import unittest
 
 
@@ -217,6 +218,32 @@ class CodexPortableContractTests(unittest.TestCase):
                 for technique in entries["aoa-safe-infra-change"]["technique_lineage"]
             )
         )
+
+    def test_stage_skill_pack_dry_run_succeeds(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "scripts/stage_skill_pack.py",
+                    "--repo-root",
+                    ".",
+                    "--profile",
+                    "repo-core-only",
+                    "--output-root",
+                    str(pathlib.Path(tmpdir) / "bundle"),
+                    "--format",
+                    "json",
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
 
     def test_explicit_only_skills_have_no_implicit_positive_cases(self):
         source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")

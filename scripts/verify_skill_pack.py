@@ -4,42 +4,20 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import pathlib
 from typing import Any, Mapping
 
-import release_manifest_contract
 import skill_pack_install_contract
 
 
 def build_directory_snapshot(root_dir: pathlib.Path) -> dict[str, Any]:
-    resolved_root = root_dir.resolve()
-    if not resolved_root.is_dir():
+    if not root_dir.resolve().is_dir():
         raise ValueError(f"directory snapshot requires a directory: {root_dir}")
-
-    digest = hashlib.sha256()
-    file_records: list[dict[str, Any]] = []
-    ordered_paths = sorted(
-        (path for path in resolved_root.rglob("*") if path.is_file()),
-        key=lambda path: path.relative_to(resolved_root).as_posix(),
-    )
-    for path in ordered_paths:
-        relative_path = path.relative_to(resolved_root).as_posix()
-        data = release_manifest_contract.normalized_file_bytes(path)
-        digest.update(relative_path.encode("utf-8"))
-        digest.update(b"\0")
-        digest.update(data)
-        digest.update(b"\0")
-        file_records.append(
-            {
-                "path": relative_path,
-                "sha256": release_manifest_contract.sha256_bytes(data),
-                "bytes": len(data),
-            }
-        )
+    payloads = skill_pack_install_contract.iter_directory_file_payloads(root_dir)
+    file_records = skill_pack_install_contract.file_digests_from_payloads(payloads)
     return {
-        "digest": digest.hexdigest(),
+        "digest": skill_pack_install_contract.record_digest(file_records),
         "file_count": len(file_records),
         "files": file_records,
     }
@@ -50,12 +28,24 @@ def verify_skill_install(
     skill_name: str,
     source_dir: pathlib.Path,
     target_dir: pathlib.Path,
+    expected_files: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    if not source_dir.is_dir():
-        raise ValueError(f"missing source skill export: {source_dir}")
+    source_matches_expected = True
+    if expected_files is None:
+        if not source_dir.is_dir():
+            raise ValueError(f"missing source skill export: {source_dir}")
+        expected_files = build_directory_snapshot(source_dir)["files"]
+    elif source_dir.exists() and source_dir.resolve().is_dir():
+        source_matches_expected = (
+            build_directory_snapshot(source_dir)["files"] == expected_files
+        )
+    else:
+        source_matches_expected = False
 
-    source_snapshot = build_directory_snapshot(source_dir)
+    if expected_files is None:
+        raise ValueError(f"missing source skill export: {source_dir}")
     is_symlink = target_dir.is_symlink()
+    source_digest = skill_pack_install_contract.record_digest(expected_files)
 
     if not target_dir.exists():
         return {
@@ -63,9 +53,9 @@ def verify_skill_install(
             "source_dir": str(source_dir),
             "target_dir": str(target_dir),
             "install_state": "missing",
-            "source_file_count": source_snapshot["file_count"],
+            "source_file_count": len(expected_files),
             "target_file_count": 0,
-            "source_digest": source_snapshot["digest"],
+            "source_digest": source_digest,
             "target_digest": None,
             "is_symlink": False,
         }
@@ -76,25 +66,27 @@ def verify_skill_install(
             "source_dir": str(source_dir),
             "target_dir": str(target_dir),
             "install_state": "mismatch",
-            "source_file_count": source_snapshot["file_count"],
+            "source_file_count": len(expected_files),
             "target_file_count": 0,
-            "source_digest": source_snapshot["digest"],
+            "source_digest": source_digest,
             "target_digest": None,
             "is_symlink": is_symlink,
         }
 
     target_snapshot = build_directory_snapshot(target_dir)
     install_state = (
-        "ok" if source_snapshot["files"] == target_snapshot["files"] else "mismatch"
+        "ok"
+        if source_matches_expected and expected_files == target_snapshot["files"]
+        else "mismatch"
     )
     return {
         "name": skill_name,
         "source_dir": str(source_dir),
         "target_dir": str(target_dir),
         "install_state": install_state,
-        "source_file_count": source_snapshot["file_count"],
+        "source_file_count": len(expected_files),
         "target_file_count": target_snapshot["file_count"],
-        "source_digest": source_snapshot["digest"],
+        "source_digest": source_digest,
         "target_digest": target_snapshot["digest"],
         "is_symlink": is_symlink,
     }
@@ -117,33 +109,35 @@ def build_report(
     repo_root: pathlib.Path,
     profile_name: str,
     install_root_override: str | None,
+    bundle_root_override: str | None,
     strict_root: bool,
 ) -> dict[str, Any]:
     try:
-        profile = skill_pack_install_contract.load_resolved_profile(repo_root, profile_name)
+        source = skill_pack_install_contract.load_skill_pack_source(
+            repo_root,
+            profile_name=profile_name,
+            bundle_root_override=bundle_root_override,
+        )
     except KeyError:
         raise SystemExit(f"unknown profile: {profile_name}")
+    except ValueError as exc:
+        raise SystemExit(str(exc))
 
-    release_manifest = skill_pack_install_contract.load_release_manifest(repo_root)
-    profile_revision = skill_pack_install_contract.load_install_profile_revision(
-        release_manifest,
-        profile_name,
-    )["profile_revision"]
     install_root = skill_pack_install_contract.resolve_install_root(
         repo_root,
         install_root_override=install_root_override,
-        default_install_root=profile["install_root"],
+        default_install_root=source["install_root"],
     )
-    export_root = skill_pack_install_contract.export_root(repo_root)
 
     skills: list[dict[str, Any]] = []
-    for skill_entry in profile["skills"]:
+    for skill_entry in source["skills"]:
         skill_name = skill_entry["name"]
         skills.append(
             verify_skill_install(
                 skill_name=skill_name,
-                source_dir=export_root / skill_name,
+                source_dir=pathlib.Path(skill_entry["source_dir"]),
                 target_dir=install_root / skill_name,
+                expected_files=skill_entry["expected_files"],
             )
         )
 
@@ -162,8 +156,10 @@ def build_report(
     )
     return {
         "profile": profile_name,
-        "profile_revision": profile_revision,
+        "profile_revision": source["profile_revision"],
         "install_root": str(install_root),
+        "source_kind": source["source_kind"],
+        "bundle_root": source["bundle_root"],
         "strict_root": strict_root,
         "verified": verified,
         "expected_skill_count": len(skills),
@@ -171,7 +167,7 @@ def build_report(
         "missing_skills": missing_skills,
         "mismatched_skills": mismatched_skills,
         "extra_skill_dirs": extra_dirs,
-        "release_identity": dict(skill_pack_install_contract.release_identity(release_manifest)),
+        "release_identity": dict(source["release_identity"]),
         "skills": skills,
     }
 
@@ -183,6 +179,7 @@ def render_markdown(report: Mapping[str, Any]) -> str:
         f"Verified: {report['verified']}",
         f"Profile revision: {report['profile_revision']}",
         f"Install root: {report['install_root']}",
+        f"Source kind: {report['source_kind']}",
         f"Strict root: {report['strict_root']}",
         f"Expected skills: {report['expected_skill_count']}",
         f"Verified skills: {report['verified_skill_count']}",
@@ -228,6 +225,11 @@ def main() -> int:
         help="Override installation root for profile verification",
     )
     parser.add_argument(
+        "--bundle-root",
+        default=None,
+        help="Optional staged profile-bundle root containing bundle_manifest.json",
+    )
+    parser.add_argument(
         "--strict-root",
         action="store_true",
         help="Fail verification when extra sibling skill dirs exist under the install root",
@@ -245,6 +247,7 @@ def main() -> int:
         repo_root=repo_root,
         profile_name=args.profile,
         install_root_override=args.install_root,
+        bundle_root_override=args.bundle_root,
         strict_root=args.strict_root,
     )
     if args.format == "json":

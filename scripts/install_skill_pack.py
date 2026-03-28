@@ -17,6 +17,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".", help="Repository root containing .agents/skills")
     parser.add_argument("--profile", required=True, help="Profile name from generated/skill_pack_profiles.resolved.json")
+    parser.add_argument(
+        "--bundle-root",
+        default=None,
+        help="Optional staged profile-bundle root containing bundle_manifest.json",
+    )
     parser.add_argument("--dest-root", default=None, help="Override destination root for installed skills")
     parser.add_argument("--mode", choices=("symlink", "copy"), default="symlink", help="Install mode")
     parser.add_argument("--execute", action="store_true", help="Apply the install plan")
@@ -25,42 +30,45 @@ def main() -> int:
     args = parser.parse_args()
 
     repo_root = pathlib.Path(args.repo_root).resolve()
-    export_root = skill_pack_install_contract.export_root(repo_root)
     try:
-        profile = skill_pack_install_contract.load_resolved_profile(repo_root, args.profile)
+        source = skill_pack_install_contract.load_skill_pack_source(
+            repo_root,
+            profile_name=args.profile,
+            bundle_root_override=args.bundle_root,
+        )
     except KeyError:
         raise SystemExit(f"unknown profile: {args.profile}")
-    release_manifest = skill_pack_install_contract.load_release_manifest(repo_root)
-    profile_revision = skill_pack_install_contract.load_install_profile_revision(
-        release_manifest,
-        args.profile,
-    )["profile_revision"]
+    except ValueError as exc:
+        raise SystemExit(str(exc))
 
     dest_root = skill_pack_install_contract.resolve_install_root(
         repo_root,
         install_root_override=args.dest_root,
-        default_install_root=profile["install_root"],
+        default_install_root=source["install_root"],
     )
 
     plan = {
         "profile": args.profile,
-        "profile_revision": profile_revision,
-        "scope": profile["scope"],
+        "profile_revision": source["profile_revision"],
+        "scope": source["scope"],
         "mode": args.mode,
-        "source_root": str(export_root),
+        "source_kind": source["source_kind"],
+        "bundle_root": source["bundle_root"],
+        "source_root": source["source_root"],
         "dest_root": str(dest_root),
         "execute": args.execute,
-        "release_identity": dict(skill_pack_install_contract.release_identity(release_manifest)),
+        "release_identity": dict(source["release_identity"]),
         "recommended_verify_command": skill_pack_install_contract.recommended_verify_command(
             profile_name=args.profile,
             install_root=dest_root,
+            bundle_root_override=pathlib.Path(source["bundle_root"]) if source["bundle_root"] else None,
             output_format="json",
         ),
         "steps": [],
     }
 
-    for skill_entry in profile["skills"]:
-        source_dir = export_root / skill_entry["name"]
+    for skill_entry in source["skills"]:
+        source_dir = pathlib.Path(skill_entry["source_dir"])
         target_dir = dest_root / skill_entry["name"]
         plan["steps"].append(
             {
@@ -101,8 +109,9 @@ def main() -> int:
     lines = [
         f"# Skill pack install plan: {args.profile}",
         "",
-        f"Scope: {profile['scope']}",
-        f"Profile revision: {profile_revision}",
+        f"Scope: {source['scope']}",
+        f"Profile revision: {source['profile_revision']}",
+        f"Source kind: {source['source_kind']}",
         f"Mode: {args.mode}",
         f"Destination: {dest_root}",
         f"Execute: {args.execute}",

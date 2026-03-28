@@ -21,6 +21,29 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
 
 
 class VerifySkillPackTests(unittest.TestCase):
+    def stage_profile_bundle(self, profile: str, bundle_root: pathlib.Path) -> None:
+        completed = run_command(
+            [
+                sys.executable,
+                "scripts/stage_skill_pack.py",
+                "--repo-root",
+                ".",
+                "--profile",
+                profile,
+                "--output-root",
+                str(bundle_root),
+                "--execute",
+                "--overwrite",
+                "--format",
+                "json",
+            ]
+        )
+        self.assertEqual(
+            completed.returncode,
+            0,
+            msg=f"stage failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+        )
+
     def install_profile_copy(self, profile: str, dest_root: pathlib.Path) -> None:
         completed = run_command(
             [
@@ -48,6 +71,7 @@ class VerifySkillPackTests(unittest.TestCase):
         profile: str,
         *,
         install_root: pathlib.Path | None = None,
+        bundle_root: pathlib.Path | None = None,
         strict_root: bool = False,
     ) -> tuple[subprocess.CompletedProcess[str], dict]:
         command = [
@@ -62,6 +86,8 @@ class VerifySkillPackTests(unittest.TestCase):
         ]
         if install_root is not None:
             command.extend(["--install-root", str(install_root)])
+        if bundle_root is not None:
+            command.extend(["--bundle-root", str(bundle_root)])
         if strict_root:
             command.append("--strict-root")
         completed = run_command(command)
@@ -102,6 +128,28 @@ class VerifySkillPackTests(unittest.TestCase):
             self.assertTrue(payload["verified"])
             self.assertEqual([], payload["extra_skill_dirs"])
             self.assertIn("aoa-change-protocol", [entry["name"] for entry in payload["skills"]])
+
+    def test_staged_bundle_verifies_offline(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+            self.install_profile_copy("repo-core-only", dest_root)
+
+            completed, payload = self.verify_profile(
+                "repo-core-only",
+                install_root=dest_root,
+                bundle_root=bundle_root,
+            )
+
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"verify failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            self.assertTrue(payload["verified"])
+            self.assertEqual("staged_bundle", payload["source_kind"])
+            self.assertEqual(str(bundle_root.resolve()), payload["bundle_root"])
 
     def test_missing_expected_skill_fails_verification(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -151,6 +199,46 @@ class VerifySkillPackTests(unittest.TestCase):
             self.assertEqual(1, completed.returncode)
             self.assertFalse(payload["verified"])
             self.assertIn("aoa-safe-infra-change", payload["mismatched_skills"])
+
+    def test_deleted_staged_bundle_file_fails_bundle_verification(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+            self.install_profile_copy("repo-core-only", dest_root)
+            (bundle_root / ".agents" / "skills" / "aoa-change-protocol" / "SKILL.md").unlink()
+
+            completed, payload = self.verify_profile(
+                "repo-core-only",
+                install_root=dest_root,
+                bundle_root=bundle_root,
+            )
+
+            self.assertEqual(1, completed.returncode)
+            self.assertFalse(payload["verified"])
+            self.assertIn("aoa-change-protocol", payload["mismatched_skills"])
+
+    def test_modified_installed_file_fails_staged_bundle_verification(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+            self.install_profile_copy("repo-core-only", dest_root)
+            skill_md_path = dest_root / "aoa-change-protocol" / "SKILL.md"
+            skill_md_path.write_text(
+                skill_md_path.read_text(encoding="utf-8") + "\n# drift\n",
+                encoding="utf-8",
+            )
+
+            completed, payload = self.verify_profile(
+                "repo-core-only",
+                install_root=dest_root,
+                bundle_root=bundle_root,
+            )
+
+            self.assertEqual(1, completed.returncode)
+            self.assertFalse(payload["verified"])
+            self.assertIn("aoa-change-protocol", payload["mismatched_skills"])
 
     def test_extra_skill_dirs_are_reported_without_failing_by_default(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
