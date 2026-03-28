@@ -324,18 +324,20 @@ def extract_bundle_archive(
                     f"bundle archive must contain exactly one top-level root, found {len(top_level_roots)}"
                 )
             extract_root.mkdir(parents=True, exist_ok=True)
+            resolved_extract_root = extract_root.resolve()
             for entry in members:
                 normalized_name = entry.filename.replace("\\", "/")
                 relative_path = PurePosixPath(normalized_name)
-                target_path = extract_root.joinpath(*relative_path.parts)
+                target_path = resolved_extract_root.joinpath(*relative_path.parts)
                 target_path.parent.mkdir(parents=True, exist_ok=True)
                 with archive.open(entry, mode="r") as source_handle:
                     with target_path.open("wb") as target_handle:
                         shutil.copyfileobj(source_handle, target_handle)
     except zipfile.BadZipFile as exc:
         raise ValueError(f"invalid bundle archive: {resolved_archive_path}") from exc
-    bundle_root_path = discover_bundle_root(extract_root)
-    relative_bundle_root = bundle_root_path.relative_to(extract_root)
+    resolved_extract_root = extract_root.resolve()
+    bundle_root_path = discover_bundle_root(resolved_extract_root)
+    relative_bundle_root = bundle_root_path.relative_to(resolved_extract_root)
     if len(relative_bundle_root.parts) != 1:
         raise ValueError(
             "bundle archive bundle root must be the single top-level folder"
