@@ -89,6 +89,16 @@ class ReleaseCheckTests(unittest.TestCase):
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
 
+    def test_build_release_check_sequence_can_append_packaging_smoke(self) -> None:
+        self.assertEqual(
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+            release_check.build_release_check_sequence(include_packaging_smoke=False),
+        )
+        self.assertEqual(
+            (*release_check.RELEASE_CHECK_COMMAND_SEQUENCE, release_check.PACKAGING_SMOKE_COMMAND),
+            release_check.build_release_check_sequence(include_packaging_smoke=True),
+        )
+
     def test_repo_state_changed_compares_full_snapshot(self) -> None:
         before = release_check.RepoStateSnapshot(" M file\n", "tracked-a", "cached-a")
         same = release_check.RepoStateSnapshot(" M file\n", "tracked-a", "cached-a")
@@ -124,7 +134,7 @@ class ReleaseCheckTests(unittest.TestCase):
             mock.patch.object(release_check, "run_command", side_effect=fake_run),
             contextlib.redirect_stdout(stdout),
         ):
-            exit_code = release_check.main()
+            exit_code = release_check.main([])
 
         self.assertEqual(0, exit_code)
         self.assertEqual(
@@ -146,7 +156,7 @@ class ReleaseCheckTests(unittest.TestCase):
             mock.patch.object(release_check, "run_command", side_effect=fake_run),
             contextlib.redirect_stdout(stdout),
         ):
-            exit_code = release_check.main()
+            exit_code = release_check.main([])
 
         self.assertEqual(0, exit_code)
         self.assertEqual(
@@ -171,7 +181,7 @@ class ReleaseCheckTests(unittest.TestCase):
             contextlib.redirect_stdout(stdout),
             contextlib.redirect_stderr(stderr),
         ):
-            exit_code = release_check.main()
+            exit_code = release_check.main([])
 
         self.assertEqual(1, exit_code)
         self.assertIn(
@@ -198,7 +208,7 @@ class ReleaseCheckTests(unittest.TestCase):
             mock.patch.object(release_check, "run_command", side_effect=fake_run),
             contextlib.redirect_stdout(stdout),
         ):
-            exit_code = release_check.main()
+            exit_code = release_check.main([])
 
         self.assertEqual(0, exit_code)
         self.assertEqual(
@@ -226,10 +236,35 @@ class ReleaseCheckTests(unittest.TestCase):
             contextlib.redirect_stdout(stdout),
             contextlib.redirect_stderr(stderr),
         ):
-            exit_code = release_check.main()
+            exit_code = release_check.main([])
 
         self.assertEqual(1, exit_code)
         self.assertIn("release check did not stabilize the worktree snapshot", stderr.getvalue())
+
+    def test_main_with_packaging_smoke_runs_extended_sequence(self) -> None:
+        before = release_check.RepoStateSnapshot("", "", "")
+        after = release_check.RepoStateSnapshot("", "", "")
+        calls: list[tuple[str, ...]] = []
+
+        def fake_run(command: tuple[str, ...], repo_root: Path) -> None:
+            calls.append(command)
+
+        stdout = io.StringIO()
+        with (
+            mock.patch.object(release_check, "capture_repo_state", side_effect=[before, after]),
+            mock.patch.object(release_check, "run_command", side_effect=fake_run),
+            contextlib.redirect_stdout(stdout),
+        ):
+            exit_code = release_check.main(["--include-packaging-smoke"])
+
+        self.assertEqual(0, exit_code)
+        self.assertEqual(
+            [
+                *release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+                release_check.PACKAGING_SMOKE_COMMAND,
+            ],
+            calls,
+        )
 
 
 if __name__ == "__main__":

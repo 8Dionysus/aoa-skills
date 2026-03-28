@@ -24,6 +24,7 @@ A release should make it easy to answer:
 2. Update `CHANGELOG.md`.
 3. Run the bounded repo-level release check:
    - `python scripts/release_check.py`
+   - if the release touches packaging handoff flows, also run `python scripts/release_check.py --include-packaging-smoke`
    - the current script runs:
      - `python scripts/build_catalog.py`
      - `python scripts/build_agent_skills.py --repo-root .`
@@ -58,8 +59,9 @@ A release should make it easy to answer:
   - read `generated/skill_bundle_index.json` for per-skill packaging membership and technique-lineage detail
   - read `generated/skill_graph.json` for profile and artifact-group topology across the same bundle set
   - use `python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json` when you want one repo-local install verification check over the live `.agents/skills` root
-  - if the release touches staged-handoff flows, read the generated bundle `README.md` as the human-facing companion and smoke-test one profile bundle with `python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json`, then inspect it with `python scripts/inspect_skill_pack.py --bundle-root ...`
-  - if the release touches archive handoff flows, optionally extend that smoke path with `--archive-path /tmp/repo-core-only.zip`, then install and verify directly against the ZIP via `install_skill_pack.py --bundle-archive ...` and `verify_skill_pack.py --bundle-archive ...`
+  - if the release touches staged-handoff or archive flows, prefer one canonical packaging smoke command: `python scripts/release_check.py --include-packaging-smoke`
+  - that optional smoke path runs `scripts/smoke_skill_pack_handoff.py` for `repo-core-only`, stages a bundle, inspects it, installs in `copy` mode, and verifies both directory and ZIP transports
+  - read the generated bundle `README.md` as the human-facing companion when reviewing one staged handoff object; `bundle_manifest.json` remains the machine-readable bundle contract
 6. Review public-safety hygiene:
    - no secrets
    - no internal-only URLs
@@ -113,5 +115,6 @@ Right now, `aoa-skills` is best released as:
 - a validated repository structure with generated reader/runtime/governance surfaces plus a generated Codex-facing portable export, a wave-4 raw runtime seam, a wave-6 governed runtime layer, a wave-7 description-first activation-eval layer, a wave-8 deterministic support-resource bridge, a wave-9 tiny-router compression bridge for downstream routing, and a legacy-compatible local adapter seam
 - a machine-readable portable release contract in `generated/release_manifest.json` that stays subordinate to the changelog/tag/release-note identity
 - a self-contained staged-bundle inspection step in `scripts/inspect_skill_pack.py` before install-side verification
+- a release-facing packaging smoke helper in `scripts/smoke_skill_pack_handoff.py`, wired into `scripts/release_check.py --include-packaging-smoke`
 - optional staged ZIP handoff over the same profile-bundle contract for repo-local offline transfer, install, and verification
 - a repo-level release identity separate from per-skill status and derived public-surface signaling
