@@ -10,6 +10,34 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 class InstallProfilesTests(unittest.TestCase):
+    def stage_profile_bundle(self, profile: str, bundle_root: pathlib.Path) -> None:
+        command = [
+            sys.executable,
+            "scripts/stage_skill_pack.py",
+            "--repo-root",
+            ".",
+            "--profile",
+            profile,
+            "--output-root",
+            str(bundle_root),
+            "--execute",
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+        completed = subprocess.run(
+            command,
+            cwd=REPO_ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(
+            completed.returncode,
+            0,
+            msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+        )
+
     def test_install_profile_copy_mode(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             dest_root = pathlib.Path(tmpdir) / "skills"
@@ -77,6 +105,46 @@ class InstallProfilesTests(unittest.TestCase):
             self.assertEqual("0.1.0", payload["release_identity"]["latest_tagged_version"])
             self.assertIn("scripts/verify_skill_pack.py", payload["recommended_verify_command"])
             self.assertIn("--profile repo-core-only", payload["recommended_verify_command"])
+
+    def test_install_profile_can_use_staged_bundle_source(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            dest_root = pathlib.Path(tmpdir) / "installed"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+
+            command = [
+                sys.executable,
+                "scripts/install_skill_pack.py",
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-core-only",
+                "--bundle-root",
+                str(bundle_root),
+                "--dest-root",
+                str(dest_root),
+                "--mode",
+                "copy",
+                "--execute",
+                "--format",
+                "json",
+            ]
+            completed = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            payload = json.loads(completed.stdout)
+            self.assertEqual("staged_bundle", payload["source_kind"])
+            self.assertEqual(str(bundle_root.resolve()), payload["bundle_root"])
+            self.assertTrue((dest_root / "aoa-change-protocol" / "SKILL.md").exists())
 
 
 if __name__ == "__main__":

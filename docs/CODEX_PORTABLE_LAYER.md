@@ -82,7 +82,8 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
 `generated/skill_handoff_contracts.json` is the only wave-5 bridge kept in `aoa-skills`: it remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
 `generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, relationship views, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
-`scripts/verify_skill_pack.py` is the next repo-local packaging primitive on top of that contract: it verifies that one installed profile/root still matches the current portable export without introducing a new bundle format or registry surface.
+`scripts/stage_skill_pack.py` is the first staged handoff primitive above that contract: it materializes one profile-scoped bundle directory with a bundle-local `bundle_manifest.json` instead of copying the full repo release manifest into every handoff.
+`scripts/verify_skill_pack.py` then verifies that one installed profile/root still matches either the live repo export or one staged bundle without introducing a new bundle format or registry surface.
 
 Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 
@@ -150,6 +151,7 @@ It intentionally keeps three things separate:
 - repo-level release identity still lives in `CHANGELOG.md`, `docs/RELEASING.md`, tags, and GitHub release notes
 - bundle-level meaning and per-skill compatibility still live in `skills/*/SKILL.md`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`
 - the release manifest only pins which portable artifact groups and relationship views exist and which bundle/profile revisions they currently expose
+- a staged profile bundle carries its own `bundle_manifest.json` as the narrow handoff contract over one profile subset
 - install verification remains a runtime check over a real target root via `scripts/verify_skill_pack.py`; it is not a committed generated catalog
 
 ## Build and validation
@@ -165,6 +167,14 @@ Validate the result:
 Verify one installed profile/root against the current export:
 
     python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
+
+Stage one profile-scoped handoff bundle:
+
+    python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
+
+Verify one installed profile/root against a staged bundle:
+
+    python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --install-root /tmp/aoa-skills --format json
 
 Lint the policy-aware trigger dataset:
 
