@@ -32,12 +32,14 @@ class StatusPromotionReviewRecordsTests(unittest.TestCase):
         readme_text = README_PATH.read_text(encoding="utf-8")
         self.assertIn("non-canonical status promotions", readme_text)
         self.assertIn("templates/STATUS_PROMOTION_REVIEW.template.md", readme_text)
+        self.assertIn("`not applicable`", readme_text)
 
     def test_status_promotion_template_contains_required_sections(self) -> None:
         template_text = TEMPLATE_PATH.read_text(encoding="utf-8")
         for section in REQUIRED_SECTIONS:
             with self.subTest(section=section):
                 self.assertIn(f"## {section}", template_text)
+        self.assertIn("`not applicable`", template_text)
 
     def test_status_promotion_records_use_required_sections_when_present(self) -> None:
         review_paths = sorted(
@@ -115,6 +117,59 @@ class StatusPromotionReviewRecordsTests(unittest.TestCase):
         self.assertTrue(record.runtime_skill_md_meaning_changed)
         self.assertEqual(("missing comparative rationale",), record.blockers_for_target_status)
         self.assertEqual(("none",), record.blockers_for_next_status_step)
+
+    def test_project_overlay_review_can_record_not_applicable_governance_fields(self) -> None:
+        review_text = textwrap.dedent(
+            """\
+            ---
+            name: demo-skill
+            ---
+
+            # demo-skill status promotion review
+
+            ## Current status
+
+            - current maturity status: evaluated
+            - current machine-checkable floor: pass
+            - current governance lane decision: not applicable
+            - scope: project
+            - current lineage: published
+            - reviewed revision: abc123
+
+            ## Target status
+
+            - target maturity status: evaluated
+            - machine-checkable floor result: pass
+            - recorded governance outcome: n/a
+
+            ## Evidence reviewed
+
+            - `skills/demo-skill/SKILL.md`
+
+            ## Findings
+
+            - runtime skill.md meaning changed: no
+
+            ## Gaps and blockers
+
+            - blockers for this target status: none
+            - blockers for the next status step: overlay-model follow-up
+
+            ## Recommendation
+
+            Keep the overlay evaluated.
+            """
+        )
+
+        record = skill_review_surface.parse_status_promotion_review_text(
+            skill_name="demo-skill",
+            review_path="docs/reviews/status-promotions/demo-skill.md",
+            review_text=review_text,
+        )
+
+        self.assertEqual("not applicable", record.current_governance_lane_decision)
+        self.assertEqual("n/a", record.recorded_governance_outcome)
+        self.assertFalse(record.runtime_skill_md_meaning_changed)
 
 
 if __name__ == "__main__":

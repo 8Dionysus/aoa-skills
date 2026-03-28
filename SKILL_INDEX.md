@@ -17,8 +17,8 @@ This file is the repository-wide map of public skills.
 | aoa-core-logic-boundary | core | evaluated | Codex skill for clarifying which logic belongs in the reusable core versus glue, orchestration, or infrastructure detail. |
 | aoa-port-adapter-refactor | core | evaluated | Codex skill for refactoring toward clearer ports and adapters so reusable logic is less entangled with infrastructure details. |
 | aoa-source-of-truth-check | core | canonical | Codex skill for checking whether canonical docs and repository guidance have clear ownership and do not silently conflict. |
-| atm10-change-protocol | project | reviewed | Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes. |
-| atm10-source-of-truth-check | project | reviewed | Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow. |
+| atm10-change-protocol | project | evaluated | Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes. |
+| atm10-source-of-truth-check | project | evaluated | Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow. |
 | aoa-local-stack-bringup | risk | evaluated | Codex skill for reviewable local multi-service bring-up through rendered runtime truth, readiness checks, and one explicit lifecycle path. |
 | aoa-dry-run-first | risk | canonical | Codex skill for preferring simulation, inspection, or preview paths before real execution with operational consequences. |
 | aoa-safe-infra-change | risk | canonical | Codex skill for making bounded infrastructure or configuration changes with explicit risk framing and reversible execution discipline. |

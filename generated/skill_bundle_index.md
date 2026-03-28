@@ -20,6 +20,6 @@ It is repo-local packaging metadata, not a release or registry surface.
 | aoa-sanitized-share | 43e610dc0a9f | canonical | risk | explicit-only | published | true | true | 4 |
 | aoa-source-of-truth-check | f842f9ec6810 | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-tdd-slice | bfa806f1adef | canonical | core | explicit-preferred | published | true | true | 2 |
-| atm10-change-protocol | a50db301bac1 | reviewed | project | explicit-preferred | published | false | true | 2 |
-| atm10-source-of-truth-check | 3b629340f865 | reviewed | project | explicit-preferred | published | false | true | 2 |
+| atm10-change-protocol | 13bb78b9a8f5 | evaluated | project | explicit-preferred | published | true | true | 3 |
+| atm10-source-of-truth-check | e8187af5c3d3 | evaluated | project | explicit-preferred | published | true | true | 3 |
 

@@ -1,7 +1,7 @@
 ---
 name: atm10-change-protocol
 scope: project
-status: reviewed
+status: evaluated
 summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.
 invocation_mode: explicit-preferred
 technique_dependencies:

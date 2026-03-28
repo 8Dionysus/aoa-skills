@@ -569,7 +569,7 @@ Common expand sections:
 ## atm10-change-protocol
 
 - scope: `project`
-- status: `reviewed`
+- status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/atm10-change-protocol/SKILL.md`
 - pick summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.
@@ -600,11 +600,12 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/atm10-change-protocol/examples/example.md`
 - `review_checklist`: `skills/atm10-change-protocol/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/atm10-change-protocol.md`
 
 ## atm10-source-of-truth-check
 
 - scope: `project`
-- status: `reviewed`
+- status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/atm10-source-of-truth-check/SKILL.md`
 - pick summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.
@@ -635,4 +636,5 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/atm10-source-of-truth-check/examples/example.md`
 - `review_checklist`: `skills/atm10-source-of-truth-check/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/atm10-source-of-truth-check.md`
 

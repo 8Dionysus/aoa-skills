@@ -280,7 +280,7 @@
       "outputs_short": "Produces: bounded local change plan; repo-relative command or path sketch; pointer to the family review surface; verification note for the local repo surface.",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
       "technique_dependencies": [
         "AOA-T-0001",
@@ -298,7 +298,7 @@
       "outputs_short": "Produces: local source-of-truth map; bounded clarification note; repo-relative canonical-file pattern; pointer to the family review surface.",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
       "technique_dependencies": [
         "AOA-T-0013",

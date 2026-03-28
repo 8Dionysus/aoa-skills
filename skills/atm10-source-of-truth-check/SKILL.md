@@ -1,7 +1,7 @@
 ---
 name: atm10-source-of-truth-check
 scope: project
-status: reviewed
+status: evaluated
 summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.
 invocation_mode: explicit-preferred
 technique_dependencies:

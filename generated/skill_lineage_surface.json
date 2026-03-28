@@ -212,7 +212,7 @@
       "published_technique_count": 2,
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "tbd_ref_count": 0
     },
     {
@@ -224,7 +224,7 @@
       "published_technique_count": 2,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "tbd_ref_count": 0
     }
   ],

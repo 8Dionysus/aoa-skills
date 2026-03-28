@@ -35,7 +35,7 @@
       "review_check_path": "skills/atm10-change-protocol/checks/review.md",
       "runtime_example_count": 1,
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     },
     {
       "eval_blockers": [],
@@ -47,7 +47,7 @@
       "review_check_path": "skills/atm10-source-of-truth-check/checks/review.md",
       "runtime_example_count": 1,
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     }
   ],
   "source_of_truth": {

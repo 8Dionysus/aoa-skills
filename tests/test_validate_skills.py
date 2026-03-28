@@ -1490,6 +1490,102 @@ class ValidateSkillsTests(unittest.TestCase):
             ),
         )
 
+    def test_project_overlay_review_truth_sync_accepts_not_applicable_governance(self) -> None:
+        repo_root = self.make_repo(
+            skill_name="abyss-test-skill",
+            scope="project",
+            status="evaluated",
+            review_record_surface="status-promotions",
+            policy_allow_implicit=True,
+        )
+        self.write_live_overlay_pack(
+            repo_root,
+            family="abyss",
+            skill_names=["abyss-test-skill"],
+        )
+        self.write_evaluation_fixtures_for_skill(
+            repo_root,
+            skill_name="abyss-test-skill",
+        )
+        self.write_catalogs(repo_root)
+        review_path = (
+            repo_root / "docs" / "reviews" / "status-promotions" / "abyss-test-skill.md"
+        )
+        review_path.write_text(
+            textwrap.dedent(
+                """\
+                ---
+                name: abyss-test-skill
+                ---
+
+                # abyss-test-skill status promotion review
+
+                ## Current status
+
+                - current maturity status: evaluated
+                - current machine-checkable floor: pass
+                - current governance lane decision: not applicable
+                - scope: project
+                - current lineage: published
+                - reviewed revision: placeholder
+
+                ## Target status
+
+                - target maturity status: evaluated
+                - machine-checkable floor result: pass
+                - recorded governance outcome: not applicable
+
+                ## Evidence reviewed
+
+                - `skills/abyss-test-skill/SKILL.md`
+
+                ## Findings
+
+                - runtime skill.md meaning changed: no
+
+                ## Gaps and blockers
+
+                - blockers for this target status: none
+                - blockers for the next status step: overlay-model follow-up
+
+                ## Recommendation
+
+                Keep the overlay evaluated.
+                """
+            ),
+            encoding="utf-8",
+        )
+
+        first_pass = validate_skills.run_validation(
+            repo_root,
+            fail_on_review_truth_sync=True,
+        )
+        mismatch_issue = next(
+            issue
+            for issue in first_pass
+            if issue.message.startswith("reviewed_revision_mismatch(expected=")
+        )
+        expected_revision = re.search(
+            r"expected=([^,]+), recorded=",
+            mismatch_issue.message,
+        ).group(1)
+        review_path.write_text(
+            review_path.read_text(encoding="utf-8").replace(
+                "- reviewed revision: placeholder",
+                f"- reviewed revision: {expected_revision}",
+            ),
+            encoding="utf-8",
+        )
+        self.write_catalogs(repo_root)
+
+        self.assertEqual(
+            [],
+            validate_skills.run_validation(
+                repo_root,
+                fail_on_review_truth_sync=True,
+            ),
+        )
+
     def test_review_truth_sync_reports_malformed_review_doc_as_issue(self) -> None:
         repo_root = self.make_repo(
             status="evaluated",

@@ -18,3 +18,6 @@ Keep the review record truth-sync friendly.
 At minimum it should state the current status, governance decision, scope, lineage,
 reviewed revision, recorded governance outcome, whether runtime `SKILL.md` meaning changed,
 and blockers for both this target status and the next status step.
+
+For project-scope overlays that intentionally have no governance lane coverage,
+record the governance fields as `not applicable` rather than inventing a lane decision.

@@ -288,6 +288,26 @@
       "prompt": "Compare authoring invariant-based tests with auditing existing invariant coverage and choose the clearer fit for a behavior rule.",
       "skill": "aoa-property-invariants",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-property-invariants/property_invariants_vs_invariant_coverage_audit_boundary.md"
+    },
+    {
+      "adjacent_skill": "atm10-source-of-truth-check",
+      "blockers": [],
+      "case_id": "atm10_change_protocol_vs_source_of_truth_boundary",
+      "expected": "use",
+      "governance_lane_ids": [],
+      "prompt": "In an atm10 repository, choose between a bounded repo-relative change plan and a repo-relative source-of-truth clarification before making edits.",
+      "skill": "atm10-change-protocol",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/atm10-change-protocol/atm10_change_protocol_vs_source_of_truth_boundary.md"
+    },
+    {
+      "adjacent_skill": "atm10-change-protocol",
+      "blockers": [],
+      "case_id": "atm10_source_of_truth_vs_change_protocol_boundary",
+      "expected": "use",
+      "governance_lane_ids": [],
+      "prompt": "In an atm10 repository, choose between a repo-relative source-of-truth clarification and a bounded change plan because the main confusion is which local doc should stay authoritative.",
+      "skill": "atm10-source-of-truth-check",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/atm10-source-of-truth-check/atm10_source_of_truth_vs_change_protocol_boundary.md"
     }
   ],
   "skills": [
@@ -561,28 +581,32 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "atm10-source-of-truth-check"
+      ],
       "governance_lane_ids": [],
       "name": "atm10-change-protocol",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "atm10-change-protocol"
+      ],
       "governance_lane_ids": [],
       "name": "atm10-source-of-truth-check",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     }
   ],
   "source_of_truth": {

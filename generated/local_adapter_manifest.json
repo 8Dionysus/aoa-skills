@@ -512,7 +512,7 @@
       },
       "metadata": {
         "aoa_scope": "project",
-        "aoa_status": "reviewed",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/atm10-change-protocol/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -542,7 +542,7 @@
       },
       "metadata": {
         "aoa_scope": "project",
-        "aoa_status": "reviewed",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",

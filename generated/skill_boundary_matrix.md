@@ -6,8 +6,8 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 ## Summary
 
 - total skills: 17
-- adjacency cases: 24
-- skills with required adjacency coverage: 15
+- adjacency cases: 26
+- skills with required adjacency coverage: 17
 - required adjacency gaps: 0
 
 | name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | lane ids | ready | blockers |
@@ -27,8 +27,8 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-sanitized-share | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | risk_authority_preview_execution | true | - |
 | aoa-source-of-truth-check | canonical | core | true | 1 | 0 | aoa-adr-write | decision_docs_authority | true | - |
 | aoa-tdd-slice | canonical | core | true | 1 | 0 | aoa-change-protocol | change_workflows | true | - |
-| atm10-change-protocol | reviewed | project | false | 0 | 0 | - | - | false | - |
-| atm10-source-of-truth-check | reviewed | project | false | 0 | 0 | - | - | false | - |
+| atm10-change-protocol | evaluated | project | true | 1 | 0 | atm10-source-of-truth-check | - | true | - |
+| atm10-source-of-truth-check | evaluated | project | true | 1 | 0 | atm10-change-protocol | - | true | - |
 
 ## Adjacency cases
 
@@ -58,4 +58,6 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-adr-write | aoa-source-of-truth-check | adr_write_vs_source_of_truth_check_boundary | use | decision_docs_authority | - |
 | aoa-invariant-coverage-audit | aoa-property-invariants | invariant_coverage_audit_vs_property_invariants_boundary | use | invariant_authoring_vs_audit | - |
 | aoa-property-invariants | aoa-invariant-coverage-audit | property_invariants_vs_invariant_coverage_audit_boundary | use | invariant_authoring_vs_audit | - |
+| atm10-change-protocol | atm10-source-of-truth-check | atm10_change_protocol_vs_source_of_truth_boundary | use | - | - |
+| atm10-source-of-truth-check | atm10-change-protocol | atm10_source_of_truth_vs_change_protocol_boundary | use | - | - |
 

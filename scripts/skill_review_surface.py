@@ -24,6 +24,9 @@ STATUS_PROMOTION_SECTION_ORDER = (
 LABEL_PATTERN = re.compile(r"^\s*[-*]\s+([^:]+?):\s*(.*)$")
 LIST_SPLIT_PATTERN = re.compile(r"\s*[;,]\s*")
 INLINE_CODE_PATTERN = re.compile(r"`([^`]+)`")
+NO_GOVERNANCE_DECISION_TOKENS = frozenset(
+    {"not applicable", "not_applicable", "n/a", "none"}
+)
 
 
 @dataclass(frozen=True)
@@ -181,6 +184,15 @@ def _parse_bool_token(value: str | None) -> bool | None:
     return None
 
 
+def _normalize_governance_decision_token(value: str | None) -> str | None:
+    if value is None:
+        return None
+    normalized = _normalize_value(value)
+    if normalized in NO_GOVERNANCE_DECISION_TOKENS:
+        return None
+    return normalized
+
+
 def parse_status_promotion_review_text(
     *,
     skill_name: str,
@@ -286,6 +298,12 @@ def status_promotion_review_truth_sync(
         skill_name,
     )
     current_revision = current_bundle_revision(repo_root, skill_name)
+    recorded_current_governance_decision = _normalize_governance_decision_token(
+        record.current_governance_lane_decision if record is not None else None
+    )
+    recorded_governance_outcome = _normalize_governance_decision_token(
+        record.recorded_governance_outcome if record is not None else None
+    )
     issues: list[str] = []
 
     if record is None:
@@ -318,7 +336,7 @@ def status_promotion_review_truth_sync(
 
     if record.current_governance_lane_decision is None:
         issues.append("missing_current_governance_lane_decision")
-    elif record.current_governance_lane_decision != signals.governance_decision:
+    elif recorded_current_governance_decision != signals.governance_decision:
         issues.append(
             "current_governance_decision_mismatch("
             f"expected={signals.governance_decision}, recorded={record.current_governance_lane_decision})"
@@ -350,7 +368,7 @@ def status_promotion_review_truth_sync(
         issues.append("missing_machine_checkable_floor_result")
     if record.recorded_governance_outcome is None:
         issues.append("missing_recorded_governance_outcome")
-    elif record.recorded_governance_outcome != signals.governance_decision:
+    elif recorded_governance_outcome != signals.governance_decision:
         issues.append(
             "recorded_governance_outcome_mismatch("
             f"expected={signals.governance_decision}, recorded={record.recorded_governance_outcome})"

@@ -26,8 +26,8 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-sanitized-share | canonical | risk | published | 2 | 0 | 0 | true | - |
 | aoa-source-of-truth-check | canonical | core | published | 3 | 0 | 0 | true | - |
 | aoa-tdd-slice | canonical | core | published | 2 | 0 | 0 | true | - |
-| atm10-change-protocol | reviewed | project | published | 2 | 0 | 0 | true | - |
-| atm10-source-of-truth-check | reviewed | project | published | 2 | 0 | 0 | true | - |
+| atm10-change-protocol | evaluated | project | published | 2 | 0 | 0 | true | - |
+| atm10-source-of-truth-check | evaluated | project | published | 2 | 0 | 0 | true | - |
 
 ## Reading notes
 

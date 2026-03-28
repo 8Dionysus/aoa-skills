@@ -6,7 +6,7 @@ It is a backlog/maintenance view, not a promotion decision surface.
 ## Summary
 
 - total skills: 17
-- candidate ready without review: 1
+- candidate ready without review: 3
 - blocked by pending lineage: 0
 - canonical maintenance cohort: 12
 - comparative pending cohort: 3
@@ -30,8 +30,8 @@ It is a backlog/maintenance view, not a promotion decision surface.
 | aoa-sanitized-share | canonical | published | true | true | default_reference | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-sanitized-share.md | docs/reviews/status-promotions/aoa-sanitized-share.md |
 | aoa-source-of-truth-check | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-source-of-truth-check.md | docs/reviews/status-promotions/aoa-source-of-truth-check.md |
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
-| atm10-change-protocol | reviewed | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
-| atm10-source-of-truth-check | reviewed | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| atm10-change-protocol | evaluated | published | true | true | - | - | governance_and_eval_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
+| atm10-source-of-truth-check | evaluated | published | true | true | - | - | governance_and_eval_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
 
 ## Review truth sync
 
@@ -50,10 +50,12 @@ It is a backlog/maintenance view, not a promotion decision surface.
 | aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | 595c4e599075 | 595c4e599075 | False | - | true |
 | aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 5db83815e920 | 5db83815e920 | True | - | true |
 | aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | f4bdf444bbe4 | f4bdf444bbe4 | True | - | true |
+| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | bf3b1081c216 | bf3b1081c216 | False | - | true |
+| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | ce4b813299a4 | ce4b813299a4 | False | - | true |
 
 ## Cohorts
 
-- `candidate_ready_without_review`: aoa-local-stack-bringup
+- `candidate_ready_without_review`: aoa-local-stack-bringup, atm10-change-protocol, atm10-source-of-truth-check
 - `blocked_by_pending_lineage`: -
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor
