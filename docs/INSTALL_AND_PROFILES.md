@@ -28,6 +28,14 @@ python scripts/install_skill_pack.py --repo-root . --profile user-curated-core
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --dest-root /tmp/aoa-skills --mode copy --execute
 ```
 
+Verify an installed profile/root against the current portable export:
+
+```bash
+python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
+python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --format json
+python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --strict-root --format markdown
+```
+
 Render a disable snippet for a profile:
 
 ```bash
@@ -42,13 +50,21 @@ python scripts/lint_pack_profiles.py --repo-root .
 
 ## Verification posture
 
-If you need a machine-readable packaging check rather than a dry-run install plan:
+If you need a machine-readable packaging check rather than only a dry-run install plan:
 
 - read `generated/skill_pack_profiles.resolved.json` for the concrete profile membership
 - read `generated/release_manifest.json` for the current `install_profile_revisions`
 - read `generated/skill_bundle_index.json` when you want the inverse view: which install profiles currently include a given skill
+- use `scripts/verify_skill_pack.py` when you want to verify one real install root against the current export and release contract
 
 That pair gives an offline verification surface for profile membership drift without introducing a separate package registry.
+
+`verify_skill_pack.py` is profile-scoped by default:
+
+- it requires every expected installed skill for the selected profile to exist
+- it compares the full installed skill directory to the current `.agents/skills/<skill>` export with normalized text-file bytes
+- it reports extra sibling skill dirs under the install root but does not fail on them unless `--strict-root` is set
+- it treats copy and symlink installs the same way: pass/fail is based on exported content parity, not on symlink-target identity
 
 ## Why profiles matter
 

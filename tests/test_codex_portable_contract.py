@@ -271,6 +271,7 @@ class CodexPortableContractTests(unittest.TestCase):
             [sys.executable, "scripts/build_support_resources.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
+            [sys.executable, "scripts/verify_skill_pack.py", "--repo-root", ".", "--profile", "repo-default", "--format", "json"],
             [sys.executable, "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"],
             [sys.executable, "scripts/validate_tiny_router_inputs.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
