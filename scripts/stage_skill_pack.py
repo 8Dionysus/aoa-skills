@@ -77,6 +77,11 @@ def build_stage_plan(
         "archive_sha256": None,
         "archive_bytes": None,
         "execute": execute,
+        "recommended_inspect_command": skill_pack_install_contract.recommended_inspect_command(
+            bundle_archive_override=archive_path if use_archive_transport else None,
+            bundle_root_override=None if use_archive_transport else output_root,
+            output_format="json",
+        ),
         "recommended_install_command": skill_pack_install_contract.recommended_install_command(
             profile_name=profile_name,
             bundle_archive_override=archive_path if use_archive_transport else None,
@@ -148,6 +153,7 @@ def render_markdown(plan: dict[str, Any]) -> str:
         f"Execute: {plan['execute']}",
         f"Skill count: {plan['skill_count']}",
         f"Bundle digest: {plan['bundle_digest']}",
+        f"Inspect: {plan['recommended_inspect_command']}",
         f"Install: {plan['recommended_install_command']}",
         f"Verify: {plan['recommended_verify_command']}",
         "",
@@ -216,6 +222,7 @@ def main() -> int:
                         "archive_sha256",
                         "archive_bytes",
                         "execute",
+                        "recommended_inspect_command",
                         "recommended_install_command",
                         "recommended_verify_command",
                     }

@@ -399,7 +399,7 @@ class VerifySkillPackTests(unittest.TestCase):
             )
 
             self.assertNotEqual(0, completed.returncode)
-            self.assertIn("exactly one bundle root", completed.stderr)
+            self.assertIn("exactly one top-level root", completed.stderr)
 
 
 if __name__ == "__main__":

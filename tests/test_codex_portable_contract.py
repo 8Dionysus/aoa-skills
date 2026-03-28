@@ -250,6 +250,7 @@ class CodexPortableContractTests(unittest.TestCase):
             payload = json.loads(completed.stdout)
             self.assertEqual(str(archive_path.resolve()), payload["archive_path"])
             self.assertEqual("zip", payload["archive_format"])
+            self.assertIn("--bundle-archive", payload["recommended_inspect_command"])
             self.assertIn("--bundle-archive", payload["recommended_install_command"])
 
     def test_explicit_only_skills_have_no_implicit_positive_cases(self):
