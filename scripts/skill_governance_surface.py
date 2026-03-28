@@ -211,6 +211,32 @@ def derive_canonical_candidate_blockers(
     return blockers
 
 
+def canonical_candidate_path_applies(
+    *,
+    scope: Any,
+    governance_signals: skill_governance_lane_contract.GovernanceSkillSignals,
+) -> bool:
+    if scope != "project":
+        return True
+    return bool(
+        governance_signals.governance_decision
+        or governance_signals.governance_lane_ids
+        or governance_signals.governance_evidence_case_ids
+    )
+
+
+def derive_canonical_candidate_ready(
+    *,
+    scope: Any,
+    governance_signals: skill_governance_lane_contract.GovernanceSkillSignals,
+    blockers: Sequence[str],
+) -> bool:
+    return canonical_candidate_path_applies(
+        scope=scope,
+        governance_signals=governance_signals,
+    ) and not blockers
+
+
 def derive_public_surface_skill_entry(
     *,
     skill_name: str,
@@ -236,7 +262,13 @@ def derive_public_surface_skill_entry(
         policy_exists=policy_exists,
         policy_allow_implicit_invocation=policy_allow_implicit_invocation,
     )
+    scope = metadata.get("scope")
     status = metadata.get("status")
+    canonical_candidate_ready = derive_canonical_candidate_ready(
+        scope=scope,
+        governance_signals=governance_signals,
+        blockers=blockers,
+    )
     is_default_reference = (
         governance_signals.governance_decision
         == skill_governance_lane_contract.GOVERNANCE_DECISION_DEFAULT_REFERENCE
@@ -246,7 +278,7 @@ def derive_public_surface_skill_entry(
 
     return {
         "name": skill_name,
-        "scope": metadata.get("scope"),
+        "scope": scope,
         "status": status,
         "summary": metadata.get("summary"),
         "invocation_mode": metadata.get("invocation_mode"),
@@ -258,7 +290,7 @@ def derive_public_surface_skill_entry(
         "governance_evidence_case_ids": list(
             governance_signals.governance_evidence_case_ids
         ),
-        "canonical_candidate_ready": not blockers,
+        "canonical_candidate_ready": canonical_candidate_ready,
         "canonical_candidate_blockers": blockers,
         "promotion_review_path": promotion_review_path,
         "candidate_review_path": candidate_review_path,
@@ -273,12 +305,12 @@ def derive_public_surface_cohorts(skill_entries: Sequence[Mapping[str, Any]]) ->
 
     for entry in skill_entries:
         skill_name = entry["name"]
-        blockers = set(entry.get("canonical_candidate_blockers", []))
+        lineage_state = entry.get("lineage_state")
         if entry.get("is_default_reference"):
             default_references.append(skill_name)
         elif entry.get("canonical_candidate_ready"):
             candidate_ready.append(skill_name)
-        if blockers & PENDING_LINEAGE_BLOCKERS:
+        if lineage_state == "pending":
             blocked_by_pending_lineage.append(skill_name)
         if entry.get("scope") == "risk":
             risk_surfaces.append(skill_name)
@@ -401,7 +433,7 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
             "",
             "- `canonical` means the skill is the current default public reference for its workflow class.",
             "- `evaluated` means behavior-oriented evidence exists, but it is not automatically a default reference.",
-            "- `candidate_ready` means the current machine-readable canonical gate checks pass without implying promotion or overriding the lane decision.",
+            "- `candidate_ready` means the current machine-readable canonical gate checks pass for a governance-eligible public reference path without implying promotion or overriding the lane decision.",
             "- `stay_evaluated` means the current governance lane decision is to keep the skill evaluated in this wave even though its canonical gate checks may already pass.",
             "- `pending lineage` means upstream technique publication or refresh still blocks the canonical path.",
             "- `explicit-only` means the skill requires an explicit invocation posture and policy alignment.",

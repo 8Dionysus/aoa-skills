@@ -63,13 +63,16 @@ It is trustworthy enough to use, but it is not automatically the default public 
 ### `candidate_ready`
 
 `candidate_ready` is a derived machine gate-pass signal.
-It means the current canonical gate checks pass, but no promotion happened yet.
+It means the current canonical gate checks pass for a governance-eligible public-reference path, but no promotion happened yet.
 
 It does not:
 - change `status`
 - decide default-reference authority
 - replace review judgment
 - imply that promotion is automatic
+
+Project overlays are intentionally read through `generated/overlay_readiness.*` instead.
+An overlay may be `evaluated` and reviewable without participating in the candidate-ready cohort when no governance lane path exists for that project-scope object.
 
 ### `governance decision`
 

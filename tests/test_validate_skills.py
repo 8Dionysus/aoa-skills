@@ -1586,6 +1586,26 @@ class ValidateSkillsTests(unittest.TestCase):
             ),
         )
 
+    def test_project_overlay_evaluated_status_does_not_require_candidate_adjacency_without_lane(self) -> None:
+        repo_root = self.make_repo(
+            skill_name="abyss-test-skill",
+            scope="project",
+            status="evaluated",
+            review_record_surface="status-promotions",
+        )
+        self.write_live_overlay_pack(
+            repo_root,
+            family="abyss",
+            skill_names=["abyss-test-skill"],
+        )
+        self.write_evaluation_fixtures_for_skill(
+            repo_root,
+            skill_name="abyss-test-skill",
+        )
+        self.write_catalogs(repo_root)
+
+        self.assertEqual([], validate_skills.validate_required_adjacency_coverage(repo_root, ["abyss-test-skill"]))
+
     def test_review_truth_sync_reports_malformed_review_doc_as_issue(self) -> None:
         repo_root = self.make_repo(
             status="evaluated",

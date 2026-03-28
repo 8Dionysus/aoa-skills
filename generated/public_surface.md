@@ -7,7 +7,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 - total skills: 17
 - default references: 12
-- candidate-ready skills: 5
+- candidate-ready skills: 3
 - blocked by pending lineage: 0
 - risk surfaces: 5
 
@@ -35,8 +35,6 @@ It is built from committed skill bundles, review records, and evaluation fixture
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md` |
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | - |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md` |
-| atm10-change-protocol | evaluated | project | explicit-preferred | published | - | - | - | `docs/reviews/status-promotions/atm10-change-protocol.md` | - |
-| atm10-source-of-truth-check | evaluated | project | explicit-preferred | published | - | - | - | `docs/reviews/status-promotions/atm10-source-of-truth-check.md` | - |
 
 ## Blocked by pending lineage
 
@@ -58,7 +56,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 - `canonical` means the skill is the current default public reference for its workflow class.
 - `evaluated` means behavior-oriented evidence exists, but it is not automatically a default reference.
-- `candidate_ready` means the current machine-readable canonical gate checks pass without implying promotion or overriding the lane decision.
+- `candidate_ready` means the current machine-readable canonical gate checks pass for a governance-eligible public reference path without implying promotion or overriding the lane decision.
 - `stay_evaluated` means the current governance lane decision is to keep the skill evaluated in this wave even though its canonical gate checks may already pass.
 - `pending lineage` means upstream technique publication or refresh still blocks the canonical path.
 - `explicit-only` means the skill requires an explicit invocation posture and policy alignment.

@@ -33,6 +33,7 @@ def adjacency_cases(fixtures: Mapping[str, Any] | None) -> list[Mapping[str, Any
 
 def governance_ready(
     source: skill_source_model.SkillSource,
+    governance_signals: skill_governance_lane_contract.GovernanceSkillSignals,
     evaluation_coverage: skill_governance_surface.EvaluationCoverage,
 ) -> bool:
     techniques = skill_catalog_contract.normalize_technique_refs(source.manifest)
@@ -46,7 +47,11 @@ def governance_ready(
         policy_exists=source.policy_exists,
         policy_allow_implicit_invocation=source.policy_allow_implicit_invocation,
     )
-    return not blockers
+    return skill_governance_surface.derive_canonical_candidate_ready(
+        scope=source.metadata.get("scope"),
+        governance_signals=governance_signals,
+        blockers=blockers,
+    )
 
 
 def case_blockers(repo_root: Path, case: Mapping[str, Any]) -> list[str]:
@@ -85,8 +90,13 @@ def build_skill_entry(
         evaluation_coverage_by_skill,
         source.name,
     )
+    governance_signals = skill_governance_lane_contract.governance_signals_for_skill(
+        governance_signals_by_skill,
+        source.name,
+    )
     required_coverage = source.metadata.get("status") == "canonical" or governance_ready(
         source,
+        governance_signals,
         evaluation_coverage,
     )
     skill_cases = [case for case in case_entries if case.get("skill") == source.name]
@@ -126,10 +136,7 @@ def build_skill_entry(
         "adjacency_ready": adjacency_ready,
         "adjacency_blockers": blockers,
         "governance_lane_ids": list(
-            skill_governance_lane_contract.governance_signals_for_skill(
-                governance_signals_by_skill,
-                source.name,
-            ).governance_lane_ids
+            governance_signals.governance_lane_ids
         ),
     }
 
