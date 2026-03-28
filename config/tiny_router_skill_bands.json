@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-9-tiny-router-inputs",
+  "bands": [
+    {
+      "id": "decision-doc-authority",
+      "summary": "Decision records, source-of-truth authority, and canonical documentation surfaces.",
+      "cues": [
+        "adr",
+        "decision note",
+        "architectural decision",
+        "decision rationale",
+        "source of truth",
+        "canonical file",
+        "authoritative docs",
+        "docs conflict",
+        "entrypoint doc",
+        "canonical surface"
+      ],
+      "skills": [
+        "aoa-adr-write",
+        "aoa-source-of-truth-check",
+        "atm10-source-of-truth-check"
+      ]
+    },
+    {
+      "id": "boundary-architecture",
+      "summary": "Bounded contexts, responsibility boundaries, core-vs-glue separation, and ports/adapters.",
+      "cues": [
+        "bounded context",
+        "context map",
+        "mixed responsibilities",
+        "overloaded naming",
+        "core logic",
+        "glue code",
+        "orchestration",
+        "port and adapter",
+        "adapter seam",
+        "infrastructure details leak"
+      ],
+      "skills": [
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor"
+      ]
+    },
+    {
+      "id": "change-validation",
+      "summary": "Scoped change execution, test-first slices, and boundary validation.",
+      "cues": [
+        "bounded change",
+        "plan apply verify report",
+        "non-trivial change",
+        "explicit verification",
+        "contract test",
+        "service boundary",
+        "module boundary",
+        "tdd",
+        "test first",
+        "feature slice",
+        "red green refactor",
+        "atm10 change"
+      ],
+      "skills": [
+        "aoa-change-protocol",
+        "aoa-contract-test",
+        "aoa-tdd-slice",
+        "atm10-change-protocol"
+      ]
+    },
+    {
+      "id": "property-audit",
+      "summary": "Property-style invariants and auditing whether existing checks actually prove them.",
+      "cues": [
+        "invariant",
+        "property test",
+        "monotonicity",
+        "idempotency",
+        "conservation",
+        "rule should always hold",
+        "coverage audit",
+        "coverage gap",
+        "prove the rule"
+      ],
+      "skills": [
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit"
+      ]
+    },
+    {
+      "id": "risk-ops-safety",
+      "summary": "Approval gates, preview-first execution, infra/runtime change discipline, bringup, and sanitization.",
+      "cues": [
+        "approval gate",
+        "authority unclear",
+        "destructive",
+        "preview path",
+        "dry run",
+        "simulate first",
+        "infra change",
+        "rollback",
+        "deployment implication",
+        "bring up local stack",
+        "readiness check",
+        "profile preset overlay",
+        "sanitize logs",
+        "redact secrets",
+        "public-safe share"
+      ],
+      "skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-safe-infra-change",
+        "aoa-local-stack-bringup",
+        "aoa-sanitized-share"
+      ]
+    }
+  ],
+  "skill_overrides": {
+    "aoa-adr-write": {
+      "band": "decision-doc-authority",
+      "positive_cues": [
+        "adr",
+        "decision note",
+        "rationale",
+        "why this path",
+        "architectural decision"
+      ],
+      "negative_cues": [
+        "tiny self-evident edit",
+        "canonical doc conflict"
+      ]
+    },
+    "aoa-approval-gate-check": {
+      "band": "risk-ops-safety",
+      "positive_cues": [
+        "approval gate",
+        "authority boundary",
+        "safe to proceed",
+        "should not execute",
+        "security sensitive"
+      ],
+      "negative_cues": [
+        "clearly low risk",
+        "preview-first execution"
+      ]
+    },
+    "aoa-bounded-context-map": {
+      "band": "boundary-architecture",
+      "positive_cues": [
+        "bounded context",
+        "context map",
+        "name the contexts",
+        "mixed responsibilities",
+        "interfaces between contexts"
+      ],
+      "negative_cues": [
+        "tiny local edit",
+        "already clear boundary"
+      ]
+    },
+    "aoa-change-protocol": {
+      "band": "change-validation",
+      "positive_cues": [
+        "bounded non-trivial change",
+        "plan apply verify report",
+        "scoped edit",
+        "explicit verification",
+        "rollback thinking"
+      ],
+      "negative_cues": [
+        "trivial wording fix",
+        "more specific risk skill"
+      ]
+    },
+    "aoa-contract-test": {
+      "band": "change-validation",
+      "positive_cues": [
+        "contract test",
+        "boundary validation",
+        "service boundary",
+        "module boundary",
+        "smoke path contract"
+      ],
+      "negative_cues": [
+        "purely local change",
+        "property testing"
+      ]
+    },
+    "aoa-core-logic-boundary": {
+      "band": "boundary-architecture",
+      "positive_cues": [
+        "core logic",
+        "reusable rules",
+        "glue code",
+        "orchestration",
+        "responsibility center"
+      ],
+      "negative_cues": [
+        "tiny isolated fix",
+        "adapter seam"
+      ]
+    },
+    "aoa-dry-run-first": {
+      "band": "risk-ops-safety",
+      "positive_cues": [
+        "dry run",
+        "preview path",
+        "simulate first",
+        "inspect only",
+        "require confirmation"
+      ],
+      "negative_cues": [
+        "purely analytical task",
+        "authority classification"
+      ]
+    },
+    "aoa-invariant-coverage-audit": {
+      "band": "property-audit",
+      "positive_cues": [
+        "coverage audit",
+        "do current tests prove",
+        "smallest coverage gap",
+        "audit invariants",
+        "repeated examples only"
+      ],
+      "negative_cues": [
+        "need to author invariants first",
+        "invariant undefined"
+      ]
+    },
+    "aoa-local-stack-bringup": {
+      "band": "risk-ops-safety",
+      "positive_cues": [
+        "bring up local stack",
+        "readiness check",
+        "profile preset overlay",
+        "launch services",
+        "visible stop path"
+      ],
+      "negative_cues": [
+        "remote deployment",
+        "pure diagnostics without launch"
+      ]
+    },
+    "aoa-port-adapter-refactor": {
+      "band": "boundary-architecture",
+      "positive_cues": [
+        "port adapter",
+        "adapter seam",
+        "isolate dependency",
+        "infrastructure entanglement",
+        "concrete dependency"
+      ],
+      "negative_cues": [
+        "no meaningful boundary",
+        "tiny local fix"
+      ]
+    },
+    "aoa-property-invariants": {
+      "band": "property-audit",
+      "positive_cues": [
+        "property invariants",
+        "invariant tests",
+        "monotonicity",
+        "idempotency",
+        "many inputs or states"
+      ],
+      "negative_cues": [
+        "no meaningful invariant known",
+        "audit existing coverage only"
+      ]
+    },
+    "aoa-safe-infra-change": {
+      "band": "risk-ops-safety",
+      "positive_cues": [
+        "infra change",
+        "service config",
+        "deployment implication",
+        "rollback",
+        "runtime impact"
+      ],
+      "negative_cues": [
+        "purely local code change",
+        "approval classification only"
+      ]
+    },
+    "aoa-sanitized-share": {
+      "band": "risk-ops-safety",
+      "positive_cues": [
+        "sanitize logs",
+        "redact secrets",
+        "public-safe share",
+        "internal identifiers",
+        "shareable artifact"
+      ],
+      "negative_cues": [
+        "already public-safe",
+        "perform the operational change"
+      ]
+    },
+    "aoa-source-of-truth-check": {
+      "band": "decision-doc-authority",
+      "positive_cues": [
+        "source of truth",
+        "canonical file",
+        "authoritative docs",
+        "docs overlap",
+        "entrypoint docs"
+      ],
+      "negative_cues": [
+        "decision rationale only",
+        "purely code-local"
+      ]
+    },
+    "aoa-tdd-slice": {
+      "band": "change-validation",
+      "positive_cues": [
+        "tdd",
+        "test first",
+        "red green refactor",
+        "feature slice",
+        "behavior before code"
+      ],
+      "negative_cues": [
+        "undefined exploratory work",
+        "broad architectural restructure"
+      ]
+    },
+    "atm10-change-protocol": {
+      "band": "change-validation",
+      "positive_cues": [
+        "atm10",
+        "atm10 change",
+        "repo-relative atm10",
+        "atm10 commands",
+        "atm10 overlay"
+      ],
+      "negative_cues": [
+        "base skill is sufficient",
+        "broader playbook"
+      ]
+    },
+    "atm10-source-of-truth-check": {
+      "band": "decision-doc-authority",
+      "positive_cues": [
+        "atm10",
+        "atm10 docs",
+        "atm10 canonical file",
+        "atm10 source of truth",
+        "atm10 authoritative docs"
+      ],
+      "negative_cues": [
+        "broader policy design",
+        "base skill is enough"
+      ]
+    }
+  },
+  "companions": {
+    "aoa-adr-write": [
+      "aoa-source-of-truth-check"
+    ],
+    "aoa-approval-gate-check": [
+      "aoa-dry-run-first",
+      "aoa-safe-infra-change"
+    ],
+    "aoa-bounded-context-map": [
+      "aoa-core-logic-boundary",
+      "aoa-port-adapter-refactor"
+    ],
+    "aoa-change-protocol": [
+      "aoa-contract-test",
+      "aoa-tdd-slice",
+      "aoa-safe-infra-change"
+    ],
+    "aoa-contract-test": [
+      "aoa-change-protocol",
+      "aoa-property-invariants"
+    ],
+    "aoa-core-logic-boundary": [
+      "aoa-bounded-context-map",
+      "aoa-port-adapter-refactor"
+    ],
+    "aoa-dry-run-first": [
+      "aoa-safe-infra-change",
+      "aoa-approval-gate-check"
+    ],
+    "aoa-invariant-coverage-audit": [
+      "aoa-property-invariants",
+      "aoa-contract-test"
+    ],
+    "aoa-local-stack-bringup": [
+      "aoa-safe-infra-change",
+      "aoa-dry-run-first"
+    ],
+    "aoa-port-adapter-refactor": [
+      "aoa-core-logic-boundary",
+      "aoa-bounded-context-map"
+    ],
+    "aoa-property-invariants": [
+      "aoa-invariant-coverage-audit",
+      "aoa-contract-test"
+    ],
+    "aoa-safe-infra-change": [
+      "aoa-dry-run-first",
+      "aoa-approval-gate-check",
+      "aoa-local-stack-bringup"
+    ],
+    "aoa-sanitized-share": [
+      "aoa-safe-infra-change",
+      "aoa-source-of-truth-check"
+    ],
+    "aoa-source-of-truth-check": [
+      "aoa-adr-write",
+      "atm10-source-of-truth-check"
+    ],
+    "aoa-tdd-slice": [
+      "aoa-change-protocol",
+      "aoa-contract-test"
+    ],
+    "atm10-change-protocol": [
+      "aoa-change-protocol",
+      "aoa-source-of-truth-check"
+    ],
+    "atm10-source-of-truth-check": [
+      "aoa-source-of-truth-check",
+      "aoa-adr-write"
+    ]
+  }
+}

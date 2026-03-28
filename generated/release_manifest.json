@@ -8,7 +8,8 @@
     4,
     6,
     7,
-    8
+    8,
+    9
   ],
   "skill_root": ".agents/skills",
   "skill_count": 17,
@@ -21,7 +22,8 @@
     "config/openai_skill_extensions.json",
     "config/skill_pack_profiles.json",
     "config/skill_policy_matrix.json",
-    "config/description_trigger_eval_policy.json"
+    "config/description_trigger_eval_policy.json",
+    "config/tiny_router_skill_bands.json"
   ],
   "generated_files": [
     "generated/agent_skill_catalog.json",
@@ -62,6 +64,11 @@
     "generated/support_resource_bridge_map.json",
     "generated/deterministic_resource_eval_cases.jsonl",
     "generated/expected_existing_aoa_support_dirs.json",
+    "generated/tiny_router_skill_signals.json",
+    "generated/tiny_router_candidate_bands.json",
+    "generated/tiny_router_capsules.min.json",
+    "generated/tiny_router_eval_cases.jsonl",
+    "generated/tiny_router_overlay_manifest.json",
     "generated/release_manifest.json"
   ],
   "release_identity": {

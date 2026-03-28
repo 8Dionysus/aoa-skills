@@ -27,7 +27,7 @@ class ReleaseCheckTests(unittest.TestCase):
             release_check.resolve_command(("git", "status")),
         )
 
-    def test_release_sequence_includes_runtime_seam_guardrails_description_eval_and_support_steps(self) -> None:
+    def test_release_sequence_includes_runtime_seam_guardrails_description_eval_support_and_tiny_router_steps(self) -> None:
         self.assertIn(
             ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
@@ -61,11 +61,23 @@ class ReleaseCheckTests(unittest.TestCase):
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
+            ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", "."),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
             ("python", "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
+            ("python", "scripts/validate_tiny_router_inputs.py", "--repo-root", "."),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
             ("python", "scripts/lint_support_resources.py", "--repo-root", "."),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
+            ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(

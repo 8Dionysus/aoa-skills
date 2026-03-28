@@ -125,6 +125,17 @@ Wave 8 adds a deterministic support-resource bridge for three high-risk skills:
 - `generated/deterministic_resource_eval_cases.jsonl`
 - `generated/expected_existing_aoa_support_dirs.json`
 
+Wave 9 adds a tiny-router compression bridge for downstream two-stage routing:
+
+- `generated/tiny_router_skill_signals.json`
+- `generated/tiny_router_candidate_bands.json`
+- `generated/tiny_router_capsules.min.json`
+- `generated/tiny_router_eval_cases.jsonl`
+- `generated/tiny_router_overlay_manifest.json`
+
+These files remain skill-derived compression surfaces only. They are not routing
+policy authority and they must not turn `aoa-skills` into a second router canon.
+
 Those files describe canonical `skills/*/{scripts,references,assets}` resources and their bridge back to existing AoA support dirs.
 The portable export still stays generated from canonical skill roots; `scripts/build_support_resources.py` records the support layer, but it does not become a second portable-sync authority.
 

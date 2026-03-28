@@ -27,6 +27,7 @@ GUARDRAIL_PROFILE = "codex-facing-wave-6-runtime-guardrails"
 DESCRIPTION_TRIGGER_PROFILE = "codex-facing-wave-7-description-trigger-evals"
 SKILLS_REF_PROFILE = "codex-facing-wave-7-standard-validation"
 SUPPORT_RESOURCE_PROFILE = "codex-facing-wave-8-support-bundles"
+TINY_ROUTER_PROFILE = "codex-facing-wave-9-tiny-router-inputs"
 TARGETED_SUPPORT_SKILLS = {
     "aoa-dry-run-first",
     "aoa-safe-infra-change",
@@ -86,6 +87,11 @@ REQUIRED_GENERATED_FILES = [
     "generated/support_resource_bridge_map.json",
     "generated/deterministic_resource_eval_cases.jsonl",
     "generated/expected_existing_aoa_support_dirs.json",
+    "generated/tiny_router_skill_signals.json",
+    "generated/tiny_router_candidate_bands.json",
+    "generated/tiny_router_capsules.min.json",
+    "generated/tiny_router_eval_cases.jsonl",
+    "generated/tiny_router_overlay_manifest.json",
     "generated/release_manifest.json",
 ]
 RELEASE_MANIFEST_GENERATED_FILES = [
@@ -127,6 +133,11 @@ RELEASE_MANIFEST_GENERATED_FILES = [
     "generated/support_resource_bridge_map.json",
     "generated/deterministic_resource_eval_cases.jsonl",
     "generated/expected_existing_aoa_support_dirs.json",
+    "generated/tiny_router_skill_signals.json",
+    "generated/tiny_router_candidate_bands.json",
+    "generated/tiny_router_capsules.min.json",
+    "generated/tiny_router_eval_cases.jsonl",
+    "generated/tiny_router_overlay_manifest.json",
     "generated/release_manifest.json",
 ]
 REQUIRED_CONFIG_FILES = [
@@ -136,6 +147,7 @@ REQUIRED_CONFIG_FILES = [
     "config/skill_policy_matrix.json",
     "config/runtime_guardrail_policy.json",
     "config/description_trigger_eval_policy.json",
+    "config/tiny_router_skill_bands.json",
 ]
 
 
@@ -231,12 +243,18 @@ def main() -> int:
     support_bridge_map = load_json(generated_dir / "support_resource_bridge_map.json")
     support_eval_cases = load_jsonl(generated_dir / "deterministic_resource_eval_cases.jsonl")
     expected_support_dirs = load_json(generated_dir / "expected_existing_aoa_support_dirs.json")
+    tiny_router_signals = load_json(generated_dir / "tiny_router_skill_signals.json")
+    tiny_router_bands = load_json(generated_dir / "tiny_router_candidate_bands.json")
+    tiny_router_capsules = load_json(generated_dir / "tiny_router_capsules.min.json")
+    tiny_router_eval_cases = load_jsonl(generated_dir / "tiny_router_eval_cases.jsonl")
+    tiny_router_manifest = load_json(generated_dir / "tiny_router_overlay_manifest.json")
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
     guardrail_policy = load_json(config_dir / "runtime_guardrail_policy.json")
     description_eval_policy = load_json(config_dir / "description_trigger_eval_policy.json")
+    tiny_router_policy = load_json(config_dir / "tiny_router_skill_bands.json")
 
     source_by_name = {entry["name"]: entry for entry in source_catalog.get("skills", [])}
     agent_by_name = {entry["name"]: entry for entry in agent_catalog.get("skills", [])}
@@ -264,6 +282,10 @@ def main() -> int:
     support_index_by_name = {entry["name"]: entry for entry in support_index.get("skills", [])}
     support_bridge_by_name = support_bridge_map.get("skills", {})
     expected_support_by_name = expected_support_dirs.get("skills", {})
+    tiny_router_signal_by_name = {entry["name"]: entry for entry in tiny_router_signals.get("skills", [])}
+    tiny_router_capsule_by_name = {entry["name"]: entry for entry in tiny_router_capsules.get("skills", [])}
+    tiny_router_manifest_by_name = {entry["name"]: entry for entry in tiny_router_manifest.get("skills", [])}
+    tiny_router_band_by_id = {entry["id"]: entry for entry in tiny_router_bands.get("bands", [])}
     description_cases_by_skill: dict[str, list[dict[str, Any]]] = {name: [] for name in source_by_name}
     for case in description_cases:
         skill_name = case.get("skill_name")
@@ -340,6 +362,15 @@ def main() -> int:
     }.items():
         if doc.get("profile") != SUPPORT_RESOURCE_PROFILE:
             errors.append(f"{label} profile must be {SUPPORT_RESOURCE_PROFILE!r}")
+    for label, doc in {
+        "config/tiny_router_skill_bands.json": tiny_router_policy,
+        "generated/tiny_router_skill_signals.json": tiny_router_signals,
+        "generated/tiny_router_candidate_bands.json": tiny_router_bands,
+        "generated/tiny_router_capsules.min.json": tiny_router_capsules,
+        "generated/tiny_router_overlay_manifest.json": tiny_router_manifest,
+    }.items():
+        if doc.get("profile") != TINY_ROUTER_PROFILE:
+            errors.append(f"{label} profile must be {TINY_ROUTER_PROFILE!r}")
 
     if not skills_root.exists():
         errors.append(f"missing skills root: {skills_root}")
@@ -370,7 +401,11 @@ def main() -> int:
         "generated/skill_description_signals.json": set(description_signal_by_name),
         "generated/description_trigger_eval_manifest.json": set(description_manifest_by_name),
         "generated/skills_ref_validation_manifest.json": set(skills_ref_target_by_name),
+        "generated/tiny_router_skill_signals.json": set(tiny_router_signal_by_name),
+        "generated/tiny_router_capsules.min.json": set(tiny_router_capsule_by_name),
+        "generated/tiny_router_overlay_manifest.json": set(tiny_router_manifest_by_name),
         "config/skill_policy_matrix.json": set((policy_doc.get("skills") or {}).keys()),
+        "config/tiny_router_skill_bands.json": set((tiny_router_policy.get("skill_overrides") or {}).keys()),
     }
     for label, names in expected_sets.items():
         if names != actual_names:
@@ -385,6 +420,13 @@ def main() -> int:
         errors.append("generated/expected_existing_aoa_support_dirs.json skill set mismatch for wave-8 targeted skills")
     if {case.get('skill_name') for case in support_eval_cases} != TARGETED_SUPPORT_SKILLS:
         errors.append("generated/deterministic_resource_eval_cases.jsonl skill set mismatch for wave-8 targeted skills")
+    tiny_band_skill_names = {
+        skill_name
+        for band_entry in tiny_router_bands.get("bands", [])
+        for skill_name in band_entry.get("skills", [])
+    }
+    if tiny_band_skill_names != actual_names:
+        errors.append("generated/tiny_router_candidate_bands.json aggregated skill set mismatch")
 
     for skill_dir in sorted(path for path in skills_root.iterdir() if path.is_dir()):
         skill_md = skill_dir / "SKILL.md"
@@ -823,6 +865,60 @@ def main() -> int:
             if description_signal is not None and skills_ref_target.get("description_sha256") != description_signal.get("description_sha256"):
                 errors.append(f"generated/skills_ref_validation_manifest.json description_sha256 mismatch for {skill_dir.name}")
 
+        tiny_router_signal = tiny_router_signal_by_name.get(skill_dir.name)
+        tiny_router_capsule = tiny_router_capsule_by_name.get(skill_dir.name)
+        tiny_router_manifest_entry = tiny_router_manifest_by_name.get(skill_dir.name)
+        if tiny_router_signal is None:
+            errors.append(f"generated/tiny_router_skill_signals.json missing {skill_dir.name}")
+        else:
+            expected_band = tiny_router_policy["skill_overrides"][skill_dir.name]["band"]
+            if tiny_router_signal.get("band") != expected_band:
+                errors.append(f"generated/tiny_router_skill_signals.json band mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("invocation_mode") != source_entry.get("invocation_mode"):
+                errors.append(f"generated/tiny_router_skill_signals.json invocation_mode mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("allow_implicit_invocation") != allow_implicit:
+                errors.append(f"generated/tiny_router_skill_signals.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("manual_invocation_required") != (not allow_implicit):
+                errors.append(f"generated/tiny_router_skill_signals.json manual_invocation_required mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("project_overlay") != (source_entry.get("scope") == "project"):
+                errors.append(f"generated/tiny_router_skill_signals.json project_overlay mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("description") != description:
+                errors.append(f"generated/tiny_router_skill_signals.json description mismatch for {skill_dir.name}")
+            if description_signal is not None and tiny_router_signal.get("description_sha256") != description_signal.get("description_sha256"):
+                errors.append(f"generated/tiny_router_skill_signals.json description_sha256 mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("companions") != tiny_router_policy.get("companions", {}).get(skill_dir.name, []):
+                errors.append(f"generated/tiny_router_skill_signals.json companions mismatch for {skill_dir.name}")
+            if len(tiny_router_signal.get("positive_cues", [])) < 3:
+                errors.append(f"generated/tiny_router_skill_signals.json must keep at least 3 positive cues for {skill_dir.name}")
+            if not tiny_router_signal.get("cue_tokens"):
+                errors.append(f"generated/tiny_router_skill_signals.json must keep cue_tokens for {skill_dir.name}")
+
+        if tiny_router_capsule is None:
+            errors.append(f"generated/tiny_router_capsules.min.json missing {skill_dir.name}")
+        else:
+            expected_band = tiny_router_policy["skill_overrides"][skill_dir.name]["band"]
+            if tiny_router_capsule.get("band") != expected_band:
+                errors.append(f"generated/tiny_router_capsules.min.json band mismatch for {skill_dir.name}")
+            if tiny_router_capsule.get("manual_invocation_required") != (not allow_implicit):
+                errors.append(f"generated/tiny_router_capsules.min.json manual_invocation_required mismatch for {skill_dir.name}")
+            if tiny_router_capsule.get("project_overlay") != (source_entry.get("scope") == "project"):
+                errors.append(f"generated/tiny_router_capsules.min.json project_overlay mismatch for {skill_dir.name}")
+            if description_signal is not None and tiny_router_capsule.get("description_sha256") != description_signal.get("description_sha256"):
+                errors.append(f"generated/tiny_router_capsules.min.json description_sha256 mismatch for {skill_dir.name}")
+
+        if tiny_router_manifest_entry is None:
+            errors.append(f"generated/tiny_router_overlay_manifest.json missing {skill_dir.name}")
+        else:
+            expected_band = tiny_router_policy["skill_overrides"][skill_dir.name]["band"]
+            if tiny_router_manifest_entry.get("band") != expected_band:
+                errors.append(f"generated/tiny_router_overlay_manifest.json band mismatch for {skill_dir.name}")
+            if tiny_router_manifest_entry.get("manual_invocation_required") != (not allow_implicit):
+                errors.append(f"generated/tiny_router_overlay_manifest.json manual_invocation_required mismatch for {skill_dir.name}")
+            if tiny_router_manifest_entry.get("project_overlay") != (source_entry.get("scope") == "project"):
+                errors.append(f"generated/tiny_router_overlay_manifest.json project_overlay mismatch for {skill_dir.name}")
+            if description_signal is not None and tiny_router_manifest_entry.get("description_sha256") != description_signal.get("description_sha256"):
+                errors.append(f"generated/tiny_router_overlay_manifest.json description_sha256 mismatch for {skill_dir.name}")
+
         class_totals: dict[str, int] = {}
         for case in skill_description_cases:
             class_totals[case["case_class"]] = class_totals.get(case["case_class"], 0) + 1
@@ -889,6 +985,50 @@ def main() -> int:
         errors.append("generated/structured_output_schema_index.json schema count mismatch")
     if {entry.get("skill") for entry in support_schema_entries} != TARGETED_SUPPORT_SKILLS:
         errors.append("generated/structured_output_schema_index.json skill set mismatch")
+    if tiny_router_manifest.get("skill_count") != len(actual_names):
+        errors.append("generated/tiny_router_overlay_manifest.json skill_count mismatch")
+    if tiny_router_manifest.get("band_count") != len(tiny_router_band_by_id):
+        errors.append("generated/tiny_router_overlay_manifest.json band_count mismatch")
+    if tiny_router_manifest.get("case_count") != len(tiny_router_eval_cases):
+        errors.append("generated/tiny_router_overlay_manifest.json case_count mismatch")
+    if "config/tiny_router_skill_bands.json" not in tiny_router_manifest.get("source_files", []):
+        errors.append("generated/tiny_router_overlay_manifest.json must include config/tiny_router_skill_bands.json")
+    positive_tiny_router_coverage = {name: 0 for name in actual_names}
+    for case in tiny_router_eval_cases:
+        for skill_name in case.get("expected_shortlist_includes", []):
+            if skill_name not in actual_names:
+                errors.append(f"{case.get('case_id')}: unknown tiny-router expected_shortlist skill {skill_name!r}")
+            else:
+                positive_tiny_router_coverage[skill_name] += 1
+        top1 = case.get("expected_top1")
+        if top1 is not None and top1 not in actual_names:
+            errors.append(f"{case.get('case_id')}: unknown tiny-router expected_top1 {top1!r}")
+        top1_not = case.get("expected_top1_not")
+        if top1_not is not None and top1_not not in actual_names:
+            errors.append(f"{case.get('case_id')}: unknown tiny-router expected_top1_not {top1_not!r}")
+    missing_tiny_router_coverage = sorted(
+        skill_name for skill_name, count in positive_tiny_router_coverage.items() if count < 1
+    )
+    if missing_tiny_router_coverage:
+        errors.append(
+            "generated/tiny_router_eval_cases.jsonl missing positive shortlist coverage for "
+            + ", ".join(missing_tiny_router_coverage)
+        )
+    for band_id, band_entry in tiny_router_band_by_id.items():
+        signal_entries = [
+            entry for entry in tiny_router_signals.get("skills", []) if entry.get("band") == band_id
+        ]
+        expected_band_skills = [entry["name"] for entry in signal_entries]
+        expected_manual_only = sorted(
+            entry["name"] for entry in signal_entries if entry.get("manual_invocation_required")
+        )
+        expected_overlay = sorted(entry["name"] for entry in signal_entries if entry.get("project_overlay"))
+        if band_entry.get("skills") != expected_band_skills:
+            errors.append(f"generated/tiny_router_candidate_bands.json skills mismatch for band {band_id}")
+        if sorted(band_entry.get("manual_only_skills", [])) != expected_manual_only:
+            errors.append(f"generated/tiny_router_candidate_bands.json manual_only_skills mismatch for band {band_id}")
+        if sorted(band_entry.get("overlay_skills", [])) != expected_overlay:
+            errors.append(f"generated/tiny_router_candidate_bands.json overlay_skills mismatch for band {band_id}")
 
     expected_generated_files = set(RELEASE_MANIFEST_GENERATED_FILES)
     if set(release_manifest.get("generated_files", [])) != expected_generated_files:
@@ -907,8 +1047,10 @@ def main() -> int:
         errors.append("generated/release_manifest.json must reference docs/RELEASING.md")
     if "config/description_trigger_eval_policy.json" not in release_manifest.get("authoring_inputs", []):
         errors.append("generated/release_manifest.json must include config/description_trigger_eval_policy.json")
-    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6, 7, 8]:
-        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6, 7, 8]")
+    if "config/tiny_router_skill_bands.json" not in release_manifest.get("authoring_inputs", []):
+        errors.append("generated/release_manifest.json must include config/tiny_router_skill_bands.json")
+    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6, 7, 8, 9]:
+        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6, 7, 8, 9]")
 
     if runtime_discovery.get("root") != ".agents/skills":
         errors.append("generated/runtime_discovery_index.json root mismatch")
