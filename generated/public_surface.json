@@ -233,7 +233,7 @@
       "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin."
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "governance_decision": "stay_evaluated",

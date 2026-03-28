@@ -33,7 +33,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 | name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md` |
-| aoa-local-stack-bringup | evaluated | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | - |
+| aoa-local-stack-bringup | evaluated | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md` |
 
 ## Blocked by pending lineage
@@ -48,7 +48,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 |---|---|---|---|---|---|---|---|---|---|
 | aoa-approval-gate-check | canonical | risk | explicit-only | published | default_reference | local_runtime_bringup, risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
 | aoa-dry-run-first | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` |
-| aoa-local-stack-bringup | evaluated | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | - |
+| aoa-local-stack-bringup | evaluated | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` |
 | aoa-safe-infra-change | canonical | risk | explicit-only | published | default_reference | local_runtime_bringup, risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` |
 | aoa-sanitized-share | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` |
 

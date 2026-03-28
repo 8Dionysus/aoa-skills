@@ -1211,12 +1211,13 @@
         "skills/aoa-local-stack-bringup/agents/openai.yaml",
         "skills/aoa-local-stack-bringup/examples/runtime.md",
         "skills/aoa-local-stack-bringup/checks/review.md",
-        "docs/reviews/status-promotions/aoa-local-stack-bringup.md"
+        "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
+        "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md"
       ],
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "97604df9ebf14447bd500e21b9ed6440a8ccf18b78bcaa64eefd9acfb2621b85",
+      "content_hash": "02c71fc78a85f601869c97aac8e4bf109ef1b1828f9d6d9a6badac0b6281c9db",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -1238,7 +1239,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
       "scope": "risk",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "skill_revision": "97604df9ebf1",
+      "skill_revision": "02c71fc78a85",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1255,6 +1256,11 @@
           "path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "technique_dependencies": [

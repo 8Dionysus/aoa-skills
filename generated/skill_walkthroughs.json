@@ -501,6 +501,11 @@
           "path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
           "selected_for_runtime_inspection": false,
           "type": "promotion_review"
+        },
+        {
+          "path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
+          "selected_for_runtime_inspection": false,
+          "type": "candidate_review"
         }
       ],
       "use_when": [

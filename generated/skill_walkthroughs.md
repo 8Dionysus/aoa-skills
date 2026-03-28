@@ -346,6 +346,7 @@ Common expand sections:
 - `runtime_example` (selected): `skills/aoa-local-stack-bringup/examples/runtime.md`
 - `review_checklist`: `skills/aoa-local-stack-bringup/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-local-stack-bringup.md`
+- `candidate_review`: `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md`
 
 ## aoa-port-adapter-refactor
 

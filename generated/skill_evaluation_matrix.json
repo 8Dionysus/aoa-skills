@@ -139,7 +139,7 @@
     },
     {
       "autonomy_check_count": 1,
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,
