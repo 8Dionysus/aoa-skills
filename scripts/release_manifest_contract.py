@@ -6,6 +6,8 @@ import re
 from pathlib import Path
 from typing import Any, Mapping
 
+import skill_relationship_contract
+
 
 EXPORT_PROFILE = "codex-facing-wave-3"
 SKILL_ROOT = ".agents/skills"
@@ -123,6 +125,7 @@ ARTIFACT_GROUPS = (
 )
 ALL_GENERATED_FILES = [
     *(file_path for group in ARTIFACT_GROUPS for file_path in group["files"]),
+    *skill_relationship_contract.RELATIONSHIP_VIEW_PATHS,
     RELEASE_MANIFEST_PATH,
 ]
 VERSION_HEADING_RE = re.compile(
@@ -332,7 +335,7 @@ def build_release_manifest(
         skill_bundle_revisions,
     )
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "profile": EXPORT_PROFILE,
         "included_waves": [1, 2, *(group["wave"] for group in ARTIFACT_GROUPS)],
         "skill_root": SKILL_ROOT,
@@ -343,6 +346,7 @@ def build_release_manifest(
         "profile_count": len((resolved_profiles.get("profiles") or {}).keys()),
         "authoring_inputs": list(AUTHORING_INPUTS),
         "generated_files": list(ALL_GENERATED_FILES),
+        "relationship_views": list(skill_relationship_contract.RELATIONSHIP_VIEW_PATHS),
         "artifact_groups": [
             {
                 "id": group["id"],

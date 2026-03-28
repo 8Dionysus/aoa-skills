@@ -31,6 +31,41 @@
       "target": "technique_AOA_T_0001"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "profile_repo_abyss_overlay"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_abyss_sanitized_share",
       "target": "status_evaluated"
@@ -59,6 +94,41 @@
       "kind": "depends_on",
       "source": "skill_abyss_sanitized_share",
       "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_abyss_sanitized_share",
+      "target": "profile_repo_abyss_overlay"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_abyss_sanitized_share",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_sanitized_share",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_sanitized_share",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_sanitized_share",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_sanitized_share",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_sanitized_share",
+      "target": "artifact_group_tiny_router"
     },
     {
       "kind": "maturity",
@@ -91,6 +161,46 @@
       "target": "technique_AOA_T_0002"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_adr_write",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_adr_write",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_adr_write",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_adr_write",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_adr_write",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_adr_write",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_adr_write",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_adr_write",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_approval_gate_check",
       "target": "status_canonical"
@@ -114,6 +224,41 @@
       "kind": "depends_on",
       "source": "skill_aoa_approval_gate_check",
       "target": "technique_AOA_T_0028"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "profile_repo_risk_explicit"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_approval_gate_check",
+      "target": "artifact_group_tiny_router"
     },
     {
       "kind": "maturity",
@@ -144,6 +289,46 @@
       "kind": "depends_on",
       "source": "skill_aoa_bounded_context_map",
       "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_bounded_context_map",
+      "target": "artifact_group_tiny_router"
     },
     {
       "kind": "maturity",
@@ -176,6 +361,46 @@
       "target": "technique_AOA_T_0002"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_change_protocol",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_change_protocol",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_change_protocol",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_change_protocol",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_change_protocol",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_change_protocol",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_change_protocol",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_change_protocol",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_contract_test",
       "target": "status_canonical"
@@ -204,6 +429,46 @@
       "kind": "depends_on",
       "source": "skill_aoa_contract_test",
       "target": "technique_AOA_T_0015"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_contract_test",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_contract_test",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_contract_test",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_contract_test",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_contract_test",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_contract_test",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_contract_test",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_contract_test",
+      "target": "artifact_group_tiny_router"
     },
     {
       "kind": "maturity",
@@ -236,6 +501,46 @@
       "target": "technique_AOA_T_0015"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_dry_run_first",
       "target": "status_canonical"
@@ -266,6 +571,46 @@
       "target": "technique_AOA_T_0028"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_dry_run_first",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_dry_run_first",
+      "target": "profile_repo_risk_explicit"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_dry_run_first",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_dry_run_first",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_dry_run_first",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_dry_run_first",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_dry_run_first",
+      "target": "artifact_group_support_resources"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_dry_run_first",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_invariant_coverage_audit",
       "target": "status_canonical"
@@ -289,6 +634,41 @@
       "kind": "depends_on",
       "source": "skill_aoa_invariant_coverage_audit",
       "target": "technique_AOA_T_0017"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "artifact_group_tiny_router"
     },
     {
       "kind": "maturity",
@@ -331,6 +711,46 @@
       "target": "technique_AOA_T_0038"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "profile_repo_risk_explicit"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "artifact_group_support_resources"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_port_adapter_refactor",
       "target": "status_evaluated"
@@ -359,6 +779,46 @@
       "kind": "depends_on",
       "source": "skill_aoa_port_adapter_refactor",
       "target": "technique_AOA_T_0015"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_port_adapter_refactor",
+      "target": "artifact_group_tiny_router"
     },
     {
       "kind": "maturity",
@@ -391,6 +851,46 @@
       "target": "technique_AOA_T_0007"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_property_invariants",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_property_invariants",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_property_invariants",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_property_invariants",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_property_invariants",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_property_invariants",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_property_invariants",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_property_invariants",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_safe_infra_change",
       "target": "status_canonical"
@@ -421,6 +921,46 @@
       "target": "technique_AOA_T_0001"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "profile_repo_risk_explicit"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "artifact_group_support_resources"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_safe_infra_change",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_sanitized_share",
       "target": "status_canonical"
@@ -449,6 +989,41 @@
       "kind": "depends_on",
       "source": "skill_aoa_sanitized_share",
       "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_sanitized_share",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_sanitized_share",
+      "target": "profile_repo_risk_explicit"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_sanitized_share",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_sanitized_share",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_sanitized_share",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_sanitized_share",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_sanitized_share",
+      "target": "artifact_group_tiny_router"
     },
     {
       "kind": "maturity",
@@ -486,6 +1061,46 @@
       "target": "technique_AOA_T_0009"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_source_of_truth_check",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_aoa_tdd_slice",
       "target": "status_canonical"
@@ -516,6 +1131,46 @@
       "target": "technique_AOA_T_0001"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_tdd_slice",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_tdd_slice",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_tdd_slice",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_tdd_slice",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_tdd_slice",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_tdd_slice",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_tdd_slice",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_tdd_slice",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_atm10_change_protocol",
       "target": "status_evaluated"
@@ -546,6 +1201,41 @@
       "target": "technique_AOA_T_0002"
     },
     {
+      "kind": "included_in_profile",
+      "source": "skill_atm10_change_protocol",
+      "target": "profile_repo_atm10_overlay"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_atm10_change_protocol",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_change_protocol",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_change_protocol",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_change_protocol",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_change_protocol",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_change_protocol",
+      "target": "artifact_group_tiny_router"
+    },
+    {
       "kind": "maturity",
       "source": "skill_atm10_source_of_truth_check",
       "target": "status_evaluated"
@@ -574,6 +1264,41 @@
       "kind": "depends_on",
       "source": "skill_atm10_source_of_truth_check",
       "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "profile_repo_atm10_overlay"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "artifact_group_tiny_router"
     }
   ],
   "nodes": [
@@ -611,6 +1336,41 @@
       "id": "technique_AOA_T_0001",
       "label": "AOA-T-0001",
       "type": "technique"
+    },
+    {
+      "id": "profile_repo_abyss_overlay",
+      "label": "profile: repo-abyss-overlay",
+      "type": "profile"
+    },
+    {
+      "id": "profile_repo_default",
+      "label": "profile: repo-default",
+      "type": "profile"
+    },
+    {
+      "id": "artifact_group_portable_export",
+      "label": "artifact group: portable_export",
+      "type": "artifact_group"
+    },
+    {
+      "id": "artifact_group_runtime_seam",
+      "label": "artifact group: runtime_seam",
+      "type": "artifact_group"
+    },
+    {
+      "id": "artifact_group_runtime_guardrails",
+      "label": "artifact group: runtime_guardrails",
+      "type": "artifact_group"
+    },
+    {
+      "id": "artifact_group_description_trigger",
+      "label": "artifact group: description_trigger",
+      "type": "artifact_group"
+    },
+    {
+      "id": "artifact_group_tiny_router",
+      "label": "artifact group: tiny_router",
+      "type": "artifact_group"
     },
     {
       "id": "skill_abyss_sanitized_share",
@@ -653,6 +1413,16 @@
       "type": "technique"
     },
     {
+      "id": "profile_repo_core_only",
+      "label": "profile: repo-core-only",
+      "type": "profile"
+    },
+    {
+      "id": "profile_user_curated_core",
+      "label": "profile: user-curated-core",
+      "type": "profile"
+    },
+    {
       "id": "skill_aoa_approval_gate_check",
       "label": "aoa-approval-gate-check",
       "type": "skill"
@@ -661,6 +1431,11 @@
       "id": "scope_risk",
       "label": "scope: risk",
       "type": "scope"
+    },
+    {
+      "id": "profile_repo_risk_explicit",
+      "label": "profile: repo-risk-explicit",
+      "type": "profile"
     },
     {
       "id": "skill_aoa_bounded_context_map",
@@ -706,6 +1481,11 @@
       "id": "technique_AOA_T_0004",
       "label": "AOA-T-0004",
       "type": "technique"
+    },
+    {
+      "id": "artifact_group_support_resources",
+      "label": "artifact group: support_resources",
+      "type": "artifact_group"
     },
     {
       "id": "skill_aoa_invariant_coverage_audit",
@@ -793,14 +1573,26 @@
       "type": "skill"
     },
     {
+      "id": "profile_repo_atm10_overlay",
+      "label": "profile: repo-atm10-overlay",
+      "type": "profile"
+    },
+    {
       "id": "skill_atm10_source_of_truth_check",
       "label": "atm10-source-of-truth-check",
       "type": "skill"
     }
   ],
-  "skill_graph_version": 1,
+  "skill_graph_version": 2,
   "skills": [
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/abyss-safe-infra-change/SKILL.md",
         "skills/abyss-safe-infra-change/techniques.yaml",
@@ -815,7 +1607,7 @@
       "content_hash": "4f8e58b5f222fc24bae83f681327fc87ddf2b397ea884fd902a3d92498b0b434",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -825,9 +1617,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-abyss-overlay",
+        "repo-default"
+      ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "abyss-safe-infra-change",
@@ -856,9 +1652,32 @@
       "technique_dependencies": [
         "AOA-T-0028",
         "AOA-T-0001"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/abyss-sanitized-share/SKILL.md",
         "skills/abyss-sanitized-share/techniques.yaml",
@@ -873,7 +1692,7 @@
       "content_hash": "b1f3322333fc1b66c543a6649243b3879c1a4ac9db11448dcd3e5ad2ee2071bc",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -883,9 +1702,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-abyss-overlay",
+        "repo-default"
+      ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "abyss-sanitized-share",
@@ -914,9 +1737,32 @@
       "technique_dependencies": [
         "AOA-T-0034",
         "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0034",
+          "lineage_state": "published",
+          "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-adr-write/SKILL.md",
         "skills/aoa-adr-write/techniques.yaml",
@@ -931,7 +1777,7 @@
       "content_hash": "932b655e2fcaa63b8d45e9643b53f55ef174e734ae64e0366451da029912fe46",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -941,9 +1787,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-adr-write",
@@ -972,9 +1823,32 @@
       "technique_dependencies": [
         "AOA-T-0033",
         "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0033",
+          "lineage_state": "published",
+          "path": "techniques/docs/decision-rationale-recording/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-approval-gate-check/SKILL.md",
         "skills/aoa-approval-gate-check/techniques.yaml",
@@ -990,7 +1864,7 @@
       "content_hash": "0721ff9daa5ffd0a73a62537246011b4d213e2c0fa69dd7ea53522ffccc00b62",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1000,9 +1874,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-default",
+        "repo-risk-explicit"
+      ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-approval-gate-check",
@@ -1035,9 +1913,25 @@
       ],
       "technique_dependencies": [
         "AOA-T-0028"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-bounded-context-map/SKILL.md",
         "skills/aoa-bounded-context-map/techniques.yaml",
@@ -1052,7 +1946,7 @@
       "content_hash": "d30b34e184aa1c55e700e34a42af33c3cd73466267b2deb40727c84e9874c311",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1062,9 +1956,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
@@ -1093,9 +1992,32 @@
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0016",
+          "lineage_state": "published",
+          "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-change-protocol/SKILL.md",
         "skills/aoa-change-protocol/techniques.yaml",
@@ -1110,7 +2032,7 @@
       "content_hash": "b16d2bb862ed8f6898dd84dac083b004fa23813b556a1ab39c6c91acdbd9d709",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1120,9 +2042,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-change-protocol",
@@ -1151,9 +2078,32 @@
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-contract-test/SKILL.md",
         "skills/aoa-contract-test/techniques.yaml",
@@ -1168,7 +2118,7 @@
       "content_hash": "ee840b7a57d358f67b4abe70690f6df8b4d9fac9e163f78ab5de404daaa6ac75",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1178,9 +2128,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-contract-test",
@@ -1209,9 +2164,32 @@
       "technique_dependencies": [
         "AOA-T-0003",
         "AOA-T-0015"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0003",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0015",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-core-logic-boundary/SKILL.md",
         "skills/aoa-core-logic-boundary/techniques.yaml",
@@ -1226,7 +2204,7 @@
       "content_hash": "705c145c971091aaca20da8275aa88a8715c6e7576f4bf80fa77a48119590816",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1236,9 +2214,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
@@ -1267,9 +2250,33 @@
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0015"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0016",
+          "lineage_state": "published",
+          "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0015",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "support_resources",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-dry-run-first/SKILL.md",
         "skills/aoa-dry-run-first/techniques.yaml",
@@ -1285,7 +2292,7 @@
       "content_hash": "d9268551ac560ced0b7e790f0170c89161860a123aa10a53e81b05f163eb36f4",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1295,9 +2302,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-default",
+        "repo-risk-explicit"
+      ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
@@ -1331,9 +2342,32 @@
       "technique_dependencies": [
         "AOA-T-0004",
         "AOA-T-0028"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0004",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-invariant-coverage-audit/SKILL.md",
         "skills/aoa-invariant-coverage-audit/techniques.yaml",
@@ -1348,7 +2382,7 @@
       "content_hash": "24523847392c20a3d74f8598a29c87c24f107d0c618639de8fd28bd569a2ba4a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1358,9 +2392,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
@@ -1388,9 +2426,26 @@
       ],
       "technique_dependencies": [
         "AOA-T-0017"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0017",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/property-invariants/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "support_resources",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-local-stack-bringup/SKILL.md",
         "skills/aoa-local-stack-bringup/techniques.yaml",
@@ -1406,7 +2461,7 @@
       "content_hash": "02c71fc78a85f601869c97aac8e4bf109ef1b1828f9d6d9a6badac0b6281c9db",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1416,9 +2471,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-default",
+        "repo-risk-explicit"
+      ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-local-stack-bringup",
@@ -1454,9 +2513,46 @@
         "AOA-T-0037",
         "AOA-T-0028",
         "AOA-T-0038"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0036",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0037",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/contextual-host-doctor/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0038",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/one-command-service-lifecycle/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-port-adapter-refactor/SKILL.md",
         "skills/aoa-port-adapter-refactor/techniques.yaml",
@@ -1471,7 +2567,7 @@
       "content_hash": "ec261dc247e9374e89a99c3f878ab1674977cfa1ac458600557020c49ec3f5e6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1481,9 +2577,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
@@ -1512,9 +2613,32 @@
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0015"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0016",
+          "lineage_state": "published",
+          "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0015",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-property-invariants/SKILL.md",
         "skills/aoa-property-invariants/techniques.yaml",
@@ -1529,7 +2653,7 @@
       "content_hash": "0b79b6884ab37fcb15ccd8236d229ba2c0c5769db8ad20b2f230d37ed6b40f7f",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1539,9 +2663,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-property-invariants",
@@ -1570,9 +2699,33 @@
       "technique_dependencies": [
         "AOA-T-0017",
         "AOA-T-0007"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0017",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/property-invariants/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0007",
+          "lineage_state": "published",
+          "path": "techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "support_resources",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-safe-infra-change/SKILL.md",
         "skills/aoa-safe-infra-change/techniques.yaml",
@@ -1588,7 +2741,7 @@
       "content_hash": "d43c7703c0b960d899b5565396454cbba97f00cbeb87788a0b300b9ca096abfc",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1598,9 +2751,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-default",
+        "repo-risk-explicit"
+      ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
@@ -1634,9 +2791,32 @@
       "technique_dependencies": [
         "AOA-T-0028",
         "AOA-T-0001"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-sanitized-share/SKILL.md",
         "skills/aoa-sanitized-share/techniques.yaml",
@@ -1652,7 +2832,7 @@
       "content_hash": "43e610dc0a9f178e81e2e59c7c1e0c30b06c596d0f09411bab46ef9ff6173f9d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1662,9 +2842,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-default",
+        "repo-risk-explicit"
+      ],
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
@@ -1698,9 +2882,32 @@
       "technique_dependencies": [
         "AOA-T-0034",
         "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0034",
+          "lineage_state": "published",
+          "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-source-of-truth-check/SKILL.md",
         "skills/aoa-source-of-truth-check/techniques.yaml",
@@ -1715,7 +2922,7 @@
       "content_hash": "f842f9ec6810ae364bd5538adfacba7fa704e86522e9e9c92c194ecaa9b0905c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1725,9 +2932,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
@@ -1757,9 +2969,39 @@
         "AOA-T-0013",
         "AOA-T-0002",
         "AOA-T-0009"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0013",
+          "lineage_state": "published",
+          "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        },
+        {
+          "id": "AOA-T-0009",
+          "lineage_state": "published",
+          "path": "techniques/docs/lightweight-status-snapshot/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/aoa-tdd-slice/SKILL.md",
         "skills/aoa-tdd-slice/techniques.yaml",
@@ -1773,7 +3015,7 @@
       "content_hash": "bfa806f1adef7c883c4bb441e237fd4c1202dbf857d307969051965f8868f883",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1783,9 +3025,14 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "user-curated-core"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-tdd-slice",
@@ -1809,9 +3056,32 @@
       "technique_dependencies": [
         "AOA-T-0014",
         "AOA-T-0001"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0014",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/tdd-slice/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/atm10-change-protocol/SKILL.md",
         "skills/atm10-change-protocol/techniques.yaml",
@@ -1826,7 +3096,7 @@
       "content_hash": "13bb78b9a8f5bd75c85c88ec7a7ffce384cbb56b3fbc18375f4203f3572a9528",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1836,9 +3106,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-atm10-overlay",
+        "repo-default"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "atm10-change-protocol",
@@ -1867,9 +3141,32 @@
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38"
+        }
       ]
     },
     {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
       "bundle_files": [
         "skills/atm10-source-of-truth-check/SKILL.md",
         "skills/atm10-source-of-truth-check/techniques.yaml",
@@ -1884,7 +3181,7 @@
       "content_hash": "e8187af5c3d39e06167a42c8ae8d56d0ac975233d2bc06796500795cde894d19",
       "generated_surface_versions": {
         "boundary_matrix": 2,
-        "bundle_index": 1,
+        "bundle_index": 2,
         "capsule": 1,
         "catalog": 1,
         "evaluation_matrix": 1,
@@ -1894,9 +3191,13 @@
         "public_surface": 2,
         "sections": 1,
         "skill_composition_audit": 1,
-        "skill_graph": 1,
+        "skill_graph": 2,
         "walkthrough": 1
       },
+      "install_profiles": [
+        "repo-atm10-overlay",
+        "repo-default"
+      ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
@@ -1925,6 +3226,22 @@
       "technique_dependencies": [
         "AOA-T-0013",
         "AOA-T-0002"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0013",
+          "lineage_state": "published",
+          "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        },
+        {
+          "id": "AOA-T-0002",
+          "lineage_state": "published",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        }
       ]
     }
   ],

@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "profile": "codex-facing-wave-3",
   "included_waves": [
     1,
@@ -70,7 +70,17 @@
     "generated/tiny_router_capsules.min.json",
     "generated/tiny_router_eval_cases.jsonl",
     "generated/tiny_router_overlay_manifest.json",
+    "generated/skill_bundle_index.json",
+    "generated/skill_bundle_index.md",
+    "generated/skill_graph.json",
+    "generated/skill_graph.md",
     "generated/release_manifest.json"
+  ],
+  "relationship_views": [
+    "generated/skill_bundle_index.json",
+    "generated/skill_bundle_index.md",
+    "generated/skill_graph.json",
+    "generated/skill_graph.md"
   ],
   "artifact_groups": [
     {
@@ -421,6 +431,26 @@
       "path": "generated/tiny_router_overlay_manifest.json",
       "sha256": "36f1a049923278c202b4be4859d6e267a12265ac1cf281d99878765a404cd64a",
       "bytes": 5334
+    },
+    {
+      "path": "generated/skill_bundle_index.json",
+      "sha256": "3e4148e0d1187fc4af3fc4c045bc3c7c119fb284812c50044c79f178988ea932",
+      "bytes": 58187
+    },
+    {
+      "path": "generated/skill_bundle_index.md",
+      "sha256": "e51ed4ccf57342ebe5e067c4e095296fe0a076057364d70804062c7eb45fa23d",
+      "bytes": 5586
+    },
+    {
+      "path": "generated/skill_graph.json",
+      "sha256": "172590a01677d3a8f8099f9c22f33e2289aaec5d084b6d3e93e5e45910552431",
+      "bytes": 100608
+    },
+    {
+      "path": "generated/skill_graph.md",
+      "sha256": "788b837b35df59d3192d94a6d36c815da9362a80b7514e6bac2f2b5bb1b2fe05",
+      "bytes": 27868
     }
   ],
   "skill_bundle_revisions": [

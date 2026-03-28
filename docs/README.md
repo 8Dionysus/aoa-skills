@@ -12,6 +12,7 @@ an executable workflow for Codex.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
 - If you are reading status, promotion, or governance state, start with `PUBLIC_SURFACE.md`.
 - If you are reading live project-overlay family maturity, use `PUBLIC_SURFACE.md` and then `../generated/overlay_readiness.md`.
+- If you are reading per-skill packaging membership or relationship topology, use `../generated/skill_bundle_index.md`, `../generated/skill_graph.md`, and then `../generated/release_manifest.json`.
 
 ## Read in this order
 
@@ -75,7 +76,8 @@ an executable workflow for Codex.
 - `../generated/public_surface.md` is the derived status and promotion surface
 - `../generated/governance_backlog.md` is the per-skill maintenance and readiness surface
 - `../generated/overlay_readiness.md` is the family-maturity surface for repo-local project overlays
-- `../generated/skill_bundle_index.md` and `../generated/skill_graph.md` are packaging and relationship surfaces
+- `../generated/skill_bundle_index.md` is the per-skill packaging, profile-membership, and technique-lineage surface
+- `../generated/skill_graph.md` is the relationship topology surface across skills, techniques, install profiles, and portable artifact groups
 - the three layers are intentionally separate: one is for selecting and using an object, one is for reading evaluation evidence, and one is for reading derived public state
 - generated catalogs, capsules, and full sections are derived reader/runtime surfaces, not source-of-truth artifacts
 - public governance signaling should stay derived from existing status, review, lineage, and evaluation facts
@@ -102,5 +104,5 @@ The next focus is keeping selection, evidence reading, public status, and live o
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md`, `docs/overlays/abyss/PROJECT_OVERLAY.md`, and matching `skills/atm10-*` plus `skills/abyss-*` bundles.
 Those live exemplar packs also have family-level review docs at `docs/overlays/atm10/REVIEW.md` and `docs/overlays/abyss/REVIEW.md`.
 Those overlays remain repo-local examples rather than live downstream integrations, and their maturity is read through `../generated/overlay_readiness.md` rather than core governance lanes.
-`ROADMAP.md` remains the canonical public roadmap, and the next packaging follow-up after the release-manifest hardening pass is compatibility/lineage depth rather than a first packaging contract bootstrap.
+`ROADMAP.md` remains the canonical public roadmap, and the next packaging follow-up after compatibility/lineage depth is import/export polish rather than another packaging-contract bootstrap.
 `PHASED_SKILL_PLAN.md` records the scaffold expansion that established the original skill-core rollout.

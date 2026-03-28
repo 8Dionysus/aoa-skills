@@ -1,22 +1,26 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
+import build_support_resources
+import release_manifest_contract
 import skill_catalog_contract
 import skill_evaluation_surface
 import skill_governance_lane_contract
 import skill_governance_surface
 import skill_lineage_surface
+import skill_relationship_contract
 import skill_runtime_surface
 import skill_source_model
 
 
-BUNDLE_INDEX_VERSION = 1
+BUNDLE_INDEX_VERSION = 2
 BUNDLE_INDEX_JSON_PATH = Path("generated") / "skill_bundle_index.json"
 BUNDLE_INDEX_MARKDOWN_PATH = Path("generated") / "skill_bundle_index.md"
-SKILL_GRAPH_VERSION = 1
+SKILL_GRAPH_VERSION = 2
 SKILL_GRAPH_JSON_PATH = Path("generated") / "skill_graph.json"
 SKILL_GRAPH_MARKDOWN_PATH = Path("generated") / "skill_graph.md"
 BUNDLE_SOURCE_OF_TRUTH = {
@@ -69,6 +73,7 @@ def bundle_entry(
     public_entry: Mapping[str, Any],
     evaluation_entry: Mapping[str, Any],
     lineage_entry: Mapping[str, Any],
+    relationship_entry: Mapping[str, Any],
     generated_surface_versions: Mapping[str, int],
 ) -> dict[str, Any]:
     file_paths = bundle_file_paths(source)
@@ -89,6 +94,9 @@ def bundle_entry(
         "candidate_review_path": public_entry["candidate_review_path"],
         "support_artifacts": list(source.support_artifacts),
         "bundle_files": [relative_location(path, repo_root) for path in file_paths],
+        "install_profiles": list(relationship_entry["install_profiles"]),
+        "artifact_group_coverage": list(relationship_entry["artifact_group_coverage"]),
+        "technique_lineage": list(relationship_entry["technique_lineage"]),
         "generated_surface_versions": dict(generated_surface_versions),
     }
 
@@ -109,6 +117,7 @@ def build_bundle_index_payload(
     *,
     generated_surface_versions: Mapping[str, int],
 ) -> dict[str, Any]:
+    sources = skill_source_model.load_skill_sources(repo_root, skill_names)
     public_payload = {
         "skills": [],
     }
@@ -127,8 +136,17 @@ def build_bundle_index_payload(
     governance_signals = skill_governance_lane_contract.governance_skill_signals(
         skill_governance_lane_contract.load_governance_lanes(repo_root)
     )
+    profiles_doc = json.loads(
+        (repo_root / "config" / "skill_pack_profiles.json").read_text(encoding="utf-8")
+    )
+    relationship_layers = skill_relationship_contract.build_skill_relationship_layers(
+        sources,
+        profiles_doc=profiles_doc,
+        artifact_groups=release_manifest_contract.ARTIFACT_GROUPS,
+        support_resource_skill_names=sorted(build_support_resources.TARGETED_SKILLS),
+    )
     public_entries: list[dict[str, Any]] = []
-    for source in skill_source_model.load_skill_sources(repo_root, skill_names):
+    for source in sources:
         techniques = skill_catalog_contract.normalize_technique_refs(source.manifest)
         public_entries.append(
             skill_governance_surface.derive_public_surface_skill_entry(
@@ -154,7 +172,7 @@ def build_bundle_index_payload(
     public_payload = {"skills": public_entries}
 
     skills: list[dict[str, Any]] = []
-    for source in skill_source_model.load_skill_sources(repo_root, skill_names):
+    for source in sources:
         skills.append(
             bundle_entry(
                 source,
@@ -162,6 +180,7 @@ def build_bundle_index_payload(
                 public_entry=entry_by_name(public_payload, source.name),
                 evaluation_entry=entry_by_name(evaluation_payload, source.name),
                 lineage_entry=entry_by_name(lineage_payload, source.name),
+                relationship_entry=relationship_layers[source.name],
                 generated_surface_versions=generated_surface_versions,
             )
         )
@@ -184,15 +203,21 @@ def render_bundle_index_markdown(payload: Mapping[str, Any]) -> str:
         "This derived file summarizes deterministic bundle metadata for each committed skill.",
         "It is repo-local packaging metadata, not a release or registry surface.",
         "",
-        "| name | revision | status | scope | invocation | lineage | candidate ready | eval ready | support artifacts |",
-        "|---|---|---|---|---|---|---|---|---:|",
+        "| name | revision | status | scope | invocation | candidate ready | eval ready | profiles | artifact groups | technique lineage |",
+        "|---|---|---|---|---|---|---|---|---|---|",
     ]
     if not skill_entries:
-        lines.append("| - | - | - | - | - | - | - | - | - |")
+        lines.append("| - | - | - | - | - | - | - | - | - | - |")
     else:
         for entry in skill_entries:
             if not isinstance(entry, Mapping):
                 continue
+            technique_lineage = entry.get("technique_lineage", [])
+            technique_summary = ", ".join(
+                f"{item['id']} ({item['lineage_state']})"
+                for item in technique_lineage
+                if isinstance(item, Mapping)
+            ) or "-"
             lines.append(
                 "| "
                 + " | ".join(
@@ -202,10 +227,11 @@ def render_bundle_index_markdown(payload: Mapping[str, Any]) -> str:
                         str(entry["status"]),
                         str(entry["scope"]),
                         str(entry["invocation_mode"]),
-                        str(entry["lineage_state"]),
                         "true" if entry["canonical_candidate_ready"] else "false",
                         "true" if entry["canonical_eval_ready"] else "false",
-                        str(len(entry.get("support_artifacts", []))),
+                        ", ".join(entry.get("install_profiles", [])) or "-",
+                        ", ".join(entry.get("artifact_group_coverage", [])) or "-",
+                        technique_summary,
                     ]
                 )
                 + " |"
@@ -271,6 +297,30 @@ def build_skill_graph_payload(
                     "kind": "depends_on",
                 }
             )
+        for profile_name in entry.get("install_profiles", []):
+            profile_node_id = graph_node_id("profile", str(profile_name))
+            add_node("profile", profile_node_id, f"profile: {profile_name}")
+            edges.append(
+                {
+                    "source": skill_id,
+                    "target": profile_node_id,
+                    "kind": "included_in_profile",
+                }
+            )
+        for artifact_group in entry.get("artifact_group_coverage", []):
+            artifact_group_node_id = graph_node_id("artifact_group", str(artifact_group))
+            add_node(
+                "artifact_group",
+                artifact_group_node_id,
+                f"artifact group: {artifact_group}",
+            )
+            edges.append(
+                {
+                    "source": skill_id,
+                    "target": artifact_group_node_id,
+                    "kind": "available_in_artifact_group",
+                }
+            )
 
     return {
         "skill_graph_version": SKILL_GRAPH_VERSION,
@@ -303,17 +353,17 @@ def render_skill_graph_markdown(payload: Mapping[str, Any]) -> str:
     lines = [
         "# Skill graph",
         "",
-        "This derived file summarizes maturity, lineage, scope, invocation, and technique edges for the current skill surface.",
+        "This derived file summarizes maturity, lineage, scope, invocation, technique, profile, and artifact-group edges for the current skill surface.",
         "",
         "```mermaid",
         *mermaid_lines,
         "```",
         "",
-        "| name | status | scope | invocation | lineage | techniques |",
-        "|---|---|---|---|---|---|",
+        "| name | status | scope | invocation | lineage | profiles | artifact groups | techniques |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     if not isinstance(skill_entries, list) or not skill_entries:
-        lines.append("| - | - | - | - | - | - |")
+        lines.append("| - | - | - | - | - | - | - | - |")
     else:
         for entry in skill_entries:
             if not isinstance(entry, Mapping):
@@ -327,6 +377,8 @@ def render_skill_graph_markdown(payload: Mapping[str, Any]) -> str:
                         str(entry["scope"]),
                         str(entry["invocation_mode"]),
                         str(entry["lineage_state"]),
+                        ", ".join(entry.get("install_profiles", [])) or "-",
+                        ", ".join(entry.get("artifact_group_coverage", [])) or "-",
                         ", ".join(entry.get("technique_dependencies", [])) or "-",
                     ]
                 )

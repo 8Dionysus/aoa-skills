@@ -14,6 +14,7 @@ from typing import Any
 
 import release_manifest_contract
 import yaml
+import build_catalog
 
 from skill_runtime_guardrails import (
     activate_guarded_payload,
@@ -93,6 +94,10 @@ REQUIRED_GENERATED_FILES = [
     "generated/tiny_router_capsules.min.json",
     "generated/tiny_router_eval_cases.jsonl",
     "generated/tiny_router_overlay_manifest.json",
+    "generated/skill_bundle_index.json",
+    "generated/skill_bundle_index.md",
+    "generated/skill_graph.json",
+    "generated/skill_graph.md",
     "generated/release_manifest.json",
 ]
 REQUIRED_CONFIG_FILES = [
@@ -203,6 +208,8 @@ def main() -> int:
     tiny_router_capsules = load_json(generated_dir / "tiny_router_capsules.min.json")
     tiny_router_eval_cases = load_jsonl(generated_dir / "tiny_router_eval_cases.jsonl")
     tiny_router_manifest = load_json(generated_dir / "tiny_router_overlay_manifest.json")
+    bundle_index = load_json(generated_dir / "skill_bundle_index.json")
+    skill_graph = load_json(generated_dir / "skill_graph.json")
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
@@ -996,6 +1003,7 @@ def main() -> int:
         "profile_count",
         "authoring_inputs",
         "generated_files",
+        "relationship_views",
         "artifact_groups",
         "authoring_input_digests",
         "generated_file_digests",
@@ -1005,6 +1013,18 @@ def main() -> int:
     ):
         if release_manifest.get(field_name) != expected_release_manifest.get(field_name):
             errors.append(f"generated/release_manifest.json {field_name} mismatch")
+    expected_bundle_index = build_catalog.build_bundle_index_payload(repo_root)
+    if bundle_index != expected_bundle_index:
+        errors.append("generated/skill_bundle_index.json mismatch")
+    expected_skill_graph = build_catalog.build_skill_graph_payload(repo_root)
+    if skill_graph != expected_skill_graph:
+        errors.append("generated/skill_graph.json mismatch")
+    for rel_path in release_manifest.get("relationship_views", []):
+        if rel_path not in release_manifest.get("generated_files", []):
+            errors.append(
+                "generated/release_manifest.json missing relationship view from generated_files: "
+                + rel_path
+            )
 
     if runtime_discovery.get("root") != ".agents/skills":
         errors.append("generated/runtime_discovery_index.json root mismatch")
