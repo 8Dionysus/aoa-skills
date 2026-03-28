@@ -25,6 +25,7 @@ Already-shipped repo-owned support layers now include:
 - wave-9 tiny-router compression bridge for downstream routing
 
 The next steps should use that derived governance layer to keep core governance decisions honest, keep live overlay families aligned under one contract, and push packaging prep rather than only increase skill count.
+The first packaging pass should harden the portable release contract itself, then follow with compatibility/lineage depth rather than inventing another catalog surface.
 Overlay preparation and packaging remain intentionally repo-local and thin: they should surface contracts and export primitives without introducing live downstream integrations or registries.
 
 ## Near-term sequence
@@ -119,12 +120,19 @@ Recommended sequencing inside this wave:
 
 Explore:
 - machine-readable bundle metadata and stronger version pinning
+- keep `generated/release_manifest.json` as the packaging-facing contract that pins portable artifact groups, bundle revisions, profile revisions, and changelog-derived release identity
 - compatibility and lineage metadata across skills and techniques
 - skill graph views for dependency, maturity, and policy relationships
 - import/export and offline bundle use
 - verifiable distribution of reusable public skill bundles
 - explicit cross-repo bridge rollout notes for source-owned bridge waves that downstream repos consume from `main`
 - keep this wave repo-local for the public core; GitHub releases and tags may continue for bounded repository baselines, while remote registries remain out of scope
+
+Near-term sequence inside this wave:
+
+1. harden the release manifest and packaging verification contract
+2. add compatibility/lineage depth on top of that contract
+3. only then consider any broader import/export polish
 
 ## Long-term direction
 

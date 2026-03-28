@@ -6,6 +6,11 @@ import unittest
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import release_manifest_contract
 
 
 def load_json(path: pathlib.Path):
@@ -130,6 +135,43 @@ class CodexPortableContractTests(unittest.TestCase):
         profiles = load_json(REPO_ROOT / "generated" / "skill_pack_profiles.resolved.json")
         snippets = load_json(REPO_ROOT / "generated" / "codex_config_snippets.json")
         self.assertEqual(set(profiles["profiles"]), set(snippets["snippets"]))
+
+    def test_release_manifest_matches_current_packaging_contract(self):
+        release_manifest = load_json(REPO_ROOT / "generated" / "release_manifest.json")
+        expected_manifest = release_manifest_contract.build_release_manifest(REPO_ROOT)
+        self.assertEqual(release_manifest, expected_manifest)
+
+        for rel_path in release_manifest["generated_files"]:
+            self.assertTrue((REPO_ROOT / rel_path).exists(), msg=rel_path)
+        for rel_path in release_manifest["authoring_inputs"]:
+            self.assertTrue((REPO_ROOT / rel_path).exists(), msg=rel_path)
+
+        self.assertEqual(release_manifest["skill_count"], 19)
+        self.assertEqual(release_manifest["explicit_only_count"], 7)
+        self.assertEqual(release_manifest["profile_count"], 6)
+        self.assertEqual(release_manifest["release_identity"]["latest_tagged_version"], "0.1.0")
+        self.assertTrue(release_manifest["release_identity"]["has_unreleased_changes"])
+
+        bundle_index = load_json(REPO_ROOT / "generated" / "skill_bundle_index.json")
+        expected_bundle_revisions = [
+            {
+                "name": entry["name"],
+                "skill_revision": entry["skill_revision"],
+                "content_hash": entry["content_hash"],
+            }
+            for entry in sorted(bundle_index["skills"], key=lambda item: item["name"])
+        ]
+        self.assertEqual(release_manifest["skill_bundle_revisions"], expected_bundle_revisions)
+
+        resolved_profiles = load_json(REPO_ROOT / "generated" / "skill_pack_profiles.resolved.json")
+        expected_profile_revisions = release_manifest_contract.build_install_profile_revisions(
+            resolved_profiles,
+            expected_bundle_revisions,
+        )
+        self.assertEqual(
+            release_manifest["install_profile_revisions"],
+            expected_profile_revisions,
+        )
 
     def test_explicit_only_skills_have_no_implicit_positive_cases(self):
         source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")

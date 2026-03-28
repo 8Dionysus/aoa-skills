@@ -11,6 +11,7 @@ import re
 import shutil
 from typing import Any
 
+import release_manifest_contract
 import yaml
 
 RESOURCE_DIR_NAMES = ("scripts", "references", "assets")
@@ -37,53 +38,6 @@ SCOPE_UI_DEFAULTS = {
     },
 }
 EXPORT_PROFILE = "codex-facing-wave-3"
-GENERATED_PORTABLE_FILES = [
-    "generated/agent_skill_catalog.json",
-    "generated/agent_skill_catalog.min.json",
-    "generated/portable_export_map.json",
-    "generated/local_adapter_manifest.json",
-    "generated/local_adapter_manifest.min.json",
-    "generated/skill_handoff_contracts.json",
-    "generated/context_retention_manifest.json",
-    "generated/trust_policy_matrix.json",
-    "generated/skill_runtime_contracts.json",
-    "generated/skill_pack_profiles.resolved.json",
-    "generated/codex_config_snippets.json",
-    "generated/mcp_dependency_manifest.json",
-    "generated/runtime_discovery_index.json",
-    "generated/runtime_discovery_index.min.json",
-    "generated/runtime_disclosure_index.json",
-    "generated/runtime_activation_aliases.json",
-    "generated/runtime_tool_schemas.json",
-    "generated/runtime_session_contract.json",
-    "generated/runtime_prompt_blocks.json",
-    "generated/runtime_router_hints.json",
-    "generated/runtime_seam_manifest.json",
-    "generated/repo_trust_gate_manifest.json",
-    "generated/permission_allowlist_manifest.json",
-    "generated/skill_context_guard_manifest.json",
-    "generated/runtime_guardrail_tool_schemas.json",
-    "generated/runtime_guardrail_prompt_blocks.json",
-    "generated/runtime_guardrail_manifest.json",
-    "generated/skill_description_signals.json",
-    "generated/description_trigger_eval_cases.jsonl",
-    "generated/description_trigger_eval_cases.csv",
-    "generated/description_trigger_eval_manifest.json",
-    "generated/skills_ref_validation_manifest.json",
-    "generated/deterministic_resource_manifest.json",
-    "generated/support_resource_index.json",
-    "generated/structured_output_schema_index.json",
-    "generated/support_resource_bridge_map.json",
-    "generated/deterministic_resource_eval_cases.jsonl",
-    "generated/expected_existing_aoa_support_dirs.json",
-    "generated/tiny_router_skill_signals.json",
-    "generated/tiny_router_candidate_bands.json",
-    "generated/tiny_router_capsules.min.json",
-    "generated/tiny_router_eval_cases.jsonl",
-    "generated/tiny_router_overlay_manifest.json",
-    "generated/release_manifest.json",
-]
-
 
 def write_text_file(path: pathlib.Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -587,33 +541,6 @@ def build_local_adapter_manifests(
     return manifest, manifest_min
 
 
-def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "schema_version": 1,
-        "profile": EXPORT_PROFILE,
-        "included_waves": [1, 2, 3, 4, 6, 7, 8, 9],
-        "skill_root": ".agents/skills",
-        "skill_count": len(catalog_full["skills"]),
-        "explicit_only_count": sum(1 for entry in catalog_full["skills"] if not entry["allow_implicit_invocation"]),
-        "profile_count": len(resolved_profiles["profiles"]),
-        "authoring_inputs": [
-            "generated/skill_sections.full.json",
-            "generated/skill_catalog.min.json",
-            "config/portable_skill_overrides.json",
-            "config/openai_skill_extensions.json",
-            "config/skill_pack_profiles.json",
-            "config/skill_policy_matrix.json",
-            "config/description_trigger_eval_policy.json",
-            "config/tiny_router_skill_bands.json",
-        ],
-        "generated_files": GENERATED_PORTABLE_FILES,
-        "release_identity": {
-            "changelog": "CHANGELOG.md",
-            "releasing_doc": "docs/RELEASING.md",
-        },
-    }
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".", help="Path to target aoa-skills repository root")
@@ -810,22 +737,28 @@ def main() -> int:
         catalog_full=catalog_full,
     )
     mcp_manifest = build_mcp_dependency_manifest(catalog_full, openai_docs)
-    release_manifest = build_release_manifest(catalog_full, resolved_profiles)
-
     generated_dir.mkdir(exist_ok=True)
-    write_text_file(generated_dir / "agent_skill_catalog.json", json.dumps(catalog_full, indent=2) + "\n")
-    write_text_file(generated_dir / "agent_skill_catalog.min.json", json.dumps(catalog_min, indent=2) + "\n")
-    write_text_file(generated_dir / "portable_export_map.json", json.dumps(export_map, indent=2) + "\n")
-    write_text_file(generated_dir / "local_adapter_manifest.json", json.dumps(local_manifest, indent=2) + "\n")
-    write_text_file(generated_dir / "local_adapter_manifest.min.json", json.dumps(local_manifest_min, indent=2) + "\n")
-    write_text_file(generated_dir / "skill_handoff_contracts.json", json.dumps(handoff_contracts, indent=2) + "\n")
-    write_text_file(generated_dir / "context_retention_manifest.json", json.dumps(context_manifest, indent=2) + "\n")
-    write_text_file(generated_dir / "trust_policy_matrix.json", json.dumps(trust_matrix, indent=2) + "\n")
-    write_text_file(generated_dir / "skill_runtime_contracts.json", json.dumps(runtime_contracts, indent=2) + "\n")
-    write_text_file(generated_dir / "skill_pack_profiles.resolved.json", json.dumps(resolved_profiles, indent=2) + "\n")
-    write_text_file(generated_dir / "codex_config_snippets.json", json.dumps(config_snippets, indent=2) + "\n")
-    write_text_file(generated_dir / "mcp_dependency_manifest.json", json.dumps(mcp_manifest, indent=2) + "\n")
-    write_text_file(generated_dir / "release_manifest.json", json.dumps(release_manifest, indent=2) + "\n")
+    file_texts = {
+        generated_dir / "agent_skill_catalog.json": json.dumps(catalog_full, indent=2) + "\n",
+        generated_dir / "agent_skill_catalog.min.json": json.dumps(catalog_min, indent=2) + "\n",
+        generated_dir / "portable_export_map.json": json.dumps(export_map, indent=2) + "\n",
+        generated_dir / "local_adapter_manifest.json": json.dumps(local_manifest, indent=2) + "\n",
+        generated_dir / "local_adapter_manifest.min.json": json.dumps(local_manifest_min, indent=2) + "\n",
+        generated_dir / "skill_handoff_contracts.json": json.dumps(handoff_contracts, indent=2) + "\n",
+        generated_dir / "context_retention_manifest.json": json.dumps(context_manifest, indent=2) + "\n",
+        generated_dir / "trust_policy_matrix.json": json.dumps(trust_matrix, indent=2) + "\n",
+        generated_dir / "skill_runtime_contracts.json": json.dumps(runtime_contracts, indent=2) + "\n",
+        generated_dir / "skill_pack_profiles.resolved.json": json.dumps(resolved_profiles, indent=2) + "\n",
+        generated_dir / "codex_config_snippets.json": json.dumps(config_snippets, indent=2) + "\n",
+        generated_dir / "mcp_dependency_manifest.json": json.dumps(mcp_manifest, indent=2) + "\n",
+    }
+    release_manifest = release_manifest_contract.build_release_manifest(
+        repo_root,
+        file_overrides=file_texts,
+    )
+    file_texts[generated_dir / "release_manifest.json"] = json.dumps(release_manifest, indent=2) + "\n"
+    for path, text in file_texts.items():
+        write_text_file(path, text)
     print(f"built {len(catalog_full['skills'])} skills into {skills_root}")
     return 0
 

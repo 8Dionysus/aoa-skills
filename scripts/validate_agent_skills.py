@@ -12,6 +12,7 @@ import sys
 import tempfile
 from typing import Any
 
+import release_manifest_contract
 import yaml
 
 from skill_runtime_guardrails import (
@@ -49,52 +50,6 @@ REQUIRED_METADATA = {
 REQUIRED_GENERATED_FILES = [
     "generated/skill_catalog.min.json",
     "generated/skill_sections.full.json",
-    "generated/agent_skill_catalog.json",
-    "generated/agent_skill_catalog.min.json",
-    "generated/portable_export_map.json",
-    "generated/local_adapter_manifest.json",
-    "generated/local_adapter_manifest.min.json",
-    "generated/skill_handoff_contracts.json",
-    "generated/context_retention_manifest.json",
-    "generated/trust_policy_matrix.json",
-    "generated/skill_runtime_contracts.json",
-    "generated/skill_pack_profiles.resolved.json",
-    "generated/codex_config_snippets.json",
-    "generated/mcp_dependency_manifest.json",
-    "generated/runtime_discovery_index.json",
-    "generated/runtime_discovery_index.min.json",
-    "generated/runtime_disclosure_index.json",
-    "generated/runtime_activation_aliases.json",
-    "generated/runtime_tool_schemas.json",
-    "generated/runtime_session_contract.json",
-    "generated/runtime_prompt_blocks.json",
-    "generated/runtime_router_hints.json",
-    "generated/runtime_seam_manifest.json",
-    "generated/repo_trust_gate_manifest.json",
-    "generated/permission_allowlist_manifest.json",
-    "generated/skill_context_guard_manifest.json",
-    "generated/runtime_guardrail_tool_schemas.json",
-    "generated/runtime_guardrail_prompt_blocks.json",
-    "generated/runtime_guardrail_manifest.json",
-    "generated/skill_description_signals.json",
-    "generated/description_trigger_eval_cases.jsonl",
-    "generated/description_trigger_eval_cases.csv",
-    "generated/description_trigger_eval_manifest.json",
-    "generated/skills_ref_validation_manifest.json",
-    "generated/deterministic_resource_manifest.json",
-    "generated/support_resource_index.json",
-    "generated/structured_output_schema_index.json",
-    "generated/support_resource_bridge_map.json",
-    "generated/deterministic_resource_eval_cases.jsonl",
-    "generated/expected_existing_aoa_support_dirs.json",
-    "generated/tiny_router_skill_signals.json",
-    "generated/tiny_router_candidate_bands.json",
-    "generated/tiny_router_capsules.min.json",
-    "generated/tiny_router_eval_cases.jsonl",
-    "generated/tiny_router_overlay_manifest.json",
-    "generated/release_manifest.json",
-]
-RELEASE_MANIFEST_GENERATED_FILES = [
     "generated/agent_skill_catalog.json",
     "generated/agent_skill_catalog.min.json",
     "generated/portable_export_map.json",
@@ -1030,27 +985,26 @@ def main() -> int:
         if sorted(band_entry.get("overlay_skills", [])) != expected_overlay:
             errors.append(f"generated/tiny_router_candidate_bands.json overlay_skills mismatch for band {band_id}")
 
-    expected_generated_files = set(RELEASE_MANIFEST_GENERATED_FILES)
-    if set(release_manifest.get("generated_files", [])) != expected_generated_files:
-        errors.append("generated/release_manifest.json generated_files mismatch")
-    if release_manifest.get("skill_count") != len(actual_names):
-        errors.append("generated/release_manifest.json skill_count mismatch")
-    expected_explicit_only = sum(1 for entry in source_by_name.values() if entry.get("invocation_mode") == "explicit-only")
-    if release_manifest.get("explicit_only_count") != expected_explicit_only:
-        errors.append("generated/release_manifest.json explicit_only_count mismatch")
-    if release_manifest.get("profile_count") != len(config_profile_names):
-        errors.append("generated/release_manifest.json profile_count mismatch")
-    release_identity = release_manifest.get("release_identity", {})
-    if release_identity.get("changelog") != "CHANGELOG.md":
-        errors.append("generated/release_manifest.json must reference CHANGELOG.md")
-    if release_identity.get("releasing_doc") != "docs/RELEASING.md":
-        errors.append("generated/release_manifest.json must reference docs/RELEASING.md")
-    if "config/description_trigger_eval_policy.json" not in release_manifest.get("authoring_inputs", []):
-        errors.append("generated/release_manifest.json must include config/description_trigger_eval_policy.json")
-    if "config/tiny_router_skill_bands.json" not in release_manifest.get("authoring_inputs", []):
-        errors.append("generated/release_manifest.json must include config/tiny_router_skill_bands.json")
-    if release_manifest.get("included_waves") != [1, 2, 3, 4, 6, 7, 8, 9]:
-        errors.append("generated/release_manifest.json included_waves must be [1, 2, 3, 4, 6, 7, 8, 9]")
+    expected_release_manifest = release_manifest_contract.build_release_manifest(repo_root)
+    for field_name in (
+        "schema_version",
+        "profile",
+        "included_waves",
+        "skill_root",
+        "skill_count",
+        "explicit_only_count",
+        "profile_count",
+        "authoring_inputs",
+        "generated_files",
+        "artifact_groups",
+        "authoring_input_digests",
+        "generated_file_digests",
+        "skill_bundle_revisions",
+        "install_profile_revisions",
+        "release_identity",
+    ):
+        if release_manifest.get(field_name) != expected_release_manifest.get(field_name):
+            errors.append(f"generated/release_manifest.json {field_name} mismatch")
 
     if runtime_discovery.get("root") != ".agents/skills":
         errors.append("generated/runtime_discovery_index.json root mismatch")

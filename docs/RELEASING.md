@@ -54,6 +54,7 @@ A release should make it easy to answer:
 4. Confirm `SKILL_INDEX.md` still matches the current public skill surface.
 5. Confirm generated surfaces are current if the release includes skill, portable export, or generated-surface changes.
    - this includes `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, `generated/runtime_*.json`, `generated/*guardrail*.json`, `generated/skill_description_signals.json`, `generated/description_trigger_eval_cases.*`, `generated/description_trigger_eval_manifest.json`, `generated/skills_ref_validation_manifest.json`, `generated/deterministic_resource_manifest.json`, `generated/support_resource_index.json`, `generated/structured_output_schema_index.json`, `generated/support_resource_bridge_map.json`, `generated/deterministic_resource_eval_cases.jsonl`, `generated/expected_existing_aoa_support_dirs.json`, `generated/tiny_router_skill_signals.json`, `generated/tiny_router_candidate_bands.json`, `generated/tiny_router_capsules.min.json`, `generated/tiny_router_eval_cases.jsonl`, `generated/tiny_router_overlay_manifest.json`, `generated/release_manifest.json`, and trigger-eval seed data when trigger boundaries changed
+   - for portable/export changes, read `generated/release_manifest.json` as the packaging-verification surface: it pins artifact groups, input digests, generated-file digests, bundle revisions, profile revisions, and changelog-derived release identity
 6. Review public-safety hygiene:
    - no secrets
    - no internal-only URLs
@@ -105,4 +106,5 @@ Right now, `aoa-skills` is best released as:
 - a curated public skill corpus
 - a self-serve repo with one bounded repo-owned release-check entrypoint
 - a validated repository structure with generated reader/runtime/governance surfaces plus a generated Codex-facing portable export, a wave-4 raw runtime seam, a wave-6 governed runtime layer, a wave-7 description-first activation-eval layer, a wave-8 deterministic support-resource bridge, a wave-9 tiny-router compression bridge for downstream routing, and a legacy-compatible local adapter seam
+- a machine-readable portable release contract in `generated/release_manifest.json` that stays subordinate to the changelog/tag/release-note identity
 - a repo-level release identity separate from per-skill status and derived public-surface signaling

@@ -16,6 +16,7 @@ import pathlib
 from datetime import datetime, timezone
 from typing import Any
 
+import release_manifest_contract
 import yaml
 
 PROFILE = "codex-facing-wave-6-runtime-guardrails"
@@ -353,51 +354,6 @@ def build_tool_schemas(skill_names: list[str]) -> dict[str, Any]:
     }
 
 
-def build_release_manifest(
-    existing: dict[str, Any],
-    generated_files: list[str],
-    skill_count: int,
-    explicit_only_count: int,
-    profile_count: int,
-) -> dict[str, Any]:
-    waves: list[int] = []
-    for wave in existing.get("included_waves", []):
-        if wave == 5:
-            continue
-        if wave not in waves:
-            waves.append(wave)
-    if 6 not in waves:
-        waves.append(6)
-    return {
-        "schema_version": 1,
-        "profile": existing.get("profile", "codex-facing-wave-3"),
-        "included_waves": waves,
-        "skill_root": existing.get("skill_root", ".agents/skills"),
-        "skill_count": skill_count,
-        "explicit_only_count": explicit_only_count,
-        "profile_count": profile_count,
-        "authoring_inputs": existing.get(
-            "authoring_inputs",
-            [
-                "generated/skill_sections.full.json",
-                "generated/skill_catalog.min.json",
-                "config/portable_skill_overrides.json",
-                "config/openai_skill_extensions.json",
-                "config/skill_pack_profiles.json",
-                "config/skill_policy_matrix.json",
-            ],
-        ),
-        "generated_files": generated_files,
-        "release_identity": existing.get(
-            "release_identity",
-            {
-                "changelog": "CHANGELOG.md",
-                "releasing_doc": "docs/RELEASING.md",
-            },
-        ),
-    }
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".")
@@ -412,9 +368,7 @@ def main() -> int:
     runtime_discovery = load_json(generated_dir / "runtime_discovery_index.json")
     runtime_aliases = load_json(generated_dir / "runtime_activation_aliases.json")
     context_retention = load_json(generated_dir / "context_retention_manifest.json")
-    release_existing = load_json(generated_dir / "release_manifest.json")
     guardrail_policy = load_json(config_dir / "runtime_guardrail_policy.json")
-    profile_count = len(load_json(config_dir / "skill_pack_profiles.json").get("profiles", []))
 
     alias_by_name = {entry["name"]: entry for entry in runtime_aliases.get("aliases", [])}
     context_by_name = {entry["name"]: entry for entry in context_retention.get("skills", [])}
@@ -506,15 +460,6 @@ def main() -> int:
         ],
     }
 
-    generated_files = list(dict.fromkeys(list(release_existing.get("generated_files", [])) + GUARDRAIL_GENERATED_FILES))
-    release_doc = build_release_manifest(
-        existing=release_existing,
-        generated_files=generated_files,
-        skill_count=len(catalog.get("skills", [])),
-        explicit_only_count=sum(1 for entry in catalog.get("skills", []) if entry["invocation_mode"] == "explicit-only"),
-        profile_count=profile_count,
-    )
-
     example_trust_store = {
         "schema_version": 1,
         "description": "Example trust store for guarded AoA runtime skill loading.",
@@ -563,11 +508,15 @@ def main() -> int:
         generated_dir / "runtime_guardrail_tool_schemas.json": dump_json(tool_schemas_doc),
         generated_dir / "runtime_guardrail_prompt_blocks.json": dump_json(prompt_blocks_doc),
         generated_dir / "runtime_guardrail_manifest.json": dump_json(guardrail_manifest_doc),
-        generated_dir / "release_manifest.json": dump_json(release_doc),
         repo_root / "examples" / "repo-trust-store.json": dump_json(example_trust_store),
         repo_root / "examples" / "permission-allowlist.json": dump_json(example_allowlist),
         repo_root / "examples" / "guardrailed-runtime-config.json": dump_json(example_runtime_config),
     }
+    release_doc = release_manifest_contract.build_release_manifest(
+        repo_root,
+        file_overrides=file_map,
+    )
+    file_map[generated_dir / "release_manifest.json"] = dump_json(release_doc)
 
     for path, text in file_map.items():
         render_or_check(path, text, args.check)
