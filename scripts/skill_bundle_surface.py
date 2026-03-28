@@ -39,8 +39,12 @@ def relative_location(path: Path, repo_root: Path) -> str:
 
 def hash_files(repo_root: Path, file_paths: Sequence[Path]) -> str:
     digest = hashlib.sha256()
-    for path in sorted(file_paths):
-        relative_path = relative_location(path, repo_root).encode("utf-8")
+    ordered_paths = sorted(
+        ((relative_location(path, repo_root), path) for path in file_paths),
+        key=lambda item: item[0],
+    )
+    for relative_path_text, path in ordered_paths:
+        relative_path = relative_path_text.encode("utf-8")
         digest.update(relative_path)
         digest.update(b"\0")
         normalized_text = path.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n")

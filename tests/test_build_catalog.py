@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import io
 import json
 import shutil
@@ -1385,6 +1386,35 @@ class BuildCatalogTests(unittest.TestCase):
             ],
             entry["technique_lineage"],
         )
+
+    def test_bundle_index_hash_uses_repo_relative_file_order(self) -> None:
+        repo_root = self.make_repo(policy_allow_implicit=False)
+        skill_dir = repo_root / "skills" / "aoa-test-skill"
+        file_paths = [
+            skill_dir / "SKILL.md",
+            skill_dir / "techniques.yaml",
+            skill_dir / "agents" / "openai.yaml",
+        ]
+
+        digest = build_catalog.skill_bundle_surface.hash_files(repo_root, file_paths)
+        file_by_relative_path = {
+            build_catalog.skill_bundle_surface.relative_location(path, repo_root): path
+            for path in file_paths
+        }
+        expected = hashlib.sha256()
+        for relative_path in sorted(file_by_relative_path):
+            path = file_by_relative_path[relative_path]
+            normalized_text = (
+                path.read_text(encoding="utf-8")
+                .replace("\r\n", "\n")
+                .replace("\r", "\n")
+            )
+            expected.update(relative_path.encode("utf-8"))
+            expected.update(b"\0")
+            expected.update(normalized_text.encode("utf-8"))
+            expected.update(b"\0")
+
+        self.assertEqual(expected.hexdigest(), digest)
 
     def test_bundle_index_support_resource_coverage_stays_targeted(self) -> None:
         repo_root = self.make_repo(

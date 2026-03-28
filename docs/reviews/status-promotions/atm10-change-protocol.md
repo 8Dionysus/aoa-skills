@@ -11,7 +11,7 @@ name: atm10-change-protocol
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `bf3b1081c216`
+- reviewed revision: `167344a9bfa8`
 
 ## Target status
 
