@@ -1,3 +1,4 @@
+import hashlib
 import json
 import pathlib
 import subprocess
@@ -141,6 +142,13 @@ class StageSkillPackTests(unittest.TestCase):
             self.assertEqual(manifest_a, manifest_b)
             self.assertEqual(manifest_a["bundle_digest"], payload_a["bundle_digest"])
             self.assertEqual(manifest_b["bundle_digest"], payload_b["bundle_digest"])
+            readme_bytes = (bundle_root_a / "README.md").read_bytes()
+            readme_record = next(
+                item for item in manifest_a["file_digests"] if item["path"] == "README.md"
+            )
+            self.assertNotIn(b"\r\n", readme_bytes)
+            self.assertEqual(hashlib.sha256(readme_bytes).hexdigest(), readme_record["sha256"])
+            self.assertEqual(len(readme_bytes), readme_record["bytes"])
 
     def test_execute_stage_with_archive_creates_deterministic_zip(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

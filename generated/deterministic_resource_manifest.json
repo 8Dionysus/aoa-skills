@@ -81,8 +81,8 @@
         "scripts": [
           {
             "path": "bringup_contract.py",
-            "sha256": "928bad58017a91aa6d0d53606db0b4087238d2a339b08094c3c4379a00b28417",
-            "bytes": "3756"
+            "sha256": "3f33dc49122e254fca13ca58a38311a687d5e5c917762981a33529721282cf9e",
+            "bytes": "4288"
           },
           {
             "path": "readiness_summary.py",
@@ -147,8 +147,8 @@
         "scripts": [
           {
             "path": "dry_run_contract.py",
-            "sha256": "acd9853080141ee2e25bbd48e0bd0db8d44476e721fb28d89a094afaa7439c15",
-            "bytes": "5173"
+            "sha256": "3b89c4e81335e3774fc7199977ed36ab43630dfbb88a272700030dc2a879144b",
+            "bytes": "5710"
           },
           {
             "path": "preview_gap_check.py",

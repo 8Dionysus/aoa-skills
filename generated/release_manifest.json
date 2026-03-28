@@ -379,7 +379,7 @@
     },
     {
       "path": "generated/deterministic_resource_manifest.json",
-      "sha256": "8b80c4ef7851908b9874fe6aa4cef25196f6c87dd49aec3c828d7b481ee8a502",
+      "sha256": "df0ffb63005944b041531af4c1dd789d389d24e7e99873a6fdc068244a30dc14",
       "bytes": 6531
     },
     {
@@ -424,8 +424,8 @@
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
-      "sha256": "3ef5b4e3d12e870225c6279352a740c0f4d66a49f3936dbb119d22930ce8f5af",
-      "bytes": 22473
+      "sha256": "5da4176078ac5052bcff1cdfc0d48e7f34ef68b32f2a825a141704a06e841b97",
+      "bytes": 22475
     },
     {
       "path": "generated/tiny_router_overlay_manifest.json",
@@ -434,7 +434,7 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "a00ea03dd806f7e1c4ae2727ed241c77c98cd140c32cccb7e9d59713fe877cc5",
+      "sha256": "394c0b5e3bd2cd72de643f8530198e38436a3035d92404d7c1fa8764c6e22a17",
       "bytes": 58187
     },
     {
@@ -444,7 +444,7 @@
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "56d103906751abd366e7009f434a3d5a9f60c7319229d24453c2f1494989a211",
+      "sha256": "eab4d44aac67c2410852542032304c3651679efce9ef7e018d4dbfd3a1769a01",
       "bytes": 100608
     },
     {
@@ -590,6 +590,8 @@
       "name": "repo-default",
       "skill_count": 19,
       "skill_names": [
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share",
         "aoa-adr-write",
         "aoa-approval-gate-check",
         "aoa-bounded-context-map",
@@ -605,12 +607,10 @@
         "aoa-sanitized-share",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice",
-        "abyss-safe-infra-change",
-        "abyss-sanitized-share",
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ],
-      "profile_revision": "2b70eaa370501816e19f98ccb9ebcd70dc200d7c77be3b7f00cc1a95a99a8b9f"
+      "profile_revision": "870cd63897949f36d06f994e4dbebd028ac7ac9e9c2b36c56dc73319d47df7ce"
     },
     {
       "name": "repo-risk-explicit",

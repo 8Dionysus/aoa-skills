@@ -24,7 +24,7 @@
     "docs_truth_sync": [],
     "review_truth_sync": []
   },
-  "governance_backlog_version": 4,
+  "governance_backlog_version": 5,
   "review_truth_sync": [
     {
       "current_revision": "f6eae2937a58",

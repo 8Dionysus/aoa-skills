@@ -16,6 +16,7 @@ TARGETED_SKILLS = (
 )
 STANDARD_DIRS = ("scripts", "references", "assets")
 LEGACY_DIRS = ("agents", "checks", "examples")
+TEXT_FILE_SUFFIXES = {".json", ".jsonl", ".md", ".py", ".svg", ".txt", ".yaml", ".yml"}
 REQUIRED_GENERATED_FILES = (
     "generated/deterministic_resource_manifest.json",
     "generated/support_resource_index.json",
@@ -27,14 +28,18 @@ REQUIRED_GENERATED_FILES = (
 
 
 def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as handle:
-        while True:
-            chunk = handle.read(65536)
-            if not chunk:
-                break
-            digest.update(chunk)
-    return digest.hexdigest()
+    return hashlib.sha256(normalized_file_bytes(path)).hexdigest()
+
+
+def normalized_file_bytes(path: Path) -> bytes:
+    if path.suffix.lower() in TEXT_FILE_SUFFIXES:
+        normalized_text = (
+            path.read_text(encoding="utf-8")
+            .replace("\r\n", "\n")
+            .replace("\r", "\n")
+        )
+        return normalized_text.encode("utf-8")
+    return path.read_bytes()
 
 
 def load_json(path: Path) -> Any:
@@ -47,6 +52,17 @@ def load_jsonl(path: Path) -> list[dict[str, Any]]:
 
 def collect_rel_files(base: Path) -> list[str]:
     return [path.relative_to(base).as_posix() for path in sorted(p for p in base.rglob("*") if p.is_file())]
+
+
+def collect_file_records(base: Path) -> list[dict[str, str]]:
+    return [
+        {
+            "path": path.relative_to(base).as_posix(),
+            "sha256": sha256(path),
+            "bytes": str(len(normalized_file_bytes(path))),
+        }
+        for path in sorted(p for p in base.rglob("*") if p.is_file())
+    ]
 
 
 def validate(repo_root: Path, check_portable: bool) -> dict[str, Any]:
@@ -116,13 +132,17 @@ def validate(repo_root: Path, check_portable: bool) -> dict[str, Any]:
             if not files:
                 errors.append(f"{skill}: {dirname}/ is empty")
                 continue
-            rel_paths = [file_path.relative_to(path).as_posix() for file_path in files]
+            actual_records = collect_file_records(path)
+            rel_paths = [item["path"] for item in actual_records]
 
             if manifest_entry is None:
                 continue
-            manifest_paths = [item["path"] for item in manifest_entry["standard_dirs"].get(dirname, [])]
+            manifest_records = manifest_entry["standard_dirs"].get(dirname, [])
+            manifest_paths = [item["path"] for item in manifest_records]
             if manifest_paths != rel_paths:
                 errors.append(f"{skill}: deterministic_resource_manifest {dirname}/ mismatch")
+            if manifest_records != actual_records:
+                errors.append(f"{skill}: deterministic_resource_manifest {dirname}/ digest mismatch")
             if bridge_entry.get("standard_support_dirs", {}).get(dirname) != rel_paths:
                 errors.append(f"{skill}: support_resource_bridge_map {dirname}/ mismatch")
             if index_entry is not None and index_entry.get("standard_dir_counts", {}).get(dirname) != len(rel_paths):
@@ -134,13 +154,17 @@ def validate(repo_root: Path, check_portable: bool) -> dict[str, Any]:
             if not path.exists():
                 errors.append(f"{skill}: missing legacy {dirname}/")
                 continue
-            rel_paths = collect_rel_files(path)
+            actual_records = collect_file_records(path)
+            rel_paths = [item["path"] for item in actual_records]
             if rel_paths != expected_paths:
                 errors.append(f"{skill}: expected_existing_aoa_support_dirs {dirname}/ mismatch")
             if manifest_entry is not None:
-                manifest_paths = [item["path"] for item in manifest_entry["legacy_dirs"].get(dirname, [])]
+                manifest_records = manifest_entry["legacy_dirs"].get(dirname, [])
+                manifest_paths = [item["path"] for item in manifest_records]
                 if manifest_paths != rel_paths:
                     errors.append(f"{skill}: deterministic_resource_manifest legacy {dirname}/ mismatch")
+                if manifest_records != actual_records:
+                    errors.append(f"{skill}: deterministic_resource_manifest legacy {dirname}/ digest mismatch")
             if bridge_entry.get("legacy_support_dirs", {}).get(dirname) != rel_paths:
                 errors.append(f"{skill}: support_resource_bridge_map legacy {dirname}/ mismatch")
             if index_entry is not None and index_entry.get("legacy_dir_counts", {}).get(dirname) != len(rel_paths):
