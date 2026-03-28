@@ -4,7 +4,7 @@
 
 - overlay family: `atm10`
 - family posture: live exemplar overlay pack
-- reviewed skills: `atm10-change-protocol`, `atm10-source-of-truth-check`
+- evaluated skills: `atm10-change-protocol`, `atm10-source-of-truth-check`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
 - family review surface: `docs/overlays/atm10/PROJECT_OVERLAY.md`, `docs/overlays/atm10/REVIEW.md`, `skills/atm10-change-protocol/checks/review.md`, `skills/atm10-source-of-truth-check/checks/review.md`
@@ -16,11 +16,12 @@
 - `skills/atm10-change-protocol/SKILL.md`
 - `skills/atm10-source-of-truth-check/SKILL.md`
 - bundle-local review checklists under `skills/atm10-*/checks/review.md`
+- overlay evaluation fixtures in `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
 
 - the overlay remains thin, repo-local, and public-safe
-- the two atm10 bundles stay bounded, explicit-preferred, and now clear the reviewed floor through bundle-local review evidence
+- the two atm10 bundles stay bounded, explicit-preferred, and now clear the evaluated floor through bundle-local review evidence plus existing overlay evaluation fixtures
 - the family entrypoint names repo-relative paths, commands, and review posture
 - bundle-local review checklists give a human review surface without adding hidden authority
 

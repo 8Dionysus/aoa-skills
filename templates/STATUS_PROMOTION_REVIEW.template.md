@@ -4,7 +4,7 @@
 
 - current maturity status:
 - current machine-checkable floor (`candidate_ready` gate only when applicable):
-- current governance lane decision:
+- current governance lane decision: use `not applicable` for project-scope overlays with no governance lane coverage
 - scope:
 - current lineage:
 - reviewed revision:
@@ -24,7 +24,7 @@
 ## Findings
 
 - machine-checkable floor result:
-- recorded governance outcome:
+- recorded governance outcome: use `not applicable` for project-scope overlays with no governance lane coverage
 - runtime `SKILL.md` meaning changed:
 
 ## Gaps and blockers

@@ -927,7 +927,7 @@
         }
       ],
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -985,7 +985,7 @@
         }
       ],
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     }
   ],
   "source_of_truth": {

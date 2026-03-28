@@ -625,6 +625,26 @@ adjacency_cases:
       - This is a property-invariants case, not an invariant-coverage-audit case.
       - A property or invariant statement that can be checked across a wide range of inputs.
     forbidden_output_phrases: []
+  - skill: atm10-change-protocol
+    case_id: atm10_change_protocol_vs_source_of_truth_boundary
+    prompt: In an atm10 repository, choose between a bounded repo-relative change plan and a repo-relative source-of-truth clarification before making edits.
+    expected: use
+    adjacent_skill: atm10-source-of-truth-check
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/atm10-change-protocol/atm10_change_protocol_vs_source_of_truth_boundary.md
+    required_output_phrases:
+      - This is an atm10-change-protocol case, not an atm10-source-of-truth-check case.
+      - A bounded local change note that keeps repo-relative paths, commands, and verification explicit.
+    forbidden_output_phrases: []
+  - skill: atm10-source-of-truth-check
+    case_id: atm10_source_of_truth_vs_change_protocol_boundary
+    prompt: In an atm10 repository, choose between a repo-relative source-of-truth clarification and a bounded change plan because the main confusion is which local doc should stay authoritative.
+    expected: use
+    adjacent_skill: atm10-change-protocol
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/atm10-source-of-truth-check/atm10_source_of_truth_vs_change_protocol_boundary.md
+    required_output_phrases:
+      - This is an atm10-source-of-truth-check case, not an atm10-change-protocol case.
+      - A local source-of-truth map that names the authoritative repo-relative file and the matching review posture.
+    forbidden_output_phrases: []
 
 snapshot_cases:
   - skill: aoa-adr-write

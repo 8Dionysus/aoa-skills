@@ -885,7 +885,7 @@
       "pick_summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/atm10-change-protocol/examples/example.md",
@@ -896,6 +896,11 @@
           "path": "skills/atm10-change-protocol/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/atm10-change-protocol.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "use_when": [
@@ -936,7 +941,7 @@
       "pick_summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/atm10-source-of-truth-check/examples/example.md",
@@ -947,6 +952,11 @@
           "path": "skills/atm10-source-of-truth-check/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "use_when": [

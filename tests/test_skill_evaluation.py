@@ -62,6 +62,8 @@ ADJACENCY_EXPECTATIONS = {
     "aoa-adr-write": ["aoa-source-of-truth-check"],
     "aoa-invariant-coverage-audit": ["aoa-property-invariants"],
     "aoa-property-invariants": ["aoa-invariant-coverage-audit"],
+    "atm10-change-protocol": ["atm10-source-of-truth-check"],
+    "atm10-source-of-truth-check": ["atm10-change-protocol"],
 }
 
 

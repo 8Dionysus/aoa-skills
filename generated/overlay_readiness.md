@@ -21,6 +21,6 @@ for the thin overlay layer in `aoa-skills`.
 
 | name | family | status | review checklist | runtime examples | adaptation points | policy file | eval ready | blockers |
 |---|---|---|---|---:|---|---|---|---|
-| atm10-change-protocol | atm10 | reviewed | skills/atm10-change-protocol/checks/review.md | 1 | true | true | true | - |
-| atm10-source-of-truth-check | atm10 | reviewed | skills/atm10-source-of-truth-check/checks/review.md | 1 | true | true | true | - |
+| atm10-change-protocol | atm10 | evaluated | skills/atm10-change-protocol/checks/review.md | 1 | true | true | true | - |
+| atm10-source-of-truth-check | atm10 | evaluated | skills/atm10-source-of-truth-check/checks/review.md | 1 | true | true | true | - |
 

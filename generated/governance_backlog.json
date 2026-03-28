@@ -2,7 +2,9 @@
   "cohorts": {
     "blocked_by_pending_lineage": [],
     "candidate_ready_without_review": [
-      "aoa-local-stack-bringup"
+      "aoa-local-stack-bringup",
+      "atm10-change-protocol",
+      "atm10-source-of-truth-check"
     ],
     "canonical_maintenance": [
       "aoa-adr-write",
@@ -182,6 +184,30 @@
       "reviewed_revision": "f4bdf444bbe4",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "bf3b1081c216",
+      "governance_decision": null,
+      "issues": [],
+      "lineage_state": "published",
+      "name": "atm10-change-protocol",
+      "review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
+      "reviewed_revision": "bf3b1081c216",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "ce4b813299a4",
+      "governance_decision": null,
+      "issues": [],
+      "lineage_state": "published",
+      "name": "atm10-source-of-truth-check",
+      "review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
+      "reviewed_revision": "ce4b813299a4",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
       "truth_synced": true
     }
   ],
@@ -567,10 +593,8 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "governance_decision": null,
@@ -578,18 +602,16 @@
       "governance_lane_ids": [],
       "lineage_state": "published",
       "name": "atm10-change-protocol",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
       "governance_decision": null,
@@ -597,11 +619,11 @@
       "governance_lane_ids": [],
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed"
+      "status": "evaluated"
     }
   ],
   "source_of_truth": {

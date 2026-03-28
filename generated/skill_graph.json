@@ -458,7 +458,7 @@
     {
       "kind": "maturity",
       "source": "skill_atm10_change_protocol",
-      "target": "status_reviewed"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -488,7 +488,7 @@
     {
       "kind": "maturity",
       "source": "skill_atm10_source_of_truth_check",
-      "target": "status_reviewed"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -716,11 +716,6 @@
       "id": "skill_atm10_change_protocol",
       "label": "atm10-change-protocol",
       "type": "skill"
-    },
-    {
-      "id": "status_reviewed",
-      "label": "status: reviewed",
-      "type": "status"
     },
     {
       "id": "scope_project",
@@ -1630,12 +1625,13 @@
         "skills/atm10-change-protocol/techniques.yaml",
         "skills/atm10-change-protocol/agents/openai.yaml",
         "skills/atm10-change-protocol/examples/example.md",
-        "skills/atm10-change-protocol/checks/review.md"
+        "skills/atm10-change-protocol/checks/review.md",
+        "docs/reviews/status-promotions/atm10-change-protocol.md"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "a50db301bac10b18d25ae6bcb9b96e4c62799642eac0c5f00e3d6714ebee6c86",
+      "content_hash": "13bb78b9a8f5bd75c85c88ec7a7ffce384cbb56b3fbc18375f4203f3572a9528",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -1654,11 +1650,11 @@
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "atm10-change-protocol",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "skill_revision": "a50db301bac1",
-      "status": "reviewed",
+      "skill_revision": "13bb78b9a8f5",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/atm10-change-protocol/examples/example.md",
@@ -1669,6 +1665,11 @@
           "path": "skills/atm10-change-protocol/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/atm10-change-protocol.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -1682,12 +1683,13 @@
         "skills/atm10-source-of-truth-check/techniques.yaml",
         "skills/atm10-source-of-truth-check/agents/openai.yaml",
         "skills/atm10-source-of-truth-check/examples/example.md",
-        "skills/atm10-source-of-truth-check/checks/review.md"
+        "skills/atm10-source-of-truth-check/checks/review.md",
+        "docs/reviews/status-promotions/atm10-source-of-truth-check.md"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "3b629340f86534fbc4200dbcf434dab0b90df970cdebb060e590a3e21f7de051",
+      "content_hash": "e8187af5c3d39e06167a42c8ae8d56d0ac975233d2bc06796500795cde894d19",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -1706,11 +1708,11 @@
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "skill_revision": "3b629340f865",
-      "status": "reviewed",
+      "skill_revision": "e8187af5c3d3",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/atm10-source-of-truth-check/examples/example.md",
@@ -1721,6 +1723,11 @@
           "path": "skills/atm10-source-of-truth-check/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [

@@ -4,7 +4,9 @@
     "candidate_ready": [
       "aoa-core-logic-boundary",
       "aoa-local-stack-bringup",
-      "aoa-port-adapter-refactor"
+      "aoa-port-adapter-refactor",
+      "atm10-change-protocol",
+      "atm10-source-of-truth-check"
     ],
     "default_references": [
       "aoa-adr-write",
@@ -411,10 +413,8 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
@@ -422,18 +422,16 @@
       "is_default_reference": false,
       "lineage_state": "published",
       "name": "atm10-change-protocol",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes."
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
@@ -441,10 +439,10 @@
       "is_default_reference": false,
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "reviewed",
+      "status": "evaluated",
       "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow."
     }
   ],
