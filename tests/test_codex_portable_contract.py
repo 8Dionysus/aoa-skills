@@ -44,6 +44,9 @@ class CodexPortableContractTests(unittest.TestCase):
         support_index = load_json(REPO_ROOT / "generated" / "support_resource_index.json")
         support_bridge = load_json(REPO_ROOT / "generated" / "support_resource_bridge_map.json")
         expected_support = load_json(REPO_ROOT / "generated" / "expected_existing_aoa_support_dirs.json")
+        tiny_router_signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
+        tiny_router_capsules = load_json(REPO_ROOT / "generated" / "tiny_router_capsules.min.json")
+        tiny_router_manifest = load_json(REPO_ROOT / "generated" / "tiny_router_overlay_manifest.json")
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
         catalog_names = {entry["name"] for entry in catalog["skills"]}
         support_names = {"aoa-dry-run-first", "aoa-safe-infra-change", "aoa-local-stack-bringup"}
@@ -61,6 +64,9 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in support_index["skills"]}, support_names)
         self.assertEqual(set(support_bridge["skills"]), support_names)
         self.assertEqual(set(expected_support["skills"]), support_names)
+        self.assertEqual({entry["name"] for entry in tiny_router_signals["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in tiny_router_capsules["skills"]}, catalog_names)
+        self.assertEqual({entry["name"] for entry in tiny_router_manifest["skills"]}, catalog_names)
 
     def test_support_resource_manifests_match_exported_resources(self):
         support_manifest = load_json(REPO_ROOT / "generated" / "deterministic_resource_manifest.json")
@@ -153,14 +159,33 @@ class CodexPortableContractTests(unittest.TestCase):
                 offenders.append(case["case_id"])
         self.assertEqual(offenders, [])
 
+    def test_tiny_router_surfaces_respect_invocation_mode_and_overlay_scope(self):
+        source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
+        tiny_router_signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
+        tiny_router_bands = load_json(REPO_ROOT / "generated" / "tiny_router_candidate_bands.json")
+        source_by_name = {entry["name"]: entry for entry in source_catalog["skills"]}
+        signal_by_name = {entry["name"]: entry for entry in tiny_router_signals["skills"]}
+
+        for name, source in source_by_name.items():
+            signal = signal_by_name[name]
+            self.assertEqual(signal["manual_invocation_required"], source["invocation_mode"] == "explicit-only")
+            self.assertEqual(signal["project_overlay"], source["scope"] == "project")
+
+        band_skill_names = set()
+        for band in tiny_router_bands["bands"]:
+            band_skill_names.update(band["skills"])
+        self.assertEqual(band_skill_names, set(source_by_name))
+
     def test_validation_scripts_pass(self):
         commands = [
             [sys.executable, "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/build_support_resources.py", "--repo-root", ".", "--check"],
+            [sys.executable, "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"],
             [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
             [sys.executable, "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"],
+            [sys.executable, "scripts/validate_tiny_router_inputs.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_description_trigger_evals.py", "--repo-root", "."],
             [sys.executable, "scripts/lint_pack_profiles.py", "--repo-root", "."],

@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "profile": "codex-facing-wave-9-tiny-router-inputs",
+  "source_files": [
+    "generated/skill_capsules.json",
+    "generated/skill_catalog.min.json",
+    "generated/local_adapter_manifest.json",
+    "generated/skill_trigger_eval_cases.jsonl",
+    "generated/description_trigger_eval_cases.jsonl",
+    "config/tiny_router_skill_bands.json"
+  ],
+  "skill_count": 17,
+  "band_count": 5,
+  "case_count": 47,
+  "skills": [
+    {
+      "name": "aoa-adr-write",
+      "band": "decision-doc-authority",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "f1f4cb3d68b8da03557ea671e72452a3e883eb989f7e093686eee8b1dd73fc94"
+    },
+    {
+      "name": "aoa-approval-gate-check",
+      "band": "risk-ops-safety",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c"
+    },
+    {
+      "name": "aoa-bounded-context-map",
+      "band": "boundary-architecture",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "735d43d6ab5652fb304178f0e2c746584bbc1a7455aa2f63fbfac82688dd6a06"
+    },
+    {
+      "name": "aoa-change-protocol",
+      "band": "change-validation",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa"
+    },
+    {
+      "name": "aoa-contract-test",
+      "band": "change-validation",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "9bc2710777cc9b6a70a74df503ba7925b7dace767ee141b879357cd3106d440e"
+    },
+    {
+      "name": "aoa-core-logic-boundary",
+      "band": "boundary-architecture",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "664701e603b988ed90f66e269c021c532c9c0b6b02a3f03b21d71fc4e7ced112"
+    },
+    {
+      "name": "aoa-dry-run-first",
+      "band": "risk-ops-safety",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc"
+    },
+    {
+      "name": "aoa-invariant-coverage-audit",
+      "band": "property-audit",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "65f3dc67fa694db586e881ca32ed304a246225c9fc3f3539094c3cd3115a8158"
+    },
+    {
+      "name": "aoa-local-stack-bringup",
+      "band": "risk-ops-safety",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516"
+    },
+    {
+      "name": "aoa-port-adapter-refactor",
+      "band": "boundary-architecture",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "e47ea2a0e2307feeff4d3c14974e7115fbb99a6cf81a1a86c1514aa24055b508"
+    },
+    {
+      "name": "aoa-property-invariants",
+      "band": "property-audit",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "2bf02fb83803f295670eb33af7b09d7dac89afd32857f82eb477db6f11dd2839"
+    },
+    {
+      "name": "aoa-safe-infra-change",
+      "band": "risk-ops-safety",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a"
+    },
+    {
+      "name": "aoa-sanitized-share",
+      "band": "risk-ops-safety",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae"
+    },
+    {
+      "name": "aoa-source-of-truth-check",
+      "band": "decision-doc-authority",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0"
+    },
+    {
+      "name": "aoa-tdd-slice",
+      "band": "change-validation",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "0e24f2dda744301b9c7f5c75b499a1a15c1f754b41d90e6c1e4abd09547dbeb9"
+    },
+    {
+      "name": "atm10-change-protocol",
+      "band": "change-validation",
+      "manual_invocation_required": false,
+      "project_overlay": true,
+      "description_sha256": "e0f5533ad013bea96c55ee9d27f0cee6e1ccd9a0f7e88fc3466c5aa1f5cfe4ea"
+    },
+    {
+      "name": "atm10-source-of-truth-check",
+      "band": "decision-doc-authority",
+      "manual_invocation_required": false,
+      "project_overlay": true,
+      "description_sha256": "e0c744178c0b7c1f9e4f1bb39dc6b3b1338f8c77b8d1f66e5d989a8724a046d4"
+    }
+  ]
+}

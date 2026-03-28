@@ -36,11 +36,17 @@ jobs:
       - name: Build deterministic support bundles
         run: python scripts/build_support_resources.py --repo-root .
 
+      - name: Build tiny-router inputs
+        run: python scripts/build_tiny_router_inputs.py --repo-root .
+
       - name: Validate export
         run: python scripts/validate_agent_skills.py --repo-root .
 
       - name: Validate deterministic support bundles
         run: python scripts/validate_support_resources.py --repo-root . --check-portable
+
+      - name: Validate tiny-router inputs
+        run: python scripts/validate_tiny_router_inputs.py --repo-root .
 
       - name: Lint trigger evals
         run: python scripts/lint_trigger_evals.py --repo-root .
@@ -76,6 +82,7 @@ jobs:
           python -m unittest tests/test_wave7_skills_ref_validation.py
           python -m unittest tests/test_support_resource_bundles.py
           python -m unittest tests/test_support_resource_schemas.py
+          python -m unittest tests/test_tiny_router_inputs.py
 
       - name: Check generated drift
         run: |
@@ -118,6 +125,11 @@ jobs:
             generated/support_resource_bridge_map.json \
             generated/deterministic_resource_eval_cases.jsonl \
             generated/expected_existing_aoa_support_dirs.json \
+            generated/tiny_router_skill_signals.json \
+            generated/tiny_router_candidate_bands.json \
+            generated/tiny_router_capsules.min.json \
+            generated/tiny_router_eval_cases.jsonl \
+            generated/tiny_router_overlay_manifest.json \
             examples/repo-trust-store.json \
             examples/permission-allowlist.json \
             examples/guardrailed-runtime-config.json \

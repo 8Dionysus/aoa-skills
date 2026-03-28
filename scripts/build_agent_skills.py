@@ -76,6 +76,11 @@ GENERATED_PORTABLE_FILES = [
     "generated/support_resource_bridge_map.json",
     "generated/deterministic_resource_eval_cases.jsonl",
     "generated/expected_existing_aoa_support_dirs.json",
+    "generated/tiny_router_skill_signals.json",
+    "generated/tiny_router_candidate_bands.json",
+    "generated/tiny_router_capsules.min.json",
+    "generated/tiny_router_eval_cases.jsonl",
+    "generated/tiny_router_overlay_manifest.json",
     "generated/release_manifest.json",
 ]
 
@@ -586,7 +591,7 @@ def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict
     return {
         "schema_version": 1,
         "profile": EXPORT_PROFILE,
-        "included_waves": [1, 2, 3, 4, 6, 7, 8],
+        "included_waves": [1, 2, 3, 4, 6, 7, 8, 9],
         "skill_root": ".agents/skills",
         "skill_count": len(catalog_full["skills"]),
         "explicit_only_count": sum(1 for entry in catalog_full["skills"] if not entry["allow_implicit_invocation"]),
@@ -599,6 +604,7 @@ def build_release_manifest(catalog_full: dict[str, Any], resolved_profiles: dict
             "config/skill_pack_profiles.json",
             "config/skill_policy_matrix.json",
             "config/description_trigger_eval_policy.json",
+            "config/tiny_router_skill_bands.json",
         ],
         "generated_files": GENERATED_PORTABLE_FILES,
         "release_identity": {
