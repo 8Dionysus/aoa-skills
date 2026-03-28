@@ -2,9 +2,9 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
-- current machine-checkable floor: published lineage plus evaluation coverage and explicit-only policy checks
-- candidate set: post-lineage conservative review wave
+- current maturity status: `canonical`
+- canonical promotion decision: promoted in this pass
+- candidate set: canonical promotion completed
 - scope: `risk`
 - current lineage: manifest-aligned with published techniques `AOA-T-0028` and `AOA-T-0001`
 
@@ -29,16 +29,16 @@
 
 - the trigger boundary keeps infrastructure and configuration changes separate from approval classification and preview-first selection
 - the explicit-only posture matches the operational risk surface and keeps rollback thinking visible
+- the bundle now reads like a stable default reference when the operational change itself is the task and reversible execution discipline is central
 - published lineage, runtime wording, and evaluation coverage are aligned
 - the bundle is candidate-ready at the repository gate level
 
 ## Gaps and blockers
 
-- no lineage or evaluation blocker remains at the repository gate level
-- the current record does not yet establish `aoa-safe-infra-change` as the default public reference relative to neighboring risk skills with overlapping authority and preview concerns
-- future canonical review should preserve the bounded infra-change contract and avoid widening the skill into a generic operations playbook
+- no current blocker remains at the repository gate level
+- future maintenance should preserve the bounded infra-change contract and avoid widening the skill into a generic operations playbook
+- future drift review should keep infra/config execution distinct from preview-only planning and sanitized sharing work
 
 ## Recommendation
 
-Keep `aoa-safe-infra-change` at `evaluated` in this pass.
-Use this record as the explicit stay-evaluated decision until a stronger default-reference rationale is recorded.
+Keep `aoa-safe-infra-change` as a canonical default reference and use this review record as the maintenance surface for future drift checks.

@@ -39,8 +39,20 @@ ADJACENCY_EXPECTATIONS = {
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
     ],
-    "aoa-dry-run-first": ["aoa-approval-gate-check", "aoa-sanitized-share"],
-    "aoa-safe-infra-change": ["aoa-approval-gate-check", "aoa-sanitized-share"],
+    "aoa-dry-run-first": [
+        "aoa-approval-gate-check",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share",
+    ],
+    "aoa-safe-infra-change": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-sanitized-share",
+    ],
+    "aoa-local-stack-bringup": [
+        "aoa-approval-gate-check",
+        "aoa-safe-infra-change",
+    ],
     "aoa-sanitized-share": [
         "aoa-approval-gate-check",
         "aoa-dry-run-first",

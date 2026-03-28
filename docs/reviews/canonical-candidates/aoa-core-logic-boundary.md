@@ -35,10 +35,10 @@
 ## Gaps and blockers
 
 - no lineage or evaluation blocker remains at the repository gate level
-- the current record does not yet establish `aoa-core-logic-boundary` as the default starting point relative to neighboring boundary-oriented core skills
+- the lane keeps `aoa-bounded-context-map` as the default starting point, while `aoa-core-logic-boundary` stays a specialized follow-on skill for the narrower "core versus glue" decision
 - future canonical review should preserve the narrow "core versus glue" decision boundary and avoid widening the skill into a broader refactor umbrella
 
 ## Recommendation
 
 Keep `aoa-core-logic-boundary` at `evaluated` in this pass.
-Use this record as the explicit stay-evaluated decision until a stronger comparative default-reference rationale is recorded.
+Use this record as the explicit stay-evaluated decision while `aoa-bounded-context-map` remains the entry anchor for this lane.

@@ -1,7 +1,7 @@
 ---
 name: aoa-local-stack-bringup
 scope: risk
-status: scaffold
+status: evaluated
 summary: Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.
 invocation_mode: explicit-only
 technique_dependencies:

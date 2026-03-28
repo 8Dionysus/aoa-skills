@@ -1,7 +1,7 @@
 ---
 name: aoa-source-of-truth-check
 scope: core
-status: evaluated
+status: canonical
 summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.
 invocation_mode: explicit-preferred
 technique_dependencies:
@@ -98,7 +98,9 @@ Manifest-backed techniques:
 
 Future project overlays may add:
 - local doc hierarchies
+- mixed ADR, architecture, and operations doc maps that split authority by concern
 - preferred canonical-file patterns
 - local review rules for doc changes
 - repository-specific examples of authoritative surfaces
 - lightweight snapshot rules for README or MANIFEST surfaces
+- rules for keeping entrypoint docs short once deeper canonical homes already exist

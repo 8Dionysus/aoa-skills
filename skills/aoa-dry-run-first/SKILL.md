@@ -1,7 +1,7 @@
 ---
 name: aoa-dry-run-first
 scope: risk
-status: evaluated
+status: canonical
 summary: Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.
 invocation_mode: explicit-only
 technique_dependencies:

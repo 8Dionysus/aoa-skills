@@ -13,7 +13,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/aoa-adr-write/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -42,7 +42,7 @@
         "Risks and anti-patterns": "writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning",
         "Verification": "confirm the decision was meaningful enough to record; confirm the rationale is explicit",
         "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/docs/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AO...",
-        "Adaptation points": "local ADR templates; local placement rules"
+        "Adaptation points": "local ADR templates; alternative decision-note homes outside formal `docs/adr/` layouts"
       },
       "resource_inventory": {
         "scripts": [],
@@ -628,7 +628,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -842,7 +842,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -1158,7 +1158,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -1272,7 +1272,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -1376,7 +1376,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -1405,7 +1405,7 @@
         "Risks and anti-patterns": "over-formalizing a tiny docs surface; creating many labels without reducing ambiguity",
         "Verification": "confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly",
         "Technique traceability": "AOA-T-0013 from `8Dionysus/aoa-techniques` at `06303d62e9cd614295a63b6543a4191e808e879c` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 from...",
-        "Adaptation points": "local doc hierarchies; preferred canonical-file patterns"
+        "Adaptation points": "local doc hierarchies; mixed ADR, architecture, and operations doc maps that split authority by concern"
       },
       "resource_inventory": {
         "scripts": [],
@@ -1581,7 +1581,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "project",
-        "aoa_status": "scaffold",
+        "aoa_status": "reviewed",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/atm10-change-protocol/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -1682,7 +1682,7 @@
       "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
       "metadata": {
         "aoa_scope": "project",
-        "aoa_status": "scaffold",
+        "aoa_status": "reviewed",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",

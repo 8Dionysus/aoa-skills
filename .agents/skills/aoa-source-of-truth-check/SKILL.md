@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
   aoa_scope: core
-  aoa_status: evaluated
+  aoa_status: canonical
   aoa_invocation_mode: explicit-preferred
   aoa_source_skill_path: skills/aoa-source-of-truth-check/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
@@ -91,7 +91,9 @@ Manifest-backed techniques:
 ## Adaptation points
 Future project overlays may add:
 - local doc hierarchies
+- mixed ADR, architecture, and operations doc maps that split authority by concern
 - preferred canonical-file patterns
 - local review rules for doc changes
 - repository-specific examples of authoritative surfaces
 - lightweight snapshot rules for README or MANIFEST surfaces
+- rules for keeping entrypoint docs short once deeper canonical homes already exist

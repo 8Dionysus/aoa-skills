@@ -9,7 +9,7 @@
       "outputs_short": "Produces: concise decision note or ADR draft; statement of rationale; consequence notes; canonical placement or reference for the note.",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.",
       "technique_dependencies": [
         "AOA-T-0033",
@@ -116,7 +116,7 @@
       "outputs_short": "Produces: dry-run or preview recommendation; bounded preview result or plan; note on what the preview does and does not prove; explicit confirmation request for the mutating step when the preview is complete.",
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.",
       "technique_dependencies": [
         "AOA-T-0004",
@@ -151,7 +151,7 @@
       "outputs_short": "Produces: rendered runtime truth summary for what would actually start; selector-aware readiness verdict with named blockers or warnings; explicit go, hold, or confirm-before-launch recommendation; started bounded...",
       "scope": "risk",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.",
       "technique_dependencies": [
         "AOA-T-0036",
@@ -207,7 +207,7 @@
       "outputs_short": "Produces: explicit risk-aware plan; bounded infrastructure or config change, or bounded execution recommendation; verification result; report with remaining risk notes.",
       "scope": "risk",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.",
       "technique_dependencies": [
         "AOA-T-0028",
@@ -225,7 +225,7 @@
       "outputs_short": "Produces: sanitized shareable artifact, abstract summary, or recommendation not to share the raw material directly; note on what was generalized or removed; warning about any remaining ambiguity or sensitive edge;...",
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.",
       "technique_dependencies": [
         "AOA-T-0034",
@@ -243,7 +243,7 @@
       "outputs_short": "Produces: clearer source-of-truth map; fan-out map when one source feeds multiple downstream consumers; note of overlaps or conflicts; proposed or implemented document role clarification.",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.",
       "technique_dependencies": [
         "AOA-T-0013",
@@ -280,7 +280,7 @@
       "outputs_short": "Produces: bounded local change plan; repo-relative command or path sketch; pointer to the family review surface; verification note for the local repo surface.",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
       "technique_dependencies": [
         "AOA-T-0001",
@@ -298,7 +298,7 @@
       "outputs_short": "Produces: local source-of-truth map; bounded clarification note; repo-relative canonical-file pattern; pointer to the family review surface.",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
       "technique_dependencies": [
         "AOA-T-0013",

@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
   aoa_scope: core
-  aoa_status: evaluated
+  aoa_status: canonical
   aoa_invocation_mode: explicit-preferred
   aoa_source_skill_path: skills/aoa-adr-write/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
@@ -89,6 +89,9 @@ Manifest-backed techniques:
 ## Adaptation points
 Future project overlays may add:
 - local ADR templates
+- alternative decision-note homes outside formal `docs/adr/` layouts
 - local placement rules
+- local template variants that still preserve context, options, decision, and consequences
 - architecture review expectations
+- cross-linking rules back to canonical authority docs without replacing them
 - repository-specific examples

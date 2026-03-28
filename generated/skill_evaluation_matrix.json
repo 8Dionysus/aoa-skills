@@ -14,7 +14,7 @@
       "scope": "core",
       "selected_runtime_artifact_path": "skills/aoa-adr-write/examples/example.md",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -116,7 +116,7 @@
       "scope": "risk",
       "selected_runtime_artifact_path": "skills/aoa-dry-run-first/examples/runtime.md",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -146,11 +146,11 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-local-stack-bringup",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
       "scope": "risk",
       "selected_runtime_artifact_path": "skills/aoa-local-stack-bringup/examples/runtime.md",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -201,7 +201,7 @@
       "scope": "risk",
       "selected_runtime_artifact_path": "skills/aoa-safe-infra-change/examples/runtime.md",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -218,7 +218,7 @@
       "scope": "risk",
       "selected_runtime_artifact_path": "skills/aoa-sanitized-share/examples/runtime.md",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -235,7 +235,7 @@
       "scope": "core",
       "selected_runtime_artifact_path": "skills/aoa-source-of-truth-check/examples/example.md",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -269,7 +269,7 @@
       "scope": "project",
       "selected_runtime_artifact_path": "skills/atm10-change-protocol/examples/example.md",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -286,7 +286,7 @@
       "scope": "project",
       "selected_runtime_artifact_path": "skills/atm10-source-of-truth-check/examples/example.md",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "use_case_count": 1,
       "use_snapshot_count": 1
     }

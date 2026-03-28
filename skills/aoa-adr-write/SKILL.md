@@ -1,7 +1,7 @@
 ---
 name: aoa-adr-write
 scope: core
-status: evaluated
+status: canonical
 summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.
 invocation_mode: explicit-preferred
 technique_dependencies:
@@ -95,6 +95,9 @@ Manifest-backed techniques:
 
 Future project overlays may add:
 - local ADR templates
+- alternative decision-note homes outside formal `docs/adr/` layouts
 - local placement rules
+- local template variants that still preserve context, options, decision, and consequences
 - architecture review expectations
+- cross-linking rules back to canonical authority docs without replacing them
 - repository-specific examples
