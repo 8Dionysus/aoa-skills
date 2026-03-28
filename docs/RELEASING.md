@@ -58,7 +58,7 @@ A release should make it easy to answer:
   - read `generated/skill_bundle_index.json` for per-skill packaging membership and technique-lineage detail
   - read `generated/skill_graph.json` for profile and artifact-group topology across the same bundle set
   - use `python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json` when you want one repo-local install verification check over the live `.agents/skills` root
-  - if the release touches staged-handoff flows, smoke-test one profile bundle with `python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json`, inspect it with `python scripts/inspect_skill_pack.py --bundle-root ...`, then install and verify against that bundle with `install_skill_pack.py` and `verify_skill_pack.py --bundle-root ...`
+  - if the release touches staged-handoff flows, read the generated bundle `README.md` as the human-facing companion and smoke-test one profile bundle with `python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json`, then inspect it with `python scripts/inspect_skill_pack.py --bundle-root ...`
   - if the release touches archive handoff flows, optionally extend that smoke path with `--archive-path /tmp/repo-core-only.zip`, then install and verify directly against the ZIP via `install_skill_pack.py --bundle-archive ...` and `verify_skill_pack.py --bundle-archive ...`
 6. Review public-safety hygiene:
    - no secrets

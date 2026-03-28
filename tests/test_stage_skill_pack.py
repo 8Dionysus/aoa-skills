@@ -70,8 +70,14 @@ class StageSkillPackTests(unittest.TestCase):
             self.assertRegex(payload["profile_revision"], r"^[0-9a-f]{64}$")
             self.assertEqual("0.1.0", payload["release_identity"]["latest_tagged_version"])
             self.assertRegex(payload["bundle_digest"], r"^[0-9a-f]{64}$")
+            self.assertEqual(
+                str((bundle_root / "README.md").resolve()),
+                payload["bundle_readme_path"],
+            )
             self.assertIn("scripts/inspect_skill_pack.py", payload["recommended_inspect_command"])
             self.assertIn("--bundle-root", payload["recommended_inspect_command"])
+            self.assertIn("scripts/import_skill_pack.py", payload["recommended_import_command"])
+            self.assertIn("--bundle-root", payload["recommended_import_command"])
             self.assertIn("scripts/install_skill_pack.py", payload["recommended_install_command"])
             self.assertIn("--bundle-root", payload["recommended_install_command"])
             self.assertIn("scripts/verify_skill_pack.py", payload["recommended_verify_command"])
@@ -99,6 +105,8 @@ class StageSkillPackTests(unittest.TestCase):
             self.assertIsNone(payload["archive_bytes"])
             self.assertIn("--bundle-archive", payload["recommended_inspect_command"])
             self.assertNotIn("--bundle-root", payload["recommended_inspect_command"])
+            self.assertIn("--bundle-archive", payload["recommended_import_command"])
+            self.assertNotIn("--bundle-root", payload["recommended_import_command"])
             self.assertIn("--bundle-archive", payload["recommended_install_command"])
             self.assertNotIn("--bundle-root", payload["recommended_install_command"])
             self.assertIn("--bundle-archive", payload["recommended_verify_command"])
@@ -125,6 +133,7 @@ class StageSkillPackTests(unittest.TestCase):
             self.assertEqual(0, completed_a.returncode, msg=completed_a.stderr)
             self.assertEqual(0, completed_b.returncode, msg=completed_b.stderr)
             self.assertTrue((bundle_root_a / "bundle_manifest.json").exists())
+            self.assertTrue((bundle_root_a / "README.md").exists())
             self.assertTrue((bundle_root_a / ".agents" / "skills" / "aoa-change-protocol" / "SKILL.md").exists())
 
             manifest_a = json.loads((bundle_root_a / "bundle_manifest.json").read_text(encoding="utf-8"))
@@ -172,6 +181,10 @@ class StageSkillPackTests(unittest.TestCase):
             )
             self.assertIn(
                 "aoa-skills-repo-core-only/bundle_manifest.json",
+                names,
+            )
+            self.assertIn(
+                "aoa-skills-repo-core-only/README.md",
                 names,
             )
 

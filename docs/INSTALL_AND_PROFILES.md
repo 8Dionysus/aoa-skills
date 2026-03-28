@@ -99,15 +99,17 @@ That pair gives an offline verification surface for profile membership drift wit
 `stage_skill_pack.py` is profile-scoped and plan-first:
 
 - dry-run output gives one deterministic handoff plan with `profile_revision`, `release_identity`, `file_digests`, and `bundle_digest`
-- `--execute` materializes a bundle directory containing only `bundle_manifest.json` plus the staged `.agents/skills/<skill>` subset
+- `--execute` materializes a bundle directory containing `bundle_manifest.json`, a bundle-local `README.md`, and the staged `.agents/skills/<skill>` subset
 - `--archive-path` adds an optional ZIP transport wrapper over that same staged directory without changing the bundle-local contract
 - the staged bundle does not copy the repo-wide `generated/release_manifest.json` because that file describes the whole export, not one profile subset
+- `README.md` is the human-facing handoff guide; `bundle_manifest.json` remains the canonical machine-readable source of truth
 
 The ZIP handoff remains repo-local and offline:
 
 - the staged directory stays the canonical intermediate
 - the archive is only a transport wrapper with one top-level folder `aoa-skills-<profile>/`
 - `inspect_skill_pack.py` validates the bundle-local manifest, file digests, bundle digest, and archive layout without consulting the live repo export
+- the ZIP carries the same bundle-local `README.md` as a human-facing companion, not as a second contract
 - install and verify can consume the ZIP directly; no separate unpack command is required
 
 ## Round-trip handoff
