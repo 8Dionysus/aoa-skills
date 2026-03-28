@@ -817,10 +817,12 @@ class BuildCatalogTests(unittest.TestCase):
         *,
         family: str,
         skill_names: list[str],
+        listed_skill_names: list[str] | None = None,
         include_authority_section: bool = True,
     ) -> None:
         overlay_dir = repo_root / "docs" / "overlays" / family
         overlay_dir.mkdir(parents=True, exist_ok=True)
+        listed_skill_names = skill_names if listed_skill_names is None else listed_skill_names
         checklist_refs = ", ".join(
             f"`skills/{skill_name}/checks/review.md`" for skill_name in skill_names
         )
@@ -840,7 +842,7 @@ class BuildCatalogTests(unittest.TestCase):
             "",
             "## Overlayed skills",
             "",
-            *[f"- `{skill_name}`" for skill_name in skill_names],
+            *[f"- `{skill_name}`" for skill_name in listed_skill_names],
             "",
             "## Risks and anti-patterns",
             "",
@@ -1441,9 +1443,10 @@ class BuildCatalogTests(unittest.TestCase):
     def test_write_overlay_readiness_generates_reviewable_family_surface(self) -> None:
         repo_root = self.make_repo()
         skill_names = [
-            "atm10-change-protocol",
-            "atm10-source-of-truth-check",
+            "cinder-change-protocol",
+            "cinder-source-of-truth-check",
         ]
+        family = "cinder"
         for skill_name in skill_names:
             self.add_skill_bundle(
                 repo_root,
@@ -1456,7 +1459,7 @@ class BuildCatalogTests(unittest.TestCase):
         self.write_evaluation_fixtures_for_skills(repo_root, skill_names)
         self.write_live_overlay_pack(
             repo_root,
-            family="atm10",
+            family=family,
             skill_names=skill_names,
         )
 
@@ -1495,9 +1498,9 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertEqual(1, len(payload["families"]))
         self.assertEqual(
             {
-                "family": "atm10",
-                "project_overlay_path": "docs/overlays/atm10/PROJECT_OVERLAY.md",
-                "review_path": "docs/overlays/atm10/REVIEW.md",
+                "family": family,
+                "project_overlay_path": f"docs/overlays/{family}/PROJECT_OVERLAY.md",
+                "review_path": f"docs/overlays/{family}/REVIEW.md",
                 "project_skill_names": skill_names,
                 "listed_skill_names": skill_names,
                 "listed_matches_actual": True,
@@ -1527,20 +1530,21 @@ class BuildCatalogTests(unittest.TestCase):
             markdown,
         )
         self.assertIn(
-            "| atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            f"| {family} | 2 | true | docs/overlays/{family}/REVIEW.md | 2 | 2 | true | true | reviewable |",
             markdown,
         )
         self.assertIn(
-            "skills/atm10-change-protocol/checks/review.md",
+            "skills/cinder-change-protocol/checks/review.md",
             markdown,
         )
 
     def test_write_overlay_readiness_requires_authority_section_for_reviewable_family(self) -> None:
         repo_root = self.make_repo()
         skill_names = [
-            "atm10-change-protocol",
-            "atm10-source-of-truth-check",
+            "cinder-change-protocol",
+            "cinder-source-of-truth-check",
         ]
+        family = "cinder"
         for skill_name in skill_names:
             self.add_skill_bundle(
                 repo_root,
@@ -1553,7 +1557,7 @@ class BuildCatalogTests(unittest.TestCase):
         self.write_evaluation_fixtures_for_skills(repo_root, skill_names)
         self.write_live_overlay_pack(
             repo_root,
-            family="atm10",
+            family=family,
             skill_names=skill_names,
             include_authority_section=False,
         )
@@ -1565,16 +1569,16 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertFalse(payload["families"][0]["authority_section_present"])
         self.assertEqual("baseline", payload["families"][0]["readiness_state"])
 
-    def test_write_overlay_readiness_generates_two_reviewable_live_families(self) -> None:
+    def test_write_overlay_readiness_discovers_synthetic_live_families_from_repo_state(self) -> None:
         repo_root = self.make_repo()
         families = {
-            "atm10": [
-                "atm10-change-protocol",
-                "atm10-source-of-truth-check",
+            "cinder": [
+                "cinder-change-protocol",
+                "cinder-source-of-truth-check",
             ],
-            "abyss": [
-                "abyss-safe-infra-change",
-                "abyss-sanitized-share",
+            "harbor": [
+                "harbor-safe-infra-change",
+                "harbor-sanitized-share",
             ],
         }
         all_skill_names = [
@@ -1618,8 +1622,8 @@ class BuildCatalogTests(unittest.TestCase):
         }
         self.assertEqual(
             {
-                "atm10": "reviewable",
-                "abyss": "reviewable",
+                "cinder": "reviewable",
+                "harbor": "reviewable",
             },
             readiness_by_family,
         )
@@ -1629,11 +1633,11 @@ class BuildCatalogTests(unittest.TestCase):
         )
         self.assertTrue(all(entry["eval_ready"] for entry in payload["skills"]))
         self.assertIn(
-            "| abyss | 2 | true | docs/overlays/abyss/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            "| cinder | 2 | true | docs/overlays/cinder/REVIEW.md | 2 | 2 | true | true | reviewable |",
             markdown,
         )
         self.assertIn(
-            "| atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            "| harbor | 2 | true | docs/overlays/harbor/REVIEW.md | 2 | 2 | true | true | reviewable |",
             markdown,
         )
 

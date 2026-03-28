@@ -36,6 +36,8 @@ The maintenance and readiness companion is:
 The overlay-maturity companion is:
 
 - `generated/overlay_readiness.md`
+- `docs/overlays/<family>/PROJECT_OVERLAY.md`
+- `docs/overlays/<family>/REVIEW.md`
 
 The packaging and relationship companions are:
 
@@ -79,6 +81,7 @@ It does not:
 Project overlays are intentionally read through `generated/overlay_readiness.*` instead.
 An overlay may be `evaluated` and reviewable without participating in the candidate-ready cohort when no governance lane path exists for that project-scope object.
 If the same overlay skill appears in `generated/governance_backlog.*`, read that row as a maintenance signal rather than as missing-governance-lane debt.
+For a live family, read `generated/overlay_readiness.md` first and then the matching `docs/overlays/<family>/*` files.
 
 ### `governance decision`
 
@@ -109,7 +112,7 @@ If you are choosing a skill, start with `docs/RUNTIME_PATH.md`.
 If you are reading matrix evidence, start with `docs/EVALUATION_PATH.md`.
 If you are reading status or release signals, stay here and in `generated/public_surface.md`.
 If you are reading maintenance readiness, use `generated/governance_backlog.md`.
-If you are reading project-overlay family maturity, use `generated/overlay_readiness.md`.
+If you are reading project-overlay family maturity, use `generated/overlay_readiness.md` and then the matching `docs/overlays/<family>/*` files.
 If you are reading bundle shape or adjacency, use `generated/skill_bundle_index.md`, `generated/skill_graph.md`, and `generated/skill_boundary_matrix.md`.
 
 ## Current reading order

@@ -646,6 +646,7 @@ class ValidateSkillsTests(unittest.TestCase):
         *,
         family: str,
         skill_names: list[str],
+        listed_skill_names: list[str] | None = None,
         repo_relative_language: bool = True,
         include_review_doc: bool = True,
         review_check_skill_names: list[str] | None = None,
@@ -653,7 +654,7 @@ class ValidateSkillsTests(unittest.TestCase):
     ) -> None:
         overlay_dir = repo_root / "docs" / "overlays" / family
         overlay_dir.mkdir(parents=True, exist_ok=True)
-        overlayed_skill_lines = "\n".join(f"- `{skill_name}`" for skill_name in skill_names)
+        listed_skill_names = skill_names if listed_skill_names is None else listed_skill_names
         review_check_skill_names = (
             skill_names if review_check_skill_names is None else review_check_skill_names
         )
@@ -705,7 +706,7 @@ class ValidateSkillsTests(unittest.TestCase):
             "",
             "## Overlayed skills",
             "",
-            *[f"- `{skill_name}`" for skill_name in skill_names],
+            *[f"- `{skill_name}`" for skill_name in listed_skill_names],
             "",
             "## Risks and anti-patterns",
             "",
@@ -758,6 +759,48 @@ class ValidateSkillsTests(unittest.TestCase):
 
         for skill_name in review_check_skill_names:
             self.write_review_checklist(repo_root, skill_name)
+
+    def make_live_overlay_repo(
+        self,
+        *,
+        overlay_specs: list[dict[str, Any]],
+    ) -> Path:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+
+        skill_specs = [
+            skill_spec
+            for overlay_spec in overlay_specs
+            for skill_spec in overlay_spec["skill_specs"]
+        ]
+        self.write_skill_index(
+            repo_root,
+            [str(skill_spec["skill_name"]) for skill_spec in skill_specs],
+        )
+        for skill_spec in skill_specs:
+            self.add_skill_bundle(repo_root, **skill_spec)
+
+        for overlay_spec in overlay_specs:
+            self.write_live_overlay_pack(
+                repo_root,
+                family=str(overlay_spec["family"]),
+                skill_names=list(overlay_spec["skill_names"]),
+                listed_skill_names=overlay_spec.get("listed_skill_names"),
+                repo_relative_language=bool(
+                    overlay_spec.get("repo_relative_language", True)
+                ),
+                include_review_doc=bool(
+                    overlay_spec.get("include_review_doc", True)
+                ),
+                review_check_skill_names=overlay_spec.get("review_check_skill_names"),
+                review_mentions_skill_names=overlay_spec.get(
+                    "review_mentions_skill_names"
+                ),
+            )
+
+        self.write_catalogs(repo_root)
+        return repo_root
 
     def load_skill_frontmatter(self, repo_root: Path, skill_name: str = "aoa-test-skill") -> dict:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
@@ -1693,129 +1736,128 @@ class ValidateSkillsTests(unittest.TestCase):
 
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
-    def test_live_project_overlay_pack_passes(self) -> None:
-        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
-        self.addCleanup(shutil.rmtree, repo_root, True)
-        (repo_root / "skills").mkdir()
-        (repo_root / "SKILL_INDEX.md").write_text(
-            textwrap.dedent(
-                """\
-                # SKILL_INDEX
-
-                | name | scope | status | summary |
-                |---|---|---|---|
-                | atm10-change-protocol | project | scaffold | Test summary. |
-                | atm10-source-of-truth-check | project | scaffold | Test summary. |
-                """
-            ),
-            encoding="utf-8",
+    def test_live_overlay_pack_passes_for_allowed_family(self) -> None:
+        repo_root = self.make_live_overlay_repo(
+            overlay_specs=[
+                {
+                    "family": "atm10",
+                    "skill_names": [
+                        "atm10-change-protocol",
+                        "atm10-source-of-truth-check",
+                    ],
+                    "skill_specs": [
+                        {
+                            "skill_name": "atm10-change-protocol",
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                        {
+                            "skill_name": "atm10-source-of-truth-check",
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PENDING_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                            "notes": [PENDING_NOTE],
+                        },
+                    ],
+                }
+            ]
         )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="atm10-change-protocol",
-            scope="project",
-            policy_allow_implicit=True,
-            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-        )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="atm10-source-of-truth-check",
-            scope="project",
-            policy_allow_implicit=True,
-            techniques=[PENDING_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-            notes=[PENDING_NOTE],
-        )
-        self.write_live_overlay_pack(
-            repo_root,
-            family="atm10",
-            skill_names=[
-                "atm10-change-protocol",
-                "atm10-source-of-truth-check",
-            ],
-        )
-        self.write_catalogs(repo_root)
-
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
-    def test_live_abyss_project_overlay_pack_passes(self) -> None:
-        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
-        self.addCleanup(shutil.rmtree, repo_root, True)
-        (repo_root / "skills").mkdir()
-        (repo_root / "SKILL_INDEX.md").write_text(
-            textwrap.dedent(
-                """\
-                # SKILL_INDEX
-
-                | name | scope | status | summary |
-                |---|---|---|---|
-                | abyss-safe-infra-change | project | scaffold | Test summary. |
-                | abyss-sanitized-share | project | scaffold | Test summary. |
-                """
-            ),
-            encoding="utf-8",
+    def test_live_overlay_contract_parity_passes_for_multiple_families(self) -> None:
+        repo_root = self.make_live_overlay_repo(
+            overlay_specs=[
+                {
+                    "family": "atm10",
+                    "skill_names": [
+                        "atm10-change-protocol",
+                        "atm10-source-of-truth-check",
+                    ],
+                    "skill_specs": [
+                        {
+                            "skill_name": "atm10-change-protocol",
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                        {
+                            "skill_name": "atm10-source-of-truth-check",
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                    ],
+                },
+                {
+                    "family": "abyss",
+                    "skill_names": [
+                        "abyss-safe-infra-change",
+                        "abyss-sanitized-share",
+                    ],
+                    "skill_specs": [
+                        {
+                            "skill_name": "abyss-safe-infra-change",
+                            "scope": "project",
+                            "invocation_mode": "explicit-only",
+                            "status": "scaffold",
+                            "policy_allow_implicit": False,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                        {
+                            "skill_name": "abyss-sanitized-share",
+                            "scope": "project",
+                            "invocation_mode": "explicit-only",
+                            "status": "scaffold",
+                            "policy_allow_implicit": False,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                    ],
+                },
+            ]
         )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="abyss-safe-infra-change",
-            scope="project",
-            invocation_mode="explicit-only",
-            status="scaffold",
-            policy_allow_implicit=False,
-            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-        )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="abyss-sanitized-share",
-            scope="project",
-            invocation_mode="explicit-only",
-            status="scaffold",
-            policy_allow_implicit=False,
-            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-        )
-        self.write_review_checklist(repo_root, "abyss-safe-infra-change")
-        self.write_review_checklist(repo_root, "abyss-sanitized-share")
-        self.write_live_overlay_pack(
-            repo_root,
-            family="abyss",
-            skill_names=[
-                "abyss-safe-infra-change",
-                "abyss-sanitized-share",
-            ],
-        )
-        self.write_catalogs(repo_root)
-
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
     def test_live_project_overlay_requires_repo_relative_language(self) -> None:
-        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
-        self.addCleanup(shutil.rmtree, repo_root, True)
-        (repo_root / "skills").mkdir()
-        (repo_root / "SKILL_INDEX.md").write_text(
-            textwrap.dedent(
-                """\
-                # SKILL_INDEX
-
-                | name | scope | status | summary |
-                |---|---|---|---|
-                | atm10-change-protocol | project | scaffold | Test summary. |
-                """
-            ),
-            encoding="utf-8",
+        family = "atm10"
+        repo_root = self.make_live_overlay_repo(
+            overlay_specs=[
+                {
+                    "family": family,
+                    "skill_names": ["atm10-change-protocol"],
+                    "repo_relative_language": False,
+                    "skill_specs": [
+                        {
+                            "skill_name": "atm10-change-protocol",
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        }
+                    ],
+                }
+            ]
         )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="atm10-change-protocol",
-            scope="project",
-            policy_allow_implicit=True,
-            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-        )
-        self.write_live_overlay_pack(
-            repo_root,
-            family="atm10",
-            skill_names=["atm10-change-protocol"],
-            repo_relative_language=False,
-        )
-        self.write_catalogs(repo_root)
 
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
@@ -1825,89 +1867,122 @@ class ValidateSkillsTests(unittest.TestCase):
         )
 
     def test_live_project_overlay_requires_family_review_doc(self) -> None:
-        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
-        self.addCleanup(shutil.rmtree, repo_root, True)
-        (repo_root / "skills").mkdir()
-        (repo_root / "SKILL_INDEX.md").write_text(
-            textwrap.dedent(
-                """\
-                # SKILL_INDEX
-
-                | name | scope | status | summary |
-                |---|---|---|---|
-                | atm10-change-protocol | project | scaffold | Test summary. |
-                """
-            ),
-            encoding="utf-8",
+        family = "atm10"
+        repo_root = self.make_live_overlay_repo(
+            overlay_specs=[
+                {
+                    "family": family,
+                    "skill_names": ["atm10-change-protocol"],
+                    "include_review_doc": False,
+                    "skill_specs": [
+                        {
+                            "skill_name": "atm10-change-protocol",
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        }
+                    ],
+                }
+            ]
         )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="atm10-change-protocol",
-            scope="project",
-            policy_allow_implicit=True,
-            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-        )
-        self.write_live_overlay_pack(
-            repo_root,
-            family="atm10",
-            skill_names=["atm10-change-protocol"],
-            include_review_doc=False,
-        )
-        self.write_catalogs(repo_root)
 
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "live overlay family 'atm10' is missing docs/overlays/atm10/REVIEW.md",
+            f"live overlay family '{family}' is missing docs/overlays/{family}/REVIEW.md",
             messages,
         )
 
     def test_live_project_overlay_requires_bundle_review_checklist(self) -> None:
-        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
-        self.addCleanup(shutil.rmtree, repo_root, True)
-        (repo_root / "skills").mkdir()
-        (repo_root / "SKILL_INDEX.md").write_text(
-            textwrap.dedent(
-                """\
-                # SKILL_INDEX
-
-                | name | scope | status | summary |
-                |---|---|---|---|
-                | atm10-change-protocol | project | scaffold | Test summary. |
-                | atm10-source-of-truth-check | project | scaffold | Test summary. |
-                """
-            ),
-            encoding="utf-8",
+        family = "atm10"
+        missing_skill = "atm10-source-of-truth-check"
+        repo_root = self.make_live_overlay_repo(
+            overlay_specs=[
+                {
+                    "family": family,
+                    "skill_names": [
+                        "atm10-change-protocol",
+                        missing_skill,
+                    ],
+                    "review_check_skill_names": ["atm10-change-protocol"],
+                    "skill_specs": [
+                        {
+                            "skill_name": "atm10-change-protocol",
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                        {
+                            "skill_name": missing_skill,
+                            "scope": "project",
+                            "policy_allow_implicit": True,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                    ],
+                }
+            ]
         )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="atm10-change-protocol",
-            scope="project",
-            policy_allow_implicit=True,
-            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-        )
-        self.add_skill_bundle(
-            repo_root,
-            skill_name="atm10-source-of-truth-check",
-            scope="project",
-            policy_allow_implicit=True,
-            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
-        )
-        self.write_live_overlay_pack(
-            repo_root,
-            family="atm10",
-            skill_names=[
-                "atm10-change-protocol",
-                "atm10-source-of-truth-check",
-            ],
-            review_check_skill_names=["atm10-change-protocol"],
-        )
-        self.write_catalogs(repo_root)
 
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "live overlay family 'atm10' requires skills/atm10-source-of-truth-check/checks/review.md",
+            f"live overlay family '{family}' requires skills/{missing_skill}/checks/review.md",
+            messages,
+        )
+
+    def test_live_project_overlay_requires_listed_skill_parity(self) -> None:
+        family = "abyss"
+        missing_skill = "abyss-sanitized-share"
+        repo_root = self.make_live_overlay_repo(
+            overlay_specs=[
+                {
+                    "family": family,
+                    "skill_names": [
+                        "abyss-safe-infra-change",
+                        missing_skill,
+                    ],
+                    "listed_skill_names": ["abyss-safe-infra-change"],
+                    "skill_specs": [
+                        {
+                            "skill_name": "abyss-safe-infra-change",
+                            "scope": "project",
+                            "invocation_mode": "explicit-only",
+                            "status": "scaffold",
+                            "policy_allow_implicit": False,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                        {
+                            "skill_name": missing_skill,
+                            "scope": "project",
+                            "invocation_mode": "explicit-only",
+                            "status": "scaffold",
+                            "policy_allow_implicit": False,
+                            "techniques": [
+                                PRIMARY_PUBLISHED_TECHNIQUE,
+                                SECONDARY_PUBLISHED_TECHNIQUE,
+                            ],
+                        },
+                    ],
+                }
+            ]
+        )
+
+        issues = validate_skills.run_validation(repo_root)
+        messages = [issue.message for issue in issues]
+        self.assertIn(
+            f"live project overlay '{family}' must list matching skill bundle(s): {missing_skill}",
             messages,
         )
 
