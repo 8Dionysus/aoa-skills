@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -21,45 +22,62 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
 
 
 class VerifySkillPackTests(unittest.TestCase):
-    def stage_profile_bundle(self, profile: str, bundle_root: pathlib.Path) -> None:
-        completed = run_command(
-            [
-                sys.executable,
-                "scripts/stage_skill_pack.py",
-                "--repo-root",
-                ".",
-                "--profile",
-                profile,
-                "--output-root",
-                str(bundle_root),
-                "--execute",
-                "--overwrite",
-                "--format",
-                "json",
-            ]
-        )
+    def stage_profile_bundle(
+        self,
+        profile: str,
+        bundle_root: pathlib.Path,
+        *,
+        archive_path: pathlib.Path | None = None,
+    ) -> None:
+        command = [
+            sys.executable,
+            "scripts/stage_skill_pack.py",
+            "--repo-root",
+            ".",
+            "--profile",
+            profile,
+            "--output-root",
+            str(bundle_root),
+            "--execute",
+            "--overwrite",
+            "--format",
+            "json",
+        ]
+        if archive_path is not None:
+            command.extend(["--archive-path", str(archive_path)])
+        completed = run_command(command)
         self.assertEqual(
             completed.returncode,
             0,
             msg=f"stage failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
         )
 
-    def install_profile_copy(self, profile: str, dest_root: pathlib.Path) -> None:
-        completed = run_command(
-            [
-                sys.executable,
-                "scripts/install_skill_pack.py",
-                "--repo-root",
-                ".",
-                "--profile",
-                profile,
-                "--dest-root",
-                str(dest_root),
-                "--mode",
-                "copy",
-                "--execute",
-            ]
-        )
+    def install_profile_copy(
+        self,
+        profile: str,
+        dest_root: pathlib.Path,
+        *,
+        bundle_root: pathlib.Path | None = None,
+        bundle_archive: pathlib.Path | None = None,
+    ) -> None:
+        command = [
+            sys.executable,
+            "scripts/install_skill_pack.py",
+            "--repo-root",
+            ".",
+            "--profile",
+            profile,
+            "--dest-root",
+            str(dest_root),
+            "--mode",
+            "copy",
+            "--execute",
+        ]
+        if bundle_root is not None:
+            command.extend(["--bundle-root", str(bundle_root)])
+        if bundle_archive is not None:
+            command.extend(["--bundle-archive", str(bundle_archive)])
+        completed = run_command(command)
         self.assertEqual(
             completed.returncode,
             0,
@@ -72,6 +90,7 @@ class VerifySkillPackTests(unittest.TestCase):
         *,
         install_root: pathlib.Path | None = None,
         bundle_root: pathlib.Path | None = None,
+        bundle_archive: pathlib.Path | None = None,
         strict_root: bool = False,
     ) -> tuple[subprocess.CompletedProcess[str], dict]:
         command = [
@@ -88,11 +107,42 @@ class VerifySkillPackTests(unittest.TestCase):
             command.extend(["--install-root", str(install_root)])
         if bundle_root is not None:
             command.extend(["--bundle-root", str(bundle_root)])
+        if bundle_archive is not None:
+            command.extend(["--bundle-archive", str(bundle_archive)])
         if strict_root:
             command.append("--strict-root")
         completed = run_command(command)
         payload = json.loads(completed.stdout)
         return completed, payload
+
+    def verify_profile_failure(
+        self,
+        profile: str,
+        *,
+        install_root: pathlib.Path | None = None,
+        bundle_root: pathlib.Path | None = None,
+        bundle_archive: pathlib.Path | None = None,
+        strict_root: bool = False,
+    ) -> subprocess.CompletedProcess[str]:
+        command = [
+            sys.executable,
+            "scripts/verify_skill_pack.py",
+            "--repo-root",
+            ".",
+            "--profile",
+            profile,
+            "--format",
+            "json",
+        ]
+        if install_root is not None:
+            command.extend(["--install-root", str(install_root)])
+        if bundle_root is not None:
+            command.extend(["--bundle-root", str(bundle_root)])
+        if bundle_archive is not None:
+            command.extend(["--bundle-archive", str(bundle_archive)])
+        if strict_root:
+            command.append("--strict-root")
+        return run_command(command)
 
     def test_repo_default_install_root_verifies_current_export(self) -> None:
         completed, payload = self.verify_profile("repo-default")
@@ -150,6 +200,38 @@ class VerifySkillPackTests(unittest.TestCase):
             self.assertTrue(payload["verified"])
             self.assertEqual("staged_bundle", payload["source_kind"])
             self.assertEqual(str(bundle_root.resolve()), payload["bundle_root"])
+
+    def test_staged_archive_verifies_offline(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            archive_path = pathlib.Path(tmpdir) / "repo-core-only.zip"
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            self.stage_profile_bundle(
+                "repo-core-only",
+                bundle_root,
+                archive_path=archive_path,
+            )
+            self.install_profile_copy(
+                "repo-core-only",
+                dest_root,
+                bundle_archive=archive_path,
+            )
+
+            completed, payload = self.verify_profile(
+                "repo-core-only",
+                install_root=dest_root,
+                bundle_archive=archive_path,
+            )
+
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"verify failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            self.assertTrue(payload["verified"])
+            self.assertEqual("staged_archive", payload["source_kind"])
+            self.assertIsNone(payload["bundle_root"])
+            self.assertEqual(str(archive_path.resolve()), payload["bundle_archive"])
 
     def test_missing_expected_skill_fails_verification(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -267,6 +349,57 @@ class VerifySkillPackTests(unittest.TestCase):
             self.assertEqual(1, completed.returncode)
             self.assertFalse(payload["verified"])
             self.assertIn("custom-skill", payload["extra_skill_dirs"])
+
+    def test_corrupted_archive_fails_cleanly(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            archive_path = pathlib.Path(tmpdir) / "corrupted.zip"
+            archive_path.write_text("not a zip", encoding="utf-8")
+
+            completed = self.verify_profile_failure(
+                "repo-core-only",
+                bundle_archive=archive_path,
+            )
+
+            self.assertNotEqual(0, completed.returncode)
+            self.assertIn("invalid bundle archive", completed.stderr)
+
+    def test_archive_missing_bundle_manifest_fails_cleanly(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            archive_path = pathlib.Path(tmpdir) / "missing-manifest.zip"
+            with zipfile.ZipFile(archive_path, mode="w") as archive:
+                archive.writestr(
+                    "aoa-skills-repo-core-only/.agents/skills/aoa-change-protocol/SKILL.md",
+                    "# placeholder\n",
+                )
+
+            completed = self.verify_profile_failure(
+                "repo-core-only",
+                bundle_archive=archive_path,
+            )
+
+            self.assertNotEqual(0, completed.returncode)
+            self.assertIn("missing bundle_manifest.json", completed.stderr)
+
+    def test_archive_with_multiple_bundle_roots_fails_cleanly(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            archive_path = pathlib.Path(tmpdir) / "multiple-roots.zip"
+            with zipfile.ZipFile(archive_path, mode="w") as archive:
+                archive.writestr(
+                    "aoa-skills-repo-core-only-a/bundle_manifest.json",
+                    "{}\n",
+                )
+                archive.writestr(
+                    "aoa-skills-repo-core-only-b/bundle_manifest.json",
+                    "{}\n",
+                )
+
+            completed = self.verify_profile_failure(
+                "repo-core-only",
+                bundle_archive=archive_path,
+            )
+
+            self.assertNotEqual(0, completed.returncode)
+            self.assertIn("exactly one bundle root", completed.stderr)
 
 
 if __name__ == "__main__":

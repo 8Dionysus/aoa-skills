@@ -27,6 +27,7 @@ Dry-run or apply an install profile:
 python scripts/install_skill_pack.py --repo-root . --profile user-curated-core
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute
+python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute
 ```
 
 Stage a profile-scoped handoff bundle:
@@ -34,6 +35,7 @@ Stage a profile-scoped handoff bundle:
 ```bash
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --format json
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
+python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
 ```
 
 Verify an installed profile/root against the current portable export:
@@ -43,6 +45,7 @@ python scripts/verify_skill_pack.py --repo-root . --profile repo-default --forma
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --format json
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --strict-root --format markdown
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --install-root /tmp/aoa-skills --format json
+python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --install-root /tmp/aoa-skills --format json
 ```
 
 Render a disable snippet for a profile:
@@ -65,7 +68,7 @@ If you need a machine-readable packaging check rather than only a dry-run instal
 - read `generated/release_manifest.json` for the current `install_profile_revisions`
 - read `generated/skill_bundle_index.json` when you want the inverse view: which install profiles currently include a given skill
 - use `scripts/stage_skill_pack.py` when you want one repo-local, profile-scoped handoff directory with its own `bundle_manifest.json`
-- use `scripts/verify_skill_pack.py` when you want to verify one real install root against either the current export or a staged bundle
+- use `scripts/verify_skill_pack.py` when you want to verify one real install root against either the current export, a staged bundle directory, or a staged ZIP handoff
 
 That pair gives an offline verification surface for profile membership drift without introducing a separate package registry.
 
@@ -80,7 +83,14 @@ That pair gives an offline verification surface for profile membership drift wit
 
 - dry-run output gives one deterministic handoff plan with `profile_revision`, `release_identity`, `file_digests`, and `bundle_digest`
 - `--execute` materializes a bundle directory containing only `bundle_manifest.json` plus the staged `.agents/skills/<skill>` subset
+- `--archive-path` adds an optional ZIP transport wrapper over that same staged directory without changing the bundle-local contract
 - the staged bundle does not copy the repo-wide `generated/release_manifest.json` because that file describes the whole export, not one profile subset
+
+The ZIP handoff remains repo-local and offline:
+
+- the staged directory stays the canonical intermediate
+- the archive is only a transport wrapper with one top-level folder `aoa-skills-<profile>/`
+- install and verify can consume the ZIP directly; no separate unpack command is required
 
 ## Round-trip handoff
 
@@ -93,6 +103,14 @@ python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bun
 ```
 
 That keeps the first handoff object profile-scoped, deterministic, and fully offline.
+
+The ZIP transport variant is:
+
+```bash
+python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
+python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
+python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --install-root /tmp/aoa-skills --format json
+```
 
 ## Why profiles matter
 

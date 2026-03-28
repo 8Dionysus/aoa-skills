@@ -4,6 +4,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -25,6 +26,7 @@ class StageSkillPackTests(unittest.TestCase):
         profile: str,
         bundle_root: pathlib.Path,
         *,
+        archive_path: pathlib.Path | None = None,
         execute: bool,
         overwrite: bool = False,
     ) -> tuple[subprocess.CompletedProcess[str], dict]:
@@ -40,6 +42,8 @@ class StageSkillPackTests(unittest.TestCase):
             "--format",
             "json",
         ]
+        if archive_path is not None:
+            command.extend(["--archive-path", str(archive_path)])
         if execute:
             command.append("--execute")
         if overwrite:
@@ -71,6 +75,31 @@ class StageSkillPackTests(unittest.TestCase):
             self.assertIn("scripts/verify_skill_pack.py", payload["recommended_verify_command"])
             self.assertIn("--bundle-root", payload["recommended_verify_command"])
 
+    def test_stage_dry_run_with_archive_reports_archive_transport(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            archive_path = pathlib.Path(tmpdir) / "repo-core-only.zip"
+            completed, payload = self.stage_profile(
+                "repo-core-only",
+                bundle_root,
+                archive_path=archive_path,
+                execute=False,
+            )
+
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"stage failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            self.assertEqual(str(archive_path.resolve()), payload["archive_path"])
+            self.assertEqual("zip", payload["archive_format"])
+            self.assertIsNone(payload["archive_sha256"])
+            self.assertIsNone(payload["archive_bytes"])
+            self.assertIn("--bundle-archive", payload["recommended_install_command"])
+            self.assertNotIn("--bundle-root", payload["recommended_install_command"])
+            self.assertIn("--bundle-archive", payload["recommended_verify_command"])
+            self.assertNotIn("--bundle-root", payload["recommended_verify_command"])
+
     def test_execute_stage_creates_deterministic_bundle_manifest(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             bundle_root_a = pathlib.Path(tmpdir) / "bundle-a"
@@ -99,6 +128,48 @@ class StageSkillPackTests(unittest.TestCase):
             self.assertEqual(manifest_a, manifest_b)
             self.assertEqual(manifest_a["bundle_digest"], payload_a["bundle_digest"])
             self.assertEqual(manifest_b["bundle_digest"], payload_b["bundle_digest"])
+
+    def test_execute_stage_with_archive_creates_deterministic_zip(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root_a = pathlib.Path(tmpdir) / "bundle-a"
+            bundle_root_b = pathlib.Path(tmpdir) / "bundle-b"
+            archive_a = pathlib.Path(tmpdir) / "bundle-a.zip"
+            archive_b = pathlib.Path(tmpdir) / "bundle-b.zip"
+
+            completed_a, payload_a = self.stage_profile(
+                "repo-core-only",
+                bundle_root_a,
+                archive_path=archive_a,
+                execute=True,
+                overwrite=True,
+            )
+            completed_b, payload_b = self.stage_profile(
+                "repo-core-only",
+                bundle_root_b,
+                archive_path=archive_b,
+                execute=True,
+                overwrite=True,
+            )
+
+            self.assertEqual(0, completed_a.returncode, msg=completed_a.stderr)
+            self.assertEqual(0, completed_b.returncode, msg=completed_b.stderr)
+            self.assertTrue(archive_a.exists())
+            self.assertTrue(archive_b.exists())
+            self.assertEqual(archive_a.read_bytes(), archive_b.read_bytes())
+            self.assertEqual(payload_a["archive_sha256"], payload_b["archive_sha256"])
+            self.assertEqual(payload_a["archive_bytes"], payload_b["archive_bytes"])
+
+            with zipfile.ZipFile(archive_a) as archive:
+                names = sorted(archive.namelist())
+            self.assertTrue(names)
+            self.assertTrue(
+                all(name.startswith("aoa-skills-repo-core-only/") for name in names),
+                msg=names,
+            )
+            self.assertIn(
+                "aoa-skills-repo-core-only/bundle_manifest.json",
+                names,
+            )
 
     def test_staged_bundle_round_trip_install_and_verify(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
