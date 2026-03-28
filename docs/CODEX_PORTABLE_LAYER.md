@@ -84,6 +84,7 @@ These surfaces make installation, local adaptation, trust checks, and context re
 `generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, relationship views, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
 `scripts/stage_skill_pack.py` is the first staged handoff primitive above that contract: it materializes one profile-scoped bundle directory with a bundle-local `bundle_manifest.json` instead of copying the full repo release manifest into every handoff.
 `scripts/stage_skill_pack.py --archive-path ...` adds an optional ZIP transport wrapper over that same staged directory without adding a second manifest or widening the release contract.
+`scripts/inspect_skill_pack.py` is the first self-contained handoff inspection primitive over that bundle-local contract: it checks manifest integrity, staged file digests, bundle digest, and archive layout before any install step.
 `scripts/verify_skill_pack.py` then verifies that one installed profile/root still matches either the live repo export, one staged bundle directory, or one staged ZIP handoff without introducing a new registry surface.
 
 Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
@@ -154,6 +155,7 @@ It intentionally keeps three things separate:
 - the release manifest only pins which portable artifact groups and relationship views exist and which bundle/profile revisions they currently expose
 - a staged profile bundle carries its own `bundle_manifest.json` as the narrow handoff contract over one profile subset
 - a staged ZIP handoff is only a transport wrapper over that same bundle-local contract
+- bundle inspection stays self-contained to the handoff object rather than reconciling against the live repo export
 - install verification remains a runtime check over a real target root via `scripts/verify_skill_pack.py`; it is not a committed generated catalog
 
 ## Build and validation
@@ -177,6 +179,11 @@ Stage one profile-scoped handoff bundle:
 Stage one profile-scoped handoff bundle plus ZIP transport:
 
     python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
+
+Inspect one staged bundle or ZIP handoff:
+
+    python scripts/inspect_skill_pack.py --bundle-root /tmp/repo-core-only-bundle --format json
+    python scripts/inspect_skill_pack.py --bundle-archive /tmp/repo-core-only.zip --format json
 
 Verify one installed profile/root against a staged bundle:
 
