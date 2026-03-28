@@ -26,6 +26,7 @@ class ReleaseDocsTests(unittest.TestCase):
         releasing = RELEASING_PATH.read_text(encoding="utf-8")
 
         self.assertIn("scripts/release_check.py", releasing)
+        self.assertIn("--include-packaging-smoke", releasing)
         self.assertIn("Create a Git tag", releasing)
         self.assertIn("GitHub release", releasing)
 

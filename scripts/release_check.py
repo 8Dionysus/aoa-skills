@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -39,6 +40,16 @@ WORKTREE_SNAPSHOT_COMMAND = ("git", "status", "--porcelain=v1", "--untracked-fil
 TRACKED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--binary", "--no-ext-diff")
 CACHED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--cached", "--binary", "--no-ext-diff")
 CLEAN_REPO_DIFF_COMMAND = ("git", "diff", "--exit-code")
+PACKAGING_SMOKE_COMMAND = (
+    "python",
+    "scripts/smoke_skill_pack_handoff.py",
+    "--repo-root",
+    ".",
+    "--transport",
+    "both",
+    "--format",
+    "json",
+)
 
 
 @dataclass(frozen=True)
@@ -100,18 +111,34 @@ def repo_started_without_tracked_diff(snapshot: RepoStateSnapshot) -> bool:
     return not snapshot.tracked_diff.strip() and not snapshot.cached_diff.strip()
 
 
-def main() -> int:
+def build_release_check_sequence(*, include_packaging_smoke: bool) -> tuple[tuple[str, ...], ...]:
+    if include_packaging_smoke:
+        return (*RELEASE_CHECK_COMMAND_SEQUENCE, PACKAGING_SMOKE_COMMAND)
+    return RELEASE_CHECK_COMMAND_SEQUENCE
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--include-packaging-smoke",
+        action="store_true",
+        help="Run the staged bundle handoff smoke path after the standard release check sequence",
+    )
+    args = parser.parse_args(argv)
     repo_root = Path(__file__).resolve().parents[1]
+    release_check_sequence = build_release_check_sequence(
+        include_packaging_smoke=args.include_packaging_smoke
+    )
     before_state = capture_repo_state(repo_root)
 
-    for command in RELEASE_CHECK_COMMAND_SEQUENCE:
+    for command in release_check_sequence:
         run_command(command, repo_root)
 
     after_state = capture_repo_state(repo_root)
     final_state = after_state
     if repo_state_changed(before_state, after_state):
         print("[info] worktree changed during release check; rerunning once to confirm stable outputs")
-        for command in RELEASE_CHECK_COMMAND_SEQUENCE:
+        for command in release_check_sequence:
             run_command(command, repo_root)
 
         stabilized_state = capture_repo_state(repo_root)
@@ -140,4 +167,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(main(sys.argv[1:]))

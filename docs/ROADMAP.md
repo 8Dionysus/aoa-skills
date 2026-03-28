@@ -136,14 +136,17 @@ Near-term sequence inside this wave:
 4. add profile-scoped staged bundle handoff on top of the same contract
 5. add ZIP handoff and direct archive install or verify on top of the same staged bundle contract
 6. add self-contained staged-bundle inspection before install-side verification
-7. only then consider any broader export/import ergonomics or archival polish beyond ZIP transport plus inspection
+7. add one-shot bundle import ergonomics on top of staged bundle or ZIP sources
+8. add bundle-local README polish so staged handoffs are more self-explanatory for receivers
+9. add a release-facing packaging smoke path over the same staged directory and ZIP transport
+10. only then consider any broader export/import ergonomics or archival polish beyond the current import-plus-smoke path
 
 The compatibility/lineage follow-up should stay inside existing packaging surfaces:
 - `generated/skill_bundle_index.*` for per-skill profile membership, artifact-group coverage, and technique-lineage detail
 - `generated/skill_graph.*` for relationship topology
 - `generated/release_manifest.json` only as the release-facing pinning layer over those views
 
-The next packaging frontier after bundle inspection is broader export or import ergonomics beyond the current staged directory plus ZIP transport plus preflight inspection, not another packaging-contract bootstrap.
+The next packaging frontier after the current import, bundle-README, and packaging-smoke passes is broader export or import ergonomics beyond the current staged directory plus ZIP transport plus preflight inspection plus release smoke, not another packaging-contract bootstrap.
 
 ## Long-term direction
 
