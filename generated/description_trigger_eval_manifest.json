@@ -11,16 +11,54 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 17,
-  "total_cases": 87,
+  "skill_count": 19,
+  "total_cases": 95,
   "case_class_totals": {
-    "explicit-handle": 17,
-    "manual-invocation-required": 10,
+    "explicit-handle": 19,
+    "manual-invocation-required": 14,
     "prefer-other-skill": 19,
-    "should-not-trigger": 17,
+    "should-not-trigger": 19,
     "should-trigger": 24
   },
   "skills": [
+    {
+      "name": "abyss-safe-infra-change",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55",
+      "family": "overlay-vs-base-skill",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84",
+      "family": "overlay-vs-base-skill",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
     {
       "name": "aoa-adr-write",
       "invocation_mode": "explicit-preferred",
@@ -250,7 +288,7 @@
       "name": "aoa-safe-infra-change",
       "invocation_mode": "explicit-only",
       "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a",
-      "family": "safety-and-mutation-gating",
+      "family": "overlay-vs-base-skill",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
@@ -270,7 +308,7 @@
       "name": "aoa-sanitized-share",
       "invocation_mode": "explicit-only",
       "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae",
-      "family": "safety-and-mutation-gating",
+      "family": "overlay-vs-base-skill",
       "total_cases": 4,
       "case_class_totals": {
         "explicit-handle": 1,

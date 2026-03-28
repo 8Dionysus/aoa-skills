@@ -97,10 +97,10 @@ Add:
 
 ## v0.6 project overlays
 
-Continue thin project-shaped overlays now that the public core has a first live exemplar pack:
-- deepen `atm10-*` from initial scaffold overlays into a clearer project-family surface with explicit maturity goals
-- move `atm10-*` from "exists and evaluates" toward reviewable overlay-family guidance that can justify status advancement
-- add first `abyss-*` exemplar overlays after the `atm10` pattern is stable
+Continue thin project-shaped overlays now that the public core has two live exemplar packs:
+- keep `atm10-*` as the stable template family for project-overlay maturity semantics
+- use the first `abyss-*` family to prove that the same overlay contract transfers to a second repo family without widening scope
+- harden shared docs, validation, and export expectations across both live families before adding any third family
 
 Target shape:
 - repository-local commands and source-of-truth files
@@ -110,9 +110,9 @@ Target shape:
 - `docs/OVERLAY_SPEC.md` and `docs/overlays/atm10/PROJECT_OVERLAY.md` define the repo-local overlay contract for live exemplar packs without turning them into downstream integrations
 
 Recommended sequencing inside this wave:
-- finish the `atm10` maturity pattern first
-- only then add the first `abyss-*` exemplar family
-- prefer a second family only if it clarifies the overlay contract rather than merely increasing bundle count
+- finish cross-family hardening for `atm10` plus `abyss`
+- only then consider any additional live family
+- prefer a third family only if it clarifies the overlay contract rather than merely increasing bundle count
 
 ## v0.7 packaging and distribution
 

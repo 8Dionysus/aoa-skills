@@ -5,14 +5,16 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 17
-- multi-technique skills: 15
+- total skills: 19
+- multi-technique skills: 17
 - single-technique skills: 2
 - approved exceptions: 2
 - needs reframe: 0
 
 | name | techniques | composition class | recommended action | exception review |
 |---|---:|---|---|---|
+| abyss-safe-infra-change | 2 | multi_technique | keep_multi_technique | - |
+| abyss-sanitized-share | 2 | multi_technique | keep_multi_technique | - |
 | aoa-adr-write | 2 | multi_technique | keep_multi_technique | - |
 | aoa-approval-gate-check | 1 | single_technique_exception | keep_exception | docs/reviews/skill-composition-exceptions/aoa-approval-gate-check.md |
 | aoa-bounded-context-map | 2 | multi_technique | keep_multi_technique | - |

@@ -74,6 +74,8 @@ ADJACENCY_EXPECTATIONS = {
     "aoa-property-invariants": ["aoa-invariant-coverage-audit"],
     "atm10-change-protocol": ["atm10-source-of-truth-check"],
     "atm10-source-of-truth-check": ["atm10-change-protocol"],
+    "abyss-safe-infra-change": ["abyss-sanitized-share"],
+    "abyss-sanitized-share": ["abyss-safe-infra-change"],
 }
 
 

@@ -2,6 +2,66 @@
   "edges": [
     {
       "kind": "maturity",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "technique_AOA_T_0028"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_abyss_safe_infra_change",
+      "target": "technique_AOA_T_0001"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_abyss_sanitized_share",
+      "target": "status_evaluated"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_abyss_sanitized_share",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_abyss_sanitized_share",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_abyss_sanitized_share",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_abyss_sanitized_share",
+      "target": "technique_AOA_T_0034"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_abyss_sanitized_share",
+      "target": "technique_AOA_T_0002"
+    },
+    {
+      "kind": "maturity",
       "source": "skill_aoa_adr_write",
       "target": "status_canonical"
     },
@@ -518,6 +578,56 @@
   ],
   "nodes": [
     {
+      "id": "skill_abyss_safe_infra_change",
+      "label": "abyss-safe-infra-change",
+      "type": "skill"
+    },
+    {
+      "id": "status_evaluated",
+      "label": "status: evaluated",
+      "type": "status"
+    },
+    {
+      "id": "scope_project",
+      "label": "scope: project",
+      "type": "scope"
+    },
+    {
+      "id": "lineage_published",
+      "label": "lineage: published",
+      "type": "lineage"
+    },
+    {
+      "id": "policy_explicit_only",
+      "label": "invocation: explicit-only",
+      "type": "policy"
+    },
+    {
+      "id": "technique_AOA_T_0028",
+      "label": "AOA-T-0028",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0001",
+      "label": "AOA-T-0001",
+      "type": "technique"
+    },
+    {
+      "id": "skill_abyss_sanitized_share",
+      "label": "abyss-sanitized-share",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_0034",
+      "label": "AOA-T-0034",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0002",
+      "label": "AOA-T-0002",
+      "type": "technique"
+    },
+    {
       "id": "skill_aoa_adr_write",
       "label": "aoa-adr-write",
       "type": "skill"
@@ -533,11 +643,6 @@
       "type": "scope"
     },
     {
-      "id": "lineage_published",
-      "label": "lineage: published",
-      "type": "lineage"
-    },
-    {
       "id": "policy_explicit_preferred",
       "label": "invocation: explicit-preferred",
       "type": "policy"
@@ -545,11 +650,6 @@
     {
       "id": "technique_AOA_T_0033",
       "label": "AOA-T-0033",
-      "type": "technique"
-    },
-    {
-      "id": "technique_AOA_T_0002",
-      "label": "AOA-T-0002",
       "type": "technique"
     },
     {
@@ -561,16 +661,6 @@
       "id": "scope_risk",
       "label": "scope: risk",
       "type": "scope"
-    },
-    {
-      "id": "policy_explicit_only",
-      "label": "invocation: explicit-only",
-      "type": "policy"
-    },
-    {
-      "id": "technique_AOA_T_0028",
-      "label": "AOA-T-0028",
-      "type": "technique"
     },
     {
       "id": "skill_aoa_bounded_context_map",
@@ -586,11 +676,6 @@
       "id": "skill_aoa_change_protocol",
       "label": "aoa-change-protocol",
       "type": "skill"
-    },
-    {
-      "id": "technique_AOA_T_0001",
-      "label": "AOA-T-0001",
-      "type": "technique"
     },
     {
       "id": "skill_aoa_contract_test",
@@ -611,11 +696,6 @@
       "id": "skill_aoa_core_logic_boundary",
       "label": "aoa-core-logic-boundary",
       "type": "skill"
-    },
-    {
-      "id": "status_evaluated",
-      "label": "status: evaluated",
-      "type": "status"
     },
     {
       "id": "skill_aoa_dry_run_first",
@@ -683,11 +763,6 @@
       "type": "skill"
     },
     {
-      "id": "technique_AOA_T_0034",
-      "label": "AOA-T-0034",
-      "type": "technique"
-    },
-    {
       "id": "skill_aoa_source_of_truth_check",
       "label": "aoa-source-of-truth-check",
       "type": "skill"
@@ -718,11 +793,6 @@
       "type": "skill"
     },
     {
-      "id": "scope_project",
-      "label": "scope: project",
-      "type": "scope"
-    },
-    {
       "id": "skill_atm10_source_of_truth_check",
       "label": "atm10-source-of-truth-check",
       "type": "skill"
@@ -730,6 +800,122 @@
   ],
   "skill_graph_version": 1,
   "skills": [
+    {
+      "bundle_files": [
+        "skills/abyss-safe-infra-change/SKILL.md",
+        "skills/abyss-safe-infra-change/techniques.yaml",
+        "skills/abyss-safe-infra-change/agents/openai.yaml",
+        "skills/abyss-safe-infra-change/examples/example.md",
+        "skills/abyss-safe-infra-change/checks/review.md",
+        "docs/reviews/status-promotions/abyss-safe-infra-change.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "4f8e58b5f222fc24bae83f681327fc87ddf2b397ea884fd902a3d92498b0b434",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 4,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "abyss-safe-infra-change",
+      "promotion_review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
+      "scope": "project",
+      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "skill_revision": "4f8e58b5f222",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/abyss-safe-infra-change/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/abyss-safe-infra-change/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0028",
+        "AOA-T-0001"
+      ]
+    },
+    {
+      "bundle_files": [
+        "skills/abyss-sanitized-share/SKILL.md",
+        "skills/abyss-sanitized-share/techniques.yaml",
+        "skills/abyss-sanitized-share/agents/openai.yaml",
+        "skills/abyss-sanitized-share/examples/example.md",
+        "skills/abyss-sanitized-share/checks/review.md",
+        "docs/reviews/status-promotions/abyss-sanitized-share.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "b1f3322333fc1b66c543a6649243b3879c1a4ac9db11448dcd3e5ad2ee2071bc",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 1,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 4,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 1,
+        "walkthrough": 1
+      },
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "abyss-sanitized-share",
+      "promotion_review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
+      "scope": "project",
+      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "skill_revision": "b1f3322333fc",
+      "status": "evaluated",
+      "support_artifacts": [
+        {
+          "path": "skills/abyss-sanitized-share/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/abyss-sanitized-share/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0034",
+        "AOA-T-0002"
+      ]
+    },
     {
       "bundle_files": [
         "skills/aoa-adr-write/SKILL.md",

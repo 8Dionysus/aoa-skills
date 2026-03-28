@@ -128,6 +128,12 @@ def tokenize(text: str) -> list[str]:
     return [token for token in normalize(text).split() if len(token) > 2 and token not in STOPWORDS]
 
 
+def overlay_family_hint(skill_name: str, project_overlay: bool) -> str | None:
+    if not project_overlay:
+        return None
+    return skill_name.split("-", 1)[0]
+
+
 def phrase_tokens(phrases: list[str]) -> list[str]:
     seen: dict[str, None] = {}
     for phrase in phrases:
@@ -297,7 +303,10 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
                     "expected_top1": skill_name,
                     "expected_shortlist_includes": [skill_name],
                     "expected_manual_invocation": signal["manual_invocation_required"],
-                    "repo_family_hint": "atm10" if signal["project_overlay"] else None,
+                    "repo_family_hint": overlay_family_hint(
+                        skill_name,
+                        signal["project_overlay"],
+                    ),
                 }
             )
         if negative_case is not None:
@@ -324,7 +333,10 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
                     "expected_shortlist_includes": [defer_case["expected_skill"]],
                     "expected_shortlist_excludes": [skill_name],
                     "expected_manual_invocation": False,
-                    "repo_family_hint": "atm10" if signal["project_overlay"] else None,
+                    "repo_family_hint": overlay_family_hint(
+                        skill_name,
+                        signal["project_overlay"],
+                    ),
                 }
             )
 

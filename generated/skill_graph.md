@@ -4,26 +4,30 @@ This derived file summarizes maturity, lineage, scope, invocation, and technique
 
 ```mermaid
 graph TD
+  skill_abyss_safe_infra_change["abyss-safe-infra-change"]
+  status_evaluated["status: evaluated"]
+  scope_project["scope: project"]
+  lineage_published["lineage: published"]
+  policy_explicit_only["invocation: explicit-only"]
+  technique_AOA_T_0028["AOA-T-0028"]
+  technique_AOA_T_0001["AOA-T-0001"]
+  skill_abyss_sanitized_share["abyss-sanitized-share"]
+  technique_AOA_T_0034["AOA-T-0034"]
+  technique_AOA_T_0002["AOA-T-0002"]
   skill_aoa_adr_write["aoa-adr-write"]
   status_canonical["status: canonical"]
   scope_core["scope: core"]
-  lineage_published["lineage: published"]
   policy_explicit_preferred["invocation: explicit-preferred"]
   technique_AOA_T_0033["AOA-T-0033"]
-  technique_AOA_T_0002["AOA-T-0002"]
   skill_aoa_approval_gate_check["aoa-approval-gate-check"]
   scope_risk["scope: risk"]
-  policy_explicit_only["invocation: explicit-only"]
-  technique_AOA_T_0028["AOA-T-0028"]
   skill_aoa_bounded_context_map["aoa-bounded-context-map"]
   technique_AOA_T_0016["AOA-T-0016"]
   skill_aoa_change_protocol["aoa-change-protocol"]
-  technique_AOA_T_0001["AOA-T-0001"]
   skill_aoa_contract_test["aoa-contract-test"]
   technique_AOA_T_0003["AOA-T-0003"]
   technique_AOA_T_0015["AOA-T-0015"]
   skill_aoa_core_logic_boundary["aoa-core-logic-boundary"]
-  status_evaluated["status: evaluated"]
   skill_aoa_dry_run_first["aoa-dry-run-first"]
   technique_AOA_T_0004["AOA-T-0004"]
   skill_aoa_invariant_coverage_audit["aoa-invariant-coverage-audit"]
@@ -37,15 +41,25 @@ graph TD
   technique_AOA_T_0007["AOA-T-0007"]
   skill_aoa_safe_infra_change["aoa-safe-infra-change"]
   skill_aoa_sanitized_share["aoa-sanitized-share"]
-  technique_AOA_T_0034["AOA-T-0034"]
   skill_aoa_source_of_truth_check["aoa-source-of-truth-check"]
   technique_AOA_T_0013["AOA-T-0013"]
   technique_AOA_T_0009["AOA-T-0009"]
   skill_aoa_tdd_slice["aoa-tdd-slice"]
   technique_AOA_T_0014["AOA-T-0014"]
   skill_atm10_change_protocol["atm10-change-protocol"]
-  scope_project["scope: project"]
   skill_atm10_source_of_truth_check["atm10-source-of-truth-check"]
+  skill_abyss_safe_infra_change -->|maturity| status_evaluated
+  skill_abyss_safe_infra_change -->|scope| scope_project
+  skill_abyss_safe_infra_change -->|lineage| lineage_published
+  skill_abyss_safe_infra_change -->|invocation_policy| policy_explicit_only
+  skill_abyss_safe_infra_change -->|depends_on| technique_AOA_T_0028
+  skill_abyss_safe_infra_change -->|depends_on| technique_AOA_T_0001
+  skill_abyss_sanitized_share -->|maturity| status_evaluated
+  skill_abyss_sanitized_share -->|scope| scope_project
+  skill_abyss_sanitized_share -->|lineage| lineage_published
+  skill_abyss_sanitized_share -->|invocation_policy| policy_explicit_only
+  skill_abyss_sanitized_share -->|depends_on| technique_AOA_T_0034
+  skill_abyss_sanitized_share -->|depends_on| technique_AOA_T_0002
   skill_aoa_adr_write -->|maturity| status_canonical
   skill_aoa_adr_write -->|scope| scope_core
   skill_aoa_adr_write -->|lineage| lineage_published
@@ -153,6 +167,8 @@ graph TD
 
 | name | status | scope | invocation | lineage | techniques |
 |---|---|---|---|---|---|
+| abyss-safe-infra-change | evaluated | project | explicit-only | published | AOA-T-0028, AOA-T-0001 |
+| abyss-sanitized-share | evaluated | project | explicit-only | published | AOA-T-0034, AOA-T-0002 |
 | aoa-adr-write | canonical | core | explicit-preferred | published | AOA-T-0033, AOA-T-0002 |
 | aoa-approval-gate-check | canonical | risk | explicit-only | published | AOA-T-0028 |
 | aoa-bounded-context-map | canonical | core | explicit-preferred | published | AOA-T-0016, AOA-T-0002 |

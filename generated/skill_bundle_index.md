@@ -5,6 +5,8 @@ It is repo-local packaging metadata, not a release or registry surface.
 
 | name | revision | status | scope | invocation | lineage | candidate ready | eval ready | support artifacts |
 |---|---|---|---|---|---|---|---|---:|
+| abyss-safe-infra-change | 4f8e58b5f222 | evaluated | project | explicit-only | published | false | true | 3 |
+| abyss-sanitized-share | b1f3322333fc | evaluated | project | explicit-only | published | false | true | 3 |
 | aoa-adr-write | 932b655e2fca | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-approval-gate-check | 0721ff9daa5f | canonical | risk | explicit-only | published | true | true | 4 |
 | aoa-bounded-context-map | d30b34e184aa | canonical | core | explicit-preferred | published | true | true | 3 |

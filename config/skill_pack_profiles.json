@@ -22,6 +22,8 @@
         "aoa-sanitized-share",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice",
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share",
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ]
@@ -62,6 +64,15 @@
       "skills": [
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
+      ]
+    },
+    "repo-abyss-overlay": {
+      "description": "Install only the Abyss project overlays into a repository root.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share"
       ]
     },
     "user-curated-core": {

@@ -41,6 +41,18 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: abyss-safe-infra-change
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: abyss-sanitized-share
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-tdd-slice
     forbidden_runtime_terms:
       - aoa-techniques
@@ -205,6 +217,34 @@ trigger_cases:
     required_phrases:
       - the task really needs a broader playbook or scenario bundle rather than a thin overlay
       - the work would introduce new upstream technique meaning instead of adapting the local repo surface
+  - skill: abyss-safe-infra-change
+    case_id: abyss_safe_infra_change_local_overlay
+    prompt: Apply a bounded runtime or configuration change inside an abyss repository where repo-relative commands, local authority notes, and rollback checks still need to be named explicitly.
+    expected: use
+    required_phrases:
+      - the base `aoa-safe-infra-change` workflow is already correct, but an `abyss-*` repo needs repo-relative operational surfaces, commands, or approval notes
+      - the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family
+  - skill: abyss-safe-infra-change
+    case_id: abyss_safe_infra_change_base_skill_sufficient
+    prompt: Apply the normal safe infra workflow where no abyss-specific local adaptation is needed because the base skill already names everything required.
+    expected: do_not_use
+    required_phrases:
+      - no `abyss-*` repo adaptation is needed and the base `aoa-safe-infra-change` skill is sufficient
+      - the overlay would only restate the base workflow without adding a real local surface
+  - skill: abyss-sanitized-share
+    case_id: abyss_sanitized_share_local_surface
+    prompt: Turn raw abyss incident material into a shareable artifact and place it in one repo-relative canonical location with explicit local sanitization thresholds.
+    expected: use
+    required_phrases:
+      - the base `aoa-sanitized-share` workflow is already correct, but an `abyss-*` repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds
+      - raw logs, diagnostics, config snippets, or incident notes from one `abyss-*` repo need a bounded public-safe or wider-shareable form
+  - skill: abyss-sanitized-share
+    case_id: abyss_sanitized_share_base_skill_sufficient
+    prompt: Prepare a normal sanitized artifact where no abyss-specific local surface or threshold needs to be named because the base skill is already sufficient.
+    expected: do_not_use
+    required_phrases:
+      - no `abyss-*` repo adaptation is needed and the base `aoa-sanitized-share` skill is sufficient
+      - the overlay would only restate the base sanitization workflow without adding a real local sharing surface
 
   - skill: aoa-tdd-slice
     case_id: tdd_slice_bounded_behavior
@@ -685,6 +725,26 @@ adjacency_cases:
       - This is an atm10-source-of-truth-check case, not an atm10-change-protocol case.
       - A local source-of-truth map that names the authoritative repo-relative file and the matching review posture.
     forbidden_output_phrases: []
+  - skill: abyss-safe-infra-change
+    case_id: abyss_safe_infra_change_vs_sanitized_share_boundary
+    prompt: In an abyss repository, choose between a bounded operational mutation and a sanitized sharing pass because the real work is changing runtime configuration rather than preparing a shareable artifact.
+    expected: use
+    adjacent_skill: abyss-sanitized-share
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-safe-infra-change/abyss_safe_infra_change_vs_sanitized_share_boundary.md
+    required_output_phrases:
+      - This is an abyss-safe-infra-change case, not an abyss-sanitized-share case.
+      - A bounded local infra-change note that keeps repo-relative operational surfaces, commands, and rollback posture explicit.
+    forbidden_output_phrases: []
+  - skill: abyss-sanitized-share
+    case_id: abyss_sanitized_share_vs_safe_infra_change_boundary
+    prompt: In an abyss repository, choose between sanitizing a shareable artifact and changing runtime configuration because the main need is to publish a safe summary from raw local material.
+    expected: use
+    adjacent_skill: abyss-safe-infra-change
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-sanitized-share/abyss_sanitized_share_vs_safe_infra_change_boundary.md
+    required_output_phrases:
+      - This is an abyss-sanitized-share case, not an abyss-safe-infra-change case.
+      - A sanitized local share artifact that names the repo-relative destination and explicit local sharing thresholds.
+    forbidden_output_phrases: []
 
 snapshot_cases:
   - skill: aoa-adr-write
@@ -776,6 +836,42 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection that says the request needs a broader playbook or a different base skill, not a thin atm10 overlay.
+    forbidden_output_phrases: []
+  - skill: abyss-safe-infra-change
+    case_id: abyss_safe_infra_change_local_overlay
+    prompt: Apply a bounded runtime or configuration change inside an abyss repository where repo-relative commands, local authority notes, and rollback checks still need to be named explicitly.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-safe-infra-change/abyss_safe_infra_change_local_overlay.md
+    required_output_phrases:
+      - use
+      - A bounded local infra-change note that keeps repo-relative operational surfaces, commands, and rollback posture explicit.
+    forbidden_output_phrases: []
+  - skill: abyss-safe-infra-change
+    case_id: abyss_safe_infra_change_base_skill_sufficient
+    prompt: Apply the normal safe infra workflow where no abyss-specific local adaptation is needed because the base skill already names everything required.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-safe-infra-change/abyss_safe_infra_change_base_skill_sufficient.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that says the base `aoa-safe-infra-change` skill is already sufficient and the abyss overlay would add no real local surface.
+    forbidden_output_phrases: []
+  - skill: abyss-sanitized-share
+    case_id: abyss_sanitized_share_local_surface
+    prompt: Turn raw abyss incident material into a shareable artifact and place it in one repo-relative canonical location with explicit local sanitization thresholds.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-sanitized-share/abyss_sanitized_share_local_surface.md
+    required_output_phrases:
+      - use
+      - A sanitized local share artifact that names the repo-relative destination and explicit local sharing thresholds.
+    forbidden_output_phrases: []
+  - skill: abyss-sanitized-share
+    case_id: abyss_sanitized_share_base_skill_sufficient
+    prompt: Prepare a normal sanitized artifact where no abyss-specific local surface or threshold needs to be named because the base skill is already sufficient.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-sanitized-share/abyss_sanitized_share_base_skill_sufficient.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that says the base `aoa-sanitized-share` skill is already sufficient and the abyss overlay would add no real local sharing surface.
     forbidden_output_phrases: []
   - skill: aoa-contract-test
     case_id: contract_test_meaningful_boundary

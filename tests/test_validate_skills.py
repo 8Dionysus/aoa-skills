@@ -1737,6 +1737,55 @@ class ValidateSkillsTests(unittest.TestCase):
 
         self.assertEqual([], validate_skills.run_validation(repo_root))
 
+    def test_live_abyss_project_overlay_pack_passes(self) -> None:
+        repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
+        self.addCleanup(shutil.rmtree, repo_root, True)
+        (repo_root / "skills").mkdir()
+        (repo_root / "SKILL_INDEX.md").write_text(
+            textwrap.dedent(
+                """\
+                # SKILL_INDEX
+
+                | name | scope | status | summary |
+                |---|---|---|---|
+                | abyss-safe-infra-change | project | scaffold | Test summary. |
+                | abyss-sanitized-share | project | scaffold | Test summary. |
+                """
+            ),
+            encoding="utf-8",
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="abyss-safe-infra-change",
+            scope="project",
+            invocation_mode="explicit-only",
+            status="scaffold",
+            policy_allow_implicit=False,
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        self.add_skill_bundle(
+            repo_root,
+            skill_name="abyss-sanitized-share",
+            scope="project",
+            invocation_mode="explicit-only",
+            status="scaffold",
+            policy_allow_implicit=False,
+            techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],
+        )
+        self.write_review_checklist(repo_root, "abyss-safe-infra-change")
+        self.write_review_checklist(repo_root, "abyss-sanitized-share")
+        self.write_live_overlay_pack(
+            repo_root,
+            family="abyss",
+            skill_names=[
+                "abyss-safe-infra-change",
+                "abyss-sanitized-share",
+            ],
+        )
+        self.write_catalogs(repo_root)
+
+        self.assertEqual([], validate_skills.run_validation(repo_root))
+
     def test_live_project_overlay_requires_repo_relative_language(self) -> None:
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
         self.addCleanup(shutil.rmtree, repo_root, True)

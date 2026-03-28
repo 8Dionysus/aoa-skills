@@ -9,6 +9,207 @@
   ],
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "display_name": "Abyss Safe Infra Change",
+      "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
+      "short_description": "Abyss safe infra overlay",
+      "path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$abyss-safe-infra-change",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/abyss-safe-infra-change",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "abyss-safe-infra-change"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "about",
+        "abyss",
+        "abyss-",
+        "adaptation",
+        "and",
+        "anti-patterns",
+        "aoa-safe-infra-change",
+        "apply",
+        "artifact",
+        "authority",
+        "base",
+        "boundary",
+        "but",
+        "change",
+        "commands",
+        "contracts",
+        "correct",
+        "explicit",
+        "for",
+        "infra",
+        "infra-change",
+        "inputs",
+        "inside",
+        "intent",
+        "local",
+        "needed",
+        "not",
+        "notes",
+        "one",
+        "operational",
+        "outputs",
+        "overlay",
+        "points",
+        "posture",
+        "procedure",
+        "producing",
+        "project",
+        "really",
+        "repo",
+        "repo-relative",
+        "repository",
+        "risks",
+        "rollback",
+        "safe",
+        "shareable",
+        "skill",
+        "sufficient",
+        "surfaces",
+        "task",
+        "technique",
+        "the",
+        "thin",
+        "traceability",
+        "trigger",
+        "use",
+        "using",
+        "validation",
+        "verification",
+        "without",
+        "workflow"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "abyss-safe-infra-change"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "abyss-safe-infra-change"
+        }
+      }
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "display_name": "Abyss Sanitized Share",
+      "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
+      "short_description": "Abyss sanitized-share overlay",
+      "path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "sharing",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$abyss-sanitized-share",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/abyss-sanitized-share",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "abyss-sanitized-share"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "abyss",
+        "abyss-",
+        "adaptation",
+        "and",
+        "anti-patterns",
+        "aoa-sanitized-share",
+        "apply",
+        "base",
+        "boundary",
+        "but",
+        "contracts",
+        "correct",
+        "explicit",
+        "for",
+        "inputs",
+        "inside",
+        "intent",
+        "local",
+        "mutation",
+        "needed",
+        "not",
+        "one",
+        "operational",
+        "outputs",
+        "overlay",
+        "points",
+        "posture",
+        "procedure",
+        "project",
+        "real",
+        "repo",
+        "repo-relative",
+        "repository",
+        "review",
+        "risks",
+        "sanitization",
+        "sanitized",
+        "share",
+        "sharing",
+        "skill",
+        "sufficient",
+        "surfaces",
+        "task",
+        "technique",
+        "the",
+        "thin",
+        "thresholds",
+        "traceability",
+        "trigger",
+        "underlying",
+        "use",
+        "using",
+        "verification",
+        "without",
+        "workflow"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "abyss-sanitized-share"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "abyss-sanitized-share"
+        }
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",

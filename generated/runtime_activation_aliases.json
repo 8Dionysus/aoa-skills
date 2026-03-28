@@ -3,6 +3,30 @@
   "profile": "codex-facing-wave-4-runtime-seam",
   "aliases": [
     {
+      "name": "abyss-safe-infra-change",
+      "codex_mention": "$abyss-safe-infra-change",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/abyss-safe-infra-change",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "abyss-safe-infra-change"
+        }
+      }
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "codex_mention": "$abyss-sanitized-share",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/abyss-sanitized-share",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "abyss-sanitized-share"
+        }
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "codex_mention": "$aoa-adr-write",
       "codex_browser": "/skills",

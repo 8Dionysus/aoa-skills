@@ -4,6 +4,142 @@
   "source_of_truth": "generated/skill_sections.full.json",
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "display_name": "Abyss Safe Infra Change",
+      "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "target operational change and touched local surface",
+        "repo-relative operational files or commands",
+        "explicit local authority or approval posture",
+        "validation and rollback path",
+        "base skill reference"
+      ],
+      "outputs": [
+        "bounded local infra-change plan",
+        "repo-relative command or path sketch",
+        "explicit local authority and rollback note",
+        "pointer to the family review surface",
+        "concise verification note for the local repo surface"
+      ],
+      "verification": [
+        "confirm the base skill is still the correct workflow",
+        "confirm repo-relative paths and commands are named explicitly",
+        "confirm local authority, rollback posture, and verification remain explicit",
+        "confirm the adaptation stays bounded to the local repo surface",
+        "confirm the family review doc and bundle-local checklist stay aligned"
+      ],
+      "contracts": [
+        "preserve the base skill meaning",
+        "keep paths and commands repo-relative",
+        "keep local authority explicit",
+        "keep the overlay explicit-only, public-safe, and reviewable"
+      ],
+      "consumes_artifact_tags": [
+        "target-operational-change-and-touched-local-surface",
+        "repo-relative-operational-files-or-commands",
+        "explicit-local-authority-or-approval-posture",
+        "validation-and-rollback-path",
+        "base-skill-reference"
+      ],
+      "provides_artifact_tags": [
+        "bounded-local-infra-change-plan",
+        "repo-relative-command-or-path-sketch",
+        "explicit-local-authority-and-rollback-note",
+        "pointer-to-the-family-review-surface",
+        "concise-verification-note-for-the-local-repo-surface"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "abyss-safe-infra-change",
+        "produced_artifacts": [
+          "bounded-local-infra-change-plan",
+          "repo-relative-command-or-path-sketch",
+          "explicit-local-authority-and-rollback-note",
+          "pointer-to-the-family-review-surface",
+          "concise-verification-note-for-the-local-repo-surface"
+        ],
+        "verification_notes": [
+          "confirm the base skill is still the correct workflow",
+          "confirm repo-relative paths and commands are named explicitly",
+          "confirm local authority, rollback posture, and verification remain explicit"
+        ],
+        "contract_notes": [
+          "preserve the base skill meaning",
+          "keep paths and commands repo-relative",
+          "keep local authority explicit"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "display_name": "Abyss Sanitized Share",
+      "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "raw material to sanitize",
+        "intended audience or sharing context",
+        "repo-relative destination or canonical sharing surface",
+        "local sensitivity thresholds or review posture",
+        "base skill reference"
+      ],
+      "outputs": [
+        "sanitized local shareable artifact",
+        "note on what was generalized or removed",
+        "repo-relative placement or reference",
+        "pointer to the family review surface",
+        "concise warning about any remaining sensitive edge"
+      ],
+      "verification": [
+        "confirm the base skill is still the correct workflow",
+        "confirm the repo-relative sharing surface is named explicitly",
+        "confirm local thresholds and review posture are visible rather than implied",
+        "confirm the adaptation stays bounded to one local repo family surface",
+        "confirm the family review doc and bundle-local checklist stay aligned"
+      ],
+      "contracts": [
+        "preserve the base skill meaning",
+        "keep local paths and output placement repo-relative and explicit",
+        "keep local review posture visible rather than implied",
+        "keep the overlay explicit-only, public-safe, and reviewable"
+      ],
+      "consumes_artifact_tags": [
+        "raw-material-to-sanitize",
+        "intended-audience-or-sharing-context",
+        "repo-relative-destination-or-canonical-sharing-surface",
+        "local-sensitivity-thresholds-or-review-posture",
+        "base-skill-reference"
+      ],
+      "provides_artifact_tags": [
+        "sanitized-local-shareable-artifact",
+        "note-on-what-was-generalized-or-removed",
+        "repo-relative-placement-or-reference",
+        "pointer-to-the-family-review-surface",
+        "concise-warning-about-any-remaining-sensitive-edge"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "abyss-sanitized-share",
+        "produced_artifacts": [
+          "sanitized-local-shareable-artifact",
+          "note-on-what-was-generalized-or-removed",
+          "repo-relative-placement-or-reference",
+          "pointer-to-the-family-review-surface",
+          "concise-warning-about-any-remaining-sensitive-edge"
+        ],
+        "verification_notes": [
+          "confirm the base skill is still the correct workflow",
+          "confirm the repo-relative sharing surface is named explicitly",
+          "confirm local thresholds and review posture are visible rather than implied"
+        ],
+        "contract_notes": [
+          "preserve the base skill meaning",
+          "keep local paths and output placement repo-relative and explicit",
+          "keep local review posture visible rather than implied"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",

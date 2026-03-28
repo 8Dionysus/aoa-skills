@@ -24,6 +24,46 @@
   },
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "display_name": "Abyss Safe Infra Change",
+      "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "runtime",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "display_name": "Abyss Sanitized Share",
+      "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "sharing",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",

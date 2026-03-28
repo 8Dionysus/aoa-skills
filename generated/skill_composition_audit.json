@@ -4,6 +4,28 @@
     {
       "composition_class": "multi_technique",
       "exception_review_path": null,
+      "name": "abyss-safe-infra-change",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0028",
+        "AOA-T-0001"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "abyss-sanitized-share",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-0034",
+        "AOA-T-0002"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
       "name": "aoa-adr-write",
       "recommended_action": "keep_multi_technique",
       "technique_count": 2,
@@ -197,9 +219,9 @@
   },
   "summary": {
     "approved_exception_count": 2,
-    "multi_technique_skill_count": 15,
+    "multi_technique_skill_count": 17,
     "needs_reframe_count": 0,
     "single_technique_skill_count": 2,
-    "total_skill_count": 17
+    "total_skill_count": 19
   }
 }

@@ -1,0 +1,26 @@
+skill_name: abyss-safe-infra-change
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0028
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0001
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
+    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    use_sections:
+      - Intent
+      - Outputs
+      - Contracts
+      - Risks
+      - Validation

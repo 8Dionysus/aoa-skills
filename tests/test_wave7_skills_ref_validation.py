@@ -72,7 +72,7 @@ class Wave7SkillsRefValidationTests(unittest.TestCase):
             self.assertEqual(completed.returncode, 0, msg=completed.stderr)
             payload = json.loads(completed.stdout)
             self.assertEqual(payload["status"], "passed")
-            self.assertEqual(payload["passed_count"], 17)
+            self.assertEqual(payload["passed_count"], 19)
 
 
 if __name__ == "__main__":

@@ -2,6 +2,122 @@
   "section_version": 1,
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "scope": "project",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to adapt `aoa-safe-infra-change` to an `abyss-*` repository when the base operational workflow is correct but the local repo still needs repo-relative commands, authority notes, and risk framing.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the base `aoa-safe-infra-change` workflow is already correct, but an `abyss-*` repo needs repo-relative operational surfaces, commands, or approval notes\n- the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family\n- explicit local authority, rollback posture, or verification commands still need to be named before execution\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the task is really about producing a shareable public-safe artifact rather than the operational change itself; use `abyss-sanitized-share`\n- no `abyss-*` repo adaptation is needed and the base `aoa-safe-infra-change` skill is sufficient\n- the overlay would only restate the base workflow without adding a real local surface\n- the main question is whether authority exists at all; use `aoa-approval-gate-check`\n- the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`\n- the work would widen into broader project doctrine instead of a thin local overlay",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- target operational change and touched local surface\n- repo-relative operational files or commands\n- explicit local authority or approval posture\n- validation and rollback path\n- base skill reference",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- bounded local infra-change plan\n- repo-relative command or path sketch\n- explicit local authority and rollback note\n- pointer to the family review surface\n- concise verification note for the local repo surface",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. start from `aoa-safe-infra-change` instead of inventing a new project-family workflow\n2. name the repo-relative operational files, commands, and authority posture that matter locally\n3. keep the adaptation bounded to the local repo surface under change\n4. preserve the base risk framing, rollback thinking, and explicit verification posture\n5. make explicit what still requires downstream human approval or repo-specific judgment",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- preserve the base skill meaning\n- keep paths and commands repo-relative\n- keep local authority explicit\n- keep the overlay explicit-only, public-safe, and reviewable",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- hiding downstream authority inside vague local operational notes\n- turning a thin overlay into project doctrine or a scenario bundle\n- naming repo-relative commands without enough verification or rollback context\n- silently changing the base workflow instead of adapting the local repo surface",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths and commands are named explicitly\n- confirm local authority, rollback posture, and verification remain explicit\n- confirm the adaptation stays bounded to the local repo surface\n- confirm the family review doc and bundle-local checklist stay aligned",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- repo-relative operational surfaces\n- local authority and approval notes\n- local validation commands\n- rollback or recovery expectations\n- family review doc and bundle-local review checklist",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "scope": "project",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to adapt `aoa-sanitized-share` to an `abyss-*` repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- the base `aoa-sanitized-share` workflow is already correct, but an `abyss-*` repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds\n- raw logs, diagnostics, config snippets, or incident notes from one `abyss-*` repo need a bounded public-safe or wider-shareable form\n- the local repo needs a canonical place or review posture for the sanitized output\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the real task is the underlying operational or configuration mutation itself; use `abyss-safe-infra-change`\n- no `abyss-*` repo adaptation is needed and the base `aoa-sanitized-share` skill is sufficient\n- the overlay would only restate the base sanitization workflow without adding a real local sharing surface\n- the main question is whether the underlying action should be allowed at all; use `aoa-approval-gate-check`\n- the material is already clearly public-safe and no local sharing surface or threshold needs clarification\n- the work would widen into broader project doctrine instead of a thin local overlay",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- raw material to sanitize\n- intended audience or sharing context\n- repo-relative destination or canonical sharing surface\n- local sensitivity thresholds or review posture\n- base skill reference",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- sanitized local shareable artifact\n- note on what was generalized or removed\n- repo-relative placement or reference\n- pointer to the family review surface\n- concise warning about any remaining sensitive edge",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow\n2. name the repo-relative output surface, audience, and local sensitivity thresholds that matter\n3. keep the adaptation bounded to one local repo family surface\n4. preserve the base raw-vs-shareable split and caution-first sanitization posture\n5. make explicit what still requires downstream human review or unpublished local judgment",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- preserve the base skill meaning\n- keep local paths and output placement repo-relative and explicit\n- keep local review posture visible rather than implied\n- keep the overlay explicit-only, public-safe, and reviewable",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- hiding local sharing thresholds in vague prose\n- collapsing a thin overlay into project doctrine or incident policy\n- naming a repo-relative destination without enough sanitization or audience context\n- silently replacing the base workflow instead of adapting the local repo surface",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm the repo-relative sharing surface is named explicitly\n- confirm local thresholds and review posture are visible rather than implied\n- confirm the adaptation stays bounded to one local repo family surface\n- confirm the family review doc and bundle-local checklist stay aligned",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0034 from `8Dionysus/aoa-techniques` at `06303d62e9cd614295a63b6543a4191e808e879c` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `06303d62e9cd614295a63b6543a4191e808e879c` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- repo-relative sharing surfaces\n- local sanitization thresholds\n- local review posture for sharing\n- project-specific output placement examples\n- family review doc and bundle-local review checklist",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated"
+    },
+    {
       "name": "aoa-adr-write",
       "scope": "core",
       "sections": [

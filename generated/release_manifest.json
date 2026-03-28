@@ -12,9 +12,9 @@
     9
   ],
   "skill_root": ".agents/skills",
-  "skill_count": 17,
-  "explicit_only_count": 5,
-  "profile_count": 5,
+  "skill_count": 19,
+  "explicit_only_count": 7,
+  "profile_count": 6,
   "authoring_inputs": [
     "generated/skill_sections.full.json",
     "generated/skill_catalog.min.json",

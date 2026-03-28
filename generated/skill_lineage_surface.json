@@ -2,6 +2,8 @@
   "cohorts": {
     "pending_lineage": [],
     "published_lineage": [
+      "abyss-safe-infra-change",
+      "abyss-sanitized-share",
       "aoa-adr-write",
       "aoa-approval-gate-check",
       "aoa-bounded-context-map",
@@ -23,6 +25,30 @@
   },
   "lineage_surface_version": 1,
   "skills": [
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "abyss-safe-infra-change",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "project",
+      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "abyss-sanitized-share",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "project",
+      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated",
+      "tbd_ref_count": 0
+    },
     {
       "lineage_blockers": [],
       "lineage_state": "published",

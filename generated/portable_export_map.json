@@ -13,6 +13,40 @@
   },
   "exports": [
     {
+      "name": "abyss-safe-infra-change",
+      "source_skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "target_dir": ".agents/skills/abyss-safe-infra-change",
+      "target_skill_path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+      "target_openai_config_path": ".agents/skills/abyss-safe-infra-change/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "source_skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "target_dir": ".agents/skills/abyss-sanitized-share",
+      "target_skill_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+      "target_openai_config_path": ".agents/skills/abyss-sanitized-share/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "source_skill_path": "skills/aoa-adr-write/SKILL.md",
       "target_dir": ".agents/skills/aoa-adr-write",

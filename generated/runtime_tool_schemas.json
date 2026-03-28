@@ -58,6 +58,8 @@
           "skill_name": {
             "type": "string",
             "enum": [
+              "abyss-safe-infra-change",
+              "abyss-sanitized-share",
               "aoa-adr-write",
               "aoa-approval-gate-check",
               "aoa-bounded-context-map",
@@ -94,6 +96,8 @@
           "skill_name": {
             "type": "string",
             "enum": [
+              "abyss-safe-infra-change",
+              "abyss-sanitized-share",
               "aoa-adr-write",
               "aoa-approval-gate-check",
               "aoa-bounded-context-map",
@@ -167,6 +171,8 @@
           "skill_name": {
             "type": "string",
             "enum": [
+              "abyss-safe-infra-change",
+              "abyss-sanitized-share",
               "aoa-adr-write",
               "aoa-approval-gate-check",
               "aoa-bounded-context-map",

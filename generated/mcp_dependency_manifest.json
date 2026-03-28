@@ -3,6 +3,14 @@
   "profile": "codex-facing-wave-3",
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "tools": []
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "tools": []
+    },
+    {
       "name": "aoa-adr-write",
       "tools": []
     },

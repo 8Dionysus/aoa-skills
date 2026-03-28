@@ -9,10 +9,24 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 17,
+  "skill_count": 19,
   "band_count": 5,
-  "case_count": 47,
+  "case_count": 51,
   "skills": [
+    {
+      "name": "abyss-safe-infra-change",
+      "band": "risk-ops-safety",
+      "manual_invocation_required": true,
+      "project_overlay": true,
+      "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55"
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "band": "risk-ops-safety",
+      "manual_invocation_required": true,
+      "project_overlay": true,
+      "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84"
+    },
     {
       "name": "aoa-adr-write",
       "band": "decision-doc-authority",
