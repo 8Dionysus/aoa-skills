@@ -132,7 +132,7 @@ For KAG/source-lift consumers, `AOA-T-0019` is the canonical bundle-level metada
 - `tests/` — local validator and evaluation tests
 - `SKILL_INDEX.md` — repository-wide skill map
 
-Local working notes such as `TODO.local.md` and `PLANS.local.md` stay gitignored in each clone.
+Local working notes such as `TODO.local.md` and `PLANS.local.md`, plus local scratch files under `seeds/`, stay gitignored in each clone.
 The public planning artifact for this repository is `docs/ROADMAP.md`, which remains tracked.
 
 A typical skill bundle contains:

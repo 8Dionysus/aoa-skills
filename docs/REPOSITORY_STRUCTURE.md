@@ -115,3 +115,8 @@ Belong in `docs/reviews/`:
 - one-off hacks that were not generalized
 - techniques that should live in `aoa-techniques`
 - project runtime state or logs
+
+## Local-only surfaces
+
+- `TODO.local.md` and `PLANS.local.md` are clone-local planning notes and stay gitignored
+- `seeds/` is a clone-local scratch area for seed files and stays gitignored

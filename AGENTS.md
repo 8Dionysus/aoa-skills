@@ -204,6 +204,7 @@ Write for portability:
 ## Local working notes
 
 - `TODO.local.md` and `PLANS.local.md` are local-only working files for private task control
+- `seeds/` is a local-only scratch area for seed files and stays out of git
 - keep them out of git
 - public roadmap or canonical docs must remain visible to git if the repo defines them that way
 
