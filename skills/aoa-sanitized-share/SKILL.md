@@ -1,7 +1,7 @@
 ---
 name: aoa-sanitized-share
 scope: risk
-status: evaluated
+status: canonical
 summary: Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.
 invocation_mode: explicit-only
 technique_dependencies:

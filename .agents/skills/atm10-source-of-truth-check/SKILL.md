@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
   aoa_scope: project
-  aoa_status: scaffold
+  aoa_status: reviewed
   aoa_invocation_mode: explicit-preferred
   aoa_source_skill_path: skills/atm10-source-of-truth-check/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills

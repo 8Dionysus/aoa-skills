@@ -2,9 +2,9 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
-- current machine-checkable floor: published lineage plus evaluation coverage and explicit-only policy checks
-- candidate set: post-lineage conservative review wave
+- current maturity status: `canonical`
+- canonical promotion decision: promoted in this pass
+- candidate set: canonical promotion completed
 - scope: `risk`
 - current lineage: manifest-aligned with published technique `AOA-T-0034`
 
@@ -29,16 +29,16 @@
 
 - the trigger boundary stays focused on preparing public-safe artifacts rather than performing the underlying operational change
 - the explicit-only posture is coherent with the risk that a supposedly safe share can still leak sensitive detail
+- the bundle now reads like a stable default reference for safe sharing work across logs, diagnostics, reports, and audience-specific sanitization contexts
 - published lineage, runtime wording, and evaluation coverage are aligned
 - the bundle is candidate-ready at the repository gate level
 
 ## Gaps and blockers
 
-- no lineage or evaluation blocker remains at the repository gate level
-- the current record does not yet establish `aoa-sanitized-share` as the default public reference across varied sharing contexts and audience-specific sanitization expectations
-- future canonical review should preserve the bounded sanitization contract and avoid widening the skill into incident handling or execution guidance
+- no current blocker remains at the repository gate level
+- future maintenance should preserve the bounded sanitization contract and avoid widening the skill into incident handling or execution guidance
+- future drift review should keep sanitized sharing separate from authority checks and operational execution paths
 
 ## Recommendation
 
-Keep `aoa-sanitized-share` at `evaluated` in this pass.
-Use this record as the explicit stay-evaluated decision until a stronger default-reference rationale is recorded.
+Keep `aoa-sanitized-share` as a canonical default reference and use this review record as the maintenance surface for future drift checks.

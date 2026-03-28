@@ -6,6 +6,12 @@ Where `aoa-techniques` stores public, reusable, validated engineering techniques
 `aoa-skills` stores reusable agent skills that compose one or more techniques into
 an executable workflow for Codex.
 
+## Quick route by question
+
+- If you are choosing or using a skill, start with `RUNTIME_PATH.md`.
+- If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
+- If you are reading status, promotion, or governance state, start with `PUBLIC_SURFACE.md`.
+
 ## Read in this order
 
 1. `RUNTIME_PATH.md` — the runtime inspection guide for `pick -> inspect -> expand -> object use`.

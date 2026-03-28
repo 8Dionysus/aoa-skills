@@ -1,24 +1,27 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [],
-    "candidate_ready_without_review": [],
+    "candidate_ready_without_review": [
+      "aoa-local-stack-bringup"
+    ],
     "canonical_maintenance": [
+      "aoa-adr-write",
       "aoa-approval-gate-check",
       "aoa-bounded-context-map",
       "aoa-change-protocol",
       "aoa-contract-test",
+      "aoa-dry-run-first",
       "aoa-invariant-coverage-audit",
       "aoa-property-invariants",
+      "aoa-safe-infra-change",
+      "aoa-sanitized-share",
+      "aoa-source-of-truth-check",
       "aoa-tdd-slice"
     ],
     "comparative_pending": [
-      "aoa-adr-write",
       "aoa-core-logic-boundary",
-      "aoa-dry-run-first",
-      "aoa-port-adapter-refactor",
-      "aoa-safe-infra-change",
-      "aoa-sanitized-share",
-      "aoa-source-of-truth-check"
+      "aoa-local-stack-bringup",
+      "aoa-port-adapter-refactor"
     ],
     "docs_truth_sync": [],
     "review_truth_sync": []
@@ -26,15 +29,15 @@
   "governance_backlog_version": 3,
   "review_truth_sync": [
     {
-      "current_revision": "0309a890f50e",
-      "governance_decision": "stay_evaluated",
+      "current_revision": "efea66558a8f",
+      "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-adr-write",
       "review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
-      "reviewed_revision": "0309a890f50e",
+      "reviewed_revision": "efea66558a8f",
       "runtime_skill_md_meaning_changed": true,
-      "status": "evaluated",
+      "status": "canonical",
       "truth_synced": true
     },
     {
@@ -86,15 +89,15 @@
       "truth_synced": true
     },
     {
-      "current_revision": "c7a12458152b",
-      "governance_decision": "stay_evaluated",
+      "current_revision": "34ca9cb7c545",
+      "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
-      "reviewed_revision": "c7a12458152b",
+      "reviewed_revision": "34ca9cb7c545",
       "runtime_skill_md_meaning_changed": true,
-      "status": "evaluated",
+      "status": "canonical",
       "truth_synced": true
     },
     {
@@ -107,6 +110,18 @@
       "reviewed_revision": "97ce3d068b91",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "4dc638ecae8b",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-local-stack-bringup",
+      "review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
+      "reviewed_revision": "4dc638ecae8b",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
       "truth_synced": true
     },
     {
@@ -134,39 +149,39 @@
       "truth_synced": true
     },
     {
-      "current_revision": "18039d4a9fe6",
-      "governance_decision": "stay_evaluated",
+      "current_revision": "595c4e599075",
+      "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
-      "reviewed_revision": "18039d4a9fe6",
+      "reviewed_revision": "595c4e599075",
       "runtime_skill_md_meaning_changed": false,
-      "status": "evaluated",
+      "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "7d5d0fd798bf",
-      "governance_decision": "stay_evaluated",
+      "current_revision": "5db83815e920",
+      "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
-      "reviewed_revision": "7d5d0fd798bf",
+      "reviewed_revision": "5db83815e920",
       "runtime_skill_md_meaning_changed": true,
-      "status": "evaluated",
+      "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "20158c186555",
-      "governance_decision": "stay_evaluated",
+      "current_revision": "f4bdf444bbe4",
+      "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
-      "reviewed_revision": "20158c186555",
+      "reviewed_revision": "f4bdf444bbe4",
       "runtime_skill_md_meaning_changed": true,
-      "status": "evaluated",
+      "status": "canonical",
       "truth_synced": true
     }
   ],
@@ -177,7 +192,7 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "adr_write_vs_source_of_truth_check_boundary",
         "source_of_truth_check_vs_adr_write_boundary"
@@ -191,7 +206,7 @@
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
@@ -205,14 +220,19 @@
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
+        "local_stack_bringup_vs_approval_gate_boundary",
+        "local_stack_bringup_vs_safe_infra_change_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
         "sanitized_share_vs_safe_infra_change_boundary"
       ],
       "governance_lane_ids": [
+        "local_runtime_bringup",
         "risk_authority_preview_execution"
       ],
       "lineage_state": "published",
@@ -320,14 +340,16 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "approval_gate_vs_preview_and_infra_boundary",
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
@@ -342,7 +364,7 @@
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
@@ -368,22 +390,25 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "local_stack_bringup_vs_approval_gate_boundary",
+        "local_stack_bringup_vs_safe_infra_change_boundary"
+      ],
+      "governance_lane_ids": [
+        "local_runtime_bringup"
+      ],
       "lineage_state": "published",
       "name": "aoa-local-stack-bringup",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
@@ -435,20 +460,25 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "approval_gate_vs_preview_and_infra_boundary",
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
+        "local_stack_bringup_vs_approval_gate_boundary",
+        "local_stack_bringup_vs_safe_infra_change_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
         "sanitized_share_vs_safe_infra_change_boundary"
       ],
       "governance_lane_ids": [
+        "local_runtime_bringup",
         "risk_authority_preview_execution"
       ],
       "lineage_state": "published",
@@ -457,7 +487,7 @@
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
@@ -465,14 +495,16 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "approval_gate_vs_preview_and_infra_boundary",
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
@@ -487,7 +519,7 @@
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
@@ -495,7 +527,7 @@
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "adr_write_vs_source_of_truth_check_boundary",
         "source_of_truth_check_vs_adr_write_boundary"
@@ -509,7 +541,7 @@
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
@@ -550,7 +582,7 @@
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "scaffold"
+      "status": "reviewed"
     },
     {
       "candidate_review_path": null,
@@ -569,7 +601,7 @@
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "scaffold"
+      "status": "reviewed"
     }
   ],
   "source_of_truth": {

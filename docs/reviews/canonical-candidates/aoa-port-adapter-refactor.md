@@ -35,10 +35,10 @@
 ## Gaps and blockers
 
 - no lineage or evaluation blocker remains at the repository gate level
-- the current record does not yet establish `aoa-port-adapter-refactor` as the default public reference for refactor-oriented boundary work across repository styles
+- the lane keeps `aoa-bounded-context-map` as the default entry anchor, while `aoa-port-adapter-refactor` stays a specialized follow-on skill for concrete dependency seams
 - future canonical review should preserve the narrow port/adapter seam and avoid widening the skill into open-ended restructuring
 
 ## Recommendation
 
 Keep `aoa-port-adapter-refactor` at `evaluated` in this pass.
-Use this record as the explicit stay-evaluated decision until a stronger comparative default-reference rationale is recorded.
+Use this record as the explicit stay-evaluated decision while `aoa-bounded-context-map` remains the entry anchor for this lane.

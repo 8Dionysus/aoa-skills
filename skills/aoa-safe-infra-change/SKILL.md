@@ -1,7 +1,7 @@
 ---
 name: aoa-safe-infra-change
 scope: risk
-status: evaluated
+status: canonical
 summary: Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.
 invocation_mode: explicit-only
 technique_dependencies:

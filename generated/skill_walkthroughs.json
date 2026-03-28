@@ -32,7 +32,7 @@
       "pick_summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-adr-write/examples/example.md",
@@ -367,7 +367,7 @@
       "pick_summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.",
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-dry-run-first/examples/runtime.md",
@@ -485,7 +485,7 @@
       "pick_summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.",
       "scope": "risk",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/aoa-local-stack-bringup/examples/runtime.md",
@@ -496,6 +496,11 @@
           "path": "skills/aoa-local-stack-bringup/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "use_when": [
@@ -648,7 +653,7 @@
       "pick_summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.",
       "scope": "risk",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-safe-infra-change/examples/runtime.md",
@@ -707,7 +712,7 @@
       "pick_summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.",
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-sanitized-share/examples/runtime.md",
@@ -771,7 +776,7 @@
       "pick_summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-source-of-truth-check/examples/example.md",
@@ -880,7 +885,7 @@
       "pick_summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "support_artifacts": [
         {
           "path": "skills/atm10-change-protocol/examples/example.md",
@@ -931,7 +936,7 @@
       "pick_summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "support_artifacts": [
         {
           "path": "skills/atm10-source-of-truth-check/examples/example.md",

@@ -44,28 +44,30 @@ lanes:
   - id: decision_docs_authority
     title: Decision docs versus authority docs
     scope: core
-    state: comparative_pending
+    state: stable_defaults
     review_path: docs/governance/lanes.md#decision_docs_authority
     evidence_case_ids:
       - source_of_truth_check_vs_adr_write_boundary
       - adr_write_vs_source_of_truth_check_boundary
     skills:
       - name: aoa-adr-write
-        decision: stay_evaluated
+        decision: default_reference
       - name: aoa-source-of-truth-check
-        decision: stay_evaluated
+        decision: default_reference
   - id: risk_authority_preview_execution
     title: Risk authority preview and execution
     scope: risk
-    state: comparative_pending
+    state: stable_defaults
     review_path: docs/governance/lanes.md#risk_authority_preview_execution
     evidence_case_ids:
       - approval_gate_vs_preview_and_infra_boundary
       - approval_gate_vs_safe_infra_boundary
       - approval_gate_vs_sanitized_share_boundary
       - dry_run_first_vs_approval_gate_boundary
+      - dry_run_first_vs_safe_infra_boundary
       - dry_run_first_vs_sanitized_share_boundary
       - safe_infra_change_vs_approval_gate_boundary
+      - safe_infra_change_vs_dry_run_first_boundary
       - safe_infra_change_vs_sanitized_share_boundary
       - sanitized_share_vs_approval_gate_boundary
       - sanitized_share_vs_dry_run_first_boundary
@@ -74,10 +76,25 @@ lanes:
       - name: aoa-approval-gate-check
         decision: default_reference
       - name: aoa-dry-run-first
-        decision: stay_evaluated
+        decision: default_reference
       - name: aoa-safe-infra-change
-        decision: stay_evaluated
+        decision: default_reference
       - name: aoa-sanitized-share
+        decision: default_reference
+  - id: local_runtime_bringup
+    title: Local runtime bring-up
+    scope: risk
+    state: comparative_pending
+    review_path: docs/governance/lanes.md#local_runtime_bringup
+    evidence_case_ids:
+      - local_stack_bringup_vs_approval_gate_boundary
+      - local_stack_bringup_vs_safe_infra_change_boundary
+    skills:
+      - name: aoa-approval-gate-check
+        decision: default_reference
+      - name: aoa-safe-infra-change
+        decision: default_reference
+      - name: aoa-local-stack-bringup
         decision: stay_evaluated
   - id: invariant_authoring_vs_audit
     title: Invariant authoring versus audit

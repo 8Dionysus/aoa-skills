@@ -134,6 +134,18 @@
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_sanitized_share_boundary.md"
     },
     {
+      "adjacent_skill": "aoa-safe-infra-change",
+      "blockers": [],
+      "case_id": "dry_run_first_vs_safe_infra_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
+      "prompt": "Compare preview-first planning with bounded infrastructure change planning and choose the clearer fit when the main task is still to inspect a risky change before execution.",
+      "skill": "aoa-dry-run-first",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-dry-run-first/dry_run_first_vs_safe_infra_boundary.md"
+    },
+    {
       "adjacent_skill": "aoa-approval-gate-check",
       "blockers": [],
       "case_id": "safe_infra_change_vs_approval_gate_boundary",
@@ -156,6 +168,42 @@
       "prompt": "Compare planning a bounded operational change with preparing a sanitized share of it and choose the clearer fit when the system still needs the change itself.",
       "skill": "aoa-safe-infra-change",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_sanitized_share_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-dry-run-first",
+      "blockers": [],
+      "case_id": "safe_infra_change_vs_dry_run_first_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "risk_authority_preview_execution"
+      ],
+      "prompt": "Compare a bounded infrastructure change with preview-first planning and choose the clearer fit when the operational change itself is ready to be planned and verified.",
+      "skill": "aoa-safe-infra-change",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-safe-infra-change/safe_infra_change_vs_dry_run_first_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-approval-gate-check",
+      "blockers": [],
+      "case_id": "local_stack_bringup_vs_approval_gate_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "local_runtime_bringup"
+      ],
+      "prompt": "Compare local multi-service stack bring-up with authority classification and choose the clearer fit when the operator already intends to start a selected local runtime.",
+      "skill": "aoa-local-stack-bringup",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-local-stack-bringup/local_stack_bringup_vs_approval_gate_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-safe-infra-change",
+      "blockers": [],
+      "case_id": "local_stack_bringup_vs_safe_infra_change_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "local_runtime_bringup"
+      ],
+      "prompt": "Compare local multi-service stack bring-up with bounded infrastructure change planning and choose the clearer fit when the task is to render, check, and launch one selected local runtime.",
+      "skill": "aoa-local-stack-bringup",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-local-stack-bringup/local_stack_bringup_vs_safe_infra_change_boundary.md"
     },
     {
       "adjacent_skill": "aoa-approval-gate-check",
@@ -258,7 +306,7 @@
       "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -271,6 +319,7 @@
         "aoa-sanitized-share"
       ],
       "governance_lane_ids": [
+        "local_runtime_bringup",
         "risk_authority_preview_execution"
       ],
       "name": "aoa-approval-gate-check",
@@ -352,9 +401,10 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 2,
+      "adjacency_use_count": 3,
       "adjacent_skill_names": [
         "aoa-approval-gate-check",
+        "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
       "governance_lane_ids": [
@@ -364,7 +414,7 @@
       "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -386,15 +436,20 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 2,
+      "adjacent_skill_names": [
+        "aoa-approval-gate-check",
+        "aoa-safe-infra-change"
+      ],
+      "governance_lane_ids": [
+        "local_runtime_bringup"
+      ],
       "name": "aoa-local-stack-bringup",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
@@ -434,19 +489,21 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 2,
+      "adjacency_use_count": 3,
       "adjacent_skill_names": [
         "aoa-approval-gate-check",
+        "aoa-dry-run-first",
         "aoa-sanitized-share"
       ],
       "governance_lane_ids": [
+        "local_runtime_bringup",
         "risk_authority_preview_execution"
       ],
       "name": "aoa-safe-infra-change",
       "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -465,7 +522,7 @@
       "required_adjacency_coverage": true,
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -482,7 +539,7 @@
       "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "adjacency_blockers": [],
@@ -512,7 +569,7 @@
       "required_adjacency_coverage": false,
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "scaffold"
+      "status": "reviewed"
     },
     {
       "adjacency_blockers": [],
@@ -525,7 +582,7 @@
       "required_adjacency_coverage": false,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "scaffold"
+      "status": "reviewed"
     }
   ],
   "source_of_truth": {

@@ -27,7 +27,7 @@ Common expand sections:
 ## aoa-adr-write
 
 - scope: `core`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-adr-write/SKILL.md`
 - pick summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.
@@ -239,7 +239,7 @@ Common expand sections:
 ## aoa-dry-run-first
 
 - scope: `risk`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-dry-run-first/SKILL.md`
 - pick summary: Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.
@@ -312,7 +312,7 @@ Common expand sections:
 ## aoa-local-stack-bringup
 
 - scope: `risk`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-local-stack-bringup/SKILL.md`
 - pick summary: Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.
@@ -345,6 +345,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/aoa-local-stack-bringup/examples/runtime.md`
 - `review_checklist`: `skills/aoa-local-stack-bringup/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-local-stack-bringup.md`
 
 ## aoa-port-adapter-refactor
 
@@ -420,7 +421,7 @@ Common expand sections:
 ## aoa-safe-infra-change
 
 - scope: `risk`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-safe-infra-change/SKILL.md`
 - pick summary: Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.
@@ -456,7 +457,7 @@ Common expand sections:
 ## aoa-sanitized-share
 
 - scope: `risk`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-sanitized-share/SKILL.md`
 - pick summary: Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.
@@ -492,7 +493,7 @@ Common expand sections:
 ## aoa-source-of-truth-check
 
 - scope: `core`
-- status: `evaluated`
+- status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-source-of-truth-check/SKILL.md`
 - pick summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.
@@ -568,7 +569,7 @@ Common expand sections:
 ## atm10-change-protocol
 
 - scope: `project`
-- status: `scaffold`
+- status: `reviewed`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/atm10-change-protocol/SKILL.md`
 - pick summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.
@@ -603,7 +604,7 @@ Common expand sections:
 ## atm10-source-of-truth-check
 
 - scope: `project`
-- status: `scaffold`
+- status: `reviewed`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/atm10-source-of-truth-check/SKILL.md`
 - pick summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.

@@ -2,21 +2,22 @@
   "cohorts": {
     "blocked_by_pending_lineage": [],
     "candidate_ready": [
-      "aoa-adr-write",
       "aoa-core-logic-boundary",
-      "aoa-dry-run-first",
-      "aoa-port-adapter-refactor",
-      "aoa-safe-infra-change",
-      "aoa-sanitized-share",
-      "aoa-source-of-truth-check"
+      "aoa-local-stack-bringup",
+      "aoa-port-adapter-refactor"
     ],
     "default_references": [
+      "aoa-adr-write",
       "aoa-approval-gate-check",
       "aoa-bounded-context-map",
       "aoa-change-protocol",
       "aoa-contract-test",
+      "aoa-dry-run-first",
       "aoa-invariant-coverage-audit",
       "aoa-property-invariants",
+      "aoa-safe-infra-change",
+      "aoa-sanitized-share",
+      "aoa-source-of-truth-check",
       "aoa-tdd-slice"
     ],
     "risk_surfaces": [
@@ -33,7 +34,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "adr_write_vs_source_of_truth_check_boundary",
         "source_of_truth_check_vs_adr_write_boundary"
@@ -42,13 +43,13 @@
         "decision_docs_authority"
       ],
       "invocation_mode": "explicit-preferred",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-adr-write",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome."
     },
     {
@@ -61,14 +62,19 @@
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
+        "local_stack_bringup_vs_approval_gate_boundary",
+        "local_stack_bringup_vs_safe_infra_change_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
         "sanitized_share_vs_safe_infra_change_boundary"
       ],
       "governance_lane_ids": [
+        "local_runtime_bringup",
         "risk_authority_preview_execution"
       ],
       "invocation_mode": "explicit-only",
@@ -176,14 +182,16 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-dry-run-first.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "approval_gate_vs_preview_and_infra_boundary",
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
@@ -193,13 +201,13 @@
         "risk_authority_preview_execution"
       ],
       "invocation_mode": "explicit-only",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs."
     },
     {
@@ -226,21 +234,24 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "local_stack_bringup_vs_approval_gate_boundary",
+        "local_stack_bringup_vs_safe_infra_change_boundary"
       ],
-      "canonical_candidate_ready": false,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_lane_ids": [
+        "local_runtime_bringup"
+      ],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
       "lineage_state": "published",
       "name": "aoa-local-stack-bringup",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
       "scope": "risk",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint."
     },
     {
@@ -291,44 +302,51 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "approval_gate_vs_preview_and_infra_boundary",
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
+        "local_stack_bringup_vs_approval_gate_boundary",
+        "local_stack_bringup_vs_safe_infra_change_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
         "sanitized_share_vs_safe_infra_change_boundary"
       ],
       "governance_lane_ids": [
+        "local_runtime_bringup",
         "risk_authority_preview_execution"
       ],
       "invocation_mode": "explicit-only",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
       "scope": "risk",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "approval_gate_vs_preview_and_infra_boundary",
         "approval_gate_vs_safe_infra_boundary",
         "approval_gate_vs_sanitized_share_boundary",
         "dry_run_first_vs_approval_gate_boundary",
+        "dry_run_first_vs_safe_infra_boundary",
         "dry_run_first_vs_sanitized_share_boundary",
         "safe_infra_change_vs_approval_gate_boundary",
+        "safe_infra_change_vs_dry_run_first_boundary",
         "safe_infra_change_vs_sanitized_share_boundary",
         "sanitized_share_vs_approval_gate_boundary",
         "sanitized_share_vs_dry_run_first_boundary",
@@ -338,20 +356,20 @@
         "risk_authority_preview_execution"
       ],
       "invocation_mode": "explicit-only",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
-      "governance_decision": "stay_evaluated",
+      "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "adr_write_vs_source_of_truth_check_boundary",
         "source_of_truth_check_vs_adr_write_boundary"
@@ -360,13 +378,13 @@
         "decision_docs_authority"
       ],
       "invocation_mode": "explicit-preferred",
-      "is_default_reference": false,
+      "is_default_reference": true,
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "evaluated",
+      "status": "canonical",
       "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist."
     },
     {
@@ -407,7 +425,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes."
     },
     {
@@ -426,7 +444,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "scaffold",
+      "status": "reviewed",
       "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow."
     }
   ],

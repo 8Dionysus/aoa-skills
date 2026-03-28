@@ -51,13 +51,13 @@
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "Future project overlays may add:\n- local ADR templates\n- local placement rules\n- architecture review expectations\n- repository-specific examples",
+          "content_markdown": "Future project overlays may add:\n- local ADR templates\n- alternative decision-note homes outside formal `docs/adr/` layouts\n- local placement rules\n- local template variants that still preserve context, options, decision, and consequences\n- architecture review expectations\n- cross-linking rules back to canonical authority docs without replacing them\n- repository-specific examples",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
       ],
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-approval-gate-check",
@@ -405,7 +405,7 @@
         }
       ],
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -521,7 +521,7 @@
         }
       ],
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "name": "aoa-port-adapter-refactor",
@@ -695,7 +695,7 @@
         }
       ],
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-sanitized-share",
@@ -753,7 +753,7 @@
         }
       ],
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -805,13 +805,13 @@
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "Future project overlays may add:\n- local doc hierarchies\n- preferred canonical-file patterns\n- local review rules for doc changes\n- repository-specific examples of authoritative surfaces\n- lightweight snapshot rules for README or MANIFEST surfaces",
+          "content_markdown": "Future project overlays may add:\n- local doc hierarchies\n- mixed ADR, architecture, and operations doc maps that split authority by concern\n- preferred canonical-file patterns\n- local review rules for doc changes\n- repository-specific examples of authoritative surfaces\n- lightweight snapshot rules for README or MANIFEST surfaces\n- rules for keeping entrypoint docs short once deeper canonical homes already exist",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
       ],
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "status": "evaluated"
+      "status": "canonical"
     },
     {
       "name": "aoa-tdd-slice",
@@ -927,7 +927,7 @@
         }
       ],
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "status": "scaffold"
+      "status": "reviewed"
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -985,7 +985,7 @@
         }
       ],
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "status": "scaffold"
+      "status": "reviewed"
     }
   ],
   "source_of_truth": {

@@ -2,9 +2,9 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
-- current machine-checkable floor: published lineage plus evaluation coverage and explicit-only policy checks
-- candidate set: post-lineage conservative review wave
+- current maturity status: `canonical`
+- canonical promotion decision: promoted in this pass
+- candidate set: canonical promotion completed
 - scope: `risk`
 - current lineage: manifest-aligned with published technique `AOA-T-0004`
 
@@ -29,16 +29,16 @@
 
 - the trigger boundary cleanly separates preview-path selection from approval classification and real operational execution
 - the explicit-only policy matches the operational risk surface and keeps the workflow reviewable
+- the bundle now reads like a stable default reference for preview-first planning when a real dry-run or inspect-only seam exists before execution
 - published lineage, runtime wording, and evaluation coverage are aligned
 - the bundle is candidate-ready at the repository gate level
 
 ## Gaps and blockers
 
-- no lineage or evaluation blocker remains at the repository gate level
-- the current record does not yet establish `aoa-dry-run-first` as the default public reference across adjacent preview, approval, and risk-execution workflows
-- future canonical review should preserve the preview-first contract and avoid widening the skill into a general execution discipline
+- no current blocker remains at the repository gate level
+- future maintenance should preserve the preview-first contract and avoid widening the skill into a general execution discipline
+- future drift review should keep preview selection distinct from both authority classification and bounded infra-change planning
 
 ## Recommendation
 
-Keep `aoa-dry-run-first` at `evaluated` in this pass.
-Use this record as the explicit stay-evaluated decision until a stronger default-reference rationale is recorded.
+Keep `aoa-dry-run-first` as a canonical default reference and use this review record as the maintenance surface for future drift checks.

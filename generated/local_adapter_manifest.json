@@ -38,7 +38,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/aoa-adr-write/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -226,7 +226,7 @@
       },
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -294,7 +294,7 @@
       },
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -392,7 +392,7 @@
       },
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -422,7 +422,7 @@
       },
       "metadata": {
         "aoa_scope": "risk",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -452,7 +452,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "evaluated",
+        "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -512,7 +512,7 @@
       },
       "metadata": {
         "aoa_scope": "project",
-        "aoa_status": "scaffold",
+        "aoa_status": "reviewed",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/atm10-change-protocol/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -542,7 +542,7 @@
       },
       "metadata": {
         "aoa_scope": "project",
-        "aoa_status": "scaffold",
+        "aoa_status": "reviewed",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",

@@ -2,18 +2,18 @@
 
 ## Current status
 
-- current maturity status: `evaluated`
+- current maturity status: `canonical`
 - current machine-checkable floor (`candidate_ready` gate only when applicable): `pass`
-- current governance lane decision: `stay_evaluated`
+- current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `20158c186555`
+- reviewed revision: `f4bdf444bbe4`
 
 ## Target status
 
 - target maturity status: `evaluated`
-- why this target now: the live bundle remains evaluation-backed and bounded around Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and now keeps top-level status docs short and link-driven once canonical homes already exist, so this record should stay aligned with the current evaluated state.
-- next status after this step: `canonical` through `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` once comparative default-reference rationale is refreshed.
+- why this target now: this historical non-canonical promotion record remains useful because the live bundle still satisfies the evaluated floor underneath the current canonical/default-reference status.
+- next status after this step: canonical maintenance now lives in `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` and `docs/governance/lanes.md`.
 
 ## Evidence reviewed
 
@@ -26,15 +26,15 @@
 ## Findings
 
 - machine-checkable floor result: `pass`
-- recorded governance outcome: `stay_evaluated`
+- recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the current governance decision keeps the bundle evaluated until a stronger comparative default-reference rationale is recorded, and the skill now also covers lightweight snapshot discipline for top-level status docs when canonical homes already exist.
+- current bundle note: the bundle now carries portability guidance for mixed docs topologies and lightweight entrypoint snapshots while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 
 - blockers for this target status: none at the current bundle gate.
-- blockers for the next status step: comparative default-reference rationale remains tracked in `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` and `docs/governance/lanes.md`.
+- blockers for the next status step: none for the current status; maintain default-reference drift through `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` and `docs/governance/lanes.md`.
 
 ## Recommendation
 
-Keep this status-promotion record aligned with the live evaluated bundle and use the canonical-candidate record for any future default-reference decision.
+Keep this historical status-promotion record aligned with the live canonical bundle and use the canonical-candidate record for default-reference maintenance.

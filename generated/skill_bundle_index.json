@@ -13,7 +13,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "765ec00d0087c4cceaabaab7a3a249043539c0c09a2ef9e0a50d0c265ca957c7",
+      "content_hash": "932b655e2fcaa63b8d45e9643b53f55ef174e734ae64e0366451da029912fe46",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -35,8 +35,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "skill_revision": "765ec00d0087",
-      "status": "evaluated",
+      "skill_revision": "932b655e2fca",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-adr-write/examples/example.md",
@@ -308,7 +308,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "04034d71eed1e107c19abf87d91b14bdc8ee754d1107751c8b966ed9e2874cd4",
+      "content_hash": "84dc298f07634b18193be06418d5ef043ab78238da7f86954be7b7bba2972ff5",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -330,7 +330,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
       "scope": "core",
       "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
-      "skill_revision": "04034d71eed1",
+      "skill_revision": "84dc298f0763",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -367,7 +367,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-dry-run-first.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "ea1e31129f14d9f4c316d2c44c7d91ad7b36376ab6fed7aa11bc80ebb0b3926a",
+      "content_hash": "d9268551ac560ced0b7e790f0170c89161860a123aa10a53e81b05f163eb36f4",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -389,8 +389,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
       "scope": "risk",
       "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "skill_revision": "ea1e31129f14",
-      "status": "evaluated",
+      "skill_revision": "d9268551ac56",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-dry-run-first/examples/runtime.md",
@@ -481,12 +481,13 @@
         "skills/aoa-local-stack-bringup/techniques.yaml",
         "skills/aoa-local-stack-bringup/agents/openai.yaml",
         "skills/aoa-local-stack-bringup/examples/runtime.md",
-        "skills/aoa-local-stack-bringup/checks/review.md"
+        "skills/aoa-local-stack-bringup/checks/review.md",
+        "docs/reviews/status-promotions/aoa-local-stack-bringup.md"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "436b10b7af1e699a820f24ba93b9d7011609087e25b9c858bd5093f678d53052",
+      "content_hash": "97604df9ebf14447bd500e21b9ed6440a8ccf18b78bcaa64eefd9acfb2621b85",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -505,11 +506,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-local-stack-bringup",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
       "scope": "risk",
       "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "skill_revision": "436b10b7af1e",
-      "status": "scaffold",
+      "skill_revision": "97604df9ebf1",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/aoa-local-stack-bringup/examples/runtime.md",
@@ -520,6 +521,11 @@
           "path": "skills/aoa-local-stack-bringup/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -541,7 +547,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "042beb07f1872d9d871c4804b715f3cb9f2e19be5e4e456955ebed76a10d67e4",
+      "content_hash": "2932554d24885e11db7095c8d4ed11e5dcf55524f48db70a6daeeaab4fb34c65",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -563,7 +569,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
       "scope": "core",
       "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
-      "skill_revision": "042beb07f187",
+      "skill_revision": "2932554d2488",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -658,7 +664,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "b6bffd33fd8154e6ecc8c3f9fed1ca775663e6700b6c5647296625a0911ed78c",
+      "content_hash": "d43c7703c0b960d899b5565396454cbba97f00cbeb87788a0b300b9ca096abfc",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -680,8 +686,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
       "scope": "risk",
       "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "skill_revision": "b6bffd33fd81",
-      "status": "evaluated",
+      "skill_revision": "d43c7703c0b9",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-safe-infra-change/examples/runtime.md",
@@ -722,7 +728,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "6c6d71aa880b0e3ad8802dfc16ebf253deac5d79371955bd7d680f743cd901be",
+      "content_hash": "43e610dc0a9f178e81e2e59c7c1e0c30b06c596d0f09411bab46ef9ff6173f9d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -744,8 +750,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
       "scope": "risk",
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "skill_revision": "6c6d71aa880b",
-      "status": "evaluated",
+      "skill_revision": "43e610dc0a9f",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-sanitized-share/examples/runtime.md",
@@ -785,7 +791,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "6175059468355d70199383ad65055b5a2396c52b73ac4656a71d5b534e7c4517",
+      "content_hash": "f842f9ec6810ae364bd5538adfacba7fa704e86522e9e9c92c194ecaa9b0905c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -807,8 +813,8 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "skill_revision": "617505946835",
-      "status": "evaluated",
+      "skill_revision": "f842f9ec6810",
+      "status": "canonical",
       "support_artifacts": [
         {
           "path": "skills/aoa-source-of-truth-check/examples/example.md",
@@ -895,7 +901,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "ff9fe6ad4aecd9c536dc4521d5a55799a01d61c8b7095eb4f42c60d6f3d7fab6",
+      "content_hash": "a50db301bac10b18d25ae6bcb9b96e4c62799642eac0c5f00e3d6714ebee6c86",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -917,8 +923,8 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "skill_revision": "ff9fe6ad4aec",
-      "status": "scaffold",
+      "skill_revision": "a50db301bac1",
+      "status": "reviewed",
       "support_artifacts": [
         {
           "path": "skills/atm10-change-protocol/examples/example.md",
@@ -947,7 +953,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c59dc0b815fd3b0cf8fcb5c8b914db74bf97ac434738b1b10c73e464955e8dc5",
+      "content_hash": "3b629340f86534fbc4200dbcf434dab0b90df970cdebb060e590a3e21f7de051",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -969,8 +975,8 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "skill_revision": "c59dc0b815fd",
-      "status": "scaffold",
+      "skill_revision": "3b629340f865",
+      "status": "reviewed",
       "support_artifacts": [
         {
           "path": "skills/atm10-source-of-truth-check/examples/example.md",

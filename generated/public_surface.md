@@ -6,8 +6,8 @@ It is built from committed skill bundles, review records, and evaluation fixture
 ## Summary
 
 - total skills: 17
-- default references: 7
-- candidate-ready skills: 7
+- default references: 12
+- candidate-ready skills: 3
 - blocked by pending lineage: 0
 - risk surfaces: 5
 
@@ -15,25 +15,26 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|
-| aoa-approval-gate-check | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
+| aoa-adr-write | canonical | core | explicit-preferred | published | default_reference | decision_docs_authority | - | `docs/reviews/status-promotions/aoa-adr-write.md` | `docs/reviews/canonical-candidates/aoa-adr-write.md` |
+| aoa-approval-gate-check | canonical | risk | explicit-only | published | default_reference | local_runtime_bringup, risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
 | aoa-bounded-context-map | canonical | core | explicit-preferred | published | default_reference | context_vs_contract, core_boundary_refactor | - | `docs/reviews/status-promotions/aoa-bounded-context-map.md` | `docs/reviews/canonical-candidates/aoa-bounded-context-map.md` |
 | aoa-change-protocol | canonical | core | explicit-preferred | published | default_reference | change_workflows | - | - | `docs/reviews/canonical-candidates/aoa-change-protocol.md` |
 | aoa-contract-test | canonical | core | explicit-preferred | published | default_reference | context_vs_contract | - | `docs/reviews/status-promotions/aoa-contract-test.md` | `docs/reviews/canonical-candidates/aoa-contract-test.md` |
+| aoa-dry-run-first | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` |
 | aoa-invariant-coverage-audit | canonical | core | explicit-preferred | published | default_reference | invariant_authoring_vs_audit | - | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md` |
 | aoa-property-invariants | canonical | core | explicit-preferred | published | default_reference | invariant_authoring_vs_audit | - | `docs/reviews/status-promotions/aoa-property-invariants.md` | `docs/reviews/canonical-candidates/aoa-property-invariants.md` |
+| aoa-safe-infra-change | canonical | risk | explicit-only | published | default_reference | local_runtime_bringup, risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` |
+| aoa-sanitized-share | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` |
+| aoa-source-of-truth-check | canonical | core | explicit-preferred | published | default_reference | decision_docs_authority | - | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` |
 | aoa-tdd-slice | canonical | core | explicit-preferred | published | default_reference | change_workflows | - | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` |
 
 ## Candidate-ready cohort
 
 | name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|
-| aoa-adr-write | evaluated | core | explicit-preferred | published | stay_evaluated | decision_docs_authority | - | `docs/reviews/status-promotions/aoa-adr-write.md` | `docs/reviews/canonical-candidates/aoa-adr-write.md` |
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md` |
-| aoa-dry-run-first | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` |
+| aoa-local-stack-bringup | evaluated | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | - |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md` |
-| aoa-safe-infra-change | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` |
-| aoa-sanitized-share | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` |
-| aoa-source-of-truth-check | evaluated | core | explicit-preferred | published | stay_evaluated | decision_docs_authority | - | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` |
 
 ## Blocked by pending lineage
 
@@ -45,11 +46,11 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|
-| aoa-approval-gate-check | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
-| aoa-dry-run-first | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` |
-| aoa-local-stack-bringup | scaffold | risk | explicit-only | published | - | - | status_below_evaluated | - | - |
-| aoa-safe-infra-change | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` |
-| aoa-sanitized-share | evaluated | risk | explicit-only | published | stay_evaluated | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` |
+| aoa-approval-gate-check | canonical | risk | explicit-only | published | default_reference | local_runtime_bringup, risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` |
+| aoa-dry-run-first | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` |
+| aoa-local-stack-bringup | evaluated | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | - |
+| aoa-safe-infra-change | canonical | risk | explicit-only | published | default_reference | local_runtime_bringup, risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` |
+| aoa-sanitized-share | canonical | risk | explicit-only | published | default_reference | risk_authority_preview_execution | - | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` |
 
 ## Legend
 
