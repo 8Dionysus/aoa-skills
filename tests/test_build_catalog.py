@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import io
 import json
 import shutil
@@ -69,6 +70,8 @@ class BuildCatalogTests(unittest.TestCase):
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-catalog-"))
         self.addCleanup(shutil.rmtree, repo_root, True)
         (repo_root / "skills").mkdir()
+        config_dir = repo_root / "config"
+        config_dir.mkdir()
         skill_dir = repo_root / "skills" / "aoa-test-skill"
         skill_dir.mkdir()
         (skill_dir / "examples").mkdir()
@@ -111,6 +114,25 @@ class BuildCatalogTests(unittest.TestCase):
         (repo_root / "SKILL_INDEX.md").write_text(
             "# SKILL_INDEX\n\n| name | scope | status | summary |\n|---|---|---|---|\n"
             f"| aoa-test-skill | {scope} | {status} | Test summary. |\n",
+            encoding="utf-8",
+        )
+        (config_dir / "skill_pack_profiles.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "profile": "codex-facing-wave-3",
+                    "profiles": {
+                        "repo-default": {
+                            "description": "Test install profile.",
+                            "scope": "repo",
+                            "install_mode": "symlink-preferred",
+                            "skills": ["aoa-test-skill"],
+                        }
+                    },
+                },
+                indent=2,
+            )
+            + "\n",
             encoding="utf-8",
         )
         (skill_dir / "SKILL.md").write_text(
@@ -585,6 +607,10 @@ class BuildCatalogTests(unittest.TestCase):
 
     def load_bundle_index(self, repo_root: Path) -> dict:
         path = repo_root / build_catalog.BUNDLE_INDEX_JSON_PATH
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def load_skill_graph(self, repo_root: Path) -> dict:
+        path = repo_root / build_catalog.SKILL_GRAPH_JSON_PATH
         return json.loads(path.read_text(encoding="utf-8"))
 
     def load_skill_composition_audit(self, repo_root: Path) -> dict:
@@ -1325,6 +1351,139 @@ class BuildCatalogTests(unittest.TestCase):
             skill_entry["readiness_reconciliation"],
         )
         self.assertIn("project_overlay_needs_evidence", markdown)
+
+    def test_bundle_index_includes_relationship_fields(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+
+        build_catalog.write_bundle_index(repo_root)
+
+        payload = self.load_bundle_index(repo_root)
+        entry = payload["skills"][0]
+        self.assertEqual(["repo-default"], entry["install_profiles"])
+        self.assertEqual(
+            [
+                "portable_export",
+                "runtime_seam",
+                "runtime_guardrails",
+                "description_trigger",
+                "tiny_router",
+            ],
+            entry["artifact_group_coverage"],
+        )
+        self.assertEqual(
+            [
+                {
+                    "id": "AOA-T-0001",
+                    "repo": "aoa-techniques",
+                    "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+                    "source_ref": "0123456789abcdef0123456789abcdef01234567",
+                    "lineage_state": "published",
+                }
+            ],
+            entry["technique_lineage"],
+        )
+
+    def test_bundle_index_hash_uses_repo_relative_file_order(self) -> None:
+        repo_root = self.make_repo(policy_allow_implicit=False)
+        skill_dir = repo_root / "skills" / "aoa-test-skill"
+        file_paths = [
+            skill_dir / "SKILL.md",
+            skill_dir / "techniques.yaml",
+            skill_dir / "agents" / "openai.yaml",
+        ]
+
+        digest = build_catalog.skill_bundle_surface.hash_files(repo_root, file_paths)
+        file_by_relative_path = {
+            build_catalog.skill_bundle_surface.relative_location(path, repo_root): path
+            for path in file_paths
+        }
+        expected = hashlib.sha256()
+        for relative_path in sorted(file_by_relative_path):
+            path = file_by_relative_path[relative_path]
+            normalized_text = (
+                path.read_text(encoding="utf-8")
+                .replace("\r\n", "\n")
+                .replace("\r", "\n")
+            )
+            expected.update(relative_path.encode("utf-8"))
+            expected.update(b"\0")
+            expected.update(normalized_text.encode("utf-8"))
+            expected.update(b"\0")
+
+        self.assertEqual(expected.hexdigest(), digest)
+
+    def test_bundle_index_support_resource_coverage_stays_targeted(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+        skill_name = "aoa-safe-infra-change"
+        skill_dir = repo_root / "skills" / "aoa-test-skill"
+        renamed_dir = repo_root / "skills" / skill_name
+        skill_dir.rename(renamed_dir)
+        skill_md = (renamed_dir / "SKILL.md").read_text(encoding="utf-8")
+        (renamed_dir / "SKILL.md").write_text(
+            skill_md.replace("aoa-test-skill", skill_name),
+            encoding="utf-8",
+        )
+        manifest = yaml.safe_load((renamed_dir / "techniques.yaml").read_text(encoding="utf-8"))
+        manifest["skill_name"] = skill_name
+        (renamed_dir / "techniques.yaml").write_text(
+            yaml.safe_dump(manifest, sort_keys=False),
+            encoding="utf-8",
+        )
+        (repo_root / "SKILL_INDEX.md").write_text(
+            "# SKILL_INDEX\n\n| name | scope | status | summary |\n|---|---|---|---|\n"
+            f"| {skill_name} | core | evaluated | Test summary. |\n",
+            encoding="utf-8",
+        )
+        (repo_root / "config" / "skill_pack_profiles.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "profile": "codex-facing-wave-3",
+                    "profiles": {
+                        "repo-default": {
+                            "description": "Test install profile.",
+                            "scope": "repo",
+                            "install_mode": "symlink-preferred",
+                            "skills": [skill_name],
+                        }
+                    },
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+
+        build_catalog.write_bundle_index(repo_root)
+
+        payload = self.load_bundle_index(repo_root)
+        entry = payload["skills"][0]
+        self.assertIn("support_resources", entry["artifact_group_coverage"])
+
+    def test_skill_graph_includes_profile_and_artifact_group_edges(self) -> None:
+        repo_root = self.make_repo(
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+
+        build_catalog.write_skill_graph(repo_root)
+
+        payload = self.load_skill_graph(repo_root)
+        node_types = {entry["type"] for entry in payload["nodes"]}
+        edge_kinds = {entry["kind"] for entry in payload["edges"]}
+        self.assertIn("profile", node_types)
+        self.assertIn("artifact_group", node_types)
+        self.assertIn("included_in_profile", edge_kinds)
+        self.assertIn("available_in_artifact_group", edge_kinds)
 
     def test_write_public_surface_marks_pending_lineage_and_resolves_both_review_paths(self) -> None:
         repo_root = self.make_repo(

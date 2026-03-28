@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements-dev.txt
 
+      - name: Build derived relationship surfaces
+        run: python scripts/build_catalog.py
+
       - name: Build Codex-facing export
         run: python scripts/build_agent_skills.py --repo-root .
 
@@ -130,6 +133,10 @@ jobs:
             generated/tiny_router_capsules.min.json \
             generated/tiny_router_eval_cases.jsonl \
             generated/tiny_router_overlay_manifest.json \
+            generated/skill_bundle_index.json \
+            generated/skill_bundle_index.md \
+            generated/skill_graph.json \
+            generated/skill_graph.md \
             examples/repo-trust-store.json \
             examples/permission-allowlist.json \
             examples/guardrailed-runtime-config.json \

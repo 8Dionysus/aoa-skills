@@ -56,6 +56,29 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
         self.assertIn("project_overlay_eval_ready", enum_values)
         self.assertIn("project_overlay_needs_evidence", enum_values)
 
+    def test_bundle_index_and_skill_graph_schemas_allow_relationship_depth(self) -> None:
+        bundle_schema = self.load_schema("skill_bundle_index.schema.json")
+        skill_properties = bundle_schema["properties"]["skills"]["items"]["properties"]
+        self.assertEqual(bundle_schema["properties"]["bundle_index_version"]["minimum"], 2)
+        self.assertIn("install_profiles", skill_properties)
+        self.assertIn("artifact_group_coverage", skill_properties)
+        self.assertIn("technique_lineage", skill_properties)
+
+        graph_schema = self.load_schema("skill_graph.schema.json")
+        node_enum = graph_schema["properties"]["nodes"]["items"]["properties"]["type"]["enum"]
+        edge_enum = graph_schema["properties"]["edges"]["items"]["properties"]["kind"]["enum"]
+        self.assertEqual(graph_schema["properties"]["skill_graph_version"]["minimum"], 2)
+        self.assertIn("profile", node_enum)
+        self.assertIn("artifact_group", node_enum)
+        self.assertIn("included_in_profile", edge_enum)
+        self.assertIn("available_in_artifact_group", edge_enum)
+
+    def test_release_manifest_schema_allows_relationship_views(self) -> None:
+        payload = self.load_schema("release_manifest.schema.json")
+        self.assertEqual(payload["properties"]["schema_version"]["const"], 3)
+        self.assertIn("relationship_views", payload["required"])
+        self.assertIn("relationship_views", payload["properties"])
+
 
 if __name__ == "__main__":
     unittest.main()

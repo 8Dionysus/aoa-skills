@@ -122,7 +122,7 @@ Explore:
 - machine-readable bundle metadata and stronger version pinning
 - keep `generated/release_manifest.json` as the packaging-facing contract that pins portable artifact groups, bundle revisions, profile revisions, and changelog-derived release identity
 - compatibility and lineage metadata across skills and techniques
-- skill graph views for dependency, maturity, and policy relationships
+- skill graph views for dependency, maturity, policy, install-profile, and artifact-group relationships
 - import/export and offline bundle use
 - verifiable distribution of reusable public skill bundles
 - explicit cross-repo bridge rollout notes for source-owned bridge waves that downstream repos consume from `main`
@@ -133,6 +133,11 @@ Near-term sequence inside this wave:
 1. harden the release manifest and packaging verification contract
 2. add compatibility/lineage depth on top of that contract
 3. only then consider any broader import/export polish
+
+The compatibility/lineage follow-up should stay inside existing packaging surfaces:
+- `generated/skill_bundle_index.*` for per-skill profile membership, artifact-group coverage, and technique-lineage detail
+- `generated/skill_graph.*` for relationship topology
+- `generated/release_manifest.json` only as the release-facing pinning layer over those views
 
 ## Long-term direction
 

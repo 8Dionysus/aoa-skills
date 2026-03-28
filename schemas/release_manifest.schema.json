@@ -13,6 +13,7 @@
     "profile_count",
     "authoring_inputs",
     "generated_files",
+    "relationship_views",
     "artifact_groups",
     "authoring_input_digests",
     "generated_file_digests",
@@ -21,7 +22,7 @@
     "release_identity"
   ],
   "properties": {
-    "schema_version": { "type": "integer", "const": 2 },
+    "schema_version": { "type": "integer", "const": 3 },
     "profile": { "type": "string", "minLength": 1 },
     "included_waves": {
       "type": "array",
@@ -36,6 +37,10 @@
       "items": { "type": "string", "minLength": 1 }
     },
     "generated_files": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "relationship_views": {
       "type": "array",
       "items": { "type": "string", "minLength": 1 }
     },

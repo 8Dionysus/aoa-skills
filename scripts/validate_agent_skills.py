@@ -14,6 +14,7 @@ from typing import Any
 
 import release_manifest_contract
 import yaml
+import build_catalog
 
 from skill_runtime_guardrails import (
     activate_guarded_payload,
@@ -93,6 +94,10 @@ REQUIRED_GENERATED_FILES = [
     "generated/tiny_router_capsules.min.json",
     "generated/tiny_router_eval_cases.jsonl",
     "generated/tiny_router_overlay_manifest.json",
+    "generated/skill_bundle_index.json",
+    "generated/skill_bundle_index.md",
+    "generated/skill_graph.json",
+    "generated/skill_graph.md",
     "generated/release_manifest.json",
 ]
 REQUIRED_CONFIG_FILES = [
@@ -143,6 +148,37 @@ def append_missing_files(errors: list[str], repo_root: pathlib.Path, rel_paths: 
     for rel_path in rel_paths:
         if not (repo_root / rel_path).exists():
             errors.append(f"missing required file: {rel_path}")
+
+
+def first_payload_difference(expected: Any, actual: Any, prefix: str = "") -> str | None:
+    if type(expected) is not type(actual):
+        return f"{prefix}type mismatch: expected {type(expected).__name__}, got {type(actual).__name__}"
+    if isinstance(expected, dict):
+        expected_keys = set(expected)
+        actual_keys = set(actual)
+        if expected_keys != actual_keys:
+            return (
+                f"{prefix}key mismatch: expected {sorted(expected_keys)!r}, "
+                f"got {sorted(actual_keys)!r}"
+            )
+        for key in expected:
+            next_prefix = f"{prefix}.{key}" if prefix else str(key)
+            difference = first_payload_difference(expected[key], actual[key], next_prefix)
+            if difference is not None:
+                return difference
+        return None
+    if isinstance(expected, list):
+        if len(expected) != len(actual):
+            return f"{prefix}length mismatch: expected {len(expected)}, got {len(actual)}"
+        for index, (expected_item, actual_item) in enumerate(zip(expected, actual)):
+            next_prefix = f"{prefix}[{index}]"
+            difference = first_payload_difference(expected_item, actual_item, next_prefix)
+            if difference is not None:
+                return difference
+        return None
+    if expected != actual:
+        return f"{prefix} mismatch: expected {expected!r}, got {actual!r}"
+    return None
 
 
 def main() -> int:
@@ -203,6 +239,8 @@ def main() -> int:
     tiny_router_capsules = load_json(generated_dir / "tiny_router_capsules.min.json")
     tiny_router_eval_cases = load_jsonl(generated_dir / "tiny_router_eval_cases.jsonl")
     tiny_router_manifest = load_json(generated_dir / "tiny_router_overlay_manifest.json")
+    bundle_index = load_json(generated_dir / "skill_bundle_index.json")
+    skill_graph = load_json(generated_dir / "skill_graph.json")
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
@@ -996,6 +1034,7 @@ def main() -> int:
         "profile_count",
         "authoring_inputs",
         "generated_files",
+        "relationship_views",
         "artifact_groups",
         "authoring_input_digests",
         "generated_file_digests",
@@ -1005,6 +1044,24 @@ def main() -> int:
     ):
         if release_manifest.get(field_name) != expected_release_manifest.get(field_name):
             errors.append(f"generated/release_manifest.json {field_name} mismatch")
+    expected_bundle_index = build_catalog.build_bundle_index_payload(repo_root)
+    if bundle_index != expected_bundle_index:
+        errors.append("generated/skill_bundle_index.json mismatch")
+        difference = first_payload_difference(expected_bundle_index, bundle_index)
+        if difference is not None:
+            errors.append(f"generated/skill_bundle_index.json detail: {difference}")
+    expected_skill_graph = build_catalog.build_skill_graph_payload(repo_root)
+    if skill_graph != expected_skill_graph:
+        errors.append("generated/skill_graph.json mismatch")
+        difference = first_payload_difference(expected_skill_graph, skill_graph)
+        if difference is not None:
+            errors.append(f"generated/skill_graph.json detail: {difference}")
+    for rel_path in release_manifest.get("relationship_views", []):
+        if rel_path not in release_manifest.get("generated_files", []):
+            errors.append(
+                "generated/release_manifest.json missing relationship view from generated_files: "
+                + rel_path
+            )
 
     if runtime_discovery.get("root") != ".agents/skills":
         errors.append("generated/runtime_discovery_index.json root mismatch")

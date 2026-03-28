@@ -15,6 +15,7 @@ Each profile declares:
 ## Generated file
 
 `generated/skill_pack_profiles.resolved.json` resolves those profiles into concrete target roots and expected target paths.
+`generated/skill_bundle_index.json` mirrors that membership back onto each skill as `install_profiles` so per-skill packaging checks do not need to reverse-read the whole profile set.
 
 `generated/release_manifest.json` now also records `install_profile_revisions` so the resolved profile set can be pinned as part of the repo-local portable release contract.
 
@@ -45,6 +46,7 @@ If you need a machine-readable packaging check rather than a dry-run install pla
 
 - read `generated/skill_pack_profiles.resolved.json` for the concrete profile membership
 - read `generated/release_manifest.json` for the current `install_profile_revisions`
+- read `generated/skill_bundle_index.json` when you want the inverse view: which install profiles currently include a given skill
 
 That pair gives an offline verification surface for profile membership drift without introducing a separate package registry.
 

@@ -81,7 +81,7 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 
 These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
 `generated/skill_handoff_contracts.json` is the only wave-5 bridge kept in `aoa-skills`: it remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
-`generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
+`generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, relationship views, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
 
 Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 
@@ -147,8 +147,8 @@ Use `generated/release_manifest.json` when you need one machine-readable view ov
 It intentionally keeps three things separate:
 
 - repo-level release identity still lives in `CHANGELOG.md`, `docs/RELEASING.md`, tags, and GitHub release notes
-- bundle-level meaning still lives in `skills/*/SKILL.md`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`
-- the release manifest only pins which portable artifact groups exist and which bundle/profile revisions they currently expose
+- bundle-level meaning and per-skill compatibility still live in `skills/*/SKILL.md`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`
+- the release manifest only pins which portable artifact groups and relationship views exist and which bundle/profile revisions they currently expose
 
 ## Build and validation
 

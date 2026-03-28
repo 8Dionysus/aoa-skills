@@ -5,7 +5,7 @@
   "additionalProperties": false,
   "required": ["bundle_index_version", "skills", "source_of_truth"],
   "properties": {
-    "bundle_index_version": { "type": "integer", "minimum": 1 },
+    "bundle_index_version": { "type": "integer", "minimum": 2 },
     "source_of_truth": {
       "type": "object",
       "additionalProperties": false,
@@ -47,6 +47,9 @@
           "candidate_review_path",
           "support_artifacts",
           "bundle_files",
+          "install_profiles",
+          "artifact_group_coverage",
+          "technique_lineage",
           "generated_surface_versions"
         ],
         "properties": {
@@ -96,6 +99,29 @@
           "bundle_files": {
             "type": "array",
             "items": { "type": "string", "minLength": 1 }
+          },
+          "install_profiles": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "artifact_group_coverage": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "technique_lineage": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "repo", "path", "source_ref", "lineage_state"],
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "repo": { "type": "string", "minLength": 1 },
+                "path": { "type": "string", "minLength": 1 },
+                "source_ref": { "type": "string", "minLength": 1 },
+                "lineage_state": { "type": "string", "enum": ["published", "pending"] }
+              }
+            }
           },
           "generated_surface_versions": {
             "type": "object",

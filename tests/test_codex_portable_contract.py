@@ -151,6 +151,15 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual(release_manifest["profile_count"], 6)
         self.assertEqual(release_manifest["release_identity"]["latest_tagged_version"], "0.1.0")
         self.assertTrue(release_manifest["release_identity"]["has_unreleased_changes"])
+        self.assertEqual(
+            release_manifest["relationship_views"],
+            [
+                "generated/skill_bundle_index.json",
+                "generated/skill_bundle_index.md",
+                "generated/skill_graph.json",
+                "generated/skill_graph.md",
+            ],
+        )
 
         bundle_index = load_json(REPO_ROOT / "generated" / "skill_bundle_index.json")
         expected_bundle_revisions = [
@@ -171,6 +180,42 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual(
             release_manifest["install_profile_revisions"],
             expected_profile_revisions,
+        )
+        generated_digests = {
+            entry["path"]: entry for entry in release_manifest["generated_file_digests"]
+        }
+        for rel_path in release_manifest["relationship_views"]:
+            self.assertIn(rel_path, release_manifest["generated_files"])
+            self.assertIn(rel_path, generated_digests)
+            self.assertEqual(
+                generated_digests[rel_path],
+                release_manifest_contract.file_digest_record(REPO_ROOT, rel_path, {}),
+            )
+
+    def test_bundle_index_tracks_overlay_profiles_and_targeted_support_coverage(self):
+        bundle_index = load_json(REPO_ROOT / "generated" / "skill_bundle_index.json")
+        entries = {entry["name"]: entry for entry in bundle_index["skills"]}
+        self.assertEqual(
+            entries["atm10-change-protocol"]["install_profiles"],
+            ["repo-atm10-overlay", "repo-default"],
+        )
+        self.assertEqual(
+            entries["abyss-safe-infra-change"]["install_profiles"],
+            ["repo-abyss-overlay", "repo-default"],
+        )
+        self.assertIn(
+            "support_resources",
+            entries["aoa-dry-run-first"]["artifact_group_coverage"],
+        )
+        self.assertNotIn(
+            "support_resources",
+            entries["aoa-adr-write"]["artifact_group_coverage"],
+        )
+        self.assertTrue(
+            all(
+                technique["lineage_state"] == "published"
+                for technique in entries["aoa-safe-infra-change"]["technique_lineage"]
+            )
         )
 
     def test_explicit_only_skills_have_no_implicit_positive_cases(self):

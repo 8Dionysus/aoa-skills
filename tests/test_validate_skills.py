@@ -237,10 +237,12 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
         self.addCleanup(shutil.rmtree, repo_root, True)
         (repo_root / "skills").mkdir()
+        (repo_root / "config").mkdir()
 
         if index_names is None:
             index_names = [skill_name]
         self.write_skill_index(repo_root, index_names)
+        self.write_skill_pack_profiles(repo_root, index_names)
         self.add_skill_bundle(
             repo_root,
             skill_name=skill_name,
@@ -537,8 +539,34 @@ class ValidateSkillsTests(unittest.TestCase):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
     def write_catalogs(self, repo_root: Path) -> None:
+        config_path = repo_root / "config" / "skill_pack_profiles.json"
+        if not config_path.exists():
+            (repo_root / "config").mkdir(exist_ok=True)
+            skill_names = sorted(path.name for path in (repo_root / "skills").iterdir() if path.is_dir())
+            self.write_skill_pack_profiles(repo_root, skill_names)
         for spec in build_catalog.generated_surface_specs():
             build_catalog.write_generated_surface(repo_root, spec)
+
+    def write_skill_pack_profiles(self, repo_root: Path, skill_names: list[str]) -> None:
+        (repo_root / "config" / "skill_pack_profiles.json").write_text(
+            json.dumps(
+                {
+                    "schema_version": 1,
+                    "profile": "codex-facing-wave-3",
+                    "profiles": {
+                        "repo-default": {
+                            "description": "Test install profile.",
+                            "scope": "repo",
+                            "install_mode": "symlink-preferred",
+                            "skills": skill_names,
+                        }
+                    },
+                },
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
 
     def write_skill_composition_exception_review(
         self,
