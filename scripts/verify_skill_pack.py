@@ -110,66 +110,72 @@ def build_report(
     profile_name: str,
     install_root_override: str | None,
     bundle_root_override: str | None,
+    bundle_archive_override: str | None,
     strict_root: bool,
 ) -> dict[str, Any]:
     try:
-        source = skill_pack_install_contract.load_skill_pack_source(
+        source_context = skill_pack_install_contract.skill_pack_source_context(
             repo_root,
             profile_name=profile_name,
             bundle_root_override=bundle_root_override,
+            bundle_archive_override=bundle_archive_override,
         )
     except KeyError:
         raise SystemExit(f"unknown profile: {profile_name}")
     except ValueError as exc:
         raise SystemExit(str(exc))
 
-    install_root = skill_pack_install_contract.resolve_install_root(
-        repo_root,
-        install_root_override=install_root_override,
-        default_install_root=source["install_root"],
-    )
-
-    skills: list[dict[str, Any]] = []
-    for skill_entry in source["skills"]:
-        skill_name = skill_entry["name"]
-        skills.append(
-            verify_skill_install(
-                skill_name=skill_name,
-                source_dir=pathlib.Path(skill_entry["source_dir"]),
-                target_dir=install_root / skill_name,
-                expected_files=skill_entry["expected_files"],
-            )
+    with source_context as source:
+        install_root = skill_pack_install_contract.resolve_install_root(
+            repo_root,
+            install_root_override=install_root_override,
+            default_install_root=source["install_root"],
         )
 
-    missing_skills = [
-        entry["name"] for entry in skills if entry["install_state"] == "missing"
-    ]
-    mismatched_skills = [
-        entry["name"] for entry in skills if entry["install_state"] == "mismatch"
-    ]
-    extra_dirs = extra_skill_dirs(
-        install_root,
-        {entry["name"] for entry in skills},
-    )
-    verified = not missing_skills and not mismatched_skills and (
-        not strict_root or not extra_dirs
-    )
-    return {
-        "profile": profile_name,
-        "profile_revision": source["profile_revision"],
-        "install_root": str(install_root),
-        "source_kind": source["source_kind"],
-        "bundle_root": source["bundle_root"],
-        "strict_root": strict_root,
-        "verified": verified,
-        "expected_skill_count": len(skills),
-        "verified_skill_count": sum(1 for entry in skills if entry["install_state"] == "ok"),
-        "missing_skills": missing_skills,
-        "mismatched_skills": mismatched_skills,
-        "extra_skill_dirs": extra_dirs,
-        "release_identity": dict(source["release_identity"]),
-        "skills": skills,
-    }
+        skills: list[dict[str, Any]] = []
+        for skill_entry in source["skills"]:
+            skill_name = skill_entry["name"]
+            skills.append(
+                verify_skill_install(
+                    skill_name=skill_name,
+                    source_dir=pathlib.Path(skill_entry["source_dir"]),
+                    target_dir=install_root / skill_name,
+                    expected_files=skill_entry["expected_files"],
+                )
+            )
+
+        missing_skills = [
+            entry["name"] for entry in skills if entry["install_state"] == "missing"
+        ]
+        mismatched_skills = [
+            entry["name"] for entry in skills if entry["install_state"] == "mismatch"
+        ]
+        extra_dirs = extra_skill_dirs(
+            install_root,
+            {entry["name"] for entry in skills},
+        )
+        verified = not missing_skills and not mismatched_skills and (
+            not strict_root or not extra_dirs
+        )
+        return {
+            "profile": profile_name,
+            "profile_revision": source["profile_revision"],
+            "install_root": str(install_root),
+            "source_kind": source["source_kind"],
+            "bundle_root": source["bundle_root"],
+            "bundle_archive": source["bundle_archive"],
+            "strict_root": strict_root,
+            "verified": verified,
+            "expected_skill_count": len(skills),
+            "verified_skill_count": sum(
+                1 for entry in skills if entry["install_state"] == "ok"
+            ),
+            "missing_skills": missing_skills,
+            "mismatched_skills": mismatched_skills,
+            "extra_skill_dirs": extra_dirs,
+            "release_identity": dict(source["release_identity"]),
+            "skills": skills,
+        }
 
 
 def render_markdown(report: Mapping[str, Any]) -> str:
@@ -224,10 +230,16 @@ def main() -> int:
         default=None,
         help="Override installation root for profile verification",
     )
-    parser.add_argument(
+    source_group = parser.add_mutually_exclusive_group()
+    source_group.add_argument(
         "--bundle-root",
         default=None,
         help="Optional staged profile-bundle root containing bundle_manifest.json",
+    )
+    source_group.add_argument(
+        "--bundle-archive",
+        default=None,
+        help="Optional ZIP handoff archive containing one staged profile bundle",
     )
     parser.add_argument(
         "--strict-root",
@@ -243,13 +255,17 @@ def main() -> int:
     args = parser.parse_args()
 
     repo_root = pathlib.Path(args.repo_root).resolve()
-    report = build_report(
-        repo_root=repo_root,
-        profile_name=args.profile,
-        install_root_override=args.install_root,
-        bundle_root_override=args.bundle_root,
-        strict_root=args.strict_root,
-    )
+    try:
+        report = build_report(
+            repo_root=repo_root,
+            profile_name=args.profile,
+            install_root_override=args.install_root,
+            bundle_root_override=args.bundle_root,
+            bundle_archive_override=args.bundle_archive,
+            strict_root=args.strict_root,
+        )
+    except ValueError as exc:
+        raise SystemExit(str(exc))
     if args.format == "json":
         print(json.dumps(report, indent=2))
     else:

@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import json
+import shutil
+import tempfile
+import zipfile
 from pathlib import Path
+from pathlib import PurePosixPath
 from typing import Any, Mapping
 
 import release_manifest_contract
@@ -16,6 +21,8 @@ STANDARD_INSTALL_ROOTS = {
 RESOLVED_PROFILES_PATH = Path("generated") / "skill_pack_profiles.resolved.json"
 BUNDLE_MANIFEST_FILENAME = "bundle_manifest.json"
 BUNDLE_SKILL_ROOT = ".agents/skills"
+BUNDLE_ARCHIVE_FORMAT = "zip"
+BUNDLE_ARCHIVE_ROOT_PREFIX = "aoa-skills"
 
 
 def load_json(path: Path) -> Any:
@@ -36,6 +43,14 @@ def bundle_manifest_path(root: str | Path) -> Path:
 
 def bundle_skill_root(root: str | Path) -> Path:
     return bundle_root(root) / ".agents" / "skills"
+
+
+def bundle_archive_path(path: str | Path) -> Path:
+    return Path(path).expanduser().resolve()
+
+
+def bundle_archive_root_name(profile_name: str) -> str:
+    return f"{BUNDLE_ARCHIVE_ROOT_PREFIX}-{profile_name}"
 
 
 def expand_root(root: str, repo_root: Path) -> Path:
@@ -165,6 +180,125 @@ def record_digest(file_records: list[Mapping[str, Any]]) -> str:
     return digest.hexdigest()
 
 
+def archive_info(path: str | Path) -> dict[str, Any]:
+    resolved_path = bundle_archive_path(path)
+    data = resolved_path.read_bytes()
+    return {
+        "archive_path": str(resolved_path),
+        "archive_format": BUNDLE_ARCHIVE_FORMAT,
+        "archive_sha256": release_manifest_contract.sha256_bytes(data),
+        "archive_bytes": len(data),
+    }
+
+
+def bundle_archive_payloads(
+    bundle_root_dir: Path,
+    *,
+    profile_name: str,
+) -> list[tuple[str, bytes]]:
+    return iter_directory_file_payloads(
+        bundle_root_dir,
+        relative_prefix=bundle_archive_root_name(profile_name),
+    )
+
+
+def write_bundle_archive(
+    bundle_root_dir: Path,
+    archive_path: str | Path,
+    *,
+    profile_name: str,
+    overwrite: bool,
+) -> dict[str, Any]:
+    resolved_archive_path = bundle_archive_path(archive_path)
+    if resolved_archive_path.exists():
+        if not overwrite:
+            raise ValueError(
+                f"bundle archive exists: {resolved_archive_path} (use --overwrite to replace)"
+            )
+        if resolved_archive_path.is_dir():
+            shutil.rmtree(resolved_archive_path)
+        else:
+            resolved_archive_path.unlink()
+
+    resolved_archive_path.parent.mkdir(parents=True, exist_ok=True)
+    payloads = sorted(
+        bundle_archive_payloads(bundle_root_dir, profile_name=profile_name),
+        key=lambda item: item[0],
+    )
+    with zipfile.ZipFile(
+        resolved_archive_path,
+        mode="w",
+        compression=zipfile.ZIP_DEFLATED,
+        compresslevel=9,
+    ) as archive:
+        for relative_path, data in payloads:
+            info = zipfile.ZipInfo(relative_path)
+            info.date_time = (1980, 1, 1, 0, 0, 0)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.create_system = 3
+            info.external_attr = 0o100644 << 16
+            archive.writestr(info, data)
+    return archive_info(resolved_archive_path)
+
+
+def _validated_archive_members(archive: zipfile.ZipFile) -> list[zipfile.ZipInfo]:
+    members: list[zipfile.ZipInfo] = []
+    for entry in archive.infolist():
+        normalized_name = entry.filename.replace("\\", "/")
+        path = PurePosixPath(normalized_name)
+        if not normalized_name or normalized_name.endswith("/"):
+            continue
+        if path.is_absolute() or ".." in path.parts:
+            raise ValueError(f"bundle archive contains unsafe path: {entry.filename}")
+        members.append(entry)
+    return members
+
+
+def discover_bundle_root(root_dir: Path) -> Path:
+    candidates = sorted(
+        {
+            path.parent.resolve()
+            for path in root_dir.rglob(BUNDLE_MANIFEST_FILENAME)
+            if path.is_file()
+        },
+        key=lambda path: path.as_posix(),
+    )
+    if not candidates:
+        raise ValueError("bundle archive is missing bundle_manifest.json")
+    if len(candidates) != 1:
+        raise ValueError(
+            f"bundle archive must contain exactly one bundle root, found {len(candidates)}"
+        )
+    candidate = candidates[0]
+    if not bundle_skill_root(candidate).is_dir():
+        raise ValueError(
+            f"bundle archive root is missing {BUNDLE_SKILL_ROOT}: {candidate}"
+        )
+    return candidate
+
+
+def extract_bundle_archive(
+    archive_path: str | Path,
+    extract_root: Path,
+) -> Path:
+    resolved_archive_path = bundle_archive_path(archive_path)
+    try:
+        with zipfile.ZipFile(resolved_archive_path, mode="r") as archive:
+            members = _validated_archive_members(archive)
+            extract_root.mkdir(parents=True, exist_ok=True)
+            for entry in members:
+                normalized_name = entry.filename.replace("\\", "/")
+                relative_path = PurePosixPath(normalized_name)
+                target_path = extract_root.joinpath(*relative_path.parts)
+                target_path.parent.mkdir(parents=True, exist_ok=True)
+                with archive.open(entry, mode="r") as source_handle:
+                    with target_path.open("wb") as target_handle:
+                        shutil.copyfileobj(source_handle, target_handle)
+    except zipfile.BadZipFile as exc:
+        raise ValueError(f"invalid bundle archive: {resolved_archive_path}") from exc
+    return discover_bundle_root(extract_root)
+
+
 def expected_skill_file_records_from_bundle(
     bundle_manifest: Mapping[str, Any],
     skill_name: str,
@@ -267,6 +401,44 @@ def load_skill_pack_source(
     }
 
 
+@contextlib.contextmanager
+def skill_pack_source_context(
+    repo_root: Path,
+    *,
+    profile_name: str,
+    bundle_root_override: str | None = None,
+    bundle_archive_override: str | None = None,
+):
+    if bundle_root_override and bundle_archive_override:
+        raise ValueError("use only one of --bundle-root or --bundle-archive")
+
+    if bundle_archive_override is None:
+        source = load_skill_pack_source(
+            repo_root,
+            profile_name=profile_name,
+            bundle_root_override=bundle_root_override,
+        )
+        source["bundle_archive"] = None
+        yield source
+        return
+
+    with tempfile.TemporaryDirectory(prefix="aoa-skills-bundle-archive-") as temp_dir:
+        extracted_root = Path(temp_dir) / "extracted"
+        discovered_bundle_root = extract_bundle_archive(
+            bundle_archive_override,
+            extracted_root,
+        )
+        source = load_skill_pack_source(
+            repo_root,
+            profile_name=profile_name,
+            bundle_root_override=str(discovered_bundle_root),
+        )
+        source["source_kind"] = "staged_archive"
+        source["bundle_root"] = None
+        source["bundle_archive"] = str(bundle_archive_path(bundle_archive_override))
+        yield source
+
+
 def _quote_command_arg(value: str) -> str:
     if not value:
         return '""'
@@ -280,11 +452,14 @@ def recommended_install_command(
     *,
     profile_name: str,
     bundle_root_override: Path | None = None,
+    bundle_archive_override: Path | None = None,
     install_root: Path | None = None,
     mode: str = "copy",
     execute: bool = True,
     output_format: str | None = None,
 ) -> str:
+    if bundle_root_override is not None and bundle_archive_override is not None:
+        raise ValueError("use only one of bundle_root_override or bundle_archive_override")
     args = [
         "python",
         "scripts/install_skill_pack.py",
@@ -295,6 +470,8 @@ def recommended_install_command(
     ]
     if bundle_root_override is not None:
         args.extend(["--bundle-root", str(bundle_root_override)])
+    if bundle_archive_override is not None:
+        args.extend(["--bundle-archive", str(bundle_archive_override)])
     if install_root is not None:
         args.extend(["--dest-root", str(install_root)])
     if mode:
@@ -311,9 +488,12 @@ def recommended_verify_command(
     profile_name: str,
     install_root: Path | None,
     bundle_root_override: Path | None = None,
+    bundle_archive_override: Path | None = None,
     strict_root: bool = False,
     output_format: str = "json",
 ) -> str:
+    if bundle_root_override is not None and bundle_archive_override is not None:
+        raise ValueError("use only one of bundle_root_override or bundle_archive_override")
     args = [
         "python",
         "scripts/verify_skill_pack.py",
@@ -324,6 +504,8 @@ def recommended_verify_command(
     ]
     if bundle_root_override is not None:
         args.extend(["--bundle-root", str(bundle_root_override)])
+    if bundle_archive_override is not None:
+        args.extend(["--bundle-archive", str(bundle_archive_override)])
     if install_root is not None:
         args.extend(["--install-root", str(install_root)])
     if strict_root:

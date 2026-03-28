@@ -221,6 +221,7 @@ class CodexPortableContractTests(unittest.TestCase):
 
     def test_stage_skill_pack_dry_run_succeeds(self):
         with tempfile.TemporaryDirectory() as tmpdir:
+            archive_path = pathlib.Path(tmpdir) / "repo-core-only.zip"
             completed = subprocess.run(
                 [
                     sys.executable,
@@ -231,6 +232,8 @@ class CodexPortableContractTests(unittest.TestCase):
                     "repo-core-only",
                     "--output-root",
                     str(pathlib.Path(tmpdir) / "bundle"),
+                    "--archive-path",
+                    str(archive_path),
                     "--format",
                     "json",
                 ],
@@ -244,6 +247,10 @@ class CodexPortableContractTests(unittest.TestCase):
                 0,
                 msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
             )
+            payload = json.loads(completed.stdout)
+            self.assertEqual(str(archive_path.resolve()), payload["archive_path"])
+            self.assertEqual("zip", payload["archive_format"])
+            self.assertIn("--bundle-archive", payload["recommended_install_command"])
 
     def test_explicit_only_skills_have_no_implicit_positive_cases(self):
         source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")

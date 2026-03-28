@@ -54,6 +54,7 @@ def build_stage_plan(
     repo_root: pathlib.Path,
     profile_name: str,
     output_root: pathlib.Path,
+    archive_path: pathlib.Path | None,
     execute: bool,
 ) -> dict[str, Any]:
     source = skill_pack_install_contract.load_skill_pack_source(
@@ -61,22 +62,33 @@ def build_stage_plan(
         profile_name=profile_name,
     )
     bundle_manifest = build_bundle_manifest(source)
+    use_archive_transport = archive_path is not None
     return {
         **bundle_manifest,
         "source_kind": source["source_kind"],
         "source_root": source["source_root"],
         "bundle_root": str(output_root),
+        "archive_path": str(archive_path) if archive_path is not None else None,
+        "archive_format": (
+            skill_pack_install_contract.BUNDLE_ARCHIVE_FORMAT
+            if archive_path is not None
+            else None
+        ),
+        "archive_sha256": None,
+        "archive_bytes": None,
         "execute": execute,
         "recommended_install_command": skill_pack_install_contract.recommended_install_command(
             profile_name=profile_name,
-            bundle_root_override=output_root,
+            bundle_archive_override=archive_path if use_archive_transport else None,
+            bundle_root_override=None if use_archive_transport else output_root,
             mode="copy",
             execute=True,
         ),
         "recommended_verify_command": skill_pack_install_contract.recommended_verify_command(
             profile_name=profile_name,
             install_root=None,
-            bundle_root_override=output_root,
+            bundle_archive_override=archive_path if use_archive_transport else None,
+            bundle_root_override=None if use_archive_transport else output_root,
             output_format="json",
         ),
     }
@@ -98,8 +110,9 @@ def execute_stage(
     source: dict[str, Any],
     bundle_root: pathlib.Path,
     bundle_manifest: dict[str, Any],
+    archive_path: pathlib.Path | None,
     overwrite: bool,
-) -> None:
+) -> dict[str, Any] | None:
     ensure_clean_bundle_root(bundle_root, overwrite)
     bundle_root.mkdir(parents=True, exist_ok=True)
 
@@ -115,6 +128,14 @@ def execute_stage(
         json.dumps(bundle_manifest, indent=2) + "\n",
         encoding="utf-8",
     )
+    if archive_path is None:
+        return None
+    return skill_pack_install_contract.write_bundle_archive(
+        bundle_root,
+        archive_path,
+        profile_name=str(bundle_manifest["profile"]),
+        overwrite=overwrite,
+    )
 
 
 def render_markdown(plan: dict[str, Any]) -> str:
@@ -123,6 +144,7 @@ def render_markdown(plan: dict[str, Any]) -> str:
         "",
         f"Profile revision: {plan['profile_revision']}",
         f"Bundle root: {plan['bundle_root']}",
+        f"Archive path: {plan['archive_path'] or '-'}",
         f"Execute: {plan['execute']}",
         f"Skill count: {plan['skill_count']}",
         f"Bundle digest: {plan['bundle_digest']}",
@@ -141,6 +163,11 @@ def main() -> int:
     parser.add_argument("--repo-root", default=".", help="Repository root containing .agents/skills")
     parser.add_argument("--profile", required=True, help="Profile name from generated/skill_pack_profiles.resolved.json")
     parser.add_argument("--output-root", required=True, help="Directory where the staged bundle should live")
+    parser.add_argument(
+        "--archive-path",
+        default=None,
+        help="Optional ZIP output path for the staged profile bundle",
+    )
     parser.add_argument("--execute", action="store_true", help="Materialize the staged bundle")
     parser.add_argument("--overwrite", action="store_true", help="Replace an existing staged bundle root")
     parser.add_argument("--format", choices=("json", "markdown"), default="markdown", help="Output format")
@@ -148,6 +175,11 @@ def main() -> int:
 
     repo_root = pathlib.Path(args.repo_root).resolve()
     bundle_root = pathlib.Path(args.output_root).expanduser().resolve()
+    archive_path = (
+        pathlib.Path(args.archive_path).expanduser().resolve()
+        if args.archive_path is not None
+        else None
+    )
     try:
         source = skill_pack_install_contract.load_skill_pack_source(
             repo_root,
@@ -162,28 +194,39 @@ def main() -> int:
         repo_root=repo_root,
         profile_name=args.profile,
         output_root=bundle_root,
+        archive_path=archive_path,
         execute=args.execute,
     )
 
     if args.execute:
-        execute_stage(
-            source=source,
-            bundle_root=bundle_root,
-            bundle_manifest={
-                key: value
-                for key, value in plan.items()
-                if key
-                not in {
-                    "source_kind",
-                    "source_root",
-                    "bundle_root",
-                    "execute",
-                    "recommended_install_command",
-                    "recommended_verify_command",
-                }
-            },
-            overwrite=args.overwrite,
-        )
+        try:
+            archive_info = execute_stage(
+                source=source,
+                bundle_root=bundle_root,
+                bundle_manifest={
+                    key: value
+                    for key, value in plan.items()
+                    if key
+                    not in {
+                        "source_kind",
+                        "source_root",
+                        "bundle_root",
+                        "archive_path",
+                        "archive_format",
+                        "archive_sha256",
+                        "archive_bytes",
+                        "execute",
+                        "recommended_install_command",
+                        "recommended_verify_command",
+                    }
+                },
+                archive_path=archive_path,
+                overwrite=args.overwrite,
+            )
+        except ValueError as exc:
+            raise SystemExit(str(exc))
+        if archive_info is not None:
+            plan.update(archive_info)
 
     if args.format == "json":
         print(json.dumps(plan, indent=2))
