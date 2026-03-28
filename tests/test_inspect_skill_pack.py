@@ -167,6 +167,36 @@ class InspectSkillPackTests(unittest.TestCase):
             self.assertIn(".agents/skills/aoa-change-protocol/SKILL.md", payload["mismatched_files"])
             self.assertFalse(payload["bundle_digest_matches_manifest"])
 
+    def test_deleted_bundle_readme_fails_inspection(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+            (bundle_root / "README.md").unlink()
+
+            completed, payload = self.inspect_bundle(bundle_root=bundle_root)
+
+            self.assertEqual(1, completed.returncode)
+            self.assertFalse(payload["verified"])
+            self.assertIn("README.md", payload["missing_files"])
+            self.assertFalse(payload["bundle_digest_matches_manifest"])
+
+    def test_mutated_bundle_readme_fails_inspection(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+            readme_path = bundle_root / "README.md"
+            readme_path.write_text(
+                readme_path.read_text(encoding="utf-8") + "\nDrift.\n",
+                encoding="utf-8",
+            )
+
+            completed, payload = self.inspect_bundle(bundle_root=bundle_root)
+
+            self.assertEqual(1, completed.returncode)
+            self.assertFalse(payload["verified"])
+            self.assertIn("README.md", payload["mismatched_files"])
+            self.assertFalse(payload["bundle_digest_matches_manifest"])
+
     def test_archive_missing_bundle_manifest_fails_cleanly(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             archive_path = pathlib.Path(tmpdir) / "missing-manifest.zip"

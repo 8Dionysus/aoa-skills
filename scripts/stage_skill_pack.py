@@ -12,7 +12,58 @@ from typing import Any
 import skill_pack_install_contract
 
 
-def build_bundle_manifest(source: dict[str, Any]) -> dict[str, Any]:
+def build_bundle_readme(*, source: dict[str, Any]) -> str:
+    lines = [
+        f"# aoa-skills bundle: {source['profile']}",
+        "",
+        "This staged bundle is a repo-local, profile-scoped handoff object.",
+        "`bundle_manifest.json` is the canonical machine-readable contract for this bundle.",
+        "`README.md` is a human-facing companion that points a receiver at inspect/import flows.",
+        "",
+        f"- Profile: `{source['profile']}`",
+        f"- Profile revision: `{source['profile_revision']}`",
+        f"- Latest tagged version: `{source['release_identity']['latest_tagged_version']}`",
+        f"- Latest tagged date: `{source['release_identity']['latest_tagged_date']}`",
+        f"- Has unreleased changes: `{str(source['release_identity']['has_unreleased_changes']).lower()}`",
+        "",
+        "## Skills",
+    ]
+    for entry in source["skills"]:
+        lines.append(f"- `{entry['name']}`")
+    lines.extend(
+        [
+            "",
+            "## Inspect",
+            "",
+            "Directory bundle:",
+            f"`{skill_pack_install_contract.recommended_inspect_command(bundle_root_override='<bundle-root>', output_format='json')}`",
+            "",
+            "ZIP handoff:",
+            f"`{skill_pack_install_contract.recommended_inspect_command(bundle_archive_override='<bundle-archive>', output_format='json')}`",
+            "",
+            "## Import",
+            "",
+            "Directory bundle:",
+            f"`{skill_pack_install_contract.recommended_import_command(profile_name=str(source['profile']), bundle_root_override='<bundle-root>', install_root='<install-root>', mode='copy', execute=True, output_format='json')}`",
+            "",
+            "ZIP handoff:",
+            f"`{skill_pack_install_contract.recommended_import_command(profile_name=str(source['profile']), bundle_archive_override='<bundle-archive>', install_root='<install-root>', mode='copy', execute=True, output_format='json')}`",
+            "",
+            "## Advanced path",
+            "",
+            "Install only:",
+            f"`{skill_pack_install_contract.recommended_install_command(profile_name=str(source['profile']), bundle_root_override='<bundle-root>', install_root='<install-root>', mode='copy', execute=True, output_format='json')}`",
+            "",
+            "Verify only:",
+            f"`{skill_pack_install_contract.recommended_verify_command(profile_name=str(source['profile']), install_root='<install-root>', bundle_root_override='<bundle-root>', output_format='json')}`",
+            "",
+            "For archive-based advanced flows, replace `<bundle-root>` with `--bundle-archive <bundle-archive>` on the lower-level commands.",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
+def build_bundle_manifest(source: dict[str, Any], *, readme_text: str) -> dict[str, Any]:
     payloads: list[tuple[str, bytes]] = []
     skills: list[dict[str, Any]] = []
     for entry in source["skills"]:
@@ -32,6 +83,12 @@ def build_bundle_manifest(source: dict[str, Any]) -> dict[str, Any]:
             }
         )
 
+    payloads.append(
+        (
+            skill_pack_install_contract.BUNDLE_README_FILENAME,
+            readme_text.encode("utf-8"),
+        )
+    )
     ordered_payloads = sorted(payloads, key=lambda item: item[0])
     return {
         "schema_version": 1,
@@ -61,13 +118,15 @@ def build_stage_plan(
         repo_root,
         profile_name=profile_name,
     )
-    bundle_manifest = build_bundle_manifest(source)
+    readme_text = build_bundle_readme(source=source)
+    bundle_manifest = build_bundle_manifest(source, readme_text=readme_text)
     use_archive_transport = archive_path is not None
     return {
         **bundle_manifest,
         "source_kind": source["source_kind"],
         "source_root": source["source_root"],
         "bundle_root": str(output_root),
+        "bundle_readme_path": str(skill_pack_install_contract.bundle_readme_path(output_root)),
         "archive_path": str(archive_path) if archive_path is not None else None,
         "archive_format": (
             skill_pack_install_contract.BUNDLE_ARCHIVE_FORMAT
@@ -80,6 +139,15 @@ def build_stage_plan(
         "recommended_inspect_command": skill_pack_install_contract.recommended_inspect_command(
             bundle_archive_override=archive_path if use_archive_transport else None,
             bundle_root_override=None if use_archive_transport else output_root,
+            output_format="json",
+        ),
+        "recommended_import_command": skill_pack_install_contract.recommended_import_command(
+            profile_name=profile_name,
+            bundle_archive_override=archive_path if use_archive_transport else None,
+            bundle_root_override=None if use_archive_transport else output_root,
+            install_root=None,
+            mode="copy",
+            execute=True,
             output_format="json",
         ),
         "recommended_install_command": skill_pack_install_contract.recommended_install_command(
@@ -115,6 +183,7 @@ def execute_stage(
     source: dict[str, Any],
     bundle_root: pathlib.Path,
     bundle_manifest: dict[str, Any],
+    readme_text: str,
     archive_path: pathlib.Path | None,
     overwrite: bool,
 ) -> dict[str, Any] | None:
@@ -129,6 +198,10 @@ def execute_stage(
         target_dir.parent.mkdir(parents=True, exist_ok=True)
         shutil.copytree(source_dir, target_dir)
 
+    skill_pack_install_contract.bundle_readme_path(bundle_root).write_text(
+        readme_text,
+        encoding="utf-8",
+    )
     skill_pack_install_contract.bundle_manifest_path(bundle_root).write_text(
         json.dumps(bundle_manifest, indent=2) + "\n",
         encoding="utf-8",
@@ -149,11 +222,13 @@ def render_markdown(plan: dict[str, Any]) -> str:
         "",
         f"Profile revision: {plan['profile_revision']}",
         f"Bundle root: {plan['bundle_root']}",
+        f"Bundle README: {plan['bundle_readme_path']}",
         f"Archive path: {plan['archive_path'] or '-'}",
         f"Execute: {plan['execute']}",
         f"Skill count: {plan['skill_count']}",
         f"Bundle digest: {plan['bundle_digest']}",
         f"Inspect: {plan['recommended_inspect_command']}",
+        f"Import: {plan['recommended_import_command']}",
         f"Install: {plan['recommended_install_command']}",
         f"Verify: {plan['recommended_verify_command']}",
         "",
@@ -217,16 +292,19 @@ def main() -> int:
                         "source_kind",
                         "source_root",
                         "bundle_root",
+                        "bundle_readme_path",
                         "archive_path",
                         "archive_format",
                         "archive_sha256",
                         "archive_bytes",
                         "execute",
                         "recommended_inspect_command",
+                        "recommended_import_command",
                         "recommended_install_command",
                         "recommended_verify_command",
                     }
                 },
+                readme_text=build_bundle_readme(source=source),
                 archive_path=archive_path,
                 overwrite=args.overwrite,
             )

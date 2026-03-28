@@ -21,6 +21,7 @@ STANDARD_INSTALL_ROOTS = {
 }
 RESOLVED_PROFILES_PATH = Path("generated") / "skill_pack_profiles.resolved.json"
 BUNDLE_MANIFEST_FILENAME = "bundle_manifest.json"
+BUNDLE_README_FILENAME = "README.md"
 BUNDLE_SKILL_ROOT = ".agents/skills"
 BUNDLE_ARCHIVE_FORMAT = "zip"
 BUNDLE_ARCHIVE_ROOT_PREFIX = "aoa-skills"
@@ -40,6 +41,10 @@ def bundle_root(root: str | Path) -> Path:
 
 def bundle_manifest_path(root: str | Path) -> Path:
     return bundle_root(root) / BUNDLE_MANIFEST_FILENAME
+
+
+def bundle_readme_path(root: str | Path) -> Path:
+    return bundle_root(root) / BUNDLE_README_FILENAME
 
 
 def bundle_skill_root(root: str | Path) -> Path:
@@ -1009,6 +1014,44 @@ def recommended_install_command(
         args.extend(["--dest-root", str(install_root)])
     if mode:
         args.extend(["--mode", mode])
+    if execute:
+        args.append("--execute")
+    if output_format is not None:
+        args.extend(["--format", output_format])
+    return " ".join(_quote_command_arg(arg) for arg in args)
+
+
+def recommended_import_command(
+    *,
+    profile_name: str,
+    bundle_root_override: str | Path | None = None,
+    bundle_archive_override: str | Path | None = None,
+    install_root: str | Path | None = None,
+    mode: str = "copy",
+    strict_root: bool = False,
+    execute: bool = True,
+    output_format: str | None = None,
+) -> str:
+    if bundle_root_override is not None and bundle_archive_override is not None:
+        raise ValueError("use only one of bundle_root_override or bundle_archive_override")
+    args = [
+        "python",
+        "scripts/import_skill_pack.py",
+        "--repo-root",
+        ".",
+        "--profile",
+        profile_name,
+    ]
+    if bundle_root_override is not None:
+        args.extend(["--bundle-root", str(bundle_root_override)])
+    if bundle_archive_override is not None:
+        args.extend(["--bundle-archive", str(bundle_archive_override)])
+    if install_root is not None:
+        args.extend(["--dest-root", str(install_root)])
+    if mode:
+        args.extend(["--mode", mode])
+    if strict_root:
+        args.append("--strict-root")
     if execute:
         args.append("--execute")
     if output_format is not None:

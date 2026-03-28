@@ -82,7 +82,7 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
 `generated/skill_handoff_contracts.json` is the only wave-5 bridge kept in `aoa-skills`: it remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
 `generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, relationship views, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
-`scripts/stage_skill_pack.py` is the first staged handoff primitive above that contract: it materializes one profile-scoped bundle directory with a bundle-local `bundle_manifest.json` instead of copying the full repo release manifest into every handoff.
+`scripts/stage_skill_pack.py` is the first staged handoff primitive above that contract: it materializes one profile-scoped bundle directory with a bundle-local `bundle_manifest.json` and a human-facing `README.md` instead of copying the full repo release manifest into every handoff.
 `scripts/stage_skill_pack.py --archive-path ...` adds an optional ZIP transport wrapper over that same staged directory without adding a second manifest or widening the release contract.
 `scripts/inspect_skill_pack.py` is the first self-contained handoff inspection primitive over that bundle-local contract: it checks manifest integrity, staged file digests, bundle digest, and archive layout before any install step.
 `scripts/import_skill_pack.py` is the preferred receiver-side path on top of that same contract: it always inspects first, then optionally installs and verifies one staged bundle or ZIP handoff as one repo-local flow.
@@ -155,6 +155,7 @@ It intentionally keeps three things separate:
 - bundle-level meaning and per-skill compatibility still live in `skills/*/SKILL.md`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`
 - the release manifest only pins which portable artifact groups and relationship views exist and which bundle/profile revisions they currently expose
 - a staged profile bundle carries its own `bundle_manifest.json` as the narrow handoff contract over one profile subset
+- a staged profile bundle also carries a generated `README.md` as the portable human-facing handoff guide
 - a staged ZIP handoff is only a transport wrapper over that same bundle-local contract
 - bundle inspection stays self-contained to the handoff object rather than reconciling against the live repo export
 - `scripts/import_skill_pack.py` is the receiver-friendly `inspect -> install -> verify` path over that same handoff object
