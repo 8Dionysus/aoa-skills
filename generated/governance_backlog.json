@@ -27,6 +27,30 @@
   "governance_backlog_version": 4,
   "review_truth_sync": [
     {
+      "current_revision": "3d16b6922236",
+      "governance_decision": null,
+      "issues": [],
+      "lineage_state": "published",
+      "name": "abyss-safe-infra-change",
+      "review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
+      "reviewed_revision": "3d16b6922236",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "d5f6806d8567",
+      "governance_decision": null,
+      "issues": [],
+      "lineage_state": "published",
+      "name": "abyss-sanitized-share",
+      "review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
+      "reviewed_revision": "d5f6806d8567",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
       "current_revision": "efea66558a8f",
       "governance_decision": "default_reference",
       "issues": [],
@@ -208,6 +232,40 @@
     }
   ],
   "skills": [
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "abyss-safe-infra-change",
+      "promotion_review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "scope": "project",
+      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "abyss-sanitized-share",
+      "promotion_review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "scope": "project",
+      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated"
+    },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_candidate_blockers": [],

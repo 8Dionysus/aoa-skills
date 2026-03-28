@@ -10,6 +10,92 @@
   },
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "display_name": "Abyss Safe Infra Change",
+      "source_scope": "repo",
+      "allowlist_id": "skill:abyss-safe-infra-change",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change",
+          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/scripts",
+          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/references",
+          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/abyss-safe-infra-change",
+          "$HOME/.agents/skills/abyss-safe-infra-change/scripts",
+          "$HOME/.agents/skills/abyss-safe-infra-change/references",
+          "$HOME/.agents/skills/abyss-safe-infra-change/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/abyss-safe-infra-change",
+          "/etc/codex/skills/abyss-safe-infra-change/scripts",
+          "/etc/codex/skills/abyss-safe-infra-change/references",
+          "/etc/codex/skills/abyss-safe-infra-change/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/abyss-safe-infra-change",
+        ".agents/skills/abyss-safe-infra-change/scripts",
+        ".agents/skills/abyss-safe-infra-change/references",
+        ".agents/skills/abyss-safe-infra-change/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "display_name": "Abyss Sanitized Share",
+      "source_scope": "repo",
+      "allowlist_id": "skill:abyss-sanitized-share",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/abyss-sanitized-share",
+          "$REPO_ROOT/.agents/skills/abyss-sanitized-share/scripts",
+          "$REPO_ROOT/.agents/skills/abyss-sanitized-share/references",
+          "$REPO_ROOT/.agents/skills/abyss-sanitized-share/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/abyss-sanitized-share",
+          "$HOME/.agents/skills/abyss-sanitized-share/scripts",
+          "$HOME/.agents/skills/abyss-sanitized-share/references",
+          "$HOME/.agents/skills/abyss-sanitized-share/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/abyss-sanitized-share",
+          "/etc/codex/skills/abyss-sanitized-share/scripts",
+          "/etc/codex/skills/abyss-sanitized-share/references",
+          "/etc/codex/skills/abyss-sanitized-share/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/abyss-sanitized-share",
+        ".agents/skills/abyss-sanitized-share/scripts",
+        ".agents/skills/abyss-sanitized-share/references",
+        ".agents/skills/abyss-sanitized-share/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "source_scope": "repo",

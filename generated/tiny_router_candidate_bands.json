@@ -121,6 +121,8 @@
         "public-safe share"
       ],
       "skills": [
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share",
         "aoa-approval-gate-check",
         "aoa-dry-run-first",
         "aoa-local-stack-bringup",
@@ -128,13 +130,18 @@
         "aoa-sanitized-share"
       ],
       "manual_only_skills": [
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share",
         "aoa-approval-gate-check",
         "aoa-dry-run-first",
         "aoa-local-stack-bringup",
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
-      "overlay_skills": []
+      "overlay_skills": [
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share"
+      ]
     }
   ]
 }

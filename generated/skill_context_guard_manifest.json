@@ -10,6 +10,70 @@
   },
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "display_name": "Abyss Safe Infra Change",
+      "source_scope": "repo",
+      "instruction_sha256": "b9f273691161df8c0bc14e9bb0991b46f9ac95386207571c245e04760159ed3a",
+      "dedupe_key": "abyss-safe-infra-change:b9f273691161df8c0bc14e9bb0991b46f9ac95386207571c245e04760159ed3a",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Abyss safe infra overlay",
+      "must_keep": [
+        "target operational change and touched local surface",
+        "repo-relative operational files or commands",
+        "bounded local infra-change plan",
+        "repo-relative command or path sketch"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.\n\nKeep in memory: target operational change and touched local surface, repo-relative operational files or commands, bounded local infra-change plan, repo-relative command or path sketch.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "abyss-safe-infra-change",
+          "explicit_handle": "$abyss-safe-infra-change",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "display_name": "Abyss Sanitized Share",
+      "source_scope": "repo",
+      "instruction_sha256": "a1a8df35f2fd2dc8ee710849e074746c3a9e62a9c771e7a34b22e77198167a6f",
+      "dedupe_key": "abyss-sanitized-share:a1a8df35f2fd2dc8ee710849e074746c3a9e62a9c771e7a34b22e77198167a6f",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Abyss sanitized-share overlay",
+      "must_keep": [
+        "raw material to sanitize",
+        "intended audience or sharing context",
+        "sanitized local shareable artifact",
+        "note on what was generalized or removed"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.\n\nKeep in memory: raw material to sanitize, intended audience or sharing context, sanitized local shareable artifact, note on what was generalized or removed.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "abyss-sanitized-share",
+          "explicit_handle": "$abyss-sanitized-share",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "source_scope": "repo",

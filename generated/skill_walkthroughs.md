@@ -24,6 +24,82 @@ Common expand sections:
 - `Risks and anti-patterns`
 - `Verification`
 
+## abyss-safe-infra-change
+
+- scope: `project`
+- status: `evaluated`
+- invocation mode: `explicit-only`
+- skill path: `skills/abyss-safe-infra-change/SKILL.md`
+- pick summary: Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes.
+
+### Use when
+
+- the base aoa-safe-infra-change workflow is already correct, but an abyss- repo needs repo-relative operational surfaces, commands, or approval notes
+- the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family
+- explicit local authority, rollback posture, or verification commands still need to be named before execution
+- the family review doc and bundle-local checklist still need to stay aligned
+
+### Do not use when
+
+- the task is really about producing a shareable public-safe artifact rather than the operational change itself; use abyss-sanitized-share
+- no abyss- repo adaptation is needed and the base aoa-safe-infra-change skill is sufficient
+- the overlay would only restate the base workflow without adding a real local surface
+- the main question is whether authority exists at all; use aoa-approval-gate-check
+- the main need is to prefer or interpret a preview path before execution; use aoa-dry-run-first
+- the work would widen into broader project doctrine instead of a thin local overlay
+
+### Object use shape
+
+- bounded local infra-change plan
+- repo-relative command or path sketch
+- explicit local authority and rollback note
+- pointer to the family review surface
+- concise verification note for the local repo surface
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/abyss-safe-infra-change/examples/example.md`
+- `review_checklist`: `skills/abyss-safe-infra-change/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/abyss-safe-infra-change.md`
+
+## abyss-sanitized-share
+
+- scope: `project`
+- status: `evaluated`
+- invocation mode: `explicit-only`
+- skill path: `skills/abyss-sanitized-share/SKILL.md`
+- pick summary: Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes.
+
+### Use when
+
+- the base aoa-sanitized-share workflow is already correct, but an abyss- repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds
+- raw logs, diagnostics, config snippets, or incident notes from one abyss- repo need a bounded public-safe or wider-shareable form
+- the local repo needs a canonical place or review posture for the sanitized output
+- the family review doc and bundle-local checklist still need to stay aligned
+
+### Do not use when
+
+- the real task is the underlying operational or configuration mutation itself; use abyss-safe-infra-change
+- no abyss- repo adaptation is needed and the base aoa-sanitized-share skill is sufficient
+- the overlay would only restate the base sanitization workflow without adding a real local sharing surface
+- the main question is whether the underlying action should be allowed at all; use aoa-approval-gate-check
+- the material is already clearly public-safe and no local sharing surface or threshold needs clarification
+- the work would widen into broader project doctrine instead of a thin local overlay
+
+### Object use shape
+
+- sanitized local shareable artifact
+- note on what was generalized or removed
+- repo-relative placement or reference
+- pointer to the family review surface
+- concise warning about any remaining sensitive edge
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/abyss-sanitized-share/examples/example.md`
+- `review_checklist`: `skills/abyss-sanitized-share/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/abyss-sanitized-share.md`
+
 ## aoa-adr-write
 
 - scope: `core`

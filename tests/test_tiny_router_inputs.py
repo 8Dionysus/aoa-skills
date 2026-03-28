@@ -60,13 +60,22 @@ class TinyRouterInputsTest(unittest.TestCase):
             self.assertEqual(entry["manual_invocation_required"], source["invocation_mode"] == "explicit-only")
             self.assertEqual(entry["project_overlay"], source["scope"] == "project")
 
-        overlay_cases = [case for case in eval_cases if case.get("repo_family_hint") == "atm10"]
+        overlay_cases = [case for case in eval_cases if case.get("repo_family_hint")]
         self.assertTrue(overlay_cases)
+        self.assertEqual({"atm10", "abyss"}, {case["repo_family_hint"] for case in overlay_cases})
+        atm10_cases = [case for case in overlay_cases if case.get("repo_family_hint") == "atm10"]
+        abyss_cases = [case for case in overlay_cases if case.get("repo_family_hint") == "abyss"]
         self.assertTrue(
-            any("atm10-change-protocol" in case.get("expected_shortlist_includes", []) for case in overlay_cases)
+            any("atm10-change-protocol" in case.get("expected_shortlist_includes", []) for case in atm10_cases)
         )
         self.assertTrue(
-            any("atm10-source-of-truth-check" in case.get("expected_shortlist_includes", []) for case in overlay_cases)
+            any("atm10-source-of-truth-check" in case.get("expected_shortlist_includes", []) for case in atm10_cases)
+        )
+        self.assertTrue(
+            any("abyss-safe-infra-change" in case.get("expected_shortlist_includes", []) for case in abyss_cases)
+        )
+        self.assertTrue(
+            any("abyss-sanitized-share" in case.get("expected_shortlist_includes", []) for case in abyss_cases)
         )
 
 

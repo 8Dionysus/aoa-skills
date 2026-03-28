@@ -2,6 +2,42 @@
   "capsule_version": 1,
   "skills": [
     {
+      "inputs_short": "Needs: target operational change and touched local surface; repo-relative operational files or commands; explicit local authority or approval posture; validation and rollback path.",
+      "invocation_mode": "explicit-only",
+      "main_anti_patterns_short": "Avoid: hiding downstream authority inside vague local operational notes; turning a thin overlay into project doctrine or a scenario bundle; naming repo-relative commands without enough verification or rollback...",
+      "name": "abyss-safe-infra-change",
+      "outputs_short": "Produces: bounded local infra-change plan; repo-relative command or path sketch; explicit local authority and rollback note; pointer to the family review surface.",
+      "scope": "project",
+      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated",
+      "summary": "Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes.",
+      "technique_dependencies": [
+        "AOA-T-0028",
+        "AOA-T-0001"
+      ],
+      "trigger_boundary_short": "Use when the base aoa-safe-infra-change workflow is already correct, but an abyss- repo needs repo-relative operational surfaces, commands, or approval notes; the task is a bounded infrastructure, service,...",
+      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly; confirm local authority, rollback posture, and verification remain explicit; confirm the...",
+      "workflow_short": "Purpose: adapt aoa-safe-infra-change to an abyss- repository when the base operational workflow is correct but the local repo still needs repo-relative commands, authority notes, and risk framing. Flow: start from aoa-safe-infra-change instead of..."
+    },
+    {
+      "inputs_short": "Needs: raw material to sanitize; intended audience or sharing context; repo-relative destination or canonical sharing surface; local sensitivity thresholds or review posture.",
+      "invocation_mode": "explicit-only",
+      "main_anti_patterns_short": "Avoid: hiding local sharing thresholds in vague prose; collapsing a thin overlay into project doctrine or incident policy; naming a repo-relative destination without enough sanitization or audience context; silently...",
+      "name": "abyss-sanitized-share",
+      "outputs_short": "Produces: sanitized local shareable artifact; note on what was generalized or removed; repo-relative placement or reference; pointer to the family review surface.",
+      "scope": "project",
+      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated",
+      "summary": "Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes.",
+      "technique_dependencies": [
+        "AOA-T-0034",
+        "AOA-T-0002"
+      ],
+      "trigger_boundary_short": "Use when the base aoa-sanitized-share workflow is already correct, but an abyss- repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds; raw logs, diagnostics, config snippets,...",
+      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly; confirm local thresholds and review posture are visible rather than implied; confirm the...",
+      "workflow_short": "Purpose: adapt aoa-sanitized-share to an abyss- repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture. Flow: start from aoa-sanitized-share rather than..."
+    },
+    {
       "inputs_short": "Needs: decision to record; context and problem statement; relevant options or alternatives; chosen path and rationale.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning; recording the chosen path without naming consequences; letting the ADR drift away from the actual change.",

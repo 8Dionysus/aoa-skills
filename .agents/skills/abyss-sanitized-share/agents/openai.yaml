@@ -1,0 +1,9 @@
+interface:
+  display_name: Abyss Sanitized Share
+  short_description: Abyss sanitized-share overlay
+  default_prompt: Use $abyss-sanitized-share to place sanitized abyss artifacts in repo-relative sharing surfaces with explicit local thresholds and review posture.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#6D28D9'
+policy:
+  allow_implicit_invocation: false

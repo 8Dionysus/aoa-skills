@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - This thin abyss overlay stays explicit-only because repo-local sanitization still needs visible operator intent and a clear audience boundary.

@@ -356,9 +356,59 @@
       "prompt": "In an atm10 repository, choose between a repo-relative source-of-truth clarification and a bounded change plan because the main confusion is which local doc should stay authoritative.",
       "skill": "atm10-source-of-truth-check",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/atm10-source-of-truth-check/atm10_source_of_truth_vs_change_protocol_boundary.md"
+    },
+    {
+      "adjacent_skill": "abyss-sanitized-share",
+      "blockers": [],
+      "case_id": "abyss_safe_infra_change_vs_sanitized_share_boundary",
+      "expected": "use",
+      "governance_lane_ids": [],
+      "prompt": "In an abyss repository, choose between a bounded operational mutation and a sanitized sharing pass because the real work is changing runtime configuration rather than preparing a shareable artifact.",
+      "skill": "abyss-safe-infra-change",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/abyss-safe-infra-change/abyss_safe_infra_change_vs_sanitized_share_boundary.md"
+    },
+    {
+      "adjacent_skill": "abyss-safe-infra-change",
+      "blockers": [],
+      "case_id": "abyss_sanitized_share_vs_safe_infra_change_boundary",
+      "expected": "use",
+      "governance_lane_ids": [],
+      "prompt": "In an abyss repository, choose between sanitizing a shareable artifact and changing runtime configuration because the main need is to publish a safe summary from raw local material.",
+      "skill": "abyss-sanitized-share",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/abyss-sanitized-share/abyss_sanitized_share_vs_safe_infra_change_boundary.md"
     }
   ],
   "skills": [
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "abyss-sanitized-share"
+      ],
+      "governance_lane_ids": [],
+      "name": "abyss-safe-infra-change",
+      "required_adjacency_coverage": false,
+      "scope": "project",
+      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "abyss-safe-infra-change"
+      ],
+      "governance_lane_ids": [],
+      "name": "abyss-sanitized-share",
+      "required_adjacency_coverage": false,
+      "scope": "project",
+      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated"
+    },
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,

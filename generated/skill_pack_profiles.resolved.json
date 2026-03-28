@@ -130,6 +130,22 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "abyss-safe-infra-change",
+          "source_path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+          "target_path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+          "openai_config_path": ".agents/skills/abyss-safe-infra-change/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "abyss-sanitized-share",
+          "source_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+          "target_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+          "openai_config_path": ".agents/skills/abyss-sanitized-share/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
           "name": "atm10-change-protocol",
           "source_path": ".agents/skills/atm10-change-protocol/SKILL.md",
           "target_path": ".agents/skills/atm10-change-protocol/SKILL.md",
@@ -303,6 +319,30 @@
           "target_path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
           "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
           "allow_implicit_invocation": true,
+          "trust_posture": "project-overlay"
+        }
+      ]
+    },
+    "repo-abyss-overlay": {
+      "description": "Install only the Abyss project overlays into a repository root.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "abyss-safe-infra-change",
+          "source_path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+          "target_path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+          "openai_config_path": ".agents/skills/abyss-safe-infra-change/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "abyss-sanitized-share",
+          "source_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+          "target_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+          "openai_config_path": ".agents/skills/abyss-sanitized-share/agents/openai.yaml",
+          "allow_implicit_invocation": false,
           "trust_posture": "project-overlay"
         }
       ]

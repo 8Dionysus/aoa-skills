@@ -1565,6 +1565,78 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertFalse(payload["families"][0]["authority_section_present"])
         self.assertEqual("baseline", payload["families"][0]["readiness_state"])
 
+    def test_write_overlay_readiness_generates_two_reviewable_live_families(self) -> None:
+        repo_root = self.make_repo()
+        families = {
+            "atm10": [
+                "atm10-change-protocol",
+                "atm10-source-of-truth-check",
+            ],
+            "abyss": [
+                "abyss-safe-infra-change",
+                "abyss-sanitized-share",
+            ],
+        }
+        all_skill_names = [
+            skill_name
+            for skill_names in families.values()
+            for skill_name in skill_names
+        ]
+        for skill_name in all_skill_names:
+            self.add_skill_bundle(
+                repo_root,
+                skill_name=skill_name,
+                scope="project",
+                techniques=[PRIMARY_PUBLISHED_TECHNIQUE],
+                policy_allow_implicit=False,
+                include_review_check=True,
+            )
+        self.write_evaluation_fixtures_for_skills(repo_root, all_skill_names)
+        for family, skill_names in families.items():
+            self.write_live_overlay_pack(
+                repo_root,
+                family=family,
+                skill_names=skill_names,
+            )
+
+        build_catalog.write_overlay_readiness(repo_root)
+
+        payload = self.load_overlay_readiness(repo_root)
+        markdown = self.load_overlay_readiness_markdown(repo_root)
+        self.assertEqual(
+            {
+                "live_overlay_family_count": 2,
+                "reviewable_family_count": 2,
+                "project_skill_count": 4,
+                "project_skill_review_check_count": 4,
+                "eval_ready_project_skill_count": 4,
+            },
+            payload["summary"],
+        )
+        readiness_by_family = {
+            entry["family"]: entry["readiness_state"] for entry in payload["families"]
+        }
+        self.assertEqual(
+            {
+                "atm10": "reviewable",
+                "abyss": "reviewable",
+            },
+            readiness_by_family,
+        )
+        self.assertCountEqual(
+            all_skill_names,
+            [entry["name"] for entry in payload["skills"]],
+        )
+        self.assertTrue(all(entry["eval_ready"] for entry in payload["skills"]))
+        self.assertIn(
+            "| abyss | 2 | true | docs/overlays/abyss/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            markdown,
+        )
+        self.assertIn(
+            "| atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            markdown,
+        )
+
     def test_write_skill_composition_audit_marks_multi_technique_skill(self) -> None:
         repo_root = self.make_repo(
             techniques=[PRIMARY_PUBLISHED_TECHNIQUE, SECONDARY_PUBLISHED_TECHNIQUE],

@@ -1,0 +1,30 @@
+skill_name: abyss-sanitized-share
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0034
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md
+    source_ref: 06303d62e9cd614295a63b6543a4191e808e879c
+    use_sections:
+      - Intent
+      - When to use
+      - When not to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0002
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
+    source_ref: 06303d62e9cd614295a63b6543a4191e808e879c
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation

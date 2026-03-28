@@ -1,0 +1,9 @@
+interface:
+  display_name: Abyss Safe Infra Change
+  short_description: Abyss safe infra overlay
+  default_prompt: Use $abyss-safe-infra-change to apply the base infra-change workflow with repo-relative abyss paths, explicit local authority, and local verification notes.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#6D28D9'
+policy:
+  allow_implicit_invocation: false

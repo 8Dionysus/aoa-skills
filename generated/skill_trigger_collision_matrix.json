@@ -73,10 +73,15 @@
         "aoa-change-protocol",
         "atm10-change-protocol",
         "aoa-source-of-truth-check",
-        "atm10-source-of-truth-check"
+        "atm10-source-of-truth-check",
+        "aoa-safe-infra-change",
+        "abyss-safe-infra-change",
+        "aoa-sanitized-share",
+        "abyss-sanitized-share"
       ],
       "notes": [
-        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
       ]
     }
@@ -279,6 +284,30 @@
       ],
       "prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
       "note": "Document authority mapping for a generic repo, not an overlay-specific ATM10 case and not a decision record task."
+    },
+    {
+      "case_id": "collision-18",
+      "skill_name": "abyss-safe-infra-change",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-safe-infra-change",
+        "abyss-sanitized-share"
+      ],
+      "prompt": "Inside this abyss-stack repo, plan a bounded infra change with repo-relative abyss paths, explicit local authority, and rollback thinking.",
+      "note": "This overlay still requires an explicit $skill invocation even when the repo-specific match is strong."
+    },
+    {
+      "case_id": "collision-19",
+      "skill_name": "abyss-sanitized-share",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-sanitized-share",
+        "abyss-safe-infra-change"
+      ],
+      "prompt": "Inside this abyss-stack repo, place a sanitized incident artifact in the repo-relative abyss sharing surface with explicit local thresholds.",
+      "note": "This overlay still requires an explicit $skill invocation even when the repo-specific match is strong."
     }
   ]
 }

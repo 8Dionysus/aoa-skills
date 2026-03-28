@@ -5,13 +5,15 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 17
-- adjacency cases: 30
+- total skills: 19
+- adjacency cases: 32
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
 
 | name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | lane ids | ready | blockers |
 |---|---|---|---|---:|---:|---|---|---|---|
+| abyss-safe-infra-change | evaluated | project | false | 1 | 0 | abyss-sanitized-share | - | true | - |
+| abyss-sanitized-share | evaluated | project | false | 1 | 0 | abyss-safe-infra-change | - | true | - |
 | aoa-adr-write | canonical | core | true | 1 | 0 | aoa-source-of-truth-check | decision_docs_authority | true | - |
 | aoa-approval-gate-check | canonical | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
 | aoa-bounded-context-map | canonical | core | true | 3 | 0 | aoa-contract-test, aoa-core-logic-boundary, aoa-port-adapter-refactor | context_vs_contract, core_boundary_refactor | true | - |
@@ -64,4 +66,6 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-property-invariants | aoa-invariant-coverage-audit | property_invariants_vs_invariant_coverage_audit_boundary | use | invariant_authoring_vs_audit | - |
 | atm10-change-protocol | atm10-source-of-truth-check | atm10_change_protocol_vs_source_of_truth_boundary | use | - | - |
 | atm10-source-of-truth-check | atm10-change-protocol | atm10_source_of_truth_vs_change_protocol_boundary | use | - | - |
+| abyss-safe-infra-change | abyss-sanitized-share | abyss_safe_infra_change_vs_sanitized_share_boundary | use | - | - |
+| abyss-sanitized-share | abyss-safe-infra-change | abyss_sanitized_share_vs_safe_infra_change_boundary | use | - | - |
 

@@ -15,6 +15,26 @@
   },
   "targets": [
     {
+      "skill_name": "abyss-safe-infra-change",
+      "path": ".agents/skills/abyss-safe-infra-change",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/abyss-safe-infra-change"
+      ],
+      "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55"
+    },
+    {
+      "skill_name": "abyss-sanitized-share",
+      "path": ".agents/skills/abyss-sanitized-share",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/abyss-sanitized-share"
+      ],
+      "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84"
+    },
+    {
       "skill_name": "aoa-adr-write",
       "path": ".agents/skills/aoa-adr-write",
       "command": [

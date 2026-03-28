@@ -166,6 +166,24 @@
       ],
       "requires_confirmation_seam": false,
       "notes": "Project overlay for atm10 repository document authority."
+    },
+    "abyss-safe-infra-change": {
+      "trust_posture": "project-overlay",
+      "mutation_surface": "runtime",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": true,
+      "notes": "Project overlay for abyss repository operational changes with explicit local authority."
+    },
+    "abyss-sanitized-share": {
+      "trust_posture": "project-overlay",
+      "mutation_surface": "sharing",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Project overlay for abyss repository sharing and sanitization surfaces."
     }
   }
 }

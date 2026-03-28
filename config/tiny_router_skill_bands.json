@@ -112,7 +112,9 @@
         "aoa-dry-run-first",
         "aoa-safe-infra-change",
         "aoa-local-stack-bringup",
-        "aoa-sanitized-share"
+        "aoa-sanitized-share",
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share"
       ]
     }
   ],
@@ -354,6 +356,34 @@
         "broader policy design",
         "base skill is enough"
       ]
+    },
+    "abyss-safe-infra-change": {
+      "band": "risk-ops-safety",
+      "positive_cues": [
+        "abyss",
+        "abyss stack",
+        "repo-relative abyss",
+        "abyss infra change",
+        "abyss local authority"
+      ],
+      "negative_cues": [
+        "base skill is sufficient",
+        "shareable artifact only"
+      ]
+    },
+    "abyss-sanitized-share": {
+      "band": "risk-ops-safety",
+      "positive_cues": [
+        "abyss",
+        "abyss incident",
+        "abyss sanitized share",
+        "repo-relative share surface",
+        "abyss local thresholds"
+      ],
+      "negative_cues": [
+        "base skill is sufficient",
+        "underlying operational mutation"
+      ]
     }
   },
   "companions": {
@@ -425,6 +455,14 @@
     "atm10-source-of-truth-check": [
       "aoa-source-of-truth-check",
       "aoa-adr-write"
+    ],
+    "abyss-safe-infra-change": [
+      "aoa-safe-infra-change",
+      "abyss-sanitized-share"
+    ],
+    "abyss-sanitized-share": [
+      "aoa-sanitized-share",
+      "abyss-safe-infra-change"
     ]
   }
 }

@@ -3,6 +3,32 @@
   "profile": "codex-facing-wave-3",
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "runtime",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Project overlay for abyss repository operational changes with explicit local authority."
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "sharing",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Project overlay for abyss repository sharing and sanitization surfaces."
+    },
+    {
       "name": "aoa-adr-write",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

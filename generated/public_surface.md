@@ -5,7 +5,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 17
+- total skills: 19
 - default references: 12
 - candidate-ready skills: 3
 - blocked by pending lineage: 0

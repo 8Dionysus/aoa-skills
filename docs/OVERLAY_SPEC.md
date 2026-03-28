@@ -101,6 +101,9 @@ The current live family overlay layout is:
 - `docs/overlays/atm10/PROJECT_OVERLAY.md`
 - `skills/atm10-change-protocol/`
 - `skills/atm10-source-of-truth-check/`
+- `docs/overlays/abyss/PROJECT_OVERLAY.md`
+- `skills/abyss-safe-infra-change/`
+- `skills/abyss-sanitized-share/`
 
 Future live packs should keep the same shape:
 

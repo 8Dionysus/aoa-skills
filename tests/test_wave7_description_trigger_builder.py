@@ -30,8 +30,8 @@ class Wave7DescriptionTriggerBuilderTests(unittest.TestCase):
 
         self.assertEqual(manifest["profile"], "codex-facing-wave-7-description-trigger-evals")
         self.assertGreaterEqual(manifest["total_cases"], 70)
-        self.assertEqual(len(signals["skills"]), 17)
-        self.assertEqual(len(skills_ref["targets"]), 17)
+        self.assertEqual(len(signals["skills"]), 19)
+        self.assertEqual(len(skills_ref["targets"]), 19)
         self.assertTrue(all(entry["coverage_ok"] for entry in manifest["skills"]))
 
 

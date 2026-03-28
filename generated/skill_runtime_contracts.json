@@ -4,6 +4,60 @@
   "root": ".agents/skills",
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "display_name": "Abyss Safe Infra Change",
+      "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
+      "short_description": "Abyss safe infra overlay",
+      "path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+      "openai_config_path": ".agents/skills/abyss-safe-infra-change/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "runtime",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $abyss-safe-infra-change to apply the base infra-change workflow with repo-relative abyss paths, explicit local authority, and local verification notes.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#abyss-safe-infra-change",
+      "notes": "Project overlay for abyss repository operational changes with explicit local authority."
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "display_name": "Abyss Sanitized Share",
+      "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
+      "short_description": "Abyss sanitized-share overlay",
+      "path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+      "openai_config_path": ".agents/skills/abyss-sanitized-share/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "sharing",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $abyss-sanitized-share to place sanitized abyss artifacts in repo-relative sharing surfaces with explicit local thresholds and review posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#abyss-sanitized-share",
+      "notes": "Project overlay for abyss repository sharing and sanitization surfaces."
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",

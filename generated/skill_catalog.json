@@ -3,6 +3,98 @@
   "skills": [
     {
       "composition_mode": "bounded",
+      "invocation_mode": "explicit-only",
+      "name": "abyss-safe-infra-change",
+      "scope": "project",
+      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated",
+      "summary": "Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes.",
+      "technique_dependencies": [
+        "AOA-T-0028",
+        "AOA-T-0001"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0028",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0001",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "use_sections": [
+            "Intent",
+            "Outputs",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-only",
+      "name": "abyss-sanitized-share",
+      "scope": "project",
+      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated",
+      "summary": "Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes.",
+      "technique_dependencies": [
+        "AOA-T-0034",
+        "AOA-T-0002"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0034",
+          "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "When not to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0002",
+          "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
       "invocation_mode": "explicit-preferred",
       "name": "aoa-adr-write",
       "scope": "core",

@@ -4,6 +4,212 @@
   "root": ".agents/skills",
   "skills": [
     {
+      "name": "abyss-safe-infra-change",
+      "display_name": "Abyss Safe Infra Change",
+      "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
+      "short_description": "Abyss safe infra overlay",
+      "path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
+      "skill_dir": ".agents/skills/abyss-safe-infra-change",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0001",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to adapt `aoa-safe-infra-change` to an `abyss-*` repository when the base operational workflow is correct but the local repo still needs repo-relative commands, authority notes, and risk framing.",
+        "Trigger boundary": "the base `aoa-safe-infra-change` workflow is already correct, but an `abyss-*` repo needs repo-relative operational surfaces, commands, or approval notes; the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family",
+        "Inputs": "target operational change and touched local surface; repo-relative operational files or commands",
+        "Outputs": "bounded local infra-change plan; repo-relative command or path sketch",
+        "Procedure": "start from `aoa-safe-infra-change` instead of inventing a new project-family workflow; name the repo-relative operational files, commands, and authority posture that matter locally",
+        "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
+        "Risks and anti-patterns": "hiding downstream authority inside vague local operational notes; turning a thin overlay into project doctrine or a scenario bundle",
+        "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
+        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AO...",
+        "Adaptation points": "repo-relative operational surfaces; local authority and approval notes"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Abyss Safe Infra Change",
+        "short_description": "Abyss safe infra overlay",
+        "default_prompt": "Use $abyss-safe-infra-change to apply the base infra-change workflow with repo-relative abyss paths, explicit local authority, and local verification notes.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#abyss-safe-infra-change",
+      "context_retention_ref": "generated/context_retention_manifest.json#abyss-safe-infra-change",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#abyss-safe-infra-change",
+      "collision_family": "overlay-vs-base-skill",
+      "collision_notes": [
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ],
+      "competing_skills": [
+        "aoa-safe-infra-change",
+        "abyss-sanitized-share"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $abyss-safe-infra-change to apply the base infra-change workflow with repo-relative abyss paths, explicit local authority, and local verification notes."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo.",
+          "Inside this abyss-stack repo, plan a bounded infra change with repo-relative abyss paths, explicit local authority, and rollback thinking."
+        ],
+        "negative": [
+          "This repository is not an abyss-* repo and the base infra-change workflow already names the needed operational surface without any project-specific overlay."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$abyss-safe-infra-change",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/abyss-safe-infra-change",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "abyss-safe-infra-change"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### abyss-safe-infra-change\n- Summary: Abyss safe infra overlay\n- Use when: Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.\n- Trust posture: project-overlay\n- Mutation surface: runtime\n"
+    },
+    {
+      "name": "abyss-sanitized-share",
+      "display_name": "Abyss Sanitized Share",
+      "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
+      "short_description": "Abyss sanitized-share overlay",
+      "path": ".agents/skills/abyss-sanitized-share/SKILL.md",
+      "skill_dir": ".agents/skills/abyss-sanitized-share",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "evaluated",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/abyss-sanitized-share/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0034,AOA-T-0002",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to adapt `aoa-sanitized-share` to an `abyss-*` repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture.",
+        "Trigger boundary": "the base `aoa-sanitized-share` workflow is already correct, but an `abyss-*` repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds; raw logs, diagnostics, config snippets, or incident notes from one `abyss-*` repo need a bounded public-saf...",
+        "Inputs": "raw material to sanitize; intended audience or sharing context",
+        "Outputs": "sanitized local shareable artifact; note on what was generalized or removed",
+        "Procedure": "start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow; name the repo-relative output surface, audience, and local sensitivity thresholds that matter",
+        "Contracts": "preserve the base skill meaning; keep local paths and output placement repo-relative and explicit",
+        "Risks and anti-patterns": "hiding local sharing thresholds in vague prose; collapsing a thin overlay into project doctrine or incident policy",
+        "Verification": "confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly",
+        "Technique traceability": "AOA-T-0034 from `8Dionysus/aoa-techniques` at `06303d62e9cd614295a63b6543a4191e808e879c` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validatio...",
+        "Adaptation points": "repo-relative sharing surfaces; local sanitization thresholds"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Abyss Sanitized Share",
+        "short_description": "Abyss sanitized-share overlay",
+        "default_prompt": "Use $abyss-sanitized-share to place sanitized abyss artifacts in repo-relative sharing surfaces with explicit local thresholds and review posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#abyss-sanitized-share",
+      "context_retention_ref": "generated/context_retention_manifest.json#abyss-sanitized-share",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#abyss-sanitized-share",
+      "collision_family": "overlay-vs-base-skill",
+      "collision_notes": [
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ],
+      "competing_skills": [
+        "aoa-sanitized-share",
+        "abyss-safe-infra-change"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $abyss-sanitized-share to place sanitized abyss artifacts in repo-relative sharing surfaces with explicit local thresholds and review posture."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo.",
+          "Inside this abyss-stack repo, place a sanitized incident artifact in the repo-relative abyss sharing surface with explicit local thresholds."
+        ],
+        "negative": [
+          "This artifact is already public-safe and no abyss-specific local sharing surface or threshold needs to be named."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$abyss-sanitized-share",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/abyss-sanitized-share",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "abyss-sanitized-share"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### abyss-sanitized-share\n- Summary: Abyss sanitized-share overlay\n- Use when: Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.\n- Trust posture: project-overlay\n- Mutation surface: sharing\n"
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
@@ -374,7 +580,8 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-change-protocol",
       "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [
@@ -1219,13 +1426,11 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-safe-infra-change",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-safe-infra-change",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-safe-infra-change",
-      "collision_family": "safety-and-mutation-gating",
+      "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
-        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
-        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
-        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
-        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [
         "aoa-approval-gate-check",
@@ -1325,13 +1530,11 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-sanitized-share",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-sanitized-share",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-sanitized-share",
-      "collision_family": "safety-and-mutation-gating",
+      "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "aoa-approval-gate-check classifies risk and whether execution is allowed at all.",
-        "aoa-dry-run-first insists on preview or simulation before a real mutation.",
-        "aoa-safe-infra-change handles bounded infra or config changes with rollback thinking.",
-        "aoa-local-stack-bringup is the local multi-service stack start path and is explicit-only.",
-        "aoa-sanitized-share is about turning raw technical material into a safe public artifact."
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [
         "aoa-safe-infra-change"
@@ -1431,7 +1634,8 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-source-of-truth-check",
       "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [
@@ -1636,7 +1840,8 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#atm10-change-protocol",
       "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [
@@ -1737,7 +1942,8 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#atm10-source-of-truth-check",
       "collision_family": "overlay-vs-base-skill",
       "collision_notes": [
-        "Use the ATM10 overlays only when the repository is actually an atm10-* repo and repo-relative overlays matter.",
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
       ],
       "competing_skills": [

@@ -86,6 +86,16 @@
       "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
       "short_description": "ATM10 source-of-truth overlay",
       "default_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture."
+    },
+    "abyss-safe-infra-change": {
+      "description": "Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.",
+      "short_description": "Abyss safe infra overlay",
+      "default_prompt": "Use $abyss-safe-infra-change to apply the base infra-change workflow with repo-relative abyss paths, explicit local authority, and local verification notes."
+    },
+    "abyss-sanitized-share": {
+      "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
+      "short_description": "Abyss sanitized-share overlay",
+      "default_prompt": "Use $abyss-sanitized-share to place sanitized abyss artifacts in repo-relative sharing surfaces with explicit local thresholds and review posture."
     }
   }
 }
