@@ -27,6 +27,7 @@ Project overlays use a different reading model:
 
 - `generated/overlay_readiness.*` is the family-level maturity surface
 - `generated/governance_backlog.*` is the per-skill maintenance readout
+- `project_overlay_federation_ready` in `generated/governance_backlog.*` is an allowed downstream bridge signal when a live overlay family is already `reviewable`
 - the absence of a governance lane for a project overlay is expected and is not, by itself, a gap
 
 The live family set is discovered from repo state through `docs/overlays/<family>/PROJECT_OVERLAY.md`
@@ -34,6 +35,7 @@ plus matching `skills/<family>-*` bundles rather than through a hardcoded family
 
 This keeps thin overlay families readable without pretending they participate in
 the same canonical-reference lane model as reusable core skills.
+That downstream bridge signal does not create candidate-ready semantics, default-reference authority, or a hidden canonical track for the overlay family.
 
 ## What an overlay may change
 

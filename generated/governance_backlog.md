@@ -17,8 +17,8 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 | name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |
 |---|---|---|---|---|---|---|---|---|---|
-| abyss-safe-infra-change | evaluated | published | false | true | - | - | project_overlay_eval_ready | - | docs/reviews/status-promotions/abyss-safe-infra-change.md |
-| abyss-sanitized-share | evaluated | published | false | true | - | - | project_overlay_eval_ready | - | docs/reviews/status-promotions/abyss-sanitized-share.md |
+| abyss-safe-infra-change | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/abyss-safe-infra-change.md |
+| abyss-sanitized-share | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/abyss-sanitized-share.md |
 | aoa-adr-write | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-adr-write.md | docs/reviews/status-promotions/aoa-adr-write.md |
 | aoa-approval-gate-check | canonical | published | true | true | default_reference | local_runtime_bringup, risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-approval-gate-check.md | docs/reviews/status-promotions/aoa-approval-gate-check.md |
 | aoa-bounded-context-map | canonical | published | true | true | default_reference | context_vs_contract, core_boundary_refactor | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-bounded-context-map.md | docs/reviews/status-promotions/aoa-bounded-context-map.md |
@@ -34,8 +34,8 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-sanitized-share | canonical | published | true | true | default_reference | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-sanitized-share.md | docs/reviews/status-promotions/aoa-sanitized-share.md |
 | aoa-source-of-truth-check | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-source-of-truth-check.md | docs/reviews/status-promotions/aoa-source-of-truth-check.md |
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
-| atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_eval_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
-| atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_eval_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
+| atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
+| atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
 
 ## Review truth sync
 

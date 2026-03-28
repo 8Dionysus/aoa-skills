@@ -24,6 +24,7 @@
         "governance_lanes",
         "evaluation_matrix",
         "public_surface",
+        "overlay_readiness",
         "review_truth_sync"
       ],
       "properties": {
@@ -35,6 +36,7 @@
         "governance_lanes": { "type": "string", "minLength": 1 },
         "evaluation_matrix": { "type": "string", "minLength": 1 },
         "public_surface": { "type": "string", "minLength": 1 },
+        "overlay_readiness": { "type": "string", "minLength": 1 },
         "review_truth_sync": { "type": "string", "minLength": 1 }
       }
     },
@@ -195,6 +197,7 @@
               "eval_ready_but_governance_blocked",
               "blocked_in_both",
               "project_overlay_eval_ready",
+              "project_overlay_federation_ready",
               "project_overlay_needs_evidence"
             ]
           }
