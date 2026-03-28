@@ -588,7 +588,7 @@
       ],
       "governance_lane_ids": [],
       "name": "atm10-change-protocol",
-      "required_adjacency_coverage": true,
+      "required_adjacency_coverage": false,
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
       "status": "evaluated"
@@ -603,7 +603,7 @@
       ],
       "governance_lane_ids": [],
       "name": "atm10-source-of-truth-check",
-      "required_adjacency_coverage": true,
+      "required_adjacency_coverage": false,
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated"

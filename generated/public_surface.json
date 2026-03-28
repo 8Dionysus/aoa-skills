@@ -4,9 +4,7 @@
     "candidate_ready": [
       "aoa-core-logic-boundary",
       "aoa-local-stack-bringup",
-      "aoa-port-adapter-refactor",
-      "atm10-change-protocol",
-      "atm10-source-of-truth-check"
+      "aoa-port-adapter-refactor"
     ],
     "default_references": [
       "aoa-adr-write",
@@ -414,7 +412,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [],
-      "canonical_candidate_ready": true,
+      "canonical_candidate_ready": false,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
@@ -431,7 +429,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [],
-      "canonical_candidate_ready": true,
+      "canonical_candidate_ready": false,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],

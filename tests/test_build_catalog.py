@@ -583,6 +583,10 @@ class BuildCatalogTests(unittest.TestCase):
         path = repo_root / build_catalog.OVERLAY_READINESS_MARKDOWN_PATH
         return path.read_text(encoding="utf-8")
 
+    def load_bundle_index(self, repo_root: Path) -> dict:
+        path = repo_root / build_catalog.BUNDLE_INDEX_JSON_PATH
+        return json.loads(path.read_text(encoding="utf-8"))
+
     def load_skill_composition_audit(self, repo_root: Path) -> dict:
         path = repo_root / build_catalog.SKILL_COMPOSITION_AUDIT_JSON_PATH
         return json.loads(path.read_text(encoding="utf-8"))
@@ -1249,6 +1253,33 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertEqual([], skill_entry["governance_evidence_case_ids"])
         self.assertFalse(skill_entry["is_default_reference"])
         self.assertEqual(["aoa-test-skill"], payload["cohorts"]["candidate_ready"])
+
+    def test_project_overlay_stays_out_of_candidate_ready_without_governance_lane(self) -> None:
+        repo_root = self.make_repo(
+            scope="project",
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+
+        build_catalog.write_public_surface(repo_root)
+        build_catalog.write_governance_backlog(repo_root)
+        build_catalog.write_bundle_index(repo_root)
+
+        public_payload = self.load_public_surface(repo_root)
+        backlog_payload = self.load_governance_backlog(repo_root)
+        bundle_payload = self.load_bundle_index(repo_root)
+
+        public_entry = public_payload["skills"][0]
+        backlog_entry = backlog_payload["skills"][0]
+        bundle_entry = bundle_payload["skills"][0]
+
+        self.assertFalse(public_entry["canonical_candidate_ready"])
+        self.assertEqual([], public_entry["canonical_candidate_blockers"])
+        self.assertEqual([], public_payload["cohorts"]["candidate_ready"])
+        self.assertEqual([], backlog_payload["cohorts"]["candidate_ready_without_review"])
+        self.assertFalse(backlog_entry["canonical_candidate_ready"])
+        self.assertFalse(bundle_entry["canonical_candidate_ready"])
 
     def test_write_public_surface_marks_pending_lineage_and_resolves_both_review_paths(self) -> None:
         repo_root = self.make_repo(

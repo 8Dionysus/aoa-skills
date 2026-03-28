@@ -900,7 +900,7 @@
         "docs/reviews/status-promotions/atm10-change-protocol.md"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": true,
+      "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
       "content_hash": "13bb78b9a8f5bd75c85c88ec7a7ffce384cbb56b3fbc18375f4203f3572a9528",
       "generated_surface_versions": {
@@ -958,7 +958,7 @@
         "docs/reviews/status-promotions/atm10-source-of-truth-check.md"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": true,
+      "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
       "content_hash": "e8187af5c3d39e06167a42c8ae8d56d0ac975233d2bc06796500795cde894d19",
       "generated_surface_versions": {
