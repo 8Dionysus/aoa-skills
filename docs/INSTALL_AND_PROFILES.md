@@ -16,6 +16,8 @@ Each profile declares:
 
 `generated/skill_pack_profiles.resolved.json` resolves those profiles into concrete target roots and expected target paths.
 
+`generated/release_manifest.json` now also records `install_profile_revisions` so the resolved profile set can be pinned as part of the repo-local portable release contract.
+
 ## Helper scripts
 
 Dry-run or apply an install profile:
@@ -36,6 +38,15 @@ Lint the profile authoring:
 ```bash
 python scripts/lint_pack_profiles.py --repo-root .
 ```
+
+## Verification posture
+
+If you need a machine-readable packaging check rather than a dry-run install plan:
+
+- read `generated/skill_pack_profiles.resolved.json` for the concrete profile membership
+- read `generated/release_manifest.json` for the current `install_profile_revisions`
+
+That pair gives an offline verification surface for profile membership drift without introducing a separate package registry.
 
 ## Why profiles matter
 

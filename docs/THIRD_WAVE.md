@@ -81,4 +81,4 @@ Keep the layers separate:
 
 Wave 3 does not replace the export.
 It makes the export easier to install, govern, and keep stable.
-`generated/release_manifest.json` inventories the portable artifacts for this layer and does not replace repo-level release identity in `CHANGELOG.md`, `docs/RELEASING.md`, the Git tag, or the GitHub release body.
+`generated/release_manifest.json` is the machine-readable portable release contract for this layer. It pins artifact groups, digests, bundle revisions, and install-profile revisions without replacing repo-level release identity in `CHANGELOG.md`, `docs/RELEASING.md`, the Git tag, or the GitHub release body.

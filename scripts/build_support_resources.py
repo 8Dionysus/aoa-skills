@@ -15,6 +15,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+import release_manifest_contract
+
 
 PROFILE = "codex-facing-wave-8-support-bundles"
 JSON_INDENT = 2
@@ -210,6 +212,11 @@ def main() -> int:
 
     repo_root = Path(args.repo_root).resolve()
     file_map = build_documents(repo_root)
+    release_doc = release_manifest_contract.build_release_manifest(
+        repo_root,
+        file_overrides=file_map,
+    )
+    file_map[repo_root / "generated" / "release_manifest.json"] = dump_json(release_doc)
     for path, text in file_map.items():
         render_or_check(path, text, args.check, repo_root)
     print(json.dumps({"status": "ok", "repo_root": str(repo_root), "check": args.check}))

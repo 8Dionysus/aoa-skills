@@ -14,6 +14,7 @@ import json
 import pathlib
 from typing import Any
 
+import release_manifest_contract
 import yaml
 
 PROFILE = "codex-facing-wave-7-description-trigger-evals"
@@ -99,44 +100,6 @@ def csv_text(rows: list[dict[str, Any]], fieldnames: list[str]) -> str:
     return buf.getvalue()
 
 
-def build_release_manifest(
-    existing: dict[str, Any],
-    generated_files: list[str],
-    skill_count: int,
-    explicit_only_count: int,
-    profile_count: int,
-) -> dict[str, Any]:
-    waves: list[int] = []
-    for wave in existing.get("included_waves", []):
-        if wave == 5:
-            continue
-        if wave not in waves:
-            waves.append(wave)
-    if 7 not in waves:
-        waves.append(7)
-    authoring_inputs = list(existing.get("authoring_inputs", []))
-    if "config/description_trigger_eval_policy.json" not in authoring_inputs:
-        authoring_inputs.append("config/description_trigger_eval_policy.json")
-    return {
-        "schema_version": 1,
-        "profile": existing.get("profile", "codex-facing-wave-3"),
-        "included_waves": waves,
-        "skill_root": existing.get("skill_root", ".agents/skills"),
-        "skill_count": skill_count,
-        "explicit_only_count": explicit_only_count,
-        "profile_count": profile_count,
-        "authoring_inputs": authoring_inputs,
-        "generated_files": generated_files,
-        "release_identity": existing.get(
-            "release_identity",
-            {
-                "changelog": "CHANGELOG.md",
-                "releasing_doc": "docs/RELEASING.md",
-            },
-        ),
-    }
-
-
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--repo-root", default=".", help="Repository root")
@@ -154,8 +117,6 @@ def main() -> int:
     router_doc = load_json(generated_dir / "runtime_router_hints.json")
     base_cases = load_jsonl(generated_dir / "skill_trigger_eval_cases.jsonl")
     collision_doc = load_json(generated_dir / "skill_trigger_collision_matrix.json")
-    release_existing = load_json(generated_dir / "release_manifest.json")
-    profiles_doc = load_json(config_dir / "skill_pack_profiles.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     policy_doc = load_json(config_dir / "description_trigger_eval_policy.json")
 
@@ -428,28 +389,25 @@ def main() -> int:
         ],
     }
 
-    generated_files = list(dict.fromkeys(list(release_existing.get("generated_files", [])) + WAVE7_GENERATED_FILES))
-    release_doc = build_release_manifest(
-        existing=release_existing,
-        generated_files=generated_files,
-        skill_count=len(description_signals),
-        explicit_only_count=sum(
-            1 for entry in catalog_doc.get("skills", []) if entry.get("invocation_mode") == "explicit-only"
+    file_map = {
+        generated_dir / "skill_description_signals.json": dump_json(
+            {"schema_version": 1, "profile": PROFILE, "skills": description_signals}
         ),
-        profile_count=len((profiles_doc.get("profiles") or {}).keys()),
+        generated_dir / "description_trigger_eval_cases.jsonl": "\n".join(
+            json.dumps(row, ensure_ascii=False) for row in rows
+        )
+        + "\n",
+        generated_dir / "description_trigger_eval_cases.csv": csv_text(rows, fieldnames),
+        generated_dir / "description_trigger_eval_manifest.json": dump_json(manifest),
+        generated_dir / "skills_ref_validation_manifest.json": dump_json(validation_manifest),
+    }
+    release_doc = release_manifest_contract.build_release_manifest(
+        repo_root,
+        file_overrides=file_map,
     )
-
-    render_or_check(
-        generated_dir / "skill_description_signals.json",
-        dump_json({"schema_version": 1, "profile": PROFILE, "skills": description_signals}),
-        args.check,
-    )
-    jsonl_text = "\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n"
-    render_or_check(generated_dir / "description_trigger_eval_cases.jsonl", jsonl_text, args.check)
-    render_or_check(generated_dir / "description_trigger_eval_cases.csv", csv_text(rows, fieldnames), args.check)
-    render_or_check(generated_dir / "description_trigger_eval_manifest.json", dump_json(manifest), args.check)
-    render_or_check(generated_dir / "skills_ref_validation_manifest.json", dump_json(validation_manifest), args.check)
-    render_or_check(generated_dir / "release_manifest.json", dump_json(release_doc), args.check)
+    file_map[generated_dir / "release_manifest.json"] = dump_json(release_doc)
+    for path, text in file_map.items():
+        render_or_check(path, text, args.check)
 
     print(f"built {len(rows)} description-trigger cases across {len(description_signals)} skills")
     return 0

@@ -14,6 +14,7 @@ import pathlib
 import re
 from typing import Any
 
+import release_manifest_contract
 import yaml
 
 PROFILE = "codex-facing-wave-4-runtime-seam"
@@ -371,26 +372,6 @@ def build_session_contract() -> dict[str, Any]:
     }
 
 
-def build_release_manifest(existing: dict[str, Any], generated_files: list[str], skill_count: int, explicit_only_count: int, profile_count: int) -> dict[str, Any]:
-    release_doc = dict(existing)
-    waves: list[int] = []
-    for wave in existing.get("included_waves", []):
-        if wave == 5:
-            continue
-        if wave not in waves:
-            waves.append(wave)
-    if 4 not in waves:
-        waves.append(4)
-    if 6 in existing.get("included_waves", []) and 6 not in waves:
-        waves.append(6)
-    release_doc["included_waves"] = waves
-    release_doc["skill_count"] = skill_count
-    release_doc["explicit_only_count"] = explicit_only_count
-    release_doc["profile_count"] = profile_count
-    release_doc["generated_files"] = generated_files
-    return release_doc
-
-
 def render_or_check(path: pathlib.Path, text: str, check: bool) -> None:
     if check:
         current = path.read_text(encoding="utf-8") if path.exists() else None
@@ -416,9 +397,6 @@ def main() -> int:
     trust_policy = load_json(generated_dir / "trust_policy_matrix.json")
     eval_cases = load_jsonl(generated_dir / "skill_trigger_eval_cases.jsonl")
     collision_doc = load_json(generated_dir / "skill_trigger_collision_matrix.json")
-    release_existing = load_json(generated_dir / "release_manifest.json")
-    resolved_profiles = load_json(generated_dir / "skill_pack_profiles.resolved.json")
-
     runtime_by_name = {entry["name"]: entry for entry in runtime_contracts.get("skills", [])}
     context_by_name = {entry["name"]: entry for entry in context_retention.get("skills", [])}
     trust_by_name = {entry["name"]: entry for entry in trust_policy.get("skills", [])}
@@ -620,15 +598,9 @@ def main() -> int:
         generated_dir / "runtime_seam_manifest.json": dump_json(runtime_seam_manifest),
     }
 
-    generated_file_list = list(
-        dict.fromkeys(release_existing.get("generated_files", []) + RUNTIME_GENERATED_FILES)
-    )
-    release_doc = build_release_manifest(
-        existing=release_existing,
-        generated_files=generated_file_list,
-        skill_count=len(discovery_records),
-        explicit_only_count=sum(1 for entry in discovery_records if entry["invocation_mode"] == "explicit-only"),
-        profile_count=len((resolved_profiles.get("profiles") or {}).keys()),
+    release_doc = release_manifest_contract.build_release_manifest(
+        repo_root,
+        file_overrides=file_map,
     )
     file_map[generated_dir / "release_manifest.json"] = dump_json(release_doc)
 

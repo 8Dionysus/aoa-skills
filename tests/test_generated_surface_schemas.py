@@ -33,6 +33,7 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
             ("overlay_readiness.schema.json", "overlay_readiness.json"),
             ("skill_bundle_index.schema.json", "skill_bundle_index.json"),
             ("skill_graph.schema.json", "skill_graph.json"),
+            ("release_manifest.schema.json", "release_manifest.json"),
         ]:
             with self.subTest(schema=schema_filename):
                 self.validate(
