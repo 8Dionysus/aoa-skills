@@ -47,6 +47,14 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
                 self.assertIn("title", payload)
                 self.assertTrue(payload["title"].startswith("aoa-skills "))
 
+    def test_governance_backlog_schema_allows_project_overlay_reconciliation_values(self) -> None:
+        payload = self.load_schema("governance_backlog.schema.json")
+        enum_values = payload["properties"]["skills"]["items"]["properties"][
+            "readiness_reconciliation"
+        ]["enum"]
+        self.assertIn("project_overlay_eval_ready", enum_values)
+        self.assertIn("project_overlay_needs_evidence", enum_values)
+
 
 if __name__ == "__main__":
     unittest.main()

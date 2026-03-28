@@ -617,6 +617,8 @@ def render_overlay_readiness_markdown(payload: Mapping[str, Any]) -> str:
         "",
         "This derived file summarizes live overlay-family maturity and project-skill readiness",
         "for the thin overlay layer in `aoa-skills`.",
+        "`reviewable` is the current mature exemplar target for a live project-overlay family in this repo.",
+        "Use this surface for family maturity and `generated/governance_backlog.md` for per-skill maintenance readout.",
         "",
         "## Summary",
         "",

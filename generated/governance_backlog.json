@@ -24,7 +24,7 @@
     "docs_truth_sync": [],
     "review_truth_sync": []
   },
-  "governance_backlog_version": 3,
+  "governance_backlog_version": 4,
   "review_truth_sync": [
     {
       "current_revision": "efea66558a8f",
@@ -611,7 +611,7 @@
       "lineage_state": "published",
       "name": "atm10-change-protocol",
       "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
       "status": "evaluated"
@@ -628,7 +628,7 @@
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
       "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated"
