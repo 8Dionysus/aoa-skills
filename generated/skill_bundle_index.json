@@ -308,7 +308,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "84dc298f07634b18193be06418d5ef043ab78238da7f86954be7b7bba2972ff5",
+      "content_hash": "705c145c971091aaca20da8275aa88a8715c6e7576f4bf80fa77a48119590816",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -330,7 +330,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
       "scope": "core",
       "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
-      "skill_revision": "84dc298f0763",
+      "skill_revision": "705c145c9710",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -553,7 +553,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "2932554d24885e11db7095c8d4ed11e5dcf55524f48db70a6daeeaab4fb34c65",
+      "content_hash": "ec261dc247e9374e89a99c3f878ab1674977cfa1ac458600557020c49ec3f5e6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 1,
@@ -575,7 +575,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
       "scope": "core",
       "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
-      "skill_revision": "2932554d2488",
+      "skill_revision": "ec261dc247e9",
       "status": "evaluated",
       "support_artifacts": [
         {

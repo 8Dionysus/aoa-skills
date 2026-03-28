@@ -415,6 +415,36 @@ adjacency_cases:
       - This is a tdd-slice case, not a change-protocol case.
       - A small test-first slice with a limited implementation surface.
     forbidden_output_phrases: []
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_vs_core_logic_boundary
+    prompt: Compare first-pass context carving with a narrower core-versus-glue split and choose the clearer fit when domain language and subsystem boundaries are still mixed together.
+    expected: use
+    adjacent_skill: aoa-core-logic-boundary
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_vs_core_logic_boundary.md
+    required_output_phrases:
+      - This is a bounded-context-map case, not a core-logic-boundary case.
+      - A first-pass context and boundary clarification that separates overlapping concepts before deciding the narrower core-versus-glue split.
+    forbidden_output_phrases: []
+  - skill: aoa-bounded-context-map
+    case_id: bounded_context_map_vs_port_adapter_refactor
+    prompt: Compare context carving with a seam-making refactor and choose the clearer fit when naming and subsystem boundaries are still unclear before any adapter work starts.
+    expected: use
+    adjacent_skill: aoa-port-adapter-refactor
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_vs_port_adapter_refactor.md
+    required_output_phrases:
+      - This is a bounded-context-map case, not a port-adapter-refactor case.
+      - A first-pass context and boundary clarification that should happen before choosing a narrower dependency seam.
+    forbidden_output_phrases: []
+  - skill: aoa-core-logic-boundary
+    case_id: core_logic_boundary_vs_bounded_context_map_boundary
+    prompt: Compare a first-pass context map with a narrower core-versus-glue split and choose the clearer fit when the context is already named but stable rules and orchestration are still mixed together.
+    expected: use
+    adjacent_skill: aoa-bounded-context-map
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_vs_bounded_context_map_boundary.md
+    required_output_phrases:
+      - This is a core-logic-boundary case, not a bounded-context-map case.
+      - A narrower decision about what belongs in reusable core logic versus orchestration or wiring after the context is already understood.
+    forbidden_output_phrases: []
   - skill: aoa-core-logic-boundary
     case_id: core_logic_boundary_vs_port_adapter_refactor
     prompt: Compare a boundary-clarity task with a port/adapter refactor and choose the clearer fit for a mixed core and wiring module.
@@ -424,6 +454,16 @@ adjacency_cases:
     required_output_phrases:
       - This is a core-logic-boundary case, not a port-adapter-refactor case.
       - A boundary judgment that separates reusable core logic from adapter or wiring responsibilities.
+    forbidden_output_phrases: []
+  - skill: aoa-port-adapter-refactor
+    case_id: port_adapter_refactor_vs_bounded_context_map_boundary
+    prompt: Compare a first-pass context map with a seam-making refactor and choose the clearer fit when the boundary is already named but one concrete dependency still needs a port or adapter seam.
+    expected: use
+    adjacent_skill: aoa-bounded-context-map
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-port-adapter-refactor/port_adapter_refactor_vs_bounded_context_map_boundary.md
+    required_output_phrases:
+      - This is a port-adapter-refactor case, not a bounded-context-map case.
+      - A narrower seam, port, or adapter move around the concrete dependency after the broader context boundary is already clear.
     forbidden_output_phrases: []
   - skill: aoa-port-adapter-refactor
     case_id: port_adapter_refactor_vs_core_logic_boundary

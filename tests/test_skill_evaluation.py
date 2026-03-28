@@ -28,12 +28,22 @@ SNAPSHOT_SECTIONS = [
     "Verification hooks",
 ]
 ADJACENCY_EXPECTATIONS = {
-    "aoa-bounded-context-map": ["aoa-contract-test"],
+    "aoa-bounded-context-map": [
+        "aoa-contract-test",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor",
+    ],
     "aoa-change-protocol": ["aoa-tdd-slice"],
     "aoa-contract-test": ["aoa-bounded-context-map"],
     "aoa-tdd-slice": ["aoa-change-protocol"],
-    "aoa-core-logic-boundary": ["aoa-port-adapter-refactor"],
-    "aoa-port-adapter-refactor": ["aoa-core-logic-boundary"],
+    "aoa-core-logic-boundary": [
+        "aoa-bounded-context-map",
+        "aoa-port-adapter-refactor",
+    ],
+    "aoa-port-adapter-refactor": [
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+    ],
     "aoa-approval-gate-check": [
         "aoa-dry-run-first",
         "aoa-safe-infra-change",
