@@ -17,8 +17,6 @@ LIVE_OVERLAYS_DIR = Path("docs") / "overlays"
 PROJECT_OVERLAY_FILE = "PROJECT_OVERLAY.md"
 LIVE_OVERLAY_REVIEW_FILE = "REVIEW.md"
 PROJECT_OVERLAY_SKILL_FILE = "PROJECT_OVERLAY_SKILL.md"
-LIVE_OVERLAY_FAMILIES = ("atm10", "abyss")
-OVERLAY_DIR_PREFIXES = tuple(f"{family}-" for family in LIVE_OVERLAY_FAMILIES)
 PROJECT_OVERLAY_HEADINGS = (
     "Overlay target",
     "Base skill surface",
@@ -64,6 +62,7 @@ OVERLAY_READINESS_SOURCE_OF_TRUTH = {
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
 }
 OVERLAY_SKILL_BULLET_PATTERN = re.compile(r"^\s*-\s*`([a-z0-9-]+)`")
+OVERLAY_STUB_DIR_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)+$")
 
 
 @dataclass(frozen=True)
@@ -102,6 +101,13 @@ def load_skill_scope(skill_path: Path) -> str | None:
     return scope if isinstance(scope, str) else None
 
 
+def skill_family_name(skill_name: str) -> str | None:
+    family, separator, remainder = skill_name.partition("-")
+    if not separator or not family or not remainder:
+        return None
+    return family
+
+
 def family_skill_names(repo_root: Path, family: str) -> list[str]:
     prefix = f"{family}-"
     skills_dir = repo_root / "skills"
@@ -113,6 +119,41 @@ def family_skill_names(repo_root: Path, family: str) -> list[str]:
         if path.is_dir()
         and path.name.startswith(prefix)
         and load_skill_scope(path / "SKILL.md") == "project"
+    )
+
+
+def project_skill_families(repo_root: Path) -> list[str]:
+    skills_dir = repo_root / "skills"
+    if not skills_dir.is_dir():
+        return []
+    families = {
+        family
+        for path in skills_dir.iterdir()
+        if path.is_dir()
+        for family in [skill_family_name(path.name)]
+        if family is not None and load_skill_scope(path / "SKILL.md") == "project"
+    }
+    return sorted(families)
+
+
+def declared_live_overlay_dirs(repo_root: Path) -> list[Path]:
+    root = repo_root / LIVE_OVERLAYS_DIR
+    if not root.is_dir():
+        return []
+    return sorted(path for path in root.iterdir() if path.is_dir())
+
+
+def overlay_doc_families(repo_root: Path) -> list[str]:
+    return sorted(
+        overlay_dir.name
+        for overlay_dir in declared_live_overlay_dirs(repo_root)
+        if (overlay_dir / PROJECT_OVERLAY_FILE).is_file()
+    )
+
+
+def live_overlay_families(repo_root: Path) -> list[str]:
+    return sorted(
+        set(project_skill_families(repo_root)) | set(overlay_doc_families(repo_root))
     )
 
 
@@ -153,11 +194,11 @@ def collect_overlay_stub_issues(repo_root: Path) -> list[OverlayContractIssue]:
         return issues
 
     for stub_dir in sorted(path for path in root.iterdir() if path.is_dir()):
-        if not any(stub_dir.name.startswith(prefix) for prefix in OVERLAY_DIR_PREFIXES):
+        if OVERLAY_STUB_DIR_PATTERN.match(stub_dir.name) is None:
             issues.append(
                 OverlayContractIssue(
                     relative_location(stub_dir, repo_root),
-                    "overlay stub directories must start with 'atm10-' or 'abyss-'",
+                    "overlay stub directories must follow '<family>-<stub-name>' naming",
                 )
             )
         overlay_path = stub_dir / PROJECT_OVERLAY_FILE
@@ -245,17 +286,17 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
     root = repo_root / LIVE_OVERLAYS_DIR
     issues: list[OverlayContractIssue] = []
 
-    if root.is_dir():
-        for overlay_dir in sorted(path for path in root.iterdir() if path.is_dir()):
-            if overlay_dir.name not in LIVE_OVERLAY_FAMILIES:
-                issues.append(
-                    OverlayContractIssue(
-                        relative_location(overlay_dir, repo_root),
-                        "live overlay directories must be named 'atm10' or 'abyss'",
-                    )
+    for overlay_dir in declared_live_overlay_dirs(repo_root):
+        overlay_path = overlay_dir / PROJECT_OVERLAY_FILE
+        if not overlay_path.is_file():
+            issues.append(
+                OverlayContractIssue(
+                    relative_location(overlay_dir, repo_root),
+                    f"live overlay directory '{overlay_dir.name}' must include {PROJECT_OVERLAY_FILE}",
                 )
+            )
 
-    for family in LIVE_OVERLAY_FAMILIES:
+    for family in live_overlay_families(repo_root):
         skill_names = family_skill_names(repo_root, family)
         overlay_path = root / family / PROJECT_OVERLAY_FILE
         review_path = root / family / LIVE_OVERLAY_REVIEW_FILE
@@ -400,15 +441,6 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
     return issues
 
 
-def live_overlay_families(repo_root: Path) -> list[str]:
-    root = repo_root / LIVE_OVERLAYS_DIR
-    return [
-        family
-        for family in LIVE_OVERLAY_FAMILIES
-        if (root / family / PROJECT_OVERLAY_FILE).is_file()
-    ]
-
-
 def _overlay_path(repo_root: Path, family: str) -> Path:
     return repo_root / LIVE_OVERLAYS_DIR / family / PROJECT_OVERLAY_FILE
 
@@ -494,7 +526,7 @@ def build_overlay_readiness_payload(repo_root: Path) -> dict[str, Any]:
     ]
 
     families: list[dict[str, Any]] = []
-    for family in sorted({entry["family"] for entry in skills}):
+    for family in live_overlay_families(repo_root):
         overlay_path = _overlay_path(repo_root, family)
         review_path = _overlay_review_path(repo_root, family)
         project_skill_names = sorted(

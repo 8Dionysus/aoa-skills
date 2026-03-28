@@ -92,7 +92,7 @@ A typical skill bundle contains:
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 17 skills, first live derived reader/runtime/governance surfaces, and a first repo-level baseline release path.
+This repository now has a mixed-status public core of 19 skills, first live derived reader/runtime/governance surfaces, and a first repo-level baseline release path.
 The public baseline release is `v0.1.0`.
 Release identity lives in `CHANGELOG.md`, `docs/RELEASING.md`, the Git tag, and the GitHub release body, while derived public-surface status remains separate.
 

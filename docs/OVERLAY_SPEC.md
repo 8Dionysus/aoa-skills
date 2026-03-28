@@ -29,6 +29,9 @@ Project overlays use a different reading model:
 - `generated/governance_backlog.*` is the per-skill maintenance readout
 - the absence of a governance lane for a project overlay is expected and is not, by itself, a gap
 
+The live family set is discovered from repo state through `docs/overlays/<family>/PROJECT_OVERLAY.md`
+plus matching `skills/<family>-*` bundles rather than through a hardcoded family allowlist.
+
 This keeps thin overlay families readable without pretending they participate in
 the same canonical-reference lane model as reusable core skills.
 

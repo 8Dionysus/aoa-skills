@@ -46,10 +46,10 @@ an executable workflow for Codex.
 29. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
 30. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
 31. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-32. `overlays/atm10/PROJECT_OVERLAY.md` - first live exemplar family overlay pack.
-33. `overlays/atm10/REVIEW.md` - family-level review surface for the first live exemplar pack.
-34. `overlays/abyss/PROJECT_OVERLAY.md` - second live exemplar family overlay pack.
-35. `overlays/abyss/REVIEW.md` - family-level review surface for the second live exemplar pack.
+32. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
+33. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
+34. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
+35. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
 36. `reviews/README.md` - public review-record conventions and review surfaces.
 37. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
 
@@ -90,7 +90,7 @@ an executable workflow for Codex.
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 17 skills with first support artifacts,
+This repository now has a mixed-status public core of 19 skills with first support artifacts,
 honest bridge manifests with pinned source refs, and local validation coverage.
 The live governance counts now belong to `../generated/public_surface.md` and `../generated/governance_backlog.md`, while this docs map stays focused on how to read the layers.
 The repository now also has a documented maturity ladder and promotion guidance.
@@ -98,7 +98,7 @@ The repository now also has a documented public promotion path in `PROMOTION_PAT
 The repository now also has a repo-level release runbook in `RELEASING.md` and a bounded release-check CLI at `../scripts/release_check.py`.
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
 The repository now also has a generated Codex-facing export in `../.agents/skills/`, portable discovery surfaces in `../generated/agent_skill_catalog*.json`, a legacy-compatible local adapter seam in `LOCAL_ADAPTER_CONTRACT.md` and `../generated/local_adapter_manifest*.json`, a wave-4 runtime seam in `FOURTH_WAVE.md`, `RUNTIME_SEAM_SECOND_PATH.md`, `RUNTIME_TOOL_CONTRACTS.md`, `SESSION_COMPACTION.md`, and `../generated/runtime_*.json`, wave-3 install and trust surfaces in `INSTALL_AND_PROFILES.md`, `CONTEXT_RETENTION.md`, `UI_METADATA_AND_ASSETS.md`, `CODEX_CONFIG_SNIPPETS.md`, policy-aware trigger-eval data documented in `TRIGGER_EVALS.md`, and a wave-8 deterministic support-resource bridge documented in `EIGHTH_WAVE.md`, `DETERMINISTIC_RESOURCE_BUNDLES.md`, `BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `../generated/deterministic_resource_manifest.json`.
-The next focus is keeping selection, evidence reading, and public status in their own layers while using the derived governance layer to drive candidate review, overlay maturity, stronger public product-surface clarity, and packaging prep through `../generated/governance_backlog.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
+The next focus is keeping selection, evidence reading, public status, and live overlay family maturity in their own layers while using the derived governance layer for cross-family overlay maintenance and packaging prep through `../generated/governance_backlog.md`, `../generated/overlay_readiness.md`, `../generated/skill_bundle_index.md`, and `../generated/skill_graph.md`.
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md`, `docs/overlays/abyss/PROJECT_OVERLAY.md`, and matching `skills/atm10-*` plus `skills/abyss-*` bundles.
 Those live exemplar packs also have family-level review docs at `docs/overlays/atm10/REVIEW.md` and `docs/overlays/abyss/REVIEW.md`.
 Those overlays remain repo-local examples rather than live downstream integrations, and their maturity is read through `../generated/overlay_readiness.md` rather than core governance lanes.

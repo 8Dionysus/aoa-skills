@@ -4,7 +4,7 @@
 
 Current public foundation:
 - coherent docs surface
-- 17 public skills across core, risk, and first live project-overlay categories
+- 19 public skills across core, risk, and live project-overlay categories
 - live governance counts kept in `generated/public_surface.md` and `generated/governance_backlog.md` rather than duplicated in source docs
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
@@ -24,7 +24,7 @@ Already-shipped repo-owned support layers now include:
 - wave-8 deterministic support-resource bundles for three high-risk skills
 - wave-9 tiny-router compression bridge for downstream routing
 
-The next steps should use that derived governance layer to drive candidate review and promotion decisions, overlay maturity, stronger public product-surface clarity, and packaging prep rather than only increase skill count.
+The next steps should use that derived governance layer to keep core governance decisions honest, keep live overlay families aligned under one contract, and push packaging prep rather than only increase skill count.
 Overlay preparation and packaging remain intentionally repo-local and thin: they should surface contracts and export primitives without introducing live downstream integrations or registries.
 
 ## Near-term sequence
@@ -98,9 +98,9 @@ Add:
 ## v0.6 project overlays
 
 Continue thin project-shaped overlays now that the public core has two live exemplar packs:
-- keep `atm10-*` as the stable template family for project-overlay maturity semantics
-- use the first `abyss-*` family to prove that the same overlay contract transfers to a second repo family without widening scope
-- harden shared docs, validation, and export expectations across both live families before adding any third family
+- keep `atm10-*` and `abyss-*` aligned under one repo-state-discovered live-family contract
+- treat `atm10` as the original template and `abyss` as the transfer check, but keep both as maintained live families rather than a first/second hierarchy
+- treat shared docs, validation, and export expectations across both live families as maintained contract surfaces before adding any third family
 
 Target shape:
 - repository-local commands and source-of-truth files
@@ -110,7 +110,8 @@ Target shape:
 - `docs/OVERLAY_SPEC.md` and `docs/overlays/atm10/PROJECT_OVERLAY.md` define the repo-local overlay contract for live exemplar packs without turning them into downstream integrations
 
 Recommended sequencing inside this wave:
-- finish cross-family hardening for `atm10` plus `abyss`
+- keep cross-family parity green for `atm10` plus `abyss`
+- move the next repo-wide frontier to `v0.7` packaging and distribution prep
 - only then consider any additional live family
 - prefer a third family only if it clarifies the overlay contract rather than merely increasing bundle count
 

@@ -51,6 +51,7 @@ class TinyRouterInputsTest(unittest.TestCase):
 
     def test_explicit_only_skills_stay_manual_and_project_skills_stay_overlays(self) -> None:
         catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
+        overlay_readiness = load_json(REPO_ROOT / "generated" / "overlay_readiness.json")
         signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
         eval_cases = load_jsonl(REPO_ROOT / "generated" / "tiny_router_eval_cases.jsonl")
         catalog_by_name = {entry["name"]: entry for entry in catalog["skills"]}
@@ -62,21 +63,24 @@ class TinyRouterInputsTest(unittest.TestCase):
 
         overlay_cases = [case for case in eval_cases if case.get("repo_family_hint")]
         self.assertTrue(overlay_cases)
-        self.assertEqual({"atm10", "abyss"}, {case["repo_family_hint"] for case in overlay_cases})
-        atm10_cases = [case for case in overlay_cases if case.get("repo_family_hint") == "atm10"]
-        abyss_cases = [case for case in overlay_cases if case.get("repo_family_hint") == "abyss"]
-        self.assertTrue(
-            any("atm10-change-protocol" in case.get("expected_shortlist_includes", []) for case in atm10_cases)
-        )
-        self.assertTrue(
-            any("atm10-source-of-truth-check" in case.get("expected_shortlist_includes", []) for case in atm10_cases)
-        )
-        self.assertTrue(
-            any("abyss-safe-infra-change" in case.get("expected_shortlist_includes", []) for case in abyss_cases)
-        )
-        self.assertTrue(
-            any("abyss-sanitized-share" in case.get("expected_shortlist_includes", []) for case in abyss_cases)
-        )
+        live_families = {
+            entry["family"]: entry["project_skill_names"]
+            for entry in overlay_readiness["families"]
+        }
+        self.assertEqual(set(live_families), {case["repo_family_hint"] for case in overlay_cases})
+        for family, skill_names in live_families.items():
+            family_cases = [
+                case for case in overlay_cases if case.get("repo_family_hint") == family
+            ]
+            self.assertTrue(family_cases, msg=f"missing tiny-router cases for family '{family}'")
+            for skill_name in skill_names:
+                self.assertTrue(
+                    any(
+                        skill_name in case.get("expected_shortlist_includes", [])
+                        for case in family_cases
+                    ),
+                    msg=f"missing family-hinted shortlist coverage for '{skill_name}'",
+                )
 
 
 if __name__ == "__main__":
