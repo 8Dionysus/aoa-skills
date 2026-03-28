@@ -274,8 +274,12 @@
       "governance_decision": "default_reference",
       "governance_evidence_case_ids": [
         "bounded_context_map_vs_contract_test_boundary",
+        "bounded_context_map_vs_core_logic_boundary",
+        "bounded_context_map_vs_port_adapter_refactor",
         "contract_test_vs_bounded_context_map_boundary",
+        "core_logic_boundary_vs_bounded_context_map_boundary",
         "core_logic_boundary_vs_port_adapter_refactor",
+        "port_adapter_refactor_vs_bounded_context_map_boundary",
         "port_adapter_refactor_vs_core_logic_boundary"
       ],
       "governance_lane_ids": [
@@ -342,7 +346,11 @@
       "canonical_eval_ready": true,
       "governance_decision": "stay_evaluated",
       "governance_evidence_case_ids": [
+        "bounded_context_map_vs_core_logic_boundary",
+        "bounded_context_map_vs_port_adapter_refactor",
+        "core_logic_boundary_vs_bounded_context_map_boundary",
         "core_logic_boundary_vs_port_adapter_refactor",
+        "port_adapter_refactor_vs_bounded_context_map_boundary",
         "port_adapter_refactor_vs_core_logic_boundary"
       ],
       "governance_lane_ids": [
@@ -440,7 +448,11 @@
       "canonical_eval_ready": true,
       "governance_decision": "stay_evaluated",
       "governance_evidence_case_ids": [
+        "bounded_context_map_vs_core_logic_boundary",
+        "bounded_context_map_vs_port_adapter_refactor",
+        "core_logic_boundary_vs_bounded_context_map_boundary",
         "core_logic_boundary_vs_port_adapter_refactor",
+        "port_adapter_refactor_vs_bounded_context_map_boundary",
         "port_adapter_refactor_vs_core_logic_boundary"
       ],
       "governance_lane_ids": [

@@ -32,7 +32,11 @@ lanes:
     state: comparative_pending
     review_path: docs/governance/lanes.md#core_boundary_refactor
     evidence_case_ids:
+      - bounded_context_map_vs_core_logic_boundary
+      - bounded_context_map_vs_port_adapter_refactor
+      - core_logic_boundary_vs_bounded_context_map_boundary
       - core_logic_boundary_vs_port_adapter_refactor
+      - port_adapter_refactor_vs_bounded_context_map_boundary
       - port_adapter_refactor_vs_core_logic_boundary
     skills:
       - name: aoa-bounded-context-map

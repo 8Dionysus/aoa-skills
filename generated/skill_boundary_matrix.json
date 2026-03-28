@@ -38,6 +38,42 @@
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-tdd-slice/tdd_slice_vs_change_protocol_boundary.md"
     },
     {
+      "adjacent_skill": "aoa-core-logic-boundary",
+      "blockers": [],
+      "case_id": "bounded_context_map_vs_core_logic_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
+      "prompt": "Compare first-pass context carving with a narrower core-versus-glue split and choose the clearer fit when domain language and subsystem boundaries are still mixed together.",
+      "skill": "aoa-bounded-context-map",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_vs_core_logic_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-port-adapter-refactor",
+      "blockers": [],
+      "case_id": "bounded_context_map_vs_port_adapter_refactor",
+      "expected": "use",
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
+      "prompt": "Compare context carving with a seam-making refactor and choose the clearer fit when naming and subsystem boundaries are still unclear before any adapter work starts.",
+      "skill": "aoa-bounded-context-map",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-bounded-context-map/bounded_context_map_vs_port_adapter_refactor.md"
+    },
+    {
+      "adjacent_skill": "aoa-bounded-context-map",
+      "blockers": [],
+      "case_id": "core_logic_boundary_vs_bounded_context_map_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
+      "prompt": "Compare a first-pass context map with a narrower core-versus-glue split and choose the clearer fit when the context is already named but stable rules and orchestration are still mixed together.",
+      "skill": "aoa-core-logic-boundary",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_vs_bounded_context_map_boundary.md"
+    },
+    {
       "adjacent_skill": "aoa-port-adapter-refactor",
       "blockers": [],
       "case_id": "core_logic_boundary_vs_port_adapter_refactor",
@@ -48,6 +84,18 @@
       "prompt": "Compare a boundary-clarity task with a port/adapter refactor and choose the clearer fit for a mixed core and wiring module.",
       "skill": "aoa-core-logic-boundary",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-core-logic-boundary/core_logic_boundary_vs_port_adapter_refactor.md"
+    },
+    {
+      "adjacent_skill": "aoa-bounded-context-map",
+      "blockers": [],
+      "case_id": "port_adapter_refactor_vs_bounded_context_map_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "core_boundary_refactor"
+      ],
+      "prompt": "Compare a first-pass context map with a seam-making refactor and choose the clearer fit when the boundary is already named but one concrete dependency still needs a port or adapter seam.",
+      "skill": "aoa-port-adapter-refactor",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-port-adapter-refactor/port_adapter_refactor_vs_bounded_context_map_boundary.md"
     },
     {
       "adjacent_skill": "aoa-core-logic-boundary",
@@ -352,9 +400,11 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 1,
+      "adjacency_use_count": 3,
       "adjacent_skill_names": [
-        "aoa-contract-test"
+        "aoa-contract-test",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor"
       ],
       "governance_lane_ids": [
         "context_vs_contract",
@@ -404,8 +454,9 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 1,
+      "adjacency_use_count": 2,
       "adjacent_skill_names": [
+        "aoa-bounded-context-map",
         "aoa-port-adapter-refactor"
       ],
       "governance_lane_ids": [
@@ -475,8 +526,9 @@
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
-      "adjacency_use_count": 1,
+      "adjacency_use_count": 2,
       "adjacent_skill_names": [
+        "aoa-bounded-context-map",
         "aoa-core-logic-boundary"
       ],
       "governance_lane_ids": [

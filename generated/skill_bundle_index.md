@@ -10,11 +10,11 @@ It is repo-local packaging metadata, not a release or registry surface.
 | aoa-bounded-context-map | d30b34e184aa | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-change-protocol | b16d2bb862ed | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-contract-test | ee840b7a57d3 | canonical | core | explicit-preferred | published | true | true | 3 |
-| aoa-core-logic-boundary | 84dc298f0763 | evaluated | core | explicit-preferred | published | true | true | 3 |
+| aoa-core-logic-boundary | 705c145c9710 | evaluated | core | explicit-preferred | published | true | true | 3 |
 | aoa-dry-run-first | d9268551ac56 | canonical | risk | explicit-only | published | true | true | 4 |
 | aoa-invariant-coverage-audit | 24523847392c | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-local-stack-bringup | 02c71fc78a85 | evaluated | risk | explicit-only | published | true | true | 4 |
-| aoa-port-adapter-refactor | 2932554d2488 | evaluated | core | explicit-preferred | published | true | true | 3 |
+| aoa-port-adapter-refactor | ec261dc247e9 | evaluated | core | explicit-preferred | published | true | true | 3 |
 | aoa-property-invariants | 0b79b6884ab3 | canonical | core | explicit-preferred | published | true | true | 3 |
 | aoa-safe-infra-change | d43c7703c0b9 | canonical | risk | explicit-only | published | true | true | 4 |
 | aoa-sanitized-share | 43e610dc0a9f | canonical | risk | explicit-only | published | true | true | 4 |

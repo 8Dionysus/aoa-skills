@@ -6,7 +6,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 ## Summary
 
 - total skills: 17
-- adjacency cases: 26
+- adjacency cases: 30
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
 
@@ -14,14 +14,14 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 |---|---|---|---|---:|---:|---|---|---|---|
 | aoa-adr-write | canonical | core | true | 1 | 0 | aoa-source-of-truth-check | decision_docs_authority | true | - |
 | aoa-approval-gate-check | canonical | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
-| aoa-bounded-context-map | canonical | core | true | 1 | 0 | aoa-contract-test | context_vs_contract, core_boundary_refactor | true | - |
+| aoa-bounded-context-map | canonical | core | true | 3 | 0 | aoa-contract-test, aoa-core-logic-boundary, aoa-port-adapter-refactor | context_vs_contract, core_boundary_refactor | true | - |
 | aoa-change-protocol | canonical | core | true | 1 | 0 | aoa-tdd-slice | change_workflows | true | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | context_vs_contract | true | - |
-| aoa-core-logic-boundary | evaluated | core | true | 1 | 0 | aoa-port-adapter-refactor | core_boundary_refactor | true | - |
+| aoa-core-logic-boundary | evaluated | core | true | 2 | 0 | aoa-bounded-context-map, aoa-port-adapter-refactor | core_boundary_refactor | true | - |
 | aoa-dry-run-first | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-safe-infra-change, aoa-sanitized-share | risk_authority_preview_execution | true | - |
 | aoa-invariant-coverage-audit | canonical | core | true | 1 | 0 | aoa-property-invariants | invariant_authoring_vs_audit | true | - |
 | aoa-local-stack-bringup | evaluated | risk | true | 2 | 0 | aoa-approval-gate-check, aoa-safe-infra-change | local_runtime_bringup | true | - |
-| aoa-port-adapter-refactor | evaluated | core | true | 1 | 0 | aoa-core-logic-boundary | core_boundary_refactor | true | - |
+| aoa-port-adapter-refactor | evaluated | core | true | 2 | 0 | aoa-bounded-context-map, aoa-core-logic-boundary | core_boundary_refactor | true | - |
 | aoa-property-invariants | canonical | core | true | 1 | 0 | aoa-invariant-coverage-audit | invariant_authoring_vs_audit | true | - |
 | aoa-safe-infra-change | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
 | aoa-sanitized-share | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | risk_authority_preview_execution | true | - |
@@ -37,7 +37,11 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-bounded-context-map | aoa-contract-test | bounded_context_map_vs_contract_test_boundary | use | context_vs_contract | - |
 | aoa-change-protocol | aoa-tdd-slice | change_protocol_vs_tdd_slice_boundary | use | change_workflows | - |
 | aoa-tdd-slice | aoa-change-protocol | tdd_slice_vs_change_protocol_boundary | use | change_workflows | - |
+| aoa-bounded-context-map | aoa-core-logic-boundary | bounded_context_map_vs_core_logic_boundary | use | core_boundary_refactor | - |
+| aoa-bounded-context-map | aoa-port-adapter-refactor | bounded_context_map_vs_port_adapter_refactor | use | core_boundary_refactor | - |
+| aoa-core-logic-boundary | aoa-bounded-context-map | core_logic_boundary_vs_bounded_context_map_boundary | use | core_boundary_refactor | - |
 | aoa-core-logic-boundary | aoa-port-adapter-refactor | core_logic_boundary_vs_port_adapter_refactor | use | core_boundary_refactor | - |
+| aoa-port-adapter-refactor | aoa-bounded-context-map | port_adapter_refactor_vs_bounded_context_map_boundary | use | core_boundary_refactor | - |
 | aoa-port-adapter-refactor | aoa-core-logic-boundary | port_adapter_refactor_vs_core_logic_boundary | use | core_boundary_refactor | - |
 | aoa-approval-gate-check | aoa-dry-run-first | approval_gate_vs_preview_and_infra_boundary | use | risk_authority_preview_execution | - |
 | aoa-approval-gate-check | aoa-safe-infra-change | approval_gate_vs_safe_infra_boundary | use | risk_authority_preview_execution | - |

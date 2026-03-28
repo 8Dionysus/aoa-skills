@@ -24,18 +24,20 @@
 - `skills/aoa-port-adapter-refactor/examples/example.md`
 - `skills/aoa-port-adapter-refactor/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
+- `docs/governance/lanes.md`
 
 ## Findings
 
-- the trigger boundary stays focused on ports and adapters around concrete dependency pressure
-- the skill remains distinct from `aoa-core-logic-boundary` and `aoa-source-of-truth-check` instead of widening into a generic architecture cleanup lane
+- the trigger boundary stays focused on ports and adapters around concrete dependency pressure after the broader context boundary is already understood
+- the skill now reads clearly as a follow-on to `aoa-bounded-context-map` rather than as a competing first-pass boundary-clarification skill
+- the skill remains distinct from `aoa-core-logic-boundary` by staying on a narrower dependency seam rather than a general reusable-rules versus orchestration decision
 - published lineage, runtime wording, and evaluation coverage are aligned
 - the bundle is candidate-ready at the repository gate level
 
 ## Gaps and blockers
 
 - no lineage or evaluation blocker remains at the repository gate level
-- the lane keeps `aoa-bounded-context-map` as the default entry anchor, while `aoa-port-adapter-refactor` stays a specialized follow-on skill for concrete dependency seams
+- the lane keeps `aoa-bounded-context-map` as the default entry anchor, while `aoa-port-adapter-refactor` stays a specialized follow-on skill for concrete dependency seams once context carving is already done
 - future canonical review should preserve the narrow port/adapter seam and avoid widening the skill into open-ended restructuring
 
 ## Recommendation

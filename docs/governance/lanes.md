@@ -31,7 +31,7 @@ This document explains the same lane decisions in prose without changing status 
 - state: `comparative_pending`
 - default reference anchor: `aoa-bounded-context-map`
 - stay-evaluated decisions: `aoa-core-logic-boundary`, `aoa-port-adapter-refactor`
-- rationale: `aoa-bounded-context-map` remains the default entry anchor for first-pass boundary clarification, while the refactor-oriented pair stays intentionally specialized follow-on work rather than the default starting point
+- rationale: `aoa-bounded-context-map` remains the default entry anchor for first-pass context and boundary clarification, while the refactor-oriented pair stays intentionally specialized follow-on work once the main problem is either core-versus-glue separation or a concrete dependency seam
 - review sources: `docs/reviews/canonical-candidates/aoa-bounded-context-map.md`, `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md`, `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md`
 
 ## decision_docs_authority
