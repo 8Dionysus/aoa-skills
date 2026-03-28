@@ -11,7 +11,7 @@ import skill_review_surface
 import skill_source_model
 
 
-GOVERNANCE_BACKLOG_VERSION = 3
+GOVERNANCE_BACKLOG_VERSION = 4
 GOVERNANCE_BACKLOG_JSON_PATH = Path("generated") / "governance_backlog.json"
 GOVERNANCE_BACKLOG_MARKDOWN_PATH = Path("generated") / "governance_backlog.md"
 GOVERNANCE_BACKLOG_SOURCE_OF_TRUTH = {
@@ -41,6 +41,8 @@ STALE_DOC_PHRASES = (
     "13 skills",
     "13 public skills",
 )
+PROJECT_OVERLAY_EVAL_READY = "project_overlay_eval_ready"
+PROJECT_OVERLAY_NEEDS_EVIDENCE = "project_overlay_needs_evidence"
 
 
 def relative_location(path: Path, repo_root: Path) -> str:
@@ -61,9 +63,14 @@ def docs_truth_sync_issues(repo_root: Path) -> list[str]:
 
 def readiness_reconciliation(
     *,
+    scope: str,
     canonical_candidate_ready: bool,
     canonical_eval_ready: bool,
 ) -> str:
+    if scope == "project":
+        if canonical_eval_ready:
+            return PROJECT_OVERLAY_EVAL_READY
+        return PROJECT_OVERLAY_NEEDS_EVIDENCE
     if canonical_candidate_ready and canonical_eval_ready:
         return "governance_and_eval_ready"
     if canonical_candidate_ready and not canonical_eval_ready:
@@ -157,6 +164,7 @@ def build_governance_backlog_payload(
                     public_entry["governance_evidence_case_ids"]
                 ),
                 "readiness_reconciliation": readiness_reconciliation(
+                    scope=str(public_entry["scope"]),
                     canonical_candidate_ready=bool(
                         public_entry["canonical_candidate_ready"]
                     ),
@@ -232,6 +240,8 @@ def render_governance_backlog_markdown(payload: Mapping[str, Any]) -> str:
         "",
         "This derived file reconciles repo-local governance readiness and evaluation readiness without changing status.",
         "It is a backlog/maintenance view, not a promotion decision surface.",
+        "Project-overlay rows may use overlay-specific reconciliation values when no governance lane exists.",
+        "Read those rows as per-skill maintenance signals, not as missing canonical-decision debt.",
         "",
         "## Summary",
         "",

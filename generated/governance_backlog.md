@@ -2,6 +2,8 @@
 
 This derived file reconciles repo-local governance readiness and evaluation readiness without changing status.
 It is a backlog/maintenance view, not a promotion decision surface.
+Project-overlay rows may use overlay-specific reconciliation values when no governance lane exists.
+Read those rows as per-skill maintenance signals, not as missing canonical-decision debt.
 
 ## Summary
 
@@ -30,8 +32,8 @@ It is a backlog/maintenance view, not a promotion decision surface.
 | aoa-sanitized-share | canonical | published | true | true | default_reference | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-sanitized-share.md | docs/reviews/status-promotions/aoa-sanitized-share.md |
 | aoa-source-of-truth-check | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-source-of-truth-check.md | docs/reviews/status-promotions/aoa-source-of-truth-check.md |
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
-| atm10-change-protocol | evaluated | published | false | true | - | - | eval_ready_but_governance_blocked | - | docs/reviews/status-promotions/atm10-change-protocol.md |
-| atm10-source-of-truth-check | evaluated | published | false | true | - | - | eval_ready_but_governance_blocked | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
+| atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_eval_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
+| atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_eval_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
 
 ## Review truth sync
 

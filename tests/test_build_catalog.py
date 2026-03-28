@@ -1281,6 +1281,49 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertFalse(backlog_entry["canonical_candidate_ready"])
         self.assertFalse(bundle_entry["canonical_candidate_ready"])
 
+    def test_project_overlay_backlog_marks_eval_ready_without_governance_lane(self) -> None:
+        repo_root = self.make_repo(
+            scope="project",
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+            include_evaluation_fixtures=True,
+        )
+
+        build_catalog.write_governance_backlog(repo_root)
+
+        payload = self.load_governance_backlog(repo_root)
+        markdown = self.load_governance_backlog_markdown(repo_root)
+        skill_entry = payload["skills"][0]
+
+        self.assertFalse(skill_entry["canonical_candidate_ready"])
+        self.assertTrue(skill_entry["canonical_eval_ready"])
+        self.assertEqual(
+            "project_overlay_eval_ready",
+            skill_entry["readiness_reconciliation"],
+        )
+        self.assertIn("project_overlay_eval_ready", markdown)
+
+    def test_project_overlay_backlog_marks_eval_blocked_as_needs_evidence(self) -> None:
+        repo_root = self.make_repo(
+            scope="project",
+            status="evaluated",
+            review_surfaces=("status-promotions",),
+        )
+
+        build_catalog.write_governance_backlog(repo_root)
+
+        payload = self.load_governance_backlog(repo_root)
+        markdown = self.load_governance_backlog_markdown(repo_root)
+        skill_entry = payload["skills"][0]
+
+        self.assertFalse(skill_entry["canonical_candidate_ready"])
+        self.assertFalse(skill_entry["canonical_eval_ready"])
+        self.assertEqual(
+            "project_overlay_needs_evidence",
+            skill_entry["readiness_reconciliation"],
+        )
+        self.assertIn("project_overlay_needs_evidence", markdown)
+
     def test_write_public_surface_marks_pending_lineage_and_resolves_both_review_paths(self) -> None:
         repo_root = self.make_repo(
             status="evaluated",
@@ -1475,6 +1518,14 @@ class BuildCatalogTests(unittest.TestCase):
         )
         self.assertTrue(all(entry["eval_ready"] for entry in payload["skills"]))
         self.assertIn("# Overlay readiness", markdown)
+        self.assertIn(
+            "`reviewable` is the current mature exemplar target for a live project-overlay family in this repo.",
+            markdown,
+        )
+        self.assertIn(
+            "Use this surface for family maturity and `generated/governance_backlog.md` for per-skill maintenance readout.",
+            markdown,
+        )
         self.assertIn(
             "| atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |",
             markdown,

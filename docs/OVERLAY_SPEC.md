@@ -18,6 +18,20 @@ An overlay is thin by design. It should explain how a skill changes shape in a t
 Live overlay packs in this repository are exemplar surfaces only.
 They are not downstream integrations and they do not replace project-local authority.
 
+## Governance and maturity
+
+Core reusable skills record default-reference authority through governance lanes,
+`generated/public_surface.*`, and the candidate/promotion review path.
+
+Project overlays use a different reading model:
+
+- `generated/overlay_readiness.*` is the family-level maturity surface
+- `generated/governance_backlog.*` is the per-skill maintenance readout
+- the absence of a governance lane for a project overlay is expected and is not, by itself, a gap
+
+This keeps thin overlay families readable without pretending they participate in
+the same canonical-reference lane model as reusable core skills.
+
 ## What an overlay may change
 
 An overlay may adjust:
@@ -55,6 +69,7 @@ The project overlay document is the family-level entrypoint.
 The family review document is the bounded review surface for overlay maturity.
 The matching `skills/<family>-*` bundles are the executable thin overlays.
 Fixture stubs remain separate from live overlay packs and do not imply project adoption.
+`reviewable` is the current mature exemplar target for a live family in this repository.
 
 ## Validation intent
 

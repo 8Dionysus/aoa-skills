@@ -24,13 +24,16 @@
 - the two atm10 bundles stay bounded, explicit-preferred, and now clear the evaluated floor through bundle-local review evidence plus existing overlay evaluation fixtures
 - the family entrypoint names repo-relative paths, commands, and review posture
 - bundle-local review checklists give a human review surface without adding hidden authority
+- `reviewable` is the current target maturity for a live project-overlay exemplar family in this repo
+- family maturity belongs in `generated/overlay_readiness.*`, while per-skill maintenance belongs in `generated/governance_backlog.*`
 
 ## Gaps and blockers
 
+- no governance lane is expected for this project-overlay family and should not be read as a missing canonical decision
 - no downstream integration is implied
 - no live remote dependency is needed
 - the family should stay narrow until additional `atm10-*` bundles are intentionally added
 
 ## Recommendation
 
-Keep `atm10` as a reviewable thin overlay exemplar, not as a playbook or project doctrine.
+Keep `atm10` as a reviewable thin overlay exemplar and stable template for future families, not as a playbook, project doctrine, or hidden canonical-promotion track.

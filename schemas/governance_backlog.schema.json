@@ -193,7 +193,9 @@
               "governance_and_eval_ready",
               "governance_ready_but_eval_blocked",
               "eval_ready_but_governance_blocked",
-              "blocked_in_both"
+              "blocked_in_both",
+              "project_overlay_eval_ready",
+              "project_overlay_needs_evidence"
             ]
           }
         }

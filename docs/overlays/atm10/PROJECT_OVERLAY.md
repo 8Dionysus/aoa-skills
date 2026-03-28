@@ -12,6 +12,7 @@ It does not change the base skill boundary.
 - canonical overlay doc: `docs/overlays/atm10/PROJECT_OVERLAY.md`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
+- maturity posture: `generated/overlay_readiness.md` is the family-level maturity surface; no governance lane is expected for these project overlays
 - explicit approval rules: downstream maintainers keep command execution, risk acceptance, and final local authority explicit
 
 ## Local surface
@@ -21,6 +22,7 @@ It does not change the base skill boundary.
 - rollback path: revert the bounded local change and re-run the smallest relevant local check
 - verification path: use the smallest repo-relative check that matches the touched surface
 - family review doc: `docs/overlays/atm10/REVIEW.md`
+- maintenance readout: use `generated/overlay_readiness.md` for family maturity and `generated/governance_backlog.md` for per-skill maintenance
 - bundle-local review checklists: `skills/atm10-change-protocol/checks/review.md`, `skills/atm10-source-of-truth-check/checks/review.md`
 
 ## Overlayed skills
@@ -34,6 +36,7 @@ It does not change the base skill boundary.
 - do not hide downstream authority inside local convenience prose
 - do not replace the base skill with family-specific rules that belong upstream or downstream
 - do not present this exemplar pack as a live downstream integration
+- do not treat the missing governance lane for `atm10-*` as a hidden canonical-promotion gap
 
 ## Validation
 
@@ -42,3 +45,4 @@ It does not change the base skill boundary.
 - confirm the family review doc and bundle-local review checklists stay aligned
 - confirm repo-relative paths and commands stay public-safe and reviewable
 - confirm downstream authority remains explicit
+- confirm the family stays reviewable as a repo-local exemplar even without a governance lane
