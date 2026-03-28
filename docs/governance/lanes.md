@@ -54,7 +54,7 @@ This document explains the same lane decisions in prose without changing status 
 - default reference anchors: `aoa-approval-gate-check`, `aoa-safe-infra-change`
 - stay-evaluated decisions: `aoa-local-stack-bringup`
 - rationale: local multi-service bring-up now clears the evaluated floor, but it remains intentionally non-canonical while the repo records its boundary against authority classification and bounded infra-change work
-- review sources: `docs/reviews/status-promotions/aoa-local-stack-bringup.md`, `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`, `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`
+- review sources: `docs/reviews/status-promotions/aoa-local-stack-bringup.md`, `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md`, `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`, `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`
 
 ## invariant_authoring_vs_audit
 

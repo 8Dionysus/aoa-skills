@@ -1,9 +1,7 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [],
-    "candidate_ready_without_review": [
-      "aoa-local-stack-bringup"
-    ],
+    "candidate_ready_without_review": [],
     "canonical_maintenance": [
       "aoa-adr-write",
       "aoa-approval-gate-check",
@@ -413,7 +411,7 @@
       "status": "canonical"
     },
     {
-      "candidate_review_path": null,
+      "candidate_review_path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
