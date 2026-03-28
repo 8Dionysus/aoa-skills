@@ -10,11 +10,16 @@ Tracking starts with the community-docs baseline for this repository.
 ### Added
 
 - wave-4 dedicated-tool runtime seam around the generated Codex-facing export, including discover, disclose, activate, session-status, deactivate, and compaction-safe rehydration surfaces
+- wave-6 governed runtime guardrails with repo trust gating, read-only allowlists, and context-guard session metadata around skill activation
+- wave-7 description-first activation-contract coverage, including description-trigger evals and the soft `skills-ref` conformance lane
+- wave-8 deterministic support-resource bundles for `aoa-dry-run-first`, `aoa-safe-infra-change`, and `aoa-local-stack-bringup`
+- wave-9 tiny-router compression surfaces for downstream stage-1 shortlist routing without moving routing policy into `aoa-skills`
 
 ### Changed
 
 - hardened the generated Codex-facing portable layer with wave-3 install profiles, trust policy, context-retention metadata, runtime contracts, UI assets, and config snippets while keeping repo-level release identity separate from seed-pack metadata
-- promoted `scripts/skill_runtime_seam.py` to the primary local runtime path while keeping `scripts/activate_skill.py` as the backward-compatible shim
+- promoted `scripts/skill_runtime_guardrails.py` to the primary local-friendly runtime path while keeping `scripts/skill_runtime_seam.py` as the raw/debug seam and `scripts/activate_skill.py` as the backward-compatible shim
+- kept wave-5 scenario canon out of `aoa-skills`, exposing only `generated/skill_handoff_contracts.json` as the downstream bridge for `aoa-playbooks`
 
 ## [0.1.0] - 2026-03-23
 

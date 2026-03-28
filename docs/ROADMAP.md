@@ -15,6 +15,15 @@ Current public foundation:
 - repo-level baseline release identity in `CHANGELOG.md`, `docs/RELEASING.md`, tags, and GitHub release notes
 - bounded release validation in `scripts/release_check.py`
 
+Already-shipped repo-owned support layers now include:
+- wave-3 Codex-facing portable export, install-profile, and local-adapter surfaces
+- wave-4 raw runtime seam
+- wave-5 limited skill-handoff bridge only; scenario canon lives in `aoa-playbooks`
+- wave-6 governed runtime guardrails
+- wave-7 description-first activation contract and soft conformance lane
+- wave-8 deterministic support-resource bundles for three high-risk skills
+- wave-9 tiny-router compression bridge for downstream routing
+
 The next steps should use that derived governance layer to drive candidate review and promotion decisions, overlay maturity, stronger public product-surface clarity, and packaging prep rather than only increase skill count.
 Overlay preparation and packaging remain intentionally repo-local and thin: they should surface contracts and export primitives without introducing live downstream integrations or registries.
 
@@ -40,6 +49,7 @@ The main near-term risk is no longer missing baseline scaffolding.
 It is ambiguity about which skills are the default references in adjacent workflow lanes,
 how thin project overlays should mature without widening scope,
 and how the public bundle surface should eventually package for portable reuse.
+Another planning risk is cross-repo rollout choreography: when a future wave splits source-owned bridge meaning from downstream consumption, merge order and rerun policy should be planned explicitly rather than left to PR folklore.
 
 ## v0.3 public core hardening
 
@@ -112,6 +122,7 @@ Explore:
 - skill graph views for dependency, maturity, and policy relationships
 - import/export and offline bundle use
 - verifiable distribution of reusable public skill bundles
+- explicit cross-repo bridge rollout notes for source-owned bridge waves that downstream repos consume from `main`
 - keep this wave repo-local for the public core; GitHub releases and tags may continue for bounded repository baselines, while remote registries remain out of scope
 
 ## Long-term direction
