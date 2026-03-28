@@ -81,6 +81,8 @@ It does not:
 Project overlays are intentionally read through `generated/overlay_readiness.*` instead.
 An overlay may be `evaluated` and reviewable without participating in the candidate-ready cohort when no governance lane path exists for that project-scope object.
 If the same overlay skill appears in `generated/governance_backlog.*`, read that row as a maintenance signal rather than as missing-governance-lane debt.
+If a live overlay family is already `reviewable`, the same backlog row may reconcile as `project_overlay_federation_ready` for downstream consumers that need a compact federation-style closure signal.
+That bridge signal still does not create a governance lane, candidate-ready semantics, or canonical-reference authority for the project overlay itself.
 For a live family, read `generated/overlay_readiness.md` first and then the matching `docs/overlays/<family>/*` files.
 
 ### `governance decision`

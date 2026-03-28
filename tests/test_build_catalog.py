@@ -1331,6 +1331,48 @@ class BuildCatalogTests(unittest.TestCase):
         )
         self.assertIn("project_overlay_eval_ready", markdown)
 
+    def test_project_overlay_backlog_marks_reviewable_family_as_federation_ready(self) -> None:
+        repo_root = self.make_repo()
+        skill_names = [
+            "cinder-change-protocol",
+            "cinder-source-of-truth-check",
+        ]
+        for skill_name in skill_names:
+            self.add_skill_bundle(
+                repo_root,
+                skill_name=skill_name,
+                scope="project",
+                status="evaluated",
+                techniques=[PRIMARY_PUBLISHED_TECHNIQUE],
+                policy_allow_implicit=True,
+                include_review_check=True,
+            )
+        self.write_evaluation_fixtures_for_skills(repo_root, skill_names)
+        self.write_live_overlay_pack(
+            repo_root,
+            family="cinder",
+            skill_names=skill_names,
+        )
+
+        build_catalog.write_governance_backlog(repo_root)
+
+        payload = self.load_governance_backlog(repo_root)
+        markdown = self.load_governance_backlog_markdown(repo_root)
+        readiness_by_skill = {
+            entry["name"]: entry["readiness_reconciliation"]
+            for entry in payload["skills"]
+        }
+
+        self.assertEqual(
+            "project_overlay_federation_ready",
+            readiness_by_skill["cinder-change-protocol"],
+        )
+        self.assertEqual(
+            "project_overlay_federation_ready",
+            readiness_by_skill["cinder-source-of-truth-check"],
+        )
+        self.assertIn("project_overlay_federation_ready", markdown)
+
     def test_project_overlay_backlog_marks_eval_blocked_as_needs_evidence(self) -> None:
         repo_root = self.make_repo(
             scope="project",

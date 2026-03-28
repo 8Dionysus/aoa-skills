@@ -12,7 +12,7 @@ It does not change the base skill boundary.
 - canonical overlay doc: `docs/overlays/abyss/PROJECT_OVERLAY.md`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
-- maturity posture: `generated/overlay_readiness.md` is the family-level maturity surface; no governance lane is expected for these project overlays
+- maturity posture: `generated/overlay_readiness.md` is the family-level maturity surface; `generated/governance_backlog.md` may expose `project_overlay_federation_ready` as a downstream bridge signal, but no governance lane is expected for these project overlays
 - explicit approval rules: downstream maintainers keep command execution, sharing thresholds, risk acceptance, and final local authority explicit
 
 ## Local surface
@@ -45,4 +45,4 @@ It does not change the base skill boundary.
 - confirm the family review doc and bundle-local review checklists stay aligned
 - confirm repo-relative paths, commands, and sharing surfaces stay public-safe and reviewable
 - confirm downstream authority remains explicit
-- confirm the family stays reviewable as a repo-local exemplar even without a governance lane
+- confirm the family stays reviewable as a repo-local exemplar even when downstream consumers read `project_overlay_federation_ready` without a governance lane

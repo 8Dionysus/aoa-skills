@@ -7,6 +7,7 @@ import skill_catalog_contract
 import skill_evaluation_surface
 import skill_governance_lane_contract
 import skill_governance_surface
+import skill_overlay_contract
 import skill_review_surface
 import skill_source_model
 
@@ -23,6 +24,7 @@ GOVERNANCE_BACKLOG_SOURCE_OF_TRUTH = {
     "governance_lanes": skill_governance_lane_contract.GOVERNANCE_LANES_PATH.as_posix(),
     "evaluation_matrix": "generated/skill_evaluation_matrix.json",
     "public_surface": "generated/public_surface.json",
+    "overlay_readiness": skill_overlay_contract.OVERLAY_READINESS_JSON_PATH.as_posix(),
     "review_truth_sync": "docs/reviews/status-promotions/*.md",
 }
 CANDIDATE_READY_WITHOUT_REVIEW = "candidate_ready_without_review"
@@ -42,6 +44,7 @@ STALE_DOC_PHRASES = (
     "13 public skills",
 )
 PROJECT_OVERLAY_EVAL_READY = "project_overlay_eval_ready"
+PROJECT_OVERLAY_FEDERATION_READY = "project_overlay_federation_ready"
 PROJECT_OVERLAY_NEEDS_EVIDENCE = "project_overlay_needs_evidence"
 
 
@@ -64,10 +67,18 @@ def docs_truth_sync_issues(repo_root: Path) -> list[str]:
 def readiness_reconciliation(
     *,
     scope: str,
+    lineage_state: str,
     canonical_candidate_ready: bool,
     canonical_eval_ready: bool,
+    overlay_family_reviewable: bool,
 ) -> str:
     if scope == "project":
+        if (
+            lineage_state == "published"
+            and canonical_eval_ready
+            and overlay_family_reviewable
+        ):
+            return PROJECT_OVERLAY_FEDERATION_READY
         if canonical_eval_ready:
             return PROJECT_OVERLAY_EVAL_READY
         return PROJECT_OVERLAY_NEEDS_EVIDENCE
@@ -139,10 +150,19 @@ def build_governance_backlog_payload(
         "skills": public_entries,
         "cohorts": skill_governance_surface.derive_public_surface_cohorts(public_entries),
     }
+    overlay_readiness_payload = skill_overlay_contract.build_overlay_readiness_payload(repo_root)
+    overlay_family_readiness = {
+        str(entry.get("family")): str(entry.get("readiness_state"))
+        for entry in overlay_readiness_payload.get("families", [])
+        if isinstance(entry, Mapping)
+        and isinstance(entry.get("family"), str)
+        and isinstance(entry.get("readiness_state"), str)
+    }
 
     skills: list[dict[str, Any]] = []
     for public_entry in public_entries:
         evaluation_entry = evaluation_entry_by_name(evaluation_payload, public_entry["name"])
+        family_name = skill_overlay_contract.skill_family_name(str(public_entry["name"]))
         skills.append(
             {
                 "name": public_entry["name"],
@@ -165,10 +185,15 @@ def build_governance_backlog_payload(
                 ),
                 "readiness_reconciliation": readiness_reconciliation(
                     scope=str(public_entry["scope"]),
+                    lineage_state=str(public_entry["lineage_state"]),
                     canonical_candidate_ready=bool(
                         public_entry["canonical_candidate_ready"]
                     ),
                     canonical_eval_ready=bool(evaluation_entry["canonical_eval_ready"]),
+                    overlay_family_reviewable=(
+                        family_name is not None
+                        and overlay_family_readiness.get(family_name) == "reviewable"
+                    ),
                 ),
             }
         )

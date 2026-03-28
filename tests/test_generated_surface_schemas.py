@@ -54,6 +54,7 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
             "readiness_reconciliation"
         ]["enum"]
         self.assertIn("project_overlay_eval_ready", enum_values)
+        self.assertIn("project_overlay_federation_ready", enum_values)
         self.assertIn("project_overlay_needs_evidence", enum_values)
 
     def test_bundle_index_and_skill_graph_schemas_allow_relationship_depth(self) -> None:

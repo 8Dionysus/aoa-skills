@@ -26,6 +26,7 @@
 - bundle-local review checklists give a human review surface without adding hidden authority
 - `reviewable` is the current target maturity for a live project-overlay exemplar family in this repo
 - family maturity belongs in `generated/overlay_readiness.*`, while per-skill maintenance belongs in `generated/governance_backlog.*`
+- if downstream consumers need federation-style closure, `generated/governance_backlog.*` may reconcile these Abyss skills as `project_overlay_federation_ready` without creating a governance lane
 
 ## Gaps and blockers
 
