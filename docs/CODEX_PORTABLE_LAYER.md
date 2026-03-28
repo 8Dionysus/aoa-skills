@@ -85,7 +85,8 @@ These surfaces make installation, local adaptation, trust checks, and context re
 `scripts/stage_skill_pack.py` is the first staged handoff primitive above that contract: it materializes one profile-scoped bundle directory with a bundle-local `bundle_manifest.json` instead of copying the full repo release manifest into every handoff.
 `scripts/stage_skill_pack.py --archive-path ...` adds an optional ZIP transport wrapper over that same staged directory without adding a second manifest or widening the release contract.
 `scripts/inspect_skill_pack.py` is the first self-contained handoff inspection primitive over that bundle-local contract: it checks manifest integrity, staged file digests, bundle digest, and archive layout before any install step.
-`scripts/verify_skill_pack.py` then verifies that one installed profile/root still matches either the live repo export, one staged bundle directory, or one staged ZIP handoff without introducing a new registry surface.
+`scripts/import_skill_pack.py` is the preferred receiver-side path on top of that same contract: it always inspects first, then optionally installs and verifies one staged bundle or ZIP handoff as one repo-local flow.
+`scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` remain the lower-level advanced path when install and verification need to stay separate without introducing a new registry surface.
 
 Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 
@@ -156,6 +157,7 @@ It intentionally keeps three things separate:
 - a staged profile bundle carries its own `bundle_manifest.json` as the narrow handoff contract over one profile subset
 - a staged ZIP handoff is only a transport wrapper over that same bundle-local contract
 - bundle inspection stays self-contained to the handoff object rather than reconciling against the live repo export
+- `scripts/import_skill_pack.py` is the receiver-friendly `inspect -> install -> verify` path over that same handoff object
 - install verification remains a runtime check over a real target root via `scripts/verify_skill_pack.py`; it is not a committed generated catalog
 
 ## Build and validation
@@ -185,14 +187,15 @@ Inspect one staged bundle or ZIP handoff:
     python scripts/inspect_skill_pack.py --bundle-root /tmp/repo-core-only-bundle --format json
     python scripts/inspect_skill_pack.py --bundle-archive /tmp/repo-core-only.zip --format json
 
-Verify one installed profile/root against a staged bundle:
+Import one staged bundle with inspect-first receiver ergonomics:
 
-    python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --install-root /tmp/aoa-skills --format json
+    python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
 
-Install and verify directly from the ZIP handoff:
+Import directly from the ZIP handoff:
 
-    python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
-    python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --install-root /tmp/aoa-skills --format json
+    python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
+
+Keep `scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` for the advanced path when install and verification need to be run as separate explicit steps.
 
 Lint the policy-aware trigger dataset:
 

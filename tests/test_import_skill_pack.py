@@ -9,7 +9,7 @@ import unittest
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-class InstallProfilesTests(unittest.TestCase):
+class ImportSkillPackTests(unittest.TestCase):
     def stage_profile_bundle(self, profile: str, bundle_root: pathlib.Path) -> None:
         command = [
             sys.executable,
@@ -73,61 +73,33 @@ class InstallProfilesTests(unittest.TestCase):
             msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
         )
 
-    def test_install_profile_copy_mode(self):
-        with tempfile.TemporaryDirectory() as tmpdir:
-            dest_root = pathlib.Path(tmpdir) / "skills"
-            command = [
-                sys.executable,
-                "scripts/install_skill_pack.py",
-                "--repo-root",
-                ".",
-                "--profile",
-                "repo-core-only",
-                "--dest-root",
-                str(dest_root),
-                "--mode",
-                "copy",
-                "--execute",
-            ]
-            completed = subprocess.run(
-                command,
-                cwd=REPO_ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
-            )
-            self.assertEqual(
-                completed.returncode,
-                0,
-                msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
-            )
-            installed = sorted(path.name for path in dest_root.iterdir() if path.is_dir())
-            self.assertIn("aoa-change-protocol", installed)
-            self.assertNotIn("aoa-safe-infra-change", installed)
+    def run_import(self, *args: str) -> subprocess.CompletedProcess[str]:
+        command = [sys.executable, "scripts/import_skill_pack.py", *args]
+        return subprocess.run(
+            command,
+            cwd=REPO_ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
 
-    def test_install_profile_json_plan_includes_revision_and_verify_command(self):
+    def test_dry_run_import_from_bundle_root_succeeds(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
-            dest_root = pathlib.Path(tmpdir) / "skills"
-            command = [
-                sys.executable,
-                "scripts/install_skill_pack.py",
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            dest_root = pathlib.Path(tmpdir) / "installed"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+
+            completed = self.run_import(
                 "--repo-root",
                 ".",
                 "--profile",
                 "repo-core-only",
+                "--bundle-root",
+                str(bundle_root),
                 "--dest-root",
                 str(dest_root),
-                "--mode",
-                "copy",
                 "--format",
                 "json",
-            ]
-            completed = subprocess.run(
-                command,
-                cwd=REPO_ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
             )
             self.assertEqual(
                 completed.returncode,
@@ -135,21 +107,50 @@ class InstallProfilesTests(unittest.TestCase):
                 msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
             )
             payload = json.loads(completed.stdout)
-            self.assertEqual("repo-core-only", payload["profile"])
-            self.assertRegex(payload["profile_revision"], r"^[0-9a-f]{64}$")
-            self.assertEqual("0.1.0", payload["release_identity"]["latest_tagged_version"])
-            self.assertIn("scripts/verify_skill_pack.py", payload["recommended_verify_command"])
-            self.assertIn("--profile repo-core-only", payload["recommended_verify_command"])
+            self.assertEqual("staged_bundle", payload["source_kind"])
+            self.assertTrue(payload["inspection"]["verified"])
+            self.assertFalse(payload["execute"])
+            self.assertIsNone(payload["verification"])
+            self.assertTrue(payload["verified"])
 
-    def test_install_profile_can_use_staged_bundle_source(self):
+    def test_dry_run_import_from_bundle_archive_succeeds(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            archive_path = pathlib.Path(tmpdir) / "repo-core-only.zip"
+            dest_root = pathlib.Path(tmpdir) / "installed"
+            self.stage_profile_archive("repo-core-only", bundle_root, archive_path)
+
+            completed = self.run_import(
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-core-only",
+                "--bundle-archive",
+                str(archive_path),
+                "--dest-root",
+                str(dest_root),
+                "--format",
+                "json",
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            payload = json.loads(completed.stdout)
+            self.assertEqual("staged_archive", payload["source_kind"])
+            self.assertIsNone(payload["bundle_root"])
+            self.assertEqual(str(archive_path.resolve()), payload["bundle_archive"])
+            self.assertTrue(payload["inspection"]["verified"])
+            self.assertTrue(payload["verified"])
+
+    def test_execute_import_from_bundle_root_copy_mode_succeeds(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             bundle_root = pathlib.Path(tmpdir) / "bundle"
             dest_root = pathlib.Path(tmpdir) / "installed"
             self.stage_profile_bundle("repo-core-only", bundle_root)
 
-            command = [
-                sys.executable,
-                "scripts/install_skill_pack.py",
+            completed = self.run_import(
                 "--repo-root",
                 ".",
                 "--profile",
@@ -163,13 +164,6 @@ class InstallProfilesTests(unittest.TestCase):
                 "--execute",
                 "--format",
                 "json",
-            ]
-            completed = subprocess.run(
-                command,
-                cwd=REPO_ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
             )
             self.assertEqual(
                 completed.returncode,
@@ -177,20 +171,18 @@ class InstallProfilesTests(unittest.TestCase):
                 msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
             )
             payload = json.loads(completed.stdout)
-            self.assertEqual("staged_bundle", payload["source_kind"])
-            self.assertEqual(str(bundle_root.resolve()), payload["bundle_root"])
+            self.assertTrue(payload["verified"])
+            self.assertTrue(payload["verification"]["verified"])
             self.assertTrue((dest_root / "aoa-change-protocol" / "SKILL.md").exists())
 
-    def test_install_profile_can_use_staged_archive_source(self):
+    def test_execute_import_from_bundle_archive_copy_mode_succeeds(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             bundle_root = pathlib.Path(tmpdir) / "bundle"
             archive_path = pathlib.Path(tmpdir) / "repo-core-only.zip"
             dest_root = pathlib.Path(tmpdir) / "installed"
             self.stage_profile_archive("repo-core-only", bundle_root, archive_path)
 
-            command = [
-                sys.executable,
-                "scripts/install_skill_pack.py",
+            completed = self.run_import(
                 "--repo-root",
                 ".",
                 "--profile",
@@ -204,13 +196,6 @@ class InstallProfilesTests(unittest.TestCase):
                 "--execute",
                 "--format",
                 "json",
-            ]
-            completed = subprocess.run(
-                command,
-                cwd=REPO_ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
             )
             self.assertEqual(
                 completed.returncode,
@@ -219,20 +204,16 @@ class InstallProfilesTests(unittest.TestCase):
             )
             payload = json.loads(completed.stdout)
             self.assertEqual("staged_archive", payload["source_kind"])
-            self.assertIsNone(payload["bundle_root"])
-            self.assertEqual(str(archive_path.resolve()), payload["bundle_archive"])
+            self.assertTrue(payload["verification"]["verified"])
             self.assertTrue((dest_root / "aoa-change-protocol" / "SKILL.md").exists())
 
-    def test_install_profile_rejects_symlink_mode_for_staged_archive(self):
+    def test_corrupted_bundle_archive_fails_before_install(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
-            bundle_root = pathlib.Path(tmpdir) / "bundle"
-            archive_path = pathlib.Path(tmpdir) / "repo-core-only.zip"
+            archive_path = pathlib.Path(tmpdir) / "broken.zip"
             dest_root = pathlib.Path(tmpdir) / "installed"
-            self.stage_profile_archive("repo-core-only", bundle_root, archive_path)
+            archive_path.write_text("not-a-zip\n", encoding="utf-8")
 
-            command = [
-                sys.executable,
-                "scripts/install_skill_pack.py",
+            completed = self.run_import(
                 "--repo-root",
                 ".",
                 "--profile",
@@ -241,23 +222,65 @@ class InstallProfilesTests(unittest.TestCase):
                 str(archive_path),
                 "--dest-root",
                 str(dest_root),
+                "--execute",
+                "--format",
+                "json",
+            )
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("invalid bundle archive", completed.stderr)
+            self.assertFalse(dest_root.exists())
+
+    def test_strict_root_propagates_to_final_verification(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            dest_root = pathlib.Path(tmpdir) / "installed"
+            self.stage_profile_bundle("repo-core-only", bundle_root)
+            (dest_root / "extra-skill").mkdir(parents=True, exist_ok=True)
+
+            completed = self.run_import(
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-core-only",
+                "--bundle-root",
+                str(bundle_root),
+                "--dest-root",
+                str(dest_root),
+                "--strict-root",
+                "--execute",
+                "--format",
+                "json",
+            )
+            self.assertEqual(
+                completed.returncode,
+                1,
+                msg=f"command failed unexpectedly\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            payload = json.loads(completed.stdout)
+            self.assertFalse(payload["verified"])
+            self.assertFalse(payload["verification"]["verified"])
+            self.assertEqual(["extra-skill"], payload["verification"]["extra_skill_dirs"])
+
+    def test_archive_source_rejects_symlink_mode(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            archive_path = pathlib.Path(tmpdir) / "repo-core-only.zip"
+            self.stage_profile_archive("repo-core-only", bundle_root, archive_path)
+
+            completed = self.run_import(
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-core-only",
+                "--bundle-archive",
+                str(archive_path),
                 "--mode",
                 "symlink",
                 "--format",
                 "json",
-            ]
-            completed = subprocess.run(
-                command,
-                cwd=REPO_ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
             )
             self.assertNotEqual(completed.returncode, 0)
-            self.assertIn(
-                "symlink mode is not supported with --bundle-archive",
-                completed.stderr,
-            )
+            self.assertIn("symlink mode is not supported with --bundle-archive", completed.stderr)
 
 
 if __name__ == "__main__":

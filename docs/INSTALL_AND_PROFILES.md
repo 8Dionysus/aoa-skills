@@ -45,6 +45,14 @@ python scripts/inspect_skill_pack.py --bundle-root /tmp/repo-core-only-bundle --
 python scripts/inspect_skill_pack.py --bundle-archive /tmp/repo-core-only.zip --format json
 ```
 
+Import a staged profile-scoped handoff bundle with one receiver-side flow:
+
+```bash
+python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --format json
+python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
+python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
+```
+
 Verify an installed profile/root against the current portable export:
 
 ```bash
@@ -76,6 +84,7 @@ If you need a machine-readable packaging check rather than only a dry-run instal
 - read `generated/skill_bundle_index.json` when you want the inverse view: which install profiles currently include a given skill
 - use `scripts/stage_skill_pack.py` when you want one repo-local, profile-scoped handoff directory with its own `bundle_manifest.json`
 - use `scripts/inspect_skill_pack.py` when you want one self-contained check over a staged bundle or ZIP before any install step
+- use `scripts/import_skill_pack.py` when you want one receiver-side `inspect -> install -> verify` path over a staged bundle or ZIP without stitching those steps together by hand
 - use `scripts/verify_skill_pack.py` when you want to verify one real install root against either the current export, a staged bundle directory, or a staged ZIP handoff
 
 That pair gives an offline verification surface for profile membership drift without introducing a separate package registry.
@@ -108,19 +117,19 @@ The narrow offline smoke path is:
 ```bash
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
 python scripts/inspect_skill_pack.py --bundle-root /tmp/repo-core-only-bundle --format json
-python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
-python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --install-root /tmp/aoa-skills --format json
+python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
 ```
 
 That keeps the first handoff object profile-scoped, deterministic, and fully offline.
+
+Use `install_skill_pack.py` plus `verify_skill_pack.py` directly when you want the lower-level advanced path or need to keep install and verification as separate steps.
 
 The ZIP transport variant is:
 
 ```bash
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
 python scripts/inspect_skill_pack.py --bundle-archive /tmp/repo-core-only.zip --format json
-python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
-python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --install-root /tmp/aoa-skills --format json
+python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
 ```
 
 ## Why profiles matter

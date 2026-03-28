@@ -3,6 +3,7 @@ from __future__ import annotations
 import contextlib
 import hashlib
 import json
+import os
 import shutil
 import tempfile
 import zipfile
@@ -650,6 +651,9 @@ def skill_pack_source_context(
             bundle_root_override=bundle_root_override,
         )
         source["bundle_archive"] = None
+        source["inspection_root"] = (
+            bundle_root(bundle_root_override) if bundle_root_override else None
+        )
         yield source
         return
 
@@ -667,7 +671,305 @@ def skill_pack_source_context(
         source["source_kind"] = "staged_archive"
         source["bundle_root"] = None
         source["bundle_archive"] = str(bundle_archive_path(bundle_archive_override))
+        source["inspection_root"] = discovered_bundle_root
         yield source
+
+
+def validate_install_mode(
+    *,
+    mode: str,
+    source_kind: str,
+    bundle_archive_override: str | None = None,
+) -> None:
+    if mode == "symlink" and (
+        source_kind == "staged_archive" or bundle_archive_override is not None
+    ):
+        raise ValueError(
+            "symlink mode is not supported with --bundle-archive; use --mode copy or --bundle-root"
+        )
+
+
+def build_install_plan(
+    *,
+    profile_name: str,
+    source: Mapping[str, Any],
+    dest_root: Path,
+    mode: str,
+    execute: bool,
+) -> dict[str, Any]:
+    validate_install_mode(
+        mode=mode,
+        source_kind=str(source["source_kind"]),
+        bundle_archive_override=source.get("bundle_archive"),
+    )
+    plan = {
+        "profile": profile_name,
+        "profile_revision": source["profile_revision"],
+        "scope": source["scope"],
+        "mode": mode,
+        "source_kind": source["source_kind"],
+        "bundle_root": source["bundle_root"],
+        "bundle_archive": source["bundle_archive"],
+        "source_root": source["source_root"],
+        "dest_root": str(dest_root),
+        "execute": execute,
+        "release_identity": dict(source["release_identity"]),
+        "recommended_verify_command": recommended_verify_command(
+            profile_name=profile_name,
+            install_root=dest_root,
+            bundle_root_override=(
+                Path(source["bundle_root"]) if source["bundle_root"] is not None else None
+            ),
+            bundle_archive_override=(
+                Path(source["bundle_archive"])
+                if source["bundle_archive"] is not None
+                else None
+            ),
+            output_format="json",
+        ),
+        "steps": [],
+    }
+
+    for skill_entry in source["skills"]:
+        source_dir = Path(skill_entry["source_dir"])
+        target_dir = dest_root / str(skill_entry["name"])
+        plan["steps"].append(
+            {
+                "skill": skill_entry["name"],
+                "source_dir": str(source_dir),
+                "target_dir": str(target_dir),
+                "exists": target_dir.exists(),
+            }
+        )
+    return plan
+
+
+def execute_install_plan(
+    plan: Mapping[str, Any],
+    *,
+    overwrite: bool,
+) -> None:
+    dest_root = Path(str(plan["dest_root"]))
+    dest_root.mkdir(parents=True, exist_ok=True)
+    for step in plan["steps"]:
+        source_dir = Path(str(step["source_dir"]))
+        target_dir = Path(str(step["target_dir"]))
+        if source_dir.resolve() == target_dir.resolve():
+            raise ValueError(f"target matches source for {step['skill']}: {target_dir}")
+        if not source_dir.exists():
+            raise ValueError(f"missing source skill export: {source_dir}")
+
+        if target_dir.exists():
+            if not overwrite:
+                raise ValueError(f"target exists: {target_dir} (use --overwrite to replace)")
+            if target_dir.is_symlink() or target_dir.is_file():
+                target_dir.unlink()
+            else:
+                shutil.rmtree(target_dir)
+
+        if str(plan["mode"]) == "symlink":
+            os.symlink(source_dir, target_dir, target_is_directory=True)
+        else:
+            shutil.copytree(source_dir, target_dir)
+
+
+def build_directory_snapshot(root_dir: Path) -> dict[str, Any]:
+    if not root_dir.resolve().is_dir():
+        raise ValueError(f"directory snapshot requires a directory: {root_dir}")
+    payloads = iter_directory_file_payloads(root_dir)
+    file_records = file_digests_from_payloads(payloads)
+    return {
+        "digest": record_digest(file_records),
+        "file_count": len(file_records),
+        "files": file_records,
+    }
+
+
+def verify_skill_install(
+    *,
+    skill_name: str,
+    source_dir: Path,
+    target_dir: Path,
+    expected_files: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    source_matches_expected = True
+    if expected_files is None:
+        if not source_dir.is_dir():
+            raise ValueError(f"missing source skill export: {source_dir}")
+        expected_files = build_directory_snapshot(source_dir)["files"]
+    elif source_dir.exists() and source_dir.resolve().is_dir():
+        source_matches_expected = (
+            build_directory_snapshot(source_dir)["files"] == expected_files
+        )
+    else:
+        source_matches_expected = False
+
+    if expected_files is None:
+        raise ValueError(f"missing source skill export: {source_dir}")
+    is_symlink = target_dir.is_symlink()
+    source_digest = record_digest(expected_files)
+
+    if not target_dir.exists():
+        return {
+            "name": skill_name,
+            "source_dir": str(source_dir),
+            "target_dir": str(target_dir),
+            "install_state": "missing",
+            "source_file_count": len(expected_files),
+            "target_file_count": 0,
+            "source_digest": source_digest,
+            "target_digest": None,
+            "is_symlink": False,
+        }
+
+    if not target_dir.resolve().is_dir():
+        return {
+            "name": skill_name,
+            "source_dir": str(source_dir),
+            "target_dir": str(target_dir),
+            "install_state": "mismatch",
+            "source_file_count": len(expected_files),
+            "target_file_count": 0,
+            "source_digest": source_digest,
+            "target_digest": None,
+            "is_symlink": is_symlink,
+        }
+
+    target_snapshot = build_directory_snapshot(target_dir)
+    install_state = (
+        "ok"
+        if source_matches_expected and expected_files == target_snapshot["files"]
+        else "mismatch"
+    )
+    return {
+        "name": skill_name,
+        "source_dir": str(source_dir),
+        "target_dir": str(target_dir),
+        "install_state": install_state,
+        "source_file_count": len(expected_files),
+        "target_file_count": target_snapshot["file_count"],
+        "source_digest": source_digest,
+        "target_digest": target_snapshot["digest"],
+        "is_symlink": is_symlink,
+    }
+
+
+def extra_skill_dirs(install_root: Path, expected_skill_names: set[str]) -> list[str]:
+    if not install_root.exists() or not install_root.is_dir():
+        return []
+    extras: list[str] = []
+    for candidate in sorted(install_root.iterdir(), key=lambda path: path.name):
+        if candidate.name in expected_skill_names:
+            continue
+        if candidate.is_dir():
+            extras.append(candidate.name)
+    return extras
+
+
+def build_verification_report(
+    *,
+    repo_root: Path,
+    profile_name: str,
+    install_root_override: str | None,
+    bundle_root_override: str | None,
+    bundle_archive_override: str | None,
+    strict_root: bool,
+) -> dict[str, Any]:
+    try:
+        source_context = skill_pack_source_context(
+            repo_root,
+            profile_name=profile_name,
+            bundle_root_override=bundle_root_override,
+            bundle_archive_override=bundle_archive_override,
+        )
+    except KeyError:
+        raise SystemExit(f"unknown profile: {profile_name}")
+    except ValueError as exc:
+        raise SystemExit(str(exc))
+
+    with source_context as source:
+        install_root = resolve_install_root(
+            repo_root,
+            install_root_override=install_root_override,
+            default_install_root=source["install_root"],
+        )
+
+        skills: list[dict[str, Any]] = []
+        for skill_entry in source["skills"]:
+            skill_name = skill_entry["name"]
+            skills.append(
+                verify_skill_install(
+                    skill_name=skill_name,
+                    source_dir=Path(skill_entry["source_dir"]),
+                    target_dir=install_root / str(skill_name),
+                    expected_files=skill_entry["expected_files"],
+                )
+            )
+
+        missing_skills = [
+            entry["name"] for entry in skills if entry["install_state"] == "missing"
+        ]
+        mismatched_skills = [
+            entry["name"] for entry in skills if entry["install_state"] == "mismatch"
+        ]
+        extra_dirs = extra_skill_dirs(
+            install_root,
+            {str(entry["name"]) for entry in skills},
+        )
+        verified = not missing_skills and not mismatched_skills and (
+            not strict_root or not extra_dirs
+        )
+        return {
+            "profile": profile_name,
+            "profile_revision": source["profile_revision"],
+            "install_root": str(install_root),
+            "source_kind": source["source_kind"],
+            "bundle_root": source["bundle_root"],
+            "bundle_archive": source["bundle_archive"],
+            "strict_root": strict_root,
+            "verified": verified,
+            "expected_skill_count": len(skills),
+            "verified_skill_count": sum(
+                1 for entry in skills if entry["install_state"] == "ok"
+            ),
+            "missing_skills": missing_skills,
+            "mismatched_skills": mismatched_skills,
+            "extra_skill_dirs": extra_dirs,
+            "release_identity": dict(source["release_identity"]),
+            "skills": skills,
+        }
+
+
+def build_import_report(
+    *,
+    source: Mapping[str, Any],
+    dest_root: Path,
+    mode: str,
+    strict_root: bool,
+    execute: bool,
+    inspection: Mapping[str, Any],
+    install: Mapping[str, Any],
+    verification: Mapping[str, Any] | None,
+) -> dict[str, Any]:
+    verified = bool(inspection.get("verified"))
+    if execute:
+        verified = verified and bool(verification and verification.get("verified"))
+    return {
+        "profile": str(source["profile"]),
+        "profile_revision": str(source["profile_revision"]),
+        "source_kind": str(source["source_kind"]),
+        "bundle_root": source["bundle_root"],
+        "bundle_archive": source["bundle_archive"],
+        "dest_root": str(dest_root),
+        "mode": mode,
+        "strict_root": strict_root,
+        "execute": execute,
+        "verified": verified,
+        "release_identity": dict(source["release_identity"]),
+        "inspection": dict(inspection),
+        "install": dict(install),
+        "verification": dict(verification) if verification is not None else None,
+    }
 
 
 def _quote_command_arg(value: str) -> str:
