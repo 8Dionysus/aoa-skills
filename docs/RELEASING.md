@@ -57,6 +57,7 @@ A release should make it easy to answer:
   - for portable/export changes, read `generated/release_manifest.json` as the packaging-verification surface: it pins artifact groups, relationship views, input digests, generated-file digests, bundle revisions, profile revisions, and changelog-derived release identity
   - read `generated/skill_bundle_index.json` for per-skill packaging membership and technique-lineage detail
   - read `generated/skill_graph.json` for profile and artifact-group topology across the same bundle set
+  - use `python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json` when you want one repo-local install verification check over the live `.agents/skills` root
 6. Review public-safety hygiene:
    - no secrets
    - no internal-only URLs

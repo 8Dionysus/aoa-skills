@@ -132,12 +132,15 @@ Near-term sequence inside this wave:
 
 1. harden the release manifest and packaging verification contract
 2. add compatibility/lineage depth on top of that contract
-3. only then consider any broader import/export polish
+3. add profile-scoped install verification on top of the same release contract
+4. only then consider any broader export staging or import/export polish
 
 The compatibility/lineage follow-up should stay inside existing packaging surfaces:
 - `generated/skill_bundle_index.*` for per-skill profile membership, artifact-group coverage, and technique-lineage detail
 - `generated/skill_graph.*` for relationship topology
 - `generated/release_manifest.json` only as the release-facing pinning layer over those views
+
+The next packaging frontier after profile-scoped install verification is broader export staging and import/export ergonomics, not another packaging-contract bootstrap.
 
 ## Long-term direction
 

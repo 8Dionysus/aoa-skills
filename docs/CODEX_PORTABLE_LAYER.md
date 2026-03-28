@@ -82,6 +82,7 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
 `generated/skill_handoff_contracts.json` is the only wave-5 bridge kept in `aoa-skills`: it remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
 `generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, relationship views, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
+`scripts/verify_skill_pack.py` is the next repo-local packaging primitive on top of that contract: it verifies that one installed profile/root still matches the current portable export without introducing a new bundle format or registry surface.
 
 Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 
@@ -149,6 +150,7 @@ It intentionally keeps three things separate:
 - repo-level release identity still lives in `CHANGELOG.md`, `docs/RELEASING.md`, tags, and GitHub release notes
 - bundle-level meaning and per-skill compatibility still live in `skills/*/SKILL.md`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`
 - the release manifest only pins which portable artifact groups and relationship views exist and which bundle/profile revisions they currently expose
+- install verification remains a runtime check over a real target root via `scripts/verify_skill_pack.py`; it is not a committed generated catalog
 
 ## Build and validation
 
@@ -159,6 +161,10 @@ Rebuild the portable layer from repo root:
 Validate the result:
 
     python scripts/validate_agent_skills.py --repo-root .
+
+Verify one installed profile/root against the current export:
+
+    python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
 
 Lint the policy-aware trigger dataset:
 

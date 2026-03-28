@@ -10,23 +10,7 @@ import pathlib
 import shutil
 from typing import Any
 
-STANDARD_INSTALL_ROOTS = {
-    "repo": ".agents/skills",
-    "user": "$HOME/.agents/skills",
-    "admin": "/etc/codex/skills",
-}
-
-
-def load_json(path: pathlib.Path) -> Any:
-    return json.loads(path.read_text(encoding="utf-8"))
-
-
-def expand_root(root: str, repo_root: pathlib.Path) -> pathlib.Path:
-    if root == STANDARD_INSTALL_ROOTS["repo"]:
-        return repo_root / ".agents" / "skills"
-    if root.startswith("$HOME/"):
-        return pathlib.Path.home() / root.replace("$HOME/", "", 1)
-    return pathlib.Path(root)
+import skill_pack_install_contract
 
 
 def main() -> int:
@@ -41,22 +25,37 @@ def main() -> int:
     args = parser.parse_args()
 
     repo_root = pathlib.Path(args.repo_root).resolve()
-    export_root = repo_root / ".agents" / "skills"
-    resolved_profiles = load_json(repo_root / "generated" / "skill_pack_profiles.resolved.json")
-    profile = resolved_profiles.get("profiles", {}).get(args.profile)
-    if profile is None:
+    export_root = skill_pack_install_contract.export_root(repo_root)
+    try:
+        profile = skill_pack_install_contract.load_resolved_profile(repo_root, args.profile)
+    except KeyError:
         raise SystemExit(f"unknown profile: {args.profile}")
+    release_manifest = skill_pack_install_contract.load_release_manifest(repo_root)
+    profile_revision = skill_pack_install_contract.load_install_profile_revision(
+        release_manifest,
+        args.profile,
+    )["profile_revision"]
 
-    default_dest = expand_root(profile["install_root"], repo_root)
-    dest_root = pathlib.Path(args.dest_root).expanduser().resolve() if args.dest_root else default_dest.resolve()
+    dest_root = skill_pack_install_contract.resolve_install_root(
+        repo_root,
+        install_root_override=args.dest_root,
+        default_install_root=profile["install_root"],
+    )
 
     plan = {
         "profile": args.profile,
+        "profile_revision": profile_revision,
         "scope": profile["scope"],
         "mode": args.mode,
         "source_root": str(export_root),
         "dest_root": str(dest_root),
         "execute": args.execute,
+        "release_identity": dict(skill_pack_install_contract.release_identity(release_manifest)),
+        "recommended_verify_command": skill_pack_install_contract.recommended_verify_command(
+            profile_name=args.profile,
+            install_root=dest_root,
+            output_format="json",
+        ),
         "steps": [],
     }
 
@@ -103,9 +102,11 @@ def main() -> int:
         f"# Skill pack install plan: {args.profile}",
         "",
         f"Scope: {profile['scope']}",
+        f"Profile revision: {profile_revision}",
         f"Mode: {args.mode}",
         f"Destination: {dest_root}",
         f"Execute: {args.execute}",
+        f"Verify: {plan['recommended_verify_command']}",
         "",
         "## Steps",
     ]
