@@ -10,6 +10,27 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 class InstallProfilesTests(unittest.TestCase):
+    def test_install_script_imports_without_site_packages(self):
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "-S",
+                "-c",
+                (
+                    "import pathlib, sys; "
+                    f"sys.path.insert(0, r'{(REPO_ROOT / 'scripts').as_posix()}'); "
+                    "import install_skill_pack; "
+                    "print('ok')"
+                ),
+            ],
+            cwd=REPO_ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(0, completed.returncode, msg=completed.stderr)
+        self.assertEqual("ok", completed.stdout.strip())
+
     def stage_profile_bundle(self, profile: str, bundle_root: pathlib.Path) -> None:
         command = [
             sys.executable,
@@ -258,6 +279,70 @@ class InstallProfilesTests(unittest.TestCase):
                 "symlink mode is not supported with --bundle-archive",
                 completed.stderr,
             )
+
+    def test_install_profile_rejects_bundle_paths_outside_root(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            bundle_root = pathlib.Path(tmpdir) / "bundle"
+            dest_root = pathlib.Path(tmpdir) / "installed"
+            (bundle_root / ".agents" / "skills").mkdir(parents=True, exist_ok=True)
+            (bundle_root / "bundle_manifest.json").write_text(
+                json.dumps(
+                    {
+                        "schema_version": 1,
+                        "profile": "repo-core-only",
+                        "profile_revision": "0" * 64,
+                        "scope": "repo",
+                        "install_mode": "copy",
+                        "install_root": ".agents/skills",
+                        "skill_root": ".agents/skills",
+                        "skill_count": 1,
+                        "skills": [
+                            {
+                                "name": "aoa-change-protocol",
+                                "relative_dir": "../escape",
+                                "skill_revision": "0" * 64,
+                                "content_hash": "0" * 64,
+                            }
+                        ],
+                        "release_identity": {
+                            "latest_tagged_version": "0.1.0",
+                            "latest_tagged_date": "2026-03-23",
+                            "has_unreleased_changes": True,
+                        },
+                        "file_digests": [],
+                        "bundle_digest": "0" * 64,
+                    },
+                    indent=2,
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "scripts/install_skill_pack.py",
+                    "--repo-root",
+                    ".",
+                    "--profile",
+                    "repo-core-only",
+                    "--bundle-root",
+                    str(bundle_root),
+                    "--dest-root",
+                    str(dest_root),
+                    "--mode",
+                    "copy",
+                    "--format",
+                    "json",
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertNotEqual(0, completed.returncode)
+            self.assertIn("bundle skill path escapes bundle root", completed.stderr)
 
 
 if __name__ == "__main__":

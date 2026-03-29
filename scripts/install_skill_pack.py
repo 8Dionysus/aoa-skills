@@ -42,7 +42,7 @@ def main() -> int:
         )
     except KeyError:
         raise SystemExit(f"unknown profile: {args.profile}")
-    except ValueError as exc:
+    except (KeyError, ValueError) as exc:
         raise SystemExit(str(exc))
 
     try:

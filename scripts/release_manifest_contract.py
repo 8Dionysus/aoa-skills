@@ -134,6 +134,17 @@ VERSION_HEADING_RE = re.compile(
 )
 
 
+def has_meaningful_markdown_content(section_text: str) -> bool:
+    for raw_line in section_text.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if line.startswith("#"):
+            continue
+        return True
+    return False
+
+
 def _normalize_override_map(
     repo_root: Path,
     file_overrides: Mapping[str | Path, str] | None,
@@ -236,7 +247,7 @@ def parse_changelog_release_identity(changelog_text: str) -> dict[str, Any]:
         "releasing_doc": RELEASING_DOC_PATH,
         "latest_tagged_version": latest_tagged_version,
         "latest_tagged_date": latest_tagged_date,
-        "has_unreleased_changes": bool(unreleased_body),
+        "has_unreleased_changes": has_meaningful_markdown_content(unreleased_body),
     }
 
 
@@ -278,7 +289,9 @@ def build_install_profile_revisions(
         skills = profile.get("skills", [])
         if not isinstance(skills, list):
             raise ValueError(f"profile {profile_name!r} field 'skills' must be a list")
-        skill_names = [entry["name"] for entry in skills if isinstance(entry, Mapping)]
+        skill_names = sorted(
+            entry["name"] for entry in skills if isinstance(entry, Mapping)
+        )
         revision_seed = {
             "name": profile_name,
             "skill_names": skill_names,

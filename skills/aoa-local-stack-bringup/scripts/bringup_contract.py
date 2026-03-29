@@ -5,7 +5,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 
 TEMPLATE = {
@@ -49,8 +49,24 @@ def build_report(payload: dict[str, Any]) -> dict[str, Any]:
     if not payload.get("stop_command"):
         warnings.append("stop_command is missing.")
 
-    fail_items = [item for item in readiness_items if str(item.get("severity", "")).lower() == "fail"]
-    warn_items = [item for item in readiness_items if str(item.get("severity", "")).lower() == "warn"]
+    fail_items: list[Mapping[str, Any]] = []
+    warn_items: list[Mapping[str, Any]] = []
+    for index, item in enumerate(readiness_items, start=1):
+        if not isinstance(item, Mapping):
+            errors.append(f"readiness_items[{index}] must be an object.")
+            continue
+        severity = str(item.get("severity", "")).lower()
+        if severity == "fail":
+            fail_items.append(item)
+        elif severity == "warn":
+            warn_items.append(item)
+        elif severity in {"", "ok"}:
+            continue
+        else:
+            fail_items.append(item)
+            warnings.append(
+                f"Unknown readiness severity {severity!r} at item {index}; treated as a blocker."
+            )
 
     if fail_items:
         verdict = "hold"

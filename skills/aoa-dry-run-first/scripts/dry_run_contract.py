@@ -5,7 +5,7 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 
 TEMPLATE = {
@@ -50,12 +50,18 @@ def _command(step: dict[str, Any]) -> str:
 
 
 def build_contract(payload: dict[str, Any]) -> dict[str, Any]:
-    preview_steps = payload.get("preview_steps") or []
-    apply_step = payload.get("apply_step") or {}
+    raw_preview_steps = payload.get("preview_steps") or []
+    preview_steps = raw_preview_steps if isinstance(raw_preview_steps, list) else []
+    raw_apply_step = payload.get("apply_step") or {}
+    apply_step = raw_apply_step if isinstance(raw_apply_step, Mapping) else {}
     limitations = payload.get("limitations") or []
     warnings: list[str] = []
     errors: list[str] = []
 
+    if not isinstance(raw_preview_steps, list):
+        errors.append("preview_steps must be a list.")
+    if raw_apply_step and not isinstance(raw_apply_step, Mapping):
+        errors.append("apply_step must be an object.")
     if not preview_steps:
         errors.append("No preview_steps were provided.")
     if not apply_step:
@@ -63,6 +69,9 @@ def build_contract(payload: dict[str, Any]) -> dict[str, Any]:
 
     preview_commands = []
     for idx, step in enumerate(preview_steps, start=1):
+        if not isinstance(step, Mapping):
+            errors.append(f"preview step {idx} must be an object.")
+            continue
         preview_commands.append(_command(step))
         if step.get("touches_state") is True:
             errors.append(f"preview step {idx} is marked as mutating.")

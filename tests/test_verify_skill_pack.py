@@ -22,6 +22,27 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
 
 
 class VerifySkillPackTests(unittest.TestCase):
+    def test_verify_script_imports_without_site_packages(self) -> None:
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "-S",
+                "-c",
+                (
+                    "import pathlib, sys; "
+                    f"sys.path.insert(0, r'{(REPO_ROOT / 'scripts').as_posix()}'); "
+                    "import verify_skill_pack; "
+                    "print('ok')"
+                ),
+            ],
+            cwd=REPO_ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(0, completed.returncode, msg=completed.stderr)
+        self.assertEqual("ok", completed.stdout.strip())
+
     def stage_profile_bundle(
         self,
         profile: str,

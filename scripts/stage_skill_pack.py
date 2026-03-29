@@ -201,6 +201,7 @@ def execute_stage(
     skill_pack_install_contract.bundle_readme_path(bundle_root).write_text(
         readme_text,
         encoding="utf-8",
+        newline="\n",
     )
     skill_pack_install_contract.bundle_manifest_path(bundle_root).write_text(
         json.dumps(bundle_manifest, indent=2) + "\n",

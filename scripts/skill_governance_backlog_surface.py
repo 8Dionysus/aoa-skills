@@ -12,7 +12,7 @@ import skill_review_surface
 import skill_source_model
 
 
-GOVERNANCE_BACKLOG_VERSION = 4
+GOVERNANCE_BACKLOG_VERSION = 5
 GOVERNANCE_BACKLOG_JSON_PATH = Path("generated") / "governance_backlog.json"
 GOVERNANCE_BACKLOG_MARKDOWN_PATH = Path("generated") / "governance_backlog.md"
 GOVERNANCE_BACKLOG_SOURCE_OF_TRUTH = {
@@ -71,8 +71,9 @@ def readiness_reconciliation(
     canonical_candidate_ready: bool,
     canonical_eval_ready: bool,
     overlay_family_reviewable: bool,
+    governance_signals_present: bool,
 ) -> str:
-    if scope == "project":
+    if scope == "project" and not governance_signals_present:
         if (
             lineage_state == "published"
             and canonical_eval_ready
@@ -193,6 +194,10 @@ def build_governance_backlog_payload(
                     overlay_family_reviewable=(
                         family_name is not None
                         and overlay_family_readiness.get(family_name) == "reviewable"
+                    ),
+                    governance_signals_present=bool(
+                        public_entry["governance_lane_ids"]
+                        or public_entry["governance_evidence_case_ids"]
                     ),
                 ),
             }

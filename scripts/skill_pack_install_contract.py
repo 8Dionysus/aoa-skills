@@ -11,8 +11,6 @@ from pathlib import Path
 from pathlib import PurePosixPath
 from typing import Any, Mapping
 
-import release_manifest_contract
-
 
 STANDARD_INSTALL_ROOTS = {
     "repo": ".agents/skills",
@@ -20,15 +18,42 @@ STANDARD_INSTALL_ROOTS = {
     "admin": "/etc/codex/skills",
 }
 RESOLVED_PROFILES_PATH = Path("generated") / "skill_pack_profiles.resolved.json"
+RELEASE_MANIFEST_PATH = Path("generated") / "release_manifest.json"
 BUNDLE_MANIFEST_FILENAME = "bundle_manifest.json"
 BUNDLE_README_FILENAME = "README.md"
 BUNDLE_SKILL_ROOT = ".agents/skills"
 BUNDLE_ARCHIVE_FORMAT = "zip"
 BUNDLE_ARCHIVE_ROOT_PREFIX = "aoa-skills"
+TEXT_FILE_SUFFIXES = {
+    ".csv",
+    ".json",
+    ".jsonl",
+    ".md",
+    ".py",
+    ".svg",
+    ".txt",
+    ".yaml",
+    ".yml",
+}
 
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def normalized_file_bytes(path: Path) -> bytes:
+    if path.suffix.lower() in TEXT_FILE_SUFFIXES:
+        normalized_text = (
+            path.read_text(encoding="utf-8")
+            .replace("\r\n", "\n")
+            .replace("\r", "\n")
+        )
+        return normalized_text.encode("utf-8")
+    return path.read_bytes()
+
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
 
 
 def export_root(repo_root: Path) -> Path:
@@ -91,7 +116,7 @@ def load_resolved_profile(repo_root: Path, profile_name: str) -> Mapping[str, An
 
 
 def load_release_manifest(repo_root: Path) -> Mapping[str, Any]:
-    return load_json(repo_root / release_manifest_contract.RELEASE_MANIFEST_PATH)
+    return load_json(repo_root / RELEASE_MANIFEST_PATH)
 
 
 def load_bundle_manifest(root: str | Path) -> Mapping[str, Any]:
@@ -156,6 +181,34 @@ def skill_bundle_revision_map(release_manifest: Mapping[str, Any]) -> dict[str, 
     return revisions
 
 
+def normalize_bundle_relative_dir(relative_dir: str) -> str:
+    candidate = str(relative_dir or "").replace("\\", "/").strip()
+    path = PurePosixPath(candidate)
+    native_path = Path(candidate)
+    if not candidate or candidate in {".", "/"}:
+        raise ValueError("bundle skill path must be a non-empty relative path")
+    if path.is_absolute() or native_path.is_absolute() or native_path.drive or ".." in path.parts:
+        raise ValueError(f"bundle skill path escapes bundle root: {relative_dir}")
+    return path.as_posix()
+
+
+def resolve_bundle_member_dir(
+    resolved_bundle_root: Path,
+    relative_dir: str,
+) -> tuple[str, Path]:
+    normalized_relative_dir = normalize_bundle_relative_dir(relative_dir)
+    resolved_target = resolved_bundle_root.joinpath(
+        *PurePosixPath(normalized_relative_dir).parts
+    ).resolve()
+    try:
+        resolved_target.relative_to(resolved_bundle_root)
+    except ValueError as exc:
+        raise ValueError(
+            f"bundle skill path escapes bundle root: {relative_dir}"
+        ) from exc
+    return normalized_relative_dir, resolved_target
+
+
 def iter_directory_file_payloads(
     root_dir: Path,
     *,
@@ -175,7 +228,7 @@ def iter_directory_file_payloads(
         payloads.append(
             (
                 relative_path,
-                release_manifest_contract.normalized_file_bytes(path),
+                normalized_file_bytes(path),
             )
         )
     return payloads
@@ -187,7 +240,7 @@ def file_digests_from_payloads(
     return [
         {
             "path": relative_path,
-            "sha256": release_manifest_contract.sha256_bytes(data),
+            "sha256": sha256_bytes(data),
             "bytes": len(data),
         }
         for relative_path, data in payloads
@@ -222,7 +275,7 @@ def archive_info(path: str | Path) -> dict[str, Any]:
     return {
         "archive_path": str(resolved_path),
         "archive_format": BUNDLE_ARCHIVE_FORMAT,
-        "archive_sha256": release_manifest_contract.sha256_bytes(data),
+        "archive_sha256": sha256_bytes(data),
         "archive_bytes": len(data),
     }
 
@@ -349,7 +402,10 @@ def extract_bundle_archive(
             "bundle archive bundle root must be the single top-level folder"
         )
     bundle_manifest = load_bundle_manifest(bundle_root_path)
-    expected_root_name = bundle_archive_root_name(str(bundle_manifest["profile"]))
+    profile_name = bundle_manifest.get("profile")
+    if not isinstance(profile_name, str) or not profile_name.strip():
+        raise ValueError("bundle manifest field 'profile' must be a non-empty string")
+    expected_root_name = bundle_archive_root_name(profile_name)
     if relative_bundle_root.parts[0] != expected_root_name:
         raise ValueError(
             f"bundle archive root must be {expected_root_name}, got {relative_bundle_root.parts[0]}"
@@ -434,8 +490,10 @@ def inspect_bundle_root(
         if not isinstance(entry, Mapping):
             continue
         name = str(entry["name"])
-        relative_dir = str(entry["relative_dir"])
-        skill_root_dir = resolved_bundle_root / relative_dir
+        relative_dir, skill_root_dir = resolve_bundle_member_dir(
+            resolved_bundle_root,
+            str(entry["relative_dir"]),
+        )
         expected_prefix = f"{relative_dir.rstrip('/')}/"
         expected_file_count = sum(
             1
@@ -576,11 +634,15 @@ def load_skill_pack_source(
             if not isinstance(entry, Mapping):
                 continue
             skill_name = entry["name"]
+            relative_dir, source_dir = resolve_bundle_member_dir(
+                resolved_bundle_root,
+                str(entry["relative_dir"]),
+            )
             skills.append(
                 {
                     "name": skill_name,
-                    "relative_dir": entry["relative_dir"],
-                    "source_dir": str(resolved_bundle_root / entry["relative_dir"]),
+                    "relative_dir": relative_dir,
+                    "source_dir": str(source_dir),
                     "skill_revision": entry["skill_revision"],
                     "content_hash": entry["content_hash"],
                     "expected_files": expected_skill_file_records_from_bundle(manifest, skill_name),
@@ -887,62 +949,61 @@ def build_verification_report(
             bundle_root_override=bundle_root_override,
             bundle_archive_override=bundle_archive_override,
         )
+        with source_context as source:
+            install_root = resolve_install_root(
+                repo_root,
+                install_root_override=install_root_override,
+                default_install_root=source["install_root"],
+            )
+
+            skills: list[dict[str, Any]] = []
+            for skill_entry in source["skills"]:
+                skill_name = skill_entry["name"]
+                skills.append(
+                    verify_skill_install(
+                        skill_name=skill_name,
+                        source_dir=Path(skill_entry["source_dir"]),
+                        target_dir=install_root / str(skill_name),
+                        expected_files=skill_entry["expected_files"],
+                    )
+                )
+
+            missing_skills = [
+                entry["name"] for entry in skills if entry["install_state"] == "missing"
+            ]
+            mismatched_skills = [
+                entry["name"] for entry in skills if entry["install_state"] == "mismatch"
+            ]
+            extra_dirs = extra_skill_dirs(
+                install_root,
+                {str(entry["name"]) for entry in skills},
+            )
+            verified = not missing_skills and not mismatched_skills and (
+                not strict_root or not extra_dirs
+            )
+            return {
+                "profile": profile_name,
+                "profile_revision": source["profile_revision"],
+                "install_root": str(install_root),
+                "source_kind": source["source_kind"],
+                "bundle_root": source["bundle_root"],
+                "bundle_archive": source["bundle_archive"],
+                "strict_root": strict_root,
+                "verified": verified,
+                "expected_skill_count": len(skills),
+                "verified_skill_count": sum(
+                    1 for entry in skills if entry["install_state"] == "ok"
+                ),
+                "missing_skills": missing_skills,
+                "mismatched_skills": mismatched_skills,
+                "extra_skill_dirs": extra_dirs,
+                "release_identity": dict(source["release_identity"]),
+                "skills": skills,
+            }
     except KeyError:
         raise SystemExit(f"unknown profile: {profile_name}")
     except ValueError as exc:
         raise SystemExit(str(exc))
-
-    with source_context as source:
-        install_root = resolve_install_root(
-            repo_root,
-            install_root_override=install_root_override,
-            default_install_root=source["install_root"],
-        )
-
-        skills: list[dict[str, Any]] = []
-        for skill_entry in source["skills"]:
-            skill_name = skill_entry["name"]
-            skills.append(
-                verify_skill_install(
-                    skill_name=skill_name,
-                    source_dir=Path(skill_entry["source_dir"]),
-                    target_dir=install_root / str(skill_name),
-                    expected_files=skill_entry["expected_files"],
-                )
-            )
-
-        missing_skills = [
-            entry["name"] for entry in skills if entry["install_state"] == "missing"
-        ]
-        mismatched_skills = [
-            entry["name"] for entry in skills if entry["install_state"] == "mismatch"
-        ]
-        extra_dirs = extra_skill_dirs(
-            install_root,
-            {str(entry["name"]) for entry in skills},
-        )
-        verified = not missing_skills and not mismatched_skills and (
-            not strict_root or not extra_dirs
-        )
-        return {
-            "profile": profile_name,
-            "profile_revision": source["profile_revision"],
-            "install_root": str(install_root),
-            "source_kind": source["source_kind"],
-            "bundle_root": source["bundle_root"],
-            "bundle_archive": source["bundle_archive"],
-            "strict_root": strict_root,
-            "verified": verified,
-            "expected_skill_count": len(skills),
-            "verified_skill_count": sum(
-                1 for entry in skills if entry["install_state"] == "ok"
-            ),
-            "missing_skills": missing_skills,
-            "mismatched_skills": mismatched_skills,
-            "extra_skill_dirs": extra_dirs,
-            "release_identity": dict(source["release_identity"]),
-            "skills": skills,
-        }
 
 
 def build_import_report(

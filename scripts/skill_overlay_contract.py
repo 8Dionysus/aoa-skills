@@ -460,7 +460,9 @@ def _overlay_sections(path: Path) -> dict[str, str]:
 
 def _review_mentions_all_skills(review_text: str, skill_names: Sequence[str]) -> bool:
     normalized = " ".join(review_text.lower().split())
-    return all(skill_name.lower() in normalized for skill_name in skill_names)
+    return bool(skill_names) and all(
+        skill_name.lower() in normalized for skill_name in skill_names
+    )
 
 
 def _evaluation_entry_by_name(
@@ -579,7 +581,8 @@ def build_overlay_readiness_payload(repo_root: Path) -> dict[str, Any]:
         listed_matches_actual = sorted(set(listed_skill_names)) == project_skill_names
         readiness_state = (
             "reviewable"
-            if review_path.is_file()
+            if project_skill_names
+            and review_path.is_file()
             and listed_matches_actual
             and bundle_review_check_count == len(project_skill_names)
             and eval_ready_skill_count == len(project_skill_names)

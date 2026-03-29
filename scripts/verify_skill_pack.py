@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import pathlib
-from typing import Mapping
+from typing import Any, Mapping
 
 import skill_pack_install_contract
 

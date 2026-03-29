@@ -324,15 +324,20 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
                     "repo_family_hint": None,
                 }
             )
-        if defer_case is not None and defer_case.get("expected_skill") and defer_case["expected_skill"] != skill_name:
+        if (
+            defer_case is not None
+            and defer_case.get("expected_skill")
+            and defer_case["expected_skill"] != skill_name
+        ):
+            expected_skill = defer_case["expected_skill"]
             eval_cases.append(
                 {
                     "case_id": f"tiny-defer-{skill_name}",
                     "stage": "stage-1-shortlist",
                     "prompt": defer_case["prompt"],
-                    "expected_band": band_id,
+                    "expected_band": band_by_skill[expected_skill],
                     "expected_top1_not": skill_name,
-                    "expected_shortlist_includes": [defer_case["expected_skill"]],
+                    "expected_shortlist_includes": [expected_skill],
                     "expected_shortlist_excludes": [skill_name],
                     "expected_manual_invocation": False,
                     "repo_family_hint": overlay_family_hint(

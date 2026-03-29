@@ -82,6 +82,19 @@ class TinyRouterInputsTest(unittest.TestCase):
                     msg=f"missing family-hinted shortlist coverage for '{skill_name}'",
                 )
 
+    def test_defer_cases_use_expected_skill_band(self) -> None:
+        signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
+        eval_cases = load_jsonl(REPO_ROOT / "generated" / "tiny_router_eval_cases.jsonl")
+        band_by_skill = {entry["name"]: entry["band"] for entry in signals["skills"]}
+
+        defer_cases = [
+            case for case in eval_cases if str(case.get("case_id", "")).startswith("tiny-defer-")
+        ]
+        self.assertTrue(defer_cases)
+        for case in defer_cases:
+            expected_skill = case["expected_shortlist_includes"][0]
+            self.assertEqual(case["expected_band"], band_by_skill[expected_skill])
+
 
 if __name__ == "__main__":
     unittest.main()

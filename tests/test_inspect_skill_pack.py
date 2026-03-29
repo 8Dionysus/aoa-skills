@@ -295,6 +295,65 @@ class InspectSkillPackTests(unittest.TestCase):
             self.assertNotEqual(0, completed.returncode)
             self.assertIn("bundle archive root must be aoa-skills-repo-core-only", completed.stderr)
 
+    def test_archive_missing_profile_fails_cleanly(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            archive_path = pathlib.Path(tmpdir) / "missing-profile.zip"
+            skill_payload = b"# placeholder\n"
+            with zipfile.ZipFile(archive_path, mode="w") as archive:
+                archive.writestr(
+                    "aoa-skills-repo-core-only/bundle_manifest.json",
+                    json.dumps(
+                        {
+                            "schema_version": 1,
+                            "profile_revision": "0" * 64,
+                            "scope": "repo",
+                            "install_mode": "copy",
+                            "install_root": ".agents/skills",
+                            "skill_root": ".agents/skills",
+                            "skill_count": 1,
+                            "skills": [
+                                {
+                                    "name": "aoa-change-protocol",
+                                    "relative_dir": ".agents/skills/aoa-change-protocol",
+                                    "skill_revision": "0" * 64,
+                                    "content_hash": "0" * 64,
+                                }
+                            ],
+                            "release_identity": {
+                                "latest_tagged_version": "0.1.0",
+                                "latest_tagged_date": "2026-03-23",
+                                "has_unreleased_changes": True,
+                            },
+                            "file_digests": [
+                                {
+                                    "path": ".agents/skills/aoa-change-protocol/SKILL.md",
+                                    "sha256": hashlib.sha256(skill_payload).hexdigest(),
+                                    "bytes": len(skill_payload),
+                                }
+                            ],
+                            "bundle_digest": hashlib.sha256(
+                                b".agents/skills/aoa-change-protocol/SKILL.md"
+                                + b"\0"
+                                + skill_payload
+                                + b"\0"
+                            ).hexdigest(),
+                        }
+                    )
+                    + "\n",
+                )
+                archive.writestr(
+                    "aoa-skills-repo-core-only/.agents/skills/aoa-change-protocol/SKILL.md",
+                    skill_payload,
+                )
+
+            completed = self.inspect_bundle_failure(bundle_archive=archive_path)
+
+            self.assertNotEqual(0, completed.returncode)
+            self.assertIn(
+                "bundle manifest field 'profile' must be a non-empty string",
+                completed.stderr,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -50,6 +50,7 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
 
     def test_governance_backlog_schema_allows_project_overlay_reconciliation_values(self) -> None:
         payload = self.load_schema("governance_backlog.schema.json")
+        self.assertEqual(payload["properties"]["governance_backlog_version"]["const"], 5)
         enum_values = payload["properties"]["skills"]["items"]["properties"][
             "readiness_reconciliation"
         ]["enum"]

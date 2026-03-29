@@ -1331,6 +1331,40 @@ class BuildCatalogTests(unittest.TestCase):
         )
         self.assertIn("project_overlay_eval_ready", markdown)
 
+    def test_project_overlay_backlog_uses_governance_reconciliation_when_lane_present(self) -> None:
+        repo_root = self.make_repo(
+            scope="project",
+            status="evaluated",
+            review_surfaces=("status-promotions", "canonical-candidates"),
+            include_evaluation_fixtures=True,
+        )
+        self.write_governance_lanes(
+            repo_root,
+            [
+                {
+                    "id": "project_lane",
+                    "title": "Project lane",
+                    "scope": "project",
+                    "state": "candidate_ready",
+                    "skills": [
+                        {
+                            "name": "aoa-test-skill",
+                            "decision": "default_reference",
+                        }
+                    ],
+                    "review_path": "docs/governance/lanes.md#project_lane",
+                    "evidence_case_ids": [],
+                }
+            ],
+        )
+
+        build_catalog.write_governance_backlog(repo_root)
+
+        payload = self.load_governance_backlog(repo_root)
+        skill_entry = payload["skills"][0]
+        self.assertEqual(5, payload["governance_backlog_version"])
+        self.assertEqual("governance_and_eval_ready", skill_entry["readiness_reconciliation"])
+
     def test_project_overlay_backlog_marks_reviewable_family_as_federation_ready(self) -> None:
         repo_root = self.make_repo()
         skill_names = [
@@ -1768,6 +1802,24 @@ class BuildCatalogTests(unittest.TestCase):
         payload = self.load_overlay_readiness(repo_root)
         self.assertEqual(0, payload["summary"]["reviewable_family_count"])
         self.assertFalse(payload["families"][0]["authority_section_present"])
+        self.assertEqual("baseline", payload["families"][0]["readiness_state"])
+
+    def test_write_overlay_readiness_keeps_docs_only_family_out_of_reviewable(self) -> None:
+        repo_root = self.make_repo()
+        self.write_live_overlay_pack(
+            repo_root,
+            family="cinder",
+            skill_names=[],
+            listed_skill_names=[],
+        )
+
+        build_catalog.write_overlay_readiness(repo_root)
+
+        payload = self.load_overlay_readiness(repo_root)
+        self.assertEqual(1, payload["summary"]["live_overlay_family_count"])
+        self.assertEqual(0, payload["summary"]["reviewable_family_count"])
+        self.assertEqual([], payload["families"][0]["project_skill_names"])
+        self.assertFalse(payload["families"][0]["review_mentions_all_skills"])
         self.assertEqual("baseline", payload["families"][0]["readiness_state"])
 
     def test_write_overlay_readiness_discovers_synthetic_live_families_from_repo_state(self) -> None:
