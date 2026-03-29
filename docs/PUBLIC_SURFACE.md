@@ -1,7 +1,8 @@
 # Public surface
 
-This document explains how to read the derived public-product surface of `aoa-skills`
-without assuming hidden release metadata or private repository state.
+This document explains how to read the derived public-product surface of `aoa-skills`,
+the bounded execution canon for Codex-facing skills, without assuming hidden release metadata
+or private repository state.
 
 Use this guide when you need status, promotion, or governance signals.
 For runtime inspection and skill selection, use `RUNTIME_PATH.md` first.
