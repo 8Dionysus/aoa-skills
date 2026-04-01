@@ -578,7 +578,7 @@ class BuildCatalogTests(unittest.TestCase):
         return path.read_text(encoding="utf-8")
 
     def write_all_surfaces(self, repo_root: Path) -> None:
-        for spec in build_catalog.generated_surface_specs():
+        for spec in build_catalog.generated_surface_specs(repo_root):
             build_catalog.write_generated_surface(repo_root, spec)
 
     def load_evaluation_matrix(self, repo_root: Path) -> dict:
