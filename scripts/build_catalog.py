@@ -536,51 +536,72 @@ def load_quest_payloads(repo_root: Path) -> dict[str, dict[str, Any]]:
     return payloads
 
 
-def build_quest_catalog_payload(repo_root: Path) -> list[dict[str, Any]]:
-    payloads = load_quest_payloads(repo_root)
+def build_quest_catalog_entry(quest_id: str, payload: Mapping[str, Any]) -> dict[str, Any]:
+    return {
+        "id": quest_id,
+        "title": payload["title"],
+        "repo": payload["repo"],
+        "theme_ref": payload.get("theme_ref", ""),
+        "milestone_ref": payload.get("milestone_ref", ""),
+        "state": payload["state"],
+        "band": payload["band"],
+        "kind": payload["kind"],
+        "difficulty": payload["difficulty"],
+        "risk": payload["risk"],
+        "owner_surface": payload["owner_surface"],
+        "source_path": f"quests/{quest_id}.yaml",
+        "public_safe": payload["public_safe"],
+    }
+
+
+def build_quest_catalog_payload(
+    repo_root: Path,
+    *,
+    payloads: Mapping[str, Mapping[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    quest_payloads = payloads if payloads is not None else load_quest_payloads(repo_root)
     return [
-        {
-            "id": quest_id,
-            "title": payloads[quest_id]["title"],
-            "repo": payloads[quest_id]["repo"],
-            "theme_ref": payloads[quest_id].get("theme_ref", ""),
-            "milestone_ref": payloads[quest_id].get("milestone_ref", ""),
-            "state": payloads[quest_id]["state"],
-            "band": payloads[quest_id]["band"],
-            "kind": payloads[quest_id]["kind"],
-            "difficulty": payloads[quest_id]["difficulty"],
-            "risk": payloads[quest_id]["risk"],
-            "owner_surface": payloads[quest_id]["owner_surface"],
-            "source_path": f"quests/{quest_id}.yaml",
-            "public_safe": payloads[quest_id]["public_safe"],
-        }
+        build_quest_catalog_entry(quest_id, quest_payloads[quest_id])
         for quest_id in QUEST_IDS
+        if quest_id in quest_payloads
     ]
 
 
-def build_quest_dispatch_payload(repo_root: Path) -> list[dict[str, Any]]:
-    payloads = load_quest_payloads(repo_root)
+def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dict[str, Any]:
+    entry = {
+        "schema_version": "quest_dispatch_v1",
+        "id": quest_id,
+        "repo": payload["repo"],
+        "state": payload["state"],
+        "band": payload["band"],
+        "difficulty": payload["difficulty"],
+        "risk": payload["risk"],
+        "control_mode": payload["control_mode"],
+        "delegate_tier": payload["delegate_tier"],
+        "split_required": payload.get("split_required", False),
+        "write_scope": payload["write_scope"],
+        "requires_artifacts": QUEST_DISPATCH_ARTIFACTS[quest_id],
+        "activation_mode": payload["activation"]["mode"],
+        "source_path": f"quests/{quest_id}.yaml",
+        "public_safe": payload["public_safe"],
+    }
+    if "fallback_tier" in payload:
+        entry["fallback_tier"] = payload["fallback_tier"]
+    if "wrapper_class" in payload:
+        entry["wrapper_class"] = payload["wrapper_class"]
+    return entry
+
+
+def build_quest_dispatch_payload(
+    repo_root: Path,
+    *,
+    payloads: Mapping[str, Mapping[str, Any]] | None = None,
+) -> list[dict[str, Any]]:
+    quest_payloads = payloads if payloads is not None else load_quest_payloads(repo_root)
     return [
-        {
-            "schema_version": "quest_dispatch_v1",
-            "id": quest_id,
-            "repo": payloads[quest_id]["repo"],
-            "state": payloads[quest_id]["state"],
-            "band": payloads[quest_id]["band"],
-            "difficulty": payloads[quest_id]["difficulty"],
-            "risk": payloads[quest_id]["risk"],
-            "control_mode": payloads[quest_id]["control_mode"],
-            "delegate_tier": payloads[quest_id]["delegate_tier"],
-            "split_required": payloads[quest_id].get("split_required", False),
-            "write_scope": payloads[quest_id]["write_scope"],
-            "requires_artifacts": QUEST_DISPATCH_ARTIFACTS[quest_id],
-            "activation_mode": payloads[quest_id]["activation"]["mode"],
-            "source_path": f"quests/{quest_id}.yaml",
-            "public_safe": payloads[quest_id]["public_safe"],
-            "fallback_tier": payloads[quest_id].get("fallback_tier"),
-            "wrapper_class": payloads[quest_id].get("wrapper_class"),
-        }
+        build_quest_dispatch_entry(quest_id, quest_payloads[quest_id])
         for quest_id in QUEST_IDS
+        if quest_id in quest_payloads
     ]
 
 
