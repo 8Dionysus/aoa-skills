@@ -15,8 +15,6 @@ Do not use it for:
 - replacing skill meaning that already lives in skill bundles and source docs
 
 ## Frontier
-- `AOA-SK-Q-0001` — land repo-local questbook surface for bounded workflow and runtime-seam obligations
-- `AOA-SK-Q-0002` — track skill-eval alignment debts from the evaluation matrix and governance backlog
 - `AOA-SK-Q-0003` — tighten the Codex portable layer and local adapter contract for .agents/skills export
 
 ## Near
