@@ -63,12 +63,13 @@ QUEST_CATALOG_JSON_PATH = Path(GENERATED_DIR_NAME) / "quest_catalog.min.json"
 QUEST_DISPATCH_JSON_PATH = Path(GENERATED_DIR_NAME) / "quest_dispatch.min.json"
 QUEST_CATALOG_EXAMPLE_PATH = Path(GENERATED_DIR_NAME) / "quest_catalog.min.example.json"
 QUEST_DISPATCH_EXAMPLE_PATH = Path(GENERATED_DIR_NAME) / "quest_dispatch.min.example.json"
-QUEST_IDS = (
+FOUNDATION_QUEST_IDS = (
     "AOA-SK-Q-0001",
     "AOA-SK-Q-0002",
     "AOA-SK-Q-0003",
     "AOA-SK-Q-0004",
 )
+QUEST_IDS = FOUNDATION_QUEST_IDS
 QUEST_DISPATCH_ARTIFACTS = {
     "AOA-SK-Q-0001": ["bounded_plan", "work_result", "verification_result"],
     "AOA-SK-Q-0002": ["bounded_plan", "evaluation_result", "verification_result"],
@@ -174,6 +175,35 @@ def load_yaml(path: Path) -> Any:
 
 def relative_path(path: Path, repo_root: Path) -> str:
     return skill_source_model.relative_location(path, repo_root)
+
+
+def quest_id_sort_key(quest_id: str) -> tuple[int, str]:
+    suffix = quest_id.rsplit("-", 1)[-1]
+    try:
+        return (int(suffix), quest_id)
+    except ValueError:
+        return (sys.maxsize, quest_id)
+
+
+def discover_quest_ids(repo_root: Path) -> tuple[str, ...]:
+    quest_ids = tuple(
+        sorted(
+            (
+                path.stem
+                for path in (repo_root / "quests").glob("AOA-SK-Q-*.yaml")
+                if path.is_file()
+            ),
+            key=quest_id_sort_key,
+        )
+    )
+    if not quest_ids:
+        return FOUNDATION_QUEST_IDS
+    return quest_ids
+
+
+def missing_foundation_quest_ids(quest_ids: tuple[str, ...]) -> tuple[str, ...]:
+    quest_id_set = set(quest_ids)
+    return tuple(quest_id for quest_id in FOUNDATION_QUEST_IDS if quest_id not in quest_id_set)
 
 
 def normalize_inline_markdown(text: str) -> str:
@@ -516,8 +546,15 @@ def build_sections_text(repo_root: Path) -> str:
 
 
 def load_quest_payloads(repo_root: Path) -> dict[str, dict[str, Any]]:
+    quest_ids = discover_quest_ids(repo_root)
+    missing_foundation_ids = missing_foundation_quest_ids(quest_ids)
+    if missing_foundation_ids:
+        raise ValueError(
+            "missing required foundation quest files: " + ", ".join(missing_foundation_ids)
+        )
+
     payloads: dict[str, dict[str, Any]] = {}
-    for quest_id in QUEST_IDS:
+    for quest_id in quest_ids:
         quest_path = repo_root / "quests" / f"{quest_id}.yaml"
         payload = load_yaml(quest_path)
         if not isinstance(payload, dict):
@@ -562,12 +599,18 @@ def build_quest_catalog_payload(
     quest_payloads = payloads if payloads is not None else load_quest_payloads(repo_root)
     return [
         build_quest_catalog_entry(quest_id, quest_payloads[quest_id])
-        for quest_id in QUEST_IDS
+        for quest_id in discover_quest_ids(repo_root)
         if quest_id in quest_payloads
     ]
 
 
 def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dict[str, Any]:
+    requires_artifacts = QUEST_DISPATCH_ARTIFACTS.get(
+        quest_id,
+        ["recurrence_evidence", "promotion_decision"]
+        if payload.get("kind") == "harvest"
+        else ["bounded_plan", "work_result", "verification_result"],
+    )
     entry = {
         "schema_version": "quest_dispatch_v1",
         "id": quest_id,
@@ -580,7 +623,7 @@ def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dic
         "delegate_tier": payload["delegate_tier"],
         "split_required": payload.get("split_required", False),
         "write_scope": payload["write_scope"],
-        "requires_artifacts": QUEST_DISPATCH_ARTIFACTS[quest_id],
+        "requires_artifacts": requires_artifacts,
         "activation_mode": payload["activation"]["mode"],
         "source_path": f"quests/{quest_id}.yaml",
         "public_safe": payload["public_safe"],
@@ -600,7 +643,7 @@ def build_quest_dispatch_payload(
     quest_payloads = payloads if payloads is not None else load_quest_payloads(repo_root)
     return [
         build_quest_dispatch_entry(quest_id, quest_payloads[quest_id])
-        for quest_id in QUEST_IDS
+        for quest_id in discover_quest_ids(repo_root)
         if quest_id in quest_payloads
     ]
 

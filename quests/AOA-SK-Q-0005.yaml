@@ -1,0 +1,52 @@
+schema_version: work_quest_v1
+id: AOA-SK-Q-0005
+title: Reflect bounded skill bundles as abilities with pack-profile-aware unlock posture
+summary: Add a derived ability-card catalog and loadout posture note that read existing skill bundles, pack profiles, overlays, and adapter seams without mutating source skill meaning.
+repo: aoa-skills
+owner_surface: skills/ability-reflection
+theme_ref: ''
+milestone_ref: ''
+kind: support
+state: captured
+band: near
+difficulty: d3_seam
+risk: r2_contract
+control_mode: human_codex_copilot
+delegate_tier: planner
+fallback_tier: conductor
+wrapper_class: hybrid
+write_scope: repo_local
+split_required: true
+complexity_basis:
+  scope: 2
+  ambiguity: 2
+  boundary: 2
+  verification: 2
+parent: null
+depends_on:
+  - AOA-SK-Q-0003
+  - AOA-AG-Q-0003
+  - AOA-EV-Q-0005
+activation:
+  mode: manual
+  note: open when the second-wave ability slice is ready to land after the first-wave progression spine exists
+anchor_ref:
+  artifact: skill_ability_model
+  ref: docs/SKILL_ABILITY_MODEL.md
+  note: ability cards must stay derived from existing skill ownership surfaces
+handoff_role: skill-layer-maintainer
+evidence:
+  - ability cards remain derived
+  - pack profiles become loadout hints rather than runtime inventory
+  - overlay and adapter posture stay explicit
+harvest:
+  target: none
+opened_at: '2026-04-01'
+touched_at: '2026-04-01'
+tags:
+  - abilities
+  - loadout
+  - skill-layer
+notes: >
+  Do not add RPG authority fields to `skills/*/SKILL.md`, `.agents/skills/*`, or pack-profile sources in this pass. Keep the new surfaces adjunct and reviewable.
+public_safe: true

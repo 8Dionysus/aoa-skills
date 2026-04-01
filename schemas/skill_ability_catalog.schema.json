@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://8dionysus.github.io/schemas/skill_ability_catalog_v1.schema.json",
+  "title": "aoa-skills skill_ability_catalog_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "cards"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "skill_ability_catalog_v1"
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ability_id",
+          "skill_name",
+          "source_skill_ref",
+          "summary",
+          "school_tags",
+          "package_kind",
+          "invocation_mode",
+          "technique_refs",
+          "unlock_posture",
+          "overlay_posture",
+          "evidence_refs",
+          "public_safe"
+        ],
+        "properties": {
+          "ability_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_skill_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 5
+          },
+          "school_tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "package_kind": {
+            "type": "string",
+            "enum": [
+              "core",
+              "project",
+              "risk"
+            ]
+          },
+          "invocation_mode": {
+            "type": "string",
+            "enum": [
+              "implicit-friendly",
+              "explicit-preferred",
+              "explicit-only"
+            ]
+          },
+          "technique_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "unlock_posture": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "min_rank",
+              "preferred_axes",
+              "difficulty_ceiling",
+              "risk_ceiling",
+              "preferred_roles",
+              "pack_profiles",
+              "adapter_posture"
+            ],
+            "properties": {
+              "min_rank": {
+                "type": "string",
+                "enum": [
+                  "initiate",
+                  "adept",
+                  "specialist",
+                  "veteran",
+                  "master"
+                ]
+              },
+              "preferred_axes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "boundary_integrity",
+                    "execution_reliability",
+                    "change_legibility",
+                    "review_sharpness",
+                    "proof_discipline",
+                    "provenance_hygiene",
+                    "deep_readiness"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "difficulty_ceiling": {
+                "type": "string",
+                "enum": [
+                  "d0_probe",
+                  "d1_patch",
+                  "d2_slice",
+                  "d3_seam",
+                  "d4_architecture",
+                  "d5_doctrine"
+                ]
+              },
+              "risk_ceiling": {
+                "type": "string",
+                "enum": [
+                  "r0_readonly",
+                  "r1_repo_local",
+                  "r2_contract",
+                  "r3_side_effect"
+                ]
+              },
+              "preferred_roles": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "pack_profiles": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "adapter_posture": {
+                "type": "string",
+                "enum": [
+                  "portable_only",
+                  "local_adapter_optional",
+                  "local_adapter_expected"
+                ]
+              }
+            }
+          },
+          "overlay_posture": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "overlay_families",
+              "note"
+            ],
+            "properties": {
+              "overlay_families": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "public_safe": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

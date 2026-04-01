@@ -1,0 +1,102 @@
+{
+  "schema_version": "skill_ability_catalog_v1",
+  "cards": [
+    {
+      "ability_id": "ability.aoa-change-protocol",
+      "skill_name": "aoa-change-protocol",
+      "source_skill_ref": "skills/aoa-change-protocol/SKILL.md",
+      "summary": "Bounded change workflow that keeps plan, diff, verification, and reporting legible.",
+      "school_tags": [
+        "change",
+        "verification",
+        "safety"
+      ],
+      "package_kind": "core",
+      "invocation_mode": "explicit-preferred",
+      "technique_refs": [
+        "AOA-T-0001"
+      ],
+      "unlock_posture": {
+        "min_rank": "adept",
+        "preferred_axes": [
+          "boundary_integrity",
+          "execution_reliability",
+          "change_legibility"
+        ],
+        "difficulty_ceiling": "d2_slice",
+        "risk_ceiling": "r1_repo_local",
+        "preferred_roles": [
+          "coder",
+          "reviewer"
+        ],
+        "pack_profiles": [
+          "repo-core-only",
+          "repo-risk-explicit"
+        ],
+        "adapter_posture": "local_adapter_optional"
+      },
+      "overlay_posture": {
+        "overlay_families": [
+          "abyss",
+          "atm10"
+        ],
+        "note": "Portable first. Overlay families stay thin and repo-local."
+      },
+      "evidence_refs": [
+        "generated/skill_evaluation_matrix.md#aoa-change-protocol",
+        "docs/CODEX_PORTABLE_LAYER.md",
+        "docs/OVERLAY_SPEC.md"
+      ],
+      "public_safe": true
+    },
+    {
+      "ability_id": "ability.aoa-safe-infra-change",
+      "skill_name": "aoa-safe-infra-change",
+      "source_skill_ref": "skills/aoa-safe-infra-change/SKILL.md",
+      "summary": "Risk-heavy infra change workflow that keeps mutating actions explicit, reviewable, and adapter-aware.",
+      "school_tags": [
+        "infra",
+        "safety",
+        "contracts"
+      ],
+      "package_kind": "risk",
+      "invocation_mode": "explicit-only",
+      "technique_refs": [
+        "AOA-T-0001",
+        "AOA-T-0004"
+      ],
+      "unlock_posture": {
+        "min_rank": "specialist",
+        "preferred_axes": [
+          "boundary_integrity",
+          "execution_reliability",
+          "proof_discipline"
+        ],
+        "difficulty_ceiling": "d3_seam",
+        "risk_ceiling": "r2_contract",
+        "preferred_roles": [
+          "architect",
+          "coder",
+          "reviewer"
+        ],
+        "pack_profiles": [
+          "repo-risk-explicit"
+        ],
+        "adapter_posture": "local_adapter_expected"
+      },
+      "overlay_posture": {
+        "overlay_families": [
+          "abyss"
+        ],
+        "note": "Local runtime and adapter seams matter. Do not flatten this into a portable-anywhere claim."
+      },
+      "evidence_refs": [
+        "generated/skill_evaluation_matrix.md#aoa-safe-infra-change",
+        "docs/LOCAL_ADAPTER_CONTRACT.md",
+        "generated/skill_runtime_contracts.json"
+      ],
+      "public_safe": true
+    }
+  ],
+  "notes": "Example only. Ability cards are derived reflections over live skill, pack-profile, and adapter surfaces."
+}

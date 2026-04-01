@@ -41,6 +41,16 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
                     json.loads((GENERATED_DIR / generated_filename).read_text(encoding="utf-8")),
                 )
 
+    def test_skill_ability_example_surface_validates(self) -> None:
+        self.validate(
+            "skill_ability_catalog.schema.json",
+            json.loads(
+                (GENERATED_DIR / "skill_ability_cards.min.example.json").read_text(
+                    encoding="utf-8"
+                )
+            ),
+        )
+
     def test_schema_files_have_expected_titles(self) -> None:
         for schema_path in sorted(SCHEMAS_DIR.glob("*.schema.json")):
             with self.subTest(schema=schema_path.name):
