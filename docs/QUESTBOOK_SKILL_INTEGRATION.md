@@ -30,3 +30,9 @@ A skill quest should usually answer one of these:
 - which proof or evaluation seam drifted
 - which runtime export or local adapter contract needs bounded repair
 - which repeated overlay exception wants promotion into a real skill or playbook
+
+## Manual-first pilot lane
+
+- `AOA-SK-Q-0002` carried one surviving proof-alignment debt from `aoa-techniques` into the existing derived readouts `generated/governance_backlog.md` and `generated/skill_evaluation_matrix.md`.
+- The bounded conclusion for this pass is that those two derived surfaces stay aligned while the remaining proof follow-through belongs in `aoa-evals`, not in a wider skill backlog.
+- No ATM10-specific or overlay-specific anchor was introduced for this lane; the repo-local contract stayed inside the existing skill/runtime boundary.

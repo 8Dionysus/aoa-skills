@@ -70,13 +70,13 @@ QUEST_IDS = (
     "AOA-SK-Q-0004",
 )
 QUESTBOOK_REQUIRED_INDEX_TOKENS = (
-    "AOA-SK-Q-0001",
-    "AOA-SK-Q-0002",
-    "AOA-SK-Q-0003",
-    "AOA-SK-Q-0004",
     "skill/eval alignment debts",
     ".agents/skills/",
+    "Frontier",
+    "Near",
+    "Harvest candidates",
 )
+CLOSED_QUEST_STATES = {"done", "dropped"}
 QUESTBOOK_REQUIRED_INTEGRATION_TOKENS = (
     "generated/public_surface.md",
     "generated/governance_backlog.md",
@@ -344,6 +344,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             issues.append(ValidationIssue(relative_location(path), "file is missing"))
 
     questbook_path = repo_root / QUESTBOOK_PATH
+    questbook_text = ""
     if questbook_path.is_file():
         questbook_text = questbook_path.read_text(encoding="utf-8")
         for token in QUESTBOOK_REQUIRED_INDEX_TOKENS:
@@ -403,6 +404,8 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
     )
 
     quest_payloads: dict[str, dict[str, Any]] = {}
+    active_quest_ids: list[str] = []
+    closed_quest_ids: list[str] = []
     for quest_id in QUEST_IDS:
         quest_path = repo_root / "quests" / f"{quest_id}.yaml"
         payload = load_yaml_file(quest_path, issues)
@@ -440,6 +443,28 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             if token in quest_path.read_text(encoding="utf-8"):
                 issues.append(ValidationIssue(location, f"must not mention '{token}'"))
         quest_payloads[quest_id] = payload
+        if payload.get("state") in CLOSED_QUEST_STATES:
+            closed_quest_ids.append(quest_id)
+        else:
+            active_quest_ids.append(quest_id)
+
+    if questbook_text:
+        for quest_id in active_quest_ids:
+            if quest_id not in questbook_text:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(questbook_path),
+                        f"must reference active quest id '{quest_id}'",
+                    )
+                )
+        for quest_id in closed_quest_ids:
+            if quest_id in questbook_text:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(questbook_path),
+                        f"must not list closed quest id '{quest_id}'",
+                    )
+                )
 
     catalog_payload = load_json_file(repo_root / QUEST_CATALOG_EXAMPLE_PATH, issues)
     if isinstance(catalog_payload, list) and len(quest_payloads) == len(QUEST_IDS):

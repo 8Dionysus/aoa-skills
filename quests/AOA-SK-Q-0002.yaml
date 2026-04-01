@@ -9,7 +9,7 @@ owner_surface: proof/alignment
 theme_ref: ''
 milestone_ref: ''
 kind: proof
-state: triaged
+state: done
 band: frontier
 difficulty: d2_slice
 risk: r1_repo_local
@@ -48,5 +48,7 @@ tags:
   - skills
   - proof
   - alignment
-notes: ''
+notes: Closed in the Phase 2 manual-first pilot after the surviving skill-eval
+  alignment debt was carried across the governance backlog and evaluation matrix
+  without widening into overlay-specific or ATM10-specific routing.
 public_safe: true
