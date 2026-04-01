@@ -53,6 +53,7 @@ If you are new to this repository, follow this short path:
 - if you need the smallest next object by task type, go to [aoa-routing](https://github.com/8Dionysus/aoa-routing)
 - if you need explicit role contracts, handoff posture, or persona surfaces, go to [aoa-agents](https://github.com/8Dionysus/aoa-agents)
 - if you need higher-level scenario composition, go to [aoa-playbooks](https://github.com/8Dionysus/aoa-playbooks)
+- if you need one bounded ability-reader layer that stays subordinate to live skill bundles, open `docs/SKILL_ABILITY_MODEL.md`, `docs/ABILITY_LOADOUT_POSTURE.md`, and `generated/skill_ability_cards.min.example.json`
 
 ## What belongs here
 

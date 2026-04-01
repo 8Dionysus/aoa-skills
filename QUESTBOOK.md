@@ -19,6 +19,7 @@ Do not use it for:
 
 ## Near
 - `AOA-SK-Q-0004` — harvest repeated overlay-specific exceptions into stable skill bundles or playbooks
+- `AOA-SK-Q-0005` — reflect bounded skill bundles as abilities with pack-profile-aware unlock posture
 
 ## Latent / parked
 - none yet

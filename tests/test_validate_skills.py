@@ -84,7 +84,8 @@ def write_valid_questbook_surface(repo_root: Path) -> None:
             encoding="utf-8"
         ),
     )
-    for quest_id in validate_skills.QUEST_IDS:
+    for quest_path in sorted((REPO_ROOT / "quests").glob("AOA-SK-Q-*.yaml")):
+        quest_id = quest_path.stem
         write_text(
             repo_root / "quests" / f"{quest_id}.yaml",
             (REPO_ROOT / "quests" / f"{quest_id}.yaml").read_text(encoding="utf-8"),
@@ -2974,6 +2975,21 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
             self.write_valid_surface(repo_root)
 
             self.assertEqual([], validate_skills.validate_questbook_surface(repo_root))
+
+    def test_additive_second_wave_quest_is_projected(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+
+            catalog_ids = [
+                entry["id"] for entry in build_catalog.build_quest_catalog_payload(repo_root)
+            ]
+            dispatch_ids = [
+                entry["id"] for entry in build_catalog.build_quest_dispatch_payload(repo_root)
+            ]
+
+        self.assertIn("AOA-SK-Q-0005", catalog_ids)
+        self.assertIn("AOA-SK-Q-0005", dispatch_ids)
 
     def test_missing_questbook_file_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

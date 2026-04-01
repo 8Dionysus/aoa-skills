@@ -58,5 +58,20 @@
     "state": "captured",
     "theme_ref": "",
     "title": "Harvest repeated overlay-specific exceptions into stable skill bundles or playbooks"
+  },
+  {
+    "band": "near",
+    "difficulty": "d3_seam",
+    "id": "AOA-SK-Q-0005",
+    "kind": "support",
+    "milestone_ref": "",
+    "owner_surface": "skills/ability-reflection",
+    "public_safe": true,
+    "repo": "aoa-skills",
+    "risk": "r2_contract",
+    "source_path": "quests/AOA-SK-Q-0005.yaml",
+    "state": "captured",
+    "theme_ref": "",
+    "title": "Reflect bounded skill bundles as abilities with pack-profile-aware unlock posture"
   }
 ]

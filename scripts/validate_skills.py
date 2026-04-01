@@ -65,12 +65,8 @@ QUEST_CATALOG_PATH = Path("generated") / "quest_catalog.min.json"
 QUEST_DISPATCH_PATH = Path("generated") / "quest_dispatch.min.json"
 QUEST_CATALOG_EXAMPLE_PATH = Path("generated") / "quest_catalog.min.example.json"
 QUEST_DISPATCH_EXAMPLE_PATH = Path("generated") / "quest_dispatch.min.example.json"
-QUEST_IDS = (
-    "AOA-SK-Q-0001",
-    "AOA-SK-Q-0002",
-    "AOA-SK-Q-0003",
-    "AOA-SK-Q-0004",
-)
+FOUNDATION_QUEST_IDS = build_catalog.FOUNDATION_QUEST_IDS
+QUEST_IDS = FOUNDATION_QUEST_IDS
 QUESTBOOK_REQUIRED_INDEX_TOKENS = (
     "skill/eval alignment debts",
     ".agents/skills/",
@@ -287,6 +283,8 @@ def validate_quest_schema_envelope(
 
 def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
+    quest_ids = build_catalog.discover_quest_ids(repo_root)
+    missing_foundation_ids = build_catalog.missing_foundation_quest_ids(quest_ids)
     required_paths = (
         repo_root / QUESTBOOK_PATH,
         repo_root / QUESTBOOK_INTEGRATION_PATH,
@@ -364,7 +362,14 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
     quest_payloads: dict[str, dict[str, Any]] = {}
     active_quest_ids: list[str] = []
     closed_quest_ids: list[str] = []
-    for quest_id in QUEST_IDS:
+    for quest_id in missing_foundation_ids:
+        issues.append(
+            ValidationIssue(
+                relative_location(repo_root / "quests" / f"{quest_id}.yaml"),
+                "file is missing",
+            )
+        )
+    for quest_id in quest_ids:
         quest_path = repo_root / "quests" / f"{quest_id}.yaml"
         payload = load_yaml_file(quest_path, issues)
         location = relative_location(quest_path)
@@ -425,21 +430,18 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
                     )
                 )
 
-    valid_quest_ids = [quest_id for quest_id in QUEST_IDS if quest_id in quest_payloads]
+    valid_quest_ids = [quest_id for quest_id in quest_ids if quest_id in quest_payloads]
 
     try:
-        expected_catalog = build_catalog.build_quest_catalog_payload(repo_root, payloads=quest_payloads)
+        expected_catalog = build_catalog.build_quest_catalog_payload(
+            repo_root, payloads=quest_payloads
+        )
     except ValueError as exc:
         issues.append(ValidationIssue("quests", str(exc)))
         expected_catalog = None
-    expected_catalog_by_id = {
-        entry["id"]: entry for entry in expected_catalog or []
-    }
+    expected_catalog_by_id = {entry["id"]: entry for entry in expected_catalog or []}
     live_catalog_payload = load_json_file(repo_root / QUEST_CATALOG_PATH, issues)
-    if (
-        isinstance(live_catalog_payload, list)
-        and expected_catalog is not None
-    ):
+    if isinstance(live_catalog_payload, list) and expected_catalog is not None:
         live_catalog_by_id: dict[str, dict[str, Any]] = {}
         for entry in live_catalog_payload:
             if isinstance(entry, dict):
@@ -465,10 +467,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
         )
 
     catalog_payload = load_json_file(repo_root / QUEST_CATALOG_EXAMPLE_PATH, issues)
-    if (
-        isinstance(catalog_payload, list)
-        and expected_catalog is not None
-    ):
+    if isinstance(catalog_payload, list) and expected_catalog is not None:
         catalog_by_id: dict[str, dict[str, Any]] = {}
         for entry in catalog_payload:
             if isinstance(entry, dict):
@@ -512,13 +511,13 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
         )
 
     try:
-        expected_dispatch = build_catalog.build_quest_dispatch_payload(repo_root, payloads=quest_payloads)
+        expected_dispatch = build_catalog.build_quest_dispatch_payload(
+            repo_root, payloads=quest_payloads
+        )
     except ValueError as exc:
         issues.append(ValidationIssue("quests", str(exc)))
         expected_dispatch = None
-    expected_dispatch_by_id = {
-        entry["id"]: entry for entry in expected_dispatch or []
-    }
+    expected_dispatch_by_id = {entry["id"]: entry for entry in expected_dispatch or []}
     live_dispatch_payload = load_json_file(repo_root / QUEST_DISPATCH_PATH, issues)
     live_dispatch_by_id: dict[str, dict[str, Any]] = {}
     live_dispatch_invalid_ids: set[str] = set()
@@ -555,9 +554,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             if entry_valid and isinstance(quest_id, str) and quest_id in expected_dispatch_by_id:
                 live_dispatch_by_id[quest_id] = entry
         comparable_live_dispatch_ids = [
-            quest_id
-            for quest_id in valid_quest_ids
-            if quest_id not in live_dispatch_invalid_ids
+            quest_id for quest_id in valid_quest_ids if quest_id not in live_dispatch_invalid_ids
         ]
         if any(
             live_dispatch_by_id.get(quest_id) != expected_dispatch_by_id[quest_id]
