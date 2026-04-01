@@ -1,0 +1,49 @@
+schema_version: work_quest_v1
+id: AOA-SK-Q-0003
+title: Tighten the Codex portable layer and local adapter contract for .agents/skills
+  export
+summary: Keep the portable export and local adapter seam honest as the repo evolves
+  and downstream wrappers grow.
+repo: aoa-skills
+owner_surface: runtime/codex-portable-layer
+theme_ref: ''
+milestone_ref: ''
+kind: seam
+state: triaged
+band: frontier
+difficulty: d3_seam
+risk: r2_contract
+control_mode: human_codex_copilot
+delegate_tier: planner
+fallback_tier: verifier
+wrapper_class: hybrid
+write_scope: repo_local
+split_required: true
+complexity_basis:
+  scope: 2
+  ambiguity: 1
+  boundary: 2
+  verification: 2
+parent: null
+depends_on: []
+activation:
+  mode: immediate
+anchor_ref:
+  artifact: local-adapter-contract
+  ref: docs/LOCAL_ADAPTER_CONTRACT.md
+  note: runtime seam around .agents/skills export
+handoff_role: skill-maintainer
+evidence:
+  - portable export changes receive stable IDs
+  - local-adapter contract and export docs stay aligned
+  - leaf-safe local delegation boundaries are explicit
+harvest:
+  target: none
+opened_at: '2026-03-31'
+touched_at: '2026-03-31'
+tags:
+  - runtime
+  - adapter
+  - portable-layer
+notes: ''
+public_safe: true

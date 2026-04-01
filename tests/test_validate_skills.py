@@ -58,6 +58,11 @@ PENDING_TECHNIQUE = {
 PENDING_NOTE = "Replace AOA-T-PENDING-TEST, path TBD, and source_ref TBD after publish."
 
 
+def write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
 class ValidateSkillsTests(unittest.TestCase):
     def add_skill_bundle(
         self,
@@ -2901,6 +2906,125 @@ class ValidateSkillsTests(unittest.TestCase):
             "generated evaluation matrix markdown is out of date; run python scripts/build_catalog.py",
             messages,
         )
+
+
+class ValidateQuestbookSurfaceTests(unittest.TestCase):
+    def write_valid_surface(self, repo_root: Path) -> None:
+        write_text(
+            repo_root / "QUESTBOOK.md",
+            (REPO_ROOT / "QUESTBOOK.md").read_text(encoding="utf-8"),
+        )
+        write_text(
+            repo_root / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md",
+            (REPO_ROOT / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md").read_text(
+                encoding="utf-8"
+            ),
+        )
+        write_text(
+            repo_root / "schemas" / "quest.schema.json",
+            (REPO_ROOT / "schemas" / "quest.schema.json").read_text(encoding="utf-8"),
+        )
+        write_text(
+            repo_root / "schemas" / "quest_dispatch.schema.json",
+            (REPO_ROOT / "schemas" / "quest_dispatch.schema.json").read_text(
+                encoding="utf-8"
+            ),
+        )
+        for quest_id in validate_skills.QUEST_IDS:
+            write_text(
+                repo_root / "quests" / f"{quest_id}.yaml",
+                (REPO_ROOT / "quests" / f"{quest_id}.yaml").read_text(encoding="utf-8"),
+            )
+        write_text(
+            repo_root / "generated" / "quest_catalog.min.example.json",
+            (REPO_ROOT / "generated" / "quest_catalog.min.example.json").read_text(
+                encoding="utf-8"
+            ),
+        )
+        write_text(
+            repo_root / "generated" / "quest_dispatch.min.example.json",
+            (REPO_ROOT / "generated" / "quest_dispatch.min.example.json").read_text(
+                encoding="utf-8"
+            ),
+        )
+
+    def test_valid_questbook_surface_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+
+            self.assertEqual([], validate_skills.validate_questbook_surface(repo_root))
+
+    def test_missing_questbook_file_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            (repo_root / "QUESTBOOK.md").unlink()
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+            self.assertTrue(
+                any(
+                    issue.location.endswith("QUESTBOOK.md")
+                    and issue.message == "file is missing"
+                    for issue in issues
+                )
+            )
+
+    def test_atm10_specific_anchor_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            write_text(
+                repo_root / "quests" / "AOA-SK-Q-0004.yaml",
+                (repo_root / "quests" / "AOA-SK-Q-0004.yaml")
+                .read_text(encoding="utf-8")
+                .replace("docs/OVERLAY_SPEC.md", "docs/overlays/atm10/PROJECT_OVERLAY.md", 1),
+            )
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+            messages = [issue.message for issue in issues]
+            self.assertIn(
+                "AOA-SK-Q-0004 must keep activation.ref 'docs/OVERLAY_SPEC.md'",
+                messages,
+            )
+
+    def test_wrong_repo_value_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            write_text(
+                repo_root / "quests" / "AOA-SK-Q-0002.yaml",
+                (repo_root / "quests" / "AOA-SK-Q-0002.yaml")
+                .read_text(encoding="utf-8")
+                .replace("repo: aoa-skills", "repo: aoa-evals"),
+            )
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+            self.assertTrue(
+                any(issue.message == "repo must be 'aoa-skills'" for issue in issues)
+            )
+
+    def test_example_projection_drift_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            write_text(
+                repo_root / "generated" / "quest_catalog.min.example.json",
+                (repo_root / "generated" / "quest_catalog.min.example.json")
+                .read_text(encoding="utf-8")
+                .replace(
+                    '"source_path": "quests/AOA-SK-Q-0004.yaml"',
+                    '"source_path": "quests/AOA-SK-Q-9999.yaml"',
+                ),
+            )
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+            self.assertTrue(
+                any(
+                    issue.message == "example catalog must stay aligned with quests/*.yaml"
+                    for issue in issues
+                )
+            )
 
 
 if __name__ == "__main__":

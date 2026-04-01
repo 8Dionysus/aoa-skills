@@ -1,0 +1,62 @@
+[
+  {
+    "id": "AOA-SK-Q-0001",
+    "title": "Land repo-local questbook surface for bounded workflow and runtime-seam obligations",
+    "repo": "aoa-skills",
+    "theme_ref": "",
+    "milestone_ref": "",
+    "state": "ready",
+    "band": "frontier",
+    "kind": "rollout",
+    "difficulty": "d2_slice",
+    "risk": "r1_repo_local",
+    "owner_surface": "questbook/public-surface",
+    "source_path": "quests/AOA-SK-Q-0001.yaml",
+    "public_safe": true
+  },
+  {
+    "id": "AOA-SK-Q-0002",
+    "title": "Track skill-eval alignment debts from the evaluation matrix and governance backlog",
+    "repo": "aoa-skills",
+    "theme_ref": "",
+    "milestone_ref": "",
+    "state": "triaged",
+    "band": "frontier",
+    "kind": "proof",
+    "difficulty": "d2_slice",
+    "risk": "r1_repo_local",
+    "owner_surface": "proof/alignment",
+    "source_path": "quests/AOA-SK-Q-0002.yaml",
+    "public_safe": true
+  },
+  {
+    "id": "AOA-SK-Q-0003",
+    "title": "Tighten the Codex portable layer and local adapter contract for .agents/skills export",
+    "repo": "aoa-skills",
+    "theme_ref": "",
+    "milestone_ref": "",
+    "state": "triaged",
+    "band": "frontier",
+    "kind": "seam",
+    "difficulty": "d3_seam",
+    "risk": "r2_contract",
+    "owner_surface": "runtime/codex-portable-layer",
+    "source_path": "quests/AOA-SK-Q-0003.yaml",
+    "public_safe": true
+  },
+  {
+    "id": "AOA-SK-Q-0004",
+    "title": "Harvest repeated overlay-specific exceptions into stable skill bundles or playbooks",
+    "repo": "aoa-skills",
+    "theme_ref": "",
+    "milestone_ref": "",
+    "state": "captured",
+    "band": "near",
+    "kind": "harvest",
+    "difficulty": "d3_seam",
+    "risk": "r1_repo_local",
+    "owner_surface": "overlays/harvest",
+    "source_path": "quests/AOA-SK-Q-0004.yaml",
+    "public_safe": true
+  }
+]

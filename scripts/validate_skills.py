@@ -57,6 +57,78 @@ GENERATED_SURFACE_SCHEMA_BY_PATH = {
     build_catalog.BUNDLE_INDEX_JSON_PATH: "skill_bundle_index.schema.json",
     build_catalog.SKILL_GRAPH_JSON_PATH: "skill_graph.schema.json",
 }
+QUESTBOOK_PATH = Path("QUESTBOOK.md")
+QUESTBOOK_INTEGRATION_PATH = Path("docs") / "QUESTBOOK_SKILL_INTEGRATION.md"
+QUEST_SCHEMA_PATH = Path("schemas") / "quest.schema.json"
+QUEST_DISPATCH_SCHEMA_PATH = Path("schemas") / "quest_dispatch.schema.json"
+QUEST_CATALOG_EXAMPLE_PATH = Path("generated") / "quest_catalog.min.example.json"
+QUEST_DISPATCH_EXAMPLE_PATH = Path("generated") / "quest_dispatch.min.example.json"
+QUEST_IDS = (
+    "AOA-SK-Q-0001",
+    "AOA-SK-Q-0002",
+    "AOA-SK-Q-0003",
+    "AOA-SK-Q-0004",
+)
+QUESTBOOK_REQUIRED_INDEX_TOKENS = (
+    "AOA-SK-Q-0001",
+    "AOA-SK-Q-0002",
+    "AOA-SK-Q-0003",
+    "AOA-SK-Q-0004",
+    "skill/eval alignment debts",
+    ".agents/skills/",
+)
+QUESTBOOK_REQUIRED_INTEGRATION_TOKENS = (
+    "generated/public_surface.md",
+    "generated/governance_backlog.md",
+    "generated/skill_evaluation_matrix.md",
+    "docs/RUNTIME_PATH.md",
+    "docs/EVALUATION_PATH.md",
+    "docs/CODEX_PORTABLE_LAYER.md",
+    "docs/LOCAL_ADAPTER_CONTRACT.md",
+    "docs/OVERLAY_SPEC.md",
+    "docs/TWO_STAGE_SKILL_SELECTION.md",
+    "hidden second source of truth",
+)
+QUEST_SCHEMA_REQUIRED_FIELDS = (
+    "schema_version",
+    "id",
+    "title",
+    "repo",
+    "owner_surface",
+    "kind",
+    "state",
+    "band",
+    "difficulty",
+    "risk",
+    "control_mode",
+    "delegate_tier",
+    "write_scope",
+    "activation",
+    "anchor_ref",
+    "evidence",
+    "opened_at",
+    "touched_at",
+    "public_safe",
+)
+QUEST_DISPATCH_REQUIRED_FIELDS = (
+    "schema_version",
+    "id",
+    "repo",
+    "state",
+    "band",
+    "difficulty",
+    "risk",
+    "control_mode",
+    "delegate_tier",
+    "split_required",
+    "write_scope",
+    "activation_mode",
+    "public_safe",
+)
+QUESTBOOK_FORBIDDEN_ANCHORS = (
+    "docs/overlays/atm10/PROJECT_OVERLAY.md",
+    "ATM10-Agent",
+)
 
 REQUIRED_HEADINGS = set(skill_section_contract.CANONICAL_HEADINGS)
 EXPECTED_TECHNIQUE_REPO = skill_catalog_contract.EXPECTED_TECHNIQUE_REPO
@@ -112,6 +184,19 @@ def load_yaml_file(path: Path, issues: list[ValidationIssue]) -> Any | None:
     return data
 
 
+def load_json_file(path: Path, issues: list[ValidationIssue]) -> Any | None:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        issues.append(ValidationIssue(relative_location(path), "file is missing"))
+        return None
+    except json.JSONDecodeError as exc:
+        issues.append(
+            ValidationIssue(relative_location(path), f"invalid JSON: {exc.msg}")
+        )
+        return None
+
+
 def relative_location(path: Path) -> str:
     try:
         return path.relative_to(REPO_ROOT).as_posix()
@@ -151,6 +236,290 @@ def validate_against_schema(
             message = f"schema violation: {error.message}"
         issues.append(ValidationIssue(location, message))
     return not schema_errors
+
+
+def validate_quest_schema_envelope(
+    repo_root: Path,
+    schema_path: Path,
+    *,
+    title: str,
+    schema_version: str,
+    required_fields: tuple[str, ...],
+) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    payload = load_json_file(schema_path, issues)
+    if payload is None:
+        return issues
+    location = relative_location(schema_path)
+    if not isinstance(payload, dict):
+        return [ValidationIssue(location, "schema payload must be a JSON object")]
+    if payload.get("title") != title:
+        issues.append(ValidationIssue(location, f"schema title must be '{title}'"))
+    if payload.get("type") != "object":
+        issues.append(ValidationIssue(location, "schema type must be 'object'"))
+    if payload.get("additionalProperties") is not False:
+        issues.append(
+            ValidationIssue(location, "schema must set additionalProperties to false")
+        )
+    if payload.get("required") != list(required_fields):
+        issues.append(
+            ValidationIssue(
+                location,
+                "schema required fields must stay aligned with the questbook contract",
+            )
+        )
+    properties = payload.get("properties")
+    if not isinstance(properties, dict):
+        issues.append(ValidationIssue(location, "schema properties must be an object"))
+        return issues
+    schema_version_entry = properties.get("schema_version")
+    if not isinstance(schema_version_entry, dict) or schema_version_entry.get("const") != schema_version:
+        issues.append(
+            ValidationIssue(
+                location,
+                f"schema_version must stay pinned to '{schema_version}'",
+            )
+        )
+    return issues
+
+
+def build_expected_quest_catalog_entry(quest_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "id": quest_id,
+        "title": payload["title"],
+        "repo": payload["repo"],
+        "theme_ref": payload.get("theme_ref", ""),
+        "milestone_ref": payload.get("milestone_ref", ""),
+        "state": payload["state"],
+        "band": payload["band"],
+        "kind": payload["kind"],
+        "difficulty": payload["difficulty"],
+        "risk": payload["risk"],
+        "owner_surface": payload["owner_surface"],
+        "source_path": f"quests/{quest_id}.yaml",
+        "public_safe": payload["public_safe"],
+    }
+
+
+def build_expected_quest_dispatch_entry(
+    quest_id: str,
+    payload: dict[str, Any],
+    actual: dict[str, Any],
+) -> dict[str, Any]:
+    expected = {
+        "schema_version": "quest_dispatch_v1",
+        "id": quest_id,
+        "repo": payload["repo"],
+        "state": payload["state"],
+        "band": payload["band"],
+        "difficulty": payload["difficulty"],
+        "risk": payload["risk"],
+        "control_mode": payload["control_mode"],
+        "delegate_tier": payload["delegate_tier"],
+        "split_required": payload.get("split_required", False),
+        "write_scope": payload["write_scope"],
+        "activation_mode": payload["activation"]["mode"],
+        "source_path": f"quests/{quest_id}.yaml",
+        "public_safe": payload["public_safe"],
+    }
+    if "fallback_tier" in actual:
+        expected["fallback_tier"] = payload.get("fallback_tier")
+    if "wrapper_class" in actual:
+        expected["wrapper_class"] = payload.get("wrapper_class")
+    return expected
+
+
+def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
+    issues: list[ValidationIssue] = []
+    required_paths = (
+        repo_root / QUESTBOOK_PATH,
+        repo_root / QUESTBOOK_INTEGRATION_PATH,
+        repo_root / QUEST_SCHEMA_PATH,
+        repo_root / QUEST_DISPATCH_SCHEMA_PATH,
+        repo_root / QUEST_CATALOG_EXAMPLE_PATH,
+        repo_root / QUEST_DISPATCH_EXAMPLE_PATH,
+    )
+    for path in required_paths:
+        if not path.is_file():
+            issues.append(ValidationIssue(relative_location(path), "file is missing"))
+
+    questbook_path = repo_root / QUESTBOOK_PATH
+    if questbook_path.is_file():
+        questbook_text = questbook_path.read_text(encoding="utf-8")
+        for token in QUESTBOOK_REQUIRED_INDEX_TOKENS:
+            if token not in questbook_text:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(questbook_path),
+                        f"must mention '{token}' explicitly",
+                    )
+                )
+        for token in QUESTBOOK_FORBIDDEN_ANCHORS:
+            if token in questbook_text:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(questbook_path),
+                        f"must not mention '{token}'",
+                    )
+                )
+
+    integration_path = repo_root / QUESTBOOK_INTEGRATION_PATH
+    if integration_path.is_file():
+        integration_text = integration_path.read_text(encoding="utf-8")
+        for token in QUESTBOOK_REQUIRED_INTEGRATION_TOKENS:
+            if token not in integration_text:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(integration_path),
+                        f"must mention '{token}' explicitly",
+                    )
+                )
+        for token in QUESTBOOK_FORBIDDEN_ANCHORS:
+            if token in integration_text:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(integration_path),
+                        f"must not mention '{token}'",
+                    )
+                )
+
+    issues.extend(
+        validate_quest_schema_envelope(
+            repo_root,
+            repo_root / QUEST_SCHEMA_PATH,
+            title="aoa-skills work_quest_v1",
+            schema_version="work_quest_v1",
+            required_fields=QUEST_SCHEMA_REQUIRED_FIELDS,
+        )
+    )
+    issues.extend(
+        validate_quest_schema_envelope(
+            repo_root,
+            repo_root / QUEST_DISPATCH_SCHEMA_PATH,
+            title="aoa-skills quest_dispatch_v1",
+            schema_version="quest_dispatch_v1",
+            required_fields=QUEST_DISPATCH_REQUIRED_FIELDS,
+        )
+    )
+
+    quest_payloads: dict[str, dict[str, Any]] = {}
+    for quest_id in QUEST_IDS:
+        quest_path = repo_root / "quests" / f"{quest_id}.yaml"
+        payload = load_yaml_file(quest_path, issues)
+        location = relative_location(quest_path)
+        if payload is None:
+            continue
+        if not isinstance(payload, dict):
+            issues.append(ValidationIssue(location, "quest payload must parse to a mapping"))
+            continue
+        validate_against_schema(payload, "quest.schema.json", location, issues)
+        if payload.get("id") != quest_id:
+            issues.append(ValidationIssue(location, f"id must be '{quest_id}'"))
+        if payload.get("repo") != "aoa-skills":
+            issues.append(ValidationIssue(location, "repo must be 'aoa-skills'"))
+        if payload.get("public_safe") is not True:
+            issues.append(ValidationIssue(location, "public_safe must be true"))
+        if quest_id == "AOA-SK-Q-0004":
+            activation = payload.get("activation")
+            anchor_ref = payload.get("anchor_ref")
+            if not isinstance(activation, dict) or activation.get("ref") != "docs/OVERLAY_SPEC.md":
+                issues.append(
+                    ValidationIssue(
+                        location,
+                        "AOA-SK-Q-0004 must keep activation.ref 'docs/OVERLAY_SPEC.md'",
+                    )
+                )
+            if not isinstance(anchor_ref, dict) or anchor_ref.get("ref") != "docs/OVERLAY_SPEC.md":
+                issues.append(
+                    ValidationIssue(
+                        location,
+                        "AOA-SK-Q-0004 must keep anchor_ref.ref 'docs/OVERLAY_SPEC.md'",
+                    )
+                )
+        for token in QUESTBOOK_FORBIDDEN_ANCHORS:
+            if token in quest_path.read_text(encoding="utf-8"):
+                issues.append(ValidationIssue(location, f"must not mention '{token}'"))
+        quest_payloads[quest_id] = payload
+
+    catalog_payload = load_json_file(repo_root / QUEST_CATALOG_EXAMPLE_PATH, issues)
+    if isinstance(catalog_payload, list) and len(quest_payloads) == len(QUEST_IDS):
+        expected_catalog = [
+            build_expected_quest_catalog_entry(quest_id, quest_payloads[quest_id])
+            for quest_id in QUEST_IDS
+        ]
+        if catalog_payload != expected_catalog:
+            issues.append(
+                ValidationIssue(
+                    relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
+                    "example catalog must stay aligned with quests/*.yaml",
+                )
+            )
+    elif catalog_payload is not None:
+        issues.append(
+            ValidationIssue(
+                relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
+                "payload must be a JSON array",
+            )
+        )
+
+    dispatch_payload = load_json_file(repo_root / QUEST_DISPATCH_EXAMPLE_PATH, issues)
+    if isinstance(dispatch_payload, list) and len(quest_payloads) == len(QUEST_IDS):
+        if len(dispatch_payload) != len(QUEST_IDS):
+            issues.append(
+                ValidationIssue(
+                    relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
+                    f"expected {len(QUEST_IDS)} dispatch examples",
+                )
+            )
+        for entry, quest_id in zip(dispatch_payload, QUEST_IDS):
+            location = relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH)
+            if not isinstance(entry, dict):
+                issues.append(
+                    ValidationIssue(location, "dispatch entries must be JSON objects")
+                )
+                continue
+            validate_against_schema(entry, "quest_dispatch.schema.json", location, issues)
+            requires_artifacts = entry.get("requires_artifacts")
+            if not isinstance(requires_artifacts, list) or not requires_artifacts or not all(
+                isinstance(item, str) and item for item in requires_artifacts
+            ):
+                issues.append(
+                    ValidationIssue(
+                        location,
+                        f"dispatch entry '{quest_id}' must keep a non-empty requires_artifacts list",
+                    )
+                )
+            expected_entry = build_expected_quest_dispatch_entry(
+                quest_id, quest_payloads[quest_id], entry
+            )
+            comparable_entry = {key: entry.get(key) for key in expected_entry}
+            if comparable_entry != expected_entry:
+                issues.append(
+                    ValidationIssue(
+                        location,
+                        f"dispatch entry '{quest_id}' must stay aligned with quests/*.yaml",
+                    )
+                )
+    elif dispatch_payload is not None:
+        issues.append(
+            ValidationIssue(
+                relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
+                "payload must be a JSON array",
+            )
+        )
+
+    return issues
+
+
+def should_validate_questbook_surface(repo_root: Path) -> bool:
+    questbook_markers = (
+        repo_root / QUESTBOOK_PATH,
+        repo_root / QUESTBOOK_INTEGRATION_PATH,
+        repo_root / "quests",
+        repo_root / QUEST_SCHEMA_PATH,
+        repo_root / QUEST_DISPATCH_SCHEMA_PATH,
+    )
+    return repo_root == REPO_ROOT or any(path.exists() for path in questbook_markers)
 
 
 def parse_skill_markdown(
@@ -2448,6 +2817,8 @@ def run_validation(
     issues.extend(validate_required_adjacency_coverage(repo_root, target_skills))
     issues.extend(validate_skill_index(repo_root, selected_skills=selected_skills))
     issues.extend(validate_repo_doc_entrypoints(repo_root))
+    if should_validate_questbook_surface(repo_root):
+        issues.extend(validate_questbook_surface(repo_root))
     if fail_on_review_truth_sync:
         for name in target_skills:
             validate_review_truth_sync(repo_root, name, issues)
