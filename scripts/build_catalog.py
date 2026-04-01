@@ -59,6 +59,22 @@ BUNDLE_INDEX_JSON_PATH = skill_bundle_surface.BUNDLE_INDEX_JSON_PATH
 BUNDLE_INDEX_MARKDOWN_PATH = skill_bundle_surface.BUNDLE_INDEX_MARKDOWN_PATH
 SKILL_GRAPH_JSON_PATH = skill_bundle_surface.SKILL_GRAPH_JSON_PATH
 SKILL_GRAPH_MARKDOWN_PATH = skill_bundle_surface.SKILL_GRAPH_MARKDOWN_PATH
+QUEST_CATALOG_JSON_PATH = Path(GENERATED_DIR_NAME) / "quest_catalog.min.json"
+QUEST_DISPATCH_JSON_PATH = Path(GENERATED_DIR_NAME) / "quest_dispatch.min.json"
+QUEST_CATALOG_EXAMPLE_PATH = Path(GENERATED_DIR_NAME) / "quest_catalog.min.example.json"
+QUEST_DISPATCH_EXAMPLE_PATH = Path(GENERATED_DIR_NAME) / "quest_dispatch.min.example.json"
+QUEST_IDS = (
+    "AOA-SK-Q-0001",
+    "AOA-SK-Q-0002",
+    "AOA-SK-Q-0003",
+    "AOA-SK-Q-0004",
+)
+QUEST_DISPATCH_ARTIFACTS = {
+    "AOA-SK-Q-0001": ["bounded_plan", "work_result", "verification_result"],
+    "AOA-SK-Q-0002": ["bounded_plan", "evaluation_result", "verification_result"],
+    "AOA-SK-Q-0003": ["bounded_plan", "work_result", "verification_result"],
+    "AOA-SK-Q-0004": ["recurrence_evidence", "promotion_decision"],
+}
 
 CATALOG_VERSION = 1
 CAPSULE_VERSION = 1
@@ -396,7 +412,7 @@ def build_skill_capsule_entry(
     }
 
 
-def render_json(payload: dict[str, Any], *, indent: int | None) -> str:
+def render_json(payload: Any, *, indent: int | None) -> str:
     kwargs: dict[str, Any] = {
         "ensure_ascii": True,
         "sort_keys": True,
@@ -497,6 +513,97 @@ def build_sections_payload(repo_root: Path) -> dict[str, Any]:
 
 def build_sections_text(repo_root: Path) -> str:
     return render_json(build_sections_payload(repo_root), indent=2)
+
+
+def load_quest_payloads(repo_root: Path) -> dict[str, dict[str, Any]]:
+    payloads: dict[str, dict[str, Any]] = {}
+    for quest_id in QUEST_IDS:
+        quest_path = repo_root / "quests" / f"{quest_id}.yaml"
+        payload = load_yaml(quest_path)
+        if not isinstance(payload, dict):
+            raise ValueError(f"{relative_path(quest_path, repo_root)} must be a YAML mapping")
+        if payload.get("schema_version") != "work_quest_v1":
+            raise ValueError(
+                f"{relative_path(quest_path, repo_root)} must keep schema_version 'work_quest_v1'"
+            )
+        if payload.get("id") != quest_id:
+            raise ValueError(f"{relative_path(quest_path, repo_root)} must keep id '{quest_id}'")
+        if payload.get("repo") != "aoa-skills":
+            raise ValueError(f"{relative_path(quest_path, repo_root)} must keep repo 'aoa-skills'")
+        if payload.get("public_safe") is not True:
+            raise ValueError(f"{relative_path(quest_path, repo_root)} must keep public_safe true")
+        payloads[quest_id] = payload
+    return payloads
+
+
+def build_quest_catalog_payload(repo_root: Path) -> list[dict[str, Any]]:
+    payloads = load_quest_payloads(repo_root)
+    return [
+        {
+            "id": quest_id,
+            "title": payloads[quest_id]["title"],
+            "repo": payloads[quest_id]["repo"],
+            "theme_ref": payloads[quest_id].get("theme_ref", ""),
+            "milestone_ref": payloads[quest_id].get("milestone_ref", ""),
+            "state": payloads[quest_id]["state"],
+            "band": payloads[quest_id]["band"],
+            "kind": payloads[quest_id]["kind"],
+            "difficulty": payloads[quest_id]["difficulty"],
+            "risk": payloads[quest_id]["risk"],
+            "owner_surface": payloads[quest_id]["owner_surface"],
+            "source_path": f"quests/{quest_id}.yaml",
+            "public_safe": payloads[quest_id]["public_safe"],
+        }
+        for quest_id in QUEST_IDS
+    ]
+
+
+def build_quest_dispatch_payload(repo_root: Path) -> list[dict[str, Any]]:
+    payloads = load_quest_payloads(repo_root)
+    return [
+        {
+            "schema_version": "quest_dispatch_v1",
+            "id": quest_id,
+            "repo": payloads[quest_id]["repo"],
+            "state": payloads[quest_id]["state"],
+            "band": payloads[quest_id]["band"],
+            "difficulty": payloads[quest_id]["difficulty"],
+            "risk": payloads[quest_id]["risk"],
+            "control_mode": payloads[quest_id]["control_mode"],
+            "delegate_tier": payloads[quest_id]["delegate_tier"],
+            "split_required": payloads[quest_id].get("split_required", False),
+            "write_scope": payloads[quest_id]["write_scope"],
+            "requires_artifacts": QUEST_DISPATCH_ARTIFACTS[quest_id],
+            "activation_mode": payloads[quest_id]["activation"]["mode"],
+            "source_path": f"quests/{quest_id}.yaml",
+            "public_safe": payloads[quest_id]["public_safe"],
+            "fallback_tier": payloads[quest_id].get("fallback_tier"),
+            "wrapper_class": payloads[quest_id].get("wrapper_class"),
+        }
+        for quest_id in QUEST_IDS
+    ]
+
+
+def build_questbook_surface_outputs(repo_root: Path) -> dict[Path, str]:
+    catalog_payload = build_quest_catalog_payload(repo_root)
+    dispatch_payload = build_quest_dispatch_payload(repo_root)
+    return {
+        QUEST_CATALOG_JSON_PATH: render_json(catalog_payload, indent=None),
+        QUEST_DISPATCH_JSON_PATH: render_json(dispatch_payload, indent=None),
+        QUEST_CATALOG_EXAMPLE_PATH: render_json(catalog_payload, indent=2),
+        QUEST_DISPATCH_EXAMPLE_PATH: render_json(dispatch_payload, indent=2),
+    }
+
+
+def questbook_surface_enabled(repo_root: Path) -> bool:
+    markers = (
+        repo_root / "QUESTBOOK.md",
+        repo_root / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md",
+        repo_root / "quests",
+        repo_root / "schemas" / "quest.schema.json",
+        repo_root / "schemas" / "quest_dispatch.schema.json",
+    )
+    return repo_root == REPO_ROOT or any(path.exists() for path in markers)
 
 
 def evaluation_coverage_by_skill(
@@ -859,8 +966,8 @@ def build_skill_graph_outputs(repo_root: Path) -> dict[Path, str]:
     }
 
 
-def generated_surface_specs() -> tuple[GeneratedSurfaceSpec, ...]:
-    return (
+def generated_surface_specs(repo_root: Path = REPO_ROOT) -> tuple[GeneratedSurfaceSpec, ...]:
+    specs: list[GeneratedSurfaceSpec] = [
         GeneratedSurfaceSpec(
             key="catalogs",
             outputs=(
@@ -1042,11 +1149,38 @@ def generated_surface_specs() -> tuple[GeneratedSurfaceSpec, ...]:
             ),
             build_texts=build_skill_graph_outputs,
         ),
-    )
+    ]
+    if questbook_surface_enabled(repo_root):
+        specs.insert(
+            3,
+            GeneratedSurfaceSpec(
+                key="questbook",
+                outputs=(
+                    GeneratedSurfaceOutput(
+                        path=QUEST_CATALOG_JSON_PATH,
+                        is_json=True,
+                    ),
+                    GeneratedSurfaceOutput(
+                        path=QUEST_DISPATCH_JSON_PATH,
+                        is_json=True,
+                    ),
+                    GeneratedSurfaceOutput(
+                        path=QUEST_CATALOG_EXAMPLE_PATH,
+                        is_json=True,
+                    ),
+                    GeneratedSurfaceOutput(
+                        path=QUEST_DISPATCH_EXAMPLE_PATH,
+                        is_json=True,
+                    ),
+                ),
+                build_texts=build_questbook_surface_outputs,
+            ),
+        )
+    return tuple(specs)
 
 
-def generated_surface_spec(key: str) -> GeneratedSurfaceSpec:
-    for spec in generated_surface_specs():
+def generated_surface_spec(key: str, repo_root: Path = REPO_ROOT) -> GeneratedSurfaceSpec:
+    for spec in generated_surface_specs(repo_root):
         if spec.key == key:
             return spec
     raise KeyError(key)
@@ -1089,22 +1223,25 @@ def check_generated_surface(repo_root: Path, spec: GeneratedSurfaceSpec) -> list
 
 
 def write_catalogs(repo_root: Path) -> tuple[Path, Path]:
-    written_paths = write_generated_surface(repo_root, generated_surface_spec("catalogs"))
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("catalogs", repo_root),
+    )
     return written_paths[0], written_paths[1]
 
 
 def write_capsules(repo_root: Path) -> Path:
-    return write_generated_surface(repo_root, generated_surface_spec("capsules"))[0]
+    return write_generated_surface(repo_root, generated_surface_spec("capsules", repo_root))[0]
 
 
 def write_sections(repo_root: Path) -> Path:
-    return write_generated_surface(repo_root, generated_surface_spec("sections"))[0]
+    return write_generated_surface(repo_root, generated_surface_spec("sections", repo_root))[0]
 
 
 def write_walkthroughs(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("walkthroughs"),
+        generated_surface_spec("walkthroughs", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1112,7 +1249,7 @@ def write_walkthroughs(repo_root: Path) -> tuple[Path, Path]:
 def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("public_surface"),
+        generated_surface_spec("public_surface", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1120,7 +1257,7 @@ def write_public_surface(repo_root: Path) -> tuple[Path, Path]:
 def write_evaluation_matrix(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("evaluation_matrix"),
+        generated_surface_spec("evaluation_matrix", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1128,7 +1265,7 @@ def write_evaluation_matrix(repo_root: Path) -> tuple[Path, Path]:
 def write_lineage_surface(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("lineage_surface"),
+        generated_surface_spec("lineage_surface", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1136,7 +1273,7 @@ def write_lineage_surface(repo_root: Path) -> tuple[Path, Path]:
 def write_boundary_matrix(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("boundary_matrix"),
+        generated_surface_spec("boundary_matrix", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1144,7 +1281,7 @@ def write_boundary_matrix(repo_root: Path) -> tuple[Path, Path]:
 def write_governance_backlog(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("governance_backlog"),
+        generated_surface_spec("governance_backlog", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1152,7 +1289,7 @@ def write_governance_backlog(repo_root: Path) -> tuple[Path, Path]:
 def write_skill_composition_audit(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("skill_composition_audit"),
+        generated_surface_spec("skill_composition_audit", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1160,7 +1297,7 @@ def write_skill_composition_audit(repo_root: Path) -> tuple[Path, Path]:
 def write_overlay_readiness(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("overlay_readiness"),
+        generated_surface_spec("overlay_readiness", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1168,7 +1305,7 @@ def write_overlay_readiness(repo_root: Path) -> tuple[Path, Path]:
 def write_bundle_index(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("bundle_index"),
+        generated_surface_spec("bundle_index", repo_root),
     )
     return written_paths[0], written_paths[1]
 
@@ -1176,70 +1313,70 @@ def write_bundle_index(repo_root: Path) -> tuple[Path, Path]:
 def write_skill_graph(repo_root: Path) -> tuple[Path, Path]:
     written_paths = write_generated_surface(
         repo_root,
-        generated_surface_spec("skill_graph"),
+        generated_surface_spec("skill_graph", repo_root),
     )
     return written_paths[0], written_paths[1]
 
 
 def check_catalogs(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("catalogs"))
+    return check_generated_surface(repo_root, generated_surface_spec("catalogs", repo_root))
 
 
 def check_capsules(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("capsules"))
+    return check_generated_surface(repo_root, generated_surface_spec("capsules", repo_root))
 
 
 def check_sections(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("sections"))
+    return check_generated_surface(repo_root, generated_surface_spec("sections", repo_root))
 
 
 def check_walkthroughs(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("walkthroughs"))
+    return check_generated_surface(repo_root, generated_surface_spec("walkthroughs", repo_root))
 
 
 def check_public_surface(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("public_surface"))
+    return check_generated_surface(repo_root, generated_surface_spec("public_surface", repo_root))
 
 
 def check_evaluation_matrix(repo_root: Path) -> list[str]:
     return check_generated_surface(
         repo_root,
-        generated_surface_spec("evaluation_matrix"),
+        generated_surface_spec("evaluation_matrix", repo_root),
     )
 
 
 def check_lineage_surface(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("lineage_surface"))
+    return check_generated_surface(repo_root, generated_surface_spec("lineage_surface", repo_root))
 
 
 def check_boundary_matrix(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("boundary_matrix"))
+    return check_generated_surface(repo_root, generated_surface_spec("boundary_matrix", repo_root))
 
 
 def check_governance_backlog(repo_root: Path) -> list[str]:
     return check_generated_surface(
         repo_root,
-        generated_surface_spec("governance_backlog"),
+        generated_surface_spec("governance_backlog", repo_root),
     )
 
 
 def check_skill_composition_audit(repo_root: Path) -> list[str]:
     return check_generated_surface(
         repo_root,
-        generated_surface_spec("skill_composition_audit"),
+        generated_surface_spec("skill_composition_audit", repo_root),
     )
 
 
 def check_overlay_readiness(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("overlay_readiness"))
+    return check_generated_surface(repo_root, generated_surface_spec("overlay_readiness", repo_root))
 
 
 def check_bundle_index(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("bundle_index"))
+    return check_generated_surface(repo_root, generated_surface_spec("bundle_index", repo_root))
 
 
 def check_skill_graph(repo_root: Path) -> list[str]:
-    return check_generated_surface(repo_root, generated_surface_spec("skill_graph"))
+    return check_generated_surface(repo_root, generated_surface_spec("skill_graph", repo_root))
 
 
 def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> int:
@@ -1248,7 +1385,7 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
         args = parse_args(argv)
         if args.check:
             problems: list[str] = []
-            for spec in generated_surface_specs():
+            for spec in generated_surface_specs(repo_root):
                 problems.extend(check_generated_surface(repo_root, spec))
             if problems:
                 print("Generated surface check failed.")
@@ -1261,7 +1398,7 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
             return 0
 
         written_paths: list[Path] = []
-        for spec in generated_surface_specs():
+        for spec in generated_surface_specs(repo_root):
             written_paths.extend(write_generated_surface(repo_root, spec))
     except (FileNotFoundError, ValueError) as exc:
         print(f"Runtime error: {exc}", file=sys.stderr)

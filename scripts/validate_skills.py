@@ -61,6 +61,8 @@ QUESTBOOK_PATH = Path("QUESTBOOK.md")
 QUESTBOOK_INTEGRATION_PATH = Path("docs") / "QUESTBOOK_SKILL_INTEGRATION.md"
 QUEST_SCHEMA_PATH = Path("schemas") / "quest.schema.json"
 QUEST_DISPATCH_SCHEMA_PATH = Path("schemas") / "quest_dispatch.schema.json"
+QUEST_CATALOG_PATH = Path("generated") / "quest_catalog.min.json"
+QUEST_DISPATCH_PATH = Path("generated") / "quest_dispatch.min.json"
 QUEST_CATALOG_EXAMPLE_PATH = Path("generated") / "quest_catalog.min.example.json"
 QUEST_DISPATCH_EXAMPLE_PATH = Path("generated") / "quest_dispatch.min.example.json"
 QUEST_IDS = (
@@ -283,52 +285,6 @@ def validate_quest_schema_envelope(
     return issues
 
 
-def build_expected_quest_catalog_entry(quest_id: str, payload: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "id": quest_id,
-        "title": payload["title"],
-        "repo": payload["repo"],
-        "theme_ref": payload.get("theme_ref", ""),
-        "milestone_ref": payload.get("milestone_ref", ""),
-        "state": payload["state"],
-        "band": payload["band"],
-        "kind": payload["kind"],
-        "difficulty": payload["difficulty"],
-        "risk": payload["risk"],
-        "owner_surface": payload["owner_surface"],
-        "source_path": f"quests/{quest_id}.yaml",
-        "public_safe": payload["public_safe"],
-    }
-
-
-def build_expected_quest_dispatch_entry(
-    quest_id: str,
-    payload: dict[str, Any],
-    actual: dict[str, Any],
-) -> dict[str, Any]:
-    expected = {
-        "schema_version": "quest_dispatch_v1",
-        "id": quest_id,
-        "repo": payload["repo"],
-        "state": payload["state"],
-        "band": payload["band"],
-        "difficulty": payload["difficulty"],
-        "risk": payload["risk"],
-        "control_mode": payload["control_mode"],
-        "delegate_tier": payload["delegate_tier"],
-        "split_required": payload.get("split_required", False),
-        "write_scope": payload["write_scope"],
-        "activation_mode": payload["activation"]["mode"],
-        "source_path": f"quests/{quest_id}.yaml",
-        "public_safe": payload["public_safe"],
-    }
-    if "fallback_tier" in actual:
-        expected["fallback_tier"] = payload.get("fallback_tier")
-    if "wrapper_class" in actual:
-        expected["wrapper_class"] = payload.get("wrapper_class")
-    return expected
-
-
 def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     required_paths = (
@@ -336,6 +292,8 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
         repo_root / QUESTBOOK_INTEGRATION_PATH,
         repo_root / QUEST_SCHEMA_PATH,
         repo_root / QUEST_DISPATCH_SCHEMA_PATH,
+        repo_root / QUEST_CATALOG_PATH,
+        repo_root / QUEST_DISPATCH_PATH,
         repo_root / QUEST_CATALOG_EXAMPLE_PATH,
         repo_root / QUEST_DISPATCH_EXAMPLE_PATH,
     )
@@ -466,17 +424,50 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
                     )
                 )
 
+    try:
+        expected_catalog = build_catalog.build_quest_catalog_payload(repo_root)
+    except ValueError as exc:
+        issues.append(ValidationIssue("quests", str(exc)))
+        expected_catalog = None
+    live_catalog_payload = load_json_file(repo_root / QUEST_CATALOG_PATH, issues)
+    if (
+        isinstance(live_catalog_payload, list)
+        and len(quest_payloads) == len(QUEST_IDS)
+        and expected_catalog is not None
+    ):
+        if live_catalog_payload != expected_catalog:
+            issues.append(
+                ValidationIssue(
+                    relative_location(repo_root / QUEST_CATALOG_PATH),
+                    "live catalog must stay aligned with quests/*.yaml",
+                )
+            )
+    elif live_catalog_payload is not None:
+        issues.append(
+            ValidationIssue(
+                relative_location(repo_root / QUEST_CATALOG_PATH),
+                "payload must be a JSON array",
+            )
+        )
+
     catalog_payload = load_json_file(repo_root / QUEST_CATALOG_EXAMPLE_PATH, issues)
-    if isinstance(catalog_payload, list) and len(quest_payloads) == len(QUEST_IDS):
-        expected_catalog = [
-            build_expected_quest_catalog_entry(quest_id, quest_payloads[quest_id])
-            for quest_id in QUEST_IDS
-        ]
+    if (
+        isinstance(catalog_payload, list)
+        and len(quest_payloads) == len(QUEST_IDS)
+        and expected_catalog is not None
+    ):
         if catalog_payload != expected_catalog:
             issues.append(
                 ValidationIssue(
                     relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
                     "example catalog must stay aligned with quests/*.yaml",
+                )
+            )
+        elif catalog_payload != live_catalog_payload:
+            issues.append(
+                ValidationIssue(
+                    relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
+                    "example catalog must match generated/quest_catalog.min.json",
                 )
             )
     elif catalog_payload is not None:
@@ -487,17 +478,26 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             )
         )
 
-    dispatch_payload = load_json_file(repo_root / QUEST_DISPATCH_EXAMPLE_PATH, issues)
-    if isinstance(dispatch_payload, list) and len(quest_payloads) == len(QUEST_IDS):
-        if len(dispatch_payload) != len(QUEST_IDS):
+    try:
+        expected_dispatch = build_catalog.build_quest_dispatch_payload(repo_root)
+    except ValueError as exc:
+        issues.append(ValidationIssue("quests", str(exc)))
+        expected_dispatch = None
+    live_dispatch_payload = load_json_file(repo_root / QUEST_DISPATCH_PATH, issues)
+    if (
+        isinstance(live_dispatch_payload, list)
+        and len(quest_payloads) == len(QUEST_IDS)
+        and expected_dispatch is not None
+    ):
+        if len(live_dispatch_payload) != len(QUEST_IDS):
             issues.append(
                 ValidationIssue(
-                    relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                    f"expected {len(QUEST_IDS)} dispatch examples",
+                    relative_location(repo_root / QUEST_DISPATCH_PATH),
+                    f"expected {len(QUEST_IDS)} dispatch entries",
                 )
             )
-        for entry, quest_id in zip(dispatch_payload, QUEST_IDS):
-            location = relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH)
+        for entry, quest_id in zip(live_dispatch_payload, QUEST_IDS):
+            location = relative_location(repo_root / QUEST_DISPATCH_PATH)
             if not isinstance(entry, dict):
                 issues.append(
                     ValidationIssue(location, "dispatch entries must be JSON objects")
@@ -514,17 +514,42 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
                         f"dispatch entry '{quest_id}' must keep a non-empty requires_artifacts list",
                     )
                 )
-            expected_entry = build_expected_quest_dispatch_entry(
-                quest_id, quest_payloads[quest_id], entry
-            )
-            comparable_entry = {key: entry.get(key) for key in expected_entry}
-            if comparable_entry != expected_entry:
+            expected_entry = expected_dispatch[QUEST_IDS.index(quest_id)]
+            if entry != expected_entry:
                 issues.append(
                     ValidationIssue(
                         location,
                         f"dispatch entry '{quest_id}' must stay aligned with quests/*.yaml",
                     )
                 )
+    elif live_dispatch_payload is not None:
+        issues.append(
+            ValidationIssue(
+                relative_location(repo_root / QUEST_DISPATCH_PATH),
+                "payload must be a JSON array",
+            )
+        )
+
+    dispatch_payload = load_json_file(repo_root / QUEST_DISPATCH_EXAMPLE_PATH, issues)
+    if (
+        isinstance(dispatch_payload, list)
+        and len(quest_payloads) == len(QUEST_IDS)
+        and expected_dispatch is not None
+    ):
+        if dispatch_payload != expected_dispatch:
+            issues.append(
+                ValidationIssue(
+                    relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
+                    "example dispatch must stay aligned with quests/*.yaml",
+                )
+            )
+        elif dispatch_payload != live_dispatch_payload:
+            issues.append(
+                ValidationIssue(
+                    relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
+                    "example dispatch must match generated/quest_dispatch.min.json",
+                )
+            )
     elif dispatch_payload is not None:
         issues.append(
             ValidationIssue(
@@ -2798,7 +2823,7 @@ def validate_additional_generated_surfaces(repo_root: Path) -> list[ValidationIs
         "public_surface",
         "evaluation_matrix",
     }
-    for spec in build_catalog.generated_surface_specs():
+    for spec in build_catalog.generated_surface_specs(repo_root):
         if spec.key in skipped_keys:
             continue
         issues.extend(validate_generated_surface_from_spec(repo_root, spec))

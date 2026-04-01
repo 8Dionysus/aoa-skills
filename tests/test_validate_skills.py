@@ -549,7 +549,7 @@ class ValidateSkillsTests(unittest.TestCase):
             (repo_root / "config").mkdir(exist_ok=True)
             skill_names = sorted(path.name for path in (repo_root / "skills").iterdir() if path.is_dir())
             self.write_skill_pack_profiles(repo_root, skill_names)
-        for spec in build_catalog.generated_surface_specs():
+        for spec in build_catalog.generated_surface_specs(repo_root):
             build_catalog.write_generated_surface(repo_root, spec)
 
     def write_skill_pack_profiles(self, repo_root: Path, skill_names: list[str]) -> None:
@@ -2936,6 +2936,18 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
                 (REPO_ROOT / "quests" / f"{quest_id}.yaml").read_text(encoding="utf-8"),
             )
         write_text(
+            repo_root / "generated" / "quest_catalog.min.json",
+            (REPO_ROOT / "generated" / "quest_catalog.min.json").read_text(
+                encoding="utf-8"
+            ),
+        )
+        write_text(
+            repo_root / "generated" / "quest_dispatch.min.json",
+            (REPO_ROOT / "generated" / "quest_dispatch.min.json").read_text(
+                encoding="utf-8"
+            ),
+        )
+        write_text(
             repo_root / "generated" / "quest_catalog.min.example.json",
             (REPO_ROOT / "generated" / "quest_catalog.min.example.json").read_text(
                 encoding="utf-8"
@@ -3022,6 +3034,44 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
             self.assertTrue(
                 any(
                     issue.message == "example catalog must stay aligned with quests/*.yaml"
+                    for issue in issues
+                )
+            )
+
+    def test_missing_live_catalog_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            (repo_root / "generated" / "quest_catalog.min.json").unlink()
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+            self.assertTrue(
+                any(
+                    issue.location.endswith("quest_catalog.min.json")
+                    and issue.message == "file is missing"
+                    for issue in issues
+                )
+            )
+
+    def test_live_dispatch_drift_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            write_text(
+                repo_root / "generated" / "quest_dispatch.min.json",
+                (repo_root / "generated" / "quest_dispatch.min.json")
+                .read_text(encoding="utf-8")
+                .replace(
+                    '"source_path":"quests/AOA-SK-Q-0004.yaml"',
+                    '"source_path":"quests/AOA-SK-Q-9999.yaml"',
+                ),
+            )
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+            self.assertTrue(
+                any(
+                    issue.message
+                    == "dispatch entry 'AOA-SK-Q-0004' must stay aligned with quests/*.yaml"
                     for issue in issues
                 )
             )
