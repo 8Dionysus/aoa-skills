@@ -229,7 +229,11 @@ def validate_governance_lanes(
     issues: list[GovernanceLaneIssue] = []
     manifest_path = repo_root / GOVERNANCE_LANES_PATH
     known_sources: dict[str, Mapping[str, Any]] = {}
-    for skill_name in skill_source_model.discover_skill_names(repo_root):
+    try:
+        discovered_skill_names = skill_source_model.discover_skill_names(repo_root)
+    except FileNotFoundError:
+        discovered_skill_names = []
+    for skill_name in discovered_skill_names:
         skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
         if not skill_md_path.is_file():
             continue

@@ -63,6 +63,58 @@ def write_text(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def write_valid_questbook_surface(repo_root: Path) -> None:
+    write_text(
+        repo_root / "QUESTBOOK.md",
+        (REPO_ROOT / "QUESTBOOK.md").read_text(encoding="utf-8"),
+    )
+    write_text(
+        repo_root / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md",
+        (REPO_ROOT / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md").read_text(
+            encoding="utf-8"
+        ),
+    )
+    write_text(
+        repo_root / "schemas" / "quest.schema.json",
+        (REPO_ROOT / "schemas" / "quest.schema.json").read_text(encoding="utf-8"),
+    )
+    write_text(
+        repo_root / "schemas" / "quest_dispatch.schema.json",
+        (REPO_ROOT / "schemas" / "quest_dispatch.schema.json").read_text(
+            encoding="utf-8"
+        ),
+    )
+    for quest_id in validate_skills.QUEST_IDS:
+        write_text(
+            repo_root / "quests" / f"{quest_id}.yaml",
+            (REPO_ROOT / "quests" / f"{quest_id}.yaml").read_text(encoding="utf-8"),
+        )
+    write_text(
+        repo_root / "generated" / "quest_catalog.min.json",
+        (REPO_ROOT / "generated" / "quest_catalog.min.json").read_text(
+            encoding="utf-8"
+        ),
+    )
+    write_text(
+        repo_root / "generated" / "quest_dispatch.min.json",
+        (REPO_ROOT / "generated" / "quest_dispatch.min.json").read_text(
+            encoding="utf-8"
+        ),
+    )
+    write_text(
+        repo_root / "generated" / "quest_catalog.min.example.json",
+        (REPO_ROOT / "generated" / "quest_catalog.min.example.json").read_text(
+            encoding="utf-8"
+        ),
+    )
+    write_text(
+        repo_root / "generated" / "quest_dispatch.min.example.json",
+        (REPO_ROOT / "generated" / "quest_dispatch.min.example.json").read_text(
+            encoding="utf-8"
+        ),
+    )
+
+
 class ValidateSkillsTests(unittest.TestCase):
     def add_skill_bundle(
         self,
@@ -243,6 +295,7 @@ class ValidateSkillsTests(unittest.TestCase):
         self.addCleanup(shutil.rmtree, repo_root, True)
         (repo_root / "skills").mkdir()
         (repo_root / "config").mkdir()
+        write_valid_questbook_surface(repo_root)
 
         if index_names is None:
             index_names = [skill_name]
@@ -544,6 +597,8 @@ class ValidateSkillsTests(unittest.TestCase):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
     def write_catalogs(self, repo_root: Path) -> None:
+        if not (repo_root / "QUESTBOOK.md").is_file():
+            write_valid_questbook_surface(repo_root)
         config_path = repo_root / "config" / "skill_pack_profiles.json"
         if not config_path.exists():
             (repo_root / "config").mkdir(exist_ok=True)
@@ -801,6 +856,7 @@ class ValidateSkillsTests(unittest.TestCase):
         repo_root = Path(tempfile.mkdtemp(prefix="aoa-skills-validator-"))
         self.addCleanup(shutil.rmtree, repo_root, True)
         (repo_root / "skills").mkdir()
+        write_valid_questbook_surface(repo_root)
 
         skill_specs = [
             skill_spec
@@ -2910,55 +2966,7 @@ class ValidateSkillsTests(unittest.TestCase):
 
 class ValidateQuestbookSurfaceTests(unittest.TestCase):
     def write_valid_surface(self, repo_root: Path) -> None:
-        write_text(
-            repo_root / "QUESTBOOK.md",
-            (REPO_ROOT / "QUESTBOOK.md").read_text(encoding="utf-8"),
-        )
-        write_text(
-            repo_root / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md",
-            (REPO_ROOT / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md").read_text(
-                encoding="utf-8"
-            ),
-        )
-        write_text(
-            repo_root / "schemas" / "quest.schema.json",
-            (REPO_ROOT / "schemas" / "quest.schema.json").read_text(encoding="utf-8"),
-        )
-        write_text(
-            repo_root / "schemas" / "quest_dispatch.schema.json",
-            (REPO_ROOT / "schemas" / "quest_dispatch.schema.json").read_text(
-                encoding="utf-8"
-            ),
-        )
-        for quest_id in validate_skills.QUEST_IDS:
-            write_text(
-                repo_root / "quests" / f"{quest_id}.yaml",
-                (REPO_ROOT / "quests" / f"{quest_id}.yaml").read_text(encoding="utf-8"),
-            )
-        write_text(
-            repo_root / "generated" / "quest_catalog.min.json",
-            (REPO_ROOT / "generated" / "quest_catalog.min.json").read_text(
-                encoding="utf-8"
-            ),
-        )
-        write_text(
-            repo_root / "generated" / "quest_dispatch.min.json",
-            (REPO_ROOT / "generated" / "quest_dispatch.min.json").read_text(
-                encoding="utf-8"
-            ),
-        )
-        write_text(
-            repo_root / "generated" / "quest_catalog.min.example.json",
-            (REPO_ROOT / "generated" / "quest_catalog.min.example.json").read_text(
-                encoding="utf-8"
-            ),
-        )
-        write_text(
-            repo_root / "generated" / "quest_dispatch.min.example.json",
-            (REPO_ROOT / "generated" / "quest_dispatch.min.example.json").read_text(
-                encoding="utf-8"
-            ),
-        )
+        write_valid_questbook_surface(repo_root)
 
     def test_valid_questbook_surface_passes(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -3072,6 +3080,67 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
                 any(
                     issue.message
                     == "dispatch entry 'AOA-SK-Q-0004' must stay aligned with quests/*.yaml"
+                    for issue in issues
+                )
+            )
+
+    def test_missing_activation_reports_issue_without_key_error(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            quest_path = repo_root / "quests" / "AOA-SK-Q-0001.yaml"
+            quest_text = quest_path.read_text(encoding="utf-8")
+            write_text(
+                quest_path,
+                quest_text[: quest_text.index("activation:")]
+                + quest_text[quest_text.index("evidence:") :],
+            )
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+
+            self.assertTrue(
+                any(
+                    issue.location.endswith("AOA-SK-Q-0001.yaml")
+                    and "schema violation" in issue.message
+                    for issue in issues
+                )
+            )
+
+    def test_example_dispatch_optional_field_uses_schema_validation(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            dispatch_path = repo_root / "generated" / "quest_dispatch.min.example.json"
+            dispatch_payload = json.loads(dispatch_path.read_text(encoding="utf-8"))
+            dispatch_payload[0]["fallback_tier"] = None
+            write_text(dispatch_path, json.dumps(dispatch_payload, indent=2) + "\n")
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+
+            self.assertTrue(
+                any(
+                    issue.location.endswith("quest_dispatch.min.example.json[0]")
+                    and "fallback_tier" in issue.message
+                    for issue in issues
+                )
+            )
+            self.assertFalse(
+                any(
+                    issue.message == "example dispatch must stay aligned with quests/*.yaml"
+                    for issue in issues
+                )
+            )
+
+    def test_run_validation_reports_missing_questbook_surface_without_gate(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+
+            issues = validate_skills.run_validation(repo_root)
+
+            self.assertTrue(
+                any(
+                    issue.location.endswith("QUESTBOOK.md")
+                    and issue.message == "file is missing"
                     for issue in issues
                 )
             )
