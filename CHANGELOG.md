@@ -7,8 +7,23 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-04-01
+
+Second public release of `aoa-skills`.
+
+This changelog entry uses the release-prep merge date.
+
+### Summary
+
+- current public skill surface now ships `19` committed skill bundles, up from `17` in `v0.1.0`
+- this release expands the runtime/export layer with staged bundle inspection and import, install profiles, guardrails, description-trigger evaluation, deterministic support resources, and tiny-router inputs
+- the repo now exposes stronger downstream bridges for `aoa-playbooks`, questbook projections, and consumer feed contracts while keeping scenario ownership out of the skill layer
+
 ### Added
 
+- inspect-first staged bundle import flow, bundle-local `README.md` handoff guides, and packaging smoke coverage for portable skill handoffs
+- questbook manual-first skill pilot and live questbook projection surfaces
+- skill downstream feed contracts and ability adjunct surfaces for current consumers
 - wave-4 dedicated-tool runtime seam around the generated Codex-facing export, including discover, disclose, activate, session-status, deactivate, and compaction-safe rehydration surfaces
 - wave-6 governed runtime guardrails with repo trust gating, read-only allowlists, and context-guard session metadata around skill activation
 - wave-7 description-first activation-contract coverage, including description-trigger evals and the soft `skills-ref` conformance lane
@@ -20,6 +35,21 @@ Tracking starts with the community-docs baseline for this repository.
 - hardened the generated Codex-facing portable layer with wave-3 install profiles, trust policy, context-retention metadata, runtime contracts, UI assets, and config snippets while keeping repo-level release identity separate from seed-pack metadata
 - promoted `scripts/skill_runtime_guardrails.py` to the primary local-friendly runtime path while keeping `scripts/skill_runtime_seam.py` as the raw/debug seam and `scripts/activate_skill.py` as the backward-compatible shim
 - kept wave-5 scenario canon out of `aoa-skills`, exposing only `generated/skill_handoff_contracts.json` as the downstream bridge for `aoa-playbooks`
+- validation and generated-surface parity now cover the staged handoff, questbook, support-resource, and tiny-router families in the bounded release path
+
+### Included in this release
+
+- `19` total skills under `skills/` plus the generated Codex-facing export under `.agents/skills/`
+- updated runtime, governance, evaluation, packaging, and tiny-router surfaces under `generated/`, `config/`, `scripts/`, and `docs/`
+
+### Validation
+
+- `python scripts/release_check.py`
+
+### Notes
+
+- release identity for this repository remains the changelog entry, Git tag, and GitHub release body
+- package publishing and per-skill release metadata remain out of scope for `v0.2.0`
 
 ## [0.1.0] - 2026-03-23
 

@@ -150,8 +150,8 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual(release_manifest["skill_count"], 19)
         self.assertEqual(release_manifest["explicit_only_count"], 7)
         self.assertEqual(release_manifest["profile_count"], 6)
-        self.assertEqual(release_manifest["release_identity"]["latest_tagged_version"], "0.1.0")
-        self.assertTrue(release_manifest["release_identity"]["has_unreleased_changes"])
+        self.assertEqual(release_manifest["release_identity"]["latest_tagged_version"], "0.2.0")
+        self.assertFalse(release_manifest["release_identity"]["has_unreleased_changes"])
         self.assertEqual(
             release_manifest["relationship_views"],
             [

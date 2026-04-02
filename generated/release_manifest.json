@@ -644,8 +644,8 @@
   "release_identity": {
     "changelog": "CHANGELOG.md",
     "releasing_doc": "docs/RELEASING.md",
-    "latest_tagged_version": "0.1.0",
-    "latest_tagged_date": "2026-03-23",
-    "has_unreleased_changes": true
+    "latest_tagged_version": "0.2.0",
+    "latest_tagged_date": "2026-04-01",
+    "has_unreleased_changes": false
   }
 }
