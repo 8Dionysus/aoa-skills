@@ -4,14 +4,9 @@ Guidance for coding agents and humans contributing to `aoa-skills`.
 
 ## Purpose
 
-`aoa-skills` is the bounded execution canon of AoA.
+`aoa-skills` is the bounded execution canon of AoA. It stores public, reusable, Codex-facing skill bundles that package reusable practice into reviewable workflows an agent can execute.
 
-It stores public, reusable, Codex-facing skill bundles that package reusable
-practice into reviewable workflows an agent can execute. A skill is normally a
-multi-technique or multi-action package; a single-technique skill is allowed
-only as an explicit reviewed exception.
-
-A skill here is not the origin of practice. It is the bounded execution form of practice.
+A skill is normally a multi-technique or multi-action package. A single-technique skill is allowed only as an explicit reviewed exception.
 
 ## Owns
 
@@ -23,19 +18,19 @@ This repository is the source of truth for:
 - skill-level inputs and outputs
 - reviewability and anti-pattern language at the skill layer
 - technique dependency declaration at the skill layer
-- generated skill catalogs, capsules, and portable export surfaces
+- generated skill catalogs, capsules, portable export surfaces, and bounded bridge manifests derived from canonical skills
 
 ## Does not own
 
 Do not treat this repository as the source of truth for:
 
 - reusable engineering techniques in `aoa-techniques`
-- proof doctrine or bounded verdict logic in `aoa-evals`
+- proof doctrine or verdict logic in `aoa-evals`
 - routing and dispatch logic in `aoa-routing`
 - role contracts in `aoa-agents`
-- higher-level scenario composition in `aoa-playbooks`
+- scenario composition in `aoa-playbooks`
 - memory objects or recall surfaces in `aoa-memo`
-- derived knowledge substrate semantics in `aoa-kag`
+- derived substrate semantics in `aoa-kag`
 - private project-specific operations or unsanitized internal instructions
 
 ## Core rule
@@ -48,7 +43,7 @@ Only contribute skills that are:
 - useful to Codex
 - traceable to reusable practice
 
-If upstream practice already has a canonical home, do not duplicate it here as shallow technique prose.
+A skill is not the origin of practice. If the meaning belongs upstream, route to the upstream repo instead of duplicating it here.
 
 ## Read this first
 
@@ -57,67 +52,25 @@ Before making changes, read in this order:
 1. `README.md`
 2. `docs/ARCHITECTURE.md`
 3. `docs/BRIDGE_SPEC.md`
-4. the target `skills/*/SKILL.md`
-5. any generated skill catalogs or capsules affected by the task
+4. `docs/LAYER_POSITION.md`
+5. the target `skills/*/SKILL.md`
+6. any generated surfaces directly affected by the task
 
 If the task touches technique dependencies, inspect the upstream technique bundles before editing.
+
+If a deeper directory defines its own `AGENTS.md`, follow the nearest one.
 
 ## Primary objects
 
 The most important objects in this repository are:
 
-- `skills/*/SKILL.md`
-- `skills/*/techniques.yaml` or the current dependency source for the skill
-- `config/portable_skill_overrides.json`
-- optional `config/openai_skill_extensions.json`
-- `config/skill_pack_profiles.json`
-- `config/skill_policy_matrix.json`
-- `config/description_trigger_eval_policy.json`
-- `config/tiny_router_skill_bands.json`
-- targeted canonical support resources under `skills/*/{scripts,references,assets}` when a skill owns deterministic helpers
-- generated `.agents/skills/*` export files
-- generated portable catalogs and manifests
-- `generated/skill_handoff_contracts.json` as a skill-derived downstream bridge for playbooks
-- generated description-trigger eval and conformance manifests
-- generated wave-8 support-resource manifests
-- generated wave-9 tiny-router bridge manifests
-- generated skill capsules
-- architecture and bridge docs referenced by the README
-
-## Allowed changes
-
-Safe, normal contributions include:
-
-- refining a skill’s bounded workflow
-- tightening trigger boundaries
-- improving inputs, outputs, anti-patterns, and verification wording
-- aligning a skill more clearly with upstream techniques
-- fixing metadata drift between source files and generated outputs
-- adding a new skill when it clearly packages upstream practice into a bounded workflow
-
-## Changes requiring extra care
-
-Use extra caution when:
-
-- changing skill names or identifiers
-- changing canonical/evaluated/scaffold status
-- changing technique dependency shape
-- changing generated catalog or capsule shape
-- changing wording that downstream eval bundles or routing surfaces may rely on
-- widening a skill beyond a bounded workflow into something that should be a playbook
+- canonical skill bundles under `skills/*/SKILL.md`
+- dependency and policy inputs under `skills/*/techniques.yaml` and `config/`
+- deterministic support resources under `skills/*/{scripts,references,assets}`
+- generated catalogs, capsules, walkthroughs, export surfaces, and bridge manifests under `generated/` and `.agents/skills/`
+- architecture, bridge, runtime, and portable-layer docs under `docs/`
 
 ## Hard NO
-
-Do not contribute:
-
-- secrets
-- tokens
-- internal-only URLs
-- sensitive infrastructure details
-- project-only dumps with no reusable overlay framing
-- hidden destructive workflows with unclear safety boundaries
-- skills with vague trigger boundaries
-- skills that silently widen scope beyond the stated task
 
 Do not:
 
@@ -126,163 +79,68 @@ Do not:
 - store role-contract meaning here
 - store memory meaning here
 - collapse scenario-level playbooks into the skill layer
+- commit secrets, tokens, internal-only URLs, or sensitive infrastructure detail
+- hide destructive workflows behind vague trigger boundaries
+- silently widen scope beyond the stated task
 
-## Repository doctrine
-
-### Techniques and skills are not the same thing
-
-- `aoa-techniques` stores reusable engineering techniques
-- `aoa-skills` stores agent-facing skill bundles
-
-A skill may depend on one or more techniques, but the default shape is a
-composed package rather than a one-technique lift.
-A technique should not be copied here as a shallow duplicate.
-
-## Required for every skill bundle
-
-Each skill should include:
-
-- a canonical `SKILL.md`
-- clear intent
-- trigger boundary
-- inputs and outputs
-- explicit contracts
-- risks and anti-patterns
-- verification guidance
-- technique traceability when relevant
-- adaptation points for project overlays
-- an explicit exception review when the skill is intentionally single-technique
-
-Recommended when relevant:
-
-- dependency manifests
-- agent-specific overlay files
-- examples or checks for risk-heavy skills
-
-## Public hygiene
-
-Assume everything here is public and reusable by strangers.
-
-Write for portability:
-
-- generalize private paths
-- generalize internal hostnames
-- strip secrets
-- keep runtime assumptions explicit
-- prefer small explicit workflow contracts
-
-## Codex-facing portable skills
-
-- `.agents/skills/*` is a generated Codex-facing export layer. Do not hand-edit exported skill files unless the task is explicitly about export debugging.
-- Canonical authoring remains in `skills/*/SKILL.md`, `generated/skill_sections.full.json`, `generated/skill_catalog.min.json`, `config/portable_skill_overrides.json`, `config/skill_pack_profiles.json`, and `config/skill_policy_matrix.json`.
-- Optional per-skill OpenAI metadata extensions live in `config/openai_skill_extensions.json`.
-- Canonical `scripts/`, `references/`, and `assets/` live under `skills/*`; `.agents/skills/*/{scripts,references,assets}` remains a generated mirror owned by `scripts/build_agent_skills.py`.
-- After changing canonical skill bodies, invocation modes, description overrides, pack profiles, policy posture, or skill resources, run:
-  - `python scripts/build_agent_skills.py --repo-root .`
-  - `python scripts/build_runtime_seam.py --repo-root .`
-  - `python scripts/build_runtime_guardrails.py --repo-root .`
-  - `python scripts/build_description_trigger_evals.py --repo-root .`
-  - `python scripts/build_support_resources.py --repo-root .`
-  - `python scripts/build_tiny_router_inputs.py --repo-root .`
-  - `python scripts/validate_agent_skills.py --repo-root .`
-  - `python scripts/validate_support_resources.py --repo-root . --check-portable`
-  - `python scripts/validate_tiny_router_inputs.py --repo-root .`
-  - `python scripts/lint_trigger_evals.py --repo-root .`
-  - `python scripts/lint_description_trigger_evals.py --repo-root .`
-  - `python scripts/lint_pack_profiles.py --repo-root .`
-  - `python scripts/lint_support_resources.py --repo-root .`
-  - `python scripts/run_skills_ref_validation.py --repo-root .`
-- Use `python scripts/skill_runtime_guardrails.py discover|disclose|activate --repo-root . ...` as the primary local-friendly runtime path.
-- `python scripts/skill_runtime_seam.py discover|disclose|activate --repo-root . ...` remains the raw/debug runtime seam.
-- `python scripts/activate_skill.py --repo-root . --skill <skill-name> --format json` remains the backward-compatible legacy shim for older local wrappers.
-- Respect `policy.allow_implicit_invocation`: explicit-only skills must not be auto-selected by local wrappers.
-- `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/runtime_*.json`, `generated/*guardrail*.json`, `generated/skill_description_signals.json`, `generated/description_trigger_eval_cases.*`, `generated/skills_ref_validation_manifest.json`, and the wave-8 support-resource manifests are generated support layers around the same export, not a second source of truth.
-- `generated/tiny_router_skill_signals.json`, `generated/tiny_router_candidate_bands.json`, `generated/tiny_router_capsules.min.json`, `generated/tiny_router_eval_cases.jsonl`, and `generated/tiny_router_overlay_manifest.json` are skill-derived downstream bridges for two-stage routing; they must stay compression surfaces only and must not become router-policy authority.
-- `generated/skill_handoff_contracts.json` is a skill-derived downstream bridge for `aoa-playbooks`; it must stay extracted from canonical skill sections and must not become authored scenario composition inside this repo.
-- When descriptions or trigger boundaries change, update `generated/skill_trigger_eval_cases.jsonl`, `generated/skill_trigger_collision_matrix.json`, and the wave-7 description-trigger outputs in the same change.
-
-## Local working notes
-
-- `TODO.local.md` and `PLANS.local.md` are local-only working files for private task control
-- `seeds/` is a local-only scratch area for seed files and stays out of git
-- keep them out of git
-- public roadmap or canonical docs must remain visible to git if the repo defines them that way
+Do not hand-edit `.agents/skills/*` unless the task is explicitly about export debugging. Canonical authoring remains in `skills/*`, `config/`, and the documented generated manifests.
 
 ## Contribution doctrine
 
-Use this flow:
-
-`PLAN -> DIFF -> VERIFY -> REPORT`
+Use this flow: `PLAN -> DIFF -> VERIFY -> REPORT`
 
 ### PLAN
 
 State:
 
-- what skill is being added or changed
-- which upstream techniques it depends on
-- what the main risk is
-- whether downstream eval or routing surfaces may be affected
+- which skill or surface family is changing
+- whether trigger boundaries, contracts, or technique dependencies are changing
+- whether portable export or downstream bridge surfaces will change
+- what boundary risk exists
 
 ### DIFF
 
-Keep the change focused.
-
-Do not mix unrelated repository cleanup into a skill PR unless it is necessary for repository integrity.
+Keep the change focused and reviewable. Preserve portability, public hygiene, and bounded execution. Do not mix unrelated cleanup into skill meaning unless it is necessary for repository integrity.
 
 ### VERIFY
 
-Confirm that:
+Run the smallest applicable validation set from `README.md`.
 
-- the skill remains bounded
-- the trigger boundary is still coherent
-- the skill remains public-safe
-- technique references are still accurate
-- the output remains reviewable by another human or agent
+Minimum validation for canonical skill changes:
 
-If metadata or generated skill surfaces changed, regenerate and validate them.
+```bash
+python scripts/build_catalog.py
+python scripts/validate_skills.py
+```
+
+Use the full repo check when the change is broad:
+
+```bash
+python scripts/release_check.py
+```
+
+If you touched portable export, policy posture, descriptions, deterministic resources, or tiny-router bridge inputs, also run the documented build and validation commands for those families before finishing.
 
 ### REPORT
 
 Summarize:
 
 - what changed
-- whether skill meaning changed or only metadata changed
-- which techniques were referenced or refreshed
-- whether generated outputs changed
-- any remaining limits or follow-up work
+- whether meaning changed or only docs, metadata, or generated surfaces changed
+- whether trigger boundaries or technique dependencies changed
+- whether portable export or downstream bridge surfaces changed
+- what validation you actually ran
+- any remaining follow-up work
 
 ## Validation
 
-Run the validation commands documented in `README.md`.
+Do not claim checks you did not run.
 
-If your change affects generated catalogs, capsules, or bridge outputs, regenerate and validate them before finishing.
+For runtime-path debugging, prefer the documented local paths such as:
 
-Run tests or checks for touched surfaces when available. Do not claim checks you did not run.
+```bash
+python scripts/inspect_skill.py --skill <skill-name>
+python scripts/skill_runtime_guardrails.py discover --repo-root . ...
+```
 
-## Cross-repo neighbors
-
-Use these neighboring repositories when the task crosses boundaries:
-
-- `aoa-techniques` for upstream reusable practice
-- `aoa-evals` for bounded proof surfaces over skill behavior
-- `aoa-routing` for smallest-next-object navigation
-- `aoa-agents` for role contracts, handoff posture, and evaluation posture
-- `aoa-playbooks` for recurring scenario composition
-- `Agents-of-Abyss` for ecosystem-level map and boundary doctrine
-
-## Output expectations
-
-When reporting back after a change, include:
-
-- which skills changed
-- whether workflow meaning changed or only metadata changed
-- whether technique dependencies changed
-- whether generated outputs changed
-- what validation was run
-- any downstream follow-up likely needed in `aoa-evals` or `aoa-routing`
-
-## Default editing posture
-
-Prefer the smallest reviewable change.
-Preserve canonical wording unless the task explicitly requires semantic change.
-If semantic change is made, report it explicitly.
+Those paths are for inspection and activation testing, not for replacing the canonical authoring surface.
