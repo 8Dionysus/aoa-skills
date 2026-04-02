@@ -182,7 +182,7 @@ class VerifySkillPackTests(unittest.TestCase):
         self.assertEqual([], payload["missing_skills"])
         self.assertEqual([], payload["mismatched_skills"])
         self.assertEqual([], payload["extra_skill_dirs"])
-        self.assertEqual("0.1.0", payload["release_identity"]["latest_tagged_version"])
+        self.assertEqual("0.2.0", payload["release_identity"]["latest_tagged_version"])
 
     def test_copy_installed_profile_verifies_successfully(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

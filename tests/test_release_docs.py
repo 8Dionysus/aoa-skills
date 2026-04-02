@@ -11,10 +11,11 @@ RELEASING_PATH = REPO_ROOT / "docs" / "RELEASING.md"
 
 
 class ReleaseDocsTests(unittest.TestCase):
-    def test_changelog_tracks_unreleased_and_v010_entry(self) -> None:
+    def test_changelog_tracks_unreleased_and_latest_release_entry(self) -> None:
         changelog = CHANGELOG_PATH.read_text(encoding="utf-8")
 
         self.assertIn("## [Unreleased]", changelog)
+        self.assertIn("## [0.2.0] - 2026-04-01", changelog)
         self.assertIn("## [0.1.0] - 2026-03-23", changelog)
 
     def test_docs_readme_links_releasing_doc(self) -> None:
