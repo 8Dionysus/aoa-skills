@@ -147,6 +147,17 @@
     {
       "composition_class": "multi_technique",
       "exception_review_path": null,
+      "name": "aoa-quest-harvest",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-QUEST-HARVEST",
+        "AOA-T-PENDING-PROMOTION-TRIAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
       "name": "aoa-safe-infra-change",
       "recommended_action": "keep_multi_technique",
       "technique_count": 2,
@@ -219,9 +230,9 @@
   },
   "summary": {
     "approved_exception_count": 2,
-    "multi_technique_skill_count": 17,
+    "multi_technique_skill_count": 18,
     "needs_reframe_count": 0,
     "single_technique_skill_count": 2,
-    "total_skill_count": 19
+    "total_skill_count": 20
   }
 }

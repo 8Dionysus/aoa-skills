@@ -27,6 +27,25 @@ Do not use it for:
 ## Harvest candidates
 - `AOA-SK-Q-0004` — harvest repeated overlay-specific exceptions into stable skill bundles or playbooks
 
+## Quest-harvest posture
+
+`aoa-quest-harvest` is the installed post-session harvest aid for this repo. It may be rolled out through the narrow `repo-quest-harvest-only` profile, but skill meaning stays source-owned in `aoa-skills`.
+
+- use it only after a reviewed run, closure, or pause
+- do not use it inside an active route
+- it does not define orchestrator identity
+- it does not replace playbook, memo, eval, or source-owned doctrine
+- do not promote on one anecdotal repeat
+
+Allowed verdicts:
+
+- `keep/open quest`
+- `promote to skill`
+- `promote to playbook`
+- `promote to orchestrator surface`
+- `promote to proof surface`
+- `promote to memo surface`
+
 ## Backing files
 
 - `quests/*.yaml`

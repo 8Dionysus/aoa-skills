@@ -88,6 +88,22 @@
       ]
     },
     {
+      "id": "quest-harvest-governance",
+      "summary": "Post-session quest harvest, promotion triage, and owner-surface selection for repeated reviewed patterns.",
+      "cues": [
+        "quest harvest",
+        "promotion triage",
+        "reviewed repeat",
+        "owner surface",
+        "stay a quest",
+        "post session harvest",
+        "promotion target"
+      ],
+      "skills": [
+        "aoa-quest-harvest"
+      ]
+    },
+    {
       "id": "risk-ops-safety",
       "summary": "Approval gates, preview-first execution, infra/runtime change discipline, bringup, and sanitization.",
       "cues": [
@@ -273,6 +289,21 @@
         "audit existing coverage only"
       ]
     },
+    "aoa-quest-harvest": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "quest harvest",
+        "promotion triage",
+        "reviewed repeat",
+        "owner surface",
+        "stay a quest"
+      ],
+      "negative_cues": [
+        "route still active",
+        "one anecdotal occurrence",
+        "invent net-new doctrine"
+      ]
+    },
     "aoa-safe-infra-change": {
       "band": "risk-ops-safety",
       "positive_cues": [
@@ -430,6 +461,10 @@
     "aoa-property-invariants": [
       "aoa-invariant-coverage-audit",
       "aoa-contract-test"
+    ],
+    "aoa-quest-harvest": [
+      "aoa-source-of-truth-check",
+      "aoa-change-protocol"
     ],
     "aoa-safe-infra-change": [
       "aoa-dry-run-first",

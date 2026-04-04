@@ -495,6 +495,41 @@ Common expand sections:
 - `promotion_review`: `docs/reviews/status-promotions/aoa-property-invariants.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-property-invariants.md`
 
+## aoa-quest-harvest
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/aoa-quest-harvest/SKILL.md`
+- pick summary: Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.
+
+### Use when
+
+- a bounded work pattern has repeated and now needs an explicit promotion decision
+- reviewed evidence exists, but the correct destination is still unclear
+- the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest
+- the route needs a compact post-session harvest rather than another free-form discussion
+
+### Do not use when
+
+- the route is still active and the evidence has not been reviewed yet
+- there is only one anecdotal occurrence with no honest repeat signal
+- the task is to invent net-new doctrine rather than classify a repeated pattern
+- the route is already clearly scenario-shaped and only needs playbook authoring
+
+### Object use shape
+
+- promotion verdict
+- owner repo and follow-up surface
+- explicit reason for promotion or non-promotion
+- named next artifact or next quest action
+- concise note on what boundary must remain intact
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-quest-harvest/examples/runtime.md`
+- `review_checklist`: `skills/aoa-quest-harvest/checks/review.md`
+
 ## aoa-safe-infra-change
 
 - scope: `risk`

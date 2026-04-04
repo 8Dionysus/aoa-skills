@@ -18,6 +18,7 @@
         "aoa-local-stack-bringup",
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
+        "aoa-quest-harvest",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
         "aoa-source-of-truth-check",
@@ -41,8 +42,17 @@
         "aoa-invariant-coverage-audit",
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
+        "aoa-quest-harvest",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
+      ]
+    },
+    "repo-quest-harvest-only": {
+      "description": "Install only aoa-quest-harvest into a repository root for explicit post-session quest promotion triage.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-quest-harvest"
       ]
     },
     "repo-risk-explicit": {
@@ -87,6 +97,7 @@
         "aoa-core-logic-boundary",
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
+        "aoa-quest-harvest",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ]

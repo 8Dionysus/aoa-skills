@@ -110,6 +110,16 @@
       "requires_confirmation_seam": false,
       "notes": "Adds invariant-oriented tests or checks to a codebase."
     },
+    "aoa-quest-harvest": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Harvest-only triage skill for deciding whether repeated quest evidence belongs in skills, playbooks, orchestrator surfaces, proof, memo, or a continued quest."
+    },
     "aoa-safe-infra-change": {
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",

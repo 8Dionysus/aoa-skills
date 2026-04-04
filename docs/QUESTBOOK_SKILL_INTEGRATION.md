@@ -31,6 +31,25 @@ A skill quest should usually answer one of these:
 - which runtime export or local adapter contract needs bounded repair
 - which repeated overlay exception wants promotion into a real skill or playbook
 
+## Installed quest-harvest posture
+
+`aoa-quest-harvest` may be installed into repo-local `.agents/skills/aoa-quest-harvest`, but its source of truth remains the canonical bundle in `aoa-skills`.
+
+- use it after a reviewed run, closure, or pause
+- do not invoke it inside an active route
+- it does not define orchestrator identity
+- it does not replace playbook, memo, eval, or source-owned doctrine
+- do not promote on one anecdotal repeat
+
+Its bounded verdict surface is:
+
+- `keep/open quest`
+- `promote to skill`
+- `promote to playbook`
+- `promote to orchestrator surface`
+- `promote to proof surface`
+- `promote to memo surface`
+
 ## Manual-first pilot lane
 
 - `AOA-SK-Q-0002` carried one surviving proof-alignment debt from `aoa-techniques` into the existing derived readouts `generated/governance_backlog.md` and `generated/skill_evaluation_matrix.md`.

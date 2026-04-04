@@ -51,6 +51,16 @@
       ]
     },
     {
+      "family": "quest-promotion-triage",
+      "skills": [
+        "aoa-quest-harvest"
+      ],
+      "notes": [
+        "aoa-quest-harvest decides whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
+        "It is a post-session harvest skill and should not be confused with the promoted surface it may recommend."
+      ]
+    },
+    {
       "family": "safety-and-mutation-gating",
       "skills": [
         "aoa-approval-gate-check",
@@ -280,10 +290,11 @@
       "expected_skill": "aoa-source-of-truth-check",
       "competing_skills": [
         "atm10-source-of-truth-check",
-        "aoa-adr-write"
+        "aoa-adr-write",
+        "aoa-quest-harvest"
       ],
       "prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
-      "note": "Document authority mapping for a generic repo, not an overlay-specific ATM10 case and not a decision record task."
+      "note": "Document authority mapping for a generic repo, not an overlay-specific ATM10 case, a decision record task, or a post-session quest-promotion triage pass."
     },
     {
       "case_id": "collision-18",

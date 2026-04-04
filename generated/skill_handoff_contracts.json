@@ -862,6 +862,79 @@
       }
     },
     {
+      "name": "aoa-quest-harvest",
+      "display_name": "AoA Quest Harvest",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "source quest or quest family",
+        "reviewed run summary or harvest pack",
+        "repeat count and repeat shape",
+        "owner layer and touched surfaces",
+        "difficulty, risk, and control posture",
+        "residual ambiguity or reasons to defer promotion"
+      ],
+      "outputs": [
+        "promotion verdict",
+        "owner repo and follow-up surface",
+        "explicit reason for promotion or non-promotion",
+        "named next artifact or next quest action",
+        "concise note on what boundary must remain intact"
+      ],
+      "verification": [
+        "confirm the harvest pack is reviewed and bounded",
+        "confirm the repeated unit is named explicitly",
+        "confirm the chosen promotion target matches the owner layer",
+        "confirm the nearest wrong target is explicitly rejected",
+        "confirm class identity is not being defined by quest metadata",
+        "confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface"
+      ],
+      "contracts": [
+        "orchestrator class identity must not be promoted into a skill",
+        "a skill promotion must stay leaf-workflow-shaped",
+        "a playbook promotion must stay route-shaped",
+        "proof and memory promotions must stay in their owner layers",
+        "one good run is not enough to justify promotion by itself",
+        "active quest state must not be copied into memo canon as if it were settled truth"
+      ],
+      "consumes_artifact_tags": [
+        "source-quest-or-quest-family",
+        "reviewed-run-summary-or-harvest-pack",
+        "repeat-count-and-repeat-shape",
+        "owner-layer-and-touched-surfaces",
+        "difficulty-risk-and-control-posture",
+        "residual-ambiguity-or-reasons-to-defer-promotion"
+      ],
+      "provides_artifact_tags": [
+        "promotion-verdict",
+        "owner-repo-and-follow-up-surface",
+        "explicit-reason-for-promotion-or-non-promotion",
+        "named-next-artifact-or-next-quest-action",
+        "concise-note-on-what-boundary-must-remain-intact"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-quest-harvest",
+        "produced_artifacts": [
+          "promotion-verdict",
+          "owner-repo-and-follow-up-surface",
+          "explicit-reason-for-promotion-or-non-promotion",
+          "named-next-artifact-or-next-quest-action",
+          "concise-note-on-what-boundary-must-remain-intact"
+        ],
+        "verification_notes": [
+          "confirm the harvest pack is reviewed and bounded",
+          "confirm the repeated unit is named explicitly",
+          "confirm the chosen promotion target matches the owner layer"
+        ],
+        "contract_notes": [
+          "orchestrator class identity must not be promoted into a skill",
+          "a skill promotion must stay leaf-workflow-shaped",
+          "a playbook promotion must stay route-shaped"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-safe-infra-change",
       "display_name": "AoA Safe Infra Change",
       "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",

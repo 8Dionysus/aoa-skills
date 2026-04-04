@@ -71,8 +71,9 @@ class Wave7SkillsRefValidationTests(unittest.TestCase):
             )
             self.assertEqual(completed.returncode, 0, msg=completed.stderr)
             payload = json.loads(completed.stdout)
+            source_catalog = json.loads((REPO_ROOT / "generated" / "skill_catalog.min.json").read_text())
             self.assertEqual(payload["status"], "passed")
-            self.assertEqual(payload["passed_count"], 19)
+            self.assertEqual(payload["passed_count"], len(source_catalog["skills"]))
 
 
 if __name__ == "__main__":

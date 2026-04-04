@@ -287,6 +287,23 @@
       ]
     },
     {
+      "name": "aoa-quest-harvest",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "collision_family": "quest-promotion-triage",
+      "competing_skills": [],
+      "should_trigger": [
+        "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The route is still active, the evidence is not reviewed yet, and there is only one anecdotal occurrence, so promotion triage would be premature."
+      ],
+      "notes": [
+        "aoa-quest-harvest decides whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
+        "It is a post-session harvest skill and should not be confused with the promoted surface it may recommend."
+      ]
+    },
+    {
       "name": "aoa-safe-infra-change",
       "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
       "collision_family": "overlay-vs-base-skill",
@@ -336,7 +353,8 @@
       "collision_family": "overlay-vs-base-skill",
       "competing_skills": [
         "atm10-source-of-truth-check",
-        "aoa-adr-write"
+        "aoa-adr-write",
+        "aoa-quest-harvest"
       ],
       "should_trigger": [
         "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust."

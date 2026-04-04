@@ -5,7 +5,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 19
+- total skills: 20
 - adjacency cases: 32
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
@@ -25,6 +25,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-local-stack-bringup | evaluated | risk | true | 2 | 0 | aoa-approval-gate-check, aoa-safe-infra-change | local_runtime_bringup | true | - |
 | aoa-port-adapter-refactor | evaluated | core | true | 2 | 0 | aoa-bounded-context-map, aoa-core-logic-boundary | core_boundary_refactor | true | - |
 | aoa-property-invariants | canonical | core | true | 1 | 0 | aoa-invariant-coverage-audit | invariant_authoring_vs_audit | true | - |
+| aoa-quest-harvest | scaffold | core | false | 0 | 0 | - | - | false | - |
 | aoa-safe-infra-change | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
 | aoa-sanitized-share | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | risk_authority_preview_execution | true | - |
 | aoa-source-of-truth-check | canonical | core | true | 1 | 0 | aoa-adr-write | decision_docs_authority | true | - |

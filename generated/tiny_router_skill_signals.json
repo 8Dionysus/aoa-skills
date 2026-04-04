@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "skill_count": 19,
-  "band_count": 5,
+  "skill_count": 20,
+  "band_count": 6,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -1054,6 +1054,83 @@
       "primary_positive_prompt": "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks.",
       "primary_negative_prompt": "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases.",
       "primary_defer_prompt": "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps."
+    },
+    {
+      "name": "aoa-quest-harvest",
+      "band": "quest-harvest-governance",
+      "band_summary": "Post-session quest harvest, promotion triage, and owner-surface selection for repeated reviewed patterns.",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
+      "summary_short": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks,...",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91",
+      "positive_cues": [
+        "quest harvest",
+        "promotion triage",
+        "reviewed repeat",
+        "owner surface",
+        "stay a quest",
+        "post session harvest",
+        "promotion target"
+      ],
+      "negative_cues": [
+        "route still active",
+        "one anecdotal occurrence",
+        "invent net-new doctrine"
+      ],
+      "cue_tokens": [
+        "quest",
+        "harvest",
+        "promotion",
+        "triage",
+        "reviewed",
+        "repeat",
+        "owner",
+        "stay",
+        "post",
+        "session",
+        "target"
+      ],
+      "negative_tokens": [
+        "route",
+        "still",
+        "active",
+        "one",
+        "anecdotal",
+        "occurrence",
+        "invent",
+        "net",
+        "new",
+        "doctrine"
+      ],
+      "auto_tokens": [
+        "quest",
+        "evidence",
+        "repeated",
+        "reviewed",
+        "promotion",
+        "still",
+        "active",
+        "exists",
+        "one",
+        "pattern",
+        "route",
+        "triage",
+        "anecdotal",
+        "aoa"
+      ],
+      "companions": [
+        "aoa-source-of-truth-check",
+        "aoa-change-protocol"
+      ],
+      "primary_positive_prompt": "Use $aoa-quest-harvest to decide whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
+      "primary_negative_prompt": "The route is still active, the evidence is not reviewed yet, and there is only one anecdotal occurrence, so promotion triage would be premature.",
+      "primary_defer_prompt": "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
     },
     {
       "name": "aoa-safe-infra-change",

@@ -11,14 +11,14 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 19,
-  "total_cases": 95,
+  "skill_count": 20,
+  "total_cases": 99,
   "case_class_totals": {
-    "explicit-handle": 19,
+    "explicit-handle": 20,
     "manual-invocation-required": 14,
-    "prefer-other-skill": 19,
-    "should-not-trigger": 19,
-    "should-trigger": 24
+    "prefer-other-skill": 20,
+    "should-not-trigger": 20,
+    "should-trigger": 25
   },
   "skills": [
     {
@@ -274,6 +274,27 @@
         "prefer-other-skill": 1,
         "should-not-trigger": 1,
         "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-quest-harvest",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91",
+      "family": "quest-promotion-triage",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 1
       },
       "required_case_classes": [
         "explicit-handle",
