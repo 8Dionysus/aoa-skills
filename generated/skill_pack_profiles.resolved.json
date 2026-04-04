@@ -98,6 +98,14 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-quest-harvest",
+          "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-safe-infra-change",
           "source_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
           "target_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
@@ -234,6 +242,14 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-quest-harvest",
+          "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-source-of-truth-check",
           "source_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
           "target_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
@@ -246,6 +262,22 @@
           "source_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
           "target_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        }
+      ]
+    },
+    "repo-quest-harvest-only": {
+      "description": "Install only aoa-quest-harvest into a repository root for explicit post-session quest promotion triage.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-quest-harvest",
+          "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "trust_posture": "portable-core"
         }
@@ -406,6 +438,14 @@
           "source_path": ".agents/skills/aoa-property-invariants/SKILL.md",
           "target_path": "$HOME/.agents/skills/aoa-property-invariants/SKILL.md",
           "openai_config_path": "$HOME/.agents/skills/aoa-property-invariants/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-quest-harvest",
+          "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-quest-harvest/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-quest-harvest/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "trust_posture": "portable-core"
         },

@@ -585,6 +585,51 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-quest-harvest",
+      "display_name": "AoA Quest Harvest",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-quest-harvest",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-quest-harvest",
+          "$REPO_ROOT/.agents/skills/aoa-quest-harvest/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-quest-harvest/references",
+          "$REPO_ROOT/.agents/skills/aoa-quest-harvest/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-quest-harvest",
+          "$HOME/.agents/skills/aoa-quest-harvest/scripts",
+          "$HOME/.agents/skills/aoa-quest-harvest/references",
+          "$HOME/.agents/skills/aoa-quest-harvest/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-quest-harvest",
+          "/etc/codex/skills/aoa-quest-harvest/scripts",
+          "/etc/codex/skills/aoa-quest-harvest/references",
+          "/etc/codex/skills/aoa-quest-harvest/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-quest-harvest",
+        ".agents/skills/aoa-quest-harvest/scripts",
+        ".agents/skills/aoa-quest-harvest/references",
+        ".agents/skills/aoa-quest-harvest/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/promotion-outcomes.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-safe-infra-change",
       "display_name": "AoA Safe Infra Change",
       "source_scope": "repo",

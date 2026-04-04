@@ -236,6 +236,24 @@
       "workflow_short": "Purpose: invariant-oriented thinking to test broad behavior through properties rather than only through a short list of fixed examples. Flow: identify what must remain true across many cases -> separate strong invariants from weak hopes or vague..."
     },
     {
+      "inputs_short": "Needs: source quest or quest family; reviewed run summary or harvest pack; repeat count and repeat shape; owner layer and touched surfaces.",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer; collapsing recurring route method into a single skill; treating proof debt as skill meaning.",
+      "name": "aoa-quest-harvest",
+      "outputs_short": "Produces: promotion verdict; owner repo and follow-up surface; explicit reason for promotion or non-promotion; named next artifact or next quest action.",
+      "scope": "core",
+      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "status": "scaffold",
+      "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-QUEST-HARVEST",
+        "AOA-T-PENDING-PROMOTION-TRIAGE"
+      ],
+      "trigger_boundary_short": "Use when a bounded work pattern has repeated and now needs an explicit promotion decision; reviewed evidence exists, but the correct destination is still unclear; Avoid when the route is still active and the...",
+      "verification_short": "Checks: confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly; confirm the chosen promotion target matches the owner layer; confirm the nearest wrong target is explicitly...",
+      "workflow_short": "Purpose: decide whether a repeated, reviewed quest-shaped pattern should remain a quest or be promoted into the next honest owner surface. Flow: collect a bounded reviewed harvest pack rather than raw runtime state -> name what actually repeated: leaf..."
+    },
+    {
       "inputs_short": "Needs: target change; touched operational surfaces; stated authority or approval state; validation path.",
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: treating infra edits like ordinary code edits; making broad config or orchestration changes under a narrow task label; relying on weak verification for changes with real runtime impact; skipping explicit risk...",

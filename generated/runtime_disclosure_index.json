@@ -1356,6 +1356,106 @@
       "disclose_card_markdown": "### aoa-property-invariants\n- Summary: Write property-based invariants\n- Use when: Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules. Do not use when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
     },
     {
+      "name": "aoa-quest-harvest",
+      "display_name": "AoA Quest Harvest",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "short_description": "Triage quest promotion honestly",
+      "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-quest-harvest",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-QUEST-HARVEST,AOA-T-PENDING-PROMOTION-TRIAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to decide whether a repeated, reviewed quest-shaped pattern should remain a quest or be promoted into the next honest owner surface.",
+        "Trigger boundary": "a bounded work pattern has repeated and now needs an explicit promotion decision; reviewed evidence exists, but the correct destination is still unclear",
+        "Inputs": "source quest or quest family; reviewed run summary or harvest pack",
+        "Outputs": "promotion verdict; owner repo and follow-up surface",
+        "Procedure": "collect a bounded reviewed harvest pack rather than raw runtime state; name what actually repeated: leaf workflow, route, proof pattern, recall pattern, or boundary law",
+        "Contracts": "orchestrator class identity must not be promoted into a skill; a skill promotion must stay leaf-workflow-shaped",
+        "Risks and anti-patterns": "promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer",
+        "Verification": "confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly",
+        "Technique traceability": "AOA-T-PENDING-QUEST-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-PROMOTION-TRIAGE from `8Dionysus/aoa-techniques` with `path: TBD` a...",
+        "Adaptation points": "local quest IDs and harvest entrypoints; local owner-repo route maps"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/promotion-outcomes.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Quest Harvest",
+        "short_description": "Triage quest promotion honestly",
+        "default_prompt": "Use $aoa-quest-harvest to decide whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-quest-harvest",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-quest-harvest",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-quest-harvest",
+      "collision_family": "quest-promotion-triage",
+      "collision_notes": [
+        "aoa-quest-harvest decides whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
+        "It is a post-session harvest skill and should not be confused with the promoted surface it may recommend."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-quest-harvest to decide whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface."
+        ],
+        "implicit": [
+          "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The route is still active, the evidence is not reviewed yet, and there is only one anecdotal occurrence, so promotion triage would be premature."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-quest-harvest",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-quest-harvest",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-quest-harvest"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-quest-harvest\n- Summary: Triage quest promotion honestly\n- Use when: Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+    },
+    {
       "name": "aoa-safe-infra-change",
       "display_name": "AoA Safe Infra Change",
       "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
@@ -1640,7 +1740,8 @@
       ],
       "competing_skills": [
         "atm10-source-of-truth-check",
-        "aoa-adr-write"
+        "aoa-adr-write",
+        "aoa-quest-harvest"
       ],
       "sample_prompts": {
         "explicit": [

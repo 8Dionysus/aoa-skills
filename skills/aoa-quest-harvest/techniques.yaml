@@ -1,0 +1,29 @@
+skill_name: aoa-quest-harvest
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-QUEST-HARVEST
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+  - id: AOA-T-PENDING-PROMOTION-TRIAGE
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - When to use
+      - Outputs
+      - Core procedure
+      - Risks
+      - Validation
+notes:
+  - Keep runtime SKILL.md self-contained.
+  - Replace pending IDs AOA-T-PENDING-QUEST-HARVEST and AOA-T-PENDING-PROMOTION-TRIAGE, path TBD, and source_ref TBD after publish.

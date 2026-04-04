@@ -5,8 +5,8 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 19
-- multi-technique skills: 17
+- total skills: 20
+- multi-technique skills: 18
 - single-technique skills: 2
 - approved exceptions: 2
 - needs reframe: 0
@@ -26,6 +26,7 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-local-stack-bringup | 4 | multi_technique | keep_multi_technique | - |
 | aoa-port-adapter-refactor | 2 | multi_technique | keep_multi_technique | - |
 | aoa-property-invariants | 2 | multi_technique | keep_multi_technique | - |
+| aoa-quest-harvest | 2 | multi_technique | keep_multi_technique | - |
 | aoa-safe-infra-change | 2 | multi_technique | keep_multi_technique | - |
 | aoa-sanitized-share | 2 | multi_technique | keep_multi_technique | - |
 | aoa-source-of-truth-check | 3 | multi_technique | keep_multi_technique | - |

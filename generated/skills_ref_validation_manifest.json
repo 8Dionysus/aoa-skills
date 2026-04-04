@@ -145,6 +145,16 @@
       "description_sha256": "2bf02fb83803f295670eb33af7b09d7dac89afd32857f82eb477db6f11dd2839"
     },
     {
+      "skill_name": "aoa-quest-harvest",
+      "path": ".agents/skills/aoa-quest-harvest",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-quest-harvest"
+      ],
+      "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91"
+    },
+    {
       "skill_name": "aoa-safe-infra-change",
       "path": ".agents/skills/aoa-safe-infra-change",
       "command": [

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "band_count": 5,
+  "band_count": 6,
   "bands": [
     {
       "id": "decision-doc-authority",
@@ -96,6 +96,24 @@
       "skills": [
         "aoa-invariant-coverage-audit",
         "aoa-property-invariants"
+      ],
+      "manual_only_skills": [],
+      "overlay_skills": []
+    },
+    {
+      "id": "quest-harvest-governance",
+      "summary": "Post-session quest harvest, promotion triage, and owner-surface selection for repeated reviewed patterns.",
+      "cues": [
+        "quest harvest",
+        "promotion triage",
+        "reviewed repeat",
+        "owner surface",
+        "stay a quest",
+        "post session harvest",
+        "promotion target"
+      ],
+      "skills": [
+        "aoa-quest-harvest"
       ],
       "manual_only_skills": [],
       "overlay_skills": []

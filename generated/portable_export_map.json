@@ -250,6 +250,25 @@
       }
     },
     {
+      "name": "aoa-quest-harvest",
+      "source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "target_dir": ".agents/skills/aoa-quest-harvest",
+      "target_skill_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/promotion-outcomes.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
       "name": "aoa-safe-infra-change",
       "source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
       "target_dir": ".agents/skills/aoa-safe-infra-change",

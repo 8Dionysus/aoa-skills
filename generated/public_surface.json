@@ -1,6 +1,8 @@
 {
   "cohorts": {
-    "blocked_by_pending_lineage": [],
+    "blocked_by_pending_lineage": [
+      "aoa-quest-harvest"
+    ],
     "candidate_ready": [
       "aoa-core-logic-boundary",
       "aoa-local-stack-bringup",
@@ -343,6 +345,28 @@
       "skill_path": "skills/aoa-property-invariants/SKILL.md",
       "status": "canonical",
       "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-quest-harvest",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "status": "scaffold",
+      "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",

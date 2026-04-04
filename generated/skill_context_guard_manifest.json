@@ -426,6 +426,38 @@
       }
     },
     {
+      "name": "aoa-quest-harvest",
+      "display_name": "AoA Quest Harvest",
+      "source_scope": "repo",
+      "instruction_sha256": "0616ee84cfc5b14e8d24bde76f433bf10cb3f6875c87c3aadf65891c2dce1a5c",
+      "dedupe_key": "aoa-quest-harvest:0616ee84cfc5b14e8d24bde76f433bf10cb3f6875c87c3aadf65891c2dce1a5c",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Triage quest promotion honestly",
+      "must_keep": [
+        "source quest or quest family",
+        "reviewed run summary or harvest pack",
+        "promotion verdict",
+        "owner repo and follow-up surface"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.\n\nKeep in memory: source quest or quest family, reviewed run summary or harvest pack, promotion verdict, owner repo and follow-up surface.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-quest-harvest",
+          "explicit_handle": "$aoa-quest-harvest",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
       "name": "aoa-safe-infra-change",
       "display_name": "AoA Safe Infra Change",
       "source_scope": "repo",

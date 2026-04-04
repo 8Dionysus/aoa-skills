@@ -159,6 +159,18 @@
       }
     },
     {
+      "name": "aoa-quest-harvest",
+      "codex_mention": "$aoa-quest-harvest",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-quest-harvest",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-quest-harvest"
+        }
+      }
+    },
+    {
       "name": "aoa-safe-infra-change",
       "codex_mention": "$aoa-safe-infra-change",
       "codex_browser": "/skills",

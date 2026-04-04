@@ -1139,6 +1139,86 @@
         "runtime_seam",
         "runtime_guardrails",
         "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-quest-harvest/SKILL.md",
+        "skills/aoa-quest-harvest/techniques.yaml",
+        "skills/aoa-quest-harvest/examples/runtime.md",
+        "skills/aoa-quest-harvest/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "8823dc96d40011e99202f5a4f8e818c42dd7552eede68dc06436192ebeba8f7b",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-quest-harvest-only",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "pending",
+      "name": "aoa-quest-harvest",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "skill_revision": "8823dc96d400",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-quest-harvest/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-quest-harvest/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-QUEST-HARVEST",
+        "AOA-T-PENDING-PROMOTION-TRIAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-QUEST-HARVEST",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-PROMOTION-TRIAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
         "support_resources",
         "tiny_router"
       ],

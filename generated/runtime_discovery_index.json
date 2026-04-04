@@ -1293,6 +1293,115 @@
       }
     },
     {
+      "name": "aoa-quest-harvest",
+      "display_name": "AoA Quest Harvest",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "short_description": "Triage quest promotion honestly",
+      "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-quest-harvest",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-quest-harvest",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-quest-harvest"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "active",
+        "adaptation",
+        "and",
+        "anecdotal",
+        "anti-patterns",
+        "aoa",
+        "boundary",
+        "bounded",
+        "classes",
+        "classifying",
+        "collapsing",
+        "contracts",
+        "core",
+        "decide",
+        "doctrine",
+        "evidence",
+        "exists",
+        "harvest",
+        "has",
+        "honest",
+        "inputs",
+        "instead",
+        "intent",
+        "invent",
+        "layer",
+        "memory",
+        "move",
+        "net-new",
+        "next",
+        "not",
+        "occurrence",
+        "one",
+        "orchestrator",
+        "outputs",
+        "owner",
+        "pattern",
+        "playbooks",
+        "points",
+        "procedure",
+        "promotion",
+        "proof",
+        "quest",
+        "repeated",
+        "reviewed",
+        "right",
+        "risks",
+        "route",
+        "should",
+        "skills",
+        "stay",
+        "still",
+        "surface",
+        "target",
+        "task",
+        "technique",
+        "the",
+        "traceability",
+        "triage",
+        "trigger",
+        "use",
+        "verification",
+        "whether",
+        "without",
+        "work",
+        "you"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-quest-harvest"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-quest-harvest"
+        }
+      }
+    },
+    {
       "name": "aoa-safe-infra-change",
       "display_name": "AoA Safe Infra Change",
       "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",

@@ -140,6 +140,7 @@ class CodexPortableContractTests(unittest.TestCase):
     def test_release_manifest_matches_current_packaging_contract(self):
         release_manifest = load_json(REPO_ROOT / "generated" / "release_manifest.json")
         expected_manifest = release_manifest_contract.build_release_manifest(REPO_ROOT)
+        source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
         self.assertEqual(release_manifest, expected_manifest)
 
         for rel_path in release_manifest["generated_files"]:
@@ -147,9 +148,12 @@ class CodexPortableContractTests(unittest.TestCase):
         for rel_path in release_manifest["authoring_inputs"]:
             self.assertTrue((REPO_ROOT / rel_path).exists(), msg=rel_path)
 
-        self.assertEqual(release_manifest["skill_count"], 19)
+        self.assertEqual(release_manifest["skill_count"], len(source_catalog["skills"]))
         self.assertEqual(release_manifest["explicit_only_count"], 7)
-        self.assertEqual(release_manifest["profile_count"], 6)
+        self.assertEqual(
+            release_manifest["profile_count"],
+            len(release_manifest["install_profile_revisions"]),
+        )
         self.assertEqual(release_manifest["release_identity"]["latest_tagged_version"], "0.2.0")
         self.assertFalse(release_manifest["release_identity"]["has_unreleased_changes"])
         self.assertEqual(

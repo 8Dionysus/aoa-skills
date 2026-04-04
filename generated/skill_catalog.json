@@ -578,6 +578,50 @@
     },
     {
       "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-quest-harvest",
+      "scope": "core",
+      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "status": "scaffold",
+      "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-QUEST-HARVEST",
+        "AOA-T-PENDING-PROMOTION-TRIAGE"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-PENDING-QUEST-HARVEST",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-PENDING-PROMOTION-TRIAGE",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Outputs",
+            "Core procedure",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
       "invocation_mode": "explicit-only",
       "name": "aoa-safe-infra-change",
       "scope": "risk",

@@ -425,6 +425,38 @@
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-property-invariants"
     },
     {
+      "name": "aoa-quest-harvest",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-quest-harvest"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/promotion-outcomes.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-QUEST-HARVEST,AOA-T-PENDING-PROMOTION-TRIAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-quest-harvest"
+    },
+    {
       "name": "aoa-safe-infra-change",
       "description": "Make bounded infrastructure, configuration, service, or operational changes with explicit risk framing, proportional verification, and rollback thinking. Use when a change has runtime or deployment implications and needs stronger discipline than a normal code edit. Do not use for purely local code changes, or when the main need is approval classification or preview-first execution.",
       "path": ".agents/skills/aoa-safe-infra-change/SKILL.md",

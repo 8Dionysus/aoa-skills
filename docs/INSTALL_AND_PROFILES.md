@@ -26,6 +26,7 @@ Dry-run or apply an install profile:
 ```bash
 python scripts/install_skill_pack.py --repo-root . --profile user-curated-core
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --dest-root /tmp/aoa-skills --mode copy --execute
+python scripts/install_skill_pack.py --repo-root . --profile repo-quest-harvest-only --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute
 ```
@@ -35,6 +36,7 @@ Stage a profile-scoped handoff bundle:
 ```bash
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --format json
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
+python scripts/stage_skill_pack.py --repo-root . --profile repo-quest-harvest-only --output-root /tmp/repo-quest-harvest-only-bundle --execute --overwrite --format json
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
 ```
 
@@ -50,6 +52,7 @@ Import a staged profile-scoped handoff bundle with one receiver-side flow:
 ```bash
 python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --format json
 python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
+python scripts/import_skill_pack.py --repo-root . --profile repo-quest-harvest-only --bundle-root /tmp/repo-quest-harvest-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
 python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
 ```
 
@@ -126,6 +129,16 @@ That keeps the first handoff object profile-scoped, deterministic, and fully off
 
 Use `install_skill_pack.py` plus `verify_skill_pack.py` directly when you want the lower-level advanced path or need to keep install and verification as separate steps.
 
+## Narrow rollout lane
+
+`repo-quest-harvest-only` is the narrow rollout profile for installing just `aoa-quest-harvest`.
+
+- It is `repo`-scoped.
+- Its authored install mode stays `symlink-preferred`.
+- Cross-repo rollout should use `copy` mode so the installed surface is reviewable and commit-safe.
+- The intended target path is `<repo>/.agents/skills/aoa-quest-harvest`.
+- This profile is for explicit post-session rollout and does not replace `repo-default`.
+
 The ZIP transport variant is:
 
 ```bash
@@ -141,6 +154,7 @@ Not every install root should carry the same surface:
 - repo roots can afford project overlays
 - user roots should prefer reusable portable skills
 - explicit-only risk skills deserve a bounded posture
+- some repos need one narrow post-session skill without taking the full repo-default surface
 - project overlays should stay project-local
 
 This is a packaging layer, not a new source of truth.
