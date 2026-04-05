@@ -4,7 +4,7 @@
 
 Current public foundation:
 - coherent docs surface
-- 19 public skills across core, risk, and live project-overlay categories
+- 20 public skills across core, risk, and live project-overlay categories
 - live governance counts kept in `generated/public_surface.md` and `generated/governance_backlog.md` rather than duplicated in source docs
 - honest `techniques.yaml` coverage with pinned source refs across the skill surface
 - first examples or checks for every current skill
