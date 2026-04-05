@@ -785,7 +785,7 @@
           "key": "procedure"
         },
         {
-          "content_markdown": "- orchestrator class identity must not be promoted into a skill\n- a skill promotion must stay leaf-workflow-shaped\n- a playbook promotion must stay route-shaped\n- proof and memory promotions must stay in their owner layers\n- one good run is not enough to justify promotion by itself\n- active quest state must not be copied into memo canon as if it were settled truth",
+          "content_markdown": "- invocation must remain explicit and post-session\n- orchestrator class identity must not be promoted into a skill\n- a skill promotion must stay leaf-workflow-shaped\n- a playbook promotion must stay route-shaped\n- proof and memory promotions must stay in their owner layers\n- one good run is not enough to justify promotion by itself\n- active quest state must not be copied into memo canon as if it were settled truth",
           "heading": "Contracts",
           "key": "contracts"
         },

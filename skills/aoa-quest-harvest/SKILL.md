@@ -3,7 +3,7 @@ name: aoa-quest-harvest
 scope: core
 status: scaffold
 summary: Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.
-invocation_mode: explicit-preferred
+invocation_mode: explicit-only
 technique_dependencies:
   - AOA-T-PENDING-QUEST-HARVEST
   - AOA-T-PENDING-PROMOTION-TRIAGE
@@ -61,6 +61,7 @@ Do not use this skill when:
 
 ## Contracts
 
+- invocation must remain explicit and post-session
 - orchestrator class identity must not be promoted into a skill
 - a skill promotion must stay leaf-workflow-shaped
 - a playbook promotion must stay route-shaped

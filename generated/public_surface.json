@@ -358,7 +358,7 @@
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "is_default_reference": false,
       "lineage_state": "pending",
       "name": "aoa-quest-harvest",

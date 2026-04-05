@@ -1299,8 +1299,8 @@
       "short_description": "Triage quest promotion honestly",
       "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "trust_posture": "portable-core",
-      "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",

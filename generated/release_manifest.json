@@ -13,7 +13,7 @@
   ],
   "skill_root": ".agents/skills",
   "skill_count": 20,
-  "explicit_only_count": 7,
+  "explicit_only_count": 8,
   "profile_count": 7,
   "authoring_inputs": [
     "generated/skill_sections.full.json",
@@ -172,13 +172,13 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "2f69d4619452816263b30dcee48c9a71d93c957ccf782a32b783d905d3830af2",
-      "bytes": 98632
+      "sha256": "4700b0f4323dc70b282f85be5e9bacc07c41fd551855c8ada9f11bb694e0ba6e",
+      "bytes": 98684
     },
     {
       "path": "generated/skill_catalog.min.json",
-      "sha256": "f59163793f73d090b04f638aa763ad5b1ea912fdcc9d2d3949738d769925a8b2",
-      "bytes": 7538
+      "sha256": "5b71cf9725ccd7ef418ac12528b7b03567de39f990cf196b4cdeb42e4fcdaf3d",
+      "bytes": 7533
     },
     {
       "path": "config/portable_skill_overrides.json",
@@ -219,33 +219,33 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "5258e1fa09c1ec6bdd5c33167d0d462ef560ae7e511e368a1f8fd1ede97a098c",
-      "bytes": 31613
+      "sha256": "80d62bda4faadc4edef88b848b6d90bbe5c8eb393da71dd22c3636b6d923fca2",
+      "bytes": 31609
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
-      "sha256": "9d14ccc9e6c41227451660f49ed9eaf764592c8ad73e65c3b09d7a8dca0cefd7",
-      "bytes": 12269
+      "sha256": "d87419fdcab6fbc3d3fcf082e08d20c118d513b7dcda9616c67179b2a59f48bc",
+      "bytes": 12270
     },
     {
       "path": "generated/portable_export_map.json",
-      "sha256": "f9e650b71ec781b3b3aba35c78b00ad57499c4bf2053db37088c15ddd22a5e53",
-      "bytes": 13969
+      "sha256": "cc9155d3a93da708bee5e99822a1627dadfb20f2a70cf85b8902915565a3ee4d",
+      "bytes": 13965
     },
     {
       "path": "generated/local_adapter_manifest.json",
-      "sha256": "5f0eb2ac32c62acb035aac205854aae29767de888cb7b0a54c67f0b897074e6e",
-      "bytes": 31598
+      "sha256": "f92a54618cc4cc11c56d0a731ea9c1ce3abcdf7a705a22ae3b9c531827508b4a",
+      "bytes": 31589
     },
     {
       "path": "generated/local_adapter_manifest.min.json",
-      "sha256": "61fa1512d59a4717b80375152edec6ac037fee60884cacc178a099e43a9cd012",
-      "bytes": 12533
+      "sha256": "03a69e467a962ff6bae3f8e2ba541f21fbf2b1729280b5797c3bbcc014a346f4",
+      "bytes": 12534
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "5ee1f0c1ce7bc71de2f66905be3a06aa6377e88885d97d66777763fad3b26c2c",
-      "bytes": 64139
+      "sha256": "f381f9869aac21ac73834459d95af7d65825ffa70e684ce9ed0861a13a7763cb",
+      "bytes": 64199
     },
     {
       "path": "generated/context_retention_manifest.json",
@@ -254,18 +254,18 @@
     },
     {
       "path": "generated/trust_policy_matrix.json",
-      "sha256": "fab37ebc65ba937516100a2c1ba5182049a6e267927bd893974ca3401dd8f2c2",
-      "bytes": 9018
+      "sha256": "6f8145686a445e28396cdf16dceeaf624ad198aacdc6b85385ebb7e66f14793d",
+      "bytes": 9012
     },
     {
       "path": "generated/skill_runtime_contracts.json",
-      "sha256": "fd12af7090c2166027363b6374b63030d07a1dfbbc74917fcb7e063746bac346",
-      "bytes": 31994
+      "sha256": "00254823ccb52bdedf6dda2fc4188f2a37aeb6373c977267bd9428a9f8bbf6eb",
+      "bytes": 31990
     },
     {
       "path": "generated/skill_pack_profiles.resolved.json",
-      "sha256": "2972f3ecdd0db82b9fccd3bebf89b43a8a61a0b47d514cfb41651df21e934be6",
-      "bytes": 22133
+      "sha256": "eee33be1343b4cbd2257289a5f77a429941e5a9e87ca5b461379d0eb3c52f8e3",
+      "bytes": 22137
     },
     {
       "path": "generated/codex_config_snippets.json",
@@ -279,18 +279,18 @@
     },
     {
       "path": "generated/runtime_discovery_index.json",
-      "sha256": "c899a5bdf76a301efc3c664e469c6745fcdc3cc02dfc4f593bd71fd7196ab753",
-      "bytes": 53421
+      "sha256": "918567c484db28c2e3d122d2aabd0a9f6a6885b800effef4f1c460561f2be85e",
+      "bytes": 53417
     },
     {
       "path": "generated/runtime_discovery_index.min.json",
-      "sha256": "8dca5ddf5f9ebe3f13beedae46783ac395a39c9cc5342bdffadaae2ffaacf8bf",
-      "bytes": 11925
+      "sha256": "6fa08cd251a6f74716e261605d900719d6b9cc92130ccc711cb6e07726b8f046",
+      "bytes": 11921
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "58954cf4ea07d7a0fa0394709f1ce4ff0347acb9db81278f9cfc14eb1b735b01",
-      "bytes": 130972
+      "sha256": "1deae4522f6286daf5572a59234107f04d3a32aa53fc771eba943c8034b752cc",
+      "bytes": 130968
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -314,7 +314,7 @@
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "570befe681572a4e03eba5295f9cfb3242217136c34441bb6f23473663838d8c",
+      "sha256": "7ce0888140d5d34f6298e7cb8a51c252024e02156dc7cf79818c141b3682b6eb",
       "bytes": 32150
     },
     {
@@ -324,8 +324,8 @@
     },
     {
       "path": "generated/repo_trust_gate_manifest.json",
-      "sha256": "7e6c2686ead856e2d38c3ca3c7860aa145567c7a6336872cf5d9ec934e1ad0db",
-      "bytes": 23704
+      "sha256": "93111d8caf4c5ad4f19d11766ba9916ac9131bd6fa38d9028c7d0e51121ed0bb",
+      "bytes": 23699
     },
     {
       "path": "generated/permission_allowlist_manifest.json",
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "439ee9b885abf3354da0d5577d17efa4f641a3628073aacf0f5d89028c8f63a0",
+      "sha256": "2125d25faa6ce74ecd07f88a0f06969eb2a6ffa6ac37d382fd938be6584d3110",
       "bytes": 39848
     },
     {
@@ -354,23 +354,23 @@
     },
     {
       "path": "generated/skill_description_signals.json",
-      "sha256": "2a17aae342bf8c64aad43cb9b902c65d7e9ac7e247dcbb7f8bc85b55f5d61660",
-      "bytes": 40562
+      "sha256": "d20ef1a2ce4914a70d3b617c73590cbb7d2bdce58b19601fb9173d1722d21030",
+      "bytes": 40547
     },
     {
       "path": "generated/description_trigger_eval_cases.jsonl",
-      "sha256": "af4edb002fb86129d853bbfce8e2a270faf01d2bcfbfa63fdf7ca1cd6e5f1db6",
-      "bytes": 81394
+      "sha256": "c7ba05b3942fb4d4991a5d97dc75b7f62c97b3f0906f5987e43df9722552d790",
+      "bytes": 81376
     },
     {
       "path": "generated/description_trigger_eval_cases.csv",
-      "sha256": "f3a18613d19ef97bc82df626ec575a5d5a963f499aff4638569edeb2a4091779",
-      "bytes": 54761
+      "sha256": "0eb0301daa3f837fc76b778a0acd68594a4a124fb7f2051908a2268c519c2221",
+      "bytes": 54743
     },
     {
       "path": "generated/description_trigger_eval_manifest.json",
-      "sha256": "166b0b0eeafed124ca2bdd8db2f98fd34cb954ad9fe0b98a77c372247ce4f676",
-      "bytes": 13306
+      "sha256": "725a264346060646fdd38bc901f9b94e9ca80ada7d9d19e58d85f07e12fff93b",
+      "bytes": 13295
     },
     {
       "path": "generated/skills_ref_validation_manifest.json",
@@ -409,48 +409,48 @@
     },
     {
       "path": "generated/tiny_router_skill_signals.json",
-      "sha256": "13ef412142b813df2594d76c8fdc33bf3d1cd8c3cb072b9d6821379bec6abee6",
-      "bytes": 59392
+      "sha256": "a5f12a8bd46bd401c1ea975d10c416de60ae47955a56aed65a15ff777d5ad6da",
+      "bytes": 59387
     },
     {
       "path": "generated/tiny_router_candidate_bands.json",
-      "sha256": "465581960f2e0309399d002227f585b2956bb49e5743991e74175ffb503f9155",
-      "bytes": 4441
+      "sha256": "796c3b2db2638ca1c5c0b0e9a692b9b7ca8d4932e1fcde41d1f19831337b0008",
+      "bytes": 4476
     },
     {
       "path": "generated/tiny_router_capsules.min.json",
-      "sha256": "b3e087fba13fcbe4e5b217eca86e6a833cd88c6e16b215f7291a5f0fb7211dae",
-      "bytes": 19570
+      "sha256": "8d9fed60c7e9114f75c840ad9086756d7b0fa0c509fa57e5ddc4279a7bfe29f6",
+      "bytes": 19569
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
-      "sha256": "23a0661b2629980c654614979c05cc2bfe3be24b03d69a4b88c653eba95ecd46",
-      "bytes": 23848
+      "sha256": "88ab05009dc24bdfdb3883ce3856aef3648d029c5e358ea1cd9762f3e06f0e3c",
+      "bytes": 23847
     },
     {
       "path": "generated/tiny_router_overlay_manifest.json",
-      "sha256": "3cb974f68d47c6041d99083dc4efe9ada444f2208f2b7660239623b4b5d02b60",
-      "bytes": 5594
+      "sha256": "c32573ac3b9bc0d61bfb0653f8df79ef5e1cbf776f353e079ee31542073d91c8",
+      "bytes": 5593
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "c3f62580ee284b91377dff53e3da8fa48f37a56d7437d5b7c9e0df98ad37abfd",
-      "bytes": 60628
+      "sha256": "36f8bd0bbf7d4252b263c7add62cf4865b61dd6a4e4ae0476ba9de930175c5f9",
+      "bytes": 60678
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "f1a340557753143bf6a8eb5285954f7f061d6bf49440f0648d97cec71f8177dd",
-      "bytes": 5920
+      "sha256": "a9ad8648bb0132d94284fe3be6a57197413f8215ea044f77ba0bc5c0e47f0cfd",
+      "bytes": 5915
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "9c8d178663ba890d6d3844ad7cb6fe62dbca76510345d03cf16b87407d516710",
-      "bytes": 105834
+      "sha256": "77824c5d3cb6acbb5e11ffa45c1388a0f8a56b24cbc91ab277dc6f5cd1fe08fd",
+      "bytes": 105879
     },
     {
       "path": "generated/skill_graph.md",
-      "sha256": "bb8ee09fc90675fa6aa78902ea007e55a740684302010b79af3c64c4890d6554",
-      "bytes": 29656
+      "sha256": "c24a0322ebc65a5d05cb8981e06394b663cc89c8531ffea4a1f6e059d9a7cf72",
+      "bytes": 29646
     }
   ],
   "skill_bundle_revisions": [
@@ -521,8 +521,8 @@
     },
     {
       "name": "aoa-quest-harvest",
-      "skill_revision": "8823dc96d400",
-      "content_hash": "8823dc96d40011e99202f5a4f8e818c42dd7552eede68dc06436192ebeba8f7b"
+      "skill_revision": "c0080b919f2c",
+      "content_hash": "c0080b919f2c27387c7d00a2b6ac6e8347876f759606e79e45263f742ecf553c"
     },
     {
       "name": "aoa-safe-infra-change",
@@ -590,7 +590,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "82af39f95cc230ad66cbe8056b16f5add24f52f1d096dd4aec89a7116a5971fe"
+      "profile_revision": "c67b020cd25616169edc6c19ce642895afa03adf85c9f74a91c3d49e2462e2c6"
     },
     {
       "name": "repo-default",
@@ -617,7 +617,7 @@
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ],
-      "profile_revision": "69bc15097a9a2a2687d151b2bd9ff6894fc31aba76c5d4e3315ed68ef2977380"
+      "profile_revision": "f5d380464de736538ba9a4fdd1751d34d9c095b23f91796ba48e0a8e9210d5c0"
     },
     {
       "name": "repo-quest-harvest-only",
@@ -625,7 +625,7 @@
       "skill_names": [
         "aoa-quest-harvest"
       ],
-      "profile_revision": "dd59fed8e97a4627c29db40d93fa571506cabcbce0171683357c5929c01d236e"
+      "profile_revision": "3eb3dfc85859da4f881cc7610b77d70f4ebfec6b56809fcc349bd44adde37832"
     },
     {
       "name": "repo-risk-explicit",
@@ -654,7 +654,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "5a0ec3feb8fb2541da47485eada63c9bed3eca137dd737fa3707cd57b9cbedbd"
+      "profile_revision": "9059d0d6e9cf52bc5b08fbb88bd3eba377620d2593c9aa122c3c0a00f99fc8b0"
     }
   ],
   "release_identity": {

@@ -865,7 +865,7 @@
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
       "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "inputs": [
         "source quest or quest family",
         "reviewed run summary or harvest pack",
@@ -890,6 +890,7 @@
         "confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface"
       ],
       "contracts": [
+        "invocation must remain explicit and post-session",
         "orchestrator class identity must not be promoted into a skill",
         "a skill promotion must stay leaf-workflow-shaped",
         "a playbook promotion must stay route-shaped",
@@ -927,9 +928,9 @@
           "confirm the chosen promotion target matches the owner layer"
         ],
         "contract_notes": [
+          "invocation must remain explicit and post-session",
           "orchestrator class identity must not be promoted into a skill",
-          "a skill promotion must stay leaf-workflow-shaped",
-          "a playbook promotion must stay route-shaped"
+          "a skill promotion must stay leaf-workflow-shaped"
         ],
         "next_recommended_skills": []
       }

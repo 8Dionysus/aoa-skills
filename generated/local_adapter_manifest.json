@@ -429,8 +429,8 @@
       "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
       "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
-      "allow_implicit_invocation": true,
-      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
       "allowlist_paths": [
         ".agents/skills/aoa-quest-harvest"
       ],
@@ -447,7 +447,7 @@
       "metadata": {
         "aoa_scope": "core",
         "aoa_status": "scaffold",
-        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-QUEST-HARVEST,AOA-T-PENDING-PROMOTION-TRIAGE",

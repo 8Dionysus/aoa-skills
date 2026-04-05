@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - This scaffold is explicit-only because quest promotion triage should stay a visible post-session decision rather than an automatic semantic trigger.

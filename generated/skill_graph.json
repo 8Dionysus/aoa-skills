@@ -908,7 +908,7 @@
     {
       "kind": "invocation_policy",
       "source": "skill_aoa_quest_harvest",
-      "target": "policy_explicit_preferred"
+      "target": "policy_explicit_only"
     },
     {
       "kind": "depends_on",
@@ -2833,13 +2833,14 @@
       "bundle_files": [
         "skills/aoa-quest-harvest/SKILL.md",
         "skills/aoa-quest-harvest/techniques.yaml",
+        "skills/aoa-quest-harvest/agents/openai.yaml",
         "skills/aoa-quest-harvest/examples/runtime.md",
         "skills/aoa-quest-harvest/checks/review.md"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "8823dc96d40011e99202f5a4f8e818c42dd7552eede68dc06436192ebeba8f7b",
+      "content_hash": "c0080b919f2c27387c7d00a2b6ac6e8347876f759606e79e45263f742ecf553c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2861,13 +2862,13 @@
         "repo-quest-harvest-only",
         "user-curated-core"
       ],
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "lineage_state": "pending",
       "name": "aoa-quest-harvest",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "8823dc96d400",
+      "skill_revision": "c0080b919f2c",
       "status": "scaffold",
       "support_artifacts": [
         {

@@ -502,8 +502,8 @@
       "summary_clause": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer",
       "use_when_clause": "a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface",
       "do_not_use_clause": "when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern",
-      "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
       "family": "quest-promotion-triage",
       "families": [
         "quest-promotion-triage"
@@ -516,13 +516,12 @@
       "default_prompt": "Use $aoa-quest-harvest to decide whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "base_case_ids": [
         "20-explicit",
-        "20-implicit",
+        "20-implicit-manual",
         "20-adjacent-negative"
       ],
       "collision_case_ids": [],
