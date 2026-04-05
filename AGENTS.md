@@ -136,6 +136,30 @@ Summarize:
 
 Do not claim checks you did not run.
 
+## Audit contract
+
+For repository audits and GitHub review, read `AUDIT.md` after the core docs.
+
+## Review guidelines
+
+For GitHub review in this repository, treat the following as P0:
+
+- committed secrets, private instructions, or internal-only URLs in skill or overlay surfaces
+- a risk-heavy skill changing from `explicit-only` to a weaker invocation posture without explicit approval and matching docs/evidence updates
+- overlay or skill wording that silently routes a bounded public workflow toward destructive or live operational behavior
+
+Treat the following as P1:
+
+- a skill widens beyond a bounded workflow
+- runtime wording duplicates or rewrites technique truth instead of packaging it
+- single-technique composition appears without exception review or without updating the composition audit surface
+- `SKILL.md`, `techniques.yaml`, and derived catalogs or matrices drift apart
+- status or invocation changes appear without matching review or evidence surfaces
+- overlay packs begin acting like downstream integrations or scenario playbooks
+- claiming validation that was not actually run
+
+Ignore trivial wording nits unless the task explicitly asks for copyediting.
+
 For runtime-path debugging, prefer the documented local paths such as:
 
 ```bash
