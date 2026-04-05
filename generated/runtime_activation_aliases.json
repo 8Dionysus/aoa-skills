@@ -195,6 +195,18 @@
       }
     },
     {
+      "name": "aoa-session-donor-harvest",
+      "codex_mention": "$aoa-session-donor-harvest",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-session-donor-harvest",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-donor-harvest"
+        }
+      }
+    },
+    {
       "name": "aoa-source-of-truth-check",
       "codex_mention": "$aoa-source-of-truth-check",
       "codex_browser": "/skills",

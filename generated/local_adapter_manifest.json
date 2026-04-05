@@ -426,7 +426,7 @@
     },
     {
       "name": "aoa-quest-harvest",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
       "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
       "allow_implicit_invocation": false,
@@ -523,6 +523,38 @@
       },
       "trust_posture": "explicit-risk",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-sanitized-share"
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
+      "path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
+      "allowlist_paths": [
+        ".agents/skills/aoa-session-donor-harvest"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/owner-layer-map.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-SESSION-DONOR-HARVEST,AOA-T-PENDING-OWNER-LAYER-TRIAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-donor-harvest"
     },
     {
       "name": "aoa-source-of-truth-check",

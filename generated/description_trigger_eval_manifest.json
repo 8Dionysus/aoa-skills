@@ -11,13 +11,13 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 20,
-  "total_cases": 99,
+  "skill_count": 21,
+  "total_cases": 102,
   "case_class_totals": {
-    "explicit-handle": 20,
-    "manual-invocation-required": 15,
+    "explicit-handle": 21,
+    "manual-invocation-required": 16,
     "prefer-other-skill": 20,
-    "should-not-trigger": 20,
+    "should-not-trigger": 21,
     "should-trigger": 24
   },
   "skills": [
@@ -287,7 +287,7 @@
     {
       "name": "aoa-quest-harvest",
       "invocation_mode": "explicit-only",
-      "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91",
+      "description_sha256": "72791816671a95202d2d728b7cbe79c6299c5102319f9ebb73ce408921f1d7cf",
       "family": "quest-promotion-triage",
       "total_cases": 4,
       "case_class_totals": {
@@ -342,6 +342,25 @@
       ],
       "coverage_ok": true,
       "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "39775fddb3e05c3981e6c1812a74f1994eb4ffc365c9d0279535d593971a2333",
+      "family": "quest-promotion-triage",
+      "total_cases": 3,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 1,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": false
     },
     {
       "name": "aoa-source-of-truth-check",

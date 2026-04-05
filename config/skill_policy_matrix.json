@@ -120,6 +120,16 @@
       "requires_confirmation_seam": false,
       "notes": "Harvest-only triage skill for deciding whether repeated quest evidence belongs in skills, playbooks, orchestrator surfaces, proof, memo, or a continued quest."
     },
+    "aoa-session-donor-harvest": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Explicit-only post-session donor harvest skill for routing reusable session outputs to the right owner layer without forcing promotion."
+    },
     "aoa-safe-infra-change": {
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",

@@ -765,7 +765,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a bounded work pattern has repeated and now needs an explicit promotion decision\n- reviewed evidence exists, but the correct destination is still unclear\n- the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest\n- the route needs a compact post-session harvest rather than another free-form discussion\n\nDo not use this skill when:\n- the route is still active and the evidence has not been reviewed yet\n- there is only one anecdotal occurrence with no honest repeat signal\n- the task is to invent net-new doctrine rather than classify a repeated pattern\n- the route is already clearly scenario-shaped and only needs playbook authoring",
+          "content_markdown": "Use this skill when:\n- a bounded work pattern has repeated and now needs an explicit promotion decision\n- reviewed evidence exists, but the correct destination is still unclear\n- the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest\n- the route needs a compact final promotion triage rather than another free-form discussion\n\nDo not use this skill when:\n- the route is still active and the evidence has not been reviewed yet\n- there is only one anecdotal occurrence with no honest repeat signal\n- the task is to invent net-new doctrine rather than classify a repeated pattern\n- the route is already clearly scenario-shaped and only needs playbook authoring\n- the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use `aoa-session-donor-harvest`",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -928,6 +928,64 @@
       ],
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
       "status": "canonical"
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to turn a reviewed session artifact into a bounded donor harvest pack that names reusable units, routes each one to the right AoA owner layer, and drafts the next honest artifact without forcing promotion.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units\n- the work is post-session and reviewable rather than live execution\n- candidate outputs may belong in technique canon, `aoa-skills`, `aoa-playbooks`, `aoa-evals`, `aoa-memo`, `aoa-agents`, or a hold/quest lane\n- the question is not merely \"what happened?\" but \"what reusable object, if any, emerged here?\"\n\nDo not use this skill when:\n- the session is still active or unreviewed\n- the task is raw session capture, transcript export, or local indexing; those are history techniques, not this skill\n- the result is clearly one bounded repeated quest unit that only needs the narrower final promotion verdict from `aoa-quest-harvest`\n- the material is only a progress log, emotional recap, or theme cloud with no bounded reusable unit\n- the intended first destination is `aoa-routing` or `aoa-kag`; those are derivative layers and should not receive source-owned meaning first",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- reviewed session artifact\n- session goal and closure state\n- candidate repeat signals or reuse signals\n- touched repos or AoA layers\n- explicit uncertainty and boundary risks\n- desired output posture: classify-only, draft-stub, or patch-ready proposal",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- one bounded donor harvest pack\n- named candidates, each with:\n  - reusable unit name\n  - unit kind: pattern, mechanic, utility, law, proof, recall, or route\n  - abstraction shape: technique, skill, playbook, eval, memo, agent, or hold\n  - owner repo recommendation\n  - one chosen next artifact\n  - one rejected nearest-wrong target\n  - evidence anchors from the session artifact\n- one short list of items to defer, drop, or keep as quest residue",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. start from a reviewed session artifact rather than transient chat memory\n2. extract candidate reusable units, not topics; prefer explicit moves, laws, checklists, structures, routes, or proof patterns\n3. split merged candidates until each unit has one honest owner shape\n4. classify each kept candidate twice:\n   - by reuse kind: pattern, mechanic, utility, law, proof, recall, or route\n   - by owner shape: technique, skill, playbook, eval, memo, agent, or hold\n5. reject theme-only repetition, aesthetic resonance, and broad \"good idea\" residue unless a bounded reusable unit exists\n6. route reusable practice meaning to technique canon first\n7. route bounded executable leaf workflows to `aoa-skills`\n8. route multi-step recurring scenario methods to `aoa-playbooks`\n9. route rubrics, verdict postures, and proof surfaces to `aoa-evals`\n10. route recall, writeback, recurrence, and memory-support patterns to `aoa-memo`\n11. route role law, orchestrator class law, handoff law, and actor-boundary rules to `aoa-agents`\n12. keep `aoa-routing` and `aoa-kag` out of first-authoring unless the source-owned object already exists elsewhere and the session only discovered a derivative bridge update\n13. when the candidate is a repeated reviewed quest unit and the remaining ambiguity is specifically the final promotion target among quest, skill, playbook, agent, eval, or memo, hand off to `aoa-quest-harvest`\n14. draft the smallest next artifact for each accepted candidate, such as `TECHNIQUE.md`, `SKILL.md`, `PLAYBOOK.md`, `EVAL.md`, memory object seed, or agent/orchestrator surface note\n15. record one clear reason for the chosen owner and one clear reason against the nearest wrong owner",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- invocation must remain explicit and post-session\n- the skill harvests donor units; it does not treat session history as memory canon or instruction authority\n- one candidate must map to one primary owner layer\n- `usefulness` is a reuse signal, not an owner layer by itself\n- derivative layers do not become first authoring targets for source-owned meaning\n- weak evidence may end in `hold` or `keep_or_open_quest`\n- drafting a next artifact is allowed; forcing promotion is not",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- collapsing technique, skill, and playbook into one generic \"good reuse\" bucket\n- mistaking session themes for reusable units\n- routing authored meaning into `aoa-routing` or `aoa-kag` first\n- turning agent class law into a skill just because an agent repeatedly used a workflow\n- promoting memory residue as if it were proof or source meaning\n- over-harvesting one session into too many thin objects\n- treating a transcript package or session index as the same thing as donor harvest",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the source artifact is reviewed and bounded\n- confirm each kept candidate names one reusable unit rather than a topic\n- confirm each accepted candidate has one primary owner layer\n- confirm the nearest wrong target is rejected explicitly\n- confirm no candidate routes source-owned meaning first into derivative layers\n- confirm hold and defer outcomes remain available\n- confirm the output names the next artifact rather than only abstract categories",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Pending manifest-backed techniques:\n- AOA-T-PENDING-SESSION-DONOR-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-OWNER-LAYER-TRIAGE from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Outputs, Core procedure, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays may add:\n- local session artifact entrypoints\n- local review packet templates\n- repo-relative destination paths for drafted artifacts\n- local stop conditions for when the result must stay `hold`\n- local naming rules for donor packs and quest IDs\n\nThis skill assumes the session artifact already exists. Adjacent history techniques such as session capture, transcript packaging, and local indexing remain separate neighbors rather than being reopened here.",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "status": "scaffold"
     },
     {
       "name": "aoa-source-of-truth-check",

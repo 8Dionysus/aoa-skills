@@ -1,7 +1,8 @@
 {
   "cohorts": {
     "pending_lineage": [
-      "aoa-quest-harvest"
+      "aoa-quest-harvest",
+      "aoa-session-donor-harvest"
     ],
     "published_lineage": [
       "abyss-safe-infra-change",
@@ -222,6 +223,22 @@
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
       "status": "canonical",
       "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "aoa-session-donor-harvest",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
     },
     {
       "lineage_blockers": [],

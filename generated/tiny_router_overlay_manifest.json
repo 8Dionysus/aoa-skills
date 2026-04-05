@@ -9,9 +9,9 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 20,
+  "skill_count": 21,
   "band_count": 6,
-  "case_count": 54,
+  "case_count": 56,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -109,7 +109,7 @@
       "band": "quest-harvest-governance",
       "manual_invocation_required": true,
       "project_overlay": false,
-      "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91"
+      "description_sha256": "72791816671a95202d2d728b7cbe79c6299c5102319f9ebb73ce408921f1d7cf"
     },
     {
       "name": "aoa-safe-infra-change",
@@ -124,6 +124,13 @@
       "manual_invocation_required": true,
       "project_overlay": false,
       "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae"
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "39775fddb3e05c3981e6c1812a74f1994eb4ffc365c9d0279535d593971a2333"
     },
     {
       "name": "aoa-source-of-truth-check",

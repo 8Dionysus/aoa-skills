@@ -152,7 +152,7 @@
         "validate",
         ".agents/skills/aoa-quest-harvest"
       ],
-      "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91"
+      "description_sha256": "72791816671a95202d2d728b7cbe79c6299c5102319f9ebb73ce408921f1d7cf"
     },
     {
       "skill_name": "aoa-safe-infra-change",
@@ -173,6 +173,16 @@
         ".agents/skills/aoa-sanitized-share"
       ],
       "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae"
+    },
+    {
+      "skill_name": "aoa-session-donor-harvest",
+      "path": ".agents/skills/aoa-session-donor-harvest",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-session-donor-harvest"
+      ],
+      "description_sha256": "39775fddb3e05c3981e6c1812a74f1994eb4ffc365c9d0279535d593971a2333"
     },
     {
       "skill_name": "aoa-source-of-truth-check",

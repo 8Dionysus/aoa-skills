@@ -429,8 +429,8 @@
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
       "source_scope": "repo",
-      "instruction_sha256": "db03e32814a7050012453a696d6ee66caa93e2922728ae446d5bb4dd388ae005",
-      "dedupe_key": "aoa-quest-harvest:db03e32814a7050012453a696d6ee66caa93e2922728ae446d5bb4dd388ae005",
+      "instruction_sha256": "6eea7ea1edc9d3c63b527c58cc8c0201257bfab1375679de195616c40be05d1b",
+      "dedupe_key": "aoa-quest-harvest:6eea7ea1edc9d3c63b527c58cc8c0201257bfab1375679de195616c40be05d1b",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -447,7 +447,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.\n\nKeep in memory: source quest or quest family, reviewed run summary or harvest pack, promotion verdict, owner repo and follow-up surface.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.\n\nKeep in memory: source quest or quest family, reviewed run summary or harvest pack, promotion verdict, owner repo and follow-up surface.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -517,6 +517,38 @@
         "arguments": {
           "skill_name": "aoa-sanitized-share",
           "explicit_handle": "$aoa-sanitized-share",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "display_name": "AoA Session Donor Harvest",
+      "source_scope": "repo",
+      "instruction_sha256": "cd91bfdea3b1506f057ebfbad99f3e5857a49e6f3c8ee6cd2510da8246be13bd",
+      "dedupe_key": "aoa-session-donor-harvest:cd91bfdea3b1506f057ebfbad99f3e5857a49e6f3c8ee6cd2510da8246be13bd",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Harvest reusable units from sessions",
+      "must_keep": [
+        "reviewed session artifact",
+        "session goal and closure state",
+        "one bounded donor harvest pack",
+        "named candidates, each with:"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded donor harvest pack, named candidates, each with:.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-donor-harvest",
+          "explicit_handle": "$aoa-session-donor-harvest",
           "session_file": ".aoa/skill-runtime-session.json"
         }
       }

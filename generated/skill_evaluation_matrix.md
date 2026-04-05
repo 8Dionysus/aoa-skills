@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 20
+- total skills: 21
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -25,9 +25,10 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/aoa-local-stack-bringup/examples/runtime.md` | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` | true | - |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-port-adapter-refactor/examples/example.md` | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md` | true | - |
 | aoa-property-invariants | canonical | core | explicit-preferred | 1 | 1 | 2 | 1 | 1 | `skills/aoa-property-invariants/examples/example.md` | `docs/reviews/status-promotions/aoa-property-invariants.md` | `docs/reviews/canonical-candidates/aoa-property-invariants.md` | true | - |
-| aoa-quest-harvest | scaffold | core | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/aoa-quest-harvest/examples/runtime.md` | - | - | true | - |
+| aoa-quest-harvest | scaffold | core | explicit-only | 1 | 2 | 1 | 1 | 1 | `skills/aoa-quest-harvest/examples/runtime.md` | - | - | true | - |
 | aoa-safe-infra-change | canonical | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/aoa-safe-infra-change/examples/runtime.md` | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` | true | - |
 | aoa-sanitized-share | canonical | risk | explicit-only | 1 | 1 | 3 | 1 | 1 | `skills/aoa-sanitized-share/examples/runtime.md` | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` | true | - |
+| aoa-session-donor-harvest | scaffold | core | explicit-only | 1 | 2 | 2 | 1 | 1 | `skills/aoa-session-donor-harvest/examples/runtime.md` | - | - | true | - |
 | aoa-source-of-truth-check | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` | true | - |
 | aoa-tdd-slice | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-tdd-slice/examples/example.md` | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` | true | - |
 | atm10-change-protocol | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-change-protocol/examples/example.md` | `docs/reviews/status-promotions/atm10-change-protocol.md` | - | true | - |

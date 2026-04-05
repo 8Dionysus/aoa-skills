@@ -295,7 +295,7 @@
     {
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
       "source_scope": "repo",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
@@ -340,6 +340,27 @@
       "source_scope": "repo",
       "trust_posture": "explicit-risk",
       "mutation_surface": "sharing",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "display_name": "AoA Session Donor Harvest",
+      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
+      "source_scope": "repo",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
       "invocation_mode": "explicit-only",
       "recommended_install_scopes": [
         "repo",

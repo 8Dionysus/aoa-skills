@@ -67,6 +67,10 @@
       "tools": []
     },
     {
+      "name": "aoa-session-donor-harvest",
+      "tools": []
+    },
+    {
       "name": "aoa-source-of-truth-check",
       "tools": []
     },

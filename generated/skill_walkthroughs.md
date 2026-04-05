@@ -508,7 +508,7 @@ Common expand sections:
 - a bounded work pattern has repeated and now needs an explicit promotion decision
 - reviewed evidence exists, but the correct destination is still unclear
 - the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest
-- the route needs a compact post-session harvest rather than another free-form discussion
+- the route needs a compact final promotion triage rather than another free-form discussion
 
 ### Do not use when
 
@@ -516,6 +516,7 @@ Common expand sections:
 - there is only one anecdotal occurrence with no honest repeat signal
 - the task is to invent net-new doctrine rather than classify a repeated pattern
 - the route is already clearly scenario-shaped and only needs playbook authoring
+- the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use aoa-session-donor-harvest
 
 ### Object use shape
 
@@ -601,6 +602,47 @@ Common expand sections:
 - `review_checklist`: `skills/aoa-sanitized-share/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-sanitized-share.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-sanitized-share.md`
+
+## aoa-session-donor-harvest
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-session-donor-harvest/SKILL.md`
+- pick summary: Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket.
+
+### Use when
+
+- a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
+- the work is post-session and reviewable rather than live execution
+- candidate outputs may belong in technique canon, aoa-skills, aoa-playbooks, aoa-evals, aoa-memo, aoa-agents, or a hold/quest lane
+- the question is not merely "what happened?" but "what reusable object, if any, emerged here?"
+
+### Do not use when
+
+- the session is still active or unreviewed
+- the task is raw session capture, transcript export, or local indexing; those are history techniques, not this skill
+- the result is clearly one bounded repeated quest unit that only needs the narrower final promotion verdict from aoa-quest-harvest
+- the material is only a progress log, emotional recap, or theme cloud with no bounded reusable unit
+- the intended first destination is aoa-routing or aoa-kag; those are derivative layers and should not receive source-owned meaning first
+
+### Object use shape
+
+- one bounded donor harvest pack
+- named candidates, each with
+- reusable unit name
+- unit kind: pattern, mechanic, utility, law, proof, recall, or route
+- abstraction shape: technique, skill, playbook, eval, memo, agent, or hold
+- owner repo recommendation
+- one chosen next artifact
+- one rejected nearest-wrong target
+- evidence anchors from the session artifact
+- one short list of items to defer, drop, or keep as quest residue
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-session-donor-harvest/examples/runtime.md`
+- `review_checklist`: `skills/aoa-session-donor-harvest/checks/review.md`
 
 ## aoa-source-of-truth-check
 

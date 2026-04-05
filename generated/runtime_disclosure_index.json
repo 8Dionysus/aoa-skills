@@ -1358,7 +1358,7 @@
     {
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
       "short_description": "Triage quest promotion honestly",
       "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "skill_dir": ".agents/skills/aoa-quest-harvest",
@@ -1422,8 +1422,8 @@
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-quest-harvest",
       "collision_family": "quest-promotion-triage",
       "collision_notes": [
-        "aoa-quest-harvest decides whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
-        "It is a post-session harvest skill and should not be confused with the promoted surface it may recommend."
+        "aoa-session-donor-harvest harvests reusable donor units from a reviewed session artifact and routes them to the right owner layer before forcing promotion.",
+        "aoa-quest-harvest handles the narrower final promotion verdict once the work is already reduced to one repeated reviewed quest unit."
       ],
       "competing_skills": [],
       "sample_prompts": {
@@ -1432,7 +1432,7 @@
         ],
         "implicit": [],
         "manual_invocation_required": [
-          "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface."
+          "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface."
         ],
         "negative": [
           "The route is still active, the evidence is not reviewed yet, and there is only one anecdotal occurrence, so promotion triage would be premature."
@@ -1453,7 +1453,7 @@
           }
         }
       },
-      "disclose_card_markdown": "### aoa-quest-harvest\n- Summary: Triage quest promotion honestly\n- Use when: Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+      "disclose_card_markdown": "### aoa-quest-harvest\n- Summary: Triage quest promotion honestly\n- Use when: Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.\n- Trust posture: portable-core\n- Mutation surface: none\n"
     },
     {
       "name": "aoa-safe-infra-change",
@@ -1668,6 +1668,106 @@
         }
       },
       "disclose_card_markdown": "### aoa-sanitized-share\n- Summary: Sanitize tech artifacts for sharing\n- Use when: Turn raw technical material into a shareable public-safe artifact while keeping the raw source separate, placing the sanitized result in the canonical sharing surface, and preserving the lesson after redaction. Use when logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers. Do not use when the material is already clearly public-safe or when the task is to perform the underlying operational change.\n- Trust posture: explicit-risk\n- Mutation surface: sharing\n"
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "display_name": "AoA Session Donor Harvest",
+      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
+      "short_description": "Harvest reusable units from sessions",
+      "path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-session-donor-harvest",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-SESSION-DONOR-HARVEST,AOA-T-PENDING-OWNER-LAYER-TRIAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to turn a reviewed session artifact into a bounded donor harvest pack that names reusable units, routes each one to the right AoA owner layer, and drafts the next honest artifact without forcing promotion.",
+        "Trigger boundary": "a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units; the work is post-session and reviewable rather than live execution",
+        "Inputs": "reviewed session artifact; session goal and closure state",
+        "Outputs": "one bounded donor harvest pack; named candidates, each with:",
+        "Procedure": "start from a reviewed session artifact rather than transient chat memory; extract candidate reusable units, not topics; prefer explicit moves, laws, checklists, structures, routes, or proof patterns",
+        "Contracts": "invocation must remain explicit and post-session; the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
+        "Risks and anti-patterns": "collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units",
+        "Verification": "confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic",
+        "Technique traceability": "AOA-T-PENDING-SESSION-DONOR-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-OWNER-LAYER-TRIAGE from `8Dionysus/aoa-techniques` with `pa...",
+        "Adaptation points": "local session artifact entrypoints; local review packet templates"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/owner-layer-map.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Session Donor Harvest",
+        "short_description": "Harvest reusable units from sessions",
+        "default_prompt": "Use $aoa-session-donor-harvest to turn a reviewed session artifact into a donor harvest pack, route each reusable unit to the right AoA owner layer, and draft the smallest honest next artifact.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-session-donor-harvest",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-donor-harvest",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-session-donor-harvest",
+      "collision_family": "quest-promotion-triage",
+      "collision_notes": [
+        "aoa-session-donor-harvest harvests reusable donor units from a reviewed session artifact and routes them to the right owner layer before forcing promotion.",
+        "aoa-quest-harvest handles the narrower final promotion verdict once the work is already reduced to one repeated reviewed quest unit."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-session-donor-harvest to turn a reviewed session artifact into a donor harvest pack, route each reusable unit to the right AoA owner layer, and draft the smallest honest next artifact."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened."
+        ],
+        "negative": [
+          "The session is still live, nothing has been reviewed yet, and the team mainly wants to capture the chat, export a transcript, and make it searchable before deciding what reusable object, if any, emerged."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-session-donor-harvest",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-session-donor-harvest",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-session-donor-harvest"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-session-donor-harvest\n- Summary: Harvest reusable units from sessions\n- Use when: Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.\n- Trust posture: portable-core\n- Mutation surface: none\n"
     },
     {
       "name": "aoa-source-of-truth-check",

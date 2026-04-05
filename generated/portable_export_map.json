@@ -311,6 +311,25 @@
       }
     },
     {
+      "name": "aoa-session-donor-harvest",
+      "source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "target_dir": ".agents/skills/aoa-session-donor-harvest",
+      "target_skill_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/owner-layer-map.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
       "name": "aoa-source-of-truth-check",
       "source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "target_dir": ".agents/skills/aoa-source-of-truth-check",

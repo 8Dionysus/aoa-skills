@@ -290,6 +290,24 @@
       "workflow_short": "Purpose: turn potentially sensitive technical material into a shareable, reviewable, public-safe form, keeping the raw source distinct from the final public-safe output and placing that output where reviewers expect it. Flow: inspect the material for..."
     },
     {
+      "inputs_short": "Needs: reviewed session artifact; session goal and closure state; candidate repeat signals or reuse signals; touched repos or AoA layers.",
+      "invocation_mode": "explicit-only",
+      "main_anti_patterns_short": "Avoid: collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units; routing authored meaning into aoa-routing or aoa-kag first; turning agent class law...",
+      "name": "aoa-session-donor-harvest",
+      "outputs_short": "Produces: one bounded donor harvest pack; named candidates, each with; reusable unit name; unit kind: pattern, mechanic, utility, law, proof, recall, or route.",
+      "scope": "core",
+      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "status": "scaffold",
+      "summary": "Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-SESSION-DONOR-HARVEST",
+        "AOA-T-PENDING-OWNER-LAYER-TRIAGE"
+      ],
+      "trigger_boundary_short": "Use when a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units; the work is post-session and reviewable rather than live execution; Avoid when...",
+      "verification_short": "Checks: confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic; confirm each accepted candidate has one primary owner layer; confirm the nearest...",
+      "workflow_short": "Purpose: turn a reviewed session artifact into a bounded donor harvest pack that names reusable units, routes each one to the right AoA owner layer, and drafts the next honest artifact without forcing promotion. Flow: start from a reviewed session..."
+    },
+    {
       "inputs_short": "Needs: repository docs surface; target area of ambiguity or overlap; known canonical files if any; current contributor confusion points.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: over-formalizing a tiny docs surface; creating many labels without reducing ambiguity; moving truth across files without clearly signaling the change; letting summaries masquerade as canonical instructions.",

@@ -1,7 +1,8 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [
-      "aoa-quest-harvest"
+      "aoa-quest-harvest",
+      "aoa-session-donor-harvest"
     ],
     "candidate_ready": [
       "aoa-core-logic-boundary",
@@ -434,6 +435,28 @@
       "skill_path": "skills/aoa-sanitized-share/SKILL.md",
       "status": "canonical",
       "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-session-donor-harvest",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "status": "scaffold",
+      "summary": "Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",

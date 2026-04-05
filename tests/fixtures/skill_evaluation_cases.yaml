@@ -119,6 +119,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-session-donor-harvest
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
 
 trigger_cases:
   - skill: aoa-adr-write
@@ -350,6 +356,40 @@ trigger_cases:
       - the route is still active and the evidence has not been reviewed yet
       - there is only one anecdotal occurrence with no honest repeat signal
       - the task is to invent net-new doctrine rather than classify a repeated pattern
+  - skill: aoa-quest-harvest
+    case_id: quest_harvest_vs_session_donor_harvest_boundary
+    prompt: Compare a single repeated reviewed quest unit that only needs a final promotion verdict with a broader reviewed-session donor harvest, and choose the clearer fit.
+    expected: use
+    required_phrases:
+      - a bounded work pattern has repeated and now needs an explicit promotion decision
+      - the route needs a compact final promotion triage rather than another free-form discussion
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_reviewed_multi_unit_session
+    prompt: A reviewed session compaction note contains one reusable practice, one bounded Codex workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
+    expected: use
+    required_phrases:
+      - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
+      - the work is post-session and reviewable rather than live execution
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_live_session_capture_confusion
+    prompt: The session is still live, nothing has been reviewed yet, and the team mainly wants to capture the chat, export a transcript, and make it searchable before deciding what any of it means.
+    expected: do_not_use
+    required_phrases:
+      - the session is still active or unreviewed
+      - the task is raw session capture, transcript export, or local indexing; those are history techniques, not this skill
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_single_repeated_quest_unit
+    prompt: A reviewed session already isolated one repeated quest-shaped unit, and the only remaining ambiguity is whether that one unit should stay a quest or be promoted into skill, playbook, memo, proof, or agent surfaces.
+    expected: do_not_use
+    required_phrases:
+      - the result is clearly one bounded repeated quest unit that only needs the narrower final promotion verdict from `aoa-quest-harvest`
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_vs_quest_harvest_boundary
+    prompt: Compare a reviewed session artifact that still contains several reusable donor candidates with a narrower repeated-quest promotion decision, and choose the clearer fit.
+    expected: use
+    required_phrases:
+      - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
+      - the question is not merely "what happened?" but "what reusable object, if any, emerged here?"
 
   - skill: aoa-invariant-coverage-audit
     case_id: invariant_coverage_audit_existing_surface
@@ -1003,6 +1043,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection that keeps the work as an active or still-unproven quest instead of forcing promotion.
+    forbidden_output_phrases: []
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_reviewed_multi_unit_session
+    prompt: A reviewed session compaction note contains one reusable practice, one bounded Codex workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-donor-harvest/session_donor_harvest_reviewed_multi_unit_session.md
+    required_output_phrases:
+      - use
+      - A donor harvest pack that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target.
+    forbidden_output_phrases: []
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_live_session_capture_confusion
+    prompt: The session is still live, nothing has been reviewed yet, and the team mainly wants to capture the chat, export a transcript, and make it searchable before deciding what any of it means.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-donor-harvest/session_donor_harvest_live_session_capture_confusion.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward reviewed-session prerequisites or history techniques instead of donor harvest.
     forbidden_output_phrases: []
   - skill: aoa-invariant-coverage-audit
     case_id: invariant_coverage_audit_existing_surface

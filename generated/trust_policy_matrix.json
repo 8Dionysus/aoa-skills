@@ -222,6 +222,20 @@
       "notes": "Explicit-only because it handles potentially sensitive raw technical material."
     },
     {
+      "name": "aoa-session-donor-harvest",
+      "scope": "core",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-only post-session donor harvest skill for routing reusable session outputs to the right owner layer without forcing promotion."
+    },
+    {
       "name": "aoa-source-of-truth-check",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

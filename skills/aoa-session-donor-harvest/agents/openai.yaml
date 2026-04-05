@@ -1,0 +1,5 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep this skill explicit-only because donor harvest should stay a visible post-session action.
+  - Prefer reviewed session artifacts over live chat state or partial recollection.
