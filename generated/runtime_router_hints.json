@@ -291,10 +291,10 @@
       "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
       "collision_family": "quest-promotion-triage",
       "competing_skills": [],
-      "should_trigger": [
+      "should_trigger": [],
+      "manual_invocation_required": [
         "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface."
       ],
-      "manual_invocation_required": [],
       "negative_controls": [
         "The route is still active, the evidence is not reviewed yet, and there is only one anecdotal occurrence, so promotion triage would be premature."
       ],

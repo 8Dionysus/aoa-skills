@@ -299,7 +299,7 @@
       "source_scope": "repo",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "recommended_install_scopes": [
         "repo",
         "user"

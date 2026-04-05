@@ -578,7 +578,7 @@
     },
     {
       "composition_mode": "bounded",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "name": "aoa-quest-harvest",
       "scope": "core",
       "skill_path": "skills/aoa-quest-harvest/SKILL.md",

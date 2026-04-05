@@ -255,8 +255,8 @@
       "target_dir": ".agents/skills/aoa-quest-harvest",
       "target_skill_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
-      "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
       "resource_inventory": {
         "scripts": [],
         "references": [

@@ -102,7 +102,7 @@
           "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
-          "allow_implicit_invocation": true,
+          "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         },
         {
@@ -246,7 +246,7 @@
           "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
-          "allow_implicit_invocation": true,
+          "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         },
         {
@@ -278,7 +278,7 @@
           "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
-          "allow_implicit_invocation": true,
+          "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         }
       ]
@@ -446,7 +446,7 @@
           "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "target_path": "$HOME/.agents/skills/aoa-quest-harvest/SKILL.md",
           "openai_config_path": "$HOME/.agents/skills/aoa-quest-harvest/agents/openai.yaml",
-          "allow_implicit_invocation": true,
+          "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         },
         {

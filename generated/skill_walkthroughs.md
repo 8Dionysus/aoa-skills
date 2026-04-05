@@ -499,7 +499,7 @@ Common expand sections:
 
 - scope: `core`
 - status: `scaffold`
-- invocation mode: `explicit-preferred`
+- invocation mode: `explicit-only`
 - skill path: `skills/aoa-quest-harvest/SKILL.md`
 - pick summary: Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.
 

@@ -115,7 +115,9 @@
       "skills": [
         "aoa-quest-harvest"
       ],
-      "manual_only_skills": [],
+      "manual_only_skills": [
+        "aoa-quest-harvest"
+      ],
       "overlay_skills": []
     },
     {

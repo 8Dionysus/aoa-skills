@@ -237,7 +237,7 @@
     },
     {
       "inputs_short": "Needs: source quest or quest family; reviewed run summary or harvest pack; repeat count and repeat shape; owner layer and touched surfaces.",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer; collapsing recurring route method into a single skill; treating proof debt as skill meaning.",
       "name": "aoa-quest-harvest",
       "outputs_short": "Produces: promotion verdict; owner repo and follow-up surface; explicit reason for promotion or non-promotion; named next artifact or next quest action.",

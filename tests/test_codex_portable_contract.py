@@ -149,7 +149,10 @@ class CodexPortableContractTests(unittest.TestCase):
             self.assertTrue((REPO_ROOT / rel_path).exists(), msg=rel_path)
 
         self.assertEqual(release_manifest["skill_count"], len(source_catalog["skills"]))
-        self.assertEqual(release_manifest["explicit_only_count"], 7)
+        self.assertEqual(
+            release_manifest["explicit_only_count"],
+            sum(1 for entry in source_catalog["skills"] if entry["invocation_mode"] == "explicit-only"),
+        )
         self.assertEqual(
             release_manifest["profile_count"],
             len(release_manifest["install_profile_revisions"]),

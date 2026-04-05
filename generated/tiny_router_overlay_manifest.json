@@ -107,7 +107,7 @@
     {
       "name": "aoa-quest-harvest",
       "band": "quest-harvest-governance",
-      "manual_invocation_required": false,
+      "manual_invocation_required": true,
       "project_overlay": false,
       "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91"
     },

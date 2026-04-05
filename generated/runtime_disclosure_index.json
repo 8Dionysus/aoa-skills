@@ -1366,7 +1366,7 @@
       "metadata": {
         "aoa_scope": "core",
         "aoa_status": "scaffold",
-        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-QUEST-HARVEST,AOA-T-PENDING-PROMOTION-TRIAGE",
@@ -1390,7 +1390,7 @@
         "Inputs": "source quest or quest family; reviewed run summary or harvest pack",
         "Outputs": "promotion verdict; owner repo and follow-up surface",
         "Procedure": "collect a bounded reviewed harvest pack rather than raw runtime state; name what actually repeated: leaf workflow, route, proof pattern, recall pattern, or boundary law",
-        "Contracts": "orchestrator class identity must not be promoted into a skill; a skill promotion must stay leaf-workflow-shaped",
+        "Contracts": "invocation must remain explicit and post-session; orchestrator class identity must not be promoted into a skill",
         "Risks and anti-patterns": "promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer",
         "Verification": "confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly",
         "Technique traceability": "AOA-T-PENDING-QUEST-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-PROMOTION-TRIAGE from `8Dionysus/aoa-techniques` with `path: TBD` a...",
@@ -1407,7 +1407,7 @@
         ]
       },
       "policy": {
-        "allow_implicit_invocation": true
+        "allow_implicit_invocation": false
       },
       "interface": {
         "display_name": "AoA Quest Harvest",
@@ -1430,10 +1430,10 @@
         "explicit": [
           "Use $aoa-quest-harvest to decide whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface."
         ],
-        "implicit": [
+        "implicit": [],
+        "manual_invocation_required": [
           "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface."
         ],
-        "manual_invocation_required": [],
         "negative": [
           "The route is still active, the evidence is not reviewed yet, and there is only one anecdotal occurrence, so promotion triage would be premature."
         ]
