@@ -10,13 +10,14 @@ A skill here is not a random prompt and not a hidden project hack. It is a reusa
 
 Use the shortest route by need:
 
-- docs map: `docs/README.md`
+- first starter bundle: `skills/aoa-change-protocol/SKILL.md`
+- current skill surface: `SKILL_INDEX.md`
 - runtime path: `docs/RUNTIME_PATH.md`
 - evaluation path: `docs/EVALUATION_PATH.md`
 - public status and governance: `docs/PUBLIC_SURFACE.md`
+- verify current repo state: `python scripts/build_catalog.py --check`, `python scripts/validate_skills.py`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques`, `python scripts/validate_agent_skills.py --repo-root .`, `python scripts/validate_support_resources.py --repo-root . --check-portable`, `python scripts/validate_tiny_router_inputs.py --repo-root .`, and `python -m pytest -q tests`
+- docs map: `docs/README.md`
 - layer position and boundaries: `docs/LAYER_POSITION.md`
-- current skill surface: `SKILL_INDEX.md`
-- first starter bundle: `skills/aoa-change-protocol/SKILL.md`
 
 ## Route by need
 
@@ -92,7 +93,20 @@ Run the bounded repo check:
 python scripts/release_check.py
 ```
 
-For day-to-day iteration, the core loop remains:
+For a read-only/current-state verify pass, use:
+
+```bash
+python scripts/build_catalog.py --check
+python scripts/validate_skills.py
+python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
+python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques
+python scripts/validate_agent_skills.py --repo-root .
+python scripts/validate_support_resources.py --repo-root . --check-portable
+python scripts/validate_tiny_router_inputs.py --repo-root .
+python -m pytest -q tests
+```
+
+For day-to-day iteration, the smallest core loop remains:
 
 ```bash
 python scripts/build_catalog.py

@@ -123,18 +123,18 @@ If you are reading bundle shape or adjacency, use `generated/skill_bundle_index.
 Use this order when orienting in the public surface:
 
 1. `README.md`
-2. `docs/README.md`
-3. `docs/RUNTIME_PATH.md`
-4. `docs/EVALUATION_PATH.md`
-5. `docs/PUBLIC_SURFACE.md`
-6. `generated/public_surface.md`
-7. `generated/governance_backlog.md`
-8. `generated/overlay_readiness.md`
-9. `generated/skill_boundary_matrix.md`
-10. `generated/skill_bundle_index.md`
-11. `generated/skill_graph.md`
-12. `SKILL_INDEX.md`
-13. the target `skills/<skill-name>/SKILL.md`
+2. `SKILL_INDEX.md`
+3. the target `skills/<skill-name>/SKILL.md`
+4. `docs/RUNTIME_PATH.md`
+5. `docs/EVALUATION_PATH.md`
+6. `docs/PUBLIC_SURFACE.md`
+7. `generated/public_surface.md`
+8. `generated/governance_backlog.md`
+9. `generated/overlay_readiness.md`
+10. `generated/skill_boundary_matrix.md`
+11. `generated/skill_bundle_index.md`
+12. `generated/skill_graph.md`
+13. `docs/README.md`
 
 ## What this layer does not do
 
