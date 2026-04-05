@@ -89,18 +89,23 @@
     },
     {
       "id": "quest-harvest-governance",
-      "summary": "Post-session quest harvest, promotion triage, and owner-surface selection for repeated reviewed patterns.",
+      "summary": "Post-session donor harvest, quest promotion triage, and owner-surface selection for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
+        "session donor",
+        "donor harvest",
         "quest harvest",
         "promotion triage",
+        "reviewed session artifact",
         "reviewed repeat",
+        "owner layer routing",
         "owner surface",
         "stay a quest",
         "post session harvest",
         "promotion target"
       ],
       "skills": [
-        "aoa-quest-harvest"
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest"
       ]
     },
     {
@@ -296,12 +301,30 @@
         "promotion triage",
         "reviewed repeat",
         "owner surface",
-        "stay a quest"
+        "stay a quest",
+        "final promotion verdict"
       ],
       "negative_cues": [
         "route still active",
         "one anecdotal occurrence",
-        "invent net-new doctrine"
+        "invent net-new doctrine",
+        "multiple donor units",
+        "reviewed session artifact with several candidates"
+      ]
+    },
+    "aoa-session-donor-harvest": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "session donor",
+        "donor harvest",
+        "reviewed session artifact",
+        "owner layer routing",
+        "reviewed compaction note"
+      ],
+      "negative_cues": [
+        "session still live",
+        "raw transcript export",
+        "single repeated quest unit"
       ]
     },
     "aoa-safe-infra-change": {
@@ -463,8 +486,13 @@
       "aoa-contract-test"
     ],
     "aoa-quest-harvest": [
+      "aoa-session-donor-harvest",
       "aoa-source-of-truth-check",
       "aoa-change-protocol"
+    ],
+    "aoa-session-donor-harvest": [
+      "aoa-quest-harvest",
+      "aoa-source-of-truth-check"
     ],
     "aoa-safe-infra-change": [
       "aoa-dry-run-first",

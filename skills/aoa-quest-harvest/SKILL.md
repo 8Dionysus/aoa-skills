@@ -21,13 +21,14 @@ Use this skill when:
 - a bounded work pattern has repeated and now needs an explicit promotion decision
 - reviewed evidence exists, but the correct destination is still unclear
 - the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest
-- the route needs a compact post-session harvest rather than another free-form discussion
+- the route needs a compact final promotion triage rather than another free-form discussion
 
 Do not use this skill when:
 - the route is still active and the evidence has not been reviewed yet
 - there is only one anecdotal occurrence with no honest repeat signal
 - the task is to invent net-new doctrine rather than classify a repeated pattern
 - the route is already clearly scenario-shaped and only needs playbook authoring
+- the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use `aoa-session-donor-harvest`
 
 ## Inputs
 

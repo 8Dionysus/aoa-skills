@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "skill_count": 20,
+  "skill_count": 21,
   "band_count": 6,
   "skills": [
     {
@@ -1058,7 +1058,7 @@
     {
       "name": "aoa-quest-harvest",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session quest harvest, promotion triage, and owner-surface selection for repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, quest promotion triage, and owner-surface selection for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
@@ -1067,21 +1067,26 @@
       "project_overlay": false,
       "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
       "summary_short": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks,...",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded work pattern has repeated, reviewed evidence exists, and you need to decide whether it should stay a quest or move into the next honest owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, or the task is to invent net-new doctrine instead of classifying a repeated pattern.",
-      "description_sha256": "39870abb627748c7818a0356ee9dcfd8b7dc617c364708e955a7776a4f773c91",
+      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
+      "description_sha256": "72791816671a95202d2d728b7cbe79c6299c5102319f9ebb73ce408921f1d7cf",
       "positive_cues": [
         "quest harvest",
         "promotion triage",
         "reviewed repeat",
         "owner surface",
         "stay a quest",
-        "post session harvest",
-        "promotion target"
+        "final promotion verdict",
+        "session donor",
+        "donor harvest",
+        "reviewed session artifact",
+        "owner layer routing"
       ],
       "negative_cues": [
         "route still active",
         "one anecdotal occurrence",
-        "invent net-new doctrine"
+        "invent net-new doctrine",
+        "multiple donor units",
+        "reviewed session artifact with several candidates"
       ],
       "cue_tokens": [
         "quest",
@@ -1092,8 +1097,14 @@
         "repeat",
         "owner",
         "stay",
-        "post",
+        "final",
+        "verdict",
         "session",
+        "donor",
+        "artifact",
+        "layer",
+        "routing",
+        "post",
         "target"
       ],
       "negative_tokens": [
@@ -1106,25 +1117,28 @@
         "invent",
         "net",
         "new",
-        "doctrine"
+        "doctrine",
+        "multiple",
+        "donor"
       ],
       "auto_tokens": [
         "quest",
+        "reviewed",
         "evidence",
         "repeated",
-        "reviewed",
-        "promotion",
         "still",
+        "promotion",
         "active",
         "exists",
         "one",
-        "pattern",
+        "owner",
         "route",
         "triage",
         "anecdotal",
         "aoa"
       ],
       "companions": [
+        "aoa-session-donor-harvest",
         "aoa-source-of-truth-check",
         "aoa-change-protocol"
       ],
@@ -1291,6 +1305,92 @@
       ],
       "primary_positive_prompt": "Use $aoa-sanitized-share to separate raw technical material from a public-safe artifact and verify the sanitized version still preserves the lesson.",
       "primary_negative_prompt": "The material is already clearly public-safe and minimal, so there is nothing to sanitize or separate.",
+      "primary_defer_prompt": ""
+    },
+    {
+      "name": "aoa-session-donor-harvest",
+      "band": "quest-harvest-governance",
+      "band_summary": "Post-session donor harvest, quest promotion triage, and owner-surface selection for reviewed session artifacts or repeated reviewed patterns.",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "summary": "Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket.",
+      "summary_short": "Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest...",
+      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
+      "description_sha256": "39775fddb3e05c3981e6c1812a74f1994eb4ffc365c9d0279535d593971a2333",
+      "positive_cues": [
+        "session donor",
+        "donor harvest",
+        "reviewed session artifact",
+        "owner layer routing",
+        "reviewed compaction note",
+        "quest harvest",
+        "promotion triage",
+        "reviewed repeat",
+        "owner surface",
+        "stay a quest"
+      ],
+      "negative_cues": [
+        "session still live",
+        "raw transcript export",
+        "single repeated quest unit"
+      ],
+      "cue_tokens": [
+        "session",
+        "donor",
+        "harvest",
+        "reviewed",
+        "artifact",
+        "owner",
+        "layer",
+        "routing",
+        "compaction",
+        "note",
+        "quest",
+        "promotion",
+        "triage",
+        "repeat",
+        "stay",
+        "post",
+        "target"
+      ],
+      "negative_tokens": [
+        "session",
+        "still",
+        "live",
+        "raw",
+        "transcript",
+        "export",
+        "single",
+        "repeated",
+        "quest",
+        "unit"
+      ],
+      "auto_tokens": [
+        "session",
+        "harvest",
+        "reusable",
+        "aoa",
+        "artifact",
+        "donor",
+        "reviewed",
+        "draft",
+        "honest",
+        "layer",
+        "next",
+        "one",
+        "owner",
+        "route"
+      ],
+      "companions": [
+        "aoa-quest-harvest",
+        "aoa-source-of-truth-check"
+      ],
+      "primary_positive_prompt": "Use $aoa-session-donor-harvest to turn a reviewed session artifact into a donor harvest pack, route each reusable unit to the right AoA owner layer, and draft the smallest honest next artifact.",
+      "primary_negative_prompt": "The session is still live, nothing has been reviewed yet, and the team mainly wants to capture the chat, export a transcript, and make it searchable before deciding what reusable object, if any, emerged.",
       "primary_defer_prompt": ""
     },
     {

@@ -102,21 +102,27 @@
     },
     {
       "id": "quest-harvest-governance",
-      "summary": "Post-session quest harvest, promotion triage, and owner-surface selection for repeated reviewed patterns.",
+      "summary": "Post-session donor harvest, quest promotion triage, and owner-surface selection for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
+        "session donor",
+        "donor harvest",
         "quest harvest",
         "promotion triage",
+        "reviewed session artifact",
         "reviewed repeat",
+        "owner layer routing",
         "owner surface",
         "stay a quest",
         "post session harvest",
         "promotion target"
       ],
       "skills": [
-        "aoa-quest-harvest"
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest"
       ],
       "manual_only_skills": [
-        "aoa-quest-harvest"
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest"
       ],
       "overlay_skills": []
     },

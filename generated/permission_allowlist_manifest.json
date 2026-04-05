@@ -724,6 +724,51 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-session-donor-harvest",
+      "display_name": "AoA Session Donor Harvest",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-session-donor-harvest",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest",
+          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/references",
+          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-session-donor-harvest",
+          "$HOME/.agents/skills/aoa-session-donor-harvest/scripts",
+          "$HOME/.agents/skills/aoa-session-donor-harvest/references",
+          "$HOME/.agents/skills/aoa-session-donor-harvest/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-session-donor-harvest",
+          "/etc/codex/skills/aoa-session-donor-harvest/scripts",
+          "/etc/codex/skills/aoa-session-donor-harvest/references",
+          "/etc/codex/skills/aoa-session-donor-harvest/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-session-donor-harvest",
+        ".agents/skills/aoa-session-donor-harvest/scripts",
+        ".agents/skills/aoa-session-donor-harvest/references",
+        ".agents/skills/aoa-session-donor-harvest/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/owner-layer-map.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-source-of-truth-check",
       "display_name": "AoA Source Of Truth Check",
       "source_scope": "repo",

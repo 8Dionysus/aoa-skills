@@ -1102,6 +1102,81 @@
     },
     {
       "kind": "maturity",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "technique_AOA_T_PENDING_SESSION_DONOR_HARVEST"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "technique_AOA_T_PENDING_OWNER_LAYER_TRIAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "profile_repo_session_donor_harvest_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
       "source": "skill_aoa_source_of_truth_check",
       "target": "status_canonical"
     },
@@ -1646,6 +1721,26 @@
       "id": "skill_aoa_sanitized_share",
       "label": "aoa-sanitized-share",
       "type": "skill"
+    },
+    {
+      "id": "skill_aoa_session_donor_harvest",
+      "label": "aoa-session-donor-harvest",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_SESSION_DONOR_HARVEST",
+      "label": "AOA-T-PENDING-SESSION-DONOR-HARVEST",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_OWNER_LAYER_TRIAGE",
+      "label": "AOA-T-PENDING-OWNER-LAYER-TRIAGE",
+      "type": "technique"
+    },
+    {
+      "id": "profile_repo_session_donor_harvest_only",
+      "label": "profile: repo-session-donor-harvest-only",
+      "type": "profile"
     },
     {
       "id": "skill_aoa_source_of_truth_check",
@@ -2840,7 +2935,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c0080b919f2c27387c7d00a2b6ac6e8347876f759606e79e45263f742ecf553c",
+      "content_hash": "c9f5951907c269d789a0135b5d85160138f0a907c8525f42fe48e65a122f4611",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2868,7 +2963,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "c0080b919f2c",
+      "skill_revision": "c9f5951907c2",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3083,6 +3178,87 @@
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
           "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-session-donor-harvest/SKILL.md",
+        "skills/aoa-session-donor-harvest/techniques.yaml",
+        "skills/aoa-session-donor-harvest/agents/openai.yaml",
+        "skills/aoa-session-donor-harvest/examples/runtime.md",
+        "skills/aoa-session-donor-harvest/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "f708926cc79a76e9ac92651c990590b22fa417b48aff8775327d1b4a99425fb9",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-session-donor-harvest-only",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-session-donor-harvest",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "skill_revision": "f708926cc79a",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-session-donor-harvest/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-session-donor-harvest/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SESSION-DONOR-HARVEST",
+        "AOA-T-PENDING-OWNER-LAYER-TRIAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-SESSION-DONOR-HARVEST",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-OWNER-LAYER-TRIAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
         }
       ]
     },

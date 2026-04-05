@@ -180,6 +180,17 @@
     {
       "composition_class": "multi_technique",
       "exception_review_path": null,
+      "name": "aoa-session-donor-harvest",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-SESSION-DONOR-HARVEST",
+        "AOA-T-PENDING-OWNER-LAYER-TRIAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
       "name": "aoa-source-of-truth-check",
       "recommended_action": "keep_multi_technique",
       "technique_count": 3,
@@ -230,9 +241,9 @@
   },
   "summary": {
     "approved_exception_count": 2,
-    "multi_technique_skill_count": 18,
+    "multi_technique_skill_count": 19,
     "needs_reframe_count": 0,
     "single_technique_skill_count": 2,
-    "total_skill_count": 20
+    "total_skill_count": 21
   }
 }

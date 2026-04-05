@@ -5,7 +5,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 20
+- total skills: 21
 - adjacency cases: 32
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
@@ -28,6 +28,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-quest-harvest | scaffold | core | false | 0 | 0 | - | - | false | - |
 | aoa-safe-infra-change | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
 | aoa-sanitized-share | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | risk_authority_preview_execution | true | - |
+| aoa-session-donor-harvest | scaffold | core | false | 0 | 0 | - | - | false | - |
 | aoa-source-of-truth-check | canonical | core | true | 1 | 0 | aoa-adr-write | decision_docs_authority | true | - |
 | aoa-tdd-slice | canonical | core | true | 1 | 0 | aoa-change-protocol | change_workflows | true | - |
 | atm10-change-protocol | evaluated | project | false | 1 | 0 | atm10-source-of-truth-check | - | true | - |

@@ -19,6 +19,7 @@
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
         "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
         "aoa-source-of-truth-check",
@@ -43,6 +44,7 @@
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
         "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ]
@@ -53,6 +55,14 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-quest-harvest"
+      ]
+    },
+    "repo-session-donor-harvest-only": {
+      "description": "Install only aoa-session-donor-harvest into a repository root for explicit post-session donor extraction and owner-layer routing.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-session-donor-harvest"
       ]
     },
     "repo-risk-explicit": {
@@ -98,6 +108,7 @@
         "aoa-port-adapter-refactor",
         "aoa-property-invariants",
         "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ]

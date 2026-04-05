@@ -53,11 +53,12 @@
     {
       "family": "quest-promotion-triage",
       "skills": [
-        "aoa-quest-harvest"
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest"
       ],
       "notes": [
-        "aoa-quest-harvest decides whether repeated reviewed quest evidence should stay a quest or be promoted into the next honest owner surface.",
-        "It is a post-session harvest skill and should not be confused with the promoted surface it may recommend."
+        "aoa-session-donor-harvest harvests reusable donor units from a reviewed session artifact and routes them to the right owner layer before forcing promotion.",
+        "aoa-quest-harvest handles the narrower final promotion verdict once the work is already reduced to one repeated reviewed quest unit."
       ]
     },
     {
