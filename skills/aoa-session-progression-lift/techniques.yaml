@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0084
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md
-    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
+    source_ref: 364da8f4e97d0c29f4b31c59d7bfd91585633f2a
     use_sections:
       - Intent
       - Inputs
@@ -14,7 +14,7 @@ techniques:
   - id: AOA-T-0085
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md
-    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
+    source_ref: 364da8f4e97d0c29f4b31c59d7bfd91585633f2a
     use_sections:
       - Outputs
       - Risks

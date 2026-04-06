@@ -974,7 +974,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0075 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0076 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation\n- AOA-T-0077 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md` and sections: Inputs, Outputs, Contracts, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0075 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0076 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation\n- AOA-T-0077 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md` and sections: Inputs, Outputs, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1032,7 +1032,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0084 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0085 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md` and sections: Outputs, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0084 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0085 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md` and sections: Outputs, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1090,7 +1090,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0078 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0079 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0078 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0079 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1148,7 +1148,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0080 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation\n- AOA-T-0081 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0080 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation\n- AOA-T-0081 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1206,7 +1206,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0082 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0083 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0082 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0083 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },

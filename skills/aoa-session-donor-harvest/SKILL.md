@@ -134,9 +134,9 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0075 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation
-- AOA-T-0076 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation
-- AOA-T-0077 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md` and sections: Inputs, Outputs, Contracts, Validation
+- AOA-T-0075 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0076 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation
+- AOA-T-0077 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md` and sections: Inputs, Outputs, Contracts, Validation
 
 ## Adaptation points
 

@@ -1716,7 +1716,7 @@
         "Contracts": "invocation must remain explicit and post-session; the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
         "Risks and anti-patterns": "collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units",
         "Verification": "confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 from `8Dion...",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 from `8Dion...",
         "Adaptation points": "local session artifact entrypoints; local review packet templates"
       },
       "resource_inventory": {
@@ -1829,7 +1829,7 @@
         "Contracts": "progression remains evidence-backed; multi-axis only; no authoritative universal score",
         "Risks and anti-patterns": "inventing progress from mood; using progression as policy",
         "Verification": "confirm all meaningful axis claims cite reviewed evidence; confirm the verdict matches the evidence",
-        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniques` at `...",
+        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniques` at `...",
         "Adaptation points": "local axis notes; role-affinity hints"
       },
       "resource_inventory": {
@@ -1938,7 +1938,7 @@
         "Contracts": "branch cards do not become routing authority; fork analysis must stay evidence-backed",
         "Risks and anti-patterns": "fake certainty about future routes; using fork cards as hidden routing policy",
         "Verification": "confirm each branch differs materially; confirm likely owner repo is named",
-        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techniques` at `6...",
+        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techniques` at `3...",
         "Adaptation points": "local control-mode labels; local delegate tiers or approval classes"
       },
       "resource_inventory": {
@@ -2045,7 +2045,7 @@
         "Contracts": "diagnosis is read-only; one odd anecdote is not enough for structural certainty",
         "Risks and anti-patterns": "mistaking symptom for cause; using vague vibes as diagnosis",
         "Verification": "confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated",
-        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `6c5e36b1063347d...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c2...",
         "Adaptation points": "local drift taxonomies; repo-specific failure classes"
       },
       "resource_inventory": {
@@ -2152,7 +2152,7 @@
         "Contracts": "self-repair is not free self-modification; important surface changes must pass checkpoint posture",
         "Risks and anti-patterns": "silent doctrine edits; approval bypass",
         "Verification": "confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape",
-        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa-technique...",
+        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa-technique...",
         "Adaptation points": "local approval classes; repo-specific rollback anchors"
       },
       "resource_inventory": {

@@ -82,8 +82,8 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0080 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation
-- AOA-T-0081 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0080 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation
+- AOA-T-0081 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation
 
 ## Adaptation points
 

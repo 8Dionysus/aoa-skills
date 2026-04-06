@@ -731,7 +731,7 @@
           "id": "AOA-T-0075",
           "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -746,7 +746,7 @@
           "id": "AOA-T-0076",
           "path": "techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -760,7 +760,7 @@
           "id": "AOA-T-0077",
           "path": "techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Inputs",
             "Outputs",
@@ -787,7 +787,7 @@
           "id": "AOA-T-0084",
           "path": "techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -800,7 +800,7 @@
           "id": "AOA-T-0085",
           "path": "techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Outputs",
             "Risks",
@@ -826,7 +826,7 @@
           "id": "AOA-T-0078",
           "path": "techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -839,7 +839,7 @@
           "id": "AOA-T-0079",
           "path": "techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -866,7 +866,7 @@
           "id": "AOA-T-0080",
           "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -878,7 +878,7 @@
           "id": "AOA-T-0081",
           "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -907,7 +907,7 @@
           "id": "AOA-T-0082",
           "path": "techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -920,7 +920,7 @@
           "id": "AOA-T-0083",
           "path": "techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
           "use_sections": [
             "Outputs",
             "Contracts",
