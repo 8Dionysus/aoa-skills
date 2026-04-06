@@ -5,8 +5,8 @@ status: scaffold
 summary: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-DECISION-FORK-CARDS
-  - AOA-T-PENDING-RISK-PASSPORT-LIFT
+  - AOA-T-0078
+  - AOA-T-0079
 ---
 
 # aoa-session-route-forks
@@ -84,9 +84,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Pending manifest-backed techniques:
-- AOA-T-PENDING-DECISION-FORK-CARDS from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Core procedure, Validation
-- AOA-T-PENDING-RISK-PASSPORT-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Outputs, Contracts, Risks, Validation
+Manifest-backed techniques:
+- AOA-T-0078 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation
+- AOA-T-0079 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 

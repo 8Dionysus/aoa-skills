@@ -9,7 +9,7 @@ metadata:
   aoa_invocation_mode: explicit-only
   aoa_source_skill_path: skills/aoa-session-self-diagnose/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
-  aoa_technique_dependencies: AOA-T-PENDING-SESSION-DRIFT-TAXONOMY,AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE
+  aoa_technique_dependencies: AOA-T-0080,AOA-T-0081
   aoa_portable_profile: codex-facing-wave-3
 ---
 
@@ -76,9 +76,9 @@ Do not use this skill when:
 - confirm no mutation happened
 
 ## Technique traceability
-Pending manifest-backed techniques:
-- AOA-T-PENDING-SESSION-DRIFT-TAXONOMY from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Outputs, Risks, Validation
-- AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation
+Manifest-backed techniques:
+- AOA-T-0080 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation
+- AOA-T-0081 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation
 
 ## Adaptation points
 Project overlays may add:

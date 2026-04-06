@@ -5,8 +5,8 @@ status: scaffold
 summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS
-  - AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR
+  - AOA-T-0082
+  - AOA-T-0083
 ---
 
 # aoa-session-self-repair
@@ -82,9 +82,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Pending manifest-backed techniques:
-- AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Core procedure, Validation
-- AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Outputs, Contracts, Risks, Validation
+Manifest-backed techniques:
+- AOA-T-0082 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation
+- AOA-T-0083 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 

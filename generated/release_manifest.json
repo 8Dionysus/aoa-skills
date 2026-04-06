@@ -172,13 +172,13 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "64d11a2cc28b34b1ebb79d1d45948e915db79b4a170fdd757d3e8545d59ad235",
-      "bytes": 125601
+      "sha256": "ee5d49ae2ea5eaf374e8c7395688dd7339602fb8e2c498d423a2c944c0a7e484",
+      "bytes": 125989
     },
     {
       "path": "generated/skill_catalog.min.json",
-      "sha256": "10a31bc0ca474029a080a74cf992cddd7ab64c72bba680fe3443ced7dc74fd3d",
-      "bytes": 9851
+      "sha256": "370fcf5aaa2b74a8b95d43448f74fd20206e3d8629adcef602563917bfbeb98d",
+      "bytes": 9597
     },
     {
       "path": "config/portable_skill_overrides.json",
@@ -219,8 +219,8 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "e27e6a4a10b995deec42a056072cae5a0d0d710eacf1a2b479a5244a5327bcc6",
-      "bytes": 40436
+      "sha256": "c11d352322f72e06fe4f9d5f7eb3a397adad925e1923d1421fcea5503c815b61",
+      "bytes": 40182
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
@@ -234,8 +234,8 @@
     },
     {
       "path": "generated/local_adapter_manifest.json",
-      "sha256": "81e9f65489132746f3a6bc02c6730862840a4a4fa24d3b61e871d67d5a9bb2ef",
-      "bytes": 40330
+      "sha256": "966b268627c355579aae593b355f6e269246c068adcab8879e595dd191d0f777",
+      "bytes": 40076
     },
     {
       "path": "generated/local_adapter_manifest.min.json",
@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "ac6aca59dc2adc47350c6eee4e7e0f78575a88c23a700973396394517e4cda7d",
-      "bytes": 170906
+      "sha256": "f5309042a7154621d79c9c306a243a84d3fadc8f9facc016df71ff155e2172c1",
+      "bytes": 170654
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "475cf47a3369ef52076cc21ea5c2bcc17dddb37dbf9f4e228d10572caaa0dcf6",
+      "sha256": "d619e5c19fffc8ca3769cb539aa1800ff1ebc80efc453db422f3a56d0e1053ee",
       "bytes": 51063
     },
     {
@@ -434,23 +434,23 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "15386d264ab70aaab315037623090108bae4bc3ab4619b33803f2c7298e9976c",
-      "bytes": 74117
+      "sha256": "42cd20e28f827ba9d02670916e95b9a5d92308dfd7adb7d4f426feb052e358b5",
+      "bytes": 74521
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "6c8551ee300dc677b83ceacbc9c3241d1bf60e043eafba1f8e6461dbf12cc385",
-      "bytes": 7776
+      "sha256": "8b467607ca7d4fbde3639e6d99c6aee02ed796dabff7b78fba7e36b05a6a4cdc",
+      "bytes": 7540
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "61064377b94abeac6c545b9c320025a06f3d936aed392085ff94e093fe7016a3",
-      "bytes": 133243
+      "sha256": "e656350284640c299c5e703efaec23b548f9a34c05107ee13f8eecd9a3fe3e67",
+      "bytes": 132895
     },
     {
       "path": "generated/skill_graph.md",
-      "sha256": "1804e21d35ddc4c9a2acea4139e964621f9e970df0975bfc4b04183ba32b27d0",
-      "bytes": 39356
+      "sha256": "4ad764a1bc40a1e68297649b6f0009ed06234c4f8f8ad4bf2b8a091717574595",
+      "bytes": 38360
     }
   ],
   "skill_bundle_revisions": [
@@ -536,28 +536,28 @@
     },
     {
       "name": "aoa-session-donor-harvest",
-      "skill_revision": "c457850c228b",
-      "content_hash": "c457850c228b1b871c38d2d79fe1432bb4f38b6b32bdebebd3ef78bb1c1a2113"
+      "skill_revision": "f17a5bf1e86a",
+      "content_hash": "f17a5bf1e86a0dbfd5980277787869f52bb96ae3b7297630130a9ddefd7d8e58"
     },
     {
       "name": "aoa-session-progression-lift",
-      "skill_revision": "b0fa82111c0e",
-      "content_hash": "b0fa82111c0ee07258dc70f49e0c30bb77274a10ddbf5f6b03730b294e77c4bc"
+      "skill_revision": "f75cbcaa3245",
+      "content_hash": "f75cbcaa3245c76a6b4446e9dbf0050135503d1a9ec388038463181674df6e62"
     },
     {
       "name": "aoa-session-route-forks",
-      "skill_revision": "c9bb89052e63",
-      "content_hash": "c9bb89052e63e2695cd83996ab23a38d92f02a51f62120531d1e341a62929d26"
+      "skill_revision": "c0f522fcafe9",
+      "content_hash": "c0f522fcafe94bcea46006c9a57fcefec24a8a9edd7ea224f69ed0ab702e079d"
     },
     {
       "name": "aoa-session-self-diagnose",
-      "skill_revision": "f11bb41fde7d",
-      "content_hash": "f11bb41fde7d1a44479f4c2cf1d41f2765d1f352e539edc9d207dc4288c0a965"
+      "skill_revision": "45e0769a0422",
+      "content_hash": "45e0769a0422f1d2dcd9982008f19c39d4f92c9f02bf0afabfd3629455a3b46d"
     },
     {
       "name": "aoa-session-self-repair",
-      "skill_revision": "8d31613dac25",
-      "content_hash": "8d31613dac250200570f4a1ee6b71bae467432d75ae138f73e65d35d3f217a5e"
+      "skill_revision": "8a3c62baeafb",
+      "content_hash": "8a3c62baeafbb7a7f3a7aec5b105ac7c719a17838404d38d024146b77a1fcbe2"
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -620,7 +620,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "5e89fc647f24e5217e46a1365589f365136b16ea316248dd5c1396022fe8c337"
+      "profile_revision": "36f315b262fe71ee4e5dea2f557b67c561b97749fb77b8dd036af66341d3b5fb"
     },
     {
       "name": "repo-default",
@@ -652,7 +652,7 @@
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ],
-      "profile_revision": "08d3b26872292b50fffadefe3ceb6ccb82b2f1e26e5ac4ec54767f5d5e36ef8b"
+      "profile_revision": "e9762538d59b199495b208b26d8ff161abdba47dbf24aa1eef16855e9fbe3b26"
     },
     {
       "name": "repo-quest-harvest-only",
@@ -680,7 +680,7 @@
       "skill_names": [
         "aoa-session-donor-harvest"
       ],
-      "profile_revision": "0bdff67d686cd4d291702dcf17c2a31767b43b7175a84981cbac01775268dc87"
+      "profile_revision": "c838a783ccc7517c35f0c1e5167ffd2b6a1420e6d2347e3ae70aaf2fca1ba4ba"
     },
     {
       "name": "repo-session-harvest-family",
@@ -693,7 +693,7 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "profile_revision": "702a0a55eebf67ad606830e91bd36174d74590484fd6967902a0b3a9ee43b36d"
+      "profile_revision": "fe310a0e8a642314da91f2469cecb2218b30e4b21c708d36711ef0b97e05e6c0"
     },
     {
       "name": "user-curated-core",
@@ -715,7 +715,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "981f65644eff62ce04a590057247f8693ca03a5d5bae254fbcf41418b9c6cbfb"
+      "profile_revision": "1ac7abf924daad8eeed770ccd1bb23855a6827d8c4f18f9b80a14700fe832b6c"
     }
   ],
   "release_identity": {

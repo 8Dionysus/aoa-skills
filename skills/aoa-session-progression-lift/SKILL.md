@@ -5,8 +5,8 @@ status: scaffold
 summary: Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT
-  - AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY
+  - AOA-T-0084
+  - AOA-T-0085
 ---
 
 # aoa-session-progression-lift
@@ -84,9 +84,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Pending manifest-backed techniques:
-- AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Contracts, Validation
-- AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Outputs, Risks, Validation
+Manifest-backed techniques:
+- AOA-T-0084 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation
+- AOA-T-0085 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md` and sections: Outputs, Risks, Validation
 
 ## Adaptation points
 

@@ -9,7 +9,7 @@ metadata:
   aoa_invocation_mode: explicit-only
   aoa_source_skill_path: skills/aoa-session-progression-lift/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
-  aoa_technique_dependencies: AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT,AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY
+  aoa_technique_dependencies: AOA-T-0084,AOA-T-0085
   aoa_portable_profile: codex-facing-wave-3
 ---
 
@@ -79,9 +79,9 @@ Do not use this skill when:
 - confirm no universal score is introduced
 
 ## Technique traceability
-Pending manifest-backed techniques:
-- AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Contracts, Validation
-- AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Outputs, Risks, Validation
+Manifest-backed techniques:
+- AOA-T-0084 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation
+- AOA-T-0085 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md` and sections: Outputs, Risks, Validation
 
 ## Adaptation points
 Project overlays may add:

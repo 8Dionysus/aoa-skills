@@ -1,20 +1,20 @@
 skill_name: aoa-session-route-forks
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-DECISION-FORK-CARDS
+  - id: AOA-T-0078
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md
+    source_ref: 364da8f4e97d0c29f4b31c59d7bfd91585633f2a
     use_sections:
       - Intent
       - Inputs
       - Outputs
       - Core procedure
       - Validation
-  - id: AOA-T-PENDING-RISK-PASSPORT-LIFT
+  - id: AOA-T-0079
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md
+    source_ref: 364da8f4e97d0c29f4b31c59d7bfd91585633f2a
     use_sections:
       - Outputs
       - Contracts
@@ -22,4 +22,4 @@ techniques:
       - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
-  - Replace pending IDs AOA-T-PENDING-DECISION-FORK-CARDS and AOA-T-PENDING-RISK-PASSPORT-LIFT, path TBD, and source_ref TBD after publish in aoa-techniques.
+  - Refresh `source_ref` when the pinned aoa-techniques commit changes.
