@@ -957,7 +957,8 @@
         "owner repo and follow-up surface",
         "explicit reason for promotion or non-promotion",
         "named next artifact or next quest action",
-        "concise note on what boundary must remain intact"
+        "concise note on what boundary must remain intact",
+        "one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md`"
       ],
       "verification": [
         "confirm the harvest pack is reviewed and bounded",
@@ -965,7 +966,8 @@
         "confirm the chosen promotion target matches the owner layer",
         "confirm the nearest wrong target is explicitly rejected",
         "confirm class identity is not being defined by quest metadata",
-        "confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface"
+        "confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface",
+        "confirm any emitted receipt stays evidence-linked and subordinate to the closed triage"
       ],
       "contracts": [
         "invocation must remain explicit and post-session",
@@ -974,7 +976,9 @@
         "a playbook promotion must stay route-shaped",
         "proof and memory promotions must stay in their owner layers",
         "one good run is not enough to justify promotion by itself",
-        "active quest state must not be copied into memo canon as if it were settled truth"
+        "active quest state must not be copied into memo canon as if it were settled truth",
+        "`QUEST_PROMOTION_RECEIPT` is verdict telemetry, not promotion authority",
+        "receipt corrections use `supersedes` rather than silent overwrite"
       ],
       "consumes_artifact_tags": [
         "source-quest-or-quest-family",
@@ -989,7 +993,8 @@
         "owner-repo-and-follow-up-surface",
         "explicit-reason-for-promotion-or-non-promotion",
         "named-next-artifact-or-next-quest-action",
-        "concise-note-on-what-boundary-must-remain-intact"
+        "concise-note-on-what-boundary-must-remain-intact",
+        "one-quest-promotion-receipt-using-references-stats-event-envelop"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-quest-harvest",
@@ -998,7 +1003,8 @@
           "owner-repo-and-follow-up-surface",
           "explicit-reason-for-promotion-or-non-promotion",
           "named-next-artifact-or-next-quest-action",
-          "concise-note-on-what-boundary-must-remain-intact"
+          "concise-note-on-what-boundary-must-remain-intact",
+          "one-quest-promotion-receipt-using-references-stats-event-envelop"
         ],
         "verification_notes": [
           "confirm the harvest pack is reviewed and bounded",

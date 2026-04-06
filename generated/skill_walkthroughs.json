@@ -826,7 +826,8 @@
         "owner repo and follow-up surface",
         "explicit reason for promotion or non-promotion",
         "named next artifact or next quest action",
-        "concise note on what boundary must remain intact"
+        "concise note on what boundary must remain intact",
+        "one QUESTPROMOTIONRECEIPT using references/stats-event-envelope.md and references/quest-promotion-receipt-schema.yaml"
       ],
       "pick_summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
       "scope": "core",

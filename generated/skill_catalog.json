@@ -643,15 +643,15 @@
       "status": "scaffold",
       "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
       "technique_dependencies": [
-        "AOA-T-PENDING-QUEST-HARVEST",
-        "AOA-T-PENDING-PROMOTION-TRIAGE"
+        "AOA-T-0089",
+        "AOA-T-0090"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-QUEST-HARVEST",
-          "path": "TBD",
+          "id": "AOA-T-0089",
+          "path": "techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "5cb9d446a73a109f7bf16997831750a9df7114d7",
           "use_sections": [
             "Intent",
             "When to use",
@@ -663,10 +663,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-PROMOTION-TRIAGE",
-          "path": "TBD",
+          "id": "AOA-T-0090",
+          "path": "techniques/agent-workflows/nearest-wrong-target-rejection/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "5cb9d446a73a109f7bf16997831750a9df7114d7",
           "use_sections": [
             "Intent",
             "When to use",

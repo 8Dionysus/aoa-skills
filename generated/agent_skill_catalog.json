@@ -550,8 +550,8 @@
       "allow_implicit_invocation": false,
       "source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-QUEST-HARVEST",
-        "AOA-T-PENDING-PROMOTION-TRIAGE"
+        "AOA-T-0089",
+        "AOA-T-0090"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",
@@ -562,7 +562,9 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/promotion-outcomes.md"
+          "references/promotion-outcomes.md",
+          "references/quest-promotion-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
         ],
         "assets": [
           "assets/large-logo.svg",

@@ -1,10 +1,10 @@
 skill_name: aoa-quest-harvest
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-QUEST-HARVEST
+  - id: AOA-T-0089
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md
+    source_ref: 5cb9d446a73a109f7bf16997831750a9df7114d7
     use_sections:
       - Intent
       - When to use
@@ -13,10 +13,10 @@ techniques:
       - Core procedure
       - Contracts
       - Validation
-  - id: AOA-T-PENDING-PROMOTION-TRIAGE
+  - id: AOA-T-0090
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/nearest-wrong-target-rejection/TECHNIQUE.md
+    source_ref: 5cb9d446a73a109f7bf16997831750a9df7114d7
     use_sections:
       - Intent
       - When to use
@@ -26,4 +26,4 @@ techniques:
       - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
-  - Replace pending IDs AOA-T-PENDING-QUEST-HARVEST and AOA-T-PENDING-PROMOTION-TRIAGE, path TBD, and source_ref TBD after publish.
+  - Keep technique refs pinned to the published aoa-techniques commit that introduced AOA-T-0089 and AOA-T-0090.

@@ -1486,7 +1486,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-QUEST-HARVEST,AOA-T-PENDING-PROMOTION-TRIAGE",
+        "aoa_technique_dependencies": "AOA-T-0089,AOA-T-0090",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -1510,13 +1510,15 @@
         "Contracts": "invocation must remain explicit and post-session; orchestrator class identity must not be promoted into a skill",
         "Risks and anti-patterns": "promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer",
         "Verification": "confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly",
-        "Technique traceability": "AOA-T-PENDING-QUEST-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-PROMOTION-TRIAGE from `8Dionysus/aoa-techniques` with `path: TBD` a...",
+        "Technique traceability": "AOA-T-0089 from `8Dionysus/aoa-techniques` at `5cb9d446a73a109f7bf16997831750a9df7114d7` using path `techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0090 from...",
         "Adaptation points": "local quest IDs and harvest entrypoints; local owner-repo route maps"
       },
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/promotion-outcomes.md"
+          "references/promotion-outcomes.md",
+          "references/quest-promotion-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
         ],
         "assets": [
           "assets/large-logo.svg",

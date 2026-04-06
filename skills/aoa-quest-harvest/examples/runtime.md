@@ -22,6 +22,7 @@ The task is no longer about executing the original work. It is about harvesting 
 - one rejected nearest-wrong target
 - one named owner repo and follow-up surface
 - one short reason why promotion should wait if the pattern must remain a quest
+- one `QUEST_PROMOTION_RECEIPT` that records the closed triage without replacing it
 
 ## Boundary notes
 
@@ -34,3 +35,4 @@ The task is no longer about executing the original work. It is about harvesting 
 - Confirm the repetition is about work or law, not just topic similarity.
 - Confirm the chosen target matches the correct owner layer.
 - Confirm the output names why the nearest wrong promotion target was rejected.
+- Confirm any finish receipt keeps the verdict, next surface, and nearest wrong target visible.

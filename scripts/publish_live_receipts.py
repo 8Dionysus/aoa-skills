@@ -14,6 +14,7 @@ ALLOWED_EVENT_KINDS = {
     "decision_fork_receipt",
     "harvest_packet_receipt",
     "progression_delta_receipt",
+    "quest_promotion_receipt",
     "repair_cycle_receipt",
     "skill_run_receipt",
 }

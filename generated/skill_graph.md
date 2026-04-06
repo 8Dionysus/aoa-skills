@@ -58,9 +58,8 @@ graph TD
   skill_aoa_property_invariants["aoa-property-invariants"]
   technique_AOA_T_0007["AOA-T-0007"]
   skill_aoa_quest_harvest["aoa-quest-harvest"]
-  lineage_pending["lineage: pending"]
-  technique_AOA_T_PENDING_QUEST_HARVEST["AOA-T-PENDING-QUEST-HARVEST"]
-  technique_AOA_T_PENDING_PROMOTION_TRIAGE["AOA-T-PENDING-PROMOTION-TRIAGE"]
+  technique_AOA_T_0089["AOA-T-0089"]
+  technique_AOA_T_0090["AOA-T-0090"]
   profile_repo_quest_harvest_only["profile: repo-quest-harvest-only"]
   skill_aoa_safe_infra_change["aoa-safe-infra-change"]
   skill_aoa_sanitized_share["aoa-sanitized-share"]
@@ -286,10 +285,10 @@ graph TD
   skill_aoa_property_invariants -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_quest_harvest -->|maturity| status_scaffold
   skill_aoa_quest_harvest -->|scope| scope_core
-  skill_aoa_quest_harvest -->|lineage| lineage_pending
+  skill_aoa_quest_harvest -->|lineage| lineage_published
   skill_aoa_quest_harvest -->|invocation_policy| policy_explicit_only
-  skill_aoa_quest_harvest -->|depends_on| technique_AOA_T_PENDING_QUEST_HARVEST
-  skill_aoa_quest_harvest -->|depends_on| technique_AOA_T_PENDING_PROMOTION_TRIAGE
+  skill_aoa_quest_harvest -->|depends_on| technique_AOA_T_0089
+  skill_aoa_quest_harvest -->|depends_on| technique_AOA_T_0090
   skill_aoa_quest_harvest -->|included_in_profile| profile_repo_core_only
   skill_aoa_quest_harvest -->|included_in_profile| profile_repo_default
   skill_aoa_quest_harvest -->|included_in_profile| profile_repo_quest_harvest_only
@@ -477,7 +476,7 @@ graph TD
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | published | repo-default, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0036, AOA-T-0037, AOA-T-0028, AOA-T-0038 |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0016, AOA-T-0015 |
 | aoa-property-invariants | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0017, AOA-T-0007 |
-| aoa-quest-harvest | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-quest-harvest-only, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-QUEST-HARVEST, AOA-T-PENDING-PROMOTION-TRIAGE |
+| aoa-quest-harvest | scaffold | core | explicit-only | published | repo-core-only, repo-default, repo-quest-harvest-only, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0089, AOA-T-0090 |
 | aoa-safe-infra-change | canonical | risk | explicit-only | published | repo-default, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0028, AOA-T-0001 |
 | aoa-sanitized-share | canonical | risk | explicit-only | published | repo-default, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0034, AOA-T-0002 |
 | aoa-session-donor-harvest | scaffold | core | explicit-only | published | repo-core-only, repo-default, repo-session-donor-harvest-only, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0075, AOA-T-0076, AOA-T-0077 |

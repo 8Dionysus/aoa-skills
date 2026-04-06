@@ -17,6 +17,7 @@ Use this checklist when reviewing work that classifies repeated quest evidence i
 - [ ] The output rejects the nearest wrong target instead of only asserting the chosen one.
 - [ ] The review does not let quest metadata define orchestrator class identity.
 - [ ] The decision does not force promotion when repetition or ownership is still weak.
+- [ ] Any emitted `QUEST_PROMOTION_RECEIPT` stays smaller than the triage and keeps the rejected nearest-wrong target visible.
 
 ## Not a fit
 

@@ -1,8 +1,6 @@
 {
   "cohorts": {
-    "blocked_by_pending_lineage": [
-      "aoa-quest-harvest"
-    ],
+    "blocked_by_pending_lineage": [],
     "candidate_ready_without_review": [],
     "canonical_maintenance": [
       "aoa-adr-write",
@@ -570,10 +568,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -581,7 +576,7 @@
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-quest-harvest",
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",

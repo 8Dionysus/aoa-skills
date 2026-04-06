@@ -435,7 +435,9 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/promotion-outcomes.md"
+          "references/promotion-outcomes.md",
+          "references/quest-promotion-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
         ],
         "assets": [
           "assets/large-logo.svg",
