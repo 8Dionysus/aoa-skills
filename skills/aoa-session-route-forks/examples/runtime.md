@@ -28,6 +28,8 @@ different gains, costs, and risks.
 - one suggested default route if the evidence is strong enough
 - one hold or defer option if uncertainty remains meaningful
 - one `DECISION_FORK_RECEIPT` with branch ids, risk posture, and stop-condition refs
+- one `CORE_SKILL_APPLICATION_RECEIPT` that records the finished
+  `aoa-session-route-forks` run and points back to the detail receipt
 
 ## Boundary notes
 
@@ -42,3 +44,5 @@ different gains, costs, and risks.
 - Confirm the cards preserve choice rather than erase alternatives.
 - Confirm the finish receipt stays descriptive rather than pretending the route
   is already chosen by policy.
+- Confirm the generic core receipt stays separate from route authority and
+  references the detail receipt.

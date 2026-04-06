@@ -458,6 +458,20 @@ def build_codex_config_snippets(resolved_profiles: dict[str, Any]) -> dict[str, 
     return doc
 
 
+def build_project_core_kernel_doc(kernel_doc: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "schema_version": 1,
+        "source_config": "config/project_core_skill_kernel.json",
+        "kernel_id": kernel_doc["kernel_id"],
+        "owner_repo": kernel_doc["owner_repo"],
+        "description": kernel_doc["description"],
+        "canonical_install_profile": kernel_doc["canonical_install_profile"],
+        "backward_compatible_aliases": kernel_doc.get("backward_compatible_aliases", []),
+        "skill_count": len(kernel_doc["skills"]),
+        "skills": kernel_doc["skills"],
+    }
+
+
 def build_mcp_dependency_manifest(
     catalog_full: dict[str, Any],
     openai_docs: dict[str, dict[str, Any]],
@@ -563,6 +577,7 @@ def main() -> int:
         default={"schema_version": 1, "global": {}, "skills": {}},
     )
     profiles_doc = load_json(config_dir / "skill_pack_profiles.json")
+    kernel_doc = load_json(config_dir / "project_core_skill_kernel.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
 
     catalog_by_name = {entry["name"]: entry for entry in skill_catalog["skills"]}
@@ -583,6 +598,7 @@ def main() -> int:
         "openai_extensions": "config/openai_skill_extensions.json",
         "policy_matrix": "config/skill_policy_matrix.json",
         "profile_matrix": "config/skill_pack_profiles.json",
+        "project_core_kernel": "config/project_core_skill_kernel.json",
     }
     catalog_full = {
         "catalog_version": 2,
@@ -730,6 +746,7 @@ def main() -> int:
         runtime_contracts["skills"].append(runtime_entry)
 
     resolved_profiles = resolve_pack_profiles(profiles_doc, catalog_full)
+    project_core_kernel = build_project_core_kernel_doc(kernel_doc)
     config_snippets = build_codex_config_snippets(resolved_profiles)
     local_manifest, local_manifest_min = build_local_adapter_manifests(
         repo_root=repo_root,
@@ -749,6 +766,7 @@ def main() -> int:
         generated_dir / "trust_policy_matrix.json": json.dumps(trust_matrix, indent=2) + "\n",
         generated_dir / "skill_runtime_contracts.json": json.dumps(runtime_contracts, indent=2) + "\n",
         generated_dir / "skill_pack_profiles.resolved.json": json.dumps(resolved_profiles, indent=2) + "\n",
+        generated_dir / "project_core_skill_kernel.min.json": json.dumps(project_core_kernel, indent=2) + "\n",
         generated_dir / "codex_config_snippets.json": json.dumps(config_snippets, indent=2) + "\n",
         generated_dir / "mcp_dependency_manifest.json": json.dumps(mcp_manifest, indent=2) + "\n",
     }

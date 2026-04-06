@@ -50,6 +50,8 @@ Do not use this skill when:
 - explicit stop conditions and escalation points
 - one `REPAIR_CYCLE_RECEIPT` using `references/stats-event-envelope.md` and
   `references/repair-cycle-receipt-schema.yaml`
+- one `CORE_SKILL_APPLICATION_RECEIPT` using
+  `references/core-skill-application-receipt-schema.yaml`
 
 ## Procedure
 
@@ -61,6 +63,9 @@ Do not use this skill when:
 6. define validation and stop conditions
 7. emit a repair quest instead of mutating immediately when risk or approval posture requires it
 8. emit one `REPAIR_CYCLE_RECEIPT` when the repair packet or repair-quest handoff closes, keeping the receipt smaller than the packet
+9. when the finish path closes, emit one `CORE_SKILL_APPLICATION_RECEIPT`
+   that points back to the bounded repair receipt and records one finished
+   kernel-skill application
 
 ## Contracts
 
@@ -72,6 +77,8 @@ Do not use this skill when:
 - scenario-scale repair routes to `aoa-playbooks`
 - repair does not smuggle live automation authority into the packet
 - repair-cycle receipts stay descriptive and append-only
+- generic core receipts stay subordinate to the repair receipt and do not
+  replace checkpoint or repair meaning
 - receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
@@ -91,6 +98,8 @@ Do not use this skill when:
 - confirm validation and rollback posture are named
 - confirm escalation route exists if the repair widens
 - confirm any emitted receipt cites diagnosis and validation refs without duplicating the whole packet
+- confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the repair
+  detail receipt and stays finish-only
 
 ## Technique traceability
 

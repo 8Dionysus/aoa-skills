@@ -49,6 +49,8 @@ Do not use this skill when:
 - negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance
 - one `PROGRESSION_DELTA_RECEIPT` using `references/stats-event-envelope.md`
   and `references/progression-delta-receipt-schema.yaml`
+- one `CORE_SKILL_APPLICATION_RECEIPT` using
+  `references/core-skill-application-receipt-schema.yaml`
 
 ## Procedure
 
@@ -63,6 +65,9 @@ Do not use this skill when:
 7. map ability or feat hints only as reflection, not as ownership transfer
 8. emit one `PROGRESSION_DELTA_RECEIPT` when the delta closes, keeping the
    receipt descriptive, evidence-linked, and smaller than the progression packet
+9. when the finish path closes, emit one `CORE_SKILL_APPLICATION_RECEIPT`
+   that points back to the bounded progression receipt and records one
+   finished kernel-skill application
 
 ## Contracts
 
@@ -73,6 +78,8 @@ Do not use this skill when:
 - progression does not replace owner-layer truth or routing authority
 - progression does not greenlight automation by itself
 - progression receipts stay descriptive and append-only
+- generic core receipts stay subordinate to the progression receipt and do not
+  become progression authority
 - receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
@@ -93,6 +100,8 @@ Do not use this skill when:
 - confirm unlock hints are small and explicit
 - confirm no universal score is introduced
 - confirm any emitted receipt stays multi-axis, evidence-linked, and non-sovereign
+- confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the
+  progression detail receipt and stays finish-only
 
 ## Technique traceability
 

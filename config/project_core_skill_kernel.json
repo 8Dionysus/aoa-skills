@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kernel_id": "project-core-session-growth-v1",
+  "owner_repo": "aoa-skills",
+  "description": "Canonical project-core kernel for explicit reviewed session growth work across donor harvest, automation scanning, route choice, diagnosis, repair, progression, and final quest triage.",
+  "canonical_install_profile": "repo-project-core-kernel",
+  "backward_compatible_aliases": [
+    "repo-session-harvest-family"
+  ],
+  "skills": [
+    "aoa-session-donor-harvest",
+    "aoa-automation-opportunity-scan",
+    "aoa-session-route-forks",
+    "aoa-session-self-diagnose",
+    "aoa-session-self-repair",
+    "aoa-session-progression-lift",
+    "aoa-quest-harvest"
+  ]
+}

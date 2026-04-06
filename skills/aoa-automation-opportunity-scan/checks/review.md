@@ -24,6 +24,7 @@ from reviewed evidence and packages them into a bounded
 - [ ] `checkpoint_required` was raised for self-changing, approval-heavy, or important mutation routes.
 - [ ] No schedule hint was presented as runtime authority.
 - [ ] Any `AUTOMATION_CANDIDATE_RECEIPT` stayed evidence-linked, append-only, and detector-shaped.
+- [ ] Any `CORE_SKILL_APPLICATION_RECEIPT` stayed finish-only, pointed to the detail receipt, and did not widen into scheduler authority.
 
 ## Not a fit
 

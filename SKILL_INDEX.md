@@ -33,6 +33,22 @@ This file is the repository-wide map of public skills.
 | aoa-safe-infra-change | risk | canonical | Codex skill for making bounded infrastructure or configuration changes with explicit risk framing and reversible execution discipline. |
 | aoa-sanitized-share | risk | canonical | Codex skill for preparing findings, logs, or diagnostics for sharing without leaking secrets or private operational detail. |
 
+## Project-Core Skill Kernel
+
+The permanent project-core session-growth kernel in this repo is:
+
+- `aoa-session-donor-harvest`
+- `aoa-automation-opportunity-scan`
+- `aoa-session-route-forks`
+- `aoa-session-self-diagnose`
+- `aoa-session-self-repair`
+- `aoa-session-progression-lift`
+- `aoa-quest-harvest`
+
+This kernel is authored under `repo-project-core-kernel`. The older
+`repo-session-harvest-family` profile remains as a backward-compatible
+operational alias for the same seven-skill surface.
+
 ## Notes
 
 - `scaffold` means the skill shape exists, but it should still evolve through technique linkage, examples, and project overlays.

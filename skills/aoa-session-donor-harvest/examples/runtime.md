@@ -33,6 +33,8 @@ The task is no longer about executing the original work. It is about extracting 
   still has more than one honest next route
 - one `HARVEST_PACKET_RECEIPT` with bounded counts, owner-layer distribution,
   and evidence-linked candidate refs
+- one `CORE_SKILL_APPLICATION_RECEIPT` that records a finished
+  `aoa-session-donor-harvest` run and points back to the detail receipt
 
 ## Boundary notes
 
@@ -48,3 +50,5 @@ The task is no longer about executing the original work. It is about extracting 
 - Confirm any post-session family handoff stays explicit.
 - Confirm the finish receipt stays smaller than the packet and links evidence
   instead of duplicating raw recap.
+- Confirm the generic core receipt stays finish-only and references the detail
+  receipt instead of becoming a second donor packet.

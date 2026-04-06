@@ -51,6 +51,8 @@ Do not use this skill when:
 - concise note on what boundary must remain intact
 - one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md`
   and `references/quest-promotion-receipt-schema.yaml`
+- one `CORE_SKILL_APPLICATION_RECEIPT` using
+  `references/core-skill-application-receipt-schema.yaml`
 
 ## Procedure
 1. collect a bounded reviewed harvest pack rather than raw runtime state
@@ -65,6 +67,9 @@ Do not use this skill when:
 10. record the verdict with one clear reason for promotion and one clear reason against the nearest wrong target
 11. emit one `QUEST_PROMOTION_RECEIPT` when the triage closes, keeping the
     receipt smaller than the promotion packet itself
+12. when the finish path closes, emit one `CORE_SKILL_APPLICATION_RECEIPT`
+    that points back to the bounded promotion receipt and records one finished
+    kernel-skill application
 
 ## Contracts
 - invocation must remain explicit and post-session
@@ -75,6 +80,8 @@ Do not use this skill when:
 - one good run is not enough to justify promotion by itself
 - active quest state must not be copied into memo canon as if it were settled truth
 - `QUEST_PROMOTION_RECEIPT` is verdict telemetry, not promotion authority
+- `CORE_SKILL_APPLICATION_RECEIPT` is generic kernel telemetry, not promotion
+  authority and not a replacement for the verdict receipt
 - receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
@@ -93,6 +100,8 @@ Do not use this skill when:
 - confirm class identity is not being defined by quest metadata
 - confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface
 - confirm any emitted receipt stays evidence-linked and subordinate to the closed triage
+- confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the
+  promotion detail receipt and stays finish-only
 
 ## Technique traceability
 Manifest-backed techniques:

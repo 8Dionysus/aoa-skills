@@ -18,6 +18,7 @@ Use this checklist when reviewing work that classifies repeated quest evidence i
 - [ ] The review does not let quest metadata define orchestrator class identity.
 - [ ] The decision does not force promotion when repetition or ownership is still weak.
 - [ ] Any emitted `QUEST_PROMOTION_RECEIPT` stays smaller than the triage and keeps the rejected nearest-wrong target visible.
+- [ ] Any `CORE_SKILL_APPLICATION_RECEIPT` points to the promotion detail receipt and stays generic finish telemetry rather than promotion authority.
 
 ## Not a fit
 

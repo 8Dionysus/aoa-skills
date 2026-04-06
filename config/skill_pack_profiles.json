@@ -83,8 +83,22 @@
         "aoa-automation-opportunity-scan"
       ]
     },
+    "repo-project-core-kernel": {
+      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
+      ]
+    },
     "repo-session-harvest-family": {
-      "description": "Install the full explicit post-session session-harvest family into a repository root, including donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "description": "Backward-compatible operational alias for the project-core session-growth kernel profile, keeping the full explicit post-session session-harvest family available under its existing rollout name.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "skills": [

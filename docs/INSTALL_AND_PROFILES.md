@@ -131,10 +131,11 @@ Use `install_skill_pack.py` plus `verify_skill_pack.py` directly when you want t
 
 ## Narrow rollout lane
 
-`repo-session-harvest-family` is the bounded rollout profile for installing the
-full explicit post-session session-harvest family:
+`repo-project-core-kernel` is the canonical bounded rollout profile for
+installing the permanent explicit post-session project-core kernel:
 
 - `aoa-session-donor-harvest`
+- `aoa-automation-opportunity-scan`
 - `aoa-session-route-forks`
 - `aoa-session-self-diagnose`
 - `aoa-session-self-repair`
@@ -149,6 +150,10 @@ full explicit post-session session-harvest family:
 - This profile is for explicit post-session rollout and does not replace
   `repo-default`.
 
+`repo-session-harvest-family` remains available as a backward-compatible
+operational alias for the same seven-skill kernel when existing rollout or
+automation surfaces still name the older profile.
+
 `repo-quest-harvest-only` remains the narrow leaf rollout profile for
 installing just `aoa-quest-harvest`.
 
@@ -160,7 +165,7 @@ installing just `aoa-quest-harvest`.
 
 `repo-session-donor-harvest-only` remains the nucleus-only profile for
 repositories that want just the donor-harvest entry surface without the full
-family.
+kernel.
 
 The ZIP transport variant is:
 

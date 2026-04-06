@@ -30,6 +30,8 @@ automation is honest yet.
 - a next-artifact suggestion such as `skill` or `playbook_seed`
 - one `AUTOMATION_CANDIDATE_RECEIPT` with repeat signal posture,
   `checkpoint_required`, and the next-artifact hint
+- one `CORE_SKILL_APPLICATION_RECEIPT` that records the finished
+  `aoa-automation-opportunity-scan` run without replacing the detector receipt
 
 ## Boundary notes
 
@@ -45,3 +47,5 @@ automation is honest yet.
 - Confirm schedule hints stay hints.
 - Confirm the finish receipt stays detector-shaped and does not pretend to
   grant schedule authority.
+- Confirm the generic core receipt points back to the detector receipt and does
+  not widen into automation authority.

@@ -29,23 +29,29 @@ Do not use it for:
 
 ## Session-harvest family posture
 
-The explicit post-session session-harvest family in this repo is:
+The permanent project-core session-growth kernel in this repo is:
 
 - `aoa-session-donor-harvest`
+- `aoa-automation-opportunity-scan`
 - `aoa-session-route-forks`
 - `aoa-session-self-diagnose`
 - `aoa-session-self-repair`
 - `aoa-session-progression-lift`
 - `aoa-quest-harvest`
 
-It may be rolled out through `repo-session-harvest-family`, while narrower
-profiles remain available for the donor-harvest nucleus and the quest-harvest
-leaf. Skill meaning stays source-owned in `aoa-skills`.
+It is authored under `repo-project-core-kernel`. The older
+`repo-session-harvest-family` name remains as a backward-compatible rollout
+alias, while narrower profiles remain available for the donor-harvest nucleus,
+the automation scan seam, and the quest-harvest leaf. Skill meaning stays
+source-owned in `aoa-skills`.
 
 Family boundaries:
 
 - `aoa-session-donor-harvest` is the nucleus for turning reviewed sessions into
   a bounded `HARVEST_PACKET`
+- `aoa-automation-opportunity-scan` keeps automation-readiness detection
+  explicit and checkpoint-aware instead of smuggling scheduler authority into
+  donor or route notes
 - `aoa-session-route-forks` makes next-route choices explicit when several
   honest routes survive
 - `aoa-session-self-diagnose` stays read-only and classifies drift before

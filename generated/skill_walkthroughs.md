@@ -207,6 +207,7 @@ Common expand sections:
 - checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries
 - next-artifact suggestion such as skill, playbookseed, techniquecandidate, repairquest, quest, or defer
 - one AUTOMATIONCANDIDATERECEIPT using references/stats-event-envelope.md and references/automation-candidate-receipt-schema.yaml
+- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -566,6 +567,7 @@ Common expand sections:
 - named next artifact or next quest action
 - concise note on what boundary must remain intact
 - one QUESTPROMOTIONRECEIPT using references/stats-event-envelope.md and references/quest-promotion-receipt-schema.yaml
+- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -684,6 +686,7 @@ Common expand sections:
 - one optional automationcandidate extract when a repeated manual route is stable enough to deserve explicit automation-readiness classification
 - one optional handoff list to aoa-automation-opportunity-scan, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-session-progression-lift, or aoa-quest-harvest
 - one HARVESTPACKETRECEIPT using references/stats-event-envelope.md and references/harvest-packet-receipt-schema.yaml
+- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -720,6 +723,7 @@ Common expand sections:
 - quest hooks or chronicle stub when useful
 - negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance
 - one PROGRESSIONDELTARECEIPT using references/stats-event-envelope.md and references/progression-delta-receipt-schema.yaml
+- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -757,6 +761,7 @@ Common expand sections:
 - optional automation and non-automation branches side by side when that choice is real
 - optional quest hooks or campaign hints without runtime authority
 - one DECISIONFORKRECEIPT using references/stats-event-envelope.md and references/decision-fork-receipt-schema.yaml
+- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -794,6 +799,7 @@ Common expand sections:
 - optional blocked-automation findings such as unstable inputs, hidden approval, rollback gaps, or secret coupling
 - optional handoff to aoa-session-self-repair
 - one SKILLRUNRECEIPT using references/stats-event-envelope.md and references/skill-run-receipt-schema.yaml
+- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 
@@ -830,6 +836,7 @@ Common expand sections:
 - optional automation-readiness prerequisite packet when the real need is to stabilize a route before later automation scanning or seeding
 - explicit stop conditions and escalation points
 - one REPAIRCYCLERECEIPT using references/stats-event-envelope.md and references/repair-cycle-receipt-schema.yaml
+- one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
 

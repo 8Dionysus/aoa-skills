@@ -22,6 +22,10 @@
       "scope": "repo",
       "disable_profile_toml": "[[skills.config]]\npath = \".agents/skills/aoa-automation-opportunity-scan/SKILL.md\"\nenabled = false\n"
     },
+    "repo-project-core-kernel": {
+      "scope": "repo",
+      "disable_profile_toml": "[[skills.config]]\npath = \".agents/skills/aoa-session-donor-harvest/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-automation-opportunity-scan/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-route-forks/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-self-diagnose/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-self-repair/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-progression-lift/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-quest-harvest/SKILL.md\"\nenabled = false\n"
+    },
     "repo-session-harvest-family": {
       "scope": "repo",
       "disable_profile_toml": "[[skills.config]]\npath = \".agents/skills/aoa-session-donor-harvest/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-automation-opportunity-scan/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-route-forks/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-self-diagnose/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-self-repair/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-session-progression-lift/SKILL.md\"\nenabled = false\n\n[[skills.config]]\npath = \".agents/skills/aoa-quest-harvest/SKILL.md\"\nenabled = false\n"

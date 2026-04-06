@@ -27,6 +27,8 @@ causes and names the likely owner layers involved.
 - optional handoff to `aoa-session-self-repair`
 - one `SKILL_RUN_RECEIPT` that records diagnosis types, confidence band, and
   evidence-linked owner hints
+- one `CORE_SKILL_APPLICATION_RECEIPT` that records the finished
+  `aoa-session-self-diagnose` run and points back to the detail receipt
 
 ## Boundary notes
 
@@ -41,3 +43,5 @@ causes and names the likely owner layers involved.
 - Confirm unknowns stay visible where evidence is weak.
 - Confirm the finish receipt stays smaller than the diagnosis packet and does
   not read like a final repair verdict.
+- Confirm the generic core receipt points back to the diagnosis receipt and
+  does not claim repair or proof authority.

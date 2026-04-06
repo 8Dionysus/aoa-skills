@@ -313,6 +313,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_automation_opportunity_scan",
+      "target": "profile_repo_project_core_kernel"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_automation_opportunity_scan",
       "target": "profile_repo_session_harvest_family"
     },
     {
@@ -1018,6 +1023,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_quest_harvest",
+      "target": "profile_repo_project_core_kernel"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_quest_harvest",
       "target": "profile_repo_quest_harvest_only"
     },
     {
@@ -1238,6 +1248,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_session_donor_harvest",
+      "target": "profile_repo_project_core_kernel"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_donor_harvest",
       "target": "profile_repo_session_donor_harvest_only"
     },
     {
@@ -1318,6 +1333,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_session_progression_lift",
+      "target": "profile_repo_project_core_kernel"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_progression_lift",
       "target": "profile_repo_session_harvest_family"
     },
     {
@@ -1389,6 +1409,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_session_route_forks",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_route_forks",
+      "target": "profile_repo_project_core_kernel"
     },
     {
       "kind": "included_in_profile",
@@ -1468,6 +1493,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_session_self_diagnose",
+      "target": "profile_repo_project_core_kernel"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_diagnose",
       "target": "profile_repo_session_harvest_family"
     },
     {
@@ -1539,6 +1569,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_session_self_repair",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_repair",
+      "target": "profile_repo_project_core_kernel"
     },
     {
       "kind": "included_in_profile",
@@ -2015,6 +2050,11 @@
     {
       "id": "profile_repo_automation_opportunity_scan_only",
       "label": "profile: repo-automation-opportunity-scan-only",
+      "type": "profile"
+    },
+    {
+      "id": "profile_repo_project_core_kernel",
+      "label": "profile: repo-project-core-kernel",
       "type": "profile"
     },
     {
@@ -2632,7 +2672,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "5cc9a8e3a67ea6d05cb6611c545356e76bf997018c00241e27721335f253323d",
+      "content_hash": "750e056877ccd08be6f0a336e7a9bf7e19e2855f1d9bf446e93805507b60bbbb",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2652,6 +2692,7 @@
         "repo-automation-opportunity-scan-only",
         "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -2661,7 +2702,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
-      "skill_revision": "5cc9a8e3a67e",
+      "skill_revision": "750e056877cc",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3515,7 +3556,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "42ab09cd021585e6281acd02c511619fb49ba5788f935d031995a0c0e2991b96",
+      "content_hash": "5396ab39e0bf8eec2220b472f5ec93f243a1b18e52fa0f810b9c213fbfc01eaa",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3534,6 +3575,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
         "repo-quest-harvest-only",
         "repo-session-harvest-family",
         "user-curated-core"
@@ -3544,7 +3586,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "42ab09cd0215",
+      "skill_revision": "5396ab39e0bf",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3780,7 +3822,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "7d97b0d835fdc09f728d9695a74119482b5d6fe3312bae1ffd4e930fd9181d5b",
+      "content_hash": "2c486882de6688563f6a8cb4a0aa1d4df684c127828c48f8fe7f8cd8fa2a4ba6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3799,6 +3841,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
         "repo-session-donor-harvest-only",
         "repo-session-harvest-family",
         "user-curated-core"
@@ -3809,7 +3852,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "7d97b0d835fd",
+      "skill_revision": "2c486882de66",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3870,7 +3913,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "e94c4de5a48473593814e6809ef1f4d2ee5f32b1a887e4979cc3891ca99345ec",
+      "content_hash": "080267cca8094f7f02b332cd28f28bad6854286b2520c6a63f9c1201b1ac5526",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3889,6 +3932,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -3898,7 +3942,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
-      "skill_revision": "e94c4de5a484",
+      "skill_revision": "080267cca809",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3951,7 +3995,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "2b4b4ca3485b9862070ed0c5cd4818977e853222a0294ab6b6bd60353ca9a9c4",
+      "content_hash": "c7d0a7177348928d4f3c70c8c5740bd1c4056b33a4932ce1bd25ace91af06e23",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3970,6 +4014,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -3979,7 +4024,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-route-forks/SKILL.md",
-      "skill_revision": "2b4b4ca3485b",
+      "skill_revision": "c7d0a7177348",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -4032,7 +4077,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "0809fe16e395456d6eeab1291d73eabf7e6ab70c13071539bf7d3ede36302408",
+      "content_hash": "b25314843a0af3a3a138e68ad2b26a7ac5fae2bf755c7f0cb2a232840277c5a2",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4051,6 +4096,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -4060,7 +4106,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
-      "skill_revision": "0809fe16e395",
+      "skill_revision": "b25314843a0a",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -4113,7 +4159,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "39c4b185831135f6060c6b99ae9b222799a80f4c391810990d36cd0f318dfa60",
+      "content_hash": "a6f73cb4f19aaa256fa5657e887067f5856c06ab668e831868a47d2dc2d42df1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4132,6 +4178,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -4141,7 +4188,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "39c4b1858311",
+      "skill_revision": "a6f73cb4f19a",
       "status": "scaffold",
       "support_artifacts": [
         {

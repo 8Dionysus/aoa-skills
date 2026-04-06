@@ -24,6 +24,7 @@ bounded `DIAGNOSIS_PACKET`.
 - [ ] No hidden mutation or silent repair happened.
 - [ ] Cross-layer issues are not lazily blamed on one convenient owner.
 - [ ] Any `SKILL_RUN_RECEIPT` stayed evidence-linked and descriptive rather than blame-shaped.
+- [ ] Any `CORE_SKILL_APPLICATION_RECEIPT` pointed to the detail diagnosis receipt and stayed generic finish telemetry only.
 
 ## Not a fit
 

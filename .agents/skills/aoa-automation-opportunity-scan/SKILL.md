@@ -55,6 +55,8 @@ Do not use this skill when:
 - one `AUTOMATION_CANDIDATE_RECEIPT` using
   `references/stats-event-envelope.md` and
   `references/automation-candidate-receipt-schema.yaml`
+- one `CORE_SKILL_APPLICATION_RECEIPT` using
+  `references/core-skill-application-receipt-schema.yaml`
 
 ## Procedure
 1. start from reviewed evidence, not from vague enthusiasm
@@ -67,6 +69,9 @@ Do not use this skill when:
 8. when classification pressure is high, use `references/automation-fit-matrix.md`, `references/session-harvest-integration.md`, `references/playbook-seed-bridge.md`, `references/checkpoint-boundary.md`, and `references/automation-opportunity-packet-schema.yaml`
 9. emit one `AUTOMATION_CANDIDATE_RECEIPT` when the packet closes, keeping the
    receipt detector-shaped rather than scheduler-shaped
+10. when the finish path closes, emit one `CORE_SKILL_APPLICATION_RECEIPT`
+    that records the finished kernel-skill run, points back to the bounded
+    detail receipt, and stays separate from scheduler or mutation authority
 
 ## Contracts
 - this skill detects and packages automation opportunities; it does not create live automation authority
@@ -79,6 +84,8 @@ Do not use this skill when:
   silent policy
 - candidate receipts stay subordinate to the packet and never grant live
   schedule, mutation, or approval authority
+- generic core receipts stay subordinate to the candidate receipt and never
+  replace automation classification meaning
 - receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
@@ -99,6 +106,8 @@ Do not use this skill when:
 - confirm the nearest wrong target is rejected when classification pressure exists
 - confirm checkpoint posture appears for self-changing or approval-heavy routes
 - confirm any emitted receipt stays detector-shaped, evidence-linked, and non-authoritative
+- confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points back to the
+  detail receipt and does not claim more than one finished kernel-skill run
 
 ## Technique traceability
 Manifest-backed techniques:

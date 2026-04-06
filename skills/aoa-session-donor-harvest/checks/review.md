@@ -26,6 +26,7 @@ family handoff hints.
 - [ ] The result names one concrete next artifact for each accepted candidate.
 - [ ] Automation candidates, quest residue, route forks, diagnosis hints, repair follow-through, or progression follow-through were surfaced explicitly when they survived the harvest.
 - [ ] Any `HARVEST_PACKET_RECEIPT` stayed evidence-linked, append-only, and smaller than the packet it summarizes.
+- [ ] Any `CORE_SKILL_APPLICATION_RECEIPT` stayed generic, finish-only, and pointed back to the bounded detail receipt instead of duplicating packet meaning.
 
 ## Not a fit
 

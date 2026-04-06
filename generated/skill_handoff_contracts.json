@@ -302,7 +302,8 @@
         "`seed_ready` or `not_now` verdict for each candidate",
         "`checkpoint_required` flag when the route crosses self-change or approval-sensitive boundaries",
         "next-artifact suggestion such as `skill`, `playbook_seed`, `technique_candidate`, `repair_quest`, `quest`, or `defer`",
-        "one `AUTOMATION_CANDIDATE_RECEIPT` using"
+        "one `AUTOMATION_CANDIDATE_RECEIPT` using",
+        "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
         "confirm each candidate names the current manual route",
@@ -312,7 +313,8 @@
         "confirm a first owner layer and next artifact are named",
         "confirm the nearest wrong target is rejected when classification pressure exists",
         "confirm checkpoint posture appears for self-changing or approval-heavy routes",
-        "confirm any emitted receipt stays detector-shaped, evidence-linked, and non-authoritative"
+        "confirm any emitted receipt stays detector-shaped, evidence-linked, and non-authoritative",
+        "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points back to the"
       ],
       "contracts": [
         "this skill detects and packages automation opportunities; it does not create live automation authority",
@@ -322,6 +324,7 @@
         "unresolved candidates may become repair quests instead of fake-ready automations",
         "handoffs to `aoa-session-self-diagnose`, `aoa-session-self-repair`, or",
         "candidate receipts stay subordinate to the packet and never grant live",
+        "generic core receipts stay subordinate to the candidate receipt and never",
         "receipt corrections use `supersedes` rather than silent overwrite"
       ],
       "consumes_artifact_tags": [
@@ -337,7 +340,8 @@
         "seed-ready-or-not-now-verdict-for-each-candidate",
         "checkpoint-required-flag-when-the-route-crosses-self-change-or-a",
         "next-artifact-suggestion-such-as-skill-playbook-seed-technique-c",
-        "one-automation-candidate-receipt-using"
+        "one-automation-candidate-receipt-using",
+        "one-core-skill-application-receipt-using"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-automation-opportunity-scan",
@@ -347,7 +351,8 @@
           "seed-ready-or-not-now-verdict-for-each-candidate",
           "checkpoint-required-flag-when-the-route-crosses-self-change-or-a",
           "next-artifact-suggestion-such-as-skill-playbook-seed-technique-c",
-          "one-automation-candidate-receipt-using"
+          "one-automation-candidate-receipt-using",
+          "one-core-skill-application-receipt-using"
         ],
         "verification_notes": [
           "confirm each candidate names the current manual route",
@@ -958,7 +963,8 @@
         "explicit reason for promotion or non-promotion",
         "named next artifact or next quest action",
         "concise note on what boundary must remain intact",
-        "one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md`"
+        "one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md`",
+        "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
         "confirm the harvest pack is reviewed and bounded",
@@ -967,7 +973,8 @@
         "confirm the nearest wrong target is explicitly rejected",
         "confirm class identity is not being defined by quest metadata",
         "confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface",
-        "confirm any emitted receipt stays evidence-linked and subordinate to the closed triage"
+        "confirm any emitted receipt stays evidence-linked and subordinate to the closed triage",
+        "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the"
       ],
       "contracts": [
         "invocation must remain explicit and post-session",
@@ -978,6 +985,7 @@
         "one good run is not enough to justify promotion by itself",
         "active quest state must not be copied into memo canon as if it were settled truth",
         "`QUEST_PROMOTION_RECEIPT` is verdict telemetry, not promotion authority",
+        "`CORE_SKILL_APPLICATION_RECEIPT` is generic kernel telemetry, not promotion",
         "receipt corrections use `supersedes` rather than silent overwrite"
       ],
       "consumes_artifact_tags": [
@@ -994,7 +1002,8 @@
         "explicit-reason-for-promotion-or-non-promotion",
         "named-next-artifact-or-next-quest-action",
         "concise-note-on-what-boundary-must-remain-intact",
-        "one-quest-promotion-receipt-using-references-stats-event-envelop"
+        "one-quest-promotion-receipt-using-references-stats-event-envelop",
+        "one-core-skill-application-receipt-using"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-quest-harvest",
@@ -1004,7 +1013,8 @@
           "explicit-reason-for-promotion-or-non-promotion",
           "named-next-artifact-or-next-quest-action",
           "concise-note-on-what-boundary-must-remain-intact",
-          "one-quest-promotion-receipt-using-references-stats-event-envelop"
+          "one-quest-promotion-receipt-using-references-stats-event-envelop",
+          "one-core-skill-application-receipt-using"
         ],
         "verification_notes": [
           "confirm the harvest pack is reviewed and bounded",
@@ -1177,7 +1187,8 @@
         "one short list of items to defer, drop, or keep as quest residue",
         "one optional `automation_candidate` extract when a repeated manual route is",
         "one optional handoff list to `aoa-automation-opportunity-scan`,",
-        "one `HARVEST_PACKET_RECEIPT` using `references/stats-event-envelope.md` and"
+        "one `HARVEST_PACKET_RECEIPT` using `references/stats-event-envelope.md` and",
+        "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
         "confirm the source artifact is reviewed and bounded",
@@ -1189,7 +1200,8 @@
         "confirm the output names the next artifact rather than only abstract categories",
         "confirm any family handoff hint is explicit rather than smuggled into the",
         "confirm any `automation_candidate` names the current manual route and still",
-        "confirm any emitted receipt stays append-only, evidence-linked, and smaller"
+        "confirm any emitted receipt stays append-only, evidence-linked, and smaller",
+        "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the matching"
       ],
       "contracts": [
         "invocation must remain explicit and post-session",
@@ -1201,6 +1213,7 @@
         "the `HARVEST_PACKET` may carry handoff hints, but it does not become hidden",
         "`automation_candidate` is only a detector hint; it is not schedule or",
         "`HARVEST_PACKET_RECEIPT` stays subordinate to the packet and never replaces",
+        "`CORE_SKILL_APPLICATION_RECEIPT` stays subordinate to the packet and the",
         "receipt corrections use `supersedes` rather than silent mutation",
         "drafting a next artifact is allowed; forcing promotion is not"
       ],
@@ -1264,7 +1277,8 @@
         "optional rank reflection note if evidence is strong enough",
         "quest hooks or chronicle stub when useful",
         "negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance",
-        "one `PROGRESSION_DELTA_RECEIPT` using `references/stats-event-envelope.md`"
+        "one `PROGRESSION_DELTA_RECEIPT` using `references/stats-event-envelope.md`",
+        "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
         "confirm all meaningful axis claims cite reviewed evidence",
@@ -1272,7 +1286,8 @@
         "confirm zero or negative movement remains allowed",
         "confirm unlock hints are small and explicit",
         "confirm no universal score is introduced",
-        "confirm any emitted receipt stays multi-axis, evidence-linked, and non-sovereign"
+        "confirm any emitted receipt stays multi-axis, evidence-linked, and non-sovereign",
+        "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the"
       ],
       "contracts": [
         "progression remains evidence-backed",
@@ -1282,6 +1297,7 @@
         "progression does not replace owner-layer truth or routing authority",
         "progression does not greenlight automation by itself",
         "progression receipts stay descriptive and append-only",
+        "generic core receipts stay subordinate to the progression receipt and do not",
         "receipt corrections use `supersedes` rather than silent overwrite"
       ],
       "consumes_artifact_tags": [
@@ -1296,7 +1312,8 @@
         "optional-rank-reflection-note-if-evidence-is-strong-enough",
         "quest-hooks-or-chronicle-stub-when-useful",
         "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad",
-        "one-progression-delta-receipt-using-references-stats-event-envel"
+        "one-progression-delta-receipt-using-references-stats-event-envel",
+        "one-core-skill-application-receipt-using"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-session-progression-lift",
@@ -1306,7 +1323,8 @@
           "optional-rank-reflection-note-if-evidence-is-strong-enough",
           "quest-hooks-or-chronicle-stub-when-useful",
           "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad",
-          "one-progression-delta-receipt-using-references-stats-event-envel"
+          "one-progression-delta-receipt-using-references-stats-event-envel",
+          "one-core-skill-application-receipt-using"
         ],
         "verification_notes": [
           "confirm all meaningful axis claims cite reviewed evidence",
@@ -1339,7 +1357,8 @@
         "one explicit hold or defer option when honest uncertainty remains",
         "optional automation and non-automation branches side by side when that choice",
         "optional quest hooks or campaign hints without runtime authority",
-        "one `DECISION_FORK_RECEIPT` using `references/stats-event-envelope.md` and"
+        "one `DECISION_FORK_RECEIPT` using `references/stats-event-envelope.md` and",
+        "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
         "confirm each branch differs materially",
@@ -1347,7 +1366,8 @@
         "confirm at least one cost or risk is explicit",
         "confirm stop conditions exist for risky branches",
         "confirm hold or defer remains possible when uncertainty is real",
-        "confirm any emitted receipt stays evidence-linked and subordinate to the fork cards"
+        "confirm any emitted receipt stays evidence-linked and subordinate to the fork cards",
+        "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the fork"
       ],
       "contracts": [
         "branch cards do not become routing authority",
@@ -1357,6 +1377,7 @@
         "a fork card may recommend but must not hide alternatives",
         "automation-shaped branches must not be read as schedule authority",
         "`DECISION_FORK_RECEIPT` is descriptive branch telemetry, not routing policy",
+        "`CORE_SKILL_APPLICATION_RECEIPT` is generic kernel telemetry, not branch",
         "receipt corrections use `supersedes` rather than silent overwrite"
       ],
       "consumes_artifact_tags": [
@@ -1372,7 +1393,8 @@
         "one-explicit-hold-or-defer-option-when-honest-uncertainty-remain",
         "optional-automation-and-non-automation-branches-side-by-side-whe",
         "optional-quest-hooks-or-campaign-hints-without-runtime-authority",
-        "one-decision-fork-receipt-using-references-stats-event-envelope-"
+        "one-decision-fork-receipt-using-references-stats-event-envelope-",
+        "one-core-skill-application-receipt-using"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-session-route-forks",
@@ -1382,7 +1404,8 @@
           "one-explicit-hold-or-defer-option-when-honest-uncertainty-remain",
           "optional-automation-and-non-automation-branches-side-by-side-whe",
           "optional-quest-hooks-or-campaign-hints-without-runtime-authority",
-          "one-decision-fork-receipt-using-references-stats-event-envelope-"
+          "one-decision-fork-receipt-using-references-stats-event-envelope-",
+          "one-core-skill-application-receipt-using"
         ],
         "verification_notes": [
           "confirm each branch differs materially",
@@ -1414,7 +1437,8 @@
         "explicit unknowns when diagnosis remains incomplete",
         "optional blocked-automation findings such as unstable inputs, hidden approval,",
         "optional handoff to `aoa-session-self-repair`",
-        "one `SKILL_RUN_RECEIPT` using `references/stats-event-envelope.md` and"
+        "one `SKILL_RUN_RECEIPT` using `references/stats-event-envelope.md` and",
+        "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
         "confirm each diagnosis cites evidence refs",
@@ -1422,7 +1446,8 @@
         "confirm a likely owner layer is named",
         "confirm unknowns are preserved where needed",
         "confirm no mutation happened",
-        "confirm any emitted receipt stays evidence-linked and smaller than the diagnosis packet"
+        "confirm any emitted receipt stays evidence-linked and smaller than the diagnosis packet",
+        "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the detail"
       ],
       "contracts": [
         "diagnosis is read-only",
@@ -1432,6 +1457,7 @@
         "no hidden mutation or silent patching",
         "diagnosis does not grant automation readiness by itself",
         "the receipt remains descriptive and cannot become proof or repair authority",
+        "the generic core receipt remains subordinate to the diagnosis receipt and",
         "receipt corrections use `supersedes` rather than silent overwrite"
       ],
       "consumes_artifact_tags": [
@@ -1446,7 +1472,8 @@
         "explicit-unknowns-when-diagnosis-remains-incomplete",
         "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
         "optional-handoff-to-aoa-session-self-repair",
-        "one-skill-run-receipt-using-references-stats-event-envelope-md-a"
+        "one-skill-run-receipt-using-references-stats-event-envelope-md-a",
+        "one-core-skill-application-receipt-using"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-session-self-diagnose",
@@ -1456,7 +1483,8 @@
           "explicit-unknowns-when-diagnosis-remains-incomplete",
           "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
           "optional-handoff-to-aoa-session-self-repair",
-          "one-skill-run-receipt-using-references-stats-event-envelope-md-a"
+          "one-skill-run-receipt-using-references-stats-event-envelope-md-a",
+          "one-core-skill-application-receipt-using"
         ],
         "verification_notes": [
           "confirm each diagnosis cites evidence refs",
@@ -1488,7 +1516,8 @@
         "optional repair quest when execution should remain deferred",
         "optional automation-readiness prerequisite packet when the real need is to",
         "explicit stop conditions and escalation points",
-        "one `REPAIR_CYCLE_RECEIPT` using `references/stats-event-envelope.md` and"
+        "one `REPAIR_CYCLE_RECEIPT` using `references/stats-event-envelope.md` and",
+        "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
         "confirm diagnosis exists and is cited",
@@ -1496,7 +1525,8 @@
         "confirm checkpoint fields are present",
         "confirm validation and rollback posture are named",
         "confirm escalation route exists if the repair widens",
-        "confirm any emitted receipt cites diagnosis and validation refs without duplicating the whole packet"
+        "confirm any emitted receipt cites diagnosis and validation refs without duplicating the whole packet",
+        "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the repair"
       ],
       "contracts": [
         "self-repair is not free self-modification",
@@ -1507,6 +1537,7 @@
         "scenario-scale repair routes to `aoa-playbooks`",
         "repair does not smuggle live automation authority into the packet",
         "repair-cycle receipts stay descriptive and append-only",
+        "generic core receipts stay subordinate to the repair receipt and do not",
         "receipt corrections use `supersedes` rather than silent overwrite"
       ],
       "consumes_artifact_tags": [
@@ -1521,7 +1552,8 @@
         "optional-repair-quest-when-execution-should-remain-deferred",
         "optional-automation-readiness-prerequisite-packet-when-the-real-",
         "explicit-stop-conditions-and-escalation-points",
-        "one-repair-cycle-receipt-using-references-stats-event-envelope-m"
+        "one-repair-cycle-receipt-using-references-stats-event-envelope-m",
+        "one-core-skill-application-receipt-using"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-session-self-repair",
@@ -1530,7 +1562,8 @@
           "optional-repair-quest-when-execution-should-remain-deferred",
           "optional-automation-readiness-prerequisite-packet-when-the-real-",
           "explicit-stop-conditions-and-escalation-points",
-          "one-repair-cycle-receipt-using-references-stats-event-envelope-m"
+          "one-repair-cycle-receipt-using-references-stats-event-envelope-m",
+          "one-core-skill-application-receipt-using"
         ],
         "verification_notes": [
           "confirm diagnosis exists and is cited",
