@@ -1,0 +1,107 @@
+{
+  "title": "aoa-skills project-core outer ring readiness surface",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_config",
+    "ring_id",
+    "canonical_install_profile",
+    "repo_core_only_profile",
+    "user_curated_core_profile",
+    "skills"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "source_config": {
+      "type": "string",
+      "const": "config/project_core_outer_ring.json"
+    },
+    "ring_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_install_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo_core_only_profile": {
+      "type": "string",
+      "const": "repo-core-only"
+    },
+    "user_curated_core_profile": {
+      "type": "string",
+      "const": "user-curated-core"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "skill_name",
+          "cluster_id",
+          "scope",
+          "status",
+          "invocation_mode",
+          "in_repo_core_only",
+          "in_repo_project_core_outer_ring",
+          "in_user_curated_core",
+          "collision_family",
+          "readiness_passed",
+          "blockers"
+        ],
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cluster_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "invocation_mode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "in_repo_core_only": {
+            "type": "boolean"
+          },
+          "in_repo_project_core_outer_ring": {
+            "type": "boolean"
+          },
+          "in_user_curated_core": {
+            "type": "boolean"
+          },
+          "collision_family": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "readiness_passed": {
+            "type": "boolean"
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

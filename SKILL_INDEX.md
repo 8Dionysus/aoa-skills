@@ -56,6 +56,37 @@ The kernel is repo-wide hard-gated:
 - the portable export must carry both refs
 - the per-skill gate truth lives in `generated/project_core_kernel_governance.min.json`
 
+## Project-Core Outer Ring
+
+The next stable layer around that kernel is the engineering outer ring:
+
+- `aoa-adr-write`
+- `aoa-source-of-truth-check`
+- `aoa-bounded-context-map`
+- `aoa-core-logic-boundary`
+- `aoa-port-adapter-refactor`
+- `aoa-change-protocol`
+- `aoa-tdd-slice`
+- `aoa-contract-test`
+- `aoa-property-invariants`
+- `aoa-invariant-coverage-audit`
+
+This ring is authored under `repo-project-core-outer-ring`. It is not a second
+kernel. It is the reusable engineering workbench that sits around the
+session-growth nucleus.
+
+The outer ring is soft-gated and classification-backed:
+
+- every ring skill must stay in the authored outer-ring manifest
+- `repo-project-core-outer-ring` must match that manifest exactly
+- `repo-core-only` must equal `kernel + outer ring` in canonical order
+- every ring skill must stay `scope=core`
+- every ring skill must stay `status=canonical` or `status=evaluated`
+- the per-skill readiness truth lives in `generated/project_core_outer_ring_readiness.min.json`
+
+`repo-core-only` is the umbrella repo profile. Risk skills and project overlays
+stay outside both the kernel and the outer ring.
+
 ## Notes
 
 - `scaffold` means the skill shape exists, but it should still evolve through technique linkage, examples, and project overlays.

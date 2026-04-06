@@ -10,7 +10,8 @@
     "openai_extensions": "config/openai_skill_extensions.json",
     "policy_matrix": "config/skill_policy_matrix.json",
     "profile_matrix": "config/skill_pack_profiles.json",
-    "project_core_kernel": "config/project_core_skill_kernel.json"
+    "project_core_kernel": "config/project_core_skill_kernel.json",
+    "project_core_outer_ring": "config/project_core_outer_ring.json"
   },
   "exports": [
     {

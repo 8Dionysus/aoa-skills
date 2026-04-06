@@ -36,27 +36,27 @@
       ]
     },
     "repo-core-only": {
-      "description": "Install only core, reusable AoA skills into a repository root.",
+      "description": "Install the full project-core repo surface into a repository root: the session-growth kernel plus the engineering outer ring.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "skills": [
-        "aoa-adr-write",
-        "aoa-automation-opportunity-scan",
-        "aoa-bounded-context-map",
-        "aoa-change-protocol",
-        "aoa-contract-test",
-        "aoa-core-logic-boundary",
-        "aoa-invariant-coverage-audit",
-        "aoa-port-adapter-refactor",
-        "aoa-property-invariants",
-        "aoa-quest-harvest",
         "aoa-session-donor-harvest",
-        "aoa-session-progression-lift",
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest",
+        "aoa-adr-write",
         "aoa-source-of-truth-check",
-        "aoa-tdd-slice"
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor",
+        "aoa-change-protocol",
+        "aoa-tdd-slice",
+        "aoa-contract-test",
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit"
       ]
     },
     "repo-quest-harvest-only": {
@@ -95,6 +95,23 @@
         "aoa-session-self-repair",
         "aoa-session-progression-lift",
         "aoa-quest-harvest"
+      ]
+    },
+    "repo-project-core-outer-ring": {
+      "description": "Install the stable project-core engineering outer ring into a repository root without the session-growth kernel or risk/project overlays.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-adr-write",
+        "aoa-source-of-truth-check",
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor",
+        "aoa-change-protocol",
+        "aoa-tdd-slice",
+        "aoa-contract-test",
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit"
       ]
     },
     "repo-session-harvest-family": {
