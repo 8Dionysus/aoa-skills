@@ -181,16 +181,16 @@
       "status": "scaffold",
       "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
       "technique_dependencies": [
-        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
-        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
-        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+        "AOA-T-0086",
+        "AOA-T-0087",
+        "AOA-T-0088"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
-          "path": "TBD",
+          "id": "AOA-T-0086",
+          "path": "techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -201,10 +201,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
-          "path": "TBD",
+          "id": "AOA-T-0087",
+          "path": "techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c",
           "use_sections": [
             "Intent",
             "When to use",
@@ -215,10 +215,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK",
-          "path": "TBD",
+          "id": "AOA-T-0088",
+          "path": "techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c",
           "use_sections": [
             "Intent",
             "Inputs",

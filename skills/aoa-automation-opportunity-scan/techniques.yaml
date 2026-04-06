@@ -1,10 +1,10 @@
 skill_name: aoa-automation-opportunity-scan
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-AUTOMATION-FIT-MATRIX
+  - id: AOA-T-0086
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md
+    source_ref: 1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c
     use_sections:
       - Intent
       - Inputs
@@ -12,10 +12,10 @@ techniques:
       - Core procedure
       - Risks
       - Validation
-  - id: AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT
+  - id: AOA-T-0087
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md
+    source_ref: 1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c
     use_sections:
       - Intent
       - When to use
@@ -23,10 +23,10 @@ techniques:
       - Core procedure
       - Contracts
       - Validation
-  - id: AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK
+  - id: AOA-T-0088
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md
+    source_ref: 1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c
     use_sections:
       - Intent
       - Inputs
@@ -36,4 +36,4 @@ techniques:
       - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
-  - Replace pending IDs, path TBD, and source_ref TBD after publish.
+  - Refresh `source_ref` when the pinned aoa-techniques commit changes.

@@ -51,9 +51,9 @@
       "recommended_action": "keep_multi_technique",
       "technique_count": 3,
       "technique_ids": [
-        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
-        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
-        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+        "AOA-T-0086",
+        "AOA-T-0087",
+        "AOA-T-0088"
       ]
     },
     {

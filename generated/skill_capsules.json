@@ -83,9 +83,9 @@
       "status": "scaffold",
       "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
       "technique_dependencies": [
-        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
-        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
-        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+        "AOA-T-0086",
+        "AOA-T-0087",
+        "AOA-T-0088"
       ],
       "trigger_boundary_short": "Use when a reviewed session or repeated project slice reveals a recurring manual route; the same audit, report, hygiene pass, or triage loop keeps coming back; Avoid when the work happened only once and still looks...",
       "verification_short": "Checks: confirm each candidate names the current manual route; confirm evidence refs justify the repeat signal; confirm stable input and output posture is assessed explicitly; confirm seedready or notnow is explicit...",

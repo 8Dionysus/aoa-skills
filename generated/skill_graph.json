@@ -273,7 +273,7 @@
     {
       "kind": "lineage",
       "source": "skill_aoa_automation_opportunity_scan",
-      "target": "lineage_pending"
+      "target": "lineage_published"
     },
     {
       "kind": "invocation_policy",
@@ -283,17 +283,17 @@
     {
       "kind": "depends_on",
       "source": "skill_aoa_automation_opportunity_scan",
-      "target": "technique_AOA_T_PENDING_AUTOMATION_FIT_MATRIX"
+      "target": "technique_AOA_T_0086"
     },
     {
       "kind": "depends_on",
       "source": "skill_aoa_automation_opportunity_scan",
-      "target": "technique_AOA_T_PENDING_HUMAN_LOOP_TO_SEED_LIFT"
+      "target": "technique_AOA_T_0087"
     },
     {
       "kind": "depends_on",
       "source": "skill_aoa_automation_opportunity_scan",
-      "target": "technique_AOA_T_PENDING_APPROVAL_SENSITIVITY_CHECK"
+      "target": "technique_AOA_T_0088"
     },
     {
       "kind": "included_in_profile",
@@ -1998,23 +1998,18 @@
       "type": "status"
     },
     {
-      "id": "lineage_pending",
-      "label": "lineage: pending",
-      "type": "lineage"
-    },
-    {
-      "id": "technique_AOA_T_PENDING_AUTOMATION_FIT_MATRIX",
-      "label": "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
+      "id": "technique_AOA_T_0086",
+      "label": "AOA-T-0086",
       "type": "technique"
     },
     {
-      "id": "technique_AOA_T_PENDING_HUMAN_LOOP_TO_SEED_LIFT",
-      "label": "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
+      "id": "technique_AOA_T_0087",
+      "label": "AOA-T-0087",
       "type": "technique"
     },
     {
-      "id": "technique_AOA_T_PENDING_APPROVAL_SENSITIVITY_CHECK",
-      "label": "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK",
+      "id": "technique_AOA_T_0088",
+      "label": "AOA-T-0088",
       "type": "technique"
     },
     {
@@ -2126,6 +2121,11 @@
       "id": "skill_aoa_quest_harvest",
       "label": "aoa-quest-harvest",
       "type": "skill"
+    },
+    {
+      "id": "lineage_pending",
+      "label": "lineage: pending",
+      "type": "lineage"
     },
     {
       "id": "technique_AOA_T_PENDING_QUEST_HARVEST",
@@ -2637,7 +2637,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "e21313d93e06529786f22c7b66dd943a57e865476f5cb2859c89b0027488d4d6",
+      "content_hash": "f18ab5dbe32a7162a04331ef99a84f4a358b1527d31e4d9cef11b804e97e90e7",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2661,12 +2661,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-automation-opportunity-scan",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
-      "skill_revision": "e21313d93e06",
+      "skill_revision": "f18ab5dbe32a",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2681,31 +2681,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
-        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
-        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+        "AOA-T-0086",
+        "AOA-T-0087",
+        "AOA-T-0088"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0086",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c"
         },
         {
-          "id": "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0087",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c"
         },
         {
-          "id": "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0088",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c"
         }
       ]
     },

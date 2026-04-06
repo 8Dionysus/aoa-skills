@@ -9,7 +9,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 - total skills: 26
 - candidate ready without review: 0
-- blocked by pending lineage: 2
+- blocked by pending lineage: 1
 - canonical maintenance cohort: 12
 - comparative pending cohort: 3
 - review truth-sync gaps: 0
@@ -21,7 +21,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | abyss-sanitized-share | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/abyss-sanitized-share.md |
 | aoa-adr-write | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-adr-write.md | docs/reviews/status-promotions/aoa-adr-write.md |
 | aoa-approval-gate-check | canonical | published | true | true | default_reference | local_runtime_bringup, risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-approval-gate-check.md | docs/reviews/status-promotions/aoa-approval-gate-check.md |
-| aoa-automation-opportunity-scan | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-automation-opportunity-scan | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-bounded-context-map | canonical | published | true | true | default_reference | context_vs_contract, core_boundary_refactor | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-bounded-context-map.md | docs/reviews/status-promotions/aoa-bounded-context-map.md |
 | aoa-change-protocol | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-change-protocol.md | - |
 | aoa-contract-test | canonical | published | true | true | default_reference | context_vs_contract | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-contract-test.md | docs/reviews/status-promotions/aoa-contract-test.md |
@@ -69,7 +69,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 ## Cohorts
 
 - `candidate_ready_without_review`: -
-- `blocked_by_pending_lineage`: aoa-automation-opportunity-scan, aoa-quest-harvest
+- `blocked_by_pending_lineage`: aoa-quest-harvest
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor
 - `review_truth_sync`: -
