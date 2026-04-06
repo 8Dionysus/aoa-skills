@@ -8,7 +8,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 - total skills: 26
 - default references: 12
 - candidate-ready skills: 3
-- blocked by pending lineage: 2
+- blocked by pending lineage: 1
 - risk surfaces: 5
 
 ## Default references
@@ -40,7 +40,6 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|
-| aoa-automation-opportunity-scan | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 | aoa-quest-harvest | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 
 ## Risk surfaces

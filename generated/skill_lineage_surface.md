@@ -6,8 +6,8 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 ## Summary
 
 - total skills: 26
-- published lineage: 24
-- pending lineage: 2
+- published lineage: 25
+- pending lineage: 1
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
@@ -15,7 +15,7 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | abyss-sanitized-share | evaluated | project | published | 2 | 0 | 0 | true | - |
 | aoa-adr-write | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-approval-gate-check | canonical | risk | published | 1 | 0 | 0 | true | - |
-| aoa-automation-opportunity-scan | scaffold | core | pending | 0 | 3 | 3 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-automation-opportunity-scan | scaffold | core | published | 3 | 0 | 0 | true | - |
 | aoa-bounded-context-map | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-change-protocol | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-contract-test | canonical | core | published | 2 | 0 | 0 | true | - |

@@ -5,9 +5,9 @@ status: scaffold
 summary: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-AUTOMATION-FIT-MATRIX
-  - AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT
-  - AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK
+  - AOA-T-0086
+  - AOA-T-0087
+  - AOA-T-0088
 ---
 
 # aoa-automation-opportunity-scan
@@ -97,10 +97,10 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Pending manifest-backed techniques:
-- AOA-T-PENDING-AUTOMATION-FIT-MATRIX from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`
-- AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`
-- AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`
+Manifest-backed techniques:
+- AOA-T-0086 from `8Dionysus/aoa-techniques` at `1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c` using path `techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation
+- AOA-T-0087 from `8Dionysus/aoa-techniques` at `1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c` using path `techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0088 from `8Dionysus/aoa-techniques` at `1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c` using path `techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md` and sections: Inputs, Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 
