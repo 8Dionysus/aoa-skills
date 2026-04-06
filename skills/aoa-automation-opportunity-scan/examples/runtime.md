@@ -28,6 +28,8 @@ automation is honest yet.
 - an explicit `seed_ready` or `not_now` verdict
 - `checkpoint_required: false` if the route is read-only and previewable
 - a next-artifact suggestion such as `skill` or `playbook_seed`
+- one `AUTOMATION_CANDIDATE_RECEIPT` with repeat signal posture,
+  `checkpoint_required`, and the next-artifact hint
 
 ## Boundary notes
 
@@ -41,3 +43,5 @@ automation is honest yet.
 - Confirm repeat evidence is explicit.
 - Confirm the likely owner layer is named honestly.
 - Confirm schedule hints stay hints.
+- Confirm the finish receipt stays detector-shaped and does not pretend to
+  grant schedule authority.

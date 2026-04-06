@@ -62,6 +62,8 @@ Do not use this skill when:
   `aoa-session-route-forks`,
   `aoa-session-self-diagnose`, `aoa-session-self-repair`,
   `aoa-session-progression-lift`, or `aoa-quest-harvest`
+- one `HARVEST_PACKET_RECEIPT` using `references/stats-event-envelope.md` and
+  `references/harvest-packet-receipt-schema.yaml`
 
 ## Procedure
 
@@ -98,7 +100,10 @@ Do not use this skill when:
 20. draft the smallest next artifact for each accepted candidate, such as
     `TECHNIQUE.md`, `SKILL.md`, `PLAYBOOK.md`, `EVAL.md`, memory object seed,
     or agent/orchestrator surface note
-21. record one clear reason for the chosen owner and one clear reason against
+21. emit one `HARVEST_PACKET_RECEIPT` when the packet is complete, using the
+    shared event envelope and a bounded receipt payload instead of duplicating
+    the full donor packet
+22. record one clear reason for the chosen owner and one clear reason against
     the nearest wrong owner
 
 ## Contracts
@@ -113,6 +118,9 @@ Do not use this skill when:
   routing authority
 - `automation_candidate` is only a detector hint; it is not schedule or
   mutation authority
+- `HARVEST_PACKET_RECEIPT` stays subordinate to the packet and never replaces
+  owner-layer or proof meaning
+- receipt corrections use `supersedes` rather than silent mutation
 - drafting a next artifact is allowed; forcing promotion is not
 
 ## Risks and anti-patterns
@@ -128,6 +136,7 @@ Do not use this skill when:
   donor notes instead of naming the next family seam explicitly
 - turning donor harvest into a generic automation detector for every recurring
   annoyance instead of keeping automation readiness as its own seam
+- letting receipt counts masquerade as proof, progression, or routing law
 
 ## Verification
 
@@ -142,6 +151,8 @@ Do not use this skill when:
   packet as hidden policy
 - confirm any `automation_candidate` names the current manual route and still
   stops short of automation authority
+- confirm any emitted receipt stays append-only, evidence-linked, and smaller
+  than the packet it summarizes
 
 ## Technique traceability
 

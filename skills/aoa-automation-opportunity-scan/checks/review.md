@@ -23,6 +23,7 @@ from reviewed evidence and packages them into a bounded
 - [ ] The nearest wrong target was rejected explicitly.
 - [ ] `checkpoint_required` was raised for self-changing, approval-heavy, or important mutation routes.
 - [ ] No schedule hint was presented as runtime authority.
+- [ ] Any `AUTOMATION_CANDIDATE_RECEIPT` stayed evidence-linked, append-only, and detector-shaped.
 
 ## Not a fit
 

@@ -48,6 +48,8 @@ Do not use this skill when:
 - optional automation-readiness prerequisite packet when the real need is to
   stabilize a route before later automation scanning or seeding
 - explicit stop conditions and escalation points
+- one `REPAIR_CYCLE_RECEIPT` using `references/stats-event-envelope.md` and
+  `references/repair-cycle-receipt-schema.yaml`
 
 ## Procedure
 
@@ -58,6 +60,7 @@ Do not use this skill when:
 5. if the target route was blocked automation, emit the smallest prerequisite repair that would make later automation classification more honest
 6. define validation and stop conditions
 7. emit a repair quest instead of mutating immediately when risk or approval posture requires it
+8. emit one `REPAIR_CYCLE_RECEIPT` when the repair packet or repair-quest handoff closes, keeping the receipt smaller than the packet
 
 ## Contracts
 
@@ -68,6 +71,8 @@ Do not use this skill when:
 - proof-law changes route to `aoa-evals`
 - scenario-scale repair routes to `aoa-playbooks`
 - repair does not smuggle live automation authority into the packet
+- repair-cycle receipts stay descriptive and append-only
+- receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
 
@@ -76,6 +81,7 @@ Do not use this skill when:
 - retry loops disguised as repair
 - using repair to hide broader governance debt
 - changing too many surfaces at once
+- letting a repair receipt pretend the repair is already verified when it is only planned
 
 ## Verification
 
@@ -84,6 +90,7 @@ Do not use this skill when:
 - confirm checkpoint fields are present
 - confirm validation and rollback posture are named
 - confirm escalation route exists if the repair widens
+- confirm any emitted receipt cites diagnosis and validation refs without duplicating the whole packet
 
 ## Technique traceability
 

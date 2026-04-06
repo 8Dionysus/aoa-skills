@@ -31,6 +31,8 @@ The task is no longer about executing the original work. It is about extracting 
 - one explicit rejected-nearest-wrong-target note for each accepted candidate
 - one explicit handoff hint to `aoa-session-route-forks` because the session
   still has more than one honest next route
+- one `HARVEST_PACKET_RECEIPT` with bounded counts, owner-layer distribution,
+  and evidence-linked candidate refs
 
 ## Boundary notes
 
@@ -44,3 +46,5 @@ The task is no longer about executing the original work. It is about extracting 
 - Confirm the chosen owner layer matches the unit shape.
 - Confirm each accepted candidate names the next artifact, not only the repo.
 - Confirm any post-session family handoff stays explicit.
+- Confirm the finish receipt stays smaller than the packet and links evidence
+  instead of duplicating raw recap.

@@ -358,7 +358,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "f18ab5dbe32a7162a04331ef99a84f4a358b1527d31e4d9cef11b804e97e90e7",
+      "content_hash": "5cc9a8e3a67ea6d05cb6611c545356e76bf997018c00241e27721335f253323d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -387,7 +387,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
-      "skill_revision": "f18ab5dbe32a",
+      "skill_revision": "5cc9a8e3a67e",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -1506,7 +1506,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "74a169977045586be2215784c3084c0077ef29d892c885f60f05323157c57f5e",
+      "content_hash": "7d97b0d835fdc09f728d9695a74119482b5d6fe3312bae1ffd4e930fd9181d5b",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1535,7 +1535,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "74a169977045",
+      "skill_revision": "7d97b0d835fd",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -1596,7 +1596,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "2b939eac5ac42260b7f965f461609a683d19dc79a2859f8d15c7519b817fb5fb",
+      "content_hash": "e94c4de5a48473593814e6809ef1f4d2ee5f32b1a887e4979cc3891ca99345ec",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1624,7 +1624,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
-      "skill_revision": "2b939eac5ac4",
+      "skill_revision": "e94c4de5a484",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -1677,7 +1677,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "b16cf44c75ae2a8d6583d500247e7ba2f6461bae4e7f9a602455b6febb0dda53",
+      "content_hash": "2b4b4ca3485b9862070ed0c5cd4818977e853222a0294ab6b6bd60353ca9a9c4",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1705,7 +1705,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-route-forks/SKILL.md",
-      "skill_revision": "b16cf44c75ae",
+      "skill_revision": "2b4b4ca3485b",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -1758,7 +1758,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c84d3fe4b582ab39986394b070b385be0a692288fabc70d2e1a96e035f11da61",
+      "content_hash": "0809fe16e395456d6eeab1291d73eabf7e6ab70c13071539bf7d3ede36302408",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1786,7 +1786,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
-      "skill_revision": "c84d3fe4b582",
+      "skill_revision": "0809fe16e395",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -1839,7 +1839,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "ef800fbafd0ac8c109e4bd509ec08805db0301848c1958253a644c766339c85d",
+      "content_hash": "39c4b185831135f6060c6b99ae9b222799a80f4c391810990d36cd0f318dfa60",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1867,7 +1867,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "ef800fbafd0a",
+      "skill_revision": "39c4b1858311",
       "status": "scaffold",
       "support_artifacts": [
         {

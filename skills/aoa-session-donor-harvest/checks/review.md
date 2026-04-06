@@ -25,6 +25,7 @@ family handoff hints.
 - [ ] Weak or unclear candidates were allowed to remain `hold` instead of being forced into canon.
 - [ ] The result names one concrete next artifact for each accepted candidate.
 - [ ] Automation candidates, quest residue, route forks, diagnosis hints, repair follow-through, or progression follow-through were surfaced explicitly when they survived the harvest.
+- [ ] Any `HARVEST_PACKET_RECEIPT` stayed evidence-linked, append-only, and smaller than the packet it summarizes.
 
 ## Not a fit
 

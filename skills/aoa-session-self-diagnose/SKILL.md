@@ -48,6 +48,8 @@ Do not use this skill when:
 - optional blocked-automation findings such as unstable inputs, hidden approval,
   rollback gaps, or secret coupling
 - optional handoff to `aoa-session-self-repair`
+- one `SKILL_RUN_RECEIPT` using `references/stats-event-envelope.md` and
+  `references/skill-run-receipt-schema.yaml`
 
 ## Procedure
 
@@ -58,6 +60,8 @@ Do not use this skill when:
 5. map each diagnosis toward the likely owner layer
 6. suggest a repair shape without silently performing it
 7. preserve unknowns where evidence does not justify stronger claims
+8. emit one bounded `SKILL_RUN_RECEIPT` when the diagnosis packet closes,
+   keeping the payload smaller than the diagnosis itself
 
 ## Contracts
 
@@ -67,6 +71,8 @@ Do not use this skill when:
 - owner hints must not override owner-layer law
 - no hidden mutation or silent patching
 - diagnosis does not grant automation readiness by itself
+- the receipt remains descriptive and cannot become proof or repair authority
+- receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
 
@@ -76,6 +82,7 @@ Do not use this skill when:
 - turning every inconvenience into a system flaw
 - blaming one owner layer for a cross-layer issue
 - treating automation frustration as if it automatically proved readiness
+- letting a diagnosis receipt read like a final blame or repair verdict
 
 ## Verification
 
@@ -84,6 +91,7 @@ Do not use this skill when:
 - confirm a likely owner layer is named
 - confirm unknowns are preserved where needed
 - confirm no mutation happened
+- confirm any emitted receipt stays evidence-linked and smaller than the diagnosis packet
 
 ## Technique traceability
 

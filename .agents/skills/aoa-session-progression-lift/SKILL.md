@@ -47,6 +47,8 @@ Do not use this skill when:
 - optional rank reflection note if evidence is strong enough
 - quest hooks or chronicle stub when useful
 - negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance
+- one `PROGRESSION_DELTA_RECEIPT` using `references/stats-event-envelope.md`
+  and `references/progression-delta-receipt-schema.yaml`
 
 ## Procedure
 1. collect reviewed evidence refs
@@ -58,6 +60,8 @@ Do not use this skill when:
 5. keep any automation-readiness hint small, descriptive, and non-authoritative
 6. allow negative, zero, and cautionary movement
 7. map ability or feat hints only as reflection, not as ownership transfer
+8. emit one `PROGRESSION_DELTA_RECEIPT` when the delta closes, keeping the
+   receipt descriptive, evidence-linked, and smaller than the progression packet
 
 ## Contracts
 - progression remains evidence-backed
@@ -66,6 +70,8 @@ Do not use this skill when:
 - unlock hints must stay reviewable and small
 - progression does not replace owner-layer truth or routing authority
 - progression does not greenlight automation by itself
+- progression receipts stay descriptive and append-only
+- receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
 - inventing progress from mood
@@ -74,6 +80,7 @@ Do not use this skill when:
 - flattening multi-axis growth into one number
 - confusing quest flavor with durable proof
 - treating progression hints as if they were approval or schedule rights
+- treating a progression receipt as if receipt emission itself proved growth
 
 ## Verification
 - confirm all meaningful axis claims cite reviewed evidence
@@ -81,6 +88,7 @@ Do not use this skill when:
 - confirm zero or negative movement remains allowed
 - confirm unlock hints are small and explicit
 - confirm no universal score is introduced
+- confirm any emitted receipt stays multi-axis, evidence-linked, and non-sovereign
 
 ## Technique traceability
 Manifest-backed techniques:

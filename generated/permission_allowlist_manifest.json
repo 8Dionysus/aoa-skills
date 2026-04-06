@@ -217,11 +217,13 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
+          "references/automation-candidate-receipt-schema.yaml",
           "references/automation-fit-matrix.md",
           "references/automation-opportunity-packet-schema.yaml",
           "references/checkpoint-boundary.md",
           "references/playbook-seed-bridge.md",
-          "references/session-harvest-integration.md"
+          "references/session-harvest-integration.md",
+          "references/stats-event-envelope.md"
         ],
         "assets": [
           "assets/large-logo.svg",
@@ -810,8 +812,10 @@
         "references": [
           "references/family-shape.md",
           "references/harvest-packet-contract.md",
+          "references/harvest-packet-receipt-schema.yaml",
           "references/owner-layer-map.md",
-          "references/rpg-reflection-posture.md"
+          "references/rpg-reflection-posture.md",
+          "references/stats-event-envelope.md"
         ],
         "assets": [
           "assets/large-logo.svg",
@@ -856,7 +860,9 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/progression-axes.md"
+          "references/progression-axes.md",
+          "references/progression-delta-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
         ],
         "assets": [
           "assets/large-logo.svg",
@@ -900,7 +906,10 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/decision-fork-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -943,7 +952,10 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/skill-run-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -987,7 +999,9 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/checkpoint-bridge.md"
+          "references/checkpoint-bridge.md",
+          "references/repair-cycle-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
         ],
         "assets": [
           "assets/large-logo.svg",
