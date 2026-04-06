@@ -1118,7 +1118,7 @@
     {
       "kind": "lineage",
       "source": "skill_aoa_session_donor_harvest",
-      "target": "lineage_pending"
+      "target": "lineage_published"
     },
     {
       "kind": "invocation_policy",
@@ -1138,7 +1138,7 @@
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_donor_harvest",
-      "target": "technique_AOA_T_PENDING_HARVEST_PACKET_CONTRACT"
+      "target": "technique_AOA_T_0077"
     },
     {
       "kind": "included_in_profile",
@@ -1203,7 +1203,7 @@
     {
       "kind": "lineage",
       "source": "skill_aoa_session_progression_lift",
-      "target": "lineage_pending"
+      "target": "lineage_published"
     },
     {
       "kind": "invocation_policy",
@@ -1213,12 +1213,12 @@
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_progression_lift",
-      "target": "technique_AOA_T_PENDING_PROGRESSION_EVIDENCE_LIFT"
+      "target": "technique_AOA_T_0084"
     },
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_progression_lift",
-      "target": "technique_AOA_T_PENDING_MULTI_AXIS_QUEST_OVERLAY"
+      "target": "technique_AOA_T_0085"
     },
     {
       "kind": "included_in_profile",
@@ -1278,7 +1278,7 @@
     {
       "kind": "lineage",
       "source": "skill_aoa_session_route_forks",
-      "target": "lineage_pending"
+      "target": "lineage_published"
     },
     {
       "kind": "invocation_policy",
@@ -1288,12 +1288,12 @@
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_route_forks",
-      "target": "technique_AOA_T_PENDING_DECISION_FORK_CARDS"
+      "target": "technique_AOA_T_0078"
     },
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_route_forks",
-      "target": "technique_AOA_T_PENDING_RISK_PASSPORT_LIFT"
+      "target": "technique_AOA_T_0079"
     },
     {
       "kind": "included_in_profile",
@@ -1353,7 +1353,7 @@
     {
       "kind": "lineage",
       "source": "skill_aoa_session_self_diagnose",
-      "target": "lineage_pending"
+      "target": "lineage_published"
     },
     {
       "kind": "invocation_policy",
@@ -1363,12 +1363,12 @@
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_self_diagnose",
-      "target": "technique_AOA_T_PENDING_SESSION_DRIFT_TAXONOMY"
+      "target": "technique_AOA_T_0080"
     },
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_self_diagnose",
-      "target": "technique_AOA_T_PENDING_DIAGNOSIS_FROM_REVIEWED_EVIDENCE"
+      "target": "technique_AOA_T_0081"
     },
     {
       "kind": "included_in_profile",
@@ -1428,7 +1428,7 @@
     {
       "kind": "lineage",
       "source": "skill_aoa_session_self_repair",
-      "target": "lineage_pending"
+      "target": "lineage_published"
     },
     {
       "kind": "invocation_policy",
@@ -1438,12 +1438,12 @@
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_self_repair",
-      "target": "technique_AOA_T_PENDING_REPAIR_SHAPE_FROM_DIAGNOSIS"
+      "target": "technique_AOA_T_0082"
     },
     {
       "kind": "depends_on",
       "source": "skill_aoa_session_self_repair",
-      "target": "technique_AOA_T_PENDING_CHECKPOINT_BOUND_SELF_REPAIR"
+      "target": "technique_AOA_T_0083"
     },
     {
       "kind": "included_in_profile",
@@ -2058,8 +2058,8 @@
       "type": "technique"
     },
     {
-      "id": "technique_AOA_T_PENDING_HARVEST_PACKET_CONTRACT",
-      "label": "AOA-T-PENDING-HARVEST-PACKET-CONTRACT",
+      "id": "technique_AOA_T_0077",
+      "label": "AOA-T-0077",
       "type": "technique"
     },
     {
@@ -2073,13 +2073,13 @@
       "type": "skill"
     },
     {
-      "id": "technique_AOA_T_PENDING_PROGRESSION_EVIDENCE_LIFT",
-      "label": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
+      "id": "technique_AOA_T_0084",
+      "label": "AOA-T-0084",
       "type": "technique"
     },
     {
-      "id": "technique_AOA_T_PENDING_MULTI_AXIS_QUEST_OVERLAY",
-      "label": "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY",
+      "id": "technique_AOA_T_0085",
+      "label": "AOA-T-0085",
       "type": "technique"
     },
     {
@@ -2088,13 +2088,13 @@
       "type": "skill"
     },
     {
-      "id": "technique_AOA_T_PENDING_DECISION_FORK_CARDS",
-      "label": "AOA-T-PENDING-DECISION-FORK-CARDS",
+      "id": "technique_AOA_T_0078",
+      "label": "AOA-T-0078",
       "type": "technique"
     },
     {
-      "id": "technique_AOA_T_PENDING_RISK_PASSPORT_LIFT",
-      "label": "AOA-T-PENDING-RISK-PASSPORT-LIFT",
+      "id": "technique_AOA_T_0079",
+      "label": "AOA-T-0079",
       "type": "technique"
     },
     {
@@ -2103,13 +2103,13 @@
       "type": "skill"
     },
     {
-      "id": "technique_AOA_T_PENDING_SESSION_DRIFT_TAXONOMY",
-      "label": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
+      "id": "technique_AOA_T_0080",
+      "label": "AOA-T-0080",
       "type": "technique"
     },
     {
-      "id": "technique_AOA_T_PENDING_DIAGNOSIS_FROM_REVIEWED_EVIDENCE",
-      "label": "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE",
+      "id": "technique_AOA_T_0081",
+      "label": "AOA-T-0081",
       "type": "technique"
     },
     {
@@ -2118,13 +2118,13 @@
       "type": "skill"
     },
     {
-      "id": "technique_AOA_T_PENDING_REPAIR_SHAPE_FROM_DIAGNOSIS",
-      "label": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
+      "id": "technique_AOA_T_0082",
+      "label": "AOA-T-0082",
       "type": "technique"
     },
     {
-      "id": "technique_AOA_T_PENDING_CHECKPOINT_BOUND_SELF_REPAIR",
-      "label": "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR",
+      "id": "technique_AOA_T_0083",
+      "label": "AOA-T-0083",
       "type": "technique"
     },
     {
@@ -3585,7 +3585,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c457850c228b1b871c38d2d79fe1432bb4f38b6b32bdebebd3ef78bb1c1a2113",
+      "content_hash": "acc9e76b84b6d8b79658ccdaca95ae8ebc819367c4d5bc639a26756d5d4b34f8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3609,12 +3609,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "c457850c228b",
+      "skill_revision": "acc9e76b84b6",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3631,7 +3631,7 @@
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0076",
-        "AOA-T-PENDING-HARVEST-PACKET-CONTRACT"
+        "AOA-T-0077"
       ],
       "technique_lineage": [
         {
@@ -3639,21 +3639,21 @@
           "lineage_state": "published",
           "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         },
         {
           "id": "AOA-T-0076",
           "lineage_state": "published",
           "path": "techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         },
         {
-          "id": "AOA-T-PENDING-HARVEST-PACKET-CONTRACT",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0077",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         }
       ]
     },
@@ -3675,7 +3675,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "b0fa82111c0ee07258dc70f49e0c30bb77274a10ddbf5f6b03730b294e77c4bc",
+      "content_hash": "8756f343dfcdb514b8978f247a8a2862fb404a8edc1504ecca169d97183894f8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3698,12 +3698,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-session-progression-lift",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
-      "skill_revision": "b0fa82111c0e",
+      "skill_revision": "8756f343dfcd",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3718,23 +3718,23 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
-        "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY"
+        "AOA-T-0084",
+        "AOA-T-0085"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0084",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         },
         {
-          "id": "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0085",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         }
       ]
     },
@@ -3756,7 +3756,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c9bb89052e63e2695cd83996ab23a38d92f02a51f62120531d1e341a62929d26",
+      "content_hash": "d297f369d7ed47a181cbf2b8cf984f45d6a667face9764f262b658a2d01abe17",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3779,12 +3779,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-session-route-forks",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-route-forks/SKILL.md",
-      "skill_revision": "c9bb89052e63",
+      "skill_revision": "d297f369d7ed",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3799,23 +3799,23 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-DECISION-FORK-CARDS",
-        "AOA-T-PENDING-RISK-PASSPORT-LIFT"
+        "AOA-T-0078",
+        "AOA-T-0079"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-DECISION-FORK-CARDS",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0078",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         },
         {
-          "id": "AOA-T-PENDING-RISK-PASSPORT-LIFT",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0079",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         }
       ]
     },
@@ -3837,7 +3837,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "f11bb41fde7d1a44479f4c2cf1d41f2765d1f352e539edc9d207dc4288c0a965",
+      "content_hash": "c2c1f0107003bddf7796cf685a6a4634e1194b987bb4d0fc818adc80749d6ad1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3860,12 +3860,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-session-self-diagnose",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
-      "skill_revision": "f11bb41fde7d",
+      "skill_revision": "c2c1f0107003",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3880,23 +3880,23 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
-        "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE"
+        "AOA-T-0080",
+        "AOA-T-0081"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0080",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         },
         {
-          "id": "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0081",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         }
       ]
     },
@@ -3918,7 +3918,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "8d31613dac250200570f4a1ee6b71bae467432d75ae138f73e65d35d3f217a5e",
+      "content_hash": "cb6a23f5328c85fca3a4e974946f851edc7c0295d8b56d036728de6b3d4f0193",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3941,12 +3941,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-session-self-repair",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "8d31613dac25",
+      "skill_revision": "cb6a23f5328c",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3961,23 +3961,23 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
-        "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR"
+        "AOA-T-0082",
+        "AOA-T-0083"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0082",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         },
         {
-          "id": "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0083",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59"
         }
       ]
     },

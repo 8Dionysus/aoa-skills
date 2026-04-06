@@ -302,7 +302,7 @@
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0076",
-        "AOA-T-PENDING-HARVEST-PACKET-CONTRACT"
+        "AOA-T-0077"
       ],
       "trigger_boundary_short": "Use when a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units; the work is post-session and reviewable rather than live execution; Avoid when...",
       "verification_short": "Checks: confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic; confirm each accepted candidate has one primary owner layer; confirm the nearest...",
@@ -319,8 +319,8 @@
       "status": "scaffold",
       "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
       "technique_dependencies": [
-        "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
-        "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY"
+        "AOA-T-0084",
+        "AOA-T-0085"
       ],
       "trigger_boundary_short": "Use when a reviewed session generated meaningful mastery evidence; the route needs progression legibility without mutating source role profiles; Avoid when there is no reviewed evidence; the request wants one global...",
       "verification_short": "Checks: confirm all meaningful axis claims cite reviewed evidence; confirm the verdict matches the evidence; confirm zero or negative movement remains allowed; confirm unlock hints are small and explicit.",
@@ -337,8 +337,8 @@
       "status": "scaffold",
       "summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.",
       "technique_dependencies": [
-        "AOA-T-PENDING-DECISION-FORK-CARDS",
-        "AOA-T-PENDING-RISK-PASSPORT-LIFT"
+        "AOA-T-0078",
+        "AOA-T-0079"
       ],
       "trigger_boundary_short": "Use when a reviewed session ended with multiple plausible next moves; the operator or Codex needs explicit branch choices instead of a buried recommendation; Avoid when there is only one obvious next bounded move;...",
       "verification_short": "Checks: confirm each branch differs materially; confirm likely owner repo is named; confirm at least one cost or risk is explicit; confirm stop conditions exist for risky branches.",
@@ -355,8 +355,8 @@
       "status": "scaffold",
       "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
-        "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE"
+        "AOA-T-0080",
+        "AOA-T-0081"
       ],
       "trigger_boundary_short": "Use when a reviewed session contains repeated friction, contradiction, or drift; the next honest move is diagnosis before repair; Avoid when the session is still live; the issue is already fully diagnosed and only...",
       "verification_short": "Checks: confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated; confirm a likely owner layer is named; confirm unknowns are preserved where needed.",
@@ -373,8 +373,8 @@
       "status": "scaffold",
       "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_dependencies": [
-        "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
-        "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR"
+        "AOA-T-0082",
+        "AOA-T-0083"
       ],
       "trigger_boundary_short": "Use when a reviewed diagnosis already exists; the next honest move is a bounded repair plan or repair-ready packet; Avoid when there is no reviewed diagnosis yet; the repair is actually a large scenario rollout...",
       "verification_short": "Checks: confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape; confirm checkpoint fields are present; confirm validation and rollback posture are named.",

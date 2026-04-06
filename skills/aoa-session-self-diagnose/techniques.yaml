@@ -1,19 +1,19 @@
 skill_name: aoa-session-self-diagnose
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-SESSION-DRIFT-TAXONOMY
+  - id: AOA-T-0080
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md
+    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
     use_sections:
       - Intent
       - Outputs
       - Risks
       - Validation
-  - id: AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE
+  - id: AOA-T-0081
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md
+    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
     use_sections:
       - Intent
       - Inputs
@@ -23,4 +23,4 @@ techniques:
       - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
-  - Replace pending IDs AOA-T-PENDING-SESSION-DRIFT-TAXONOMY and AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE, path TBD, and source_ref TBD after publish in aoa-techniques.
+  - Refresh `source_ref` when the pinned aoa-techniques commit changes.

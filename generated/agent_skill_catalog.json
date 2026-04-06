@@ -624,7 +624,7 @@
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0076",
-        "AOA-T-PENDING-HARVEST-PACKET-CONTRACT"
+        "AOA-T-0077"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",
@@ -664,8 +664,8 @@
       "allow_implicit_invocation": false,
       "source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
-        "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY"
+        "AOA-T-0084",
+        "AOA-T-0085"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",
@@ -702,8 +702,8 @@
       "allow_implicit_invocation": false,
       "source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-DECISION-FORK-CARDS",
-        "AOA-T-PENDING-RISK-PASSPORT-LIFT"
+        "AOA-T-0078",
+        "AOA-T-0079"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",
@@ -738,8 +738,8 @@
       "allow_implicit_invocation": false,
       "source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
-        "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE"
+        "AOA-T-0080",
+        "AOA-T-0081"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",
@@ -774,8 +774,8 @@
       "allow_implicit_invocation": false,
       "source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
-        "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR"
+        "AOA-T-0082",
+        "AOA-T-0083"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",

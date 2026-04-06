@@ -1,12 +1,7 @@
 {
   "cohorts": {
     "pending_lineage": [
-      "aoa-quest-harvest",
-      "aoa-session-donor-harvest",
-      "aoa-session-progression-lift",
-      "aoa-session-route-forks",
-      "aoa-session-self-diagnose",
-      "aoa-session-self-repair"
+      "aoa-quest-harvest"
     ],
     "published_lineage": [
       "abyss-safe-infra-change",
@@ -24,6 +19,11 @@
       "aoa-property-invariants",
       "aoa-safe-infra-change",
       "aoa-sanitized-share",
+      "aoa-session-donor-harvest",
+      "aoa-session-progression-lift",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair",
       "aoa-source-of-truth-check",
       "aoa-tdd-slice",
       "atm10-change-protocol",
@@ -229,84 +229,64 @@
       "tbd_ref_count": 0
     },
     {
-      "lineage_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "lineage_state": "pending",
-      "manifest_canonical_path_ready": false,
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
       "name": "aoa-session-donor-harvest",
-      "pending_technique_count": 1,
-      "published_technique_count": 2,
+      "pending_technique_count": 0,
+      "published_technique_count": 3,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold",
-      "tbd_ref_count": 1
+      "tbd_ref_count": 0
     },
     {
-      "lineage_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "lineage_state": "pending",
-      "manifest_canonical_path_ready": false,
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
       "name": "aoa-session-progression-lift",
-      "pending_technique_count": 2,
-      "published_technique_count": 0,
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
       "status": "scaffold",
-      "tbd_ref_count": 2
+      "tbd_ref_count": 0
     },
     {
-      "lineage_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "lineage_state": "pending",
-      "manifest_canonical_path_ready": false,
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
       "name": "aoa-session-route-forks",
-      "pending_technique_count": 2,
-      "published_technique_count": 0,
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-session-route-forks/SKILL.md",
       "status": "scaffold",
-      "tbd_ref_count": 2
+      "tbd_ref_count": 0
     },
     {
-      "lineage_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "lineage_state": "pending",
-      "manifest_canonical_path_ready": false,
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
       "name": "aoa-session-self-diagnose",
-      "pending_technique_count": 2,
-      "published_technique_count": 0,
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
       "status": "scaffold",
-      "tbd_ref_count": 2
+      "tbd_ref_count": 0
     },
     {
-      "lineage_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "lineage_state": "pending",
-      "manifest_canonical_path_ready": false,
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
       "name": "aoa-session-self-repair",
-      "pending_technique_count": 2,
-      "published_technique_count": 0,
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-session-self-repair/SKILL.md",
       "status": "scaffold",
-      "tbd_ref_count": 2
+      "tbd_ref_count": 0
     },
     {
       "lineage_blockers": [],

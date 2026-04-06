@@ -9,7 +9,7 @@ metadata:
   aoa_invocation_mode: explicit-only
   aoa_source_skill_path: skills/aoa-session-self-repair/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
-  aoa_technique_dependencies: AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS,AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR
+  aoa_technique_dependencies: AOA-T-0082,AOA-T-0083
   aoa_portable_profile: codex-facing-wave-3
 ---
 
@@ -77,9 +77,9 @@ Do not use this skill when:
 - confirm escalation route exists if the repair widens
 
 ## Technique traceability
-Pending manifest-backed techniques:
-- AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Core procedure, Validation
-- AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Outputs, Contracts, Risks, Validation
+Manifest-backed techniques:
+- AOA-T-0082 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation
+- AOA-T-0083 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 Project overlays may add:

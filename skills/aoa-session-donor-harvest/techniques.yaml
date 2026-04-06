@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0075
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md
-    source_ref: 2db37769d65833cce9dce1919dfac0bf69e5c115
+    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
     use_sections:
       - Intent
       - When to use
@@ -16,7 +16,7 @@ techniques:
   - id: AOA-T-0076
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md
-    source_ref: 2db37769d65833cce9dce1919dfac0bf69e5c115
+    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
     use_sections:
       - Intent
       - When to use
@@ -24,10 +24,10 @@ techniques:
       - Core procedure
       - Risks
       - Validation
-  - id: AOA-T-PENDING-HARVEST-PACKET-CONTRACT
+  - id: AOA-T-0077
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md
+    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
     use_sections:
       - Inputs
       - Outputs
@@ -37,4 +37,3 @@ notes:
   - Keep runtime SKILL.md self-contained.
   - Refresh `source_ref` when the pinned aoa-techniques commit changes.
   - Treat AOA-T-0026, AOA-T-0044, and AOA-T-0053 as adjacent history prerequisites, not as substitutes for this harvest workflow.
-  - Replace pending ID AOA-T-PENDING-HARVEST-PACKET-CONTRACT, path TBD, and source_ref TBD after publish in aoa-techniques.

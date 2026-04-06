@@ -1692,7 +1692,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-0075,AOA-T-0076,AOA-T-PENDING-HARVEST-PACKET-CONTRACT",
+        "aoa_technique_dependencies": "AOA-T-0075,AOA-T-0076,AOA-T-0077",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -1716,7 +1716,7 @@
         "Contracts": "invocation must remain explicit and post-session; the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
         "Risks and anti-patterns": "collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units",
         "Verification": "confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `2db37769d65833cce9dce1919dfac0bf69e5c115` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 from `8Dion...",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 from `8Dion...",
         "Adaptation points": "local session artifact entrypoints; local review packet templates"
       },
       "resource_inventory": {
@@ -1805,7 +1805,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT,AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY",
+        "aoa_technique_dependencies": "AOA-T-0084,AOA-T-0085",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -1829,7 +1829,7 @@
         "Contracts": "progression remains evidence-backed; multi-axis only; no authoritative universal score",
         "Risks and anti-patterns": "inventing progress from mood; using progression as policy",
         "Verification": "confirm all meaningful axis claims cite reviewed evidence; confirm the verdict matches the evidence",
-        "Technique traceability": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY from `8Dionysus/aoa-techniques` with `path: TBD` and `sourc...",
+        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniques` at `...",
         "Adaptation points": "local axis notes; role-affinity hints"
       },
       "resource_inventory": {
@@ -1914,7 +1914,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-DECISION-FORK-CARDS,AOA-T-PENDING-RISK-PASSPORT-LIFT",
+        "aoa_technique_dependencies": "AOA-T-0078,AOA-T-0079",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -1938,7 +1938,7 @@
         "Contracts": "branch cards do not become routing authority; fork analysis must stay evidence-backed",
         "Risks and anti-patterns": "fake certainty about future routes; using fork cards as hidden routing policy",
         "Verification": "confirm each branch differs materially; confirm likely owner repo is named",
-        "Technique traceability": "AOA-T-PENDING-DECISION-FORK-CARDS from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-PENDING-RISK-PASSPORT-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref:...",
+        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techniques` at `6...",
         "Adaptation points": "local control-mode labels; local delegate tiers or approval classes"
       },
       "resource_inventory": {
@@ -2021,7 +2021,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY,AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE",
+        "aoa_technique_dependencies": "AOA-T-0080,AOA-T-0081",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -2045,7 +2045,7 @@
         "Contracts": "diagnosis is read-only; one odd anecdote is not enough for structural certainty",
         "Risks and anti-patterns": "mistaking symptom for cause; using vague vibes as diagnosis",
         "Verification": "confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated",
-        "Technique traceability": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Outputs, Risks, Validation; AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref:...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `6c5e36b1063347d...",
         "Adaptation points": "local drift taxonomies; repo-specific failure classes"
       },
       "resource_inventory": {
@@ -2128,7 +2128,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS,AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR",
+        "aoa_technique_dependencies": "AOA-T-0082,AOA-T-0083",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -2152,7 +2152,7 @@
         "Contracts": "self-repair is not free self-modification; important surface changes must pass checkpoint posture",
         "Risks and anti-patterns": "silent doctrine edits; approval bypass",
         "Verification": "confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape",
-        "Technique traceability": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR from `8Dionysus/aoa-techniques` with `path: TBD`...",
+        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `6c5e36b1063347da9675980b6da750ec856e2c59` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa-technique...",
         "Adaptation points": "local approval classes; repo-specific rollback anchors"
       },
       "resource_inventory": {

@@ -724,14 +724,14 @@
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0076",
-        "AOA-T-PENDING-HARVEST-PACKET-CONTRACT"
+        "AOA-T-0077"
       ],
       "technique_refs": [
         {
           "id": "AOA-T-0075",
           "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Intent",
             "When to use",
@@ -746,7 +746,7 @@
           "id": "AOA-T-0076",
           "path": "techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Intent",
             "When to use",
@@ -757,10 +757,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-HARVEST-PACKET-CONTRACT",
-          "path": "TBD",
+          "id": "AOA-T-0077",
+          "path": "techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Inputs",
             "Outputs",
@@ -779,15 +779,15 @@
       "status": "scaffold",
       "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
       "technique_dependencies": [
-        "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
-        "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY"
+        "AOA-T-0084",
+        "AOA-T-0085"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
-          "path": "TBD",
+          "id": "AOA-T-0084",
+          "path": "techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -797,10 +797,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY",
-          "path": "TBD",
+          "id": "AOA-T-0085",
+          "path": "techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Outputs",
             "Risks",
@@ -818,15 +818,15 @@
       "status": "scaffold",
       "summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.",
       "technique_dependencies": [
-        "AOA-T-PENDING-DECISION-FORK-CARDS",
-        "AOA-T-PENDING-RISK-PASSPORT-LIFT"
+        "AOA-T-0078",
+        "AOA-T-0079"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-DECISION-FORK-CARDS",
-          "path": "TBD",
+          "id": "AOA-T-0078",
+          "path": "techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -836,10 +836,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-RISK-PASSPORT-LIFT",
-          "path": "TBD",
+          "id": "AOA-T-0079",
+          "path": "techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -858,15 +858,15 @@
       "status": "scaffold",
       "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
-        "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE"
+        "AOA-T-0080",
+        "AOA-T-0081"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
-          "path": "TBD",
+          "id": "AOA-T-0080",
+          "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -875,10 +875,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE",
-          "path": "TBD",
+          "id": "AOA-T-0081",
+          "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -899,15 +899,15 @@
       "status": "scaffold",
       "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_dependencies": [
-        "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
-        "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR"
+        "AOA-T-0082",
+        "AOA-T-0083"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
-          "path": "TBD",
+          "id": "AOA-T-0082",
+          "path": "techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -917,10 +917,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR",
-          "path": "TBD",
+          "id": "AOA-T-0083",
+          "path": "techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "6c5e36b1063347da9675980b6da750ec856e2c59",
           "use_sections": [
             "Outputs",
             "Contracts",

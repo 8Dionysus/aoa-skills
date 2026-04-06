@@ -1,24 +1,24 @@
 skill_name: aoa-session-progression-lift
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT
+  - id: AOA-T-0084
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md
+    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
     use_sections:
       - Intent
       - Inputs
       - Outputs
       - Contracts
       - Validation
-  - id: AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY
+  - id: AOA-T-0085
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md
+    source_ref: 6c5e36b1063347da9675980b6da750ec856e2c59
     use_sections:
       - Outputs
       - Risks
       - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
-  - Replace pending IDs AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT and AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY, path TBD, and source_ref TBD after publish in aoa-techniques.
+  - Refresh `source_ref` when the pinned aoa-techniques commit changes.

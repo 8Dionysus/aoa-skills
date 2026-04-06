@@ -553,7 +553,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-0075,AOA-T-0076,AOA-T-PENDING-HARVEST-PACKET-CONTRACT",
+        "aoa_technique_dependencies": "AOA-T-0075,AOA-T-0076,AOA-T-0077",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "portable-core",
@@ -585,7 +585,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT,AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY",
+        "aoa_technique_dependencies": "AOA-T-0084,AOA-T-0085",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "portable-core",
@@ -615,7 +615,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-DECISION-FORK-CARDS,AOA-T-PENDING-RISK-PASSPORT-LIFT",
+        "aoa_technique_dependencies": "AOA-T-0078,AOA-T-0079",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "portable-core",
@@ -645,7 +645,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY,AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE",
+        "aoa_technique_dependencies": "AOA-T-0080,AOA-T-0081",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "portable-core",
@@ -677,7 +677,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS,AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR",
+        "aoa_technique_dependencies": "AOA-T-0082,AOA-T-0083",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "portable-core",
