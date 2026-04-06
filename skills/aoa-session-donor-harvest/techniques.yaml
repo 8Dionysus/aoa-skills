@@ -1,10 +1,10 @@
 skill_name: aoa-session-donor-harvest
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-SESSION-DONOR-HARVEST
+  - id: AOA-T-0075
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md
+    source_ref: 2db37769d65833cce9dce1919dfac0bf69e5c115
     use_sections:
       - Intent
       - When to use
@@ -13,10 +13,10 @@ techniques:
       - Core procedure
       - Contracts
       - Validation
-  - id: AOA-T-PENDING-OWNER-LAYER-TRIAGE
+  - id: AOA-T-0076
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md
+    source_ref: 2db37769d65833cce9dce1919dfac0bf69e5c115
     use_sections:
       - Intent
       - When to use
@@ -26,5 +26,5 @@ techniques:
       - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
-  - Replace pending technique IDs, path, and source_ref after publish.
+  - Refresh `source_ref` when the pinned aoa-techniques commit changes.
   - Treat AOA-T-0026, AOA-T-0044, and AOA-T-0053 as adjacent history prerequisites, not as substitutes for this harvest workflow.

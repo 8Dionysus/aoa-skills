@@ -1,8 +1,7 @@
 {
   "cohorts": {
     "pending_lineage": [
-      "aoa-quest-harvest",
-      "aoa-session-donor-harvest"
+      "aoa-quest-harvest"
     ],
     "published_lineage": [
       "abyss-safe-infra-change",
@@ -20,6 +19,7 @@
       "aoa-property-invariants",
       "aoa-safe-infra-change",
       "aoa-sanitized-share",
+      "aoa-session-donor-harvest",
       "aoa-source-of-truth-check",
       "aoa-tdd-slice",
       "atm10-change-protocol",
@@ -225,20 +225,16 @@
       "tbd_ref_count": 0
     },
     {
-      "lineage_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "lineage_state": "pending",
-      "manifest_canonical_path_ready": false,
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
       "name": "aoa-session-donor-harvest",
-      "pending_technique_count": 2,
-      "published_technique_count": 0,
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold",
-      "tbd_ref_count": 2
+      "tbd_ref_count": 0
     },
     {
       "lineage_blockers": [],

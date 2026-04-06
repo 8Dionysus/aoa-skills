@@ -300,8 +300,8 @@
       "status": "scaffold",
       "summary": "Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DONOR-HARVEST",
-        "AOA-T-PENDING-OWNER-LAYER-TRIAGE"
+        "AOA-T-0075",
+        "AOA-T-0076"
       ],
       "trigger_boundary_short": "Use when a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units; the work is post-session and reviewable rather than live execution; Avoid when...",
       "verification_short": "Checks: confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic; confirm each accepted candidate has one primary owner layer; confirm the nearest...",

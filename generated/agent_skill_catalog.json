@@ -622,8 +622,8 @@
       "allow_implicit_invocation": false,
       "source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DONOR-HARVEST",
-        "AOA-T-PENDING-OWNER-LAYER-TRIAGE"
+        "AOA-T-0075",
+        "AOA-T-0076"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",

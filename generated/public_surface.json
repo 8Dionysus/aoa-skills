@@ -1,8 +1,7 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [
-      "aoa-quest-harvest",
-      "aoa-session-donor-harvest"
+      "aoa-quest-harvest"
     ],
     "candidate_ready": [
       "aoa-core-logic-boundary",
@@ -439,10 +438,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "governance_decision": null,
@@ -450,7 +446,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
       "promotion_review_path": null,
       "scope": "core",

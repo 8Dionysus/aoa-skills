@@ -5,9 +5,10 @@ status: scaffold
 summary: Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-SESSION-DONOR-HARVEST
-  - AOA-T-PENDING-OWNER-LAYER-TRIAGE
+  - AOA-T-0075
+  - AOA-T-0076
 ---
+
 # aoa-session-donor-harvest
 
 ## Intent
@@ -103,9 +104,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Pending manifest-backed techniques:
-- AOA-T-PENDING-SESSION-DONOR-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation
-- AOA-T-PENDING-OWNER-LAYER-TRIAGE from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Outputs, Core procedure, Risks, Validation
+Manifest-backed techniques:
+- AOA-T-0075 from `8Dionysus/aoa-techniques` at `2db37769d65833cce9dce1919dfac0bf69e5c115` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0076 from `8Dionysus/aoa-techniques` at `2db37769d65833cce9dce1919dfac0bf69e5c115` using path `techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation
 
 ## Adaptation points
 
