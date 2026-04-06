@@ -6,3 +6,6 @@ seeds/
 # Python validator cache files stay local.
 __pycache__/
 *.pyc
+
+# Owner-local live receipt logs stay out of git.
+.aoa/live_receipts/
