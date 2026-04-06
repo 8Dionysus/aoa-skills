@@ -113,8 +113,39 @@ Outer-ring posture:
 Boundary notes:
 
 - `repo-core-only` is the umbrella repo surface and must equal `kernel + outer ring`
-- `repo-risk-explicit` stays outside both layers
-- project overlays such as `atm10-*` and `abyss-*` stay outside both layers
+- the explicit safety perimeter is the separate `risk guard ring`, authored
+  under `repo-project-risk-guard-ring`
+- `repo-risk-explicit` remains as the backward-compatible alias for that same
+  risk ring
+- project overlays such as `atm10-*` and `abyss-*` stay outside both project-core
+  layers and outside the risk guard ring membership
+
+## Risk guard ring
+
+The risk guard ring currently contains:
+
+- `aoa-approval-gate-check`
+- `aoa-dry-run-first`
+- `aoa-local-stack-bringup`
+- `aoa-safe-infra-change`
+- `aoa-sanitized-share`
+
+Risk-ring posture:
+
+- it is authored under `repo-project-risk-guard-ring`
+- `repo-risk-explicit` must stay an exact alias of the same five-skill surface
+- it is repo-wide hard-gated through
+  `generated/project_risk_guard_ring_governance.min.json`
+- it stays explicit-only, scope=`risk`, and collision-family aligned
+- it does not replace `repo-default` and it is not a second kernel
+
+Adjacent overlays:
+
+- `aoa-safe-infra-change` may have the adjacent project overlay
+  `abyss-safe-infra-change`
+- `aoa-sanitized-share` may have the adjacent project overlay
+  `abyss-sanitized-share`
+- those overlays are reported next to the ring, but they are not ring members
 
 Allowed `aoa-quest-harvest` verdicts:
 

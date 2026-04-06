@@ -65,6 +65,8 @@ REQUIRED_GENERATED_FILES = [
     "generated/project_core_kernel_governance.min.json",
     "generated/project_core_outer_ring.min.json",
     "generated/project_core_outer_ring_readiness.min.json",
+    "generated/project_risk_guard_ring.min.json",
+    "generated/project_risk_guard_ring_governance.min.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
     "generated/runtime_discovery_index.json",
@@ -110,6 +112,7 @@ REQUIRED_CONFIG_FILES = [
     "config/skill_pack_profiles.json",
     "config/project_core_skill_kernel.json",
     "config/project_core_outer_ring.json",
+    "config/project_risk_guard_ring.json",
     "config/skill_policy_matrix.json",
     "config/runtime_guardrail_policy.json",
     "config/description_trigger_eval_policy.json",
@@ -157,6 +160,35 @@ EXPECTED_OUTER_RING_CLUSTERS = [
             "aoa-property-invariants",
             "aoa-invariant-coverage-audit",
         ],
+    },
+]
+EXPECTED_RISK_RING_SKILLS = [
+    "aoa-approval-gate-check",
+    "aoa-dry-run-first",
+    "aoa-local-stack-bringup",
+    "aoa-safe-infra-change",
+    "aoa-sanitized-share",
+]
+EXPECTED_RISK_RING_CLUSTERS = [
+    {
+        "cluster_id": "safety-and-mutation-gating",
+        "skills": [
+            "aoa-approval-gate-check",
+            "aoa-dry-run-first",
+            "aoa-local-stack-bringup",
+            "aoa-safe-infra-change",
+            "aoa-sanitized-share",
+        ],
+    }
+]
+EXPECTED_RISK_RING_ADJACENT_OVERLAYS = [
+    {
+        "base_skill_name": "aoa-safe-infra-change",
+        "overlay_skill_name": "abyss-safe-infra-change",
+    },
+    {
+        "base_skill_name": "aoa-sanitized-share",
+        "overlay_skill_name": "abyss-sanitized-share",
     },
 ]
 
@@ -260,6 +292,8 @@ def main() -> int:
     kernel_governance = load_json(generated_dir / "project_core_kernel_governance.min.json")
     resolved_outer_ring = load_json(generated_dir / "project_core_outer_ring.min.json")
     outer_ring_readiness = load_json(generated_dir / "project_core_outer_ring_readiness.min.json")
+    resolved_risk_ring = load_json(generated_dir / "project_risk_guard_ring.min.json")
+    risk_ring_governance = load_json(generated_dir / "project_risk_guard_ring_governance.min.json")
     snippets_doc = load_json(generated_dir / "codex_config_snippets.json")
     mcp_doc = load_json(generated_dir / "mcp_dependency_manifest.json")
     runtime_discovery = load_json(generated_dir / "runtime_discovery_index.json")
@@ -300,6 +334,7 @@ def main() -> int:
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
     kernel_doc = load_json(config_dir / "project_core_skill_kernel.json")
     outer_ring_doc = load_json(config_dir / "project_core_outer_ring.json")
+    risk_ring_doc = load_json(config_dir / "project_risk_guard_ring.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
     guardrail_policy = load_json(config_dir / "runtime_guardrail_policy.json")
     description_eval_policy = load_json(config_dir / "description_trigger_eval_policy.json")
@@ -1276,6 +1311,174 @@ def main() -> int:
         if not entry["readiness_passed"]:
             blockers = ", ".join(entry["blockers"])
             errors.append(f"project-core outer ring readiness gate failed for {entry['skill_name']}: {blockers}")
+
+    risk_ring_skills = risk_ring_doc.get("skills", [])
+    risk_ring_clusters = risk_ring_doc.get("clusters", [])
+    risk_ring_adjacent_overlays = risk_ring_doc.get("adjacent_overlays", [])
+    if risk_ring_doc.get("schema_version") != 1:
+        errors.append("config/project_risk_guard_ring.json schema_version must be 1")
+    if risk_ring_doc.get("ring_id") != "project-risk-guard-ring-v1":
+        errors.append("config/project_risk_guard_ring.json ring_id must be 'project-risk-guard-ring-v1'")
+    if risk_ring_doc.get("owner_repo") != "aoa-skills":
+        errors.append("config/project_risk_guard_ring.json owner_repo must be 'aoa-skills'")
+    if not isinstance(risk_ring_doc.get("description"), str) or not risk_ring_doc["description"]:
+        errors.append("config/project_risk_guard_ring.json description must be a non-empty string")
+    if risk_ring_doc.get("canonical_install_profile") != "repo-project-risk-guard-ring":
+        errors.append("config/project_risk_guard_ring.json canonical_install_profile must be 'repo-project-risk-guard-ring'")
+    if risk_ring_doc.get("backcompat_alias_profile") != "repo-risk-explicit":
+        errors.append("config/project_risk_guard_ring.json backcompat_alias_profile must be 'repo-risk-explicit'")
+    if risk_ring_doc.get("adjacent_kernel_id") != kernel_doc.get("kernel_id"):
+        errors.append("config/project_risk_guard_ring.json adjacent_kernel_id must match the canonical project-core kernel id")
+    if risk_ring_doc.get("adjacent_outer_ring_id") != outer_ring_doc.get("ring_id"):
+        errors.append("config/project_risk_guard_ring.json adjacent_outer_ring_id must match the canonical project-core outer ring id")
+    if risk_ring_skills != EXPECTED_RISK_RING_SKILLS:
+        errors.append("config/project_risk_guard_ring.json skills must match the canonical risk guard ring order exactly")
+    if len(risk_ring_skills) != len(set(risk_ring_skills)):
+        errors.append("config/project_risk_guard_ring.json skills must not contain duplicates")
+    if risk_ring_clusters != EXPECTED_RISK_RING_CLUSTERS:
+        errors.append("config/project_risk_guard_ring.json clusters must match the canonical risk guard ring cluster map exactly")
+    if risk_ring_adjacent_overlays != EXPECTED_RISK_RING_ADJACENT_OVERLAYS:
+        errors.append("config/project_risk_guard_ring.json adjacent_overlays must match the canonical adjacent overlay map exactly")
+
+    expected_resolved_risk_ring = {
+        "schema_version": 1,
+        "source_config": "config/project_risk_guard_ring.json",
+        "ring_id": risk_ring_doc.get("ring_id"),
+        "owner_repo": risk_ring_doc.get("owner_repo"),
+        "description": risk_ring_doc.get("description"),
+        "canonical_install_profile": risk_ring_doc.get("canonical_install_profile"),
+        "backcompat_alias_profile": risk_ring_doc.get("backcompat_alias_profile"),
+        "adjacent_kernel_id": risk_ring_doc.get("adjacent_kernel_id"),
+        "adjacent_outer_ring_id": risk_ring_doc.get("adjacent_outer_ring_id"),
+        "skill_count": len(risk_ring_skills) if isinstance(risk_ring_skills, list) else 0,
+        "skills": risk_ring_skills,
+        "clusters": [
+            {
+                "cluster_id": cluster["cluster_id"],
+                "skill_count": len(cluster["skills"]),
+                "skills": cluster["skills"],
+            }
+            for cluster in risk_ring_clusters
+            if isinstance(cluster, dict) and isinstance(cluster.get("skills"), list)
+        ],
+        "adjacent_overlays": risk_ring_adjacent_overlays,
+    }
+    if resolved_risk_ring != expected_resolved_risk_ring:
+        errors.append("generated/project_risk_guard_ring.min.json mismatch")
+        difference = first_payload_difference(expected_resolved_risk_ring, resolved_risk_ring)
+        if difference is not None:
+            errors.append(f"generated/project_risk_guard_ring.min.json detail: {difference}")
+
+    risk_ring_profile = (profile_doc.get("profiles") or {}).get(
+        risk_ring_doc.get("canonical_install_profile")
+    )
+    if risk_ring_profile is None:
+        errors.append("config/project_risk_guard_ring.json canonical_install_profile missing from skill profiles")
+        risk_ring_profile_skills: list[str] = []
+    else:
+        risk_ring_profile_skills = risk_ring_profile.get("skills", [])
+        if risk_ring_profile_skills != risk_ring_skills:
+            errors.append("config/project_risk_guard_ring.json canonical profile skills must match risk guard ring skills exactly")
+
+    risk_ring_alias_profile = (profile_doc.get("profiles") or {}).get(
+        risk_ring_doc.get("backcompat_alias_profile")
+    )
+    if risk_ring_alias_profile is None:
+        errors.append("config/project_risk_guard_ring.json backcompat_alias_profile missing from skill profiles")
+        risk_ring_alias_skills: list[str] = []
+    else:
+        risk_ring_alias_skills = risk_ring_alias_profile.get("skills", [])
+        if risk_ring_alias_skills != risk_ring_skills:
+            errors.append("config/project_risk_guard_ring.json backcompat alias skills must match risk guard ring skills exactly")
+
+    repo_default_profile = (profile_doc.get("profiles") or {}).get("repo-default")
+    if repo_default_profile is None:
+        errors.append("config/skill_pack_profiles.json missing repo-default")
+        repo_default_skills: list[str] = []
+    else:
+        repo_default_skills = repo_default_profile.get("skills", [])
+        missing_default_risk_skills = [
+            skill_name for skill_name in risk_ring_skills if skill_name not in repo_default_skills
+        ]
+        if missing_default_risk_skills:
+            errors.append(
+                "config/skill_pack_profiles.json repo-default must include every risk guard ring skill"
+            )
+
+    expected_risk_cluster_by_skill = {
+        skill_name: cluster["cluster_id"]
+        for cluster in EXPECTED_RISK_RING_CLUSTERS
+        for skill_name in cluster["skills"]
+    }
+    adjacent_overlay_by_skill = {
+        entry["base_skill_name"]: entry["overlay_skill_name"]
+        for entry in EXPECTED_RISK_RING_ADJACENT_OVERLAYS
+    }
+    expected_risk_governance_skills: list[dict[str, Any]] = []
+    for skill_name in risk_ring_skills:
+        source_entry = source_by_name.get(skill_name, {})
+        expected_cluster = expected_risk_cluster_by_skill[skill_name]
+        actual_families = sorted(description_families_by_skill.get(skill_name, []))
+        actual_collision_family = (
+            expected_cluster if expected_cluster in actual_families else (actual_families[0] if actual_families else None)
+        )
+        adjacent_overlay_skill_name = adjacent_overlay_by_skill.get(skill_name)
+        adjacent_overlay_present = bool(
+            adjacent_overlay_skill_name and adjacent_overlay_skill_name in actual_names
+        )
+        blockers: list[str] = []
+        if skill_name not in risk_ring_profile_skills:
+            blockers.append("missing_from_repo_project_risk_guard_ring")
+        if skill_name not in risk_ring_alias_skills:
+            blockers.append("missing_from_repo_risk_explicit")
+        if skill_name not in repo_default_skills:
+            blockers.append("missing_from_repo_default")
+        if source_entry.get("scope") != "risk":
+            blockers.append("scope_not_risk")
+        if source_entry.get("status") not in {"canonical", "evaluated"}:
+            blockers.append("status_not_ring_ready")
+        if source_entry.get("invocation_mode") != "explicit-only":
+            blockers.append("invocation_mode_not_explicit_only")
+        if actual_collision_family is None:
+            blockers.append("missing_collision_family")
+        elif actual_collision_family != expected_cluster:
+            blockers.append("collision_family_mismatch")
+        expected_risk_governance_skills.append(
+            {
+                "skill_name": skill_name,
+                "cluster_id": expected_cluster,
+                "scope": source_entry.get("scope"),
+                "status": source_entry.get("status"),
+                "invocation_mode": source_entry.get("invocation_mode"),
+                "in_repo_project_risk_guard_ring": skill_name in risk_ring_profile_skills,
+                "in_repo_risk_explicit": skill_name in risk_ring_alias_skills,
+                "in_repo_default": skill_name in repo_default_skills,
+                "collision_family": actual_collision_family,
+                "adjacent_overlay_skill_name": adjacent_overlay_skill_name,
+                "adjacent_overlay_present": adjacent_overlay_present,
+                "governance_passed": not blockers,
+                "blockers": blockers,
+            }
+        )
+
+    expected_risk_ring_governance = {
+        "schema_version": 1,
+        "source_config": "config/project_risk_guard_ring.json",
+        "ring_id": risk_ring_doc.get("ring_id"),
+        "canonical_install_profile": risk_ring_doc.get("canonical_install_profile"),
+        "backcompat_alias_profile": risk_ring_doc.get("backcompat_alias_profile"),
+        "repo_default_profile": "repo-default",
+        "skills": expected_risk_governance_skills,
+    }
+    if risk_ring_governance != expected_risk_ring_governance:
+        errors.append("generated/project_risk_guard_ring_governance.min.json mismatch")
+        difference = first_payload_difference(expected_risk_ring_governance, risk_ring_governance)
+        if difference is not None:
+            errors.append(f"generated/project_risk_guard_ring_governance.min.json detail: {difference}")
+    for entry in expected_risk_governance_skills:
+        if not entry["governance_passed"]:
+            blockers = ", ".join(entry["blockers"])
+            errors.append(f"project risk guard ring governance gate failed for {entry['skill_name']}: {blockers}")
 
     for profile_name, profile in (profile_doc.get("profiles") or {}).items():
         seen: set[str] = set()

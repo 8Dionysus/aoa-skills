@@ -238,6 +238,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_approval_gate_check",
+      "target": "profile_repo_project_risk_guard_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_approval_gate_check",
       "target": "profile_repo_risk_explicit"
     },
     {
@@ -693,6 +698,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_dry_run_first",
+      "target": "profile_repo_project_risk_guard_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_dry_run_first",
       "target": "profile_repo_risk_explicit"
     },
     {
@@ -834,6 +844,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_local_stack_bringup",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_local_stack_bringup",
+      "target": "profile_repo_project_risk_guard_ring"
     },
     {
       "kind": "included_in_profile",
@@ -1143,6 +1158,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_safe_infra_change",
+      "target": "profile_repo_project_risk_guard_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_safe_infra_change",
       "target": "profile_repo_risk_explicit"
     },
     {
@@ -1209,6 +1229,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_sanitized_share",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_sanitized_share",
+      "target": "profile_repo_project_risk_guard_ring"
     },
     {
       "kind": "included_in_profile",
@@ -2073,6 +2098,11 @@
       "type": "scope"
     },
     {
+      "id": "profile_repo_project_risk_guard_ring",
+      "label": "profile: repo-project-risk-guard-ring",
+      "type": "profile"
+    },
+    {
       "id": "profile_repo_risk_explicit",
       "label": "profile: repo-risk-explicit",
       "type": "profile"
@@ -2665,6 +2695,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -3188,6 +3219,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -3358,6 +3390,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -3723,6 +3756,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -3814,6 +3848,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",

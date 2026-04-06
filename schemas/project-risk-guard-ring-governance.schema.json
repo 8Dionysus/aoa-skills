@@ -1,0 +1,118 @@
+{
+  "title": "aoa-skills project risk guard ring governance surface",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_config",
+    "ring_id",
+    "canonical_install_profile",
+    "backcompat_alias_profile",
+    "repo_default_profile",
+    "skills"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "source_config": {
+      "type": "string",
+      "const": "config/project_risk_guard_ring.json"
+    },
+    "ring_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_install_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "backcompat_alias_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repo_default_profile": {
+      "type": "string",
+      "const": "repo-default"
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "skill_name",
+          "cluster_id",
+          "scope",
+          "status",
+          "invocation_mode",
+          "in_repo_project_risk_guard_ring",
+          "in_repo_risk_explicit",
+          "in_repo_default",
+          "collision_family",
+          "adjacent_overlay_skill_name",
+          "adjacent_overlay_present",
+          "governance_passed",
+          "blockers"
+        ],
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cluster_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "invocation_mode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "in_repo_project_risk_guard_ring": {
+            "type": "boolean"
+          },
+          "in_repo_risk_explicit": {
+            "type": "boolean"
+          },
+          "in_repo_default": {
+            "type": "boolean"
+          },
+          "collision_family": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "adjacent_overlay_skill_name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "adjacent_overlay_present": {
+            "type": "boolean"
+          },
+          "governance_passed": {
+            "type": "boolean"
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

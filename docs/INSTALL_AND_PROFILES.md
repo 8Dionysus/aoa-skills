@@ -199,6 +199,28 @@ stable engineering workbench around that kernel:
 - it keeps the project-core shape explicit without turning the outer ring into a
   second kernel
 
+`repo-project-risk-guard-ring` is the canonical bounded rollout profile for the
+explicit project safety perimeter outside project-core:
+
+- `aoa-approval-gate-check`
+- `aoa-dry-run-first`
+- `aoa-local-stack-bringup`
+- `aoa-safe-infra-change`
+- `aoa-sanitized-share`
+
+- It is `repo`-scoped.
+- Its authored install mode stays `symlink-preferred`.
+- Cross-repo rollout should use `copy` mode so the installed surface is
+  reviewable and commit-safe.
+- The intended target path is `<repo>/.agents/skills/`.
+- It is repo-wide hard-gated through
+  `generated/project_risk_guard_ring_governance.min.json`.
+- It does not replace `repo-default`, and it does not pull project overlays
+  into ring membership.
+
+`repo-risk-explicit` remains as the backward-compatible alias for the same five
+explicit-only risk skills.
+
 `repo-quest-harvest-only` remains the narrow leaf rollout profile for
 installing just `aoa-quest-harvest`.
 
@@ -226,7 +248,7 @@ Not every install root should carry the same surface:
 
 - repo roots can afford project overlays
 - user roots should prefer reusable portable skills
-- explicit-only risk skills deserve a bounded posture
+- explicit-only risk skills deserve a canonical bounded posture
 - some repos need one narrow post-session skill without taking the full repo-default surface
 - project overlays should stay project-local
 

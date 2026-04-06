@@ -84,8 +84,35 @@ The outer ring is soft-gated and classification-backed:
 - every ring skill must stay `status=canonical` or `status=evaluated`
 - the per-skill readiness truth lives in `generated/project_core_outer_ring_readiness.min.json`
 
-`repo-core-only` is the umbrella repo profile. Risk skills and project overlays
-stay outside both the kernel and the outer ring.
+## Project Risk Guard Ring
+
+The next stable layer outside project-core is the explicit risk guard ring:
+
+- `aoa-approval-gate-check`
+- `aoa-dry-run-first`
+- `aoa-local-stack-bringup`
+- `aoa-safe-infra-change`
+- `aoa-sanitized-share`
+
+This ring is authored under `repo-project-risk-guard-ring`. The older
+`repo-risk-explicit` profile remains as a backward-compatible alias for the
+same five-skill safety perimeter.
+
+The risk guard ring is repo-wide hard-gated:
+
+- every risk-ring skill must stay in the authored manifest
+- `repo-project-risk-guard-ring` must match that manifest exactly
+- `repo-risk-explicit` must stay an exact alias of the same surface
+- `repo-default` must continue to carry the whole risk guard ring
+- every risk-ring skill must stay `scope=risk`
+- every risk-ring skill must stay `status=canonical` or `status=evaluated`
+- every risk-ring skill must stay `invocation_mode=explicit-only`
+- every risk-ring skill must stay in the `safety-and-mutation-gating` collision family
+- the per-skill gate truth lives in `generated/project_risk_guard_ring_governance.min.json`
+
+`repo-core-only` remains the umbrella profile for project-core only. The risk
+guard ring sits outside project-core, and project overlays stay outside all
+three layers.
 
 ## Notes
 
