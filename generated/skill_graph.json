@@ -173,6 +173,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_adr_write",
+      "target": "profile_repo_project_core_outer_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_adr_write",
       "target": "profile_user_curated_core"
     },
     {
@@ -393,6 +398,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_bounded_context_map",
+      "target": "profile_repo_project_core_outer_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_bounded_context_map",
       "target": "profile_user_curated_core"
     },
     {
@@ -459,6 +469,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_change_protocol",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_change_protocol",
+      "target": "profile_repo_project_core_outer_ring"
     },
     {
       "kind": "included_in_profile",
@@ -533,6 +548,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_contract_test",
+      "target": "profile_repo_project_core_outer_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_contract_test",
       "target": "profile_user_curated_core"
     },
     {
@@ -599,6 +619,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_core_logic_boundary",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_core_logic_boundary",
+      "target": "profile_repo_project_core_outer_ring"
     },
     {
       "kind": "included_in_profile",
@@ -734,6 +759,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_invariant_coverage_audit",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_invariant_coverage_audit",
+      "target": "profile_repo_project_core_outer_ring"
     },
     {
       "kind": "available_in_artifact_group",
@@ -883,6 +913,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_port_adapter_refactor",
+      "target": "profile_repo_project_core_outer_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_port_adapter_refactor",
       "target": "profile_user_curated_core"
     },
     {
@@ -949,6 +984,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_property_invariants",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_property_invariants",
+      "target": "profile_repo_project_core_outer_ring"
     },
     {
       "kind": "included_in_profile",
@@ -1658,6 +1698,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_source_of_truth_check",
+      "target": "profile_repo_project_core_outer_ring"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_source_of_truth_check",
       "target": "profile_user_curated_core"
     },
     {
@@ -1724,6 +1769,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_tdd_slice",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_tdd_slice",
+      "target": "profile_repo_project_core_outer_ring"
     },
     {
       "kind": "included_in_profile",
@@ -2000,6 +2050,11 @@
     {
       "id": "profile_repo_core_only",
       "label": "profile: repo-core-only",
+      "type": "profile"
+    },
+    {
+      "id": "profile_repo_project_core_outer_ring",
+      "label": "profile: repo-project-core-outer-ring",
       "type": "profile"
     },
     {
@@ -2523,6 +2578,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2783,6 +2839,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2869,6 +2926,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2955,6 +3013,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -3041,6 +3100,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -3218,7 +3278,8 @@
       },
       "install_profiles": [
         "repo-core-only",
-        "repo-default"
+        "repo-default",
+        "repo-project-core-outer-ring"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -3404,6 +3465,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -3490,6 +3552,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -4261,6 +4324,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -4354,6 +4418,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",

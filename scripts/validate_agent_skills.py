@@ -63,6 +63,8 @@ REQUIRED_GENERATED_FILES = [
     "generated/skill_pack_profiles.resolved.json",
     "generated/project_core_skill_kernel.min.json",
     "generated/project_core_kernel_governance.min.json",
+    "generated/project_core_outer_ring.min.json",
+    "generated/project_core_outer_ring_readiness.min.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
     "generated/runtime_discovery_index.json",
@@ -107,10 +109,55 @@ REQUIRED_CONFIG_FILES = [
     "config/openai_skill_extensions.json",
     "config/skill_pack_profiles.json",
     "config/project_core_skill_kernel.json",
+    "config/project_core_outer_ring.json",
     "config/skill_policy_matrix.json",
     "config/runtime_guardrail_policy.json",
     "config/description_trigger_eval_policy.json",
     "config/tiny_router_skill_bands.json",
+]
+EXPECTED_OUTER_RING_SKILLS = [
+    "aoa-adr-write",
+    "aoa-source-of-truth-check",
+    "aoa-bounded-context-map",
+    "aoa-core-logic-boundary",
+    "aoa-port-adapter-refactor",
+    "aoa-change-protocol",
+    "aoa-tdd-slice",
+    "aoa-contract-test",
+    "aoa-property-invariants",
+    "aoa-invariant-coverage-audit",
+]
+EXPECTED_OUTER_RING_CLUSTERS = [
+    {
+        "cluster_id": "decision-and-doc-authority",
+        "skills": [
+            "aoa-adr-write",
+            "aoa-source-of-truth-check",
+        ],
+    },
+    {
+        "cluster_id": "boundary-shaping",
+        "skills": [
+            "aoa-bounded-context-map",
+            "aoa-core-logic-boundary",
+            "aoa-port-adapter-refactor",
+        ],
+    },
+    {
+        "cluster_id": "change-execution-vs-test-first",
+        "skills": [
+            "aoa-change-protocol",
+            "aoa-tdd-slice",
+            "aoa-contract-test",
+        ],
+    },
+    {
+        "cluster_id": "property-authoring-vs-coverage-audit",
+        "skills": [
+            "aoa-property-invariants",
+            "aoa-invariant-coverage-audit",
+        ],
+    },
 ]
 
 
@@ -211,6 +258,8 @@ def main() -> int:
     resolved_profiles = load_json(generated_dir / "skill_pack_profiles.resolved.json")
     resolved_kernel = load_json(generated_dir / "project_core_skill_kernel.min.json")
     kernel_governance = load_json(generated_dir / "project_core_kernel_governance.min.json")
+    resolved_outer_ring = load_json(generated_dir / "project_core_outer_ring.min.json")
+    outer_ring_readiness = load_json(generated_dir / "project_core_outer_ring_readiness.min.json")
     snippets_doc = load_json(generated_dir / "codex_config_snippets.json")
     mcp_doc = load_json(generated_dir / "mcp_dependency_manifest.json")
     runtime_discovery = load_json(generated_dir / "runtime_discovery_index.json")
@@ -250,6 +299,7 @@ def main() -> int:
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
     kernel_doc = load_json(config_dir / "project_core_skill_kernel.json")
+    outer_ring_doc = load_json(config_dir / "project_core_outer_ring.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
     guardrail_policy = load_json(config_dir / "runtime_guardrail_policy.json")
     description_eval_policy = load_json(config_dir / "description_trigger_eval_policy.json")
@@ -1094,6 +1144,138 @@ def main() -> int:
         if not entry["gate_passed"]:
             blockers = ", ".join(entry["blockers"])
             errors.append(f"project-core kernel governance gate failed for {entry['skill_name']}: {blockers}")
+
+    outer_ring_skills = outer_ring_doc.get("skills", [])
+    outer_ring_clusters = outer_ring_doc.get("clusters", [])
+    if outer_ring_doc.get("schema_version") != 1:
+        errors.append("config/project_core_outer_ring.json schema_version must be 1")
+    if outer_ring_doc.get("ring_id") != "project-core-engineering-ring-v1":
+        errors.append("config/project_core_outer_ring.json ring_id must be 'project-core-engineering-ring-v1'")
+    if outer_ring_doc.get("owner_repo") != "aoa-skills":
+        errors.append("config/project_core_outer_ring.json owner_repo must be 'aoa-skills'")
+    if not isinstance(outer_ring_doc.get("description"), str) or not outer_ring_doc["description"]:
+        errors.append("config/project_core_outer_ring.json description must be a non-empty string")
+    if outer_ring_doc.get("canonical_install_profile") != "repo-project-core-outer-ring":
+        errors.append("config/project_core_outer_ring.json canonical_install_profile must be 'repo-project-core-outer-ring'")
+    if outer_ring_doc.get("adjacent_kernel_id") != kernel_doc.get("kernel_id"):
+        errors.append("config/project_core_outer_ring.json adjacent_kernel_id must match the canonical project-core kernel id")
+    if outer_ring_skills != EXPECTED_OUTER_RING_SKILLS:
+        errors.append("config/project_core_outer_ring.json skills must match the canonical project-core engineering ring order exactly")
+    if len(outer_ring_skills) != len(set(outer_ring_skills)):
+        errors.append("config/project_core_outer_ring.json skills must not contain duplicates")
+    expected_cluster_payload = EXPECTED_OUTER_RING_CLUSTERS
+    if outer_ring_clusters != expected_cluster_payload:
+        errors.append("config/project_core_outer_ring.json clusters must match the canonical project-core engineering ring cluster map exactly")
+
+    expected_resolved_outer_ring = {
+        "schema_version": 1,
+        "source_config": "config/project_core_outer_ring.json",
+        "ring_id": outer_ring_doc.get("ring_id"),
+        "owner_repo": outer_ring_doc.get("owner_repo"),
+        "description": outer_ring_doc.get("description"),
+        "canonical_install_profile": outer_ring_doc.get("canonical_install_profile"),
+        "adjacent_kernel_id": outer_ring_doc.get("adjacent_kernel_id"),
+        "skill_count": len(outer_ring_skills) if isinstance(outer_ring_skills, list) else 0,
+        "skills": outer_ring_skills,
+        "clusters": [
+            {
+                "cluster_id": cluster["cluster_id"],
+                "skill_count": len(cluster["skills"]),
+                "skills": cluster["skills"],
+            }
+            for cluster in outer_ring_clusters
+            if isinstance(cluster, dict) and isinstance(cluster.get("skills"), list)
+        ],
+    }
+    if resolved_outer_ring != expected_resolved_outer_ring:
+        errors.append("generated/project_core_outer_ring.min.json mismatch")
+        difference = first_payload_difference(expected_resolved_outer_ring, resolved_outer_ring)
+        if difference is not None:
+            errors.append(f"generated/project_core_outer_ring.min.json detail: {difference}")
+
+    outer_ring_profile = (profile_doc.get("profiles") or {}).get(outer_ring_doc.get("canonical_install_profile"))
+    if outer_ring_profile is None:
+        errors.append("config/project_core_outer_ring.json canonical_install_profile missing from skill profiles")
+        outer_ring_profile_skills: list[str] = []
+    else:
+        outer_ring_profile_skills = outer_ring_profile.get("skills", [])
+        if outer_ring_profile_skills != outer_ring_skills:
+            errors.append("config/project_core_outer_ring.json canonical profile skills must match outer ring skills exactly")
+
+    repo_core_only_profile = (profile_doc.get("profiles") or {}).get("repo-core-only")
+    if repo_core_only_profile is None:
+        errors.append("config/skill_pack_profiles.json missing repo-core-only")
+        repo_core_only_skills: list[str] = []
+    else:
+        repo_core_only_skills = repo_core_only_profile.get("skills", [])
+        expected_repo_core_only = [*kernel_skills, *outer_ring_skills]
+        if repo_core_only_skills != expected_repo_core_only:
+            errors.append("config/skill_pack_profiles.json repo-core-only must equal project-core kernel plus project-core outer ring in canonical order")
+
+    user_curated_core_profile = (profile_doc.get("profiles") or {}).get("user-curated-core")
+    user_curated_core_skills = (
+        user_curated_core_profile.get("skills", [])
+        if isinstance(user_curated_core_profile, dict)
+        else []
+    )
+    expected_cluster_by_skill = {
+        skill_name: cluster["cluster_id"]
+        for cluster in EXPECTED_OUTER_RING_CLUSTERS
+        for skill_name in cluster["skills"]
+    }
+    expected_outer_ring_readiness_skills: list[dict[str, Any]] = []
+    for skill_name in outer_ring_skills:
+        source_entry = source_by_name.get(skill_name, {})
+        expected_cluster = expected_cluster_by_skill[skill_name]
+        actual_families = sorted(description_families_by_skill.get(skill_name, []))
+        actual_collision_family = expected_cluster if expected_cluster in actual_families else (actual_families[0] if actual_families else None)
+        blockers: list[str] = []
+        if skill_name not in outer_ring_profile_skills:
+            blockers.append("missing_from_repo_project_core_outer_ring")
+        if skill_name not in repo_core_only_skills:
+            blockers.append("missing_from_repo_core_only")
+        if source_entry.get("scope") != "core":
+            blockers.append("scope_not_core")
+        if source_entry.get("status") not in {"canonical", "evaluated"}:
+            blockers.append("status_not_ring_ready")
+        if actual_collision_family is None:
+            blockers.append("missing_collision_family")
+        elif actual_collision_family != expected_cluster:
+            blockers.append("collision_family_mismatch")
+        expected_outer_ring_readiness_skills.append(
+            {
+                "skill_name": skill_name,
+                "cluster_id": expected_cluster,
+                "scope": source_entry.get("scope"),
+                "status": source_entry.get("status"),
+                "invocation_mode": source_entry.get("invocation_mode"),
+                "in_repo_core_only": skill_name in repo_core_only_skills,
+                "in_repo_project_core_outer_ring": skill_name in outer_ring_profile_skills,
+                "in_user_curated_core": skill_name in user_curated_core_skills,
+                "collision_family": actual_collision_family,
+                "readiness_passed": not blockers,
+                "blockers": blockers,
+            }
+        )
+
+    expected_outer_ring_readiness = {
+        "schema_version": 1,
+        "source_config": "config/project_core_outer_ring.json",
+        "ring_id": outer_ring_doc.get("ring_id"),
+        "canonical_install_profile": outer_ring_doc.get("canonical_install_profile"),
+        "repo_core_only_profile": "repo-core-only",
+        "user_curated_core_profile": "user-curated-core",
+        "skills": expected_outer_ring_readiness_skills,
+    }
+    if outer_ring_readiness != expected_outer_ring_readiness:
+        errors.append("generated/project_core_outer_ring_readiness.min.json mismatch")
+        difference = first_payload_difference(expected_outer_ring_readiness, outer_ring_readiness)
+        if difference is not None:
+            errors.append(f"generated/project_core_outer_ring_readiness.min.json detail: {difference}")
+    for entry in expected_outer_ring_readiness_skills:
+        if not entry["readiness_passed"]:
+            blockers = ", ".join(entry["blockers"])
+            errors.append(f"project-core outer ring readiness gate failed for {entry['skill_name']}: {blockers}")
 
     for profile_name, profile in (profile_doc.get("profiles") or {}).items():
         seen: set[str] = set()

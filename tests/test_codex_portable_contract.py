@@ -137,6 +137,29 @@ class CodexPortableContractTests(unittest.TestCase):
         snippets = load_json(REPO_ROOT / "generated" / "codex_config_snippets.json")
         self.assertEqual(set(profiles["profiles"]), set(snippets["snippets"]))
 
+    def test_project_core_outer_ring_profiles_and_surfaces_stay_aligned(self):
+        kernel = load_json(REPO_ROOT / "generated" / "project_core_skill_kernel.min.json")
+        outer_ring = load_json(REPO_ROOT / "generated" / "project_core_outer_ring.min.json")
+        readiness = load_json(REPO_ROOT / "generated" / "project_core_outer_ring_readiness.min.json")
+        profiles = load_json(REPO_ROOT / "config" / "skill_pack_profiles.json")["profiles"]
+
+        self.assertEqual("project-core-engineering-ring-v1", outer_ring["ring_id"])
+        self.assertEqual("repo-project-core-outer-ring", outer_ring["canonical_install_profile"])
+        self.assertEqual(kernel["kernel_id"], outer_ring["adjacent_kernel_id"])
+        self.assertEqual(
+            profiles["repo-project-core-outer-ring"]["skills"],
+            outer_ring["skills"],
+        )
+        self.assertEqual(
+            profiles["repo-core-only"]["skills"],
+            [*kernel["skills"], *outer_ring["skills"]],
+        )
+        self.assertEqual(
+            [entry["skill_name"] for entry in readiness["skills"]],
+            outer_ring["skills"],
+        )
+        self.assertTrue(all(entry["readiness_passed"] for entry in readiness["skills"]))
+
     def test_release_manifest_matches_current_packaging_contract(self):
         release_manifest = load_json(REPO_ROOT / "generated" / "release_manifest.json")
         expected_manifest = release_manifest_contract.build_release_manifest(REPO_ROOT)

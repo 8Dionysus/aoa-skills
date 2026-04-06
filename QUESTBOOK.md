@@ -82,6 +82,40 @@ Family rules:
 - do not let self-repair bypass checkpoint posture
 - do not promote on one anecdotal repeat
 
+## Project-core shape
+
+The project-core shape in this repo now has two stable layers:
+
+- `kernel` = the hard-gated seven-skill session-growth nucleus
+- `outer ring` = the soft-gated engineering workbench around that nucleus
+
+The outer ring currently contains:
+
+- `aoa-adr-write`
+- `aoa-source-of-truth-check`
+- `aoa-bounded-context-map`
+- `aoa-core-logic-boundary`
+- `aoa-port-adapter-refactor`
+- `aoa-change-protocol`
+- `aoa-tdd-slice`
+- `aoa-contract-test`
+- `aoa-property-invariants`
+- `aoa-invariant-coverage-audit`
+
+Outer-ring posture:
+
+- it is authored under `repo-project-core-outer-ring`
+- it is repo-wide soft-gated through
+  `generated/project_core_outer_ring_readiness.min.json`
+- it stays classification-backed, not telemetry-backed
+- it is not a second kernel and does not replace `repo-core-only`
+
+Boundary notes:
+
+- `repo-core-only` is the umbrella repo surface and must equal `kernel + outer ring`
+- `repo-risk-explicit` stays outside both layers
+- project overlays such as `atm10-*` and `abyss-*` stay outside both layers
+
 Allowed `aoa-quest-harvest` verdicts:
 
 - `keep/open quest`

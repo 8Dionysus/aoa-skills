@@ -26,6 +26,7 @@ Dry-run or apply an install profile:
 ```bash
 python scripts/install_skill_pack.py --repo-root . --profile user-curated-core
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --dest-root /tmp/aoa-skills --mode copy --execute
+python scripts/install_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-quest-harvest-only --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute
@@ -36,6 +37,7 @@ Stage a profile-scoped handoff bundle:
 ```bash
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --format json
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --execute --overwrite --format json
+python scripts/stage_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --output-root /tmp/repo-project-core-outer-ring-bundle --execute --overwrite --format json
 python scripts/stage_skill_pack.py --repo-root . --profile repo-quest-harvest-only --output-root /tmp/repo-quest-harvest-only-bundle --execute --overwrite --format json
 python scripts/stage_skill_pack.py --repo-root . --profile repo-core-only --output-root /tmp/repo-core-only-bundle --archive-path /tmp/repo-core-only.zip --execute --overwrite --format json
 ```
@@ -52,6 +54,7 @@ Import a staged profile-scoped handoff bundle with one receiver-side flow:
 ```bash
 python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --format json
 python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
+python scripts/import_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --bundle-root /tmp/repo-project-core-outer-ring-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
 python scripts/import_skill_pack.py --repo-root . --profile repo-quest-harvest-only --bundle-root /tmp/repo-quest-harvest-only-bundle --dest-root /tmp/aoa-skills --mode copy --execute --format json
 python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --dest-root /tmp/aoa-skills --mode copy --execute --format json
 ```
@@ -61,6 +64,7 @@ Verify an installed profile/root against the current portable export:
 ```bash
 python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --format json
+python scripts/verify_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --install-root /tmp/aoa-skills --format json
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --strict-root --format markdown
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-root /tmp/repo-core-only-bundle --install-root /tmp/aoa-skills --format json
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --install-root /tmp/aoa-skills --format json
@@ -163,6 +167,37 @@ This kernel is also repo-wide hard-gated in `aoa-skills`:
   readout
 - `python scripts/release_check.py` fails if any kernel skill drifts out of
   that contract
+
+`repo-project-core-outer-ring` is the canonical bounded rollout profile for the
+stable engineering workbench around that kernel:
+
+- `aoa-adr-write`
+- `aoa-source-of-truth-check`
+- `aoa-bounded-context-map`
+- `aoa-core-logic-boundary`
+- `aoa-port-adapter-refactor`
+- `aoa-change-protocol`
+- `aoa-tdd-slice`
+- `aoa-contract-test`
+- `aoa-property-invariants`
+- `aoa-invariant-coverage-audit`
+
+- It is `repo`-scoped.
+- Its authored install mode stays `symlink-preferred`.
+- Cross-repo rollout should use `copy` mode so the installed surface is
+  reviewable and commit-safe.
+- The intended target path is `<repo>/.agents/skills/`.
+- This profile is soft-gated through
+  `generated/project_core_outer_ring_readiness.min.json`.
+- It does not replace `repo-project-core-kernel`, and it does not pull in risk
+  skills or project overlays.
+
+`repo-core-only` is now the umbrella repo surface:
+
+- it must equal `repo-project-core-kernel + repo-project-core-outer-ring` in
+  canonical order
+- it keeps the project-core shape explicit without turning the outer ring into a
+  second kernel
 
 `repo-quest-harvest-only` remains the narrow leaf rollout profile for
 installing just `aoa-quest-harvest`.

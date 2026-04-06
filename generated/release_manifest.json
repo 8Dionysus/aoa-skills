@@ -14,7 +14,7 @@
   "skill_root": ".agents/skills",
   "skill_count": 26,
   "explicit_only_count": 14,
-  "profile_count": 11,
+  "profile_count": 12,
   "authoring_inputs": [
     "generated/skill_sections.full.json",
     "generated/skill_catalog.min.json",
@@ -192,8 +192,8 @@
     },
     {
       "path": "config/skill_pack_profiles.json",
-      "sha256": "235a92345dba1a077b5fec4b2fda6960de79b8627538dbbbb82c69c2df43303d",
-      "bytes": 6025
+      "sha256": "26133289aa4bc1c84bb66d14c6e1ed300ee34d40e8846dc9d1847f68ffb00a34",
+      "bytes": 6715
     },
     {
       "path": "config/skill_policy_matrix.json",
@@ -219,8 +219,8 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "94f98159cb746ed4d971ba74c85e6f6fa9b0edc607799cd198dc6d77e485201b",
-      "bytes": 43480
+      "sha256": "6f5ad5957d884461fe1234e80d4bef09c51d774abb73a7dffec7905c88f186c6",
+      "bytes": 43550
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
@@ -229,8 +229,8 @@
     },
     {
       "path": "generated/portable_export_map.json",
-      "sha256": "3142b8b6452cfca0fddf1eef6784ff1ef0dbe1afcd95a613c42a528242171f47",
-      "bytes": 19704
+      "sha256": "0bd7fbef34a3ff4bb9e03c2e99f1492336059a59f3284c6f86ed3e464bd2038a",
+      "bytes": 19774
     },
     {
       "path": "generated/local_adapter_manifest.json",
@@ -264,13 +264,13 @@
     },
     {
       "path": "generated/skill_pack_profiles.resolved.json",
-      "sha256": "96acb87e681a9495dc7e58707daa9cbcd233009690a47c4f85612365c934bc82",
-      "bytes": 37626
+      "sha256": "9f46ddc54d3e425926848813583d3910f28d6fc159532d4dfddda91fe009e31d",
+      "bytes": 41933
     },
     {
       "path": "generated/codex_config_snippets.json",
-      "sha256": "7543ce2698d623016726aa86ab34105d6864045e800c2999063ea99bccbcbf11",
-      "bytes": 9584
+      "sha256": "7e30d0e7265f8eb46e26d3c4569a528a017b3de75747a8888a3cec2f3a7fc914",
+      "bytes": 10642
     },
     {
       "path": "generated/mcp_dependency_manifest.json",
@@ -434,23 +434,23 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "fa8acc51a51857c76e14bd0a397734b3d64e83cbe2897ec83c164c4d09075b84",
-      "bytes": 78008
+      "sha256": "0d8aa3bb29723dca22cd29b5424484c683dea265bd240bb2b3fef60fd4c3d421",
+      "bytes": 78408
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "105d36903a33cba85716614108a5ae256c0683dd11e5efc4aef2bce850ef01e2",
-      "bytes": 8066
+      "sha256": "f4040d5d164aef15975cb4df0a290a0f190bc26c8b53253fd030ae200651d9fd",
+      "bytes": 8366
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "2d1fe792b79f0c7ec10d011b6798366b805e33e16bd7c43872eb3c472e25df57",
-      "bytes": 140516
+      "sha256": "e628f006334937b625e09ab583b6d18276f5b3dd1069f41aed2ddf05b58d7a5d",
+      "bytes": 142580
     },
     {
       "path": "generated/skill_graph.md",
-      "sha256": "226e60fb57766cc42d37ac28800f87517c4be1b35ef3d9336ca8f2cc615e3d07",
-      "bytes": 41195
+      "sha256": "55caa7255c97f79c014a9d7b1745ebc5d2b131e7102c361e7496408fa56d4851",
+      "bytes": 42494
     }
   ],
   "skill_bundle_revisions": [
@@ -682,6 +682,23 @@
         "aoa-session-self-repair"
       ],
       "profile_revision": "84e1ca7fe6258896f6df8743292020a276d2f31c5a614c5d8f4a5af0195a2a3d"
+    },
+    {
+      "name": "repo-project-core-outer-ring",
+      "skill_count": 10,
+      "skill_names": [
+        "aoa-adr-write",
+        "aoa-bounded-context-map",
+        "aoa-change-protocol",
+        "aoa-contract-test",
+        "aoa-core-logic-boundary",
+        "aoa-invariant-coverage-audit",
+        "aoa-port-adapter-refactor",
+        "aoa-property-invariants",
+        "aoa-source-of-truth-check",
+        "aoa-tdd-slice"
+      ],
+      "profile_revision": "18c1cb615ea6396094d7333b921f66fb5a3f506c9e94c0f20a6664cb8b2e906e"
     },
     {
       "name": "repo-quest-harvest-only",

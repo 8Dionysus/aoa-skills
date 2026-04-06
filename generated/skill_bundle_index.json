@@ -209,6 +209,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -469,6 +470,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -555,6 +557,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -641,6 +644,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -727,6 +731,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -904,7 +909,8 @@
       },
       "install_profiles": [
         "repo-core-only",
-        "repo-default"
+        "repo-default",
+        "repo-project-core-outer-ring"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -1090,6 +1096,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1176,6 +1183,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1947,6 +1955,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2040,6 +2049,7 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
+        "repo-project-core-outer-ring",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
