@@ -1169,7 +1169,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-donor-harvest/session_donor_harvest_reviewed_multi_unit_session.md
     required_output_phrases:
       - use
-      - A HARVEST_PACKET that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target.
+      - A HARVEST_PACKET plus one bounded harvest-packet receipt that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target without duplicating the whole packet.
     forbidden_output_phrases: []
   - skill: aoa-session-donor-harvest
     case_id: session_donor_harvest_live_session_capture_confusion
@@ -1196,7 +1196,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-automation-opportunity-scan/automation_opportunity_scan_recurring_review_closeout_route.md
     required_output_phrases:
       - use
-      - An automation opportunity packet that names the current manual route, the readiness verdict, and the likely first owner layer.
+      - An automation opportunity packet plus one automation-candidate receipt that names the current manual route, the readiness verdict, and the likely first owner layer.
     forbidden_output_phrases: []
   - skill: aoa-session-route-forks
     case_id: session_route_forks_reviewed_branch_choice
@@ -1205,7 +1205,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-route-forks/session_route_forks_reviewed_branch_choice.md
     required_output_phrases:
       - use
-      - A set of fork cards that makes the next routes, their owner targets, and their stop conditions explicit.
+      - A set of fork cards plus one bounded decision-fork receipt that makes the next routes, their owner targets, and their stop conditions explicit.
     forbidden_output_phrases: []
   - skill: aoa-session-route-forks
     case_id: session_route_forks_single_obvious_move
@@ -1223,7 +1223,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-diagnose/session_self_diagnose_reviewed_drift_pattern.md
     required_output_phrases:
       - use
-      - A diagnosis packet that separates symptoms from probable causes and names likely owner hints.
+      - A diagnosis packet plus one bounded skill-run receipt that separates symptoms from probable causes and names likely owner hints.
     forbidden_output_phrases: []
   - skill: aoa-session-self-diagnose
     case_id: session_self_diagnose_already_diagnosed
@@ -1241,7 +1241,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-repair/session_self_repair_reviewed_diagnosis_packet.md
     required_output_phrases:
       - use
-      - A repair packet with checkpoint posture, rollback thinking, and explicit owner targets.
+      - A repair packet plus one bounded repair-cycle receipt with checkpoint posture, rollback thinking, and explicit owner targets.
     forbidden_output_phrases: []
   - skill: aoa-session-self-repair
     case_id: session_self_repair_without_diagnosis
@@ -1259,7 +1259,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-progression-lift/session_progression_lift_reviewed_multi_axis_evidence.md
     required_output_phrases:
       - use
-      - A bounded progression delta with multi-axis movement and explicit verdicts.
+      - A bounded progression delta plus one progression-delta receipt with multi-axis movement and explicit verdicts.
     forbidden_output_phrases: []
   - skill: aoa-session-progression-lift
     case_id: session_progression_lift_global_power_number

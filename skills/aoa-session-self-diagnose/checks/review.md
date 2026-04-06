@@ -23,6 +23,7 @@ bounded `DIAGNOSIS_PACKET`.
 - [ ] Unknowns are preserved where evidence is incomplete.
 - [ ] No hidden mutation or silent repair happened.
 - [ ] Cross-layer issues are not lazily blamed on one convenient owner.
+- [ ] Any `SKILL_RUN_RECEIPT` stayed evidence-linked and descriptive rather than blame-shaped.
 
 ## Not a fit
 

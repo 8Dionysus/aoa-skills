@@ -1,0 +1,17 @@
+receipt_name: HARVEST_PACKET_RECEIPT
+event_kind: harvest_packet_receipt
+envelope_ref: references/stats-event-envelope.md
+required_payload_fields:
+  - extract_kind_counts
+  - owner_layer_distribution
+  - promotion_candidate_refs
+  - deferral_refs
+  - evidence_density_summary
+optional_payload_fields:
+  - automation_candidate_present
+  - handoff_targets
+  - chosen_next_artifact_refs
+rules:
+  - summarize the completed HARVEST_PACKET instead of duplicating its full body
+  - keep counts descriptive and evidence-linked rather than proof-shaped
+  - record only bounded candidate or deferral refs, not raw session history

@@ -16,8 +16,8 @@ or final promotion triage.
 
 ## Expected object
 
-A set of fork cards that makes the next routes, their owner targets, and their
-stop conditions explicit.
+A set of fork cards plus one bounded decision-fork receipt that makes the next
+routes, their owner targets, and their stop conditions explicit.
 
 ## Boundary notes
 
@@ -28,5 +28,6 @@ exists.
 ## Verification hooks
 
 The response should separate materially different branches, name at least one
-cost or risk per route, and preserve stop conditions or defer posture where
-uncertainty remains.
+cost or risk per route, preserve stop conditions or defer posture where
+uncertainty remains, and keep any finish receipt descriptive rather than
+policy-shaped.

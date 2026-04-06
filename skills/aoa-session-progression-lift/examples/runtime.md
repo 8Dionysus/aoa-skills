@@ -24,6 +24,8 @@ more owner-layer routing pass and not one fake universal score.
 - qualitative axis movement
 - one verdict such as advance, hold, reanchor, or downgrade
 - optional unlock hints, quest hooks, or chronicle stub
+- one `PROGRESSION_DELTA_RECEIPT` with axis delta summary, verdict, and any
+  caution refs
 
 ## Boundary notes
 
@@ -36,3 +38,5 @@ more owner-layer routing pass and not one fake universal score.
 - Confirm meaningful claims cite evidence.
 - Confirm negative or zero movement remains possible.
 - Confirm unlock hints stay small and explicit.
+- Confirm the finish receipt stays multi-axis and does not collapse movement
+  into a universal score.

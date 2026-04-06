@@ -14,7 +14,9 @@ The source is already a reviewed session artifact, several reusable units may ex
 
 ## Expected object
 
-A HARVEST_PACKET that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target.
+A HARVEST_PACKET plus one bounded harvest-packet receipt that names each
+reusable unit, its owner layer, the next artifact, and the nearest wrong
+target without duplicating the whole packet.
 
 ## Boundary notes
 
@@ -22,4 +24,6 @@ Use this skill when a reviewed session needs donor extraction across multiple ca
 
 ## Verification hooks
 
-The response should separate the units cleanly, map each one to one primary owner layer, and name a concrete next artifact for each accepted candidate.
+The response should separate the units cleanly, map each one to one primary
+owner layer, name a concrete next artifact for each accepted candidate, and
+keep any finish receipt evidence-linked and smaller than the packet.

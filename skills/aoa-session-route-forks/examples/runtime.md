@@ -27,6 +27,7 @@ different gains, costs, and risks.
 - one likely first owner repo for each branch
 - one suggested default route if the evidence is strong enough
 - one hold or defer option if uncertainty remains meaningful
+- one `DECISION_FORK_RECEIPT` with branch ids, risk posture, and stop-condition refs
 
 ## Boundary notes
 
@@ -39,3 +40,5 @@ different gains, costs, and risks.
 - Confirm each branch is materially distinct.
 - Confirm costs, risks, and stop conditions are visible.
 - Confirm the cards preserve choice rather than erase alternatives.
+- Confirm the finish receipt stays descriptive rather than pretending the route
+  is already chosen by policy.

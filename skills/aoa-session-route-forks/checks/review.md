@@ -23,6 +23,7 @@ harvest packet into explicit next-route forks.
 - [ ] Hold, defer, or reanchor remains available when uncertainty is real.
 - [ ] Quest-board language stays reflective rather than authoritative.
 - [ ] `aoa-routing` and `aoa-kag` were not treated as first-authoring targets.
+- [ ] Any `DECISION_FORK_RECEIPT` stayed evidence-linked and subordinate to the fork cards.
 
 ## Not a fit
 

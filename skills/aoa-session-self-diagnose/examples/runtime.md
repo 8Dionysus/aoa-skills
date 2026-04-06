@@ -25,6 +25,8 @@ causes and names the likely owner layers involved.
 - named drift types, symptoms, probable causes, and repair shapes
 - owner hints and explicit unknowns
 - optional handoff to `aoa-session-self-repair`
+- one `SKILL_RUN_RECEIPT` that records diagnosis types, confidence band, and
+  evidence-linked owner hints
 
 ## Boundary notes
 
@@ -37,3 +39,5 @@ causes and names the likely owner layers involved.
 - Confirm the diagnosis cites evidence.
 - Confirm symptoms and causes are separated.
 - Confirm unknowns stay visible where evidence is weak.
+- Confirm the finish receipt stays smaller than the diagnosis packet and does
+  not read like a final repair verdict.

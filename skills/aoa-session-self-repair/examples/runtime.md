@@ -25,6 +25,8 @@ mutation.
 - a smallest diff shape or repair quest
 - approval need, rollback marker, health check, and improvement-log stub
 - explicit stop conditions and escalation points
+- one `REPAIR_CYCLE_RECEIPT` with diagnosis refs, checkpoint posture, and
+  bounded verification refs
 
 ## Boundary notes
 
@@ -37,3 +39,5 @@ mutation.
 - Confirm checkpoint fields are present.
 - Confirm the repair stays bounded.
 - Confirm escalation is named if the route widens.
+- Confirm the finish receipt cites rollback and health-check posture without
+  pretending the repair is already fully verified.

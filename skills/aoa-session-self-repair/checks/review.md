@@ -22,6 +22,7 @@ bounded `REPAIR_PACKET`.
 - [ ] Escalation exists if the repair widens beyond one bounded unit.
 - [ ] Role-law and proof-law changes were routed to the correct owner layers.
 - [ ] No silent doctrine edit or approval bypass happened.
+- [ ] Any `REPAIR_CYCLE_RECEIPT` stayed append-only, diagnosis-linked, and smaller than the repair packet.
 
 ## Not a fit
 

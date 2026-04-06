@@ -52,6 +52,9 @@ Do not use this skill when:
 - `seed_ready` or `not_now` verdict for each candidate
 - `checkpoint_required` flag when the route crosses self-change or approval-sensitive boundaries
 - next-artifact suggestion such as `skill`, `playbook_seed`, `technique_candidate`, `repair_quest`, `quest`, or `defer`
+- one `AUTOMATION_CANDIDATE_RECEIPT` using
+  `references/stats-event-envelope.md` and
+  `references/automation-candidate-receipt-schema.yaml`
 
 ## Procedure
 1. start from reviewed evidence, not from vague enthusiasm
@@ -62,6 +65,8 @@ Do not use this skill when:
 6. emit `seed_ready` only when the process is stable enough to name inputs, outputs, bounded prompts or activation hints, and a likely owner surface
 7. state the nearest wrong target so promotion pressure stays honest
 8. when classification pressure is high, use `references/automation-fit-matrix.md`, `references/session-harvest-integration.md`, `references/playbook-seed-bridge.md`, `references/checkpoint-boundary.md`, and `references/automation-opportunity-packet-schema.yaml`
+9. emit one `AUTOMATION_CANDIDATE_RECEIPT` when the packet closes, keeping the
+   receipt detector-shaped rather than scheduler-shaped
 
 ## Contracts
 - this skill detects and packages automation opportunities; it does not create live automation authority
@@ -72,6 +77,9 @@ Do not use this skill when:
 - handoffs to `aoa-session-self-diagnose`, `aoa-session-self-repair`, or
   `aoa-quest-harvest` must stay explicit rather than being smuggled in as
   silent policy
+- candidate receipts stay subordinate to the packet and never grant live
+  schedule, mutation, or approval authority
+- receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
 - treating one exciting session as proof of repeatability
@@ -80,6 +88,7 @@ Do not use this skill when:
 - using automation desire to bypass approval, rollback, or post-change health checks
 - writing authored meaning first into derived routing or KAG surfaces
 - inventing fake confidence about gains while hiding costs or risks
+- reading an automation-candidate receipt as if it were a scheduler verdict
 
 ## Verification
 - confirm each candidate names the current manual route
@@ -89,6 +98,7 @@ Do not use this skill when:
 - confirm a first owner layer and next artifact are named
 - confirm the nearest wrong target is rejected when classification pressure exists
 - confirm checkpoint posture appears for self-changing or approval-heavy routes
+- confirm any emitted receipt stays detector-shaped, evidence-linked, and non-authoritative
 
 ## Technique traceability
 Manifest-backed techniques:

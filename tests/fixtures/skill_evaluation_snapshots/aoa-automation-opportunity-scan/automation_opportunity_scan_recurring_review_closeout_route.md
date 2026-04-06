@@ -17,8 +17,9 @@ any checkpoint posture is needed.
 
 ## Expected object
 
-An automation opportunity packet that names the current manual route, the
-readiness verdict, and the likely first owner layer.
+An automation opportunity packet plus one automation-candidate receipt that
+names the current manual route, the readiness verdict, and the likely first
+owner layer.
 
 ## Boundary notes
 
@@ -29,4 +30,5 @@ mutation authority.
 ## Verification hooks
 
 The response should name the current manual route, justify the repeat signal,
-state `seed_ready` or `not_now`, and keep schedule hints advisory only.
+state `seed_ready` or `not_now`, keep schedule hints advisory only, and keep
+any finish receipt detector-shaped rather than scheduler-shaped.

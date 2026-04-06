@@ -22,6 +22,7 @@ one bounded `PROGRESSION_DELTA`.
 - [ ] Quest or RPG language stays reflective rather than sovereign.
 - [ ] No authority rights or status jumps were granted without evidence.
 - [ ] Negative or zero movement remained available where honest.
+- [ ] Any `PROGRESSION_DELTA_RECEIPT` stayed multi-axis, evidence-linked, and non-sovereign.
 
 ## Not a fit
 

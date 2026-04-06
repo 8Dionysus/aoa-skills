@@ -16,8 +16,8 @@ another diagnosis or a playbook-scale rollout.
 
 ## Expected object
 
-A repair packet with checkpoint posture, rollback thinking, and explicit owner
-targets.
+A repair packet plus one bounded repair-cycle receipt with checkpoint posture,
+rollback thinking, and explicit owner targets.
 
 ## Boundary notes
 
@@ -27,4 +27,5 @@ let it turn into silent self-mutation or an approval bypass.
 ## Verification hooks
 
 The response should name rollback and health-check posture, keep the repair
-small, and show what escalation path exists if the repair widens.
+small, show what escalation path exists if the repair widens, and keep any
+finish receipt diagnosis-linked instead of verification-theater.

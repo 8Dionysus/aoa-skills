@@ -16,8 +16,8 @@ authored.
 
 ## Expected object
 
-A diagnosis packet that separates symptoms from probable causes and names
-likely owner hints.
+A diagnosis packet plus one bounded skill-run receipt that separates symptoms
+from probable causes and names likely owner hints.
 
 ## Boundary notes
 
@@ -27,5 +27,6 @@ certainty.
 
 ## Verification hooks
 
-The response should cite evidence, distinguish symptoms from causes, and keep
-unknowns visible where the evidence is still weak.
+The response should cite evidence, distinguish symptoms from causes, keep
+unknowns visible where the evidence is still weak, and keep any finish receipt
+descriptive rather than blame-shaped.

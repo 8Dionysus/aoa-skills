@@ -16,7 +16,8 @@ authority.
 
 ## Expected object
 
-A bounded progression delta with multi-axis movement and explicit verdicts.
+A bounded progression delta plus one progression-delta receipt with multi-axis
+movement and explicit verdicts.
 
 ## Boundary notes
 
@@ -26,5 +27,6 @@ routing policy.
 
 ## Verification hooks
 
-The response should cite evidence, keep movement qualitative, and allow hold,
-reanchor, or downgrade instead of forcing positive inflation.
+The response should cite evidence, keep movement qualitative, allow hold,
+reanchor, or downgrade instead of forcing positive inflation, and keep any
+finish receipt non-sovereign.

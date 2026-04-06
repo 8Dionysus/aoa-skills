@@ -50,6 +50,8 @@ Do not use this skill when:
 - optional automation and non-automation branches side by side when that choice
   is real
 - optional quest hooks or campaign hints without runtime authority
+- one `DECISION_FORK_RECEIPT` using `references/stats-event-envelope.md` and
+  `references/decision-fork-receipt-schema.yaml`
 
 ## Procedure
 1. start from reviewed evidence rather than free speculation
@@ -60,6 +62,8 @@ Do not use this skill when:
 6. allow automation and non-automation branches to appear side by side when the reviewed evidence supports a real choice between them
 7. preserve a hold or reanchor path where uncertainty or risk remains meaningful
 8. emit quest-board-readable language only as adjunct reflection
+9. emit one `DECISION_FORK_RECEIPT` when the fork set closes, keeping the
+   receipt smaller than the branch cards themselves
 
 ## Contracts
 - branch cards do not become routing authority
@@ -68,6 +72,8 @@ Do not use this skill when:
 - stop conditions are first-class, not footnotes
 - a fork card may recommend but must not hide alternatives
 - automation-shaped branches must not be read as schedule authority
+- `DECISION_FORK_RECEIPT` is descriptive branch telemetry, not routing policy
+- receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
 - fake certainty about future routes
@@ -76,6 +82,7 @@ Do not use this skill when:
 - confusing playbook outline with branch analysis
 - confusing an automation seed candidate with a live scheduler or background job
 - treating quest-board cards as runtime state
+- treating branch receipts as if they already chose the route
 
 ## Verification
 - confirm each branch differs materially
@@ -83,6 +90,7 @@ Do not use this skill when:
 - confirm at least one cost or risk is explicit
 - confirm stop conditions exist for risky branches
 - confirm hold or defer remains possible when uncertainty is real
+- confirm any emitted receipt stays evidence-linked and subordinate to the fork cards
 
 ## Technique traceability
 Manifest-backed techniques:
