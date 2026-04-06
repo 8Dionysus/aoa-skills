@@ -47,6 +47,18 @@
     {
       "composition_class": "multi_technique",
       "exception_review_path": null,
+      "name": "aoa-automation-opportunity-scan",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 3,
+      "technique_ids": [
+        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
+        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
+        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
       "name": "aoa-bounded-context-map",
       "recommended_action": "keep_multi_technique",
       "technique_count": 2,
@@ -286,9 +298,9 @@
   },
   "summary": {
     "approved_exception_count": 2,
-    "multi_technique_skill_count": 23,
+    "multi_technique_skill_count": 24,
     "needs_reframe_count": 0,
     "single_technique_skill_count": 2,
-    "total_skill_count": 25
+    "total_skill_count": 26
   }
 }

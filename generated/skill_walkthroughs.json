@@ -237,6 +237,59 @@
     },
     {
       "do_not_use_when": [
+        "the work happened only once and still looks exploratory",
+        "the route is primarily creative synthesis with no stable trigger or output",
+        "the task is asking for live scheduling or hidden background execution authority",
+        "the route would mutate important system surfaces without checkpoint posture",
+        "the work still needs basic donor harvest or source-of-truth clarification first"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-only",
+      "name": "aoa-automation-opportunity-scan",
+      "object_use_shape": [
+        "AUTOMATIONOPPORTUNITYPACKET",
+        "one or more AUTOMATIONCANDIDATE cards",
+        "seedready or notnow verdict for each candidate",
+        "checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries",
+        "next-artifact suggestion such as skill, playbookseed, techniquecandidate, repairquest, quest, or defer"
+      ],
+      "pick_summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
+      "scope": "core",
+      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-automation-opportunity-scan/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-automation-opportunity-scan/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "use_when": [
+        "a reviewed session or repeated project slice reveals a recurring manual route",
+        "the same audit, report, hygiene pass, or triage loop keeps coming back",
+        "a session-harvest packet includes an automationcandidate",
+        "an operator wants to know whether a recurring route should stay manual, become a bounded skill, or become a playbook automation seed",
+        "repeated friction suggests a good automation opportunity but authority and risk still need classification"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the change is tiny and fully local",
         "the boundary is already clear and agreed on, and the real task is validating the interface contract; use aoa-contract-test",
         "the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first"
@@ -750,6 +803,7 @@
         "the task is to invent net-new doctrine rather than classify a repeated pattern",
         "the route is already clearly scenario-shaped and only needs playbook authoring",
         "the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use aoa-session-donor-harvest",
+        "the source still needs explicit automation-readiness classification for a repeated manual route; use aoa-automation-opportunity-scan",
         "the source still needs explicit route forks, diagnosis, repair, or progression reflection from the wider session-harvest family before final promotion triage"
       ],
       "expand_sections": [
@@ -949,7 +1003,8 @@
         "one rejected nearest-wrong target",
         "evidence anchors from the session artifact",
         "one short list of items to defer, drop, or keep as quest residue",
-        "one optional handoff list to aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-session-progression-lift, or aoa-quest-harvest"
+        "one optional automationcandidate extract when a repeated manual route is stable enough to deserve explicit automation-readiness classification",
+        "one optional handoff list to aoa-automation-opportunity-scan, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-session-progression-lift, or aoa-quest-harvest"
       ],
       "pick_summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "scope": "core",
@@ -971,6 +1026,7 @@
         "a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units",
         "the work is post-session and reviewable rather than live execution",
         "candidate outputs may belong in technique canon, aoa-skills, aoa-playbooks, aoa-evals, aoa-memo, aoa-agents, or a hold/quest lane",
+        "a repeated manual route may also need an explicit automation-readiness seam instead of staying vague donor residue",
         "the session may also have produced decision forks, diagnosis clues, repair candidates, progression evidence, or quest residue that should be made explicit rather than buried in recap prose",
         "the question is not merely \"what happened?\" but \"what reusable object, if any, emerged here?\""
       ]
@@ -998,6 +1054,7 @@
       "name": "aoa-session-progression-lift",
       "object_use_shape": [
         "PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints",
+        "optional automation-readiness hint when reviewed evidence supports it",
         "optional rank reflection note if evidence is strong enough",
         "quest hooks or chronicle stub when useful",
         "negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance"
@@ -1050,6 +1107,7 @@
         "FORKCARDS with likely gain, cost, risk, owner repo, and stop conditions",
         "one suggested default route if evidence is strong enough",
         "one explicit hold or defer option when honest uncertainty remains",
+        "optional automation and non-automation branches side by side when that choice is real",
         "optional quest hooks or campaign hints without runtime authority"
       ],
       "pick_summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.",
@@ -1072,6 +1130,7 @@
         "a reviewed session ended with multiple plausible next moves",
         "the operator or Codex needs explicit branch choices instead of a buried recommendation",
         "the next route may change owner repo, risk posture, or difficulty posture",
+        "the choice may include staying manual, becoming a bounded skill, becoming a playbook automation seed candidate, or waiting for prerequisite repair",
         "the session needs quest-board legibility without pretending to be runtime state"
       ]
     },
@@ -1100,6 +1159,7 @@
         "DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints",
         "severity or urgency notes when evidence supports them",
         "explicit unknowns when diagnosis remains incomplete",
+        "optional blocked-automation findings such as unstable inputs, hidden approval, rollback gaps, or secret coupling",
         "optional handoff to aoa-session-self-repair"
       ],
       "pick_summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
@@ -1122,6 +1182,7 @@
         "a reviewed session contains repeated friction, contradiction, or drift",
         "the next honest move is diagnosis before repair",
         "boundary confusion or missing proof may be more important than immediate output production",
+        "blocked automation readiness may need root-cause classification before any automation claim becomes honest",
         "the same class of problem may be appearing across sessions"
       ]
     },
@@ -1149,6 +1210,7 @@
       "object_use_shape": [
         "REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
         "optional repair quest when execution should remain deferred",
+        "optional automation-readiness prerequisite packet when the real need is to stabilize a route before later automation scanning or seeding",
         "explicit stop conditions and escalation points"
       ],
       "pick_summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
@@ -1171,6 +1233,7 @@
         "a reviewed diagnosis already exists",
         "the next honest move is a bounded repair plan or repair-ready packet",
         "the route may change skill, playbook, agent, eval, or memo surfaces and needs explicit checkpoint posture",
+        "the route may need prerequisite repair before later automation becomes honest",
         "repair can still be kept inside one bounded execution unit"
       ]
     },

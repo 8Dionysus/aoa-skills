@@ -7,6 +7,7 @@ A reviewed session artifact contains three potentially reusable outcomes:
 2. one bounded leaf workflow for explicit post-session harvesting by Codex
 3. one broader recurring rollout route that spans skill drafting, review, and later proof updates
 4. one unresolved post-session branch where the next route should stay explicit
+5. one repeated manual review-closeout ritual that may be ripe for automation but still needs explicit readiness classification
 
 ## Why this skill fits
 
@@ -25,6 +26,8 @@ The task is no longer about executing the original work. It is about extracting 
 - one candidate routed to `aoa-techniques` as reusable practice meaning
 - one candidate routed to `aoa-skills` as a bounded executable leaf workflow
 - one candidate routed to `aoa-playbooks` or deferred because it is route-shaped rather than skill-shaped
+- one optional `automation_candidate` extract plus an explicit handoff hint to
+  `aoa-automation-opportunity-scan`
 - one explicit rejected-nearest-wrong-target note for each accepted candidate
 - one explicit handoff hint to `aoa-session-route-forks` because the session
   still has more than one honest next route

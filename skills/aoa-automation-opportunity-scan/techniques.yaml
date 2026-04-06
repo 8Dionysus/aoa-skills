@@ -1,0 +1,39 @@
+skill_name: aoa-automation-opportunity-scan
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-AUTOMATION-FIT-MATRIX
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Risks
+      - Validation
+  - id: AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - When to use
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+  - id: AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Keep runtime SKILL.md self-contained.
+  - Replace pending IDs, path TBD, and source_ref TBD after publish.

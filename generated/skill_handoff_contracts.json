@@ -285,6 +285,78 @@
       }
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "reviewed session artifact, harvest packet, or recurring project slice",
+        "evidence of repeated manual work",
+        "known current manual route",
+        "known triggers, inputs, outputs, or their current ambiguity",
+        "current risk, approval, rollback, and proof posture if known"
+      ],
+      "outputs": [
+        "`AUTOMATION_OPPORTUNITY_PACKET`",
+        "one or more `AUTOMATION_CANDIDATE` cards",
+        "`seed_ready` or `not_now` verdict for each candidate",
+        "`checkpoint_required` flag when the route crosses self-change or approval-sensitive boundaries",
+        "next-artifact suggestion such as `skill`, `playbook_seed`, `technique_candidate`, `repair_quest`, `quest`, or `defer`"
+      ],
+      "verification": [
+        "confirm each candidate names the current manual route",
+        "confirm evidence refs justify the repeat signal",
+        "confirm stable input and output posture is assessed explicitly",
+        "confirm `seed_ready` or `not_now` is explicit for each candidate",
+        "confirm a first owner layer and next artifact are named",
+        "confirm the nearest wrong target is rejected when classification pressure exists",
+        "confirm checkpoint posture appears for self-changing or approval-heavy routes"
+      ],
+      "contracts": [
+        "this skill detects and packages automation opportunities; it does not create live automation authority",
+        "schedule hints remain hints, not runtime truth",
+        "recurring scenario candidates belong in `aoa-playbooks` as seed candidates rather than hidden playbooks inside a skill",
+        "self-changing or approval-heavy candidates must surface checkpoint posture explicitly",
+        "unresolved candidates may become repair quests instead of fake-ready automations",
+        "handoffs to `aoa-session-self-diagnose`, `aoa-session-self-repair`, or"
+      ],
+      "consumes_artifact_tags": [
+        "reviewed-session-artifact-harvest-packet-or-recurring-project-sl",
+        "evidence-of-repeated-manual-work",
+        "known-current-manual-route",
+        "known-triggers-inputs-outputs-or-their-current-ambiguity",
+        "current-risk-approval-rollback-and-proof-posture-if-known"
+      ],
+      "provides_artifact_tags": [
+        "automation-opportunity-packet",
+        "one-or-more-automation-candidate-cards",
+        "seed-ready-or-not-now-verdict-for-each-candidate",
+        "checkpoint-required-flag-when-the-route-crosses-self-change-or-a",
+        "next-artifact-suggestion-such-as-skill-playbook-seed-technique-c"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-automation-opportunity-scan",
+        "produced_artifacts": [
+          "automation-opportunity-packet",
+          "one-or-more-automation-candidate-cards",
+          "seed-ready-or-not-now-verdict-for-each-candidate",
+          "checkpoint-required-flag-when-the-route-crosses-self-change-or-a",
+          "next-artifact-suggestion-such-as-skill-playbook-seed-technique-c"
+        ],
+        "verification_notes": [
+          "confirm each candidate names the current manual route",
+          "confirm evidence refs justify the repeat signal",
+          "confirm stable input and output posture is assessed explicitly"
+        ],
+        "contract_notes": [
+          "this skill detects and packages automation opportunities; it does not create live automation authority",
+          "schedule hints remain hints, not runtime truth",
+          "recurring scenario candidates belong in `aoa-playbooks` as seed candidates rather than hidden playbooks inside a skill"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
@@ -1091,7 +1163,8 @@
         "one rejected nearest-wrong target",
         "evidence anchors from the session artifact",
         "one short list of items to defer, drop, or keep as quest residue",
-        "one optional handoff list to `aoa-session-route-forks`,"
+        "one optional `automation_candidate` extract when a repeated manual route is",
+        "one optional handoff list to `aoa-automation-opportunity-scan`,"
       ],
       "verification": [
         "confirm the source artifact is reviewed and bounded",
@@ -1101,7 +1174,8 @@
         "confirm no candidate routes source-owned meaning first into derivative layers",
         "confirm hold and defer outcomes remain available",
         "confirm the output names the next artifact rather than only abstract categories",
-        "confirm any family handoff hint is explicit rather than smuggled into the"
+        "confirm any family handoff hint is explicit rather than smuggled into the",
+        "confirm any `automation_candidate` names the current manual route and still"
       ],
       "contracts": [
         "invocation must remain explicit and post-session",
@@ -1111,6 +1185,7 @@
         "derivative layers do not become first authoring targets for source-owned meaning",
         "weak evidence may end in `hold` or `keep_or_open_quest`",
         "the `HARVEST_PACKET` may carry handoff hints, but it does not become hidden",
+        "`automation_candidate` is only a detector hint; it is not schedule or",
         "drafting a next artifact is allowed; forcing promotion is not"
       ],
       "consumes_artifact_tags": [
@@ -1169,6 +1244,7 @@
       ],
       "outputs": [
         "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
+        "optional automation-readiness hint when reviewed evidence supports it",
         "optional rank reflection note if evidence is strong enough",
         "quest hooks or chronicle stub when useful",
         "negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance"
@@ -1185,7 +1261,8 @@
         "multi-axis only; no authoritative universal score",
         "rank labels are descriptive, not sovereign",
         "unlock hints must stay reviewable and small",
-        "progression does not replace owner-layer truth or routing authority"
+        "progression does not replace owner-layer truth or routing authority",
+        "progression does not greenlight automation by itself"
       ],
       "consumes_artifact_tags": [
         "reviewed-session-artifact-or-harvest-packet",
@@ -1195,6 +1272,7 @@
       ],
       "provides_artifact_tags": [
         "progression-delta-with-axis-movement-verdict-and-optional-unlock",
+        "optional-automation-readiness-hint-when-reviewed-evidence-suppor",
         "optional-rank-reflection-note-if-evidence-is-strong-enough",
         "quest-hooks-or-chronicle-stub-when-useful",
         "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad"
@@ -1203,6 +1281,7 @@
         "from_skill": "aoa-session-progression-lift",
         "produced_artifacts": [
           "progression-delta-with-axis-movement-verdict-and-optional-unlock",
+          "optional-automation-readiness-hint-when-reviewed-evidence-suppor",
           "optional-rank-reflection-note-if-evidence-is-strong-enough",
           "quest-hooks-or-chronicle-stub-when-useful",
           "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad"
@@ -1236,6 +1315,7 @@
         "`FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions",
         "one suggested default route if evidence is strong enough",
         "one explicit hold or defer option when honest uncertainty remains",
+        "optional automation and non-automation branches side by side when that choice",
         "optional quest hooks or campaign hints without runtime authority"
       ],
       "verification": [
@@ -1250,7 +1330,8 @@
         "fork analysis must stay evidence-backed",
         "confidence should be named when weak",
         "stop conditions are first-class, not footnotes",
-        "a fork card may recommend but must not hide alternatives"
+        "a fork card may recommend but must not hide alternatives",
+        "automation-shaped branches must not be read as schedule authority"
       ],
       "consumes_artifact_tags": [
         "reviewed-session-artifact-or-harvest-packet",
@@ -1263,6 +1344,7 @@
         "fork-cards-with-likely-gain-cost-risk-owner-repo-and-stop-condit",
         "one-suggested-default-route-if-evidence-is-strong-enough",
         "one-explicit-hold-or-defer-option-when-honest-uncertainty-remain",
+        "optional-automation-and-non-automation-branches-side-by-side-whe",
         "optional-quest-hooks-or-campaign-hints-without-runtime-authority"
       ],
       "handoff_packet_template": {
@@ -1271,6 +1353,7 @@
           "fork-cards-with-likely-gain-cost-risk-owner-repo-and-stop-condit",
           "one-suggested-default-route-if-evidence-is-strong-enough",
           "one-explicit-hold-or-defer-option-when-honest-uncertainty-remain",
+          "optional-automation-and-non-automation-branches-side-by-side-whe",
           "optional-quest-hooks-or-campaign-hints-without-runtime-authority"
         ],
         "verification_notes": [
@@ -1301,6 +1384,7 @@
         "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints",
         "severity or urgency notes when evidence supports them",
         "explicit unknowns when diagnosis remains incomplete",
+        "optional blocked-automation findings such as unstable inputs, hidden approval,",
         "optional handoff to `aoa-session-self-repair`"
       ],
       "verification": [
@@ -1315,7 +1399,8 @@
         "one odd anecdote is not enough for structural certainty",
         "probable cause must remain probabilistic when evidence is thin",
         "owner hints must not override owner-layer law",
-        "no hidden mutation or silent patching"
+        "no hidden mutation or silent patching",
+        "diagnosis does not grant automation readiness by itself"
       ],
       "consumes_artifact_tags": [
         "reviewed-session-artifact-or-harvest-packet",
@@ -1327,6 +1412,7 @@
         "diagnosis-packet-with-drift-types-symptoms-probable-causes-repai",
         "severity-or-urgency-notes-when-evidence-supports-them",
         "explicit-unknowns-when-diagnosis-remains-incomplete",
+        "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
         "optional-handoff-to-aoa-session-self-repair"
       ],
       "handoff_packet_template": {
@@ -1335,6 +1421,7 @@
           "diagnosis-packet-with-drift-types-symptoms-probable-causes-repai",
           "severity-or-urgency-notes-when-evidence-supports-them",
           "explicit-unknowns-when-diagnosis-remains-incomplete",
+          "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
           "optional-handoff-to-aoa-session-self-repair"
         ],
         "verification_notes": [
@@ -1365,6 +1452,7 @@
       "outputs": [
         "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
         "optional repair quest when execution should remain deferred",
+        "optional automation-readiness prerequisite packet when the real need is to",
         "explicit stop conditions and escalation points"
       ],
       "verification": [
@@ -1380,7 +1468,8 @@
         "repair packets stay bounded and reviewable",
         "role law changes route to `aoa-agents`",
         "proof-law changes route to `aoa-evals`",
-        "scenario-scale repair routes to `aoa-playbooks`"
+        "scenario-scale repair routes to `aoa-playbooks`",
+        "repair does not smuggle live automation authority into the packet"
       ],
       "consumes_artifact_tags": [
         "reviewed-diagnosis-packet",
@@ -1392,6 +1481,7 @@
       "provides_artifact_tags": [
         "repair-packet-with-target-owner-repo-smallest-diff-shape-approva",
         "optional-repair-quest-when-execution-should-remain-deferred",
+        "optional-automation-readiness-prerequisite-packet-when-the-real-",
         "explicit-stop-conditions-and-escalation-points"
       ],
       "handoff_packet_template": {
@@ -1399,6 +1489,7 @@
         "produced_artifacts": [
           "repair-packet-with-target-owner-repo-smallest-diff-shape-approva",
           "optional-repair-quest-when-execution-should-remain-deferred",
+          "optional-automation-readiness-prerequisite-packet-when-the-real-",
           "explicit-stop-conditions-and-escalation-points"
         ],
         "verification_notes": [

@@ -1,6 +1,7 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [
+      "aoa-automation-opportunity-scan",
       "aoa-quest-harvest"
     ],
     "candidate_ready": [
@@ -122,6 +123,28 @@
       "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
       "status": "canonical",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-automation-opportunity-scan",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold",
+      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",

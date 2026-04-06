@@ -114,6 +114,40 @@
       "notes": "Explicit-only because it classifies authority boundaries before risky work."
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "short_description": "Classify automation-ready routes",
+      "path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-automation-opportunity-scan to turn reviewed recurring work into an automation opportunity packet with a seed-ready or not-now verdict, checkpoint posture, and the most honest next artifact.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/automation-fit-matrix.md",
+          "references/automation-opportunity-packet-schema.yaml",
+          "references/checkpoint-boundary.md",
+          "references/playbook-seed-bridge.md",
+          "references/session-harvest-integration.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-automation-opportunity-scan",
+      "notes": "Explicit-only detector skill for classifying whether reviewed recurring work is honestly automation-ready without granting schedule, hidden runtime, or self-mutation authority."
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",

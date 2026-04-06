@@ -154,6 +154,49 @@
       }
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "short_description": "Classify automation-ready routes",
+      "path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "source_skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "technique_dependencies": [
+        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
+        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
+        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+      ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/automation-fit-matrix.md",
+          "references/automation-opportunity-packet-schema.yaml",
+          "references/checkpoint-boundary.md",
+          "references/playbook-seed-bridge.md",
+          "references/session-harvest-integration.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",

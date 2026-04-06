@@ -138,6 +138,38 @@
       }
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "source_scope": "repo",
+      "instruction_sha256": "fd7c38c33a4cb973df5b64d790a93c233652e084eb44123ea23cd26cf4f8f944",
+      "dedupe_key": "aoa-automation-opportunity-scan:fd7c38c33a4cb973df5b64d790a93c233652e084eb44123ea23cd26cf4f8f944",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Classify automation-ready routes",
+      "must_keep": [
+        "reviewed session artifact, harvest packet, or recurring project slice",
+        "evidence of repeated manual work",
+        "`AUTOMATION_OPPORTUNITY_PACKET`",
+        "one or more `AUTOMATION_CANDIDATE` cards"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.\n\nKeep in memory: reviewed session artifact, harvest packet, or recurring project slice, evidence of repeated manual work, `AUTOMATION_OPPORTUNITY_PACKET`, one or more `AUTOMATION_CANDIDATE` cards.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-automation-opportunity-scan",
+          "explicit_handle": "$aoa-automation-opportunity-scan",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "source_scope": "repo",
@@ -429,8 +461,8 @@
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
       "source_scope": "repo",
-      "instruction_sha256": "01ecbca1a0c46f9e58f809065abacf76f0a5d6b291a209ca55ead6de76ce3e74",
-      "dedupe_key": "aoa-quest-harvest:01ecbca1a0c46f9e58f809065abacf76f0a5d6b291a209ca55ead6de76ce3e74",
+      "instruction_sha256": "3379661e4e179c764c150a33301a7055c018899004cb42dfd8b58baacbe03f90",
+      "dedupe_key": "aoa-quest-harvest:3379661e4e179c764c150a33301a7055c018899004cb42dfd8b58baacbe03f90",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -525,8 +557,8 @@
       "name": "aoa-session-donor-harvest",
       "display_name": "AoA Session Donor Harvest",
       "source_scope": "repo",
-      "instruction_sha256": "1a6b8e6b6b0450a3b0f9fe48eb2f41417d488a025edf44f50f200431b17e9b25",
-      "dedupe_key": "aoa-session-donor-harvest:1a6b8e6b6b0450a3b0f9fe48eb2f41417d488a025edf44f50f200431b17e9b25",
+      "instruction_sha256": "c7bb0bf14536dc8257c7373a0c2884dece035427af7727d40d2f44ba8b4d6093",
+      "dedupe_key": "aoa-session-donor-harvest:c7bb0bf14536dc8257c7373a0c2884dece035427af7727d40d2f44ba8b4d6093",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -557,8 +589,8 @@
       "name": "aoa-session-progression-lift",
       "display_name": "AoA Session Progression Lift",
       "source_scope": "repo",
-      "instruction_sha256": "a6506a2bb2a571e2206795a89b7c69969763124c79aae8af7252220bb4744a4d",
-      "dedupe_key": "aoa-session-progression-lift:a6506a2bb2a571e2206795a89b7c69969763124c79aae8af7252220bb4744a4d",
+      "instruction_sha256": "cd81b9431a54cc7efe5b6f7657d2b6e4c2ab6622d2432cd453aed31195f4d956",
+      "dedupe_key": "aoa-session-progression-lift:cd81b9431a54cc7efe5b6f7657d2b6e4c2ab6622d2432cd453aed31195f4d956",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -567,7 +599,7 @@
         "reviewed session artifact or harvest packet",
         "named evidence refs",
         "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
-        "optional rank reflection note if evidence is strong enough"
+        "optional automation-readiness hint when reviewed evidence supports it"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -575,7 +607,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, optional rank reflection note if evidence is strong enough.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, optional automation-readiness hint when reviewed evidence supports it.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -589,8 +621,8 @@
       "name": "aoa-session-route-forks",
       "display_name": "AoA Session Route Forks",
       "source_scope": "repo",
-      "instruction_sha256": "f332bdc8ea00be18a4d7e65a808466eefa1bc6578785ddb7b679d293faf1eb85",
-      "dedupe_key": "aoa-session-route-forks:f332bdc8ea00be18a4d7e65a808466eefa1bc6578785ddb7b679d293faf1eb85",
+      "instruction_sha256": "7f45ad43e89198a82e9e737ede0a51c0eccd9d4cffb66285aa7d753006746e79",
+      "dedupe_key": "aoa-session-route-forks:7f45ad43e89198a82e9e737ede0a51c0eccd9d4cffb66285aa7d753006746e79",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -621,8 +653,8 @@
       "name": "aoa-session-self-diagnose",
       "display_name": "AoA Session Self Diagnose",
       "source_scope": "repo",
-      "instruction_sha256": "cae7e68eb4263d37d5c05222949ebecefedb35bba683cff552697c4e51baa36e",
-      "dedupe_key": "aoa-session-self-diagnose:cae7e68eb4263d37d5c05222949ebecefedb35bba683cff552697c4e51baa36e",
+      "instruction_sha256": "5e19518b0e0edbb7c8cf5c30af28fce51f9141b5cc8569d144e4f22f1872903b",
+      "dedupe_key": "aoa-session-self-diagnose:5e19518b0e0edbb7c8cf5c30af28fce51f9141b5cc8569d144e4f22f1872903b",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -653,8 +685,8 @@
       "name": "aoa-session-self-repair",
       "display_name": "AoA Session Self Repair",
       "source_scope": "repo",
-      "instruction_sha256": "eb963d8862503868e69fae617b9cad2b20fbe7784177dbcda9cd5c1f771c70a5",
-      "dedupe_key": "aoa-session-self-repair:eb963d8862503868e69fae617b9cad2b20fbe7784177dbcda9cd5c1f771c70a5",
+      "instruction_sha256": "99d9b63fbb24f90af2cc524e38b4630aa3d68677b09090e1615a588cc8290275",
+      "dedupe_key": "aoa-session-self-repair:99d9b63fbb24f90af2cc524e38b4630aa3d68677b09090e1615a588cc8290275",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",

@@ -413,6 +413,121 @@
       "disclose_card_markdown": "### aoa-approval-gate-check\n- Summary: Classify approval boundaries\n- Use when: Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.\n- Trust posture: explicit-risk\n- Mutation surface: none\n"
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "short_description": "Classify automation-ready routes",
+      "path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-automation-opportunity-scan",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-AUTOMATION-FIT-MATRIX,AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT,AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to detect where repeated project work is ripe for automation and to package that finding into a bounded `AUTOMATION_OPPORTUNITY_PACKET`. The goal is not to automate by reflex. The goal is to notice when a process has become repetitive, stable, legible, and evide...",
+        "Trigger boundary": "a reviewed session or repeated project slice reveals a recurring manual route; the same audit, report, hygiene pass, or triage loop keeps coming back",
+        "Inputs": "reviewed session artifact, harvest packet, or recurring project slice; evidence of repeated manual work",
+        "Outputs": "`AUTOMATION_OPPORTUNITY_PACKET`; one or more `AUTOMATION_CANDIDATE` cards",
+        "Procedure": "start from reviewed evidence, not from vague enthusiasm; isolate the current manual route as actually practiced",
+        "Contracts": "this skill detects and packages automation opportunities; it does not create live automation authority; schedule hints remain hints, not runtime truth",
+        "Risks and anti-patterns": "treating one exciting session as proof of repeatability; automating unstable, under-specified, or secret-heavy work too early",
+        "Verification": "confirm each candidate names the current manual route; confirm evidence refs justify the repeat signal",
+        "Technique traceability": "AOA-T-PENDING-AUTOMATION-FIT-MATRIX from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`",
+        "Adaptation points": "project overlays may add local execution modes, trigger classes, or schedule vocabularies; project overlays may add local approval classes or environment-risk labels"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/automation-fit-matrix.md",
+          "references/automation-opportunity-packet-schema.yaml",
+          "references/checkpoint-boundary.md",
+          "references/playbook-seed-bridge.md",
+          "references/session-harvest-integration.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Automation Opportunity Scan",
+        "short_description": "Classify automation-ready routes",
+        "default_prompt": "Use $aoa-automation-opportunity-scan to turn reviewed recurring work into an automation opportunity packet with a seed-ready or not-now verdict, checkpoint posture, and the most honest next artifact.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-automation-opportunity-scan",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-automation-opportunity-scan",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-automation-opportunity-scan",
+      "collision_family": "session-harvest-family",
+      "collision_notes": [
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+      ],
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-automation-opportunity-scan to classify whether a recurring reviewed project route should stay manual, become a bounded skill, or become a playbook automation seed."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Classify whether a recurring reviewed project route is automation-ready, checkpoint-required, or not ready yet without granting scheduler authority, hidden background execution, or silent self-change. Use when the same audit, hygiene pass, report loop, or repair ritual keeps returning and the real question is whether it should remain manual or lift into a bounded automation seed.",
+          "This reviewed workflow keeps recurring across sessions with the same inputs, the same approval seam, and the same expected output. Classify whether it should stay manual, become a bounded skill, or become a playbook automation seed with checkpoint requirements called out explicitly."
+        ],
+        "negative": [
+          "This only happened once, still looks exploratory, and there is no stable trigger, checkpoint boundary, or repeatable output contract yet, so calling it automation-ready would be premature."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-automation-opportunity-scan",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-automation-opportunity-scan",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-automation-opportunity-scan"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-automation-opportunity-scan\n- Summary: Classify automation-ready routes\n- Use when: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
@@ -1423,6 +1538,7 @@
       "collision_family": "session-harvest-family",
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
         "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
@@ -1749,6 +1865,7 @@
       "collision_family": "session-harvest-family",
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
         "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
@@ -1756,6 +1873,7 @@
         "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
       ],
       "competing_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-progression-lift",
@@ -1824,7 +1942,7 @@
         "Intent": "Use this skill to author a `PROGRESSION_DELTA` from reviewed evidence. This is not score inflation. It is an evidence-backed overlay that says what mastery axes moved, what should hold or reanchor, and what small unlock hints are now safer.",
         "Trigger boundary": "a reviewed session generated meaningful mastery evidence; the route needs progression legibility without mutating source role profiles",
         "Inputs": "reviewed session artifact or harvest packet; named evidence refs",
-        "Outputs": "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints; optional rank reflection note if evidence is strong enough",
+        "Outputs": "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints; optional automation-readiness hint when reviewed evidence supports it",
         "Procedure": "collect reviewed evidence refs; assess movement qualitatively across `boundary_integrity`,",
         "Contracts": "progression remains evidence-backed; multi-axis only; no authoritative universal score",
         "Risks and anti-patterns": "inventing progress from mood; using progression as policy",
@@ -1859,6 +1977,7 @@
       "collision_family": "session-harvest-family",
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
         "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
@@ -1966,6 +2085,7 @@
       "collision_family": "session-harvest-family",
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
         "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
@@ -1974,6 +2094,7 @@
       ],
       "competing_skills": [
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-self-diagnose",
         "aoa-quest-harvest"
       ],
@@ -2073,6 +2194,7 @@
       "collision_family": "session-harvest-family",
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
         "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
@@ -2081,6 +2203,7 @@
       ],
       "competing_skills": [
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-self-repair",
         "aoa-session-progression-lift"
       ],
@@ -2182,6 +2305,7 @@
       "collision_family": "session-harvest-family",
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
         "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
@@ -2191,7 +2315,8 @@
       "competing_skills": [
         "aoa-session-self-diagnose",
         "aoa-session-donor-harvest",
-        "aoa-session-route-forks"
+        "aoa-session-route-forks",
+        "aoa-automation-opportunity-scan"
       ],
       "sample_prompts": {
         "explicit": [

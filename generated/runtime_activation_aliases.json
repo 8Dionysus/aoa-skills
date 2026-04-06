@@ -51,6 +51,18 @@
       }
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "codex_mention": "$aoa-automation-opportunity-scan",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-automation-opportunity-scan",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-automation-opportunity-scan"
+        }
+      }
+    },
+    {
       "name": "aoa-bounded-context-map",
       "codex_mention": "$aoa-bounded-context-map",
       "codex_browser": "/skills",

@@ -174,6 +174,64 @@
     },
     {
       "composition_mode": "bounded",
+      "invocation_mode": "explicit-only",
+      "name": "aoa-automation-opportunity-scan",
+      "scope": "core",
+      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold",
+      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
+        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
+        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
       "invocation_mode": "explicit-preferred",
       "name": "aoa-bounded-context-map",
       "scope": "core",

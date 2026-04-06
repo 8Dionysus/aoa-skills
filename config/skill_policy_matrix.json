@@ -130,6 +130,16 @@
       "requires_confirmation_seam": false,
       "notes": "Explicit-only nucleus skill for turning a reviewed session into a bounded HARVEST_PACKET, routing reusable outputs to the right owner layer, and handing off to later post-session family seams when needed."
     },
+    "aoa-automation-opportunity-scan": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Explicit-only detector skill for classifying whether reviewed recurring work is honestly automation-ready without granting schedule, hidden runtime, or self-mutation authority."
+    },
     "aoa-session-route-forks": {
       "trust_posture": "portable-core",
       "mutation_surface": "none",

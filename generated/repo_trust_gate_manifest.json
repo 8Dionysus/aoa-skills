@@ -106,6 +106,27 @@
       "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "source_scope": "repo",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",

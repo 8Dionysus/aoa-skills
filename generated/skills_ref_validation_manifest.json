@@ -55,6 +55,16 @@
       "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c"
     },
     {
+      "skill_name": "aoa-automation-opportunity-scan",
+      "path": ".agents/skills/aoa-automation-opportunity-scan",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-automation-opportunity-scan"
+      ],
+      "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7"
+    },
+    {
       "skill_name": "aoa-bounded-context-map",
       "path": ".agents/skills/aoa-bounded-context-map",
       "command": [

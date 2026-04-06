@@ -182,6 +182,55 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-automation-opportunity-scan",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan",
+          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/references",
+          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-automation-opportunity-scan",
+          "$HOME/.agents/skills/aoa-automation-opportunity-scan/scripts",
+          "$HOME/.agents/skills/aoa-automation-opportunity-scan/references",
+          "$HOME/.agents/skills/aoa-automation-opportunity-scan/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-automation-opportunity-scan",
+          "/etc/codex/skills/aoa-automation-opportunity-scan/scripts",
+          "/etc/codex/skills/aoa-automation-opportunity-scan/references",
+          "/etc/codex/skills/aoa-automation-opportunity-scan/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-automation-opportunity-scan",
+        ".agents/skills/aoa-automation-opportunity-scan/scripts",
+        ".agents/skills/aoa-automation-opportunity-scan/references",
+        ".agents/skills/aoa-automation-opportunity-scan/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/automation-fit-matrix.md",
+          "references/automation-opportunity-packet-schema.yaml",
+          "references/checkpoint-boundary.md",
+          "references/playbook-seed-bridge.md",
+          "references/session-harvest-integration.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "source_scope": "repo",

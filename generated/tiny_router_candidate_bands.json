@@ -102,10 +102,14 @@
     },
     {
       "id": "quest-harvest-governance",
-      "summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
         "session donor",
         "donor harvest",
+        "automation opportunity",
+        "automation candidate",
+        "seed ready",
+        "not now",
         "route forks",
         "diagnosis packet",
         "repair packet",
@@ -123,6 +127,7 @@
         "unlock hint"
       ],
       "skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -131,6 +136,7 @@
         "aoa-session-self-repair"
       ],
       "manual_only_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",

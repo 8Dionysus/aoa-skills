@@ -19,6 +19,10 @@
       "tools": []
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "tools": []
+    },
+    {
       "name": "aoa-bounded-context-map",
       "tools": []
     },
