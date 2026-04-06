@@ -49,6 +49,13 @@ This kernel is authored under `repo-project-core-kernel`. The older
 `repo-session-harvest-family` profile remains as a backward-compatible
 operational alias for the same seven-skill surface.
 
+The kernel is repo-wide hard-gated:
+
+- each kernel skill must keep its detail receipt schema
+- each kernel skill must keep the shared core receipt schema
+- the portable export must carry both refs
+- the per-skill gate truth lives in `generated/project_core_kernel_governance.min.json`
+
 ## Notes
 
 - `scaffold` means the skill shape exists, but it should still evolve through technique linkage, examples, and project overlays.

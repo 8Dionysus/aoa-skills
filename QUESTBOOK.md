@@ -45,6 +45,16 @@ alias, while narrower profiles remain available for the donor-harvest nucleus,
 the automation scan seam, and the quest-harvest leaf. Skill meaning stays
 source-owned in `aoa-skills`.
 
+Kernel governance posture:
+
+- the kernel is repo-wide hard-gated, not just installable
+- every kernel skill must keep one detail receipt schema plus the shared
+  `core_skill_application_receipt` schema
+- the portable export must carry both refs for every kernel skill
+- `generated/project_core_kernel_governance.min.json` is the canonical
+  per-skill gate readout
+- release is blocked if any kernel skill drops out of that contract
+
 Family boundaries:
 
 - `aoa-session-donor-harvest` is the nucleus for turning reviewed sessions into

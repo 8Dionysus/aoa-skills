@@ -469,6 +469,69 @@ def build_project_core_kernel_doc(kernel_doc: dict[str, Any]) -> dict[str, Any]:
         "backward_compatible_aliases": kernel_doc.get("backward_compatible_aliases", []),
         "skill_count": len(kernel_doc["skills"]),
         "skills": kernel_doc["skills"],
+        "governance_contract": kernel_doc["governance_contract"],
+        "skill_contracts": kernel_doc["skill_contracts"],
+    }
+
+
+def build_project_core_kernel_governance_doc(
+    *,
+    repo_root: pathlib.Path,
+    kernel_doc: dict[str, Any],
+    export_map: dict[str, Any],
+) -> dict[str, Any]:
+    export_by_name = {entry["name"]: entry for entry in export_map["exports"]}
+    governance_contract = kernel_doc["governance_contract"]
+    skill_contracts = {
+        entry["skill_name"]: entry
+        for entry in kernel_doc["skill_contracts"]
+    }
+    skills: list[dict[str, Any]] = []
+
+    for skill_name in kernel_doc["skills"]:
+        contract = skill_contracts[skill_name]
+        export_entry = export_by_name.get(skill_name, {})
+        source_skill_dir = repo_root / "skills" / skill_name
+        export_skill_dir = repo_root / ".agents" / "skills" / skill_name
+        references = set((export_entry.get("resource_inventory") or {}).get("references", []))
+        blockers: list[str] = []
+
+        detail_ref = contract["detail_receipt_schema_ref"]
+        core_ref = governance_contract["core_receipt_schema_ref"]
+        if not (source_skill_dir / detail_ref).exists():
+            blockers.append("missing_source_detail_receipt_schema")
+        if not (source_skill_dir / core_ref).exists():
+            blockers.append("missing_source_core_receipt_schema")
+        if detail_ref not in references:
+            blockers.append("missing_portable_detail_receipt_schema")
+        if core_ref not in references:
+            blockers.append("missing_portable_core_receipt_schema")
+        if not (export_skill_dir / detail_ref).exists():
+            blockers.append("missing_exported_detail_receipt_schema")
+        if not (export_skill_dir / core_ref).exists():
+            blockers.append("missing_exported_core_receipt_schema")
+
+        skills.append(
+            {
+                "skill_name": skill_name,
+                "detail_event_kind": contract["detail_event_kind"],
+                "detail_receipt_schema_ref": detail_ref,
+                "core_receipt_schema_ref": core_ref,
+                "detail_publisher": governance_contract["detail_publisher"],
+                "core_publisher": governance_contract["core_publisher"],
+                "stats_surface": governance_contract["stats_surface"],
+                "gate_passed": not blockers,
+                "blockers": blockers,
+            }
+        )
+
+    return {
+        "schema_version": 1,
+        "source_config": "config/project_core_skill_kernel.json",
+        "kernel_id": kernel_doc["kernel_id"],
+        "canonical_install_profile": kernel_doc["canonical_install_profile"],
+        "stats_surface": governance_contract["stats_surface"],
+        "skills": skills,
     }
 
 
@@ -747,6 +810,11 @@ def main() -> int:
 
     resolved_profiles = resolve_pack_profiles(profiles_doc, catalog_full)
     project_core_kernel = build_project_core_kernel_doc(kernel_doc)
+    project_core_kernel_governance = build_project_core_kernel_governance_doc(
+        repo_root=repo_root,
+        kernel_doc=kernel_doc,
+        export_map=export_map,
+    )
     config_snippets = build_codex_config_snippets(resolved_profiles)
     local_manifest, local_manifest_min = build_local_adapter_manifests(
         repo_root=repo_root,
@@ -767,6 +835,7 @@ def main() -> int:
         generated_dir / "skill_runtime_contracts.json": json.dumps(runtime_contracts, indent=2) + "\n",
         generated_dir / "skill_pack_profiles.resolved.json": json.dumps(resolved_profiles, indent=2) + "\n",
         generated_dir / "project_core_skill_kernel.min.json": json.dumps(project_core_kernel, indent=2) + "\n",
+        generated_dir / "project_core_kernel_governance.min.json": json.dumps(project_core_kernel_governance, indent=2) + "\n",
         generated_dir / "codex_config_snippets.json": json.dumps(config_snippets, indent=2) + "\n",
         generated_dir / "mcp_dependency_manifest.json": json.dumps(mcp_manifest, indent=2) + "\n",
     }

@@ -1,0 +1,93 @@
+{
+  "title": "aoa-skills project-core kernel governance surface",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_config",
+    "kernel_id",
+    "canonical_install_profile",
+    "stats_surface",
+    "skills"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "source_config": {
+      "type": "string",
+      "const": "config/project_core_skill_kernel.json"
+    },
+    "kernel_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_install_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stats_surface": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "skill_name",
+          "detail_event_kind",
+          "detail_receipt_schema_ref",
+          "core_receipt_schema_ref",
+          "detail_publisher",
+          "core_publisher",
+          "stats_surface",
+          "gate_passed",
+          "blockers"
+        ],
+        "properties": {
+          "skill_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detail_event_kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detail_receipt_schema_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "core_receipt_schema_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detail_publisher": {
+            "type": "string",
+            "minLength": 1
+          },
+          "core_publisher": {
+            "type": "string",
+            "minLength": 1
+          },
+          "stats_surface": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gate_passed": {
+            "type": "boolean"
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
