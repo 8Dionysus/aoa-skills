@@ -265,8 +265,8 @@
       "status": "scaffold",
       "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
       "technique_dependencies": [
-        "AOA-T-PENDING-QUEST-HARVEST",
-        "AOA-T-PENDING-PROMOTION-TRIAGE"
+        "AOA-T-0089",
+        "AOA-T-0090"
       ],
       "trigger_boundary_short": "Use when a bounded work pattern has repeated and now needs an explicit promotion decision; reviewed evidence exists, but the correct destination is still unclear; Avoid when the route is still active and the...",
       "verification_short": "Checks: confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly; confirm the chosen promotion target matches the owner layer; confirm the nearest wrong target is explicitly...",

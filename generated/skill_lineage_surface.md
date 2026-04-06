@@ -6,8 +6,8 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 ## Summary
 
 - total skills: 26
-- published lineage: 25
-- pending lineage: 1
+- published lineage: 26
+- pending lineage: 0
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
@@ -25,7 +25,7 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-local-stack-bringup | evaluated | risk | published | 4 | 0 | 0 | true | - |
 | aoa-port-adapter-refactor | evaluated | core | published | 2 | 0 | 0 | true | - |
 | aoa-property-invariants | canonical | core | published | 2 | 0 | 0 | true | - |
-| aoa-quest-harvest | scaffold | core | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-quest-harvest | scaffold | core | published | 2 | 0 | 0 | true | - |
 | aoa-safe-infra-change | canonical | risk | published | 2 | 0 | 0 | true | - |
 | aoa-sanitized-share | canonical | risk | published | 2 | 0 | 0 | true | - |
 | aoa-session-donor-harvest | scaffold | core | published | 3 | 0 | 0 | true | - |

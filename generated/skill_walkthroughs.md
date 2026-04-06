@@ -565,6 +565,7 @@ Common expand sections:
 - explicit reason for promotion or non-promotion
 - named next artifact or next quest action
 - concise note on what boundary must remain intact
+- one QUESTPROMOTIONRECEIPT using references/stats-event-envelope.md and references/quest-promotion-receipt-schema.yaml
 
 ### Support artifacts
 

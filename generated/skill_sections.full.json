@@ -833,17 +833,17 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- promotion verdict\n- owner repo and follow-up surface\n- explicit reason for promotion or non-promotion\n- named next artifact or next quest action\n- concise note on what boundary must remain intact",
+          "content_markdown": "- promotion verdict\n- owner repo and follow-up surface\n- explicit reason for promotion or non-promotion\n- named next artifact or next quest action\n- concise note on what boundary must remain intact\n- one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md`\n  and `references/quest-promotion-receipt-schema.yaml`",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. collect a bounded reviewed harvest pack rather than raw runtime state\n2. name what actually repeated: leaf workflow, route, proof pattern, recall pattern, or boundary law\n3. reject theme-only repetition; only repeatable work or repeatable law counts\n4. if the repeated unit is a bounded leaf workflow, consider promotion to a skill\n5. if the repeated unit is a multi-step scenario route, consider promotion to a playbook\n6. if the repeated unit is orchestrator boundary law, read order, or allowed outputs, promote toward orchestrator class surfaces in `aoa-agents`\n7. if the repeated unit is proof posture, promote toward `aoa-evals`\n8. if the repeated unit is recall, writeback, or recurrence posture, promote toward `aoa-memo`\n9. if repetition is still weak, owner is unclear, or boundary risk is high, keep or open a quest instead of forcing promotion\n10. record the verdict with one clear reason for promotion and one clear reason against the nearest wrong target",
+          "content_markdown": "1. collect a bounded reviewed harvest pack rather than raw runtime state\n2. name what actually repeated: leaf workflow, route, proof pattern, recall pattern, or boundary law\n3. reject theme-only repetition; only repeatable work or repeatable law counts\n4. if the repeated unit is a bounded leaf workflow, consider promotion to a skill\n5. if the repeated unit is a multi-step scenario route, consider promotion to a playbook\n6. if the repeated unit is orchestrator boundary law, read order, or allowed outputs, promote toward orchestrator class surfaces in `aoa-agents`\n7. if the repeated unit is proof posture, promote toward `aoa-evals`\n8. if the repeated unit is recall, writeback, or recurrence posture, promote toward `aoa-memo`\n9. if repetition is still weak, owner is unclear, or boundary risk is high, keep or open a quest instead of forcing promotion\n10. record the verdict with one clear reason for promotion and one clear reason against the nearest wrong target\n11. emit one `QUEST_PROMOTION_RECEIPT` when the triage closes, keeping the\n    receipt smaller than the promotion packet itself",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- invocation must remain explicit and post-session\n- orchestrator class identity must not be promoted into a skill\n- a skill promotion must stay leaf-workflow-shaped\n- a playbook promotion must stay route-shaped\n- proof and memory promotions must stay in their owner layers\n- one good run is not enough to justify promotion by itself\n- active quest state must not be copied into memo canon as if it were settled truth",
+          "content_markdown": "- invocation must remain explicit and post-session\n- orchestrator class identity must not be promoted into a skill\n- a skill promotion must stay leaf-workflow-shaped\n- a playbook promotion must stay route-shaped\n- proof and memory promotions must stay in their owner layers\n- one good run is not enough to justify promotion by itself\n- active quest state must not be copied into memo canon as if it were settled truth\n- `QUEST_PROMOTION_RECEIPT` is verdict telemetry, not promotion authority\n- receipt corrections use `supersedes` rather than silent overwrite",
           "heading": "Contracts",
           "key": "contracts"
         },
@@ -853,12 +853,12 @@
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the harvest pack is reviewed and bounded\n- confirm the repeated unit is named explicitly\n- confirm the chosen promotion target matches the owner layer\n- confirm the nearest wrong target is explicitly rejected\n- confirm class identity is not being defined by quest metadata\n- confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface",
+          "content_markdown": "- confirm the harvest pack is reviewed and bounded\n- confirm the repeated unit is named explicitly\n- confirm the chosen promotion target matches the owner layer\n- confirm the nearest wrong target is explicitly rejected\n- confirm class identity is not being defined by quest metadata\n- confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface\n- confirm any emitted receipt stays evidence-linked and subordinate to the closed triage",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Pending manifest-backed techniques:\n- AOA-T-PENDING-QUEST-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-PROMOTION-TRIAGE from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Outputs, Core procedure, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0089 from `8Dionysus/aoa-techniques` at `5cb9d446a73a109f7bf16997831750a9df7114d7` using path `techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0090 from `8Dionysus/aoa-techniques` at `5cb9d446a73a109f7bf16997831750a9df7114d7` using path `techniques/agent-workflows/nearest-wrong-target-rejection/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },

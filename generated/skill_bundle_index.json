@@ -1241,7 +1241,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "e6d8bc9dee38573445850fc201fc9ef5dfc206ff11a5fa449d470d1c98031bdb",
+      "content_hash": "42ab09cd021585e6281acd02c511619fb49ba5788f935d031995a0c0e2991b96",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1265,12 +1265,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-quest-harvest",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "e6d8bc9dee38",
+      "skill_revision": "42ab09cd0215",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -1285,23 +1285,23 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-QUEST-HARVEST",
-        "AOA-T-PENDING-PROMOTION-TRIAGE"
+        "AOA-T-0089",
+        "AOA-T-0090"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-QUEST-HARVEST",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0089",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "5cb9d446a73a109f7bf16997831750a9df7114d7"
         },
         {
-          "id": "AOA-T-PENDING-PROMOTION-TRIAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0090",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/nearest-wrong-target-rejection/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "5cb9d446a73a109f7bf16997831750a9df7114d7"
         }
       ]
     },

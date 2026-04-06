@@ -9,7 +9,7 @@ metadata:
   aoa_invocation_mode: explicit-only
   aoa_source_skill_path: skills/aoa-quest-harvest/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
-  aoa_technique_dependencies: AOA-T-PENDING-QUEST-HARVEST,AOA-T-PENDING-PROMOTION-TRIAGE
+  aoa_technique_dependencies: AOA-T-0089,AOA-T-0090
   aoa_portable_profile: codex-facing-wave-3
 ---
 
@@ -49,6 +49,8 @@ Do not use this skill when:
 - explicit reason for promotion or non-promotion
 - named next artifact or next quest action
 - concise note on what boundary must remain intact
+- one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md`
+  and `references/quest-promotion-receipt-schema.yaml`
 
 ## Procedure
 1. collect a bounded reviewed harvest pack rather than raw runtime state
@@ -61,6 +63,8 @@ Do not use this skill when:
 8. if the repeated unit is recall, writeback, or recurrence posture, promote toward `aoa-memo`
 9. if repetition is still weak, owner is unclear, or boundary risk is high, keep or open a quest instead of forcing promotion
 10. record the verdict with one clear reason for promotion and one clear reason against the nearest wrong target
+11. emit one `QUEST_PROMOTION_RECEIPT` when the triage closes, keeping the
+    receipt smaller than the promotion packet itself
 
 ## Contracts
 - invocation must remain explicit and post-session
@@ -70,6 +74,8 @@ Do not use this skill when:
 - proof and memory promotions must stay in their owner layers
 - one good run is not enough to justify promotion by itself
 - active quest state must not be copied into memo canon as if it were settled truth
+- `QUEST_PROMOTION_RECEIPT` is verdict telemetry, not promotion authority
+- receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
 - promoting a theme instead of a repeatable workflow
@@ -86,11 +92,12 @@ Do not use this skill when:
 - confirm the nearest wrong target is explicitly rejected
 - confirm class identity is not being defined by quest metadata
 - confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface
+- confirm any emitted receipt stays evidence-linked and subordinate to the closed triage
 
 ## Technique traceability
-Pending manifest-backed techniques:
-- AOA-T-PENDING-QUEST-HARVEST from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation
-- AOA-T-PENDING-PROMOTION-TRIAGE from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, When to use, Outputs, Core procedure, Risks, Validation
+Manifest-backed techniques:
+- AOA-T-0089 from `8Dionysus/aoa-techniques` at `5cb9d446a73a109f7bf16997831750a9df7114d7` using path `techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0090 from `8Dionysus/aoa-techniques` at `5cb9d446a73a109f7bf16997831750a9df7114d7` using path `techniques/agent-workflows/nearest-wrong-target-rejection/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation
 
 ## Adaptation points
 Project overlays may add:
