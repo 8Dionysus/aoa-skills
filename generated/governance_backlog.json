@@ -1,7 +1,12 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [
-      "aoa-quest-harvest"
+      "aoa-quest-harvest",
+      "aoa-session-donor-harvest",
+      "aoa-session-progression-lift",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair"
     ],
     "candidate_ready_without_review": [],
     "canonical_maintenance": [
@@ -640,7 +645,10 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated"
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -648,12 +656,104 @@
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
-      "lineage_state": "published",
+      "lineage_state": "pending",
       "name": "aoa-session-donor-harvest",
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "pending",
+      "name": "aoa-session-progression-lift",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "pending",
+      "name": "aoa-session-route-forks",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "pending",
+      "name": "aoa-session-self-diagnose",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "pending",
+      "name": "aoa-session-self-repair",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
       "status": "scaffold"
     },
     {

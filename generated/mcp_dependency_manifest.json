@@ -71,6 +71,22 @@
       "tools": []
     },
     {
+      "name": "aoa-session-progression-lift",
+      "tools": []
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "tools": []
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "tools": []
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "tools": []
+    },
+    {
       "name": "aoa-source-of-truth-check",
       "tools": []
     },

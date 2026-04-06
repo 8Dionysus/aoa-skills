@@ -759,7 +759,186 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/owner-layer-map.md"
+          "references/family-shape.md",
+          "references/harvest-packet-contract.md",
+          "references/owner-layer-map.md",
+          "references/rpg-reflection-posture.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "display_name": "AoA Session Progression Lift",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-session-progression-lift",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift",
+          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/references",
+          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-session-progression-lift",
+          "$HOME/.agents/skills/aoa-session-progression-lift/scripts",
+          "$HOME/.agents/skills/aoa-session-progression-lift/references",
+          "$HOME/.agents/skills/aoa-session-progression-lift/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-session-progression-lift",
+          "/etc/codex/skills/aoa-session-progression-lift/scripts",
+          "/etc/codex/skills/aoa-session-progression-lift/references",
+          "/etc/codex/skills/aoa-session-progression-lift/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-session-progression-lift",
+        ".agents/skills/aoa-session-progression-lift/scripts",
+        ".agents/skills/aoa-session-progression-lift/references",
+        ".agents/skills/aoa-session-progression-lift/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/progression-axes.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "display_name": "AoA Session Route Forks",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-session-route-forks",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-session-route-forks",
+          "$REPO_ROOT/.agents/skills/aoa-session-route-forks/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-session-route-forks/references",
+          "$REPO_ROOT/.agents/skills/aoa-session-route-forks/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-session-route-forks",
+          "$HOME/.agents/skills/aoa-session-route-forks/scripts",
+          "$HOME/.agents/skills/aoa-session-route-forks/references",
+          "$HOME/.agents/skills/aoa-session-route-forks/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-session-route-forks",
+          "/etc/codex/skills/aoa-session-route-forks/scripts",
+          "/etc/codex/skills/aoa-session-route-forks/references",
+          "/etc/codex/skills/aoa-session-route-forks/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-session-route-forks",
+        ".agents/skills/aoa-session-route-forks/scripts",
+        ".agents/skills/aoa-session-route-forks/references",
+        ".agents/skills/aoa-session-route-forks/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "display_name": "AoA Session Self Diagnose",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-session-self-diagnose",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/references",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-session-self-diagnose",
+          "$HOME/.agents/skills/aoa-session-self-diagnose/scripts",
+          "$HOME/.agents/skills/aoa-session-self-diagnose/references",
+          "$HOME/.agents/skills/aoa-session-self-diagnose/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-session-self-diagnose",
+          "/etc/codex/skills/aoa-session-self-diagnose/scripts",
+          "/etc/codex/skills/aoa-session-self-diagnose/references",
+          "/etc/codex/skills/aoa-session-self-diagnose/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-session-self-diagnose",
+        ".agents/skills/aoa-session-self-diagnose/scripts",
+        ".agents/skills/aoa-session-self-diagnose/references",
+        ".agents/skills/aoa-session-self-diagnose/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "display_name": "AoA Session Self Repair",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-session-self-repair",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-session-self-repair",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-repair/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-repair/references",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-repair/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-session-self-repair",
+          "$HOME/.agents/skills/aoa-session-self-repair/scripts",
+          "$HOME/.agents/skills/aoa-session-self-repair/references",
+          "$HOME/.agents/skills/aoa-session-self-repair/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-session-self-repair",
+          "/etc/codex/skills/aoa-session-self-repair/scripts",
+          "/etc/codex/skills/aoa-session-self-repair/references",
+          "/etc/codex/skills/aoa-session-self-repair/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-session-self-repair",
+        ".agents/skills/aoa-session-self-repair/scripts",
+        ".agents/skills/aoa-session-self-repair/references",
+        ".agents/skills/aoa-session-self-repair/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/checkpoint-bridge.md"
         ],
         "assets": [
           "assets/large-logo.svg",

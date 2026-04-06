@@ -131,13 +131,36 @@ Use `install_skill_pack.py` plus `verify_skill_pack.py` directly when you want t
 
 ## Narrow rollout lane
 
-`repo-quest-harvest-only` is the narrow rollout profile for installing just `aoa-quest-harvest`.
+`repo-session-harvest-family` is the bounded rollout profile for installing the
+full explicit post-session session-harvest family:
+
+- `aoa-session-donor-harvest`
+- `aoa-session-route-forks`
+- `aoa-session-self-diagnose`
+- `aoa-session-self-repair`
+- `aoa-session-progression-lift`
+- `aoa-quest-harvest`
+
+- It is `repo`-scoped.
+- Its authored install mode stays `symlink-preferred`.
+- Cross-repo rollout should use `copy` mode so the installed surface is
+  reviewable and commit-safe.
+- The intended target path is `<repo>/.agents/skills/`.
+- This profile is for explicit post-session rollout and does not replace
+  `repo-default`.
+
+`repo-quest-harvest-only` remains the narrow leaf rollout profile for
+installing just `aoa-quest-harvest`.
 
 - It is `repo`-scoped.
 - Its authored install mode stays `symlink-preferred`.
 - Cross-repo rollout should use `copy` mode so the installed surface is reviewable and commit-safe.
 - The intended target path is `<repo>/.agents/skills/aoa-quest-harvest`.
 - This profile is for explicit post-session rollout and does not replace `repo-default`.
+
+`repo-session-donor-harvest-only` remains the nucleus-only profile for
+repositories that want just the donor-harvest entry surface without the full
+family.
 
 The ZIP transport variant is:
 

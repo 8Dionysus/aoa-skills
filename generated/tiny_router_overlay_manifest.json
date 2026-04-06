@@ -9,9 +9,9 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 21,
+  "skill_count": 25,
   "band_count": 6,
-  "case_count": 56,
+  "case_count": 64,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -109,7 +109,7 @@
       "band": "quest-harvest-governance",
       "manual_invocation_required": true,
       "project_overlay": false,
-      "description_sha256": "72791816671a95202d2d728b7cbe79c6299c5102319f9ebb73ce408921f1d7cf"
+      "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda"
     },
     {
       "name": "aoa-safe-infra-change",
@@ -130,7 +130,35 @@
       "band": "quest-harvest-governance",
       "manual_invocation_required": true,
       "project_overlay": false,
-      "description_sha256": "39775fddb3e05c3981e6c1812a74f1994eb4ffc365c9d0279535d593971a2333"
+      "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2"
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961"
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "22824ec5994207065055b7d44afc266c05c0f8458f1d1794441823ae8f191ed9"
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed"
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869"
     },
     {
       "name": "aoa-source-of-truth-check",

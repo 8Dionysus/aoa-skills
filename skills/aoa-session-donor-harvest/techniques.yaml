@@ -24,7 +24,17 @@ techniques:
       - Core procedure
       - Risks
       - Validation
+  - id: AOA-T-PENDING-HARVEST-PACKET-CONTRACT
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Inputs
+      - Outputs
+      - Contracts
+      - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
   - Refresh `source_ref` when the pinned aoa-techniques commit changes.
   - Treat AOA-T-0026, AOA-T-0044, and AOA-T-0053 as adjacent history prerequisites, not as substitutes for this harvest workflow.
+  - Replace pending ID AOA-T-PENDING-HARVEST-PACKET-CONTRACT, path TBD, and source_ref TBD after publish in aoa-techniques.

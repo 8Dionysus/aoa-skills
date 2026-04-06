@@ -114,6 +114,38 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-session-progression-lift",
+          "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-route-forks",
+          "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-diagnose",
+          "source_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-repair",
+          "source_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-safe-infra-change",
           "source_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
           "target_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
@@ -266,6 +298,38 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-session-progression-lift",
+          "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-route-forks",
+          "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-diagnose",
+          "source_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-repair",
+          "source_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-source-of-truth-check",
           "source_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
           "target_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
@@ -310,6 +374,62 @@
           "source_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
           "target_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        }
+      ]
+    },
+    "repo-session-harvest-family": {
+      "description": "Install the full explicit post-session session-harvest family into a repository root, including donor harvest, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-session-donor-harvest",
+          "source_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-route-forks",
+          "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-diagnose",
+          "source_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-repair",
+          "source_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-progression-lift",
+          "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-quest-harvest",
+          "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         }
@@ -486,6 +606,38 @@
           "source_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
           "target_path": "$HOME/.agents/skills/aoa-session-donor-harvest/SKILL.md",
           "openai_config_path": "$HOME/.agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-progression-lift",
+          "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-session-progression-lift/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-route-forks",
+          "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-session-route-forks/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-session-route-forks/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-diagnose",
+          "source_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-repair",
+          "source_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-session-self-repair/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-session-self-repair/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         },

@@ -1,0 +1,24 @@
+skill_name: aoa-session-progression-lift
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Contracts
+      - Validation
+  - id: AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Outputs
+      - Risks
+      - Validation
+notes:
+  - Keep runtime SKILL.md self-contained.
+  - Replace pending IDs AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT and AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY, path TBD, and source_ref TBD after publish in aoa-techniques.

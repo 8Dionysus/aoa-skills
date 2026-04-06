@@ -31,17 +31,28 @@ A skill quest should usually answer one of these:
 - which runtime export or local adapter contract needs bounded repair
 - which repeated overlay exception wants promotion into a real skill or playbook
 
-## Installed quest-harvest posture
+## Installed session-harvest posture
 
-`aoa-quest-harvest` may be installed into repo-local `.agents/skills/aoa-quest-harvest`, but its source of truth remains the canonical bundle in `aoa-skills`.
+The explicit post-session session-harvest family may be installed into
+repo-local `.agents/skills/`, but its source of truth remains the canonical
+bundles in `aoa-skills`.
 
-- use it after a reviewed run, closure, or pause
+The family is:
+
+- `aoa-session-donor-harvest`
+- `aoa-session-route-forks`
+- `aoa-session-self-diagnose`
+- `aoa-session-self-repair`
+- `aoa-session-progression-lift`
+- `aoa-quest-harvest`
+
+- use the family after a reviewed run, closure, or pause
 - do not invoke it inside an active route
 - it does not define orchestrator identity
 - it does not replace playbook, memo, eval, or source-owned doctrine
 - do not promote on one anecdotal repeat
 
-Its bounded verdict surface is:
+The bounded `aoa-quest-harvest` verdict surface remains:
 
 - `keep/open quest`
 - `promote to skill`

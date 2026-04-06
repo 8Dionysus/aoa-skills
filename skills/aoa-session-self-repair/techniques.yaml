@@ -1,0 +1,25 @@
+skill_name: aoa-session-self-repair
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Validation
+  - id: AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Outputs
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Keep runtime SKILL.md self-contained.
+  - Replace pending IDs AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS and AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR, path TBD, and source_ref TBD after publish in aoa-techniques.

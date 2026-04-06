@@ -27,17 +27,46 @@ Do not use it for:
 ## Harvest candidates
 - `AOA-SK-Q-0004` — harvest repeated overlay-specific exceptions into stable skill bundles or playbooks
 
-## Quest-harvest posture
+## Session-harvest family posture
 
-`aoa-quest-harvest` is the installed post-session harvest aid for this repo. It may be rolled out through the narrow `repo-quest-harvest-only` profile, but skill meaning stays source-owned in `aoa-skills`.
+The explicit post-session session-harvest family in this repo is:
 
-- use it only after a reviewed run, closure, or pause
+- `aoa-session-donor-harvest`
+- `aoa-session-route-forks`
+- `aoa-session-self-diagnose`
+- `aoa-session-self-repair`
+- `aoa-session-progression-lift`
+- `aoa-quest-harvest`
+
+It may be rolled out through `repo-session-harvest-family`, while narrower
+profiles remain available for the donor-harvest nucleus and the quest-harvest
+leaf. Skill meaning stays source-owned in `aoa-skills`.
+
+Family boundaries:
+
+- `aoa-session-donor-harvest` is the nucleus for turning reviewed sessions into
+  a bounded `HARVEST_PACKET`
+- `aoa-session-route-forks` makes next-route choices explicit when several
+  honest routes survive
+- `aoa-session-self-diagnose` stays read-only and classifies drift before
+  repair
+- `aoa-session-self-repair` authors checkpointed repair packets instead of
+  silent self-mutation
+- `aoa-session-progression-lift` keeps progression evidence multi-axis and
+  reviewable
+- `aoa-quest-harvest` remains the leaf skill for final promotion triage on one
+  repeated reviewed quest unit
+
+Family rules:
+
+- use the family only after a reviewed run, closure, or pause
 - do not use it inside an active route
-- it does not define orchestrator identity
-- it does not replace playbook, memo, eval, or source-owned doctrine
+- do not let route forks, progression, or quest flavor become hidden routing authority
+- do not let diagnosis silently mutate anything
+- do not let self-repair bypass checkpoint posture
 - do not promote on one anecdotal repeat
 
-Allowed verdicts:
+Allowed `aoa-quest-harvest` verdicts:
 
 - `keep/open quest`
 - `promote to skill`

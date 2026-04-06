@@ -429,8 +429,8 @@
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
       "source_scope": "repo",
-      "instruction_sha256": "6eea7ea1edc9d3c63b527c58cc8c0201257bfab1375679de195616c40be05d1b",
-      "dedupe_key": "aoa-quest-harvest:6eea7ea1edc9d3c63b527c58cc8c0201257bfab1375679de195616c40be05d1b",
+      "instruction_sha256": "01ecbca1a0c46f9e58f809065abacf76f0a5d6b291a209ca55ead6de76ce3e74",
+      "dedupe_key": "aoa-quest-harvest:01ecbca1a0c46f9e58f809065abacf76f0a5d6b291a209ca55ead6de76ce3e74",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -447,7 +447,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.\n\nKeep in memory: source quest or quest family, reviewed run summary or harvest pack, promotion verdict, owner repo and follow-up surface.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.\n\nKeep in memory: source quest or quest family, reviewed run summary or harvest pack, promotion verdict, owner repo and follow-up surface.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -525,8 +525,8 @@
       "name": "aoa-session-donor-harvest",
       "display_name": "AoA Session Donor Harvest",
       "source_scope": "repo",
-      "instruction_sha256": "b2bbd73e16c8393c63359be78a97cb94b96ffc28dbecae0324ac27c5f90facd2",
-      "dedupe_key": "aoa-session-donor-harvest:b2bbd73e16c8393c63359be78a97cb94b96ffc28dbecae0324ac27c5f90facd2",
+      "instruction_sha256": "a45121aaa6feeb35a8b76175c2d8a6b8394a40eb74b239edd589ee0f2bb629c2",
+      "dedupe_key": "aoa-session-donor-harvest:a45121aaa6feeb35a8b76175c2d8a6b8394a40eb74b239edd589ee0f2bb629c2",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -534,7 +534,7 @@
       "must_keep": [
         "reviewed session artifact",
         "session goal and closure state",
-        "one bounded donor harvest pack",
+        "one bounded `HARVEST_PACKET`",
         "named candidates, each with:"
       ],
       "retain_sections": [
@@ -543,12 +543,140 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded donor harvest pack, named candidates, each with:.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded `HARVEST_PACKET`, named candidates, each with:.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
           "skill_name": "aoa-session-donor-harvest",
           "explicit_handle": "$aoa-session-donor-harvest",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "display_name": "AoA Session Progression Lift",
+      "source_scope": "repo",
+      "instruction_sha256": "e3c69f49a487b20d0a01b8c75045bbfb46a24a12dcad481cf628b32037c2e49d",
+      "dedupe_key": "aoa-session-progression-lift:e3c69f49a487b20d0a01b8c75045bbfb46a24a12dcad481cf628b32037c2e49d",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Lift reviewed progression signals",
+      "must_keep": [
+        "reviewed session artifact or harvest packet",
+        "named evidence refs",
+        "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
+        "optional rank reflection note if evidence is strong enough"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, optional rank reflection note if evidence is strong enough.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-progression-lift",
+          "explicit_handle": "$aoa-session-progression-lift",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "display_name": "AoA Session Route Forks",
+      "source_scope": "repo",
+      "instruction_sha256": "9f66a97250ad013a72280012727f4d72b72615a84111d9df2f070ad8a69ab0f0",
+      "dedupe_key": "aoa-session-route-forks:9f66a97250ad013a72280012727f4d72b72615a84111d9df2f070ad8a69ab0f0",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Make next-route forks explicit",
+      "must_keep": [
+        "reviewed session artifact or harvest packet",
+        "candidate next routes",
+        "`FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions",
+        "one suggested default route if evidence is strong enough"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.\n\nKeep in memory: reviewed session artifact or harvest packet, candidate next routes, `FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions, one suggested default route if evidence is strong enough.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-route-forks",
+          "explicit_handle": "$aoa-session-route-forks",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "display_name": "AoA Session Self Diagnose",
+      "source_scope": "repo",
+      "instruction_sha256": "b645a660518600f0d0893ea3188fbc016a0f615cc28a88f23426561ff8e6075f",
+      "dedupe_key": "aoa-session-self-diagnose:b645a660518600f0d0893ea3188fbc016a0f615cc28a88f23426561ff8e6075f",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Diagnose reviewed session drift",
+      "must_keep": [
+        "reviewed session artifact or harvest packet",
+        "observed frictions, failures, or contradictions",
+        "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints",
+        "severity or urgency notes when evidence supports them"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.\n\nKeep in memory: reviewed session artifact or harvest packet, observed frictions, failures, or contradictions, `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints, severity or urgency notes when evidence supports them.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-self-diagnose",
+          "explicit_handle": "$aoa-session-self-diagnose",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "display_name": "AoA Session Self Repair",
+      "source_scope": "repo",
+      "instruction_sha256": "20bbc8b7f2616c5c7ae97ec5a9b1af26784e186c5992de9116cded7cbd2cce07",
+      "dedupe_key": "aoa-session-self-repair:20bbc8b7f2616c5c7ae97ec5a9b1af26784e186c5992de9116cded7cbd2cce07",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Author checkpointed repair packets",
+      "must_keep": [
+        "reviewed diagnosis packet",
+        "owner-layer candidates",
+        "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
+        "optional repair quest when execution should remain deferred"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.\n\nKeep in memory: reviewed diagnosis packet, owner-layer candidates, `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub, optional repair quest when execution should remain deferred.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-self-repair",
+          "explicit_handle": "$aoa-session-self-repair",
           "session_file": ".aoa/skill-runtime-session.json"
         }
       }

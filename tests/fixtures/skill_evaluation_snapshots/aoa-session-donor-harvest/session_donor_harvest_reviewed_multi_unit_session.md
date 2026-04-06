@@ -14,7 +14,7 @@ The source is already a reviewed session artifact, several reusable units may ex
 
 ## Expected object
 
-A donor harvest pack that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target.
+A HARVEST_PACKET that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target.
 
 ## Boundary notes
 

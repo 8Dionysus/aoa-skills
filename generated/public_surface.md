@@ -5,10 +5,10 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 21
+- total skills: 25
 - default references: 12
 - candidate-ready skills: 3
-- blocked by pending lineage: 1
+- blocked by pending lineage: 6
 - risk surfaces: 5
 
 ## Default references
@@ -41,6 +41,11 @@ It is built from committed skill bundles, review records, and evaluation fixture
 | name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|
 | aoa-quest-harvest | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
+| aoa-session-donor-harvest | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
+| aoa-session-progression-lift | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs, missing_autonomy_check | - | - |
+| aoa-session-route-forks | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs, missing_autonomy_check | - | - |
+| aoa-session-self-diagnose | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs, missing_autonomy_check | - | - |
+| aoa-session-self-repair | scaffold | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs, missing_autonomy_check | - | - |
 
 ## Risk surfaces
 

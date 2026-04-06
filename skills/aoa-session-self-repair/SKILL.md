@@ -1,0 +1,94 @@
+---
+name: aoa-session-self-repair
+scope: core
+status: scaffold
+summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
+invocation_mode: explicit-only
+technique_dependencies:
+  - AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS
+  - AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR
+---
+
+# aoa-session-self-repair
+
+## Intent
+
+Use this skill to author a bounded `REPAIR_PACKET`.
+
+The repair packet should be small, explicit, reversible where needed, and
+aligned with checkpoint posture before any important system surface is changed.
+
+## Trigger boundary
+
+Use this skill when:
+- a reviewed diagnosis already exists
+- the next honest move is a bounded repair plan or repair-ready packet
+- the route may change skill, playbook, agent, eval, or memo surfaces and needs explicit checkpoint posture
+- repair can still be kept inside one bounded execution unit
+
+Do not use this skill when:
+- there is no reviewed diagnosis yet
+- the repair is actually a large scenario rollout better owned by a playbook
+- the route is trying to bypass approval, rollback, or health-check posture
+- the request is vague self-improvement rhetoric with no bounded target
+
+## Inputs
+
+- reviewed diagnosis packet
+- owner-layer candidates
+- risk and approval posture
+- known validation surfaces
+- current rollback anchors if any
+
+## Outputs
+
+- `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub
+- optional repair quest when execution should remain deferred
+- explicit stop conditions and escalation points
+
+## Procedure
+
+1. start from the reviewed diagnosis rather than from general aspiration
+2. choose the smallest honest repair shape
+3. name the primary owner repo and target artifact class
+4. record checkpoint posture: constitution or policy check, approval gate, rollback marker, post-change health check, bounded iteration limit, improvement log
+5. define validation and stop conditions
+6. emit a repair quest instead of mutating immediately when risk or approval posture requires it
+
+## Contracts
+
+- self-repair is not free self-modification
+- important surface changes must pass checkpoint posture
+- repair packets stay bounded and reviewable
+- role law changes route to `aoa-agents`
+- proof-law changes route to `aoa-evals`
+- scenario-scale repair routes to `aoa-playbooks`
+
+## Risks and anti-patterns
+
+- silent doctrine edits
+- approval bypass
+- retry loops disguised as repair
+- using repair to hide broader governance debt
+- changing too many surfaces at once
+
+## Verification
+
+- confirm diagnosis exists and is cited
+- confirm the chosen repair is the smallest honest shape
+- confirm checkpoint fields are present
+- confirm validation and rollback posture are named
+- confirm escalation route exists if the repair widens
+
+## Technique traceability
+
+Pending manifest-backed techniques:
+- AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Intent, Inputs, Outputs, Core procedure, Validation
+- AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`; intended sections: Outputs, Contracts, Risks, Validation
+
+## Adaptation points
+
+Project overlays may add:
+- local approval classes
+- repo-specific rollback anchors
+- bounded repair templates

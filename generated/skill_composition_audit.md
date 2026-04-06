@@ -5,8 +5,8 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 21
-- multi-technique skills: 19
+- total skills: 25
+- multi-technique skills: 23
 - single-technique skills: 2
 - approved exceptions: 2
 - needs reframe: 0
@@ -29,7 +29,11 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-quest-harvest | 2 | multi_technique | keep_multi_technique | - |
 | aoa-safe-infra-change | 2 | multi_technique | keep_multi_technique | - |
 | aoa-sanitized-share | 2 | multi_technique | keep_multi_technique | - |
-| aoa-session-donor-harvest | 2 | multi_technique | keep_multi_technique | - |
+| aoa-session-donor-harvest | 3 | multi_technique | keep_multi_technique | - |
+| aoa-session-progression-lift | 2 | multi_technique | keep_multi_technique | - |
+| aoa-session-route-forks | 2 | multi_technique | keep_multi_technique | - |
+| aoa-session-self-diagnose | 2 | multi_technique | keep_multi_technique | - |
+| aoa-session-self-repair | 2 | multi_technique | keep_multi_technique | - |
 | aoa-source-of-truth-check | 3 | multi_technique | keep_multi_technique | - |
 | aoa-tdd-slice | 2 | multi_technique | keep_multi_technique | - |
 | atm10-change-protocol | 2 | multi_technique | keep_multi_technique | - |

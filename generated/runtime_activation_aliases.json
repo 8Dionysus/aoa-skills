@@ -207,6 +207,54 @@
       }
     },
     {
+      "name": "aoa-session-progression-lift",
+      "codex_mention": "$aoa-session-progression-lift",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-session-progression-lift",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-progression-lift"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "codex_mention": "$aoa-session-route-forks",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-session-route-forks",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-route-forks"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "codex_mention": "$aoa-session-self-diagnose",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-session-self-diagnose",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-self-diagnose"
+        }
+      }
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "codex_mention": "$aoa-session-self-repair",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-session-self-repair",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-session-self-repair"
+        }
+      }
+    },
+    {
       "name": "aoa-source-of-truth-check",
       "codex_mention": "$aoa-source-of-truth-check",
       "codex_browser": "/skills",

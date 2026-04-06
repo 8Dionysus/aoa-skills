@@ -390,6 +390,62 @@ trigger_cases:
     required_phrases:
       - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
       - the question is not merely "what happened?" but "what reusable object, if any, emerged here?"
+  - skill: aoa-session-route-forks
+    case_id: session_route_forks_reviewed_branch_choice
+    prompt: A reviewed session ended with three plausible next moves across different owner repos, and we need explicit branch cards with likely gains, costs, risks, and stop conditions instead of one buried recommendation.
+    expected: use
+    required_phrases:
+      - a reviewed session ended with multiple plausible next moves
+      - the operator or Codex needs explicit branch choices instead of a buried recommendation
+  - skill: aoa-session-route-forks
+    case_id: session_route_forks_single_obvious_move
+    prompt: There is only one obvious next bounded move after the reviewed session, so making branch cards would just restate the same route in several cosmetic variants.
+    expected: do_not_use
+    required_phrases:
+      - there is only one obvious next bounded move
+      - the question is final promotion of a repeated quest unit
+  - skill: aoa-session-self-diagnose
+    case_id: session_self_diagnose_reviewed_drift_pattern
+    prompt: A reviewed session shows repeated ownership confusion, proof debt, and route collapse, and the next honest move is diagnosis before repair.
+    expected: use
+    required_phrases:
+      - a reviewed session contains repeated friction, contradiction, or drift
+      - the next honest move is diagnosis before repair
+  - skill: aoa-session-self-diagnose
+    case_id: session_self_diagnose_already_diagnosed
+    prompt: The issue is already fully diagnosed, the repair path is known, and the team now needs a bounded repair packet rather than another diagnosis pass.
+    expected: do_not_use
+    required_phrases:
+      - the issue is already fully diagnosed and only needs repair execution
+      - the route is actually a single quest-promotion decision
+  - skill: aoa-session-self-repair
+    case_id: session_self_repair_reviewed_diagnosis_packet
+    prompt: A reviewed diagnosis packet already exists, and we need the smallest honest repair packet with checkpoint posture, rollback marker, health check, and explicit owner-layer targets.
+    expected: use
+    required_phrases:
+      - a reviewed diagnosis already exists
+      - the next honest move is a bounded repair plan or repair-ready packet
+  - skill: aoa-session-self-repair
+    case_id: session_self_repair_without_diagnosis
+    prompt: We want the system to improve itself right now, but there is no reviewed diagnosis packet yet and the request is mostly vague self-improvement rhetoric.
+    expected: do_not_use
+    required_phrases:
+      - there is no reviewed diagnosis yet
+      - the request is vague self-improvement rhetoric with no bounded target
+  - skill: aoa-session-progression-lift
+    case_id: session_progression_lift_reviewed_multi_axis_evidence
+    prompt: A reviewed session shows stronger boundary discipline, sharper review posture, and one small safe unlock hint, and we want a multi-axis progression delta rather than one global score.
+    expected: use
+    required_phrases:
+      - a reviewed session generated meaningful mastery evidence
+      - the output needs to stay small, evidence-backed, and multi-axis
+  - skill: aoa-session-progression-lift
+    case_id: session_progression_lift_global_power_number
+    prompt: There is no reviewed evidence yet, but the team wants one global power number that can double as hidden routing authority for what to do next.
+    expected: do_not_use
+    required_phrases:
+      - there is no reviewed evidence
+      - the request wants one global power number
 
   - skill: aoa-invariant-coverage-audit
     case_id: invariant_coverage_audit_existing_surface
@@ -1051,7 +1107,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-donor-harvest/session_donor_harvest_reviewed_multi_unit_session.md
     required_output_phrases:
       - use
-      - A donor harvest pack that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target.
+      - A HARVEST_PACKET that names each reusable unit, its owner layer, the next artifact, and the nearest wrong target.
     forbidden_output_phrases: []
   - skill: aoa-session-donor-harvest
     case_id: session_donor_harvest_live_session_capture_confusion
@@ -1061,6 +1117,78 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection toward reviewed-session prerequisites or history techniques instead of donor harvest.
+    forbidden_output_phrases: []
+  - skill: aoa-session-route-forks
+    case_id: session_route_forks_reviewed_branch_choice
+    prompt: A reviewed session ended with three plausible next moves across different owner repos, and we need explicit branch cards with likely gains, costs, risks, and stop conditions instead of one buried recommendation.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-route-forks/session_route_forks_reviewed_branch_choice.md
+    required_output_phrases:
+      - use
+      - A set of fork cards that makes the next routes, their owner targets, and their stop conditions explicit.
+    forbidden_output_phrases: []
+  - skill: aoa-session-route-forks
+    case_id: session_route_forks_single_obvious_move
+    prompt: There is only one obvious next bounded move after the reviewed session, so making branch cards would just restate the same route in several cosmetic variants.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-route-forks/session_route_forks_single_obvious_move.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that says branch analysis is unnecessary because there is only one honest next move.
+    forbidden_output_phrases: []
+  - skill: aoa-session-self-diagnose
+    case_id: session_self_diagnose_reviewed_drift_pattern
+    prompt: A reviewed session shows repeated ownership confusion, proof debt, and route collapse, and the next honest move is diagnosis before repair.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-diagnose/session_self_diagnose_reviewed_drift_pattern.md
+    required_output_phrases:
+      - use
+      - A diagnosis packet that separates symptoms from probable causes and names likely owner hints.
+    forbidden_output_phrases: []
+  - skill: aoa-session-self-diagnose
+    case_id: session_self_diagnose_already_diagnosed
+    prompt: The issue is already fully diagnosed, the repair path is known, and the team now needs a bounded repair packet rather than another diagnosis pass.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-diagnose/session_self_diagnose_already_diagnosed.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection toward repair work instead of reopening diagnosis.
+    forbidden_output_phrases: []
+  - skill: aoa-session-self-repair
+    case_id: session_self_repair_reviewed_diagnosis_packet
+    prompt: A reviewed diagnosis packet already exists, and we need the smallest honest repair packet with checkpoint posture, rollback marker, health check, and explicit owner-layer targets.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-repair/session_self_repair_reviewed_diagnosis_packet.md
+    required_output_phrases:
+      - use
+      - A repair packet with checkpoint posture, rollback thinking, and explicit owner targets.
+    forbidden_output_phrases: []
+  - skill: aoa-session-self-repair
+    case_id: session_self_repair_without_diagnosis
+    prompt: We want the system to improve itself right now, but there is no reviewed diagnosis packet yet and the request is mostly vague self-improvement rhetoric.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-repair/session_self_repair_without_diagnosis.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that requires reviewed diagnosis before any repair packet.
+    forbidden_output_phrases: []
+  - skill: aoa-session-progression-lift
+    case_id: session_progression_lift_reviewed_multi_axis_evidence
+    prompt: A reviewed session shows stronger boundary discipline, sharper review posture, and one small safe unlock hint, and we want a multi-axis progression delta rather than one global score.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-progression-lift/session_progression_lift_reviewed_multi_axis_evidence.md
+    required_output_phrases:
+      - use
+      - A bounded progression delta with multi-axis movement and explicit verdicts.
+    forbidden_output_phrases: []
+  - skill: aoa-session-progression-lift
+    case_id: session_progression_lift_global_power_number
+    prompt: There is no reviewed evidence yet, but the team wants one global power number that can double as hidden routing authority for what to do next.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-progression-lift/session_progression_lift_global_power_number.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that rejects universal-score authority and requires reviewed evidence first.
     forbidden_output_phrases: []
   - skill: aoa-invariant-coverage-audit
     case_id: invariant_coverage_audit_existing_surface

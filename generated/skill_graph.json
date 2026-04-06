@@ -938,6 +938,11 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_quest_harvest",
+      "target": "profile_repo_session_harvest_family"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_quest_harvest",
       "target": "profile_user_curated_core"
     },
     {
@@ -1113,7 +1118,7 @@
     {
       "kind": "lineage",
       "source": "skill_aoa_session_donor_harvest",
-      "target": "lineage_published"
+      "target": "lineage_pending"
     },
     {
       "kind": "invocation_policy",
@@ -1131,6 +1136,11 @@
       "target": "technique_AOA_T_0076"
     },
     {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "technique_AOA_T_PENDING_HARVEST_PACKET_CONTRACT"
+    },
+    {
       "kind": "included_in_profile",
       "source": "skill_aoa_session_donor_harvest",
       "target": "profile_repo_core_only"
@@ -1144,6 +1154,11 @@
       "kind": "included_in_profile",
       "source": "skill_aoa_session_donor_harvest",
       "target": "profile_repo_session_donor_harvest_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_donor_harvest",
+      "target": "profile_repo_session_harvest_family"
     },
     {
       "kind": "included_in_profile",
@@ -1173,6 +1188,306 @@
     {
       "kind": "available_in_artifact_group",
       "source": "skill_aoa_session_donor_harvest",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "technique_AOA_T_PENDING_PROGRESSION_EVIDENCE_LIFT"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "technique_AOA_T_PENDING_MULTI_AXIS_QUEST_OVERLAY"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "profile_repo_session_harvest_family"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_progression_lift",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_session_route_forks",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_session_route_forks",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_session_route_forks",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_session_route_forks",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_route_forks",
+      "target": "technique_AOA_T_PENDING_DECISION_FORK_CARDS"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_route_forks",
+      "target": "technique_AOA_T_PENDING_RISK_PASSPORT_LIFT"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_route_forks",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_route_forks",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_route_forks",
+      "target": "profile_repo_session_harvest_family"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_route_forks",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_route_forks",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_route_forks",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_route_forks",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_route_forks",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_route_forks",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "technique_AOA_T_PENDING_SESSION_DRIFT_TAXONOMY"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "technique_AOA_T_PENDING_DIAGNOSIS_FROM_REVIEWED_EVIDENCE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "profile_repo_session_harvest_family"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_diagnose",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_aoa_session_self_repair",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_session_self_repair",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_session_self_repair",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_session_self_repair",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_self_repair",
+      "target": "technique_AOA_T_PENDING_REPAIR_SHAPE_FROM_DIAGNOSIS"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_session_self_repair",
+      "target": "technique_AOA_T_PENDING_CHECKPOINT_BOUND_SELF_REPAIR"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_repair",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_repair",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_repair",
+      "target": "profile_repo_session_harvest_family"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_session_self_repair",
+      "target": "profile_user_curated_core"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_repair",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_repair",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_repair",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_repair",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_session_self_repair",
       "target": "artifact_group_tiny_router"
     },
     {
@@ -1713,6 +2028,11 @@
       "type": "profile"
     },
     {
+      "id": "profile_repo_session_harvest_family",
+      "label": "profile: repo-session-harvest-family",
+      "type": "profile"
+    },
+    {
       "id": "skill_aoa_safe_infra_change",
       "label": "aoa-safe-infra-change",
       "type": "skill"
@@ -1738,9 +2058,74 @@
       "type": "technique"
     },
     {
+      "id": "technique_AOA_T_PENDING_HARVEST_PACKET_CONTRACT",
+      "label": "AOA-T-PENDING-HARVEST-PACKET-CONTRACT",
+      "type": "technique"
+    },
+    {
       "id": "profile_repo_session_donor_harvest_only",
       "label": "profile: repo-session-donor-harvest-only",
       "type": "profile"
+    },
+    {
+      "id": "skill_aoa_session_progression_lift",
+      "label": "aoa-session-progression-lift",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_PROGRESSION_EVIDENCE_LIFT",
+      "label": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_MULTI_AXIS_QUEST_OVERLAY",
+      "label": "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_session_route_forks",
+      "label": "aoa-session-route-forks",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_DECISION_FORK_CARDS",
+      "label": "AOA-T-PENDING-DECISION-FORK-CARDS",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_RISK_PASSPORT_LIFT",
+      "label": "AOA-T-PENDING-RISK-PASSPORT-LIFT",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_session_self_diagnose",
+      "label": "aoa-session-self-diagnose",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_SESSION_DRIFT_TAXONOMY",
+      "label": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_DIAGNOSIS_FROM_REVIEWED_EVIDENCE",
+      "label": "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE",
+      "type": "technique"
+    },
+    {
+      "id": "skill_aoa_session_self_repair",
+      "label": "aoa-session-self-repair",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_REPAIR_SHAPE_FROM_DIAGNOSIS",
+      "label": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_CHECKPOINT_BOUND_SELF_REPAIR",
+      "label": "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR",
+      "type": "technique"
     },
     {
       "id": "skill_aoa_source_of_truth_check",
@@ -2935,7 +3320,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c9f5951907c269d789a0135b5d85160138f0a907c8525f42fe48e65a122f4611",
+      "content_hash": "e883655fbf9e69d3fbe7c3cea5a0164a4fff45114ae7330c92416779de33c5b7",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2955,6 +3340,7 @@
         "repo-core-only",
         "repo-default",
         "repo-quest-harvest-only",
+        "repo-session-harvest-family",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
@@ -2963,7 +3349,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "c9f5951907c2",
+      "skill_revision": "e883655fbf9e",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3199,7 +3585,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "3a1a4395213bb7ea74604cb26265de77fd4ac4175b2750184d75f649a9097034",
+      "content_hash": "c457850c228b1b871c38d2d79fe1432bb4f38b6b32bdebebd3ef78bb1c1a2113",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3219,15 +3605,16 @@
         "repo-core-only",
         "repo-default",
         "repo-session-donor-harvest-only",
+        "repo-session-harvest-family",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "published",
+      "lineage_state": "pending",
       "name": "aoa-session-donor-harvest",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "3a1a4395213b",
+      "skill_revision": "c457850c228b",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3243,7 +3630,8 @@
       ],
       "technique_dependencies": [
         "AOA-T-0075",
-        "AOA-T-0076"
+        "AOA-T-0076",
+        "AOA-T-PENDING-HARVEST-PACKET-CONTRACT"
       ],
       "technique_lineage": [
         {
@@ -3259,6 +3647,337 @@
           "path": "techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
           "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115"
+        },
+        {
+          "id": "AOA-T-PENDING-HARVEST-PACKET-CONTRACT",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-session-progression-lift/SKILL.md",
+        "skills/aoa-session-progression-lift/techniques.yaml",
+        "skills/aoa-session-progression-lift/agents/openai.yaml",
+        "skills/aoa-session-progression-lift/examples/runtime.md",
+        "skills/aoa-session-progression-lift/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "b0fa82111c0ee07258dc70f49e0c30bb77274a10ddbf5f6b03730b294e77c4bc",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-session-harvest-family",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-session-progression-lift",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "skill_revision": "b0fa82111c0e",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-session-progression-lift/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-session-progression-lift/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
+        "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-session-route-forks/SKILL.md",
+        "skills/aoa-session-route-forks/techniques.yaml",
+        "skills/aoa-session-route-forks/agents/openai.yaml",
+        "skills/aoa-session-route-forks/examples/runtime.md",
+        "skills/aoa-session-route-forks/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "c9bb89052e63e2695cd83996ab23a38d92f02a51f62120531d1e341a62929d26",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-session-harvest-family",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-session-route-forks",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "skill_revision": "c9bb89052e63",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-session-route-forks/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-session-route-forks/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-DECISION-FORK-CARDS",
+        "AOA-T-PENDING-RISK-PASSPORT-LIFT"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-DECISION-FORK-CARDS",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-RISK-PASSPORT-LIFT",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-session-self-diagnose/SKILL.md",
+        "skills/aoa-session-self-diagnose/techniques.yaml",
+        "skills/aoa-session-self-diagnose/agents/openai.yaml",
+        "skills/aoa-session-self-diagnose/examples/runtime.md",
+        "skills/aoa-session-self-diagnose/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "f11bb41fde7d1a44479f4c2cf1d41f2765d1f352e539edc9d207dc4288c0a965",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-session-harvest-family",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-session-self-diagnose",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "skill_revision": "f11bb41fde7d",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-session-self-diagnose/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-session-self-diagnose/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
+        "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-session-self-repair/SKILL.md",
+        "skills/aoa-session-self-repair/techniques.yaml",
+        "skills/aoa-session-self-repair/agents/openai.yaml",
+        "skills/aoa-session-self-repair/examples/runtime.md",
+        "skills/aoa-session-self-repair/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "8d31613dac250200570f4a1ee6b71bae467432d75ae138f73e65d35d3f217a5e",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 2,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-session-harvest-family",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-session-self-repair",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "skill_revision": "8d31613dac25",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-session-self-repair/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-session-self-repair/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
+        "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
         }
       ]
     },

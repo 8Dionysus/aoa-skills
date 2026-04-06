@@ -497,20 +497,24 @@
     },
     {
       "name": "aoa-quest-harvest",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
-      "description_sha256": "72791816671a95202d2d728b7cbe79c6299c5102319f9ebb73ce408921f1d7cf",
-      "summary_clause": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer",
+      "description": "Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.",
+      "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda",
+      "summary_clause": "Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer",
       "use_when_clause": "a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface",
-      "do_not_use_clause": "when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first",
+      "do_not_use_clause": "when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "family": "quest-promotion-triage",
+      "family": "session-harvest-family",
       "families": [
-        "quest-promotion-triage"
+        "session-harvest-family"
       ],
       "adjacent_skills": [
         "aoa-adr-write",
         "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
         "aoa-source-of-truth-check",
         "atm10-source-of-truth-check"
       ],
@@ -523,9 +527,12 @@
       "base_case_ids": [
         "20-explicit",
         "20-implicit-manual",
-        "20-adjacent-negative"
+        "20-adjacent-negative",
+        "collision-25"
       ],
-      "collision_case_ids": [],
+      "collision_case_ids": [
+        "desc-collision-collision-25"
+      ],
       "mirror_case_ids": [
         "desc-mirror-020-aoa-quest-harvest"
       ]
@@ -621,21 +628,25 @@
     },
     {
       "name": "aoa-session-donor-harvest",
-      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
-      "description_sha256": "39775fddb3e05c3981e6c1812a74f1994eb4ffc365c9d0279535d593971a2333",
-      "summary_clause": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact",
-      "use_when_clause": "the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened",
-      "do_not_use_clause": "for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict",
+      "description": "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.",
+      "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2",
+      "summary_clause": "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed",
+      "use_when_clause": "the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened",
+      "do_not_use_clause": "for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "family": "quest-promotion-triage",
+      "family": "session-harvest-family",
       "families": [
-        "quest-promotion-triage"
+        "session-harvest-family"
       ],
       "adjacent_skills": [
-        "aoa-quest-harvest"
+        "aoa-quest-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
       ],
-      "default_prompt": "Use $aoa-session-donor-harvest to turn a reviewed session artifact into a donor harvest pack, route each reusable unit to the right AoA owner layer, and draft the smallest honest next artifact.",
+      "default_prompt": "Use $aoa-session-donor-harvest to turn a reviewed session artifact into a HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and name any explicit handoff to the next honest post-session skill.",
       "required_case_classes": [
         "explicit-handle",
         "manual-invocation-required",
@@ -644,9 +655,160 @@
       "base_case_ids": [
         "21-explicit",
         "21-implicit-manual",
-        "21-adjacent-negative"
+        "21-adjacent-negative",
+        "collision-20"
       ],
-      "collision_case_ids": [],
+      "collision_case_ids": [
+        "desc-collision-collision-20"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "description": "Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.",
+      "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961",
+      "summary_clause": "Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority",
+      "use_when_clause": "a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority",
+      "do_not_use_clause": "when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "session-harvest-family",
+      "families": [
+        "session-harvest-family"
+      ],
+      "adjacent_skills": [
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "default_prompt": "Use $aoa-session-progression-lift to turn reviewed session evidence into a bounded multi-axis progression delta with explicit verdicts and small unlock hints.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "25-explicit",
+        "25-implicit-manual",
+        "25-adjacent-negative",
+        "collision-24"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-24"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "description": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.",
+      "description_sha256": "22824ec5994207065055b7d44afc266c05c0f8458f1d1794441823ae8f191ed9",
+      "summary_clause": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory",
+      "use_when_clause": "a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation",
+      "do_not_use_clause": "when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "session-harvest-family",
+      "families": [
+        "session-harvest-family"
+      ],
+      "adjacent_skills": [
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "default_prompt": "Use $aoa-session-route-forks to turn a reviewed session or harvest packet into explicit fork cards with likely gains, costs, risks, owner targets, and stop conditions.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "22-explicit",
+        "22-implicit-manual",
+        "22-adjacent-negative",
+        "collision-21"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-21"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "description": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.",
+      "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed",
+      "summary_clause": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet",
+      "use_when_clause": "the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur",
+      "do_not_use_clause": "for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "session-harvest-family",
+      "families": [
+        "session-harvest-family"
+      ],
+      "adjacent_skills": [
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-repair"
+      ],
+      "default_prompt": "Use $aoa-session-self-diagnose to turn reviewed session evidence into a diagnosis packet with drift types, symptoms, probable causes, repair shapes, and owner hints.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "23-explicit",
+        "23-implicit-manual",
+        "23-adjacent-negative",
+        "collision-22"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-22"
+      ],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "description": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.",
+      "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869",
+      "summary_clause": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation",
+      "use_when_clause": "diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet",
+      "do_not_use_clause": "without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "session-harvest-family",
+      "families": [
+        "session-harvest-family"
+      ],
+      "adjacent_skills": [
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose"
+      ],
+      "default_prompt": "Use $aoa-session-self-repair to turn a reviewed diagnosis packet into a bounded repair packet with owner target, checkpoint posture, rollback marker, health check, and stop conditions.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "24-explicit",
+        "24-implicit-manual",
+        "24-adjacent-negative",
+        "collision-23"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-23"
+      ],
       "mirror_case_ids": []
     },
     {
