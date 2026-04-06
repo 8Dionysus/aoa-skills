@@ -1,0 +1,119 @@
+{
+  "title": "aoa-skills project risk guard ring surface",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "source_config",
+    "ring_id",
+    "owner_repo",
+    "description",
+    "canonical_install_profile",
+    "backcompat_alias_profile",
+    "adjacent_kernel_id",
+    "adjacent_outer_ring_id",
+    "skill_count",
+    "skills",
+    "clusters",
+    "adjacent_overlays"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "source_config": {
+      "type": "string",
+      "const": "config/project_risk_guard_ring.json"
+    },
+    "ring_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_install_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "backcompat_alias_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adjacent_kernel_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "adjacent_outer_ring_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skill_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "clusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "cluster_id",
+          "skill_count",
+          "skills"
+        ],
+        "properties": {
+          "cluster_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "adjacent_overlays": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "base_skill_name",
+          "overlay_skill_name"
+        ],
+        "properties": {
+          "base_skill_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "overlay_skill_name": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

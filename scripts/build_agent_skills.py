@@ -626,6 +626,118 @@ def build_project_core_outer_ring_readiness_doc(
     }
 
 
+def build_project_risk_guard_ring_doc(ring_doc: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "schema_version": 1,
+        "source_config": "config/project_risk_guard_ring.json",
+        "ring_id": ring_doc["ring_id"],
+        "owner_repo": ring_doc["owner_repo"],
+        "description": ring_doc["description"],
+        "canonical_install_profile": ring_doc["canonical_install_profile"],
+        "backcompat_alias_profile": ring_doc["backcompat_alias_profile"],
+        "adjacent_kernel_id": ring_doc["adjacent_kernel_id"],
+        "adjacent_outer_ring_id": ring_doc["adjacent_outer_ring_id"],
+        "skill_count": len(ring_doc["skills"]),
+        "skills": ring_doc["skills"],
+        "clusters": [
+            {
+                "cluster_id": cluster["cluster_id"],
+                "skill_count": len(cluster["skills"]),
+                "skills": cluster["skills"],
+            }
+            for cluster in ring_doc["clusters"]
+        ],
+        "adjacent_overlays": ring_doc.get("adjacent_overlays", []),
+    }
+
+
+def build_project_risk_guard_ring_governance_doc(
+    *,
+    ring_doc: dict[str, Any],
+    skill_catalog: dict[str, Any],
+    profiles_doc: dict[str, Any],
+    collision_doc: dict[str, Any],
+) -> dict[str, Any]:
+    catalog_by_name = {entry["name"]: entry for entry in skill_catalog["skills"]}
+    profile_map = profiles_doc.get("profiles", {})
+    repo_risk_ring = set(
+        (profile_map.get(ring_doc["canonical_install_profile"]) or {}).get("skills", [])
+    )
+    repo_risk_alias = set(
+        (profile_map.get(ring_doc["backcompat_alias_profile"]) or {}).get("skills", [])
+    )
+    repo_default = set((profile_map.get("repo-default") or {}).get("skills", []))
+    collision_by_name: dict[str, str | None] = {skill_name: None for skill_name in ring_doc["skills"]}
+    cluster_by_name: dict[str, str] = {}
+    adjacent_overlay_by_name = {
+        entry["base_skill_name"]: entry["overlay_skill_name"]
+        for entry in ring_doc.get("adjacent_overlays", [])
+    }
+    for cluster in ring_doc["clusters"]:
+        cluster_id = cluster["cluster_id"]
+        for skill_name in cluster["skills"]:
+            cluster_by_name[skill_name] = cluster_id
+    for family in collision_doc.get("families", []):
+        family_id = family["family"]
+        for skill_name in family.get("skills", []):
+            if skill_name in collision_by_name and collision_by_name[skill_name] is None:
+                collision_by_name[skill_name] = family_id
+
+    skills: list[dict[str, Any]] = []
+    for skill_name in ring_doc["skills"]:
+        catalog_entry = catalog_by_name.get(skill_name, {})
+        blockers: list[str] = []
+        cluster_id = cluster_by_name[skill_name]
+        collision_family = collision_by_name.get(skill_name)
+        adjacent_overlay_skill_name = adjacent_overlay_by_name.get(skill_name)
+        adjacent_overlay_present = bool(
+            adjacent_overlay_skill_name and adjacent_overlay_skill_name in catalog_by_name
+        )
+        if skill_name not in repo_risk_ring:
+            blockers.append("missing_from_repo_project_risk_guard_ring")
+        if skill_name not in repo_risk_alias:
+            blockers.append("missing_from_repo_risk_explicit")
+        if skill_name not in repo_default:
+            blockers.append("missing_from_repo_default")
+        if catalog_entry.get("scope") != "risk":
+            blockers.append("scope_not_risk")
+        if catalog_entry.get("status") not in {"canonical", "evaluated"}:
+            blockers.append("status_not_ring_ready")
+        if catalog_entry.get("invocation_mode") != "explicit-only":
+            blockers.append("invocation_mode_not_explicit_only")
+        if collision_family is None:
+            blockers.append("missing_collision_family")
+        elif collision_family != cluster_id:
+            blockers.append("collision_family_mismatch")
+        skills.append(
+            {
+                "skill_name": skill_name,
+                "cluster_id": cluster_id,
+                "scope": catalog_entry.get("scope"),
+                "status": catalog_entry.get("status"),
+                "invocation_mode": catalog_entry.get("invocation_mode"),
+                "in_repo_project_risk_guard_ring": skill_name in repo_risk_ring,
+                "in_repo_risk_explicit": skill_name in repo_risk_alias,
+                "in_repo_default": skill_name in repo_default,
+                "collision_family": collision_family,
+                "adjacent_overlay_skill_name": adjacent_overlay_skill_name,
+                "adjacent_overlay_present": adjacent_overlay_present,
+                "governance_passed": not blockers,
+                "blockers": blockers,
+            }
+        )
+
+    return {
+        "schema_version": 1,
+        "source_config": "config/project_risk_guard_ring.json",
+        "ring_id": ring_doc["ring_id"],
+        "canonical_install_profile": ring_doc["canonical_install_profile"],
+        "backcompat_alias_profile": ring_doc["backcompat_alias_profile"],
+        "repo_default_profile": "repo-default",
+        "skills": skills,
+    }
+
+
 def build_mcp_dependency_manifest(
     catalog_full: dict[str, Any],
     openai_docs: dict[str, dict[str, Any]],
@@ -733,6 +845,7 @@ def main() -> int:
     profiles_doc = load_json(config_dir / "skill_pack_profiles.json")
     kernel_doc = load_json(config_dir / "project_core_skill_kernel.json")
     ring_doc = load_json(config_dir / "project_core_outer_ring.json")
+    risk_ring_doc = load_json(config_dir / "project_risk_guard_ring.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
 
     catalog_by_name = {entry["name"]: entry for entry in skill_catalog["skills"]}
@@ -755,6 +868,7 @@ def main() -> int:
         "profile_matrix": "config/skill_pack_profiles.json",
         "project_core_kernel": "config/project_core_skill_kernel.json",
         "project_core_outer_ring": "config/project_core_outer_ring.json",
+        "project_risk_guard_ring": "config/project_risk_guard_ring.json",
     }
     catalog_full = {
         "catalog_version": 2,
@@ -915,6 +1029,13 @@ def main() -> int:
         profiles_doc=profiles_doc,
         collision_doc=load_json(generated_dir / "skill_trigger_collision_matrix.json"),
     )
+    project_risk_guard_ring = build_project_risk_guard_ring_doc(risk_ring_doc)
+    project_risk_guard_ring_governance = build_project_risk_guard_ring_governance_doc(
+        ring_doc=risk_ring_doc,
+        skill_catalog=skill_catalog,
+        profiles_doc=profiles_doc,
+        collision_doc=load_json(generated_dir / "skill_trigger_collision_matrix.json"),
+    )
     config_snippets = build_codex_config_snippets(resolved_profiles)
     local_manifest, local_manifest_min = build_local_adapter_manifests(
         repo_root=repo_root,
@@ -938,6 +1059,8 @@ def main() -> int:
         generated_dir / "project_core_kernel_governance.min.json": json.dumps(project_core_kernel_governance, indent=2) + "\n",
         generated_dir / "project_core_outer_ring.min.json": json.dumps(project_core_outer_ring, indent=2) + "\n",
         generated_dir / "project_core_outer_ring_readiness.min.json": json.dumps(project_core_outer_ring_readiness, indent=2) + "\n",
+        generated_dir / "project_risk_guard_ring.min.json": json.dumps(project_risk_guard_ring, indent=2) + "\n",
+        generated_dir / "project_risk_guard_ring_governance.min.json": json.dumps(project_risk_guard_ring_governance, indent=2) + "\n",
         generated_dir / "codex_config_snippets.json": json.dumps(config_snippets, indent=2) + "\n",
         generated_dir / "mcp_dependency_manifest.json": json.dumps(mcp_manifest, indent=2) + "\n",
     }

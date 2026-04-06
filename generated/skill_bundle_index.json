@@ -296,6 +296,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -819,6 +820,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -989,6 +991,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -1354,6 +1357,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",
@@ -1445,6 +1449,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
       "invocation_mode": "explicit-only",

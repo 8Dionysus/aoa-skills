@@ -563,6 +563,54 @@
         }
       ]
     },
+    "repo-project-risk-guard-ring": {
+      "description": "Install the canonical explicit safety perimeter into a repository root without the project-core kernel, engineering outer ring, or project overlays.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-approval-gate-check",
+          "source_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "target_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-dry-run-first",
+          "source_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "target_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-local-stack-bringup",
+          "source_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "target_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-safe-infra-change",
+          "source_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "target_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-sanitized-share",
+          "source_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "target_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        }
+      ]
+    },
     "repo-session-harvest-family": {
       "description": "Backward-compatible operational alias for the project-core session-growth kernel profile, keeping the full explicit post-session session-harvest family available under its existing rollout name.",
       "scope": "repo",
@@ -628,7 +676,7 @@
       ]
     },
     "repo-risk-explicit": {
-      "description": "Install only explicit-only risk skills for repositories that want bounded operational workflows available by explicit mention.",
+      "description": "Backward-compatible alias for the canonical project risk guard ring profile, keeping the explicit-only safety perimeter available under its older rollout name.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "install_root": ".agents/skills",

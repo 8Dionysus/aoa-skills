@@ -14,7 +14,7 @@
   "skill_root": ".agents/skills",
   "skill_count": 26,
   "explicit_only_count": 14,
-  "profile_count": 12,
+  "profile_count": 13,
   "authoring_inputs": [
     "generated/skill_sections.full.json",
     "generated/skill_catalog.min.json",
@@ -192,8 +192,8 @@
     },
     {
       "path": "config/skill_pack_profiles.json",
-      "sha256": "26133289aa4bc1c84bb66d14c6e1ed300ee34d40e8846dc9d1847f68ffb00a34",
-      "bytes": 6715
+      "sha256": "f0f70c7a20cc3a23da520441220da17e76e1f5b3cd683406818914c33f12b476",
+      "bytes": 7220
     },
     {
       "path": "config/skill_policy_matrix.json",
@@ -219,8 +219,8 @@
   "generated_file_digests": [
     {
       "path": "generated/agent_skill_catalog.json",
-      "sha256": "6f5ad5957d884461fe1234e80d4bef09c51d774abb73a7dffec7905c88f186c6",
-      "bytes": 43550
+      "sha256": "9d7e707b70ecf6c668703b58e21d072a15725461bf4820b5e3af874a475addc4",
+      "bytes": 43620
     },
     {
       "path": "generated/agent_skill_catalog.min.json",
@@ -229,8 +229,8 @@
     },
     {
       "path": "generated/portable_export_map.json",
-      "sha256": "0bd7fbef34a3ff4bb9e03c2e99f1492336059a59f3284c6f86ed3e464bd2038a",
-      "bytes": 19774
+      "sha256": "517586883ecae9cb6040184214e3b0ba20ca0e88c15b4584d4a804e326b783b1",
+      "bytes": 19844
     },
     {
       "path": "generated/local_adapter_manifest.json",
@@ -264,13 +264,13 @@
     },
     {
       "path": "generated/skill_pack_profiles.resolved.json",
-      "sha256": "9f46ddc54d3e425926848813583d3910f28d6fc159532d4dfddda91fe009e31d",
-      "bytes": 41933
+      "sha256": "690722a6fb2040ab5264a0a64617d444053e76a7bf37d8f4df032373a3d36844",
+      "bytes": 44267
     },
     {
       "path": "generated/codex_config_snippets.json",
-      "sha256": "7e30d0e7265f8eb46e26d3c4569a528a017b3de75747a8888a3cec2f3a7fc914",
-      "bytes": 10642
+      "sha256": "31a3e6fa03608943fa2ce3ca8a317f06e3b0bef00b43a1521e9ea9b3c92826ea",
+      "bytes": 11219
     },
     {
       "path": "generated/mcp_dependency_manifest.json",
@@ -434,23 +434,23 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "0d8aa3bb29723dca22cd29b5424484c683dea265bd240bb2b3fef60fd4c3d421",
-      "bytes": 78408
+      "sha256": "9ae0ab076b27f10162406430ff87c40fbb7b39a887ae4014e3c6bec627a85d49",
+      "bytes": 78608
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "f4040d5d164aef15975cb4df0a290a0f190bc26c8b53253fd030ae200651d9fd",
-      "bytes": 8366
+      "sha256": "bf9006bc8e4b8f66f6441361c67bfe77c55f6c260ec88bd49c653bf08bd6b81d",
+      "bytes": 8516
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "e628f006334937b625e09ab583b6d18276f5b3dd1069f41aed2ddf05b58d7a5d",
-      "bytes": 142580
+      "sha256": "6a49b2b30414156ebd5fbb7664608e33f03829f1dccdd3e83aed57ceb3688f6f",
+      "bytes": 143683
     },
     {
       "path": "generated/skill_graph.md",
-      "sha256": "55caa7255c97f79c014a9d7b1745ebc5d2b131e7102c361e7496408fa56d4851",
-      "bytes": 42494
+      "sha256": "e8bd8b6ec267c5275152a60dbf0deb65c8886aa028349d2346e1eedd6d60357e",
+      "bytes": 43182
     }
   ],
   "skill_bundle_revisions": [
@@ -699,6 +699,18 @@
         "aoa-tdd-slice"
       ],
       "profile_revision": "18c1cb615ea6396094d7333b921f66fb5a3f506c9e94c0f20a6664cb8b2e906e"
+    },
+    {
+      "name": "repo-project-risk-guard-ring",
+      "skill_count": 5,
+      "skill_names": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share"
+      ],
+      "profile_revision": "e87132d7fe3f5d025a7a90ef0ec99d3a69d519b2c3763e80b2c453f6d41716b1"
     },
     {
       "name": "repo-quest-harvest-only",
