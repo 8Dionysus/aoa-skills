@@ -23,6 +23,7 @@ one bounded `PROGRESSION_DELTA`.
 - [ ] No authority rights or status jumps were granted without evidence.
 - [ ] Negative or zero movement remained available where honest.
 - [ ] Any `PROGRESSION_DELTA_RECEIPT` stayed multi-axis, evidence-linked, and non-sovereign.
+- [ ] Any `CORE_SKILL_APPLICATION_RECEIPT` pointed to the progression detail receipt and stayed generic finish telemetry only.
 
 ## Not a fit
 

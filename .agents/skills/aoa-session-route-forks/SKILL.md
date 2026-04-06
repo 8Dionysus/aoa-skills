@@ -52,6 +52,8 @@ Do not use this skill when:
 - optional quest hooks or campaign hints without runtime authority
 - one `DECISION_FORK_RECEIPT` using `references/stats-event-envelope.md` and
   `references/decision-fork-receipt-schema.yaml`
+- one `CORE_SKILL_APPLICATION_RECEIPT` using
+  `references/core-skill-application-receipt-schema.yaml`
 
 ## Procedure
 1. start from reviewed evidence rather than free speculation
@@ -64,6 +66,9 @@ Do not use this skill when:
 8. emit quest-board-readable language only as adjunct reflection
 9. emit one `DECISION_FORK_RECEIPT` when the fork set closes, keeping the
    receipt smaller than the branch cards themselves
+10. when the finish path closes, emit one `CORE_SKILL_APPLICATION_RECEIPT`
+    that points back to the bounded fork receipt and records one finished
+    kernel-skill application only
 
 ## Contracts
 - branch cards do not become routing authority
@@ -73,6 +78,8 @@ Do not use this skill when:
 - a fork card may recommend but must not hide alternatives
 - automation-shaped branches must not be read as schedule authority
 - `DECISION_FORK_RECEIPT` is descriptive branch telemetry, not routing policy
+- `CORE_SKILL_APPLICATION_RECEIPT` is generic kernel telemetry, not branch
+  policy or route choice authority
 - receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
@@ -91,6 +98,8 @@ Do not use this skill when:
 - confirm stop conditions exist for risky branches
 - confirm hold or defer remains possible when uncertainty is real
 - confirm any emitted receipt stays evidence-linked and subordinate to the fork cards
+- confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the fork
+  detail receipt and stays finish-only
 
 ## Technique traceability
 Manifest-backed techniques:

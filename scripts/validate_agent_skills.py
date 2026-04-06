@@ -61,6 +61,7 @@ REQUIRED_GENERATED_FILES = [
     "generated/trust_policy_matrix.json",
     "generated/skill_runtime_contracts.json",
     "generated/skill_pack_profiles.resolved.json",
+    "generated/project_core_skill_kernel.min.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
     "generated/runtime_discovery_index.json",
@@ -104,6 +105,7 @@ REQUIRED_CONFIG_FILES = [
     "config/portable_skill_overrides.json",
     "config/openai_skill_extensions.json",
     "config/skill_pack_profiles.json",
+    "config/project_core_skill_kernel.json",
     "config/skill_policy_matrix.json",
     "config/runtime_guardrail_policy.json",
     "config/description_trigger_eval_policy.json",
@@ -206,6 +208,7 @@ def main() -> int:
     trust_doc = load_json(generated_dir / "trust_policy_matrix.json")
     context_doc = load_json(generated_dir / "context_retention_manifest.json")
     resolved_profiles = load_json(generated_dir / "skill_pack_profiles.resolved.json")
+    resolved_kernel = load_json(generated_dir / "project_core_skill_kernel.min.json")
     snippets_doc = load_json(generated_dir / "codex_config_snippets.json")
     mcp_doc = load_json(generated_dir / "mcp_dependency_manifest.json")
     runtime_discovery = load_json(generated_dir / "runtime_discovery_index.json")
@@ -244,6 +247,7 @@ def main() -> int:
     release_manifest = load_json(generated_dir / "release_manifest.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     profile_doc = load_json(config_dir / "skill_pack_profiles.json")
+    kernel_doc = load_json(config_dir / "project_core_skill_kernel.json")
     policy_doc = load_json(config_dir / "skill_policy_matrix.json")
     guardrail_policy = load_json(config_dir / "runtime_guardrail_policy.json")
     description_eval_policy = load_json(config_dir / "description_trigger_eval_policy.json")
@@ -938,6 +942,53 @@ def main() -> int:
         errors.append("resolved profile set does not match config profile set")
     if config_profile_names != snippet_profile_names:
         errors.append("config snippet profile set does not match config profile set")
+
+    kernel_skills = kernel_doc.get("skills", [])
+    if kernel_doc.get("schema_version") != 1:
+        errors.append("config/project_core_skill_kernel.json schema_version must be 1")
+    if not isinstance(kernel_doc.get("kernel_id"), str) or not kernel_doc["kernel_id"]:
+        errors.append("config/project_core_skill_kernel.json kernel_id must be a non-empty string")
+    if not isinstance(kernel_doc.get("canonical_install_profile"), str) or not kernel_doc["canonical_install_profile"]:
+        errors.append("config/project_core_skill_kernel.json canonical_install_profile must be a non-empty string")
+    if not isinstance(kernel_doc.get("backward_compatible_aliases"), list):
+        errors.append("config/project_core_skill_kernel.json backward_compatible_aliases must be a list")
+    if not isinstance(kernel_skills, list) or not kernel_skills:
+        errors.append("config/project_core_skill_kernel.json skills must be a non-empty list")
+    elif len(kernel_skills) != len(set(kernel_skills)):
+        errors.append("config/project_core_skill_kernel.json skills must not contain duplicates")
+
+    expected_resolved_kernel = {
+        "schema_version": 1,
+        "source_config": "config/project_core_skill_kernel.json",
+        "kernel_id": kernel_doc.get("kernel_id"),
+        "owner_repo": kernel_doc.get("owner_repo"),
+        "description": kernel_doc.get("description"),
+        "canonical_install_profile": kernel_doc.get("canonical_install_profile"),
+        "backward_compatible_aliases": kernel_doc.get("backward_compatible_aliases", []),
+        "skill_count": len(kernel_skills) if isinstance(kernel_skills, list) else 0,
+        "skills": kernel_skills,
+    }
+    if resolved_kernel != expected_resolved_kernel:
+        errors.append("generated/project_core_skill_kernel.min.json mismatch")
+        difference = first_payload_difference(expected_resolved_kernel, resolved_kernel)
+        if difference is not None:
+            errors.append(f"generated/project_core_skill_kernel.min.json detail: {difference}")
+
+    canonical_profile_name = kernel_doc.get("canonical_install_profile")
+    alias_profile_names = kernel_doc.get("backward_compatible_aliases", [])
+    if isinstance(canonical_profile_name, str):
+        canonical_profile = (profile_doc.get("profiles") or {}).get(canonical_profile_name)
+        if canonical_profile is None:
+            errors.append(f"config/project_core_skill_kernel.json canonical_install_profile missing from skill profiles: {canonical_profile_name}")
+        elif canonical_profile.get("skills") != kernel_skills:
+            errors.append("config/project_core_skill_kernel.json canonical profile skills must match kernel skills exactly")
+    for alias_profile_name in alias_profile_names:
+        alias_profile = (profile_doc.get("profiles") or {}).get(alias_profile_name)
+        if alias_profile is None:
+            errors.append(f"config/project_core_skill_kernel.json alias missing from skill profiles: {alias_profile_name}")
+            continue
+        if alias_profile.get("skills") != kernel_skills:
+            errors.append(f"config/project_core_skill_kernel.json alias {alias_profile_name} must match kernel skills exactly")
 
     for profile_name, profile in (profile_doc.get("profiles") or {}).items():
         seen: set[str] = set()

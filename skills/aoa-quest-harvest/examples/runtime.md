@@ -23,6 +23,8 @@ The task is no longer about executing the original work. It is about harvesting 
 - one named owner repo and follow-up surface
 - one short reason why promotion should wait if the pattern must remain a quest
 - one `QUEST_PROMOTION_RECEIPT` that records the closed triage without replacing it
+- one `CORE_SKILL_APPLICATION_RECEIPT` that records the finished
+  `aoa-quest-harvest` run and points back to the detail receipt
 
 ## Boundary notes
 
@@ -36,3 +38,5 @@ The task is no longer about executing the original work. It is about harvesting 
 - Confirm the chosen target matches the correct owner layer.
 - Confirm the output names why the nearest wrong promotion target was rejected.
 - Confirm any finish receipt keeps the verdict, next surface, and nearest wrong target visible.
+- Confirm the generic core receipt points back to the promotion receipt and
+  does not become promotion authority.

@@ -26,6 +26,8 @@ more owner-layer routing pass and not one fake universal score.
 - optional unlock hints, quest hooks, or chronicle stub
 - one `PROGRESSION_DELTA_RECEIPT` with axis delta summary, verdict, and any
   caution refs
+- one `CORE_SKILL_APPLICATION_RECEIPT` that records the finished
+  `aoa-session-progression-lift` run and points back to the detail receipt
 
 ## Boundary notes
 
@@ -40,3 +42,5 @@ more owner-layer routing pass and not one fake universal score.
 - Confirm unlock hints stay small and explicit.
 - Confirm the finish receipt stays multi-axis and does not collapse movement
   into a universal score.
+- Confirm the generic core receipt points back to the progression receipt and
+  does not become progression authority.

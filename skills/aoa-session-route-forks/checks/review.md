@@ -24,6 +24,7 @@ harvest packet into explicit next-route forks.
 - [ ] Quest-board language stays reflective rather than authoritative.
 - [ ] `aoa-routing` and `aoa-kag` were not treated as first-authoring targets.
 - [ ] Any `DECISION_FORK_RECEIPT` stayed evidence-linked and subordinate to the fork cards.
+- [ ] Any `CORE_SKILL_APPLICATION_RECEIPT` pointed to the fork detail receipt and stayed generic finish telemetry rather than route authority.
 
 ## Not a fit
 

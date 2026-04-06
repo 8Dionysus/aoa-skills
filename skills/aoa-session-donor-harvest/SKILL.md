@@ -64,6 +64,8 @@ Do not use this skill when:
   `aoa-session-progression-lift`, or `aoa-quest-harvest`
 - one `HARVEST_PACKET_RECEIPT` using `references/stats-event-envelope.md` and
   `references/harvest-packet-receipt-schema.yaml`
+- one `CORE_SKILL_APPLICATION_RECEIPT` using
+  `references/core-skill-application-receipt-schema.yaml`
 
 ## Procedure
 
@@ -103,7 +105,11 @@ Do not use this skill when:
 21. emit one `HARVEST_PACKET_RECEIPT` when the packet is complete, using the
     shared event envelope and a bounded receipt payload instead of duplicating
     the full donor packet
-22. record one clear reason for the chosen owner and one clear reason against
+22. when the finish path is complete, emit one
+    `CORE_SKILL_APPLICATION_RECEIPT` that points back to the bounded detail
+    receipt, keeps `application_stage=finish`, and stays generic enough to act
+    as project-core kernel telemetry rather than a second donor packet
+23. record one clear reason for the chosen owner and one clear reason against
     the nearest wrong owner
 
 ## Contracts
@@ -120,6 +126,9 @@ Do not use this skill when:
   mutation authority
 - `HARVEST_PACKET_RECEIPT` stays subordinate to the packet and never replaces
   owner-layer or proof meaning
+- `CORE_SKILL_APPLICATION_RECEIPT` stays subordinate to the packet and the
+  detail receipt; it records one finished kernel-skill application and nothing
+  more
 - receipt corrections use `supersedes` rather than silent mutation
 - drafting a next artifact is allowed; forcing promotion is not
 
@@ -153,6 +162,8 @@ Do not use this skill when:
   stops short of automation authority
 - confirm any emitted receipt stays append-only, evidence-linked, and smaller
   than the packet it summarizes
+- confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the matching
+  detail receipt and does not widen beyond one finished kernel-skill run
 
 ## Technique traceability
 

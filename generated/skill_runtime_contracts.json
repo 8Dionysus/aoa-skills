@@ -137,6 +137,7 @@
           "references/automation-fit-matrix.md",
           "references/automation-opportunity-packet-schema.yaml",
           "references/checkpoint-boundary.md",
+          "references/core-skill-application-receipt-schema.yaml",
           "references/playbook-seed-bridge.md",
           "references/session-harvest-integration.md",
           "references/stats-event-envelope.md"
@@ -435,6 +436,7 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
+          "references/core-skill-application-receipt-schema.yaml",
           "references/promotion-outcomes.md",
           "references/quest-promotion-receipt-schema.yaml",
           "references/stats-event-envelope.md"
@@ -530,6 +532,7 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
+          "references/core-skill-application-receipt-schema.yaml",
           "references/family-shape.md",
           "references/harvest-packet-contract.md",
           "references/harvest-packet-receipt-schema.yaml",
@@ -565,6 +568,7 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
+          "references/core-skill-application-receipt-schema.yaml",
           "references/progression-axes.md",
           "references/progression-delta-receipt-schema.yaml",
           "references/stats-event-envelope.md"
@@ -597,6 +601,7 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
+          "references/core-skill-application-receipt-schema.yaml",
           "references/decision-fork-receipt-schema.yaml",
           "references/stats-event-envelope.md"
         ],
@@ -628,6 +633,7 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
+          "references/core-skill-application-receipt-schema.yaml",
           "references/skill-run-receipt-schema.yaml",
           "references/stats-event-envelope.md"
         ],
@@ -660,6 +666,7 @@
         "scripts": [],
         "references": [
           "references/checkpoint-bridge.md",
+          "references/core-skill-application-receipt-schema.yaml",
           "references/repair-cycle-receipt-schema.yaml",
           "references/stats-event-envelope.md"
         ],

@@ -23,6 +23,7 @@ bounded `REPAIR_PACKET`.
 - [ ] Role-law and proof-law changes were routed to the correct owner layers.
 - [ ] No silent doctrine edit or approval bypass happened.
 - [ ] Any `REPAIR_CYCLE_RECEIPT` stayed append-only, diagnosis-linked, and smaller than the repair packet.
+- [ ] Any `CORE_SKILL_APPLICATION_RECEIPT` pointed to the repair detail receipt and stayed generic finish telemetry only.
 
 ## Not a fit
 

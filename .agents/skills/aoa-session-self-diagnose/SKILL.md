@@ -50,6 +50,8 @@ Do not use this skill when:
 - optional handoff to `aoa-session-self-repair`
 - one `SKILL_RUN_RECEIPT` using `references/stats-event-envelope.md` and
   `references/skill-run-receipt-schema.yaml`
+- one `CORE_SKILL_APPLICATION_RECEIPT` using
+  `references/core-skill-application-receipt-schema.yaml`
 
 ## Procedure
 1. gather reviewed symptoms and evidence refs
@@ -61,6 +63,9 @@ Do not use this skill when:
 7. preserve unknowns where evidence does not justify stronger claims
 8. emit one bounded `SKILL_RUN_RECEIPT` when the diagnosis packet closes,
    keeping the payload smaller than the diagnosis itself
+9. when the finish path closes, emit one `CORE_SKILL_APPLICATION_RECEIPT`
+   that points back to the bounded detail receipt and records one finished
+   kernel-skill application
 
 ## Contracts
 - diagnosis is read-only
@@ -70,6 +75,8 @@ Do not use this skill when:
 - no hidden mutation or silent patching
 - diagnosis does not grant automation readiness by itself
 - the receipt remains descriptive and cannot become proof or repair authority
+- the generic core receipt remains subordinate to the diagnosis receipt and
+  cannot become diagnosis, proof, or repair authority
 - receipt corrections use `supersedes` rather than silent overwrite
 
 ## Risks and anti-patterns
@@ -88,6 +95,8 @@ Do not use this skill when:
 - confirm unknowns are preserved where needed
 - confirm no mutation happened
 - confirm any emitted receipt stays evidence-linked and smaller than the diagnosis packet
+- confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the detail
+  diagnosis receipt and stays finish-only
 
 ## Technique traceability
 Manifest-backed techniques:

@@ -27,6 +27,8 @@ mutation.
 - explicit stop conditions and escalation points
 - one `REPAIR_CYCLE_RECEIPT` with diagnosis refs, checkpoint posture, and
   bounded verification refs
+- one `CORE_SKILL_APPLICATION_RECEIPT` that records the finished
+  `aoa-session-self-repair` run and points back to the detail receipt
 
 ## Boundary notes
 
@@ -41,3 +43,5 @@ mutation.
 - Confirm escalation is named if the route widens.
 - Confirm the finish receipt cites rollback and health-check posture without
   pretending the repair is already fully verified.
+- Confirm the generic core receipt points back to the repair receipt and does
+  not replace checkpoint posture or repair meaning.
