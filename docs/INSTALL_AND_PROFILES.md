@@ -154,6 +154,16 @@ installing the permanent explicit post-session project-core kernel:
 operational alias for the same seven-skill kernel when existing rollout or
 automation surfaces still name the older profile.
 
+This kernel is also repo-wide hard-gated in `aoa-skills`:
+
+- every kernel skill must keep both its detail receipt schema and its generic
+  core receipt schema
+- the portable export must carry both refs for every kernel skill
+- `generated/project_core_kernel_governance.min.json` is the per-skill gate
+  readout
+- `python scripts/release_check.py` fails if any kernel skill drifts out of
+  that contract
+
 `repo-quest-harvest-only` remains the narrow leaf rollout profile for
 installing just `aoa-quest-harvest`.
 

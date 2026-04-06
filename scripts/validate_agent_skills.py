@@ -62,6 +62,7 @@ REQUIRED_GENERATED_FILES = [
     "generated/skill_runtime_contracts.json",
     "generated/skill_pack_profiles.resolved.json",
     "generated/project_core_skill_kernel.min.json",
+    "generated/project_core_kernel_governance.min.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
     "generated/runtime_discovery_index.json",
@@ -209,6 +210,7 @@ def main() -> int:
     context_doc = load_json(generated_dir / "context_retention_manifest.json")
     resolved_profiles = load_json(generated_dir / "skill_pack_profiles.resolved.json")
     resolved_kernel = load_json(generated_dir / "project_core_skill_kernel.min.json")
+    kernel_governance = load_json(generated_dir / "project_core_kernel_governance.min.json")
     snippets_doc = load_json(generated_dir / "codex_config_snippets.json")
     mcp_doc = load_json(generated_dir / "mcp_dependency_manifest.json")
     runtime_discovery = load_json(generated_dir / "runtime_discovery_index.json")
@@ -944,6 +946,8 @@ def main() -> int:
         errors.append("config snippet profile set does not match config profile set")
 
     kernel_skills = kernel_doc.get("skills", [])
+    governance_contract = kernel_doc.get("governance_contract")
+    skill_contracts = kernel_doc.get("skill_contracts", [])
     if kernel_doc.get("schema_version") != 1:
         errors.append("config/project_core_skill_kernel.json schema_version must be 1")
     if not isinstance(kernel_doc.get("kernel_id"), str) or not kernel_doc["kernel_id"]:
@@ -952,10 +956,48 @@ def main() -> int:
         errors.append("config/project_core_skill_kernel.json canonical_install_profile must be a non-empty string")
     if not isinstance(kernel_doc.get("backward_compatible_aliases"), list):
         errors.append("config/project_core_skill_kernel.json backward_compatible_aliases must be a list")
+    if not isinstance(governance_contract, dict):
+        errors.append("config/project_core_skill_kernel.json governance_contract must be an object")
+        governance_contract = {}
     if not isinstance(kernel_skills, list) or not kernel_skills:
         errors.append("config/project_core_skill_kernel.json skills must be a non-empty list")
     elif len(kernel_skills) != len(set(kernel_skills)):
         errors.append("config/project_core_skill_kernel.json skills must not contain duplicates")
+    if not isinstance(skill_contracts, list) or not skill_contracts:
+        errors.append("config/project_core_skill_kernel.json skill_contracts must be a non-empty list")
+        skill_contracts = []
+
+    expected_governance_contract = {
+        "core_receipt_kind": "core_skill_application_receipt",
+        "core_receipt_schema_ref": "references/core-skill-application-receipt-schema.yaml",
+        "detail_publisher": "aoa-skills.session-harvest-family",
+        "core_publisher": "aoa-skills.core-kernel-applications",
+        "stats_surface": "aoa-stats.core_skill_application_summary.min",
+        "application_stage": "finish",
+    }
+    if governance_contract != expected_governance_contract:
+        errors.append("config/project_core_skill_kernel.json governance_contract must match the canonical kernel telemetry contract")
+
+    skill_contracts_by_name: dict[str, dict[str, Any]] = {}
+    for entry in skill_contracts:
+        if not isinstance(entry, dict):
+            errors.append("config/project_core_skill_kernel.json skill_contracts entries must be objects")
+            continue
+        skill_name = entry.get("skill_name")
+        if not isinstance(skill_name, str) or not skill_name:
+            errors.append("config/project_core_skill_kernel.json skill_contracts skill_name must be a non-empty string")
+            continue
+        if skill_name in skill_contracts_by_name:
+            errors.append(f"config/project_core_skill_kernel.json duplicate skill_contract entry for {skill_name}")
+            continue
+        skill_contracts_by_name[skill_name] = entry
+        for field in ("detail_event_kind", "detail_receipt_schema_ref"):
+            value = entry.get(field)
+            if not isinstance(value, str) or not value:
+                errors.append(f"config/project_core_skill_kernel.json skill_contracts[{skill_name!r}].{field} must be a non-empty string")
+
+    if list(skill_contracts_by_name) != kernel_skills:
+        errors.append("config/project_core_skill_kernel.json skill_contract order must match skills exactly")
 
     expected_resolved_kernel = {
         "schema_version": 1,
@@ -967,6 +1009,8 @@ def main() -> int:
         "backward_compatible_aliases": kernel_doc.get("backward_compatible_aliases", []),
         "skill_count": len(kernel_skills) if isinstance(kernel_skills, list) else 0,
         "skills": kernel_skills,
+        "governance_contract": governance_contract,
+        "skill_contracts": skill_contracts,
     }
     if resolved_kernel != expected_resolved_kernel:
         errors.append("generated/project_core_skill_kernel.min.json mismatch")
@@ -989,6 +1033,67 @@ def main() -> int:
             continue
         if alias_profile.get("skills") != kernel_skills:
             errors.append(f"config/project_core_skill_kernel.json alias {alias_profile_name} must match kernel skills exactly")
+
+    export_by_name = {entry["name"]: entry for entry in export_map.get("exports", [])}
+    expected_kernel_governance_skills: list[dict[str, Any]] = []
+    for skill_name in kernel_skills:
+        contract = skill_contracts_by_name.get(skill_name, {})
+        export_entry = export_by_name.get(skill_name, {})
+        exported_references = set((export_entry.get("resource_inventory") or {}).get("references", []))
+        source_skill_dir = repo_root / "skills" / skill_name
+        exported_skill_dir = skills_root / skill_name
+        detail_ref = contract.get("detail_receipt_schema_ref")
+        core_ref = governance_contract.get("core_receipt_schema_ref")
+        blockers: list[str] = []
+        if not isinstance(detail_ref, str) or not detail_ref:
+            blockers.append("missing_detail_contract")
+        else:
+            if not (source_skill_dir / detail_ref).exists():
+                blockers.append("missing_source_detail_receipt_schema")
+            if detail_ref not in exported_references:
+                blockers.append("missing_portable_detail_receipt_schema")
+            if not (exported_skill_dir / detail_ref).exists():
+                blockers.append("missing_exported_detail_receipt_schema")
+        if not isinstance(core_ref, str) or not core_ref:
+            blockers.append("missing_core_contract")
+        else:
+            if not (source_skill_dir / core_ref).exists():
+                blockers.append("missing_source_core_receipt_schema")
+            if core_ref not in exported_references:
+                blockers.append("missing_portable_core_receipt_schema")
+            if not (exported_skill_dir / core_ref).exists():
+                blockers.append("missing_exported_core_receipt_schema")
+        expected_kernel_governance_skills.append(
+            {
+                "skill_name": skill_name,
+                "detail_event_kind": contract.get("detail_event_kind"),
+                "detail_receipt_schema_ref": detail_ref,
+                "core_receipt_schema_ref": core_ref,
+                "detail_publisher": governance_contract.get("detail_publisher"),
+                "core_publisher": governance_contract.get("core_publisher"),
+                "stats_surface": governance_contract.get("stats_surface"),
+                "gate_passed": not blockers,
+                "blockers": blockers,
+            }
+        )
+
+    expected_kernel_governance = {
+        "schema_version": 1,
+        "source_config": "config/project_core_skill_kernel.json",
+        "kernel_id": kernel_doc.get("kernel_id"),
+        "canonical_install_profile": kernel_doc.get("canonical_install_profile"),
+        "stats_surface": governance_contract.get("stats_surface"),
+        "skills": expected_kernel_governance_skills,
+    }
+    if kernel_governance != expected_kernel_governance:
+        errors.append("generated/project_core_kernel_governance.min.json mismatch")
+        difference = first_payload_difference(expected_kernel_governance, kernel_governance)
+        if difference is not None:
+            errors.append(f"generated/project_core_kernel_governance.min.json detail: {difference}")
+    for entry in expected_kernel_governance_skills:
+        if not entry["gate_passed"]:
+            blockers = ", ".join(entry["blockers"])
+            errors.append(f"project-core kernel governance gate failed for {entry['skill_name']}: {blockers}")
 
     for profile_name, profile in (profile_doc.get("profiles") or {}).items():
         seen: set[str] = set()
