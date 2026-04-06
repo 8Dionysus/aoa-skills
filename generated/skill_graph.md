@@ -56,12 +56,26 @@ graph TD
   technique_AOA_T_PENDING_QUEST_HARVEST["AOA-T-PENDING-QUEST-HARVEST"]
   technique_AOA_T_PENDING_PROMOTION_TRIAGE["AOA-T-PENDING-PROMOTION-TRIAGE"]
   profile_repo_quest_harvest_only["profile: repo-quest-harvest-only"]
+  profile_repo_session_harvest_family["profile: repo-session-harvest-family"]
   skill_aoa_safe_infra_change["aoa-safe-infra-change"]
   skill_aoa_sanitized_share["aoa-sanitized-share"]
   skill_aoa_session_donor_harvest["aoa-session-donor-harvest"]
   technique_AOA_T_0075["AOA-T-0075"]
   technique_AOA_T_0076["AOA-T-0076"]
+  technique_AOA_T_PENDING_HARVEST_PACKET_CONTRACT["AOA-T-PENDING-HARVEST-PACKET-CONTRACT"]
   profile_repo_session_donor_harvest_only["profile: repo-session-donor-harvest-only"]
+  skill_aoa_session_progression_lift["aoa-session-progression-lift"]
+  technique_AOA_T_PENDING_PROGRESSION_EVIDENCE_LIFT["AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT"]
+  technique_AOA_T_PENDING_MULTI_AXIS_QUEST_OVERLAY["AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY"]
+  skill_aoa_session_route_forks["aoa-session-route-forks"]
+  technique_AOA_T_PENDING_DECISION_FORK_CARDS["AOA-T-PENDING-DECISION-FORK-CARDS"]
+  technique_AOA_T_PENDING_RISK_PASSPORT_LIFT["AOA-T-PENDING-RISK-PASSPORT-LIFT"]
+  skill_aoa_session_self_diagnose["aoa-session-self-diagnose"]
+  technique_AOA_T_PENDING_SESSION_DRIFT_TAXONOMY["AOA-T-PENDING-SESSION-DRIFT-TAXONOMY"]
+  technique_AOA_T_PENDING_DIAGNOSIS_FROM_REVIEWED_EVIDENCE["AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE"]
+  skill_aoa_session_self_repair["aoa-session-self-repair"]
+  technique_AOA_T_PENDING_REPAIR_SHAPE_FROM_DIAGNOSIS["AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS"]
+  technique_AOA_T_PENDING_CHECKPOINT_BOUND_SELF_REPAIR["AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR"]
   skill_aoa_source_of_truth_check["aoa-source-of-truth-check"]
   technique_AOA_T_0013["AOA-T-0013"]
   technique_AOA_T_0009["AOA-T-0009"]
@@ -257,6 +271,7 @@ graph TD
   skill_aoa_quest_harvest -->|included_in_profile| profile_repo_core_only
   skill_aoa_quest_harvest -->|included_in_profile| profile_repo_default
   skill_aoa_quest_harvest -->|included_in_profile| profile_repo_quest_harvest_only
+  skill_aoa_quest_harvest -->|included_in_profile| profile_repo_session_harvest_family
   skill_aoa_quest_harvest -->|included_in_profile| profile_user_curated_core
   skill_aoa_quest_harvest -->|available_in_artifact_group| artifact_group_portable_export
   skill_aoa_quest_harvest -->|available_in_artifact_group| artifact_group_runtime_seam
@@ -292,19 +307,81 @@ graph TD
   skill_aoa_sanitized_share -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_session_donor_harvest -->|maturity| status_scaffold
   skill_aoa_session_donor_harvest -->|scope| scope_core
-  skill_aoa_session_donor_harvest -->|lineage| lineage_published
+  skill_aoa_session_donor_harvest -->|lineage| lineage_pending
   skill_aoa_session_donor_harvest -->|invocation_policy| policy_explicit_only
   skill_aoa_session_donor_harvest -->|depends_on| technique_AOA_T_0075
   skill_aoa_session_donor_harvest -->|depends_on| technique_AOA_T_0076
+  skill_aoa_session_donor_harvest -->|depends_on| technique_AOA_T_PENDING_HARVEST_PACKET_CONTRACT
   skill_aoa_session_donor_harvest -->|included_in_profile| profile_repo_core_only
   skill_aoa_session_donor_harvest -->|included_in_profile| profile_repo_default
   skill_aoa_session_donor_harvest -->|included_in_profile| profile_repo_session_donor_harvest_only
+  skill_aoa_session_donor_harvest -->|included_in_profile| profile_repo_session_harvest_family
   skill_aoa_session_donor_harvest -->|included_in_profile| profile_user_curated_core
   skill_aoa_session_donor_harvest -->|available_in_artifact_group| artifact_group_portable_export
   skill_aoa_session_donor_harvest -->|available_in_artifact_group| artifact_group_runtime_seam
   skill_aoa_session_donor_harvest -->|available_in_artifact_group| artifact_group_runtime_guardrails
   skill_aoa_session_donor_harvest -->|available_in_artifact_group| artifact_group_description_trigger
   skill_aoa_session_donor_harvest -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_session_progression_lift -->|maturity| status_scaffold
+  skill_aoa_session_progression_lift -->|scope| scope_core
+  skill_aoa_session_progression_lift -->|lineage| lineage_pending
+  skill_aoa_session_progression_lift -->|invocation_policy| policy_explicit_only
+  skill_aoa_session_progression_lift -->|depends_on| technique_AOA_T_PENDING_PROGRESSION_EVIDENCE_LIFT
+  skill_aoa_session_progression_lift -->|depends_on| technique_AOA_T_PENDING_MULTI_AXIS_QUEST_OVERLAY
+  skill_aoa_session_progression_lift -->|included_in_profile| profile_repo_core_only
+  skill_aoa_session_progression_lift -->|included_in_profile| profile_repo_default
+  skill_aoa_session_progression_lift -->|included_in_profile| profile_repo_session_harvest_family
+  skill_aoa_session_progression_lift -->|included_in_profile| profile_user_curated_core
+  skill_aoa_session_progression_lift -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_session_progression_lift -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_session_progression_lift -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_session_progression_lift -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_session_progression_lift -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_session_route_forks -->|maturity| status_scaffold
+  skill_aoa_session_route_forks -->|scope| scope_core
+  skill_aoa_session_route_forks -->|lineage| lineage_pending
+  skill_aoa_session_route_forks -->|invocation_policy| policy_explicit_only
+  skill_aoa_session_route_forks -->|depends_on| technique_AOA_T_PENDING_DECISION_FORK_CARDS
+  skill_aoa_session_route_forks -->|depends_on| technique_AOA_T_PENDING_RISK_PASSPORT_LIFT
+  skill_aoa_session_route_forks -->|included_in_profile| profile_repo_core_only
+  skill_aoa_session_route_forks -->|included_in_profile| profile_repo_default
+  skill_aoa_session_route_forks -->|included_in_profile| profile_repo_session_harvest_family
+  skill_aoa_session_route_forks -->|included_in_profile| profile_user_curated_core
+  skill_aoa_session_route_forks -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_session_route_forks -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_session_route_forks -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_session_route_forks -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_session_route_forks -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_session_self_diagnose -->|maturity| status_scaffold
+  skill_aoa_session_self_diagnose -->|scope| scope_core
+  skill_aoa_session_self_diagnose -->|lineage| lineage_pending
+  skill_aoa_session_self_diagnose -->|invocation_policy| policy_explicit_only
+  skill_aoa_session_self_diagnose -->|depends_on| technique_AOA_T_PENDING_SESSION_DRIFT_TAXONOMY
+  skill_aoa_session_self_diagnose -->|depends_on| technique_AOA_T_PENDING_DIAGNOSIS_FROM_REVIEWED_EVIDENCE
+  skill_aoa_session_self_diagnose -->|included_in_profile| profile_repo_core_only
+  skill_aoa_session_self_diagnose -->|included_in_profile| profile_repo_default
+  skill_aoa_session_self_diagnose -->|included_in_profile| profile_repo_session_harvest_family
+  skill_aoa_session_self_diagnose -->|included_in_profile| profile_user_curated_core
+  skill_aoa_session_self_diagnose -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_session_self_diagnose -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_session_self_diagnose -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_session_self_diagnose -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_session_self_diagnose -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_session_self_repair -->|maturity| status_scaffold
+  skill_aoa_session_self_repair -->|scope| scope_core
+  skill_aoa_session_self_repair -->|lineage| lineage_pending
+  skill_aoa_session_self_repair -->|invocation_policy| policy_explicit_only
+  skill_aoa_session_self_repair -->|depends_on| technique_AOA_T_PENDING_REPAIR_SHAPE_FROM_DIAGNOSIS
+  skill_aoa_session_self_repair -->|depends_on| technique_AOA_T_PENDING_CHECKPOINT_BOUND_SELF_REPAIR
+  skill_aoa_session_self_repair -->|included_in_profile| profile_repo_core_only
+  skill_aoa_session_self_repair -->|included_in_profile| profile_repo_default
+  skill_aoa_session_self_repair -->|included_in_profile| profile_repo_session_harvest_family
+  skill_aoa_session_self_repair -->|included_in_profile| profile_user_curated_core
+  skill_aoa_session_self_repair -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_session_self_repair -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_session_self_repair -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_session_self_repair -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_session_self_repair -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_source_of_truth_check -->|maturity| status_canonical
   skill_aoa_source_of_truth_check -->|scope| scope_core
   skill_aoa_source_of_truth_check -->|lineage| lineage_published
@@ -377,10 +454,14 @@ graph TD
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | published | repo-default, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0036, AOA-T-0037, AOA-T-0028, AOA-T-0038 |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0016, AOA-T-0015 |
 | aoa-property-invariants | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0017, AOA-T-0007 |
-| aoa-quest-harvest | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-quest-harvest-only, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-QUEST-HARVEST, AOA-T-PENDING-PROMOTION-TRIAGE |
+| aoa-quest-harvest | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-quest-harvest-only, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-QUEST-HARVEST, AOA-T-PENDING-PROMOTION-TRIAGE |
 | aoa-safe-infra-change | canonical | risk | explicit-only | published | repo-default, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0028, AOA-T-0001 |
 | aoa-sanitized-share | canonical | risk | explicit-only | published | repo-default, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0034, AOA-T-0002 |
-| aoa-session-donor-harvest | scaffold | core | explicit-only | published | repo-core-only, repo-default, repo-session-donor-harvest-only, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0075, AOA-T-0076 |
+| aoa-session-donor-harvest | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-session-donor-harvest-only, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0075, AOA-T-0076, AOA-T-PENDING-HARVEST-PACKET-CONTRACT |
+| aoa-session-progression-lift | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT, AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY |
+| aoa-session-route-forks | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-DECISION-FORK-CARDS, AOA-T-PENDING-RISK-PASSPORT-LIFT |
+| aoa-session-self-diagnose | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-SESSION-DRIFT-TAXONOMY, AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE |
+| aoa-session-self-repair | scaffold | core | explicit-only | pending | repo-core-only, repo-default, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS, AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR |
 | aoa-source-of-truth-check | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0013, AOA-T-0002, AOA-T-0009 |
 | aoa-tdd-slice | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0014, AOA-T-0001 |
 | atm10-change-protocol | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002 |

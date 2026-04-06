@@ -89,10 +89,14 @@
     },
     {
       "id": "quest-harvest-governance",
-      "summary": "Post-session donor harvest, quest promotion triage, and owner-surface selection for reviewed session artifacts or repeated reviewed patterns.",
+      "summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
         "session donor",
         "donor harvest",
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
+        "progression delta",
         "quest harvest",
         "promotion triage",
         "reviewed session artifact",
@@ -101,11 +105,17 @@
         "owner surface",
         "stay a quest",
         "post session harvest",
-        "promotion target"
+        "promotion target",
+        "reviewed drift",
+        "unlock hint"
       ],
       "skills": [
         "aoa-quest-harvest",
-        "aoa-session-donor-harvest"
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift"
       ]
     },
     {
@@ -309,7 +319,9 @@
         "one anecdotal occurrence",
         "invent net-new doctrine",
         "multiple donor units",
-        "reviewed session artifact with several candidates"
+        "reviewed session artifact with several candidates",
+        "route forks still unresolved",
+        "diagnosis should happen first"
       ]
     },
     "aoa-session-donor-harvest": {
@@ -319,12 +331,80 @@
         "donor harvest",
         "reviewed session artifact",
         "owner layer routing",
-        "reviewed compaction note"
+        "reviewed compaction note",
+        "harvest packet",
+        "what should survive this session"
       ],
       "negative_cues": [
         "session still live",
         "raw transcript export",
-        "single repeated quest unit"
+        "single repeated quest unit",
+        "already have reviewed diagnosis",
+        "primary need is explicit route comparison",
+        "primary need is progression overlay"
+      ]
+    },
+    "aoa-session-route-forks": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "route forks",
+        "fork cards",
+        "branch choices",
+        "multiple plausible next moves",
+        "stop conditions"
+      ],
+      "negative_cues": [
+        "one obvious next move",
+        "donor harvest still needed",
+        "final promotion verdict only"
+      ]
+    },
+    "aoa-session-self-diagnose": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "reviewed drift",
+        "diagnosis packet",
+        "proof gap",
+        "ownership confusion",
+        "repeated friction"
+      ],
+      "negative_cues": [
+        "session still live",
+        "already fully diagnosed",
+        "celebration recap",
+        "single promotion verdict"
+      ]
+    },
+    "aoa-session-self-repair": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "repair packet",
+        "checkpoint posture",
+        "rollback marker",
+        "health check",
+        "reviewed diagnosis"
+      ],
+      "negative_cues": [
+        "no reviewed diagnosis",
+        "playbook-scale rollout",
+        "approval bypass",
+        "vague self improvement"
+      ]
+    },
+    "aoa-session-progression-lift": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "progression delta",
+        "multi-axis progression",
+        "unlock hint",
+        "reviewed mastery evidence",
+        "quest reflection"
+      ],
+      "negative_cues": [
+        "no reviewed evidence",
+        "global power number",
+        "hidden routing policy",
+        "grant authority without evidence"
       ]
     },
     "aoa-safe-infra-change": {
@@ -487,12 +567,37 @@
     ],
     "aoa-quest-harvest": [
       "aoa-session-donor-harvest",
+      "aoa-session-route-forks",
+      "aoa-session-progression-lift",
       "aoa-source-of-truth-check",
       "aoa-change-protocol"
     ],
     "aoa-session-donor-harvest": [
       "aoa-quest-harvest",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-progression-lift",
       "aoa-source-of-truth-check"
+    ],
+    "aoa-session-route-forks": [
+      "aoa-session-donor-harvest",
+      "aoa-session-self-diagnose",
+      "aoa-quest-harvest"
+    ],
+    "aoa-session-self-diagnose": [
+      "aoa-session-donor-harvest",
+      "aoa-session-self-repair",
+      "aoa-session-progression-lift"
+    ],
+    "aoa-session-self-repair": [
+      "aoa-session-self-diagnose",
+      "aoa-change-protocol",
+      "aoa-safe-infra-change"
+    ],
+    "aoa-session-progression-lift": [
+      "aoa-session-donor-harvest",
+      "aoa-quest-harvest",
+      "aoa-session-self-diagnose"
     ],
     "aoa-safe-infra-change": [
       "aoa-dry-run-first",

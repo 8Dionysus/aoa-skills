@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 21
+- total skills: 25
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -29,6 +29,10 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-safe-infra-change | canonical | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/aoa-safe-infra-change/examples/runtime.md` | `docs/reviews/status-promotions/aoa-safe-infra-change.md` | `docs/reviews/canonical-candidates/aoa-safe-infra-change.md` | true | - |
 | aoa-sanitized-share | canonical | risk | explicit-only | 1 | 1 | 3 | 1 | 1 | `skills/aoa-sanitized-share/examples/runtime.md` | `docs/reviews/status-promotions/aoa-sanitized-share.md` | `docs/reviews/canonical-candidates/aoa-sanitized-share.md` | true | - |
 | aoa-session-donor-harvest | scaffold | core | explicit-only | 1 | 2 | 2 | 1 | 1 | `skills/aoa-session-donor-harvest/examples/runtime.md` | - | - | true | - |
+| aoa-session-progression-lift | scaffold | core | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/aoa-session-progression-lift/examples/runtime.md` | - | - | true | - |
+| aoa-session-route-forks | scaffold | core | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/aoa-session-route-forks/examples/runtime.md` | - | - | true | - |
+| aoa-session-self-diagnose | scaffold | core | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/aoa-session-self-diagnose/examples/runtime.md` | - | - | true | - |
+| aoa-session-self-repair | scaffold | core | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/aoa-session-self-repair/examples/runtime.md` | - | - | true | - |
 | aoa-source-of-truth-check | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` | true | - |
 | aoa-tdd-slice | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-tdd-slice/examples/example.md` | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` | true | - |
 | atm10-change-protocol | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-change-protocol/examples/example.md` | `docs/reviews/status-promotions/atm10-change-protocol.md` | - | true | - |

@@ -5,9 +5,9 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 
 ## Summary
 
-- total skills: 21
-- published lineage: 20
-- pending lineage: 1
+- total skills: 25
+- published lineage: 19
+- pending lineage: 6
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
@@ -27,7 +27,11 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-quest-harvest | scaffold | core | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-safe-infra-change | canonical | risk | published | 2 | 0 | 0 | true | - |
 | aoa-sanitized-share | canonical | risk | published | 2 | 0 | 0 | true | - |
-| aoa-session-donor-harvest | scaffold | core | published | 2 | 0 | 0 | true | - |
+| aoa-session-donor-harvest | scaffold | core | pending | 2 | 1 | 1 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-session-progression-lift | scaffold | core | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-session-route-forks | scaffold | core | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-session-self-diagnose | scaffold | core | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| aoa-session-self-repair | scaffold | core | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | aoa-source-of-truth-check | canonical | core | published | 3 | 0 | 0 | true | - |
 | aoa-tdd-slice | canonical | core | published | 2 | 0 | 0 | true | - |
 | atm10-change-protocol | evaluated | project | published | 2 | 0 | 0 | true | - |

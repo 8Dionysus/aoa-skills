@@ -1,0 +1,5 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep this skill explicit-only because route forks should stay visible post-session choices rather than hidden routing policy.
+  - Use it after donor harvest when several honest next routes remain.

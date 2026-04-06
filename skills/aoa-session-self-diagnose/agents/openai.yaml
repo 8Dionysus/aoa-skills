@@ -1,0 +1,5 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep this skill explicit-only because diagnosis should stay a visible reviewed pass before any repair work.
+  - Preserve read-only posture and keep probable causes honest when evidence is thin.

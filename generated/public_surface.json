@@ -1,7 +1,12 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [
-      "aoa-quest-harvest"
+      "aoa-quest-harvest",
+      "aoa-session-donor-harvest",
+      "aoa-session-progression-lift",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair"
     ],
     "candidate_ready": [
       "aoa-core-logic-boundary",
@@ -438,7 +443,10 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated"
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
       ],
       "canonical_candidate_ready": false,
       "governance_decision": null,
@@ -446,13 +454,105 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "published",
+      "lineage_state": "pending",
       "name": "aoa-session-donor-harvest",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold",
-      "summary": "Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket."
+      "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-session-progression-lift",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "status": "scaffold",
+      "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-session-route-forks",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "status": "scaffold",
+      "summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-session-self-diagnose",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "status": "scaffold",
+      "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "name": "aoa-session-self-repair",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "status": "scaffold",
+      "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",

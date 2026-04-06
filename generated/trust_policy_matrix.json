@@ -192,7 +192,7 @@
         "repo",
         "user"
       ],
-      "notes": "Harvest-only triage skill for deciding whether repeated quest evidence belongs in skills, playbooks, orchestrator surfaces, proof, memo, or a continued quest."
+      "notes": "Leaf promotion-triage skill for one repeated reviewed quest unit after the wider session-harvest family has already done donor extraction or related post-session shaping."
     },
     {
       "name": "aoa-safe-infra-change",
@@ -233,7 +233,63 @@
         "repo",
         "user"
       ],
-      "notes": "Explicit-only post-session donor harvest skill for routing reusable session outputs to the right owner layer without forcing promotion."
+      "notes": "Explicit-only nucleus skill for turning a reviewed session into a bounded HARVEST_PACKET, routing reusable outputs to the right owner layer, and handing off to later post-session family seams when needed."
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "scope": "core",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-only evidence-backed progression overlay skill for reviewed sessions that keeps growth legible without creating sovereign scores or hidden routing authority."
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "scope": "core",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-only post-session branch-analysis skill for making next-route options legible without turning fork cards into hidden routing policy."
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "scope": "core",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-only reviewed-session diagnosis skill for classifying drift, proof debt, and ownership confusion before any repair is attempted."
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "scope": "core",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-only checkpoint-governed repair-packet skill that stays smaller than a rollout and does not allow silent self-mutation."
     },
     {
       "name": "aoa-source-of-truth-check",

@@ -517,6 +517,7 @@ Common expand sections:
 - the task is to invent net-new doctrine rather than classify a repeated pattern
 - the route is already clearly scenario-shaped and only needs playbook authoring
 - the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use aoa-session-donor-harvest
+- the source still needs explicit route forks, diagnosis, repair, or progression reflection from the wider session-harvest family before final promotion triage
 
 ### Object use shape
 
@@ -609,13 +610,14 @@ Common expand sections:
 - status: `scaffold`
 - invocation mode: `explicit-only`
 - skill path: `skills/aoa-session-donor-harvest/SKILL.md`
-- pick summary: Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket.
+- pick summary: Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.
 
 ### Use when
 
 - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
 - the work is post-session and reviewable rather than live execution
 - candidate outputs may belong in technique canon, aoa-skills, aoa-playbooks, aoa-evals, aoa-memo, aoa-agents, or a hold/quest lane
+- the session may also have produced decision forks, diagnosis clues, repair candidates, progression evidence, or quest residue that should be made explicit rather than buried in recap prose
 - the question is not merely "what happened?" but "what reusable object, if any, emerged here?"
 
 ### Do not use when
@@ -628,7 +630,7 @@ Common expand sections:
 
 ### Object use shape
 
-- one bounded donor harvest pack
+- one bounded HARVESTPACKET
 - named candidates, each with
 - reusable unit name
 - unit kind: pattern, mechanic, utility, law, proof, recall, or route
@@ -638,11 +640,147 @@ Common expand sections:
 - one rejected nearest-wrong target
 - evidence anchors from the session artifact
 - one short list of items to defer, drop, or keep as quest residue
+- one optional handoff list to aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-session-progression-lift, or aoa-quest-harvest
 
 ### Support artifacts
 
 - `runtime_example` (selected): `skills/aoa-session-donor-harvest/examples/runtime.md`
 - `review_checklist`: `skills/aoa-session-donor-harvest/checks/review.md`
+
+## aoa-session-progression-lift
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-session-progression-lift/SKILL.md`
+- pick summary: Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.
+
+### Use when
+
+- a reviewed session generated meaningful mastery evidence
+- the route needs progression legibility without mutating source role profiles
+- quest or RPG reflection would help continuation
+- the output needs to stay small, evidence-backed, and multi-axis
+
+### Do not use when
+
+- there is no reviewed evidence
+- the request wants one global power number
+- progression is being used as hidden routing policy
+- the route is trying to mint authority rights without evidence
+
+### Object use shape
+
+- PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints
+- optional rank reflection note if evidence is strong enough
+- quest hooks or chronicle stub when useful
+- negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-session-progression-lift/examples/runtime.md`
+- `review_checklist`: `skills/aoa-session-progression-lift/checks/review.md`
+
+## aoa-session-route-forks
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-session-route-forks/SKILL.md`
+- pick summary: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.
+
+### Use when
+
+- a reviewed session ended with multiple plausible next moves
+- the operator or Codex needs explicit branch choices instead of a buried recommendation
+- the next route may change owner repo, risk posture, or difficulty posture
+- the session needs quest-board legibility without pretending to be runtime state
+
+### Do not use when
+
+- there is only one obvious next bounded move
+- the session still needs first-pass donor harvest
+- the question is final promotion of a repeated quest unit
+- the route needs scenario canon immediately rather than branch analysis
+
+### Object use shape
+
+- FORKCARDS with likely gain, cost, risk, owner repo, and stop conditions
+- one suggested default route if evidence is strong enough
+- one explicit hold or defer option when honest uncertainty remains
+- optional quest hooks or campaign hints without runtime authority
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-session-route-forks/examples/runtime.md`
+- `review_checklist`: `skills/aoa-session-route-forks/checks/review.md`
+
+## aoa-session-self-diagnose
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-session-self-diagnose/SKILL.md`
+- pick summary: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.
+
+### Use when
+
+- a reviewed session contains repeated friction, contradiction, or drift
+- the next honest move is diagnosis before repair
+- boundary confusion or missing proof may be more important than immediate output production
+- the same class of problem may be appearing across sessions
+
+### Do not use when
+
+- the session is still live
+- the issue is already fully diagnosed and only needs repair execution
+- the material is a celebration recap with no meaningful friction
+- the route is actually a single quest-promotion decision
+
+### Object use shape
+
+- DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints
+- severity or urgency notes when evidence supports them
+- explicit unknowns when diagnosis remains incomplete
+- optional handoff to aoa-session-self-repair
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-session-self-diagnose/examples/runtime.md`
+- `review_checklist`: `skills/aoa-session-self-diagnose/checks/review.md`
+
+## aoa-session-self-repair
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-session-self-repair/SKILL.md`
+- pick summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
+
+### Use when
+
+- a reviewed diagnosis already exists
+- the next honest move is a bounded repair plan or repair-ready packet
+- the route may change skill, playbook, agent, eval, or memo surfaces and needs explicit checkpoint posture
+- repair can still be kept inside one bounded execution unit
+
+### Do not use when
+
+- there is no reviewed diagnosis yet
+- the repair is actually a large scenario rollout better owned by a playbook
+- the route is trying to bypass approval, rollback, or health-check posture
+- the request is vague self-improvement rhetoric with no bounded target
+
+### Object use shape
+
+- REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub
+- optional repair quest when execution should remain deferred
+- explicit stop conditions and escalation points
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-session-self-repair/examples/runtime.md`
+- `review_checklist`: `skills/aoa-session-self-repair/checks/review.md`
 
 ## aoa-source-of-truth-check
 

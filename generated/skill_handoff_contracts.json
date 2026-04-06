@@ -864,7 +864,7 @@
     {
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
+      "description": "Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.",
       "invocation_mode": "explicit-only",
       "inputs": [
         "source quest or quest family",
@@ -1070,7 +1070,7 @@
     {
       "name": "aoa-session-donor-harvest",
       "display_name": "AoA Session Donor Harvest",
-      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
+      "description": "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.",
       "invocation_mode": "explicit-only",
       "inputs": [
         "reviewed session artifact",
@@ -1081,7 +1081,7 @@
         "desired output posture: classify-only, draft-stub, or patch-ready proposal"
       ],
       "outputs": [
-        "one bounded donor harvest pack",
+        "one bounded `HARVEST_PACKET`",
         "named candidates, each with:",
         "reusable unit name",
         "unit kind: pattern, mechanic, utility, law, proof, recall, or route",
@@ -1090,7 +1090,8 @@
         "one chosen next artifact",
         "one rejected nearest-wrong target",
         "evidence anchors from the session artifact",
-        "one short list of items to defer, drop, or keep as quest residue"
+        "one short list of items to defer, drop, or keep as quest residue",
+        "one optional handoff list to `aoa-session-route-forks`,"
       ],
       "verification": [
         "confirm the source artifact is reviewed and bounded",
@@ -1099,7 +1100,8 @@
         "confirm the nearest wrong target is rejected explicitly",
         "confirm no candidate routes source-owned meaning first into derivative layers",
         "confirm hold and defer outcomes remain available",
-        "confirm the output names the next artifact rather than only abstract categories"
+        "confirm the output names the next artifact rather than only abstract categories",
+        "confirm any family handoff hint is explicit rather than smuggled into the"
       ],
       "contracts": [
         "invocation must remain explicit and post-session",
@@ -1108,6 +1110,7 @@
         "`usefulness` is a reuse signal, not an owner layer by itself",
         "derivative layers do not become first authoring targets for source-owned meaning",
         "weak evidence may end in `hold` or `keep_or_open_quest`",
+        "the `HARVEST_PACKET` may carry handoff hints, but it does not become hidden",
         "drafting a next artifact is allowed; forcing promotion is not"
       ],
       "consumes_artifact_tags": [
@@ -1119,7 +1122,7 @@
         "desired-output-posture-classify-only-draft-stub-or-patch-ready-p"
       ],
       "provides_artifact_tags": [
-        "one-bounded-donor-harvest-pack",
+        "one-bounded-harvest-packet",
         "named-candidates-each-with",
         "reusable-unit-name",
         "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
@@ -1131,7 +1134,7 @@
       "handoff_packet_template": {
         "from_skill": "aoa-session-donor-harvest",
         "produced_artifacts": [
-          "one-bounded-donor-harvest-pack",
+          "one-bounded-harvest-packet",
           "named-candidates-each-with",
           "reusable-unit-name",
           "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
@@ -1149,6 +1152,264 @@
           "invocation must remain explicit and post-session",
           "the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
           "one candidate must map to one primary owner layer"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "display_name": "AoA Session Progression Lift",
+      "description": "Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "reviewed session artifact or harvest packet",
+        "named evidence refs",
+        "relevant role or cohort context if known",
+        "existing progression baseline if available"
+      ],
+      "outputs": [
+        "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
+        "optional rank reflection note if evidence is strong enough",
+        "quest hooks or chronicle stub when useful",
+        "negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance"
+      ],
+      "verification": [
+        "confirm all meaningful axis claims cite reviewed evidence",
+        "confirm the verdict matches the evidence",
+        "confirm zero or negative movement remains allowed",
+        "confirm unlock hints are small and explicit",
+        "confirm no universal score is introduced"
+      ],
+      "contracts": [
+        "progression remains evidence-backed",
+        "multi-axis only; no authoritative universal score",
+        "rank labels are descriptive, not sovereign",
+        "unlock hints must stay reviewable and small",
+        "progression does not replace owner-layer truth or routing authority"
+      ],
+      "consumes_artifact_tags": [
+        "reviewed-session-artifact-or-harvest-packet",
+        "named-evidence-refs",
+        "relevant-role-or-cohort-context-if-known",
+        "existing-progression-baseline-if-available"
+      ],
+      "provides_artifact_tags": [
+        "progression-delta-with-axis-movement-verdict-and-optional-unlock",
+        "optional-rank-reflection-note-if-evidence-is-strong-enough",
+        "quest-hooks-or-chronicle-stub-when-useful",
+        "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-session-progression-lift",
+        "produced_artifacts": [
+          "progression-delta-with-axis-movement-verdict-and-optional-unlock",
+          "optional-rank-reflection-note-if-evidence-is-strong-enough",
+          "quest-hooks-or-chronicle-stub-when-useful",
+          "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad"
+        ],
+        "verification_notes": [
+          "confirm all meaningful axis claims cite reviewed evidence",
+          "confirm the verdict matches the evidence",
+          "confirm zero or negative movement remains allowed"
+        ],
+        "contract_notes": [
+          "progression remains evidence-backed",
+          "multi-axis only; no authoritative universal score",
+          "rank labels are descriptive, not sovereign"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "display_name": "AoA Session Route Forks",
+      "description": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "reviewed session artifact or harvest packet",
+        "candidate next routes",
+        "known risks, dependencies, and blockers",
+        "desired control mode or approval posture",
+        "operator preference if already named"
+      ],
+      "outputs": [
+        "`FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions",
+        "one suggested default route if evidence is strong enough",
+        "one explicit hold or defer option when honest uncertainty remains",
+        "optional quest hooks or campaign hints without runtime authority"
+      ],
+      "verification": [
+        "confirm each branch differs materially",
+        "confirm likely owner repo is named",
+        "confirm at least one cost or risk is explicit",
+        "confirm stop conditions exist for risky branches",
+        "confirm hold or defer remains possible when uncertainty is real"
+      ],
+      "contracts": [
+        "branch cards do not become routing authority",
+        "fork analysis must stay evidence-backed",
+        "confidence should be named when weak",
+        "stop conditions are first-class, not footnotes",
+        "a fork card may recommend but must not hide alternatives"
+      ],
+      "consumes_artifact_tags": [
+        "reviewed-session-artifact-or-harvest-packet",
+        "candidate-next-routes",
+        "known-risks-dependencies-and-blockers",
+        "desired-control-mode-or-approval-posture",
+        "operator-preference-if-already-named"
+      ],
+      "provides_artifact_tags": [
+        "fork-cards-with-likely-gain-cost-risk-owner-repo-and-stop-condit",
+        "one-suggested-default-route-if-evidence-is-strong-enough",
+        "one-explicit-hold-or-defer-option-when-honest-uncertainty-remain",
+        "optional-quest-hooks-or-campaign-hints-without-runtime-authority"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-session-route-forks",
+        "produced_artifacts": [
+          "fork-cards-with-likely-gain-cost-risk-owner-repo-and-stop-condit",
+          "one-suggested-default-route-if-evidence-is-strong-enough",
+          "one-explicit-hold-or-defer-option-when-honest-uncertainty-remain",
+          "optional-quest-hooks-or-campaign-hints-without-runtime-authority"
+        ],
+        "verification_notes": [
+          "confirm each branch differs materially",
+          "confirm likely owner repo is named",
+          "confirm at least one cost or risk is explicit"
+        ],
+        "contract_notes": [
+          "branch cards do not become routing authority",
+          "fork analysis must stay evidence-backed",
+          "confidence should be named when weak"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "display_name": "AoA Session Self Diagnose",
+      "description": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "reviewed session artifact or harvest packet",
+        "observed frictions, failures, or contradictions",
+        "relevant owner layers and touched repos",
+        "previous related session evidence if available"
+      ],
+      "outputs": [
+        "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints",
+        "severity or urgency notes when evidence supports them",
+        "explicit unknowns when diagnosis remains incomplete",
+        "optional handoff to `aoa-session-self-repair`"
+      ],
+      "verification": [
+        "confirm each diagnosis cites evidence refs",
+        "confirm symptoms and causes are separated",
+        "confirm a likely owner layer is named",
+        "confirm unknowns are preserved where needed",
+        "confirm no mutation happened"
+      ],
+      "contracts": [
+        "diagnosis is read-only",
+        "one odd anecdote is not enough for structural certainty",
+        "probable cause must remain probabilistic when evidence is thin",
+        "owner hints must not override owner-layer law",
+        "no hidden mutation or silent patching"
+      ],
+      "consumes_artifact_tags": [
+        "reviewed-session-artifact-or-harvest-packet",
+        "observed-frictions-failures-or-contradictions",
+        "relevant-owner-layers-and-touched-repos",
+        "previous-related-session-evidence-if-available"
+      ],
+      "provides_artifact_tags": [
+        "diagnosis-packet-with-drift-types-symptoms-probable-causes-repai",
+        "severity-or-urgency-notes-when-evidence-supports-them",
+        "explicit-unknowns-when-diagnosis-remains-incomplete",
+        "optional-handoff-to-aoa-session-self-repair"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-session-self-diagnose",
+        "produced_artifacts": [
+          "diagnosis-packet-with-drift-types-symptoms-probable-causes-repai",
+          "severity-or-urgency-notes-when-evidence-supports-them",
+          "explicit-unknowns-when-diagnosis-remains-incomplete",
+          "optional-handoff-to-aoa-session-self-repair"
+        ],
+        "verification_notes": [
+          "confirm each diagnosis cites evidence refs",
+          "confirm symptoms and causes are separated",
+          "confirm a likely owner layer is named"
+        ],
+        "contract_notes": [
+          "diagnosis is read-only",
+          "one odd anecdote is not enough for structural certainty",
+          "probable cause must remain probabilistic when evidence is thin"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "display_name": "AoA Session Self Repair",
+      "description": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "reviewed diagnosis packet",
+        "owner-layer candidates",
+        "risk and approval posture",
+        "known validation surfaces",
+        "current rollback anchors if any"
+      ],
+      "outputs": [
+        "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
+        "optional repair quest when execution should remain deferred",
+        "explicit stop conditions and escalation points"
+      ],
+      "verification": [
+        "confirm diagnosis exists and is cited",
+        "confirm the chosen repair is the smallest honest shape",
+        "confirm checkpoint fields are present",
+        "confirm validation and rollback posture are named",
+        "confirm escalation route exists if the repair widens"
+      ],
+      "contracts": [
+        "self-repair is not free self-modification",
+        "important surface changes must pass checkpoint posture",
+        "repair packets stay bounded and reviewable",
+        "role law changes route to `aoa-agents`",
+        "proof-law changes route to `aoa-evals`",
+        "scenario-scale repair routes to `aoa-playbooks`"
+      ],
+      "consumes_artifact_tags": [
+        "reviewed-diagnosis-packet",
+        "owner-layer-candidates",
+        "risk-and-approval-posture",
+        "known-validation-surfaces",
+        "current-rollback-anchors-if-any"
+      ],
+      "provides_artifact_tags": [
+        "repair-packet-with-target-owner-repo-smallest-diff-shape-approva",
+        "optional-repair-quest-when-execution-should-remain-deferred",
+        "explicit-stop-conditions-and-escalation-points"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-session-self-repair",
+        "produced_artifacts": [
+          "repair-packet-with-target-owner-repo-smallest-diff-shape-approva",
+          "optional-repair-quest-when-execution-should-remain-deferred",
+          "explicit-stop-conditions-and-escalation-points"
+        ],
+        "verification_notes": [
+          "confirm diagnosis exists and is cited",
+          "confirm the chosen repair is the smallest honest shape",
+          "confirm checkpoint fields are present"
+        ],
+        "contract_notes": [
+          "self-repair is not free self-modification",
+          "important surface changes must pass checkpoint posture",
+          "repair packets stay bounded and reviewable"
         ],
         "next_recommended_skills": []
       }

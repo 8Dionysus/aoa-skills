@@ -2,13 +2,17 @@
 
 ## Purpose
 
-Use this checklist when reviewing work that harvests reusable donor units from a reviewed session artifact into AoA owner-layer candidates.
+Use this checklist when reviewing work that turns a reviewed session artifact
+into a bounded `HARVEST_PACKET` with AoA owner-layer candidates and explicit
+family handoff hints.
 
 ## When it applies
 
 - a reviewed session, transcript, or compaction packet is being distilled after the fact
 - the reviewer must check whether reusable units belong in `aoa-techniques`, `aoa-skills`, `aoa-playbooks`, `aoa-evals`, `aoa-memo`, `aoa-agents`, or should remain deferred
 - the route risks collapsing source-owned meaning into derivative layers or vague "good ideas"
+- the result may also need explicit route-forks, diagnosis, progression, or
+  quest-triage follow-through
 
 ## Review checklist
 
@@ -20,6 +24,9 @@ Use this checklist when reviewing work that harvests reusable donor units from a
 - [ ] `usefulness` was treated as a reuse signal, not as an owner layer.
 - [ ] Weak or unclear candidates were allowed to remain `hold` instead of being forced into canon.
 - [ ] The result names one concrete next artifact for each accepted candidate.
+- [ ] Quest residue, route forks, diagnosis hints, repair follow-through, or
+  progression follow-through were surfaced explicitly when they survived the
+  harvest.
 
 ## Not a fit
 

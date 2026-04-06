@@ -1,0 +1,41 @@
+# Runtime Example
+
+## Scenario
+
+A reviewed session has already produced a donor packet, but three honest next
+routes remain:
+1. deepen the donor-harvest nucleus
+2. add a new sibling skill for route choice
+3. defer the family split and keep the work as one bounded owner-repo change
+
+## Why this skill fits
+
+The surviving problem is not donor extraction anymore.
+It is explicit branch analysis across several plausible next routes with
+different gains, costs, and risks.
+
+## Expected inputs
+
+- reviewed session artifact or harvest packet
+- named next-route candidates
+- known risks and dependencies
+- desired control mode or operator preference if already known
+
+## Expected outputs
+
+- `FORK_CARDS` for each materially different route
+- one likely first owner repo for each branch
+- one suggested default route if the evidence is strong enough
+- one hold or defer option if uncertainty remains meaningful
+
+## Boundary notes
+
+- Do not use this skill before donor harvest exists.
+- Do not use this skill as hidden routing policy.
+- Do not confuse branch analysis with final promotion triage.
+
+## Verification notes
+
+- Confirm each branch is materially distinct.
+- Confirm costs, risks, and stop conditions are visible.
+- Confirm the cards preserve choice rather than erase alternatives.

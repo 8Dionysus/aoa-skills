@@ -11,13 +11,13 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 21,
-  "total_cases": 102,
+  "skill_count": 25,
+  "total_cases": 120,
   "case_class_totals": {
-    "explicit-handle": 21,
-    "manual-invocation-required": 16,
+    "explicit-handle": 25,
+    "manual-invocation-required": 26,
     "prefer-other-skill": 20,
-    "should-not-trigger": 21,
+    "should-not-trigger": 25,
     "should-trigger": 24
   },
   "skills": [
@@ -287,12 +287,12 @@
     {
       "name": "aoa-quest-harvest",
       "invocation_mode": "explicit-only",
-      "description_sha256": "72791816671a95202d2d728b7cbe79c6299c5102319f9ebb73ce408921f1d7cf",
-      "family": "quest-promotion-triage",
-      "total_cases": 4,
+      "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda",
+      "family": "session-harvest-family",
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
-        "manual-invocation-required": 1,
+        "manual-invocation-required": 2,
         "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
@@ -346,12 +346,12 @@
     {
       "name": "aoa-session-donor-harvest",
       "invocation_mode": "explicit-only",
-      "description_sha256": "39775fddb3e05c3981e6c1812a74f1994eb4ffc365c9d0279535d593971a2333",
-      "family": "quest-promotion-triage",
-      "total_cases": 3,
+      "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2",
+      "family": "session-harvest-family",
+      "total_cases": 4,
       "case_class_totals": {
         "explicit-handle": 1,
-        "manual-invocation-required": 1,
+        "manual-invocation-required": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -360,7 +360,83 @@
         "should-not-trigger"
       ],
       "coverage_ok": true,
-      "has_collision_coverage": false
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961",
+      "family": "session-harvest-family",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "22824ec5994207065055b7d44afc266c05c0f8458f1d1794441823ae8f191ed9",
+      "family": "session-harvest-family",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed",
+      "family": "session-harvest-family",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "invocation_mode": "explicit-only",
+      "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869",
+      "family": "session-harvest-family",
+      "total_cases": 4,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "manual-invocation-required": 2,
+        "should-not-trigger": 1
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
     },
     {
       "name": "aoa-source-of-truth-check",

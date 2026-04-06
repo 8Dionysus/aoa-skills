@@ -675,6 +675,58 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "governance_lane_ids": [],
+      "name": "aoa-session-progression-lift",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "governance_lane_ids": [],
+      "name": "aoa-session-route-forks",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "governance_lane_ids": [],
+      "name": "aoa-session-self-diagnose",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "governance_lane_ids": [],
+      "name": "aoa-session-self-repair",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
       "adjacency_use_count": 1,
       "adjacent_skill_names": [

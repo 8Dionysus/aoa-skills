@@ -20,6 +20,10 @@
         "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
         "aoa-source-of-truth-check",
@@ -45,6 +49,10 @@
         "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ]
@@ -63,6 +71,19 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest"
+      ]
+    },
+    "repo-session-harvest-family": {
+      "description": "Install the full explicit post-session session-harvest family into a repository root, including donor harvest, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
       ]
     },
     "repo-risk-explicit": {
@@ -109,6 +130,10 @@
         "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ]

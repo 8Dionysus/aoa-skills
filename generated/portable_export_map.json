@@ -321,7 +321,82 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/owner-layer-map.md"
+          "references/family-shape.md",
+          "references/harvest-packet-contract.md",
+          "references/owner-layer-map.md",
+          "references/rpg-reflection-posture.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "target_dir": ".agents/skills/aoa-session-progression-lift",
+      "target_skill_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/progression-axes.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "target_dir": ".agents/skills/aoa-session-route-forks",
+      "target_skill_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "target_dir": ".agents/skills/aoa-session-self-diagnose",
+      "target_skill_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "target_dir": ".agents/skills/aoa-session-self-repair",
+      "target_skill_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/checkpoint-bridge.md"
         ],
         "assets": [
           "assets/large-logo.svg",

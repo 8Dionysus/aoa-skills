@@ -495,7 +495,7 @@
     {
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
+      "description": "Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.",
       "short_description": "Triage quest promotion honestly",
       "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
@@ -612,7 +612,7 @@
     {
       "name": "aoa-session-donor-harvest",
       "display_name": "AoA Session Donor Harvest",
-      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
+      "description": "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.",
       "short_description": "Harvest reusable units from sessions",
       "path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
@@ -623,7 +623,8 @@
       "source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0075",
-        "AOA-T-0076"
+        "AOA-T-0076",
+        "AOA-T-PENDING-HARVEST-PACKET-CONTRACT"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",
@@ -634,7 +635,158 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
-          "references/owner-layer-map.md"
+          "references/family-shape.md",
+          "references/harvest-packet-contract.md",
+          "references/owner-layer-map.md",
+          "references/rpg-reflection-posture.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "display_name": "AoA Session Progression Lift",
+      "description": "Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.",
+      "short_description": "Lift reviewed progression signals",
+      "path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "technique_dependencies": [
+        "AOA-T-PENDING-PROGRESSION-EVIDENCE-LIFT",
+        "AOA-T-PENDING-MULTI-AXIS-QUEST-OVERLAY"
+      ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/progression-axes.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "display_name": "AoA Session Route Forks",
+      "description": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.",
+      "short_description": "Make next-route forks explicit",
+      "path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "technique_dependencies": [
+        "AOA-T-PENDING-DECISION-FORK-CARDS",
+        "AOA-T-PENDING-RISK-PASSPORT-LIFT"
+      ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "display_name": "AoA Session Self Diagnose",
+      "description": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.",
+      "short_description": "Diagnose reviewed session drift",
+      "path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "technique_dependencies": [
+        "AOA-T-PENDING-SESSION-DRIFT-TAXONOMY",
+        "AOA-T-PENDING-DIAGNOSIS-FROM-REVIEWED-EVIDENCE"
+      ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "display_name": "AoA Session Self Repair",
+      "description": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.",
+      "short_description": "Author checkpointed repair packets",
+      "path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "technique_dependencies": [
+        "AOA-T-PENDING-REPAIR-SHAPE-FROM-DIAGNOSIS",
+        "AOA-T-PENDING-CHECKPOINT-BOUND-SELF-REPAIR"
+      ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/checkpoint-bridge.md"
         ],
         "assets": [
           "assets/large-logo.svg",

@@ -51,14 +51,22 @@
       ]
     },
     {
-      "family": "quest-promotion-triage",
+      "family": "session-harvest-family",
       "skills": [
-        "aoa-quest-harvest",
-        "aoa-session-donor-harvest"
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
       ],
       "notes": [
-        "aoa-session-donor-harvest harvests reusable donor units from a reviewed session artifact and routes them to the right owner layer before forcing promotion.",
-        "aoa-quest-harvest handles the narrower final promotion verdict once the work is already reduced to one repeated reviewed quest unit."
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
       ]
     },
     {
@@ -320,6 +328,85 @@
       ],
       "prompt": "Inside this abyss-stack repo, place a sanitized incident artifact in the repo-relative abyss sharing surface with explicit local thresholds.",
       "note": "This overlay still requires an explicit $skill invocation even when the repo-specific match is strong."
+    },
+    {
+      "case_id": "collision-20",
+      "skill_name": "aoa-session-donor-harvest",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
+      ],
+      "prompt": "Turn this reviewed session recap into a bounded HARVEST_PACKET, route reusable units to the right owner layer, and name whether the next honest handoff is forks, diagnosis, progression, or quest promotion.",
+      "note": "This is the family nucleus: harvest first, then hand off. Even with a strong semantic match it stays explicit-only."
+    },
+    {
+      "case_id": "collision-21",
+      "skill_name": "aoa-session-route-forks",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-self-diagnose",
+        "aoa-quest-harvest"
+      ],
+      "prompt": "The reviewed session is already harvested, but there are three materially different next routes with different risks and owner targets. Surface explicit fork cards instead of burying the choice in one recommendation.",
+      "note": "This is branch analysis after review, not first-pass harvest, diagnosis, or final quest promotion."
+    },
+    {
+      "case_id": "collision-22",
+      "skill_name": "aoa-session-self-diagnose",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift"
+      ],
+      "prompt": "Across the reviewed session notes, the same blockers, proof gaps, and boundary blur keep recurring. Turn that evidence into a diagnosis packet before anyone starts patching.",
+      "note": "Diagnosis is the next honest move here, not donor extraction, repair execution, or progression reflection."
+    },
+    {
+      "case_id": "collision-23",
+      "skill_name": "aoa-session-self-repair",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-self-diagnose",
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks"
+      ],
+      "prompt": "We already have a reviewed diagnosis packet. Turn it into the smallest repair packet with checkpoint posture, rollback marker, health check, and owner target.",
+      "note": "This is repair planning after diagnosis, not diagnosis itself or a broader donor harvest."
+    },
+    {
+      "case_id": "collision-24",
+      "skill_name": "aoa-session-progression-lift",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-self-diagnose",
+        "aoa-quest-harvest"
+      ],
+      "prompt": "The reviewed session clearly moved several mastery axes in different directions. Emit a bounded progression delta with honest advance, hold, or reanchor signals and small unlock hints.",
+      "note": "This is progression reflection from reviewed evidence, not donor harvest, diagnosis, or quest promotion."
+    },
+    {
+      "case_id": "collision-25",
+      "skill_name": "aoa-quest-harvest",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-progression-lift"
+      ],
+      "prompt": "The material is already reduced to one repeated reviewed quest unit and the only real question is whether it should stay a quest or be promoted into the next owner surface.",
+      "note": "This is the narrow final promotion verdict, not wider session-family harvest, fork routing, diagnosis, or progression reflection."
     }
   ]
 }

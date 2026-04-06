@@ -16,8 +16,12 @@ This file is the repository-wide map of public skills.
 | aoa-adr-write | core | canonical | Codex skill for recording a meaningful architectural or workflow decision with rationale and tradeoffs. |
 | aoa-core-logic-boundary | core | evaluated | Codex skill for clarifying which logic belongs in the reusable core versus glue, orchestration, or infrastructure detail. |
 | aoa-port-adapter-refactor | core | evaluated | Codex skill for refactoring toward clearer ports and adapters so reusable logic is less entangled with infrastructure details. |
-| aoa-quest-harvest | core | scaffold | Codex skill for triaging repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. |
-| aoa-session-donor-harvest | core | scaffold | Codex skill for harvesting reusable donor units from a reviewed session, routing them to the right AoA owner layer, and drafting the smallest honest next artifact. |
+| aoa-quest-harvest | core | scaffold | Codex skill for giving the final promotion verdict on one repeated reviewed quest unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. |
+| aoa-session-donor-harvest | core | scaffold | Codex skill for turning a reviewed session into a bounded HARVEST_PACKET, routing reusable units to the right AoA owner layer, and handing off to the next honest post-session skill when needed. |
+| aoa-session-route-forks | core | scaffold | Codex skill for turning reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions. |
+| aoa-session-self-diagnose | core | scaffold | Codex skill for classifying drift, friction, proof gaps, and ownership confusion from a reviewed session into a bounded diagnosis packet without mutating anything yet. |
+| aoa-session-self-repair | core | scaffold | Codex skill for turning a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, and explicit owner-layer targets. |
+| aoa-session-progression-lift | core | scaffold | Codex skill for lifting reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints and no fake single-score authority. |
 | aoa-source-of-truth-check | core | canonical | Codex skill for checking whether canonical docs and repository guidance have clear ownership and do not silently conflict. |
 | abyss-safe-infra-change | project | evaluated | Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes. |
 | abyss-sanitized-share | project | evaluated | Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes. |

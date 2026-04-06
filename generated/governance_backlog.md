@@ -7,9 +7,9 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Summary
 
-- total skills: 21
+- total skills: 25
 - candidate ready without review: 0
-- blocked by pending lineage: 1
+- blocked by pending lineage: 6
 - canonical maintenance cohort: 12
 - comparative pending cohort: 3
 - review truth-sync gaps: 0
@@ -33,7 +33,11 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-quest-harvest | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-safe-infra-change | canonical | published | true | true | default_reference | local_runtime_bringup, risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-safe-infra-change.md | docs/reviews/status-promotions/aoa-safe-infra-change.md |
 | aoa-sanitized-share | canonical | published | true | true | default_reference | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-sanitized-share.md | docs/reviews/status-promotions/aoa-sanitized-share.md |
-| aoa-session-donor-harvest | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-session-donor-harvest | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-session-progression-lift | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-session-route-forks | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-session-self-diagnose | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
+| aoa-session-self-repair | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-source-of-truth-check | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-source-of-truth-check.md | docs/reviews/status-promotions/aoa-source-of-truth-check.md |
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
 | atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
@@ -64,7 +68,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 ## Cohorts
 
 - `candidate_ready_without_review`: -
-- `blocked_by_pending_lineage`: aoa-quest-harvest
+- `blocked_by_pending_lineage`: aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor
 - `review_truth_sync`: -

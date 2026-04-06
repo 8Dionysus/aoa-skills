@@ -1,0 +1,5 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep this skill explicit-only because self-repair must stay checkpointed and visible rather than feeling like silent self-mutation.
+  - Require a reviewed diagnosis before this skill is a fit.

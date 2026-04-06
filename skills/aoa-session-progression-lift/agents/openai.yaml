@@ -1,0 +1,5 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep this skill explicit-only because progression overlays should stay evidence-backed and visibly bounded.
+  - Do not let progression language become routing policy or sovereign authority.

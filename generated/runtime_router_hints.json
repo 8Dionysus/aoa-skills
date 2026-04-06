@@ -288,19 +288,28 @@
     },
     {
       "name": "aoa-quest-harvest",
-      "description": "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a reviewed session artifact still contains multiple donor units that need broader owner-layer routing first.",
-      "collision_family": "quest-promotion-triage",
-      "competing_skills": [],
+      "description": "Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.",
+      "collision_family": "session-harvest-family",
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-progression-lift"
+      ],
       "should_trigger": [],
       "manual_invocation_required": [
-        "Triage repeated reviewed quest evidence into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface."
+        "Triage one repeated reviewed quest unit into the right promotion target without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when the work is already reduced to one bounded quest-shaped unit with repeated reviewed evidence and you need the final honest verdict on whether it should stay a quest or move into the next owner surface.",
+        "The material is already reduced to one repeated reviewed quest unit and the only real question is whether it should stay a quest or be promoted into the next owner surface."
       ],
       "negative_controls": [
-        "The route is still active, the evidence is not reviewed yet, and there is only one anecdotal occurrence, so promotion triage would be premature."
+        "The source still needs donor harvest or broader session-family routing, and the evidence is not reduced to one repeated reviewed quest unit yet, so promotion triage would be premature."
       ],
       "notes": [
-        "aoa-session-donor-harvest harvests reusable donor units from a reviewed session artifact and routes them to the right owner layer before forcing promotion.",
-        "aoa-quest-harvest handles the narrower final promotion verdict once the work is already reduced to one repeated reviewed quest unit."
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
       ]
     },
     {
@@ -349,19 +358,133 @@
     },
     {
       "name": "aoa-session-donor-harvest",
-      "description": "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when there is already one repeated quest unit that only needs `aoa-quest-harvest` for the final promotion verdict.",
-      "collision_family": "quest-promotion-triage",
-      "competing_skills": [],
+      "description": "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.",
+      "collision_family": "session-harvest-family",
+      "competing_skills": [
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
+      ],
       "should_trigger": [],
       "manual_invocation_required": [
-        "Harvest reusable pattern, mechanic, utility, law, proof, recall, or route candidates from a reviewed session artifact, route each one to the right AoA owner layer, and draft the smallest honest next artifact. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what reusable object emerged here rather than merely what happened."
+        "Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and name any next honest post-session handoff. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened.",
+        "Turn this reviewed session recap into a bounded HARVEST_PACKET, route reusable units to the right owner layer, and name whether the next honest handoff is forks, diagnosis, progression, or quest promotion."
       ],
       "negative_controls": [
         "The session is still live, nothing has been reviewed yet, and the team mainly wants to capture the chat, export a transcript, and make it searchable before deciding what reusable object, if any, emerged."
       ],
       "notes": [
-        "aoa-session-donor-harvest harvests reusable donor units from a reviewed session artifact and routes them to the right owner layer before forcing promotion.",
-        "aoa-quest-harvest handles the narrower final promotion verdict once the work is already reduced to one repeated reviewed quest unit."
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+      ]
+    },
+    {
+      "name": "aoa-session-progression-lift",
+      "description": "Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.",
+      "collision_family": "session-harvest-family",
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-self-diagnose",
+        "aoa-quest-harvest"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and the team needs progression legibility without changing routing authority.",
+        "The reviewed session clearly moved several mastery axes in different directions. Emit a bounded progression delta with honest advance, hold, or reanchor signals and small unlock hints."
+      ],
+      "negative_controls": [
+        "The request mainly wants one global power score or vibe-based praise, so progression lift would be dishonest."
+      ],
+      "notes": [
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+      ]
+    },
+    {
+      "name": "aoa-session-route-forks",
+      "description": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.",
+      "collision_family": "session-harvest-family",
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-self-diagnose",
+        "aoa-quest-harvest"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Turn a reviewed session or HARVEST_PACKET into explicit fork cards so several plausible next moves stay visible, comparable, and bounded instead of collapsing into one hidden recommendation. Use when the session ended with multiple credible branches that differ in owner target, risk posture, or likely gain.",
+        "The reviewed session is already harvested, but there are three materially different next routes with different risks and owner targets. Surface explicit fork cards instead of burying the choice in one recommendation."
+      ],
+      "negative_controls": [
+        "The reviewed session already points to one obvious bounded next move, so branch analysis would only add ceremony."
+      ],
+      "notes": [
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+      ]
+    },
+    {
+      "name": "aoa-session-self-diagnose",
+      "description": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.",
+      "collision_family": "session-harvest-family",
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when repeated contradictions, blockers, or boundary blur suggest diagnosis should happen before repair.",
+        "Across the reviewed session notes, the same blockers, proof gaps, and boundary blur keep recurring. Turn that evidence into a diagnosis packet before anyone starts patching."
+      ],
+      "negative_controls": [
+        "The session contains no meaningful friction or contradiction, and the next move is straightforward execution rather than diagnosis."
+      ],
+      "notes": [
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+      ]
+    },
+    {
+      "name": "aoa-session-self-repair",
+      "description": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.",
+      "collision_family": "session-harvest-family",
+      "competing_skills": [
+        "aoa-session-self-diagnose",
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan.",
+        "We already have a reviewed diagnosis packet. Turn it into the smallest repair packet with checkpoint posture, rollback marker, health check, and owner target."
+      ],
+      "negative_controls": [
+        "There is no reviewed diagnosis yet, so producing a repair packet now would be premature and likely hide the real problem."
+      ],
+      "notes": [
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
       ]
     },
     {
