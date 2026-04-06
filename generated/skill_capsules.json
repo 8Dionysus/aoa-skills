@@ -73,6 +73,25 @@
       "workflow_short": "Purpose: classify whether a requested action crosses an approval boundary and to return a bounded next step that keeps authority explicit before any execution proceeds. Flow: identify the requested action and touched surfaces -> assess whether the action..."
     },
     {
+      "inputs_short": "Needs: reviewed session artifact, harvest packet, or recurring project slice; evidence of repeated manual work; known current manual route; known triggers, inputs, outputs, or their current ambiguity.",
+      "invocation_mode": "explicit-only",
+      "main_anti_patterns_short": "Avoid: treating one exciting session as proof of repeatability; automating unstable, under-specified, or secret-heavy work too early; confusing a bounded skill with a recurring scenario seed; using automation desire...",
+      "name": "aoa-automation-opportunity-scan",
+      "outputs_short": "Produces: AUTOMATIONOPPORTUNITYPACKET; one or more AUTOMATIONCANDIDATE cards; seedready or notnow verdict for each candidate; checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries.",
+      "scope": "core",
+      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold",
+      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-AUTOMATION-FIT-MATRIX",
+        "AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT",
+        "AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"
+      ],
+      "trigger_boundary_short": "Use when a reviewed session or repeated project slice reveals a recurring manual route; the same audit, report, hygiene pass, or triage loop keeps coming back; Avoid when the work happened only once and still looks...",
+      "verification_short": "Checks: confirm each candidate names the current manual route; confirm evidence refs justify the repeat signal; confirm stable input and output posture is assessed explicitly; confirm seedready or notnow is explicit...",
+      "workflow_short": "Purpose: detect where repeated project work is ripe for automation and to package that finding into a bounded AUTOMATIONOPPORTUNITYPACKET. Flow: start from reviewed evidence, not from vague enthusiasm -> isolate the current manual route as actually..."
+    },
+    {
       "inputs_short": "Needs: target area or subsystem; current naming and responsibilities; known neighboring contexts; ambiguous or overloaded terms.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: inventing too many contexts for a small problem; renaming concepts without reducing confusion; treating context maps as proof of good architecture when interfaces remain muddy.",
@@ -313,7 +332,7 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: inventing progress from mood; using progression as policy; granting authority without cited evidence; flattening multi-axis growth into one number.",
       "name": "aoa-session-progression-lift",
-      "outputs_short": "Produces: PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints; optional rank reflection note if evidence is strong enough; quest hooks or chronicle stub when useful; negative or cautionary...",
+      "outputs_short": "Produces: PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints; optional automation-readiness hint when reviewed evidence supports it; optional rank reflection note if evidence is strong enough;...",
       "scope": "core",
       "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
       "status": "scaffold",
@@ -367,7 +386,7 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: silent doctrine edits; approval bypass; retry loops disguised as repair; using repair to hide broader governance debt.",
       "name": "aoa-session-self-repair",
-      "outputs_short": "Produces: REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub; optional repair quest when execution should remain deferred; explicit stop...",
+      "outputs_short": "Produces: REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub; optional repair quest when execution should remain deferred; optional...",
       "scope": "core",
       "skill_path": "skills/aoa-session-self-repair/SKILL.md",
       "status": "scaffold",

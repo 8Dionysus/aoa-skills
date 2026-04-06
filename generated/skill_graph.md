@@ -31,6 +31,14 @@ graph TD
   skill_aoa_approval_gate_check["aoa-approval-gate-check"]
   scope_risk["scope: risk"]
   profile_repo_risk_explicit["profile: repo-risk-explicit"]
+  skill_aoa_automation_opportunity_scan["aoa-automation-opportunity-scan"]
+  status_scaffold["status: scaffold"]
+  lineage_pending["lineage: pending"]
+  technique_AOA_T_PENDING_AUTOMATION_FIT_MATRIX["AOA-T-PENDING-AUTOMATION-FIT-MATRIX"]
+  technique_AOA_T_PENDING_HUMAN_LOOP_TO_SEED_LIFT["AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT"]
+  technique_AOA_T_PENDING_APPROVAL_SENSITIVITY_CHECK["AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK"]
+  profile_repo_automation_opportunity_scan_only["profile: repo-automation-opportunity-scan-only"]
+  profile_repo_session_harvest_family["profile: repo-session-harvest-family"]
   skill_aoa_bounded_context_map["aoa-bounded-context-map"]
   technique_AOA_T_0016["AOA-T-0016"]
   skill_aoa_change_protocol["aoa-change-protocol"]
@@ -51,12 +59,9 @@ graph TD
   skill_aoa_property_invariants["aoa-property-invariants"]
   technique_AOA_T_0007["AOA-T-0007"]
   skill_aoa_quest_harvest["aoa-quest-harvest"]
-  status_scaffold["status: scaffold"]
-  lineage_pending["lineage: pending"]
   technique_AOA_T_PENDING_QUEST_HARVEST["AOA-T-PENDING-QUEST-HARVEST"]
   technique_AOA_T_PENDING_PROMOTION_TRIAGE["AOA-T-PENDING-PROMOTION-TRIAGE"]
   profile_repo_quest_harvest_only["profile: repo-quest-harvest-only"]
-  profile_repo_session_harvest_family["profile: repo-session-harvest-family"]
   skill_aoa_safe_infra_change["aoa-safe-infra-change"]
   skill_aoa_sanitized_share["aoa-sanitized-share"]
   skill_aoa_session_donor_harvest["aoa-session-donor-harvest"]
@@ -136,6 +141,23 @@ graph TD
   skill_aoa_approval_gate_check -->|available_in_artifact_group| artifact_group_runtime_guardrails
   skill_aoa_approval_gate_check -->|available_in_artifact_group| artifact_group_description_trigger
   skill_aoa_approval_gate_check -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_automation_opportunity_scan -->|maturity| status_scaffold
+  skill_aoa_automation_opportunity_scan -->|scope| scope_core
+  skill_aoa_automation_opportunity_scan -->|lineage| lineage_pending
+  skill_aoa_automation_opportunity_scan -->|invocation_policy| policy_explicit_only
+  skill_aoa_automation_opportunity_scan -->|depends_on| technique_AOA_T_PENDING_AUTOMATION_FIT_MATRIX
+  skill_aoa_automation_opportunity_scan -->|depends_on| technique_AOA_T_PENDING_HUMAN_LOOP_TO_SEED_LIFT
+  skill_aoa_automation_opportunity_scan -->|depends_on| technique_AOA_T_PENDING_APPROVAL_SENSITIVITY_CHECK
+  skill_aoa_automation_opportunity_scan -->|included_in_profile| profile_repo_automation_opportunity_scan_only
+  skill_aoa_automation_opportunity_scan -->|included_in_profile| profile_repo_core_only
+  skill_aoa_automation_opportunity_scan -->|included_in_profile| profile_repo_default
+  skill_aoa_automation_opportunity_scan -->|included_in_profile| profile_repo_session_harvest_family
+  skill_aoa_automation_opportunity_scan -->|included_in_profile| profile_user_curated_core
+  skill_aoa_automation_opportunity_scan -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_automation_opportunity_scan -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_automation_opportunity_scan -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_automation_opportunity_scan -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_automation_opportunity_scan -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_bounded_context_map -->|maturity| status_canonical
   skill_aoa_bounded_context_map -->|scope| scope_core
   skill_aoa_bounded_context_map -->|lineage| lineage_published
@@ -445,6 +467,7 @@ graph TD
 | abyss-sanitized-share | evaluated | project | explicit-only | published | repo-abyss-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0034, AOA-T-0002 |
 | aoa-adr-write | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0033, AOA-T-0002 |
 | aoa-approval-gate-check | canonical | risk | explicit-only | published | repo-default, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028 |
+| aoa-automation-opportunity-scan | scaffold | core | explicit-only | pending | repo-automation-opportunity-scan-only, repo-core-only, repo-default, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-AUTOMATION-FIT-MATRIX, AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT, AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK |
 | aoa-bounded-context-map | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0016, AOA-T-0002 |
 | aoa-change-protocol | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002 |
 | aoa-contract-test | canonical | core | explicit-preferred | published | repo-core-only, repo-default, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0003, AOA-T-0015 |

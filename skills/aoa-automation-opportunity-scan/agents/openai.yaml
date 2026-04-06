@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep this skill explicit-only because automation detection must stay a visible post-session action and must not grant hidden scheduling or mutation authority.
+  - Start from reviewed evidence and the current manual route rather than vague pressure to automate more.
+  - Escalate self-changing or approval-heavy candidates into checkpoint-required posture instead of pretending they are seed-ready.

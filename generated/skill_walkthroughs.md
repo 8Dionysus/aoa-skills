@@ -175,6 +175,43 @@ Common expand sections:
 - `promotion_review`: `docs/reviews/status-promotions/aoa-approval-gate-check.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`
 
+## aoa-automation-opportunity-scan
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-automation-opportunity-scan/SKILL.md`
+- pick summary: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.
+
+### Use when
+
+- a reviewed session or repeated project slice reveals a recurring manual route
+- the same audit, report, hygiene pass, or triage loop keeps coming back
+- a session-harvest packet includes an automationcandidate
+- an operator wants to know whether a recurring route should stay manual, become a bounded skill, or become a playbook automation seed
+- repeated friction suggests a good automation opportunity but authority and risk still need classification
+
+### Do not use when
+
+- the work happened only once and still looks exploratory
+- the route is primarily creative synthesis with no stable trigger or output
+- the task is asking for live scheduling or hidden background execution authority
+- the route would mutate important system surfaces without checkpoint posture
+- the work still needs basic donor harvest or source-of-truth clarification first
+
+### Object use shape
+
+- AUTOMATIONOPPORTUNITYPACKET
+- one or more AUTOMATIONCANDIDATE cards
+- seedready or notnow verdict for each candidate
+- checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries
+- next-artifact suggestion such as skill, playbookseed, techniquecandidate, repairquest, quest, or defer
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-automation-opportunity-scan/examples/runtime.md`
+- `review_checklist`: `skills/aoa-automation-opportunity-scan/checks/review.md`
+
 ## aoa-bounded-context-map
 
 - scope: `core`
@@ -517,6 +554,7 @@ Common expand sections:
 - the task is to invent net-new doctrine rather than classify a repeated pattern
 - the route is already clearly scenario-shaped and only needs playbook authoring
 - the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use aoa-session-donor-harvest
+- the source still needs explicit automation-readiness classification for a repeated manual route; use aoa-automation-opportunity-scan
 - the source still needs explicit route forks, diagnosis, repair, or progression reflection from the wider session-harvest family before final promotion triage
 
 ### Object use shape
@@ -617,6 +655,7 @@ Common expand sections:
 - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
 - the work is post-session and reviewable rather than live execution
 - candidate outputs may belong in technique canon, aoa-skills, aoa-playbooks, aoa-evals, aoa-memo, aoa-agents, or a hold/quest lane
+- a repeated manual route may also need an explicit automation-readiness seam instead of staying vague donor residue
 - the session may also have produced decision forks, diagnosis clues, repair candidates, progression evidence, or quest residue that should be made explicit rather than buried in recap prose
 - the question is not merely "what happened?" but "what reusable object, if any, emerged here?"
 
@@ -640,7 +679,8 @@ Common expand sections:
 - one rejected nearest-wrong target
 - evidence anchors from the session artifact
 - one short list of items to defer, drop, or keep as quest residue
-- one optional handoff list to aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-session-progression-lift, or aoa-quest-harvest
+- one optional automationcandidate extract when a repeated manual route is stable enough to deserve explicit automation-readiness classification
+- one optional handoff list to aoa-automation-opportunity-scan, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-session-progression-lift, or aoa-quest-harvest
 
 ### Support artifacts
 
@@ -672,6 +712,7 @@ Common expand sections:
 ### Object use shape
 
 - PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints
+- optional automation-readiness hint when reviewed evidence supports it
 - optional rank reflection note if evidence is strong enough
 - quest hooks or chronicle stub when useful
 - negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance
@@ -694,6 +735,7 @@ Common expand sections:
 - a reviewed session ended with multiple plausible next moves
 - the operator or Codex needs explicit branch choices instead of a buried recommendation
 - the next route may change owner repo, risk posture, or difficulty posture
+- the choice may include staying manual, becoming a bounded skill, becoming a playbook automation seed candidate, or waiting for prerequisite repair
 - the session needs quest-board legibility without pretending to be runtime state
 
 ### Do not use when
@@ -708,6 +750,7 @@ Common expand sections:
 - FORKCARDS with likely gain, cost, risk, owner repo, and stop conditions
 - one suggested default route if evidence is strong enough
 - one explicit hold or defer option when honest uncertainty remains
+- optional automation and non-automation branches side by side when that choice is real
 - optional quest hooks or campaign hints without runtime authority
 
 ### Support artifacts
@@ -728,6 +771,7 @@ Common expand sections:
 - a reviewed session contains repeated friction, contradiction, or drift
 - the next honest move is diagnosis before repair
 - boundary confusion or missing proof may be more important than immediate output production
+- blocked automation readiness may need root-cause classification before any automation claim becomes honest
 - the same class of problem may be appearing across sessions
 
 ### Do not use when
@@ -742,6 +786,7 @@ Common expand sections:
 - DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints
 - severity or urgency notes when evidence supports them
 - explicit unknowns when diagnosis remains incomplete
+- optional blocked-automation findings such as unstable inputs, hidden approval, rollback gaps, or secret coupling
 - optional handoff to aoa-session-self-repair
 
 ### Support artifacts
@@ -762,6 +807,7 @@ Common expand sections:
 - a reviewed diagnosis already exists
 - the next honest move is a bounded repair plan or repair-ready packet
 - the route may change skill, playbook, agent, eval, or memo surfaces and needs explicit checkpoint posture
+- the route may need prerequisite repair before later automation becomes honest
 - repair can still be kept inside one bounded execution unit
 
 ### Do not use when
@@ -775,6 +821,7 @@ Common expand sections:
 
 - REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub
 - optional repair quest when execution should remain deferred
+- optional automation-readiness prerequisite packet when the real need is to stabilize a route before later automation scanning or seeding
 - explicit stop conditions and escalation points
 
 ### Support artifacts

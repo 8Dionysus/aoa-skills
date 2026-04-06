@@ -7,6 +7,11 @@
       "short_description": "Record architecture decisions clearly",
       "default_prompt": "Use $aoa-adr-write to record a meaningful architectural or workflow decision, place it in the canonical decision surface, and verify the rationale is easy to find."
     },
+    "aoa-automation-opportunity-scan": {
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "short_description": "Classify automation-ready routes",
+      "default_prompt": "Use $aoa-automation-opportunity-scan to turn reviewed recurring work into an automation opportunity packet with a seed-ready or not-now verdict, checkpoint posture, and the most honest next artifact."
+    },
     "aoa-approval-gate-check": {
       "description": "Classify whether a requested action is safe to proceed, requires explicit approval, or should not be executed. Use when a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear. Do not use for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed.",
       "short_description": "Classify approval boundaries",

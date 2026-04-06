@@ -14,6 +14,7 @@ This file is the repository-wide map of public skills.
 | aoa-invariant-coverage-audit | core | canonical | Codex skill for auditing whether existing checks actually constrain the stable invariants that matter, and for reporting the smallest bounded gaps. |
 | aoa-approval-gate-check | risk | canonical | Codex skill for classifying whether a requested action should proceed, wait for explicit approval, or be refused. |
 | aoa-adr-write | core | canonical | Codex skill for recording a meaningful architectural or workflow decision with rationale and tradeoffs. |
+| aoa-automation-opportunity-scan | core | scaffold | Codex skill for detecting reviewed or repeated project processes that are candidates for automation, classifying whether they are seed-ready, and routing them to the right owner layer without granting schedule or mutation authority. |
 | aoa-core-logic-boundary | core | evaluated | Codex skill for clarifying which logic belongs in the reusable core versus glue, orchestration, or infrastructure detail. |
 | aoa-port-adapter-refactor | core | evaluated | Codex skill for refactoring toward clearer ports and adapters so reusable logic is less entangled with infrastructure details. |
 | aoa-quest-harvest | core | scaffold | Codex skill for giving the final promotion verdict on one repeated reviewed quest unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. |

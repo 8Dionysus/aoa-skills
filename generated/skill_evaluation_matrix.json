@@ -71,6 +71,23 @@
     },
     {
       "autonomy_check_count": 1,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "do_not_use_case_count": 1,
+      "do_not_use_snapshot_count": 1,
+      "invocation_mode": "explicit-only",
+      "name": "aoa-automation-opportunity-scan",
+      "promotion_review_path": null,
+      "scope": "core",
+      "selected_runtime_artifact_path": "skills/aoa-automation-opportunity-scan/examples/runtime.md",
+      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 2,
+      "use_snapshot_count": 1
+    },
+    {
+      "autonomy_check_count": 1,
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -287,7 +304,7 @@
       "selected_runtime_artifact_path": "skills/aoa-session-donor-harvest/examples/runtime.md",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 2,
+      "use_case_count": 3,
       "use_snapshot_count": 1
     },
     {
@@ -304,7 +321,7 @@
       "selected_runtime_artifact_path": "skills/aoa-session-progression-lift/examples/runtime.md",
       "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -321,7 +338,7 @@
       "selected_runtime_artifact_path": "skills/aoa-session-route-forks/examples/runtime.md",
       "skill_path": "skills/aoa-session-route-forks/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -338,7 +355,7 @@
       "selected_runtime_artifact_path": "skills/aoa-session-self-diagnose/examples/runtime.md",
       "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -355,7 +372,7 @@
       "selected_runtime_artifact_path": "skills/aoa-session-self-repair/examples/runtime.md",
       "skill_path": "skills/aoa-session-self-repair/SKILL.md",
       "status": "scaffold",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {

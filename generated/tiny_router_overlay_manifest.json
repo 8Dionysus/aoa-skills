@@ -9,9 +9,9 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 25,
+  "skill_count": 26,
   "band_count": 6,
-  "case_count": 64,
+  "case_count": 66,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -40,6 +40,13 @@
       "manual_invocation_required": true,
       "project_overlay": false,
       "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c"
+    },
+    {
+      "name": "aoa-automation-opportunity-scan",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7"
     },
     {
       "name": "aoa-bounded-context-map",

@@ -54,6 +54,7 @@
       "family": "session-harvest-family",
       "skills": [
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
@@ -62,6 +63,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
         "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
@@ -335,12 +337,13 @@
       "expected_behavior": "manual-invocation-required",
       "expected_skill": null,
       "competing_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-progression-lift",
         "aoa-quest-harvest"
       ],
-      "prompt": "Turn this reviewed session recap into a bounded HARVEST_PACKET, route reusable units to the right owner layer, and name whether the next honest handoff is forks, diagnosis, progression, or quest promotion.",
+      "prompt": "Turn this reviewed session recap into a bounded HARVEST_PACKET, route reusable units to the right owner layer, and name whether the next honest handoff is automation scan, forks, diagnosis, progression, or quest promotion.",
       "note": "This is the family nucleus: harvest first, then hand off. Even with a strong semantic match it stays explicit-only."
     },
     {
@@ -350,11 +353,12 @@
       "expected_skill": null,
       "competing_skills": [
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-self-diagnose",
         "aoa-quest-harvest"
       ],
-      "prompt": "The reviewed session is already harvested, but there are three materially different next routes with different risks and owner targets. Surface explicit fork cards instead of burying the choice in one recommendation.",
-      "note": "This is branch analysis after review, not first-pass harvest, diagnosis, or final quest promotion."
+      "prompt": "The reviewed session is already harvested, but there are three materially different next routes with different risks and owner targets, including staying manual versus lifting one branch into an automation seed. Surface explicit fork cards instead of burying the choice in one recommendation.",
+      "note": "This is branch analysis after review, not first-pass harvest, automation-readiness classification, diagnosis, or final quest promotion."
     },
     {
       "case_id": "collision-22",
@@ -363,11 +367,12 @@
       "expected_skill": null,
       "competing_skills": [
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-self-repair",
         "aoa-session-progression-lift"
       ],
-      "prompt": "Across the reviewed session notes, the same blockers, proof gaps, and boundary blur keep recurring. Turn that evidence into a diagnosis packet before anyone starts patching.",
-      "note": "Diagnosis is the next honest move here, not donor extraction, repair execution, or progression reflection."
+      "prompt": "Across the reviewed session notes, the same blockers, proof gaps, hidden inputs, and approval blur keep recurring. Turn that evidence into a diagnosis packet before anyone claims the route is automation-ready or starts patching.",
+      "note": "Diagnosis is the next honest move here, not donor extraction, automation-readiness classification, repair execution, or progression reflection."
     },
     {
       "case_id": "collision-23",
@@ -377,10 +382,11 @@
       "competing_skills": [
         "aoa-session-self-diagnose",
         "aoa-session-donor-harvest",
-        "aoa-session-route-forks"
+        "aoa-session-route-forks",
+        "aoa-automation-opportunity-scan"
       ],
-      "prompt": "We already have a reviewed diagnosis packet. Turn it into the smallest repair packet with checkpoint posture, rollback marker, health check, and owner target.",
-      "note": "This is repair planning after diagnosis, not diagnosis itself or a broader donor harvest."
+      "prompt": "We already have a reviewed diagnosis packet. Turn it into the smallest repair packet with checkpoint posture, rollback marker, health check, and owner target so later automation claims rest on a safer boundary.",
+      "note": "This is repair planning after diagnosis, not diagnosis itself, broader donor harvest, branch analysis, or automation-readiness classification."
     },
     {
       "case_id": "collision-24",
@@ -407,6 +413,20 @@
       ],
       "prompt": "The material is already reduced to one repeated reviewed quest unit and the only real question is whether it should stay a quest or be promoted into the next owner surface.",
       "note": "This is the narrow final promotion verdict, not wider session-family harvest, fork routing, diagnosis, or progression reflection."
+    },
+    {
+      "case_id": "collision-26",
+      "skill_name": "aoa-automation-opportunity-scan",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "prompt": "This reviewed workflow keeps recurring across sessions with the same inputs, the same approval seam, and the same expected output. Classify whether it should stay manual, become a bounded skill, or become a playbook automation seed with checkpoint requirements called out explicitly.",
+      "note": "This is automation-readiness classification for a recurring route, not donor extraction, branch comparison, diagnosis-first analysis, or repair planning."
     }
   ]
 }

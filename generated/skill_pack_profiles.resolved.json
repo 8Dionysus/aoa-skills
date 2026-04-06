@@ -26,6 +26,14 @@
           "trust_posture": "explicit-risk"
         },
         {
+          "name": "aoa-automation-opportunity-scan",
+          "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "target_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-bounded-context-map",
           "source_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
           "target_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
@@ -226,6 +234,14 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-automation-opportunity-scan",
+          "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "target_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-bounded-context-map",
           "source_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
           "target_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
@@ -379,8 +395,24 @@
         }
       ]
     },
+    "repo-automation-opportunity-scan-only": {
+      "description": "Install only aoa-automation-opportunity-scan into a repository root for explicit automation-readiness detection from reviewed recurring work.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-automation-opportunity-scan",
+          "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "target_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        }
+      ]
+    },
     "repo-session-harvest-family": {
-      "description": "Install the full explicit post-session session-harvest family into a repository root, including donor harvest, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "description": "Install the full explicit post-session session-harvest family into a repository root, including donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "install_root": ".agents/skills",
@@ -390,6 +422,14 @@
           "source_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
           "target_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-automation-opportunity-scan",
+          "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "target_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         },
@@ -543,6 +583,14 @@
           "target_path": "$HOME/.agents/skills/aoa-adr-write/SKILL.md",
           "openai_config_path": "$HOME/.agents/skills/aoa-adr-write/agents/openai.yaml",
           "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-automation-opportunity-scan",
+          "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         },
         {

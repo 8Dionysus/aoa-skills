@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "skill_count": 25,
+  "skill_count": 26,
   "band_count": 6,
   "skills": [
     {
@@ -325,6 +325,100 @@
       ],
       "primary_positive_prompt": "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.",
       "primary_negative_prompt": "The task is clearly low-risk, already bounded, and does not look destructive, security-sensitive, or operationally sensitive.",
+      "primary_defer_prompt": ""
+    },
+    {
+      "name": "aoa-automation-opportunity-scan",
+      "band": "quest-harvest-governance",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
+      "summary_short": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are...",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7",
+      "positive_cues": [
+        "automation opportunity",
+        "automation candidate",
+        "seed ready",
+        "not now",
+        "checkpoint required",
+        "recurring manual route",
+        "playbook automation seed",
+        "session donor",
+        "donor harvest",
+        "route forks"
+      ],
+      "negative_cues": [
+        "one off creative thread",
+        "only happened once",
+        "live scheduler",
+        "background execution authority",
+        "hidden self change"
+      ],
+      "cue_tokens": [
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed",
+        "ready",
+        "now",
+        "checkpoint",
+        "required",
+        "recurring",
+        "manual",
+        "route",
+        "playbook",
+        "session",
+        "donor",
+        "harvest",
+        "forks",
+        "diagnosis",
+        "packet"
+      ],
+      "negative_tokens": [
+        "one",
+        "off",
+        "creative",
+        "thread",
+        "happened",
+        "once",
+        "live",
+        "scheduler",
+        "background",
+        "execution",
+        "authority",
+        "hidden"
+      ],
+      "auto_tokens": [
+        "automation",
+        "project",
+        "reviewed",
+        "route",
+        "become",
+        "manual",
+        "repeated",
+        "seed",
+        "whether",
+        "classify",
+        "ready",
+        "recurring",
+        "aoa",
+        "authority"
+      ],
+      "companions": [
+        "aoa-session-donor-harvest",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-quest-harvest"
+      ],
+      "primary_positive_prompt": "Use $aoa-automation-opportunity-scan to classify whether a recurring reviewed project route should stay manual, become a bounded skill, or become a playbook automation seed.",
+      "primary_negative_prompt": "This only happened once, still looks exploratory, and there is no stable trigger, checkpoint boundary, or repeatable output contract yet, so calling it automation-ready would be premature.",
       "primary_defer_prompt": ""
     },
     {
@@ -1058,7 +1152,7 @@
     {
       "name": "aoa-quest-harvest",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
@@ -1078,8 +1172,8 @@
         "final promotion verdict",
         "session donor",
         "donor harvest",
-        "route forks",
-        "diagnosis packet"
+        "automation opportunity",
+        "automation candidate"
       ],
       "negative_cues": [
         "route still active",
@@ -1102,12 +1196,12 @@
         "verdict",
         "session",
         "donor",
-        "route",
-        "forks",
-        "diagnosis",
-        "packet",
-        "repair",
-        "progression"
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed",
+        "ready",
+        "now"
       ],
       "negative_tokens": [
         "route",
@@ -1141,6 +1235,7 @@
       ],
       "companions": [
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-progression-lift",
         "aoa-source-of-truth-check",
@@ -1314,7 +1409,7 @@
     {
       "name": "aoa-session-donor-harvest",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
@@ -1333,9 +1428,9 @@
         "reviewed compaction note",
         "harvest packet",
         "what should survive this session",
-        "route forks",
-        "diagnosis packet",
-        "repair packet"
+        "automation opportunity",
+        "automation candidate",
+        "seed ready"
       ],
       "negative_cues": [
         "session still live",
@@ -1359,11 +1454,11 @@
         "packet",
         "what",
         "survive",
-        "route",
-        "forks",
-        "diagnosis",
-        "repair",
-        "progression"
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed",
+        "ready"
       ],
       "negative_tokens": [
         "session",
@@ -1397,6 +1492,7 @@
       ],
       "companions": [
         "aoa-quest-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-progression-lift",
@@ -1409,7 +1505,7 @@
     {
       "name": "aoa-session-progression-lift",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
@@ -1428,9 +1524,9 @@
         "quest reflection",
         "session donor",
         "donor harvest",
-        "route forks",
-        "diagnosis packet",
-        "repair packet"
+        "automation opportunity",
+        "automation candidate",
+        "seed ready"
       ],
       "negative_cues": [
         "no reviewed evidence",
@@ -1453,10 +1549,10 @@
         "session",
         "donor",
         "harvest",
-        "route",
-        "forks",
-        "diagnosis",
-        "packet"
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed"
       ],
       "negative_tokens": [
         "reviewed",
@@ -1499,7 +1595,7 @@
     {
       "name": "aoa-session-route-forks",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
@@ -1518,9 +1614,9 @@
         "stop conditions",
         "session donor",
         "donor harvest",
-        "diagnosis packet",
-        "repair packet",
-        "progression delta"
+        "automation opportunity",
+        "automation candidate",
+        "seed ready"
       ],
       "negative_cues": [
         "one obvious next move",
@@ -1543,9 +1639,9 @@
         "session",
         "donor",
         "harvest",
-        "diagnosis",
-        "packet",
-        "repair"
+        "automation",
+        "opportunity",
+        "candidate"
       ],
       "negative_tokens": [
         "one",
@@ -1577,6 +1673,7 @@
         "move"
       ],
       "companions": [
+        "aoa-automation-opportunity-scan",
         "aoa-session-donor-harvest",
         "aoa-session-self-diagnose",
         "aoa-quest-harvest"
@@ -1588,7 +1685,7 @@
     {
       "name": "aoa-session-self-diagnose",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
@@ -1607,9 +1704,9 @@
         "repeated friction",
         "session donor",
         "donor harvest",
-        "route forks",
-        "repair packet",
-        "progression delta"
+        "automation opportunity",
+        "automation candidate",
+        "seed ready"
       ],
       "negative_cues": [
         "session still live",
@@ -1631,11 +1728,11 @@
         "session",
         "donor",
         "harvest",
-        "route",
-        "forks",
-        "repair",
-        "progression",
-        "delta"
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed",
+        "ready"
       ],
       "negative_tokens": [
         "session",
@@ -1667,6 +1764,7 @@
         "classify"
       ],
       "companions": [
+        "aoa-automation-opportunity-scan",
         "aoa-session-donor-harvest",
         "aoa-session-self-repair",
         "aoa-session-progression-lift"
@@ -1678,7 +1776,7 @@
     {
       "name": "aoa-session-self-repair",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
@@ -1697,9 +1795,9 @@
         "reviewed diagnosis",
         "session donor",
         "donor harvest",
-        "route forks",
-        "diagnosis packet",
-        "progression delta"
+        "automation opportunity",
+        "automation candidate",
+        "seed ready"
       ],
       "negative_cues": [
         "no reviewed diagnosis",
@@ -1721,11 +1819,11 @@
         "session",
         "donor",
         "harvest",
-        "route",
-        "forks",
-        "progression",
-        "delta",
-        "quest"
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed",
+        "ready"
       ],
       "negative_tokens": [
         "reviewed",
@@ -1756,6 +1854,7 @@
         "rollback"
       ],
       "companions": [
+        "aoa-automation-opportunity-scan",
         "aoa-session-self-diagnose",
         "aoa-change-protocol",
         "aoa-safe-infra-change"

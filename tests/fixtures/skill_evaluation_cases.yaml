@@ -125,6 +125,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-automation-opportunity-scan
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
 
 trigger_cases:
   - skill: aoa-adr-write
@@ -390,6 +396,34 @@ trigger_cases:
     required_phrases:
       - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
       - the question is not merely "what happened?" but "what reusable object, if any, emerged here?"
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_detects_automation_candidate
+    prompt: Harvest this reviewed session and note whether any part looks ripe for automation without granting automation authority yet.
+    expected: use
+    required_phrases:
+      - a repeated manual route may also need an explicit automation-readiness seam instead of staying vague donor residue
+      - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
+  - skill: aoa-automation-opportunity-scan
+    case_id: automation_opportunity_scan_recurring_review_closeout_route
+    prompt: We keep doing the same reviewed session closeout by hand. Scan whether it is ready for automation.
+    expected: use
+    required_phrases:
+      - a reviewed session or repeated project slice reveals a recurring manual route
+      - repeated friction suggests a good automation opportunity but authority and risk still need classification
+  - skill: aoa-automation-opportunity-scan
+    case_id: automation_opportunity_scan_one_off_creative_strategy_thread
+    prompt: This one intense strategy session felt important. Automate it.
+    expected: do_not_use
+    required_phrases:
+      - the work happened only once and still looks exploratory
+      - the route is primarily creative synthesis with no stable trigger or output
+  - skill: aoa-automation-opportunity-scan
+    case_id: automation_opportunity_scan_autopatch_desire
+    prompt: Whenever the system drifts, automatically patch it.
+    expected: use
+    required_phrases:
+      - an operator wants to know whether a recurring route should stay manual, become a bounded skill, or become a playbook automation seed
+      - repeated friction suggests a good automation opportunity but authority and risk still need classification
   - skill: aoa-session-route-forks
     case_id: session_route_forks_reviewed_branch_choice
     prompt: A reviewed session ended with three plausible next moves across different owner repos, and we need explicit branch cards with likely gains, costs, risks, and stop conditions instead of one buried recommendation.
@@ -404,6 +438,13 @@ trigger_cases:
     required_phrases:
       - there is only one obvious next bounded move
       - the question is final promotion of a repeated quest unit
+  - skill: aoa-session-route-forks
+    case_id: session_route_forks_automation_branch_vs_manual_branch
+    prompt: Show whether we should keep this process manual, package it as a skill, or promote it as a playbook automation seed.
+    expected: use
+    required_phrases:
+      - the choice may include staying manual, becoming a bounded skill, becoming a playbook automation seed candidate, or waiting for prerequisite repair
+      - the operator or Codex needs explicit branch choices instead of a buried recommendation
   - skill: aoa-session-self-diagnose
     case_id: session_self_diagnose_reviewed_drift_pattern
     prompt: A reviewed session shows repeated ownership confusion, proof debt, and route collapse, and the next honest move is diagnosis before repair.
@@ -418,6 +459,13 @@ trigger_cases:
     required_phrases:
       - the issue is already fully diagnosed and only needs repair execution
       - the route is actually a single quest-promotion decision
+  - skill: aoa-session-self-diagnose
+    case_id: session_self_diagnose_blocked_automation_due_to_hidden_inputs
+    prompt: We want to automate this route, but its inputs keep changing. Diagnose why it is not ready.
+    expected: use
+    required_phrases:
+      - blocked automation readiness may need root-cause classification before any automation claim becomes honest
+      - the next honest move is diagnosis before repair
   - skill: aoa-session-self-repair
     case_id: session_self_repair_reviewed_diagnosis_packet
     prompt: A reviewed diagnosis packet already exists, and we need the smallest honest repair packet with checkpoint posture, rollback marker, health check, and explicit owner-layer targets.
@@ -432,6 +480,13 @@ trigger_cases:
     required_phrases:
       - there is no reviewed diagnosis yet
       - the request is vague self-improvement rhetoric with no bounded target
+  - skill: aoa-session-self-repair
+    case_id: session_self_repair_automation_prerequisite
+    prompt: A reviewed diagnosis already says the automation route is blocked by unstable inputs and missing rollback markers. Name the smallest repair packet that would make later automation honest.
+    expected: use
+    required_phrases:
+      - the route may need prerequisite repair before later automation becomes honest
+      - the next honest move is a bounded repair plan or repair-ready packet
   - skill: aoa-session-progression-lift
     case_id: session_progression_lift_reviewed_multi_axis_evidence
     prompt: A reviewed session shows stronger boundary discipline, sharper review posture, and one small safe unlock hint, and we want a multi-axis progression delta rather than one global score.
@@ -446,6 +501,13 @@ trigger_cases:
     required_phrases:
       - there is no reviewed evidence
       - the request wants one global power number
+  - skill: aoa-session-progression-lift
+    case_id: session_progression_lift_automation_readiness_hint
+    prompt: A reviewed session improved repeatability and proof posture, and we want a small automation-readiness hint without turning it into authority.
+    expected: use
+    required_phrases:
+      - a reviewed session generated meaningful mastery evidence
+      - the output needs to stay small, evidence-backed, and multi-axis
 
   - skill: aoa-invariant-coverage-audit
     case_id: invariant_coverage_audit_existing_surface
@@ -1117,6 +1179,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection toward reviewed-session prerequisites or history techniques instead of donor harvest.
+    forbidden_output_phrases: []
+  - skill: aoa-automation-opportunity-scan
+    case_id: automation_opportunity_scan_one_off_creative_strategy_thread
+    prompt: This one intense strategy session felt important. Automate it.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-automation-opportunity-scan/automation_opportunity_scan_one_off_creative_strategy_thread.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that keeps one-off creative or exploratory work manual instead of pretending it is automation-ready.
+    forbidden_output_phrases: []
+  - skill: aoa-automation-opportunity-scan
+    case_id: automation_opportunity_scan_recurring_review_closeout_route
+    prompt: We keep doing the same reviewed session closeout by hand. Scan whether it is ready for automation.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-automation-opportunity-scan/automation_opportunity_scan_recurring_review_closeout_route.md
+    required_output_phrases:
+      - use
+      - An automation opportunity packet that names the current manual route, the readiness verdict, and the likely first owner layer.
     forbidden_output_phrases: []
   - skill: aoa-session-route-forks
     case_id: session_route_forks_reviewed_branch_choice

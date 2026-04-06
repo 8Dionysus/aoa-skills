@@ -57,6 +57,20 @@
       "notes": "Explicit-only because it classifies authority boundaries before risky work."
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "scope": "core",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-only detector skill for classifying whether reviewed recurring work is honestly automation-ready without granting schedule, hidden runtime, or self-mutation authority."
+    },
+    {
       "name": "aoa-bounded-context-map",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

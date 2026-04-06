@@ -43,6 +43,7 @@ Do not use this skill when:
 ## Outputs
 
 - `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints
+- optional automation-readiness hint when reviewed evidence supports it
 - optional rank reflection note if evidence is strong enough
 - quest hooks or chronicle stub when useful
 - negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance
@@ -55,8 +56,9 @@ Do not use this skill when:
    `proof_discipline`, `provenance_hygiene`, and `deep_readiness`
 3. emit a verdict: advance, hold, reanchor, or downgrade
 4. name small unlock hints only when evidence supports them
-5. allow negative, zero, and cautionary movement
-6. map ability or feat hints only as reflection, not as ownership transfer
+5. keep any automation-readiness hint small, descriptive, and non-authoritative
+6. allow negative, zero, and cautionary movement
+7. map ability or feat hints only as reflection, not as ownership transfer
 
 ## Contracts
 
@@ -65,6 +67,7 @@ Do not use this skill when:
 - rank labels are descriptive, not sovereign
 - unlock hints must stay reviewable and small
 - progression does not replace owner-layer truth or routing authority
+- progression does not greenlight automation by itself
 
 ## Risks and anti-patterns
 
@@ -73,6 +76,7 @@ Do not use this skill when:
 - granting authority without cited evidence
 - flattening multi-axis growth into one number
 - confusing quest flavor with durable proof
+- treating progression hints as if they were approval or schedule rights
 
 ## Verification
 

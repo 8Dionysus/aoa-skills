@@ -152,6 +152,44 @@
       "mirror_case_ids": []
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7",
+      "summary_clause": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority",
+      "use_when_clause": "a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate",
+      "do_not_use_clause": "for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "session-harvest-family",
+      "families": [
+        "session-harvest-family"
+      ],
+      "adjacent_skills": [
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "default_prompt": "Use $aoa-automation-opportunity-scan to turn reviewed recurring work into an automation opportunity packet with a seed-ready or not-now verdict, checkpoint posture, and the most honest next artifact.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "26-explicit",
+        "26-implicit-manual",
+        "26-adjacent-negative",
+        "collision-26"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-26"
+      ],
+      "mirror_case_ids": []
+    },
+    {
       "name": "aoa-bounded-context-map",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
       "description_sha256": "735d43d6ab5652fb304178f0e2c746584bbc1a7455aa2f63fbfac82688dd6a06",
@@ -510,6 +548,7 @@
       ],
       "adjacent_skills": [
         "aoa-adr-write",
+        "aoa-automation-opportunity-scan",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
@@ -640,6 +679,7 @@
         "session-harvest-family"
       ],
       "adjacent_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
@@ -677,6 +717,7 @@
         "session-harvest-family"
       ],
       "adjacent_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-route-forks",
@@ -714,6 +755,7 @@
         "session-harvest-family"
       ],
       "adjacent_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -751,6 +793,7 @@
         "session-harvest-family"
       ],
       "adjacent_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -788,6 +831,7 @@
         "session-harvest-family"
       ],
       "adjacent_skills": [
+        "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",

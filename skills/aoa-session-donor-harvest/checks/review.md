@@ -11,7 +11,7 @@ family handoff hints.
 - a reviewed session, transcript, or compaction packet is being distilled after the fact
 - the reviewer must check whether reusable units belong in `aoa-techniques`, `aoa-skills`, `aoa-playbooks`, `aoa-evals`, `aoa-memo`, `aoa-agents`, or should remain deferred
 - the route risks collapsing source-owned meaning into derivative layers or vague "good ideas"
-- the result may also need explicit route-forks, diagnosis, progression, or
+- the result may also need explicit automation scan, route-forks, diagnosis, progression, or
   quest-triage follow-through
 
 ## Review checklist
@@ -24,9 +24,7 @@ family handoff hints.
 - [ ] `usefulness` was treated as a reuse signal, not as an owner layer.
 - [ ] Weak or unclear candidates were allowed to remain `hold` instead of being forced into canon.
 - [ ] The result names one concrete next artifact for each accepted candidate.
-- [ ] Quest residue, route forks, diagnosis hints, repair follow-through, or
-  progression follow-through were surfaced explicitly when they survived the
-  harvest.
+- [ ] Automation candidates, quest residue, route forks, diagnosis hints, repair follow-through, or progression follow-through were surfaced explicitly when they survived the harvest.
 
 ## Not a fit
 

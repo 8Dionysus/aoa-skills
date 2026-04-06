@@ -401,6 +401,120 @@
       }
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "display_name": "AoA Automation Opportunity Scan",
+      "description": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.",
+      "short_description": "Classify automation-ready routes",
+      "path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-automation-opportunity-scan",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-automation-opportunity-scan",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-automation-opportunity-scan"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "are",
+        "authority",
+        "automation",
+        "become",
+        "boundary",
+        "bounded",
+        "candidate",
+        "candidates",
+        "classify",
+        "contracts",
+        "core",
+        "creative",
+        "detect",
+        "exploratory",
+        "for",
+        "granting",
+        "hidden",
+        "honest",
+        "inputs",
+        "intent",
+        "layer",
+        "live",
+        "manual",
+        "mutation",
+        "not",
+        "one-off",
+        "opportunity",
+        "output",
+        "outputs",
+        "owner",
+        "playbook",
+        "points",
+        "procedure",
+        "processes",
+        "project",
+        "question",
+        "recurring",
+        "repeated",
+        "requests",
+        "reveals",
+        "reviewed",
+        "right",
+        "risks",
+        "route",
+        "scan",
+        "schedule",
+        "scheduling",
+        "seed",
+        "seed-ready",
+        "self-change",
+        "session",
+        "should",
+        "skill",
+        "slice",
+        "stable",
+        "stay",
+        "synthesis",
+        "technique",
+        "the",
+        "traceability",
+        "trigger",
+        "use",
+        "verification",
+        "whether",
+        "without",
+        "work"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-automation-opportunity-scan"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-automation-opportunity-scan"
+        }
+      }
+    },
+    {
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",

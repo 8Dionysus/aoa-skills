@@ -95,6 +95,29 @@
       "requires_confirmation_seam": false
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "compact_summary": "Classify automation-ready routes",
+      "activation_card_markdown": "Use when: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.\n\nKeep in memory: reviewed session artifact, harvest packet, or recurring project slice, evidence of repeated manual work, `AUTOMATION_OPPORTUNITY_PACKET`, one or more `AUTOMATION_CANDIDATE` cards.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "reviewed session artifact, harvest packet, or recurring project slice",
+        "evidence of repeated manual work",
+        "`AUTOMATION_OPPORTUNITY_PACKET`",
+        "one or more `AUTOMATION_CANDIDATE` cards"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-bounded-context-map",
       "compact_summary": "Map contexts and interfaces",
       "activation_card_markdown": "Use when: Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.\n\nKeep in memory: target area or subsystem, current naming and responsibilities, named contexts or subsystems, rough boundary map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
@@ -396,12 +419,12 @@
     {
       "name": "aoa-session-progression-lift",
       "compact_summary": "Lift reviewed progression signals",
-      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, optional rank reflection note if evidence is strong enough.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, optional automation-readiness hint when reviewed evidence supports it.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact or harvest packet",
         "named evidence refs",
         "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
-        "optional rank reflection note if evidence is strong enough"
+        "optional automation-readiness hint when reviewed evidence supports it"
       ],
       "retain_sections": [
         "Trigger boundary",

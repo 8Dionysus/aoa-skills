@@ -9,6 +9,7 @@
       "skills": [
         "aoa-adr-write",
         "aoa-approval-gate-check",
+        "aoa-automation-opportunity-scan",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
         "aoa-contract-test",
@@ -40,6 +41,7 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-adr-write",
+        "aoa-automation-opportunity-scan",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
         "aoa-contract-test",
@@ -73,12 +75,21 @@
         "aoa-session-donor-harvest"
       ]
     },
+    "repo-automation-opportunity-scan-only": {
+      "description": "Install only aoa-automation-opportunity-scan into a repository root for explicit automation-readiness detection from reviewed recurring work.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-automation-opportunity-scan"
+      ]
+    },
     "repo-session-harvest-family": {
-      "description": "Install the full explicit post-session session-harvest family into a repository root, including donor harvest, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "description": "Install the full explicit post-session session-harvest family into a repository root, including donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
@@ -122,6 +133,7 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-adr-write",
+        "aoa-automation-opportunity-scan",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
         "aoa-contract-test",

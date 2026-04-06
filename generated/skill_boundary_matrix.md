@@ -5,7 +5,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 25
+- total skills: 26
 - adjacency cases: 32
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
@@ -16,6 +16,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | abyss-sanitized-share | evaluated | project | false | 1 | 0 | abyss-safe-infra-change | - | true | - |
 | aoa-adr-write | canonical | core | true | 1 | 0 | aoa-source-of-truth-check | decision_docs_authority | true | - |
 | aoa-approval-gate-check | canonical | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
+| aoa-automation-opportunity-scan | scaffold | core | false | 0 | 0 | - | - | false | - |
 | aoa-bounded-context-map | canonical | core | true | 3 | 0 | aoa-contract-test, aoa-core-logic-boundary, aoa-port-adapter-refactor | context_vs_contract, core_boundary_refactor | true | - |
 | aoa-change-protocol | canonical | core | true | 1 | 0 | aoa-tdd-slice | change_workflows | true | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | context_vs_contract | true | - |

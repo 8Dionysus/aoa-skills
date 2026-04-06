@@ -234,6 +234,64 @@
       "status": "canonical"
     },
     {
+      "name": "aoa-automation-opportunity-scan",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to detect where repeated project work is ripe for automation and\nto package that finding into a bounded `AUTOMATION_OPPORTUNITY_PACKET`.\n\nThe goal is not to automate by reflex.\nThe goal is to notice when a process has become repetitive, stable, legible,\nand evidence-backed enough that automation or semi-automation becomes an honest\nnext move.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a reviewed session or repeated project slice reveals a recurring manual route\n- the same audit, report, hygiene pass, or triage loop keeps coming back\n- a session-harvest packet includes an `automation_candidate`\n- an operator wants to know whether a recurring route should stay manual, become a bounded skill, or become a playbook automation seed\n- repeated friction suggests a good automation opportunity but authority and risk still need classification\n\nDo not use this skill when:\n- the work happened only once and still looks exploratory\n- the route is primarily creative synthesis with no stable trigger or output\n- the task is asking for live scheduling or hidden background execution authority\n- the route would mutate important system surfaces without checkpoint posture\n- the work still needs basic donor harvest or source-of-truth clarification first",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- reviewed session artifact, harvest packet, or recurring project slice\n- evidence of repeated manual work\n- known current manual route\n- known triggers, inputs, outputs, or their current ambiguity\n- current risk, approval, rollback, and proof posture if known",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- `AUTOMATION_OPPORTUNITY_PACKET`\n- one or more `AUTOMATION_CANDIDATE` cards\n- `seed_ready` or `not_now` verdict for each candidate\n- `checkpoint_required` flag when the route crosses self-change or approval-sensitive boundaries\n- next-artifact suggestion such as `skill`, `playbook_seed`, `technique_candidate`, `repair_quest`, `quest`, or `defer`",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. start from reviewed evidence, not from vague enthusiasm\n2. isolate the current manual route as actually practiced\n3. classify repeat signal, friction, determinism, input clarity, output clarity, proof surface, reversibility, secret coupling, and approval sensitivity\n4. decide whether the first honest landing is a bounded skill, a playbook automation seed candidate, a technique candidate, a repair quest, or a defer verdict\n5. mark `checkpoint_required` when the route would cross into self-change, hidden authority, or important mutation\n6. emit `seed_ready` only when the process is stable enough to name inputs, outputs, bounded prompts or activation hints, and a likely owner surface\n7. state the nearest wrong target so promotion pressure stays honest\n8. when classification pressure is high, use `references/automation-fit-matrix.md`, `references/session-harvest-integration.md`, `references/playbook-seed-bridge.md`, `references/checkpoint-boundary.md`, and `references/automation-opportunity-packet-schema.yaml`",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- this skill detects and packages automation opportunities; it does not create live automation authority\n- schedule hints remain hints, not runtime truth\n- recurring scenario candidates belong in `aoa-playbooks` as seed candidates rather than hidden playbooks inside a skill\n- self-changing or approval-heavy candidates must surface checkpoint posture explicitly\n- unresolved candidates may become repair quests instead of fake-ready automations\n- handoffs to `aoa-session-self-diagnose`, `aoa-session-self-repair`, or\n  `aoa-quest-harvest` must stay explicit rather than being smuggled in as\n  silent policy",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating one exciting session as proof of repeatability\n- automating unstable, under-specified, or secret-heavy work too early\n- confusing a bounded skill with a recurring scenario seed\n- using automation desire to bypass approval, rollback, or post-change health checks\n- writing authored meaning first into derived routing or KAG surfaces\n- inventing fake confidence about gains while hiding costs or risks",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm each candidate names the current manual route\n- confirm evidence refs justify the repeat signal\n- confirm stable input and output posture is assessed explicitly\n- confirm `seed_ready` or `not_now` is explicit for each candidate\n- confirm a first owner layer and next artifact are named\n- confirm the nearest wrong target is rejected when classification pressure exists\n- confirm checkpoint posture appears for self-changing or approval-heavy routes",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Pending manifest-backed techniques:\n- AOA-T-PENDING-AUTOMATION-FIT-MATRIX from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`\n- AOA-T-PENDING-HUMAN-LOOP-TO-SEED-LIFT from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`\n- AOA-T-PENDING-APPROVAL-SENSITIVITY-CHECK from `8Dionysus/aoa-techniques` with `path: TBD` and `source_ref: TBD`",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- project overlays may add local execution modes, trigger classes, or schedule vocabularies\n- project overlays may add local approval classes or environment-risk labels\n- project overlays may add local candidate examples tied to recurring repo rituals",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "name": "aoa-bounded-context-map",
       "scope": "core",
       "sections": [
@@ -765,7 +823,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a bounded work pattern has repeated and now needs an explicit promotion decision\n- reviewed evidence exists, but the correct destination is still unclear\n- the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest\n- the route needs a compact final promotion triage rather than another free-form discussion\n\nDo not use this skill when:\n- the route is still active and the evidence has not been reviewed yet\n- there is only one anecdotal occurrence with no honest repeat signal\n- the task is to invent net-new doctrine rather than classify a repeated pattern\n- the route is already clearly scenario-shaped and only needs playbook authoring\n- the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use `aoa-session-donor-harvest`\n- the source still needs explicit route forks, diagnosis, repair, or progression reflection from the wider session-harvest family before final promotion triage",
+          "content_markdown": "Use this skill when:\n- a bounded work pattern has repeated and now needs an explicit promotion decision\n- reviewed evidence exists, but the correct destination is still unclear\n- the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest\n- the route needs a compact final promotion triage rather than another free-form discussion\n\nDo not use this skill when:\n- the route is still active and the evidence has not been reviewed yet\n- there is only one anecdotal occurrence with no honest repeat signal\n- the task is to invent net-new doctrine rather than classify a repeated pattern\n- the route is already clearly scenario-shaped and only needs playbook authoring\n- the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use `aoa-session-donor-harvest`\n- the source still needs explicit automation-readiness classification for a\n  repeated manual route; use `aoa-automation-opportunity-scan`\n- the source still needs explicit route forks, diagnosis, repair, or progression reflection from the wider session-harvest family before final promotion triage",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -939,7 +997,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units\n- the work is post-session and reviewable rather than live execution\n- candidate outputs may belong in technique canon, `aoa-skills`,\n  `aoa-playbooks`, `aoa-evals`, `aoa-memo`, `aoa-agents`, or a hold/quest lane\n- the session may also have produced decision forks, diagnosis clues, repair\n  candidates, progression evidence, or quest residue that should be made\n  explicit rather than buried in recap prose\n- the question is not merely \"what happened?\" but \"what reusable object, if any, emerged here?\"\n\nDo not use this skill when:\n- the session is still active or unreviewed\n- the task is raw session capture, transcript export, or local indexing; those are history techniques, not this skill\n- the result is clearly one bounded repeated quest unit that only needs the narrower final promotion verdict from `aoa-quest-harvest`\n- the material is only a progress log, emotional recap, or theme cloud with no bounded reusable unit\n- the intended first destination is `aoa-routing` or `aoa-kag`; those are derivative layers and should not receive source-owned meaning first",
+          "content_markdown": "Use this skill when:\n- a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units\n- the work is post-session and reviewable rather than live execution\n- candidate outputs may belong in technique canon, `aoa-skills`, `aoa-playbooks`, `aoa-evals`, `aoa-memo`, `aoa-agents`, or a hold/quest lane\n- a repeated manual route may also need an explicit automation-readiness seam instead of staying vague donor residue\n- the session may also have produced decision forks, diagnosis clues, repair candidates, progression evidence, or quest residue that should be made explicit rather than buried in recap prose\n- the question is not merely \"what happened?\" but \"what reusable object, if any, emerged here?\"\n\nDo not use this skill when:\n- the session is still active or unreviewed\n- the task is raw session capture, transcript export, or local indexing; those are history techniques, not this skill\n- the result is clearly one bounded repeated quest unit that only needs the narrower final promotion verdict from `aoa-quest-harvest`\n- the material is only a progress log, emotional recap, or theme cloud with no bounded reusable unit\n- the intended first destination is `aoa-routing` or `aoa-kag`; those are derivative layers and should not receive source-owned meaning first",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -949,27 +1007,27 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- one bounded `HARVEST_PACKET`\n- named candidates, each with:\n  - reusable unit name\n  - unit kind: pattern, mechanic, utility, law, proof, recall, or route\n  - abstraction shape: technique, skill, playbook, eval, memo, agent, or hold\n  - owner repo recommendation\n  - one chosen next artifact\n  - one rejected nearest-wrong target\n  - evidence anchors from the session artifact\n- one short list of items to defer, drop, or keep as quest residue\n- one optional handoff list to `aoa-session-route-forks`,\n  `aoa-session-self-diagnose`, `aoa-session-self-repair`,\n  `aoa-session-progression-lift`, or `aoa-quest-harvest`",
+          "content_markdown": "- one bounded `HARVEST_PACKET`\n- named candidates, each with:\n  - reusable unit name\n  - unit kind: pattern, mechanic, utility, law, proof, recall, or route\n  - abstraction shape: technique, skill, playbook, eval, memo, agent, or hold\n  - owner repo recommendation\n  - one chosen next artifact\n  - one rejected nearest-wrong target\n  - evidence anchors from the session artifact\n- one short list of items to defer, drop, or keep as quest residue\n- one optional `automation_candidate` extract when a repeated manual route is\n  stable enough to deserve explicit automation-readiness classification\n- one optional handoff list to `aoa-automation-opportunity-scan`,\n  `aoa-session-route-forks`,\n  `aoa-session-self-diagnose`, `aoa-session-self-repair`,\n  `aoa-session-progression-lift`, or `aoa-quest-harvest`",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from a reviewed session artifact rather than transient chat memory\n2. extract candidate reusable units, not topics; prefer explicit moves, laws, checklists, structures, routes, or proof patterns\n3. split merged candidates until each unit has one honest owner shape\n4. classify each kept candidate twice:\n   - by reuse kind: pattern, mechanic, utility, law, proof, recall, or route\n   - by owner shape: technique, skill, playbook, eval, memo, agent, or hold\n5. reject theme-only repetition, aesthetic resonance, and broad \"good idea\" residue unless a bounded reusable unit exists\n6. route reusable practice meaning to technique canon first\n7. route bounded executable leaf workflows to `aoa-skills`\n8. route multi-step recurring scenario methods to `aoa-playbooks`\n9. route rubrics, verdict postures, and proof surfaces to `aoa-evals`\n10. route recall, writeback, recurrence, and memory-support patterns to `aoa-memo`\n11. route role law, orchestrator class law, handoff law, and actor-boundary rules to `aoa-agents`\n12. keep `aoa-routing` and `aoa-kag` out of first-authoring unless the source-owned object already exists elsewhere and the session only discovered a derivative bridge update\n13. preserve quest residue without forcing promotion when the reviewed session\n    is still mixed, early, or weakly repeated\n14. hand off to `aoa-session-route-forks` when the main post-session need is\n    explicit next-route choice rather than donor extraction itself\n15. hand off to `aoa-session-self-diagnose` when the dominant surviving object\n    is drift, contradiction, proof gap, or ownership confusion\n16. hand off to `aoa-session-progression-lift` when the main surviving object is\n    evidence-backed progression reflection rather than owner placement\n17. when the candidate is a repeated reviewed quest unit and the remaining\n    ambiguity is specifically the final promotion target among quest, skill,\n    playbook, agent, eval, or memo, hand off to `aoa-quest-harvest`\n18. draft the smallest next artifact for each accepted candidate, such as\n    `TECHNIQUE.md`, `SKILL.md`, `PLAYBOOK.md`, `EVAL.md`, memory object seed,\n    or agent/orchestrator surface note\n19. record one clear reason for the chosen owner and one clear reason against\n    the nearest wrong owner",
+          "content_markdown": "1. start from a reviewed session artifact rather than transient chat memory\n2. extract candidate reusable units, not topics; prefer explicit moves, laws, checklists, structures, routes, or proof patterns\n3. split merged candidates until each unit has one honest owner shape\n4. classify each kept candidate twice:\n   - by reuse kind: pattern, mechanic, utility, law, proof, recall, or route\n   - by owner shape: technique, skill, playbook, eval, memo, agent, or hold\n5. mark `automation_candidate` only when a repeated manual route is stable\n   enough to name the current inputs, outputs, and risk posture, but the\n   surviving question is still automation readiness rather than owner canon\n6. reject theme-only repetition, aesthetic resonance, and broad \"good idea\" residue unless a bounded reusable unit exists\n7. route reusable practice meaning to technique canon first\n8. route bounded executable leaf workflows to `aoa-skills`\n9. route multi-step recurring scenario methods to `aoa-playbooks`\n10. route rubrics, verdict postures, and proof surfaces to `aoa-evals`\n11. route recall, writeback, recurrence, and memory-support patterns to `aoa-memo`\n12. route role law, orchestrator class law, handoff law, and actor-boundary rules to `aoa-agents`\n13. keep `aoa-routing` and `aoa-kag` out of first-authoring unless the source-owned object already exists elsewhere and the session only discovered a derivative bridge update\n14. preserve quest residue without forcing promotion when the reviewed session\n    is still mixed, early, or weakly repeated\n15. hand off to `aoa-automation-opportunity-scan` when the main surviving\n    question is whether a repeated manual route is honestly automation-ready\n16. hand off to `aoa-session-route-forks` when the main post-session need is\n    explicit next-route choice rather than donor extraction itself\n17. hand off to `aoa-session-self-diagnose` when the dominant surviving object\n    is drift, contradiction, proof gap, or ownership confusion\n18. hand off to `aoa-session-progression-lift` when the main surviving object is\n    evidence-backed progression reflection rather than owner placement\n19. when the candidate is a repeated reviewed quest unit and the remaining\n    ambiguity is specifically the final promotion target among quest, skill,\n    playbook, agent, eval, or memo, hand off to `aoa-quest-harvest`\n20. draft the smallest next artifact for each accepted candidate, such as\n    `TECHNIQUE.md`, `SKILL.md`, `PLAYBOOK.md`, `EVAL.md`, memory object seed,\n    or agent/orchestrator surface note\n21. record one clear reason for the chosen owner and one clear reason against\n    the nearest wrong owner",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- invocation must remain explicit and post-session\n- the skill harvests donor units; it does not treat session history as memory canon or instruction authority\n- one candidate must map to one primary owner layer\n- `usefulness` is a reuse signal, not an owner layer by itself\n- derivative layers do not become first authoring targets for source-owned meaning\n- weak evidence may end in `hold` or `keep_or_open_quest`\n- the `HARVEST_PACKET` may carry handoff hints, but it does not become hidden\n  routing authority\n- drafting a next artifact is allowed; forcing promotion is not",
+          "content_markdown": "- invocation must remain explicit and post-session\n- the skill harvests donor units; it does not treat session history as memory canon or instruction authority\n- one candidate must map to one primary owner layer\n- `usefulness` is a reuse signal, not an owner layer by itself\n- derivative layers do not become first authoring targets for source-owned meaning\n- weak evidence may end in `hold` or `keep_or_open_quest`\n- the `HARVEST_PACKET` may carry handoff hints, but it does not become hidden\n  routing authority\n- `automation_candidate` is only a detector hint; it is not schedule or\n  mutation authority\n- drafting a next artifact is allowed; forcing promotion is not",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- collapsing technique, skill, and playbook into one generic \"good reuse\" bucket\n- mistaking session themes for reusable units\n- routing authored meaning into `aoa-routing` or `aoa-kag` first\n- turning agent class law into a skill just because an agent repeatedly used a workflow\n- promoting memory residue as if it were proof or source meaning\n- over-harvesting one session into too many thin objects\n- treating a transcript package or session index as the same thing as donor harvest\n- stuffing route-forks, diagnosis, repair, or progression meaning into vague\n  donor notes instead of naming the next family seam explicitly",
+          "content_markdown": "- collapsing technique, skill, and playbook into one generic \"good reuse\" bucket\n- mistaking session themes for reusable units\n- routing authored meaning into `aoa-routing` or `aoa-kag` first\n- turning agent class law into a skill just because an agent repeatedly used a workflow\n- promoting memory residue as if it were proof or source meaning\n- over-harvesting one session into too many thin objects\n- treating a transcript package or session index as the same thing as donor harvest\n- stuffing route-forks, diagnosis, repair, or progression meaning into vague\n  donor notes instead of naming the next family seam explicitly\n- turning donor harvest into a generic automation detector for every recurring\n  annoyance instead of keeping automation readiness as its own seam",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the source artifact is reviewed and bounded\n- confirm each kept candidate names one reusable unit rather than a topic\n- confirm each accepted candidate has one primary owner layer\n- confirm the nearest wrong target is rejected explicitly\n- confirm no candidate routes source-owned meaning first into derivative layers\n- confirm hold and defer outcomes remain available\n- confirm the output names the next artifact rather than only abstract categories\n- confirm any family handoff hint is explicit rather than smuggled into the\n  packet as hidden policy",
+          "content_markdown": "- confirm the source artifact is reviewed and bounded\n- confirm each kept candidate names one reusable unit rather than a topic\n- confirm each accepted candidate has one primary owner layer\n- confirm the nearest wrong target is rejected explicitly\n- confirm no candidate routes source-owned meaning first into derivative layers\n- confirm hold and defer outcomes remain available\n- confirm the output names the next artifact rather than only abstract categories\n- confirm any family handoff hint is explicit rather than smuggled into the\n  packet as hidden policy\n- confirm any `automation_candidate` names the current manual route and still\n  stops short of automation authority",
           "heading": "Verification",
           "key": "verification"
         },
@@ -979,7 +1037,7 @@
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "Project overlays may add:\n- local session artifact entrypoints\n- local review packet templates\n- repo-relative destination paths for drafted artifacts\n- local stop conditions for when the result must stay `hold`\n- local naming rules for donor packs and quest IDs\n- local family handoff preferences when route-forks, diagnosis, repair, or\n  progression surfaces exist\n\nThis skill assumes the session artifact already exists. Adjacent history techniques such as session capture, transcript packaging, and local indexing remain separate neighbors rather than being reopened here.",
+          "content_markdown": "Project overlays may add:\n- local session artifact entrypoints\n- local review packet templates\n- repo-relative destination paths for drafted artifacts\n- local stop conditions for when the result must stay `hold`\n- local naming rules for donor packs and quest IDs\n- local family handoff preferences when automation scan, route-forks,\n  diagnosis, repair, or progression surfaces exist\n\nThis skill assumes the session artifact already exists. Adjacent history techniques such as session capture, transcript packaging, and local indexing remain separate neighbors rather than being reopened here.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -1007,22 +1065,22 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints\n- optional rank reflection note if evidence is strong enough\n- quest hooks or chronicle stub when useful\n- negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance",
+          "content_markdown": "- `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints\n- optional automation-readiness hint when reviewed evidence supports it\n- optional rank reflection note if evidence is strong enough\n- quest hooks or chronicle stub when useful\n- negative or cautionary evidence when a hold, reanchor, or downgrade is more honest than advance",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. collect reviewed evidence refs\n2. assess movement qualitatively across `boundary_integrity`,\n   `execution_reliability`, `change_legibility`, `review_sharpness`,\n   `proof_discipline`, `provenance_hygiene`, and `deep_readiness`\n3. emit a verdict: advance, hold, reanchor, or downgrade\n4. name small unlock hints only when evidence supports them\n5. allow negative, zero, and cautionary movement\n6. map ability or feat hints only as reflection, not as ownership transfer",
+          "content_markdown": "1. collect reviewed evidence refs\n2. assess movement qualitatively across `boundary_integrity`,\n   `execution_reliability`, `change_legibility`, `review_sharpness`,\n   `proof_discipline`, `provenance_hygiene`, and `deep_readiness`\n3. emit a verdict: advance, hold, reanchor, or downgrade\n4. name small unlock hints only when evidence supports them\n5. keep any automation-readiness hint small, descriptive, and non-authoritative\n6. allow negative, zero, and cautionary movement\n7. map ability or feat hints only as reflection, not as ownership transfer",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- progression remains evidence-backed\n- multi-axis only; no authoritative universal score\n- rank labels are descriptive, not sovereign\n- unlock hints must stay reviewable and small\n- progression does not replace owner-layer truth or routing authority",
+          "content_markdown": "- progression remains evidence-backed\n- multi-axis only; no authoritative universal score\n- rank labels are descriptive, not sovereign\n- unlock hints must stay reviewable and small\n- progression does not replace owner-layer truth or routing authority\n- progression does not greenlight automation by itself",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- inventing progress from mood\n- using progression as policy\n- granting authority without cited evidence\n- flattening multi-axis growth into one number\n- confusing quest flavor with durable proof",
+          "content_markdown": "- inventing progress from mood\n- using progression as policy\n- granting authority without cited evidence\n- flattening multi-axis growth into one number\n- confusing quest flavor with durable proof\n- treating progression hints as if they were approval or schedule rights",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
@@ -1055,7 +1113,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a reviewed session ended with multiple plausible next moves\n- the operator or Codex needs explicit branch choices instead of a buried recommendation\n- the next route may change owner repo, risk posture, or difficulty posture\n- the session needs quest-board legibility without pretending to be runtime state\n\nDo not use this skill when:\n- there is only one obvious next bounded move\n- the session still needs first-pass donor harvest\n- the question is final promotion of a repeated quest unit\n- the route needs scenario canon immediately rather than branch analysis",
+          "content_markdown": "Use this skill when:\n- a reviewed session ended with multiple plausible next moves\n- the operator or Codex needs explicit branch choices instead of a buried recommendation\n- the next route may change owner repo, risk posture, or difficulty posture\n- the choice may include staying manual, becoming a bounded skill, becoming a playbook automation seed candidate, or waiting for prerequisite repair\n- the session needs quest-board legibility without pretending to be runtime state\n\nDo not use this skill when:\n- there is only one obvious next bounded move\n- the session still needs first-pass donor harvest\n- the question is final promotion of a repeated quest unit\n- the route needs scenario canon immediately rather than branch analysis",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1065,22 +1123,22 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- `FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions\n- one suggested default route if evidence is strong enough\n- one explicit hold or defer option when honest uncertainty remains\n- optional quest hooks or campaign hints without runtime authority",
+          "content_markdown": "- `FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions\n- one suggested default route if evidence is strong enough\n- one explicit hold or defer option when honest uncertainty remains\n- optional automation and non-automation branches side by side when that choice\n  is real\n- optional quest hooks or campaign hints without runtime authority",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from reviewed evidence rather than free speculation\n2. separate materially different branches instead of cosmetic variants\n3. name the likely first owner repo for each branch\n4. state likely gains, likely costs, likely risks, and stop conditions\n5. attach a small route passport with difficulty, risk, control mode, and delegate tier\n6. preserve a hold or reanchor path where uncertainty or risk remains meaningful\n7. emit quest-board-readable language only as adjunct reflection",
+          "content_markdown": "1. start from reviewed evidence rather than free speculation\n2. separate materially different branches instead of cosmetic variants\n3. name the likely first owner repo for each branch\n4. state likely gains, likely costs, likely risks, and stop conditions\n5. attach a small route passport with difficulty, risk, control mode, and delegate tier\n6. allow automation and non-automation branches to appear side by side when the reviewed evidence supports a real choice between them\n7. preserve a hold or reanchor path where uncertainty or risk remains meaningful\n8. emit quest-board-readable language only as adjunct reflection",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- branch cards do not become routing authority\n- fork analysis must stay evidence-backed\n- confidence should be named when weak\n- stop conditions are first-class, not footnotes\n- a fork card may recommend but must not hide alternatives",
+          "content_markdown": "- branch cards do not become routing authority\n- fork analysis must stay evidence-backed\n- confidence should be named when weak\n- stop conditions are first-class, not footnotes\n- a fork card may recommend but must not hide alternatives\n- automation-shaped branches must not be read as schedule authority",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- fake certainty about future routes\n- using fork cards as hidden routing policy\n- collapsing all branches into one generic recommendation\n- confusing playbook outline with branch analysis\n- treating quest-board cards as runtime state",
+          "content_markdown": "- fake certainty about future routes\n- using fork cards as hidden routing policy\n- collapsing all branches into one generic recommendation\n- confusing playbook outline with branch analysis\n- confusing an automation seed candidate with a live scheduler or background job\n- treating quest-board cards as runtime state",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
@@ -1113,7 +1171,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a reviewed session contains repeated friction, contradiction, or drift\n- the next honest move is diagnosis before repair\n- boundary confusion or missing proof may be more important than immediate output production\n- the same class of problem may be appearing across sessions\n\nDo not use this skill when:\n- the session is still live\n- the issue is already fully diagnosed and only needs repair execution\n- the material is a celebration recap with no meaningful friction\n- the route is actually a single quest-promotion decision",
+          "content_markdown": "Use this skill when:\n- a reviewed session contains repeated friction, contradiction, or drift\n- the next honest move is diagnosis before repair\n- boundary confusion or missing proof may be more important than immediate output production\n- blocked automation readiness may need root-cause classification before any automation claim becomes honest\n- the same class of problem may be appearing across sessions\n\nDo not use this skill when:\n- the session is still live\n- the issue is already fully diagnosed and only needs repair execution\n- the material is a celebration recap with no meaningful friction\n- the route is actually a single quest-promotion decision",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1123,22 +1181,22 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints\n- severity or urgency notes when evidence supports them\n- explicit unknowns when diagnosis remains incomplete\n- optional handoff to `aoa-session-self-repair`",
+          "content_markdown": "- `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints\n- severity or urgency notes when evidence supports them\n- explicit unknowns when diagnosis remains incomplete\n- optional blocked-automation findings such as unstable inputs, hidden approval,\n  rollback gaps, or secret coupling\n- optional handoff to `aoa-session-self-repair`",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. gather reviewed symptoms and evidence refs\n2. separate symptom from probable cause\n3. classify drift types such as boundary drift, proof debt, role leakage, memory contamination, route collapse, compaction damage, or repeated blocker patterns\n4. map each diagnosis toward the likely owner layer\n5. suggest a repair shape without silently performing it\n6. preserve unknowns where evidence does not justify stronger claims",
+          "content_markdown": "1. gather reviewed symptoms and evidence refs\n2. separate symptom from probable cause\n3. classify drift types such as boundary drift, proof debt, role leakage, memory contamination, route collapse, compaction damage, or repeated blocker patterns\n4. call out blocked automation causes when the route looks repetitive but still fails readiness because of unstable inputs, hidden authority, weak rollback posture, or secret coupling\n5. map each diagnosis toward the likely owner layer\n6. suggest a repair shape without silently performing it\n7. preserve unknowns where evidence does not justify stronger claims",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- diagnosis is read-only\n- one odd anecdote is not enough for structural certainty\n- probable cause must remain probabilistic when evidence is thin\n- owner hints must not override owner-layer law\n- no hidden mutation or silent patching",
+          "content_markdown": "- diagnosis is read-only\n- one odd anecdote is not enough for structural certainty\n- probable cause must remain probabilistic when evidence is thin\n- owner hints must not override owner-layer law\n- no hidden mutation or silent patching\n- diagnosis does not grant automation readiness by itself",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- mistaking symptom for cause\n- using vague vibes as diagnosis\n- smuggling repair work into diagnosis\n- turning every inconvenience into a system flaw\n- blaming one owner layer for a cross-layer issue",
+          "content_markdown": "- mistaking symptom for cause\n- using vague vibes as diagnosis\n- smuggling repair work into diagnosis\n- turning every inconvenience into a system flaw\n- blaming one owner layer for a cross-layer issue\n- treating automation frustration as if it automatically proved readiness",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
@@ -1171,7 +1229,7 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- a reviewed diagnosis already exists\n- the next honest move is a bounded repair plan or repair-ready packet\n- the route may change skill, playbook, agent, eval, or memo surfaces and needs explicit checkpoint posture\n- repair can still be kept inside one bounded execution unit\n\nDo not use this skill when:\n- there is no reviewed diagnosis yet\n- the repair is actually a large scenario rollout better owned by a playbook\n- the route is trying to bypass approval, rollback, or health-check posture\n- the request is vague self-improvement rhetoric with no bounded target",
+          "content_markdown": "Use this skill when:\n- a reviewed diagnosis already exists\n- the next honest move is a bounded repair plan or repair-ready packet\n- the route may change skill, playbook, agent, eval, or memo surfaces and needs explicit checkpoint posture\n- the route may need prerequisite repair before later automation becomes honest\n- repair can still be kept inside one bounded execution unit\n\nDo not use this skill when:\n- there is no reviewed diagnosis yet\n- the repair is actually a large scenario rollout better owned by a playbook\n- the route is trying to bypass approval, rollback, or health-check posture\n- the request is vague self-improvement rhetoric with no bounded target",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
@@ -1181,17 +1239,17 @@
           "key": "inputs"
         },
         {
-          "content_markdown": "- `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub\n- optional repair quest when execution should remain deferred\n- explicit stop conditions and escalation points",
+          "content_markdown": "- `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub\n- optional repair quest when execution should remain deferred\n- optional automation-readiness prerequisite packet when the real need is to\n  stabilize a route before later automation scanning or seeding\n- explicit stop conditions and escalation points",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from the reviewed diagnosis rather than from general aspiration\n2. choose the smallest honest repair shape\n3. name the primary owner repo and target artifact class\n4. record checkpoint posture: constitution or policy check, approval gate, rollback marker, post-change health check, bounded iteration limit, improvement log\n5. define validation and stop conditions\n6. emit a repair quest instead of mutating immediately when risk or approval posture requires it",
+          "content_markdown": "1. start from the reviewed diagnosis rather than from general aspiration\n2. choose the smallest honest repair shape\n3. name the primary owner repo and target artifact class\n4. record checkpoint posture: constitution or policy check, approval gate, rollback marker, post-change health check, bounded iteration limit, improvement log\n5. if the target route was blocked automation, emit the smallest prerequisite repair that would make later automation classification more honest\n6. define validation and stop conditions\n7. emit a repair quest instead of mutating immediately when risk or approval posture requires it",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- self-repair is not free self-modification\n- important surface changes must pass checkpoint posture\n- repair packets stay bounded and reviewable\n- role law changes route to `aoa-agents`\n- proof-law changes route to `aoa-evals`\n- scenario-scale repair routes to `aoa-playbooks`",
+          "content_markdown": "- self-repair is not free self-modification\n- important surface changes must pass checkpoint posture\n- repair packets stay bounded and reviewable\n- role law changes route to `aoa-agents`\n- proof-law changes route to `aoa-evals`\n- scenario-scale repair routes to `aoa-playbooks`\n- repair does not smuggle live automation authority into the packet",
           "heading": "Contracts",
           "key": "contracts"
         },

@@ -89,10 +89,14 @@
     },
     {
       "id": "quest-harvest-governance",
-      "summary": "Post-session donor harvest, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
         "session donor",
         "donor harvest",
+        "automation opportunity",
+        "automation candidate",
+        "seed ready",
+        "not now",
         "route forks",
         "diagnosis packet",
         "repair packet",
@@ -112,6 +116,7 @@
       "skills": [
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
@@ -344,6 +349,25 @@
         "primary need is progression overlay"
       ]
     },
+    "aoa-automation-opportunity-scan": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "automation opportunity",
+        "automation candidate",
+        "seed ready",
+        "not now",
+        "checkpoint required",
+        "recurring manual route",
+        "playbook automation seed"
+      ],
+      "negative_cues": [
+        "one off creative thread",
+        "only happened once",
+        "live scheduler",
+        "background execution authority",
+        "hidden self change"
+      ]
+    },
     "aoa-session-route-forks": {
       "band": "quest-harvest-governance",
       "positive_cues": [
@@ -567,6 +591,7 @@
     ],
     "aoa-quest-harvest": [
       "aoa-session-donor-harvest",
+      "aoa-automation-opportunity-scan",
       "aoa-session-route-forks",
       "aoa-session-progression-lift",
       "aoa-source-of-truth-check",
@@ -574,22 +599,33 @@
     ],
     "aoa-session-donor-harvest": [
       "aoa-quest-harvest",
+      "aoa-automation-opportunity-scan",
       "aoa-session-route-forks",
       "aoa-session-self-diagnose",
       "aoa-session-progression-lift",
       "aoa-source-of-truth-check"
     ],
+    "aoa-automation-opportunity-scan": [
+      "aoa-session-donor-harvest",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair",
+      "aoa-quest-harvest"
+    ],
     "aoa-session-route-forks": [
+      "aoa-automation-opportunity-scan",
       "aoa-session-donor-harvest",
       "aoa-session-self-diagnose",
       "aoa-quest-harvest"
     ],
     "aoa-session-self-diagnose": [
+      "aoa-automation-opportunity-scan",
       "aoa-session-donor-harvest",
       "aoa-session-self-repair",
       "aoa-session-progression-lift"
     ],
     "aoa-session-self-repair": [
+      "aoa-automation-opportunity-scan",
       "aoa-session-self-diagnose",
       "aoa-change-protocol",
       "aoa-safe-infra-change"
