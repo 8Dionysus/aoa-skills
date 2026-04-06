@@ -1415,7 +1415,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "f708926cc79a76e9ac92651c990590b22fa417b48aff8775327d1b4a99425fb9",
+      "content_hash": "3a1a4395213bb7ea74604cb26265de77fd4ac4175b2750184d75f649a9097034",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1438,12 +1438,12 @@
         "user-curated-core"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "f708926cc79a",
+      "skill_revision": "3a1a4395213b",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -1458,23 +1458,23 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DONOR-HARVEST",
-        "AOA-T-PENDING-OWNER-LAYER-TRIAGE"
+        "AOA-T-0075",
+        "AOA-T-0076"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-SESSION-DONOR-HARVEST",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0075",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115"
         },
         {
-          "id": "AOA-T-PENDING-OWNER-LAYER-TRIAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0076",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115"
         }
       ]
     },

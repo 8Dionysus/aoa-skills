@@ -722,15 +722,15 @@
       "status": "scaffold",
       "summary": "Harvest reusable donor units from a reviewed session, classify them by owner layer, and draft the smallest honest next artifact without collapsing technique, skill, playbook, proof, memory, routing, or role law into one bucket.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SESSION-DONOR-HARVEST",
-        "AOA-T-PENDING-OWNER-LAYER-TRIAGE"
+        "AOA-T-0075",
+        "AOA-T-0076"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-SESSION-DONOR-HARVEST",
-          "path": "TBD",
+          "id": "AOA-T-0075",
+          "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115",
           "use_sections": [
             "Intent",
             "When to use",
@@ -742,10 +742,10 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-OWNER-LAYER-TRIAGE",
-          "path": "TBD",
+          "id": "AOA-T-0076",
+          "path": "techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "2db37769d65833cce9dce1919dfac0bf69e5c115",
           "use_sections": [
             "Intent",
             "When to use",
