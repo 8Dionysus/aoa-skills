@@ -40,7 +40,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--fail-on-required-gaps",
         action="store_true",
-        help="Return exit code 1 when canonical or candidate-ready skills still have adjacency gaps.",
+        help="Return exit code 1 when canonical or default-reference-ready skills still have adjacency gaps.",
     )
     return parser.parse_args(argv)
 

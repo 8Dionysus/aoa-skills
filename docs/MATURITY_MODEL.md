@@ -4,6 +4,9 @@ This document defines the current public maturity ladder for `aoa-skills`
 and the minimum evidence expected before a skill changes status.
 The repository currently has a mixed-status public surface with canonical, evaluated, scaffold, and overlay-shaped surfaces already represented.
 
+`status` in the canonical skill bundle is the maturity signal.
+The derived public surface now keeps default-reference readiness separate from that maturity ladder so a skill can be `evaluated` or even `canonical` in maturity terms without collapsing governance-readiness and promotion authority into the same word.
+
 ## Status ladder
 
 ### `scaffold`
@@ -83,6 +86,7 @@ Before a skill can move to `canonical`, it should pass these repository-level ga
 
 These gates do not promote a skill by themselves.
 They define the minimum machine-checkable floor before canonical promotion is even considered.
+In `generated/public_surface.*`, that floor appears as `default_reference_readiness`, not as a replacement for the underlying maturity status.
 
 ## Machine-checkable floors vs human decisions
 

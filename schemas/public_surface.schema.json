@@ -29,9 +29,14 @@
     "cohorts": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["default_references", "candidate_ready", "blocked_by_pending_lineage", "risk_surfaces"],
+      "required": ["default_references", "default_reference_ready", "candidate_ready", "blocked_by_pending_lineage", "risk_surfaces"],
       "properties": {
         "default_references": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "default_reference_ready": {
           "type": "array",
           "items": { "type": "string", "minLength": 1 },
           "uniqueItems": true
@@ -62,6 +67,7 @@
           "name",
           "scope",
           "status",
+          "maturity_status",
           "summary",
           "invocation_mode",
           "skill_path",
@@ -70,6 +76,8 @@
           "governance_decision",
           "governance_lane_ids",
           "governance_evidence_case_ids",
+          "default_reference_readiness",
+          "default_reference_readiness_blockers",
           "canonical_candidate_ready",
           "canonical_candidate_blockers",
           "promotion_review_path",
@@ -79,6 +87,10 @@
           "name": { "type": "string", "pattern": "^[a-z0-9-]+$" },
           "scope": { "type": "string", "enum": ["core", "project", "risk"] },
           "status": {
+            "type": "string",
+            "enum": ["scaffold", "linked", "reviewed", "evaluated", "canonical", "deprecated"]
+          },
+          "maturity_status": {
             "type": "string",
             "enum": ["scaffold", "linked", "reviewed", "evaluated", "canonical", "deprecated"]
           },
@@ -100,6 +112,15 @@
             "uniqueItems": true
           },
           "governance_evidence_case_ids": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "default_reference_readiness": {
+            "type": "string",
+            "enum": ["ready", "blocked", "not_applicable"]
+          },
+          "default_reference_readiness_blockers": {
             "type": "array",
             "items": { "type": "string", "minLength": 1 },
             "uniqueItems": true

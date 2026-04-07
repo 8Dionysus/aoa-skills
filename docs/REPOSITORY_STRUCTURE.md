@@ -89,7 +89,7 @@ Belong in `generated/skill_walkthroughs.json` and `generated/skill_walkthroughs.
 
 Belong in `generated/public_surface.json` and `generated/public_surface.md`:
 - derived governance and public-product signaling
-- cohort views such as default references, candidate-ready skills, and pending-lineage blockers
+- cohort views such as default references, default-reference-ready skills, and pending-lineage blockers
 - no status change authority beyond the source files, review records, and evaluation fixtures
 
 Belong in `generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, `generated/runtime_discovery_index*.json`, `generated/runtime_disclosure_index.json`, `generated/runtime_activation_aliases.json`, `generated/runtime_tool_schemas.json`, `generated/runtime_session_contract.json`, `generated/runtime_prompt_blocks.json`, `generated/runtime_router_hints.json`, `generated/runtime_seam_manifest.json`, `generated/deterministic_resource_manifest.json`, `generated/support_resource_index.json`, `generated/structured_output_schema_index.json`, `generated/support_resource_bridge_map.json`, `generated/expected_existing_aoa_support_dirs.json`, and `generated/release_manifest.json`:

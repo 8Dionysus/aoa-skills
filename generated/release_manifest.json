@@ -434,7 +434,7 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "4f7fa57e44ffc620dd39b21976534c4403c6118b41f198d9e794f187d24e6200",
+      "sha256": "ec54933466a5be908cd712404c9d993bd18e63d5678400682b70e475ad012490",
       "bytes": 79378
     },
     {
@@ -444,7 +444,7 @@
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "98a48f2f1ee89982b543b5f1c3778e7855bc89212ab3ba5791bc450177c70bfb",
+      "sha256": "f8a1c42d2d0cc4311e412fd695d50d1b33b285af91001c60de575bbebf9ba911",
       "bytes": 147844
     },
     {

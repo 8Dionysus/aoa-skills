@@ -8,7 +8,7 @@ import skill_catalog_contract
 import skill_governance_lane_contract
 
 
-PUBLIC_SURFACE_VERSION = 2
+PUBLIC_SURFACE_VERSION = 3
 PUBLIC_SURFACE_JSON_PATH = Path("generated") / "public_surface.json"
 PUBLIC_SURFACE_MARKDOWN_PATH = Path("generated") / "public_surface.md"
 PUBLIC_SURFACE_SOURCE_OF_TRUTH = {
@@ -31,9 +31,14 @@ BLOCKER_MISSING_DO_NOT_USE_CASE = "missing_do_not_use_case"
 BLOCKER_EXPLICIT_ONLY_POLICY_VIOLATION = "explicit_only_policy_violation"
 
 DEFAULT_REFERENCES_COHORT = "default_references"
+DEFAULT_REFERENCE_READY_COHORT = "default_reference_ready"
 CANDIDATE_READY_COHORT = "candidate_ready"
 PENDING_LINEAGE_COHORT = "blocked_by_pending_lineage"
 RISK_SURFACES_COHORT = "risk_surfaces"
+
+DEFAULT_REFERENCE_READINESS_READY = "ready"
+DEFAULT_REFERENCE_READINESS_BLOCKED = "blocked"
+DEFAULT_REFERENCE_READINESS_NOT_APPLICABLE = "not_applicable"
 
 PENDING_LINEAGE_BLOCKERS = {
     BLOCKER_PENDING_TECHNIQUE_DEPENDENCIES,
@@ -237,6 +242,22 @@ def derive_canonical_candidate_ready(
     ) and not blockers
 
 
+def derive_default_reference_readiness(
+    *,
+    scope: Any,
+    governance_signals: skill_governance_lane_contract.GovernanceSkillSignals,
+    blockers: Sequence[str],
+) -> str:
+    if not canonical_candidate_path_applies(
+        scope=scope,
+        governance_signals=governance_signals,
+    ):
+        return DEFAULT_REFERENCE_READINESS_NOT_APPLICABLE
+    if blockers:
+        return DEFAULT_REFERENCE_READINESS_BLOCKED
+    return DEFAULT_REFERENCE_READINESS_READY
+
+
 def derive_public_surface_skill_entry(
     *,
     skill_name: str,
@@ -269,6 +290,11 @@ def derive_public_surface_skill_entry(
         governance_signals=governance_signals,
         blockers=blockers,
     )
+    default_reference_readiness = derive_default_reference_readiness(
+        scope=scope,
+        governance_signals=governance_signals,
+        blockers=blockers,
+    )
     is_default_reference = (
         governance_signals.governance_decision
         == skill_governance_lane_contract.GOVERNANCE_DECISION_DEFAULT_REFERENCE
@@ -280,6 +306,7 @@ def derive_public_surface_skill_entry(
         "name": skill_name,
         "scope": scope,
         "status": status,
+        "maturity_status": status,
         "summary": metadata.get("summary"),
         "invocation_mode": metadata.get("invocation_mode"),
         "skill_path": skill_path,
@@ -290,6 +317,12 @@ def derive_public_surface_skill_entry(
         "governance_evidence_case_ids": list(
             governance_signals.governance_evidence_case_ids
         ),
+        "default_reference_readiness": default_reference_readiness,
+        "default_reference_readiness_blockers": (
+            list(blockers)
+            if default_reference_readiness == DEFAULT_REFERENCE_READINESS_BLOCKED
+            else []
+        ),
         "canonical_candidate_ready": canonical_candidate_ready,
         "canonical_candidate_blockers": blockers,
         "promotion_review_path": promotion_review_path,
@@ -299,6 +332,7 @@ def derive_public_surface_skill_entry(
 
 def derive_public_surface_cohorts(skill_entries: Sequence[Mapping[str, Any]]) -> dict[str, list[str]]:
     default_references: list[str] = []
+    default_reference_ready: list[str] = []
     candidate_ready: list[str] = []
     blocked_by_pending_lineage: list[str] = []
     risk_surfaces: list[str] = []
@@ -308,7 +342,11 @@ def derive_public_surface_cohorts(skill_entries: Sequence[Mapping[str, Any]]) ->
         lineage_state = entry.get("lineage_state")
         if entry.get("is_default_reference"):
             default_references.append(skill_name)
-        elif entry.get("canonical_candidate_ready"):
+        elif (
+            entry.get("default_reference_readiness")
+            == DEFAULT_REFERENCE_READINESS_READY
+        ):
+            default_reference_ready.append(skill_name)
             candidate_ready.append(skill_name)
         if lineage_state == "pending":
             blocked_by_pending_lineage.append(skill_name)
@@ -317,6 +355,7 @@ def derive_public_surface_cohorts(skill_entries: Sequence[Mapping[str, Any]]) ->
 
     return {
         DEFAULT_REFERENCES_COHORT: sorted(default_references),
+        DEFAULT_REFERENCE_READY_COHORT: sorted(default_reference_ready),
         CANDIDATE_READY_COHORT: sorted(candidate_ready),
         PENDING_LINEAGE_COHORT: sorted(blocked_by_pending_lineage),
         RISK_SURFACES_COHORT: sorted(risk_surfaces),
@@ -360,9 +399,9 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
         find_skill_entry(skill_entries, skill_name)
         for skill_name in cohorts[DEFAULT_REFERENCES_COHORT]
     ]
-    candidate_ready_entries = [
+    default_reference_ready_entries = [
         find_skill_entry(skill_entries, skill_name)
-        for skill_name in cohorts[CANDIDATE_READY_COHORT]
+        for skill_name in cohorts[DEFAULT_REFERENCE_READY_COHORT]
     ]
     blocked_by_pending_entries = [
         find_skill_entry(skill_entries, skill_name)
@@ -383,7 +422,7 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
         "",
         f"- total skills: {len(skill_entries)}",
         f"- default references: {len(default_reference_entries)}",
-        f"- candidate-ready skills: {len(candidate_ready_entries)}",
+        f"- default-reference ready skills: {len(default_reference_ready_entries)}",
         f"- blocked by pending lineage: {len(blocked_by_pending_entries)}",
         f"- risk surfaces: {len(risk_entries)}",
         "",
@@ -394,12 +433,12 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
             [
                 f"## {title}",
                 "",
-                "| name | status | scope | invocation | lineage | governance decision | lanes | blockers | promotion review | candidate review |",
-                "|---|---|---|---|---|---|---|---|---|---|",
+                "| name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | promotion review | candidate review |",
+                "|---|---|---|---|---|---|---|---|---|---|---|",
             ]
         )
         if not entries:
-            lines.append("| - | - | - | - | - | - | - | - | - | - |")
+            lines.append("| - | - | - | - | - | - | - | - | - | - | - |")
         else:
             for entry in entries:
                 lines.append(
@@ -407,13 +446,16 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
                     + " | ".join(
                         [
                             str(entry["name"]),
-                            str(entry["status"]),
+                            str(entry["maturity_status"]),
+                            str(entry["default_reference_readiness"]),
                             str(entry["scope"]),
                             str(entry["invocation_mode"]),
                             str(entry["lineage_state"]),
                             str(entry.get("governance_decision") or "-"),
                             format_values_or_dash(entry.get("governance_lane_ids", [])),
-                            format_blockers_or_dash(entry["canonical_candidate_blockers"]),
+                            format_blockers_or_dash(
+                                entry["default_reference_readiness_blockers"]
+                            ),
                             format_path_or_dash(entry["promotion_review_path"]),
                             format_path_or_dash(entry["candidate_review_path"]),
                         ]
@@ -423,7 +465,7 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
         lines.append("")
 
     append_table("Default references", default_reference_entries)
-    append_table("Candidate-ready cohort", candidate_ready_entries)
+    append_table("Default-reference ready cohort", default_reference_ready_entries)
     append_table("Blocked by pending lineage", blocked_by_pending_entries)
     append_table("Risk surfaces", risk_entries)
 
@@ -431,12 +473,15 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
         [
             "## Legend",
             "",
-            "- `canonical` means the skill is the current default public reference for its workflow class.",
-            "- `evaluated` means behavior-oriented evidence exists, but it is not automatically a default reference.",
-            "- `candidate_ready` means the current machine-readable canonical gate checks pass for a governance-eligible public reference path without implying promotion or overriding the lane decision.",
+            "- `maturity` is the source-owned skill status ladder (`scaffold` through `canonical`).",
+            "- `default_reference_readiness` is the derived machine gate for default-reference consideration and stays separate from maturity.",
+            "- `ready` means the current machine-readable default-reference gate passes for a governance-eligible path without implying promotion.",
+            "- `blocked` means the default-reference path applies, but machine-checkable blockers remain visible.",
+            "- `not_applicable` means the default-reference path does not currently apply, most notably for project overlays without a governance lane.",
             "- `stay_evaluated` means the current governance lane decision is to keep the skill evaluated in this wave even though its canonical gate checks may already pass.",
             "- `pending lineage` means upstream technique publication or refresh still blocks the canonical path.",
             "- `explicit-only` means the skill requires an explicit invocation posture and policy alignment.",
+            "- `candidate_ready` remains in the JSON payload as a compatibility alias for the `default_reference_ready` cohort.",
             "",
         ]
     )

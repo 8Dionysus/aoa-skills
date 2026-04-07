@@ -1220,6 +1220,9 @@ class BuildCatalogTests(unittest.TestCase):
         payload = self.load_public_surface(repo_root)
         skill_entry = payload["skills"][0]
         self.assertTrue(skill_entry["is_default_reference"])
+        self.assertEqual("canonical", skill_entry["maturity_status"])
+        self.assertEqual("ready", skill_entry["default_reference_readiness"])
+        self.assertEqual([], skill_entry["default_reference_readiness_blockers"])
         self.assertTrue(skill_entry["canonical_candidate_ready"])
         self.assertEqual([], skill_entry["canonical_candidate_blockers"])
         self.assertEqual(
@@ -1239,7 +1242,14 @@ class BuildCatalogTests(unittest.TestCase):
         payload = self.load_public_surface(repo_root)
         skill_entry = payload["skills"][0]
         self.assertEqual("published", skill_entry["lineage_state"])
+        self.assertEqual("evaluated", skill_entry["maturity_status"])
+        self.assertEqual("ready", skill_entry["default_reference_readiness"])
+        self.assertEqual([], skill_entry["default_reference_readiness_blockers"])
         self.assertTrue(skill_entry["canonical_candidate_ready"])
+        self.assertEqual(
+            ["aoa-test-skill"],
+            payload["cohorts"]["default_reference_ready"],
+        )
         self.assertEqual(
             ["aoa-test-skill"],
             payload["cohorts"]["candidate_ready"],
@@ -1275,11 +1285,13 @@ class BuildCatalogTests(unittest.TestCase):
 
         payload = self.load_public_surface(repo_root)
         skill_entry = payload["skills"][0]
+        self.assertEqual("ready", skill_entry["default_reference_readiness"])
         self.assertTrue(skill_entry["canonical_candidate_ready"])
         self.assertEqual("stay_evaluated", skill_entry["governance_decision"])
         self.assertEqual(["test_lane"], skill_entry["governance_lane_ids"])
         self.assertEqual([], skill_entry["governance_evidence_case_ids"])
         self.assertFalse(skill_entry["is_default_reference"])
+        self.assertEqual(["aoa-test-skill"], payload["cohorts"]["default_reference_ready"])
         self.assertEqual(["aoa-test-skill"], payload["cohorts"]["candidate_ready"])
 
     def test_project_overlay_stays_out_of_candidate_ready_without_governance_lane(self) -> None:
@@ -1302,8 +1314,11 @@ class BuildCatalogTests(unittest.TestCase):
         backlog_entry = backlog_payload["skills"][0]
         bundle_entry = bundle_payload["skills"][0]
 
+        self.assertEqual("not_applicable", public_entry["default_reference_readiness"])
+        self.assertEqual([], public_entry["default_reference_readiness_blockers"])
         self.assertFalse(public_entry["canonical_candidate_ready"])
         self.assertEqual([], public_entry["canonical_candidate_blockers"])
+        self.assertEqual([], public_payload["cohorts"]["default_reference_ready"])
         self.assertEqual([], public_payload["cohorts"]["candidate_ready"])
         self.assertEqual([], backlog_payload["cohorts"]["candidate_ready_without_review"])
         self.assertFalse(backlog_entry["canonical_candidate_ready"])
@@ -1573,8 +1588,13 @@ class BuildCatalogTests(unittest.TestCase):
 
         payload = self.load_public_surface(repo_root)
         skill_entry = payload["skills"][0]
+        self.assertEqual("blocked", skill_entry["default_reference_readiness"])
         self.assertEqual("pending", skill_entry["lineage_state"])
         self.assertFalse(skill_entry["canonical_candidate_ready"])
+        self.assertIn(
+            "pending_technique_dependencies",
+            skill_entry["default_reference_readiness_blockers"],
+        )
         self.assertIn(
             "pending_technique_dependencies",
             skill_entry["canonical_candidate_blockers"],
@@ -1630,9 +1650,9 @@ class BuildCatalogTests(unittest.TestCase):
         build_catalog.write_public_surface(repo_root)
 
         markdown = self.load_public_surface_markdown(repo_root)
-        self.assertIn("## Candidate-ready cohort", markdown)
+        self.assertIn("## Default-reference ready cohort", markdown)
         self.assertIn(
-            "| aoa-test-skill | evaluated | core | explicit-preferred | published | - | - | - | `docs/reviews/status-promotions/aoa-test-skill.md` | - |",
+            "| aoa-test-skill | evaluated | ready | core | explicit-preferred | published | - | - | - | `docs/reviews/status-promotions/aoa-test-skill.md` | - |",
             markdown,
         )
 
@@ -2100,8 +2120,8 @@ class BuildCatalogTests(unittest.TestCase):
         public_surface_markdown_path = repo_root / build_catalog.PUBLIC_SURFACE_MARKDOWN_PATH
         public_surface_markdown_path.write_text(
             public_surface_markdown_path.read_text(encoding="utf-8").replace(
-                "candidate-ready skills: 1",
-                "candidate-ready skills: 0",
+                "default-reference ready skills: 1",
+                "default-reference ready skills: 0",
             ),
             encoding="utf-8",
         )
