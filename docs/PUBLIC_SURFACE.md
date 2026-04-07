@@ -47,7 +47,7 @@ The packaging and relationship companions are:
 - `generated/skill_boundary_matrix.md`
 
 Read the live counts in those derived surfaces instead of treating this guide as a second status ledger.
-`generated/public_surface.md` and `generated/governance_backlog.md` are the authoritative readouts for the current total-skill count, default-reference cohort, candidate-ready cohort, pending-lineage state, and maintenance/readiness view.
+`generated/public_surface.md` and `generated/governance_backlog.md` are the authoritative readouts for the current total-skill count, default-reference cohort, default-reference-ready cohort, pending-lineage state, and maintenance/readiness view.
 
 These derived surfaces stay separate on purpose:
 - `generated/public_surface.*` is the status and promotion readout
@@ -68,16 +68,27 @@ It is more than "good" or "evaluated"; it is the current recommended starting po
 `evaluated` means the skill already has behavior-oriented evidence.
 It is trustworthy enough to use, but it is not automatically the default public reference.
 
-### `candidate_ready`
+### `default_reference_readiness`
 
-`candidate_ready` is a derived machine gate-pass signal.
-It means the current canonical gate checks pass for a governance-eligible public-reference path, but no promotion happened yet.
+`default_reference_readiness` is the derived machine gate signal for default-reference consideration.
+It is intentionally separate from maturity status.
+
+The current values are:
+- `ready`
+- `blocked`
+- `not_applicable`
+
+`ready` means the current canonical gate checks pass for a governance-eligible public-reference path, but no promotion happened yet.
+`blocked` means the same path applies, but the current machine-checkable blockers are still visible.
+`not_applicable` means the default-reference path does not currently apply, most often for project-scope overlays with no governance lane.
 
 It does not:
 - change `status`
 - decide default-reference authority
 - replace review judgment
 - imply that promotion is automatic
+
+The legacy `candidate_ready` cohort is still emitted in `generated/public_surface.json` as a compatibility alias for the `default_reference_ready` cohort.
 
 Project overlays are intentionally read through `generated/overlay_readiness.*` instead.
 An overlay may be `evaluated` and reviewable without participating in the candidate-ready cohort when no governance lane path exists for that project-scope object.
@@ -93,7 +104,7 @@ For a live family, read `generated/overlay_readiness.md` first and then the matc
 - `default_reference` means the skill is the recorded default reference in that lane
 - `stay_evaluated` means the skill is candidate-ready or otherwise well-evidenced, but the recorded governance outcome is to keep it at `evaluated`
 
-This is why `candidate_ready` and `stay_evaluated` can coexist without contradiction.
+This is why a skill can be `ready` for default-reference consideration and still carry `stay_evaluated` as the explicit governance outcome.
 
 ### `pending lineage`
 
