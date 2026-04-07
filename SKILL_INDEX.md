@@ -114,6 +114,21 @@ The risk guard ring is repo-wide hard-gated:
 guard ring sits outside project-core, and project overlays stay outside all
 three layers.
 
+## Project Foundation
+
+The baseline project install layer is now `repo-project-foundation`:
+
+- `project-core kernel`
+- `project-core outer ring`
+- `project risk guard ring`
+
+That means:
+
+- `repo-project-foundation` equals `kernel + outer ring + risk guard ring` in canonical order
+- it intentionally excludes `abyss-*` and `atm10-*` overlays
+- it is the stable baseline for repo-local rollout and `/srv/.agents/skills`
+- it does not replace `repo-default`, which remains the wider profile that can still carry overlays
+
 ## Notes
 
 - `scaffold` means the skill shape exists, but it should still evolve through technique linkage, examples, and project overlays.

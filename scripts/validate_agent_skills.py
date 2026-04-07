@@ -67,6 +67,7 @@ REQUIRED_GENERATED_FILES = [
     "generated/project_core_outer_ring_readiness.min.json",
     "generated/project_risk_guard_ring.min.json",
     "generated/project_risk_guard_ring_governance.min.json",
+    "generated/project_foundation_profile.min.json",
     "generated/codex_config_snippets.json",
     "generated/mcp_dependency_manifest.json",
     "generated/runtime_discovery_index.json",
@@ -191,6 +192,30 @@ EXPECTED_RISK_RING_ADJACENT_OVERLAYS = [
         "overlay_skill_name": "abyss-sanitized-share",
     },
 ]
+EXPECTED_FOUNDATION_PROFILE_SKILLS = [
+    "aoa-session-donor-harvest",
+    "aoa-automation-opportunity-scan",
+    "aoa-session-route-forks",
+    "aoa-session-self-diagnose",
+    "aoa-session-self-repair",
+    "aoa-session-progression-lift",
+    "aoa-quest-harvest",
+    "aoa-adr-write",
+    "aoa-source-of-truth-check",
+    "aoa-bounded-context-map",
+    "aoa-core-logic-boundary",
+    "aoa-port-adapter-refactor",
+    "aoa-change-protocol",
+    "aoa-tdd-slice",
+    "aoa-contract-test",
+    "aoa-property-invariants",
+    "aoa-invariant-coverage-audit",
+    "aoa-approval-gate-check",
+    "aoa-dry-run-first",
+    "aoa-local-stack-bringup",
+    "aoa-safe-infra-change",
+    "aoa-sanitized-share",
+]
 
 
 def parse_frontmatter(path: pathlib.Path) -> tuple[dict[str, Any], str]:
@@ -294,6 +319,7 @@ def main() -> int:
     outer_ring_readiness = load_json(generated_dir / "project_core_outer_ring_readiness.min.json")
     resolved_risk_ring = load_json(generated_dir / "project_risk_guard_ring.min.json")
     risk_ring_governance = load_json(generated_dir / "project_risk_guard_ring_governance.min.json")
+    foundation_profile = load_json(generated_dir / "project_foundation_profile.min.json")
     snippets_doc = load_json(generated_dir / "codex_config_snippets.json")
     mcp_doc = load_json(generated_dir / "mcp_dependency_manifest.json")
     runtime_discovery = load_json(generated_dir / "runtime_discovery_index.json")
@@ -1479,6 +1505,43 @@ def main() -> int:
         if not entry["governance_passed"]:
             blockers = ", ".join(entry["blockers"])
             errors.append(f"project risk guard ring governance gate failed for {entry['skill_name']}: {blockers}")
+
+    foundation_profile_doc = (profile_doc.get("profiles") or {}).get("repo-project-foundation")
+    if foundation_profile_doc is None:
+        errors.append("config/skill_pack_profiles.json missing repo-project-foundation")
+    else:
+        if foundation_profile_doc.get("scope") != "repo":
+            errors.append("config/skill_pack_profiles.json repo-project-foundation scope must be 'repo'")
+        if foundation_profile_doc.get("install_mode") != "symlink-preferred":
+            errors.append(
+                "config/skill_pack_profiles.json repo-project-foundation install_mode must be 'symlink-preferred'"
+            )
+        foundation_profile_skills = foundation_profile_doc.get("skills") or []
+        if foundation_profile_skills != EXPECTED_FOUNDATION_PROFILE_SKILLS:
+            errors.append(
+                "config/skill_pack_profiles.json repo-project-foundation must equal kernel + outer ring + risk ring in canonical order"
+            )
+        expected_foundation_profile = {
+            "schema_version": 1,
+            "source_config": "config/skill_pack_profiles.json",
+            "foundation_id": "project-foundation-v1",
+            "owner_repo": "aoa-skills",
+            "description": foundation_profile_doc.get("description", ""),
+            "canonical_install_profile": "repo-project-foundation",
+            "kernel_id": kernel_doc.get("kernel_id"),
+            "outer_ring_id": outer_ring_doc.get("ring_id"),
+            "risk_ring_id": risk_ring_doc.get("ring_id"),
+            "skill_count": len(EXPECTED_FOUNDATION_PROFILE_SKILLS),
+            "skills": EXPECTED_FOUNDATION_PROFILE_SKILLS,
+            "kernel_skills": kernel_doc.get("skills"),
+            "outer_ring_skills": outer_ring_doc.get("skills"),
+            "risk_ring_skills": risk_ring_doc.get("skills"),
+        }
+        if foundation_profile != expected_foundation_profile:
+            errors.append("generated/project_foundation_profile.min.json mismatch")
+            difference = first_payload_difference(expected_foundation_profile, foundation_profile)
+            if difference is not None:
+                errors.append(f"generated/project_foundation_profile.min.json detail: {difference}")
 
     for profile_name, profile in (profile_doc.get("profiles") or {}).items():
         seen: set[str] = set()

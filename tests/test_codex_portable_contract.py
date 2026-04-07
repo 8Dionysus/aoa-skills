@@ -160,6 +160,22 @@ class CodexPortableContractTests(unittest.TestCase):
         )
         self.assertTrue(all(entry["readiness_passed"] for entry in readiness["skills"]))
 
+    def test_project_foundation_profile_stays_aligned(self):
+        kernel = load_json(REPO_ROOT / "generated" / "project_core_skill_kernel.min.json")
+        outer_ring = load_json(REPO_ROOT / "generated" / "project_core_outer_ring.min.json")
+        risk_ring = load_json(REPO_ROOT / "generated" / "project_risk_guard_ring.min.json")
+        foundation = load_json(REPO_ROOT / "generated" / "project_foundation_profile.min.json")
+        profiles = load_json(REPO_ROOT / "config" / "skill_pack_profiles.json")["profiles"]
+
+        expected_skills = [*kernel["skills"], *outer_ring["skills"], *risk_ring["skills"]]
+        self.assertEqual(foundation["foundation_id"], "project-foundation-v1")
+        self.assertEqual(foundation["canonical_install_profile"], "repo-project-foundation")
+        self.assertEqual(foundation["skills"], expected_skills)
+        self.assertEqual(foundation["kernel_skills"], kernel["skills"])
+        self.assertEqual(foundation["outer_ring_skills"], outer_ring["skills"])
+        self.assertEqual(foundation["risk_ring_skills"], risk_ring["skills"])
+        self.assertEqual(profiles["repo-project-foundation"]["skills"], expected_skills)
+
     def test_release_manifest_matches_current_packaging_contract(self):
         release_manifest = load_json(REPO_ROOT / "generated" / "release_manifest.json")
         expected_manifest = release_manifest_contract.build_release_manifest(REPO_ROOT)

@@ -822,7 +822,7 @@ def execute_install_plan(
         source_dir = Path(str(step["source_dir"]))
         target_dir = Path(str(step["target_dir"]))
         if source_dir.resolve() == target_dir.resolve():
-            raise ValueError(f"target matches source for {step['skill']}: {target_dir}")
+            continue
         if not source_dir.exists():
             raise ValueError(f"missing source skill export: {source_dir}")
 
