@@ -1,0 +1,19 @@
+{
+  "artifact_kind": "progression_delta",
+  "session_ref": "session:2026-04-05-alpha",
+  "route_ref": "route:session-growth",
+  "scope": "route_scoped",
+  "verdict": "hold",
+  "axis_deltas": {
+    "boundary_integrity": 0,
+    "execution_reliability": 1,
+    "change_legibility": 1,
+    "review_sharpness": 0,
+    "proof_discipline": 1,
+    "provenance_hygiene": 0,
+    "deep_readiness": 0
+  },
+  "cautions": [
+    "automation candidate still requires explicit checkpoint"
+  ]
+}

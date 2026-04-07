@@ -13,11 +13,11 @@ DEFAULT_LOG_PATH = REPO_ROOT / ".aoa" / "live_receipts" / "core-skill-applicatio
 ALLOWED_DETAIL_EVENT_KINDS = {
     "automation_candidate_receipt",
     "decision_fork_receipt",
+    "diagnosis_packet_receipt",
     "harvest_packet_receipt",
     "progression_delta_receipt",
     "quest_promotion_receipt",
     "repair_cycle_receipt",
-    "skill_run_receipt",
 }
 
 

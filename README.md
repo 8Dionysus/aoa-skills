@@ -15,7 +15,7 @@ Use the shortest route by need:
 - runtime path: `docs/RUNTIME_PATH.md`
 - evaluation path: `docs/EVALUATION_PATH.md`
 - public status and governance: `docs/PUBLIC_SURFACE.md`
-- verify current repo state: `python scripts/build_catalog.py --check`, `python scripts/validate_skills.py`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques`, `python scripts/validate_agent_skills.py --repo-root .`, `python scripts/validate_support_resources.py --repo-root . --check-portable`, `python scripts/validate_tiny_router_inputs.py --repo-root .`, and `python -m pytest -q tests`
+- verify current repo state: `python scripts/build_catalog.py --check`, `python scripts/validate_skills.py --fail-on-review-truth-sync`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift`, `python scripts/validate_agent_skills.py --repo-root .`, `python scripts/validate_support_resources.py --repo-root . --check-portable`, `python scripts/validate_tiny_router_inputs.py --repo-root .`, and `python -m pytest -q tests`
 - docs map: `docs/README.md`
 - layer position and boundaries: `docs/LAYER_POSITION.md`
 
@@ -97,9 +97,9 @@ For a read-only/current-state verify pass, use:
 
 ```bash
 python scripts/build_catalog.py --check
-python scripts/validate_skills.py
+python scripts/validate_skills.py --fail-on-review-truth-sync
 python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
-python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques
+python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
 python scripts/validate_agent_skills.py --repo-root .
 python scripts/validate_support_resources.py --repo-root . --check-portable
 python scripts/validate_tiny_router_inputs.py --repo-root .

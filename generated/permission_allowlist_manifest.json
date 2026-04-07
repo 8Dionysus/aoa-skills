@@ -961,7 +961,7 @@
         "scripts": [],
         "references": [
           "references/core-skill-application-receipt-schema.yaml",
-          "references/skill-run-receipt-schema.yaml",
+          "references/diagnosis-packet-receipt-schema.yaml",
           "references/stats-event-envelope.md"
         ],
         "assets": [

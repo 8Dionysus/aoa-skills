@@ -48,8 +48,9 @@ Do not use this skill when:
 - optional blocked-automation findings such as unstable inputs, hidden approval,
   rollback gaps, or secret coupling
 - optional handoff to `aoa-session-self-repair`
-- one `SKILL_RUN_RECEIPT` using `references/stats-event-envelope.md` and
-  `references/skill-run-receipt-schema.yaml`
+- one `DIAGNOSIS_PACKET_RECEIPT` using
+  `references/stats-event-envelope.md` and
+  `references/diagnosis-packet-receipt-schema.yaml`
 - one `CORE_SKILL_APPLICATION_RECEIPT` using
   `references/core-skill-application-receipt-schema.yaml`
 
@@ -61,8 +62,8 @@ Do not use this skill when:
 5. map each diagnosis toward the likely owner layer
 6. suggest a repair shape without silently performing it
 7. preserve unknowns where evidence does not justify stronger claims
-8. emit one bounded `SKILL_RUN_RECEIPT` when the diagnosis packet closes,
-   keeping the payload smaller than the diagnosis itself
+8. emit one bounded `DIAGNOSIS_PACKET_RECEIPT` when the diagnosis packet
+   closes, keeping the payload smaller than the diagnosis itself
 9. when the finish path closes, emit one `CORE_SKILL_APPLICATION_RECEIPT`
    that points back to the bounded detail receipt and records one finished
    kernel-skill application

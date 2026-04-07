@@ -6,6 +6,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CHANGELOG_PATH = REPO_ROOT / "CHANGELOG.md"
+README_PATH = REPO_ROOT / "README.md"
 DOCS_README_PATH = REPO_ROOT / "docs" / "README.md"
 RELEASING_PATH = REPO_ROOT / "docs" / "RELEASING.md"
 
@@ -22,6 +23,15 @@ class ReleaseDocsTests(unittest.TestCase):
         docs_readme = DOCS_README_PATH.read_text(encoding="utf-8")
 
         self.assertIn("RELEASING.md", docs_readme)
+
+    def test_readme_mentions_review_truth_sync_and_drift_gates(self) -> None:
+        readme = README_PATH.read_text(encoding="utf-8")
+
+        self.assertIn("python scripts/validate_skills.py --fail-on-review-truth-sync", readme)
+        self.assertIn(
+            "python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift",
+            readme,
+        )
 
     def test_releasing_doc_mentions_release_check_tag_and_github_release(self) -> None:
         releasing = RELEASING_PATH.read_text(encoding="utf-8")

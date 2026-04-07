@@ -18,7 +18,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -34,7 +34,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -158,7 +158,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -412,7 +412,7 @@
           "id": "AOA-T-0004",
           "path": "techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -425,7 +425,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -486,7 +486,7 @@
           "id": "AOA-T-0036",
           "path": "techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -502,7 +502,7 @@
           "id": "AOA-T-0037",
           "path": "techniques/evaluation/contextual-host-doctor/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -518,7 +518,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -534,7 +534,7 @@
           "id": "AOA-T-0038",
           "path": "techniques/agent-workflows/one-command-service-lifecycle/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -695,7 +695,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "When to use",
@@ -711,7 +711,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
           "use_sections": [
             "Intent",
             "Outputs",

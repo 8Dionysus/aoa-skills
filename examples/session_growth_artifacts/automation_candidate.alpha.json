@@ -1,0 +1,11 @@
+{
+  "artifact_kind": "automation_candidate",
+  "session_ref": "session:2026-04-05-alpha",
+  "pipeline_ref": "pipeline:session-growth",
+  "repeat_signal": "present",
+  "deterministic_ready": true,
+  "reversible_ready": true,
+  "checkpoint_required": true,
+  "seed_ready": false,
+  "next_artifact_hint": "repair-prompt"
+}

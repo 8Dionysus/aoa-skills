@@ -1,0 +1,10 @@
+{
+  "artifact_kind": "decision_fork",
+  "session_ref": "session:2026-04-05-alpha",
+  "route_ref": "route:session-growth",
+  "chosen_branch": "automation-first",
+  "branch_options_count": 3,
+  "predicted_gain": "higher post-session reuse",
+  "predicted_risk": "bounded",
+  "realized_outcome_refs": []
+}

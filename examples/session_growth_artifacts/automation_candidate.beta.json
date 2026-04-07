@@ -1,0 +1,11 @@
+{
+  "artifact_kind": "automation_candidate",
+  "session_ref": "session:2026-04-06-beta",
+  "pipeline_ref": "pipeline:session-growth",
+  "repeat_signal": "strong",
+  "deterministic_ready": true,
+  "reversible_ready": true,
+  "checkpoint_required": false,
+  "seed_ready": true,
+  "next_artifact_hint": "seed-pack"
+}

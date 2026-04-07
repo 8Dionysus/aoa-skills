@@ -64,13 +64,12 @@ jobs:
         run: python scripts/lint_support_resources.py --repo-root .
 
       - name: Install skills-ref reference validator
-        continue-on-error: true
         run: |
           git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills
           python -m pip install -e /tmp/agentskills/skills-ref
 
       - name: Validate portable export with skills-ref
-        run: python scripts/run_skills_ref_validation.py --repo-root .
+        run: python scripts/run_skills_ref_validation.py --repo-root . --require-skills-ref
 
       - name: Contract tests
         run: |

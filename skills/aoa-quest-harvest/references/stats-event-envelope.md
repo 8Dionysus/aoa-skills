@@ -3,6 +3,12 @@
 Use this shared envelope when the session-harvest family emits one bounded
 finish receipt.
 
+Canonical owner:
+
+- `aoa-stats` owns the shared envelope and active event-kind vocabulary at
+  `repo:aoa-stats/schemas/stats-event-envelope.schema.json`.
+- owner repos keep payload meaning in their own receipt schemas.
+
 ## Required fields
 
 - `event_kind`

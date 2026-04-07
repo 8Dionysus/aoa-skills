@@ -27,13 +27,13 @@
   "governance_backlog_version": 5,
   "review_truth_sync": [
     {
-      "current_revision": "f6eae2937a58",
+      "current_revision": "ade3139d7db3",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "abyss-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
-      "reviewed_revision": "f6eae2937a58",
+      "reviewed_revision": "ade3139d7db3",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
@@ -63,13 +63,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "d642f96c7c18",
+      "current_revision": "60144f9b6720",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-approval-gate-check",
       "review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
-      "reviewed_revision": "d642f96c7c18",
+      "reviewed_revision": "60144f9b6720",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
@@ -111,13 +111,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "61b7d09d2002",
+      "current_revision": "968dec89b040",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
-      "reviewed_revision": "61b7d09d2002",
+      "reviewed_revision": "968dec89b040",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
@@ -135,13 +135,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "1246a65e99d7",
+      "current_revision": "a29b29ed6402",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-local-stack-bringup",
       "review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
-      "reviewed_revision": "1246a65e99d7",
+      "reviewed_revision": "a29b29ed6402",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
@@ -171,13 +171,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "d80b4c9df219",
+      "current_revision": "c19470b0d9b8",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
-      "reviewed_revision": "d80b4c9df219",
+      "reviewed_revision": "c19470b0d9b8",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
       "truth_synced": true

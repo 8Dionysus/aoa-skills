@@ -798,7 +798,7 @@ Common expand sections:
 - explicit unknowns when diagnosis remains incomplete
 - optional blocked-automation findings such as unstable inputs, hidden approval, rollback gaps, or secret coupling
 - optional handoff to aoa-session-self-repair
-- one SKILLRUNRECEIPT using references/stats-event-envelope.md and references/skill-run-receipt-schema.yaml
+- one DIAGNOSISPACKETRECEIPT using references/stats-event-envelope.md and references/diagnosis-packet-receipt-schema.yaml
 - one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 
 ### Support artifacts
