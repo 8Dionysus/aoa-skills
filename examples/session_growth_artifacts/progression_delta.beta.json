@@ -1,0 +1,17 @@
+{
+  "artifact_kind": "progression_delta",
+  "session_ref": "session:2026-04-06-beta",
+  "route_ref": "route:session-growth",
+  "scope": "route_scoped",
+  "verdict": "advance",
+  "axis_deltas": {
+    "boundary_integrity": 0,
+    "execution_reliability": 1,
+    "change_legibility": 1,
+    "review_sharpness": 1,
+    "proof_discipline": 1,
+    "provenance_hygiene": 1,
+    "deep_readiness": 1
+  },
+  "cautions": []
+}

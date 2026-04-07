@@ -1437,7 +1437,7 @@
         "explicit unknowns when diagnosis remains incomplete",
         "optional blocked-automation findings such as unstable inputs, hidden approval,",
         "optional handoff to `aoa-session-self-repair`",
-        "one `SKILL_RUN_RECEIPT` using `references/stats-event-envelope.md` and",
+        "one `DIAGNOSIS_PACKET_RECEIPT` using",
         "one `CORE_SKILL_APPLICATION_RECEIPT` using"
       ],
       "verification": [
@@ -1472,7 +1472,7 @@
         "explicit-unknowns-when-diagnosis-remains-incomplete",
         "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
         "optional-handoff-to-aoa-session-self-repair",
-        "one-skill-run-receipt-using-references-stats-event-envelope-md-a",
+        "one-diagnosis-packet-receipt-using",
         "one-core-skill-application-receipt-using"
       ],
       "handoff_packet_template": {
@@ -1483,7 +1483,7 @@
           "explicit-unknowns-when-diagnosis-remains-incomplete",
           "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
           "optional-handoff-to-aoa-session-self-repair",
-          "one-skill-run-receipt-using-references-stats-event-envelope-md-a",
+          "one-diagnosis-packet-receipt-using",
           "one-core-skill-application-receipt-using"
         ],
         "verification_notes": [

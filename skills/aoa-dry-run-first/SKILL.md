@@ -85,8 +85,8 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0004 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation
-- AOA-T-0028 from `8Dionysus/aoa-techniques` at `609693c2782510e0811ba7ecb4904bc06cf40c38` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation
+- AOA-T-0004 from `8Dionysus/aoa-techniques` at `bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation
+- AOA-T-0028 from `8Dionysus/aoa-techniques` at `bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation
 
 ## Adaptation points
 

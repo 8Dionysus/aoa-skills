@@ -15,6 +15,6 @@ rules:
   - `application_stage` must equal `finish`
   - `kernel_id` must equal `project-core-session-growth-v1`
   - `skill_name` must equal `aoa-session-self-diagnose`
-  - `detail_event_kind` must equal `skill_run_receipt`
+  - `detail_event_kind` must equal `diagnosis_packet_receipt`
   - `detail_receipt_ref` must point to the bounded finish receipt for the same completed run
   - include `route_ref` only when the detail receipt already names it honestly

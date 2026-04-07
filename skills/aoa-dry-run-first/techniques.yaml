@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0004
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md
-    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    source_ref: bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a
     use_sections:
       - Intent
       - When to use
@@ -14,7 +14,7 @@ techniques:
   - id: AOA-T-0028
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md
-    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    source_ref: bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a
     use_sections:
       - Intent
       - When to use

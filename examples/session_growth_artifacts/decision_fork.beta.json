@@ -1,0 +1,12 @@
+{
+  "artifact_kind": "decision_fork",
+  "session_ref": "session:2026-04-06-beta",
+  "route_ref": "route:session-growth",
+  "chosen_branch": "ship-adjunct",
+  "branch_options_count": 2,
+  "predicted_gain": "live derived stats layer",
+  "predicted_risk": "moderate",
+  "realized_outcome_refs": [
+    "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate.beta.json"
+  ]
+}

@@ -42,8 +42,8 @@
     },
     {
       "skill_name": "aoa-session-self-diagnose",
-      "detail_event_kind": "skill_run_receipt",
-      "detail_receipt_schema_ref": "references/skill-run-receipt-schema.yaml"
+      "detail_event_kind": "diagnosis_packet_receipt",
+      "detail_receipt_schema_ref": "references/diagnosis-packet-receipt-schema.yaml"
     },
     {
       "skill_name": "aoa-session-self-repair",

@@ -1,0 +1,14 @@
+{
+  "artifact_kind": "harvest_packet",
+  "session_ref": "session:2026-04-05-alpha",
+  "route_ref": "route:session-growth",
+  "owner_repo": "aoa-skills",
+  "extract_counts": {
+    "skill": 2,
+    "technique": 1,
+    "memo": 1
+  },
+  "promotion_candidates": 2,
+  "deferrals": 1,
+  "evidence_density": "reviewed"
+}

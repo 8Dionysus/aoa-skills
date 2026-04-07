@@ -25,8 +25,8 @@ causes and names the likely owner layers involved.
 - named drift types, symptoms, probable causes, and repair shapes
 - owner hints and explicit unknowns
 - optional handoff to `aoa-session-self-repair`
-- one `SKILL_RUN_RECEIPT` that records diagnosis types, confidence band, and
-  evidence-linked owner hints
+- one `DIAGNOSIS_PACKET_RECEIPT` that records diagnosis types, confidence
+  band, and evidence-linked owner hints
 - one `CORE_SKILL_APPLICATION_RECEIPT` that records the finished
   `aoa-session-self-diagnose` run and points back to the detail receipt
 

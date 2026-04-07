@@ -1,5 +1,5 @@
-receipt_name: SKILL_RUN_RECEIPT
-event_kind: skill_run_receipt
+receipt_name: DIAGNOSIS_PACKET_RECEIPT
+event_kind: diagnosis_packet_receipt
 envelope_ref: references/stats-event-envelope.md
 required_payload_fields:
   - skill_name
@@ -10,6 +10,7 @@ required_payload_fields:
   - confidence_band
   - owner_hints
 optional_payload_fields:
+  - route_ref
   - blocked_automation_causes
   - repair_handoff
   - unknowns
