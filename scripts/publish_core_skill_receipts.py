@@ -25,12 +25,13 @@ class ReceiptPublishError(ValueError):
     pass
 
 
-def load_kernel_manifest() -> tuple[str, set[str]]:
+def load_kernel_manifest() -> tuple[str, dict[str, str]]:
     payload = json.loads(KERNEL_MANIFEST_PATH.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise ReceiptPublishError(f"{KERNEL_MANIFEST_PATH}: kernel manifest must be an object")
     kernel_id = payload.get("kernel_id")
     skills = payload.get("skills")
+    skill_contracts = payload.get("skill_contracts")
     if not isinstance(kernel_id, str) or not kernel_id:
         raise ReceiptPublishError(f"{KERNEL_MANIFEST_PATH}: kernel_id must be a non-empty string")
     if not isinstance(skills, list) or not skills:
@@ -38,10 +39,48 @@ def load_kernel_manifest() -> tuple[str, set[str]]:
     skill_names = {skill for skill in skills if isinstance(skill, str) and skill}
     if len(skill_names) != len(skills):
         raise ReceiptPublishError(f"{KERNEL_MANIFEST_PATH}: skills must be non-empty strings without duplicates")
-    return kernel_id, skill_names
+    if not isinstance(skill_contracts, list) or not skill_contracts:
+        raise ReceiptPublishError(f"{KERNEL_MANIFEST_PATH}: skill_contracts must be a non-empty list")
+
+    detail_event_kind_by_skill: dict[str, str] = {}
+    for index, entry in enumerate(skill_contracts):
+        if not isinstance(entry, dict):
+            raise ReceiptPublishError(
+                f"{KERNEL_MANIFEST_PATH}: skill_contracts[{index}] must be an object"
+            )
+        skill_name = entry.get("skill_name")
+        detail_event_kind = entry.get("detail_event_kind")
+        if not isinstance(skill_name, str) or not skill_name:
+            raise ReceiptPublishError(
+                f"{KERNEL_MANIFEST_PATH}: skill_contracts[{index}].skill_name must be a non-empty string"
+            )
+        if skill_name not in skill_names:
+            raise ReceiptPublishError(
+                f"{KERNEL_MANIFEST_PATH}: skill_contracts[{index}].skill_name must be declared in skills"
+            )
+        if skill_name in detail_event_kind_by_skill:
+            raise ReceiptPublishError(
+                f"{KERNEL_MANIFEST_PATH}: duplicate skill_contract entry for {skill_name!r}"
+            )
+        if not isinstance(detail_event_kind, str) or not detail_event_kind:
+            raise ReceiptPublishError(
+                f"{KERNEL_MANIFEST_PATH}: skill_contracts[{index}].detail_event_kind must be a non-empty string"
+            )
+        if detail_event_kind not in ALLOWED_DETAIL_EVENT_KINDS:
+            raise ReceiptPublishError(
+                f"{KERNEL_MANIFEST_PATH}: skill_contracts[{index}].detail_event_kind must be one of "
+                f"{sorted(ALLOWED_DETAIL_EVENT_KINDS)!r}"
+            )
+        detail_event_kind_by_skill[skill_name] = detail_event_kind
+    if set(detail_event_kind_by_skill) != skill_names:
+        raise ReceiptPublishError(
+            f"{KERNEL_MANIFEST_PATH}: skill_contracts must cover every kernel skill exactly once"
+        )
+    return kernel_id, detail_event_kind_by_skill
 
 
-KERNEL_ID, KERNEL_SKILLS = load_kernel_manifest()
+KERNEL_ID, KERNEL_DETAIL_EVENT_KIND_BY_SKILL = load_kernel_manifest()
+KERNEL_SKILLS = set(KERNEL_DETAIL_EVENT_KIND_BY_SKILL)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -124,6 +163,12 @@ def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
     if detail_event_kind not in ALLOWED_DETAIL_EVENT_KINDS:
         raise ReceiptPublishError(
             f"{location}.payload.detail_event_kind: unsupported detail receipt kind {detail_event_kind!r}"
+        )
+    expected_detail_event_kind = KERNEL_DETAIL_EVENT_KIND_BY_SKILL[skill_name]
+    if detail_event_kind != expected_detail_event_kind:
+        raise ReceiptPublishError(
+            f"{location}.payload.detail_event_kind: must equal {expected_detail_event_kind!r} "
+            f"for skill {skill_name!r}"
         )
     detail_receipt_ref = payload["detail_receipt_ref"]
     if not isinstance(detail_receipt_ref, str) or not detail_receipt_ref:

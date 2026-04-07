@@ -1130,7 +1130,11 @@ def main() -> int:
             errors.append(f"generated/project_core_skill_kernel.min.json detail: {difference}")
 
     canonical_profile_name = kernel_doc.get("canonical_install_profile")
-    alias_profile_names = kernel_doc.get("backward_compatible_aliases", [])
+    alias_profile_names = (
+        kernel_doc.get("backward_compatible_aliases", [])
+        if isinstance(kernel_doc.get("backward_compatible_aliases"), list)
+        else []
+    )
     if isinstance(canonical_profile_name, str):
         canonical_profile = (profile_doc.get("profiles") or {}).get(canonical_profile_name)
         if canonical_profile is None:
