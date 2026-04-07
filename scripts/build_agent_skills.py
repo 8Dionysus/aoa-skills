@@ -477,6 +477,7 @@ def build_project_core_kernel_doc(kernel_doc: dict[str, Any]) -> dict[str, Any]:
 def build_project_core_kernel_governance_doc(
     *,
     repo_root: pathlib.Path,
+    skills_root: pathlib.Path,
     kernel_doc: dict[str, Any],
     export_map: dict[str, Any],
 ) -> dict[str, Any]:
@@ -492,7 +493,7 @@ def build_project_core_kernel_governance_doc(
         contract = skill_contracts[skill_name]
         export_entry = export_by_name.get(skill_name, {})
         source_skill_dir = repo_root / "skills" / skill_name
-        export_skill_dir = repo_root / ".agents" / "skills" / skill_name
+        export_skill_dir = skills_root / skill_name
         references = set((export_entry.get("resource_inventory") or {}).get("references", []))
         blockers: list[str] = []
 
@@ -1051,6 +1052,7 @@ def main() -> int:
     project_core_kernel = build_project_core_kernel_doc(kernel_doc)
     project_core_kernel_governance = build_project_core_kernel_governance_doc(
         repo_root=repo_root,
+        skills_root=skills_root,
         kernel_doc=kernel_doc,
         export_map=export_map,
     )
