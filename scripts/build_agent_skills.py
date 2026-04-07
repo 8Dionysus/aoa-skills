@@ -738,6 +738,38 @@ def build_project_risk_guard_ring_governance_doc(
     }
 
 
+def build_project_foundation_profile_doc(
+    *,
+    kernel_doc: dict[str, Any],
+    outer_ring_doc: dict[str, Any],
+    risk_ring_doc: dict[str, Any],
+    profiles_doc: dict[str, Any],
+) -> dict[str, Any]:
+    foundation_profile_name = "repo-project-foundation"
+    profile_map = profiles_doc.get("profiles", {})
+    foundation_profile = profile_map.get(foundation_profile_name) or {}
+    kernel_skills = list(kernel_doc["skills"])
+    outer_ring_skills = list(outer_ring_doc["skills"])
+    risk_ring_skills = list(risk_ring_doc["skills"])
+    foundation_skills = [*kernel_skills, *outer_ring_skills, *risk_ring_skills]
+    return {
+        "schema_version": 1,
+        "source_config": "config/skill_pack_profiles.json",
+        "foundation_id": "project-foundation-v1",
+        "owner_repo": "aoa-skills",
+        "description": foundation_profile.get("description", ""),
+        "canonical_install_profile": foundation_profile_name,
+        "kernel_id": kernel_doc["kernel_id"],
+        "outer_ring_id": outer_ring_doc["ring_id"],
+        "risk_ring_id": risk_ring_doc["ring_id"],
+        "skill_count": len(foundation_skills),
+        "skills": foundation_skills,
+        "kernel_skills": kernel_skills,
+        "outer_ring_skills": outer_ring_skills,
+        "risk_ring_skills": risk_ring_skills,
+    }
+
+
 def build_mcp_dependency_manifest(
     catalog_full: dict[str, Any],
     openai_docs: dict[str, dict[str, Any]],
@@ -1036,6 +1068,12 @@ def main() -> int:
         profiles_doc=profiles_doc,
         collision_doc=load_json(generated_dir / "skill_trigger_collision_matrix.json"),
     )
+    project_foundation_profile = build_project_foundation_profile_doc(
+        kernel_doc=kernel_doc,
+        outer_ring_doc=ring_doc,
+        risk_ring_doc=risk_ring_doc,
+        profiles_doc=profiles_doc,
+    )
     config_snippets = build_codex_config_snippets(resolved_profiles)
     local_manifest, local_manifest_min = build_local_adapter_manifests(
         repo_root=repo_root,
@@ -1061,6 +1099,7 @@ def main() -> int:
         generated_dir / "project_core_outer_ring_readiness.min.json": json.dumps(project_core_outer_ring_readiness, indent=2) + "\n",
         generated_dir / "project_risk_guard_ring.min.json": json.dumps(project_risk_guard_ring, indent=2) + "\n",
         generated_dir / "project_risk_guard_ring_governance.min.json": json.dumps(project_risk_guard_ring_governance, indent=2) + "\n",
+        generated_dir / "project_foundation_profile.min.json": json.dumps(project_foundation_profile, indent=2) + "\n",
         generated_dir / "codex_config_snippets.json": json.dumps(config_snippets, indent=2) + "\n",
         generated_dir / "mcp_dependency_manifest.json": json.dumps(mcp_manifest, indent=2) + "\n",
     }

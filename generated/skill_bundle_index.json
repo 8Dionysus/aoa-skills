@@ -210,6 +210,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -296,6 +297,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-foundation",
         "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
@@ -381,6 +383,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -472,6 +475,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -559,6 +563,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -646,6 +651,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -733,6 +739,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -820,6 +827,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-foundation",
         "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
@@ -912,7 +920,8 @@
       "install_profiles": [
         "repo-core-only",
         "repo-default",
-        "repo-project-core-outer-ring"
+        "repo-project-core-outer-ring",
+        "repo-project-foundation"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
@@ -991,6 +1000,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-foundation",
         "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
@@ -1100,6 +1110,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1187,6 +1198,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -1273,6 +1285,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-quest-harvest-only",
         "repo-session-harvest-family",
         "user-curated-core"
@@ -1357,6 +1370,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-foundation",
         "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
@@ -1449,6 +1463,7 @@
       },
       "install_profiles": [
         "repo-default",
+        "repo-project-foundation",
         "repo-project-risk-guard-ring",
         "repo-risk-explicit"
       ],
@@ -1541,6 +1556,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-session-donor-harvest-only",
         "repo-session-harvest-family",
         "user-curated-core"
@@ -1632,6 +1648,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -1714,6 +1731,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -1796,6 +1814,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -1878,6 +1897,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-session-harvest-family",
         "user-curated-core"
       ],
@@ -1961,6 +1981,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",
@@ -2055,6 +2076,7 @@
         "repo-core-only",
         "repo-default",
         "repo-project-core-outer-ring",
+        "repo-project-foundation",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",

@@ -363,6 +363,190 @@
         }
       ]
     },
+    "repo-project-foundation": {
+      "description": "Install the stable project foundation into a repository root: the session-growth kernel, the engineering outer ring, and the explicit risk guard ring without any project overlays.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-session-donor-harvest",
+          "source_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-automation-opportunity-scan",
+          "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "target_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-route-forks",
+          "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-diagnose",
+          "source_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-repair",
+          "source_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-progression-lift",
+          "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-quest-harvest",
+          "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-adr-write",
+          "source_path": ".agents/skills/aoa-adr-write/SKILL.md",
+          "target_path": ".agents/skills/aoa-adr-write/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-source-of-truth-check",
+          "source_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "target_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-bounded-context-map",
+          "source_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+          "target_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-core-logic-boundary",
+          "source_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "target_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-port-adapter-refactor",
+          "source_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "target_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-change-protocol",
+          "source_path": ".agents/skills/aoa-change-protocol/SKILL.md",
+          "target_path": ".agents/skills/aoa-change-protocol/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-tdd-slice",
+          "source_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+          "target_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-contract-test",
+          "source_path": ".agents/skills/aoa-contract-test/SKILL.md",
+          "target_path": ".agents/skills/aoa-contract-test/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-property-invariants",
+          "source_path": ".agents/skills/aoa-property-invariants/SKILL.md",
+          "target_path": ".agents/skills/aoa-property-invariants/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-invariant-coverage-audit",
+          "source_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+          "target_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-approval-gate-check",
+          "source_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "target_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-dry-run-first",
+          "source_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "target_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-local-stack-bringup",
+          "source_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "target_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-safe-infra-change",
+          "source_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "target_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        },
+        {
+          "name": "aoa-sanitized-share",
+          "source_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "target_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "explicit-risk"
+        }
+      ]
+    },
     "repo-quest-harvest-only": {
       "description": "Install only aoa-quest-harvest into a repository root for explicit post-session quest promotion triage.",
       "scope": "repo",

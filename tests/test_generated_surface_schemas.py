@@ -36,6 +36,7 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
             ("project-core-outer-ring.schema.json", "project_core_outer_ring.min.json"),
             ("project-core-outer-ring-readiness.schema.json", "project_core_outer_ring_readiness.min.json"),
             ("project-core-kernel-governance.schema.json", "project_core_kernel_governance.min.json"),
+            ("project-foundation-profile.schema.json", "project_foundation_profile.min.json"),
             ("release_manifest.schema.json", "release_manifest.json"),
         ]:
             with self.subTest(schema=schema_filename):

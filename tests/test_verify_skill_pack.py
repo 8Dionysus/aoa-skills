@@ -200,6 +200,21 @@ class VerifySkillPackTests(unittest.TestCase):
             self.assertEqual([], payload["extra_skill_dirs"])
             self.assertIn("aoa-change-protocol", [entry["name"] for entry in payload["skills"]])
 
+    def test_foundation_copy_installed_profile_verifies_successfully(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            self.install_profile_copy("repo-project-foundation", dest_root)
+
+            completed, payload = self.verify_profile("repo-project-foundation", install_root=dest_root)
+
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"verify failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            self.assertTrue(payload["verified"])
+            self.assertEqual(payload["expected_skill_count"], 22)
+
     def test_staged_bundle_verifies_offline(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             bundle_root = pathlib.Path(tmpdir) / "bundle"

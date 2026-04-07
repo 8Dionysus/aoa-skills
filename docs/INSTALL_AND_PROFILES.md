@@ -25,6 +25,7 @@ Dry-run or apply an install profile:
 
 ```bash
 python scripts/install_skill_pack.py --repo-root . --profile user-curated-core
+python scripts/install_skill_pack.py --repo-root . --profile repo-project-foundation --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-core-only --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --dest-root /tmp/aoa-skills --mode copy --execute
 python scripts/install_skill_pack.py --repo-root . --profile repo-quest-harvest-only --dest-root /tmp/aoa-skills --mode copy --execute
@@ -63,6 +64,7 @@ Verify an installed profile/root against the current portable export:
 
 ```bash
 python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
+python scripts/verify_skill_pack.py --repo-root . --profile repo-project-foundation --install-root /tmp/aoa-skills --format json
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --format json
 python scripts/verify_skill_pack.py --repo-root . --profile repo-project-core-outer-ring --install-root /tmp/aoa-skills --format json
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --install-root /tmp/aoa-skills --strict-root --format markdown
@@ -217,6 +219,14 @@ explicit project safety perimeter outside project-core:
   `generated/project_risk_guard_ring_governance.min.json`.
 - It does not replace `repo-default`, and it does not pull project overlays
   into ring membership.
+
+`repo-project-foundation` is the baseline project install layer:
+
+- it equals `repo-project-core-kernel + repo-project-core-outer-ring + repo-project-risk-guard-ring`
+- it is `repo`-scoped and keeps `symlink-preferred`
+- it intentionally excludes project overlays
+- it is the intended default for broad repo-local rollout and `/srv/.agents/skills`
+- repeated symlink installs over already-matching portable exports must remain idempotent
 
 `repo-risk-explicit` remains as the backward-compatible alias for the same five
 explicit-only risk skills.

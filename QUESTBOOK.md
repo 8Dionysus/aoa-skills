@@ -113,6 +113,8 @@ Outer-ring posture:
 Boundary notes:
 
 - `repo-core-only` is the umbrella repo surface and must equal `kernel + outer ring`
+- `repo-project-foundation` is the baseline install layer and must equal
+  `kernel + outer ring + risk guard ring`
 - the explicit safety perimeter is the separate `risk guard ring`, authored
   under `repo-project-risk-guard-ring`
 - `repo-risk-explicit` remains as the backward-compatible alias for that same
@@ -146,6 +148,13 @@ Adjacent overlays:
 - `aoa-sanitized-share` may have the adjacent project overlay
   `abyss-sanitized-share`
 - those overlays are reported next to the ring, but they are not ring members
+
+Foundation posture:
+
+- `repo-project-foundation` is the stable install baseline for project work
+- it carries the hard-gated session-growth kernel, the soft-gated engineering
+  workbench, and the hard-gated risk perimeter together
+- it intentionally excludes project overlays, which remain opt-in and local
 
 Allowed `aoa-quest-harvest` verdicts:
 

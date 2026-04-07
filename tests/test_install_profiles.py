@@ -126,6 +126,75 @@ class InstallProfilesTests(unittest.TestCase):
             self.assertIn("aoa-change-protocol", installed)
             self.assertNotIn("aoa-safe-infra-change", installed)
 
+    def test_foundation_profile_copy_mode_includes_risk_ring_without_overlays(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            command = [
+                sys.executable,
+                "scripts/install_skill_pack.py",
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-project-foundation",
+                "--dest-root",
+                str(dest_root),
+                "--mode",
+                "copy",
+                "--execute",
+            ]
+            completed = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            installed = sorted(path.name for path in dest_root.iterdir() if path.is_dir())
+            self.assertIn("aoa-change-protocol", installed)
+            self.assertIn("aoa-safe-infra-change", installed)
+            self.assertNotIn("abyss-safe-infra-change", installed)
+
+    def test_install_profile_symlink_reinstall_is_idempotent_when_target_matches_source(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            command = [
+                sys.executable,
+                "scripts/install_skill_pack.py",
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-project-core-kernel",
+                "--dest-root",
+                str(dest_root),
+                "--mode",
+                "symlink",
+                "--execute",
+                "--overwrite",
+                "--format",
+                "json",
+            ]
+            first = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            second = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(0, first.returncode, msg=first.stderr or first.stdout)
+            self.assertEqual(0, second.returncode, msg=second.stderr or second.stdout)
+
     def test_install_profile_json_plan_includes_revision_and_verify_command(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             dest_root = pathlib.Path(tmpdir) / "skills"
