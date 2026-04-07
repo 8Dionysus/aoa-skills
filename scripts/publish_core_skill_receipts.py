@@ -19,6 +19,23 @@ ALLOWED_DETAIL_EVENT_KINDS = {
     "quest_promotion_receipt",
     "repair_cycle_receipt",
 }
+ALLOWED_OWNER_REPOS = {
+    "aoa-techniques",
+    "aoa-skills",
+    "aoa-evals",
+    "aoa-memo",
+    "aoa-playbooks",
+    "aoa-agents",
+}
+ALLOWED_HANDOFF_TARGETS = {
+    "aoa-session-donor-harvest",
+    "aoa-automation-opportunity-scan",
+    "aoa-session-route-forks",
+    "aoa-session-self-diagnose",
+    "aoa-session-self-repair",
+    "aoa-session-progression-lift",
+    "aoa-quest-harvest",
+}
 
 
 class ReceiptPublishError(ValueError):
@@ -101,6 +118,141 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
+def validate_surface_detection_context(context: dict[str, Any], *, location: str) -> None:
+    allowed_fields = {
+        "activation_truth",
+        "adjacent_owner_repos",
+        "owner_layer_ambiguity",
+        "shortlist_confidence",
+        "detail_to_closeout_ref",
+        "surface_detection_report_ref",
+        "surface_closeout_handoff_ref",
+        "family_entry_refs",
+        "candidate_counts",
+        "suggested_handoff_targets",
+        "repeated_pattern_signal",
+        "promotion_discussion_required",
+    }
+    extra = sorted(field for field in context if field not in allowed_fields)
+    if extra:
+        raise ReceiptPublishError(
+            f"{location}: unsupported surface_detection_context fields {extra!r}"
+        )
+
+    activation_truth = context.get("activation_truth")
+    if activation_truth is not None and activation_truth not in {
+        "activated",
+        "manual-equivalent-adjacent",
+    }:
+        raise ReceiptPublishError(
+            f"{location}.activation_truth: must be omitted or one of "
+            f"{['activated', 'manual-equivalent-adjacent']!r}"
+        )
+
+    adjacent_owner_repos = context.get("adjacent_owner_repos")
+    if adjacent_owner_repos is not None:
+        if not isinstance(adjacent_owner_repos, list) or not adjacent_owner_repos:
+            raise ReceiptPublishError(
+                f"{location}.adjacent_owner_repos: must be omitted or a non-empty list"
+            )
+        normalized_repos = {
+            repo for repo in adjacent_owner_repos if isinstance(repo, str) and repo
+        }
+        if normalized_repos != set(adjacent_owner_repos):
+            raise ReceiptPublishError(
+                f"{location}.adjacent_owner_repos: must contain unique non-empty strings"
+            )
+        unsupported_repos = sorted(normalized_repos - ALLOWED_OWNER_REPOS)
+        if unsupported_repos:
+            raise ReceiptPublishError(
+                f"{location}.adjacent_owner_repos: unsupported repos {unsupported_repos!r}"
+            )
+
+    owner_layer_ambiguity = context.get("owner_layer_ambiguity")
+    if owner_layer_ambiguity is not None and not isinstance(owner_layer_ambiguity, bool):
+        raise ReceiptPublishError(
+            f"{location}.owner_layer_ambiguity: must be omitted or a boolean"
+        )
+
+    shortlist_confidence = context.get("shortlist_confidence")
+    if shortlist_confidence is not None and shortlist_confidence not in {"low", "medium", "high"}:
+        raise ReceiptPublishError(
+            f"{location}.shortlist_confidence: must be omitted or one of {['low', 'medium', 'high']!r}"
+        )
+
+    for field in (
+        "detail_to_closeout_ref",
+        "surface_detection_report_ref",
+        "surface_closeout_handoff_ref",
+    ):
+        value = context.get(field)
+        if value is not None and (not isinstance(value, str) or not value):
+            raise ReceiptPublishError(
+                f"{location}.{field}: must be omitted or a non-empty string"
+            )
+
+    family_entry_refs = context.get("family_entry_refs")
+    if family_entry_refs is not None:
+        if not isinstance(family_entry_refs, list) or not family_entry_refs:
+            raise ReceiptPublishError(
+                f"{location}.family_entry_refs: must be omitted or a non-empty list"
+            )
+        if any(not isinstance(ref, str) or not ref for ref in family_entry_refs):
+            raise ReceiptPublishError(
+                f"{location}.family_entry_refs: must contain only non-empty strings"
+            )
+        if len(set(family_entry_refs)) != len(family_entry_refs):
+            raise ReceiptPublishError(
+                f"{location}.family_entry_refs: duplicate refs are not allowed"
+            )
+
+    candidate_counts = context.get("candidate_counts")
+    if candidate_counts is not None:
+        if not isinstance(candidate_counts, dict):
+            raise ReceiptPublishError(
+                f"{location}.candidate_counts: must be omitted or an object"
+            )
+        extra_candidate_fields = sorted(
+            field for field in candidate_counts if field not in {"candidate_now", "candidate_later"}
+        )
+        if extra_candidate_fields:
+            raise ReceiptPublishError(
+                f"{location}.candidate_counts: unsupported fields {extra_candidate_fields!r}"
+            )
+        for field in ("candidate_now", "candidate_later"):
+            value = candidate_counts.get(field)
+            if value is not None and (not isinstance(value, int) or value < 0):
+                raise ReceiptPublishError(
+                    f"{location}.candidate_counts.{field}: must be omitted or a non-negative integer"
+                )
+
+    suggested_handoff_targets = context.get("suggested_handoff_targets")
+    if suggested_handoff_targets is not None:
+        if not isinstance(suggested_handoff_targets, list) or not suggested_handoff_targets:
+            raise ReceiptPublishError(
+                f"{location}.suggested_handoff_targets: must be omitted or a non-empty list"
+            )
+        normalized_targets = {
+            skill_name for skill_name in suggested_handoff_targets if isinstance(skill_name, str) and skill_name
+        }
+        if normalized_targets != set(suggested_handoff_targets):
+            raise ReceiptPublishError(
+                f"{location}.suggested_handoff_targets: must contain unique non-empty strings"
+            )
+        unsupported_targets = sorted(normalized_targets - ALLOWED_HANDOFF_TARGETS)
+        if unsupported_targets:
+            raise ReceiptPublishError(
+                f"{location}.suggested_handoff_targets: unsupported targets {unsupported_targets!r}"
+            )
+
+    for field in ("repeated_pattern_signal", "promotion_discussion_required"):
+        value = context.get(field)
+        if value is not None and not isinstance(value, bool):
+            raise ReceiptPublishError(
+                f"{location}.{field}: must be omitted or a boolean"
+            )
+
+
 def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
     required_fields = (
         "event_kind",
@@ -141,7 +293,7 @@ def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
         "detail_event_kind",
         "detail_receipt_ref",
     }
-    allowed_payload_fields = {*required_payload_fields, "route_ref"}
+    allowed_payload_fields = {*required_payload_fields, "route_ref", "surface_detection_context"}
     missing = sorted(field for field in required_payload_fields if field not in payload)
     if missing:
         raise ReceiptPublishError(f"{location}.payload: missing required fields {missing!r}")
@@ -179,6 +331,16 @@ def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
     if route_ref is not None and (not isinstance(route_ref, str) or not route_ref):
         raise ReceiptPublishError(
             f"{location}.payload.route_ref: must be omitted or a non-empty string"
+        )
+    surface_detection_context = payload.get("surface_detection_context")
+    if surface_detection_context is not None:
+        if not isinstance(surface_detection_context, dict):
+            raise ReceiptPublishError(
+                f"{location}.payload.surface_detection_context: must be omitted or an object"
+            )
+        validate_surface_detection_context(
+            surface_detection_context,
+            location=f"{location}.payload.surface_detection_context",
         )
 
 

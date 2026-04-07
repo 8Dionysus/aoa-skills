@@ -29,7 +29,20 @@ def load_module(name: str, path: pathlib.Path):
             sys.path.pop(0)
 
 
-def build_core_skill_receipt(*, detail_event_kind: str) -> dict[str, object]:
+def build_core_skill_receipt(
+    *,
+    detail_event_kind: str,
+    surface_detection_context: dict[str, object] | None = None,
+) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "kernel_id": "project-core-session-growth-v1",
+        "skill_name": "aoa-session-donor-harvest",
+        "application_stage": "finish",
+        "detail_event_kind": detail_event_kind,
+        "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
+    }
+    if surface_detection_context is not None:
+        payload["surface_detection_context"] = surface_detection_context
     return {
         "event_kind": "core_skill_application_receipt",
         "event_id": "evt-core-kernel-001",
@@ -47,13 +60,7 @@ def build_core_skill_receipt(*, detail_event_kind: str) -> dict[str, object]:
             "id": "aoa-session-donor-harvest",
         },
         "evidence_refs": [{"kind": "receipt", "ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json"}],
-        "payload": {
-            "kernel_id": "project-core-session-growth-v1",
-            "skill_name": "aoa-session-donor-harvest",
-            "application_stage": "finish",
-            "detail_event_kind": detail_event_kind,
-            "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
-        },
+        "payload": payload,
     }
 
 
@@ -68,6 +75,53 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
             )
 
         self.assertIn("must equal 'harvest_packet_receipt'", str(exc.exception))
+
+    def test_publish_core_skill_receipts_accepts_surface_detection_context(self) -> None:
+        module = load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
+
+        receipt = build_core_skill_receipt(
+            detail_event_kind="harvest_packet_receipt",
+            surface_detection_context={
+                "activation_truth": "activated",
+                "adjacent_owner_repos": ["aoa-playbooks", "aoa-techniques"],
+                "owner_layer_ambiguity": True,
+                "shortlist_confidence": "medium",
+                "detail_to_closeout_ref": "closeout:item:playbook-candidate",
+                "surface_detection_report_ref": "repo:aoa-sdk/.aoa/surface-detection/aoa-sdk.closeout.latest.json",
+                "surface_closeout_handoff_ref": "repo:aoa-sdk/.aoa/surface-detection/aoa-sdk.closeout-handoff.latest.json",
+                "family_entry_refs": [
+                    "aoa-playbooks.playbook_registry.min",
+                    "aoa-techniques.technique_promotion_readiness.min",
+                ],
+                "candidate_counts": {
+                    "candidate_now": 1,
+                    "candidate_later": 2,
+                },
+                "suggested_handoff_targets": [
+                    "aoa-session-donor-harvest",
+                    "aoa-quest-harvest",
+                ],
+                "repeated_pattern_signal": True,
+                "promotion_discussion_required": True,
+            },
+        )
+
+        module.validate_receipt(receipt, location="memory")
+
+    def test_publish_core_skill_receipts_rejects_invalid_surface_detection_context(self) -> None:
+        module = load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
+
+        receipt = build_core_skill_receipt(
+            detail_event_kind="harvest_packet_receipt",
+            surface_detection_context={
+                "activation_truth": "candidate-now",
+            },
+        )
+
+        with self.assertRaises(module.ReceiptPublishError) as exc:
+            module.validate_receipt(receipt, location="memory")
+
+        self.assertIn("activation_truth", str(exc.exception))
 
     def test_validate_agent_skills_reports_alias_type_error_without_traceback(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
