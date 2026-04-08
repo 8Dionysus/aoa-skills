@@ -7,6 +7,7 @@ Use it for:
 - skill/eval alignment debts
 - `.agents/skills/` portable-layer and local-adapter contract follow-through
 - overlay or two-stage-routing exceptions that recur often enough to need harvest
+- recurring cross-repo bridge refresh and review truth-sync routes that need explicit automation or playbook classification
 
 Do not use it for:
 - one-off prompt tweaks
@@ -20,6 +21,7 @@ Do not use it for:
 ## Near
 - `AOA-SK-Q-0004` — harvest repeated overlay-specific exceptions into stable skill bundles or playbooks
 - `AOA-SK-Q-0005` — reflect bounded skill bundles as abilities with pack-profile-aware unlock posture
+- `AOA-SK-Q-0006` — classify the cross-repo technique refresh and truth-sync route for bounded automation follow-through
 
 ## Latent / parked
 - none yet

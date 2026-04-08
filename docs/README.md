@@ -17,6 +17,7 @@ an executable workflow for Codex.
 - If you are reading live project-overlay family maturity, use `PUBLIC_SURFACE.md` and then `../generated/overlay_readiness.md`.
 - If you are reading per-skill packaging membership or relationship topology, use `../generated/skill_bundle_index.md`, `../generated/skill_graph.md`, and then `../generated/release_manifest.json`.
 - If you need one bounded ability-reader layer that stays subordinate to live skill bundles, use `SKILL_ABILITY_MODEL.md`, `ABILITY_LOADOUT_POSTURE.md`, and `../generated/skill_ability_cards.min.example.json`.
+- If you are reading deferred workflow, recurring cross-repo follow-through, or session-harvest aftermath, start with `../QUESTBOOK.md` and `QUESTBOOK_SKILL_INTEGRATION.md`.
 
 ## Shortest canonical route
 

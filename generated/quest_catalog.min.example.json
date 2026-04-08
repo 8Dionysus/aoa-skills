@@ -73,5 +73,20 @@
     "state": "captured",
     "theme_ref": "",
     "title": "Reflect bounded skill bundles as abilities with pack-profile-aware unlock posture"
+  },
+  {
+    "band": "near",
+    "difficulty": "d4_architecture",
+    "id": "AOA-SK-Q-0006",
+    "kind": "automation",
+    "milestone_ref": "",
+    "owner_surface": "bridge/cross-repo-refresh-route",
+    "public_safe": true,
+    "repo": "aoa-skills",
+    "risk": "r2_contract",
+    "source_path": "quests/AOA-SK-Q-0006.yaml",
+    "state": "captured",
+    "theme_ref": "",
+    "title": "Classify the cross-repo technique refresh and truth-sync route for bounded automation follow-through"
   }
 ]
