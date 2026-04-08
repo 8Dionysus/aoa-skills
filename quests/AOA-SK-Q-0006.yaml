@@ -1,0 +1,56 @@
+schema_version: work_quest_v1
+id: AOA-SK-Q-0006
+title: Classify the cross-repo technique refresh and truth-sync route for bounded automation follow-through
+summary: Review the recurring route from upstream `aoa-techniques` merges through downstream drift detection, skill refresh, review truth-sync, and merge recovery, then decide whether it should stay manual, become a bounded helper surface, or lift into a playbook/automation seed without smuggling authority.
+repo: aoa-skills
+owner_surface: bridge/cross-repo-refresh-route
+theme_ref: ''
+milestone_ref: ''
+kind: automation
+state: captured
+band: near
+difficulty: d4_architecture
+risk: r2_contract
+control_mode: human_codex_copilot
+delegate_tier: planner
+fallback_tier: conductor
+wrapper_class: hybrid
+write_scope: cross_repo_request
+split_required: true
+complexity_basis:
+  scope: 3
+  ambiguity: 2
+  boundary: 3
+  verification: 2
+parent: null
+depends_on: []
+activation:
+  mode: on_recurrence
+  ref: docs/BRIDGE_SPEC.md
+  note: open when the same upstream-merge -> downstream drift detect -> refresh -> review truth-sync route recurs, or when maintainers want an explicit automation-readiness scan after a reviewed closeout
+anchor_ref:
+  artifact: bridge-spec
+  ref: docs/BRIDGE_SPEC.md
+  note: the current manual bridge/drift workflow is the source route that must stay honest before any automation or playbook lift
+handoff_role: skill-layer-maintainer
+evidence:
+  - upstream technique merges can trigger repeated downstream drift detection and refresh work
+  - review truth-sync on status-promotion records can lag behind refreshed bundle revisions
+  - the route needs explicit checkpoint posture before any automation or playbook lift
+  - the first honest output is an automation-opportunity packet, helper-surface proposal, or not-now verdict rather than hidden mutation
+harvest:
+  target: none
+opened_at: '2026-04-07'
+touched_at: '2026-04-07'
+tags:
+  - automation
+  - bridge
+  - cross-repo
+  - drift
+  - truth-sync
+notes: >
+  Start from reviewed evidence such as the kind-wave follow-through closeout.
+  Do not grant scheduler authority, hidden background mutation, or direct
+  repin power in this quest. The first honest landing may be a playbook, a
+  bounded helper surface, a repair quest, or a not-now verdict.
+public_safe: true

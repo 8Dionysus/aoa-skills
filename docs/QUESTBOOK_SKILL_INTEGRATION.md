@@ -16,6 +16,7 @@ This note shows how `QUESTBOOK.md` fits into `aoa-skills` as the public tracked 
 Use stable anchors such as:
 - `docs/RUNTIME_PATH.md`
 - `docs/EVALUATION_PATH.md`
+- `docs/BRIDGE_SPEC.md`
 - `generated/governance_backlog.md`
 - `generated/skill_evaluation_matrix.md`
 - `docs/CODEX_PORTABLE_LAYER.md`
@@ -30,6 +31,7 @@ A skill quest should usually answer one of these:
 - which proof or evaluation seam drifted
 - which runtime export or local adapter contract needs bounded repair
 - which repeated overlay exception wants promotion into a real skill or playbook
+- which recurring cross-repo bridge refresh route wants automation classification without smuggling runtime authority
 
 ## Installed session-harvest posture
 
@@ -66,3 +68,5 @@ The bounded `aoa-quest-harvest` verdict surface remains:
 - `AOA-SK-Q-0002` carried one surviving proof-alignment debt from `aoa-techniques` into the existing derived readouts `generated/governance_backlog.md` and `generated/skill_evaluation_matrix.md`.
 - The bounded conclusion for this pass is that those two derived surfaces stay aligned while the remaining proof follow-through belongs in `aoa-evals`, not in a wider skill backlog.
 - No ATM10-specific or overlay-specific anchor was introduced for this lane; the repo-local contract stayed inside the existing skill/runtime boundary.
+- `AOA-SK-Q-0006` now captures the reviewed cross-repo route where an upstream `aoa-techniques` landing can trigger downstream drift detection, skill refresh, review truth-sync, and merge recovery.
+- The bounded conclusion for this lane is still manual-first: classify the route for automation or playbook lift explicitly before granting any helper surface more authority.
