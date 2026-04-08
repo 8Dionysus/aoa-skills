@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0075
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md
-    source_ref: 364da8f4e97d0c29f4b31c59d7bfd91585633f2a
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use
@@ -16,7 +16,7 @@ techniques:
   - id: AOA-T-0076
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md
-    source_ref: 364da8f4e97d0c29f4b31c59d7bfd91585633f2a
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use
@@ -27,7 +27,7 @@ techniques:
   - id: AOA-T-0077
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md
-    source_ref: 364da8f4e97d0c29f4b31c59d7bfd91585633f2a
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Inputs
       - Outputs

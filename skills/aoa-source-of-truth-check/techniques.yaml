@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0013
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/single-source-rule-distribution/TECHNIQUE.md
-    source_ref: 06303d62e9cd614295a63b6543a4191e808e879c
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use
@@ -17,7 +17,7 @@ techniques:
   - id: AOA-T-0002
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/source-of-truth-layout/TECHNIQUE.md
-    source_ref: 06303d62e9cd614295a63b6543a4191e808e879c
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use
@@ -30,7 +30,7 @@ techniques:
   - id: AOA-T-0009
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/lightweight-status-snapshot/TECHNIQUE.md
-    source_ref: 06303d62e9cd614295a63b6543a4191e808e879c
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use

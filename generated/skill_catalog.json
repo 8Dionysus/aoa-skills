@@ -18,7 +18,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -34,7 +34,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -62,7 +62,7 @@
           "id": "AOA-T-0034",
           "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -79,7 +79,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -110,7 +110,7 @@
           "id": "AOA-T-0033",
           "path": "techniques/docs/decision-rationale-recording/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -127,7 +127,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -158,7 +158,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -190,7 +190,7 @@
           "id": "AOA-T-0086",
           "path": "techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -204,7 +204,7 @@
           "id": "AOA-T-0087",
           "path": "techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -218,7 +218,7 @@
           "id": "AOA-T-0088",
           "path": "techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -247,7 +247,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -263,7 +263,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "summary"
           ]
@@ -287,7 +287,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -303,7 +303,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "summary"
           ]
@@ -327,7 +327,7 @@
           "id": "AOA-T-0003",
           "path": "techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -340,7 +340,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -367,7 +367,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -381,7 +381,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -412,7 +412,7 @@
           "id": "AOA-T-0004",
           "path": "techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -425,7 +425,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -452,7 +452,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/evaluation/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -486,7 +486,7 @@
           "id": "AOA-T-0036",
           "path": "techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -502,7 +502,7 @@
           "id": "AOA-T-0037",
           "path": "techniques/evaluation/contextual-host-doctor/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -518,7 +518,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -534,7 +534,7 @@
           "id": "AOA-T-0038",
           "path": "techniques/agent-workflows/one-command-service-lifecycle/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -565,7 +565,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/docs/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -579,7 +579,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/evaluation/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -610,7 +610,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/evaluation/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -626,7 +626,7 @@
           "id": "AOA-T-0007",
           "path": "techniques/evaluation/signal-first-gate-promotion/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "summary",
             "Validation"
@@ -651,7 +651,7 @@
           "id": "AOA-T-0089",
           "path": "techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "5cb9d446a73a109f7bf16997831750a9df7114d7",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -666,7 +666,7 @@
           "id": "AOA-T-0090",
           "path": "techniques/agent-workflows/nearest-wrong-target-rejection/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "5cb9d446a73a109f7bf16997831750a9df7114d7",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -695,7 +695,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -711,7 +711,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bc3edff1a6ea3f8789f2247a07d093fa3bec4f4a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -739,7 +739,7 @@
           "id": "AOA-T-0034",
           "path": "techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -756,7 +756,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -789,7 +789,7 @@
           "id": "AOA-T-0075",
           "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -804,7 +804,7 @@
           "id": "AOA-T-0076",
           "path": "techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -818,7 +818,7 @@
           "id": "AOA-T-0077",
           "path": "techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Inputs",
             "Outputs",
@@ -845,7 +845,7 @@
           "id": "AOA-T-0084",
           "path": "techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -858,7 +858,7 @@
           "id": "AOA-T-0085",
           "path": "techniques/agent-workflows/multi-axis-quest-overlay/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Outputs",
             "Risks",
@@ -884,7 +884,7 @@
           "id": "AOA-T-0078",
           "path": "techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -897,7 +897,7 @@
           "id": "AOA-T-0079",
           "path": "techniques/agent-workflows/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -924,7 +924,7 @@
           "id": "AOA-T-0080",
           "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -936,7 +936,7 @@
           "id": "AOA-T-0081",
           "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -965,7 +965,7 @@
           "id": "AOA-T-0082",
           "path": "techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -978,7 +978,7 @@
           "id": "AOA-T-0083",
           "path": "techniques/agent-workflows/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -1006,7 +1006,7 @@
           "id": "AOA-T-0013",
           "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -1022,7 +1022,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -1038,7 +1038,7 @@
           "id": "AOA-T-0009",
           "path": "techniques/docs/lightweight-status-snapshot/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -1069,7 +1069,7 @@
           "id": "AOA-T-0014",
           "path": "techniques/agent-workflows/tdd-slice/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -1085,7 +1085,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Contracts",
             "Validation"
@@ -1110,7 +1110,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -1126,7 +1126,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "609693c2782510e0811ba7ecb4904bc06cf40c38",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "summary"
           ]
@@ -1150,7 +1150,7 @@
           "id": "AOA-T-0013",
           "path": "techniques/docs/single-source-rule-distribution/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
@@ -1166,7 +1166,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "06303d62e9cd614295a63b6543a4191e808e879c",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
           "use_sections": [
             "Intent",
             "When to use",
