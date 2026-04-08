@@ -11,7 +11,7 @@ name: atm10-source-of-truth-check
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `276bb620c2df`
+- reviewed revision: `2e1ac0095772`
 
 ## Target status
 

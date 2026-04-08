@@ -22,265 +22,213 @@
       "aoa-port-adapter-refactor"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": [
-      "abyss-safe-infra-change",
-      "abyss-sanitized-share",
-      "aoa-adr-write",
-      "aoa-approval-gate-check",
-      "aoa-bounded-context-map",
-      "aoa-contract-test",
-      "aoa-core-logic-boundary",
-      "aoa-dry-run-first",
-      "aoa-invariant-coverage-audit",
-      "aoa-local-stack-bringup",
-      "aoa-port-adapter-refactor",
-      "aoa-property-invariants",
-      "aoa-safe-infra-change",
-      "aoa-sanitized-share",
-      "aoa-source-of-truth-check",
-      "atm10-change-protocol",
-      "atm10-source-of-truth-check"
-    ]
+    "review_truth_sync": []
   },
   "governance_backlog_version": 5,
   "review_truth_sync": [
     {
       "current_revision": "cd5c169a6c4c",
       "governance_decision": null,
-      "issues": [
-        "reviewed_revision_mismatch(expected=cd5c169a6c4c, recorded=ade3139d7db3)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "abyss-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
-      "reviewed_revision": "ade3139d7db3",
+      "reviewed_revision": "cd5c169a6c4c",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "b748332deeb3",
       "governance_decision": null,
-      "issues": [
-        "reviewed_revision_mismatch(expected=b748332deeb3, recorded=80b1a85ce739)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "abyss-sanitized-share",
       "review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
-      "reviewed_revision": "80b1a85ce739",
+      "reviewed_revision": "b748332deeb3",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "85363f128a32",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=85363f128a32, recorded=79434b7b4046)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-adr-write",
       "review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
-      "reviewed_revision": "79434b7b4046",
+      "reviewed_revision": "85363f128a32",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "5f5fddc53dbf",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=5f5fddc53dbf, recorded=60144f9b6720)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-approval-gate-check",
       "review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
-      "reviewed_revision": "60144f9b6720",
+      "reviewed_revision": "5f5fddc53dbf",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "81d64fe3b35a",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=81d64fe3b35a, recorded=179cc653ed94)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
-      "reviewed_revision": "179cc653ed94",
+      "reviewed_revision": "81d64fe3b35a",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "630cd7200d6f",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=630cd7200d6f, recorded=d55dacb4365e)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
-      "reviewed_revision": "d55dacb4365e",
+      "reviewed_revision": "630cd7200d6f",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "edc922f89c31",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=edc922f89c31, recorded=2bef71351866)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
       "review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
-      "reviewed_revision": "2bef71351866",
+      "reviewed_revision": "edc922f89c31",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "a36559876459",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=a36559876459, recorded=968dec89b040)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
-      "reviewed_revision": "968dec89b040",
+      "reviewed_revision": "a36559876459",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "bae3ee49239c",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=bae3ee49239c, recorded=150029c46b64)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
       "review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
-      "reviewed_revision": "150029c46b64",
+      "reviewed_revision": "bae3ee49239c",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "25ce8d3dfd74",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=25ce8d3dfd74, recorded=a29b29ed6402)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-local-stack-bringup",
       "review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
-      "reviewed_revision": "a29b29ed6402",
+      "reviewed_revision": "25ce8d3dfd74",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "ae55c27f1def",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=ae55c27f1def, recorded=dcd7ba77858f)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
       "review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
-      "reviewed_revision": "dcd7ba77858f",
+      "reviewed_revision": "ae55c27f1def",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "583b00c7022b",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=583b00c7022b, recorded=3c46d42a16e4)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
-      "reviewed_revision": "3c46d42a16e4",
+      "reviewed_revision": "583b00c7022b",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "be3c837ac0ef",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=be3c837ac0ef, recorded=c19470b0d9b8)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
-      "reviewed_revision": "c19470b0d9b8",
+      "reviewed_revision": "be3c837ac0ef",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "66e22f9be20a",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=66e22f9be20a, recorded=609be0fb9853)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
-      "reviewed_revision": "609be0fb9853",
+      "reviewed_revision": "66e22f9be20a",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "d05107b7628c",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=d05107b7628c, recorded=6a765363cb55)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
-      "reviewed_revision": "6a765363cb55",
+      "reviewed_revision": "d05107b7628c",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "d619f3e2e5c3",
       "governance_decision": null,
-      "issues": [
-        "reviewed_revision_mismatch(expected=d619f3e2e5c3, recorded=167344a9bfa8)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "atm10-change-protocol",
       "review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
-      "reviewed_revision": "167344a9bfa8",
+      "reviewed_revision": "d619f3e2e5c3",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "2e1ac0095772",
       "governance_decision": null,
-      "issues": [
-        "reviewed_revision_mismatch(expected=2e1ac0095772, recorded=276bb620c2df)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
-      "reviewed_revision": "276bb620c2df",
+      "reviewed_revision": "2e1ac0095772",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     }
   ],
   "skills": [
