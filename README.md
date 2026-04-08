@@ -13,6 +13,7 @@ Use the shortest route by need:
 - first starter bundle: `skills/aoa-change-protocol/SKILL.md`
 - current skill surface: `SKILL_INDEX.md`
 - runtime path: `docs/RUNTIME_PATH.md`
+- orchestration and closeout path: `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
 - evaluation path: `docs/EVALUATION_PATH.md`
 - public status and governance: `docs/PUBLIC_SURFACE.md`
 - verify current repo state: `python scripts/build_catalog.py --check`, `python scripts/validate_skills.py --fail-on-review-truth-sync`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift`, `python scripts/validate_agent_skills.py --repo-root .`, `python scripts/validate_support_resources.py --repo-root . --check-portable`, `python scripts/validate_tiny_router_inputs.py --repo-root .`, and `python -m pytest -q tests`
@@ -27,6 +28,7 @@ Use the shortest route by need:
 - runtime inspect and walkthrough surfaces: `generated/skill_walkthroughs.md` and `scripts/inspect_skill.py`
 - additive degraded and receipt-authoring guidance for future skill bundles: `docs/ANTIFRAGILITY_SKILL_ADDENDUM.md`
 - checkpoint-aware pre-harvest session-growth capture: `docs/CHECKPOINT_NOTE_PATH.md`, `schemas/session_checkpoint_note.schema.json`, and `examples/session_checkpoint_note.example.json`
+- adaptive applicability, closeout, and harvest routing for multi-skill sessions: `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, `templates/SKILL_APPLICABILITY_MAP.template.md`, and `templates/SESSION_CANDIDATE_HARVEST.template.md`
 - ability-reader and loadout surfaces: `docs/SKILL_ABILITY_MODEL.md`, `docs/ABILITY_LOADOUT_POSTURE.md`, and `generated/skill_ability_cards.min.example.json`
 - evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
 - deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`

@@ -39,6 +39,17 @@ The explicit post-session session-harvest family may be installed into
 repo-local `.agents/skills/`, but its source of truth remains the canonical
 bundles in `aoa-skills`.
 
+Use [ADAPTIVE_SKILL_ORCHESTRATION.md](ADAPTIVE_SKILL_ORCHESTRATION.md)
+before invoking that family when a session still mixes task execution,
+closeout, and promotion pressure.
+That protocol helps the agent decide whether the honest next move is:
+
+- more execution
+- a bounded closeout read
+- a checkpoint note
+- a candidate harvest note
+- or an explicit session-harvest family skill
+
 The family is:
 
 - `aoa-session-donor-harvest`
@@ -51,6 +62,9 @@ The family is:
 - before that family, a lower-authority checkpoint-note lane may preserve
   repeated candidates, evidence refs, owner hints, and promotion conditions as
   a pre-harvest reviewed note
+- a bounded applicability map or candidate-harvest note may also exist before
+  the family as an orchestration aid; it is still lower-authority than the
+  explicit session-harvest skills
 - the checkpoint-note lane is additive and review-shaped; it is not a replacement for the reviewed session-harvest family
 - checkpoint-note capture does not emit harvest verdicts, progression deltas,
   or core-skill application receipts
