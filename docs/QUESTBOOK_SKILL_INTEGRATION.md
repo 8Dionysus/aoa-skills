@@ -48,6 +48,12 @@ The family is:
 - `aoa-session-progression-lift`
 - `aoa-quest-harvest`
 
+- before that family, a lower-authority checkpoint-note lane may preserve
+  repeated candidates, evidence refs, owner hints, and promotion conditions as
+  a pre-harvest reviewed note
+- the checkpoint-note lane is additive and review-shaped; it is not a replacement for the reviewed session-harvest family
+- checkpoint-note capture does not emit harvest verdicts, progression deltas,
+  or core-skill application receipts
 - use the family after a reviewed run, closure, or pause
 - do not invoke it inside an active route
 - it does not define orchestrator identity

@@ -12,6 +12,7 @@ an executable workflow for Codex.
 - If you want the current canonical surface at a glance, start with `../SKILL_INDEX.md`.
 - If you are choosing or using a skill, start with `RUNTIME_PATH.md`.
 - If you need additive degraded, fallback, or receipt-authoring posture for future skills, start with `ANTIFRAGILITY_SKILL_ADDENDUM.md`.
+- If you need a lightweight checkpoint-aware note before post-session harvest, start with `CHECKPOINT_NOTE_PATH.md`.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
 - If you are reading status, promotion, or governance state, start with `PUBLIC_SURFACE.md`.
 - If you are reading live project-overlay family maturity, use `PUBLIC_SURFACE.md` and then `../generated/overlay_readiness.md`.
@@ -60,15 +61,16 @@ an executable workflow for Codex.
 28. `EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
 29. `DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
 30. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
-31. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
-32. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
-33. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-34. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
-35. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
-36. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
-37. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
-38. `reviews/README.md` - public review-record conventions and review surfaces.
-39. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
+31. `CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
+32. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
+33. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
+34. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+35. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
+36. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
+37. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
+38. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
+39. `reviews/README.md` - public review-record conventions and review surfaces.
+40. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 

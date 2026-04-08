@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills session checkpoint note",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract_type",
+    "session_ref",
+    "state",
+    "repo_scope",
+    "checkpoint_history",
+    "candidate_clusters",
+    "promotion_recommendation",
+    "blocked_by",
+    "review_status",
+    "evidence_refs",
+    "next_owner_moves"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "contract_type": {
+      "const": "session_checkpoint_note_v1"
+    },
+    "session_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "enum": [
+        "collecting",
+        "reviewable",
+        "promoted",
+        "closed"
+      ]
+    },
+    "repo_scope": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "checkpoint_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "checkpoint_kind",
+          "observed_at",
+          "candidate_ids"
+        ],
+        "properties": {
+          "checkpoint_kind": {
+            "enum": [
+              "manual",
+              "commit",
+              "verify_green",
+              "pr_opened",
+              "pr_merged",
+              "pause",
+              "owner_followthrough"
+            ]
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "candidate_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "candidate_clusters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "candidate_kind",
+          "owner_hint",
+          "display_name",
+          "checkpoint_hits",
+          "evidence_refs",
+          "confidence",
+          "review_status",
+          "promote_if",
+          "next_owner_moves"
+        ],
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidate_kind": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner_hint": {
+            "type": "string",
+            "minLength": 1
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "checkpoint_hits": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "confidence": {
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "review_status": {
+            "enum": [
+              "collecting",
+              "reviewable",
+              "promoted",
+              "closed"
+            ]
+          },
+          "promote_if": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "defer_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "next_owner_moves": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "promotion_recommendation": {
+      "enum": [
+        "none",
+        "local_note",
+        "dionysus_note",
+        "harvest_handoff"
+      ]
+    },
+    "blocked_by": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "review_status": {
+      "enum": [
+        "unreviewed",
+        "reviewed"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "next_owner_moves": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}
