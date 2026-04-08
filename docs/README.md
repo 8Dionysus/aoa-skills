@@ -11,6 +11,7 @@ an executable workflow for Codex.
 - If you want one concrete source-authored skill before any derived layer, start with `../skills/aoa-change-protocol/SKILL.md` and then `RUNTIME_PATH.md`.
 - If you want the current canonical surface at a glance, start with `../SKILL_INDEX.md`.
 - If you are choosing or using a skill, start with `RUNTIME_PATH.md`.
+- If you need to decide which skills apply now, which belong to closeout, and which belong to harvest, start with `ADAPTIVE_SKILL_ORCHESTRATION.md`.
 - If you need additive degraded, fallback, or receipt-authoring posture for future skills, start with `ANTIFRAGILITY_SKILL_ADDENDUM.md`.
 - If you need a lightweight checkpoint-aware note before post-session harvest, start with `CHECKPOINT_NOTE_PATH.md`.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
@@ -25,52 +26,54 @@ an executable workflow for Codex.
 1. `../skills/aoa-change-protocol/SKILL.md` - one concrete source-authored skill bundle.
 2. `../SKILL_INDEX.md` - the current repo-wide skill map.
 3. `RUNTIME_PATH.md` - how to inspect and use a bounded skill object.
-4. `EVALUATION_PATH.md` - how to read behavior evidence.
-5. `PUBLIC_SURFACE.md` - how to read derived status and governance.
-6. `RELEASING.md` - the bounded repo-level verification and release path.
+4. `ADAPTIVE_SKILL_ORCHESTRATION.md` - how to build applicability maps, close out a session honestly, and hand off to harvest only when needed.
+5. `EVALUATION_PATH.md` - how to read behavior evidence.
+6. `PUBLIC_SURFACE.md` - how to read derived status and governance.
+7. `RELEASING.md` - the bounded repo-level verification and release path.
 
 ## Read in this order
 
 1. `../skills/aoa-change-protocol/SKILL.md` - one concrete source-authored starter bundle.
 2. `../SKILL_INDEX.md` - the current skill map across the repo.
 3. `RUNTIME_PATH.md` - the runtime inspection guide for `pick -> inspect -> expand -> object use`.
-4. `EVALUATION_PATH.md` - the evaluation evidence guide for matrix outputs and snapshot-backed coverage.
-5. `PUBLIC_SURFACE.md` - the derived public-product and governance layer, kept separate from runtime inspection and evaluation evidence.
-6. `LAYER_POSITION.md` - repo-owned layer-position note for the boundary between techniques, skills, and playbooks.
-7. `ARCHITECTURE.md` - high-level model of the repository.
-8. `BRIDGE_SPEC.md` - how skills reference and compose techniques.
-9. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
-10. `ROADMAP.md` - canonical public roadmap for repository evolution.
-11. `RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
-12. `CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
-13. `LOCAL_ADAPTER_CONTRACT.md` - local runtime seams around that export, including the legacy activation shim.
-14. `OPENAI_SKILL_EXTENSIONS.md` - optional OpenAI metadata seam for portable export files.
-15. `INSTALL_AND_PROFILES.md` - install roots, skill-pack profiles, and disable-snippet helpers.
-16. `CONTEXT_RETENTION.md` - generated retention-support metadata around the export.
-17. `UI_METADATA_AND_ASSETS.md` - icon and UI metadata rules for the export.
-18. `CODEX_CONFIG_SNIPPETS.md` - generated disable-profile snippets and example config surfaces.
-19. `THIRD_WAVE.md` - portable-layer hardening for install, trust, and config surfaces.
-20. `FOURTH_WAVE.md` - dedicated-tool runtime seam added around the same export.
-21. `RUNTIME_SEAM_SECOND_PATH.md` - primary wave-4 runtime path for discover, disclose, activate, and compact.
-22. `RUNTIME_TOOL_CONTRACTS.md` - tool-shaped contract for the wave-4 runtime seam.
-23. `SESSION_COMPACTION.md` - session state and compaction behavior for long-running local wrappers.
-24. `TRIGGER_EVALS.md` - policy-aware trigger-eval dataset and collision-family guidance.
-25. `SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
-26. `DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
-27. `SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
-28. `EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
-29. `DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
-30. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
-31. `CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
-32. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
-33. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
-34. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-35. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
-36. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
-37. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
-38. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
-39. `reviews/README.md` - public review-record conventions and review surfaces.
-40. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
+4. `ADAPTIVE_SKILL_ORCHESTRATION.md` - adaptive protocol for applicability maps, closeout, and harvest handoff.
+5. `EVALUATION_PATH.md` - the evaluation evidence guide for matrix outputs and snapshot-backed coverage.
+6. `PUBLIC_SURFACE.md` - the derived public-product and governance layer, kept separate from runtime inspection and evaluation evidence.
+7. `LAYER_POSITION.md` - repo-owned layer-position note for the boundary between techniques, skills, and playbooks.
+8. `ARCHITECTURE.md` - high-level model of the repository.
+9. `BRIDGE_SPEC.md` - how skills reference and compose techniques.
+10. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
+11. `ROADMAP.md` - canonical public roadmap for repository evolution.
+12. `RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
+13. `CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
+14. `LOCAL_ADAPTER_CONTRACT.md` - local runtime seams around that export, including the legacy activation shim.
+15. `OPENAI_SKILL_EXTENSIONS.md` - optional OpenAI metadata seam for portable export files.
+16. `INSTALL_AND_PROFILES.md` - install roots, skill-pack profiles, and disable-snippet helpers.
+17. `CONTEXT_RETENTION.md` - generated retention-support metadata around the export.
+18. `UI_METADATA_AND_ASSETS.md` - icon and UI metadata rules for the export.
+19. `CODEX_CONFIG_SNIPPETS.md` - generated disable-profile snippets and example config surfaces.
+20. `THIRD_WAVE.md` - portable-layer hardening for install, trust, and config surfaces.
+21. `FOURTH_WAVE.md` - dedicated-tool runtime seam added around the same export.
+22. `RUNTIME_SEAM_SECOND_PATH.md` - primary wave-4 runtime path for discover, disclose, activate, and compact.
+23. `RUNTIME_TOOL_CONTRACTS.md` - tool-shaped contract for the wave-4 runtime seam.
+24. `SESSION_COMPACTION.md` - session state and compaction behavior for long-running local wrappers.
+25. `TRIGGER_EVALS.md` - policy-aware trigger-eval dataset and collision-family guidance.
+26. `SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
+27. `DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
+28. `SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
+29. `EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
+30. `DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
+31. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
+32. `CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
+33. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
+34. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
+35. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+36. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
+37. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
+38. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
+39. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
+40. `reviews/README.md` - public review-record conventions and review surfaces.
+41. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
