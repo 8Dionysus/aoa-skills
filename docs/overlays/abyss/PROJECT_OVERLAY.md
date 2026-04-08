@@ -23,12 +23,13 @@ It does not change the base skill boundary.
 - verification path: use the smallest repo-relative check that matches the touched operational or sharing surface
 - family review doc: `docs/overlays/abyss/REVIEW.md`
 - maintenance readout: use `generated/overlay_readiness.md` for family maturity and `generated/governance_backlog.md` for per-skill maintenance
-- bundle-local review checklists: `skills/abyss-safe-infra-change/checks/review.md`, `skills/abyss-sanitized-share/checks/review.md`
+- bundle-local review checklists: `skills/abyss-safe-infra-change/checks/review.md`, `skills/abyss-sanitized-share/checks/review.md`, `skills/abyss-self-diagnostic-spine/checks/review.md`
 
 ## Overlayed skills
 
 - `abyss-safe-infra-change` - adapts `aoa-safe-infra-change` to repo-relative operational surfaces, explicit local authority notes, and local validation commands
 - `abyss-sanitized-share` - adapts `aoa-sanitized-share` to repo-relative sharing surfaces, explicit local thresholds, and local review posture
+- `abyss-self-diagnostic-spine` - adapts `aoa-session-self-diagnose` to repo-relative runtime evidence, bounded diagnostic-session artifacts, and honest owner-aware handoff
 
 ## Risks and anti-patterns
 

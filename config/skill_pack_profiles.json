@@ -30,6 +30,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice",
         "abyss-safe-infra-change",
+        "abyss-self-diagnostic-spine",
         "abyss-sanitized-share",
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
@@ -196,6 +197,7 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "abyss-safe-infra-change",
+        "abyss-self-diagnostic-spine",
         "abyss-sanitized-share"
       ]
     },

@@ -98,7 +98,8 @@
         "aoa-safe-infra-change",
         "abyss-safe-infra-change",
         "aoa-sanitized-share",
-        "abyss-sanitized-share"
+        "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine"
       ],
       "notes": [
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
@@ -427,6 +428,29 @@
       ],
       "prompt": "This reviewed workflow keeps recurring across sessions with the same inputs, the same approval seam, and the same expected output. Classify whether it should stay manual, become a bounded skill, or become a playbook automation seed with checkpoint requirements called out explicitly.",
       "note": "This is automation-readiness classification for a recurring route, not donor extraction, branch comparison, diagnosis-first analysis, or repair planning."
+    },
+    {
+      "case_id": "collision-27",
+      "skill_name": "abyss-self-diagnostic-spine",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "abyss-self-diagnostic-spine",
+      "competing_skills": [
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "prompt": "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made.",
+      "note": "The abyss overlay should win when the base diagnosis workflow needs one runtime-owned repo-relative artifact instead of a generic session packet."
+    },
+    {
+      "case_id": "collision-28",
+      "skill_name": "aoa-source-of-truth-check",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-source-of-truth-check",
+      "competing_skills": [
+        "abyss-self-diagnostic-spine"
+      ],
+      "prompt": "This abyss repo now has a diagnostic spine note, runbook fragments, and overlay guidance that disagree about which file is authoritative. Map the canonical docs and shorten the entrypoints instead of producing a runtime artifact.",
+      "note": "When the real problem is document authority around the diagnostic spine, source-of-truth mapping should win and the overlay should defer."
     }
   ]
 }

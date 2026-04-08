@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "skill_count": 26,
+  "skill_count": 27,
   "band_count": 6,
   "skills": [
     {
@@ -166,6 +166,90 @@
       "primary_positive_prompt": "Use $abyss-sanitized-share to place sanitized abyss artifacts in repo-relative sharing surfaces with explicit local thresholds and review posture.",
       "primary_negative_prompt": "This artifact is already public-safe and no abyss-specific local sharing surface or threshold needs to be named.",
       "primary_defer_prompt": ""
+    },
+    {
+      "name": "abyss-self-diagnostic-spine",
+      "band": "quest-harvest-governance",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "scope": "project",
+      "status": "scaffold",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "project_overlay": true,
+      "summary": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.",
+      "summary_short": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded...",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9",
+      "positive_cues": [
+        "abyss diagnostic spine",
+        "runtime self diagnosis",
+        "diagnostic session artifact",
+        "runtime evidence handoff",
+        "exit class",
+        "session donor",
+        "donor harvest",
+        "automation opportunity",
+        "automation candidate",
+        "seed ready"
+      ],
+      "negative_cues": [
+        "immediate silent repair",
+        "base skill is sufficient"
+      ],
+      "cue_tokens": [
+        "abyss",
+        "diagnostic",
+        "spine",
+        "runtime",
+        "self",
+        "diagnosis",
+        "session",
+        "artifact",
+        "evidence",
+        "handoff",
+        "exit",
+        "class",
+        "donor",
+        "harvest",
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed"
+      ],
+      "negative_tokens": [
+        "immediate",
+        "silent",
+        "repair",
+        "base",
+        "skill",
+        "sufficient"
+      ],
+      "auto_tokens": [
+        "session",
+        "diagnostic",
+        "runtime",
+        "abyss",
+        "evidence",
+        "self",
+        "artifact",
+        "honest",
+        "one",
+        "relative",
+        "base",
+        "concrete",
+        "repair",
+        "silent"
+      ],
+      "companions": [
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
+      ],
+      "primary_positive_prompt": "Use $abyss-self-diagnostic-spine to turn repo-relative runtime evidence plus optional reviewed session refs into one bounded diagnostic session artifact with an honest exit class and no silent repair authority.",
+      "primary_negative_prompt": "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature.",
+      "primary_defer_prompt": "This abyss repo now has a diagnostic spine note, runbook fragments, and overlay guidance that disagree about which file is authoritative. Map the canonical docs and shorten the entrypoints instead of producing a runtime artifact."
     },
     {
       "name": "aoa-adr-write",
@@ -1771,7 +1855,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-session-self-diagnose to turn reviewed session evidence into a diagnosis packet with drift types, symptoms, probable causes, repair shapes, and owner hints.",
       "primary_negative_prompt": "The session contains no meaningful friction or contradiction, and the next move is straightforward execution rather than diagnosis.",
-      "primary_defer_prompt": ""
+      "primary_defer_prompt": "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
     },
     {
       "name": "aoa-session-self-repair",
@@ -1861,7 +1945,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-session-self-repair to turn a reviewed diagnosis packet into a bounded repair packet with checkpoint posture, rollback markers, health checks, and owner-layer targets.",
       "primary_negative_prompt": "There is no reviewed diagnosis yet, so producing a repair packet now would be premature and likely hide the real problem.",
-      "primary_defer_prompt": ""
+      "primary_defer_prompt": "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
     },
     {
       "name": "aoa-source-of-truth-check",

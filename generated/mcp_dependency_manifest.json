@@ -11,6 +11,10 @@
       "tools": []
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "tools": []
+    },
+    {
       "name": "aoa-adr-write",
       "tools": []
     },

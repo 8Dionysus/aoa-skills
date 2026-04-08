@@ -35,6 +35,16 @@
       "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84"
     },
     {
+      "skill_name": "abyss-self-diagnostic-spine",
+      "path": ".agents/skills/abyss-self-diagnostic-spine",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/abyss-self-diagnostic-spine"
+      ],
+      "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9"
+    },
+    {
       "skill_name": "aoa-adr-write",
       "path": ".agents/skills/aoa-adr-write",
       "command": [

@@ -7,7 +7,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Summary
 
-- total skills: 26
+- total skills: 27
 - candidate ready without review: 0
 - blocked by pending lineage: 0
 - canonical maintenance cohort: 12
@@ -19,6 +19,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 |---|---|---|---|---|---|---|---|---|---|
 | abyss-safe-infra-change | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/abyss-safe-infra-change.md |
 | abyss-sanitized-share | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/abyss-sanitized-share.md |
+| abyss-self-diagnostic-spine | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
 | aoa-adr-write | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-adr-write.md | docs/reviews/status-promotions/aoa-adr-write.md |
 | aoa-approval-gate-check | canonical | published | true | true | default_reference | local_runtime_bringup, risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-approval-gate-check.md | docs/reviews/status-promotions/aoa-approval-gate-check.md |
 | aoa-automation-opportunity-scan | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |

@@ -4,6 +4,7 @@
     "published_lineage": [
       "abyss-safe-infra-change",
       "abyss-sanitized-share",
+      "abyss-self-diagnostic-spine",
       "aoa-adr-write",
       "aoa-approval-gate-check",
       "aoa-automation-opportunity-scan",
@@ -54,6 +55,18 @@
       "scope": "project",
       "skill_path": "skills/abyss-sanitized-share/SKILL.md",
       "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "abyss-self-diagnostic-spine",
+      "pending_technique_count": 0,
+      "published_technique_count": 2,
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
       "tbd_ref_count": 0
     },
     {

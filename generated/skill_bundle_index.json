@@ -180,6 +180,85 @@
         "tiny_router"
       ],
       "bundle_files": [
+        "skills/abyss-self-diagnostic-spine/SKILL.md",
+        "skills/abyss-self-diagnostic-spine/techniques.yaml",
+        "skills/abyss-self-diagnostic-spine/agents/openai.yaml",
+        "skills/abyss-self-diagnostic-spine/examples/example.md",
+        "skills/abyss-self-diagnostic-spine/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "e041eed61d3166d8e62bc3265f4a5090e9d3502545626cf65e56a89c1493cea6",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-abyss-overlay",
+        "repo-default"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "abyss-self-diagnostic-spine",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_revision": "e041eed61d31",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/abyss-self-diagnostic-spine/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/abyss-self-diagnostic-spine/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0080",
+        "AOA-T-0081"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0080",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a"
+        },
+        {
+          "id": "AOA-T-0081",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
         "skills/aoa-adr-write/SKILL.md",
         "skills/aoa-adr-write/techniques.yaml",
         "skills/aoa-adr-write/agents/openai.yaml",

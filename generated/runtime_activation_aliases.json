@@ -27,6 +27,18 @@
       }
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "codex_mention": "$abyss-self-diagnostic-spine",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/abyss-self-diagnostic-spine",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "abyss-self-diagnostic-spine"
+        }
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "codex_mention": "$aoa-adr-write",
       "codex_browser": "/skills",

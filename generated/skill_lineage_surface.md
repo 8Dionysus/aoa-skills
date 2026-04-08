@@ -5,14 +5,15 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 
 ## Summary
 
-- total skills: 26
-- published lineage: 26
+- total skills: 27
+- published lineage: 27
 - pending lineage: 0
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
 | abyss-safe-infra-change | evaluated | project | published | 2 | 0 | 0 | true | - |
 | abyss-sanitized-share | evaluated | project | published | 2 | 0 | 0 | true | - |
+| abyss-self-diagnostic-spine | scaffold | project | published | 2 | 0 | 0 | true | - |
 | aoa-adr-write | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-approval-gate-check | canonical | risk | published | 1 | 0 | 0 | true | - |
 | aoa-automation-opportunity-scan | scaffold | core | published | 3 | 0 | 0 | true | - |

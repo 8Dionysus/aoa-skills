@@ -38,6 +38,24 @@
       "workflow_short": "Purpose: adapt aoa-sanitized-share to an abyss- repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture. Flow: start from aoa-sanitized-share rather than..."
     },
     {
+      "inputs_short": "Needs: resolved or requested preset / profile selectors; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs; optional reviewed session or harvest packet refs;...",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: treating one axis failure as total collapse; confusing runtime drift with source-owned doctrine drift; using diagnosis to smuggle mutation authority; turning every repeated issue into automatic progression or...",
+      "name": "abyss-self-diagnostic-spine",
+      "outputs_short": "Produces: one bounded runtime-owned diagnosticsessionv1; one explicit exitclass; named drift classes with evidence refs and unknowns when needed; optional handoff recommendation toward.",
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
+      "summary": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.",
+      "technique_dependencies": [
+        "AOA-T-0080",
+        "AOA-T-0081"
+      ],
+      "trigger_boundary_short": "Use when the base aoa-session-self-diagnose workflow is already correct, but an abyss- repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs; a concrete runtime path must be...",
+      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm a concrete target exists; confirm the produced artifact stays runtime-owned and citation-friendly; confirm drift classes are named explicitly.",
+      "workflow_short": "Purpose: adapt aoa-session-self-diagnose to an abyss- repository when the local repo needs one runtime-owned diagnostic session artifact that can cite runtime evidence, compare against last-good posture, and hand off honestly toward the reviewed session..."
+    },
+    {
       "inputs_short": "Needs: decision to record; context and problem statement; relevant options or alternatives; chosen path and rationale.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning; recording the chosen path without naming consequences; letting the ADR drift away from the actual change.",

@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: true
+notes:
+  - This thin abyss overlay may be auto-suggested when one abyss repo needs runtime diagnosis normalization, but it stays explicit-preferred because local intent and owner-aware handoff still matter.

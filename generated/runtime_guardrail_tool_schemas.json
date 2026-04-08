@@ -46,6 +46,7 @@
             "enum": [
               "abyss-safe-infra-change",
               "abyss-sanitized-share",
+              "abyss-self-diagnostic-spine",
               "aoa-adr-write",
               "aoa-approval-gate-check",
               "aoa-automation-opportunity-scan",
@@ -102,6 +103,7 @@
             "enum": [
               "abyss-safe-infra-change",
               "abyss-sanitized-share",
+              "abyss-self-diagnostic-spine",
               "aoa-adr-write",
               "aoa-approval-gate-check",
               "aoa-automation-opportunity-scan",
@@ -228,6 +230,7 @@
             "enum": [
               "abyss-safe-infra-change",
               "abyss-sanitized-share",
+              "abyss-self-diagnostic-spine",
               "aoa-adr-write",
               "aoa-approval-gate-check",
               "aoa-automation-opportunity-scan",
@@ -302,6 +305,7 @@
             "enum": [
               "abyss-safe-infra-change",
               "abyss-sanitized-share",
+              "abyss-self-diagnostic-spine",
               "aoa-adr-write",
               "aoa-approval-gate-check",
               "aoa-automation-opportunity-scan",

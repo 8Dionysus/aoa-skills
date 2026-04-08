@@ -96,6 +96,49 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "display_name": "Abyss Self Diagnostic Spine",
+      "source_scope": "repo",
+      "allowlist_id": "skill:abyss-self-diagnostic-spine",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine",
+          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/scripts",
+          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/references",
+          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/abyss-self-diagnostic-spine",
+          "$HOME/.agents/skills/abyss-self-diagnostic-spine/scripts",
+          "$HOME/.agents/skills/abyss-self-diagnostic-spine/references",
+          "$HOME/.agents/skills/abyss-self-diagnostic-spine/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/abyss-self-diagnostic-spine",
+          "/etc/codex/skills/abyss-self-diagnostic-spine/scripts",
+          "/etc/codex/skills/abyss-self-diagnostic-spine/references",
+          "/etc/codex/skills/abyss-self-diagnostic-spine/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/abyss-self-diagnostic-spine",
+        ".agents/skills/abyss-self-diagnostic-spine/scripts",
+        ".agents/skills/abyss-self-diagnostic-spine/references",
+        ".agents/skills/abyss-self-diagnostic-spine/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "source_scope": "repo",

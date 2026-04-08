@@ -140,6 +140,89 @@
       }
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "display_name": "Abyss Self Diagnostic Spine",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "resolved or requested preset / profile selectors",
+        "runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
+        "optional reviewed session or harvest packet refs",
+        "optional last-good comparison ref",
+        "base skill reference"
+      ],
+      "outputs": [
+        "one bounded runtime-owned `diagnostic_session_v1`",
+        "one explicit `exit_class`",
+        "named drift classes with evidence refs and unknowns when needed",
+        "optional handoff recommendation toward:",
+        "`aoa-session-self-diagnose`",
+        "`aoa-session-self-repair`",
+        "`aoa-session-progression-lift`",
+        "`aoa-quest-harvest`",
+        "a concise verification note for the local repo surface"
+      ],
+      "verification": [
+        "confirm the base skill is still the correct workflow",
+        "confirm a concrete target exists",
+        "confirm the produced artifact stays runtime-owned and citation-friendly",
+        "confirm drift classes are named explicitly",
+        "confirm one exit class is chosen",
+        "confirm any handoff points to the right owner layer",
+        "confirm no silent repair authority was added"
+      ],
+      "contracts": [
+        "preserve the base skill meaning",
+        "the overlay stays read-only and citation-friendly",
+        "this overlay does not replace `aoa-doctor`",
+        "this overlay does not grant free self-repair",
+        "reviewed session packets remain packet-shaped and owner-aware",
+        "quest state is not auto-mutated by this overlay",
+        "public-safe defaults stay strong"
+      ],
+      "consumes_artifact_tags": [
+        "resolved-or-requested-preset-profile-selectors",
+        "runtime-body-signals-such-as-doctor-machine-fit-render-truth-smo",
+        "optional-reviewed-session-or-harvest-packet-refs",
+        "optional-last-good-comparison-ref",
+        "base-skill-reference"
+      ],
+      "provides_artifact_tags": [
+        "one-bounded-runtime-owned-diagnostic-session-v1",
+        "one-explicit-exit-class",
+        "named-drift-classes-with-evidence-refs-and-unknowns-when-needed",
+        "optional-handoff-recommendation-toward",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "abyss-self-diagnostic-spine",
+        "produced_artifacts": [
+          "one-bounded-runtime-owned-diagnostic-session-v1",
+          "one-explicit-exit-class",
+          "named-drift-classes-with-evidence-refs-and-unknowns-when-needed",
+          "optional-handoff-recommendation-toward",
+          "aoa-session-self-diagnose",
+          "aoa-session-self-repair",
+          "aoa-session-progression-lift",
+          "aoa-quest-harvest"
+        ],
+        "verification_notes": [
+          "confirm the base skill is still the correct workflow",
+          "confirm a concrete target exists",
+          "confirm the produced artifact stays runtime-owned and citation-friendly"
+        ],
+        "contract_notes": [
+          "preserve the base skill meaning",
+          "the overlay stays read-only and citation-friendly",
+          "this overlay does not replace `aoa-doctor`"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",

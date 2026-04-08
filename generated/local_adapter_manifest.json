@@ -79,6 +79,36 @@
       "context_retention_ref": "generated/context_retention_manifest.json#abyss-sanitized-share"
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+      "openai_config_path": ".agents/skills/abyss-self-diagnostic-spine/agents/openai.yaml",
+      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/abyss-self-diagnostic-spine"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0080,AOA-T-0081",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "project-overlay",
+      "context_retention_ref": "generated/context_retention_manifest.json#abyss-self-diagnostic-spine"
+    },
+    {
       "name": "aoa-adr-write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
       "path": ".agents/skills/aoa-adr-write/SKILL.md",

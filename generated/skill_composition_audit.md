@@ -5,8 +5,8 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 26
-- multi-technique skills: 24
+- total skills: 27
+- multi-technique skills: 25
 - single-technique skills: 2
 - approved exceptions: 2
 - needs reframe: 0
@@ -15,6 +15,7 @@ It is a boundary/readiness view, not a direct status surface.
 |---|---:|---|---|---|
 | abyss-safe-infra-change | 2 | multi_technique | keep_multi_technique | - |
 | abyss-sanitized-share | 2 | multi_technique | keep_multi_technique | - |
+| abyss-self-diagnostic-spine | 2 | multi_technique | keep_multi_technique | - |
 | aoa-adr-write | 2 | multi_technique | keep_multi_technique | - |
 | aoa-approval-gate-check | 1 | single_technique_exception | keep_exception | docs/reviews/skill-composition-exceptions/aoa-approval-gate-check.md |
 | aoa-automation-opportunity-scan | 3 | multi_technique | keep_multi_technique | - |

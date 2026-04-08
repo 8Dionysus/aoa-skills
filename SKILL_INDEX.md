@@ -26,6 +26,7 @@ This file is the repository-wide map of public skills.
 | aoa-source-of-truth-check | core | canonical | Codex skill for checking whether canonical docs and repository guidance have clear ownership and do not silently conflict. |
 | abyss-safe-infra-change | project | evaluated | Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes. |
 | abyss-sanitized-share | project | evaluated | Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes. |
+| abyss-self-diagnostic-spine | project | scaffold | Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation. |
 | atm10-change-protocol | project | evaluated | Thin atm10 overlay for bounded change execution with repo-relative paths, commands, and explicit local approval notes. |
 | atm10-source-of-truth-check | project | evaluated | Thin atm10 overlay for clarifying repo-local document authority, canonical files, and review posture without changing the base workflow. |
 | aoa-local-stack-bringup | risk | evaluated | Codex skill for reviewable local multi-service bring-up through rendered runtime truth, readiness checks, and one explicit lifecycle path. |

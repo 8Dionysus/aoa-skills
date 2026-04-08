@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 26
+- total skills: 27
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -14,6 +14,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 |---|---|---|---|---:|---:|---:|---:|---:|---|---|---|---|---|
 | abyss-safe-infra-change | evaluated | project | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/abyss-safe-infra-change/examples/example.md` | `docs/reviews/status-promotions/abyss-safe-infra-change.md` | - | true | - |
 | abyss-sanitized-share | evaluated | project | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/abyss-sanitized-share/examples/example.md` | `docs/reviews/status-promotions/abyss-sanitized-share.md` | - | true | - |
+| abyss-self-diagnostic-spine | scaffold | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/abyss-self-diagnostic-spine/examples/example.md` | - | - | true | - |
 | aoa-adr-write | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-adr-write/examples/example.md` | `docs/reviews/status-promotions/aoa-adr-write.md` | `docs/reviews/canonical-candidates/aoa-adr-write.md` | true | - |
 | aoa-approval-gate-check | canonical | risk | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/aoa-approval-gate-check/examples/runtime.md` | `docs/reviews/status-promotions/aoa-approval-gate-check.md` | `docs/reviews/canonical-candidates/aoa-approval-gate-check.md` | true | - |
 | aoa-automation-opportunity-scan | scaffold | core | explicit-only | 1 | 2 | 1 | 1 | 1 | `skills/aoa-automation-opportunity-scan/examples/runtime.md` | - | - | true | - |

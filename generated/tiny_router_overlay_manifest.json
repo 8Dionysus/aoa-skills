@@ -9,9 +9,9 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 26,
+  "skill_count": 27,
   "band_count": 6,
-  "case_count": 66,
+  "case_count": 71,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -26,6 +26,13 @@
       "manual_invocation_required": true,
       "project_overlay": true,
       "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84"
+    },
+    {
+      "name": "abyss-self-diagnostic-spine",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": false,
+      "project_overlay": true,
+      "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9"
     },
     {
       "name": "aoa-adr-write",

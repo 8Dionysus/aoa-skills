@@ -5,9 +5,10 @@
 - overlay family: `abyss`
 - family posture: live exemplar overlay pack
 - evaluated skills: `abyss-safe-infra-change`, `abyss-sanitized-share`
+- scaffold skills: `abyss-self-diagnostic-spine`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
-- family review surface: `docs/overlays/abyss/PROJECT_OVERLAY.md`, `docs/overlays/abyss/REVIEW.md`, `skills/abyss-safe-infra-change/checks/review.md`, `skills/abyss-sanitized-share/checks/review.md`
+- family review surface: `docs/overlays/abyss/PROJECT_OVERLAY.md`, `docs/overlays/abyss/REVIEW.md`, `skills/abyss-safe-infra-change/checks/review.md`, `skills/abyss-sanitized-share/checks/review.md`, `skills/abyss-self-diagnostic-spine/checks/review.md`
 
 ## Evidence reviewed
 
@@ -15,6 +16,7 @@
 - `docs/overlays/abyss/PROJECT_OVERLAY.md`
 - `skills/abyss-safe-infra-change/SKILL.md`
 - `skills/abyss-sanitized-share/SKILL.md`
+- `skills/abyss-self-diagnostic-spine/SKILL.md`
 - bundle-local review checklists under `skills/abyss-*/checks/review.md`
 - overlay evaluation fixtures in `tests/fixtures/skill_evaluation_cases.yaml`
 
@@ -34,6 +36,7 @@
 - no downstream integration is implied
 - no live remote dependency is needed
 - the family should stay narrow until additional `abyss-*` bundles are intentionally added
+- the scaffolded diagnosis overlay should stay bounded, repo-relative, and handoff-oriented until repeated usage justifies evaluated promotion
 
 ## Recommendation
 

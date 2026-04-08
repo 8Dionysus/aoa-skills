@@ -74,6 +74,38 @@
       }
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "display_name": "Abyss Self Diagnostic Spine",
+      "source_scope": "repo",
+      "instruction_sha256": "bebe3d305b1453a9123af99be190c522da932b13acc486efdf386152666972a8",
+      "dedupe_key": "abyss-self-diagnostic-spine:bebe3d305b1453a9123af99be190c522da932b13acc486efdf386152666972a8",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Abyss runtime diagnosis overlay",
+      "must_keep": [
+        "resolved or requested preset / profile selectors",
+        "runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
+        "one bounded runtime-owned `diagnostic_session_v1`",
+        "one explicit `exit_class`"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.\n\nKeep in memory: resolved or requested preset / profile selectors, runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs, one bounded runtime-owned `diagnostic_session_v1`, one explicit `exit_class`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "abyss-self-diagnostic-spine",
+          "explicit_handle": "$abyss-self-diagnostic-spine",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "source_scope": "repo",

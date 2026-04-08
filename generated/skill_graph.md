@@ -21,10 +21,14 @@ graph TD
   skill_abyss_sanitized_share["abyss-sanitized-share"]
   technique_AOA_T_0034["AOA-T-0034"]
   technique_AOA_T_0002["AOA-T-0002"]
+  skill_abyss_self_diagnostic_spine["abyss-self-diagnostic-spine"]
+  status_scaffold["status: scaffold"]
+  policy_explicit_preferred["invocation: explicit-preferred"]
+  technique_AOA_T_0080["AOA-T-0080"]
+  technique_AOA_T_0081["AOA-T-0081"]
   skill_aoa_adr_write["aoa-adr-write"]
   status_canonical["status: canonical"]
   scope_core["scope: core"]
-  policy_explicit_preferred["invocation: explicit-preferred"]
   technique_AOA_T_0033["AOA-T-0033"]
   profile_repo_core_only["profile: repo-core-only"]
   profile_repo_project_core_outer_ring["profile: repo-project-core-outer-ring"]
@@ -35,7 +39,6 @@ graph TD
   profile_repo_project_risk_guard_ring["profile: repo-project-risk-guard-ring"]
   profile_repo_risk_explicit["profile: repo-risk-explicit"]
   skill_aoa_automation_opportunity_scan["aoa-automation-opportunity-scan"]
-  status_scaffold["status: scaffold"]
   technique_AOA_T_0086["AOA-T-0086"]
   technique_AOA_T_0087["AOA-T-0087"]
   technique_AOA_T_0088["AOA-T-0088"]
@@ -79,8 +82,6 @@ graph TD
   technique_AOA_T_0078["AOA-T-0078"]
   technique_AOA_T_0079["AOA-T-0079"]
   skill_aoa_session_self_diagnose["aoa-session-self-diagnose"]
-  technique_AOA_T_0080["AOA-T-0080"]
-  technique_AOA_T_0081["AOA-T-0081"]
   skill_aoa_session_self_repair["aoa-session-self-repair"]
   technique_AOA_T_0082["AOA-T-0082"]
   technique_AOA_T_0083["AOA-T-0083"]
@@ -118,6 +119,19 @@ graph TD
   skill_abyss_sanitized_share -->|available_in_artifact_group| artifact_group_runtime_guardrails
   skill_abyss_sanitized_share -->|available_in_artifact_group| artifact_group_description_trigger
   skill_abyss_sanitized_share -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_abyss_self_diagnostic_spine -->|maturity| status_scaffold
+  skill_abyss_self_diagnostic_spine -->|scope| scope_project
+  skill_abyss_self_diagnostic_spine -->|lineage| lineage_published
+  skill_abyss_self_diagnostic_spine -->|invocation_policy| policy_explicit_preferred
+  skill_abyss_self_diagnostic_spine -->|depends_on| technique_AOA_T_0080
+  skill_abyss_self_diagnostic_spine -->|depends_on| technique_AOA_T_0081
+  skill_abyss_self_diagnostic_spine -->|included_in_profile| profile_repo_abyss_overlay
+  skill_abyss_self_diagnostic_spine -->|included_in_profile| profile_repo_default
+  skill_abyss_self_diagnostic_spine -->|available_in_artifact_group| artifact_group_portable_export
+  skill_abyss_self_diagnostic_spine -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_abyss_self_diagnostic_spine -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_abyss_self_diagnostic_spine -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_abyss_self_diagnostic_spine -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_adr_write -->|maturity| status_canonical
   skill_aoa_adr_write -->|scope| scope_core
   skill_aoa_adr_write -->|lineage| lineage_published
@@ -512,6 +526,7 @@ graph TD
 |---|---|---|---|---|---|---|---|
 | abyss-safe-infra-change | evaluated | project | explicit-only | published | repo-abyss-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028, AOA-T-0001 |
 | abyss-sanitized-share | evaluated | project | explicit-only | published | repo-abyss-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0034, AOA-T-0002 |
+| abyss-self-diagnostic-spine | scaffold | project | explicit-preferred | published | repo-abyss-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0080, AOA-T-0081 |
 | aoa-adr-write | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0033, AOA-T-0002 |
 | aoa-approval-gate-check | canonical | risk | explicit-only | published | repo-default, repo-project-foundation, repo-project-risk-guard-ring, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028 |
 | aoa-automation-opportunity-scan | scaffold | core | explicit-only | published | repo-automation-opportunity-scan-only, repo-core-only, repo-default, repo-project-core-kernel, repo-project-foundation, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0086, AOA-T-0087, AOA-T-0088 |

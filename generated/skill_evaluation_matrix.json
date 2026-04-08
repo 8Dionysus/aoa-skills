@@ -37,6 +37,23 @@
     },
     {
       "autonomy_check_count": 1,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "do_not_use_case_count": 1,
+      "do_not_use_snapshot_count": 1,
+      "invocation_mode": "explicit-preferred",
+      "name": "abyss-self-diagnostic-spine",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/abyss-self-diagnostic-spine/examples/example.md",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 1,
+      "use_snapshot_count": 1
+    },
+    {
+      "autonomy_check_count": 1,
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
