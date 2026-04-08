@@ -23,6 +23,7 @@ Use the shortest route by need:
 
 - packaging, relationship, and release-manifest views: `generated/skill_bundle_index.md`, `generated/skill_graph.md`, `generated/skill_composition_audit.md`, and `generated/release_manifest.json`
 - public status, governance, and overlay-maturity readouts: `generated/public_surface.md`, `generated/governance_backlog.md`, and `generated/overlay_readiness.md`
+- via negativa pruning checklist: `docs/VIA_NEGATIVA_CHECKLIST.md`
 - runtime inspect and walkthrough surfaces: `generated/skill_walkthroughs.md` and `scripts/inspect_skill.py`
 - additive degraded and receipt-authoring guidance for future skill bundles: `docs/ANTIFRAGILITY_SKILL_ADDENDUM.md`
 - ability-reader and loadout surfaces: `docs/SKILL_ABILITY_MODEL.md`, `docs/ABILITY_LOADOUT_POSTURE.md`, and `generated/skill_ability_cards.min.example.json`
