@@ -49,6 +49,29 @@
       "requires_confirmation_seam": false
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "compact_summary": "Abyss runtime diagnosis overlay",
+      "activation_card_markdown": "Use when: Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.\n\nKeep in memory: resolved or requested preset / profile selectors, runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs, one bounded runtime-owned `diagnostic_session_v1`, one explicit `exit_class`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "resolved or requested preset / profile selectors",
+        "runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
+        "one bounded runtime-owned `diagnostic_session_v1`",
+        "one explicit `exit_class`"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-adr-write",
       "compact_summary": "Record architecture decisions clearly",
       "activation_card_markdown": "Use when: Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.\n\nKeep in memory: decision to record, context and problem statement, concise decision note or ADR draft, statement of rationale.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",

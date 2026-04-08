@@ -86,6 +86,41 @@
       }
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "display_name": "Abyss Self Diagnostic Spine",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "short_description": "Abyss runtime diagnosis overlay",
+      "path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+      "openai_config_path": ".agents/skills/abyss-self-diagnostic-spine/agents/openai.yaml",
+      "scope": "project",
+      "status": "scaffold",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "source_skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "technique_dependencies": [
+        "AOA-T-0080",
+        "AOA-T-0081"
+      ],
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "ui": {
+        "brand_color": "#6D28D9",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",

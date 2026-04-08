@@ -9,15 +9,15 @@ Use this surface for family maturity and `generated/governance_backlog.md` for p
 
 - live overlay families: 2
 - reviewable families: 2
-- project overlay skills: 4
-- project skills with review checklists: 4
-- eval-ready project skills: 4
+- project overlay skills: 5
+- project skills with review checklists: 5
+- eval-ready project skills: 5
 
 ## Families
 
 | family | skills | listed parity | family review | bundle review checks | eval-ready skills | repo-relative evidence | boundary evidence | readiness |
 |---|---:|---|---|---:|---:|---|---|---|
-| abyss | 2 | true | docs/overlays/abyss/REVIEW.md | 2 | 2 | true | true | reviewable |
+| abyss | 3 | true | docs/overlays/abyss/REVIEW.md | 3 | 3 | true | true | reviewable |
 | atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |
 
 ## Project skills
@@ -26,6 +26,7 @@ Use this surface for family maturity and `generated/governance_backlog.md` for p
 |---|---|---|---|---:|---|---|---|---|
 | abyss-safe-infra-change | abyss | evaluated | skills/abyss-safe-infra-change/checks/review.md | 1 | true | true | true | - |
 | abyss-sanitized-share | abyss | evaluated | skills/abyss-sanitized-share/checks/review.md | 1 | true | true | true | - |
+| abyss-self-diagnostic-spine | abyss | scaffold | skills/abyss-self-diagnostic-spine/checks/review.md | 1 | true | true | true | - |
 | atm10-change-protocol | atm10 | evaluated | skills/atm10-change-protocol/checks/review.md | 1 | true | true | true | - |
 | atm10-source-of-truth-check | atm10 | evaluated | skills/atm10-source-of-truth-check/checks/review.md | 1 | true | true | true | - |
 

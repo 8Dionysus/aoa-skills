@@ -132,6 +132,71 @@
     },
     {
       "kind": "maturity",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "technique_AOA_T_0080"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "technique_AOA_T_0081"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "profile_repo_abyss_overlay"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_abyss_self_diagnostic_spine",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
       "source": "skill_aoa_adr_write",
       "target": "status_canonical"
     },
@@ -2158,6 +2223,31 @@
       "type": "technique"
     },
     {
+      "id": "skill_abyss_self_diagnostic_spine",
+      "label": "abyss-self-diagnostic-spine",
+      "type": "skill"
+    },
+    {
+      "id": "status_scaffold",
+      "label": "status: scaffold",
+      "type": "status"
+    },
+    {
+      "id": "policy_explicit_preferred",
+      "label": "invocation: explicit-preferred",
+      "type": "policy"
+    },
+    {
+      "id": "technique_AOA_T_0080",
+      "label": "AOA-T-0080",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_0081",
+      "label": "AOA-T-0081",
+      "type": "technique"
+    },
+    {
       "id": "skill_aoa_adr_write",
       "label": "aoa-adr-write",
       "type": "skill"
@@ -2171,11 +2261,6 @@
       "id": "scope_core",
       "label": "scope: core",
       "type": "scope"
-    },
-    {
-      "id": "policy_explicit_preferred",
-      "label": "invocation: explicit-preferred",
-      "type": "policy"
     },
     {
       "id": "technique_AOA_T_0033",
@@ -2226,11 +2311,6 @@
       "id": "skill_aoa_automation_opportunity_scan",
       "label": "aoa-automation-opportunity-scan",
       "type": "skill"
-    },
-    {
-      "id": "status_scaffold",
-      "label": "status: scaffold",
-      "type": "status"
     },
     {
       "id": "technique_AOA_T_0086",
@@ -2446,16 +2526,6 @@
       "id": "skill_aoa_session_self_diagnose",
       "label": "aoa-session-self-diagnose",
       "type": "skill"
-    },
-    {
-      "id": "technique_AOA_T_0080",
-      "label": "AOA-T-0080",
-      "type": "technique"
-    },
-    {
-      "id": "technique_AOA_T_0081",
-      "label": "AOA-T-0081",
-      "type": "technique"
     },
     {
       "id": "skill_aoa_session_self_repair",
@@ -2680,6 +2750,85 @@
           "id": "AOA-T-0002",
           "lineage_state": "published",
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/abyss-self-diagnostic-spine/SKILL.md",
+        "skills/abyss-self-diagnostic-spine/techniques.yaml",
+        "skills/abyss-self-diagnostic-spine/agents/openai.yaml",
+        "skills/abyss-self-diagnostic-spine/examples/example.md",
+        "skills/abyss-self-diagnostic-spine/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "306115006f978052618cd7d94f21210d2bf537b5e0108c797c485677f608ce27",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-abyss-overlay",
+        "repo-default"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "abyss-self-diagnostic-spine",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_revision": "306115006f97",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/abyss-self-diagnostic-spine/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/abyss-self-diagnostic-spine/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0080",
+        "AOA-T-0081"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0080",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        },
+        {
+          "id": "AOA-T-0081",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
           "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
         }

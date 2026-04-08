@@ -118,6 +118,63 @@
     },
     {
       "do_not_use_when": [
+        "the route is asking for immediate silent repair; use aoa-session-self-repair only after reviewed diagnosis exists",
+        "there is no concrete target path to diagnose",
+        "the material is still a live unreviewed session that belongs in the session-harvest family first",
+        "no abyss- repo adaptation is needed and the base aoa-session-self-diagnose skill is sufficient",
+        "the work would widen into broader project doctrine instead of a thin local overlay"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "name": "abyss-self-diagnostic-spine",
+      "object_use_shape": [
+        "one bounded runtime-owned diagnosticsessionv1",
+        "one explicit exitclass",
+        "named drift classes with evidence refs and unknowns when needed",
+        "optional handoff recommendation toward",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest",
+        "a concise verification note for the local repo surface"
+      ],
+      "pick_summary": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.",
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/abyss-self-diagnostic-spine/examples/example.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/abyss-self-diagnostic-spine/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "use_when": [
+        "the base aoa-session-self-diagnose workflow is already correct, but an abyss- repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs",
+        "a concrete runtime path must be diagnosed before any repair claim becomes honest",
+        "multiple runtime-body signals exist but remain scattered across local docs, logs, or checks",
+        "reviewed session evidence exists and should be cited rather than absorbed into runtime canon",
+        "the next honest move may be retest, governed repair, quest follow-up, progression lift, or manual regrounding"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the change is tiny and self-evident",
         "the note would only restate an obvious diff with no real decision content",
         "the main problem is unclear authoritative documentation rather than decision rationale; use aoa-source-of-truth-check first",

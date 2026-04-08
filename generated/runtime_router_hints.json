@@ -47,6 +47,28 @@
       ]
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "collision_family": "overlay-vs-base-skill",
+      "competing_skills": [
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "should_trigger": [
+        "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature.",
+        "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
+      ],
+      "notes": [
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    },
+    {
       "name": "aoa-adr-write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
       "collision_family": "decision-and-doc-authority",
@@ -532,7 +554,8 @@
       "competing_skills": [
         "atm10-source-of-truth-check",
         "aoa-adr-write",
-        "aoa-quest-harvest"
+        "aoa-quest-harvest",
+        "abyss-self-diagnostic-spine"
       ],
       "should_trigger": [
         "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust."
@@ -540,7 +563,8 @@
       "manual_invocation_required": [],
       "negative_controls": [
         "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
-        "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
+        "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
+        "This abyss repo now has a diagnostic spine note, runbook fragments, and overlay guidance that disagree about which file is authoritative. Map the canonical docs and shorten the entrypoints instead of producing a runtime artifact."
       ],
       "notes": [
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",

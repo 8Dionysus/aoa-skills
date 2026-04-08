@@ -96,6 +96,47 @@
     {
       "composition_mode": "bounded",
       "invocation_mode": "explicit-preferred",
+      "name": "abyss-self-diagnostic-spine",
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
+      "summary": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.",
+      "technique_dependencies": [
+        "AOA-T-0080",
+        "AOA-T-0081"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0080",
+          "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
+          "use_sections": [
+            "Intent",
+            "Outputs",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0081",
+          "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
       "name": "aoa-adr-write",
       "scope": "core",
       "skill_path": "skills/aoa-adr-write/SKILL.md",

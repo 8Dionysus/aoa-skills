@@ -267,6 +267,25 @@
       "status": "evaluated"
     },
     {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "abyss-self-diagnostic-spine",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,

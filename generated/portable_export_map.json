@@ -50,6 +50,23 @@
       }
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "source_skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "target_dir": ".agents/skills/abyss-self-diagnostic-spine",
+      "target_skill_path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+      "target_openai_config_path": ".agents/skills/abyss-self-diagnostic-spine/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "source_skill_path": "skills/aoa-adr-write/SKILL.md",
       "target_dir": ".agents/skills/aoa-adr-write",

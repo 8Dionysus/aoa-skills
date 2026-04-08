@@ -100,6 +100,47 @@ Common expand sections:
 - `review_checklist`: `skills/abyss-sanitized-share/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/abyss-sanitized-share.md`
 
+## abyss-self-diagnostic-spine
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/abyss-self-diagnostic-spine/SKILL.md`
+- pick summary: Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.
+
+### Use when
+
+- the base aoa-session-self-diagnose workflow is already correct, but an abyss- repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs
+- a concrete runtime path must be diagnosed before any repair claim becomes honest
+- multiple runtime-body signals exist but remain scattered across local docs, logs, or checks
+- reviewed session evidence exists and should be cited rather than absorbed into runtime canon
+- the next honest move may be retest, governed repair, quest follow-up, progression lift, or manual regrounding
+
+### Do not use when
+
+- the route is asking for immediate silent repair; use aoa-session-self-repair only after reviewed diagnosis exists
+- there is no concrete target path to diagnose
+- the material is still a live unreviewed session that belongs in the session-harvest family first
+- no abyss- repo adaptation is needed and the base aoa-session-self-diagnose skill is sufficient
+- the work would widen into broader project doctrine instead of a thin local overlay
+
+### Object use shape
+
+- one bounded runtime-owned diagnosticsessionv1
+- one explicit exitclass
+- named drift classes with evidence refs and unknowns when needed
+- optional handoff recommendation toward
+- aoa-session-self-diagnose
+- aoa-session-self-repair
+- aoa-session-progression-lift
+- aoa-quest-harvest
+- a concise verification note for the local repo surface
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/abyss-self-diagnostic-spine/examples/example.md`
+- `review_checklist`: `skills/abyss-self-diagnostic-spine/checks/review.md`
+
 ## aoa-adr-write
 
 - scope: `core`

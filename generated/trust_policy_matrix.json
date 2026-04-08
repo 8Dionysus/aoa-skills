@@ -29,6 +29,19 @@
       "notes": "Project overlay for abyss repository sharing and sanitization surfaces."
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "scope": "project",
+      "invocation_mode": "explicit-preferred",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_manual_invocation": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Project overlay for abyss runtime diagnosis normalization and honest owner-aware handoff without silent repair."
+    },
+    {
       "name": "aoa-adr-write",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

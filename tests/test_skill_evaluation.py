@@ -75,6 +75,10 @@ ADJACENCY_EXPECTATIONS = {
     "atm10-change-protocol": ["atm10-source-of-truth-check"],
     "atm10-source-of-truth-check": ["atm10-change-protocol"],
     "abyss-safe-infra-change": ["abyss-sanitized-share"],
+    "abyss-self-diagnostic-spine": [
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+    ],
     "abyss-sanitized-share": ["abyss-safe-infra-change"],
 }
 

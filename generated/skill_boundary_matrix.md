@@ -5,8 +5,8 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 26
-- adjacency cases: 32
+- total skills: 27
+- adjacency cases: 34
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
 
@@ -14,6 +14,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 |---|---|---|---|---:|---:|---|---|---|---|
 | abyss-safe-infra-change | evaluated | project | false | 1 | 0 | abyss-sanitized-share | - | true | - |
 | abyss-sanitized-share | evaluated | project | false | 1 | 0 | abyss-safe-infra-change | - | true | - |
+| abyss-self-diagnostic-spine | scaffold | project | false | 2 | 0 | aoa-session-self-diagnose, aoa-session-self-repair | - | true | - |
 | aoa-adr-write | canonical | core | true | 1 | 0 | aoa-source-of-truth-check | decision_docs_authority | true | - |
 | aoa-approval-gate-check | canonical | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
 | aoa-automation-opportunity-scan | scaffold | core | false | 0 | 0 | - | - | false | - |
@@ -75,4 +76,6 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | atm10-source-of-truth-check | atm10-change-protocol | atm10_source_of_truth_vs_change_protocol_boundary | use | - | - |
 | abyss-safe-infra-change | abyss-sanitized-share | abyss_safe_infra_change_vs_sanitized_share_boundary | use | - | - |
 | abyss-sanitized-share | abyss-safe-infra-change | abyss_sanitized_share_vs_safe_infra_change_boundary | use | - | - |
+| abyss-self-diagnostic-spine | aoa-session-self-diagnose | abyss_self_diagnostic_spine_vs_session_self_diagnose_boundary | use | - | - |
+| abyss-self-diagnostic-spine | aoa-session-self-repair | abyss_self_diagnostic_spine_vs_session_self_repair_boundary | use | - | - |
 

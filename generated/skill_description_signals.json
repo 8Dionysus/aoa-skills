@@ -17,6 +17,7 @@
       ],
       "adjacent_skills": [
         "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine",
         "aoa-change-protocol",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -56,6 +57,7 @@
       ],
       "adjacent_skills": [
         "abyss-safe-infra-change",
+        "abyss-self-diagnostic-spine",
         "aoa-change-protocol",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -79,6 +81,51 @@
         "desc-collision-collision-19"
       ],
       "mirror_case_ids": []
+    },
+    {
+      "name": "abyss-self-diagnostic-spine",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9",
+      "summary_clause": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff",
+      "use_when_clause": "the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest",
+      "do_not_use_clause": "when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "overlay-vs-base-skill",
+      "families": [
+        "overlay-vs-base-skill"
+      ],
+      "adjacent_skills": [
+        "abyss-safe-infra-change",
+        "abyss-sanitized-share",
+        "aoa-change-protocol",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-source-of-truth-check",
+        "atm10-change-protocol",
+        "atm10-source-of-truth-check"
+      ],
+      "default_prompt": "Use $abyss-self-diagnostic-spine to turn repo-relative abyss runtime evidence into one bounded diagnostic session artifact with an exit class and honest handoff toward diagnosis, repair, progression, or quest surfaces.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "27-explicit",
+        "27-implicit",
+        "27-adjacent-negative",
+        "collision-27"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-27"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-023-abyss-self-diagnostic-spine"
+      ]
     },
     {
       "name": "aoa-adr-write",
@@ -244,6 +291,7 @@
       "adjacent_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine",
         "aoa-contract-test",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -593,6 +641,7 @@
       "adjacent_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine",
         "aoa-approval-gate-check",
         "aoa-change-protocol",
         "aoa-dry-run-first",
@@ -639,6 +688,7 @@
       "adjacent_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine",
         "aoa-approval-gate-check",
         "aoa-change-protocol",
         "aoa-dry-run-first",
@@ -793,6 +843,7 @@
         "session-harvest-family"
       ],
       "adjacent_skills": [
+        "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
@@ -815,7 +866,9 @@
       "collision_case_ids": [
         "desc-collision-collision-22"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-021-aoa-session-self-diagnose"
+      ]
     },
     {
       "name": "aoa-session-self-repair",
@@ -831,6 +884,7 @@
         "session-harvest-family"
       ],
       "adjacent_skills": [
+        "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
@@ -853,7 +907,9 @@
       "collision_case_ids": [
         "desc-collision-collision-23"
       ],
-      "mirror_case_ids": []
+      "mirror_case_ids": [
+        "desc-mirror-022-aoa-session-self-repair"
+      ]
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -872,6 +928,7 @@
       "adjacent_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine",
         "aoa-adr-write",
         "aoa-change-protocol",
         "aoa-quest-harvest",
@@ -891,10 +948,12 @@
         "14-explicit",
         "14-implicit",
         "14-adjacent-negative",
-        "collision-17"
+        "collision-17",
+        "collision-28"
       ],
       "collision_case_ids": [
-        "desc-collision-collision-17"
+        "desc-collision-collision-17",
+        "desc-collision-collision-28"
       ],
       "mirror_case_ids": [
         "desc-mirror-017-aoa-source-of-truth-check"
@@ -955,6 +1014,7 @@
       "adjacent_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine",
         "aoa-change-protocol",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -997,6 +1057,7 @@
       "adjacent_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine",
         "aoa-adr-write",
         "aoa-change-protocol",
         "aoa-quest-harvest",

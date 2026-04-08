@@ -3,19 +3,21 @@
     {
       "authority_section_present": true,
       "boundary_statement_present": true,
-      "bundle_review_check_count": 2,
-      "eval_ready_skill_count": 2,
+      "bundle_review_check_count": 3,
+      "eval_ready_skill_count": 3,
       "family": "abyss",
       "listed_matches_actual": true,
       "listed_skill_names": [
         "abyss-safe-infra-change",
-        "abyss-sanitized-share"
+        "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine"
       ],
       "project_overlay_path": "docs/overlays/abyss/PROJECT_OVERLAY.md",
-      "project_skill_count": 2,
+      "project_skill_count": 3,
       "project_skill_names": [
         "abyss-safe-infra-change",
-        "abyss-sanitized-share"
+        "abyss-sanitized-share",
+        "abyss-self-diagnostic-spine"
       ],
       "readiness_state": "reviewable",
       "repo_relative_statement_present": true,
@@ -74,6 +76,18 @@
     {
       "eval_blockers": [],
       "eval_ready": true,
+      "family": "abyss",
+      "has_adaptation_points": true,
+      "has_policy_file": true,
+      "name": "abyss-self-diagnostic-spine",
+      "review_check_path": "skills/abyss-self-diagnostic-spine/checks/review.md",
+      "runtime_example_count": 1,
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "atm10",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -105,10 +119,10 @@
     "skill_markdown": "skills/*/SKILL.md"
   },
   "summary": {
-    "eval_ready_project_skill_count": 4,
+    "eval_ready_project_skill_count": 5,
     "live_overlay_family_count": 2,
-    "project_skill_count": 4,
-    "project_skill_review_check_count": 4,
+    "project_skill_count": 5,
+    "project_skill_review_check_count": 5,
     "reviewable_family_count": 2
   }
 }

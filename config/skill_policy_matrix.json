@@ -246,6 +246,15 @@
       "requires_confirmation_seam": true,
       "notes": "Project overlay for abyss repository operational changes with explicit local authority."
     },
+    "abyss-self-diagnostic-spine": {
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Project overlay for abyss runtime diagnosis normalization and honest owner-aware handoff without silent repair."
+    },
     "abyss-sanitized-share": {
       "trust_posture": "project-overlay",
       "mutation_surface": "sharing",

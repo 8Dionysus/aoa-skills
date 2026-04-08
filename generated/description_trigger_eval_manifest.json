@@ -11,14 +11,14 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 26,
-  "total_cases": 124,
+  "skill_count": 27,
+  "total_cases": 132,
   "case_class_totals": {
-    "explicit-handle": 26,
+    "explicit-handle": 27,
     "manual-invocation-required": 28,
-    "prefer-other-skill": 20,
-    "should-not-trigger": 26,
-    "should-trigger": 24
+    "prefer-other-skill": 23,
+    "should-not-trigger": 27,
+    "should-trigger": 27
   },
   "skills": [
     {
@@ -55,6 +55,27 @@
         "explicit-handle",
         "manual-invocation-required",
         "should-not-trigger"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "abyss-self-diagnostic-spine",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9",
+      "family": "overlay-vs-base-skill",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
       ],
       "coverage_ok": true,
       "has_collision_coverage": true
@@ -424,10 +445,11 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -443,10 +465,11 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -462,12 +485,12 @@
       "invocation_mode": "explicit-preferred",
       "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0",
       "family": "decision-and-doc-authority",
-      "total_cases": 5,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
         "prefer-other-skill": 1,
         "should-not-trigger": 1,
-        "should-trigger": 2
+        "should-trigger": 3
       },
       "required_case_classes": [
         "explicit-handle",

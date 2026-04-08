@@ -124,9 +124,14 @@
         "post session harvest",
         "promotion target",
         "reviewed drift",
-        "unlock hint"
+        "unlock hint",
+        "runtime self diagnosis",
+        "diagnostic session artifact",
+        "runtime evidence handoff",
+        "exit class"
       ],
       "skills": [
+        "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
@@ -144,7 +149,9 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "overlay_skills": []
+      "overlay_skills": [
+        "abyss-self-diagnostic-spine"
+      ]
     },
     {
       "id": "risk-ops-safety",

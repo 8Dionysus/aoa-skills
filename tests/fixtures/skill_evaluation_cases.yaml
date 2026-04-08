@@ -53,6 +53,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: abyss-self-diagnostic-spine
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-tdd-slice
     forbidden_runtime_terms:
       - aoa-techniques
@@ -263,6 +269,20 @@ trigger_cases:
     required_phrases:
       - no `abyss-*` repo adaptation is needed and the base `aoa-sanitized-share` skill is sufficient
       - the overlay would only restate the base sanitization workflow without adding a real local sharing surface
+  - skill: abyss-self-diagnostic-spine
+    case_id: abyss_self_diagnostic_spine_runtime_overlay
+    prompt: Diagnose one abyss runtime path by normalizing doctor, machine-fit, render-truth, and autonomy evidence into one local diagnostic artifact before any repair claim is made.
+    expected: use
+    required_phrases:
+      - the base `aoa-session-self-diagnose` workflow is already correct, but an `abyss-*` repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs
+      - a concrete runtime path must be diagnosed before any repair claim becomes honest
+  - skill: abyss-self-diagnostic-spine
+    case_id: abyss_self_diagnostic_spine_silent_repair_attempt
+    prompt: Skip diagnosis and repair the abyss runtime immediately even though there is no concrete target artifact yet.
+    expected: do_not_use
+    required_phrases:
+      - the route is asking for immediate silent repair; use `aoa-session-self-repair` only after reviewed diagnosis exists
+      - there is no concrete target path to diagnose
 
   - skill: aoa-tdd-slice
     case_id: tdd_slice_bounded_behavior
@@ -926,6 +946,26 @@ adjacency_cases:
       - This is an abyss-sanitized-share case, not an abyss-safe-infra-change case.
       - A sanitized local share artifact that names the repo-relative destination and explicit local sharing thresholds.
     forbidden_output_phrases: []
+  - skill: abyss-self-diagnostic-spine
+    case_id: abyss_self_diagnostic_spine_vs_session_self_diagnose_boundary
+    prompt: In an abyss repository, choose between a local runtime diagnosis overlay and the base reviewed-session diagnosis skill because the repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs.
+    expected: use
+    adjacent_skill: aoa-session-self-diagnose
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-self-diagnostic-spine/abyss_self_diagnostic_spine_vs_session_self_diagnose_boundary.md
+    required_output_phrases:
+      - This is an abyss-self-diagnostic-spine case, not an aoa-session-self-diagnose case.
+      - A bounded runtime-owned diagnostic session artifact with repo-relative evidence refs and one explicit exit class.
+    forbidden_output_phrases: []
+  - skill: abyss-self-diagnostic-spine
+    case_id: abyss_self_diagnostic_spine_vs_session_self_repair_boundary
+    prompt: In an abyss repository, choose between runtime diagnosis normalization and self-repair because the evidence still needs to be gathered into one honest diagnostic artifact before any repair packet can be justified.
+    expected: use
+    adjacent_skill: aoa-session-self-repair
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-self-diagnostic-spine/abyss_self_diagnostic_spine_vs_session_self_repair_boundary.md
+    required_output_phrases:
+      - This is an abyss-self-diagnostic-spine case, not an aoa-session-self-repair case.
+      - A bounded runtime-owned diagnostic session artifact with repo-relative evidence refs and one explicit exit class.
+    forbidden_output_phrases: []
 
 snapshot_cases:
   - skill: aoa-adr-write
@@ -1053,6 +1093,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection that says the base `aoa-sanitized-share` skill is already sufficient and the abyss overlay would add no real local sharing surface.
+    forbidden_output_phrases: []
+  - skill: abyss-self-diagnostic-spine
+    case_id: abyss_self_diagnostic_spine_runtime_overlay
+    prompt: Diagnose one abyss runtime path by normalizing doctor, machine-fit, render-truth, and autonomy evidence into one local diagnostic artifact before any repair claim is made.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-self-diagnostic-spine/abyss_self_diagnostic_spine_runtime_overlay.md
+    required_output_phrases:
+      - use
+      - A bounded runtime-owned diagnostic session artifact with repo-relative evidence refs and one explicit exit class.
+    forbidden_output_phrases: []
+  - skill: abyss-self-diagnostic-spine
+    case_id: abyss_self_diagnostic_spine_silent_repair_attempt
+    prompt: Skip diagnosis and repair the abyss runtime immediately even though there is no concrete target artifact yet.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/abyss-self-diagnostic-spine/abyss_self_diagnostic_spine_silent_repair_attempt.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that requires diagnosis and a concrete target path before any repair packet can be honest.
     forbidden_output_phrases: []
   - skill: aoa-contract-test
     case_id: contract_test_meaningful_boundary

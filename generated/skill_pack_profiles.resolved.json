@@ -194,6 +194,14 @@
           "trust_posture": "project-overlay"
         },
         {
+          "name": "abyss-self-diagnostic-spine",
+          "source_path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+          "target_path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+          "openai_config_path": ".agents/skills/abyss-self-diagnostic-spine/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "project-overlay"
+        },
+        {
           "name": "abyss-sanitized-share",
           "source_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
           "target_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
@@ -943,6 +951,14 @@
           "target_path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
           "openai_config_path": ".agents/skills/abyss-safe-infra-change/agents/openai.yaml",
           "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "abyss-self-diagnostic-spine",
+          "source_path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+          "target_path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+          "openai_config_path": ".agents/skills/abyss-self-diagnostic-spine/agents/openai.yaml",
+          "allow_implicit_invocation": true,
           "trust_posture": "project-overlay"
         },
         {

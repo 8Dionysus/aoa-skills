@@ -1,0 +1,27 @@
+skill_name: abyss-self-diagnostic-spine
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0080
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    use_sections:
+      - Intent
+      - Outputs
+      - Risks
+      - Validation
+  - id: AOA-T-0081
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+notes:
+  - Keep the overlay thin and repo-relative.
+  - Keep runtime SKILL.md self-contained.
+  - Refresh `source_ref` when the pinned aoa-techniques commit changes.

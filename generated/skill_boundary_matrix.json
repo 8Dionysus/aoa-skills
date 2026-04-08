@@ -376,6 +376,26 @@
       "prompt": "In an abyss repository, choose between sanitizing a shareable artifact and changing runtime configuration because the main need is to publish a safe summary from raw local material.",
       "skill": "abyss-sanitized-share",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/abyss-sanitized-share/abyss_sanitized_share_vs_safe_infra_change_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-self-diagnose",
+      "blockers": [],
+      "case_id": "abyss_self_diagnostic_spine_vs_session_self_diagnose_boundary",
+      "expected": "use",
+      "governance_lane_ids": [],
+      "prompt": "In an abyss repository, choose between a local runtime diagnosis overlay and the base reviewed-session diagnosis skill because the repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs.",
+      "skill": "abyss-self-diagnostic-spine",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/abyss-self-diagnostic-spine/abyss_self_diagnostic_spine_vs_session_self_diagnose_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-self-repair",
+      "blockers": [],
+      "case_id": "abyss_self_diagnostic_spine_vs_session_self_repair_boundary",
+      "expected": "use",
+      "governance_lane_ids": [],
+      "prompt": "In an abyss repository, choose between runtime diagnosis normalization and self-repair because the evidence still needs to be gathered into one honest diagnostic artifact before any repair packet can be justified.",
+      "skill": "abyss-self-diagnostic-spine",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/abyss-self-diagnostic-spine/abyss_self_diagnostic_spine_vs_session_self_repair_boundary.md"
     }
   ],
   "skills": [
@@ -408,6 +428,22 @@
       "scope": "project",
       "skill_path": "skills/abyss-sanitized-share/SKILL.md",
       "status": "evaluated"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
+      "adjacency_ready": true,
+      "adjacency_use_count": 2,
+      "adjacent_skill_names": [
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "governance_lane_ids": [],
+      "name": "abyss-self-diagnostic-spine",
+      "required_adjacency_coverage": false,
+      "scope": "project",
+      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold"
     },
     {
       "adjacency_blockers": [],

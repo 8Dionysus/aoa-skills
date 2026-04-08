@@ -210,6 +210,109 @@
       "disclose_card_markdown": "### abyss-sanitized-share\n- Summary: Abyss sanitized-share overlay\n- Use when: Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.\n- Trust posture: project-overlay\n- Mutation surface: sharing\n"
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "display_name": "Abyss Self Diagnostic Spine",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "short_description": "Abyss runtime diagnosis overlay",
+      "path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_dir": ".agents/skills/abyss-self-diagnostic-spine",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0080,AOA-T-0081",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to adapt `aoa-session-self-diagnose` to an `abyss-*` repository when the local repo needs one runtime-owned diagnostic session artifact that can cite runtime evidence, compare against last-good posture, and hand off honestly toward the reviewed session diagnosis...",
+        "Trigger boundary": "the base `aoa-session-self-diagnose` workflow is already correct, but an `abyss-*` repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs; a concrete runtime path must be diagnosed before any repair claim becomes honest",
+        "Inputs": "resolved or requested preset / profile selectors; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
+        "Outputs": "one bounded runtime-owned `diagnostic_session_v1`; one explicit `exit_class`",
+        "Procedure": "start from `aoa-session-self-diagnose` instead of inventing a new project-family workflow; resolve the diagnostic target before interpreting symptoms",
+        "Contracts": "preserve the base skill meaning; the overlay stays read-only and citation-friendly",
+        "Risks and anti-patterns": "treating one axis failure as total collapse; confusing runtime drift with source-owned doctrine drift",
+        "Verification": "confirm the base skill is still the correct workflow; confirm a concrete target exists",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e...",
+        "Adaptation points": "repo-relative runtime evidence refs; local diagnostic target and last-good posture"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "Abyss Self Diagnostic Spine",
+        "short_description": "Abyss runtime diagnosis overlay",
+        "default_prompt": "Use $abyss-self-diagnostic-spine to turn repo-relative abyss runtime evidence into one bounded diagnostic session artifact with an exit class and honest handoff toward diagnosis, repair, progression, or quest surfaces.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#abyss-self-diagnostic-spine",
+      "context_retention_ref": "generated/context_retention_manifest.json#abyss-self-diagnostic-spine",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#abyss-self-diagnostic-spine",
+      "collision_family": "overlay-vs-base-skill",
+      "collision_notes": [
+        "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
+        "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
+        "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ],
+      "competing_skills": [
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $abyss-self-diagnostic-spine to turn repo-relative runtime evidence plus optional reviewed session refs into one bounded diagnostic session artifact with an honest exit class and no silent repair authority."
+        ],
+        "implicit": [
+          "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature.",
+          "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$abyss-self-diagnostic-spine",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/abyss-self-diagnostic-spine",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "abyss-self-diagnostic-spine"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### abyss-self-diagnostic-spine\n- Summary: Abyss runtime diagnosis overlay\n- Use when: Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",
@@ -2443,7 +2546,8 @@
       "competing_skills": [
         "atm10-source-of-truth-check",
         "aoa-adr-write",
-        "aoa-quest-harvest"
+        "aoa-quest-harvest",
+        "abyss-self-diagnostic-spine"
       ],
       "sample_prompts": {
         "explicit": [

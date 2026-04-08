@@ -1,0 +1,9 @@
+interface:
+  display_name: Abyss Self Diagnostic Spine
+  short_description: Abyss runtime diagnosis overlay
+  default_prompt: Use $abyss-self-diagnostic-spine to turn repo-relative abyss runtime evidence into one bounded diagnostic session artifact with an exit class and honest handoff toward diagnosis, repair, progression, or quest surfaces.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#6D28D9'
+policy:
+  allow_implicit_invocation: true

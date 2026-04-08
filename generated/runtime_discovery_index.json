@@ -210,6 +210,120 @@
       }
     },
     {
+      "name": "abyss-self-diagnostic-spine",
+      "display_name": "Abyss Self Diagnostic Spine",
+      "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
+      "short_description": "Abyss runtime diagnosis overlay",
+      "path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$abyss-self-diagnostic-spine",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/abyss-self-diagnostic-spine",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "abyss-self-diagnostic-spine"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "abyss",
+        "abyss-",
+        "adaptation",
+        "already",
+        "and",
+        "anti-patterns",
+        "any",
+        "aoa-session-self-diagnose",
+        "apply",
+        "artifacts",
+        "base",
+        "becomes",
+        "before",
+        "boundary",
+        "bounded",
+        "but",
+        "claim",
+        "comparison",
+        "concrete",
+        "contracts",
+        "correct",
+        "diagnosis",
+        "diagnostic",
+        "diagnostic-session",
+        "evidence",
+        "exists",
+        "for",
+        "handoff",
+        "honest",
+        "inputs",
+        "inside",
+        "intent",
+        "last-good",
+        "local",
+        "model",
+        "needs",
+        "not",
+        "one",
+        "outputs",
+        "owner-aware",
+        "path",
+        "points",
+        "posture",
+        "procedure",
+        "project",
+        "read",
+        "really",
+        "repair",
+        "repo",
+        "repo-relative",
+        "repository",
+        "request",
+        "risks",
+        "runtime",
+        "runtime-owned",
+        "self",
+        "silent",
+        "skill",
+        "spine",
+        "sufficient",
+        "target",
+        "technique",
+        "the",
+        "thin",
+        "traceability",
+        "trigger",
+        "use",
+        "using",
+        "verification",
+        "without",
+        "workflow"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "abyss-self-diagnostic-spine"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "abyss-self-diagnostic-spine"
+        }
+      }
+    },
+    {
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "description": "Capture a meaningful architectural or workflow decision as an ADR or decision note, place it in the canonical decision surface, and verify the rationale stays discoverable. Use when structure, boundaries, tooling, or workflow expectations change and future contributors need to know why. Do not use for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale.",

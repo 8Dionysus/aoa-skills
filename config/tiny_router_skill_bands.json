@@ -111,7 +111,11 @@
         "post session harvest",
         "promotion target",
         "reviewed drift",
-        "unlock hint"
+        "unlock hint",
+        "runtime self diagnosis",
+        "diagnostic session artifact",
+        "runtime evidence handoff",
+        "exit class"
       ],
       "skills": [
         "aoa-quest-harvest",
@@ -120,7 +124,8 @@
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
-        "aoa-session-progression-lift"
+        "aoa-session-progression-lift",
+        "abyss-self-diagnostic-spine"
       ]
     },
     {
@@ -529,6 +534,20 @@
         "shareable artifact only"
       ]
     },
+    "abyss-self-diagnostic-spine": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "abyss diagnostic spine",
+        "runtime self diagnosis",
+        "diagnostic session artifact",
+        "runtime evidence handoff",
+        "exit class"
+      ],
+      "negative_cues": [
+        "immediate silent repair",
+        "base skill is sufficient"
+      ]
+    },
     "abyss-sanitized-share": {
       "band": "risk-ops-safety",
       "positive_cues": [
@@ -663,6 +682,12 @@
     "abyss-safe-infra-change": [
       "aoa-safe-infra-change",
       "abyss-sanitized-share"
+    ],
+    "abyss-self-diagnostic-spine": [
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair",
+      "aoa-session-progression-lift",
+      "aoa-quest-harvest"
     ],
     "abyss-sanitized-share": [
       "aoa-sanitized-share",
