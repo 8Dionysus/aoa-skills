@@ -26,9 +26,10 @@ Use the shortest route by need:
 - via negativa pruning checklist: `docs/VIA_NEGATIVA_CHECKLIST.md`
 - runtime inspect and walkthrough surfaces: `generated/skill_walkthroughs.md` and `scripts/inspect_skill.py`
 - additive degraded and receipt-authoring guidance for future skill bundles: `docs/ANTIFRAGILITY_SKILL_ADDENDUM.md`
+- checkpoint-aware pre-harvest session-growth capture: `docs/CHECKPOINT_NOTE_PATH.md`, `schemas/session_checkpoint_note.schema.json`, and `examples/session_checkpoint_note.example.json`
 - ability-reader and loadout surfaces: `docs/SKILL_ABILITY_MODEL.md`, `docs/ABILITY_LOADOUT_POSTURE.md`, and `generated/skill_ability_cards.min.example.json`
 - evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
-- deferred workflow, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
+- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
 - portable export and local runtime seams: `docs/CODEX_PORTABLE_LAYER.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, `docs/OPENAI_SKILL_EXTENSIONS.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `docs/RUNTIME_TOOL_CONTRACTS.md`, `docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
 - install, trust, config, and UI surfaces: `docs/INSTALL_AND_PROFILES.md`, `docs/CONTEXT_RETENTION.md`, `docs/UI_METADATA_AND_ASSETS.md`, `docs/CODEX_CONFIG_SNIPPETS.md`, `docs/TRUST_GATE_AND_ALLOWLIST.md`, `docs/SKILL_CONTEXT_GUARD.md`, and `docs/RUNTIME_GOVERNANCE_LAYER.md`
 - activation quality and conformance: `docs/TRIGGER_EVALS.md`, `docs/DESCRIPTION_TRIGGER_EVALS.md`, and `docs/SKILLS_REF_VALIDATION.md`

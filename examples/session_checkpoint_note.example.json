@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "contract_type": "session_checkpoint_note_v1",
+  "session_ref": "session:2026-04-07-aoa-sdk-checkpoint-growth",
+  "state": "reviewable",
+  "repo_scope": [
+    "aoa-sdk",
+    "Dionysus"
+  ],
+  "checkpoint_history": [
+    {
+      "checkpoint_kind": "commit",
+      "observed_at": "2026-04-07T18:10:00Z",
+      "candidate_ids": [
+        "candidate:route:cross-repo-seed-wave-landing"
+      ]
+    },
+    {
+      "checkpoint_kind": "verify_green",
+      "observed_at": "2026-04-07T18:24:00Z",
+      "candidate_ids": [
+        "candidate:route:cross-repo-seed-wave-landing"
+      ]
+    }
+  ],
+  "candidate_clusters": [
+    {
+      "candidate_id": "candidate:route:cross-repo-seed-wave-landing",
+      "candidate_kind": "route",
+      "owner_hint": "aoa-playbooks",
+      "display_name": "Cross-repo seed-wave landing lane",
+      "checkpoint_hits": 2,
+      "evidence_refs": [
+        "repo:aoa-sdk/.aoa/session-growth/current/aoa-sdk/checkpoint-note.jsonl#2026-04-07T18:10:00Z",
+        "repo:aoa-sdk/.aoa/session-growth/current/aoa-sdk/checkpoint-note.jsonl#2026-04-07T18:24:00Z",
+        "repo:aoa-sdk/.aoa/surface-detection/aoa-sdk.checkpoint.latest.json"
+      ],
+      "confidence": "medium",
+      "review_status": "reviewable",
+      "promote_if": [
+        "owner hint stays stable across one more reviewed checkpoint",
+        "session closes without new owner ambiguity"
+      ],
+      "defer_reason": null,
+      "next_owner_moves": [
+        "prepare a reviewed Dionysus checkpoint note",
+        "keep full harvest promotion explicit"
+      ]
+    }
+  ],
+  "promotion_recommendation": "dionysus_note",
+  "blocked_by": [],
+  "review_status": "reviewed",
+  "evidence_refs": [
+    "repo:aoa-sdk/.aoa/session-growth/current/aoa-sdk/checkpoint-note.json",
+    "repo:aoa-sdk/.aoa/surface-detection/aoa-sdk.checkpoint.latest.json"
+  ],
+  "next_owner_moves": [
+    "promote the reviewed note into Dionysus when evidence density is sufficient",
+    "use the explicit session-harvest family only after reviewed closeout"
+  ]
+}
