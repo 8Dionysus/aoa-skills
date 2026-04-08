@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0086
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md
-    source_ref: 1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - Inputs
@@ -15,7 +15,7 @@ techniques:
   - id: AOA-T-0087
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md
-    source_ref: 1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use
@@ -26,7 +26,7 @@ techniques:
   - id: AOA-T-0088
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md
-    source_ref: 1f1ec1b4f76d6e4726d3ea4343fbde834ddc6b1c
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - Inputs

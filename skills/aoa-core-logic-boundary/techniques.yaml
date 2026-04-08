@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0016
     repo: 8Dionysus/aoa-techniques
     path: techniques/docs/bounded-context-map/TECHNIQUE.md
-    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use
@@ -15,7 +15,7 @@ techniques:
   - id: AOA-T-0015
     repo: 8Dionysus/aoa-techniques
     path: techniques/evaluation/contract-test-design/TECHNIQUE.md
-    source_ref: 609693c2782510e0811ba7ecb4904bc06cf40c38
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use

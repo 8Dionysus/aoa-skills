@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0089
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md
-    source_ref: 5cb9d446a73a109f7bf16997831750a9df7114d7
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use
@@ -16,7 +16,7 @@ techniques:
   - id: AOA-T-0090
     repo: 8Dionysus/aoa-techniques
     path: techniques/agent-workflows/nearest-wrong-target-rejection/TECHNIQUE.md
-    source_ref: 5cb9d446a73a109f7bf16997831750a9df7114d7
+    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
     use_sections:
       - Intent
       - When to use

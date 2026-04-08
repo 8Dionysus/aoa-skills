@@ -11,7 +11,7 @@ name: abyss-sanitized-share
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `80b1a85ce739`
+- reviewed revision: `b748332deeb3`
 
 ## Target status
 
