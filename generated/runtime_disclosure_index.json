@@ -247,7 +247,7 @@
         "Contracts": "preserve the base skill meaning; the overlay stays read-only and citation-friendly",
         "Risks and anti-patterns": "treating one axis failure as total collapse; confusing runtime drift with source-owned doctrine drift",
         "Verification": "confirm the base skill is still the correct workflow; confirm a concrete target exists",
-        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c29f4b31c59d7bfd91585633f2a` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `364da8f4e97d0c2...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e...",
         "Adaptation points": "repo-relative runtime evidence refs; local diagnostic target and last-good posture"
       },
       "resource_inventory": {

@@ -2773,7 +2773,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "e041eed61d3166d8e62bc3265f4a5090e9d3502545626cf65e56a89c1493cea6",
+      "content_hash": "306115006f978052618cd7d94f21210d2bf537b5e0108c797c485677f608ce27",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2799,7 +2799,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
-      "skill_revision": "e041eed61d31",
+      "skill_revision": "306115006f97",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2823,14 +2823,14 @@
           "lineage_state": "published",
           "path": "techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a"
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
         },
         {
           "id": "AOA-T-0081",
           "lineage_state": "published",
           "path": "techniques/agent-workflows/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "364da8f4e97d0c29f4b31c59d7bfd91585633f2a"
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
         }
       ]
     },

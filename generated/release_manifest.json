@@ -172,7 +172,7 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "28be413d509a170031d4c15dccde1c66ab0634c024b6ad3cf0f4f0cd452fd944",
+      "sha256": "6a5e94fc9d91c0b40560e81b65815de604d3a1d416fb6d7c108ce431645a7070",
       "bytes": 149898
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "da486b90c97cecdf5873d5eea88a6941922e38def9810e2afddb095af073a0a6",
+      "sha256": "1f23e9a31e94a3ba88f5f7f38f03a8ed3bdcdeaf070b1a53ad5e377403ac0dea",
       "bytes": 189892
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "29812381525a188a0e3b4e903be4c34ecc6e07865231688d86e1cdfb18b98d1c",
+      "sha256": "d77a081c6ca9058af89d303dbed623dc88261c8e364ef39e45b4bb7d6fbb7ff0",
       "bytes": 55704
     },
     {
@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "05b1d5d80ee6fb11ab9133b752411bddb4bb3fe4faaed2b645356ccb42f4337f",
+      "sha256": "879bb19657a2be90e95ee7dac751e17a3879a366a2d9bd89405d47bedc3e3dac",
       "bytes": 82041
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "31dd5d7a3fc5d2624fbc7bf7837637108e6281799bc600063783ccc86252969d",
+      "sha256": "e574b81748a6deec0a03bdacb4b846f7d60ce700b1d734970fa7bcffa4bbf86e",
       "bytes": 9340
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "b0258ccd54f7385ec2ec3ed5e6f7236fee09f852d7f5ac677955cd160440dd89",
+      "sha256": "4f5fc28638887b165b294cfd09283317040f5e03349e1e59c8bf6f2db6cc6180",
       "bytes": 152512
     },
     {
@@ -466,8 +466,8 @@
     },
     {
       "name": "abyss-self-diagnostic-spine",
-      "skill_revision": "e041eed61d31",
-      "content_hash": "e041eed61d3166d8e62bc3265f4a5090e9d3502545626cf65e56a89c1493cea6"
+      "skill_revision": "306115006f97",
+      "content_hash": "306115006f978052618cd7d94f21210d2bf537b5e0108c797c485677f608ce27"
     },
     {
       "name": "aoa-adr-write",
@@ -599,7 +599,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine"
       ],
-      "profile_revision": "f97cc9bbb64600a76a058afe271564f6921b3ac1cec836c6f05ef87886d2c740"
+      "profile_revision": "8e5d271b42999b5dab01b9efd9f60b49049266de62274c526996793b9d9bd4ce"
     },
     {
       "name": "repo-atm10-overlay",
@@ -674,7 +674,7 @@
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ],
-      "profile_revision": "884716f80dbece0a9055affad74056088038569534d5929202f7b2088723e7aa"
+      "profile_revision": "2db83ee6066177a1583d26b98b40731b965bde5e9ec5ce1afe74bc82e56eec50"
     },
     {
       "name": "repo-project-core-kernel",
