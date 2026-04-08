@@ -149,7 +149,8 @@ survive closeout:
 - the next honest move is promotion triage rather than more execution
 
 Use [SESSION_CANDIDATE_HARVEST.template.md](../templates/SESSION_CANDIDATE_HARVEST.template.md)
-to keep that handoff bounded.
+to keep that handoff bounded, and store committed public-safe harvest notes
+under `docs/session-harvests/` rather than inside the skill-review surfaces.
 
 ## Relationship to checkpoint and session-harvest layers
 

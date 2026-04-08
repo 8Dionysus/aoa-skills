@@ -12,6 +12,7 @@ an executable workflow for Codex.
 - If you want the current canonical surface at a glance, start with `../SKILL_INDEX.md`.
 - If you are choosing or using a skill, start with `RUNTIME_PATH.md`.
 - If you need to decide which skills apply now, which belong to closeout, and which belong to harvest, start with `ADAPTIVE_SKILL_ORCHESTRATION.md`.
+- If you need a committed bounded note for reusable session outputs that are not yet skill reviews or owner-layer truth, start with `session-harvests/README.md`.
 - If you need additive degraded, fallback, or receipt-authoring posture for future skills, start with `ANTIFRAGILITY_SKILL_ADDENDUM.md`.
 - If you need a lightweight checkpoint-aware note before post-session harvest, start with `CHECKPOINT_NOTE_PATH.md`.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
@@ -27,9 +28,10 @@ an executable workflow for Codex.
 2. `../SKILL_INDEX.md` - the current repo-wide skill map.
 3. `RUNTIME_PATH.md` - how to inspect and use a bounded skill object.
 4. `ADAPTIVE_SKILL_ORCHESTRATION.md` - how to build applicability maps, close out a session honestly, and hand off to harvest only when needed.
-5. `EVALUATION_PATH.md` - how to read behavior evidence.
-6. `PUBLIC_SURFACE.md` - how to read derived status and governance.
-7. `RELEASING.md` - the bounded repo-level verification and release path.
+5. `session-harvests/README.md` - where bounded public candidate-harvest notes live before promotion.
+6. `EVALUATION_PATH.md` - how to read behavior evidence.
+7. `PUBLIC_SURFACE.md` - how to read derived status and governance.
+8. `RELEASING.md` - the bounded repo-level verification and release path.
 
 ## Read in this order
 
