@@ -95,6 +95,24 @@ def validate(repo_root: Path) -> dict[str, Any]:
         top1_not = case.get("expected_top1_not")
         if top1_not is not None and top1_not not in actual_names:
             errors.append(f"generated/tiny_router_eval_cases.jsonl references unknown expected_top1_not {top1_not!r}")
+        case_id = str(case.get("case_id", ""))
+        if case_id.startswith("tiny-defer-"):
+            source_skill = case_id[len("tiny-defer-") :]
+            if source_skill in signal_by_name:
+                source_band = signal_by_name[source_skill]["band"]
+                included = case.get("expected_shortlist_includes", [])
+                if case.get("expected_band") != source_band and included:
+                    errors.append(
+                        f"{case_id}: cross-band defer cases must not require expected_shortlist_includes"
+                    )
+                for included_skill in included:
+                    included_signal = signal_by_name.get(included_skill)
+                    if included_signal is None:
+                        continue
+                    if included_signal["project_overlay"] and not case.get("repo_family_hint"):
+                        errors.append(
+                            f"{case_id}: overlay defer targets must set repo_family_hint"
+                        )
 
     missing_positive = sorted(name for name, count in positive_coverage.items() if count == 0)
     if missing_positive:

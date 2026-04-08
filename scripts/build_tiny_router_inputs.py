@@ -136,6 +136,19 @@ def overlay_family_hint(skill_name: str, project_overlay: bool) -> str | None:
     return skill_name.split("-", 1)[0]
 
 
+def defer_case_repo_family_hint(
+    *,
+    skill_name: str,
+    signal: dict[str, Any],
+    expected_skill: str,
+    catalog_by_name: dict[str, dict[str, Any]],
+) -> str | None:
+    expected_catalog_entry = catalog_by_name.get(expected_skill)
+    if expected_catalog_entry is not None and expected_catalog_entry.get("scope") == "project":
+        return overlay_family_hint(expected_skill, True)
+    return overlay_family_hint(skill_name, bool(signal.get("project_overlay")))
+
+
 def phrase_tokens(phrases: list[str]) -> list[str]:
     seen: dict[str, None] = {}
     for phrase in phrases:
@@ -330,6 +343,11 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
             and defer_case["expected_skill"] != skill_name
         ):
             expected_skill = defer_case["expected_skill"]
+            expected_shortlist_includes = (
+                [expected_skill]
+                if band_by_skill[expected_skill] == band_id
+                else []
+            )
             eval_cases.append(
                 {
                     "case_id": f"tiny-defer-{skill_name}",
@@ -337,12 +355,14 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
                     "prompt": defer_case["prompt"],
                     "expected_band": band_by_skill[expected_skill],
                     "expected_top1_not": skill_name,
-                    "expected_shortlist_includes": [expected_skill],
+                    "expected_shortlist_includes": expected_shortlist_includes,
                     "expected_shortlist_excludes": [skill_name],
                     "expected_manual_invocation": False,
-                    "repo_family_hint": overlay_family_hint(
-                        skill_name,
-                        signal["project_overlay"],
+                    "repo_family_hint": defer_case_repo_family_hint(
+                        skill_name=skill_name,
+                        signal=signal,
+                        expected_skill=expected_skill,
+                        catalog_by_name=catalog_by_name,
                     ),
                 }
             )

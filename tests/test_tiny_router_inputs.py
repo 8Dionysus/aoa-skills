@@ -92,8 +92,36 @@ class TinyRouterInputsTest(unittest.TestCase):
         ]
         self.assertTrue(defer_cases)
         for case in defer_cases:
-            expected_skill = case["expected_shortlist_includes"][0]
-            self.assertEqual(case["expected_band"], band_by_skill[expected_skill])
+            includes = case.get("expected_shortlist_includes", [])
+            if includes:
+                expected_skill = includes[0]
+                self.assertEqual(case["expected_band"], band_by_skill[expected_skill])
+
+    def test_defer_cases_only_require_shortlist_hits_within_same_band_and_overlay_targets_carry_family_hints(self) -> None:
+        signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
+        eval_cases = load_jsonl(REPO_ROOT / "generated" / "tiny_router_eval_cases.jsonl")
+        signal_by_name = {entry["name"]: entry for entry in signals["skills"]}
+
+        defer_cases = [
+            case for case in eval_cases if str(case.get("case_id", "")).startswith("tiny-defer-")
+        ]
+        self.assertTrue(defer_cases)
+        for case in defer_cases:
+            source_skill = case["case_id"][len("tiny-defer-") :]
+            source_band = signal_by_name[source_skill]["band"]
+            includes = case.get("expected_shortlist_includes", [])
+            if case["expected_band"] != source_band:
+                self.assertEqual(
+                    includes,
+                    [],
+                    msg=f"cross-band defer case should not require a shortlist include: {case['case_id']}",
+                )
+            for skill_name in includes:
+                if signal_by_name[skill_name]["project_overlay"]:
+                    self.assertTrue(
+                        case.get("repo_family_hint"),
+                        msg=f"overlay defer target must carry repo_family_hint: {case['case_id']}",
+                    )
 
 
 if __name__ == "__main__":
