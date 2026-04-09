@@ -12,6 +12,7 @@ KERNEL_MANIFEST_PATH = REPO_ROOT / "config" / "project_core_skill_kernel.json"
 DEFAULT_LOG_PATH = REPO_ROOT / ".aoa" / "live_receipts" / "core-skill-applications.jsonl"
 ALLOWED_DETAIL_EVENT_KINDS = {
     "automation_candidate_receipt",
+    "checkpoint_closeout_execution_report",
     "decision_fork_receipt",
     "diagnosis_packet_receipt",
     "harvest_packet_receipt",

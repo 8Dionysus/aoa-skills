@@ -726,7 +726,11 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-core-only",
+        "repo-default",
+        "repo-project-core-kernel",
+        "repo-project-foundation",
+        "repo-session-harvest-family"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",

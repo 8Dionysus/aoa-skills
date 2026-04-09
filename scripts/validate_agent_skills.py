@@ -194,6 +194,7 @@ EXPECTED_RISK_RING_ADJACENT_OVERLAYS = [
 ]
 EXPECTED_FOUNDATION_PROFILE_SKILLS = [
     "aoa-session-donor-harvest",
+    "aoa-checkpoint-closeout-bridge",
     "aoa-automation-opportunity-scan",
     "aoa-session-route-forks",
     "aoa-session-self-diagnose",

@@ -170,7 +170,11 @@
       "allow_implicit_invocation": true,
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/checkpoint-closeout-execution-report-schema.yaml",
+          "references/core-skill-application-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"

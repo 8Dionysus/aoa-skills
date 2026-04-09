@@ -17,6 +17,7 @@
   },
   "skills": [
     "aoa-session-donor-harvest",
+    "aoa-checkpoint-closeout-bridge",
     "aoa-automation-opportunity-scan",
     "aoa-session-route-forks",
     "aoa-session-self-diagnose",
@@ -29,6 +30,11 @@
       "skill_name": "aoa-session-donor-harvest",
       "detail_event_kind": "harvest_packet_receipt",
       "detail_receipt_schema_ref": "references/harvest-packet-receipt-schema.yaml"
+    },
+    {
+      "skill_name": "aoa-checkpoint-closeout-bridge",
+      "detail_event_kind": "checkpoint_closeout_execution_report",
+      "detail_receipt_schema_ref": "references/checkpoint-closeout-execution-report-schema.yaml"
     },
     {
       "skill_name": "aoa-automation-opportunity-scan",

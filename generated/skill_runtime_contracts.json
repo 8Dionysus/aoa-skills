@@ -252,7 +252,11 @@
       "default_prompt": "Use $aoa-checkpoint-closeout-bridge to build one closeout context from reviewed evidence, keep checkpoint hints provisional, and run donor harvest, progression lift, and quest harvest in order.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/checkpoint-closeout-execution-report-schema.yaml",
+          "references/core-skill-application-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"

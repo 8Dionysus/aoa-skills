@@ -213,7 +213,7 @@ class VerifySkillPackTests(unittest.TestCase):
                 msg=f"verify failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
             )
             self.assertTrue(payload["verified"])
-            self.assertEqual(payload["expected_skill_count"], 22)
+            self.assertEqual(payload["expected_skill_count"], 23)
 
     def test_staged_bundle_verifies_offline(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

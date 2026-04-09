@@ -638,7 +638,27 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_checkpoint_closeout_bridge",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_checkpoint_closeout_bridge",
       "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_checkpoint_closeout_bridge",
+      "target": "profile_repo_project_core_kernel"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_checkpoint_closeout_bridge",
+      "target": "profile_repo_project_foundation"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_checkpoint_closeout_bridge",
+      "target": "profile_repo_session_harvest_family"
     },
     {
       "kind": "available_in_artifact_group",
@@ -3380,7 +3400,11 @@
         "walkthrough": 1
       },
       "install_profiles": [
-        "repo-default"
+        "repo-core-only",
+        "repo-default",
+        "repo-project-core-kernel",
+        "repo-project-foundation",
+        "repo-session-harvest-family"
       ],
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
