@@ -1,0 +1,54 @@
+schema_version: work_quest_v1
+id: AOA-SK-Q-0007
+title: Carry checkpoint closeout bridge follow-through into bounded workflow upkeep
+summary: Track the reviewed closeout evidence that now points from the checkpoint closeout bridge into explicit self-diagnose and owner-follow-through, without turning the bridge into hidden runtime authority or widening aoa closeout run.
+repo: aoa-skills
+owner_surface: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+theme_ref: ''
+milestone_ref: ''
+kind: seam
+state: captured
+band: near
+difficulty: d3_seam
+risk: r2_contract
+control_mode: human_codex_copilot
+delegate_tier: planner
+fallback_tier: verifier
+wrapper_class: hybrid
+write_scope: repo_local
+split_required: true
+complexity_basis:
+  scope: 1
+  ambiguity: 2
+  boundary: 2
+  verification: 2
+parent: null
+depends_on:
+  - AOA-SK-Q-0006
+activation:
+  mode: on_review_of
+  ref: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+  note: open when reviewed closeout proves the bridge is working but leaves bounded workflow follow-through or self-diagnose upkeep to the skill layer
+anchor_ref:
+  artifact: checkpoint_closeout_bridge
+  ref: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+  note: the bridge must remain explicit, reviewed-closeout only, and downstream from checkpoint collection
+handoff_role: skill-maintainer
+evidence:
+  - the bridge now executes donor harvest, progression lift, and quest harvest in order
+  - reviewed closeout can surface aoa-session-self-diagnose after reanchor without hiding that move inside aoa closeout run
+  - owner follow-through and stats refresh remain downstream, so workflow upkeep should stay tracked at the skill layer
+harvest:
+  target: skill
+opened_at: '2026-04-09'
+touched_at: '2026-04-09'
+tags:
+  - checkpoint
+  - closeout
+  - workflow
+  - self-diagnose
+notes: >
+  This quest is about bounded upkeep of the bridge workflow after the reviewed
+  workspace closeout, not about replacing the bridge skill with questbook
+  authority.
+public_safe: true
