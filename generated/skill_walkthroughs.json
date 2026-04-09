@@ -455,6 +455,64 @@
     },
     {
       "do_not_use_when": [
+        "the session is still active and only mid-session collection is needed",
+        "there is no reviewed artifact yet",
+        "the task is to implement or patch the bridge itself rather than execute a reviewed closeout chain",
+        "the task wants final harvest, progression, or quest verdicts from checkpoint notes alone",
+        "the request tries to make aoa closeout run a hidden skill runner"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "object_use_shape": [
+        "in checkpoint-collect mode",
+        "updated local checkpoint note",
+        "updated provisional progression-axis hints",
+        "ordered session-end target list",
+        "in reviewed-closeout-execute mode",
+        "one explicit execution context bundle",
+        "one explicit run of",
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest",
+        "one execution report that records what ran, what was skipped, and which artifacts or receipts were emitted"
+      ],
+      "pick_summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
+      "scope": "core",
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-checkpoint-closeout-bridge/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-checkpoint-closeout-bridge/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "use_when": [
+        "checkpoint notes already carry harvest, progression, or upgrade candidates",
+        "reviewed closeout must use those candidates as focus hints without treating them as final authority",
+        "the route needs one explicit bridge from local checkpoint evidence into the reviewed session-harvest family",
+        "the honest next move is not raw recap, but a bounded session-end chain"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the change is entirely local and does not affect a meaningful boundary",
         "the boundary itself is still semantically unclear and naming is drifting; use aoa-bounded-context-map",
         "the main problem is expressing a broad invariant rather than a boundary contract; use aoa-property-invariants",

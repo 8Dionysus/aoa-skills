@@ -5,8 +5,8 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 
 ## Summary
 
-- total skills: 27
-- published lineage: 27
+- total skills: 28
+- published lineage: 28
 - pending lineage: 0
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
@@ -19,6 +19,7 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-automation-opportunity-scan | scaffold | core | published | 3 | 0 | 0 | true | - |
 | aoa-bounded-context-map | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-change-protocol | canonical | core | published | 2 | 0 | 0 | true | - |
+| aoa-checkpoint-closeout-bridge | scaffold | core | published | 3 | 0 | 0 | true | - |
 | aoa-contract-test | canonical | core | published | 2 | 0 | 0 | true | - |
 | aoa-core-logic-boundary | evaluated | core | published | 2 | 0 | 0 | true | - |
 | aoa-dry-run-first | canonical | risk | published | 2 | 0 | 0 | true | - |

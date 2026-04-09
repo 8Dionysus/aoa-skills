@@ -112,6 +112,9 @@
         "promotion target",
         "reviewed drift",
         "unlock hint",
+        "reviewed closeout execute",
+        "closeout context",
+        "checkpoint collect",
         "runtime self diagnosis",
         "diagnostic session artifact",
         "runtime evidence handoff",
@@ -120,6 +123,7 @@
       "skills": [
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -352,6 +356,22 @@
         "already have reviewed diagnosis",
         "primary need is explicit route comparison",
         "primary need is progression overlay"
+      ]
+    },
+    "aoa-checkpoint-closeout-bridge": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "reviewed closeout execute",
+        "closeout context",
+        "donor progression quest chain",
+        "checkpoint collect"
+      ],
+      "negative_cues": [
+        "mid-session collection only",
+        "hidden aoa closeout run",
+        "final verdicts from checkpoint notes alone",
+        "implement the bridge itself",
+        "bounded code-and-docs patch"
       ]
     },
     "aoa-automation-opportunity-scan": {

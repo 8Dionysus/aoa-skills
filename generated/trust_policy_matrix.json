@@ -112,6 +112,20 @@
       "notes": "General bounded change workflow for non-trivial code, config, and docs work."
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-preferred orchestration skill for carrying provisional checkpoint evidence into one reviewed closeout execution chain without turning aoa closeout run or checkpoint notes into hidden verdict authority."
+    },
+    {
       "name": "aoa-contract-test",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

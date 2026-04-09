@@ -21,6 +21,7 @@
         "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",

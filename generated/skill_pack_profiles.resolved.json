@@ -122,6 +122,14 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-checkpoint-closeout-bridge",
+          "source_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "target_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-session-progression-lift",
           "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
           "target_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",

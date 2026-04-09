@@ -818,6 +818,116 @@
       }
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "display_name": "AoA Checkpoint Closeout Bridge",
+      "description": "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.",
+      "short_description": "Bridge checkpoints into reviewed closeout",
+      "path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-checkpoint-closeout-bridge",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-checkpoint-closeout-bridge",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-checkpoint-closeout-bridge"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "already",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "artifact",
+        "authority",
+        "boundary",
+        "bridge",
+        "carry",
+        "chain",
+        "checkpoint",
+        "closeout",
+        "collection",
+        "contracts",
+        "core",
+        "donor",
+        "driving",
+        "evidence",
+        "execution",
+        "exists",
+        "explicit",
+        "final",
+        "fixed",
+        "focus",
+        "for",
+        "handoffs",
+        "harvest",
+        "hidden",
+        "hints",
+        "honest",
+        "inputs",
+        "inside",
+        "intent",
+        "lift",
+        "mid-session",
+        "mint",
+        "move",
+        "next",
+        "not",
+        "notes",
+        "one",
+        "order",
+        "outputs",
+        "points",
+        "procedure",
+        "progression",
+        "provisional",
+        "quest",
+        "request",
+        "reread",
+        "reviewed",
+        "risks",
+        "run",
+        "session",
+        "technique",
+        "the",
+        "traceability",
+        "tries",
+        "trigger",
+        "turning",
+        "use",
+        "verdicts",
+        "verification",
+        "while",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-checkpoint-closeout-bridge"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-checkpoint-closeout-bridge"
+        }
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",

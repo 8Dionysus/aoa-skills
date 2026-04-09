@@ -146,6 +146,25 @@
       "workflow_short": "Purpose: a visible, bounded workflow for non-trivial changes to keep results remains reviewable and safer. Flow: state the goal and touched surfaces -> identify the main risk and think about rollback before editing -> prepare the smallest reviewable..."
     },
     {
+      "inputs_short": "Needs: reviewed session artifact; optional local checkpoint note; optional reviewed surface closeout handoff; optional receipt refs from already published or staged session evidence.",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: treating checkpoint hints as if they were final donor harvest truth; skipping donor harvest and jumping straight to progression or quest verdicts; using progression verdicts that were not reread against the...",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "outputs_short": "Produces: in checkpoint-collect mode; updated local checkpoint note; updated provisional progression-axis hints; ordered session-end target list.",
+      "scope": "core",
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
+      "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
+      "technique_dependencies": [
+        "AOA-T-0075",
+        "AOA-T-0084",
+        "AOA-T-0089"
+      ],
+      "trigger_boundary_short": "Use when checkpoint notes already carry harvest, progression, or upgrade candidates; reviewed closeout must use those candidates as focus hints without treating them as final authority; Avoid when the session is...",
+      "verification_short": "Checks: confirm checkpoint-collect only updates local ledger surfaces; confirm the bridge never emits final verdicts during mid-session capture; confirm reviewed closeout refuses to run without a reviewed artifact;...",
+      "workflow_short": "Purpose: connect checkpoint-led session growth with explicit reviewed closeout execution. Flow: during checkpoint collection, keep the note append-only and provisional -> treat checkpoint candidates and progression-axis hints as shortlist inputs, not..."
+    },
+    {
       "inputs_short": "Needs: boundary under review; expected inputs and outputs; current verification surface; known downstream dependencies.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary; changing interface behavior without downstream impact notes.",

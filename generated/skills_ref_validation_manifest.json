@@ -95,6 +95,16 @@
       "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa"
     },
     {
+      "skill_name": "aoa-checkpoint-closeout-bridge",
+      "path": ".agents/skills/aoa-checkpoint-closeout-bridge",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-checkpoint-closeout-bridge"
+      ],
+      "description_sha256": "417755266b47a9c47b0556216821716b52acb98cd81173bd1d8556892cc00350"
+    },
+    {
       "skill_name": "aoa-contract-test",
       "path": ".agents/skills/aoa-contract-test",
       "command": [

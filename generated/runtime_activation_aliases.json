@@ -99,6 +99,18 @@
       }
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "codex_mention": "$aoa-checkpoint-closeout-bridge",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-checkpoint-closeout-bridge",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-checkpoint-closeout-bridge"
+        }
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "codex_mention": "$aoa-contract-test",
       "codex_browser": "/skills",

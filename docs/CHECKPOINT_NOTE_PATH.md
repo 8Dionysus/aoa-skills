@@ -55,3 +55,9 @@ The honest route is:
 
 Promotion stays explicit. A checkpoint note may prepare reviewed closeout, but
 it does not become a silent substitute for the existing session-growth family.
+
+When the session is ready for explicit reviewed closeout, the honest bridge is
+`aoa-checkpoint-closeout-bridge`: it may use checkpoint hints as shortlist
+inputs, but it must still reread the reviewed artifact and any receipt evidence
+before driving `aoa-session-donor-harvest`, `aoa-session-progression-lift`, and
+`aoa-quest-harvest`.

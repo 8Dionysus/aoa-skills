@@ -354,6 +354,63 @@
     {
       "composition_mode": "bounded",
       "invocation_mode": "explicit-preferred",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "scope": "core",
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
+      "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
+      "technique_dependencies": [
+        "AOA-T-0075",
+        "AOA-T-0084",
+        "AOA-T-0089"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0075",
+          "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Contracts",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0084",
+          "path": "techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Contracts",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0089",
+          "path": "techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
       "name": "aoa-contract-test",
       "scope": "core",
       "skill_path": "skills/aoa-contract-test/SKILL.md",

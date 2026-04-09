@@ -130,6 +130,16 @@
       "requires_confirmation_seam": false,
       "notes": "Explicit-only nucleus skill for turning a reviewed session into a bounded HARVEST_PACKET, routing reusable outputs to the right owner layer, and handing off to later post-session family seams when needed."
     },
+    "aoa-checkpoint-closeout-bridge": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Explicit-preferred orchestration skill for carrying provisional checkpoint evidence into one reviewed closeout execution chain without turning aoa closeout run or checkpoint notes into hidden verdict authority."
+    },
     "aoa-automation-opportunity-scan": {
       "trust_posture": "portable-core",
       "mutation_surface": "none",

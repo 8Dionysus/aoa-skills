@@ -187,6 +187,29 @@
       "requires_confirmation_seam": false
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "compact_summary": "Bridge checkpoints into reviewed closeout",
+      "activation_card_markdown": "Use when: Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.\n\nKeep in memory: reviewed session artifact, optional local checkpoint note, in `checkpoint-collect` mode:, updated local checkpoint note.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "reviewed session artifact",
+        "optional local checkpoint note",
+        "in `checkpoint-collect` mode:",
+        "updated local checkpoint note"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-contract-test",
       "compact_summary": "Strengthen interface contracts",
       "activation_card_markdown": "Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n\nKeep in memory: boundary under review, expected inputs and outputs, explicit contract assumptions, tests or smoke summary changes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",

@@ -310,6 +310,43 @@
       }
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "display_name": "AoA Checkpoint Closeout Bridge",
+      "description": "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.",
+      "short_description": "Bridge checkpoints into reviewed closeout",
+      "path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "source_skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "technique_dependencies": [
+        "AOA-T-0075",
+        "AOA-T-0084",
+        "AOA-T-0089"
+      ],
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "ui": {
+        "brand_color": "#2563EB",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg"
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",

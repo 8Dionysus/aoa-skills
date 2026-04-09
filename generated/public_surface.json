@@ -242,6 +242,30 @@
       "summary": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly."
     },
     {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated"
+      ],
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "maturity_status": "scaffold",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
+      "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority."
+    },
+    {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,
