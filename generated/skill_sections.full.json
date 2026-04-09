@@ -466,6 +466,64 @@
       "status": "canonical"
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to connect checkpoint-led session growth with explicit reviewed\ncloseout execution.\n\nIt does not replace the core session-growth skills.\nIt keeps checkpoint capture provisional during the session and then drives the\nexplicit reviewed-closeout chain in the fixed order:\n\n`aoa-session-donor-harvest -> aoa-session-progression-lift -> aoa-quest-harvest`",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- checkpoint notes already carry harvest, progression, or upgrade candidates\n- reviewed closeout must use those candidates as focus hints without treating\n  them as final authority\n- the route needs one explicit bridge from local checkpoint evidence into the\n  reviewed session-harvest family\n- the honest next move is not raw recap, but a bounded session-end chain\n\nDo not use this skill when:\n- the session is still active and only mid-session collection is needed\n- there is no reviewed artifact yet\n- the task is to implement or patch the bridge itself rather than execute a\n  reviewed closeout chain\n- the task wants final harvest, progression, or quest verdicts from checkpoint\n  notes alone\n- the request tries to make `aoa closeout run` a hidden skill runner",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- reviewed session artifact\n- optional local checkpoint note\n- optional reviewed surface closeout handoff\n- optional receipt refs from already published or staged session evidence\n- repo scope and touched owner hints",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- in `checkpoint-collect` mode:\n  - updated local checkpoint note\n  - updated provisional progression-axis hints\n  - ordered session-end target list\n- in `reviewed-closeout-execute` mode:\n  - one explicit execution context bundle\n  - one explicit run of:\n    - `aoa-session-donor-harvest`\n    - `aoa-session-progression-lift`\n    - `aoa-quest-harvest`\n  - one execution report that records what ran, what was skipped, and which\n    artifacts or receipts were emitted",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. during checkpoint collection, keep the note append-only and provisional\n2. treat checkpoint candidates and progression-axis hints as shortlist inputs,\n   not verdict authority\n3. publish the reviewed-closeout target order explicitly:\n   - donor harvest first\n   - progression lift second\n   - quest harvest third\n4. when executing reviewed closeout, reread the full reviewed artifact before\n   every core skill stage\n5. let checkpoint note and reviewed handoff narrow attention, but never replace\n   the reviewed artifact or receipt evidence\n6. run `aoa-session-donor-harvest` first so reusable units and owner routing\n   are bounded before any progression verdict\n7. run `aoa-session-progression-lift` second so final multi-axis movement is\n   gathered from reviewed evidence, donor outputs, and provisional checkpoint\n   axes together\n8. run `aoa-quest-harvest` third so final promotion triage happens only after\n   donor harvest and progression lift have finished\n9. keep stats refresh out of this bridge skill; that remains downstream after\n   explicit closeout receipts exist",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- checkpoint note stays provisional and lower-authority than reviewed closeout\n- `checkpoint-collect` never emits final harvest, progression, or quest verdicts\n- `reviewed-closeout-execute` must reread the reviewed artifact and any receipt\n  evidence; it may not trust checkpoint notes alone\n- core skill order is fixed:\n  - `aoa-session-donor-harvest`\n  - `aoa-session-progression-lift`\n  - `aoa-quest-harvest`\n- this bridge skill coordinates core skills; it does not replace their meaning\n- `aoa closeout run` remains a separate receipt-first publisher path\n- stats refresh is not part of this skill",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating checkpoint hints as if they were final donor harvest truth\n- skipping donor harvest and jumping straight to progression or quest verdicts\n- using progression verdicts that were not reread against the reviewed artifact\n- letting quest harvest run before progression lift\n- turning the bridge into a hidden auto-runner inside `aoa closeout run`\n- refreshing stats before the explicit reviewed-closeout chain finishes",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm `checkpoint-collect` only updates local ledger surfaces\n- confirm the bridge never emits final verdicts during mid-session capture\n- confirm reviewed closeout refuses to run without a reviewed artifact\n- confirm the core skill order is fixed and visible\n- confirm checkpoint note and reviewed handoff are treated as hints rather than\n  sole evidence\n- confirm stats refresh remains downstream of the bridge execution",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0075 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0084 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0089 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays may add:\n- local reviewed artifact entrypoints\n- local receipt bundle locations\n- local stop conditions before quest triage\n- local owner-layer route maps for generated donor packets\n- local post-closeout stats or owner follow-through commands that stay outside\n  this bridge skill",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "name": "aoa-contract-test",
       "scope": "core",
       "sections": [

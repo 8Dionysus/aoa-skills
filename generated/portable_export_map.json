@@ -161,6 +161,27 @@
       }
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "source_skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "target_dir": ".agents/skills/aoa-checkpoint-closeout-bridge",
+      "target_skill_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/checkpoint-closeout-execution-report-schema.yaml",
+          "references/core-skill-application-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "source_skill_path": "skills/aoa-contract-test/SKILL.md",
       "target_dir": ".agents/skills/aoa-contract-test",

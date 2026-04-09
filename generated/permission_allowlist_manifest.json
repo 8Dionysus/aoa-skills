@@ -363,6 +363,53 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "display_name": "AoA Checkpoint Closeout Bridge",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-checkpoint-closeout-bridge",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge",
+          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/references",
+          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge",
+          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/scripts",
+          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/references",
+          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-checkpoint-closeout-bridge",
+          "/etc/codex/skills/aoa-checkpoint-closeout-bridge/scripts",
+          "/etc/codex/skills/aoa-checkpoint-closeout-bridge/references",
+          "/etc/codex/skills/aoa-checkpoint-closeout-bridge/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-checkpoint-closeout-bridge",
+        ".agents/skills/aoa-checkpoint-closeout-bridge/scripts",
+        ".agents/skills/aoa-checkpoint-closeout-bridge/references",
+        ".agents/skills/aoa-checkpoint-closeout-bridge/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/checkpoint-closeout-execution-report-schema.yaml",
+          "references/core-skill-application-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "source_scope": "repo",

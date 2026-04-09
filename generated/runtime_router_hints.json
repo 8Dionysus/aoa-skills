@@ -129,6 +129,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -166,7 +167,8 @@
       "competing_skills": [
         "aoa-tdd-slice",
         "aoa-safe-infra-change",
-        "atm10-change-protocol"
+        "atm10-change-protocol",
+        "aoa-checkpoint-closeout-bridge"
       ],
       "should_trigger": [
         "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan."
@@ -181,6 +183,34 @@
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
         "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    },
+    {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "description": "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.",
+      "collision_family": "session-harvest-family",
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
+      ],
+      "should_trigger": [
+        "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The session is still active, there is no reviewed artifact yet, and the request is to let aoa closeout run silently decide donor, progression, and quest verdicts straight from checkpoint notes.",
+        "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
+      ],
+      "notes": [
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
       ]
     },
     {
@@ -355,6 +385,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -428,6 +459,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -455,6 +487,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -483,6 +516,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -511,6 +545,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -539,6 +574,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",

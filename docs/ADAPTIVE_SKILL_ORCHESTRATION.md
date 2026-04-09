@@ -163,6 +163,7 @@ The honest route remains:
 Use:
 
 - [CHECKPOINT_NOTE_PATH.md](CHECKPOINT_NOTE_PATH.md) for lower-authority checkpoint capture
+- `aoa-checkpoint-closeout-bridge` when reviewed closeout must turn checkpoint-led evidence into one explicit ordered core-skill chain
 - [QUESTBOOK_SKILL_INTEGRATION.md](QUESTBOOK_SKILL_INTEGRATION.md) for the installed session-harvest family posture
 
 ## Anti-patterns

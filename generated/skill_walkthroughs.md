@@ -321,6 +321,48 @@ Common expand sections:
 - `review_checklist`: `skills/aoa-change-protocol/checks/review.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-change-protocol.md`
 
+## aoa-checkpoint-closeout-bridge
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/aoa-checkpoint-closeout-bridge/SKILL.md`
+- pick summary: Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.
+
+### Use when
+
+- checkpoint notes already carry harvest, progression, or upgrade candidates
+- reviewed closeout must use those candidates as focus hints without treating them as final authority
+- the route needs one explicit bridge from local checkpoint evidence into the reviewed session-harvest family
+- the honest next move is not raw recap, but a bounded session-end chain
+
+### Do not use when
+
+- the session is still active and only mid-session collection is needed
+- there is no reviewed artifact yet
+- the task is to implement or patch the bridge itself rather than execute a reviewed closeout chain
+- the task wants final harvest, progression, or quest verdicts from checkpoint notes alone
+- the request tries to make aoa closeout run a hidden skill runner
+
+### Object use shape
+
+- in checkpoint-collect mode
+- updated local checkpoint note
+- updated provisional progression-axis hints
+- ordered session-end target list
+- in reviewed-closeout-execute mode
+- one explicit execution context bundle
+- one explicit run of
+- aoa-session-donor-harvest
+- aoa-session-progression-lift
+- aoa-quest-harvest
+- one execution report that records what ran, what was skipped, and which artifacts or receipts were emitted
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-checkpoint-closeout-bridge/examples/runtime.md`
+- `review_checklist`: `skills/aoa-checkpoint-closeout-bridge/checks/review.md`
+
 ## aoa-contract-test
 
 - scope: `core`

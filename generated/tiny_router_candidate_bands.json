@@ -125,6 +125,9 @@
         "promotion target",
         "reviewed drift",
         "unlock hint",
+        "reviewed closeout execute",
+        "closeout context",
+        "checkpoint collect",
         "runtime self diagnosis",
         "diagnostic session artifact",
         "runtime evidence handoff",
@@ -133,6 +136,7 @@
       "skills": [
         "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",

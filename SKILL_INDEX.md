@@ -18,6 +18,7 @@ This file is the repository-wide map of public skills.
 | aoa-core-logic-boundary | core | evaluated | Codex skill for clarifying which logic belongs in the reusable core versus glue, orchestration, or infrastructure detail. |
 | aoa-port-adapter-refactor | core | evaluated | Codex skill for refactoring toward clearer ports and adapters so reusable logic is less entangled with infrastructure details. |
 | aoa-quest-harvest | core | scaffold | Codex skill for giving the final promotion verdict on one repeated reviewed quest unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. |
+| aoa-checkpoint-closeout-bridge | core | scaffold | Codex skill for bridging provisional checkpoint evidence into one explicit reviewed-closeout execution chain without turning notes into final authority. |
 | aoa-session-donor-harvest | core | scaffold | Codex skill for turning a reviewed session into a bounded HARVEST_PACKET, routing reusable units to the right AoA owner layer, and handing off to the next honest post-session skill when needed. |
 | aoa-session-route-forks | core | scaffold | Codex skill for turning reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions. |
 | aoa-session-self-diagnose | core | scaffold | Codex skill for classifying drift, friction, proof gaps, and ownership confusion from a reviewed session into a bounded diagnosis packet without mutating anything yet. |

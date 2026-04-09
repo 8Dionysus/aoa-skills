@@ -54,6 +54,7 @@
       "family": "session-harvest-family",
       "skills": [
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -63,6 +64,7 @@
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -451,6 +453,30 @@
       ],
       "prompt": "This abyss repo now has a diagnostic spine note, runbook fragments, and overlay guidance that disagree about which file is authoritative. Map the canonical docs and shorten the entrypoints instead of producing a runtime artifact.",
       "note": "When the real problem is document authority around the diagnostic spine, source-of-truth mapping should win and the overlay should defer."
+    },
+    {
+      "case_id": "collision-29",
+      "skill_name": "aoa-checkpoint-closeout-bridge",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-checkpoint-closeout-bridge",
+      "competing_skills": [
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest"
+      ],
+      "prompt": "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order.",
+      "note": "This is the explicit reviewed-closeout bridge: checkpoint hints stay provisional, but the bridge itself should win when the task is to coordinate the full donor -> progression -> quest chain."
+    },
+    {
+      "case_id": "collision-30",
+      "skill_name": "aoa-change-protocol",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-change-protocol",
+      "competing_skills": [
+        "aoa-checkpoint-closeout-bridge"
+      ],
+      "prompt": "Implement a bounded code-and-docs patch across aoa-sdk and aoa-skills so the checkpoint closeout bridge becomes real, then verify the repo batteries and report what changed.",
+      "note": "When the task is to implement bridge support rather than execute a reviewed closeout chain, the bounded change workflow should win and the bridge skill should defer."
     }
   ]
 }

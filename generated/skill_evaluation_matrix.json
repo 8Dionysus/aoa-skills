@@ -139,6 +139,23 @@
     },
     {
       "autonomy_check_count": 1,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "do_not_use_case_count": 1,
+      "do_not_use_snapshot_count": 1,
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "promotion_review_path": null,
+      "scope": "core",
+      "selected_runtime_artifact_path": "skills/aoa-checkpoint-closeout-bridge/examples/runtime.md",
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 1,
+      "use_snapshot_count": 1
+    },
+    {
+      "autonomy_check_count": 1,
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,

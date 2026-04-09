@@ -35,6 +35,10 @@
       "tools": []
     },
     {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "tools": []
+    },
+    {
       "name": "aoa-contract-test",
       "tools": []
     },

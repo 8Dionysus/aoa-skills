@@ -131,6 +131,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-checkpoint-closeout-bridge
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-automation-opportunity-scan
     forbidden_runtime_terms:
       - aoa-techniques
@@ -423,6 +429,23 @@ trigger_cases:
     required_phrases:
       - a repeated manual route may also need an explicit automation-readiness seam instead of staying vague donor residue
       - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
+  - skill: aoa-checkpoint-closeout-bridge
+    case_id: checkpoint_closeout_bridge_reviewed_execution_chain
+    prompt: A reviewed session artifact, a provisional checkpoint note, and a reviewed closeout handoff already exist, and we need one explicit bridge that rereads the reviewed artifact before donor harvest, progression lift, and quest harvest run in order.
+    expected: use
+    required_phrases:
+      - checkpoint notes already carry harvest, progression, or upgrade candidates
+      - reviewed closeout must use those candidates as focus hints without treating
+      - the route needs one explicit bridge from local checkpoint evidence into the
+  - skill: aoa-checkpoint-closeout-bridge
+    case_id: checkpoint_closeout_bridge_hidden_mid_session_runner
+    prompt: The session is still active, and we want aoa closeout run to silently harvest, lift progression, and promote quests straight from checkpoint notes without any reviewed artifact.
+    expected: do_not_use
+    required_phrases:
+      - the session is still active and only mid-session collection is needed
+      - there is no reviewed artifact yet
+      - the request tries to make `aoa closeout run` a hidden skill runner
+      - the task wants final harvest, progression, or quest verdicts from checkpoint
   - skill: aoa-automation-opportunity-scan
     case_id: automation_opportunity_scan_recurring_review_closeout_route
     prompt: We keep doing the same reviewed session closeout by hand. Scan whether it is ready for automation.
@@ -1237,6 +1260,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection toward reviewed-session prerequisites or history techniques instead of donor harvest.
+    forbidden_output_phrases: []
+  - skill: aoa-checkpoint-closeout-bridge
+    case_id: checkpoint_closeout_bridge_reviewed_execution_chain
+    prompt: A reviewed session artifact, a provisional checkpoint note, and a reviewed closeout handoff already exist, and we need one explicit bridge that rereads the reviewed artifact before donor harvest, progression lift, and quest harvest run in order.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-checkpoint-closeout-bridge/checkpoint_closeout_bridge_reviewed_execution_chain.md
+    required_output_phrases:
+      - use
+      - A closeout-context bundle plus one explicit donor -> progression -> quest execution chain that rereads the reviewed artifact instead of trusting checkpoint notes alone.
+    forbidden_output_phrases: []
+  - skill: aoa-checkpoint-closeout-bridge
+    case_id: checkpoint_closeout_bridge_hidden_mid_session_runner
+    prompt: The session is still active, and we want aoa closeout run to silently harvest, lift progression, and promote quests straight from checkpoint notes without any reviewed artifact.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-checkpoint-closeout-bridge/checkpoint_closeout_bridge_hidden_mid_session_runner.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that keeps checkpoint collection provisional and refuses to turn aoa closeout run into a hidden skill runner without a reviewed artifact.
     forbidden_output_phrases: []
   - skill: aoa-automation-opportunity-scan
     case_id: automation_opportunity_scan_one_off_creative_strategy_thread

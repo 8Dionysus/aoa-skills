@@ -9,9 +9,9 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 27,
+  "skill_count": 28,
   "band_count": 6,
-  "case_count": 71,
+  "case_count": 76,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -68,6 +68,13 @@
       "manual_invocation_required": false,
       "project_overlay": false,
       "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa"
+    },
+    {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "417755266b47a9c47b0556216821716b52acb98cd81173bd1d8556892cc00350"
     },
     {
       "name": "aoa-contract-test",

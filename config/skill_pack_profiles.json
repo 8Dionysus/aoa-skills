@@ -21,6 +21,7 @@
         "aoa-property-invariants",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -42,6 +43,7 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -66,6 +68,7 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -119,6 +122,7 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -162,6 +166,7 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",

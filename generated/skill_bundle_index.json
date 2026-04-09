@@ -700,6 +700,96 @@
         "tiny_router"
       ],
       "bundle_files": [
+        "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+        "skills/aoa-checkpoint-closeout-bridge/techniques.yaml",
+        "skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+        "skills/aoa-checkpoint-closeout-bridge/examples/runtime.md",
+        "skills/aoa-checkpoint-closeout-bridge/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "21255703e3bc9e79fbc53602073ac9afd14cd23538e82845cbe1afbe2815053a",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-core-only",
+        "repo-default",
+        "repo-project-core-kernel",
+        "repo-project-foundation",
+        "repo-session-harvest-family"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "skill_revision": "21255703e3bc",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-checkpoint-closeout-bridge/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-checkpoint-closeout-bridge/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0075",
+        "AOA-T-0084",
+        "AOA-T-0089"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0075",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        },
+        {
+          "id": "AOA-T-0084",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        },
+        {
+          "id": "AOA-T-0089",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
         "skills/aoa-contract-test/SKILL.md",
         "skills/aoa-contract-test/techniques.yaml",
         "skills/aoa-contract-test/agents/openai.yaml",

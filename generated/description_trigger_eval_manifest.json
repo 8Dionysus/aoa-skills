@@ -11,14 +11,14 @@
     "generated/runtime_router_hints.json",
     ".agents/skills/*/SKILL.md"
   ],
-  "skill_count": 27,
-  "total_cases": 132,
+  "skill_count": 28,
+  "total_cases": 141,
   "case_class_totals": {
-    "explicit-handle": 27,
+    "explicit-handle": 28,
     "manual-invocation-required": 28,
-    "prefer-other-skill": 23,
-    "should-not-trigger": 27,
-    "should-trigger": 27
+    "prefer-other-skill": 27,
+    "should-not-trigger": 28,
+    "should-trigger": 30
   },
   "skills": [
     {
@@ -165,12 +165,33 @@
       "invocation_mode": "explicit-preferred",
       "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
       "family": "change-execution-vs-test-first",
-      "total_cases": 8,
+      "total_cases": 9,
       "case_class_totals": {
         "explicit-handle": 1,
         "prefer-other-skill": 3,
         "should-not-trigger": 1,
-        "should-trigger": 3
+        "should-trigger": 4
+      },
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "coverage_ok": true,
+      "has_collision_coverage": true
+    },
+    {
+      "name": "aoa-checkpoint-closeout-bridge",
+      "invocation_mode": "explicit-preferred",
+      "description_sha256": "417755266b47a9c47b0556216821716b52acb98cd81173bd1d8556892cc00350",
+      "family": "session-harvest-family",
+      "total_cases": 5,
+      "case_class_totals": {
+        "explicit-handle": 1,
+        "prefer-other-skill": 1,
+        "should-not-trigger": 1,
+        "should-trigger": 2
       },
       "required_case_classes": [
         "explicit-handle",
@@ -329,11 +350,11 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda",
       "family": "session-harvest-family",
-      "total_cases": 5,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
-        "prefer-other-skill": 1,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -388,10 +409,11 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -407,10 +429,11 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
+        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [

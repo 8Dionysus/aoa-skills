@@ -10,6 +10,7 @@
       "aoa-automation-opportunity-scan",
       "aoa-bounded-context-map",
       "aoa-change-protocol",
+      "aoa-checkpoint-closeout-bridge",
       "aoa-contract-test",
       "aoa-core-logic-boundary",
       "aoa-dry-run-first",
@@ -127,6 +128,18 @@
       "scope": "core",
       "skill_path": "skills/aoa-change-protocol/SKILL.md",
       "status": "canonical",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-checkpoint-closeout-bridge",
+      "pending_technique_count": 0,
+      "published_technique_count": 3,
+      "scope": "core",
+      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
       "tbd_ref_count": 0
     },
     {
