@@ -88,5 +88,20 @@
     "state": "captured",
     "theme_ref": "",
     "title": "Classify the cross-repo technique refresh and truth-sync route for bounded automation follow-through"
+  },
+  {
+    "band": "near",
+    "difficulty": "d3_seam",
+    "id": "AOA-SK-Q-0007",
+    "kind": "seam",
+    "milestone_ref": "",
+    "owner_surface": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+    "public_safe": true,
+    "repo": "aoa-skills",
+    "risk": "r2_contract",
+    "source_path": "quests/AOA-SK-Q-0007.yaml",
+    "state": "captured",
+    "theme_ref": "",
+    "title": "Carry checkpoint closeout bridge follow-through into bounded workflow upkeep"
   }
 ]

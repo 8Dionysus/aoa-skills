@@ -22,6 +22,7 @@ Do not use it for:
 - `AOA-SK-Q-0004` — harvest repeated overlay-specific exceptions into stable skill bundles or playbooks
 - `AOA-SK-Q-0005` — reflect bounded skill bundles as abilities with pack-profile-aware unlock posture
 - `AOA-SK-Q-0006` — classify the cross-repo technique refresh and truth-sync route for bounded automation follow-through
+- `AOA-SK-Q-0007` — carry checkpoint closeout bridge follow-through into bounded workflow upkeep
 
 ## Latent / parked
 - none yet
