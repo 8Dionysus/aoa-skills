@@ -1,4 +1,4 @@
-name: Repo Validation
+name: Release Audit
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
   pull_request:
 
 jobs:
-  validate:
+  release_audit:
+    name: Release Audit
     runs-on: windows-latest
     steps:
       - name: Checkout aoa-skills
@@ -39,6 +40,6 @@ jobs:
         working-directory: workspace/aoa-skills
         run: python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
 
-      - name: Run bounded release check with packaging smoke
+      - name: Run release audit
         working-directory: workspace/aoa-skills
         run: python scripts/release_check.py --include-packaging-smoke
