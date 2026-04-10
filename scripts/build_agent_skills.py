@@ -38,6 +38,8 @@ SCOPE_UI_DEFAULTS = {
     },
 }
 EXPORT_PROFILE = "codex-facing-wave-3"
+DEFAULT_EXPORT_ROOT = pathlib.Path(".agents") / "skills"
+
 
 def write_text_file(path: pathlib.Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -72,6 +74,31 @@ def load_json(path: pathlib.Path, default: Any | None = None) -> Any:
     if default is not None:
         return copy.deepcopy(default)
     raise FileNotFoundError(path)
+
+
+def path_reference(path: pathlib.Path, repo_root: pathlib.Path) -> str:
+    try:
+        return path.relative_to(repo_root).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
+def prepare_skills_root(repo_root: pathlib.Path, skills_root: pathlib.Path) -> None:
+    default_skills_root = (repo_root / DEFAULT_EXPORT_ROOT).resolve()
+    if skills_root == default_skills_root:
+        if skills_root.exists():
+            shutil.rmtree(skills_root)
+        skills_root.mkdir(parents=True, exist_ok=True)
+        return
+    if skills_root.exists():
+        if not skills_root.is_dir():
+            raise ValueError(f"--output-root must point to a directory: {skills_root}")
+        if any(skills_root.iterdir()):
+            raise ValueError(
+                "--output-root must point to a new or empty directory; refusing to delete existing external contents"
+            )
+    else:
+        skills_root.mkdir(parents=True, exist_ok=True)
 
 
 def merge_dict(base: dict[str, Any], extra: dict[str, Any]) -> dict[str, Any]:
@@ -794,7 +821,7 @@ def build_local_adapter_manifests(
     skills_root: pathlib.Path,
     catalog_full: dict[str, Any],
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    root = str(skills_root.relative_to(repo_root).as_posix())
+    root = path_reference(skills_root, repo_root)
     contracts = {
         "runtime": "generated/skill_runtime_contracts.json",
         "context_retention": "generated/context_retention_manifest.json",
@@ -835,7 +862,7 @@ def build_local_adapter_manifests(
                 "openai_config_path": entry["openai_config_path"],
                 "allow_implicit_invocation": entry["allow_implicit_invocation"],
                 "invocation_mode": entry["invocation_mode"],
-                "allowlist_paths": [str((skills_root / entry["name"]).relative_to(repo_root).as_posix())],
+                "allowlist_paths": [path_reference(skills_root / entry["name"], repo_root)],
                 "resource_inventory": entry.get("resource_inventory", {}),
                 "metadata": frontmatter.get("metadata", {}),
                 "trust_posture": entry["trust_posture"],
@@ -887,10 +914,8 @@ def main() -> int:
     compatibility_default = overrides_doc["compatibility_default"]
     source_repo = "8Dionysus/aoa-skills"
 
-    skills_root = pathlib.Path(args.output_root).resolve() if args.output_root else repo_root / ".agents" / "skills"
-    if skills_root.exists():
-        shutil.rmtree(skills_root)
-    skills_root.mkdir(parents=True)
+    skills_root = pathlib.Path(args.output_root).resolve() if args.output_root else repo_root / DEFAULT_EXPORT_ROOT
+    prepare_skills_root(repo_root, skills_root)
 
     source_of_truth = {
         "skill_sections": "generated/skill_sections.full.json",

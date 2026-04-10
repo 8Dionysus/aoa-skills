@@ -1,4 +1,5 @@
 import json
+import importlib.util
 import pathlib
 import subprocess
 import sys
@@ -17,6 +18,14 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
         capture_output=True,
         check=False,
     )
+
+
+def load_module(name: str, path: pathlib.Path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
 
 
 class Wave6RuntimeGuardrailsTests(unittest.TestCase):
@@ -53,7 +62,7 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
                     "activate",
                     "--repo-root",
                     ".",
-                    "--skill",
+                    "--skill-name",
                     "aoa-change-protocol",
                     "--session-file",
                     str(session_file),
@@ -113,7 +122,7 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
                     "activate",
                     "--repo-root",
                     ".",
-                    "--skill",
+                    "--skill-name",
                     "aoa-change-protocol",
                     "--session-file",
                     str(session_file),
@@ -195,6 +204,31 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
             self.assertEqual(rehydrate_payload["skill_packets"][0]["name"], "aoa-change-protocol")
             self.assertIn("dedupe_key", rehydrate_payload["skill_packets"][0])
             self.assertEqual(rehydrate_payload["activation_calls"][0]["name"], "guarded_activate_skill")
+
+    def test_repo_root_only_match_does_not_override_git_origin_identity(self):
+        module = load_module("skill_runtime_guardrails", REPO_ROOT / "scripts" / "skill_runtime_guardrails.py")
+        store = {
+            "entries": [
+                {
+                    "repo_root": "/tmp/worktree",
+                    "git_origin_url": "https://example.com/other.git",
+                    "decision": "trusted",
+                },
+                {
+                    "git_origin_url": "https://example.com/right.git",
+                    "decision": "trusted",
+                },
+            ]
+        }
+        identity = {
+            "repo_root": "/tmp/worktree",
+            "repo_id": "missing",
+            "git_origin_url": "https://example.com/right.git",
+        }
+
+        match = module.find_matching_trust_entry(store, identity)
+
+        self.assertEqual(match["git_origin_url"], "https://example.com/right.git")
 
 
 if __name__ == "__main__":

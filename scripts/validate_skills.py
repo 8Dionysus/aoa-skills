@@ -541,6 +541,13 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             quest_id = entry.get("id")
             if not entry_valid and isinstance(quest_id, str):
                 live_dispatch_invalid_ids.add(quest_id)
+            if entry_valid and isinstance(quest_id, str) and quest_id not in expected_dispatch_by_id:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(repo_root / QUEST_DISPATCH_PATH),
+                        f"dispatch entry '{quest_id}' must map to a quest declared in quests/*.yaml",
+                    )
+                )
             requires_artifacts = entry.get("requires_artifacts")
             if not isinstance(requires_artifacts, list) or not requires_artifacts or not all(
                 isinstance(item, str) and item for item in requires_artifacts
@@ -603,6 +610,13 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             quest_id = entry.get("id")
             if not entry_valid and isinstance(quest_id, str):
                 example_dispatch_invalid_ids.add(quest_id)
+            if entry_valid and isinstance(quest_id, str) and quest_id not in expected_dispatch_by_id:
+                issues.append(
+                    ValidationIssue(
+                        relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
+                        f"example dispatch entry '{quest_id}' must map to a quest declared in quests/*.yaml",
+                    )
+                )
             if entry_valid and isinstance(quest_id, str) and quest_id in expected_dispatch_by_id:
                 example_dispatch_by_id[quest_id] = entry
         comparable_example_dispatch_ids = [

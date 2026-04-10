@@ -20,6 +20,9 @@ import yaml
 PROFILE = "codex-facing-wave-7-description-trigger-evals"
 VALIDATION_PROFILE = "codex-facing-wave-7-standard-validation"
 JSON_INDENT = 2
+AGENTSKILLS_REPOSITORY = "agentskills/agentskills"
+AGENTSKILLS_SKILLS_REF_SUBDIRECTORY = "skills-ref"
+AGENTSKILLS_PIN = "2e8b3265237b2e5f255d6e675f89ae83be572329"
 WAVE7_GENERATED_FILES = [
     "generated/skill_description_signals.json",
     "generated/description_trigger_eval_cases.jsonl",
@@ -361,10 +364,12 @@ def main() -> int:
         "mode": "soft-conformance-lane",
         "validator": "skills-ref",
         "upstream": {
-            "repository": "agentskills/agentskills",
-            "subdirectory": "skills-ref",
+            "repository": AGENTSKILLS_REPOSITORY,
+            "subdirectory": AGENTSKILLS_SKILLS_REF_SUBDIRECTORY,
+            "ref": AGENTSKILLS_PIN,
             "installation": [
-                "git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills",
+                f"git clone https://github.com/{AGENTSKILLS_REPOSITORY}.git /tmp/agentskills",
+                f"git -C /tmp/agentskills checkout {AGENTSKILLS_PIN}",
                 "python -m pip install -e /tmp/agentskills/skills-ref",
             ],
             "usage": "skills-ref validate path/to/skill",

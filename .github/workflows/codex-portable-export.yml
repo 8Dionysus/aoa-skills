@@ -9,6 +9,8 @@ on:
 jobs:
   build-validate:
     runs-on: ubuntu-latest
+    env:
+      AGENTSKILLS_REF: 2e8b3265237b2e5f255d6e675f89ae83be572329
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -65,7 +67,8 @@ jobs:
 
       - name: Install skills-ref reference validator
         run: |
-          git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills
+          git clone https://github.com/agentskills/agentskills.git /tmp/agentskills
+          git -C /tmp/agentskills checkout "$AGENTSKILLS_REF"
           python -m pip install -e /tmp/agentskills/skills-ref
 
       - name: Validate portable export with skills-ref

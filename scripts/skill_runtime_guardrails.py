@@ -128,13 +128,25 @@ def repo_identity(repo_root: pathlib.Path) -> dict[str, Any]:
 
 def find_matching_trust_entry(store: dict[str, Any], identity: dict[str, Any]) -> dict[str, Any] | None:
     entries = store.get("entries", [])
-    for key in ("repo_id", "repo_root"):
+    repo_id = identity.get("repo_id")
+    if repo_id:
         for entry in entries:
-            if entry.get(key) and entry.get(key) == identity.get(key):
+            if entry.get("repo_id") == repo_id:
                 return entry
-    if identity.get("git_origin_url"):
+    repo_root = identity.get("repo_root")
+    git_origin_url = identity.get("git_origin_url")
+    if repo_root and git_origin_url:
         for entry in entries:
-            if entry.get("git_origin_url") == identity["git_origin_url"]:
+            if entry.get("repo_root") == repo_root and entry.get("git_origin_url") == git_origin_url:
+                return entry
+    if git_origin_url:
+        for entry in entries:
+            if entry.get("git_origin_url") == git_origin_url:
+                if not entry.get("repo_root") or entry.get("repo_root") == repo_root:
+                    return entry
+    if repo_root and not git_origin_url:
+        for entry in entries:
+            if entry.get("repo_root") == repo_root and not entry.get("git_origin_url"):
                 return entry
     return None
 
@@ -695,14 +707,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     disclose = subparsers.add_parser("disclose")
     disclose.add_argument("--repo-root", default=".")
-    disclose.add_argument("--skill", required=True)
+    disclose.add_argument("--skill", "--skill-name", dest="skill", required=True)
     disclose.add_argument("--trust-store")
     disclose.add_argument("--repo-trusted", choices=("auto", "true", "false"), default="auto")
     disclose.add_argument("--format", choices=("json", "markdown"), default="json")
 
     activate = subparsers.add_parser("activate")
     activate.add_argument("--repo-root", default=".")
-    activate.add_argument("--skill", required=True)
+    activate.add_argument("--skill", "--skill-name", dest="skill", required=True)
     activate.add_argument("--session-file")
     activate.add_argument("--explicit-handle")
     activate.add_argument("--include-frontmatter", action="store_true")
@@ -727,7 +739,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     allowlist = subparsers.add_parser("allowlist")
     allowlist.add_argument("--repo-root", default=".")
-    allowlist.add_argument("--skill")
+    allowlist.add_argument("--skill", "--skill-name", dest="skill")
     allowlist.add_argument("--session-file")
     allowlist.add_argument("--adapter", choices=("generic", "local-shell", "codex-local", "codex-worktree"), default="generic")
     allowlist.add_argument("--format", choices=("json", "markdown"), default="json")
@@ -740,7 +752,7 @@ def build_parser() -> argparse.ArgumentParser:
     rehydrate = subparsers.add_parser("rehydrate")
     rehydrate.add_argument("--repo-root", default=".")
     rehydrate.add_argument("--session-file", required=True)
-    rehydrate.add_argument("--skill")
+    rehydrate.add_argument("--skill", "--skill-name", dest="skill")
     rehydrate.add_argument("--include-activation-call", action="store_true")
     rehydrate.add_argument("--format", choices=("json", "markdown"), default="json")
 

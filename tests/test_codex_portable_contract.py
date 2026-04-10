@@ -299,6 +299,30 @@ class CodexPortableContractTests(unittest.TestCase):
             self.assertIn("--bundle-archive", payload["recommended_inspect_command"])
             self.assertIn("--bundle-archive", payload["recommended_install_command"])
 
+    def test_build_agent_skills_refuses_to_delete_nonempty_external_output_root(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output_root = pathlib.Path(tmpdir) / "portable-skills"
+            output_root.mkdir()
+            (output_root / "keep.txt").write_text("do not delete\n", encoding="utf-8")
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "scripts/build_agent_skills.py",
+                    "--repo-root",
+                    ".",
+                    "--output-root",
+                    str(output_root),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+            self.assertNotEqual(completed.returncode, 0)
+            self.assertIn("refusing to delete existing external contents", completed.stderr)
+            self.assertTrue((output_root / "keep.txt").exists())
+
     def test_explicit_only_skills_have_no_implicit_positive_cases(self):
         source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
         cases = load_jsonl(REPO_ROOT / "generated" / "skill_trigger_eval_cases.jsonl")

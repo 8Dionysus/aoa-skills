@@ -46,6 +46,7 @@
     },
     "checkpoint_history": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -88,7 +89,6 @@
         "required": [
           "candidate_id",
           "candidate_kind",
-          "owner_hint",
           "display_name",
           "checkpoint_hits",
           "evidence_refs",
@@ -107,7 +107,10 @@
             "minLength": 1
           },
           "owner_hint": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "minLength": 1
           },
           "display_name": {

@@ -53,7 +53,7 @@ class Wave4RuntimeSeamToolchainTests(unittest.TestCase):
                 "disclose",
                 "--repo-root",
                 ".",
-                "--skill",
+                "--skill-name",
                 "aoa-change-protocol",
                 "--format",
                 "json",

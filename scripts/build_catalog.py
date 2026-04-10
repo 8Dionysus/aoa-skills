@@ -611,6 +611,12 @@ def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dic
         if payload.get("kind") == "harvest"
         else ["bounded_plan", "work_result", "verification_result"],
     )
+    activation = payload.get("activation")
+    if not isinstance(activation, Mapping):
+        raise ValueError(f"quests/{quest_id}.yaml must keep activation as an object")
+    activation_mode = activation.get("mode")
+    if not isinstance(activation_mode, str) or not activation_mode:
+        raise ValueError(f"quests/{quest_id}.yaml must keep activation.mode as a non-empty string")
     entry = {
         "schema_version": "quest_dispatch_v1",
         "id": quest_id,
@@ -624,7 +630,7 @@ def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dic
         "split_required": payload.get("split_required", False),
         "write_scope": payload["write_scope"],
         "requires_artifacts": requires_artifacts,
-        "activation_mode": payload["activation"]["mode"],
+        "activation_mode": activation_mode,
         "source_path": f"quests/{quest_id}.yaml",
         "public_safe": payload["public_safe"],
     }

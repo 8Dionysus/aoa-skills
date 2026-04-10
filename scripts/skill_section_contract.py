@@ -38,7 +38,7 @@ SECTION_KEY_BY_HEADING = {
     "Technique traceability": "technique_traceability",
     "Adaptation points": "adaptation_points",
 }
-SECTION_HEADING_PATTERN = re.compile(r"^##\s+(.+?)\s*$")
+SECTION_HEADING_PATTERN = re.compile(r"^[ ]{0,3}##\s+(.+?)\s*$")
 
 
 @dataclass(frozen=True)
@@ -149,6 +149,12 @@ def build_sections_entry(
     location = relative_location(skill_md_path, repo_root)
     section_pairs = extract_top_level_sections(body)
     issues = collect_section_contract_issues(section_pairs, location=location)
+    for field in ("name", "scope", "status"):
+        value = metadata.get(field)
+        if not isinstance(value, str) or not value:
+            issues.append(
+                ContractIssue(location, f"frontmatter metadata.{field} must be a non-empty string")
+            )
     if issues:
         return None, issues
 
@@ -162,4 +168,3 @@ def build_sections_entry(
         },
         [],
     )
-

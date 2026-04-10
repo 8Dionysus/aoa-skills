@@ -16,6 +16,7 @@ REQUIRED_GENERATED_FILES = (
     "generated/tiny_router_capsules.min.json",
     "generated/tiny_router_eval_cases.jsonl",
     "generated/tiny_router_overlay_manifest.json",
+    "generated/description_trigger_eval_cases.jsonl",
 )
 
 
@@ -45,6 +46,7 @@ def validate(repo_root: Path) -> dict[str, Any]:
     policy = load_json(config_path)
     skill_catalog = load_json(repo_root / "generated" / "skill_catalog.min.json")
     description_signals = load_json(repo_root / "generated" / "skill_description_signals.json")
+    description_eval_cases = load_jsonl(repo_root / "generated" / "description_trigger_eval_cases.jsonl")
     signals = load_json(repo_root / "generated" / "tiny_router_skill_signals.json")
     bands = load_json(repo_root / "generated" / "tiny_router_candidate_bands.json")
     capsules = load_json(repo_root / "generated" / "tiny_router_capsules.min.json")
@@ -62,11 +64,19 @@ def validate(repo_root: Path) -> dict[str, Any]:
             errors.append(f"{label}: profile must be {PROFILE!r}")
 
     actual_names = {entry["name"] for entry in skill_catalog.get("skills", [])}
+    catalog_by_name = {entry["name"]: entry for entry in skill_catalog.get("skills", [])}
     description_by_name = {entry["name"]: entry for entry in description_signals.get("skills", [])}
     signal_by_name = {entry["name"]: entry for entry in signals.get("skills", [])}
     capsule_by_name = {entry["name"]: entry for entry in capsules.get("skills", [])}
     manifest_by_name = {entry["name"]: entry for entry in manifest.get("skills", [])}
     policy_names = set((policy.get("skill_overrides") or {}).keys())
+    defer_case_by_source_and_prompt = {
+        (case["skill_name"], case["prompt"]): case
+        for case in description_eval_cases
+        if case.get("case_class") == "prefer-other-skill"
+        and isinstance(case.get("skill_name"), str)
+        and isinstance(case.get("prompt"), str)
+    }
 
     if policy_names != actual_names:
         errors.append("config/tiny_router_skill_bands.json skill set mismatch")
@@ -101,10 +111,34 @@ def validate(repo_root: Path) -> dict[str, Any]:
             if source_skill in signal_by_name:
                 source_band = signal_by_name[source_skill]["band"]
                 included = case.get("expected_shortlist_includes", [])
+                source_defer_case = defer_case_by_source_and_prompt.get((source_skill, case.get("prompt")))
+                expected_skill = (
+                    source_defer_case.get("expected_skill")
+                    if isinstance(source_defer_case, dict)
+                    else None
+                )
                 if case.get("expected_band") != source_band and included:
                     errors.append(
                         f"{case_id}: cross-band defer cases must not require expected_shortlist_includes"
                     )
+                if case.get("expected_band") == source_band and not included:
+                    errors.append(
+                        f"{case_id}: same-band defer cases must require expected_shortlist_includes"
+                    )
+                if (
+                    case.get("expected_band") != source_band
+                    and isinstance(expected_skill, str)
+                    and expected_skill in catalog_by_name
+                ):
+                    expected_catalog_entry = catalog_by_name[expected_skill]
+                    if (
+                        expected_catalog_entry is not None
+                        and expected_catalog_entry.get("scope") == "project"
+                        and not case.get("repo_family_hint")
+                    ):
+                        errors.append(
+                            f"{case_id}: cross-band overlay defer targets must set repo_family_hint"
+                        )
                 for included_skill in included:
                     included_signal = signal_by_name.get(included_skill)
                     if included_signal is None:

@@ -141,10 +141,10 @@ def validate_surface_detection_context(context: dict[str, Any], *, location: str
         )
 
     activation_truth = context.get("activation_truth")
-    if activation_truth is not None and activation_truth not in {
-        "activated",
-        "manual-equivalent-adjacent",
-    }:
+    if activation_truth is not None and (
+        not isinstance(activation_truth, str)
+        or activation_truth not in {"activated", "manual-equivalent-adjacent"}
+    ):
         raise ReceiptPublishError(
             f"{location}.activation_truth: must be omitted or one of "
             f"{['activated', 'manual-equivalent-adjacent']!r}"
@@ -156,10 +156,12 @@ def validate_surface_detection_context(context: dict[str, Any], *, location: str
             raise ReceiptPublishError(
                 f"{location}.adjacent_owner_repos: must be omitted or a non-empty list"
             )
-        normalized_repos = {
-            repo for repo in adjacent_owner_repos if isinstance(repo, str) and repo
-        }
-        if normalized_repos != set(adjacent_owner_repos):
+        if any(not isinstance(repo, str) or not repo for repo in adjacent_owner_repos):
+            raise ReceiptPublishError(
+                f"{location}.adjacent_owner_repos: must contain unique non-empty strings"
+            )
+        normalized_repos = set(adjacent_owner_repos)
+        if len(normalized_repos) != len(adjacent_owner_repos):
             raise ReceiptPublishError(
                 f"{location}.adjacent_owner_repos: must contain unique non-empty strings"
             )
@@ -222,7 +224,7 @@ def validate_surface_detection_context(context: dict[str, Any], *, location: str
             )
         for field in ("candidate_now", "candidate_later"):
             value = candidate_counts.get(field)
-            if value is not None and (not isinstance(value, int) or value < 0):
+            if value is not None and (type(value) is not int or value < 0):
                 raise ReceiptPublishError(
                     f"{location}.candidate_counts.{field}: must be omitted or a non-negative integer"
                 )
@@ -233,10 +235,12 @@ def validate_surface_detection_context(context: dict[str, Any], *, location: str
             raise ReceiptPublishError(
                 f"{location}.suggested_handoff_targets: must be omitted or a non-empty list"
             )
-        normalized_targets = {
-            skill_name for skill_name in suggested_handoff_targets if isinstance(skill_name, str) and skill_name
-        }
-        if normalized_targets != set(suggested_handoff_targets):
+        if any(not isinstance(skill_name, str) or not skill_name for skill_name in suggested_handoff_targets):
+            raise ReceiptPublishError(
+                f"{location}.suggested_handoff_targets: must contain unique non-empty strings"
+            )
+        normalized_targets = set(suggested_handoff_targets)
+        if len(normalized_targets) != len(suggested_handoff_targets):
             raise ReceiptPublishError(
                 f"{location}.suggested_handoff_targets: must contain unique non-empty strings"
             )
