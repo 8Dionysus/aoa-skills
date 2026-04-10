@@ -50,6 +50,9 @@
       "cues": [
         "bounded change",
         "plan apply verify report",
+        "commit boundary",
+        "local commit",
+        "stop line before push",
         "non-trivial change",
         "explicit verification",
         "contract test",
@@ -63,6 +66,7 @@
       ],
       "skills": [
         "aoa-change-protocol",
+        "aoa-commit-growth-seam",
         "aoa-contract-test",
         "aoa-tdd-slice",
         "atm10-change-protocol"
@@ -218,6 +222,20 @@
       "negative_cues": [
         "trivial wording fix",
         "more specific risk skill"
+      ]
+    },
+    "aoa-commit-growth-seam": {
+      "band": "change-validation",
+      "positive_cues": [
+        "commit boundary",
+        "local commit",
+        "commit message",
+        "bounded diff ready",
+        "stop line before push"
+      ],
+      "negative_cues": [
+        "still needs more coding",
+        "push or publish route"
       ]
     },
     "aoa-contract-test": {
@@ -596,8 +614,14 @@
       "aoa-port-adapter-refactor"
     ],
     "aoa-change-protocol": [
+      "aoa-commit-growth-seam",
       "aoa-contract-test",
       "aoa-tdd-slice",
+      "aoa-safe-infra-change"
+    ],
+    "aoa-commit-growth-seam": [
+      "aoa-change-protocol",
+      "aoa-approval-gate-check",
       "aoa-safe-infra-change"
     ],
     "aoa-contract-test": [

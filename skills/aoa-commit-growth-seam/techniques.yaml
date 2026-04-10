@@ -1,0 +1,29 @@
+skill_name: aoa-commit-growth-seam
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0001
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md
+    source_ref: 9cd5eecea303403f69a582be071cf2cad74bd1b8
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0028
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md
+    source_ref: 9cd5eecea303403f69a582be071cf2cad74bd1b8
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation

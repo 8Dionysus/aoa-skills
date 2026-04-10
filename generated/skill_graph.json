@@ -687,6 +687,66 @@
     },
     {
       "kind": "maturity",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "lineage_published"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "policy_explicit_preferred"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "technique_AOA_T_0001"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "technique_AOA_T_0028"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_commit_growth_seam",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
       "source": "skill_aoa_contract_test",
       "target": "status_canonical"
     },
@@ -2463,6 +2523,11 @@
       "type": "technique"
     },
     {
+      "id": "skill_aoa_commit_growth_seam",
+      "label": "aoa-commit-growth-seam",
+      "type": "skill"
+    },
+    {
       "id": "skill_aoa_contract_test",
       "label": "aoa-contract-test",
       "type": "skill"
@@ -3452,6 +3517,84 @@
           "path": "techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
           "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-commit-growth-seam/SKILL.md",
+        "skills/aoa-commit-growth-seam/techniques.yaml",
+        "skills/aoa-commit-growth-seam/agents/openai.yaml",
+        "skills/aoa-commit-growth-seam/examples/runtime.md",
+        "skills/aoa-commit-growth-seam/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "4c4000278b011bcbf256dcfc77dfcb664333ed5f7f475d0d15568db40994bfca",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-commit-growth-seam",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "skill_revision": "4c4000278b01",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-commit-growth-seam/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-commit-growth-seam/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0028"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9cd5eecea303403f69a582be071cf2cad74bd1b8"
+        },
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9cd5eecea303403f69a582be071cf2cad74bd1b8"
         }
       ]
     },

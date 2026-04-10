@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: true
+notes:
+  - This skill is explicit-preferred because it packages one durable local commit boundary, but it still keeps push, publish, and review as separate follow-on routes.

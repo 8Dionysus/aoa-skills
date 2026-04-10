@@ -294,6 +294,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-commit-growth-seam",
         "aoa-contract-test",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -315,17 +316,20 @@
         "04-adjacent-negative",
         "collision-08",
         "collision-15",
-        "collision-30"
+        "collision-30",
+        "collision-32"
       ],
       "collision_case_ids": [
         "desc-collision-collision-08",
         "desc-collision-collision-15",
-        "desc-collision-collision-30"
+        "desc-collision-collision-30",
+        "desc-collision-collision-32"
       ],
       "mirror_case_ids": [
         "desc-mirror-009-aoa-change-protocol",
         "desc-mirror-011-aoa-change-protocol",
-        "desc-mirror-015-aoa-change-protocol"
+        "desc-mirror-015-aoa-change-protocol",
+        "desc-mirror-028-aoa-change-protocol"
       ]
     },
     {
@@ -372,6 +376,44 @@
       ]
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12",
+      "summary_clause": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish",
+      "use_when_clause": "a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding",
+      "do_not_use_clause": "when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "family": "change-execution-vs-test-first",
+      "families": [
+        "change-execution-vs-test-first"
+      ],
+      "adjacent_skills": [
+        "aoa-change-protocol",
+        "aoa-contract-test",
+        "aoa-tdd-slice"
+      ],
+      "default_prompt": "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route.",
+      "required_case_classes": [
+        "explicit-handle",
+        "should-trigger",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "30-explicit",
+        "30-implicit",
+        "30-adjacent-negative",
+        "collision-31"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-31"
+      ],
+      "mirror_case_ids": [
+        "desc-mirror-029-aoa-commit-growth-seam"
+      ]
+    },
+    {
       "name": "aoa-contract-test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
       "description_sha256": "9bc2710777cc9b6a70a74df503ba7925b7dace767ee141b879357cd3106d440e",
@@ -386,6 +428,7 @@
       ],
       "adjacent_skills": [
         "aoa-change-protocol",
+        "aoa-commit-growth-seam",
         "aoa-tdd-slice"
       ],
       "default_prompt": "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves.",
@@ -1032,6 +1075,7 @@
       ],
       "adjacent_skills": [
         "aoa-change-protocol",
+        "aoa-commit-growth-seam",
         "aoa-contract-test",
         "aoa-safe-infra-change"
       ],

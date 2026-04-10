@@ -266,6 +266,34 @@
       "notes": "Explicit-preferred orchestration skill for carrying provisional checkpoint evidence into one reviewed closeout execution chain without turning aoa closeout run or checkpoint notes into hidden verdict authority."
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "display_name": "AoA Commit Growth Seam",
+      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "short_description": "Commit bounded diffs honestly",
+      "path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-commit-growth-seam",
+      "notes": "Packages one honest local commit boundary after a bounded diff is already ready, while keeping push, publish, and release as separate follow-on routes."
+    },
+    {
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",

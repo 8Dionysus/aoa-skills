@@ -52,6 +52,7 @@ graph TD
   technique_AOA_T_0075["AOA-T-0075"]
   technique_AOA_T_0084["AOA-T-0084"]
   technique_AOA_T_0089["AOA-T-0089"]
+  skill_aoa_commit_growth_seam["aoa-commit-growth-seam"]
   skill_aoa_contract_test["aoa-contract-test"]
   technique_AOA_T_0003["AOA-T-0003"]
   technique_AOA_T_0015["AOA-T-0015"]
@@ -231,6 +232,18 @@ graph TD
   skill_aoa_checkpoint_closeout_bridge -->|available_in_artifact_group| artifact_group_runtime_guardrails
   skill_aoa_checkpoint_closeout_bridge -->|available_in_artifact_group| artifact_group_description_trigger
   skill_aoa_checkpoint_closeout_bridge -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_commit_growth_seam -->|maturity| status_scaffold
+  skill_aoa_commit_growth_seam -->|scope| scope_core
+  skill_aoa_commit_growth_seam -->|lineage| lineage_published
+  skill_aoa_commit_growth_seam -->|invocation_policy| policy_explicit_preferred
+  skill_aoa_commit_growth_seam -->|depends_on| technique_AOA_T_0001
+  skill_aoa_commit_growth_seam -->|depends_on| technique_AOA_T_0028
+  skill_aoa_commit_growth_seam -->|included_in_profile| profile_repo_default
+  skill_aoa_commit_growth_seam -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_commit_growth_seam -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_commit_growth_seam -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_commit_growth_seam -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_commit_growth_seam -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_contract_test -->|maturity| status_canonical
   skill_aoa_contract_test -->|scope| scope_core
   skill_aoa_contract_test -->|lineage| lineage_published
@@ -551,6 +564,7 @@ graph TD
 | aoa-bounded-context-map | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0016, AOA-T-0002 |
 | aoa-change-protocol | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002 |
 | aoa-checkpoint-closeout-bridge | scaffold | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-kernel, repo-project-foundation, repo-session-harvest-family | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0075, AOA-T-0084, AOA-T-0089 |
+| aoa-commit-growth-seam | scaffold | core | explicit-preferred | published | repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0028 |
 | aoa-contract-test | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0003, AOA-T-0015 |
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0016, AOA-T-0015 |
 | aoa-dry-run-first | canonical | risk | explicit-only | published | repo-default, repo-project-foundation, repo-project-risk-guard-ring, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0004, AOA-T-0028 |

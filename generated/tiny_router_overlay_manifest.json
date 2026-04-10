@@ -9,9 +9,9 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 28,
+  "skill_count": 29,
   "band_count": 6,
-  "case_count": 76,
+  "case_count": 79,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -75,6 +75,13 @@
       "manual_invocation_required": false,
       "project_overlay": false,
       "description_sha256": "417755266b47a9c47b0556216821716b52acb98cd81173bd1d8556892cc00350"
+    },
+    {
+      "name": "aoa-commit-growth-seam",
+      "band": "change-validation",
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12"
     },
     {
       "name": "aoa-contract-test",

@@ -363,6 +363,43 @@ Common expand sections:
 - `runtime_example` (selected): `skills/aoa-checkpoint-closeout-bridge/examples/runtime.md`
 - `review_checklist`: `skills/aoa-checkpoint-closeout-bridge/checks/review.md`
 
+## aoa-commit-growth-seam
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-preferred`
+- skill path: `skills/aoa-commit-growth-seam/SKILL.md`
+- pick summary: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.
+
+### Use when
+
+- a bounded code, config, or docs diff is already prepared locally
+- the next honest move is one local commit boundary rather than more coding
+- the commit needs to preserve what was verified and what remains unresolved
+- the working tree may contain unrelated changes that must stay outside the commit
+- the workflow needs a visible stop line before push, PR, release, or broader closeout follow-through
+
+### Do not use when
+
+- the task still needs more coding, repair, or verification before any commit is honest
+- no bounded diff exists yet
+- the main question is whether a mutating step is authorized at all; use aoa-approval-gate-check
+- the main task is push, PR, release, or public-share rather than the local commit boundary itself
+- the route should trigger or classify a post-commit review artifact rather than author the commit boundary itself
+
+### Object use shape
+
+- one bounded commit-or-defer decision
+- one intentional local commit, or one explicit refusal to commit yet
+- one honest commit message that matches the bounded unit
+- one carry-forward note for what was verified and what remains unresolved
+- one explicit stop line before any push, PR, or publish path
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-commit-growth-seam/examples/runtime.md`
+- `review_checklist`: `skills/aoa-commit-growth-seam/checks/review.md`
+
 ## aoa-contract-test
 
 - scope: `core`

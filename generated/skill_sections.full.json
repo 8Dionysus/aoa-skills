@@ -524,6 +524,64 @@
       "status": "scaffold"
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to cross one honest local commit boundary after a bounded change\nis already prepared and reviewed enough to stop widening the working session.\n\nThe goal is not \"commit because work happened.\"\nThe goal is to preserve one bounded unit with an honest message, explicit\nvalidation carry-forward, and a visible stop line before any push, PR, release,\nor public-share route begins.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a bounded code, config, or docs diff is already prepared locally\n- the next honest move is one local commit boundary rather than more coding\n- the commit needs to preserve what was verified and what remains unresolved\n- the working tree may contain unrelated changes that must stay outside the\n  commit\n- the workflow needs a visible stop line before push, PR, release, or broader\n  closeout follow-through\n\nDo not use this skill when:\n- the task still needs more coding, repair, or verification before any commit\n  is honest\n- no bounded diff exists yet\n- the main question is whether a mutating step is authorized at all; use\n  `aoa-approval-gate-check`\n- the main task is push, PR, release, or public-share rather than the local\n  commit boundary itself\n- the route should trigger or classify a post-commit review artifact rather\n  than author the commit boundary itself",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- one bounded local diff\n- working tree status, including any unrelated local changes\n- validation results or explicit validation debt\n- intended commit scope and message shape\n- explicit next stop line after the commit",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- one bounded commit-or-defer decision\n- one intentional local commit, or one explicit refusal to commit yet\n- one honest commit message that matches the bounded unit\n- one carry-forward note for what was verified and what remains unresolved\n- one explicit stop line before any push, PR, or publish path",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. reread `git status` and the target diff to isolate the exact bounded unit\n2. stop if unrelated changes are mixed in and cannot be excluded cleanly\n3. restate what was verified, what was intentionally not verified, and what the\n   commit boundary is meant to preserve\n4. confirm the proposed commit is still one bounded mutation rather than the\n   start of a hidden push or publish loop\n5. shape one commit message that matches the bounded unit and any remaining\n   debt honestly\n6. create one local commit only for the intended diff\n7. record or report the commit ref together with the validation state and next\n   stop line\n8. stop after the local commit and hand off push, PR, review, release, or\n   closeout publication explicitly if still needed",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- the commit boundary matches the actual bounded diff\n- unrelated local state is not silently swept into the commit\n- verification status stays attached to the commit story\n- the local commit does not imply push, publish, merge, or release\n- if the route needs a new approval seam or broader workflow, it hands off\n  instead of stretching this skill",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- using one commit as a catch-all bucket for unrelated changes\n- writing a clean commit message that hides missing or weak verification\n- treating the local commit boundary as silent permission to push or publish\n- committing while the task still clearly needs more repair or diff cleanup\n- widening the skill into a release, PR, or post-commit automation workflow",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the committed diff matches the named bounded unit\n- confirm unrelated local changes were excluded or explicitly deferred\n- confirm the validation state was named honestly before the commit happened\n- confirm the commit message reflects the real change rather than generic\n  success language\n- confirm the workflow stopped at the local commit boundary and kept push,\n  publish, or review as separate next moves",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `9cd5eecea303403f69a582be071cf2cad74bd1b8` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `9cd5eecea303403f69a582be071cf2cad74bd1b8` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays may add:\n- local commit-message conventions or trailers\n- local validation commands that should be named before commit\n- local dirty-worktree split rules when unrelated edits are present\n- local stop-line conventions for push, PR, release, or public-share handoff",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "name": "aoa-contract-test",
       "scope": "core",
       "sections": [

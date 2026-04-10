@@ -111,6 +111,18 @@
       }
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "codex_mention": "$aoa-commit-growth-seam",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-commit-growth-seam",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-commit-growth-seam"
+        }
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "codex_mention": "$aoa-contract-test",
       "codex_browser": "/skills",

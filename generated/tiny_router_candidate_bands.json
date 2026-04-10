@@ -57,6 +57,9 @@
       "cues": [
         "bounded change",
         "plan apply verify report",
+        "commit boundary",
+        "local commit",
+        "stop line before push",
         "non-trivial change",
         "explicit verification",
         "contract test",
@@ -70,6 +73,7 @@
       ],
       "skills": [
         "aoa-change-protocol",
+        "aoa-commit-growth-seam",
         "aoa-contract-test",
         "aoa-tdd-slice",
         "atm10-change-protocol"

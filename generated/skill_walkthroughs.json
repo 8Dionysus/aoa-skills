@@ -513,6 +513,59 @@
     },
     {
       "do_not_use_when": [
+        "the task still needs more coding, repair, or verification before any commit is honest",
+        "no bounded diff exists yet",
+        "the main question is whether a mutating step is authorized at all; use aoa-approval-gate-check",
+        "the main task is push, PR, release, or public-share rather than the local commit boundary itself",
+        "the route should trigger or classify a post-commit review artifact rather than author the commit boundary itself"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-commit-growth-seam",
+      "object_use_shape": [
+        "one bounded commit-or-defer decision",
+        "one intentional local commit, or one explicit refusal to commit yet",
+        "one honest commit message that matches the bounded unit",
+        "one carry-forward note for what was verified and what remains unresolved",
+        "one explicit stop line before any push, PR, or publish path"
+      ],
+      "pick_summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
+      "scope": "core",
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-commit-growth-seam/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-commit-growth-seam/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "use_when": [
+        "a bounded code, config, or docs diff is already prepared locally",
+        "the next honest move is one local commit boundary rather than more coding",
+        "the commit needs to preserve what was verified and what remains unresolved",
+        "the working tree may contain unrelated changes that must stay outside the commit",
+        "the workflow needs a visible stop line before push, PR, release, or broader closeout follow-through"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the change is entirely local and does not affect a meaningful boundary",
         "the boundary itself is still semantically unclear and naming is drifting; use aoa-bounded-context-map",
         "the main problem is expressing a broad invariant rather than a boundary contract; use aoa-property-invariants",

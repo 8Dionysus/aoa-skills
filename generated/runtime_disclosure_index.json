@@ -810,7 +810,8 @@
         "aoa-tdd-slice",
         "aoa-safe-infra-change",
         "atm10-change-protocol",
-        "aoa-checkpoint-closeout-bridge"
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-commit-growth-seam"
       ],
       "sample_prompts": {
         "explicit": [
@@ -956,6 +957,109 @@
       "disclose_card_markdown": "### aoa-checkpoint-closeout-bridge\n- Summary: Bridge checkpoints into reviewed closeout\n- Use when: Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.\n- Trust posture: portable-core\n- Mutation surface: none\n"
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "display_name": "AoA Commit Growth Seam",
+      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "short_description": "Commit bounded diffs honestly",
+      "path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-commit-growth-seam",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0028",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to cross one honest local commit boundary after a bounded change is already prepared and reviewed enough to stop widening the working session. The goal is not \"commit because work happened.\" The goal is to preserve one bounded unit with an honest message, explic...",
+        "Trigger boundary": "a bounded code, config, or docs diff is already prepared locally; the next honest move is one local commit boundary rather than more coding",
+        "Inputs": "one bounded local diff; working tree status, including any unrelated local changes",
+        "Outputs": "one bounded commit-or-defer decision; one intentional local commit, or one explicit refusal to commit yet",
+        "Procedure": "reread `git status` and the target diff to isolate the exact bounded unit; stop if unrelated changes are mixed in and cannot be excluded cleanly",
+        "Contracts": "the commit boundary matches the actual bounded diff; unrelated local state is not silently swept into the commit",
+        "Risks and anti-patterns": "using one commit as a catch-all bucket for unrelated changes; writing a clean commit message that hides missing or weak verification",
+        "Verification": "confirm the committed diff matches the named bounded unit; confirm unrelated local changes were excluded or explicitly deferred",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `9cd5eecea303403f69a582be071cf2cad74bd1b8` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
+        "Adaptation points": "local commit-message conventions or trailers; local validation commands that should be named before commit"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": true
+      },
+      "interface": {
+        "display_name": "AoA Commit Growth Seam",
+        "short_description": "Commit bounded diffs honestly",
+        "default_prompt": "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-commit-growth-seam",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-commit-growth-seam",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-commit-growth-seam",
+      "collision_family": "change-execution-vs-test-first",
+      "collision_notes": [
+        "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
+        "aoa-tdd-slice is specifically test-first feature slicing.",
+        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+      ],
+      "competing_skills": [
+        "aoa-change-protocol"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route."
+        ],
+        "implicit": [
+          "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding."
+        ],
+        "manual_invocation_required": [],
+        "negative": [
+          "The patch is still incomplete, tests are still red, and the next honest move is more repair work rather than crossing any commit boundary yet.",
+          "The diff is already bounded and validated. Create one intentional local commit with an honest message, carry forward what was checked, and stop before any push or PR."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-commit-growth-seam",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-commit-growth-seam",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-commit-growth-seam"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-commit-growth-seam\n- Summary: Commit bounded diffs honestly\n- Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
@@ -1021,6 +1125,7 @@
       "collision_family": "change-execution-vs-test-first",
       "collision_notes": [
         "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
         "aoa-tdd-slice is specifically test-first feature slicing.",
         "aoa-contract-test is specifically about validating a module/service/workflow boundary."
       ],
@@ -2766,6 +2871,7 @@
       "collision_family": "change-execution-vs-test-first",
       "collision_notes": [
         "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
         "aoa-tdd-slice is specifically test-first feature slicing.",
         "aoa-contract-test is specifically about validating a module/service/workflow boundary."
       ],

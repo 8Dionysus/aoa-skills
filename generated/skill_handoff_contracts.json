@@ -662,6 +662,75 @@
       }
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "display_name": "AoA Commit Growth Seam",
+      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "one bounded local diff",
+        "working tree status, including any unrelated local changes",
+        "validation results or explicit validation debt",
+        "intended commit scope and message shape",
+        "explicit next stop line after the commit"
+      ],
+      "outputs": [
+        "one bounded commit-or-defer decision",
+        "one intentional local commit, or one explicit refusal to commit yet",
+        "one honest commit message that matches the bounded unit",
+        "one carry-forward note for what was verified and what remains unresolved",
+        "one explicit stop line before any push, PR, or publish path"
+      ],
+      "verification": [
+        "confirm the committed diff matches the named bounded unit",
+        "confirm unrelated local changes were excluded or explicitly deferred",
+        "confirm the validation state was named honestly before the commit happened",
+        "confirm the commit message reflects the real change rather than generic",
+        "confirm the workflow stopped at the local commit boundary and kept push,"
+      ],
+      "contracts": [
+        "the commit boundary matches the actual bounded diff",
+        "unrelated local state is not silently swept into the commit",
+        "verification status stays attached to the commit story",
+        "the local commit does not imply push, publish, merge, or release",
+        "if the route needs a new approval seam or broader workflow, it hands off"
+      ],
+      "consumes_artifact_tags": [
+        "one-bounded-local-diff",
+        "working-tree-status-including-any-unrelated-local-changes",
+        "validation-results-or-explicit-validation-debt",
+        "intended-commit-scope-and-message-shape",
+        "explicit-next-stop-line-after-the-commit"
+      ],
+      "provides_artifact_tags": [
+        "one-bounded-commit-or-defer-decision",
+        "one-intentional-local-commit-or-one-explicit-refusal-to-commit-y",
+        "one-honest-commit-message-that-matches-the-bounded-unit",
+        "one-carry-forward-note-for-what-was-verified-and-what-remains-un",
+        "one-explicit-stop-line-before-any-push-pr-or-publish-path"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-commit-growth-seam",
+        "produced_artifacts": [
+          "one-bounded-commit-or-defer-decision",
+          "one-intentional-local-commit-or-one-explicit-refusal-to-commit-y",
+          "one-honest-commit-message-that-matches-the-bounded-unit",
+          "one-carry-forward-note-for-what-was-verified-and-what-remains-un",
+          "one-explicit-stop-line-before-any-push-pr-or-publish-path"
+        ],
+        "verification_notes": [
+          "confirm the committed diff matches the named bounded unit",
+          "confirm unrelated local changes were excluded or explicitly deferred",
+          "confirm the validation state was named honestly before the commit happened"
+        ],
+        "contract_notes": [
+          "the commit boundary matches the actual bounded diff",
+          "unrelated local state is not silently swept into the commit",
+          "verification status stays attached to the commit story"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",

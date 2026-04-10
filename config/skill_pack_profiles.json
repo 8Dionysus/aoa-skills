@@ -12,6 +12,7 @@
         "aoa-automation-opportunity-scan",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
+        "aoa-commit-growth-seam",
         "aoa-contract-test",
         "aoa-core-logic-boundary",
         "aoa-dry-run-first",

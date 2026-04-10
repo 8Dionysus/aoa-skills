@@ -266,6 +266,36 @@
       "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority."
     },
     {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check",
+        "missing_use_case",
+        "missing_do_not_use_case"
+      ],
+      "canonical_candidate_ready": false,
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check",
+        "missing_use_case",
+        "missing_do_not_use_case"
+      ],
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "maturity_status": "scaffold",
+      "name": "aoa-commit-growth-seam",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold",
+      "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish."
+    },
+    {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,

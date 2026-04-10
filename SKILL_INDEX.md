@@ -7,6 +7,7 @@ This file is the repository-wide map of public skills.
 | name | scope | status | summary |
 |---|---|---|---|
 | aoa-change-protocol | core | canonical | Codex skill for bounded change execution using plan, scoped edits, validation, and concise reporting. |
+| aoa-commit-growth-seam | core | scaffold | Codex skill for turning a validated bounded diff into one intentional local commit with explicit scope review and a visible stop line before push or publish. |
 | aoa-tdd-slice | core | canonical | Codex skill for implementing a small feature slice through test-first change discipline. |
 | aoa-contract-test | core | canonical | Codex skill for designing or extending contract-oriented validation at service or module boundaries. |
 | aoa-bounded-context-map | core | canonical | Codex skill for carving or clarifying domain or system boundaries and their interfaces. |

@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 28
+- total skills: 29
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -21,6 +21,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-bounded-context-map | canonical | core | explicit-preferred | 1 | 1 | 2 | 1 | 1 | `skills/aoa-bounded-context-map/examples/example.md` | `docs/reviews/status-promotions/aoa-bounded-context-map.md` | `docs/reviews/canonical-candidates/aoa-bounded-context-map.md` | true | - |
 | aoa-change-protocol | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-change-protocol/examples/runtime.md` | - | `docs/reviews/canonical-candidates/aoa-change-protocol.md` | true | - |
 | aoa-checkpoint-closeout-bridge | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-checkpoint-closeout-bridge/examples/runtime.md` | - | - | true | - |
+| aoa-commit-growth-seam | scaffold | core | explicit-preferred | 0 | 0 | 0 | 0 | 0 | `skills/aoa-commit-growth-seam/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
 | aoa-contract-test | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-contract-test/examples/example.md` | `docs/reviews/status-promotions/aoa-contract-test.md` | `docs/reviews/canonical-candidates/aoa-contract-test.md` | true | - |
 | aoa-core-logic-boundary | evaluated | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-core-logic-boundary/examples/example.md` | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md` | true | - |
 | aoa-dry-run-first | canonical | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/aoa-dry-run-first/examples/runtime.md` | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` | true | - |

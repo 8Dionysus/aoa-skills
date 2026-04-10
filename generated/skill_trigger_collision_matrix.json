@@ -30,11 +30,13 @@
       "family": "change-execution-vs-test-first",
       "skills": [
         "aoa-change-protocol",
+        "aoa-commit-growth-seam",
         "aoa-tdd-slice",
         "aoa-contract-test"
       ],
       "notes": [
         "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
         "aoa-tdd-slice is specifically test-first feature slicing.",
         "aoa-contract-test is specifically about validating a module/service/workflow boundary."
       ]
@@ -477,6 +479,28 @@
       ],
       "prompt": "Implement a bounded code-and-docs patch across aoa-sdk and aoa-skills so the checkpoint closeout bridge becomes real, then verify the repo batteries and report what changed.",
       "note": "When the task is to implement bridge support rather than execute a reviewed closeout chain, the bounded change workflow should win and the bridge skill should defer."
+    },
+    {
+      "case_id": "collision-31",
+      "skill_name": "aoa-commit-growth-seam",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-commit-growth-seam",
+      "competing_skills": [
+        "aoa-change-protocol"
+      ],
+      "prompt": "The diff is already bounded and validated. Create one intentional local commit with an honest message, carry forward what was checked, and stop before any push or PR.",
+      "note": "This is the narrow post-verify commit boundary; the broader change workflow should defer once the coding work is already done."
+    },
+    {
+      "case_id": "collision-32",
+      "skill_name": "aoa-change-protocol",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-change-protocol",
+      "competing_skills": [
+        "aoa-commit-growth-seam"
+      ],
+      "prompt": "The change still needs planning, code edits, explicit verification, and a final report before any commit boundary would be honest.",
+      "note": "When the work is still in flight, the broader bounded change workflow should win and the commit-boundary skill should defer."
     }
   ]
 }

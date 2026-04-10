@@ -42,6 +42,16 @@
       "requires_confirmation_seam": false,
       "notes": "General bounded change workflow for non-trivial code, config, and docs work."
     },
+    "aoa-commit-growth-seam": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Packages one honest local commit boundary after a bounded diff is already ready, while keeping push, publish, and release as separate follow-on routes."
+    },
     "aoa-contract-test": {
       "trust_posture": "portable-core",
       "mutation_surface": "repo",

@@ -548,6 +548,19 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "governance_lane_ids": [],
+      "name": "aoa-commit-growth-seam",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
       "adjacency_use_count": 1,
       "adjacent_skill_names": [

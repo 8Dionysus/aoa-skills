@@ -210,6 +210,29 @@
       "requires_confirmation_seam": false
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "compact_summary": "Commit bounded diffs honestly",
+      "activation_card_markdown": "Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n\nKeep in memory: one bounded local diff, working tree status, including any unrelated local changes, one bounded commit-or-defer decision, one intentional local commit, or one explicit refusal to commit yet.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "one bounded local diff",
+        "working tree status, including any unrelated local changes",
+        "one bounded commit-or-defer decision",
+        "one intentional local commit, or one explicit refusal to commit yet"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-contract-test",
       "compact_summary": "Strengthen interface contracts",
       "activation_card_markdown": "Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n\nKeep in memory: boundary under review, expected inputs and outputs, explicit contract assumptions, tests or smoke summary changes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",

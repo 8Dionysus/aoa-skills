@@ -790,6 +790,84 @@
         "tiny_router"
       ],
       "bundle_files": [
+        "skills/aoa-commit-growth-seam/SKILL.md",
+        "skills/aoa-commit-growth-seam/techniques.yaml",
+        "skills/aoa-commit-growth-seam/agents/openai.yaml",
+        "skills/aoa-commit-growth-seam/examples/runtime.md",
+        "skills/aoa-commit-growth-seam/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "4c4000278b011bcbf256dcfc77dfcb664333ed5f7f475d0d15568db40994bfca",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-commit-growth-seam",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "skill_revision": "4c4000278b01",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-commit-growth-seam/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-commit-growth-seam/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0028"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0001",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9cd5eecea303403f69a582be071cf2cad74bd1b8"
+        },
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9cd5eecea303403f69a582be071cf2cad74bd1b8"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
         "skills/aoa-contract-test/SKILL.md",
         "skills/aoa-contract-test/techniques.yaml",
         "skills/aoa-contract-test/agents/openai.yaml",
