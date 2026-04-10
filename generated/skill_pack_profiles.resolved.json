@@ -50,6 +50,14 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-commit-growth-seam",
+          "source_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+          "target_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-contract-test",
           "source_path": ".agents/skills/aoa-contract-test/SKILL.md",
           "target_path": ".agents/skills/aoa-contract-test/SKILL.md",

@@ -168,7 +168,8 @@
         "aoa-tdd-slice",
         "aoa-safe-infra-change",
         "atm10-change-protocol",
-        "aoa-checkpoint-closeout-bridge"
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-commit-growth-seam"
       ],
       "should_trigger": [
         "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan."
@@ -214,6 +215,28 @@
       ]
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "collision_family": "change-execution-vs-test-first",
+      "competing_skills": [
+        "aoa-change-protocol"
+      ],
+      "should_trigger": [
+        "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding."
+      ],
+      "manual_invocation_required": [],
+      "negative_controls": [
+        "The patch is still incomplete, tests are still red, and the next honest move is more repair work rather than crossing any commit boundary yet.",
+        "The diff is already bounded and validated. Create one intentional local commit with an honest message, carry forward what was checked, and stop before any push or PR."
+      ],
+      "notes": [
+        "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
+        "aoa-tdd-slice is specifically test-first feature slicing.",
+        "aoa-contract-test is specifically about validating a module/service/workflow boundary."
+      ]
+    },
+    {
       "name": "aoa-contract-test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
       "collision_family": "change-execution-vs-test-first",
@@ -231,6 +254,7 @@
       ],
       "notes": [
         "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
         "aoa-tdd-slice is specifically test-first feature slicing.",
         "aoa-contract-test is specifically about validating a module/service/workflow boundary."
       ]
@@ -626,6 +650,7 @@
       ],
       "notes": [
         "aoa-change-protocol is the generic bounded-change workflow.",
+        "aoa-commit-growth-seam is the narrower post-verify commit boundary when the coding work is already done.",
         "aoa-tdd-slice is specifically test-first feature slicing.",
         "aoa-contract-test is specifically about validating a module/service/workflow boundary."
       ]

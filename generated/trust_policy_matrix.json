@@ -126,6 +126,20 @@
       "notes": "Explicit-preferred orchestration skill for carrying provisional checkpoint evidence into one reviewed closeout execution chain without turning aoa closeout run or checkpoint notes into hidden verdict authority."
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": false,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Packages one honest local commit boundary after a bounded diff is already ready, while keeping push, publish, and release as separate follow-on routes."
+    },
+    {
       "name": "aoa-contract-test",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

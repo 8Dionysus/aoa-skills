@@ -5,8 +5,8 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 28
-- multi-technique skills: 26
+- total skills: 29
+- multi-technique skills: 27
 - single-technique skills: 2
 - approved exceptions: 2
 - needs reframe: 0
@@ -22,6 +22,7 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-bounded-context-map | 2 | multi_technique | keep_multi_technique | - |
 | aoa-change-protocol | 2 | multi_technique | keep_multi_technique | - |
 | aoa-checkpoint-closeout-bridge | 3 | multi_technique | keep_multi_technique | - |
+| aoa-commit-growth-seam | 2 | multi_technique | keep_multi_technique | - |
 | aoa-contract-test | 2 | multi_technique | keep_multi_technique | - |
 | aoa-core-logic-boundary | 2 | multi_technique | keep_multi_technique | - |
 | aoa-dry-run-first | 2 | multi_technique | keep_multi_technique | - |

@@ -39,6 +39,10 @@
       "tools": []
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "tools": []
+    },
+    {
       "name": "aoa-contract-test",
       "tools": []
     },

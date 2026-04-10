@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "skill_count": 28,
+  "skill_count": 29,
   "band_count": 6,
   "skills": [
     {
@@ -607,10 +607,10 @@
         "explicit verification",
         "rollback thinking",
         "bounded change",
-        "non-trivial change",
-        "contract test",
-        "service boundary",
-        "module boundary"
+        "commit boundary",
+        "local commit",
+        "stop line before push",
+        "non-trivial change"
       ],
       "negative_cues": [
         "trivial wording fix",
@@ -628,13 +628,13 @@
         "verification",
         "rollback",
         "thinking",
-        "contract",
-        "test",
-        "service",
+        "commit",
         "boundary",
-        "module",
-        "tdd",
-        "first"
+        "stop",
+        "line",
+        "push",
+        "contract",
+        "test"
       ],
       "negative_tokens": [
         "trivial",
@@ -662,6 +662,7 @@
         "affects"
       ],
       "companions": [
+        "aoa-commit-growth-seam",
         "aoa-contract-test",
         "aoa-tdd-slice",
         "aoa-safe-infra-change"
@@ -759,6 +760,89 @@
       "primary_defer_prompt": "Implement a bounded code-and-docs patch across aoa-sdk and aoa-skills so the checkpoint closeout bridge becomes real, then verify the repo batteries and report what changed."
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "band": "change-validation",
+      "band_summary": "Scoped change execution, test-first slices, and boundary validation.",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "project_overlay": false,
+      "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
+      "summary_short": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification...",
+      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12",
+      "positive_cues": [
+        "commit boundary",
+        "local commit",
+        "commit message",
+        "bounded diff ready",
+        "stop line before push",
+        "bounded change",
+        "plan apply verify report",
+        "non-trivial change",
+        "explicit verification",
+        "contract test"
+      ],
+      "negative_cues": [
+        "still needs more coding",
+        "push or publish route"
+      ],
+      "cue_tokens": [
+        "commit",
+        "boundary",
+        "message",
+        "diff",
+        "ready",
+        "stop",
+        "line",
+        "push",
+        "plan",
+        "apply",
+        "verify",
+        "report",
+        "non",
+        "trivial",
+        "verification",
+        "contract",
+        "test",
+        "service"
+      ],
+      "negative_tokens": [
+        "still",
+        "more",
+        "coding",
+        "push",
+        "publish",
+        "route"
+      ],
+      "auto_tokens": [
+        "commit",
+        "diff",
+        "one",
+        "more",
+        "boundary",
+        "push",
+        "still",
+        "carry",
+        "coding",
+        "forward",
+        "honest",
+        "intentional",
+        "move",
+        "next"
+      ],
+      "companions": [
+        "aoa-change-protocol",
+        "aoa-approval-gate-check",
+        "aoa-safe-infra-change"
+      ],
+      "primary_positive_prompt": "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route.",
+      "primary_negative_prompt": "The patch is still incomplete, tests are still red, and the next honest move is more repair work rather than crossing any commit boundary yet.",
+      "primary_defer_prompt": "The change still needs planning, code edits, explicit verification, and a final report before any commit boundary would be honest."
+    },
+    {
       "name": "aoa-contract-test",
       "band": "change-validation",
       "band_summary": "Scoped change execution, test-first slices, and boundary validation.",
@@ -780,9 +864,9 @@
         "smoke path contract",
         "bounded change",
         "plan apply verify report",
-        "non-trivial change",
-        "explicit verification",
-        "tdd"
+        "commit boundary",
+        "local commit",
+        "stop line before push"
       ],
       "negative_cues": [
         "purely local change",
@@ -801,12 +885,12 @@
         "apply",
         "verify",
         "report",
+        "commit",
+        "stop",
+        "line",
+        "push",
         "non",
-        "trivial",
-        "verification",
-        "tdd",
-        "first",
-        "feature"
+        "trivial"
       ],
       "negative_tokens": [
         "purely",
@@ -2132,9 +2216,9 @@
         "behavior before code",
         "bounded change",
         "plan apply verify report",
-        "non-trivial change",
-        "explicit verification",
-        "contract test"
+        "commit boundary",
+        "local commit",
+        "stop line before push"
       ],
       "negative_cues": [
         "undefined exploratory work",
@@ -2154,11 +2238,11 @@
         "apply",
         "verify",
         "report",
-        "non",
-        "trivial",
-        "verification",
-        "contract",
-        "service"
+        "commit",
+        "boundary",
+        "stop",
+        "line",
+        "push"
       ],
       "negative_tokens": [
         "undefined",
@@ -2213,9 +2297,9 @@
         "atm10 overlay",
         "bounded change",
         "plan apply verify report",
-        "non-trivial change",
-        "explicit verification",
-        "contract test"
+        "commit boundary",
+        "local commit",
+        "stop line before push"
       ],
       "negative_cues": [
         "base skill is sufficient",
@@ -2230,16 +2314,16 @@
         "apply",
         "verify",
         "report",
+        "commit",
+        "boundary",
+        "stop",
+        "line",
+        "push",
         "non",
         "trivial",
         "verification",
         "contract",
-        "test",
-        "service",
-        "boundary",
-        "module",
-        "tdd",
-        "first"
+        "test"
       ],
       "negative_tokens": [
         "base",

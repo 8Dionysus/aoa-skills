@@ -165,6 +165,24 @@
       "workflow_short": "Purpose: connect checkpoint-led session growth with explicit reviewed closeout execution. Flow: during checkpoint collection, keep the note append-only and provisional -> treat checkpoint candidates and progression-axis hints as shortlist inputs, not..."
     },
     {
+      "inputs_short": "Needs: one bounded local diff; working tree status, including any unrelated local changes; validation results or explicit validation debt; intended commit scope and message shape.",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: using one commit as a catch-all bucket for unrelated changes; writing a clean commit message that hides missing or weak verification; treating the local commit boundary as silent permission to push or...",
+      "name": "aoa-commit-growth-seam",
+      "outputs_short": "Produces: one bounded commit-or-defer decision; one intentional local commit, or one explicit refusal to commit yet; one honest commit message that matches the bounded unit; one carry-forward note for what was...",
+      "scope": "core",
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold",
+      "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0028"
+      ],
+      "trigger_boundary_short": "Use when a bounded code, config, or docs diff is already prepared locally; the next honest move is one local commit boundary rather than more coding; Avoid when the task still needs more coding, repair, or...",
+      "verification_short": "Checks: confirm the committed diff matches the named bounded unit; confirm unrelated local changes were excluded or explicitly deferred; confirm the validation state was named honestly before the commit happened;...",
+      "workflow_short": "Purpose: cross one honest local commit boundary after a bounded change is already prepared and reviewed enough to stop widening the working session. Flow: reread git status and the target diff to isolate the exact bounded unit -> stop if unrelated changes..."
+    },
+    {
       "inputs_short": "Needs: boundary under review; expected inputs and outputs; current verification surface; known downstream dependencies.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary; changing interface behavior without downstream impact notes.",

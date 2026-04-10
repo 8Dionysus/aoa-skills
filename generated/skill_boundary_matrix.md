@@ -5,7 +5,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 28
+- total skills: 29
 - adjacency cases: 34
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
@@ -21,6 +21,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-bounded-context-map | canonical | core | true | 3 | 0 | aoa-contract-test, aoa-core-logic-boundary, aoa-port-adapter-refactor | context_vs_contract, core_boundary_refactor | true | - |
 | aoa-change-protocol | canonical | core | true | 1 | 0 | aoa-tdd-slice | change_workflows | true | - |
 | aoa-checkpoint-closeout-bridge | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-commit-growth-seam | scaffold | core | false | 0 | 0 | - | - | false | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | context_vs_contract | true | - |
 | aoa-core-logic-boundary | evaluated | core | true | 2 | 0 | aoa-bounded-context-map, aoa-port-adapter-refactor | core_boundary_refactor | true | - |
 | aoa-dry-run-first | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-safe-infra-change, aoa-sanitized-share | risk_authority_preview_execution | true | - |

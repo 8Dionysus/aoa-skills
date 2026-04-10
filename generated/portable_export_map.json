@@ -182,6 +182,23 @@
       }
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "target_dir": ".agents/skills/aoa-commit-growth-seam",
+      "target_skill_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "source_skill_path": "skills/aoa-contract-test/SKILL.md",
       "target_dir": ".agents/skills/aoa-contract-test",

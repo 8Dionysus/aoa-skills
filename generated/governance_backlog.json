@@ -432,6 +432,26 @@
       "status": "scaffold"
     },
     {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "lineage_state": "published",
+      "name": "aoa-commit-growth-seam",
+      "promotion_review_path": null,
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "scope": "core",
+      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,

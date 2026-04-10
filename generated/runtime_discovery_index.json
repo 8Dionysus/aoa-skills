@@ -928,6 +928,110 @@
       }
     },
     {
+      "name": "aoa-commit-growth-seam",
+      "display_name": "AoA Commit Growth Seam",
+      "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
+      "short_description": "Commit bounded diffs honestly",
+      "path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": true,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-commit-growth-seam",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-commit-growth-seam",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-commit-growth-seam"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "already",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "before",
+        "boundary",
+        "bounded",
+        "carry-forward",
+        "code",
+        "coding",
+        "commit",
+        "config",
+        "contracts",
+        "core",
+        "diff",
+        "docs",
+        "exists",
+        "explicit",
+        "growth",
+        "honest",
+        "inputs",
+        "intent",
+        "intentional",
+        "line",
+        "local",
+        "locally",
+        "main",
+        "move",
+        "named",
+        "needs",
+        "next",
+        "not",
+        "one",
+        "outputs",
+        "points",
+        "prepared",
+        "procedure",
+        "public-share",
+        "publish",
+        "push",
+        "rather",
+        "release",
+        "repair",
+        "review",
+        "risks",
+        "scope",
+        "seam",
+        "still",
+        "stop",
+        "task",
+        "technique",
+        "the",
+        "traceability",
+        "trigger",
+        "turn",
+        "use",
+        "validated",
+        "verification",
+        "visible"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-commit-growth-seam"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-commit-growth-seam"
+        }
+      }
+    },
+    {
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
