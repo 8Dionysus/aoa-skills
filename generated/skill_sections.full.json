@@ -515,7 +515,7 @@
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "Project overlays may add:\n- local reviewed artifact entrypoints\n- local receipt bundle locations\n- local stop conditions before quest triage\n- local owner-layer route maps for generated donor packets\n- local post-closeout stats or owner follow-through commands that stay outside\n  this bridge skill",
+          "content_markdown": "Project overlays may add:\n- local reviewed artifact entrypoints\n- local receipt bundle locations\n- local stop conditions before quest triage\n- local owner-layer route maps for generated donor packets\n- project-local reviewed follow-through notes under `docs/session-harvests/`\n  when bridge upkeep becomes reusable but is still below promotion authority\n- project-local reminders that downstream `aoa-session-self-diagnose`, owner\n  follow-through, and stats refresh stay explicit next steps outside this skill\n- local post-closeout stats or owner follow-through commands that stay outside\n  this bridge skill",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
