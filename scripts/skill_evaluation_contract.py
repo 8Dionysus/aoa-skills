@@ -413,6 +413,7 @@ def collect_snapshot_file_issues(
     fixtures: Mapping[str, Any] | None,
 ) -> list[EvaluationContractIssue]:
     issues: list[EvaluationContractIssue] = []
+    resolved_repo_root = repo_root.resolve()
     for case in snapshot_cases(fixtures):
         snapshot_path_value = case.get("snapshot_path")
         if not isinstance(snapshot_path_value, str) or not snapshot_path_value.strip():
@@ -426,9 +427,9 @@ def collect_snapshot_file_issues(
             )
             continue
 
-        snapshot_path = (repo_root / snapshot_path_value).resolve()
+        snapshot_path = (resolved_repo_root / snapshot_path_value).resolve()
         try:
-            snapshot_path.relative_to(repo_root)
+            snapshot_path.relative_to(resolved_repo_root)
         except ValueError:
             issues.append(
                 EvaluationContractIssue(
@@ -437,7 +438,7 @@ def collect_snapshot_file_issues(
                 )
             )
             continue
-        location = relative_location(snapshot_path, repo_root)
+        location = relative_location(snapshot_path, resolved_repo_root)
         if not snapshot_path.is_file():
             issues.append(
                 EvaluationContractIssue(location, "evaluation snapshot file is missing")
