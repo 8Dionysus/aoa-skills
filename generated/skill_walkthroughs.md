@@ -367,7 +367,7 @@ Common expand sections:
 
 - scope: `core`
 - status: `scaffold`
-- invocation mode: `explicit-preferred`
+- invocation mode: `explicit-only`
 - skill path: `skills/aoa-commit-growth-seam/SKILL.md`
 - pick summary: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.
 

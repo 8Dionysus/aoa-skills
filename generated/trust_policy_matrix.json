@@ -128,10 +128,10 @@
     {
       "name": "aoa-commit-growth-seam",
       "scope": "core",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
-      "requires_manual_invocation": false,
+      "requires_manual_invocation": true,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",

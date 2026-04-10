@@ -410,7 +410,7 @@
     },
     {
       "composition_mode": "bounded",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "name": "aoa-commit-growth-seam",
       "scope": "core",
       "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",

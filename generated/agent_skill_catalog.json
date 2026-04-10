@@ -359,8 +359,8 @@
       "openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
       "scope": "core",
       "status": "scaffold",
-      "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
       "source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0001",

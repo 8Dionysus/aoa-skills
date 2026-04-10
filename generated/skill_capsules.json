@@ -166,7 +166,7 @@
     },
     {
       "inputs_short": "Needs: one bounded local diff; working tree status, including any unrelated local changes; validation results or explicit validation debt; intended commit scope and message shape.",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: using one commit as a catch-all bucket for unrelated changes; writing a clean commit message that hides missing or weak verification; treating the local commit boundary as silent permission to push or...",
       "name": "aoa-commit-growth-seam",
       "outputs_short": "Produces: one bounded commit-or-defer decision; one intentional local commit, or one explicit refusal to commit yet; one honest commit message that matches the bounded unit; one carry-forward note for what was...",

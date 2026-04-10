@@ -703,7 +703,7 @@
     {
       "kind": "invocation_policy",
       "source": "skill_aoa_commit_growth_seam",
-      "target": "policy_explicit_preferred"
+      "target": "policy_explicit_only"
     },
     {
       "kind": "depends_on",
@@ -3538,7 +3538,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "4c4000278b011bcbf256dcfc77dfcb664333ed5f7f475d0d15568db40994bfca",
+      "content_hash": "137125f73e61cd36823d92b62417c9cf9c06678b58a25558d82dfef30b4785af",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3557,13 +3557,13 @@
       "install_profiles": [
         "repo-default"
       ],
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-commit-growth-seam",
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
-      "skill_revision": "4c4000278b01",
+      "skill_revision": "137125f73e61",
       "status": "scaffold",
       "support_artifacts": [
         {

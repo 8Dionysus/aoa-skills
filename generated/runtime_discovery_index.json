@@ -934,8 +934,8 @@
       "short_description": "Commit bounded diffs honestly",
       "path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
       "trust_posture": "portable-core",
-      "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",

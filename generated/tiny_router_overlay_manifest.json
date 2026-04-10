@@ -79,7 +79,7 @@
     {
       "name": "aoa-commit-growth-seam",
       "band": "change-validation",
-      "manual_invocation_required": false,
+      "manual_invocation_required": true,
       "project_overlay": false,
       "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12"
     },
