@@ -135,5 +135,9 @@ Project overlays may add:
 - local receipt bundle locations
 - local stop conditions before quest triage
 - local owner-layer route maps for generated donor packets
+- project-local reviewed follow-through notes under `docs/session-harvests/`
+  when bridge upkeep becomes reusable but is still below promotion authority
+- project-local reminders that downstream `aoa-session-self-diagnose`, owner
+  follow-through, and stats refresh stay explicit next steps outside this skill
 - local post-closeout stats or owner follow-through commands that stay outside
   this bridge skill

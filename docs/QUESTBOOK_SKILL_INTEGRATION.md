@@ -90,3 +90,5 @@ The bounded `aoa-quest-harvest` verdict surface remains:
 - No ATM10-specific or overlay-specific anchor was introduced for this lane; the repo-local contract stayed inside the existing skill/runtime boundary.
 - `AOA-SK-Q-0006` now captures the reviewed cross-repo route where an upstream `aoa-techniques` landing can trigger downstream drift detection, skill refresh, review truth-sync, and merge recovery.
 - The bounded conclusion for this lane is still manual-first: classify the route for automation or playbook lift explicitly before granting any helper surface more authority.
+- `AOA-SK-Q-0007` closed once the workspace checkpoint-growth route was written as a bounded session-harvest note and the bridge skill kept downstream self-diagnose, owner follow-through, and stats refresh explicit.
+- The bounded conclusion for that lane is to keep `aoa-checkpoint-closeout-bridge` narrow while leaving broader automation classification in `AOA-SK-Q-0006`.

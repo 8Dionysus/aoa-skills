@@ -7,7 +7,7 @@ owner_surface: skills/aoa-checkpoint-closeout-bridge/SKILL.md
 theme_ref: ''
 milestone_ref: ''
 kind: seam
-state: captured
+state: done
 band: near
 difficulty: d3_seam
 risk: r2_contract
@@ -50,5 +50,8 @@ tags:
 notes: >
   This quest is about bounded upkeep of the bridge workflow after the reviewed
   workspace closeout, not about replacing the bridge skill with questbook
-  authority.
+  authority. Closed once
+  docs/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md
+  recorded the reviewed route and the bridge skill kept downstream
+  follow-through explicit.
 public_safe: true

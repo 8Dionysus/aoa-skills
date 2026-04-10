@@ -155,7 +155,7 @@
     "schema_version": "quest_dispatch_v1",
     "source_path": "quests/AOA-SK-Q-0007.yaml",
     "split_required": true,
-    "state": "captured",
+    "state": "done",
     "wrapper_class": "hybrid",
     "write_scope": "repo_local"
   }
