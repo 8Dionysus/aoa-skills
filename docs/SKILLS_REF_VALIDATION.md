@@ -16,7 +16,8 @@ Using both together gives broader coverage.
 ## Local install
 
 ```bash
-git clone --depth 1 https://github.com/agentskills/agentskills.git /tmp/agentskills
+git clone https://github.com/agentskills/agentskills.git /tmp/agentskills
+git -C /tmp/agentskills checkout 2e8b3265237b2e5f255d6e675f89ae83be572329
 python -m pip install -e /tmp/agentskills/skills-ref
 python scripts/run_skills_ref_validation.py --repo-root . --require-skills-ref
 ```

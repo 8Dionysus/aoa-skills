@@ -653,12 +653,16 @@ def main() -> int:
                                 errors.append(f"{openai_yaml}: dependencies.tools[{idx}].value must be a non-empty string")
 
         source_entry = source_by_name.get(skill_dir.name)
+        source_scope = source_entry.get("scope") if source_entry else None
+        source_invocation_mode = source_entry.get("invocation_mode") if source_entry else None
+        if source_entry is None:
+            errors.append(f"generated/skill_catalog.min.json missing {skill_dir.name}")
         if source_entry is not None:
-            expected_allow = source_entry.get("invocation_mode") != "explicit-only"
+            expected_allow = source_invocation_mode != "explicit-only"
             if allow_implicit != expected_allow:
                 errors.append(
                     f"{openai_yaml}: policy.allow_implicit_invocation={allow_implicit} does not match "
-                    f"canonical invocation_mode={source_entry.get('invocation_mode')!r}"
+                    f"canonical invocation_mode={source_invocation_mode!r}"
                 )
 
         agent_entry = agent_by_name.get(skill_dir.name)
@@ -938,7 +942,7 @@ def main() -> int:
                 errors.append(f"generated/skill_description_signals.json description mismatch for {skill_dir.name}")
             if description_signal.get("description_sha256") != description_sha:
                 errors.append(f"generated/skill_description_signals.json description_sha256 mismatch for {skill_dir.name}")
-            if description_signal.get("invocation_mode") != source_entry.get("invocation_mode"):
+            if description_signal.get("invocation_mode") != source_invocation_mode:
                 errors.append(f"generated/skill_description_signals.json invocation_mode mismatch for {skill_dir.name}")
             if description_signal.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/skill_description_signals.json allow_implicit_invocation mismatch for {skill_dir.name}")
@@ -956,8 +960,12 @@ def main() -> int:
         if description_manifest_entry is None:
             errors.append(f"generated/description_trigger_eval_manifest.json missing {skill_dir.name}")
         else:
-            required_classes = description_eval_policy["required_case_classes"][source_entry.get("invocation_mode")]
-            if description_manifest_entry.get("required_case_classes") != required_classes:
+            required_classes = description_eval_policy["required_case_classes"].get(source_invocation_mode)
+            if required_classes is None:
+                errors.append(
+                    f"generated/description_trigger_eval_manifest.json cannot resolve required_case_classes for {skill_dir.name}"
+                )
+            elif description_manifest_entry.get("required_case_classes") != required_classes:
                 errors.append(f"generated/description_trigger_eval_manifest.json required_case_classes mismatch for {skill_dir.name}")
             if description_signal is not None and description_manifest_entry.get("description_sha256") != description_signal.get("description_sha256"):
                 errors.append(f"generated/description_trigger_eval_manifest.json description_sha256 mismatch for {skill_dir.name}")
@@ -985,13 +993,13 @@ def main() -> int:
             expected_band = tiny_router_policy["skill_overrides"][skill_dir.name]["band"]
             if tiny_router_signal.get("band") != expected_band:
                 errors.append(f"generated/tiny_router_skill_signals.json band mismatch for {skill_dir.name}")
-            if tiny_router_signal.get("invocation_mode") != source_entry.get("invocation_mode"):
+            if tiny_router_signal.get("invocation_mode") != source_invocation_mode:
                 errors.append(f"generated/tiny_router_skill_signals.json invocation_mode mismatch for {skill_dir.name}")
             if tiny_router_signal.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/tiny_router_skill_signals.json allow_implicit_invocation mismatch for {skill_dir.name}")
             if tiny_router_signal.get("manual_invocation_required") != (not allow_implicit):
                 errors.append(f"generated/tiny_router_skill_signals.json manual_invocation_required mismatch for {skill_dir.name}")
-            if tiny_router_signal.get("project_overlay") != (source_entry.get("scope") == "project"):
+            if tiny_router_signal.get("project_overlay") != (source_scope == "project"):
                 errors.append(f"generated/tiny_router_skill_signals.json project_overlay mismatch for {skill_dir.name}")
             if tiny_router_signal.get("description") != description:
                 errors.append(f"generated/tiny_router_skill_signals.json description mismatch for {skill_dir.name}")
@@ -1012,7 +1020,7 @@ def main() -> int:
                 errors.append(f"generated/tiny_router_capsules.min.json band mismatch for {skill_dir.name}")
             if tiny_router_capsule.get("manual_invocation_required") != (not allow_implicit):
                 errors.append(f"generated/tiny_router_capsules.min.json manual_invocation_required mismatch for {skill_dir.name}")
-            if tiny_router_capsule.get("project_overlay") != (source_entry.get("scope") == "project"):
+            if tiny_router_capsule.get("project_overlay") != (source_scope == "project"):
                 errors.append(f"generated/tiny_router_capsules.min.json project_overlay mismatch for {skill_dir.name}")
             if description_signal is not None and tiny_router_capsule.get("description_sha256") != description_signal.get("description_sha256"):
                 errors.append(f"generated/tiny_router_capsules.min.json description_sha256 mismatch for {skill_dir.name}")
@@ -1025,7 +1033,7 @@ def main() -> int:
                 errors.append(f"generated/tiny_router_overlay_manifest.json band mismatch for {skill_dir.name}")
             if tiny_router_manifest_entry.get("manual_invocation_required") != (not allow_implicit):
                 errors.append(f"generated/tiny_router_overlay_manifest.json manual_invocation_required mismatch for {skill_dir.name}")
-            if tiny_router_manifest_entry.get("project_overlay") != (source_entry.get("scope") == "project"):
+            if tiny_router_manifest_entry.get("project_overlay") != (source_scope == "project"):
                 errors.append(f"generated/tiny_router_overlay_manifest.json project_overlay mismatch for {skill_dir.name}")
             if description_signal is not None and tiny_router_manifest_entry.get("description_sha256") != description_signal.get("description_sha256"):
                 errors.append(f"generated/tiny_router_overlay_manifest.json description_sha256 mismatch for {skill_dir.name}")
@@ -1035,17 +1043,20 @@ def main() -> int:
             class_totals[case["case_class"]] = class_totals.get(case["case_class"], 0) + 1
             if description_signal is not None and case.get("description_sha256") != description_signal.get("description_sha256"):
                 errors.append(f"{case['case_id']}: description trigger case hash mismatch for {skill_dir.name}")
-            if case.get("case_class") == "should-trigger" and source_entry.get("invocation_mode") == "explicit-only":
+            if case.get("case_class") == "should-trigger" and source_invocation_mode == "explicit-only":
                 errors.append(f"{case['case_id']}: explicit-only skill must not have should-trigger cases")
             if case.get("case_class") == "prefer-other-skill":
                 expected_skill = case.get("expected_skill")
                 if expected_skill == skill_dir.name:
                     errors.append(f"{case['case_id']}: prefer-other-skill must defer to another skill")
-        required_classes = description_eval_policy["required_case_classes"][source_entry.get("invocation_mode")]
-        for case_class in required_classes:
-            if class_totals.get(case_class, 0) < 1:
-                errors.append(f"{skill_dir.name}: missing description-trigger class {case_class!r}")
-        if router_entry is not None and router_entry.get("collision_family") and source_entry.get("invocation_mode") != "explicit-only":
+        required_classes = description_eval_policy["required_case_classes"].get(source_invocation_mode)
+        if required_classes is None:
+            errors.append(f"{skill_dir.name}: unknown invocation_mode for description-trigger coverage")
+        else:
+            for case_class in required_classes:
+                if class_totals.get(case_class, 0) < 1:
+                    errors.append(f"{skill_dir.name}: missing description-trigger class {case_class!r}")
+        if router_entry is not None and router_entry.get("collision_family") and source_invocation_mode != "explicit-only":
             if class_totals.get("prefer-other-skill", 0) < 1:
                 errors.append(f"{skill_dir.name}: missing mirrored defer coverage in description-trigger cases")
 

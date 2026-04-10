@@ -473,12 +473,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     disclose = subparsers.add_parser("disclose")
     disclose.add_argument("--repo-root", default=".")
-    disclose.add_argument("--skill", required=True)
+    disclose.add_argument("--skill", "--skill-name", dest="skill", required=True)
     disclose.add_argument("--format", choices=("json", "markdown"), default="json")
 
     activate = subparsers.add_parser("activate")
     activate.add_argument("--repo-root", default=".")
-    activate.add_argument("--skill", required=True)
+    activate.add_argument("--skill", "--skill-name", dest="skill", required=True)
     activate.add_argument("--session-file")
     activate.add_argument("--explicit-handle")
     activate.add_argument("--include-frontmatter", action="store_true")
@@ -491,7 +491,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     deactivate = subparsers.add_parser("deactivate")
     deactivate.add_argument("--session-file", required=True)
-    deactivate.add_argument("--skill", required=True)
+    deactivate.add_argument("--skill", "--skill-name", dest="skill", required=True)
     deactivate.add_argument("--format", choices=("json", "markdown"), default="json")
 
     compact = subparsers.add_parser("compact")

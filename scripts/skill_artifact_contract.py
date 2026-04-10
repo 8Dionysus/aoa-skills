@@ -28,7 +28,7 @@ RUNTIME_EXAMPLE_TYPE = "runtime_example"
 REVIEW_CHECKLIST_TYPE = "review_checklist"
 PROMOTION_REVIEW_TYPE = "promotion_review"
 CANDIDATE_REVIEW_TYPE = "candidate_review"
-SECTION_HEADING_PATTERN = re.compile(r"^##\s+(.+?)\s*$")
+SECTION_HEADING_PATTERN = re.compile(r"^[ ]{0,3}##\s+(.+?)\s*$")
 STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
 CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
 

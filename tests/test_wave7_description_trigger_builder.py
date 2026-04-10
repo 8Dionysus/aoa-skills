@@ -35,6 +35,10 @@ class Wave7DescriptionTriggerBuilderTests(unittest.TestCase):
         self.assertEqual(len(signals["skills"]), expected_skill_count)
         self.assertEqual(len(skills_ref["targets"]), expected_skill_count)
         self.assertTrue(all(entry["coverage_ok"] for entry in manifest["skills"]))
+        self.assertEqual(
+            skills_ref["upstream"]["ref"],
+            "2e8b3265237b2e5f255d6e675f89ae83be572329",
+        )
 
 
 if __name__ == "__main__":

@@ -374,8 +374,8 @@
     },
     {
       "path": "generated/skills_ref_validation_manifest.json",
-      "sha256": "4db197d4c2b833abdceeb7edc023a8909c85011e6c4de64dce1c68b87c530ded",
-      "bytes": 10298
+      "sha256": "5e234edb1bd5db7d3154875841aff01e775ce8566bc1819241fdb37f6536bb53",
+      "bytes": 10426
     },
     {
       "path": "generated/deterministic_resource_manifest.json",

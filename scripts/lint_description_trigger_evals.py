@@ -76,7 +76,12 @@ def main() -> int:
         for case_class in required:
             if totals.get(case_class, 0) < 1:
                 errors.append(f"{skill_name}: missing required description-trigger case class {case_class!r}")
-        if signal.get("family") and totals.get("prefer-other-skill", 0) < 1 and signal["invocation_mode"] != "explicit-only":
+        if (
+            signal.get("family")
+            and totals.get("prefer-other-skill", 0) < 1
+            and signal["invocation_mode"] != "explicit-only"
+            and policy_doc.get("mirror_collision_cases", True)
+        ):
             errors.append(f"{skill_name}: missing prefer-other-skill mirror coverage")
         manifest_entry = manifest_by_name.get(skill_name)
         if manifest_entry is None:

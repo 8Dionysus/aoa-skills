@@ -282,6 +282,7 @@ def collect_drift_records(
             continue
 
         ensure_commit_exists(techniques_repo, source_ref)
+        ensure_path_exists_at_ref(techniques_repo, source_ref, path_value)
         ensure_path_exists_at_ref(techniques_repo, target_ref, path_value)
         state = (
             "drifted"
