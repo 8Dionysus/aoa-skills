@@ -9,6 +9,20 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [0.3.0] - 2026-04-10
 
+### Summary
+
+- this release adds checkpoint-closeout bridging, commit-growth seams, adaptive orchestration, session-harvest note surfaces, and refreshed downstream support resources
+- skill build and validation contracts, defer-case expectations, and technique-reference alignment are hardened across the public corpus
+- `aoa-skills` remains the reusable skill and runtime-export canon rather than a scenario or routing authority
+
+### Validation
+
+- `python scripts/release_check.py`
+
+### Notes
+
+- detailed skill-corpus, generated-runtime, governance, and install-surface coverage for this release remains enumerated below under `Added`, `Changed`, and `Included in this release`
+
 ### Added
 
 - `aoa-checkpoint-closeout-bridge`, `aoa-commit-growth-seam`, and
