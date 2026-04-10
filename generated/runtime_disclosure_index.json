@@ -967,7 +967,7 @@
       "metadata": {
         "aoa_scope": "core",
         "aoa_status": "scaffold",
-        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0028",
@@ -1006,7 +1006,7 @@
         ]
       },
       "policy": {
-        "allow_implicit_invocation": true
+        "allow_implicit_invocation": false
       },
       "interface": {
         "display_name": "AoA Commit Growth Seam",
@@ -1033,13 +1033,13 @@
         "explicit": [
           "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route."
         ],
-        "implicit": [
-          "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding."
-        ],
-        "manual_invocation_required": [],
-        "negative": [
-          "The patch is still incomplete, tests are still red, and the next honest move is more repair work rather than crossing any commit boundary yet.",
+        "implicit": [],
+        "manual_invocation_required": [
+          "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding.",
           "The diff is already bounded and validated. Create one intentional local commit with an honest message, carry forward what was checked, and stop before any push or PR."
+        ],
+        "negative": [
+          "The patch is still incomplete, tests are still red, and the next honest move is more repair work rather than crossing any commit boundary yet."
         ]
       },
       "explicit_handles": {

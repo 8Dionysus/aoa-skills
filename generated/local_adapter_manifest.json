@@ -306,8 +306,8 @@
       "description": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.",
       "path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
-      "allow_implicit_invocation": true,
-      "invocation_mode": "explicit-preferred",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
       "allowlist_paths": [
         ".agents/skills/aoa-commit-growth-seam"
       ],
@@ -322,7 +322,7 @@
       "metadata": {
         "aoa_scope": "core",
         "aoa_status": "scaffold",
-        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0028",

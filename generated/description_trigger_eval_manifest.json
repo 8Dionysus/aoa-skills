@@ -12,13 +12,13 @@
     ".agents/skills/*/SKILL.md"
   ],
   "skill_count": 29,
-  "total_cases": 148,
+  "total_cases": 147,
   "case_class_totals": {
     "explicit-handle": 29,
-    "manual-invocation-required": 28,
-    "prefer-other-skill": 29,
+    "manual-invocation-required": 30,
+    "prefer-other-skill": 28,
     "should-not-trigger": 29,
-    "should-trigger": 33
+    "should-trigger": 31
   },
   "skills": [
     {
@@ -165,10 +165,10 @@
       "invocation_mode": "explicit-preferred",
       "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
       "family": "change-execution-vs-test-first",
-      "total_cases": 11,
+      "total_cases": 10,
       "case_class_totals": {
         "explicit-handle": 1,
-        "prefer-other-skill": 4,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1,
         "should-trigger": 5
       },
@@ -204,21 +204,20 @@
     },
     {
       "name": "aoa-commit-growth-seam",
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12",
       "family": "change-execution-vs-test-first",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
+        "manual-invocation-required": 2,
         "prefer-other-skill": 1,
-        "should-not-trigger": 1,
-        "should-trigger": 2
+        "should-not-trigger": 1
       },
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "coverage_ok": true,
       "has_collision_coverage": true

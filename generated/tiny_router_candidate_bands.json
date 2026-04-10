@@ -78,7 +78,9 @@
         "aoa-tdd-slice",
         "atm10-change-protocol"
       ],
-      "manual_only_skills": [],
+      "manual_only_skills": [
+        "aoa-commit-growth-seam"
+      ],
       "overlay_skills": [
         "atm10-change-protocol"
       ]

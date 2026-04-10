@@ -1,4 +1,4 @@
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false
 notes:
-  - This skill is explicit-preferred because it packages one durable local commit boundary, but it still keeps push, publish, and review as separate follow-on routes.
+  - This skill is explicit-only because crossing a local commit boundary requires visible operator intent before any mutating commit step begins.

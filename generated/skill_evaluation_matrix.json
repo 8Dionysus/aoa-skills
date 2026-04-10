@@ -161,7 +161,7 @@
       "canonical_eval_ready": true,
       "do_not_use_case_count": 1,
       "do_not_use_snapshot_count": 1,
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "name": "aoa-commit-growth-seam",
       "promotion_review_path": null,
       "scope": "core",

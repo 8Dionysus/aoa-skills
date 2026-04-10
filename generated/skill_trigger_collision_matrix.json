@@ -483,13 +483,13 @@
     {
       "case_id": "collision-31",
       "skill_name": "aoa-commit-growth-seam",
-      "expected_behavior": "invoke-skill",
-      "expected_skill": "aoa-commit-growth-seam",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
       "competing_skills": [
         "aoa-change-protocol"
       ],
       "prompt": "The diff is already bounded and validated. Create one intentional local commit with an honest message, carry forward what was checked, and stop before any push or PR.",
-      "note": "This is the narrow post-verify commit boundary; the broader change workflow should defer once the coding work is already done."
+      "note": "This skill is explicit-only; even a strong post-verify commit-boundary match should require a manual $skill invocation."
     },
     {
       "case_id": "collision-32",

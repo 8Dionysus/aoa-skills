@@ -531,7 +531,7 @@
         "full",
         "evidence"
       ],
-      "invocation_mode": "explicit-preferred",
+      "invocation_mode": "explicit-only",
       "name": "aoa-commit-growth-seam",
       "object_use_shape": [
         "one bounded commit-or-defer decision",
