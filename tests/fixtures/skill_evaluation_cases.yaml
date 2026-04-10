@@ -233,6 +233,21 @@ trigger_cases:
     expected: do_not_use
     required_phrases:
       - the edit is tiny and has no meaningful review or operational consequence
+  - skill: aoa-commit-growth-seam
+    case_id: commit_growth_seam_bounded_verified_diff
+    prompt: The bounded diff is already applied, the targeted checks are green, and the next honest move is one local commit with an explicit stop line before push.
+    expected: use
+    required_phrases:
+      - a bounded code, config, or docs diff is already prepared locally
+      - the next honest move is one local commit boundary rather than more coding
+      - the commit needs to preserve what was verified and what remains unresolved
+  - skill: aoa-commit-growth-seam
+    case_id: commit_growth_seam_still_needs_repair
+    prompt: The diff is still changing, verification is not done, and the work clearly needs more repair before any commit boundary would be honest.
+    expected: do_not_use
+    required_phrases:
+      - the task still needs more coding, repair, or verification before any commit
+      - no bounded diff exists yet
   - skill: atm10-change-protocol
     case_id: atm10_change_protocol_local_overlay
     prompt: Apply a bounded non-trivial change in an atm10 repository where local files, commands, and approval notes still need to be named explicitly.
@@ -1062,6 +1077,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection that treats the edit as a simple local fix rather than a scoped change workflow.
+    forbidden_output_phrases: []
+  - skill: aoa-commit-growth-seam
+    case_id: commit_growth_seam_bounded_verified_diff
+    prompt: The bounded diff is already applied, the targeted checks are green, and the next honest move is one local commit with an explicit stop line before push.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-commit-growth-seam/commit_growth_seam_bounded_verified_diff.md
+    required_output_phrases:
+      - use
+      - A bounded local commit decision that carries forward the real validation state and stops before push or publish.
+    forbidden_output_phrases: []
+  - skill: aoa-commit-growth-seam
+    case_id: commit_growth_seam_still_needs_repair
+    prompt: The diff is still changing, verification is not done, and the work clearly needs more repair before any commit boundary would be honest.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-commit-growth-seam/commit_growth_seam_still_needs_repair.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that keeps the route in repair or verification instead of forcing a commit boundary too early.
     forbidden_output_phrases: []
   - skill: atm10-change-protocol
     case_id: atm10_change_protocol_local_overlay

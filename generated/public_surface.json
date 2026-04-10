@@ -269,17 +269,13 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
       "default_reference_readiness": "blocked",
       "default_reference_readiness_blockers": [
         "status_below_evaluated",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "governance_decision": null,
       "governance_evidence_case_ids": [],

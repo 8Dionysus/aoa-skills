@@ -434,18 +434,18 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "05d64b680149aae67985aa913ed4cd82276fcdb5c25b9d0204c1349d57271c7c",
-      "bytes": 87726
+      "sha256": "e8965e125e8a9bf982539a7905b34f5b19f151cc6a16954262834b02daa26a93",
+      "bytes": 87725
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "75985cdec6f844544fdc2f27d5fa43321804297d457f738b6ed1df30a7389aca",
-      "bytes": 9961
+      "sha256": "fbfb19438ed05b9417c70c4c460bd258af3fd9f25d5dd2ab861c857d471407bc",
+      "bytes": 9960
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "d202995975a28f6ae44ee391b0d167f396ad53479517cf7440f5d02b1cf54585",
-      "bytes": 162633
+      "sha256": "9f89f2044fe8e11cfd8de3adb70adb83d965955313940128ddeb8043b3cd44bf",
+      "bytes": 162632
     },
     {
       "path": "generated/skill_graph.md",
