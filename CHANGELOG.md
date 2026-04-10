@@ -26,6 +26,19 @@ Tracking starts with the community-docs baseline for this repository.
 - aligned docs and AGENTS guidance with next-wave execution posture,
   promotion-review revisions, and cross-repo refresh follow-through
 
+### Included in this release
+
+- new skill and runtime-export surfaces across `skills/`, `generated/`,
+  `config/`, `schemas/`, `examples/`, and `scripts/`, including
+  `aoa-quest-harvest`, the session-harvest family,
+  `aoa-automation-opportunity-scan`, `aoa-checkpoint-closeout-bridge`,
+  `aoa-commit-growth-seam`, and `abyss-self-diagnostic-spine`
+- governance and install-profile refreshes across `docs/`, `SKILL_INDEX.md`,
+  `.agents/`, `.github/`, `README.md`, `AGENTS.md`, `AUDIT.md`, `templates/`,
+  `tests/`, `QUESTBOOK.md`, and `quests/`, including project-core kernel and
+  risk rings, foundation-pack rollout, live receipt publication, via negativa
+  guidance, checkpoint-note growth, and cross-repo follow-through capture
+
 ## [0.2.0] - 2026-04-01
 
 Second public release of `aoa-skills`.
