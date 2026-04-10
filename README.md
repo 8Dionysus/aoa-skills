@@ -6,6 +6,8 @@ Public library of reusable Codex-facing skills for coding agents and humans.
 
 A skill here is not a random prompt and not a hidden project hack. It is a reusable agent-facing workflow with clear trigger boundaries, explicit contracts, risks, verification guidance, and technique traceability.
 
+> Current release: `v0.3.0`. See [CHANGELOG](CHANGELOG.md) for release notes.
+
 ## Start here
 
 Use the shortest route by need:
