@@ -879,7 +879,7 @@
         "Outputs": "in `checkpoint-collect` mode:; updated local checkpoint note",
         "Procedure": "during checkpoint collection, keep the note append-only and provisional; treat checkpoint candidates and progression-axis hints as shortlist inputs,",
         "Contracts": "checkpoint note stays provisional and lower-authority than reviewed closeout; `checkpoint-collect` never emits final harvest, progression, or quest verdicts",
-        "Risks and anti-patterns": "treating checkpoint hints as if they were final donor harvest truth; skipping donor harvest and jumping straight to progression or quest verdicts",
+        "Risks and anti-patterns": "treating checkpoint hints as if they were final donor harvest truth; treating `execute-closeout-chain` JSON as if it were the actual skill",
         "Verification": "confirm `checkpoint-collect` only updates local ledger surfaces; confirm the bridge never emits final verdicts during mid-session capture",
         "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0084 from `8Dionysus/aoa-techniques` at `5c6f...",
         "Adaptation points": "local reviewed artifact entrypoints; local receipt bundle locations"

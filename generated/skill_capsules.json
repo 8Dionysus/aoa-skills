@@ -148,7 +148,7 @@
     {
       "inputs_short": "Needs: reviewed session artifact; optional local checkpoint note; optional reviewed surface closeout handoff; optional receipt refs from already published or staged session evidence.",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: treating checkpoint hints as if they were final donor harvest truth; skipping donor harvest and jumping straight to progression or quest verdicts; using progression verdicts that were not reread against the...",
+      "main_anti_patterns_short": "Avoid: treating checkpoint hints as if they were final donor harvest truth; treating execute-closeout-chain JSON as if it were the actual skill application instead of an artifact bundle that still needs agent...",
       "name": "aoa-checkpoint-closeout-bridge",
       "outputs_short": "Produces: in checkpoint-collect mode; updated local checkpoint note; updated provisional progression-axis hints; ordered session-end target list.",
       "scope": "core",

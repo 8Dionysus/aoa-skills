@@ -357,6 +357,7 @@ Common expand sections:
 - aoa-session-progression-lift
 - aoa-quest-harvest
 - one execution report that records what ran, what was skipped, and which artifacts or receipts were emitted
+- one agent-authored closeout summary that says which conclusions came from reread session evidence, which checkpoint hints were accepted, and which hints were rejected as stale, cross-session, or contaminated
 
 ### Support artifacts
 

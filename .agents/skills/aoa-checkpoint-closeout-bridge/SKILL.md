@@ -49,6 +49,8 @@ Do not use this skill when:
 - optional reviewed surface closeout handoff
 - optional receipt refs from already published or staged session evidence
 - repo scope and touched owner hints
+- full session evidence available to the agent, such as the reviewed artifact,
+  Codex rollout trace, transcript excerpts, and relevant receipts
 
 ## Outputs
 - in `checkpoint-collect` mode:
@@ -63,6 +65,9 @@ Do not use this skill when:
     - `aoa-quest-harvest`
   - one execution report that records what ran, what was skipped, and which
     artifacts or receipts were emitted
+  - one agent-authored closeout summary that says which conclusions came from
+    reread session evidence, which checkpoint hints were accepted, and which
+    hints were rejected as stale, cross-session, or contaminated
 
 ## Procedure
 1. during checkpoint collection, keep the note append-only and provisional
@@ -72,18 +77,23 @@ Do not use this skill when:
    - donor harvest first
    - progression lift second
    - quest harvest third
-4. when executing reviewed closeout, reread the full reviewed artifact before
+4. before executing reviewed closeout, the Codex agent must reread the skill
+   instructions and the primary session evidence; checkpoint JSON, generated
+   packets, and closeout reports are only navigation aids
+5. when executing reviewed closeout, reread the full reviewed artifact before
    every core skill stage
-5. let checkpoint note and reviewed handoff narrow attention, but never replace
+6. let checkpoint note and reviewed handoff narrow attention, but never replace
    the reviewed artifact or receipt evidence
-6. run `aoa-session-donor-harvest` first so reusable units and owner routing
+7. explicitly separate current-session evidence from stale, neighboring, or
+   diagnostic checkpoint contamination before naming final candidates
+8. run `aoa-session-donor-harvest` first so reusable units and owner routing
    are bounded before any progression verdict
-7. run `aoa-session-progression-lift` second so final multi-axis movement is
+9. run `aoa-session-progression-lift` second so final multi-axis movement is
    gathered from reviewed evidence, donor outputs, and provisional checkpoint
    axes together
-8. run `aoa-quest-harvest` third so final promotion triage happens only after
+10. run `aoa-quest-harvest` third so final promotion triage happens only after
    donor harvest and progression lift have finished
-9. keep stats refresh out of this bridge skill; that remains downstream after
+11. keep stats refresh out of this bridge skill; that remains downstream after
    explicit closeout receipts exist
 
 ## Contracts
@@ -91,6 +101,9 @@ Do not use this skill when:
 - `checkpoint-collect` never emits final harvest, progression, or quest verdicts
 - `reviewed-closeout-execute` must reread the reviewed artifact and any receipt
   evidence; it may not trust checkpoint notes alone
+- generated bridge artifacts are mechanical outputs, not proof that the agent
+  applied the skill protocol; the agent must still produce the final analytical
+  judgment from reread evidence
 - core skill order is fixed:
   - `aoa-session-donor-harvest`
   - `aoa-session-progression-lift`
@@ -101,6 +114,8 @@ Do not use this skill when:
 
 ## Risks and anti-patterns
 - treating checkpoint hints as if they were final donor harvest truth
+- treating `execute-closeout-chain` JSON as if it were the actual skill
+  application instead of an artifact bundle that still needs agent judgment
 - skipping donor harvest and jumping straight to progression or quest verdicts
 - using progression verdicts that were not reread against the reviewed artifact
 - letting quest harvest run before progression lift
@@ -114,6 +129,10 @@ Do not use this skill when:
 - confirm the core skill order is fixed and visible
 - confirm checkpoint note and reviewed handoff are treated as hints rather than
   sole evidence
+- confirm the final answer distinguishes current-session evidence from
+  checkpoint hints and from stale or contaminated ledger entries
+- confirm the execution report's mechanical bridge outputs were not presented
+  as autonomous skill analysis
 - confirm stats refresh remains downstream of the bridge execution
 
 ## Technique traceability

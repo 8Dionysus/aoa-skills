@@ -584,7 +584,8 @@
         "optional local checkpoint note",
         "optional reviewed surface closeout handoff",
         "optional receipt refs from already published or staged session evidence",
-        "repo scope and touched owner hints"
+        "repo scope and touched owner hints",
+        "full session evidence available to the agent, such as the reviewed artifact,"
       ],
       "outputs": [
         "in `checkpoint-collect` mode:",
@@ -597,7 +598,8 @@
         "`aoa-session-donor-harvest`",
         "`aoa-session-progression-lift`",
         "`aoa-quest-harvest`",
-        "one execution report that records what ran, what was skipped, and which"
+        "one execution report that records what ran, what was skipped, and which",
+        "one agent-authored closeout summary that says which conclusions came from"
       ],
       "verification": [
         "confirm `checkpoint-collect` only updates local ledger surfaces",
@@ -605,12 +607,15 @@
         "confirm reviewed closeout refuses to run without a reviewed artifact",
         "confirm the core skill order is fixed and visible",
         "confirm checkpoint note and reviewed handoff are treated as hints rather than",
+        "confirm the final answer distinguishes current-session evidence from",
+        "confirm the execution report's mechanical bridge outputs were not presented",
         "confirm stats refresh remains downstream of the bridge execution"
       ],
       "contracts": [
         "checkpoint note stays provisional and lower-authority than reviewed closeout",
         "`checkpoint-collect` never emits final harvest, progression, or quest verdicts",
         "`reviewed-closeout-execute` must reread the reviewed artifact and any receipt",
+        "generated bridge artifacts are mechanical outputs, not proof that the agent",
         "core skill order is fixed:",
         "`aoa-session-donor-harvest`",
         "`aoa-session-progression-lift`",
@@ -624,7 +629,8 @@
         "optional-local-checkpoint-note",
         "optional-reviewed-surface-closeout-handoff",
         "optional-receipt-refs-from-already-published-or-staged-session-e",
-        "repo-scope-and-touched-owner-hints"
+        "repo-scope-and-touched-owner-hints",
+        "full-session-evidence-available-to-the-agent-such-as-the-reviewe"
       ],
       "provides_artifact_tags": [
         "in-checkpoint-collect-mode",
