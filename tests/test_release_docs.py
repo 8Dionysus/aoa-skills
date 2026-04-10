@@ -16,8 +16,8 @@ class ReleaseDocsTests(unittest.TestCase):
         changelog = CHANGELOG_PATH.read_text(encoding="utf-8")
 
         self.assertIn("## [Unreleased]", changelog)
+        self.assertIn("## [0.3.0] - 2026-04-10", changelog)
         self.assertIn("## [0.2.0] - 2026-04-01", changelog)
-        self.assertIn("## [0.1.0] - 2026-03-23", changelog)
 
     def test_docs_readme_links_releasing_doc(self) -> None:
         docs_readme = DOCS_README_PATH.read_text(encoding="utf-8")

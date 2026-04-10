@@ -833,8 +833,8 @@
   "release_identity": {
     "changelog": "CHANGELOG.md",
     "releasing_doc": "docs/RELEASING.md",
-    "latest_tagged_version": "0.2.0",
-    "latest_tagged_date": "2026-04-01",
+    "latest_tagged_version": "0.3.0",
+    "latest_tagged_date": "2026-04-10",
     "has_unreleased_changes": false
   }
 }
