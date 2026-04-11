@@ -22,8 +22,9 @@ for the reviewed session-harvest family.
 
 - checkpoint capture is not harvest verdict
 - checkpoint capture is append-only and lower-authority
-- checkpoint capture may preserve owner hints, evidence refs, and promotion
-  conditions
+- checkpoint capture may preserve `cluster_ref`, owner hints, evidence refs,
+  status posture, and promotion conditions
+- checkpoint capture does not mint `candidate_ref`
 - checkpoint capture does not emit `HARVEST_PACKET`
 - checkpoint capture does not emit `CORE_SKILL_APPLICATION_RECEIPT`
 - existing session-harvest skills remain `explicit-only`
@@ -34,7 +35,7 @@ for the reviewed session-harvest family.
 - checkpoint history with meaningful checkpoint kinds
 - candidate clusters that survived the checkpoint
 - review posture such as `collecting` or `reviewable`
-- evidence refs and owner hints
+- evidence refs, owner hints, and provisional `cluster_ref`
 - promotion recommendations such as `local_note`, `dionysus_note`, or
   `harvest_handoff`
 - defer reasons when owner ambiguity or thin evidence remains
@@ -61,3 +62,5 @@ When the session is ready for explicit reviewed closeout, the honest bridge is
 inputs, but it must still reread the reviewed artifact and any receipt evidence
 before driving `aoa-session-donor-harvest`, `aoa-session-progression-lift`, and
 `aoa-quest-harvest`.
+That keeps checkpoint lineage provisional; `candidate_ref` does not exist until
+reviewed donor harvest.

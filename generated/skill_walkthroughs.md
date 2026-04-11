@@ -796,12 +796,15 @@ Common expand sections:
 
 - one bounded HARVESTPACKET
 - named candidates, each with
+- candidate ref minted only after reviewed harvest
+- source cluster ref when the reviewed input carried one
 - reusable unit name
 - unit kind: pattern, mechanic, utility, law, proof, recall, or route
-- abstraction shape: technique, skill, playbook, eval, memo, agent, or hold
-- owner repo recommendation
+- owner shape: technique, skill, playbook, eval, memo, agent, or hold
+- owner hypothesis and owner repo recommendation
 - one chosen next artifact
 - one rejected nearest-wrong target
+- status posture plus any supersedes, merged-into, or drop-reason carry
 - evidence anchors from the session artifact
 - one short list of items to defer, drop, or keep as quest residue
 - one optional automationcandidate extract when a repeated manual route is stable enough to deserve explicit automation-readiness classification

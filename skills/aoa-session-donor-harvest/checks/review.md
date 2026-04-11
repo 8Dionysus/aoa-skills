@@ -19,6 +19,8 @@ family handoff hints.
 - [ ] The source artifact was reviewed and bounded before harvest.
 - [ ] Each kept candidate names one reusable unit rather than one topic cluster.
 - [ ] Each candidate has one primary owner layer.
+- [ ] Each accepted candidate minted `candidate_ref` only after reviewed donor harvest.
+- [ ] Any carried `cluster_ref` stayed linked instead of being treated as final object identity.
 - [ ] The output names the nearest wrong target and rejects it explicitly.
 - [ ] `aoa-routing` and `aoa-kag` were not treated as first authoring targets for source-owned meaning.
 - [ ] `usefulness` was treated as a reuse signal, not as an owner layer.

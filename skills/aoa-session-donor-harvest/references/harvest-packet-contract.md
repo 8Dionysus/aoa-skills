@@ -5,9 +5,11 @@ shape for the post-session packet it emits.
 
 ## Required fields
 
-- `session_ref`
+- `packet_version`
+- `source_session_ref`
 - `reviewed_artifacts`
-- `extracts`
+- `candidates`
+- `deferred_or_dropped`
 
 ## Common optional fields
 
@@ -24,16 +26,22 @@ shape for the post-session packet it emits.
 
 ## Extract record expectations
 
-Each extract should keep:
+Each accepted candidate should keep:
 
+- `candidate_ref`
+- optional `cluster_ref`
 - `title`
 - `kind`
 - `summary`
+- `owner_hypothesis`
+- `owner_shape`
 - `evidence_refs`
 - `repeat_signal`
 - `owner_repo`
 - `chosen_next_surface`
 - `nearest_wrong_target`
+- `status_posture`
+- optional `supersedes`, `merged_into`, and `drop_reason`
 - optional `difficulty`, `risk`, `control_mode`, and `notes`
 
 ## Contract rule

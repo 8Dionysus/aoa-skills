@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
+import yaml
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -11,6 +12,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 def _load_json(relative_path: str) -> dict:
     return json.loads((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
+
+
+def _load_yaml(relative_path: str) -> dict:
+    return yaml.safe_load((REPO_ROOT / relative_path).read_text(encoding="utf-8"))
 
 
 def test_session_checkpoint_note_schema_validates_example() -> None:
@@ -26,8 +31,20 @@ def test_checkpoint_docs_keep_pre_harvest_boundary_explicit() -> None:
     questbook_doc = (REPO_ROOT / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md").read_text(encoding="utf-8")
 
     assert "checkpoint capture is not harvest verdict" in checkpoint_doc
+    assert "checkpoint capture does not mint `candidate_ref`" in checkpoint_doc
     assert "pre-harvest reviewed note" in questbook_doc
     assert "not a replacement for the reviewed session-harvest family" in questbook_doc
+    assert "first candidate-ref minting seam" in questbook_doc
+
+
+def test_candidate_lineage_receipt_schema_validates_example() -> None:
+    schema = _load_yaml(
+        "skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
+    )
+    example = _load_json("examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
+
+    Draft202012Validator.check_schema(schema)
+    Draft202012Validator(schema).validate(example)
 
 
 def test_core_ring_skills_remain_explicit_only() -> None:
