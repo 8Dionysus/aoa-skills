@@ -4,10 +4,16 @@ type: object
 required:
   - schema_version
   - receipt_kind
+  - cluster_ref
   - candidate_ref
   - owner_hypothesis
   - owner_shape
+  - nearest_wrong_target
+  - status_posture
   - evidence_refs
+  - supersedes
+  - merged_into
+  - drop_reason
 properties:
   schema_version:
     const: aoa_candidate_lineage_receipt_v1
