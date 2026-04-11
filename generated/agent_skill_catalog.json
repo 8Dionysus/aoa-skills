@@ -799,6 +799,7 @@
       "resource_inventory": {
         "scripts": [],
         "references": [
+          "references/candidate-lineage-receipt-schema.yaml",
           "references/core-skill-application-receipt-schema.yaml",
           "references/family-shape.md",
           "references/harvest-packet-contract.md",

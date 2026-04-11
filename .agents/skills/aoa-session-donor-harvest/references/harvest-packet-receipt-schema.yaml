@@ -4,14 +4,15 @@ envelope_ref: references/stats-event-envelope.md
 required_payload_fields:
   - extract_kind_counts
   - owner_layer_distribution
-  - promotion_candidate_refs
-  - deferral_refs
+  - accepted_candidate_refs
+  - deferred_or_dropped_refs
   - evidence_density_summary
 optional_payload_fields:
+  - candidate_lineage_refs
   - automation_candidate_present
   - handoff_targets
   - chosen_next_artifact_refs
 rules:
   - summarize the completed HARVEST_PACKET instead of duplicating its full body
   - keep counts descriptive and evidence-linked rather than proof-shaped
-  - record only bounded candidate or deferral refs, not raw session history
+  - record only bounded candidate, lineage, or deferral refs, not raw session history

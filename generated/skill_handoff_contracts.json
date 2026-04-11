@@ -1422,12 +1422,15 @@
       "outputs": [
         "one bounded `HARVEST_PACKET`",
         "named candidates, each with:",
+        "candidate ref minted only after reviewed harvest",
+        "source cluster ref when the reviewed input carried one",
         "reusable unit name",
         "unit kind: pattern, mechanic, utility, law, proof, recall, or route",
-        "abstraction shape: technique, skill, playbook, eval, memo, agent, or hold",
-        "owner repo recommendation",
+        "owner shape: technique, skill, playbook, eval, memo, agent, or hold",
+        "owner hypothesis and owner repo recommendation",
         "one chosen next artifact",
         "one rejected nearest-wrong target",
+        "status posture plus any supersedes, merged-into, or drop-reason carry",
         "evidence anchors from the session artifact",
         "one short list of items to defer, drop, or keep as quest residue",
         "one optional `automation_candidate` extract when a repeated manual route is",
@@ -1440,6 +1443,8 @@
         "confirm each kept candidate names one reusable unit rather than a topic",
         "confirm each accepted candidate has one primary owner layer",
         "confirm the nearest wrong target is rejected explicitly",
+        "confirm `candidate_ref` was minted only for reviewed bounded units",
+        "confirm any surviving checkpoint `cluster_ref` stayed linked when available",
         "confirm no candidate routes source-owned meaning first into derivative layers",
         "confirm hold and defer outcomes remain available",
         "confirm the output names the next artifact rather than only abstract categories",
@@ -1452,6 +1457,7 @@
         "invocation must remain explicit and post-session",
         "the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
         "one candidate must map to one primary owner layer",
+        "`candidate_ref` appears only after reviewed donor harvest",
         "`usefulness` is a reuse signal, not an owner layer by itself",
         "derivative layers do not become first authoring targets for source-owned meaning",
         "weak evidence may end in `hold` or `keep_or_open_quest`",
@@ -1473,24 +1479,24 @@
       "provides_artifact_tags": [
         "one-bounded-harvest-packet",
         "named-candidates-each-with",
+        "candidate-ref-minted-only-after-reviewed-harvest",
+        "source-cluster-ref-when-the-reviewed-input-carried-one",
         "reusable-unit-name",
         "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
-        "abstraction-shape-technique-skill-playbook-eval-memo-agent-or-ho",
-        "owner-repo-recommendation",
-        "one-chosen-next-artifact",
-        "one-rejected-nearest-wrong-target"
+        "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold",
+        "owner-hypothesis-and-owner-repo-recommendation"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-session-donor-harvest",
         "produced_artifacts": [
           "one-bounded-harvest-packet",
           "named-candidates-each-with",
+          "candidate-ref-minted-only-after-reviewed-harvest",
+          "source-cluster-ref-when-the-reviewed-input-carried-one",
           "reusable-unit-name",
           "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
-          "abstraction-shape-technique-skill-playbook-eval-memo-agent-or-ho",
-          "owner-repo-recommendation",
-          "one-chosen-next-artifact",
-          "one-rejected-nearest-wrong-target"
+          "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold",
+          "owner-hypothesis-and-owner-repo-recommendation"
         ],
         "verification_notes": [
           "confirm the source artifact is reviewed and bounded",
