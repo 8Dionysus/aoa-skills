@@ -47,6 +47,18 @@ def test_candidate_lineage_receipt_schema_validates_example() -> None:
     Draft202012Validator(schema).validate(example)
 
 
+def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
+    schema = _load_yaml(
+        "skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
+    )
+    example = _load_json("examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
+    del example["nearest_wrong_target"]
+
+    errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]
+
+    assert "'nearest_wrong_target' is a required property" in errors
+
+
 def test_core_ring_skills_remain_explicit_only() -> None:
     catalog = _load_json("generated/skill_catalog.min.json")
     expected = {
