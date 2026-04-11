@@ -486,7 +486,8 @@
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
         "aoa-quest-harvest",
-        "one execution report that records what ran, what was skipped, and which artifacts or receipts were emitted"
+        "one execution report that records what ran, what was skipped, and which artifacts or receipts were emitted",
+        "one agent-authored closeout summary that says which conclusions came from reread session evidence, which checkpoint hints were accepted, and which hints were rejected as stale, cross-session, or contaminated"
       ],
       "pick_summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
       "scope": "core",

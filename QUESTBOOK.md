@@ -22,12 +22,14 @@ Do not use it for:
 - `AOA-SK-Q-0004` — harvest repeated overlay-specific exceptions into stable skill bundles or playbooks
 - `AOA-SK-Q-0005` — reflect bounded skill bundles as abilities with pack-profile-aware unlock posture
 - `AOA-SK-Q-0006` — classify the cross-repo technique refresh and truth-sync route for bounded automation follow-through
+- `AOA-SK-Q-0008` — track checkpoint owner-promotion follow-through as an early skill-layer seam
 
 ## Latent / parked
 - none yet
 
 ## Harvest candidates
 - `AOA-SK-Q-0004` — harvest repeated overlay-specific exceptions into stable skill bundles or playbooks
+- `AOA-SK-Q-0008` — track checkpoint owner-promotion follow-through as an early skill-layer seam
 
 ## Session-harvest family posture
 
