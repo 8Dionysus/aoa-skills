@@ -103,5 +103,20 @@
     "state": "done",
     "theme_ref": "",
     "title": "Carry checkpoint closeout bridge follow-through into bounded workflow upkeep"
+  },
+  {
+    "band": "near",
+    "difficulty": "d3_seam",
+    "id": "AOA-SK-Q-0008",
+    "kind": "seam",
+    "milestone_ref": "",
+    "owner_surface": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+    "public_safe": true,
+    "repo": "aoa-skills",
+    "risk": "r2_contract",
+    "source_path": "quests/AOA-SK-Q-0008.yaml",
+    "state": "captured",
+    "theme_ref": "",
+    "title": "Track checkpoint owner-promotion follow-through as an early skill-layer seam"
   }
 ]

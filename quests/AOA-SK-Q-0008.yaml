@@ -1,0 +1,59 @@
+schema_version: work_quest_v1
+id: AOA-SK-Q-0008
+title: Track checkpoint owner-promotion follow-through as an early skill-layer seam
+summary: Preserve the reviewed aoa-sdk checkpoint automation closeout as a skill-layer follow-through candidate without treating the checkpoint bridge or hook as final harvest authority.
+repo: aoa-skills
+owner_surface: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+theme_ref: ''
+milestone_ref: ''
+kind: seam
+state: captured
+band: near
+difficulty: d3_seam
+risk: r2_contract
+control_mode: human_codex_copilot
+delegate_tier: planner
+fallback_tier: verifier
+wrapper_class: hybrid
+write_scope: repo_local
+split_required: true
+complexity_basis:
+  scope: 2
+  ambiguity: 2
+  boundary: 2
+  verification: 2
+parent: null
+depends_on:
+  - AOA-SK-Q-0007
+activation:
+  mode: on_review_of
+  ref: session:2026-04-10T19-59-19-444382Z-aoa-sdk-checkpoint-growth-228d9e46-6c8
+  note: open when a reviewed checkpoint automation closeout needs immediate tracked owner follow-through while still staying below final skill promotion authority
+anchor_ref:
+  artifact: checkpoint_owner_promotion_follow_through
+  ref: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+  note: owner follow-through should become tracked early status after reviewed closeout, not remain only in runtime-local checkpoint state
+handoff_role: skill-maintainer
+evidence:
+  - session:2026-04-10T19-59-19-444382Z-aoa-sdk-checkpoint-growth-228d9e46-6c8 produced reviewed checkpoint automation closeout evidence
+  - candidate:growth:aoa-sdk-commit-code reached 8 checkpoint hits with commit/code mutation evidence
+  - candidate:growth:aoa-sdk-commit-repo-config and candidate:growth:aoa-sdk-verify-green-repo-config preserved repo-config and verify-green follow-through
+  - candidate:risk:aoa-skills-layer-request remained reviewable with owner-ambiguity, so it belongs here only as an early tracked seam
+harvest:
+  target: skill
+  trigger_count: 11
+  note: classify whether the bridge, hook review-note protocol, or owner-follow-through docs need a bounded skill-layer adjustment after another reviewed run
+opened_at: '2026-04-11'
+touched_at: '2026-04-11'
+tags:
+  - checkpoint
+  - closeout
+  - owner-follow-through
+  - skill-layer
+notes: >
+  This is the tracked public-safe landing for early status, not a promotion
+  verdict. It exists because leaving the reviewed checkpoint closeout only in
+  .aoa runtime state creates a loss window; the next review should preserve
+  provenance, keep the bridge narrow, and decide whether a skill-layer change is
+  actually warranted.
+public_safe: true

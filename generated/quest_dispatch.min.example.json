@@ -158,5 +158,28 @@
     "state": "done",
     "wrapper_class": "hybrid",
     "write_scope": "repo_local"
+  },
+  {
+    "activation_mode": "on_review_of",
+    "band": "near",
+    "control_mode": "human_codex_copilot",
+    "delegate_tier": "planner",
+    "difficulty": "d3_seam",
+    "fallback_tier": "verifier",
+    "id": "AOA-SK-Q-0008",
+    "public_safe": true,
+    "repo": "aoa-skills",
+    "requires_artifacts": [
+      "bounded_plan",
+      "work_result",
+      "verification_result"
+    ],
+    "risk": "r2_contract",
+    "schema_version": "quest_dispatch_v1",
+    "source_path": "quests/AOA-SK-Q-0008.yaml",
+    "split_required": true,
+    "state": "captured",
+    "wrapper_class": "hybrid",
+    "write_scope": "repo_local"
   }
 ]
