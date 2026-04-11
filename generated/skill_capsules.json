@@ -368,7 +368,7 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units; routing authored meaning into aoa-routing or aoa-kag first; turning agent class law...",
       "name": "aoa-session-donor-harvest",
-      "outputs_short": "Produces: one bounded HARVESTPACKET; named candidates, each with; reusable unit name; unit kind: pattern, mechanic, utility, law, proof, recall, or route.",
+      "outputs_short": "Produces: one bounded HARVESTPACKET; named candidates, each with; candidate ref minted only after reviewed harvest; source cluster ref when the reviewed input carried one.",
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold",

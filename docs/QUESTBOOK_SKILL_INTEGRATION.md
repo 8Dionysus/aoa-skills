@@ -60,14 +60,16 @@ The family is:
 - `aoa-quest-harvest`
 
 - before that family, a lower-authority checkpoint-note lane may preserve
-  repeated candidates, evidence refs, owner hints, and promotion conditions as
-  a pre-harvest reviewed note
+  repeated candidates, `cluster_ref`, evidence refs, owner hints, and
+  promotion conditions as a pre-harvest reviewed note
 - a bounded applicability map or candidate-harvest note may also exist before
   the family as an orchestration aid; it is still lower-authority than the
   explicit session-harvest skills
 - the checkpoint-note lane is additive and review-shaped; it is not a replacement for the reviewed session-harvest family
 - checkpoint-note capture does not emit harvest verdicts, progression deltas,
   or core-skill application receipts
+- `aoa-session-donor-harvest` is the first candidate-ref minting seam in this
+  family
 - use the family after a reviewed run, closure, or pause
 - do not invoke it inside an active route
 - it does not define orchestrator identity

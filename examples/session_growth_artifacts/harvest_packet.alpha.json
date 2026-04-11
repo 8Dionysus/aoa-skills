@@ -1,14 +1,65 @@
 {
   "artifact_kind": "harvest_packet",
-  "session_ref": "session:2026-04-05-alpha",
+  "packet_version": "aoa_harvest_packet_v1",
+  "source_session_ref": "session:2026-04-05-alpha",
   "route_ref": "route:session-growth",
   "owner_repo": "aoa-skills",
+  "reviewed_artifacts": [
+    "repo:aoa-skills/docs/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
+  ],
   "extract_counts": {
-    "skill": 2,
-    "technique": 1,
-    "memo": 1
+    "skill": 1,
+    "hold": 1
   },
-  "promotion_candidates": 2,
-  "deferrals": 1,
-  "evidence_density": "reviewed"
+  "owner_layer_distribution": {
+    "aoa-skills": 1,
+    "hold": 1
+  },
+  "accepted_candidate_refs": [
+    "candidate:session-growth:reviewed-donor-harvest"
+  ],
+  "deferred_or_dropped_refs": [
+    "deferred:session-growth:theme-only-residue"
+  ],
+  "chosen_next_artifact_refs": [
+    "skills/aoa-session-donor-harvest/SKILL.md"
+  ],
+  "candidate_lineage_refs": [
+    "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
+  ],
+  "evidence_density": "reviewed",
+  "candidates": [
+    {
+      "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+      "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+      "title": "reviewed-donor-harvest",
+      "kind": "mechanic",
+      "summary": "Turn reviewed checkpoint closeout evidence into one bounded donor packet before further family handoffs.",
+      "owner_hypothesis": "aoa-skills",
+      "owner_shape": "skill",
+      "repeat_signal": "reviewed-repeat",
+      "owner_repo": "aoa-skills",
+      "chosen_next_surface": "skills/aoa-session-donor-harvest/SKILL.md",
+      "nearest_wrong_target": "aoa-playbooks",
+      "rejected_nearest_wrong_target_note": "The unit is a bounded executable leaf workflow, not a recurring multi-step route.",
+      "status_posture": "early",
+      "evidence_refs": [
+        "repo:aoa-sdk/examples/closeout_context.lineage.example.json",
+        "repo:aoa-skills/docs/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
+      ],
+      "supersedes": [],
+      "merged_into": null,
+      "drop_reason": null
+    }
+  ],
+  "deferred_or_dropped": [
+    {
+      "name": "session-mood-summary",
+      "drop_reason": "theme-only residue, no bounded reusable object",
+      "status_posture": "thin-evidence",
+      "evidence_refs": [
+        "repo:aoa-skills/docs/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
+      ]
+    }
+  ]
 }

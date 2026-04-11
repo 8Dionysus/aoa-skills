@@ -19,6 +19,11 @@
         "role": "primary"
       },
       {
+        "kind": "candidate_lineage_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+        "role": "candidate-lineage"
+      },
+      {
         "kind": "skill_contract",
         "ref": "repo:aoa-skills/skills/aoa-session-donor-harvest/SKILL.md",
         "role": "contract"
@@ -26,19 +31,30 @@
     ],
     "payload": {
       "route_ref": "route:session-growth",
-      "extract_counts": {
-        "skill": 2,
-        "technique": 1,
-        "memo": 1
+      "extract_kind_counts": {
+        "skill": 1,
+        "hold": 1
       },
       "owner_layer_distribution": {
-        "aoa-skills": 2,
-        "aoa-techniques": 1,
-        "aoa-memo": 1
+        "aoa-skills": 1,
+        "hold": 1
       },
-      "promotion_candidates": 2,
-      "deferrals": 1,
-      "evidence_density": "reviewed"
+      "accepted_candidate_refs": [
+        "candidate:session-growth:reviewed-donor-harvest"
+      ],
+      "deferred_or_dropped_refs": [
+        "deferred:session-growth:theme-only-residue"
+      ],
+      "candidate_lineage_refs": [
+        "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
+      ],
+      "chosen_next_artifact_refs": [
+        "skills/aoa-session-donor-harvest/SKILL.md"
+      ],
+      "handoff_targets": [
+        "aoa-session-route-forks"
+      ],
+      "evidence_density_summary": "reviewed"
     }
   },
   {

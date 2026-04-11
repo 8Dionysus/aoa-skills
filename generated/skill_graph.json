@@ -4522,7 +4522,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "baf5e7fc10c9ce915e6c5090ee4db65d14232c0742784fb3beb70e41013c0394",
+      "content_hash": "3f99e2c86d308804c82df7db93091ebe2d01053f0d2597a6826a4dae1cbb4c67",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4553,7 +4553,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "baf5e7fc10c9",
+      "skill_revision": "3f99e2c86d30",
       "status": "scaffold",
       "support_artifacts": [
         {

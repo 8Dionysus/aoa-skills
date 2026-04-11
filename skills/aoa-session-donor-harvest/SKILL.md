@@ -48,12 +48,15 @@ Do not use this skill when:
 
 - one bounded `HARVEST_PACKET`
 - named candidates, each with:
+  - candidate ref minted only after reviewed harvest
+  - source cluster ref when the reviewed input carried one
   - reusable unit name
   - unit kind: pattern, mechanic, utility, law, proof, recall, or route
-  - abstraction shape: technique, skill, playbook, eval, memo, agent, or hold
-  - owner repo recommendation
+  - owner shape: technique, skill, playbook, eval, memo, agent, or hold
+  - owner hypothesis and owner repo recommendation
   - one chosen next artifact
   - one rejected nearest-wrong target
+  - status posture plus any supersedes, merged-into, or drop-reason carry
   - evidence anchors from the session artifact
 - one short list of items to defer, drop, or keep as quest residue
 - one optional `automation_candidate` extract when a repeated manual route is
@@ -75,6 +78,8 @@ Do not use this skill when:
 4. classify each kept candidate twice:
    - by reuse kind: pattern, mechanic, utility, law, proof, recall, or route
    - by owner shape: technique, skill, playbook, eval, memo, agent, or hold
+5. mint `candidate_ref` only after the reviewed unit is bounded and the owner
+   hypothesis plus nearest-wrong target are explicit
 5. mark `automation_candidate` only when a repeated manual route is stable
    enough to name the current inputs, outputs, and risk posture, but the
    surviving question is still automation readiness rather than owner canon
@@ -102,6 +107,10 @@ Do not use this skill when:
 20. draft the smallest next artifact for each accepted candidate, such as
     `TECHNIQUE.md`, `SKILL.md`, `PLAYBOOK.md`, `EVAL.md`, memory object seed,
     or agent/orchestrator surface note
+21. keep `cluster_ref`, `owner_hypothesis`, `owner_shape`,
+    `nearest_wrong_target`, `status_posture`, `evidence_refs`, `supersedes`,
+    `merged_into`, and `drop_reason` on each accepted candidate when that carry
+    exists or becomes explicit during reviewed harvest
 21. emit one `HARVEST_PACKET_RECEIPT` when the packet is complete, using the
     shared event envelope and a bounded receipt payload instead of duplicating
     the full donor packet
@@ -117,6 +126,7 @@ Do not use this skill when:
 - invocation must remain explicit and post-session
 - the skill harvests donor units; it does not treat session history as memory canon or instruction authority
 - one candidate must map to one primary owner layer
+- `candidate_ref` appears only after reviewed donor harvest
 - `usefulness` is a reuse signal, not an owner layer by itself
 - derivative layers do not become first authoring targets for source-owned meaning
 - weak evidence may end in `hold` or `keep_or_open_quest`
@@ -153,6 +163,8 @@ Do not use this skill when:
 - confirm each kept candidate names one reusable unit rather than a topic
 - confirm each accepted candidate has one primary owner layer
 - confirm the nearest wrong target is rejected explicitly
+- confirm `candidate_ref` was minted only for reviewed bounded units
+- confirm any surviving checkpoint `cluster_ref` stayed linked when available
 - confirm no candidate routes source-owned meaning first into derivative layers
 - confirm hold and defer outcomes remain available
 - confirm the output names the next artifact rather than only abstract categories

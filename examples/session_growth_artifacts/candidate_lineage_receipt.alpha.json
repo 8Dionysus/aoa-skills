@@ -1,0 +1,16 @@
+{
+  "schema_version": "aoa_candidate_lineage_receipt_v1",
+  "receipt_kind": "candidate_lineage_receipt",
+  "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+  "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+  "owner_hypothesis": "aoa-skills",
+  "owner_shape": "skill",
+  "nearest_wrong_target": "aoa-playbooks",
+  "status_posture": "early",
+  "evidence_refs": [
+    "repo:aoa-skills/examples/session_growth_artifacts/harvest_packet.alpha.json#candidates[0]"
+  ],
+  "supersedes": [],
+  "merged_into": null,
+  "drop_reason": null
+}

@@ -23,6 +23,8 @@ The task is no longer about executing the original work. It is about extracting 
 ## Expected outputs
 
 - one `HARVEST_PACKET`
+- one reviewed accepted candidate with a minted `candidate_ref`
+- one carried `cluster_ref` when the reviewed source already named it
 - one candidate routed to `aoa-techniques` as reusable practice meaning
 - one candidate routed to `aoa-skills` as a bounded executable leaf workflow
 - one candidate routed to `aoa-playbooks` or deferred because it is route-shaped rather than skill-shaped
@@ -45,6 +47,7 @@ The task is no longer about executing the original work. It is about extracting 
 ## Verification notes
 
 - Confirm the kept units are reusable objects rather than themes.
+- Confirm `candidate_ref` was minted only after reviewed owner-shaping.
 - Confirm the chosen owner layer matches the unit shape.
 - Confirm each accepted candidate names the next artifact, not only the repo.
 - Confirm any post-session family handoff stays explicit.
