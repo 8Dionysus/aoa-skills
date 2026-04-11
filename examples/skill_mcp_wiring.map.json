@@ -1,0 +1,76 @@
+{
+  "schema_version": "1",
+  "mcp_registry": {
+    "aoa_workspace": {
+      "description": "AoA workspace orientation MCP server",
+      "transport": "stdio",
+      "required": true
+    },
+    "aoa_stats": {
+      "description": "AoA stats derived-observability MCP server",
+      "transport": "stdio",
+      "required": false
+    },
+    "dionysus": {
+      "description": "Dionysus seed-routing MCP server",
+      "transport": "stdio",
+      "required": false
+    }
+  },
+  "skill_wirings": [
+    {
+      "slug": "workspace-orientation",
+      "display_name": "AoA workspace orientation",
+      "short_description": "Orient within the sibling workspace and pick the strongest owner surface before deeper work.",
+      "default_prompt": "Use this route to orient within the AoA workspace, map the owning repository and strongest source surfaces, and hand off only after route clarity is explicit.",
+      "allow_implicit_invocation": true,
+      "mcp_dependencies": [
+        "aoa_workspace"
+      ],
+      "preferred_subagents": [
+        "architect",
+        "reviewer"
+      ],
+      "supporting_subagents": [],
+      "notes": "Good first move when the task is fuzzy, cross-repo, or owner-fit is unclear."
+    },
+    {
+      "slug": "stats-observability",
+      "display_name": "AoA stats observability",
+      "short_description": "Inspect derived views and evidence-linked summaries without turning stats into proof authority.",
+      "default_prompt": "Use this route to inspect AoA summary surfaces, derived windows, and evidence-linked observability views after workspace orientation has named the strongest path.",
+      "allow_implicit_invocation": false,
+      "mcp_dependencies": [
+        "aoa_workspace",
+        "aoa_stats"
+      ],
+      "preferred_subagents": [
+        "reviewer",
+        "evaluator"
+      ],
+      "supporting_subagents": [
+        "architect"
+      ],
+      "notes": "Use when the route needs active summary surfaces or evidence-linked counts."
+    },
+    {
+      "slug": "seed-route",
+      "display_name": "Dionysus seed route",
+      "short_description": "Follow manifest-first seed order, staging context, and planting lineage without mistaking staging for owner truth.",
+      "default_prompt": "Use this route to navigate Dionysus through manifest -> seed -> closure -> registry -> planting protocol, then return to the owning repository before making meaning claims.",
+      "allow_implicit_invocation": false,
+      "mcp_dependencies": [
+        "aoa_workspace",
+        "dionysus"
+      ],
+      "preferred_subagents": [
+        "architect",
+        "memory-keeper"
+      ],
+      "supporting_subagents": [
+        "reviewer"
+      ],
+      "notes": "Use when the route involves open waves, seed staging, planting trace, or owner handoff."
+    }
+  ]
+}

@@ -11,6 +11,7 @@ an executable workflow for Codex.
 - If you want one concrete source-authored skill before any derived layer, start with `../skills/aoa-change-protocol/SKILL.md` and then `RUNTIME_PATH.md`.
 - If you want the current canonical surface at a glance, start with `../SKILL_INDEX.md`.
 - If you are choosing or using a skill, start with `RUNTIME_PATH.md`.
+- If you need named MCP dependency wiring or workspace-server alignment for the generated Codex export, start with `CODEX_SKILL_MCP_WIRING.md` and `OPENAI_SKILL_EXTENSIONS.md`.
 - If you need to decide which skills apply now, which belong to closeout, and which belong to harvest, start with `ADAPTIVE_SKILL_ORCHESTRATION.md`.
 - If you need a committed bounded note for reusable session outputs that are not yet skill reviews or owner-layer truth, start with `session-harvests/README.md`.
 - If you need additive degraded, fallback, or receipt-authoring posture for future skills, start with `ANTIFRAGILITY_SKILL_ADDENDUM.md`.
@@ -49,7 +50,7 @@ an executable workflow for Codex.
 12. `RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
 13. `CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
 14. `LOCAL_ADAPTER_CONTRACT.md` - local runtime seams around that export, including the legacy activation shim.
-15. `OPENAI_SKILL_EXTENSIONS.md` - optional OpenAI metadata seam for portable export files.
+15. `OPENAI_SKILL_EXTENSIONS.md` and `CODEX_SKILL_MCP_WIRING.md` - optional OpenAI metadata seam plus named MCP wiring guidance for the generated export.
 16. `INSTALL_AND_PROFILES.md` - install roots, skill-pack profiles, and disable-snippet helpers.
 17. `CONTEXT_RETENTION.md` - generated retention-support metadata around the export.
 18. `UI_METADATA_AND_ASSETS.md` - icon and UI metadata rules for the export.
@@ -122,7 +123,7 @@ The repository now also has a documented maturity ladder and promotion guidance.
 The repository now also has a documented public promotion path in `PROMOTION_PATH.md`.
 The repository now also has a repo-level release runbook in `RELEASING.md` and a bounded release-check CLI at `../scripts/release_check.py`.
 The repository now also has a runtime inspection guide in `RUNTIME_PATH.md`, an evaluation evidence guide in `EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
-The repository now also has a generated Codex-facing export in `../.agents/skills/`, portable discovery surfaces in `../generated/agent_skill_catalog*.json`, a legacy-compatible local adapter seam in `LOCAL_ADAPTER_CONTRACT.md` and `../generated/local_adapter_manifest*.json`, a wave-4 runtime seam in `FOURTH_WAVE.md`, `RUNTIME_SEAM_SECOND_PATH.md`, `RUNTIME_TOOL_CONTRACTS.md`, `SESSION_COMPACTION.md`, and `../generated/runtime_*.json`, wave-3 install and trust surfaces in `INSTALL_AND_PROFILES.md`, `CONTEXT_RETENTION.md`, `UI_METADATA_AND_ASSETS.md`, `CODEX_CONFIG_SNIPPETS.md`, policy-aware trigger-eval data documented in `TRIGGER_EVALS.md`, and a wave-8 deterministic support-resource bridge documented in `EIGHTH_WAVE.md`, `DETERMINISTIC_RESOURCE_BUNDLES.md`, `BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `../generated/deterministic_resource_manifest.json`.
+The repository now also has a generated Codex-facing export in `../.agents/skills/`, portable discovery surfaces in `../generated/agent_skill_catalog*.json`, a legacy-compatible local adapter seam in `LOCAL_ADAPTER_CONTRACT.md` and `../generated/local_adapter_manifest*.json`, named MCP dependency wiring guidance in `CODEX_SKILL_MCP_WIRING.md` plus example scaffolds under `../examples/openai.*.example.yaml`, a wave-4 runtime seam in `FOURTH_WAVE.md`, `RUNTIME_SEAM_SECOND_PATH.md`, `RUNTIME_TOOL_CONTRACTS.md`, `SESSION_COMPACTION.md`, and `../generated/runtime_*.json`, wave-3 install and trust surfaces in `INSTALL_AND_PROFILES.md`, `CONTEXT_RETENTION.md`, `UI_METADATA_AND_ASSETS.md`, `CODEX_CONFIG_SNIPPETS.md`, policy-aware trigger-eval data documented in `TRIGGER_EVALS.md`, and a wave-8 deterministic support-resource bridge documented in `EIGHTH_WAVE.md`, `DETERMINISTIC_RESOURCE_BUNDLES.md`, `BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `../generated/deterministic_resource_manifest.json`.
 The next focus is keeping selection, evidence reading, public status, and live overlay family maturity in their own layers while using the derived governance layer for cross-family overlay maintenance and packaging prep through `../generated/governance_backlog.md`, `../generated/overlay_readiness.md`, `../generated/skill_bundle_index.md`, `../generated/skill_graph.md`, and `../generated/release_manifest.json`.
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md`, `docs/overlays/abyss/PROJECT_OVERLAY.md`, and matching `skills/atm10-*` plus `skills/abyss-*` bundles.
 Those live exemplar packs also have family-level review docs at `docs/overlays/atm10/REVIEW.md` and `docs/overlays/abyss/REVIEW.md`.
