@@ -1,0 +1,24 @@
+# Example generated Codex-facing openai.yaml scaffold.
+# slug: stats-observability
+# Do not copy this into skills/*/agents/openai.yaml unchanged.
+# In aoa-skills, named MCP dependencies belong in config/openai_skill_extensions.json
+# and then flow into the generated export under .agents/skills/*/agents/openai.yaml.
+interface:
+  display_name: AoA stats observability
+  short_description: Inspect derived views and evidence-linked summaries without turning
+    stats into proof authority.
+  default_prompt: Use this route to inspect AoA summary surfaces, derived windows,
+    and evidence-linked observability views after workspace orientation has named
+    the strongest path.
+policy:
+  allow_implicit_invocation: false
+dependencies:
+  tools:
+  - type: mcp
+    value: aoa_workspace
+    description: AoA workspace orientation MCP server
+    transport: stdio
+  - type: mcp
+    value: aoa_stats
+    description: AoA stats derived-observability MCP server
+    transport: stdio

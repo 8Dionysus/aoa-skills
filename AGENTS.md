@@ -96,7 +96,8 @@ Then branch by task:
   `docs/CODEX_PORTABLE_LAYER.md`,
   `docs/LOCAL_ADAPTER_CONTRACT.md`,
   `docs/RUNTIME_TOOL_CONTRACTS.md`, and
-  `docs/OPENAI_SKILL_EXTENSIONS.md`
+  `docs/OPENAI_SKILL_EXTENSIONS.md`, and
+  `docs/CODEX_SKILL_MCP_WIRING.md`
 - deterministic resources, tiny-router bridge, or support bundles:
   `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`,
   `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and
@@ -128,6 +129,7 @@ Do not:
 - collapse scenario-level playbooks into the skill layer
 - let ability cards or loadouts become canonical skill truth
 - let quest surfaces become live quest state, campaign authority, or a hidden runtime ledger
+- move full Codex-facing interface or named MCP dependency metadata into source `skills/*/agents/openai.yaml`; keep that file policy-only and route generated-export metadata through `config/openai_skill_extensions.json`
 - commit secrets, tokens, internal-only URLs, or sensitive infrastructure detail
 - hide destructive workflows behind vague trigger boundaries
 - silently widen scope beyond the stated task
@@ -177,6 +179,7 @@ resources, or bridge inputs:
 ```bash
 python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
 python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
+python scripts/build_openai_yaml_examples.py --map examples/skill_mcp_wiring.map.json --output-dir examples --check
 python scripts/validate_agent_skills.py --repo-root .
 python scripts/validate_support_resources.py --repo-root . --check-portable
 python scripts/validate_tiny_router_inputs.py --repo-root .
@@ -200,6 +203,7 @@ Summarize:
 - what changed
 - whether meaning changed or only docs, metadata, or generated surfaces changed
 - whether trigger boundaries, invocation posture, or technique dependencies changed
+- whether named MCP dependency wiring or workspace-alignment scaffolds changed
 - whether orchestration, ability-card, loadout, quest, portable export, or downstream bridge surfaces changed
 - what validation you actually ran
 - any remaining follow-up work

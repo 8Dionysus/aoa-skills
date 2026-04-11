@@ -35,7 +35,8 @@ Use the shortest route by need:
 - ability-reader and loadout surfaces: `docs/SKILL_ABILITY_MODEL.md`, `docs/ABILITY_LOADOUT_POSTURE.md`, and `generated/skill_ability_cards.min.example.json`
 - evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
 - deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
-- portable export and local runtime seams: `docs/CODEX_PORTABLE_LAYER.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, `docs/OPENAI_SKILL_EXTENSIONS.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `docs/RUNTIME_TOOL_CONTRACTS.md`, `docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
+- portable export and local runtime seams: `docs/CODEX_PORTABLE_LAYER.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, `docs/OPENAI_SKILL_EXTENSIONS.md`, `docs/CODEX_SKILL_MCP_WIRING.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `docs/RUNTIME_TOOL_CONTRACTS.md`, `docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
+- named MCP dependency scaffolds and workspace-alignment checks: `examples/skill_mcp_wiring.map.json`, `examples/openai.*.example.yaml`, `scripts/build_openai_yaml_examples.py`, and `scripts/validate_skill_mcp_wiring.py`
 - install, trust, config, and UI surfaces: `docs/INSTALL_AND_PROFILES.md`, `docs/CONTEXT_RETENTION.md`, `docs/UI_METADATA_AND_ASSETS.md`, `docs/CODEX_CONFIG_SNIPPETS.md`, `docs/TRUST_GATE_AND_ALLOWLIST.md`, `docs/SKILL_CONTEXT_GUARD.md`, and `docs/RUNTIME_GOVERNANCE_LAYER.md`
 - activation quality and conformance: `docs/TRIGGER_EVALS.md`, `docs/DESCRIPTION_TRIGGER_EVALS.md`, and `docs/SKILLS_REF_VALIDATION.md`
 - deterministic resources and downstream tiny-router bridge: `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`, `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `docs/TWO_STAGE_SKILL_SELECTION.md`
@@ -115,6 +116,7 @@ python scripts/build_catalog.py --check
 python scripts/validate_skills.py --fail-on-review-truth-sync
 python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
 python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
+python scripts/build_openai_yaml_examples.py --map examples/skill_mcp_wiring.map.json --output-dir examples --check
 python scripts/validate_agent_skills.py --repo-root .
 python scripts/validate_support_resources.py --repo-root . --check-portable
 python scripts/validate_tiny_router_inputs.py --repo-root .
@@ -130,6 +132,13 @@ python scripts/build_catalog.py --check
 ```
 
 If you change skill bodies, portable export, policy posture, descriptions, deterministic resources, or tiny-router bridge inputs, also run the documented build and validation commands for those families.
+
+When the task specifically touches named MCP dependency wiring, also validate the
+workspace seam against a real workspace config:
+
+```bash
+python scripts/validate_skill_mcp_wiring.py --workspace-config /path/to/.codex/config.toml --format text
+```
 
 ## Go elsewhere when...
 
