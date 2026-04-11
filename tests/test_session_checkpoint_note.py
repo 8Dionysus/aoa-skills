@@ -59,6 +59,25 @@ def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
     assert "'nearest_wrong_target' is a required property" in errors
 
 
+def test_harvest_packet_receipt_allows_candidate_lineage_entries_without_seed_or_object_refs() -> None:
+    schema = _load_yaml(
+        "skills/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml"
+    )
+    receipt_family = json.loads(
+        (REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    harvest_receipt = receipt_family[0]
+    lineage_entries = harvest_receipt["payload"]["candidate_lineage_entries"]
+
+    assert "candidate_lineage_entries" in schema["optional_payload_fields"]
+    assert lineage_entries
+    assert all("seed_ref" not in entry for entry in lineage_entries)
+    assert all("object_ref" not in entry for entry in lineage_entries)
+    assert any("must not carry seed_ref or object_ref" in rule for rule in schema["rules"])
+
+
 def test_core_ring_skills_remain_explicit_only() -> None:
     catalog = _load_json("generated/skill_catalog.min.json")
     expected = {

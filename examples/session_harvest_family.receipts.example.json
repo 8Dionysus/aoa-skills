@@ -48,6 +48,22 @@
       "candidate_lineage_refs": [
         "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
       ],
+      "candidate_lineage_entries": [
+        {
+          "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+          "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+          "owner_hypothesis": "aoa-skills",
+          "owner_shape": "skill",
+          "nearest_wrong_target": "aoa-playbooks",
+          "status_posture": "early",
+          "evidence_refs": [
+            "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
+          ],
+          "supersedes": [],
+          "merged_into": null,
+          "drop_reason": null
+        }
+      ],
       "chosen_next_artifact_refs": [
         "skills/aoa-session-donor-harvest/SKILL.md"
       ],

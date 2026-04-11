@@ -9,6 +9,7 @@ required_payload_fields:
   - evidence_density_summary
 optional_payload_fields:
   - candidate_lineage_refs
+  - candidate_lineage_entries
   - automation_candidate_present
   - handoff_targets
   - chosen_next_artifact_refs
@@ -16,3 +17,5 @@ rules:
   - summarize the completed HARVEST_PACKET instead of duplicating its full body
   - keep counts descriptive and evidence-linked rather than proof-shaped
   - record only bounded candidate, lineage, or deferral refs, not raw session history
+  - candidate_lineage_entries may carry candidate_ref, cluster_ref, owner_hypothesis, owner_shape, nearest_wrong_target, status_posture, evidence_refs, supersedes, merged_into, and drop_reason
+  - candidate_lineage_entries must not carry seed_ref or object_ref; Dionysus and the final owner repo own those identities

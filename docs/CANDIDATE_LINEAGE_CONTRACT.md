@@ -16,6 +16,9 @@ Checkpoint carry may arrive with `cluster_ref`, owner hints, evidence refs, and
 status posture, but it stays provisional until donor harvest performs the
 reviewed owner-shaping pass.
 
+For the shorter donor-harvest bridge note, read
+`docs/CANDIDATE_REF_REFINERY.md`.
+
 ## Required carried fields
 
 Each accepted donor-harvest candidate should keep:
