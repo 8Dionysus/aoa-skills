@@ -59,6 +59,63 @@ def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
     assert "'nearest_wrong_target' is a required property" in errors
 
 
+def test_reviewed_owner_landing_bundle_schema_validates_example() -> None:
+    schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
+    example = _load_json("examples/reviewed_owner_landing_bundle.example.json")
+
+    Draft202012Validator.check_schema(schema)
+    Draft202012Validator(schema).validate(example)
+
+
+def test_reviewed_owner_landing_bundle_forbids_seed_or_object_refs() -> None:
+    schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
+    example = _load_json("examples/reviewed_owner_landing_bundle.example.json")
+    example["seed_ref"] = "seed:aoa-skills:reviewed-donor-harvest"
+    example["object_ref"] = "object:aoa-skills:reviewed-donor-harvest"
+
+    errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]
+
+    assert any("Additional properties are not allowed" in error for error in errors)
+
+
+def test_reviewed_owner_landing_bundle_requires_terminal_drop_metadata() -> None:
+    schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
+    example = _load_json("examples/reviewed_owner_landing_bundle.example.json")
+    example["status_posture"] = "dropped"
+
+    errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]
+
+    assert "None is not of type 'string'" in errors
+
+
+def test_route_followthrough_decision_schema_validates_example() -> None:
+    schema = _load_json("schemas/route_followthrough_decision.schema.json")
+    example = _load_json("examples/route_followthrough_decision.example.json")
+
+    Draft202012Validator.check_schema(schema)
+    Draft202012Validator(schema).validate(example)
+
+
+def test_route_followthrough_decision_requires_reasoning_against_nearest_wrong_target() -> None:
+    schema = _load_json("schemas/route_followthrough_decision.schema.json")
+    example = _load_json("examples/route_followthrough_decision.example.json")
+    del example["why_not_nearest_wrong_target"]
+
+    errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]
+
+    assert "'why_not_nearest_wrong_target' is a required property" in errors
+
+
+def test_owner_landing_and_followthrough_examples_keep_lineage_aligned() -> None:
+    landing = _load_json("examples/reviewed_owner_landing_bundle.example.json")
+    decision = _load_json("examples/route_followthrough_decision.example.json")
+
+    assert landing["candidate_ref"] == decision["candidate_ref"]
+    assert landing["cluster_ref"] == decision["cluster_ref"]
+    assert landing["owner_repo"] == decision["owner_repo"]
+    assert landing["nearest_wrong_target"] == decision["nearest_wrong_target"]
+
+
 def test_harvest_packet_receipt_allows_candidate_lineage_entries_without_seed_or_object_refs() -> None:
     schema = _load_yaml(
         "skills/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml"
@@ -106,3 +163,18 @@ def test_kernel_stage_and_live_receipt_family_do_not_expand_for_checkpoints() ->
     assert kernel["governance_contract"]["application_stage"] == "finish"
     assert "checkpoint_note_receipt" not in publish_script
     assert "session_checkpoint_note_v1" not in publish_script
+
+
+def test_owner_landing_docs_keep_bounded_reviewed_boundary_explicit() -> None:
+    owner_status_doc = (REPO_ROOT / "docs" / "OWNER_STATUS_SURFACES.md").read_text(encoding="utf-8")
+    followthrough_doc = (REPO_ROOT / "docs" / "GOVERNED_FOLLOWTHROUGH.md").read_text(encoding="utf-8")
+    docs_map = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+    lineage_doc = (REPO_ROOT / "docs" / "CANDIDATE_REF_REFINERY.md").read_text(encoding="utf-8")
+
+    assert "reviewed-only" in owner_status_doc
+    assert "must not mint `seed_ref` or `object_ref`" in owner_status_doc
+    assert "It does not become a queue, a runner," in followthrough_doc
+    assert "or schedule authority." in followthrough_doc
+    assert "OWNER_STATUS_SURFACES.md" in docs_map
+    assert "GOVERNED_FOLLOWTHROUGH.md" in docs_map
+    assert "Once `candidate_ref` exists" in lineage_doc
