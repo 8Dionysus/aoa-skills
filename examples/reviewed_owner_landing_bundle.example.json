@@ -1,0 +1,22 @@
+{
+  "schema_version": "reviewed_owner_landing_bundle_v1",
+  "bundle_kind": "reviewed_owner_landing_bundle",
+  "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+  "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+  "owner_repo": "aoa-skills",
+  "owner_shape": "skill",
+  "nearest_wrong_target": "aoa-playbooks",
+  "status_posture": "early",
+  "reviewed_at": "2026-04-12T00:32:00Z",
+  "evidence_refs": [
+    "repo:aoa-skills/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+    "repo:aoa-sdk/examples/closeout_owner_followthrough_map.example.json#owner_followthrough_map[0]"
+  ],
+  "status_note": "first reviewed owner-local landing for the bounded skill candidate before stable object truth exists",
+  "supersedes": [],
+  "superseded_by": null,
+  "merged_into": null,
+  "drop_reason": null,
+  "drop_stage": null,
+  "drop_evidence_refs": []
+}

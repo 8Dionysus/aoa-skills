@@ -18,6 +18,8 @@ reviewed owner-shaping pass.
 
 For the shorter donor-harvest bridge note, read
 `docs/CANDIDATE_REF_REFINERY.md`.
+For the next owner-local tracked surfaces after `candidate_ref` exists, read
+`docs/OWNER_STATUS_SURFACES.md` and `docs/GOVERNED_FOLLOWTHROUGH.md`.
 
 ## Required carried fields
 

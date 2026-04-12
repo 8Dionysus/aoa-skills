@@ -14,6 +14,11 @@ It is not:
 - the first home of `seed_ref`
 - the final home of planted `object_ref`
 
+Once `candidate_ref` exists, the next reviewed owner-local tracked surfaces are:
+
+- `docs/OWNER_STATUS_SURFACES.md`
+- `docs/GOVERNED_FOLLOWTHROUGH.md`
+
 ## Boundary
 
 `aoa-skills` may:
@@ -45,6 +50,8 @@ Reviewed candidate identity remains anchored in the existing donor-harvest path:
 - `skills/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml`
 - `skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml`
 - `examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json`
+- `examples/reviewed_owner_landing_bundle.example.json`
+- `examples/route_followthrough_decision.example.json`
 
 This wave patches the existing `harvest_packet_receipt` shape.
 It does not create a second competing receipt kind.

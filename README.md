@@ -30,6 +30,7 @@ Use the shortest route by need:
 - runtime inspect and walkthrough surfaces: `generated/skill_walkthroughs.md` and `scripts/inspect_skill.py`
 - additive degraded and receipt-authoring guidance for future skill bundles: `docs/ANTIFRAGILITY_SKILL_ADDENDUM.md`
 - checkpoint-aware pre-harvest session-growth capture: `docs/CHECKPOINT_NOTE_PATH.md`, `schemas/session_checkpoint_note.schema.json`, and `examples/session_checkpoint_note.example.json`
+- reviewed owner-status landing and bounded next-step followthrough after `candidate_ref` exists: `docs/OWNER_STATUS_SURFACES.md`, `docs/GOVERNED_FOLLOWTHROUGH.md`, `schemas/reviewed_owner_landing_bundle.schema.json`, `schemas/route_followthrough_decision.schema.json`, and matching examples under `examples/`
 - adaptive applicability, closeout, and harvest routing for multi-skill sessions: `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, `templates/SKILL_APPLICABILITY_MAP.template.md`, and `templates/SESSION_CANDIDATE_HARVEST.template.md`
 - checkpoint-to-closeout bridge orchestration: `skills/aoa-checkpoint-closeout-bridge/SKILL.md`, `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, and `docs/CHECKPOINT_NOTE_PATH.md`
 - ability-reader and loadout surfaces: `docs/SKILL_ABILITY_MODEL.md`, `docs/ABILITY_LOADOUT_POSTURE.md`, and `generated/skill_ability_cards.min.example.json`

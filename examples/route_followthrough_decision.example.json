@@ -1,0 +1,26 @@
+{
+  "schema_version": "route_followthrough_decision_v1",
+  "decision_kind": "route_followthrough_decision",
+  "cluster_ref": "cluster:growth:aoa-sdk-checkpoint-auto-capture-verify-green",
+  "candidate_ref": "candidate:session-growth:reviewed-donor-harvest",
+  "verdict": "land_direct",
+  "owner_repo": "aoa-skills",
+  "owner_shape": "skill",
+  "nearest_wrong_target": "aoa-playbooks",
+  "why_now": "the reviewed candidate already has an owner-local landing and the owner repo is explicit, so the next honest move is a direct bounded owner update rather than another provisional hop",
+  "why_not_nearest_wrong_target": "the candidate is a bounded skill-layer unit, not recurring scenario method for aoa-playbooks",
+  "next_artifact_kind": "skill_bundle_patch",
+  "approval_posture": "review_required",
+  "seed_required": false,
+  "proof_bundle_hint": null,
+  "writeback_hint": null,
+  "stats_refresh_hint": "refresh after the reviewed owner landing either stabilizes or changes terminal posture",
+  "stop_conditions": [
+    "stop if the owner repo changes from aoa-skills",
+    "stop if proof becomes a prerequisite before the owner-local change can stay bounded"
+  ],
+  "evidence_refs": [
+    "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json",
+    "repo:aoa-sdk/examples/closeout_owner_followthrough_map.example.json#owner_followthrough_map[0]"
+  ]
+}

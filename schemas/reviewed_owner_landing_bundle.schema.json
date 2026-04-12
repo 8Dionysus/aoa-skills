@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "aoa-skills reviewed owner landing bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "bundle_kind",
+    "candidate_ref",
+    "owner_repo",
+    "owner_shape",
+    "nearest_wrong_target",
+    "status_posture",
+    "reviewed_at",
+    "evidence_refs",
+    "status_note",
+    "supersedes",
+    "superseded_by",
+    "merged_into",
+    "drop_reason",
+    "drop_stage",
+    "drop_evidence_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "reviewed_owner_landing_bundle_v1"
+    },
+    "bundle_kind": {
+      "const": "reviewed_owner_landing_bundle"
+    },
+    "cluster_ref": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "candidate_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_repo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_shape": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nearest_wrong_target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status_posture": {
+      "type": "string",
+      "enum": [
+        "early",
+        "reanchor",
+        "thin-evidence",
+        "stable",
+        "merged",
+        "superseded",
+        "dropped"
+      ]
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "status_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supersedes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "superseded_by": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "merged_into": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "drop_reason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "wrong_owner",
+        "too_broad",
+        "thin_evidence_persisted",
+        "duplicate",
+        "replaced_by_stronger_candidate",
+        "seed_not_worth_staging",
+        "repair_cost_not_honest",
+        "proof_failed",
+        "manual_route_preferred",
+        null
+      ]
+    },
+    "drop_stage": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "drop_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status_posture": {
+            "const": "merged"
+          }
+        },
+        "required": [
+          "status_posture"
+        ]
+      },
+      "then": {
+        "properties": {
+          "merged_into": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status_posture": {
+            "const": "superseded"
+          }
+        },
+        "required": [
+          "status_posture"
+        ]
+      },
+      "then": {
+        "properties": {
+          "superseded_by": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status_posture": {
+            "const": "dropped"
+          }
+        },
+        "required": [
+          "status_posture"
+        ]
+      },
+      "then": {
+        "properties": {
+          "drop_reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "drop_stage": {
+            "type": "string",
+            "minLength": 1
+          },
+          "drop_evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}
