@@ -7,6 +7,42 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-04-12
+
+### Summary
+
+- this release tightens checkpoint follow-through, candidate lineage, and
+  local Codex/MCP disclosure across the current skill corpus
+- wave-4 session-growth kernel maturity examples land beside the continuity
+  and owner-landing follow-through work
+- `aoa-skills` remains the reusable skill and runtime-export canon rather than
+  a scenario or routing authority
+
+### Validation
+
+- `python scripts/release_check.py`
+
+### Notes
+
+- this patch keeps the current release line focused on follow-through,
+  lineage, and local adapter disclosure without widening the layer boundary
+
+### Added
+
+- checkpoint owner follow-through quest surfaces and closeout-bridge contract
+  follow-through for release-driven harvest.
+- Codex skill MCP wiring surfaces and the matching generated dependency
+  metadata for downstream local adapter use.
+- reviewed candidate-lineage, owner-landing follow-through, and harvest
+  lineage surfaces across the skill corpus.
+- wave-4 session-growth kernel maturity examples and tests for the current
+  session artifact family.
+
+### Changed
+
+- candidate lineage posture fields and donor-harvest lineage contracts are
+  tightened across the current public skill surface.
+
 ## [0.3.0] - 2026-04-10
 
 ### Summary

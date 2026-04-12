@@ -16,6 +16,7 @@ class ReleaseDocsTests(unittest.TestCase):
         changelog = CHANGELOG_PATH.read_text(encoding="utf-8")
 
         self.assertIn("## [Unreleased]", changelog)
+        self.assertIn("## [0.3.1] - 2026-04-12", changelog)
         self.assertIn("## [0.3.0] - 2026-04-10", changelog)
         self.assertIn("## [0.2.0] - 2026-04-01", changelog)
 
