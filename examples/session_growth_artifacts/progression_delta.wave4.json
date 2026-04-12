@@ -1,0 +1,28 @@
+{
+  "artifact_kind": "progression_delta",
+  "packet_kind": "PROGRESSION_DELTA",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "route_ref": "route:session-growth-kernel",
+  "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
+  "lineage_refs": {
+    "cluster_ref": "cluster:route:aoa-playbooks-playbook-registry-min",
+    "candidate_ref": "candidate:aoa-skills:2026-04-11:reviewed-automation-followthrough"
+  },
+  "status_posture": "thin-evidence",
+  "owner_target": "aoa-playbooks",
+  "verdict": "hold",
+  "axes": {
+    "boundary_integrity": "advance",
+    "execution_reliability": "hold",
+    "change_legibility": "advance",
+    "review_sharpness": "hold",
+    "proof_discipline": "hold",
+    "provenance_hygiene": "advance",
+    "deep_readiness": "thin-evidence"
+  },
+  "unlock_hints": [
+    "add one reviewed automation real-run note before promotion"
+  ],
+  "automation_readiness_hint": "candidate exists but keep seed-ready conditional",
+  "defer_condition": "defer promotion until one reviewed automation followthrough lands"
+}

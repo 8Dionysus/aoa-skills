@@ -74,3 +74,9 @@ Do not:
 - treat donor harvest as proof that an owner repo already accepted the unit
 - collapse a mixed multi-owner route into one fake candidate
 - widen the route so far that the candidate stops being bounded
+
+## Later Neighbor
+
+For the later reviewed packet and receipt route that uses existing
+`candidate_ref` without turning it into seed or object truth, read
+`SESSION_GROWTH_KERNEL_MATURITY.md`.

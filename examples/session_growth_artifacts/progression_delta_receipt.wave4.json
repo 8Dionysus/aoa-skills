@@ -1,0 +1,46 @@
+{
+  "event_kind": "progression_delta_receipt",
+  "event_id": "evt-wave4-progression-0001",
+  "observed_at": "2026-04-12T01:22:00Z",
+  "run_ref": "run-wave4-kernel-001",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "actor_ref": "aoa-skills:session-progression-lift",
+  "object_ref": {
+    "repo": "aoa-skills",
+    "kind": "skill",
+    "id": "aoa-session-progression-lift",
+    "version": "main"
+  },
+  "evidence_refs": [
+    {
+      "kind": "progression_packet",
+      "ref": "repo:aoa-skills/examples/session_growth_artifacts/progression_delta.wave4.json",
+      "role": "primary"
+    },
+    {
+      "kind": "skill_contract",
+      "ref": "repo:aoa-skills/skills/aoa-session-progression-lift/SKILL.md",
+      "role": "contract"
+    }
+  ],
+  "payload": {
+    "scope_ref": "route:session-growth-kernel",
+    "axis_delta_summary": {
+      "boundary_integrity": "advance",
+      "execution_reliability": "hold",
+      "change_legibility": "advance",
+      "review_sharpness": "hold",
+      "proof_discipline": "hold",
+      "provenance_hygiene": "advance",
+      "deep_readiness": "thin-evidence"
+    },
+    "verdict": "hold",
+    "caution_refs": [
+      "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate.wave4.json#defer_condition"
+    ],
+    "unlock_hint_refs": [
+      "repo:aoa-skills/examples/session_growth_artifacts/progression_delta.wave4.json#unlock_hints[0]"
+    ],
+    "automation_readiness_hint": "candidate exists but keep seed-ready conditional"
+  }
+}

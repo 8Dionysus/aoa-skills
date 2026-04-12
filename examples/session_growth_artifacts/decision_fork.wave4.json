@@ -1,0 +1,45 @@
+{
+  "artifact_kind": "decision_fork",
+  "packet_kind": "FORK_CARDS",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "route_ref": "route:session-growth-kernel",
+  "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
+  "lineage_refs": {
+    "cluster_ref": "cluster:route:aoa-playbooks-playbook-registry-min",
+    "candidate_ref": "candidate:aoa-skills:2026-04-11:reviewed-automation-followthrough"
+  },
+  "owner_targets": [
+    "aoa-playbooks",
+    "aoa-skills"
+  ],
+  "status_posture": "reanchor",
+  "default_route": "automation_seed_candidate",
+  "nearest_wrong_target": "aoa-routing",
+  "cards": [
+    {
+      "route": "automation_seed_candidate",
+      "owner_repo": "aoa-playbooks",
+      "likely_gain": "reduce repeated cross-repo closeout packaging",
+      "likely_cost": "one reviewed playbook seed and one real-run note",
+      "main_risk": "scheduler drift",
+      "stop_condition": "if the route starts implying live scheduling authority"
+    },
+    {
+      "route": "diagnosis_first",
+      "owner_repo": "aoa-skills",
+      "likely_gain": "repair approval and rollback ambiguity before seeding",
+      "likely_cost": "one extra reviewed loop",
+      "main_risk": "delay",
+      "stop_condition": "if the blockers are already explicit in the packet set"
+    },
+    {
+      "route": "defer",
+      "owner_repo": "none",
+      "likely_gain": "avoid false readiness",
+      "likely_cost": "manual repetition continues",
+      "main_risk": "stalled learning",
+      "stop_condition": "if no branch stays review-gated and recommendation-only"
+    }
+  ],
+  "defer_condition": "defer if no branch stays reviewed-only and recommendation-only"
+}

@@ -1,0 +1,38 @@
+{
+  "artifact_kind": "diagnosis_packet",
+  "packet_kind": "DIAGNOSIS_PACKET",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "route_ref": "route:session-growth-kernel",
+  "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
+  "lineage_refs": {
+    "cluster_ref": "cluster:route:aoa-playbooks-playbook-registry-min",
+    "candidate_ref": "candidate:aoa-skills:2026-04-11:reviewed-automation-followthrough"
+  },
+  "status_posture": "thin-evidence",
+  "owner_hints": [
+    "aoa-skills",
+    "aoa-playbooks"
+  ],
+  "skill_name": "aoa-session-self-diagnose",
+  "diagnosis_types": [
+    "blocked_automation_readiness",
+    "approval_ambiguity"
+  ],
+  "symptom_refs": [
+    "artifact:wave4/manual-loop-repeats",
+    "artifact:wave4/approval-boundary-fuzzy"
+  ],
+  "probable_cause_hypotheses": [
+    "checkpoint posture is not yet preserved as an explicit prerequisite",
+    "rollback and health-check notes are still too thin for a seed-ready verdict"
+  ],
+  "confidence_band": "medium",
+  "blocked_automation_causes": [
+    "review gate is clear but the repair prerequisites are still spread across notes"
+  ],
+  "repair_handoff": "aoa-session-self-repair",
+  "unknowns": [
+    "where the first reviewed real-run note should live after playbook landing"
+  ],
+  "defer_condition": "defer if approval posture stays ambiguous after one bounded repair"
+}

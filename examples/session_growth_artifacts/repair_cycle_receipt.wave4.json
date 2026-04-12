@@ -1,0 +1,41 @@
+{
+  "event_kind": "repair_cycle_receipt",
+  "event_id": "evt-wave4-repair-0001",
+  "observed_at": "2026-04-12T01:18:00Z",
+  "run_ref": "run-wave4-kernel-001",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "actor_ref": "aoa-skills:session-self-repair",
+  "object_ref": {
+    "repo": "aoa-skills",
+    "kind": "skill",
+    "id": "aoa-session-self-repair",
+    "version": "main"
+  },
+  "evidence_refs": [
+    {
+      "kind": "repair_packet",
+      "ref": "repo:aoa-skills/examples/session_growth_artifacts/repair_cycle.wave4.json",
+      "role": "primary"
+    },
+    {
+      "kind": "skill_contract",
+      "ref": "repo:aoa-skills/skills/aoa-session-self-repair/SKILL.md",
+      "role": "contract"
+    }
+  ],
+  "payload": {
+    "repair_cycle_state": "prepared",
+    "linked_diagnosis_refs": [
+      "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json"
+    ],
+    "action_family": "docs-and-example-update",
+    "approval_posture": "review_required",
+    "rollback_marker": "git:wave4-kernel-pre-repair",
+    "health_check_refs": [
+      "cmd:python scripts/validate_skills.py --fail-on-review-truth-sync"
+    ],
+    "resolution_status": "bounded_patch_prepared",
+    "escalation_route": "aoa-session-route-forks",
+    "iteration_limit": 1
+  }
+}
