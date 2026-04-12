@@ -1,0 +1,91 @@
+{
+  "schema_version": "aoa_component_refresh_law_v1",
+  "component_ref": "component:skills-export:foundation",
+  "component_title": "AoA portable skill export foundation",
+  "owner_repo": "aoa-skills",
+  "source_authored_inputs": [
+    "skills/*/SKILL.md",
+    "config/portable_skill_overrides.json",
+    "config/openai_skill_extensions.json",
+    "config/skill_pack_profiles.json",
+    "config/skill_policy_matrix.json",
+    "config/description_trigger_eval_policy.json"
+  ],
+  "generated_surfaces": [
+    ".agents/skills/*",
+    "generated/agent_skill_catalog.min.json",
+    "generated/local_adapter_manifest.min.json",
+    "generated/runtime_discovery_index.json",
+    "generated/mcp_dependency_manifest.json"
+  ],
+  "projected_or_installed_surfaces": [
+    ".agents/skills/"
+  ],
+  "drift_signals": [
+    {
+      "signal": "skill_source_changed_without_export_refresh",
+      "drift_class": "export_drift",
+      "meaning": "canonical skill bundles changed while the Codex-facing export stayed stale",
+      "recommended_route_class": "reexport"
+    },
+    {
+      "signal": "openai_yaml_dependency_drift",
+      "drift_class": "wiring_drift",
+      "meaning": "generated OpenAI-facing metadata or named MCP wiring no longer matches repo-owned export inputs",
+      "recommended_route_class": "reexport"
+    },
+    {
+      "signal": "runtime_discovery_surface_stale",
+      "drift_class": "runtime_drift",
+      "meaning": "runtime discovery or adapter-facing views no longer describe the current export accurately",
+      "recommended_route_class": "rebuild"
+    },
+    {
+      "signal": "portable_policy_matrix_drift",
+      "drift_class": "policy_drift",
+      "meaning": "trust or invocation posture in the export diverged from repo-owned policy inputs",
+      "recommended_route_class": "repair"
+    },
+    {
+      "signal": "skill_validation_failed",
+      "drift_class": "validation_drift",
+      "meaning": "repo validation detected export or generated-surface mismatch",
+      "recommended_route_class": "rebuild"
+    }
+  ],
+  "refresh_routes": {
+    "check": [
+      "python scripts/build_catalog.py --check"
+    ],
+    "execute": [
+      "python scripts/build_catalog.py"
+    ],
+    "validate": [
+      "python scripts/validate_skills.py --fail-on-review-truth-sync",
+      "python scripts/validate_agent_skills.py --repo-root .",
+      "python scripts/validate_support_resources.py --repo-root . --check-portable",
+      "python scripts/validate_tiny_router_inputs.py --repo-root ."
+    ]
+  },
+  "proof_commands": [
+    "python scripts/build_catalog.py --check",
+    "python scripts/validate_skills.py --fail-on-review-truth-sync",
+    "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps",
+    "python scripts/validate_agent_skills.py --repo-root .",
+    "python scripts/validate_support_resources.py --repo-root . --check-portable",
+    "python scripts/validate_tiny_router_inputs.py --repo-root .",
+    "python -m pytest -q tests"
+  ],
+  "rollback_anchors": [
+    "docs/CODEX_PORTABLE_LAYER.md",
+    "docs/LOCAL_ADAPTER_CONTRACT.md",
+    "generated/local_adapter_manifest.min.json",
+    "generated/runtime_discovery_index.json"
+  ],
+  "refresh_window": {
+    "stale_after_days": 7,
+    "repeat_trigger_threshold": 2,
+    "open_window_days": 5
+  },
+  "followthrough_home": "aoa-playbooks:component-refresh-cycle"
+}
