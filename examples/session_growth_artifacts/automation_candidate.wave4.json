@@ -1,0 +1,31 @@
+{
+  "artifact_kind": "automation_candidate",
+  "packet_kind": "AUTOMATION_OPPORTUNITY_PACKET",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "pipeline_ref": "pipeline:session-growth-kernel",
+  "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
+  "lineage_refs": {
+    "cluster_ref": "cluster:route:aoa-playbooks-playbook-registry-min",
+    "candidate_ref": "candidate:aoa-skills:2026-04-11:reviewed-automation-followthrough"
+  },
+  "status_posture": "reanchor",
+  "current_manual_route": "assemble reviewed automation followthrough notes across closeout, playbook, and stats surfaces",
+  "repeat_signal": "observed_three_times",
+  "friction_signal": "owner-local followthrough still requires hand-assembled artifacts",
+  "input_clarity": "moderate",
+  "output_clarity": "high",
+  "proof_surface": "one reviewed real-run note still required",
+  "reversibility": "bounded",
+  "approval_sensitivity": "review_required",
+  "verdict": "seed_ready",
+  "checkpoint_required": true,
+  "owner_layer": "aoa-playbooks",
+  "next_artifact": "playbook_seed",
+  "schedule_hint": "advisory only after one reviewed run",
+  "nearest_wrong_target": "aoa-routing",
+  "evidence_refs": [
+    "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
+    "repo:aoa-skills/examples/reviewed_owner_landing_bundle.example.json"
+  ],
+  "defer_condition": "defer if the route starts implying live scheduling authority"
+}

@@ -1,0 +1,55 @@
+{
+  "event_kind": "diagnosis_packet_receipt",
+  "event_id": "evt-wave4-diagnose-0001",
+  "observed_at": "2026-04-12T01:12:00Z",
+  "run_ref": "run-wave4-kernel-001",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "actor_ref": "aoa-skills:session-self-diagnose",
+  "object_ref": {
+    "repo": "aoa-skills",
+    "kind": "skill",
+    "id": "aoa-session-self-diagnose",
+    "version": "main"
+  },
+  "evidence_refs": [
+    {
+      "kind": "diagnosis_packet",
+      "ref": "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet.wave4.json",
+      "role": "primary"
+    },
+    {
+      "kind": "skill_contract",
+      "ref": "repo:aoa-skills/skills/aoa-session-self-diagnose/SKILL.md",
+      "role": "contract"
+    }
+  ],
+  "payload": {
+    "route_ref": "route:session-growth-kernel",
+    "skill_name": "aoa-session-self-diagnose",
+    "result_kind": "diagnosis_packet",
+    "diagnosis_types": [
+      "blocked_automation_readiness",
+      "approval_ambiguity"
+    ],
+    "symptom_refs": [
+      "artifact:wave4/manual-loop-repeats",
+      "artifact:wave4/approval-boundary-fuzzy"
+    ],
+    "probable_cause_hypotheses": [
+      "checkpoint posture is not yet preserved as an explicit prerequisite",
+      "rollback and health-check notes are still too thin for a seed-ready verdict"
+    ],
+    "confidence_band": "medium",
+    "owner_hints": [
+      "aoa-skills",
+      "aoa-playbooks"
+    ],
+    "blocked_automation_causes": [
+      "review gate is clear but the repair prerequisites are still spread across notes"
+    ],
+    "repair_handoff": "aoa-session-self-repair",
+    "unknowns": [
+      "where the first reviewed real-run note should live after playbook landing"
+    ]
+  }
+}

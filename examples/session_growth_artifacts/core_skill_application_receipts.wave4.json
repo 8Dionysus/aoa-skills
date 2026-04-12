@@ -1,0 +1,145 @@
+[
+  {
+    "event_kind": "core_skill_application_receipt",
+    "event_id": "evt-wave4-core-automation-0001",
+    "observed_at": "2026-04-12T01:29:00Z",
+    "run_ref": "run-wave4-kernel-001",
+    "session_ref": "session:2026-04-11:wave4-kernel-automation",
+    "actor_ref": "aoa-skills:automation-opportunity-scan",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-automation-opportunity-scan",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "detail_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate_receipt.wave4.json",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "kernel_id": "project-core-session-growth-v1",
+      "skill_name": "aoa-automation-opportunity-scan",
+      "application_stage": "finish",
+      "detail_event_kind": "automation_candidate_receipt",
+      "detail_receipt_ref": "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate_receipt.wave4.json"
+    }
+  },
+  {
+    "event_kind": "core_skill_application_receipt",
+    "event_id": "evt-wave4-core-fork-0001",
+    "observed_at": "2026-04-12T01:30:00Z",
+    "run_ref": "run-wave4-kernel-001",
+    "session_ref": "session:2026-04-11:wave4-kernel-automation",
+    "actor_ref": "aoa-skills:session-route-forks",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-route-forks",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "detail_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/decision_fork_receipt.wave4.json",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "kernel_id": "project-core-session-growth-v1",
+      "skill_name": "aoa-session-route-forks",
+      "application_stage": "finish",
+      "detail_event_kind": "decision_fork_receipt",
+      "detail_receipt_ref": "repo:aoa-skills/examples/session_growth_artifacts/decision_fork_receipt.wave4.json",
+      "route_ref": "route:session-growth-kernel"
+    }
+  },
+  {
+    "event_kind": "core_skill_application_receipt",
+    "event_id": "evt-wave4-core-diagnosis-0001",
+    "observed_at": "2026-04-12T01:31:00Z",
+    "run_ref": "run-wave4-kernel-001",
+    "session_ref": "session:2026-04-11:wave4-kernel-automation",
+    "actor_ref": "aoa-skills:session-self-diagnose",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-self-diagnose",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "detail_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "kernel_id": "project-core-session-growth-v1",
+      "skill_name": "aoa-session-self-diagnose",
+      "application_stage": "finish",
+      "detail_event_kind": "diagnosis_packet_receipt",
+      "detail_receipt_ref": "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json",
+      "route_ref": "route:session-growth-kernel"
+    }
+  },
+  {
+    "event_kind": "core_skill_application_receipt",
+    "event_id": "evt-wave4-core-repair-0001",
+    "observed_at": "2026-04-12T01:32:00Z",
+    "run_ref": "run-wave4-kernel-001",
+    "session_ref": "session:2026-04-11:wave4-kernel-automation",
+    "actor_ref": "aoa-skills:session-self-repair",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-self-repair",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "detail_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/repair_cycle_receipt.wave4.json",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "kernel_id": "project-core-session-growth-v1",
+      "skill_name": "aoa-session-self-repair",
+      "application_stage": "finish",
+      "detail_event_kind": "repair_cycle_receipt",
+      "detail_receipt_ref": "repo:aoa-skills/examples/session_growth_artifacts/repair_cycle_receipt.wave4.json"
+    }
+  },
+  {
+    "event_kind": "core_skill_application_receipt",
+    "event_id": "evt-wave4-core-progression-0001",
+    "observed_at": "2026-04-12T01:33:00Z",
+    "run_ref": "run-wave4-kernel-001",
+    "session_ref": "session:2026-04-11:wave4-kernel-automation",
+    "actor_ref": "aoa-skills:session-progression-lift",
+    "object_ref": {
+      "repo": "aoa-skills",
+      "kind": "skill",
+      "id": "aoa-session-progression-lift",
+      "version": "main"
+    },
+    "evidence_refs": [
+      {
+        "kind": "detail_receipt",
+        "ref": "repo:aoa-skills/examples/session_growth_artifacts/progression_delta_receipt.wave4.json",
+        "role": "primary"
+      }
+    ],
+    "payload": {
+      "kernel_id": "project-core-session-growth-v1",
+      "skill_name": "aoa-session-progression-lift",
+      "application_stage": "finish",
+      "detail_event_kind": "progression_delta_receipt",
+      "detail_receipt_ref": "repo:aoa-skills/examples/session_growth_artifacts/progression_delta_receipt.wave4.json",
+      "route_ref": "route:session-growth-kernel"
+    }
+  }
+]

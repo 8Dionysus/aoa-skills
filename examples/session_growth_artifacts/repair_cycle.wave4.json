@@ -1,0 +1,24 @@
+{
+  "artifact_kind": "repair_cycle",
+  "packet_kind": "REPAIR_PACKET",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "route_ref": "route:session-growth-kernel",
+  "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
+  "lineage_refs": {
+    "cluster_ref": "cluster:route:aoa-playbooks-playbook-registry-min",
+    "candidate_ref": "candidate:aoa-skills:2026-04-11:reviewed-automation-followthrough"
+  },
+  "status_posture": "reanchor",
+  "diagnosis_ref": "repo:aoa-skills/examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json",
+  "target_owner_repo": "aoa-skills",
+  "target_artifact_class": "docs-and-example-update",
+  "checkpoint_required": true,
+  "approval_need": "review_required",
+  "rollback_marker": "git:wave4-kernel-pre-repair",
+  "health_check": "python scripts/validate_skills.py --fail-on-review-truth-sync",
+  "bounded_iteration_limit": 1,
+  "stop_conditions": [
+    "if the repair widens beyond one bounded docs/examples/tests patch",
+    "if the route stops being recommendation-only"
+  ]
+}

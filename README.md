@@ -6,7 +6,7 @@ Public library of reusable Codex-facing skills for coding agents and humans.
 
 A skill here is not a random prompt and not a hidden project hack. It is a reusable agent-facing workflow with clear trigger boundaries, explicit contracts, risks, verification guidance, and technique traceability.
 
-> Current release: `v0.3.0`. See [CHANGELOG](CHANGELOG.md) for release notes.
+> Current release: `v0.3.1`. See [CHANGELOG](CHANGELOG.md) for release notes.
 
 ## Start here
 
@@ -41,7 +41,7 @@ Use the shortest route by need:
 - install, trust, config, and UI surfaces: `docs/INSTALL_AND_PROFILES.md`, `docs/CONTEXT_RETENTION.md`, `docs/UI_METADATA_AND_ASSETS.md`, `docs/CODEX_CONFIG_SNIPPETS.md`, `docs/TRUST_GATE_AND_ALLOWLIST.md`, `docs/SKILL_CONTEXT_GUARD.md`, and `docs/RUNTIME_GOVERNANCE_LAYER.md`
 - activation quality and conformance: `docs/TRIGGER_EVALS.md`, `docs/DESCRIPTION_TRIGGER_EVALS.md`, and `docs/SKILLS_REF_VALIDATION.md`
 - deterministic resources and downstream tiny-router bridge: `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`, `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `docs/TWO_STAGE_SKILL_SELECTION.md`
-- project-core kernel receipts and bounded second-wave surface context: `config/project_core_skill_kernel.json`, `scripts/publish_core_skill_receipts.py`, and `skills/*/references/core-skill-application-receipt-schema.yaml`
+- project-core kernel receipts, Wave 4 maturity guidance, and bounded second-wave surface context: `config/project_core_skill_kernel.json`, `scripts/publish_core_skill_receipts.py`, `skills/*/references/core-skill-application-receipt-schema.yaml`, `docs/SESSION_GROWTH_KERNEL_MATURITY.md`, and `examples/session_growth_artifacts/*.wave4.json`
 - promotion, maturity, and release posture: `docs/MATURITY_MODEL.md`, `docs/PROMOTION_PATH.md`, and `docs/RELEASING.md`
 - thin downstream overlays: `docs/OVERLAY_SPEC.md` and `docs/overlays/*`
 

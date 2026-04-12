@@ -18,6 +18,7 @@ an executable workflow for Codex.
 - If you need a lightweight checkpoint-aware note before post-session harvest, start with `CHECKPOINT_NOTE_PATH.md`.
 - If you need the checkpoint-to-reviewed-candidate identity seam, start with `CANDIDATE_LINEAGE_CONTRACT.md`, then `CANDIDATE_REF_REFINERY.md`, and then `CHECKPOINT_NOTE_PATH.md`.
 - If you need the first reviewed owner-status landing and the next bounded verdict after `candidate_ref` exists, start with `OWNER_STATUS_SURFACES.md`, then `GOVERNED_FOLLOWTHROUGH.md`, and then `CANDIDATE_REF_REFINERY.md`.
+- If you need the later reviewed session-growth kernel packet and receipt examples after closeout carry and `candidate_ref` already exist, start with `SESSION_GROWTH_KERNEL_MATURITY.md`.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
 - If you are reading status, promotion, or governance state, start with `PUBLIC_SURFACE.md`.
 - If you are reading live project-overlay family maturity, use `PUBLIC_SURFACE.md` and then `../generated/overlay_readiness.md`.

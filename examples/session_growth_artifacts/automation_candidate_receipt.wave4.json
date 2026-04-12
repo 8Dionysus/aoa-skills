@@ -1,0 +1,37 @@
+{
+  "event_kind": "automation_candidate_receipt",
+  "event_id": "evt-wave4-automation-0001",
+  "observed_at": "2026-04-12T01:28:00Z",
+  "run_ref": "run-wave4-kernel-001",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "actor_ref": "aoa-skills:automation-opportunity-scan",
+  "object_ref": {
+    "repo": "aoa-skills",
+    "kind": "skill",
+    "id": "aoa-automation-opportunity-scan",
+    "version": "main"
+  },
+  "evidence_refs": [
+    {
+      "kind": "automation_packet",
+      "ref": "repo:aoa-skills/examples/session_growth_artifacts/automation_candidate.wave4.json",
+      "role": "primary"
+    },
+    {
+      "kind": "skill_contract",
+      "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+      "role": "contract"
+    }
+  ],
+  "payload": {
+    "manual_route_ref": "manual-route:wave4:reviewed-automation-followthrough-assembly",
+    "repeat_signal_posture": "repeated",
+    "determinism_posture": "stable-input-output",
+    "reversibility_posture": "bounded-rollback",
+    "checkpoint_required": true,
+    "seed_ready": true,
+    "next_artifact_hint": "playbook_seed",
+    "likely_owner_layer": "aoa-playbooks",
+    "proof_surface_notes": "one reviewed real-run note still keeps the route recommendation-only"
+  }
+}

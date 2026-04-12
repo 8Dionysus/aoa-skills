@@ -1,0 +1,47 @@
+{
+  "event_kind": "decision_fork_receipt",
+  "event_id": "evt-wave4-fork-0001",
+  "observed_at": "2026-04-12T01:08:00Z",
+  "run_ref": "run-wave4-kernel-001",
+  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "actor_ref": "aoa-skills:session-route-forks",
+  "object_ref": {
+    "repo": "aoa-skills",
+    "kind": "skill",
+    "id": "aoa-session-route-forks",
+    "version": "main"
+  },
+  "evidence_refs": [
+    {
+      "kind": "fork_packet",
+      "ref": "repo:aoa-skills/examples/session_growth_artifacts/decision_fork.wave4.json",
+      "role": "primary"
+    },
+    {
+      "kind": "skill_contract",
+      "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+      "role": "contract"
+    }
+  ],
+  "payload": {
+    "route_ref": "route:session-growth-kernel",
+    "branch_ids": [
+      "automation_seed_candidate",
+      "diagnosis_first",
+      "defer"
+    ],
+    "suggested_default_branch": "automation_seed_candidate",
+    "predicted_gain_posture": "high",
+    "predicted_cost_posture": "medium",
+    "predicted_risk_posture": "checkpoint-sensitive",
+    "chosen_branch": "automation_seed_candidate",
+    "stop_condition_refs": [
+      "repo:aoa-skills/examples/session_growth_artifacts/decision_fork.wave4.json#defer_condition"
+    ],
+    "realized_outcome_refs": [],
+    "owner_targets": [
+      "aoa-playbooks",
+      "aoa-skills"
+    ]
+  }
+}
