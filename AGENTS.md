@@ -92,8 +92,9 @@ Then branch by task:
 - quest carry-forward or quest dispatch:
   `QUESTBOOK.md` and
   `docs/QUESTBOOK_SKILL_INTEGRATION.md`
-- portable export, adapter, or runtime seams:
+- portable export, component refresh, adapter, or runtime seams:
   `docs/CODEX_PORTABLE_LAYER.md`,
+  `docs/COMPONENT_REFRESH_LAW.md`,
   `docs/LOCAL_ADAPTER_CONTRACT.md`,
   `docs/RUNTIME_TOOL_CONTRACTS.md`, and
   `docs/OPENAI_SKILL_EXTENSIONS.md`, and

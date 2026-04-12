@@ -10,6 +10,11 @@ The target shape is:
 - Codex-facing export lives in `.agents/skills/*`
 - local-friendly runtimes wrap or mirror the Codex-facing export rather than replacing it
 
+When repeated drift or stale generated surfaces show up around that export, use
+`COMPONENT_REFRESH_LAW.md` as the owner refresh route. That law stays
+subordinate to the same source-authored skill bundles and repo-owned config
+described here.
+
 ## Source surfaces
 
 The builder reads:
