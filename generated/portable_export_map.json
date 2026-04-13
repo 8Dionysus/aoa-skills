@@ -527,6 +527,28 @@
       }
     },
     {
+      "name": "aoa-summon",
+      "source_skill_path": "skills/aoa-summon/SKILL.md",
+      "target_dir": ".agents/skills/aoa-summon",
+      "target_skill_path": ".agents/skills/aoa-summon/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/no-raw-traces-rule.md",
+          "references/passport-lane-matrix.v3.md",
+          "references/summon-request-v3.schema.json",
+          "references/summon-result-v3.schema.json"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
       "name": "aoa-tdd-slice",
       "source_skill_path": "skills/aoa-tdd-slice/SKILL.md",
       "target_dir": ".agents/skills/aoa-tdd-slice",

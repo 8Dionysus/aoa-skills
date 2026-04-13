@@ -107,6 +107,10 @@
       "tools": []
     },
     {
+      "name": "aoa-summon",
+      "tools": []
+    },
+    {
       "name": "aoa-tdd-slice",
       "tools": []
     },

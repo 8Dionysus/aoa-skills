@@ -1,6 +1,8 @@
 {
   "cohorts": {
-    "blocked_by_pending_lineage": [],
+    "blocked_by_pending_lineage": [
+      "aoa-summon"
+    ],
     "candidate_ready": [
       "aoa-core-logic-boundary",
       "aoa-local-stack-bringup",
@@ -733,6 +735,38 @@
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
       "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist."
+    },
+    {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "canonical_candidate_ready": false,
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-only",
+      "is_default_reference": false,
+      "lineage_state": "pending",
+      "maturity_status": "scaffold",
+      "name": "aoa-summon",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-summon/SKILL.md",
+      "status": "scaffold",
+      "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",

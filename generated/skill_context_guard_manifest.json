@@ -842,6 +842,38 @@
       }
     },
     {
+      "name": "aoa-summon",
+      "display_name": "AoA Summon",
+      "source_scope": "repo",
+      "instruction_sha256": "f5f5fedf1d417a89458903cec791386da44880384ef2455ab53273f37a63b21b",
+      "dedupe_key": "aoa-summon:f5f5fedf1d417a89458903cec791386da44880384ef2455ab53273f37a63b21b",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Summon one bounded child route",
+      "must_keep": [
+        "a quest passport with difficulty, risk, control mode, and delegate tier",
+        "a summon request with desired role or child target, transport preference, one",
+        "one summon decision with allowed or blocked posture",
+        "one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one, one summon decision with allowed or blocked posture, one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-summon",
+          "explicit_handle": "$aoa-summon",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
       "name": "aoa-tdd-slice",
       "display_name": "AoA TDD Slice",
       "source_scope": "repo",

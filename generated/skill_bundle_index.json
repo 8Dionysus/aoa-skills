@@ -2294,6 +2294,85 @@
         "tiny_router"
       ],
       "bundle_files": [
+        "skills/aoa-summon/SKILL.md",
+        "skills/aoa-summon/techniques.yaml",
+        "skills/aoa-summon/agents/openai.yaml",
+        "skills/aoa-summon/examples/runtime.md",
+        "skills/aoa-summon/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "fef9b0482464a04fb64fedf1770f38cdd540b2b2e9fda4cf608df24b35415440",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-summon-only"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-summon",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-summon/SKILL.md",
+      "skill_revision": "fef9b0482464",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-summon/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-summon/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
         "skills/aoa-tdd-slice/SKILL.md",
         "skills/aoa-tdd-slice/techniques.yaml",
         "skills/aoa-tdd-slice/agents/openai.yaml",

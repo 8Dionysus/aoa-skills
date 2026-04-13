@@ -118,6 +118,10 @@
         "unlock hint",
         "reviewed closeout execute",
         "closeout context",
+        "child route summon",
+        "quest passport",
+        "codex local child",
+        "return plan",
         "checkpoint collect",
         "runtime self diagnosis",
         "diagnostic session artifact",
@@ -128,6 +132,7 @@
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-summon",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -390,6 +395,23 @@
         "final verdicts from checkpoint notes alone",
         "implement the bridge itself",
         "bounded code-and-docs patch"
+      ]
+    },
+    "aoa-summon": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "child route summon",
+        "quest passport",
+        "codex local child",
+        "return plan",
+        "reviewed helper lane"
+      ],
+      "negative_cues": [
+        "whole orchestration mesh",
+        "no anchor yet",
+        "unnamed outputs",
+        "d3 plus unsplit route",
+        "remote shortcut around approval"
       ]
     },
     "aoa-automation-opportunity-scan": {
@@ -667,6 +689,12 @@
       "aoa-session-self-diagnose",
       "aoa-session-progression-lift",
       "aoa-source-of-truth-check"
+    ],
+    "aoa-summon": [
+      "aoa-checkpoint-closeout-bridge",
+      "aoa-session-route-forks",
+      "aoa-change-protocol",
+      "aoa-approval-gate-check"
     ],
     "aoa-automation-opportunity-scan": [
       "aoa-session-donor-harvest",

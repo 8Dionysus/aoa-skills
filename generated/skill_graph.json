@@ -2072,6 +2072,71 @@
     },
     {
       "kind": "maturity",
+      "source": "skill_aoa_summon",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_aoa_summon",
+      "target": "scope_core"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_aoa_summon",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_aoa_summon",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_summon",
+      "target": "technique_AOA_T_PENDING_SUMMON_LANE_SELECTION"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_aoa_summon",
+      "target": "technique_AOA_T_PENDING_SUMMON_RETURN_GOVERNANCE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_summon",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_summon",
+      "target": "profile_repo_summon_only"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_summon",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_summon",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_summon",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_summon",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_aoa_summon",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
       "source": "skill_aoa_tdd_slice",
       "target": "status_canonical"
     },
@@ -2711,6 +2776,31 @@
       "id": "technique_AOA_T_0009",
       "label": "AOA-T-0009",
       "type": "technique"
+    },
+    {
+      "id": "skill_aoa_summon",
+      "label": "aoa-summon",
+      "type": "skill"
+    },
+    {
+      "id": "lineage_pending",
+      "label": "lineage: pending",
+      "type": "lineage"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_SUMMON_LANE_SELECTION",
+      "label": "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_SUMMON_RETURN_GOVERNANCE",
+      "label": "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
+      "type": "technique"
+    },
+    {
+      "id": "profile_repo_summon_only",
+      "label": "profile: repo-summon-only",
+      "type": "profile"
     },
     {
       "id": "skill_aoa_tdd_slice",
@@ -5021,6 +5111,85 @@
           "path": "techniques/docs/lightweight-status-snapshot/TECHNIQUE.md",
           "repo": "aoa-techniques",
           "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/aoa-summon/SKILL.md",
+        "skills/aoa-summon/techniques.yaml",
+        "skills/aoa-summon/agents/openai.yaml",
+        "skills/aoa-summon/examples/runtime.md",
+        "skills/aoa-summon/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "fef9b0482464a04fb64fedf1770f38cdd540b2b2e9fda4cf608df24b35415440",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-summon-only"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-summon",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/aoa-summon/SKILL.md",
+      "skill_revision": "fef9b0482464",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/aoa-summon/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/aoa-summon/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
         }
       ]
     },

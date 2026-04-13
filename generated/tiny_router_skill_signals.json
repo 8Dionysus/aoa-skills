@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "skill_count": 29,
+  "skill_count": 30,
   "band_count": 6,
   "skills": [
     {
@@ -2193,6 +2193,99 @@
       "primary_positive_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
       "primary_negative_prompt": "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
       "primary_defer_prompt": "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
+    },
+    {
+      "name": "aoa-summon",
+      "band": "quest-harvest-governance",
+      "band_summary": "Post-session donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
+      "summary_short": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and...",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description_sha256": "711452125c6e7cb10c60f080098acdc081b5322852a6265f3018b7c555b639e4",
+      "positive_cues": [
+        "child route summon",
+        "quest passport",
+        "codex local child",
+        "return plan",
+        "reviewed helper lane",
+        "session donor",
+        "donor harvest",
+        "automation opportunity",
+        "automation candidate",
+        "seed ready"
+      ],
+      "negative_cues": [
+        "whole orchestration mesh",
+        "no anchor yet",
+        "unnamed outputs",
+        "d3 plus unsplit route",
+        "remote shortcut around approval"
+      ],
+      "cue_tokens": [
+        "child",
+        "route",
+        "summon",
+        "quest",
+        "passport",
+        "codex",
+        "return",
+        "plan",
+        "reviewed",
+        "helper",
+        "lane",
+        "session",
+        "donor",
+        "harvest",
+        "automation",
+        "opportunity",
+        "candidate",
+        "seed"
+      ],
+      "negative_tokens": [
+        "whole",
+        "orchestration",
+        "mesh",
+        "anchor",
+        "yet",
+        "unnamed",
+        "outputs",
+        "plus",
+        "unsplit",
+        "route",
+        "remote",
+        "shortcut"
+      ],
+      "auto_tokens": [
+        "route",
+        "child",
+        "anchor",
+        "closeout",
+        "one",
+        "outputs",
+        "parent",
+        "return",
+        "named",
+        "real",
+        "summon",
+        "would",
+        "agent",
+        "already"
+      ],
+      "companions": [
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-session-route-forks",
+        "aoa-change-protocol",
+        "aoa-approval-gate-check"
+      ],
+      "primary_positive_prompt": "Use $aoa-summon to decide whether one anchored parent route may launch a bounded child helper, pick the honest lane, and return explicit gate, return, and closeout plans.",
+      "primary_negative_prompt": "There is no real anchor, no named outputs, and the work is still a broad d3-plus route, so pretending one child summon would clarify it would only hide the missing split.",
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-tdd-slice",

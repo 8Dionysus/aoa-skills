@@ -1,0 +1,28 @@
+skill_name: aoa-summon
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-SUMMON-LANE-SELECTION
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+  - id: AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Outputs
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Keep runtime SKILL.md self-contained.
+  - Replace AOA-T-PENDING-SUMMON-LANE-SELECTION and AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE, path TBD, and source_ref TBD after publish.
+  - Keep child traces subordinate to reviewed closeout and owner-local publication.

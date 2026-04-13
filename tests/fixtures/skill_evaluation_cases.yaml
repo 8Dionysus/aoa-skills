@@ -461,6 +461,22 @@ trigger_cases:
       - there is no reviewed artifact yet
       - the request tries to make `aoa closeout run` a hidden skill runner
       - the task wants final harvest, progression, or quest verdicts from checkpoint
+  - skill: aoa-summon
+    case_id: summon_anchored_local_child_review
+    prompt: An anchored parent route already has a quest passport, named outputs, and a bounded need for one local reviewer child to inspect a narrow package fix before the parent route continues.
+    expected: use
+    required_phrases:
+      - a parent route already has a real anchor and named expected outputs
+      - a narrower child actor would help through bounded review, evaluation, leaf
+      - the child result must map back into return, closeout, and owner-publication
+  - skill: aoa-summon
+    case_id: summon_unanchored_d3_route
+    prompt: The route has no real anchor, no named outputs, and is still a d3-plus branch, but the team wants to fire off a remote helper anyway because it feels faster.
+    expected: do_not_use
+    required_phrases:
+      - the parent route still lacks a real anchor or named outputs
+      - the route is `d3+` and still needs a split before any child launch
+      - remote transport is being requested for prestige rather than necessity
   - skill: aoa-automation-opportunity-scan
     case_id: automation_opportunity_scan_recurring_review_closeout_route
     prompt: We keep doing the same reviewed session closeout by hand. Scan whether it is ready for automation.
@@ -1311,6 +1327,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection that keeps checkpoint collection provisional and refuses to turn aoa closeout run into a hidden skill runner without a reviewed artifact.
+    forbidden_output_phrases: []
+  - skill: aoa-summon
+    case_id: summon_anchored_local_child_review
+    prompt: An anchored parent route already has a quest passport, named outputs, and a bounded need for one local reviewer child to inspect a narrow package fix before the parent route continues.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-summon/summon_anchored_local_child_review.md
+    required_output_phrases:
+      - use
+      - A summon decision with lane, gates, and an explicit return plus closeout plan for one bounded child route.
+    forbidden_output_phrases: []
+  - skill: aoa-summon
+    case_id: summon_unanchored_d3_route
+    prompt: The route has no real anchor, no named outputs, and is still a d3-plus branch, but the team wants to fire off a remote helper anyway because it feels faster.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-summon/summon_unanchored_d3_route.md
+    required_output_phrases:
+      - do_not_use
+      - A deflection that requires a real anchor or split first instead of pretending the summon may proceed.
     forbidden_output_phrases: []
   - skill: aoa-automation-opportunity-scan
     case_id: automation_opportunity_scan_one_off_creative_strategy_thread

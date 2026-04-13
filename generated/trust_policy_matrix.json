@@ -361,6 +361,20 @@
       "notes": "Maps authoritative documentation surfaces and entrypoints."
     },
     {
+      "name": "aoa-summon",
+      "scope": "core",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with Codex-local defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
+    },
+    {
       "name": "aoa-tdd-slice",
       "scope": "core",
       "invocation_mode": "explicit-preferred",

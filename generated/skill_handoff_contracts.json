@@ -1900,6 +1900,84 @@
       }
     },
     {
+      "name": "aoa-summon",
+      "display_name": "AoA Summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "a quest passport with difficulty, risk, control mode, and delegate tier",
+        "a summon request with desired role or child target, transport preference, one",
+        "named expected outputs for the child route",
+        "optional reviewed artifact path, stress bundle ref, checkpoint note ref,"
+      ],
+      "outputs": [
+        "one summon decision with allowed or blocked posture",
+        "one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,",
+        "`execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`",
+        "optional `codex_local_target`",
+        "`return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and",
+        "`closeout_required`, `checkpoint_required`, and `progression_required`"
+      ],
+      "verification": [
+        "confirm the passport and parent anchor exist",
+        "confirm expected outputs are named",
+        "confirm the chosen lane matches difficulty, risk, control mode, and requested",
+        "confirm `d3+` routes split before summon",
+        "confirm stress only narrows or blocks",
+        "confirm progression and self-agent gates are not bypassed",
+        "confirm return, checkpoint bridge, and publication plans stay explicit for",
+        "confirm terminal publication stays owner-local and memo export stays reviewed",
+        "confirm traces stay subordinate to reviewed closeout and parent reread"
+      ],
+      "contracts": [
+        "this skill governs one bounded child route; it does not grant hidden",
+        "local Codex child targeting is the default first choice, not an afterthought",
+        "stress may narrow or block, but it may never widen authority",
+        "remote transport follows the same passport, return, checkpoint, and closeout",
+        "`d3+` routes split first",
+        "progression and self-agent gates are real blockers when required evidence is",
+        "child traces, memos, and receipts do not replace rereading the reviewed",
+        "terminal publication stays inside canonical owner families, and memo export",
+        "failed, narrowed, or blocked child results still map into an explicit return"
+      ],
+      "consumes_artifact_tags": [
+        "a-quest-passport-with-difficulty-risk-control-mode-and-delegate-",
+        "a-summon-request-with-desired-role-or-child-target-transport-pre",
+        "named-expected-outputs-for-the-child-route",
+        "optional-reviewed-artifact-path-stress-bundle-ref-checkpoint-not"
+      ],
+      "provides_artifact_tags": [
+        "one-summon-decision-with-allowed-or-blocked-posture",
+        "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed",
+        "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
+        "optional-codex-local-target",
+        "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
+        "closeout-required-checkpoint-required-and-progression-required"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-summon",
+        "produced_artifacts": [
+          "one-summon-decision-with-allowed-or-blocked-posture",
+          "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed",
+          "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
+          "optional-codex-local-target",
+          "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
+          "closeout-required-checkpoint-required-and-progression-required"
+        ],
+        "verification_notes": [
+          "confirm the passport and parent anchor exist",
+          "confirm expected outputs are named",
+          "confirm the chosen lane matches difficulty, risk, control mode, and requested"
+        ],
+        "contract_notes": [
+          "this skill governs one bounded child route; it does not grant hidden",
+          "local Codex child targeting is the default first choice, not an afterthought",
+          "stress may narrow or block, but it may never widen authority"
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-tdd-slice",
       "display_name": "AoA TDD Slice",
       "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",

@@ -150,6 +150,16 @@
       "requires_confirmation_seam": false,
       "notes": "Explicit-preferred orchestration skill for carrying provisional checkpoint evidence into one reviewed closeout execution chain without turning aoa closeout run or checkpoint notes into hidden verdict authority."
     },
+    "aoa-summon": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with Codex-local defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
+    },
     "aoa-automation-opportunity-scan": {
       "trust_posture": "portable-core",
       "mutation_surface": "none",

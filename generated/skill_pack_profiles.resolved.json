@@ -138,6 +138,14 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-summon",
+          "source_path": ".agents/skills/aoa-summon/SKILL.md",
+          "target_path": ".agents/skills/aoa-summon/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-session-progression-lift",
           "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
           "target_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
@@ -630,6 +638,22 @@
           "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
           "target_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        }
+      ]
+    },
+    "repo-summon-only": {
+      "description": "Install only aoa-summon into a repository root for explicit bounded child-route delegation with quest-passport, gate, and closeout governance.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-summon",
+          "source_path": ".agents/skills/aoa-summon/SKILL.md",
+          "target_path": ".agents/skills/aoa-summon/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         }

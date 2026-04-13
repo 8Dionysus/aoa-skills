@@ -564,6 +564,27 @@
       "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
     },
     {
+      "name": "aoa-summon",
+      "display_name": "AoA Summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "source_scope": "repo",
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
       "name": "aoa-tdd-slice",
       "display_name": "AoA TDD Slice",
       "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",

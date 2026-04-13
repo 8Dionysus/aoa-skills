@@ -868,6 +868,41 @@
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check"
     },
     {
+      "name": "aoa-summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "path": ".agents/skills/aoa-summon/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "invocation_mode": "explicit-only",
+      "allowlist_paths": [
+        ".agents/skills/aoa-summon"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/no-raw-traces-rule.md",
+          "references/passport-lane-matrix.v3.md",
+          "references/summon-request-v3.schema.json",
+          "references/summon-result-v3.schema.json"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-summon/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-SUMMON-LANE-SELECTION,AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-summon"
+    },
+    {
       "name": "aoa-tdd-slice",
       "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
       "path": ".agents/skills/aoa-tdd-slice/SKILL.md",

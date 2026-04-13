@@ -601,6 +601,29 @@
       "requires_confirmation_seam": false
     },
     {
+      "name": "aoa-summon",
+      "compact_summary": "Summon one bounded child route",
+      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one, one summon decision with allowed or blocked posture, one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "a quest passport with difficulty, risk, control mode, and delegate tier",
+        "a summon request with desired role or child target, transport preference, one",
+        "one summon decision with allowed or blocked posture",
+        "one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-tdd-slice",
       "compact_summary": "Build slices test-first",
       "activation_card_markdown": "Use when: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.\n\nKeep in memory: desired behavior, target module or slice, new or updated tests, minimal implementation.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",

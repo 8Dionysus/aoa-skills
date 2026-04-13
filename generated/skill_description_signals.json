@@ -287,7 +287,8 @@
       "family": "change-execution-vs-test-first",
       "families": [
         "change-execution-vs-test-first",
-        "overlay-vs-base-skill"
+        "overlay-vs-base-skill",
+        "summon-and-route-governance"
       ],
       "adjacent_skills": [
         "abyss-safe-infra-change",
@@ -298,7 +299,9 @@
         "aoa-contract-test",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
+        "aoa-session-route-forks",
         "aoa-source-of-truth-check",
+        "aoa-summon",
         "aoa-tdd-slice",
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
@@ -342,7 +345,8 @@
       "allow_implicit_invocation": true,
       "family": "session-harvest-family",
       "families": [
-        "session-harvest-family"
+        "session-harvest-family",
+        "summon-and-route-governance"
       ],
       "adjacent_skills": [
         "aoa-automation-opportunity-scan",
@@ -352,7 +356,8 @@
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
-        "aoa-session-self-repair"
+        "aoa-session-self-repair",
+        "aoa-summon"
       ],
       "default_prompt": "Use $aoa-checkpoint-closeout-bridge to build one closeout context from reviewed evidence, keep checkpoint hints provisional, and run donor harvest, progression lift, and quest harvest in order.",
       "required_case_classes": [
@@ -898,16 +903,19 @@
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
-        "session-harvest-family"
+        "session-harvest-family",
+        "summon-and-route-governance"
       ],
       "adjacent_skills": [
         "aoa-automation-opportunity-scan",
+        "aoa-change-protocol",
         "aoa-checkpoint-closeout-bridge",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
         "aoa-session-self-diagnose",
-        "aoa-session-self-repair"
+        "aoa-session-self-repair",
+        "aoa-summon"
       ],
       "default_prompt": "Use $aoa-session-route-forks to turn a reviewed session or harvest packet into explicit fork cards with likely gains, costs, risks, owner targets, and stop conditions.",
       "required_case_classes": [
@@ -1057,6 +1065,41 @@
       "mirror_case_ids": [
         "desc-mirror-017-aoa-source-of-truth-check"
       ]
+    },
+    {
+      "name": "aoa-summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description_sha256": "711452125c6e7cb10c60f080098acdc081b5322852a6265f3018b7c555b639e4",
+      "summary_clause": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout",
+      "use_when_clause": "a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer",
+      "do_not_use_clause": "when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "summon-and-route-governance",
+      "families": [
+        "summon-and-route-governance"
+      ],
+      "adjacent_skills": [
+        "aoa-change-protocol",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-session-route-forks"
+      ],
+      "default_prompt": "Use $aoa-summon to decide whether one anchored parent route may launch a bounded child helper, pick the honest lane, and return explicit gate, return, and closeout plans.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "31-explicit",
+        "31-implicit-manual",
+        "31-adjacent-negative",
+        "collision-33"
+      ],
+      "collision_case_ids": [
+        "desc-collision-collision-33"
+      ],
+      "mirror_case_ids": []
     },
     {
       "name": "aoa-tdd-slice",

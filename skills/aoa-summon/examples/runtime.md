@@ -1,0 +1,48 @@
+# Runtime Example
+
+## Scenario
+
+A reviewed `aoa-sdk` route already has a parent task anchor, a clear list of
+expected outputs, and a bounded need for a local Codex reviewer to inspect one
+package-layer fix before the parent route proceeds to validation.
+
+## Why this skill fits
+
+The parent route is already real and anchored. What is needed is not a whole
+new orchestration layer but one bounded child route that keeps the same
+passport, returns explicit outputs, and maps cleanly back into reviewed
+closeout.
+
+## Expected inputs
+
+- a quest passport with the parent difficulty, risk, control mode, and
+  delegate tier
+- a summon request naming the child role, transport preference, anchor, and
+  expected outputs
+- the reviewed parent artifact or route note
+- optional stress, checkpoint, or progression refs when the route needs them
+
+## Expected outputs
+
+- one summon decision that selects `codex_local_reviewed`
+- one local child target with named expected outputs
+- reason codes explaining why local reviewed execution is sufficient
+- a return plan that says how the child result rejoins the parent route
+- a checkpoint bridge plan for reviewed closeout if the child narrows but does
+  not fully finish the route
+- an owner publication plan that keeps terminal meaning in the parent owner
+  repo rather than in derived traces
+
+## Boundary notes
+
+- Do not use this skill until the parent route has a real anchor and named outputs.
+- Do not let `d3+` work skip the split step.
+- Do not let remote transport bypass the same gates that local execution must satisfy.
+
+## Verification notes
+
+- Confirm the lane is justified by the passport and requested role.
+- Confirm local execution stayed the default.
+- Confirm return and closeout planning are explicit.
+- Confirm any traces remain subordinate to reviewed closeout.
+- Confirm owner publication stays in the canonical owner family.

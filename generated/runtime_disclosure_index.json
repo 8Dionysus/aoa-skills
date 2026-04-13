@@ -910,16 +910,12 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-checkpoint-closeout-bridge",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-checkpoint-closeout-bridge",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-checkpoint-closeout-bridge",
-      "collision_family": "session-harvest-family",
+      "collision_family": "summon-and-route-governance",
       "collision_notes": [
-        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
-        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
-        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
-        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
-        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
-        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
-        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
-        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+        "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
+        "aoa-session-route-forks is broader next-route comparison when several plausible continuations need to stay visible.",
+        "aoa-checkpoint-closeout-bridge coordinates reviewed closeout order from checkpoint hints rather than child-route delegation during the live route.",
+        "aoa-change-protocol is about doing the bounded work directly instead of selecting a child route to do it."
       ],
       "competing_skills": [
         "aoa-session-donor-harvest",
@@ -2425,16 +2421,12 @@
       "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-session-route-forks",
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-route-forks",
       "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-session-route-forks",
-      "collision_family": "session-harvest-family",
+      "collision_family": "summon-and-route-governance",
       "collision_notes": [
-        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
-        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
-        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
-        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
-        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
-        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
-        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
-        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+        "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
+        "aoa-session-route-forks is broader next-route comparison when several plausible continuations need to stay visible.",
+        "aoa-checkpoint-closeout-bridge coordinates reviewed closeout order from checkpoint hints rather than child-route delegation during the live route.",
+        "aoa-change-protocol is about doing the bounded work directly instead of selecting a child route to do it."
       ],
       "competing_skills": [
         "aoa-session-donor-harvest",
@@ -2805,6 +2797,116 @@
         }
       },
       "disclose_card_markdown": "### aoa-source-of-truth-check\n- Summary: Clarify authoritative docs\n- Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+    },
+    {
+      "name": "aoa-summon",
+      "display_name": "AoA Summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "short_description": "Summon one bounded child route",
+      "path": ".agents/skills/aoa-summon/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-summon",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/aoa-summon/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-SUMMON-LANE-SELECTION,AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to decide whether and how to launch one bounded child route from an already-anchored parent route. The goal is not delegation theater. The goal is to preserve quest-passport law, Codex-first local execution, stress narrowing, progression and self-agent gates, re...",
+        "Trigger boundary": "a parent route already has a real anchor and named expected outputs; a narrower child actor would help through bounded review, evaluation, leaf",
+        "Inputs": "a quest passport with difficulty, risk, control mode, and delegate tier; a summon request with desired role or child target, transport preference, one",
+        "Outputs": "one summon decision with allowed or blocked posture; one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,",
+        "Procedure": "start from the parent anchor and quest passport, not from raw pressure to delegate; default `transport_preference` to `codex_local` when the request leaves it open",
+        "Contracts": "this skill governs one bounded child route; it does not grant hidden; local Codex child targeting is the default first choice, not an afterthought",
+        "Risks and anti-patterns": "treating delegation as progress without anchor or output clarity; using a remote child route to bypass local proof, approval, or closeout",
+        "Verification": "confirm the passport and parent anchor exist; confirm expected outputs are named",
+        "Technique traceability": "AOA-T-PENDING-SUMMON-LANE-SELECTION from `8Dionysus/aoa-techniques` at `TBD`; AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE from `8Dionysus/aoa-techniques` at",
+        "Adaptation points": "project overlays may add local child-role labels, control modes, or transport; project overlays may map local reviewed-closeout or checkpoint families onto"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/no-raw-traces-rule.md",
+          "references/passport-lane-matrix.v3.md",
+          "references/summon-request-v3.schema.json",
+          "references/summon-result-v3.schema.json"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Summon",
+        "short_description": "Summon one bounded child route",
+        "default_prompt": "Use $aoa-summon to decide whether one anchored parent route may launch a bounded child helper, pick the honest lane, and return explicit gate, return, and closeout plans.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-summon",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-summon",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-summon",
+      "collision_family": "summon-and-route-governance",
+      "collision_notes": [
+        "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
+        "aoa-session-route-forks is broader next-route comparison when several plausible continuations need to stay visible.",
+        "aoa-checkpoint-closeout-bridge coordinates reviewed closeout order from checkpoint hints rather than child-route delegation during the live route.",
+        "aoa-change-protocol is about doing the bounded work directly instead of selecting a child route to do it."
+      ],
+      "competing_skills": [
+        "aoa-session-route-forks",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-change-protocol"
+      ],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-summon to decide whether one anchored parent route may launch a bounded child helper, pick the honest lane, and return explicit gate, return, and closeout plans."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer.",
+          "The parent route already has a quest passport, a concrete anchor, and named outputs, and it needs one bounded local reviewer child to inspect a narrow package fix before the parent continues. Decide the honest child lane, gates, and return plan."
+        ],
+        "negative": [
+          "There is no real anchor, no named outputs, and the work is still a broad d3-plus route, so pretending one child summon would clarify it would only hide the missing split."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-summon",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-summon",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-summon"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-summon\n- Summary: Summon one bounded child route\n- Use when: Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n- Trust posture: portable-core\n- Mutation surface: none\n"
     },
     {
       "name": "aoa-tdd-slice",

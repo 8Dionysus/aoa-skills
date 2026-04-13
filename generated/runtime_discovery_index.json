@@ -2699,6 +2699,126 @@
       }
     },
     {
+      "name": "aoa-summon",
+      "display_name": "AoA Summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "short_description": "Summon one bounded child route",
+      "path": ".agents/skills/aoa-summon/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-summon",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-summon",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-summon"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "already",
+        "anchor",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "approval",
+        "are",
+        "being",
+        "boundary",
+        "bounded",
+        "bypass",
+        "child",
+        "closeout",
+        "codex",
+        "contracts",
+        "core",
+        "defaults",
+        "delegate",
+        "delegation",
+        "evaluator",
+        "execution",
+        "for",
+        "gates",
+        "governed",
+        "hard",
+        "has",
+        "helper",
+        "honest",
+        "inputs",
+        "intent",
+        "lacks",
+        "larger",
+        "law",
+        "layer",
+        "leaf",
+        "local-first",
+        "move",
+        "named",
+        "narrower",
+        "needs",
+        "next",
+        "not",
+        "one",
+        "orchestration",
+        "outputs",
+        "parent",
+        "points",
+        "posture",
+        "procedure",
+        "progression",
+        "proof",
+        "quest-passport",
+        "rather",
+        "real",
+        "remote",
+        "return",
+        "reviewed",
+        "reviewer",
+        "risks",
+        "route",
+        "self-agent",
+        "split",
+        "still",
+        "stress",
+        "summon",
+        "technique",
+        "the",
+        "through",
+        "traceability",
+        "trigger",
+        "unnamed",
+        "use",
+        "verification",
+        "verifier",
+        "work"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-summon"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-summon"
+        }
+      }
+    },
+    {
       "name": "aoa-tdd-slice",
       "display_name": "AoA TDD Slice",
       "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",
