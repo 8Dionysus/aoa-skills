@@ -795,6 +795,39 @@
       "notes": "Maps authoritative documentation surfaces and entrypoints."
     },
     {
+      "name": "aoa-summon",
+      "display_name": "AoA Summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "short_description": "Summon one bounded child route",
+      "path": ".agents/skills/aoa-summon/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "portable-core",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-summon to decide whether one anchored parent route may launch a bounded child helper, pick the honest lane, and return explicit gate, return, and closeout plans.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/no-raw-traces-rule.md",
+          "references/passport-lane-matrix.v3.md",
+          "references/summon-request-v3.schema.json",
+          "references/summon-result-v3.schema.json"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-summon",
+      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with Codex-local defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
+    },
+    {
       "name": "aoa-tdd-slice",
       "display_name": "AoA TDD Slice",
       "description": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.",

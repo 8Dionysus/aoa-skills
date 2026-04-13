@@ -1510,6 +1510,64 @@
       "status": "canonical"
     },
     {
+      "name": "aoa-summon",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to decide whether and how to launch one bounded child route from\nan already-anchored parent route.\n\nThe goal is not delegation theater.\nThe goal is to preserve quest-passport law, Codex-first local execution,\nstress narrowing, progression and self-agent gates, return planning,\ncheckpoint-aware reviewed closeout, and owner-local publication mapping.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a parent route already has a real anchor and named expected outputs\n- a narrower child actor would help through bounded review, evaluation, leaf\n  implementation, or local verification\n- the child result must map back into return, closeout, and owner-publication\n  surfaces\n- local Codex execution is the honest default unless a separate execution\n  surface is actually required\n\nDo not use this skill when:\n- the parent route still lacks a real anchor or named outputs\n- the route is `d3+` and still needs a split before any child launch\n- delegation would widen authority, hide approval posture, or bypass a human\n  gate\n- the task is asking for a whole orchestration mesh rather than one bounded\n  child route\n- remote transport is being requested for prestige rather than necessity",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- a quest passport with difficulty, risk, control mode, and delegate tier\n- a summon request with desired role or child target, transport preference, one\n  parent anchor (`route_anchor`, `parent_task_id`, or `session_ref`), and\n  named expected outputs\n- named expected outputs for the child route\n- optional reviewed artifact path, stress bundle ref, checkpoint note ref,\n  Codex trace ref, progression overlay ref, self-agent checkpoint ref, and\n  audit refs",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- one summon decision with allowed or blocked posture\n- one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,\n  `remote_reviewed`, `split_required`, or `human_gate`\n- `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`\n- optional `codex_local_target`\n- `return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and\n  `owner_publication_plan`\n- `closeout_required`, `checkpoint_required`, and `progression_required`",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. start from the parent anchor and quest passport, not from raw pressure to delegate\n2. default `transport_preference` to `codex_local` when the request leaves it open\n3. verify that expected outputs are named before picking a lane\n4. classify the lane with difficulty, risk, control mode, requested role, and\n   `references/passport-lane-matrix.v3.md`\n5. keep low-risk `d0_probe`, `d1_patch`, and bounded `d2_slice` leaf work in\n   `codex_local_leaf` when anchor and outputs are clear\n6. keep local reviewer, evaluator, and architect-like narrowing work in\n   `codex_local_reviewed`\n7. allow `remote_reviewed` only when a separate endpoint or execution surface\n   is actually required\n8. if difficulty is `d3+`, return `split_required` instead of launching child execution\n9. if stress posture says `stop_before_mutation`, only allow a narrowing\n   non-mutating child; otherwise gate to human review\n10. if `require_progression` is true or the route depends on reviewed unlock\n    posture, require a reviewed progression overlay before summon\n11. if the route is self-agent or policy-sensitive, require reviewed\n    self-agent checkpoint posture before summon\n12. emit return, checkpoint bridge, memo export, and owner publication plans\n    that stay subordinate to reviewed closeout and owner truth\n13. apply `references/no-raw-traces-rule.md` so child traces remain aids rather\n    than proof or memo canon\n14. map failed, narrowed, or blocked child states back into return posture\n    instead of letting them disappear",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- this skill governs one bounded child route; it does not grant hidden\n  orchestration authority\n- local Codex child targeting is the default first choice, not an afterthought\n- stress may narrow or block, but it may never widen authority\n- remote transport follows the same passport, return, checkpoint, and closeout\n  law as local transport\n- `d3+` routes split first\n- progression and self-agent gates are real blockers when required evidence is\n  missing\n- child traces, memos, and receipts do not replace rereading the reviewed\n  parent artifact\n- terminal publication stays inside canonical owner families, and memo export\n  stays reviewed and candidate-oriented\n- failed, narrowed, or blocked child results still map into an explicit return\n  surface",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- treating delegation as progress without anchor or output clarity\n- using a remote child route to bypass local proof, approval, or closeout\n  posture\n- allowing child scope to widen beyond the parent passport\n- reading child traces as proof authority or memo canon\n- skipping the required split for `d3+` work\n- publishing terminal meaning into derived layers before owner-local landing",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the passport and parent anchor exist\n- confirm expected outputs are named\n- confirm the chosen lane matches difficulty, risk, control mode, and requested\n  role\n- confirm `d3+` routes split before summon\n- confirm stress only narrows or blocks\n- confirm progression and self-agent gates are not bypassed\n- confirm return, checkpoint bridge, and publication plans stay explicit for\n  nonterminal or failed child outcomes\n- confirm terminal publication stays owner-local and memo export stays reviewed\n  and candidate-oriented\n- confirm traces stay subordinate to reviewed closeout and parent reread",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-SUMMON-LANE-SELECTION from `8Dionysus/aoa-techniques` at `TBD`\n  using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure,\n  Contracts, Validation\n- AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE from `8Dionysus/aoa-techniques` at\n  `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks,\n  Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "- project overlays may add local child-role labels, control modes, or transport\n  labels\n- project overlays may map local reviewed-closeout or checkpoint families onto\n  the core summon result without weakening the gates\n- project overlays may specialize owner publication families or memo candidate\n  classes while keeping the parent return route explicit",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/aoa-summon/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "name": "aoa-tdd-slice",
       "scope": "core",
       "sections": [

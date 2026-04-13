@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 29
+- total skills: 30
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -38,6 +38,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-session-self-diagnose | scaffold | core | explicit-only | 0 | 2 | 1 | 1 | 1 | `skills/aoa-session-self-diagnose/examples/runtime.md` | - | - | true | - |
 | aoa-session-self-repair | scaffold | core | explicit-only | 0 | 2 | 1 | 1 | 1 | `skills/aoa-session-self-repair/examples/runtime.md` | - | - | true | - |
 | aoa-source-of-truth-check | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/aoa-source-of-truth-check.md` | `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md` | true | - |
+| aoa-summon | scaffold | core | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/aoa-summon/examples/runtime.md` | - | - | true | - |
 | aoa-tdd-slice | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-tdd-slice/examples/example.md` | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` | true | - |
 | atm10-change-protocol | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-change-protocol/examples/example.md` | `docs/reviews/status-promotions/atm10-change-protocol.md` | - | true | - |
 | atm10-source-of-truth-check | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/atm10-source-of-truth-check.md` | - | true | - |

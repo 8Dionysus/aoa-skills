@@ -189,7 +189,7 @@
     {
       "name": "aoa-checkpoint-closeout-bridge",
       "description": "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.",
-      "collision_family": "session-harvest-family",
+      "collision_family": "summon-and-route-governance",
       "competing_skills": [
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -204,14 +204,10 @@
         "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
       ],
       "notes": [
-        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
-        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
-        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
-        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
-        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
-        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
-        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
-        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+        "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
+        "aoa-session-route-forks is broader next-route comparison when several plausible continuations need to stay visible.",
+        "aoa-checkpoint-closeout-bridge coordinates reviewed closeout order from checkpoint hints rather than child-route delegation during the live route.",
+        "aoa-change-protocol is about doing the bounded work directly instead of selecting a child route to do it."
       ]
     },
     {
@@ -523,7 +519,7 @@
     {
       "name": "aoa-session-route-forks",
       "description": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.",
-      "collision_family": "session-harvest-family",
+      "collision_family": "summon-and-route-governance",
       "competing_skills": [
         "aoa-session-donor-harvest",
         "aoa-automation-opportunity-scan",
@@ -539,14 +535,10 @@
         "The reviewed session already points to one obvious bounded next move, so branch analysis would only add ceremony."
       ],
       "notes": [
-        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
-        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
-        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
-        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
-        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
-        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
-        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
-        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+        "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
+        "aoa-session-route-forks is broader next-route comparison when several plausible continuations need to stay visible.",
+        "aoa-checkpoint-closeout-bridge coordinates reviewed closeout order from checkpoint hints rather than child-route delegation during the live route.",
+        "aoa-change-protocol is about doing the bounded work directly instead of selecting a child route to do it."
       ]
     },
     {
@@ -630,6 +622,30 @@
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
         "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
+      ]
+    },
+    {
+      "name": "aoa-summon",
+      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "collision_family": "summon-and-route-governance",
+      "competing_skills": [
+        "aoa-session-route-forks",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-change-protocol"
+      ],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer.",
+        "The parent route already has a quest passport, a concrete anchor, and named outputs, and it needs one bounded local reviewer child to inspect a narrow package fix before the parent continues. Decide the honest child lane, gates, and return plan."
+      ],
+      "negative_controls": [
+        "There is no real anchor, no named outputs, and the work is still a broad d3-plus route, so pretending one child summon would clarify it would only hide the missing split."
+      ],
+      "notes": [
+        "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
+        "aoa-session-route-forks is broader next-route comparison when several plausible continuations need to stay visible.",
+        "aoa-checkpoint-closeout-bridge coordinates reviewed closeout order from checkpoint hints rather than child-route delegation during the live route.",
+        "aoa-change-protocol is about doing the bounded work directly instead of selecting a child route to do it."
       ]
     },
     {

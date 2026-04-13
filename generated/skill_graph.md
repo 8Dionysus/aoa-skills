@@ -90,6 +90,11 @@ graph TD
   skill_aoa_source_of_truth_check["aoa-source-of-truth-check"]
   technique_AOA_T_0013["AOA-T-0013"]
   technique_AOA_T_0009["AOA-T-0009"]
+  skill_aoa_summon["aoa-summon"]
+  lineage_pending["lineage: pending"]
+  technique_AOA_T_PENDING_SUMMON_LANE_SELECTION["AOA-T-PENDING-SUMMON-LANE-SELECTION"]
+  technique_AOA_T_PENDING_SUMMON_RETURN_GOVERNANCE["AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"]
+  profile_repo_summon_only["profile: repo-summon-only"]
   skill_aoa_tdd_slice["aoa-tdd-slice"]
   technique_AOA_T_0014["AOA-T-0014"]
   skill_atm10_change_protocol["atm10-change-protocol"]
@@ -509,6 +514,19 @@ graph TD
   skill_aoa_source_of_truth_check -->|available_in_artifact_group| artifact_group_runtime_guardrails
   skill_aoa_source_of_truth_check -->|available_in_artifact_group| artifact_group_description_trigger
   skill_aoa_source_of_truth_check -->|available_in_artifact_group| artifact_group_tiny_router
+  skill_aoa_summon -->|maturity| status_scaffold
+  skill_aoa_summon -->|scope| scope_core
+  skill_aoa_summon -->|lineage| lineage_pending
+  skill_aoa_summon -->|invocation_policy| policy_explicit_only
+  skill_aoa_summon -->|depends_on| technique_AOA_T_PENDING_SUMMON_LANE_SELECTION
+  skill_aoa_summon -->|depends_on| technique_AOA_T_PENDING_SUMMON_RETURN_GOVERNANCE
+  skill_aoa_summon -->|included_in_profile| profile_repo_default
+  skill_aoa_summon -->|included_in_profile| profile_repo_summon_only
+  skill_aoa_summon -->|available_in_artifact_group| artifact_group_portable_export
+  skill_aoa_summon -->|available_in_artifact_group| artifact_group_runtime_seam
+  skill_aoa_summon -->|available_in_artifact_group| artifact_group_runtime_guardrails
+  skill_aoa_summon -->|available_in_artifact_group| artifact_group_description_trigger
+  skill_aoa_summon -->|available_in_artifact_group| artifact_group_tiny_router
   skill_aoa_tdd_slice -->|maturity| status_canonical
   skill_aoa_tdd_slice -->|scope| scope_core
   skill_aoa_tdd_slice -->|lineage| lineage_published
@@ -581,6 +599,7 @@ graph TD
 | aoa-session-self-diagnose | scaffold | core | explicit-only | published | repo-core-only, repo-default, repo-project-core-kernel, repo-project-foundation, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0080, AOA-T-0081 |
 | aoa-session-self-repair | scaffold | core | explicit-only | published | repo-core-only, repo-default, repo-project-core-kernel, repo-project-foundation, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0082, AOA-T-0083 |
 | aoa-source-of-truth-check | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0013, AOA-T-0002, AOA-T-0009 |
+| aoa-summon | scaffold | core | explicit-only | pending | repo-default, repo-summon-only | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-SUMMON-LANE-SELECTION, AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE |
 | aoa-tdd-slice | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0014, AOA-T-0001 |
 | atm10-change-protocol | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002 |
 | atm10-source-of-truth-check | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0013, AOA-T-0002 |

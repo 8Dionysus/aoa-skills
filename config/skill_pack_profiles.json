@@ -23,6 +23,7 @@
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-summon",
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -115,6 +116,14 @@
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-automation-opportunity-scan"
+      ]
+    },
+    "repo-summon-only": {
+      "description": "Install only aoa-summon into a repository root for explicit bounded child-route delegation with quest-passport, gate, and closeout governance.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-summon"
       ]
     },
     "repo-project-core-kernel": {

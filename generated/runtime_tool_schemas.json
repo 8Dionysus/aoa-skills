@@ -84,6 +84,7 @@
               "aoa-session-self-diagnose",
               "aoa-session-self-repair",
               "aoa-source-of-truth-check",
+              "aoa-summon",
               "aoa-tdd-slice",
               "atm10-change-protocol",
               "atm10-source-of-truth-check"
@@ -132,6 +133,7 @@
               "aoa-session-self-diagnose",
               "aoa-session-self-repair",
               "aoa-source-of-truth-check",
+              "aoa-summon",
               "aoa-tdd-slice",
               "atm10-change-protocol",
               "atm10-source-of-truth-check"
@@ -217,6 +219,7 @@
               "aoa-session-self-diagnose",
               "aoa-session-self-repair",
               "aoa-source-of-truth-check",
+              "aoa-summon",
               "aoa-tdd-slice",
               "atm10-change-protocol",
               "atm10-source-of-truth-check"

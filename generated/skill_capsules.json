@@ -474,6 +474,24 @@
       "workflow_short": "Purpose: clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance. Flow: identify the main docs or guidance files involved in the target area -> determine which file should be authoritative for each..."
     },
     {
+      "inputs_short": "Needs: a quest passport with difficulty, risk, control mode, and delegate tier; a summon request with desired role or child target, transport preference, one parent anchor (routeanchor, parenttaskid, or sessionref),...",
+      "invocation_mode": "explicit-only",
+      "main_anti_patterns_short": "Avoid: treating delegation as progress without anchor or output clarity; using a remote child route to bypass local proof, approval, or closeout posture; allowing child scope to widen beyond the parent passport;...",
+      "name": "aoa-summon",
+      "outputs_short": "Produces: one summon decision with allowed or blocked posture; one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate; executionsurface, cohortpattern, reasoncodes,...",
+      "scope": "core",
+      "skill_path": "skills/aoa-summon/SKILL.md",
+      "status": "scaffold",
+      "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
+      "technique_dependencies": [
+        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+      ],
+      "trigger_boundary_short": "Use when a parent route already has a real anchor and named expected outputs; a narrower child actor would help through bounded review, evaluation, leaf implementation, or local verification; Avoid when the parent...",
+      "verification_short": "Checks: confirm the passport and parent anchor exist; confirm expected outputs are named; confirm the chosen lane matches difficulty, risk, control mode, and requested role; confirm d3+ routes split before summon.",
+      "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to codexlocal when the request..."
+    },
+    {
       "inputs_short": "Needs: desired behavior; target module or slice; constraints and non-goals; available test surface.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: writing tests that merely mirror the implementation; turning a small slice into a hidden architectural rewrite; using TDD ritualistically where the problem is not well-shaped yet; overfitting tests to brittle...",

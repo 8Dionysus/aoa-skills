@@ -133,6 +133,10 @@
         "unlock hint",
         "reviewed closeout execute",
         "closeout context",
+        "child route summon",
+        "quest passport",
+        "codex local child",
+        "return plan",
         "checkpoint collect",
         "runtime self diagnosis",
         "diagnostic session artifact",
@@ -148,7 +152,8 @@
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
-        "aoa-session-self-repair"
+        "aoa-session-self-repair",
+        "aoa-summon"
       ],
       "manual_only_skills": [
         "aoa-automation-opportunity-scan",
@@ -157,7 +162,8 @@
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
-        "aoa-session-self-repair"
+        "aoa-session-self-repair",
+        "aoa-summon"
       ],
       "overlay_skills": [
         "abyss-self-diagnostic-spine"

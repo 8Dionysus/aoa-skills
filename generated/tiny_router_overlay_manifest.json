@@ -9,9 +9,9 @@
     "generated/description_trigger_eval_cases.jsonl",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 29,
+  "skill_count": 30,
   "band_count": 6,
-  "case_count": 79,
+  "case_count": 81,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -194,6 +194,13 @@
       "manual_invocation_required": false,
       "project_overlay": false,
       "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0"
+    },
+    {
+      "name": "aoa-summon",
+      "band": "quest-harvest-governance",
+      "manual_invocation_required": true,
+      "project_overlay": false,
+      "description_sha256": "711452125c6e7cb10c60f080098acdc081b5322852a6265f3018b7c555b639e4"
     },
     {
       "name": "aoa-tdd-slice",

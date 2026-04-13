@@ -1009,6 +1009,43 @@ Common expand sections:
 - `promotion_review`: `docs/reviews/status-promotions/aoa-source-of-truth-check.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md`
 
+## aoa-summon
+
+- scope: `core`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/aoa-summon/SKILL.md`
+- pick summary: Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
+
+### Use when
+
+- a parent route already has a real anchor and named expected outputs
+- a narrower child actor would help through bounded review, evaluation, leaf implementation, or local verification
+- the child result must map back into return, closeout, and owner-publication surfaces
+- local Codex execution is the honest default unless a separate execution surface is actually required
+
+### Do not use when
+
+- the parent route still lacks a real anchor or named outputs
+- the route is d3+ and still needs a split before any child launch
+- delegation would widen authority, hide approval posture, or bypass a human gate
+- the task is asking for a whole orchestration mesh rather than one bounded child route
+- remote transport is being requested for prestige rather than necessity
+
+### Object use shape
+
+- one summon decision with allowed or blocked posture
+- one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate
+- executionsurface, cohortpattern, reasoncodes, and blockedactions
+- optional codexlocaltarget
+- returnplan, checkpointbridgeplan, memoexportplan, and ownerpublicationplan
+- closeoutrequired, checkpointrequired, and progressionrequired
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/aoa-summon/examples/runtime.md`
+- `review_checklist`: `skills/aoa-summon/checks/review.md`
+
 ## aoa-tdd-slice
 
 - scope: `core`

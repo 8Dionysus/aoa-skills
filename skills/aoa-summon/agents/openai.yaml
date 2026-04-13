@@ -1,0 +1,6 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep this skill explicit-only because child-route delegation must stay visible, anchored, and reviewable.
+  - Prefer local Codex child execution unless a separate reviewed execution surface is genuinely required.
+  - Do not let remote transport bypass passport, checkpoint, return, or closeout law.

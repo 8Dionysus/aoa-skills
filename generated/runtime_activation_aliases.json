@@ -315,6 +315,18 @@
       }
     },
     {
+      "name": "aoa-summon",
+      "codex_mention": "$aoa-summon",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-summon",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-summon"
+        }
+      }
+    },
+    {
       "name": "aoa-tdd-slice",
       "codex_mention": "$aoa-tdd-slice",
       "codex_browser": "/skills",

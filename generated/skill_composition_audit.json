@@ -294,6 +294,17 @@
     {
       "composition_class": "multi_technique",
       "exception_review_path": null,
+      "name": "aoa-summon",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
       "name": "aoa-tdd-slice",
       "recommended_action": "keep_multi_technique",
       "technique_count": 2,
@@ -332,9 +343,9 @@
   },
   "summary": {
     "approved_exception_count": 2,
-    "multi_technique_skill_count": 27,
+    "multi_technique_skill_count": 28,
     "needs_reframe_count": 0,
     "single_technique_skill_count": 2,
-    "total_skill_count": 29
+    "total_skill_count": 30
   }
 }

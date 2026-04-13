@@ -277,6 +277,16 @@
       "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0"
     },
     {
+      "skill_name": "aoa-summon",
+      "path": ".agents/skills/aoa-summon",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-summon"
+      ],
+      "description_sha256": "711452125c6e7cb10c60f080098acdc081b5322852a6265f3018b7c555b639e4"
+    },
+    {
       "skill_name": "aoa-tdd-slice",
       "path": ".agents/skills/aoa-tdd-slice",
       "command": [

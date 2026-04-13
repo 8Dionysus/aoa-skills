@@ -1197,6 +1197,54 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-summon",
+      "display_name": "AoA Summon",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-summon",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-summon",
+          "$REPO_ROOT/.agents/skills/aoa-summon/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-summon/references",
+          "$REPO_ROOT/.agents/skills/aoa-summon/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-summon",
+          "$HOME/.agents/skills/aoa-summon/scripts",
+          "$HOME/.agents/skills/aoa-summon/references",
+          "$HOME/.agents/skills/aoa-summon/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-summon",
+          "/etc/codex/skills/aoa-summon/scripts",
+          "/etc/codex/skills/aoa-summon/references",
+          "/etc/codex/skills/aoa-summon/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-summon",
+        ".agents/skills/aoa-summon/scripts",
+        ".agents/skills/aoa-summon/references",
+        ".agents/skills/aoa-summon/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [
+          "references/no-raw-traces-rule.md",
+          "references/passport-lane-matrix.v3.md",
+          "references/summon-request-v3.schema.json",
+          "references/summon-result-v3.schema.json"
+        ],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-tdd-slice",
       "display_name": "AoA TDD Slice",
       "source_scope": "repo",

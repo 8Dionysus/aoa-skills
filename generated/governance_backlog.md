@@ -7,9 +7,9 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Summary
 
-- total skills: 29
+- total skills: 30
 - candidate ready without review: 0
-- blocked by pending lineage: 0
+- blocked by pending lineage: 1
 - canonical maintenance cohort: 12
 - comparative pending cohort: 3
 - review truth-sync gaps: 0
@@ -43,6 +43,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-session-self-diagnose | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-session-self-repair | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-source-of-truth-check | canonical | published | true | true | default_reference | decision_docs_authority | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-source-of-truth-check.md | docs/reviews/status-promotions/aoa-source-of-truth-check.md |
+| aoa-summon | scaffold | pending | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
 | atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
 | atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
@@ -72,7 +73,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 ## Cohorts
 
 - `candidate_ready_without_review`: -
-- `blocked_by_pending_lineage`: -
+- `blocked_by_pending_lineage`: aoa-summon
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor
 - `review_truth_sync`: -

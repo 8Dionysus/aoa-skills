@@ -76,6 +76,21 @@
       ]
     },
     {
+      "family": "summon-and-route-governance",
+      "skills": [
+        "aoa-summon",
+        "aoa-session-route-forks",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-change-protocol"
+      ],
+      "notes": [
+        "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
+        "aoa-session-route-forks is broader next-route comparison when several plausible continuations need to stay visible.",
+        "aoa-checkpoint-closeout-bridge coordinates reviewed closeout order from checkpoint hints rather than child-route delegation during the live route.",
+        "aoa-change-protocol is about doing the bounded work directly instead of selecting a child route to do it."
+      ]
+    },
+    {
       "family": "safety-and-mutation-gating",
       "skills": [
         "aoa-approval-gate-check",
@@ -501,6 +516,19 @@
       ],
       "prompt": "The change still needs planning, code edits, explicit verification, and a final report before any commit boundary would be honest.",
       "note": "When the work is still in flight, the broader bounded change workflow should win and the commit-boundary skill should defer."
+    },
+    {
+      "case_id": "collision-33",
+      "skill_name": "aoa-summon",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-session-route-forks",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-change-protocol"
+      ],
+      "prompt": "The parent route already has a quest passport, a concrete anchor, and named outputs, and it needs one bounded local reviewer child to inspect a narrow package fix before the parent continues. Decide the honest child lane, gates, and return plan.",
+      "note": "This is bounded child-route delegation with explicit lane and return governance, not branch analysis, reviewed closeout chaining, or direct execution of the parent work."
     }
   ]
 }
