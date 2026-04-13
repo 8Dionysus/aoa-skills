@@ -28,6 +28,7 @@ A release should make it easy to answer:
    - the current script runs:
      - `python scripts/build_catalog.py`
      - `python scripts/build_agent_skills.py --repo-root .`
+     - `python scripts/build_openai_yaml_examples.py --map examples/skill_mcp_wiring.map.json --output-dir examples --check`
      - `python scripts/build_runtime_seam.py --repo-root .`
      - `python scripts/build_runtime_guardrails.py --repo-root .`
      - `python scripts/build_description_trigger_evals.py --repo-root .`
