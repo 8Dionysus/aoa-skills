@@ -74,12 +74,13 @@ control plane.
 Before making changes, read in this order:
 
 1. `README.md`
-2. `docs/ARCHITECTURE.md`
-3. `docs/BRIDGE_SPEC.md`
-4. `docs/LAYER_POSITION.md`
-5. `docs/RUNTIME_PATH.md`
-6. the target `skills/*/SKILL.md`
-7. any generated surfaces directly affected by the task
+2. `ROADMAP.md`
+3. `docs/ARCHITECTURE.md`
+4. `docs/BRIDGE_SPEC.md`
+5. `docs/LAYER_POSITION.md`
+6. `docs/RUNTIME_PATH.md`
+7. the target `skills/*/SKILL.md`
+8. any generated surfaces directly affected by the task
 
 Then branch by task:
 
