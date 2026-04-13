@@ -15,6 +15,13 @@ Current public foundation:
 - repo-level baseline release identity in `CHANGELOG.md`, `docs/RELEASING.md`, tags, and GitHub release notes
 - bounded release validation in `scripts/release_check.py`
 
+The current `v0.3.x` release line also already carries:
+- checkpoint-closeout and commit-growth follow-through skills such as `aoa-checkpoint-closeout-bridge`, `aoa-commit-growth-seam`, `aoa-automation-opportunity-scan`, `aoa-session-donor-harvest`, and the wider session-harvest family surfaced through `generated/runtime_discovery_index.json`
+- checkpoint-aware and reviewed owner-status follow-through guidance in `docs/CHECKPOINT_NOTE_PATH.md`, `docs/OWNER_STATUS_SURFACES.md`, and `docs/GOVERNED_FOLLOWTHROUGH.md`
+- quest carry-forward and dispatch adjuncts in `generated/quest_catalog.min.json` and `generated/quest_dispatch.min.json`
+- local Codex or MCP disclosure plus adapter and compaction guidance in `docs/CODEX_SKILL_MCP_WIRING.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, and `docs/SESSION_COMPACTION.md`
+- packaging, governance, and overlay-maturity readouts in `generated/governance_backlog.md`, `generated/overlay_readiness.md`, `generated/skill_bundle_index.md`, `generated/skill_graph.md`, and `generated/release_manifest.json`
+
 Already-shipped repo-owned support layers now include:
 - wave-3 Codex-facing portable export, install-profile, and local-adapter surfaces
 - wave-4 raw runtime seam
@@ -36,7 +43,7 @@ The nearest waves should now be read in this order:
 2. `v0.6` project-overlay maturity
 3. `v0.7` packaging and distribution prep
 
-Repo-level semver releases such as `v0.1.0` describe bounded public baselines.
+Repo-level semver releases such as `v0.3.1` describe bounded public baselines.
 The wave labels below still describe internal maturity and packaging lanes rather than replacing that release identity.
 
 `v0.3` and `v0.4` are no longer the main expansion frontier.
@@ -50,6 +57,10 @@ The main near-term risk is no longer missing baseline scaffolding.
 It is ambiguity about which skills are the default references in adjacent workflow lanes,
 how thin project overlays should mature without widening scope,
 and how the public bundle surface should eventually package for portable reuse.
+Another near-term risk is roadmap drift: checkpoint follow-through, owner-status
+landing, quest dispatch, and local Codex or MCP disclosure are now shipped
+surfaces and should stay visible in current-direction docs rather than only in
+release notes.
 Another planning risk is cross-repo rollout choreography: when a future wave splits source-owned bridge meaning from downstream consumption, merge order and rerun policy should be planned explicitly rather than left to PR folklore.
 
 ## v0.3 public core hardening
