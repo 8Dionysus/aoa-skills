@@ -50,7 +50,7 @@ an executable workflow for Codex.
 8. `ARCHITECTURE.md` - high-level model of the repository.
 9. `BRIDGE_SPEC.md` - how skills reference and compose techniques.
 10. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
-11. `ROADMAP.md` - canonical public roadmap for repository evolution.
+11. `../ROADMAP.md` - canonical public roadmap for repository evolution.
 12. `RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
 13. `CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
 14. `COMPONENT_REFRESH_LAW.md` - owner refresh law for the portable export foundation when generated or adapter-facing surfaces drift.
@@ -121,7 +121,7 @@ an executable workflow for Codex.
 
 ## Current repository phase
 
-This repository now has a mixed-status public core of 20 skills with first support artifacts,
+This repository now has a mixed-status public core with first support artifacts,
 honest bridge manifests with pinned source refs, and local validation coverage.
 The live governance counts now belong to `../generated/public_surface.md` and `../generated/governance_backlog.md`, while this docs map stays focused on how to read the layers.
 The repository now also has a documented maturity ladder and promotion guidance.
@@ -133,5 +133,5 @@ The next focus is keeping selection, evidence reading, public status, and live o
 The repository now also permits thin live exemplar overlay packs such as `docs/overlays/atm10/PROJECT_OVERLAY.md`, `docs/overlays/abyss/PROJECT_OVERLAY.md`, and matching `skills/atm10-*` plus `skills/abyss-*` bundles.
 Those live exemplar packs also have family-level review docs at `docs/overlays/atm10/REVIEW.md` and `docs/overlays/abyss/REVIEW.md`.
 Those overlays remain repo-local examples rather than live downstream integrations, and their maturity is read through `../generated/overlay_readiness.md` rather than core governance lanes.
-`ROADMAP.md` remains the canonical public roadmap, and the next packaging follow-up after compatibility/lineage depth is import/export polish rather than another packaging-contract bootstrap.
+`../ROADMAP.md` remains the canonical public roadmap, and the next packaging follow-up after compatibility/lineage depth is import/export polish rather than another packaging-contract bootstrap.
 `PHASED_SKILL_PLAN.md` records the scaffold expansion that established the original skill-core rollout.

@@ -14,6 +14,7 @@ Use the shortest route by need:
 
 - first starter bundle: `skills/aoa-change-protocol/SKILL.md`
 - current skill surface: `SKILL_INDEX.md`
+- current direction: `ROADMAP.md`
 - runtime path: `docs/RUNTIME_PATH.md`
 - orchestration and closeout path: `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
 - evaluation path: `docs/EVALUATION_PATH.md`
