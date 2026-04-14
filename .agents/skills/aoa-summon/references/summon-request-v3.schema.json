@@ -5,6 +5,42 @@
   "type": "object",
   "additionalProperties": false,
   "required": ["quest_passport", "summon_request", "expected_outputs"],
+  "allOf": [
+    {
+      "anyOf": [
+        {
+          "properties": {
+            "quest_passport": {
+              "required": ["route_anchor"],
+              "properties": {
+                "route_anchor": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "summon_request": {
+              "required": ["parent_task_id"],
+              "properties": {
+                "parent_task_id": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "summon_request": {
+              "required": ["session_ref"],
+              "properties": {
+                "session_ref": {"type": "string", "minLength": 1}
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
   "properties": {
     "quest_passport": {
       "type": "object",
@@ -39,6 +75,7 @@
         "session_ref": {"type": ["string", "null"]},
         "expected_outputs": {
           "type": "array",
+          "minItems": 1,
           "items": {"type": "string"}
         },
         "reviewed_artifact_path": {"type": ["string", "null"]},
@@ -47,6 +84,7 @@
     },
     "expected_outputs": {
       "type": "array",
+      "minItems": 1,
       "items": {"type": "string"}
     },
     "progression_overlay_ref": {"type": ["string", "null"]},
