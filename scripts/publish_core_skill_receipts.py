@@ -37,6 +37,13 @@ ALLOWED_HANDOFF_TARGETS = {
     "aoa-session-progression-lift",
     "aoa-quest-harvest",
 }
+ALLOWED_AUTHORITY_CONTRACT_FIELDS = {
+    "contract",
+    "bridge_output",
+    "checkpoint_notes",
+    "reviewed_artifact",
+    "agent_skill_application",
+}
 
 
 class ReceiptPublishError(ValueError):
@@ -258,6 +265,18 @@ def validate_surface_detection_context(context: dict[str, Any], *, location: str
             )
 
 
+def validate_authority_contract(contract: dict[str, Any], *, location: str) -> None:
+    extra = sorted(field for field in contract if field not in ALLOWED_AUTHORITY_CONTRACT_FIELDS)
+    if extra:
+        raise ReceiptPublishError(f"{location}: unsupported authority_contract fields {extra!r}")
+    for field in ALLOWED_AUTHORITY_CONTRACT_FIELDS:
+        value = contract.get(field)
+        if value is not None and (not isinstance(value, str) or not value):
+            raise ReceiptPublishError(
+                f"{location}.{field}: must be omitted or a non-empty string"
+            )
+
+
 def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
     required_fields = (
         "event_kind",
@@ -298,7 +317,12 @@ def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
         "detail_event_kind",
         "detail_receipt_ref",
     }
-    allowed_payload_fields = {*required_payload_fields, "route_ref", "surface_detection_context"}
+    allowed_payload_fields = {
+        *required_payload_fields,
+        "authority_contract",
+        "route_ref",
+        "surface_detection_context",
+    }
     missing = sorted(field for field in required_payload_fields if field not in payload)
     if missing:
         raise ReceiptPublishError(f"{location}.payload: missing required fields {missing!r}")
@@ -336,6 +360,16 @@ def validate_receipt(receipt: dict[str, Any], *, location: str) -> None:
     if route_ref is not None and (not isinstance(route_ref, str) or not route_ref):
         raise ReceiptPublishError(
             f"{location}.payload.route_ref: must be omitted or a non-empty string"
+        )
+    authority_contract = payload.get("authority_contract")
+    if authority_contract is not None:
+        if not isinstance(authority_contract, dict):
+            raise ReceiptPublishError(
+                f"{location}.payload.authority_contract: must be omitted or an object"
+            )
+        validate_authority_contract(
+            authority_contract,
+            location=f"{location}.payload.authority_contract",
         )
     surface_detection_context = payload.get("surface_detection_context")
     if surface_detection_context is not None:

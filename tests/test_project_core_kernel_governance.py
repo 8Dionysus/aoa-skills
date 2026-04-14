@@ -31,6 +31,7 @@ def load_module(name: str, path: pathlib.Path):
 
 def build_core_skill_receipt(
     *,
+    authority_contract: dict[str, object] | None = None,
     detail_event_kind: str,
     surface_detection_context: dict[str, object] | None = None,
 ) -> dict[str, object]:
@@ -41,6 +42,8 @@ def build_core_skill_receipt(
         "detail_event_kind": detail_event_kind,
         "detail_receipt_ref": "repo:aoa-skills/tmp/HARVEST_PACKET_RECEIPT.json",
     }
+    if authority_contract is not None:
+        payload["authority_contract"] = authority_contract
     if surface_detection_context is not None:
         payload["surface_detection_context"] = surface_detection_context
     return {
@@ -108,6 +111,22 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
 
         module.validate_receipt(receipt, location="memory")
 
+    def test_publish_core_skill_receipts_accepts_authority_contract(self) -> None:
+        module = load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
+
+        receipt = build_core_skill_receipt(
+            detail_event_kind="harvest_packet_receipt",
+            authority_contract={
+                "contract": "reviewed_artifact_primary_checkpoint_hints_provisional",
+                "bridge_output": "mechanical_artifact_build",
+                "checkpoint_notes": "focus_hints_only_not_final_authority",
+                "reviewed_artifact": "primary_closeout_evidence",
+                "agent_skill_application": "required_for_final_session_analysis",
+            },
+        )
+
+        module.validate_receipt(receipt, location="memory")
+
     def test_publish_core_skill_receipts_rejects_invalid_surface_detection_context(self) -> None:
         module = load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
 
@@ -122,6 +141,23 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
             module.validate_receipt(receipt, location="memory")
 
         self.assertIn("activation_truth", str(exc.exception))
+
+    def test_publish_core_skill_receipts_rejects_invalid_authority_contract(self) -> None:
+        module = load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
+
+        receipt = build_core_skill_receipt(
+            detail_event_kind="harvest_packet_receipt",
+            authority_contract={
+                "contract": "reviewed_artifact_primary_checkpoint_hints_provisional",
+                "bridge_output": "mechanical_artifact_build",
+                "bogus": "nope",
+            },
+        )
+
+        with self.assertRaises(module.ReceiptPublishError) as exc:
+            module.validate_receipt(receipt, location="memory")
+
+        self.assertIn("authority_contract", str(exc.exception))
 
     def test_validate_agent_skills_reports_alias_type_error_without_traceback(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
