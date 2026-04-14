@@ -1,0 +1,302 @@
+{
+  "schema_version": "aoa_recurrence_component_v2",
+  "component_ref": "component:skills:bundle-and-activation-beacons",
+  "owner_repo": "aoa-skills",
+  "description": "Skill bundle canon, activation quality, applicability maps, and harvest-pressure surfaces.",
+  "source_inputs": [
+    "skills/**/*.md",
+    "docs/TRIGGER_EVALS.md",
+    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+    "templates/SKILL_APPLICABILITY_MAP.template.md",
+    "templates/SESSION_CANDIDATE_HARVEST.template.md"
+  ],
+  "generated_surfaces": [
+    "generated/skill_catalog.min.json",
+    "generated/skill_evaluation_matrix.md",
+    "generated/description_trigger_eval_manifest.json",
+    "generated/quest_dispatch.min.json"
+  ],
+  "projected_surfaces": [
+    ".agents/skills/*"
+  ],
+  "contract_surfaces": [
+    "docs/TRIGGER_EVALS.md",
+    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
+  ],
+  "documentation_surfaces": [
+    "README.md",
+    "SKILL_INDEX.md"
+  ],
+  "proof_surfaces": [
+    "python scripts/build_catalog.py --check",
+    "python scripts/validate_skills.py --fail-on-review-truth-sync",
+    "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps",
+    "python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift",
+    "python scripts/validate_agent_skills.py --repo-root .",
+    "python scripts/validate_support_resources.py --repo-root . --check-portable",
+    "python scripts/validate_tiny_router_inputs.py --repo-root .",
+    "python -m pytest -q tests"
+  ],
+  "refresh_routes": [
+    {
+      "action": "revalidate",
+      "commands": [
+        "python scripts/build_catalog.py --check",
+        "python scripts/validate_skills.py --fail-on-review-truth-sync",
+        "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps",
+        "python scripts/validate_agent_skills.py --repo-root .",
+        "python scripts/validate_support_resources.py --repo-root . --check-portable",
+        "python scripts/validate_tiny_router_inputs.py --repo-root ."
+      ],
+      "notes": "keep canonical skill bundles, trigger suites, and export surfaces aligned"
+    },
+    {
+      "action": "repair",
+      "commands": [
+        "python scripts/build_catalog.py --check",
+        "python scripts/validate_skills.py --fail-on-review-truth-sync",
+        "python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift"
+      ],
+      "notes": "repair bundle or trigger drift before widening activation authority"
+    }
+  ],
+  "consumer_edges": [
+    {
+      "kind": "evaluated_by",
+      "target": "component:evals:portable-proof-beacons",
+      "target_repo": "aoa-evals",
+      "required": true,
+      "suggested_action": "revalidate",
+      "suggested_commands": [],
+      "notes": "portable eval surfaces may need revalidation when canonical skill behavior shifts"
+    },
+    {
+      "kind": "handoff_home",
+      "target": "playbooks/component-refresh-cycle/PLAYBOOK.md",
+      "target_repo": "aoa-playbooks",
+      "required": true,
+      "suggested_action": "handoff",
+      "suggested_commands": [],
+      "notes": "owner-law follow-through remains explicit"
+    }
+  ],
+  "drift_signals": [
+    {
+      "signal": "description_changed_without_trigger_refresh",
+      "recommended_action": "revalidate",
+      "severity": "high"
+    },
+    {
+      "signal": "technique_refs_changed_without_drift_review",
+      "recommended_action": "repair",
+      "severity": "medium"
+    }
+  ],
+  "freshness": {
+    "stale_after_days": 14,
+    "repeat_trigger_threshold": 2,
+    "open_window_days": 10
+  },
+  "rollback_anchors": [
+    "docs/TRIGGER_EVALS.md",
+    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
+  ],
+  "tags": [
+    "skills",
+    "activation",
+    "harvest",
+    "beacons"
+  ],
+  "signal_edges": [
+    {
+      "kind": "incubated_by_technique",
+      "target": "component:techniques:canon-and-intake-beacons",
+      "target_repo": "aoa-techniques",
+      "notes": "skills may donate bounded evidence back into technique distillation"
+    },
+    {
+      "kind": "proved_by_eval",
+      "target": "component:evals:portable-proof-beacons",
+      "target_repo": "aoa-evals",
+      "notes": "eval bundles check bounded claim quality for skills"
+    },
+    {
+      "kind": "composed_by_playbook",
+      "target": "component:playbooks:scenario-composition-beacons",
+      "target_repo": "aoa-playbooks",
+      "notes": "repeated scenario evidence may push a bounded workflow into playbook space"
+    }
+  ],
+  "observation_inputs": [
+    {
+      "input_ref": "description-trigger-suite",
+      "kind": "trigger_eval",
+      "path_globs": [
+        "generated/description_trigger_eval_cases.jsonl",
+        "generated/description_trigger_eval_manifest.json"
+      ],
+      "notes": "wave-7 description-first activation surface"
+    },
+    {
+      "input_ref": "trigger-eval-suite",
+      "kind": "trigger_eval",
+      "path_globs": [
+        "docs/TRIGGER_EVALS.md"
+      ],
+      "notes": "older seed and regression trigger suite"
+    },
+    {
+      "input_ref": "skill-evaluation-matrix",
+      "kind": "evaluation_matrix",
+      "path_globs": [
+        "generated/skill_evaluation_matrix.md"
+      ],
+      "notes": "evidence matrix for canonical gaps and readiness"
+    },
+    {
+      "input_ref": "session-harvest-notes",
+      "kind": "harvest",
+      "path_globs": [
+        "docs/session-harvests/*"
+      ],
+      "notes": "bounded post-session candidate pressure"
+    }
+  ],
+  "beacon_rules": [
+    {
+      "beacon_ref": "skills.unused_skill.activation_gap",
+      "kind": "unused_skill_opportunity",
+      "decision_surface": "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+      "target_repo": "aoa-skills",
+      "observation_inputs": [
+        "change_signal",
+        "description-trigger-suite",
+        "skill-evaluation-matrix",
+        "session-harvest-notes"
+      ],
+      "match_signals": [
+        "should_trigger_missing",
+        "prefer_other_skill_gap",
+        "applicability_skip_without_boundary",
+        "closeout_harvest_signal_survived"
+      ],
+      "match_categories": [
+        "usage_gap",
+        "review_signal",
+        "repeat_pattern"
+      ],
+      "thresholds": {
+        "watch_observations": 1,
+        "candidate_observations": 2,
+        "review_ready_observations": 3,
+        "min_unique_sources": 2,
+        "min_unique_evidence_refs": 2
+      },
+      "status_ladder": [
+        "hint",
+        "watch",
+        "candidate",
+        "review_ready"
+      ],
+      "suppress_when": [],
+      "recommended_actions": [
+        "inspect the applicability map and defer/skip notes",
+        "check whether a nearby skill should have triggered"
+      ],
+      "notes": "signal a missing or displaced skill without pretending routing already failed globally"
+    },
+    {
+      "beacon_ref": "skills.trigger_drift.description_boundary",
+      "kind": "skill_trigger_drift",
+      "decision_surface": "docs/TRIGGER_EVALS.md",
+      "target_repo": "aoa-skills",
+      "observation_inputs": [
+        "change_signal",
+        "description-trigger-suite",
+        "trigger-eval-suite"
+      ],
+      "match_signals": [
+        "description_changed_without_trigger_refresh",
+        "trigger_eval_gap",
+        "collision_case_missing",
+        "source_changed",
+        "docs_changed"
+      ],
+      "match_categories": [
+        "change_pressure",
+        "usage_gap",
+        "review_signal"
+      ],
+      "thresholds": {
+        "watch_observations": 1,
+        "candidate_observations": 2,
+        "review_ready_observations": 3,
+        "min_unique_sources": 1,
+        "min_unique_evidence_refs": 1
+      },
+      "status_ladder": [
+        "hint",
+        "watch",
+        "candidate",
+        "review_ready"
+      ],
+      "suppress_when": [],
+      "recommended_actions": [
+        "refresh trigger evals and mirrored collision cases in the same change set"
+      ],
+      "notes": "changes to descriptions or trigger boundaries should drag their evaluation surfaces with them"
+    },
+    {
+      "beacon_ref": "skills.bundle_candidate.harvest_pressure",
+      "kind": "skill_bundle_candidate",
+      "decision_surface": "templates/SESSION_CANDIDATE_HARVEST.template.md",
+      "target_repo": "aoa-skills",
+      "observation_inputs": [
+        "session-harvest-notes",
+        "skill-evaluation-matrix",
+        "change_signal"
+      ],
+      "match_signals": [
+        "repeated_workflow_candidate",
+        "harvest_candidate_recorded",
+        "quest_dispatch_pressure"
+      ],
+      "match_categories": [
+        "repeat_pattern",
+        "review_signal",
+        "evidence_pressure"
+      ],
+      "thresholds": {
+        "watch_observations": 1,
+        "candidate_observations": 2,
+        "review_ready_observations": 3,
+        "min_unique_sources": 2,
+        "min_unique_evidence_refs": 2
+      },
+      "status_ladder": [
+        "hint",
+        "watch",
+        "candidate",
+        "review_ready"
+      ],
+      "suppress_when": [],
+      "recommended_actions": [
+        "capture the repeated workflow as a bounded skill-bundle candidate"
+      ],
+      "notes": "harvest pressure belongs after closeout, not inside blind ring expansion"
+    }
+  ],
+  "decision_surfaces": [
+    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+    "docs/TRIGGER_EVALS.md",
+    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "templates/SESSION_CANDIDATE_HARVEST.template.md"
+  ],
+  "candidate_targets": [
+    "generated/skill_evaluation_matrix.md",
+    "templates/SESSION_CANDIDATE_HARVEST.template.md"
+  ]
+}
