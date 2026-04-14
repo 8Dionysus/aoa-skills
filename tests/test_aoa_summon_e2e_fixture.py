@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 import unittest
 from pathlib import Path
 
@@ -67,6 +68,17 @@ class AoaSummonE2EFixtureTests(unittest.TestCase):
         self.assertEqual(fixture["summon_decision"]["lane"], "codex_local_reviewed")
         self.assertIs(fixture["dry_run"], True)
         self.assertIs(fixture["live_automation"], False)
+
+        request_validator = Draft202012Validator(request_schema)
+        anchorless_request = deepcopy(fixture["summon_request"])
+        anchorless_request["quest_passport"].pop("route_anchor", None)
+        anchorless_request["summon_request"].pop("parent_task_id", None)
+        anchorless_request["summon_request"].pop("session_ref", None)
+        self.assertFalse(request_validator.is_valid(anchorless_request))
+
+        empty_outputs_request = deepcopy(fixture["summon_request"])
+        empty_outputs_request["expected_outputs"] = []
+        self.assertFalse(request_validator.is_valid(empty_outputs_request))
 
 
 if __name__ == "__main__":
