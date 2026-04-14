@@ -1,0 +1,47 @@
+{
+  "schema_version": "aoa_hook_binding_set_v1",
+  "component_ref": "component:skills:bundle-and-activation-beacons",
+  "owner_repo": "aoa-skills",
+  "notes": "Session-stop trigger-gap detector for description-first skill activation pressure.",
+  "bindings": [
+    {
+      "binding_ref": "skills.trigger_gap.session_stop",
+      "event": "session_stop",
+      "producer": "skill_trigger_gap_watch",
+      "component_ref": "component:skills:bundle-and-activation-beacons",
+      "owner_repo": "aoa-skills",
+      "input_ref": "description-trigger-suite",
+      "path_globs": [
+        "generated/description_trigger_eval_cases.jsonl"
+      ],
+      "config": {
+        "receipt_globs": [
+          ".aoa/live_receipts/skill-receipts.jsonl",
+          "examples/session_growth_artifacts/*.wave4.json"
+        ],
+        "case_class_field": "case_class",
+        "skill_field": "skill_name",
+        "record_id_field": "case_id",
+        "positive_case_values": [
+          "should-trigger",
+          "explicit-handle"
+        ],
+        "prefer_other_case_values": [
+          "prefer-other-skill"
+        ],
+        "manual_case_values": [
+          "manual-invocation-required"
+        ],
+        "receipt_skill_fields": [
+          "skill_name",
+          "skill_ref",
+          "skill_refs",
+          "applied_skills",
+          "applied_skill_refs"
+        ]
+      },
+      "signal_rules": [],
+      "notes": "Detect activation opportunities and omissions without auto-invoking skills."
+    }
+  ]
+}
