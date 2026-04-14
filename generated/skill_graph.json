@@ -5132,7 +5132,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "fef9b0482464a04fb64fedf1770f38cdd540b2b2e9fda4cf608df24b35415440",
+      "content_hash": "f169ae2d849122e8db110fc962527bf75e58dcc41664048b805deeaa7c03189e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5158,7 +5158,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-summon/SKILL.md",
-      "skill_revision": "fef9b0482464",
+      "skill_revision": "f169ae2d8491",
       "status": "scaffold",
       "support_artifacts": [
         {
