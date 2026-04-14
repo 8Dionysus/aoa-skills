@@ -93,6 +93,10 @@ Do not use this skill when:
 - this skill governs one bounded child route; it does not grant hidden
   orchestration authority
 - local Codex child targeting is the default first choice, not an afterthought
+- the SDK-owned E2E fixture at
+  `repo:aoa-sdk/examples/a2a/summon_return_checkpoint_e2e.fixture.json`
+  may be used to check this skill's v3 request/result contract, but it does not
+  move summon law into `aoa-sdk`
 - stress may narrow or block, but it may never widen authority
 - remote transport follows the same passport, return, checkpoint, and closeout
   law as local transport
@@ -120,6 +124,9 @@ Do not use this skill when:
 - confirm expected outputs are named
 - confirm the chosen lane matches difficulty, risk, control mode, and requested
   role
+- confirm any E2E fixture check validates `summon_request` and `summon_result`
+  against `references/summon-request-v3.schema.json` and
+  `references/summon-result-v3.schema.json`
 - confirm `d3+` routes split before summon
 - confirm stress only narrows or blocks
 - confirm progression and self-agent gates are not bypassed

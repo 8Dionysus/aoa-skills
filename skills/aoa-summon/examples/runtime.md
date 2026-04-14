@@ -33,6 +33,13 @@ closeout.
 - an owner publication plan that keeps terminal meaning in the parent owner
   repo rather than in derived traces
 
+The SDK-owned fixture
+`repo:aoa-sdk/examples/a2a/summon_return_checkpoint_e2e.fixture.json` is the
+current full-chain check for this scenario. It should validate this skill's v3
+`summon_request` and `summon_result` schemas while leaving the SDK helper,
+checkpoint bridge, memo candidate, eval packet, runtime dry-run receipt, and
+routing re-entry in their owning repositories.
+
 ## Boundary notes
 
 - Do not use this skill until the parent route has a real anchor and named outputs.

@@ -488,7 +488,7 @@
         "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
       ],
       "trigger_boundary_short": "Use when a parent route already has a real anchor and named expected outputs; a narrower child actor would help through bounded review, evaluation, leaf implementation, or local verification; Avoid when the parent...",
-      "verification_short": "Checks: confirm the passport and parent anchor exist; confirm expected outputs are named; confirm the chosen lane matches difficulty, risk, control mode, and requested role; confirm d3+ routes split before summon.",
+      "verification_short": "Checks: confirm the passport and parent anchor exist; confirm expected outputs are named; confirm the chosen lane matches difficulty, risk, control mode, and requested role; confirm any E2E fixture check validates...",
       "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to codexlocal when the request..."
     },
     {

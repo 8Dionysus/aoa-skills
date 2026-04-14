@@ -1922,6 +1922,7 @@
         "confirm the passport and parent anchor exist",
         "confirm expected outputs are named",
         "confirm the chosen lane matches difficulty, risk, control mode, and requested",
+        "confirm any E2E fixture check validates `summon_request` and `summon_result`",
         "confirm `d3+` routes split before summon",
         "confirm stress only narrows or blocks",
         "confirm progression and self-agent gates are not bypassed",
@@ -1932,6 +1933,7 @@
       "contracts": [
         "this skill governs one bounded child route; it does not grant hidden",
         "local Codex child targeting is the default first choice, not an afterthought",
+        "the SDK-owned E2E fixture at",
         "stress may narrow or block, but it may never widen authority",
         "remote transport follows the same passport, return, checkpoint, and closeout",
         "`d3+` routes split first",
@@ -1972,7 +1974,7 @@
         "contract_notes": [
           "this skill governs one bounded child route; it does not grant hidden",
           "local Codex child targeting is the default first choice, not an afterthought",
-          "stress may narrow or block, but it may never widen authority"
+          "the SDK-owned E2E fixture at"
         ],
         "next_recommended_skills": []
       }
