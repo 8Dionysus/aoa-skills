@@ -314,8 +314,8 @@
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "e01cb5666b15e82ece958c251119ba638743548e5a87b75149521932697c89d6",
-      "bytes": 60506
+      "sha256": "6fdea73c9e25f2f836dca94861cb9d224a7382cba57372d7f364f73e5231b226",
+      "bytes": 60867
     },
     {
       "path": "generated/runtime_seam_manifest.json",
@@ -354,8 +354,8 @@
     },
     {
       "path": "generated/skill_description_signals.json",
-      "sha256": "f2d1604c9bbe870ec41f1df167604cf9e35f8d6a3ca322dd7f3ceee64ea7ef97",
-      "bytes": 66529
+      "sha256": "099fcef964dd6b9837b48d7e5407bca928a8206dab74f69192194558115f7d5b",
+      "bytes": 66601
     },
     {
       "path": "generated/description_trigger_eval_cases.jsonl",
