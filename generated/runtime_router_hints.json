@@ -156,8 +156,7 @@
       "manual_invocation_required": [],
       "negative_controls": [
         "The edit is tiny, fully local, and there is no meaningful ambiguity about boundaries or interfaces.",
-        "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code.",
-        "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written."
+        "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code."
       ],
       "notes": [
         "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",

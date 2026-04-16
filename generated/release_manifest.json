@@ -314,8 +314,8 @@
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "6fdea73c9e25f2f836dca94861cb9d224a7382cba57372d7f364f73e5231b226",
-      "bytes": 60867
+      "sha256": "b2f0ab8db47c120629acd69ad8b0c932961c9c5cb74466c9804876d32fcd8f82",
+      "bytes": 60706
     },
     {
       "path": "generated/runtime_seam_manifest.json",
