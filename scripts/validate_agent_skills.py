@@ -918,6 +918,19 @@ def main() -> int:
         else:
             if router_entry.get("description") != description:
                 errors.append(f"generated/runtime_router_hints.json description mismatch for {skill_dir.name}")
+            should_trigger = router_entry.get("should_trigger", [])
+            manual_required = router_entry.get("manual_invocation_required", [])
+            negative_controls = router_entry.get("negative_controls", [])
+            overlap = (
+                (set(should_trigger) & set(manual_required))
+                | (set(should_trigger) & set(negative_controls))
+                | (set(manual_required) & set(negative_controls))
+            )
+            if overlap:
+                errors.append(
+                    "generated/runtime_router_hints.json routing buckets must be disjoint "
+                    f"for {skill_dir.name}: {sorted(overlap)!r}"
+                )
 
         alias_entry = alias_by_name.get(skill_dir.name)
         if alias_entry is None:

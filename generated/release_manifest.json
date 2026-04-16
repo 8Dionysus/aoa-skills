@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "9c6f957d244d8addeb2305ccb4a93aba5962da74991e64a58f19e9dcb0e79135",
-      "bytes": 214129
+      "sha256": "0ebe3e98659e998a1f09f583e911657edcc7e37dc4f3da37bb6c4e73a08605e2",
+      "bytes": 214717
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -314,8 +314,8 @@
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "ef899075c08ed8585d39bb487b05b9c0cb69a1395c5464557f892ecac9dcf59a",
-      "bytes": 60088
+      "sha256": "b2f0ab8db47c120629acd69ad8b0c932961c9c5cb74466c9804876d32fcd8f82",
+      "bytes": 60706
     },
     {
       "path": "generated/runtime_seam_manifest.json",
@@ -354,22 +354,22 @@
     },
     {
       "path": "generated/skill_description_signals.json",
-      "sha256": "37e634094560fb5e13e54a2cb1b8bc4bea8de9fbc47c8bec474c6d11287c9f6a",
-      "bytes": 66051
+      "sha256": "099fcef964dd6b9837b48d7e5407bca928a8206dab74f69192194558115f7d5b",
+      "bytes": 66601
     },
     {
       "path": "generated/description_trigger_eval_cases.jsonl",
-      "sha256": "f058dbabb16857ed0155655112a46f95c872d197c9ef220156f14852f995dec2",
-      "bytes": 128778
+      "sha256": "6f4bbefcbd867fb074ebc6392e8073e521f1d6e9a0751b5911783767d38f184d",
+      "bytes": 136327
     },
     {
       "path": "generated/description_trigger_eval_cases.csv",
-      "sha256": "96a113ff920c403de14c878d9eec6500d24d4dd1be43b9b1969acba9168a56b5",
-      "bytes": 88135
+      "sha256": "50023af3c5768f0099b12ac2c529e53f44dc7d35c8b247510c5aec00e5e5e760",
+      "bytes": 93276
     },
     {
       "path": "generated/description_trigger_eval_manifest.json",
-      "sha256": "ef050aa0d95c5961bd5e4d95747fd620bef5220690ffe27ddce197e4736a4021",
+      "sha256": "93d5c107c5cf35010dd6aec1501c40e8ad5a9159a44612eead99e135ab637116",
       "bytes": 19566
     },
     {
@@ -409,8 +409,8 @@
     },
     {
       "path": "generated/tiny_router_skill_signals.json",
-      "sha256": "66376b77cfae7ca05645c10ecc2ce537313d15c703912cb94cfdf42b1416d6fb",
-      "bytes": 96523
+      "sha256": "567e075cae9cc6aab1a0fc38c66488308daa8d1beb4c9ece4b96d2196db14499",
+      "bytes": 96526
     },
     {
       "path": "generated/tiny_router_candidate_bands.json",
@@ -424,8 +424,8 @@
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
-      "sha256": "8e10eb3c273b35d02933b9ab55a4603e86d6f038f15f8f202db2fa6e88ac4d83",
-      "bytes": 37349
+      "sha256": "1972b0d6c7621fb990c0ba941e2fe38b027b564218e89eea60a28dd38f855201",
+      "bytes": 37359
     },
     {
       "path": "generated/tiny_router_overlay_manifest.json",

@@ -99,6 +99,24 @@ def main() -> int:
         if extra:
             errors.append(f"collision matrix has unknown skills: {extra!r}")
 
+    expected_collision_case_ids = {
+        case["case_id"]
+        for case in collision_doc.get("cases", [])
+        if case.get("case_id")
+    }
+    actual_collision_case_ids = {
+        case.get("case_id")
+        for case in cases
+        if case.get("mode") == "collision" and case.get("case_id")
+    }
+    if expected_collision_case_ids != actual_collision_case_ids:
+        missing = sorted(expected_collision_case_ids - actual_collision_case_ids)
+        extra = sorted(actual_collision_case_ids - expected_collision_case_ids)
+        if missing:
+            errors.append(f"trigger eval dataset missing collision cases: {missing!r}")
+        if extra:
+            errors.append(f"trigger eval dataset has unknown collision cases: {extra!r}")
+
     collision_case_count = sum(1 for case in cases if case.get("mode") == "collision")
     if collision_case_count < len(skills) // 2:
         errors.append(

@@ -35,10 +35,12 @@
         "18-explicit",
         "18-implicit-manual",
         "18-adjacent-negative",
-        "collision-18"
+        "collision-18",
+        "collision-35"
       ],
       "collision_case_ids": [
-        "desc-collision-collision-18"
+        "desc-collision-collision-18",
+        "desc-collision-collision-35"
       ],
       "mirror_case_ids": []
     },
@@ -141,6 +143,7 @@
         "decision-and-doc-authority"
       ],
       "adjacent_skills": [
+        "aoa-bounded-context-map",
         "aoa-quest-harvest",
         "aoa-source-of-truth-check",
         "atm10-source-of-truth-check"
@@ -159,7 +162,9 @@
       ],
       "collision_case_ids": [],
       "mirror_case_ids": [
-        "desc-mirror-019-aoa-adr-write"
+        "desc-mirror-019-aoa-adr-write",
+        "desc-mirror-029-aoa-adr-write",
+        "desc-mirror-031-aoa-adr-write"
       ]
     },
     {
@@ -189,6 +194,7 @@
       ],
       "base_case_ids": [
         "02-explicit",
+        "02-chaos-explicit",
         "02-implicit-manual",
         "02-adjacent-negative",
         "collision-09"
@@ -230,6 +236,7 @@
         "26-explicit",
         "26-implicit-manual",
         "26-adjacent-negative",
+        "26-chaos-adjacent-negative",
         "collision-26"
       ],
       "collision_case_ids": [
@@ -251,8 +258,10 @@
         "boundary-shaping"
       ],
       "adjacent_skills": [
+        "aoa-adr-write",
         "aoa-core-logic-boundary",
-        "aoa-port-adapter-refactor"
+        "aoa-port-adapter-refactor",
+        "aoa-source-of-truth-check"
       ],
       "default_prompt": "Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them.",
       "required_case_classes": [
@@ -264,15 +273,19 @@
       "base_case_ids": [
         "03-explicit",
         "03-implicit",
+        "03-chaos-implicit",
         "03-adjacent-negative",
-        "collision-03"
+        "collision-03",
+        "collision-36"
       ],
       "collision_case_ids": [
-        "desc-collision-collision-03"
+        "desc-collision-collision-03",
+        "desc-collision-collision-36"
       ],
       "mirror_case_ids": [
         "desc-mirror-005-aoa-bounded-context-map",
-        "desc-mirror-007-aoa-bounded-context-map"
+        "desc-mirror-007-aoa-bounded-context-map",
+        "desc-mirror-030-aoa-bounded-context-map"
       ]
     },
     {
@@ -1037,6 +1050,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine",
         "aoa-adr-write",
+        "aoa-bounded-context-map",
         "aoa-change-protocol",
         "aoa-quest-harvest",
         "aoa-safe-infra-change",
@@ -1056,11 +1070,13 @@
         "14-implicit",
         "14-adjacent-negative",
         "collision-17",
-        "collision-28"
+        "collision-28",
+        "collision-34"
       ],
       "collision_case_ids": [
         "desc-collision-collision-17",
-        "desc-collision-collision-28"
+        "desc-collision-collision-28",
+        "desc-collision-collision-34"
       ],
       "mirror_case_ids": [
         "desc-mirror-017-aoa-source-of-truth-check"

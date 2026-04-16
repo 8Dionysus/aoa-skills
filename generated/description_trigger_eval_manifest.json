@@ -12,13 +12,13 @@
     ".agents/skills/*/SKILL.md"
   ],
   "skill_count": 30,
-  "total_cases": 151,
+  "total_cases": 160,
   "case_class_totals": {
-    "explicit-handle": 30,
-    "manual-invocation-required": 32,
-    "prefer-other-skill": 28,
-    "should-not-trigger": 30,
-    "should-trigger": 31
+    "explicit-handle": 31,
+    "manual-invocation-required": 33,
+    "prefer-other-skill": 31,
+    "should-not-trigger": 31,
+    "should-trigger": 34
   },
   "skills": [
     {
@@ -26,10 +26,10 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55",
       "family": "overlay-vs-base-skill",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
-        "manual-invocation-required": 2,
+        "manual-invocation-required": 3,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -85,10 +85,10 @@
       "invocation_mode": "explicit-preferred",
       "description_sha256": "f1f4cb3d68b8da03557ea671e72452a3e883eb989f7e093686eee8b1dd73fc94",
       "family": "decision-and-doc-authority",
-      "total_cases": 4,
+      "total_cases": 6,
       "case_class_totals": {
         "explicit-handle": 1,
-        "prefer-other-skill": 1,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1,
         "should-trigger": 1
       },
@@ -106,9 +106,9 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c",
       "family": "safety-and-mutation-gating",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
-        "explicit-handle": 1,
+        "explicit-handle": 2,
         "manual-invocation-required": 2,
         "should-not-trigger": 1
       },
@@ -125,11 +125,11 @@
       "invocation_mode": "explicit-only",
       "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7",
       "family": "session-harvest-family",
-      "total_cases": 4,
+      "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
-        "should-not-trigger": 1
+        "should-not-trigger": 2
       },
       "required_case_classes": [
         "explicit-handle",
@@ -144,12 +144,12 @@
       "invocation_mode": "explicit-preferred",
       "description_sha256": "735d43d6ab5652fb304178f0e2c746584bbc1a7455aa2f63fbfac82688dd6a06",
       "family": "boundary-shaping",
-      "total_cases": 6,
+      "total_cases": 9,
       "case_class_totals": {
         "explicit-handle": 1,
-        "prefer-other-skill": 2,
+        "prefer-other-skill": 3,
         "should-not-trigger": 1,
-        "should-trigger": 2
+        "should-trigger": 4
       },
       "required_case_classes": [
         "explicit-handle",
@@ -528,12 +528,12 @@
       "invocation_mode": "explicit-preferred",
       "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0",
       "family": "decision-and-doc-authority",
-      "total_cases": 6,
+      "total_cases": 7,
       "case_class_totals": {
         "explicit-handle": 1,
         "prefer-other-skill": 1,
         "should-not-trigger": 1,
-        "should-trigger": 3
+        "should-trigger": 4
       },
       "required_case_classes": [
         "explicit-handle",

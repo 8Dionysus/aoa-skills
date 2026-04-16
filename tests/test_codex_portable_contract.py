@@ -123,6 +123,16 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in router["skills"]}, catalog_names)
         self.assertEqual({entry["name"] for entry in aliases["aliases"]}, catalog_names)
 
+    def test_runtime_router_hints_keep_prompt_buckets_disjoint(self):
+        router = load_json(REPO_ROOT / "generated" / "runtime_router_hints.json")
+        for entry in router["skills"]:
+            should_trigger = set(entry.get("should_trigger", []))
+            manual_required = set(entry.get("manual_invocation_required", []))
+            negative_controls = set(entry.get("negative_controls", []))
+            self.assertFalse(should_trigger & manual_required, entry["name"])
+            self.assertFalse(should_trigger & negative_controls, entry["name"])
+            self.assertFalse(manual_required & negative_controls, entry["name"])
+
     def test_discovery_and_disclosure_do_not_expose_full_instructions(self):
         discovery = load_json(REPO_ROOT / "generated" / "runtime_discovery_index.json")
         disclosure = load_json(REPO_ROOT / "generated" / "runtime_disclosure_index.json")

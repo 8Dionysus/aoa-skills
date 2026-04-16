@@ -167,6 +167,19 @@ def eval_examples_by_skill(eval_cases: list[dict[str, Any]]) -> dict[str, dict[s
     return out
 
 
+def dedupe_prompts(prompts: list[str], *, exclude: set[str] | None = None, limit: int | None = None) -> list[str]:
+    seen = set(exclude or ())
+    out: list[str] = []
+    for prompt in prompts:
+        if prompt in seen:
+            continue
+        seen.add(prompt)
+        out.append(prompt)
+        if limit is not None and len(out) >= limit:
+            break
+    return out
+
+
 def explicit_handles(name: str) -> dict[str, Any]:
     return {
         "codex": {
@@ -494,15 +507,26 @@ def main() -> int:
             }
         )
 
+        router_should_trigger = dedupe_prompts(eval_bucket["implicit"], limit=3)
+        router_manual = dedupe_prompts(
+            eval_bucket["manual"],
+            exclude=set(router_should_trigger),
+            limit=3,
+        )
+        router_negative = dedupe_prompts(
+            eval_bucket["negative"],
+            exclude=set(router_should_trigger) | set(router_manual),
+            limit=3,
+        )
         router_records.append(
             {
                 "name": entry["name"],
                 "description": entry["description"],
                 "collision_family": family.get("family"),
                 "competing_skills": competing,
-                "should_trigger": eval_bucket["implicit"][:3],
-                "manual_invocation_required": eval_bucket["manual"][:3],
-                "negative_controls": eval_bucket["negative"][:3],
+                "should_trigger": router_should_trigger,
+                "manual_invocation_required": router_manual,
+                "negative_controls": router_negative,
                 "notes": family.get("notes", []),
             }
         )
