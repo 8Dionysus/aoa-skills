@@ -529,6 +529,41 @@
       ],
       "prompt": "The parent route already has a quest passport, a concrete anchor, and named outputs, and it needs one bounded local reviewer child to inspect a narrow package fix before the parent continues. Decide the honest child lane, gates, and return plan.",
       "note": "This is bounded child-route delegation with explicit lane and return governance, not branch analysis, reviewed closeout chaining, or direct execution of the parent work."
+    },
+    {
+      "case_id": "collision-34",
+      "skill_name": "aoa-source-of-truth-check",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-source-of-truth-check",
+      "competing_skills": [
+        "aoa-adr-write",
+        "aoa-bounded-context-map"
+      ],
+      "prompt": "Clarify which files are authoritative for chaos doctrine, runtime receipts, and re-entry gates, then keep the repo entrypoints short and link-driven.",
+      "note": "This is an authority-mapping task under stress-doc overlap, not ADR drafting or broader context carving."
+    },
+    {
+      "case_id": "collision-35",
+      "skill_name": "abyss-safe-infra-change",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
+      "competing_skills": [
+        "aoa-safe-infra-change",
+        "abyss-sanitized-share"
+      ],
+      "prompt": "Inside this abyss-stack repo, plan a bounded runtime stress repair change with repo-relative abyss paths, explicit local authority notes, rollback posture, and local verification commands.",
+      "note": "The overlay match is strong, but explicit-only posture must still block auto-invocation."
+    },
+    {
+      "case_id": "collision-36",
+      "skill_name": "aoa-bounded-context-map",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-bounded-context-map",
+      "competing_skills": [
+        "aoa-adr-write"
+      ],
+      "prompt": "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written.",
+      "note": "This is context carving before a decision note, not ADR authoring."
     }
   ]
 }

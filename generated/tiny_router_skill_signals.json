@@ -390,24 +390,24 @@
       "auto_tokens": [
         "approval",
         "sensitive",
-        "whether",
-        "action",
         "authority",
-        "classify",
         "destructive",
         "low",
         "may",
         "operationally",
         "proceed",
-        "requested",
         "risk",
-        "security"
+        "security",
+        "whether",
+        "action",
+        "already",
+        "aoa"
       ],
       "companions": [
         "aoa-dry-run-first",
         "aoa-safe-infra-change"
       ],
-      "primary_positive_prompt": "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.",
+      "primary_positive_prompt": "Use $aoa-approval-gate-check before any timeout-chaos repair path so the route is classified as safe, approval-gated, or out of bounds before execution.",
       "primary_negative_prompt": "The task is clearly low-risk, already bounded, and does not look destructive, security-sensitive, or operationally sensitive.",
       "primary_defer_prompt": ""
     },

@@ -21,6 +21,7 @@ an executable workflow for Codex.
 - If you need the first reviewed owner-status landing and the next bounded verdict after `candidate_ref` exists, start with `OWNER_STATUS_SURFACES.md`, then `GOVERNED_FOLLOWTHROUGH.md`, and then `CANDIDATE_REF_REFINERY.md`.
 - If you need the later reviewed session-growth kernel packet and receipt examples after closeout carry and `candidate_ref` already exist, start with `SESSION_GROWTH_KERNEL_MATURITY.md`.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
+- If you need the stress-era trigger and collision extension for timeout chaos, source-of-truth wins, and one-off incident suppression, start with `TRIGGER_EVALS.md` and then `SKILL_COLLISION_CHAOS_WAVE1.md`.
 - If you are reading status, promotion, or governance state, start with `PUBLIC_SURFACE.md`.
 - If you are reading live project-overlay family maturity, use `PUBLIC_SURFACE.md` and then `../generated/overlay_readiness.md`.
 - If you are reading per-skill packaging membership or relationship topology, use `../generated/skill_bundle_index.md`, `../generated/skill_graph.md`, and then `../generated/release_manifest.json`.
@@ -66,22 +67,23 @@ an executable workflow for Codex.
 24. `RUNTIME_TOOL_CONTRACTS.md` - tool-shaped contract for the wave-4 runtime seam.
 25. `SESSION_COMPACTION.md` - session state and compaction behavior for long-running local wrappers.
 26. `TRIGGER_EVALS.md` - policy-aware trigger-eval dataset and collision-family guidance.
-27. `SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
-28. `DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
-29. `SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
-30. `EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
-31. `DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
-32. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
-33. `CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
-34. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
-35. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
-36. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-37. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
-38. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
-39. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
-40. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
-41. `reviews/README.md` - public review-record conventions and review surfaces.
-42. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
+27. `SKILL_COLLISION_CHAOS_WAVE1.md` - additive stress-era collision coverage for timeout chaos, source-of-truth wins, and thin incident suppression.
+28. `SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
+29. `DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
+30. `SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
+31. `EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
+32. `DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
+33. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
+34. `CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
+35. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
+36. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
+37. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+38. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
+39. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
+40. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
+41. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
+42. `reviews/README.md` - public review-record conventions and review surfaces.
+43. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
