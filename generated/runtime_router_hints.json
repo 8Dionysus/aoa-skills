@@ -125,7 +125,8 @@
         "This reviewed workflow keeps recurring across sessions with the same inputs, the same approval seam, and the same expected output. Classify whether it should stay manual, become a bounded skill, or become a playbook automation seed with checkpoint requirements called out explicitly."
       ],
       "negative_controls": [
-        "This only happened once, still looks exploratory, and there is no stable trigger, checkpoint boundary, or repeatable output contract yet, so calling it automation-ready would be premature."
+        "This only happened once, still looks exploratory, and there is no stable trigger, checkpoint boundary, or repeatable output contract yet, so calling it automation-ready would be premature.",
+        "This timeout incident happened once, the evidence is still thin, and there is no stable recurring route or output contract yet. Do not upgrade it into an automation or harvest workflow."
       ],
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
@@ -144,10 +145,12 @@
       "collision_family": "boundary-shaping",
       "competing_skills": [
         "aoa-core-logic-boundary",
-        "aoa-port-adapter-refactor"
+        "aoa-port-adapter-refactor",
+        "aoa-adr-write"
       ],
       "should_trigger": [
-        "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding."
+        "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding.",
+        "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
@@ -607,7 +610,8 @@
         "atm10-source-of-truth-check",
         "aoa-adr-write",
         "aoa-quest-harvest",
-        "abyss-self-diagnostic-spine"
+        "abyss-self-diagnostic-spine",
+        "aoa-bounded-context-map"
       ],
       "should_trigger": [
         "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust."

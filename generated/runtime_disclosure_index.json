@@ -487,7 +487,8 @@
       ],
       "sample_prompts": {
         "explicit": [
-          "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds."
+          "Use $aoa-approval-gate-check to classify whether the requested action is safe, approval-gated, or out of bounds before any execution proceeds.",
+          "Use $aoa-approval-gate-check before any timeout-chaos repair path so the route is classified as safe, approval-gated, or out of bounds before execution."
         ],
         "implicit": [],
         "manual_invocation_required": [
@@ -614,7 +615,8 @@
           "This reviewed workflow keeps recurring across sessions with the same inputs, the same approval seam, and the same expected output. Classify whether it should stay manual, become a bounded skill, or become a playbook automation seed with checkpoint requirements called out explicitly."
         ],
         "negative": [
-          "This only happened once, still looks exploratory, and there is no stable trigger, checkpoint boundary, or repeatable output contract yet, so calling it automation-ready would be premature."
+          "This only happened once, still looks exploratory, and there is no stable trigger, checkpoint boundary, or repeatable output contract yet, so calling it automation-ready would be premature.",
+          "This timeout incident happened once, the evidence is still thin, and there is no stable recurring route or output contract yet. Do not upgrade it into an automation or harvest workflow."
         ]
       },
       "explicit_handles": {
@@ -705,14 +707,16 @@
       ],
       "competing_skills": [
         "aoa-core-logic-boundary",
-        "aoa-port-adapter-refactor"
+        "aoa-port-adapter-refactor",
+        "aoa-adr-write"
       ],
       "sample_prompts": {
         "explicit": [
           "Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them."
         ],
         "implicit": [
-          "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding."
+          "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding.",
+          "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written."
         ],
         "manual_invocation_required": [],
         "negative": [
@@ -2766,7 +2770,8 @@
         "atm10-source-of-truth-check",
         "aoa-adr-write",
         "aoa-quest-harvest",
-        "abyss-self-diagnostic-spine"
+        "abyss-self-diagnostic-spine",
+        "aoa-bounded-context-map"
       ],
       "sample_prompts": {
         "explicit": [

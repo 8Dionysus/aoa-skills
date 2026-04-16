@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "9c6f957d244d8addeb2305ccb4a93aba5962da74991e64a58f19e9dcb0e79135",
-      "bytes": 214129
+      "sha256": "0ebe3e98659e998a1f09f583e911657edcc7e37dc4f3da37bb6c4e73a08605e2",
+      "bytes": 214717
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -314,8 +314,8 @@
     },
     {
       "path": "generated/runtime_router_hints.json",
-      "sha256": "ef899075c08ed8585d39bb487b05b9c0cb69a1395c5464557f892ecac9dcf59a",
-      "bytes": 60088
+      "sha256": "e01cb5666b15e82ece958c251119ba638743548e5a87b75149521932697c89d6",
+      "bytes": 60506
     },
     {
       "path": "generated/runtime_seam_manifest.json",
