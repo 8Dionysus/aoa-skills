@@ -39,12 +39,14 @@ evidence:
   - candidate:growth:aoa-sdk-commit-code reached 8 checkpoint hits with commit/code mutation evidence
   - candidate:growth:aoa-sdk-commit-repo-config and candidate:growth:aoa-sdk-verify-green-repo-config preserved repo-config and verify-green follow-through
   - candidate:risk:aoa-skills-layer-request remained reviewable with owner-ambiguity, so it belongs here only as an early tracked seam
+  - session:2026-04-16T15-16-30-804824Z-abyss-stack-checkpoint-growth-74c888d1-3a8 produced seventeen mechanically accepted survivors, but reviewed reread kept route, proof, and technique follow-through in their owner repos
+  - the remaining skill-layer status from that reread was still the reanchor-shaped candidate:risk:aoa-skills-layer-request, which stays a boundary warning rather than a promotion verdict
 harvest:
   target: skill
   trigger_count: 11
   note: classify whether the bridge, hook review-note protocol, or owner-follow-through docs need a bounded skill-layer adjustment after another reviewed run
 opened_at: '2026-04-11'
-touched_at: '2026-04-11'
+touched_at: '2026-04-17'
 tags:
   - checkpoint
   - closeout
@@ -55,5 +57,8 @@ notes: >
   verdict. It exists because leaving the reviewed checkpoint closeout only in
   .aoa runtime state creates a loss window; the next review should preserve
   provenance, keep the bridge narrow, and decide whether a skill-layer change is
-  actually warranted.
+  actually warranted. The April 17 chaos-wave1 reread confirmed the same
+  caution from the other side: owner-routed survivors should land in playbook,
+  eval, and technique surfaces first, while the skill layer keeps only the
+  bounded reanchor warning.
 public_safe: true
