@@ -7,6 +7,38 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-04-19
+
+### Summary
+
+- this patch adds `aoa-summon`, chaos-wave collision coverage, and recurrence
+  beacons across the skill corpus
+- closeout authority contracts, export refresh posture, and release/reporting
+  surfaces are tightened for current Codex and A2A flows
+- `aoa-skills` remains the reusable skill canon rather than a routing or
+  scenario authority
+
+### Added
+
+- the `aoa-summon` skill scaffold, A2A end-to-end fixture binding, chaos wave
+  1 skill collision surfaces, and recurrence beacons with hook bindings
+- closeout authority contract acceptance in core receipts and restored
+  audit-report pull request template coverage
+
+### Changed
+
+- roadmap/current-direction docs, required-check plus Node24 workflow refs,
+  and export refresh law are aligned with the current skill release line
+
+### Validation
+
+- `python scripts/release_check.py`
+
+### Notes
+
+- this patch extends reusable execution surfaces while keeping scenario
+  ownership in `aoa-playbooks` and routing ownership in `aoa-routing`
+
 ## [0.3.1] - 2026-04-12
 
 ### Summary

@@ -19,10 +19,10 @@ class RoadmapParityTestCase(unittest.TestCase):
             )
         )
 
-        self.assertIn("v0.3.1", readme)
-        self.assertIn("[0.3.1]", changelog)
+        self.assertIn("v0.3.2", readme)
+        self.assertIn("[0.3.2]", changelog)
         self.assertIn("v0.3.x", roadmap)
-        self.assertIn("v0.3.1", roadmap)
+        self.assertIn("v0.3.2", roadmap)
 
         runtime_skill_names = {skill["name"] for skill in runtime_index["skills"]}
         for skill_name in (
