@@ -1,28 +1,40 @@
-## What Changed
-<!-- 1-3 short bullets. Keep it concrete; do not restate the whole diff. -->
-- ...
-
-## Why
-<!-- State the reason for the change, bug, gap, or opportunity. -->
-- ...
-
-## Validation
-<!-- List only checks that actually ran. If none, say Not run. -->
-- ...
-
-## Boundary / Direction Impact
-<!-- Optional.
-Use this section only when the change shifts a boundary, owner-fit, route, contract, provenance posture, proof semantics, runtime posture, or recurring composition logic.
-Allowed short answers:
-- None.
-- No boundary shift.
-- Exposed a new owner-fit: ...
-- Tightens/loosens the boundary between ... and ...
-- Changes the route from ... to ...
-Note compatibility impact, workflow contract shifts, boundary tightening/loosening, reusable execution assumptions, or control-plane consequences.
+## PLAN
+<!--
+- restate the task
+- list touched or inspected skills or surfaces
+- name the main risk: boundary, bridge drift, status/evidence, overlay, or public hygiene
 -->
 - ...
 
-## Risk / Follow-ups
-<!-- Note remaining risk, deliberate non-goals, or next follow-up work. -->
+## DIFF
+<!--
+- say what changed
+- say whether skill meaning changed or only metadata/docs/generated surfaces changed
+- say whether technique dependencies or invocation posture changed
+-->
+- ...
+
+## VERIFY
+<!--
+- `python scripts/release_check.py` status
+- `build_catalog`, `validate_skills`, `report_skill_evaluation`, `inspect_skill`, or drift commands actually run
+- `pytest` modules actually run
+- what was not run
+-->
+- ...
+
+## REPORT
+<!--
+- current skill boundary after the change
+- whether status, invocation mode, technique traceability, or overlay posture changed
+- downstream follow-up likely needed in `aoa-evals`, `aoa-routing`, or a downstream project repo
+-->
+- ...
+
+## RESIDUAL RISK
+<!--
+- upstream technique refs not yet refreshed
+- generated surfaces not re-read
+- overlay assumptions or evidence paths not exercised
+-->
 - ...
