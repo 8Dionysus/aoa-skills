@@ -37,6 +37,7 @@ This directory contains derived surfaces such as:
 - `skill_lineage_surface.json` and `skill_lineage_surface.md`
 - `overlay_readiness.json` and `overlay_readiness.md`
 - `skill_composition_audit.json` and `skill_composition_audit.md`
+- `agon_skill_binding_candidates.min.json`
 - `agent_skill_catalog.json` and `agent_skill_catalog.min.json`
 - `portable_export_map.json`
 - `local_adapter_manifest.json` and `local_adapter_manifest.min.json`
@@ -62,6 +63,8 @@ Use extra caution when:
 - changing wording that downstream readers may parse or rely on
 - changing how walkthrough, evaluation, lineage, or governance signals are derived
 - changing multiple derived surfaces without naming the owning authored cause
+- changing candidate-bridge indexes in ways that would make
+  `requested_not_landed` look like promoted skill truth
 
 ## Hard NO
 
@@ -82,6 +85,8 @@ For changes that affect derived outputs, run:
 - `python scripts/validate_skills.py`
 - `python scripts/validate_agent_skills.py --repo-root .`
 - `python scripts/lint_trigger_evals.py --repo-root .`
+- `python scripts/build_agon_skill_binding_candidates.py --check`
+- `python scripts/validate_agon_skill_binding_candidates.py`
 - `python scripts/build_catalog.py --check`
 
 If a generated file changed unexpectedly, inspect the owning source before accepting the diff.

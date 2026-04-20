@@ -87,6 +87,9 @@ Then branch by task:
 - adaptive orchestration, closeout, or checkpoint capture:
   `docs/ADAPTIVE_SKILL_ORCHESTRATION.md` and
   `docs/CHECKPOINT_NOTE_PATH.md`
+- Agon owner-binding workflow candidates:
+  `docs/AGON_MOVE_SKILL_BRIDGE.md` and
+  `docs/AGON_WAVE4_SKILL_LANDING.md`
 - ability-card or loadout reader surfaces:
   `docs/SKILL_ABILITY_MODEL.md` and
   `docs/ABILITY_LOADOUT_POSTURE.md`
@@ -187,6 +190,14 @@ python scripts/validate_support_resources.py --repo-root . --check-portable
 python scripts/validate_tiny_router_inputs.py --repo-root .
 python -m pytest -q tests
 python scripts/release_check.py
+```
+
+If the task touches the Agon Wave IV skill candidate bridge, also run:
+
+```bash
+python scripts/build_agon_skill_binding_candidates.py --check
+python scripts/validate_agon_skill_binding_candidates.py
+python -m pytest -q tests/test_agon_skill_binding_candidates.py
 ```
 
 Confirm that:

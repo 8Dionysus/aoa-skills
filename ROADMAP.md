@@ -18,6 +18,10 @@ Current public foundation:
 The current `v0.3.x` release line also already carries:
 - checkpoint-closeout and commit-growth follow-through skills such as `aoa-checkpoint-closeout-bridge`, `aoa-commit-growth-seam`, `aoa-automation-opportunity-scan`, `aoa-session-donor-harvest`, and the wider session-harvest family surfaced through `generated/runtime_discovery_index.json`
 - checkpoint-aware and reviewed owner-status follow-through guidance in `docs/CHECKPOINT_NOTE_PATH.md`, `docs/OWNER_STATUS_SURFACES.md`, and `docs/GOVERNED_FOLLOWTHROUGH.md`
+- Agon Wave IV bounded-workflow companion bridge surfaces in
+  `docs/AGON_MOVE_SKILL_BRIDGE.md`, `docs/AGON_WAVE4_SKILL_LANDING.md`, and
+  `generated/agon_skill_binding_candidates.min.json`, with all requests kept
+  `requested_not_landed` until normal skill review accepts them
 - quest carry-forward and dispatch adjuncts in `generated/quest_catalog.min.json` and `generated/quest_dispatch.min.json`
 - local Codex or MCP disclosure plus adapter and compaction guidance in `docs/CODEX_SKILL_MCP_WIRING.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, and `docs/SESSION_COMPACTION.md`
 - packaging, governance, and overlay-maturity readouts in `generated/governance_backlog.md`, `generated/overlay_readiness.md`, `generated/skill_bundle_index.md`, `generated/skill_graph.md`, and `generated/release_manifest.json`

@@ -58,6 +58,26 @@ class RoadmapParityTestCase(unittest.TestCase):
         self.assertIn("local Codex/MCP disclosure", changelog)
         self.assertIn("roadmap drift", roadmap)
 
+    def test_roadmap_names_agon_wave4_companion_bridge_surfaces(self) -> None:
+        roadmap = (REPO_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
+        readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+
+        for relative_path in (
+            "docs/AGON_MOVE_SKILL_BRIDGE.md",
+            "docs/AGON_WAVE4_SKILL_LANDING.md",
+            "generated/agon_skill_binding_candidates.min.json",
+            "config/agon_skill_binding_candidates.seed.json",
+            "scripts/build_agon_skill_binding_candidates.py",
+            "scripts/validate_agon_skill_binding_candidates.py",
+            "tests/test_agon_skill_binding_candidates.py",
+        ):
+            self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+        self.assertIn("AGON_MOVE_SKILL_BRIDGE", roadmap)
+        self.assertIn("generated/agon_skill_binding_candidates.min.json", roadmap)
+        self.assertIn("requested_not_landed", roadmap)
+        self.assertIn("docs/AGON_MOVE_SKILL_BRIDGE.md", readme)
+
 
 if __name__ == "__main__":
     unittest.main()
