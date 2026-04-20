@@ -4,9 +4,8 @@ import importlib.util
 import json
 import subprocess
 import sys
+import unittest
 from pathlib import Path
-
-import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -44,7 +43,8 @@ def test_builder_rejects_missing_scope_widening_boundary() -> None:
     config["candidates"][0]["must_not"] = [
         item for item in config["candidates"][0]["must_not"] if "silently widen task scope" not in item
     ]
-    with pytest.raises(builder.ValidationError, match="silently widen task scope"):
+    case = unittest.TestCase()
+    with case.assertRaisesRegex(builder.ValidationError, "silently widen task scope"):
         builder.validate_config(config)
 
 
@@ -52,5 +52,6 @@ def test_builder_rejects_missing_source_owner_binding() -> None:
     builder = load_builder()
     config = json.loads((ROOT / "config" / "agon_skill_binding_candidates.seed.json").read_text(encoding="utf-8"))
     config["candidates"][0]["source_owner_binding"] = "Agents-of-Abyss/generated/missing.json"
-    with pytest.raises(builder.ValidationError, match="source_owner_binding must be"):
+    case = unittest.TestCase()
+    with case.assertRaisesRegex(builder.ValidationError, "source_owner_binding must be"):
         builder.validate_config(config)
