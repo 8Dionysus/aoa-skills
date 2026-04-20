@@ -16,6 +16,14 @@ EXPECTED_INDEX_SCHEMA = "agon-skill-binding-candidates-index/0.1"
 EXPECTED_BRIDGE_KIND = "bounded_workflow_candidate"
 EXPECTED_TOTAL = 14
 EXPECTED_REPO = "aoa-skills"
+EXPECTED_SOURCE_OWNER_BINDING = "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json"
+REQUIRED_MUST_NOT_BOUNDARIES = (
+    "lawful move vocabulary",
+    "proof verdict",
+    "scars",
+    "arena",
+    "silently widen task scope",
+)
 
 
 class ValidationError(Exception):
@@ -68,8 +76,12 @@ def validate_config(config: dict[str, Any]) -> None:
             raise ValidationError(f"{cid}: bridge_kind must be {EXPECTED_BRIDGE_KIND}")
         if not candidate.get("move_id", "").startswith("agon.move."):
             raise ValidationError(f"{cid}: invalid move_id")
-        must_not = " ".join(candidate.get("must_not", []))
-        for forbidden in ("lawful move vocabulary", "proof verdict", "scars", "arena"):
+        if candidate.get("source_owner_binding") != EXPECTED_SOURCE_OWNER_BINDING:
+            raise ValidationError(
+                f"{cid}: source_owner_binding must be {EXPECTED_SOURCE_OWNER_BINDING}"
+            )
+        must_not = " ".join(candidate.get("must_not", [])).lower()
+        for forbidden in REQUIRED_MUST_NOT_BOUNDARIES:
             if forbidden not in must_not:
                 raise ValidationError(f"{cid}: must_not must preserve {forbidden!r} boundary")
 

@@ -34,9 +34,9 @@
             "mode": "any",
             "notes": "documentation repeats a pre-protocol stop-line",
             "phrases": [
-              "no verdict",
-              "no scar",
-              "no arena"
+              "arena session",
+              "proof verdict",
+              "durable scar"
             ],
             "signal": "agon_stop_line_repeated"
           }
@@ -101,9 +101,9 @@
             "mode": "any",
             "notes": "documentation repeats a pre-protocol stop-line",
             "phrases": [
-              "no verdict",
-              "no scar",
-              "no arena"
+              "arena session",
+              "proof verdict",
+              "durable scar"
             ],
             "signal": "agon_stop_line_repeated"
           }
