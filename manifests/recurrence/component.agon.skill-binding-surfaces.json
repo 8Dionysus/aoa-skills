@@ -1,0 +1,192 @@
+{
+  "beacon_rules": [
+    {
+      "beacon_ref": "agon.skills.bundle_pressure",
+      "decision_surface": "docs/AGON_MOVE_SKILL_BRIDGE.md",
+      "kind": "skill_bundle_candidate",
+      "match_categories": [
+        "usage_gap",
+        "repeat_pattern",
+        "review_signal"
+      ],
+      "match_signals": [
+        "lawful_move_needs_workflow",
+        "skill_candidate_repeated",
+        "bounded_execution_gap_repeated"
+      ],
+      "notes": "Lawful moves can request bounded workflows; recurrence must not activate skills automatically.",
+      "observation_inputs": [
+        "agon-skill-binding-candidates"
+      ],
+      "recommended_actions": [
+        "review skill candidate trigger boundary",
+        "check verification guidance before activation"
+      ],
+      "status_ladder": [
+        "hint",
+        "watch",
+        "candidate",
+        "review_ready"
+      ],
+      "suppress_when": [
+        "live_protocol_claim_present",
+        "hidden_authority_detected"
+      ],
+      "target_repo": "aoa-skills",
+      "thresholds": {
+        "candidate_observations": 2,
+        "min_unique_evidence_refs": 2,
+        "min_unique_sources": 2,
+        "review_ready_observations": 3,
+        "watch_observations": 1
+      }
+    },
+    {
+      "beacon_ref": "agon.skills.trigger_drift",
+      "decision_surface": "docs/AGON_MOVE_SKILL_BRIDGE.md",
+      "kind": "skill_trigger_drift",
+      "match_categories": [
+        "change_pressure",
+        "usage_gap"
+      ],
+      "match_signals": [
+        "skill_trigger_boundary_changed",
+        "move_skill_binding_changed"
+      ],
+      "notes": "Skill trigger drift must stay bounded by owner review.",
+      "observation_inputs": [
+        "agon-skill-binding-candidates"
+      ],
+      "recommended_actions": [
+        "refresh skill binding candidates",
+        "do not infer arena authority from workflow shape"
+      ],
+      "status_ladder": [
+        "hint",
+        "watch",
+        "candidate",
+        "review_ready"
+      ],
+      "suppress_when": [
+        "live_protocol_claim_present",
+        "hidden_authority_detected"
+      ],
+      "target_repo": "aoa-skills",
+      "thresholds": {
+        "candidate_observations": 2,
+        "min_unique_evidence_refs": 2,
+        "min_unique_sources": 2,
+        "review_ready_observations": 3,
+        "watch_observations": 1
+      }
+    }
+  ],
+  "candidate_targets": [
+    "generated/agon_skill_binding_candidates.min.json"
+  ],
+  "component_ref": "component:agon:skill-binding-surfaces",
+  "consumer_edges": [
+    {
+      "kind": "handoff_home",
+      "notes": "Owner remains the review home for its own Agon recurrence signals.",
+      "required": true,
+      "suggested_action": "observe",
+      "suggested_commands": [],
+      "target": "docs/AGON_RECURRENCE_ADAPTER.md",
+      "target_repo": "aoa-skills"
+    }
+  ],
+  "contract_surfaces": [
+    "docs/AGON_MOVE_SKILL_BRIDGE.md",
+    "docs/AGON_WAVE4_SKILL_LANDING.md",
+    "docs/AGON_RECURRENCE_ADAPTER.md"
+  ],
+  "decision_surfaces": [
+    "docs/AGON_MOVE_SKILL_BRIDGE.md",
+    "docs/AGON_WAVE4_SKILL_LANDING.md"
+  ],
+  "description": "Requested-only bounded workflow candidates behind lawful moves.",
+  "documentation_surfaces": [
+    "docs/AGON_MOVE_SKILL_BRIDGE.md",
+    "docs/AGON_WAVE4_SKILL_LANDING.md",
+    "docs/AGON_RECURRENCE_ADAPTER.md"
+  ],
+  "drift_signals": [
+    {
+      "recommended_action": "revalidate",
+      "severity": "medium",
+      "signal": "agon_surface_changed_without_recurrence_review"
+    },
+    {
+      "recommended_action": "defer",
+      "severity": "high",
+      "signal": "agon_stop_line_blur_detected"
+    }
+  ],
+  "freshness": {
+    "open_window_days": 7,
+    "repeat_trigger_threshold": 2,
+    "stale_after_days": 14
+  },
+  "generated_surfaces": [
+    "generated/agon_skill_binding_candidates.min.json"
+  ],
+  "observation_inputs": [
+    {
+      "input_ref": "agon-skill-binding-candidates",
+      "kind": "trigger_eval",
+      "notes": "Requested-only bounded workflow candidates behind lawful moves.",
+      "path_globs": [
+        "generated/agon_skill_binding_candidates.min.json",
+        "config/agon_skill_binding_candidates.seed.json"
+      ]
+    },
+    {
+      "input_ref": "agon-skill-bridge-docs",
+      "kind": "review_note",
+      "notes": "Owner boundary for bounded execution candidates.",
+      "path_globs": [
+        "docs/AGON_MOVE_SKILL_BRIDGE.md"
+      ]
+    }
+  ],
+  "owner_repo": "aoa-skills",
+  "proof_surfaces": [
+    "python scripts/validate_agon_skill_binding_candidates.py"
+  ],
+  "refresh_routes": [
+    {
+      "action": "revalidate",
+      "commands": [
+        "python scripts/validate_agon_skill_binding_candidates.py"
+      ],
+      "notes": "Owner-local validation path. Recurrence may suggest this route; it must not run it as hidden authority."
+    }
+  ],
+  "rollback_anchors": [
+    "docs/AGON_MOVE_SKILL_BRIDGE.md",
+    "docs/AGON_WAVE4_SKILL_LANDING.md"
+  ],
+  "schema_version": "aoa_recurrence_component_v2",
+  "signal_edges": [
+    {
+      "kind": "incubated_by_technique",
+      "notes": "Skill pressure should stay traceable to practice candidates where possible.",
+      "target": "component:agon:technique-binding-surfaces",
+      "target_repo": "aoa-techniques"
+    },
+    {
+      "kind": "summarized_by",
+      "notes": "Center can observe workflow pressure without owning skill truth.",
+      "target": "component:agon:center-surfaces",
+      "target_repo": "Agents-of-Abyss"
+    }
+  ],
+  "source_inputs": [],
+  "tags": [
+    "agon",
+    "skills",
+    "bounded-workflow",
+    "recurrence"
+  ]
+}
