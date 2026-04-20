@@ -5,14 +5,12 @@
       "decision_surface": "docs/AGON_MOVE_SKILL_BRIDGE.md",
       "kind": "skill_bundle_candidate",
       "match_categories": [
-        "usage_gap",
         "repeat_pattern",
         "review_signal"
       ],
       "match_signals": [
-        "lawful_move_needs_workflow",
-        "skill_candidate_repeated",
-        "bounded_execution_gap_repeated"
+        "agon_stop_line_repeated",
+        "agon_recurrence_surface_seen"
       ],
       "notes": "Lawful moves can request bounded workflows; recurrence must not activate skills automatically.",
       "observation_inputs": [
@@ -46,12 +44,10 @@
       "decision_surface": "docs/AGON_MOVE_SKILL_BRIDGE.md",
       "kind": "skill_trigger_drift",
       "match_categories": [
-        "change_pressure",
-        "usage_gap"
+        "change_pressure"
       ],
       "match_signals": [
-        "skill_trigger_boundary_changed",
-        "move_skill_binding_changed"
+        "agon_recurrence_surface_changed"
       ],
       "notes": "Skill trigger drift must stay bounded by owner review.",
       "observation_inputs": [
