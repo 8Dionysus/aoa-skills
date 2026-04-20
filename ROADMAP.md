@@ -43,7 +43,7 @@ The nearest waves should now be read in this order:
 2. `v0.6` project-overlay maturity
 3. `v0.7` packaging and distribution prep
 
-Repo-level semver releases such as `v0.3.1` describe bounded public baselines.
+Repo-level semver releases such as `v0.3.2` describe bounded public baselines.
 The wave labels below still describe internal maturity and packaging lanes rather than replacing that release identity.
 
 `v0.3` and `v0.4` are no longer the main expansion frontier.

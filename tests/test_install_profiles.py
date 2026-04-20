@@ -227,7 +227,7 @@ class InstallProfilesTests(unittest.TestCase):
             payload = json.loads(completed.stdout)
             self.assertEqual("repo-core-only", payload["profile"])
             self.assertRegex(payload["profile_revision"], r"^[0-9a-f]{64}$")
-            self.assertEqual("0.3.1", payload["release_identity"]["latest_tagged_version"])
+            self.assertEqual("0.3.2", payload["release_identity"]["latest_tagged_version"])
             self.assertIn("scripts/verify_skill_pack.py", payload["recommended_verify_command"])
             self.assertIn("--profile repo-core-only", payload["recommended_verify_command"])
 
