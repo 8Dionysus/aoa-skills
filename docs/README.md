@@ -19,6 +19,7 @@ an executable workflow for Codex.
 - If you need a lightweight checkpoint-aware note before post-session harvest, start with `CHECKPOINT_NOTE_PATH.md`.
 - If you need the checkpoint-to-reviewed-candidate identity seam, start with `CANDIDATE_LINEAGE_CONTRACT.md`, then `CANDIDATE_REF_REFINERY.md`, and then `CHECKPOINT_NOTE_PATH.md`.
 - If you need the first reviewed owner-status landing and the next bounded verdict after `candidate_ref` exists, start with `OWNER_STATUS_SURFACES.md`, then `GOVERNED_FOLLOWTHROUGH.md`, and then `CANDIDATE_REF_REFINERY.md`.
+- If you need the Agon Wave IV bounded-workflow companion bridge, start with `AGON_MOVE_SKILL_BRIDGE.md`, then `AGON_WAVE4_SKILL_LANDING.md`, and then `../generated/agon_skill_binding_candidates.min.json`.
 - If you need the later reviewed session-growth kernel packet and receipt examples after closeout carry and `candidate_ref` already exist, start with `SESSION_GROWTH_KERNEL_MATURITY.md`.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
 - If you need the stress-era trigger and collision extension for timeout chaos, source-of-truth wins, and one-off incident suppression, start with `TRIGGER_EVALS.md` and then `SKILL_COLLISION_CHAOS_WAVE1.md`.

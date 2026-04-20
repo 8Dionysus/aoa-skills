@@ -1,0 +1,21 @@
+{
+  "bridge_kind": "bounded_workflow_candidate",
+  "candidate_id": "candidate:aoa-skills:agon/assert-position-workflow",
+  "move_class": "stance",
+  "move_id": "agon.move.stance.assert_position",
+  "move_name": "assert_position",
+  "must_not": [
+    "define lawful move vocabulary",
+    "issue proof verdict",
+    "write scars",
+    "open arena session",
+    "silently widen task scope"
+  ],
+  "requires": [
+    "lawful move owner binding",
+    "reviewed technique candidate or explicit single-technique exception"
+  ],
+  "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+  "status": "requested_not_landed",
+  "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move assert_position after technique practice exists or is explicitly reviewed."
+}

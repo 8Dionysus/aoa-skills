@@ -1,0 +1,304 @@
+{
+  "candidates": [
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/assert-position-workflow",
+      "move_class": "stance",
+      "move_id": "agon.move.stance.assert_position",
+      "move_name": "assert_position",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move assert_position after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/challenge-claim-workflow",
+      "move_class": "stance",
+      "move_id": "agon.move.stance.challenge_claim",
+      "move_name": "challenge_claim",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move challenge_claim after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/request-evidence-workflow",
+      "move_class": "evidence",
+      "move_id": "agon.move.evidence.request_evidence",
+      "move_name": "request_evidence",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move request_evidence after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/offer-evidence-reference-workflow",
+      "move_class": "evidence",
+      "move_id": "agon.move.evidence.offer_evidence_reference",
+      "move_name": "offer_evidence_reference",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move offer_evidence_reference after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/probe-trace-workflow",
+      "move_class": "trace",
+      "move_id": "agon.move.trace.probe_trace",
+      "move_name": "probe_trace",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move probe_trace after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/deny-trace-closure-workflow",
+      "move_class": "trace",
+      "move_id": "agon.move.trace.deny_trace_closure",
+      "move_name": "deny_trace_closure",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move deny_trace_closure after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/mark-contradiction-workflow",
+      "move_class": "contradiction",
+      "move_id": "agon.move.contradiction.mark_contradiction",
+      "move_name": "mark_contradiction",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move mark_contradiction after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/localize-contradiction-workflow",
+      "move_class": "contradiction",
+      "move_id": "agon.move.contradiction.localize_contradiction",
+      "move_name": "localize_contradiction",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move localize_contradiction after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/deny-closure-workflow",
+      "move_class": "closure",
+      "move_id": "agon.move.closure.deny_closure",
+      "move_name": "deny_closure",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move deny_closure after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/request-closure-review-workflow",
+      "move_class": "closure",
+      "move_id": "agon.move.closure.request_closure_review",
+      "move_name": "request_closure_review",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move request_closure_review after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/request-witness-workflow",
+      "move_class": "witness",
+      "move_id": "agon.move.witness.request_witness",
+      "move_name": "request_witness",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move request_witness after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/revise-position-workflow",
+      "move_class": "revision",
+      "move_id": "agon.move.revision.revise_position",
+      "move_name": "revise_position",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move revise_position after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/stand-fast-workflow",
+      "move_class": "revision",
+      "move_id": "agon.move.revision.stand_fast",
+      "move_name": "stand_fast",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move stand_fast after technique practice exists or is explicitly reviewed."
+    },
+    {
+      "bridge_kind": "bounded_workflow_candidate",
+      "candidate_id": "candidate:aoa-skills:agon/concede-workflow",
+      "move_class": "revision",
+      "move_id": "agon.move.revision.concede",
+      "move_name": "concede",
+      "must_not": [
+        "define lawful move vocabulary",
+        "issue proof verdict",
+        "write scars",
+        "open arena session",
+        "silently widen task scope"
+      ],
+      "requires": [
+        "lawful move owner binding",
+        "reviewed technique candidate or explicit single-technique exception"
+      ],
+      "source_owner_binding": "Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+      "status": "requested_not_landed",
+      "workflow_intent": "Prepare a future bounded agent-facing workflow for the lawful move concede after technique practice exists or is explicitly reviewed."
+    }
+  ],
+  "schema_version": "agon-skill-binding-candidates.seed/0.1",
+  "scope": "bounded workflow candidates requested by center owner-binding; no skill promotion yet",
+  "source_owner_binding_registry": "../Agents-of-Abyss/generated/agon_move_owner_binding_registry.min.json",
+  "status": "owner_repo_candidate_requests",
+  "title": "Agon skill binding candidates",
+  "wave": "IV"
+}
