@@ -41,12 +41,14 @@ evidence:
   - candidate:risk:aoa-skills-layer-request remained reviewable with owner-ambiguity, so it belongs here only as an early tracked seam
   - session:2026-04-16T15-16-30-804824Z-abyss-stack-checkpoint-growth-74c888d1-3a8 produced seventeen mechanically accepted survivors, but reviewed reread kept route, proof, and technique follow-through in their owner repos
   - the remaining skill-layer status from that reread was still the reanchor-shaped candidate:risk:aoa-skills-layer-request, which stays a boundary warning rather than a promotion verdict
+  - session:2026-04-17T15-28-42-371944Z-workspace-checkpoint-growth-74c888d1-3a8 preserved reviewed workspace closeout carry, but route-shaped and proof-shaped survivors landed in aoa-playbooks and aoa-evals before the skill layer was reread
+  - the remaining skill-layer status from that reread was bounded workflow carry in candidate:growth:aoa-skills-owner-followthrough-code and candidate:growth:aoa-skills-pr-opened-public-share plus the same reanchor-shaped candidate:risk:aoa-skills-layer-request
 harvest:
   target: skill
   trigger_count: 11
   note: classify whether the bridge, hook review-note protocol, or owner-follow-through docs need a bounded skill-layer adjustment after another reviewed run
 opened_at: '2026-04-11'
-touched_at: '2026-04-17'
+touched_at: '2026-04-20'
 tags:
   - checkpoint
   - closeout
@@ -60,5 +62,9 @@ notes: >
   actually warranted. The April 17 chaos-wave1 reread confirmed the same
   caution from the other side: owner-routed survivors should land in playbook,
   eval, and technique surfaces first, while the skill layer keeps only the
-  bounded reanchor warning.
+  bounded reanchor warning. The April 20 workspace reread kept that caution
+  intact after downstream owner artifacts merged: aoa-skills may preserve
+  workflow carry and boundary warning, but it still does not have honest
+  authority to mint PR-opened, owner-follow-through, or layer-request skills
+  from this single reviewed route.
 public_safe: true
