@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "count": {
+      "const": 9
+    },
+    "digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "registry_id": {
+      "const": "agon.epistemic_skill_candidates.registry.v1"
+    },
+    "runtime_posture": {
+      "const": "candidate_only"
+    },
+    "skills": {
+      "items": {
+        "$ref": "agon-epistemic-skill-candidate.schema.json"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "wave": {
+      "const": "XV"
+    }
+  },
+  "required": [
+    "registry_id",
+    "wave",
+    "runtime_posture",
+    "count",
+    "skills",
+    "digest"
+  ],
+  "title": "Agon Epistemic Skill Candidate Registry",
+  "type": "object"
+}
