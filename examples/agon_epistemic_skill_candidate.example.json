@@ -1,0 +1,27 @@
+{
+  "bounded_workflow_for": [
+    "revise_concept_map"
+  ],
+  "candidate_outputs": [
+    "skill_candidate",
+    "bounded_workflow_review_candidate"
+  ],
+  "forbidden_effects": [
+    "live_verdict_authority",
+    "durable_scar_write",
+    "retention_execution",
+    "rank_mutation",
+    "trust_mutation",
+    "tree_of_sophia_promotion",
+    "kag_promotion",
+    "hidden_scheduler_action",
+    "assistant_contestant_drift",
+    "auto_doctrine_rewrite"
+  ],
+  "live_protocol": false,
+  "owner_repo": "aoa-skills",
+  "runtime_effect": "candidate_only",
+  "skill_id": "agon.skill.epistemic.concept_delta_receipt_workflow",
+  "status": "requested_only_candidate",
+  "trigger_boundary": "future epistemic Agon packet or playbook request only"
+}

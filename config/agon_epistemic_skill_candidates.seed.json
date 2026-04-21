@@ -1,0 +1,250 @@
+{
+  "registry_id": "agon.epistemic_skill_candidates.registry.v1",
+  "runtime_posture": "candidate_only",
+  "skills": [
+    {
+      "bounded_workflow_for": [
+        "state_hypothesis"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.hypothesis_stance_packet_draft",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "predict_other_model"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.model_prediction_packet_draft",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "attack_inference_chain"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.inference_chain_review_workflow",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "revise_concept_map"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.concept_delta_receipt_workflow",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "propose_bifurcation"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.bifurcation_proposal_workflow",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "compare_explanatory_power"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.explanatory_comparison_workflow",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "mark_epistemic_rupture"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.rupture_dossier_workflow",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "request_doctrine_review"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.doctrine_revision_candidate_workflow",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    },
+    {
+      "bounded_workflow_for": [
+        "compare_explanatory_power"
+      ],
+      "candidate_outputs": [
+        "skill_candidate",
+        "bounded_workflow_review_candidate"
+      ],
+      "forbidden_effects": [
+        "live_verdict_authority",
+        "durable_scar_write",
+        "retention_execution",
+        "rank_mutation",
+        "trust_mutation",
+        "tree_of_sophia_promotion",
+        "kag_promotion",
+        "hidden_scheduler_action",
+        "assistant_contestant_drift",
+        "auto_doctrine_rewrite"
+      ],
+      "live_protocol": false,
+      "owner_repo": "aoa-skills",
+      "runtime_effect": "candidate_only",
+      "skill_id": "agon.skill.epistemic.false_consensus_check_workflow",
+      "status": "requested_only_candidate",
+      "trigger_boundary": "future epistemic Agon packet or playbook request only"
+    }
+  ],
+  "wave": "XV"
+}
