@@ -17,7 +17,71 @@
     },
     "skills": {
       "items": {
-        "$ref": "agon-epistemic-skill-candidate.schema.json"
+        "additionalProperties": false,
+        "properties": {
+          "bounded_workflow_for": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "candidate_outputs": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "forbidden_effects": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 10,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "live_protocol": {
+            "const": false
+          },
+          "owner_repo": {
+            "const": "aoa-skills"
+          },
+          "runtime_effect": {
+            "enum": [
+              "none",
+              "candidate_only",
+              "local_dry_run_candidate_only",
+              "local_rehearsal_candidate_only"
+            ]
+          },
+          "skill_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "const": "requested_only_candidate"
+          },
+          "trigger_boundary": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "bounded_workflow_for",
+          "candidate_outputs",
+          "forbidden_effects",
+          "live_protocol",
+          "owner_repo",
+          "runtime_effect",
+          "skill_id",
+          "status",
+          "trigger_boundary"
+        ],
+        "type": "object"
       },
       "maxItems": 9,
       "minItems": 9,

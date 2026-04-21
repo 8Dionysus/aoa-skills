@@ -6,6 +6,8 @@ import subprocess
 import sys
 import unittest
 
+import jsonschema
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
@@ -46,6 +48,20 @@ class AgonEpistemicSkillCandidateTests(unittest.TestCase):
             ).returncode,
             0,
         )
+
+    def test_registry_schema_validates_without_ref_workaround(self) -> None:
+        schema = json.loads(
+            (ROOT / "schemas/agon-epistemic-skill-candidate-registry.schema.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        registry = json.loads(
+            (ROOT / "generated/agon_epistemic_skill_candidates.min.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
+        jsonschema.Draft202012Validator(schema).validate(registry)
 
 
 if __name__ == "__main__":
