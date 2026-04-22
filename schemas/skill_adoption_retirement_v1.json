@@ -112,7 +112,8 @@
           "type": "string"
         },
         "regression_required": {
-          "type": "boolean"
+          "type": "boolean",
+          "const": true
         }
       }
     }
