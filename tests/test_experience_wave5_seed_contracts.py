@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import json
 from pathlib import Path
+import re
 import unittest
 
 from jsonschema import Draft202012Validator, FormatChecker
@@ -11,6 +12,40 @@ from jsonschema import Draft202012Validator, FormatChecker
 ROOT = Path(__file__).resolve().parents[1]
 ESCAPE_VALUE = "__wave5_not_allowed__"
 FORMAT_CHECKER = FormatChecker()
+RFC3339_DATETIME = re.compile(
+    r"^(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})"
+    r"[Tt](?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2})"
+    r"(?:\.\d+)?(?P<zone>[Zz]|[+-](?P<offset_hour>\d{2}):(?P<offset_minute>\d{2}))$"
+)
+
+
+def is_rfc3339_leap_year(year: int) -> bool:
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+
+def is_rfc3339_date(year: int, month: int, day: int) -> bool:
+    month_lengths = [31, 29 if is_rfc3339_leap_year(year) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    return 1 <= month <= 12 and 1 <= day <= month_lengths[month - 1]
+
+
+@FORMAT_CHECKER.checks("date-time")
+def is_rfc3339_datetime(value: object) -> bool:
+    if not isinstance(value, str):
+        return True
+    match = RFC3339_DATETIME.fullmatch(value)
+    if not match:
+        return False
+    if not is_rfc3339_date(int(match["year"]), int(match["month"]), int(match["day"])):
+        return False
+    hour = int(match["hour"])
+    minute = int(match["minute"])
+    second = int(match["second"])
+    if hour > 23 or minute > 59 or second > 59:
+        return False
+    if match["offset_hour"] is not None:
+        if int(match["offset_hour"]) > 23 or int(match["offset_minute"]) > 59:
+            return False
+    return True
 
 WAVE5_CONTRACTS = (
     ('installation_skill_invocation_v1', 'installation_skill_invocation_v1.json'),
@@ -355,6 +390,43 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
                     set_path(mutated, path, escape_value(value))
                     self.assert_invalid(schema, mutated, f"{stem} enum escape at {path}")
                     exercised += 1
+        self.assertGreater(exercised, 0)
+
+    def test_experience_wave5_schemas_reject_bad_datetime_formats(self) -> None:
+        exercised = 0
+        for stem, schema_file in WAVE5_CONTRACTS:
+            schema, example = load_contract(stem, schema_file)
+            for path, constraint in constrained_paths(schema, example, "format"):
+                if constraint != "date-time":
+                    continue
+                for bad_value in (
+                    "not-a-date",
+                    "2026-02-30T00:00:00Z",
+                    "2026-04-22T24:00:00Z",
+                    "2026-04-22T00:00:60Z",
+                    "2026-04-22T00:00:00+24:00",
+                ):
+                    with self.subTest(stem=stem, path=path, value=bad_value):
+                        mutated = copy.deepcopy(example)
+                        set_path(mutated, path, bad_value)
+                        self.assert_invalid(schema, mutated, f"{stem} bad date-time at {path}")
+                        exercised += 1
+        self.assertGreater(exercised, 0)
+
+    def test_experience_wave5_schemas_accept_rfc3339_datetime_variants(self) -> None:
+        exercised = 0
+        for stem, schema_file in WAVE5_CONTRACTS:
+            schema, example = load_contract(stem, schema_file)
+            for path, constraint in constrained_paths(schema, example, "format"):
+                if constraint != "date-time":
+                    continue
+                for valid_value in ("2026-04-22t00:00:00.123456789z", "0000-02-29T00:00:00Z"):
+                    with self.subTest(stem=stem, path=path, value=valid_value):
+                        mutated = copy.deepcopy(example)
+                        set_path(mutated, path, valid_value)
+                        errors = validation_errors(schema, mutated)
+                        self.assertFalse(errors, f"{stem}: {errors[0].message}" if errors else stem)
+                        exercised += 1
         self.assertGreater(exercised, 0)
 
     def test_experience_wave5_schemas_reject_numeric_bound_escapes_when_present(self) -> None:
