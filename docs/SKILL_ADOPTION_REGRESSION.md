@@ -25,7 +25,7 @@ Regression packs for skill adoption.
 
 ## Outputs
 
-- skill_adoption_regression
+- skill_adoption_regression_case
 
 ## Stop lines
 

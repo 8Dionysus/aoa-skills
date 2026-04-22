@@ -25,7 +25,7 @@ Compatibility and evidence floor for skill uptake.
 
 ## Outputs
 
-- skill_adoption_compatibility
+- skill_adoption_compatibility_report
 
 ## Stop lines
 

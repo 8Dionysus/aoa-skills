@@ -25,7 +25,7 @@ Skill uptake receipts and owner evidence.
 
 ## Outputs
 
-- skill_adoption_receipts
+- skill_adoption_receipt
 
 ## Stop lines
 

@@ -25,7 +25,7 @@ How a shared pattern becomes a bounded reusable skill.
 
 ## Outputs
 
-- skill_pattern_adoption
+- skill_pattern_adoption_patch
 
 ## Stop lines
 
