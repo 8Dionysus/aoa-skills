@@ -1,0 +1,6 @@
+{
+  "actor_id": "council.member",
+  "invocation_id": "skill_001",
+  "result": "committed",
+  "skill": "seal_vote"
+}
