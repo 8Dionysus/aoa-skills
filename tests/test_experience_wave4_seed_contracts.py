@@ -302,6 +302,12 @@ class ExperienceWave4SeedContractTests(unittest.TestCase):
                     self.assert_invalid(schema, mutated, f"{stem} enum escape at {path}")
         self.assertGreater(exercised, 0, "no wave4 enum fields were exercised")
 
+    def test_governance_runtime_skill_invocation_rejects_out_of_set_skill(self) -> None:
+        schema, example = load_contract("governance_runtime_skill_invocation_v1", "governance_runtime_skill_invocation_v1.json")
+        mutated = copy.deepcopy(example)
+        mutated["skill"] = "not-a-governance-runtime-skill"
+        self.assert_invalid(schema, mutated, "governance_runtime_skill_invocation_v1 out-of-set skill")
+
     def test_experience_wave4_schemas_reject_invalid_numeric_ranges(self) -> None:
         for stem, schema_file in WAVE4_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
