@@ -869,7 +869,7 @@
       "competing_skills": [],
       "should_trigger": [],
       "manual_invocation_required": [
-        "$titan-mutation-gate before Forge edits files, naming intent, target paths, prechecks, validation, and rollback or stop posture."
+        "before Forge edits files, name intent, target paths, prechecks, validation, and rollback or stop posture."
       ],
       "negative_controls": [
         "The request is read-only analysis and does not ask Forge to mutate files."
