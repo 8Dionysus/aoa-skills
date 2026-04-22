@@ -94,6 +94,23 @@ def required_payload_fields(schema: dict[str, object]) -> list[str]:
     return [field for field in required if isinstance(field, str)]
 
 
+def required_fields(schema: dict[str, object]) -> list[str]:
+    required = schema.get("required")
+    if not isinstance(required, list):
+        return []
+    return [field for field in required if isinstance(field, str)]
+
+
+def required_nested_fields(schema: dict[str, object], section: str) -> list[str]:
+    nested = schema_properties(schema).get(section)
+    if not isinstance(nested, dict):
+        return []
+    required = nested.get("required")
+    if not isinstance(required, list):
+        return []
+    return [field for field in required if isinstance(field, str)]
+
+
 def const_escape_value(value: object) -> object:
     if isinstance(value, bool):
         return not value
@@ -244,6 +261,33 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
                     del mutated["payload"][key]
                     self.assert_invalid(schema, mutated, f"{stem} missing required payload.{key}")
         self.assertGreater(exercised, 0, "no required wave3 payload fields were exercised")
+
+    def test_experience_wave3_schemas_reject_missing_required_envelope_and_refs_fields(self) -> None:
+        exercised = 0
+        for stem in WAVE3_STEMS:
+            schema, example = load_contract(stem)
+            for key in required_fields(schema):
+                if key not in example:
+                    continue
+                exercised += 1
+                with self.subTest(stem=stem, section="top", key=key):
+                    mutated = copy.deepcopy(example)
+                    del mutated[key]
+                    self.assert_invalid(schema, mutated, f"{stem} missing required {key}")
+
+            refs = example.get("refs")
+            if not isinstance(refs, dict):
+                continue
+            for key in required_nested_fields(schema, "refs"):
+                if key not in refs:
+                    continue
+                exercised += 1
+                with self.subTest(stem=stem, section="refs", key=key):
+                    mutated = copy.deepcopy(example)
+                    self.assertIsInstance(mutated["refs"], dict)
+                    del mutated["refs"][key]
+                    self.assert_invalid(schema, mutated, f"{stem} missing required refs.{key}")
+        self.assertGreater(exercised, 0, "no required wave3 envelope or refs fields were exercised")
 
     def test_experience_wave3_schemas_reject_invalid_numeric_ranges(self) -> None:
         for stem in WAVE3_STEMS:
