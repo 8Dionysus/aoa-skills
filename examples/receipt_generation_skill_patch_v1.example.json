@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-04-22T00:00:00Z",
+  "evidence_refs": [
+    "generated/multi_office_train_clean_flow/release_train.json"
+  ],
+  "id": "receipt_generation_skill_patch_v1_example",
+  "kind": "receipt_generation_skill_patch_v1",
+  "notes": "Example artifact for receipt_generation_skill_patch_v1.",
+  "owner_repo": "aoa-skills",
+  "patch": "multi_office_train_context",
+  "skill": "emit_receipt",
+  "status": "draft",
+  "version": "1.1.0"
+}
