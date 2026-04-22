@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aoa.local/aoa-skills/schemas/governance_runtime_skill_invocation_v1.json",
+  "title": "governance_runtime_skill_invocation_v1",
+  "description": "Seed schema for governance_runtime_skill_invocation_v1 in Experience Constitution Runtime v0.9.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "actor_id",
+    "invocation_id",
+    "result",
+    "skill"
+  ],
+  "properties": {
+    "actor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skill": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
