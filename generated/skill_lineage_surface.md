@@ -5,9 +5,9 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 
 ## Summary
 
-- total skills: 30
+- total skills: 45
 - published lineage: 29
-- pending lineage: 1
+- pending lineage: 16
 
 | name | status | scope | lineage | published techniques | pending techniques | tbd refs | manifest canonical-path ready | blockers |
 |---|---|---|---|---:|---:|---:|---|---|
@@ -41,6 +41,21 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-tdd-slice | canonical | core | published | 2 | 0 | 0 | true | - |
 | atm10-change-protocol | evaluated | project | published | 2 | 0 | 0 | true | - |
 | atm10-source-of-truth-check | evaluated | project | published | 2 | 0 | 0 | true | - |
+| titan-approval-ledger | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-approval-loom | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-appserver-bridge | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-appserver-plan | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-closeout | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-console | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-event-replay | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-memory-loom | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-memory-prune | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-mutation-gate | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-recall | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-receipt | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-runtime-gate | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-summon | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
+| titan-thread-turn-binding | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 
 ## Reading notes
 

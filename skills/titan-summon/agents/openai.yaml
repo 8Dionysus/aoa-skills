@@ -1,0 +1,4 @@
+policy:
+  allow_implicit_invocation: false
+notes:
+  - Keep titan-summon explicit-only because Titan gates, receipts, and bearer-memory posture must stay operator-visible.

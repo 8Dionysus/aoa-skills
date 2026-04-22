@@ -908,6 +908,411 @@
       },
       "context_retention_ref": "generated/context_retention_manifest.json#atm10-source-of-truth-check",
       "notes": "Project overlay for atm10 repository document authority."
+    },
+    {
+      "name": "titan-approval-ledger",
+      "display_name": "Titan Approval Ledger",
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Record Titan approval gates",
+      "path": ".agents/skills/titan-approval-ledger/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-approval-ledger/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-approval-ledger to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-approval-ledger",
+      "notes": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-approval-loom",
+      "display_name": "Titan Approval Loom",
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan approval queue",
+      "path": ".agents/skills/titan-approval-loom/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-approval-loom/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-approval-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-approval-loom",
+      "notes": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "display_name": "Titan Appserver Bridge",
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Operate Titan bridge visibly",
+      "path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-appserver-bridge/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-appserver-bridge to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-appserver-bridge",
+      "notes": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-appserver-plan",
+      "display_name": "Titan Appserver Plan",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Plan Titan bridge launch",
+      "path": ".agents/skills/titan-appserver-plan/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-appserver-plan/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-appserver-plan to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-appserver-plan",
+      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-closeout",
+      "display_name": "Titan Closeout",
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Close Titan sessions honestly",
+      "path": ".agents/skills/titan-closeout/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-closeout/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-closeout to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-closeout",
+      "notes": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-console",
+      "display_name": "Titan Console",
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan console state",
+      "path": ".agents/skills/titan-console/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-console/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-console to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-console",
+      "notes": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-event-replay",
+      "display_name": "Titan Event Replay",
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Replay Titan events visibly",
+      "path": ".agents/skills/titan-event-replay/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-event-replay/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-event-replay to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-event-replay",
+      "notes": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-memory-loom",
+      "display_name": "Titan Memory Loom",
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Ingest Titan memory candidates",
+      "path": ".agents/skills/titan-memory-loom/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-memory-loom/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-memory-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-memory-loom",
+      "notes": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-memory-prune",
+      "display_name": "Titan Memory Prune",
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Prune Titan memory safely",
+      "path": ".agents/skills/titan-memory-prune/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-memory-prune/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-memory-prune to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-memory-prune",
+      "notes": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-mutation-gate",
+      "display_name": "Titan Mutation Gate",
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Gate Forge mutations",
+      "path": ".agents/skills/titan-mutation-gate/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-mutation-gate/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-mutation-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-mutation-gate",
+      "notes": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-recall",
+      "display_name": "Titan Recall",
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Recall Titan candidates",
+      "path": ".agents/skills/titan-recall/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-recall/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-recall to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-recall",
+      "notes": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-receipt",
+      "display_name": "Titan Receipt",
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Manage Titan receipts",
+      "path": ".agents/skills/titan-receipt/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-receipt/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-receipt to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-receipt",
+      "notes": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-runtime-gate",
+      "display_name": "Titan Runtime Gate",
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Open Titan runtime gates",
+      "path": ".agents/skills/titan-runtime-gate/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-runtime-gate/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-runtime-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-runtime-gate",
+      "notes": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-summon",
+      "display_name": "Titan Summon",
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Summon Titan service cohort",
+      "path": ".agents/skills/titan-summon/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-summon/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-summon to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-summon",
+      "notes": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "display_name": "Titan Thread Turn Binding",
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Bind Titan thread turns",
+      "path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+      "openai_config_path": ".agents/skills/titan-thread-turn-binding/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "default_prompt": "Use $titan-thread-turn-binding to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-thread-turn-binding",
+      "notes": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Explicit-only Titan scaffold; owner repos retain stronger authority."
     }
   ]
 }

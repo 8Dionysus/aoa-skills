@@ -598,6 +598,261 @@
           "assets/small-logo.svg"
         ]
       }
+    },
+    {
+      "name": "titan-approval-ledger",
+      "source_skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "target_dir": ".agents/skills/titan-approval-ledger",
+      "target_skill_path": ".agents/skills/titan-approval-ledger/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-approval-ledger/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-approval-loom",
+      "source_skill_path": "skills/titan-approval-loom/SKILL.md",
+      "target_dir": ".agents/skills/titan-approval-loom",
+      "target_skill_path": ".agents/skills/titan-approval-loom/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-approval-loom/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "source_skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "target_dir": ".agents/skills/titan-appserver-bridge",
+      "target_skill_path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-appserver-bridge/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-appserver-plan",
+      "source_skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "target_dir": ".agents/skills/titan-appserver-plan",
+      "target_skill_path": ".agents/skills/titan-appserver-plan/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-appserver-plan/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-closeout",
+      "source_skill_path": "skills/titan-closeout/SKILL.md",
+      "target_dir": ".agents/skills/titan-closeout",
+      "target_skill_path": ".agents/skills/titan-closeout/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-closeout/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-console",
+      "source_skill_path": "skills/titan-console/SKILL.md",
+      "target_dir": ".agents/skills/titan-console",
+      "target_skill_path": ".agents/skills/titan-console/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-console/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-event-replay",
+      "source_skill_path": "skills/titan-event-replay/SKILL.md",
+      "target_dir": ".agents/skills/titan-event-replay",
+      "target_skill_path": ".agents/skills/titan-event-replay/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-event-replay/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-memory-loom",
+      "source_skill_path": "skills/titan-memory-loom/SKILL.md",
+      "target_dir": ".agents/skills/titan-memory-loom",
+      "target_skill_path": ".agents/skills/titan-memory-loom/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-memory-loom/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-memory-prune",
+      "source_skill_path": "skills/titan-memory-prune/SKILL.md",
+      "target_dir": ".agents/skills/titan-memory-prune",
+      "target_skill_path": ".agents/skills/titan-memory-prune/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-memory-prune/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-mutation-gate",
+      "source_skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "target_dir": ".agents/skills/titan-mutation-gate",
+      "target_skill_path": ".agents/skills/titan-mutation-gate/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-mutation-gate/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-recall",
+      "source_skill_path": "skills/titan-recall/SKILL.md",
+      "target_dir": ".agents/skills/titan-recall",
+      "target_skill_path": ".agents/skills/titan-recall/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-recall/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-receipt",
+      "source_skill_path": "skills/titan-receipt/SKILL.md",
+      "target_dir": ".agents/skills/titan-receipt",
+      "target_skill_path": ".agents/skills/titan-receipt/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-receipt/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-runtime-gate",
+      "source_skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "target_dir": ".agents/skills/titan-runtime-gate",
+      "target_skill_path": ".agents/skills/titan-runtime-gate/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-runtime-gate/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-summon",
+      "source_skill_path": "skills/titan-summon/SKILL.md",
+      "target_dir": ".agents/skills/titan-summon",
+      "target_skill_path": ".agents/skills/titan-summon/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-summon/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "source_skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "target_dir": ".agents/skills/titan-thread-turn-binding",
+      "target_skill_path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+      "target_openai_config_path": ".agents/skills/titan-thread-turn-binding/agents/openai.yaml",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      }
     }
   ]
 }

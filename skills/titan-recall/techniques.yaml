@@ -1,0 +1,27 @@
+skill_name: titan-recall
+composition_mode: bounded
+techniques:
+  - id: AOA-T-PENDING-TITAN-GATE-DISCIPLINE
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+  - id: AOA-T-PENDING-TITAN-RECEIPT-LINEAGE
+    repo: 8Dionysus/aoa-techniques
+    path: TBD
+    source_ref: TBD
+    use_sections:
+      - Intent
+      - Outputs
+      - Contracts
+      - Risks
+      - Validation
+notes:
+  - Replace AOA-T-PENDING-TITAN-GATE-DISCIPLINE and AOA-T-PENDING-TITAN-RECEIPT-LINEAGE, path TBD, and source_ref TBD after publish.
+  - Keep Titan skills explicit-only until the role, runtime, memory, and proof surfaces graduate from scaffold.

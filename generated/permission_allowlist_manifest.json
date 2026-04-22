@@ -1372,6 +1372,651 @@
         ]
       },
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-approval-ledger",
+      "display_name": "Titan Approval Ledger",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-approval-ledger",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-approval-ledger",
+          "$REPO_ROOT/.agents/skills/titan-approval-ledger/scripts",
+          "$REPO_ROOT/.agents/skills/titan-approval-ledger/references",
+          "$REPO_ROOT/.agents/skills/titan-approval-ledger/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-approval-ledger",
+          "$HOME/.agents/skills/titan-approval-ledger/scripts",
+          "$HOME/.agents/skills/titan-approval-ledger/references",
+          "$HOME/.agents/skills/titan-approval-ledger/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-approval-ledger",
+          "/etc/codex/skills/titan-approval-ledger/scripts",
+          "/etc/codex/skills/titan-approval-ledger/references",
+          "/etc/codex/skills/titan-approval-ledger/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-approval-ledger",
+        ".agents/skills/titan-approval-ledger/scripts",
+        ".agents/skills/titan-approval-ledger/references",
+        ".agents/skills/titan-approval-ledger/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-approval-loom",
+      "display_name": "Titan Approval Loom",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-approval-loom",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-approval-loom",
+          "$REPO_ROOT/.agents/skills/titan-approval-loom/scripts",
+          "$REPO_ROOT/.agents/skills/titan-approval-loom/references",
+          "$REPO_ROOT/.agents/skills/titan-approval-loom/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-approval-loom",
+          "$HOME/.agents/skills/titan-approval-loom/scripts",
+          "$HOME/.agents/skills/titan-approval-loom/references",
+          "$HOME/.agents/skills/titan-approval-loom/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-approval-loom",
+          "/etc/codex/skills/titan-approval-loom/scripts",
+          "/etc/codex/skills/titan-approval-loom/references",
+          "/etc/codex/skills/titan-approval-loom/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-approval-loom",
+        ".agents/skills/titan-approval-loom/scripts",
+        ".agents/skills/titan-approval-loom/references",
+        ".agents/skills/titan-approval-loom/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "display_name": "Titan Appserver Bridge",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-appserver-bridge",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-appserver-bridge",
+          "$REPO_ROOT/.agents/skills/titan-appserver-bridge/scripts",
+          "$REPO_ROOT/.agents/skills/titan-appserver-bridge/references",
+          "$REPO_ROOT/.agents/skills/titan-appserver-bridge/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-appserver-bridge",
+          "$HOME/.agents/skills/titan-appserver-bridge/scripts",
+          "$HOME/.agents/skills/titan-appserver-bridge/references",
+          "$HOME/.agents/skills/titan-appserver-bridge/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-appserver-bridge",
+          "/etc/codex/skills/titan-appserver-bridge/scripts",
+          "/etc/codex/skills/titan-appserver-bridge/references",
+          "/etc/codex/skills/titan-appserver-bridge/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-appserver-bridge",
+        ".agents/skills/titan-appserver-bridge/scripts",
+        ".agents/skills/titan-appserver-bridge/references",
+        ".agents/skills/titan-appserver-bridge/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-appserver-plan",
+      "display_name": "Titan Appserver Plan",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-appserver-plan",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-appserver-plan",
+          "$REPO_ROOT/.agents/skills/titan-appserver-plan/scripts",
+          "$REPO_ROOT/.agents/skills/titan-appserver-plan/references",
+          "$REPO_ROOT/.agents/skills/titan-appserver-plan/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-appserver-plan",
+          "$HOME/.agents/skills/titan-appserver-plan/scripts",
+          "$HOME/.agents/skills/titan-appserver-plan/references",
+          "$HOME/.agents/skills/titan-appserver-plan/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-appserver-plan",
+          "/etc/codex/skills/titan-appserver-plan/scripts",
+          "/etc/codex/skills/titan-appserver-plan/references",
+          "/etc/codex/skills/titan-appserver-plan/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-appserver-plan",
+        ".agents/skills/titan-appserver-plan/scripts",
+        ".agents/skills/titan-appserver-plan/references",
+        ".agents/skills/titan-appserver-plan/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-closeout",
+      "display_name": "Titan Closeout",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-closeout",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-closeout",
+          "$REPO_ROOT/.agents/skills/titan-closeout/scripts",
+          "$REPO_ROOT/.agents/skills/titan-closeout/references",
+          "$REPO_ROOT/.agents/skills/titan-closeout/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-closeout",
+          "$HOME/.agents/skills/titan-closeout/scripts",
+          "$HOME/.agents/skills/titan-closeout/references",
+          "$HOME/.agents/skills/titan-closeout/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-closeout",
+          "/etc/codex/skills/titan-closeout/scripts",
+          "/etc/codex/skills/titan-closeout/references",
+          "/etc/codex/skills/titan-closeout/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-closeout",
+        ".agents/skills/titan-closeout/scripts",
+        ".agents/skills/titan-closeout/references",
+        ".agents/skills/titan-closeout/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-console",
+      "display_name": "Titan Console",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-console",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-console",
+          "$REPO_ROOT/.agents/skills/titan-console/scripts",
+          "$REPO_ROOT/.agents/skills/titan-console/references",
+          "$REPO_ROOT/.agents/skills/titan-console/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-console",
+          "$HOME/.agents/skills/titan-console/scripts",
+          "$HOME/.agents/skills/titan-console/references",
+          "$HOME/.agents/skills/titan-console/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-console",
+          "/etc/codex/skills/titan-console/scripts",
+          "/etc/codex/skills/titan-console/references",
+          "/etc/codex/skills/titan-console/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-console",
+        ".agents/skills/titan-console/scripts",
+        ".agents/skills/titan-console/references",
+        ".agents/skills/titan-console/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-event-replay",
+      "display_name": "Titan Event Replay",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-event-replay",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-event-replay",
+          "$REPO_ROOT/.agents/skills/titan-event-replay/scripts",
+          "$REPO_ROOT/.agents/skills/titan-event-replay/references",
+          "$REPO_ROOT/.agents/skills/titan-event-replay/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-event-replay",
+          "$HOME/.agents/skills/titan-event-replay/scripts",
+          "$HOME/.agents/skills/titan-event-replay/references",
+          "$HOME/.agents/skills/titan-event-replay/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-event-replay",
+          "/etc/codex/skills/titan-event-replay/scripts",
+          "/etc/codex/skills/titan-event-replay/references",
+          "/etc/codex/skills/titan-event-replay/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-event-replay",
+        ".agents/skills/titan-event-replay/scripts",
+        ".agents/skills/titan-event-replay/references",
+        ".agents/skills/titan-event-replay/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-memory-loom",
+      "display_name": "Titan Memory Loom",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-memory-loom",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-memory-loom",
+          "$REPO_ROOT/.agents/skills/titan-memory-loom/scripts",
+          "$REPO_ROOT/.agents/skills/titan-memory-loom/references",
+          "$REPO_ROOT/.agents/skills/titan-memory-loom/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-memory-loom",
+          "$HOME/.agents/skills/titan-memory-loom/scripts",
+          "$HOME/.agents/skills/titan-memory-loom/references",
+          "$HOME/.agents/skills/titan-memory-loom/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-memory-loom",
+          "/etc/codex/skills/titan-memory-loom/scripts",
+          "/etc/codex/skills/titan-memory-loom/references",
+          "/etc/codex/skills/titan-memory-loom/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-memory-loom",
+        ".agents/skills/titan-memory-loom/scripts",
+        ".agents/skills/titan-memory-loom/references",
+        ".agents/skills/titan-memory-loom/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-memory-prune",
+      "display_name": "Titan Memory Prune",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-memory-prune",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-memory-prune",
+          "$REPO_ROOT/.agents/skills/titan-memory-prune/scripts",
+          "$REPO_ROOT/.agents/skills/titan-memory-prune/references",
+          "$REPO_ROOT/.agents/skills/titan-memory-prune/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-memory-prune",
+          "$HOME/.agents/skills/titan-memory-prune/scripts",
+          "$HOME/.agents/skills/titan-memory-prune/references",
+          "$HOME/.agents/skills/titan-memory-prune/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-memory-prune",
+          "/etc/codex/skills/titan-memory-prune/scripts",
+          "/etc/codex/skills/titan-memory-prune/references",
+          "/etc/codex/skills/titan-memory-prune/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-memory-prune",
+        ".agents/skills/titan-memory-prune/scripts",
+        ".agents/skills/titan-memory-prune/references",
+        ".agents/skills/titan-memory-prune/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-mutation-gate",
+      "display_name": "Titan Mutation Gate",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-mutation-gate",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-mutation-gate",
+          "$REPO_ROOT/.agents/skills/titan-mutation-gate/scripts",
+          "$REPO_ROOT/.agents/skills/titan-mutation-gate/references",
+          "$REPO_ROOT/.agents/skills/titan-mutation-gate/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-mutation-gate",
+          "$HOME/.agents/skills/titan-mutation-gate/scripts",
+          "$HOME/.agents/skills/titan-mutation-gate/references",
+          "$HOME/.agents/skills/titan-mutation-gate/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-mutation-gate",
+          "/etc/codex/skills/titan-mutation-gate/scripts",
+          "/etc/codex/skills/titan-mutation-gate/references",
+          "/etc/codex/skills/titan-mutation-gate/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-mutation-gate",
+        ".agents/skills/titan-mutation-gate/scripts",
+        ".agents/skills/titan-mutation-gate/references",
+        ".agents/skills/titan-mutation-gate/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-recall",
+      "display_name": "Titan Recall",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-recall",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-recall",
+          "$REPO_ROOT/.agents/skills/titan-recall/scripts",
+          "$REPO_ROOT/.agents/skills/titan-recall/references",
+          "$REPO_ROOT/.agents/skills/titan-recall/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-recall",
+          "$HOME/.agents/skills/titan-recall/scripts",
+          "$HOME/.agents/skills/titan-recall/references",
+          "$HOME/.agents/skills/titan-recall/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-recall",
+          "/etc/codex/skills/titan-recall/scripts",
+          "/etc/codex/skills/titan-recall/references",
+          "/etc/codex/skills/titan-recall/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-recall",
+        ".agents/skills/titan-recall/scripts",
+        ".agents/skills/titan-recall/references",
+        ".agents/skills/titan-recall/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-receipt",
+      "display_name": "Titan Receipt",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-receipt",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-receipt",
+          "$REPO_ROOT/.agents/skills/titan-receipt/scripts",
+          "$REPO_ROOT/.agents/skills/titan-receipt/references",
+          "$REPO_ROOT/.agents/skills/titan-receipt/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-receipt",
+          "$HOME/.agents/skills/titan-receipt/scripts",
+          "$HOME/.agents/skills/titan-receipt/references",
+          "$HOME/.agents/skills/titan-receipt/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-receipt",
+          "/etc/codex/skills/titan-receipt/scripts",
+          "/etc/codex/skills/titan-receipt/references",
+          "/etc/codex/skills/titan-receipt/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-receipt",
+        ".agents/skills/titan-receipt/scripts",
+        ".agents/skills/titan-receipt/references",
+        ".agents/skills/titan-receipt/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-runtime-gate",
+      "display_name": "Titan Runtime Gate",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-runtime-gate",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-runtime-gate",
+          "$REPO_ROOT/.agents/skills/titan-runtime-gate/scripts",
+          "$REPO_ROOT/.agents/skills/titan-runtime-gate/references",
+          "$REPO_ROOT/.agents/skills/titan-runtime-gate/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-runtime-gate",
+          "$HOME/.agents/skills/titan-runtime-gate/scripts",
+          "$HOME/.agents/skills/titan-runtime-gate/references",
+          "$HOME/.agents/skills/titan-runtime-gate/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-runtime-gate",
+          "/etc/codex/skills/titan-runtime-gate/scripts",
+          "/etc/codex/skills/titan-runtime-gate/references",
+          "/etc/codex/skills/titan-runtime-gate/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-runtime-gate",
+        ".agents/skills/titan-runtime-gate/scripts",
+        ".agents/skills/titan-runtime-gate/references",
+        ".agents/skills/titan-runtime-gate/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-summon",
+      "display_name": "Titan Summon",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-summon",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-summon",
+          "$REPO_ROOT/.agents/skills/titan-summon/scripts",
+          "$REPO_ROOT/.agents/skills/titan-summon/references",
+          "$REPO_ROOT/.agents/skills/titan-summon/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-summon",
+          "$HOME/.agents/skills/titan-summon/scripts",
+          "$HOME/.agents/skills/titan-summon/references",
+          "$HOME/.agents/skills/titan-summon/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-summon",
+          "/etc/codex/skills/titan-summon/scripts",
+          "/etc/codex/skills/titan-summon/references",
+          "/etc/codex/skills/titan-summon/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-summon",
+        ".agents/skills/titan-summon/scripts",
+        ".agents/skills/titan-summon/references",
+        ".agents/skills/titan-summon/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "display_name": "Titan Thread Turn Binding",
+      "source_scope": "repo",
+      "allowlist_id": "skill:titan-thread-turn-binding",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding",
+          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/scripts",
+          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/references",
+          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/assets"
+        ],
+        "user": [
+          "$HOME/.agents/skills/titan-thread-turn-binding",
+          "$HOME/.agents/skills/titan-thread-turn-binding/scripts",
+          "$HOME/.agents/skills/titan-thread-turn-binding/references",
+          "$HOME/.agents/skills/titan-thread-turn-binding/assets"
+        ],
+        "admin": [
+          "/etc/codex/skills/titan-thread-turn-binding",
+          "/etc/codex/skills/titan-thread-turn-binding/scripts",
+          "/etc/codex/skills/titan-thread-turn-binding/references",
+          "/etc/codex/skills/titan-thread-turn-binding/assets"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/titan-thread-turn-binding",
+        ".agents/skills/titan-thread-turn-binding/scripts",
+        ".agents/skills/titan-thread-turn-binding/references",
+        ".agents/skills/titan-thread-turn-binding/assets"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
     }
   ]
 }

@@ -2344,6 +2344,981 @@
       "kind": "available_in_artifact_group",
       "source": "skill_atm10_source_of_truth_check",
       "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_approval_ledger",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_approval_ledger",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_approval_ledger",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_approval_ledger",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_approval_ledger",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_approval_ledger",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_approval_ledger",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_approval_ledger",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_ledger",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_ledger",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_ledger",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_ledger",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_ledger",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_approval_loom",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_approval_loom",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_approval_loom",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_approval_loom",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_approval_loom",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_approval_loom",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_approval_loom",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_approval_loom",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_loom",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_loom",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_loom",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_loom",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_approval_loom",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_appserver_bridge",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_appserver_bridge",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_appserver_bridge",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_appserver_bridge",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_appserver_bridge",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_appserver_bridge",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_appserver_bridge",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_appserver_bridge",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_bridge",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_bridge",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_bridge",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_bridge",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_bridge",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_appserver_plan",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_appserver_plan",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_appserver_plan",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_appserver_plan",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_appserver_plan",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_appserver_plan",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_appserver_plan",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_appserver_plan",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_plan",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_plan",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_plan",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_plan",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_appserver_plan",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_closeout",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_closeout",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_closeout",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_closeout",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_closeout",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_closeout",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_closeout",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_closeout",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_closeout",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_closeout",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_closeout",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_closeout",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_closeout",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_console",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_console",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_console",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_console",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_console",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_console",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_console",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_console",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_console",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_console",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_console",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_console",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_console",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_event_replay",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_event_replay",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_event_replay",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_event_replay",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_event_replay",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_event_replay",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_event_replay",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_event_replay",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_event_replay",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_event_replay",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_event_replay",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_event_replay",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_event_replay",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_memory_loom",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_memory_loom",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_memory_loom",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_memory_loom",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_memory_loom",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_memory_loom",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_memory_loom",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_memory_loom",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_loom",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_loom",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_loom",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_loom",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_loom",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_memory_prune",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_memory_prune",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_memory_prune",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_memory_prune",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_memory_prune",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_memory_prune",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_memory_prune",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_memory_prune",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_prune",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_prune",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_prune",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_prune",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_memory_prune",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_mutation_gate",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_mutation_gate",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_mutation_gate",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_mutation_gate",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_mutation_gate",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_mutation_gate",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_mutation_gate",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_mutation_gate",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_mutation_gate",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_mutation_gate",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_mutation_gate",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_mutation_gate",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_mutation_gate",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_recall",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_recall",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_recall",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_recall",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_recall",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_recall",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_recall",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_recall",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_recall",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_recall",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_recall",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_recall",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_recall",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_receipt",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_receipt",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_receipt",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_receipt",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_receipt",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_receipt",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_receipt",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_receipt",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_receipt",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_receipt",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_receipt",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_receipt",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_receipt",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_runtime_gate",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_runtime_gate",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_runtime_gate",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_runtime_gate",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_runtime_gate",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_runtime_gate",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_runtime_gate",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_runtime_gate",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_runtime_gate",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_runtime_gate",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_runtime_gate",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_runtime_gate",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_runtime_gate",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_summon",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_summon",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_summon",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_summon",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_summon",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_summon",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_summon",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_summon",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_summon",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_summon",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_summon",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_summon",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_summon",
+      "target": "artifact_group_tiny_router"
+    },
+    {
+      "kind": "maturity",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "status_scaffold"
+    },
+    {
+      "kind": "scope",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "scope_project"
+    },
+    {
+      "kind": "lineage",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "lineage_pending"
+    },
+    {
+      "kind": "invocation_policy",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "policy_explicit_only"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE"
+    },
+    {
+      "kind": "depends_on",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "profile_repo_default"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "profile_repo_titan_overlay"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "artifact_group_portable_export"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "artifact_group_runtime_seam"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "artifact_group_runtime_guardrails"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "artifact_group_description_trigger"
+    },
+    {
+      "kind": "available_in_artifact_group",
+      "source": "skill_titan_thread_turn_binding",
+      "target": "artifact_group_tiny_router"
     }
   ],
   "nodes": [
@@ -2825,6 +3800,96 @@
     {
       "id": "skill_atm10_source_of_truth_check",
       "label": "atm10-source-of-truth-check",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_approval_ledger",
+      "label": "titan-approval-ledger",
+      "type": "skill"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE",
+      "label": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+      "type": "technique"
+    },
+    {
+      "id": "technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE",
+      "label": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+      "type": "technique"
+    },
+    {
+      "id": "profile_repo_titan_overlay",
+      "label": "profile: repo-titan-overlay",
+      "type": "profile"
+    },
+    {
+      "id": "skill_titan_approval_loom",
+      "label": "titan-approval-loom",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_appserver_bridge",
+      "label": "titan-appserver-bridge",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_appserver_plan",
+      "label": "titan-appserver-plan",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_closeout",
+      "label": "titan-closeout",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_console",
+      "label": "titan-console",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_event_replay",
+      "label": "titan-event-replay",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_memory_loom",
+      "label": "titan-memory-loom",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_memory_prune",
+      "label": "titan-memory-prune",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_mutation_gate",
+      "label": "titan-mutation-gate",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_recall",
+      "label": "titan-recall",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_receipt",
+      "label": "titan-receipt",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_runtime_gate",
+      "label": "titan-runtime-gate",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_summon",
+      "label": "titan-summon",
+      "type": "skill"
+    },
+    {
+      "id": "skill_titan_thread_turn_binding",
+      "label": "titan-thread-turn-binding",
       "type": "skill"
     }
   ],
@@ -5442,6 +6507,1191 @@
           "path": "techniques/docs/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
           "source_ref": "5c6f0496edc3c2e74590baa35627c85fe58ef765"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-approval-ledger/SKILL.md",
+        "skills/titan-approval-ledger/techniques.yaml",
+        "skills/titan-approval-ledger/agents/openai.yaml",
+        "skills/titan-approval-ledger/examples/runtime.md",
+        "skills/titan-approval-ledger/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "82fa49f50d13a57b9e106b9682a9a38099f4c2aff2b9b4ead18fde438286d358",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-approval-ledger",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "skill_revision": "82fa49f50d13",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-approval-ledger/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-approval-ledger/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-approval-loom/SKILL.md",
+        "skills/titan-approval-loom/techniques.yaml",
+        "skills/titan-approval-loom/agents/openai.yaml",
+        "skills/titan-approval-loom/examples/runtime.md",
+        "skills/titan-approval-loom/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "68a37b7c7dad5d7e68a87840295b141c651ec32579f3462f336a6e098cf15311",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-approval-loom",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "skill_revision": "68a37b7c7dad",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-approval-loom/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-approval-loom/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-appserver-bridge/SKILL.md",
+        "skills/titan-appserver-bridge/techniques.yaml",
+        "skills/titan-appserver-bridge/agents/openai.yaml",
+        "skills/titan-appserver-bridge/examples/runtime.md",
+        "skills/titan-appserver-bridge/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "2a04b3b9f4ab6f01415fc1c8aee64272055396b6ed7b201ad7c494f36ecbc9f6",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-appserver-bridge",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "skill_revision": "2a04b3b9f4ab",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-appserver-bridge/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-appserver-bridge/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-appserver-plan/SKILL.md",
+        "skills/titan-appserver-plan/techniques.yaml",
+        "skills/titan-appserver-plan/agents/openai.yaml",
+        "skills/titan-appserver-plan/examples/runtime.md",
+        "skills/titan-appserver-plan/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "25033d0fc3734dc649f2d157e8825c953fa8688523c0400b6f38c7052df7366d",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-appserver-plan",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "skill_revision": "25033d0fc373",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-appserver-plan/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-appserver-plan/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-closeout/SKILL.md",
+        "skills/titan-closeout/techniques.yaml",
+        "skills/titan-closeout/agents/openai.yaml",
+        "skills/titan-closeout/examples/runtime.md",
+        "skills/titan-closeout/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "d6a91af0772835da03a639b20807c3e65bedaa5444c26a80b2b222e3073a6899",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-closeout",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-closeout/SKILL.md",
+      "skill_revision": "d6a91af07728",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-closeout/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-closeout/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-console/SKILL.md",
+        "skills/titan-console/techniques.yaml",
+        "skills/titan-console/agents/openai.yaml",
+        "skills/titan-console/examples/runtime.md",
+        "skills/titan-console/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "80a96aab9852d8617f8889044b426c2768c504343c03adc4afa0f9eeb9750900",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-console",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-console/SKILL.md",
+      "skill_revision": "80a96aab9852",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-console/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-console/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-event-replay/SKILL.md",
+        "skills/titan-event-replay/techniques.yaml",
+        "skills/titan-event-replay/agents/openai.yaml",
+        "skills/titan-event-replay/examples/runtime.md",
+        "skills/titan-event-replay/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "328dcd6cc5d6518d7e11fe99647808dce38f1708b7312108853a66dc807941c3",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-event-replay",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "skill_revision": "328dcd6cc5d6",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-event-replay/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-event-replay/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-memory-loom/SKILL.md",
+        "skills/titan-memory-loom/techniques.yaml",
+        "skills/titan-memory-loom/agents/openai.yaml",
+        "skills/titan-memory-loom/examples/runtime.md",
+        "skills/titan-memory-loom/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "0eec6bd6567aacb74da023d562b3a92ea34331a70279018d80d5c0652efb0fa0",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-memory-loom",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "skill_revision": "0eec6bd6567a",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-memory-loom/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-memory-loom/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-memory-prune/SKILL.md",
+        "skills/titan-memory-prune/techniques.yaml",
+        "skills/titan-memory-prune/agents/openai.yaml",
+        "skills/titan-memory-prune/examples/runtime.md",
+        "skills/titan-memory-prune/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "f3a3e1eec0e3e5f42679a156f37e1f80d4545514b5df1c5252e3d6776dc70903",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-memory-prune",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "skill_revision": "f3a3e1eec0e3",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-memory-prune/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-memory-prune/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-mutation-gate/SKILL.md",
+        "skills/titan-mutation-gate/techniques.yaml",
+        "skills/titan-mutation-gate/agents/openai.yaml",
+        "skills/titan-mutation-gate/examples/runtime.md",
+        "skills/titan-mutation-gate/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "5b7c56789be9c36b7e836431079b013aad353aca32eac24642e6c5e213143e76",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-mutation-gate",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "skill_revision": "5b7c56789be9",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-mutation-gate/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-mutation-gate/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-recall/SKILL.md",
+        "skills/titan-recall/techniques.yaml",
+        "skills/titan-recall/agents/openai.yaml",
+        "skills/titan-recall/examples/runtime.md",
+        "skills/titan-recall/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "ae99aa78caa4bf294c0fa59dfc3b9b160fcd4ec8a943a63a88f64e154e11f0d7",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-recall",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-recall/SKILL.md",
+      "skill_revision": "ae99aa78caa4",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-recall/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-recall/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-receipt/SKILL.md",
+        "skills/titan-receipt/techniques.yaml",
+        "skills/titan-receipt/agents/openai.yaml",
+        "skills/titan-receipt/examples/runtime.md",
+        "skills/titan-receipt/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "6867c6115e378adcdfff0b14c7ff93c87f36bf454f9537f74496999b8f07bdbb",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-receipt",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-receipt/SKILL.md",
+      "skill_revision": "6867c6115e37",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-receipt/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-receipt/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-runtime-gate/SKILL.md",
+        "skills/titan-runtime-gate/techniques.yaml",
+        "skills/titan-runtime-gate/agents/openai.yaml",
+        "skills/titan-runtime-gate/examples/runtime.md",
+        "skills/titan-runtime-gate/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "a906e0259551c07b417652231ba2fd0d87e09984353dd35e4af072a6301b13c2",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-runtime-gate",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "skill_revision": "a906e0259551",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-runtime-gate/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-runtime-gate/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-summon/SKILL.md",
+        "skills/titan-summon/techniques.yaml",
+        "skills/titan-summon/agents/openai.yaml",
+        "skills/titan-summon/examples/runtime.md",
+        "skills/titan-summon/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "2f2a834d1cadadb9a3e04a8a0d4d551cbbb9da01f3ed3e493eb32256f0b6efb3",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-summon",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-summon/SKILL.md",
+      "skill_revision": "2f2a834d1cad",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-summon/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-summon/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
+        "skills/titan-thread-turn-binding/SKILL.md",
+        "skills/titan-thread-turn-binding/techniques.yaml",
+        "skills/titan-thread-turn-binding/agents/openai.yaml",
+        "skills/titan-thread-turn-binding/examples/runtime.md",
+        "skills/titan-thread-turn-binding/checks/review.md"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": false,
+      "content_hash": "401c64eb421c998f8c768c3c1137d92f8618b2dc6ddd1d914fd300eece7ff13e",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-titan-overlay"
+      ],
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-thread-turn-binding",
+      "promotion_review_path": null,
+      "scope": "project",
+      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "skill_revision": "401c64eb421c",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/titan-thread-turn-binding/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        },
+        {
+          "path": "skills/titan-thread-turn-binding/checks/review.md",
+          "selected_for_runtime_inspection": false,
+          "type": "review_checklist"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
+        },
+        {
+          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "lineage_state": "pending",
+          "path": "TBD",
+          "repo": "aoa-techniques",
+          "source_ref": "TBD"
         }
       ]
     }

@@ -1152,3 +1152,496 @@ Common expand sections:
 - `review_checklist`: `skills/atm10-source-of-truth-check/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/atm10-source-of-truth-check.md`
 
+## titan-approval-ledger
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-approval-ledger/SKILL.md`
+- pick summary: Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth.
+
+### Use when
+
+- an operator has approved a named Forge or Delta gate
+- the approval must be attached to a receipt, console ledger, or bridge ledger
+- the next step needs visible approval evidence before execution continues
+
+### Do not use when
+
+- the request has no explicit operator approval
+- the action is not tied to a Titan receipt or ledger
+- approval is being inferred from silence or convenience
+
+### Object use shape
+
+- approval record candidate
+- gate kind and target lane
+- source refs for the receipt or ledger
+- stop note when the approval is missing or ambiguous
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-approval-ledger/examples/runtime.md`
+- `review_checklist`: `skills/titan-approval-ledger/checks/review.md`
+
+## titan-approval-loom
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-approval-loom/SKILL.md`
+- pick summary: Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent.
+
+### Use when
+
+- a bridge turn contains pending approvals
+- operator intent must be matched to a queued action
+- approval state must be replayable from ledger events
+
+### Do not use when
+
+- an action should be auto-approved
+- approval would bypass Forge or Delta gates
+- the queue item has no receipt or thread-turn context
+
+### Object use shape
+
+- updated approval queue entry
+- decision event candidate
+- gate status summary
+- blocked-action note when approval is insufficient
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-approval-loom/examples/runtime.md`
+- `review_checklist`: `skills/titan-approval-loom/checks/review.md`
+
+## titan-appserver-bridge
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-appserver-bridge/SKILL.md`
+- pick summary: Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution.
+
+### Use when
+
+- a Titan console needs a JSON-RPC shaped bridge
+- thread and turn events need normalization
+- approvals, replay, or metrics need one bounded bridge state
+
+### Do not use when
+
+- the request asks for hidden background agents
+- the bridge would execute Codex without an operator-visible plan
+- role truth or memory truth would be moved into the bridge
+
+### Object use shape
+
+- bridge plan or state summary
+- normalized event candidates
+- approval queue status
+- replay or metrics summary
+- explicit non-execution note
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-appserver-bridge/examples/runtime.md`
+- `review_checklist`: `skills/titan-appserver-bridge/checks/review.md`
+
+## titan-appserver-plan
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-appserver-plan/SKILL.md`
+- pick summary: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex.
+
+### Use when
+
+- the operator wants a visible app-server launch plan
+- a console needs bridge startup commands described but not run
+- risk posture requires dry-run planning before runtime action
+
+### Do not use when
+
+- the request asks to start the server now
+- required workspace or receipt refs are missing
+- the plan would include secrets or hidden auto-spawn behavior
+
+### Object use shape
+
+- JSONL launch-plan entries
+- required prechecks
+- approval gates
+- non-execution reminder
+- validation command suggestion
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-appserver-plan/examples/runtime.md`
+- `review_checklist`: `skills/titan-appserver-plan/checks/review.md`
+
+## titan-closeout
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-closeout/SKILL.md`
+- pick summary: Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.
+
+### Use when
+
+- a Titan receipt is ready to close
+- Atlas, Sentinel, and Mneme posture needs one summary
+- Forge or Delta gates were used and need visible closeout
+
+### Do not use when
+
+- the session has no receipt
+- closeout would replace owner-repo validation
+- memory candidates are being promoted without owner confirmation
+
+### Object use shape
+
+- closed receipt or closeout packet
+- role and boundary summary
+- gate summary
+- verification status
+- next owner-repo action
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-closeout/examples/runtime.md`
+- `review_checklist`: `skills/titan-closeout/checks/review.md`
+
+## titan-console
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-console/SKILL.md`
+- pick summary: Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.
+
+### Use when
+
+- the operator wants a visible Titan lane dashboard
+- console state must show active, locked, or gated lanes
+- approvals and digests need local console tracking
+
+### Do not use when
+
+- the console would become role truth
+- Forge or Delta would unlock without explicit approval
+- the console would silently launch app-server work
+
+### Object use shape
+
+- console state summary
+- lane status table
+- approval gate status
+- digest candidate
+- blocked-action notes
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-console/examples/runtime.md`
+- `review_checklist`: `skills/titan-console/checks/review.md`
+
+## titan-event-replay
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-event-replay/SKILL.md`
+- pick summary: Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.
+
+### Use when
+
+- bridge state must be reconstructed from events
+- a digest or approval queue needs replay evidence
+- metrics or closeout need traceable event order
+
+### Do not use when
+
+- events are missing source refs
+- replay output would be treated as proof or memory canon
+- replay would mutate state without an explicit write target
+
+### Object use shape
+
+- replayed state summary
+- event order report
+- differences from current state
+- authority warning
+- next verification step
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-event-replay/examples/runtime.md`
+- `review_checklist`: `skills/titan-event-replay/checks/review.md`
+
+## titan-memory-loom
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-memory-loom/SKILL.md`
+- pick summary: Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings.
+
+### Use when
+
+- a Titan receipt or event should become recallable later
+- cross-session digest needs candidate memory entries
+- Mneme needs provenance-preserving memory posture
+
+### Do not use when
+
+- memory would be canonized without owner confirmation
+- the input lacks source refs
+- redaction or retention policy has not been considered for sensitive material
+
+### Object use shape
+
+- candidate remembrance record
+- recall authority warning
+- source and confidence fields
+- redaction or tombstone candidates
+- digest note
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-memory-loom/examples/runtime.md`
+- `review_checklist`: `skills/titan-memory-loom/checks/review.md`
+
+## titan-memory-prune
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-memory-prune/SKILL.md`
+- pick summary: Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.
+
+### Use when
+
+- a Titan memory record may be stale, sensitive, or wrong
+- a recall result needs redaction handling
+- a bearer lineage record should preserve fall or correction without erasure
+
+### Do not use when
+
+- the request asks for silent deletion
+- the record lacks source or authority metadata
+- pruning would hide an important lineage event
+
+### Object use shape
+
+- redaction proposal
+- tombstone proposal
+- records to keep unchanged
+- reason and source refs
+- stop line for missing confirmation
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-memory-prune/examples/runtime.md`
+- `review_checklist`: `skills/titan-memory-prune/checks/review.md`
+
+## titan-mutation-gate
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-mutation-gate/SKILL.md`
+- pick summary: Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture.
+
+### Use when
+
+- Forge is being asked to edit files
+- the mutation target and validation path need to be explicit
+- Atlas, Sentinel, and Mneme prechecks must be visible before mutation
+
+### Do not use when
+
+- the request has no explicit mutation intent
+- targets or validation are unclear
+- the action is destructive without approval and rollback posture
+
+### Object use shape
+
+- mutation gate packet
+- allowed or blocked decision
+- precheck summary
+- validation expectation
+- rollback or stop note
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-mutation-gate/examples/runtime.md`
+- `review_checklist`: `skills/titan-mutation-gate/checks/review.md`
+
+## titan-recall
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-recall/SKILL.md`
+- pick summary: Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.
+
+### Use when
+
+- a user asks what a Titan remembers
+- a session needs bearer memory candidates
+- Mneme needs recall with source refs and confidence
+
+### Do not use when
+
+- recall would replace owner-repo evidence
+- records lack source refs
+- confidence or authority notes cannot be shown
+
+### Object use shape
+
+- matching remembrance records
+- record ids and source refs
+- authority warning
+- confidence notes
+- verification path
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-recall/examples/runtime.md`
+- `review_checklist`: `skills/titan-recall/checks/review.md`
+
+## titan-receipt
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-receipt/SKILL.md`
+- pick summary: Create, validate, note, or close Titan session receipts as witnesses rather than final truth.
+
+### Use when
+
+- a Titan session needs a receipt
+- an existing receipt needs validation or a note
+- a gated action or closeout must be attached to receipt state
+
+### Do not use when
+
+- receipt state would be treated as owner truth
+- the receipt path is unclear
+- notes would contain secrets or unreviewed claims
+
+### Object use shape
+
+- created or updated receipt
+- validation result
+- receipt note
+- closeout state
+- authority warning
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-receipt/examples/runtime.md`
+- `review_checklist`: `skills/titan-receipt/checks/review.md`
+
+## titan-runtime-gate
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-runtime-gate/SKILL.md`
+- pick summary: Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.
+
+### Use when
+
+- Forge needs a mutation gate
+- Delta needs a judgment gate
+- a receipt must record lane activation before proceeding
+
+### Do not use when
+
+- Atlas, Sentinel, or Mneme are being gated unnecessarily
+- Forge is requested with judgment or Delta with mutation
+- the receipt does not exist
+
+### Object use shape
+
+- updated gate state
+- allowed or blocked decision
+- receipt event
+- lane summary
+- next validation step
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-runtime-gate/examples/runtime.md`
+- `review_checklist`: `skills/titan-runtime-gate/checks/review.md`
+
+## titan-summon
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-summon/SKILL.md`
+- pick summary: Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.
+
+### Use when
+
+- the operator explicitly requests the Titan cohort
+- the session needs Atlas route, Sentinel risk, and Mneme provenance lanes
+- Forge and Delta must remain locked until later gates
+
+### Do not use when
+
+- the request asks for hidden background agents
+- Forge should mutate before a target and validation exist
+- Delta should issue final truth without bounded evidence
+
+### Object use shape
+
+- summon receipt candidate
+- active and locked roster state
+- route, risk, and memory posture summary
+- gate status
+- next move
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-summon/examples/runtime.md`
+- `review_checklist`: `skills/titan-summon/checks/review.md`
+
+## titan-thread-turn-binding
+
+- scope: `project`
+- status: `scaffold`
+- invocation mode: `explicit-only`
+- skill path: `skills/titan-thread-turn-binding/SKILL.md`
+- pick summary: Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.
+
+### Use when
+
+- events need a thread-turn identity
+- approval or digest state must be scoped to one turn
+- replay needs stable continuity keys
+
+### Do not use when
+
+- thread or turn identifiers are missing
+- the binding would collapse multiple sessions into one record
+- binding would grant execution authority by itself
+
+### Object use shape
+
+- thread-turn binding record
+- scoped event list
+- approval refs
+- replay key
+- continuity warning
+
+### Support artifacts
+
+- `runtime_example` (selected): `skills/titan-thread-turn-binding/examples/runtime.md`
+- `review_checklist`: `skills/titan-thread-turn-binding/checks/review.md`
+

@@ -5,10 +5,10 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 ## Summary
 
-- total skills: 30
+- total skills: 45
 - default references: 12
 - default-reference ready skills: 3
-- blocked by pending lineage: 1
+- blocked by pending lineage: 16
 - risk surfaces: 5
 
 ## Default references
@@ -41,6 +41,21 @@ It is built from committed skill bundles, review records, and evaluation fixture
 | name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|---|
 | aoa-summon | scaffold | blocked | core | explicit-only | pending | - | - | status_below_evaluated, pending_technique_dependencies, pending_technique_entries, tbd_technique_refs, missing_autonomy_check | - | - |
+| titan-approval-ledger | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-approval-loom | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-appserver-bridge | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-appserver-plan | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-closeout | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-console | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-event-replay | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-memory-loom | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-memory-prune | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-mutation-gate | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-recall | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-receipt | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-runtime-gate | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-summon | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
+| titan-thread-turn-binding | scaffold | not_applicable | project | explicit-only | pending | - | - | - | - | - |
 
 ## Risk surfaces
 

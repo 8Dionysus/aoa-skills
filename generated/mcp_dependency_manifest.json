@@ -121,6 +121,66 @@
     {
       "name": "atm10-source-of-truth-check",
       "tools": []
+    },
+    {
+      "name": "titan-approval-ledger",
+      "tools": []
+    },
+    {
+      "name": "titan-approval-loom",
+      "tools": []
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "tools": []
+    },
+    {
+      "name": "titan-appserver-plan",
+      "tools": []
+    },
+    {
+      "name": "titan-closeout",
+      "tools": []
+    },
+    {
+      "name": "titan-console",
+      "tools": []
+    },
+    {
+      "name": "titan-event-replay",
+      "tools": []
+    },
+    {
+      "name": "titan-memory-loom",
+      "tools": []
+    },
+    {
+      "name": "titan-memory-prune",
+      "tools": []
+    },
+    {
+      "name": "titan-mutation-gate",
+      "tools": []
+    },
+    {
+      "name": "titan-recall",
+      "tools": []
+    },
+    {
+      "name": "titan-receipt",
+      "tools": []
+    },
+    {
+      "name": "titan-runtime-gate",
+      "tools": []
+    },
+    {
+      "name": "titan-summon",
+      "tools": []
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "tools": []
     }
   ]
 }

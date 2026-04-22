@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 30
+- total skills: 45
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -42,6 +42,21 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-tdd-slice | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-tdd-slice/examples/example.md` | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` | true | - |
 | atm10-change-protocol | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-change-protocol/examples/example.md` | `docs/reviews/status-promotions/atm10-change-protocol.md` | - | true | - |
 | atm10-source-of-truth-check | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/atm10-source-of-truth-check.md` | - | true | - |
+| titan-approval-ledger | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-approval-ledger/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-approval-loom | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-approval-loom/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-appserver-bridge | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-appserver-bridge/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-appserver-plan | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-appserver-plan/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-closeout | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-closeout/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-console | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-console/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-event-replay | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-event-replay/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-memory-loom | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-memory-loom/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-memory-prune | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-memory-prune/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-mutation-gate | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-mutation-gate/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-recall | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-recall/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-receipt | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-receipt/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-runtime-gate | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-runtime-gate/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-summon | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-summon/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
+| titan-thread-turn-binding | scaffold | project | explicit-only | 0 | 0 | 0 | 0 | 0 | `skills/titan-thread-turn-binding/examples/runtime.md` | - | - | false | missing_use_snapshot, missing_do_not_use_snapshot |
 
 ## Reading notes
 

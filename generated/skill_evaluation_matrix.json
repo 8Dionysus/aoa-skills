@@ -510,6 +510,306 @@
       "status": "evaluated",
       "use_case_count": 1,
       "use_snapshot_count": 1
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-approval-ledger",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-approval-ledger/examples/runtime.md",
+      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-approval-loom",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-approval-loom/examples/runtime.md",
+      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-appserver-bridge",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-appserver-bridge/examples/runtime.md",
+      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-appserver-plan",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-appserver-plan/examples/runtime.md",
+      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-closeout",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-closeout/examples/runtime.md",
+      "skill_path": "skills/titan-closeout/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-console",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-console/examples/runtime.md",
+      "skill_path": "skills/titan-console/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-event-replay",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-event-replay/examples/runtime.md",
+      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-memory-loom",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-memory-loom/examples/runtime.md",
+      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-memory-prune",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-memory-prune/examples/runtime.md",
+      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-mutation-gate",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-mutation-gate/examples/runtime.md",
+      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-recall",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-recall/examples/runtime.md",
+      "skill_path": "skills/titan-recall/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-receipt",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-receipt/examples/runtime.md",
+      "skill_path": "skills/titan-receipt/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-runtime-gate",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-runtime-gate/examples/runtime.md",
+      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-summon",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-summon/examples/runtime.md",
+      "skill_path": "skills/titan-summon/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
+    },
+    {
+      "autonomy_check_count": 0,
+      "candidate_review_path": null,
+      "canonical_eval_blockers": [
+        "missing_use_snapshot",
+        "missing_do_not_use_snapshot"
+      ],
+      "canonical_eval_ready": false,
+      "do_not_use_case_count": 0,
+      "do_not_use_snapshot_count": 0,
+      "invocation_mode": "explicit-only",
+      "name": "titan-thread-turn-binding",
+      "promotion_review_path": null,
+      "scope": "project",
+      "selected_runtime_artifact_path": "skills/titan-thread-turn-binding/examples/runtime.md",
+      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "status": "scaffold",
+      "use_case_count": 0,
+      "use_snapshot_count": 0
     }
   ],
   "source_of_truth": {

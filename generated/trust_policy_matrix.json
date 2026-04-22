@@ -413,6 +413,201 @@
         "repo"
       ],
       "notes": "Project overlay for atm10 repository document authority."
+    },
+    {
+      "name": "titan-approval-ledger",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-approval-loom",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-appserver-plan",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-closeout",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-console",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-event-replay",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-memory-loom",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-memory-prune",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-mutation-gate",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-recall",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-receipt",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-runtime-gate",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": true,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-summon",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Explicit-only Titan scaffold; owner repos retain stronger authority."
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "scope": "project",
+      "invocation_mode": "explicit-only",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "notes": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Explicit-only Titan scaffold; owner repos retain stronger authority."
     }
   ]
 }
