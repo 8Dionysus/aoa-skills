@@ -47,21 +47,21 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
 | atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
 | atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
-| titan-approval-ledger | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-approval-loom | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-appserver-bridge | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-appserver-plan | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-closeout | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-console | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-event-replay | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-memory-loom | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-memory-prune | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-mutation-gate | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-recall | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-receipt | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-runtime-gate | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-summon | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
-| titan-thread-turn-binding | scaffold | pending | false | false | - | - | project_overlay_needs_evidence | - | - |
+| titan-approval-ledger | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-approval-loom | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-appserver-bridge | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-appserver-plan | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-closeout | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-console | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-event-replay | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-memory-loom | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-memory-prune | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-mutation-gate | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-recall | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-receipt | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-runtime-gate | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-summon | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-thread-turn-binding | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
 
 ## Review truth sync
 

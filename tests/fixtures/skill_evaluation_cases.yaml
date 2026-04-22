@@ -679,6 +679,188 @@ trigger_cases:
     required_phrases:
       - the task is to preview or execute the operational change itself; use `aoa-dry-run-first` or `aoa-safe-infra-change`
 
+  - skill: titan-approval-ledger
+    case_id: titan_approval_ledger_explicit_titan_route
+    prompt: Invoke titan-approval-ledger for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - an operator has approved a named Forge or Delta gate
+  - skill: titan-approval-ledger
+    case_id: titan_approval_ledger_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the request has no explicit operator approval
+  - skill: titan-approval-loom
+    case_id: titan_approval_loom_explicit_titan_route
+    prompt: Invoke titan-approval-loom for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - a bridge turn contains pending approvals
+  - skill: titan-approval-loom
+    case_id: titan_approval_loom_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - an action should be auto-approved
+  - skill: titan-appserver-bridge
+    case_id: titan_appserver_bridge_explicit_titan_route
+    prompt: Invoke titan-appserver-bridge for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - a Titan console needs a JSON-RPC shaped bridge
+  - skill: titan-appserver-bridge
+    case_id: titan_appserver_bridge_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the request asks for hidden background agents
+  - skill: titan-appserver-plan
+    case_id: titan_appserver_plan_explicit_titan_route
+    prompt: Invoke titan-appserver-plan for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - the operator wants a visible app-server launch plan
+  - skill: titan-appserver-plan
+    case_id: titan_appserver_plan_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the request asks to start the server now
+  - skill: titan-closeout
+    case_id: titan_closeout_explicit_titan_route
+    prompt: Invoke titan-closeout for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - a Titan receipt is ready to close
+  - skill: titan-closeout
+    case_id: titan_closeout_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the session has no receipt
+  - skill: titan-console
+    case_id: titan_console_explicit_titan_route
+    prompt: Invoke titan-console for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - the operator wants a visible Titan lane dashboard
+  - skill: titan-console
+    case_id: titan_console_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the console would become role truth
+  - skill: titan-event-replay
+    case_id: titan_event_replay_explicit_titan_route
+    prompt: Invoke titan-event-replay for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - bridge state must be reconstructed from events
+  - skill: titan-event-replay
+    case_id: titan_event_replay_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - events are missing source refs
+  - skill: titan-memory-loom
+    case_id: titan_memory_loom_explicit_titan_route
+    prompt: Invoke titan-memory-loom for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - a Titan receipt or event should become recallable later
+  - skill: titan-memory-loom
+    case_id: titan_memory_loom_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - memory would be canonized without owner confirmation
+  - skill: titan-memory-prune
+    case_id: titan_memory_prune_explicit_titan_route
+    prompt: Invoke titan-memory-prune for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - a Titan memory record may be stale, sensitive, or wrong
+  - skill: titan-memory-prune
+    case_id: titan_memory_prune_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the request asks for silent deletion
+  - skill: titan-mutation-gate
+    case_id: titan_mutation_gate_explicit_titan_route
+    prompt: Invoke titan-mutation-gate for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - Forge is being asked to edit files
+  - skill: titan-mutation-gate
+    case_id: titan_mutation_gate_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the request has no explicit mutation intent
+  - skill: titan-recall
+    case_id: titan_recall_explicit_titan_route
+    prompt: Invoke titan-recall for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - a user asks what a Titan remembers
+  - skill: titan-recall
+    case_id: titan_recall_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - recall would replace owner-repo evidence
+  - skill: titan-receipt
+    case_id: titan_receipt_explicit_titan_route
+    prompt: Invoke titan-receipt for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - a Titan session needs a receipt
+  - skill: titan-receipt
+    case_id: titan_receipt_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - receipt state would be treated as owner truth
+  - skill: titan-runtime-gate
+    case_id: titan_runtime_gate_explicit_titan_route
+    prompt: Invoke titan-runtime-gate for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - Forge needs a mutation gate
+  - skill: titan-runtime-gate
+    case_id: titan_runtime_gate_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - Atlas, Sentinel, or Mneme are being gated unnecessarily
+  - skill: titan-summon
+    case_id: titan_summon_explicit_titan_route
+    prompt: Invoke titan-summon for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - the operator explicitly requests the Titan cohort
+  - skill: titan-summon
+    case_id: titan_summon_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - the request asks for hidden background agents
+  - skill: titan-thread-turn-binding
+    case_id: titan_thread_turn_binding_explicit_titan_route
+    prompt: Invoke titan-thread-turn-binding for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    required_phrases:
+      - events need a thread-turn identity
+  - skill: titan-thread-turn-binding
+    case_id: titan_thread_turn_binding_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    required_phrases:
+      - thread or turn identifiers are missing
+
+
 adjacency_cases:
   - skill: aoa-bounded-context-map
     case_id: bounded_context_map_vs_contract_test_boundary
@@ -1563,4 +1745,274 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection toward exploration or discovery rather than test-first implementation.
+    forbidden_output_phrases: []
+  - skill: titan-approval-ledger
+    case_id: titan_approval_ledger_explicit_titan_route
+    prompt: Invoke titan-approval-ledger for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-approval-ledger/titan_approval_ledger_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-approval-ledger`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-approval-ledger
+    case_id: titan_approval_ledger_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-approval-ledger/titan_approval_ledger_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-approval-ledger`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-approval-loom
+    case_id: titan_approval_loom_explicit_titan_route
+    prompt: Invoke titan-approval-loom for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-approval-loom/titan_approval_loom_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-approval-loom`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-approval-loom
+    case_id: titan_approval_loom_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-approval-loom/titan_approval_loom_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-approval-loom`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-appserver-bridge
+    case_id: titan_appserver_bridge_explicit_titan_route
+    prompt: Invoke titan-appserver-bridge for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-appserver-bridge/titan_appserver_bridge_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-appserver-bridge`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-appserver-bridge
+    case_id: titan_appserver_bridge_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-appserver-bridge/titan_appserver_bridge_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-appserver-bridge`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-appserver-plan
+    case_id: titan_appserver_plan_explicit_titan_route
+    prompt: Invoke titan-appserver-plan for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-appserver-plan/titan_appserver_plan_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-appserver-plan`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-appserver-plan
+    case_id: titan_appserver_plan_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-appserver-plan/titan_appserver_plan_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-appserver-plan`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-closeout
+    case_id: titan_closeout_explicit_titan_route
+    prompt: Invoke titan-closeout for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-closeout/titan_closeout_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-closeout`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-closeout
+    case_id: titan_closeout_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-closeout/titan_closeout_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-closeout`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-console
+    case_id: titan_console_explicit_titan_route
+    prompt: Invoke titan-console for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-console/titan_console_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-console`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-console
+    case_id: titan_console_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-console/titan_console_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-console`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-event-replay
+    case_id: titan_event_replay_explicit_titan_route
+    prompt: Invoke titan-event-replay for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-event-replay/titan_event_replay_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-event-replay`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-event-replay
+    case_id: titan_event_replay_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-event-replay/titan_event_replay_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-event-replay`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-memory-loom
+    case_id: titan_memory_loom_explicit_titan_route
+    prompt: Invoke titan-memory-loom for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-memory-loom/titan_memory_loom_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-memory-loom`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-memory-loom
+    case_id: titan_memory_loom_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-memory-loom/titan_memory_loom_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-memory-loom`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-memory-prune
+    case_id: titan_memory_prune_explicit_titan_route
+    prompt: Invoke titan-memory-prune for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-memory-prune/titan_memory_prune_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-memory-prune`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-memory-prune
+    case_id: titan_memory_prune_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-memory-prune/titan_memory_prune_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-memory-prune`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-mutation-gate
+    case_id: titan_mutation_gate_explicit_titan_route
+    prompt: Invoke titan-mutation-gate for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-mutation-gate/titan_mutation_gate_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-mutation-gate`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-mutation-gate
+    case_id: titan_mutation_gate_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-mutation-gate/titan_mutation_gate_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-mutation-gate`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-recall
+    case_id: titan_recall_explicit_titan_route
+    prompt: Invoke titan-recall for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-recall/titan_recall_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-recall`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-recall
+    case_id: titan_recall_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-recall/titan_recall_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-recall`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-receipt
+    case_id: titan_receipt_explicit_titan_route
+    prompt: Invoke titan-receipt for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-receipt/titan_receipt_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-receipt`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-receipt
+    case_id: titan_receipt_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-receipt/titan_receipt_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-receipt`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-runtime-gate
+    case_id: titan_runtime_gate_explicit_titan_route
+    prompt: Invoke titan-runtime-gate for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-runtime-gate/titan_runtime_gate_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-runtime-gate`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-runtime-gate
+    case_id: titan_runtime_gate_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-runtime-gate/titan_runtime_gate_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-runtime-gate`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-summon
+    case_id: titan_summon_explicit_titan_route
+    prompt: Invoke titan-summon for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-summon/titan_summon_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-summon`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-summon
+    case_id: titan_summon_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-summon/titan_summon_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-summon`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
+    forbidden_output_phrases: []
+  - skill: titan-thread-turn-binding
+    case_id: titan_thread_turn_binding_explicit_titan_route
+    prompt: Invoke titan-thread-turn-binding for an explicit Titan service-cohort route that must stay gated, owner-grounded, and reviewable.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-thread-turn-binding/titan_thread_turn_binding_explicit_titan_route.md
+    required_output_phrases:
+      - use
+      - 'Decision: use `titan-thread-turn-binding`. Apply the explicit Titan service-cohort overlay while preserving owner truth, gates, and reviewable evidence.'
+    forbidden_output_phrases: []
+  - skill: titan-thread-turn-binding
+    case_id: titan_thread_turn_binding_ordinary_non_titan_task
+    prompt: Handle an ordinary repo-local task with no explicit Titan service-cohort route or Titan runtime surface.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/titan-thread-turn-binding/titan_thread_turn_binding_ordinary_non_titan_task.md
+    required_output_phrases:
+      - do_not_use
+      - 'Decision: do_not_use `titan-thread-turn-binding`. Use the ordinary owner-repo workflow because no explicit Titan service-cohort route is being requested.'
     forbidden_output_phrases: []

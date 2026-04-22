@@ -50,7 +50,7 @@
       "authority_section_present": true,
       "boundary_statement_present": true,
       "bundle_review_check_count": 15,
-      "eval_ready_skill_count": 0,
+      "eval_ready_skill_count": 15,
       "family": "titan",
       "listed_matches_actual": true,
       "listed_skill_names": [
@@ -89,7 +89,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "readiness_state": "baseline",
+      "readiness_state": "reviewable",
       "repo_relative_statement_present": true,
       "review_mentions_all_skills": true,
       "review_path": "docs/overlays/titan/REVIEW.md"
@@ -158,11 +158,8 @@
       "status": "evaluated"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -173,11 +170,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -188,11 +182,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -203,11 +194,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -218,11 +206,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -233,11 +218,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -248,11 +230,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -263,11 +242,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -278,11 +254,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -293,11 +266,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -308,11 +278,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -323,11 +290,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -338,11 +302,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -353,11 +314,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -368,11 +326,8 @@
       "status": "scaffold"
     },
     {
-      "eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "eval_ready": false,
+      "eval_blockers": [],
+      "eval_ready": true,
       "family": "titan",
       "has_adaptation_points": true,
       "has_policy_file": true,
@@ -392,10 +347,10 @@
     "skill_markdown": "skills/*/SKILL.md"
   },
   "summary": {
-    "eval_ready_project_skill_count": 5,
+    "eval_ready_project_skill_count": 20,
     "live_overlay_family_count": 3,
     "project_skill_count": 20,
     "project_skill_review_check_count": 20,
-    "reviewable_family_count": 2
+    "reviewable_family_count": 3
   }
 }

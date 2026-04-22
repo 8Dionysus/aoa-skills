@@ -2633,7 +2633,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "82fa49f50d13a57b9e106b9682a9a38099f4c2aff2b9b4ead18fde438286d358",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -2712,7 +2712,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "68a37b7c7dad5d7e68a87840295b141c651ec32579f3462f336a6e098cf15311",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -2791,7 +2791,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "2a04b3b9f4ab6f01415fc1c8aee64272055396b6ed7b201ad7c494f36ecbc9f6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -2870,7 +2870,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "25033d0fc3734dc649f2d157e8825c953fa8688523c0400b6f38c7052df7366d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -2949,7 +2949,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "d6a91af0772835da03a639b20807c3e65bedaa5444c26a80b2b222e3073a6899",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3028,7 +3028,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "80a96aab9852d8617f8889044b426c2768c504343c03adc4afa0f9eeb9750900",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3107,7 +3107,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "328dcd6cc5d6518d7e11fe99647808dce38f1708b7312108853a66dc807941c3",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3186,7 +3186,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "0eec6bd6567aacb74da023d562b3a92ea34331a70279018d80d5c0652efb0fa0",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3265,7 +3265,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "f3a3e1eec0e3e5f42679a156f37e1f80d4545514b5df1c5252e3d6776dc70903",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3344,7 +3344,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "5b7c56789be9c36b7e836431079b013aad353aca32eac24642e6c5e213143e76",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3423,7 +3423,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "ae99aa78caa4bf294c0fa59dfc3b9b160fcd4ec8a943a63a88f64e154e11f0d7",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3502,7 +3502,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "6867c6115e378adcdfff0b14c7ff93c87f36bf454f9537f74496999b8f07bdbb",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3581,7 +3581,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "a906e0259551c07b417652231ba2fd0d87e09984353dd35e4af072a6301b13c2",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3660,7 +3660,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "2f2a834d1cadadb9a3e04a8a0d4d551cbbb9da01f3ed3e493eb32256f0b6efb3",
       "generated_surface_versions": {
         "boundary_matrix": 2,
@@ -3739,7 +3739,7 @@
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
-      "canonical_eval_ready": false,
+      "canonical_eval_ready": true,
       "content_hash": "401c64eb421c998f8c768c3c1137d92f8618b2dc6ddd1d914fd300eece7ff13e",
       "generated_surface_versions": {
         "boundary_matrix": 2,

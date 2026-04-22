@@ -933,23 +933,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-approval-ledger",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-approval-ledger/SKILL.md",
       "status": "scaffold"
@@ -961,23 +956,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-approval-loom",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-approval-loom/SKILL.md",
       "status": "scaffold"
@@ -989,23 +979,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-appserver-bridge",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-appserver-bridge/SKILL.md",
       "status": "scaffold"
@@ -1017,23 +1002,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-appserver-plan",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-appserver-plan/SKILL.md",
       "status": "scaffold"
@@ -1045,23 +1025,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-closeout",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-closeout/SKILL.md",
       "status": "scaffold"
@@ -1073,23 +1048,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-console",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-console/SKILL.md",
       "status": "scaffold"
@@ -1101,23 +1071,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-event-replay",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-event-replay/SKILL.md",
       "status": "scaffold"
@@ -1129,23 +1094,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-memory-loom",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-memory-loom/SKILL.md",
       "status": "scaffold"
@@ -1157,23 +1117,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-memory-prune",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-memory-prune/SKILL.md",
       "status": "scaffold"
@@ -1185,23 +1140,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-mutation-gate",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-mutation-gate/SKILL.md",
       "status": "scaffold"
@@ -1213,23 +1163,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-recall",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-recall/SKILL.md",
       "status": "scaffold"
@@ -1241,23 +1186,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-receipt",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-receipt/SKILL.md",
       "status": "scaffold"
@@ -1269,23 +1209,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-runtime-gate",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-runtime-gate/SKILL.md",
       "status": "scaffold"
@@ -1297,23 +1232,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-summon",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-summon/SKILL.md",
       "status": "scaffold"
@@ -1325,23 +1255,18 @@
         "pending_technique_dependencies",
         "pending_technique_entries",
         "tbd_technique_refs",
-        "missing_autonomy_check",
-        "missing_use_case",
-        "missing_do_not_use_case"
+        "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
-      "canonical_eval_blockers": [
-        "missing_use_snapshot",
-        "missing_do_not_use_snapshot"
-      ],
-      "canonical_eval_ready": false,
+      "canonical_eval_blockers": [],
+      "canonical_eval_ready": true,
       "governance_decision": null,
       "governance_evidence_case_ids": [],
       "governance_lane_ids": [],
       "lineage_state": "pending",
       "name": "titan-thread-turn-binding",
       "promotion_review_path": null,
-      "readiness_reconciliation": "project_overlay_needs_evidence",
+      "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
       "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold"
