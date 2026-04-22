@@ -5,7 +5,7 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 
 ## Summary
 
-- total skills: 30
+- total skills: 45
 - adjacency cases: 34
 - skills with required adjacency coverage: 15
 - required adjacency gaps: 0
@@ -42,6 +42,21 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-tdd-slice | canonical | core | true | 1 | 0 | aoa-change-protocol | change_workflows | true | - |
 | atm10-change-protocol | evaluated | project | false | 1 | 0 | atm10-source-of-truth-check | - | true | - |
 | atm10-source-of-truth-check | evaluated | project | false | 1 | 0 | atm10-change-protocol | - | true | - |
+| titan-approval-ledger | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-approval-loom | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-appserver-bridge | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-appserver-plan | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-closeout | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-console | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-event-replay | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-memory-loom | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-memory-prune | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-mutation-gate | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-recall | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-receipt | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-runtime-gate | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-summon | scaffold | project | false | 0 | 0 | - | - | false | - |
+| titan-thread-turn-binding | scaffold | project | false | 0 | 0 | - | - | false | - |
 
 ## Adjacency cases
 

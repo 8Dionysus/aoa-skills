@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "band_count": 6,
+  "band_count": 7,
   "bands": [
     {
       "id": "decision-doc-authority",
@@ -210,6 +210,82 @@
       "overlay_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share"
+      ]
+    },
+    {
+      "id": "titan-service-cohort",
+      "summary": "Titan service-cohort summon, receipt, gate, console, bridge, replay, and candidate-memory workflows.",
+      "cues": [
+        "titan",
+        "atlas",
+        "sentinel",
+        "mneme",
+        "forge",
+        "delta",
+        "service cohort",
+        "summon",
+        "titan receipt",
+        "runtime gate",
+        "mutation gate",
+        "judgment gate",
+        "operator console",
+        "app server bridge",
+        "approval loom",
+        "thread turn",
+        "memory loom",
+        "remembrance",
+        "candidate recall"
+      ],
+      "skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "manual_only_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "overlay_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
       ]
     }
   ]

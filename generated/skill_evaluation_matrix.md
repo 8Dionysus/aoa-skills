@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 30
+- total skills: 45
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -42,6 +42,21 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-tdd-slice | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/aoa-tdd-slice/examples/example.md` | - | `docs/reviews/canonical-candidates/aoa-tdd-slice.md` | true | - |
 | atm10-change-protocol | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-change-protocol/examples/example.md` | `docs/reviews/status-promotions/atm10-change-protocol.md` | - | true | - |
 | atm10-source-of-truth-check | evaluated | project | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/atm10-source-of-truth-check/examples/example.md` | `docs/reviews/status-promotions/atm10-source-of-truth-check.md` | - | true | - |
+| titan-approval-ledger | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-approval-ledger/examples/runtime.md` | - | - | true | - |
+| titan-approval-loom | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-approval-loom/examples/runtime.md` | - | - | true | - |
+| titan-appserver-bridge | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-appserver-bridge/examples/runtime.md` | - | - | true | - |
+| titan-appserver-plan | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-appserver-plan/examples/runtime.md` | - | - | true | - |
+| titan-closeout | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-closeout/examples/runtime.md` | - | - | true | - |
+| titan-console | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-console/examples/runtime.md` | - | - | true | - |
+| titan-event-replay | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-event-replay/examples/runtime.md` | - | - | true | - |
+| titan-memory-loom | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-memory-loom/examples/runtime.md` | - | - | true | - |
+| titan-memory-prune | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-memory-prune/examples/runtime.md` | - | - | true | - |
+| titan-mutation-gate | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-mutation-gate/examples/runtime.md` | - | - | true | - |
+| titan-recall | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-recall/examples/runtime.md` | - | - | true | - |
+| titan-receipt | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-receipt/examples/runtime.md` | - | - | true | - |
+| titan-runtime-gate | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-runtime-gate/examples/runtime.md` | - | - | true | - |
+| titan-summon | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-summon/examples/runtime.md` | - | - | true | - |
+| titan-thread-turn-binding | scaffold | project | explicit-only | 0 | 1 | 1 | 1 | 1 | `skills/titan-thread-turn-binding/examples/runtime.md` | - | - | true | - |
 
 ## Reading notes
 

@@ -2176,6 +2176,1007 @@
         ],
         "next_recommended_skills": []
       }
+    },
+    {
+      "name": "titan-approval-ledger",
+      "display_name": "Titan Approval Ledger",
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "receipt or ledger reference",
+        "approved Titan lane",
+        "gate kind",
+        "operator intent text",
+        "scope and validation expectation"
+      ],
+      "outputs": [
+        "approval record candidate",
+        "gate kind and target lane",
+        "source refs for the receipt or ledger",
+        "stop note when the approval is missing or ambiguous"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "receipt-or-ledger-reference",
+        "approved-titan-lane",
+        "gate-kind",
+        "operator-intent-text",
+        "scope-and-validation-expectation"
+      ],
+      "provides_artifact_tags": [
+        "approval-record-candidate",
+        "gate-kind-and-target-lane",
+        "source-refs-for-the-receipt-or-ledger",
+        "stop-note-when-the-approval-is-missing-or-ambiguous"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-approval-ledger",
+        "produced_artifacts": [
+          "approval-record-candidate",
+          "gate-kind-and-target-lane",
+          "source-refs-for-the-receipt-or-ledger",
+          "stop-note-when-the-approval-is-missing-or-ambiguous"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-approval-loom",
+      "display_name": "Titan Approval Loom",
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "bridge state path",
+        "thread id and turn id",
+        "approval request id",
+        "operator decision",
+        "receipt or event refs"
+      ],
+      "outputs": [
+        "updated approval queue entry",
+        "decision event candidate",
+        "gate status summary",
+        "blocked-action note when approval is insufficient"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "bridge-state-path",
+        "thread-id-and-turn-id",
+        "approval-request-id",
+        "operator-decision",
+        "receipt-or-event-refs"
+      ],
+      "provides_artifact_tags": [
+        "updated-approval-queue-entry",
+        "decision-event-candidate",
+        "gate-status-summary",
+        "blocked-action-note-when-approval-is-insufficient"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-approval-loom",
+        "produced_artifacts": [
+          "updated-approval-queue-entry",
+          "decision-event-candidate",
+          "gate-status-summary",
+          "blocked-action-note-when-approval-is-insufficient"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "display_name": "Titan Appserver Bridge",
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "workspace root",
+        "bridge state path",
+        "thread and turn identifiers",
+        "event payloads or launch plan request",
+        "approval and receipt refs"
+      ],
+      "outputs": [
+        "bridge plan or state summary",
+        "normalized event candidates",
+        "approval queue status",
+        "replay or metrics summary",
+        "explicit non-execution note"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "workspace-root",
+        "bridge-state-path",
+        "thread-and-turn-identifiers",
+        "event-payloads-or-launch-plan-request",
+        "approval-and-receipt-refs"
+      ],
+      "provides_artifact_tags": [
+        "bridge-plan-or-state-summary",
+        "normalized-event-candidates",
+        "approval-queue-status",
+        "replay-or-metrics-summary",
+        "explicit-non-execution-note"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-appserver-bridge",
+        "produced_artifacts": [
+          "bridge-plan-or-state-summary",
+          "normalized-event-candidates",
+          "approval-queue-status",
+          "replay-or-metrics-summary",
+          "explicit-non-execution-note"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-appserver-plan",
+      "display_name": "Titan Appserver Plan",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "workspace root",
+        "console or bridge state ref",
+        "desired endpoint or transport shape",
+        "receipt path",
+        "operator intent"
+      ],
+      "outputs": [
+        "JSONL launch-plan entries",
+        "required prechecks",
+        "approval gates",
+        "non-execution reminder",
+        "validation command suggestion"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "workspace-root",
+        "console-or-bridge-state-ref",
+        "desired-endpoint-or-transport-shape",
+        "receipt-path",
+        "operator-intent"
+      ],
+      "provides_artifact_tags": [
+        "jsonl-launch-plan-entries",
+        "required-prechecks",
+        "approval-gates",
+        "non-execution-reminder",
+        "validation-command-suggestion"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-appserver-plan",
+        "produced_artifacts": [
+          "jsonl-launch-plan-entries",
+          "required-prechecks",
+          "approval-gates",
+          "non-execution-reminder",
+          "validation-command-suggestion"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-closeout",
+      "display_name": "Titan Closeout",
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "receipt path",
+        "operator summary",
+        "gates used",
+        "validation evidence",
+        "memory candidates and owner-route hints"
+      ],
+      "outputs": [
+        "closed receipt or closeout packet",
+        "role and boundary summary",
+        "gate summary",
+        "verification status",
+        "next owner-repo action"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "receipt-path",
+        "operator-summary",
+        "gates-used",
+        "validation-evidence",
+        "memory-candidates-and-owner-route-hints"
+      ],
+      "provides_artifact_tags": [
+        "closed-receipt-or-closeout-packet",
+        "role-and-boundary-summary",
+        "gate-summary",
+        "verification-status",
+        "next-owner-repo-action"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-closeout",
+        "produced_artifacts": [
+          "closed-receipt-or-closeout-packet",
+          "role-and-boundary-summary",
+          "gate-summary",
+          "verification-status",
+          "next-owner-repo-action"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-console",
+      "display_name": "Titan Console",
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "workspace root",
+        "console state path",
+        "receipt path",
+        "operator intent",
+        "lane updates or approval refs"
+      ],
+      "outputs": [
+        "console state summary",
+        "lane status table",
+        "approval gate status",
+        "digest candidate",
+        "blocked-action notes"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "workspace-root",
+        "console-state-path",
+        "receipt-path",
+        "operator-intent",
+        "lane-updates-or-approval-refs"
+      ],
+      "provides_artifact_tags": [
+        "console-state-summary",
+        "lane-status-table",
+        "approval-gate-status",
+        "digest-candidate",
+        "blocked-action-notes"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-console",
+        "produced_artifacts": [
+          "console-state-summary",
+          "lane-status-table",
+          "approval-gate-status",
+          "digest-candidate",
+          "blocked-action-notes"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-event-replay",
+      "display_name": "Titan Event Replay",
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "event log path",
+        "optional current state path",
+        "thread or turn filter",
+        "receipt ref",
+        "expected replay target"
+      ],
+      "outputs": [
+        "replayed state summary",
+        "event order report",
+        "differences from current state",
+        "authority warning",
+        "next verification step"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "event-log-path",
+        "optional-current-state-path",
+        "thread-or-turn-filter",
+        "receipt-ref",
+        "expected-replay-target"
+      ],
+      "provides_artifact_tags": [
+        "replayed-state-summary",
+        "event-order-report",
+        "differences-from-current-state",
+        "authority-warning",
+        "next-verification-step"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-event-replay",
+        "produced_artifacts": [
+          "replayed-state-summary",
+          "event-order-report",
+          "differences-from-current-state",
+          "authority-warning",
+          "next-verification-step"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-memory-loom",
+      "display_name": "Titan Memory Loom",
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "receipt or event source",
+        "bearer id or Titan name",
+        "source refs",
+        "confidence note",
+        "redaction or retention hints"
+      ],
+      "outputs": [
+        "candidate remembrance record",
+        "recall authority warning",
+        "source and confidence fields",
+        "redaction or tombstone candidates",
+        "digest note"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "receipt-or-event-source",
+        "bearer-id-or-titan-name",
+        "source-refs",
+        "confidence-note",
+        "redaction-or-retention-hints"
+      ],
+      "provides_artifact_tags": [
+        "candidate-remembrance-record",
+        "recall-authority-warning",
+        "source-and-confidence-fields",
+        "redaction-or-tombstone-candidates",
+        "digest-note"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-memory-loom",
+        "produced_artifacts": [
+          "candidate-remembrance-record",
+          "recall-authority-warning",
+          "source-and-confidence-fields",
+          "redaction-or-tombstone-candidates",
+          "digest-note"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-memory-prune",
+      "display_name": "Titan Memory Prune",
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "memory record id",
+        "source refs",
+        "reason for prune request",
+        "retention rule",
+        "operator or owner confirmation state"
+      ],
+      "outputs": [
+        "redaction proposal",
+        "tombstone proposal",
+        "records to keep unchanged",
+        "reason and source refs",
+        "stop line for missing confirmation"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "memory-record-id",
+        "source-refs",
+        "reason-for-prune-request",
+        "retention-rule",
+        "operator-or-owner-confirmation-state"
+      ],
+      "provides_artifact_tags": [
+        "redaction-proposal",
+        "tombstone-proposal",
+        "records-to-keep-unchanged",
+        "reason-and-source-refs",
+        "stop-line-for-missing-confirmation"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-memory-prune",
+        "produced_artifacts": [
+          "redaction-proposal",
+          "tombstone-proposal",
+          "records-to-keep-unchanged",
+          "reason-and-source-refs",
+          "stop-line-for-missing-confirmation"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-mutation-gate",
+      "display_name": "Titan Mutation Gate",
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "intent text",
+        "target repos and paths",
+        "allowed actor",
+        "precheck evidence",
+        "validation command",
+        "rollback or stop condition"
+      ],
+      "outputs": [
+        "mutation gate packet",
+        "allowed or blocked decision",
+        "precheck summary",
+        "validation expectation",
+        "rollback or stop note"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "intent-text",
+        "target-repos-and-paths",
+        "allowed-actor",
+        "precheck-evidence",
+        "validation-command",
+        "rollback-or-stop-condition"
+      ],
+      "provides_artifact_tags": [
+        "mutation-gate-packet",
+        "allowed-or-blocked-decision",
+        "precheck-summary",
+        "validation-expectation",
+        "rollback-or-stop-note"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-mutation-gate",
+        "produced_artifacts": [
+          "mutation-gate-packet",
+          "allowed-or-blocked-decision",
+          "precheck-summary",
+          "validation-expectation",
+          "rollback-or-stop-note"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-recall",
+      "display_name": "Titan Recall",
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "query text",
+        "bearer id or Titan name",
+        "memory index path",
+        "time or session filter",
+        "verification target"
+      ],
+      "outputs": [
+        "matching remembrance records",
+        "record ids and source refs",
+        "authority warning",
+        "confidence notes",
+        "verification path"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "query-text",
+        "bearer-id-or-titan-name",
+        "memory-index-path",
+        "time-or-session-filter",
+        "verification-target"
+      ],
+      "provides_artifact_tags": [
+        "matching-remembrance-records",
+        "record-ids-and-source-refs",
+        "authority-warning",
+        "confidence-notes",
+        "verification-path"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-recall",
+        "produced_artifacts": [
+          "matching-remembrance-records",
+          "record-ids-and-source-refs",
+          "authority-warning",
+          "confidence-notes",
+          "verification-path"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-receipt",
+      "display_name": "Titan Receipt",
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "workspace root",
+        "operator id",
+        "receipt path",
+        "note or closeout summary",
+        "gate refs or validation command"
+      ],
+      "outputs": [
+        "created or updated receipt",
+        "validation result",
+        "receipt note",
+        "closeout state",
+        "authority warning"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "workspace-root",
+        "operator-id",
+        "receipt-path",
+        "note-or-closeout-summary",
+        "gate-refs-or-validation-command"
+      ],
+      "provides_artifact_tags": [
+        "created-or-updated-receipt",
+        "validation-result",
+        "receipt-note",
+        "closeout-state",
+        "authority-warning"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-receipt",
+        "produced_artifacts": [
+          "created-or-updated-receipt",
+          "validation-result",
+          "receipt-note",
+          "closeout-state",
+          "authority-warning"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-runtime-gate",
+      "display_name": "Titan Runtime Gate",
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "receipt path",
+        "requested Titan",
+        "gate kind",
+        "intent text",
+        "operator approval ref"
+      ],
+      "outputs": [
+        "updated gate state",
+        "allowed or blocked decision",
+        "receipt event",
+        "lane summary",
+        "next validation step"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "receipt-path",
+        "requested-titan",
+        "gate-kind",
+        "intent-text",
+        "operator-approval-ref"
+      ],
+      "provides_artifact_tags": [
+        "updated-gate-state",
+        "allowed-or-blocked-decision",
+        "receipt-event",
+        "lane-summary",
+        "next-validation-step"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-runtime-gate",
+        "produced_artifacts": [
+          "updated-gate-state",
+          "allowed-or-blocked-decision",
+          "receipt-event",
+          "lane-summary",
+          "next-validation-step"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-summon",
+      "display_name": "Titan Summon",
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "workspace root",
+        "summon prompt reference",
+        "operator intent",
+        "receipt output path",
+        "initial route question"
+      ],
+      "outputs": [
+        "summon receipt candidate",
+        "active and locked roster state",
+        "route, risk, and memory posture summary",
+        "gate status",
+        "next move"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "workspace-root",
+        "summon-prompt-reference",
+        "operator-intent",
+        "receipt-output-path",
+        "initial-route-question"
+      ],
+      "provides_artifact_tags": [
+        "summon-receipt-candidate",
+        "active-and-locked-roster-state",
+        "route-risk-and-memory-posture-summary",
+        "gate-status",
+        "next-move"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-summon",
+        "produced_artifacts": [
+          "summon-receipt-candidate",
+          "active-and-locked-roster-state",
+          "route-risk-and-memory-posture-summary",
+          "gate-status",
+          "next-move"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "display_name": "Titan Thread Turn Binding",
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "invocation_mode": "explicit-only",
+      "inputs": [
+        "thread id",
+        "turn id",
+        "event ids or payloads",
+        "receipt ref",
+        "bridge or console state path"
+      ],
+      "outputs": [
+        "thread-turn binding record",
+        "scoped event list",
+        "approval refs",
+        "replay key",
+        "continuity warning"
+      ],
+      "verification": [
+        "confirm the request and outputs stayed inside the declared Titan lane",
+        "confirm any mutation or judgment gate was explicit and recorded",
+        "confirm source refs, receipt refs, or ledger refs are preserved when available",
+        "confirm the result names stop lines and remaining owner validation needs"
+      ],
+      "contracts": [
+        "The skill is explicit-only and must not be invoked as hidden background behavior.",
+        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct and visible.",
+        "Owner-repo validation and human judgment remain stronger than the local skill output."
+      ],
+      "consumes_artifact_tags": [
+        "thread-id",
+        "turn-id",
+        "event-ids-or-payloads",
+        "receipt-ref",
+        "bridge-or-console-state-path"
+      ],
+      "provides_artifact_tags": [
+        "thread-turn-binding-record",
+        "scoped-event-list",
+        "approval-refs",
+        "replay-key",
+        "continuity-warning"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "titan-thread-turn-binding",
+        "produced_artifacts": [
+          "thread-turn-binding-record",
+          "scoped-event-list",
+          "approval-refs",
+          "replay-key",
+          "continuity-warning"
+        ],
+        "verification_notes": [
+          "confirm the request and outputs stayed inside the declared Titan lane",
+          "confirm any mutation or judgment gate was explicit and recorded",
+          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+        ],
+        "contract_notes": [
+          "The skill is explicit-only and must not be invoked as hidden background behavior.",
+          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+          "Forge mutation and Delta judgment gates must remain distinct and visible."
+        ],
+        "next_recommended_skills": []
+      }
     }
   ]
 }

@@ -644,6 +644,306 @@
       },
       "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
       "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-approval-ledger",
+      "display_name": "Titan Approval Ledger",
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-approval-loom",
+      "display_name": "Titan Approval Loom",
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "display_name": "Titan Appserver Bridge",
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-appserver-plan",
+      "display_name": "Titan Appserver Plan",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-closeout",
+      "display_name": "Titan Closeout",
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-console",
+      "display_name": "Titan Console",
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-event-replay",
+      "display_name": "Titan Event Replay",
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-memory-loom",
+      "display_name": "Titan Memory Loom",
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-memory-prune",
+      "display_name": "Titan Memory Prune",
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-mutation-gate",
+      "display_name": "Titan Mutation Gate",
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-recall",
+      "display_name": "Titan Recall",
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-receipt",
+      "display_name": "Titan Receipt",
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-runtime-gate",
+      "display_name": "Titan Runtime Gate",
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-summon",
+      "display_name": "Titan Summon",
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "none",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "display_name": "Titan Thread Turn Binding",
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "source_scope": "repo",
+      "trust_posture": "project-overlay",
+      "mutation_surface": "repo",
+      "invocation_mode": "explicit-only",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "scope_policy": {
+        "repo": "require-trusted-repo",
+        "user": "allow",
+        "admin": "allow",
+        "system": "allow"
+      },
+      "default_behavior_when_untrusted": "hide-on-discover block-on-disclose block-on-activate",
+      "notes": "Repo-scoped skills stay dark until the repository is explicitly trusted. The same skill may be installed at user/admin scope without repo trust gating."
     }
   ]
 }

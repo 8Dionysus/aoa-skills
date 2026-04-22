@@ -717,6 +717,246 @@
         "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
       ]
+    },
+    {
+      "name": "titan-approval-ledger",
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "record the explicit operator approval for a Forge mutation or Delta judgment gate on a Titan receipt."
+      ],
+      "negative_controls": [
+        "The Titan route mentions approval in passing, but no operator decision, receipt, or gate kind is present, so no approval ledger entry should be made."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-approval-loom",
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "resolve the pending Titan bridge approval queue item for this thread and turn while preserving Forge and Delta gates."
+      ],
+      "negative_controls": [
+        "There is no pending bridge approval request, only a general note about future app-server work."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "inspect the Titan JSON-RPC bridge state, normalize turn events, and keep approvals visible without starting hidden execution."
+      ],
+      "negative_controls": [
+        "The request is to write role doctrine for Atlas, not to operate bridge state or normalize events."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-appserver-plan",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "generate a JSONL Titan app-server launch plan without executing Codex or starting a server."
+      ],
+      "negative_controls": [
+        "The operator already asked to run the server directly, so planning-only posture is not enough without a separate execution gate."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-closeout",
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "close the Titan receipt with route, risk, provenance, gate, verification, and next-owner summary."
+      ],
+      "negative_controls": [
+        "The Titan session has just started and has no receipt events to close."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-console",
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "open a visible Titan operator console showing Atlas, Sentinel, Mneme, Forge, and Delta lane status."
+      ],
+      "negative_controls": [
+        "The request only asks for source-of-truth docs and does not need console state."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-event-replay",
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "replay the Titan bridge ledger and compare the reconstructed state against the current console digest."
+      ],
+      "negative_controls": [
+        "There is no event log or replay target, only a static memory policy question."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-memory-loom",
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "ingest a Titan receipt into candidate memory with source refs, confidence, and recall authority warnings."
+      ],
+      "negative_controls": [
+        "The user asks to edit canonical role docs, not to create candidate memory records."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-memory-prune",
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "propose a tombstone or redaction for a stale Titan remembrance record without deleting it silently."
+      ],
+      "negative_controls": [
+        "The memory record is current and source-backed, so no redaction or pruning review is needed."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-mutation-gate",
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "before Forge edits files, name intent, target paths, prechecks, validation, and rollback or stop posture."
+      ],
+      "negative_controls": [
+        "The request is read-only analysis and does not ask Forge to mutate files."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-recall",
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "retrieve Titan candidate memory with record id, source refs, confidence, authority note, and verification path."
+      ],
+      "negative_controls": [
+        "The question asks for source-owned docs, not remembered candidate records."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-receipt",
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "create, validate, note, or close a Titan session receipt as a witness rather than final truth."
+      ],
+      "negative_controls": [
+        "The task has no Titan session or receipt surface to manage."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-runtime-gate",
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "open a Forge mutation or Delta judgment lane on an existing Titan receipt with matching gate kind."
+      ],
+      "negative_controls": [
+        "Atlas, Sentinel, and Mneme are active read-only lanes and do not need runtime gates."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-summon",
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "begin the explicit Titan service cohort with Atlas, Sentinel, and Mneme active while Forge and Delta stay locked."
+      ],
+      "negative_controls": [
+        "The user mentions Titans metaphorically but does not explicitly request a Titan service-cohort session."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "collision_family": "titan-service-cohort",
+      "competing_skills": [],
+      "should_trigger": [],
+      "manual_invocation_required": [
+        "bind Titan bridge events and approvals to a specific thread id and turn id for replayable continuity."
+      ],
+      "negative_controls": [
+        "The bridge event has no thread id or turn id, so binding would invent continuity."
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
     }
   ]
 }

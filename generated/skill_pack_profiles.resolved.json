@@ -248,6 +248,126 @@
           "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-approval-ledger",
+          "source_path": ".agents/skills/titan-approval-ledger/SKILL.md",
+          "target_path": ".agents/skills/titan-approval-ledger/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-approval-ledger/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-approval-loom",
+          "source_path": ".agents/skills/titan-approval-loom/SKILL.md",
+          "target_path": ".agents/skills/titan-approval-loom/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-approval-loom/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-appserver-bridge",
+          "source_path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+          "target_path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-appserver-bridge/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-appserver-plan",
+          "source_path": ".agents/skills/titan-appserver-plan/SKILL.md",
+          "target_path": ".agents/skills/titan-appserver-plan/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-appserver-plan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-closeout",
+          "source_path": ".agents/skills/titan-closeout/SKILL.md",
+          "target_path": ".agents/skills/titan-closeout/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-closeout/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-console",
+          "source_path": ".agents/skills/titan-console/SKILL.md",
+          "target_path": ".agents/skills/titan-console/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-console/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-event-replay",
+          "source_path": ".agents/skills/titan-event-replay/SKILL.md",
+          "target_path": ".agents/skills/titan-event-replay/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-event-replay/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-memory-loom",
+          "source_path": ".agents/skills/titan-memory-loom/SKILL.md",
+          "target_path": ".agents/skills/titan-memory-loom/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-memory-loom/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-memory-prune",
+          "source_path": ".agents/skills/titan-memory-prune/SKILL.md",
+          "target_path": ".agents/skills/titan-memory-prune/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-memory-prune/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-mutation-gate",
+          "source_path": ".agents/skills/titan-mutation-gate/SKILL.md",
+          "target_path": ".agents/skills/titan-mutation-gate/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-mutation-gate/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-recall",
+          "source_path": ".agents/skills/titan-recall/SKILL.md",
+          "target_path": ".agents/skills/titan-recall/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-recall/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-receipt",
+          "source_path": ".agents/skills/titan-receipt/SKILL.md",
+          "target_path": ".agents/skills/titan-receipt/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-receipt/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-runtime-gate",
+          "source_path": ".agents/skills/titan-runtime-gate/SKILL.md",
+          "target_path": ".agents/skills/titan-runtime-gate/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-runtime-gate/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-summon",
+          "source_path": ".agents/skills/titan-summon/SKILL.md",
+          "target_path": ".agents/skills/titan-summon/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-summon/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-thread-turn-binding",
+          "source_path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+          "target_path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-thread-turn-binding/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
         }
       ]
     },
@@ -1176,6 +1296,134 @@
           "openai_config_path": "$HOME/.agents/skills/aoa-tdd-slice/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "trust_posture": "portable-core"
+        }
+      ]
+    },
+    "repo-titan-overlay": {
+      "description": "Install only the Titan project overlay scaffold skills into a repository root.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "titan-approval-ledger",
+          "source_path": ".agents/skills/titan-approval-ledger/SKILL.md",
+          "target_path": ".agents/skills/titan-approval-ledger/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-approval-ledger/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-approval-loom",
+          "source_path": ".agents/skills/titan-approval-loom/SKILL.md",
+          "target_path": ".agents/skills/titan-approval-loom/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-approval-loom/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-appserver-bridge",
+          "source_path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+          "target_path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-appserver-bridge/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-appserver-plan",
+          "source_path": ".agents/skills/titan-appserver-plan/SKILL.md",
+          "target_path": ".agents/skills/titan-appserver-plan/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-appserver-plan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-closeout",
+          "source_path": ".agents/skills/titan-closeout/SKILL.md",
+          "target_path": ".agents/skills/titan-closeout/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-closeout/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-console",
+          "source_path": ".agents/skills/titan-console/SKILL.md",
+          "target_path": ".agents/skills/titan-console/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-console/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-event-replay",
+          "source_path": ".agents/skills/titan-event-replay/SKILL.md",
+          "target_path": ".agents/skills/titan-event-replay/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-event-replay/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-memory-loom",
+          "source_path": ".agents/skills/titan-memory-loom/SKILL.md",
+          "target_path": ".agents/skills/titan-memory-loom/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-memory-loom/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-memory-prune",
+          "source_path": ".agents/skills/titan-memory-prune/SKILL.md",
+          "target_path": ".agents/skills/titan-memory-prune/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-memory-prune/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-mutation-gate",
+          "source_path": ".agents/skills/titan-mutation-gate/SKILL.md",
+          "target_path": ".agents/skills/titan-mutation-gate/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-mutation-gate/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-recall",
+          "source_path": ".agents/skills/titan-recall/SKILL.md",
+          "target_path": ".agents/skills/titan-recall/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-recall/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-receipt",
+          "source_path": ".agents/skills/titan-receipt/SKILL.md",
+          "target_path": ".agents/skills/titan-receipt/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-receipt/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-runtime-gate",
+          "source_path": ".agents/skills/titan-runtime-gate/SKILL.md",
+          "target_path": ".agents/skills/titan-runtime-gate/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-runtime-gate/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-summon",
+          "source_path": ".agents/skills/titan-summon/SKILL.md",
+          "target_path": ".agents/skills/titan-summon/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-summon/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
+        },
+        {
+          "name": "titan-thread-turn-binding",
+          "source_path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+          "target_path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+          "openai_config_path": ".agents/skills/titan-thread-turn-binding/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "project-overlay"
         }
       ]
     }

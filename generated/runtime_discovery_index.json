@@ -3107,6 +3107,1406 @@
           "skill_name": "atm10-source-of-truth-check"
         }
       }
+    },
+    {
+      "name": "titan-approval-ledger",
+      "display_name": "Titan Approval Ledger",
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Record Titan approval gates",
+      "path": ".agents/skills/titan-approval-ledger/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-approval-ledger",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-approval-ledger",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-approval-ledger"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "approval",
+        "background",
+        "boundary",
+        "bounded",
+        "canonization",
+        "confirmation",
+        "contracts",
+        "delta",
+        "explicit",
+        "for",
+        "forge",
+        "gates",
+        "hidden",
+        "inputs",
+        "intent",
+        "judgment",
+        "ledger",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "operator",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "record",
+        "records",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "step",
+        "technique",
+        "titan",
+        "traceability",
+        "treating",
+        "trigger",
+        "truth",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-approval-ledger"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-approval-ledger"
+        }
+      }
+    },
+    {
+      "name": "titan-approval-loom",
+      "display_name": "Titan Approval Loom",
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan approval queue",
+      "path": ".agents/skills/titan-approval-loom/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-approval-loom",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-approval-loom",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-approval-loom"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "app-server",
+        "approval",
+        "background",
+        "boundary",
+        "bounded",
+        "bridge",
+        "canonization",
+        "confirmation",
+        "contracts",
+        "delta",
+        "explicit",
+        "for",
+        "forge",
+        "gates",
+        "hidden",
+        "inputs",
+        "intent",
+        "loom",
+        "maintain",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "operator",
+        "outputs",
+        "owner",
+        "points",
+        "preserving",
+        "procedure",
+        "project",
+        "proof",
+        "queue",
+        "receipts",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "step",
+        "technique",
+        "the",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "visible",
+        "while",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-approval-loom"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-approval-loom"
+        }
+      }
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "display_name": "Titan Appserver Bridge",
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Operate Titan bridge visibly",
+      "path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-appserver-bridge",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-appserver-bridge",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-appserver-bridge"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "app-server",
+        "approval",
+        "appserver",
+        "background",
+        "boundary",
+        "bounded",
+        "bridge",
+        "canonization",
+        "confirmation",
+        "contracts",
+        "event",
+        "execution",
+        "explicit",
+        "for",
+        "hidden",
+        "inputs",
+        "inspectable",
+        "intent",
+        "memory",
+        "metrics",
+        "mutation",
+        "needs",
+        "not",
+        "operate",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "replay",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "state",
+        "step",
+        "technique",
+        "the",
+        "thread",
+        "titan",
+        "traceability",
+        "trigger",
+        "turn",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-bridge"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-bridge"
+        }
+      }
+    },
+    {
+      "name": "titan-appserver-plan",
+      "display_name": "Titan Appserver Plan",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Plan Titan bridge launch",
+      "path": ".agents/skills/titan-appserver-plan/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-appserver-plan",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-appserver-plan",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-appserver-plan"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "app-server",
+        "appserver",
+        "background",
+        "boundary",
+        "bounded",
+        "canonization",
+        "codex",
+        "confirmation",
+        "contracts",
+        "equivalent",
+        "executing",
+        "explicit",
+        "for",
+        "generate",
+        "hidden",
+        "inputs",
+        "inspectable",
+        "intent",
+        "jsonl",
+        "launch",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "output",
+        "outputs",
+        "owner",
+        "plan",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "step",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-plan"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-plan"
+        }
+      }
+    },
+    {
+      "name": "titan-closeout",
+      "display_name": "Titan Closeout",
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Close Titan sessions honestly",
+      "path": ".agents/skills/titan-closeout/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-closeout",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-closeout",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-closeout"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "background",
+        "boundary",
+        "bounded",
+        "canonization",
+        "close",
+        "closeout",
+        "confirmation",
+        "contracts",
+        "explicit",
+        "for",
+        "gate",
+        "hidden",
+        "inputs",
+        "intent",
+        "memory",
+        "mutation",
+        "needs",
+        "next-owner",
+        "not",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "provenance",
+        "risk",
+        "risks",
+        "role",
+        "route",
+        "service-cohort",
+        "session",
+        "silent",
+        "sovereignty",
+        "step",
+        "summary",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-closeout"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-closeout"
+        }
+      }
+    },
+    {
+      "name": "titan-console",
+      "display_name": "Titan Console",
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan console state",
+      "path": ".agents/skills/titan-console/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-console",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-console",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-console"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "approvals",
+        "background",
+        "boundary",
+        "bounded",
+        "canonization",
+        "confirmation",
+        "console",
+        "contracts",
+        "delta",
+        "exist",
+        "explicit",
+        "for",
+        "forge",
+        "hidden",
+        "inputs",
+        "intent",
+        "keeping",
+        "locked",
+        "maintain",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "open",
+        "operator-console",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "state",
+        "step",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "until",
+        "use",
+        "verification",
+        "visible",
+        "while",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-console"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-console"
+        }
+      }
+    },
+    {
+      "name": "titan-event-replay",
+      "display_name": "Titan Event Replay",
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Replay Titan events visibly",
+      "path": ".agents/skills/titan-event-replay/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-event-replay",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-event-replay",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-event-replay"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "authority",
+        "background",
+        "boundary",
+        "bounded",
+        "bridge",
+        "canonization",
+        "confirmation",
+        "console",
+        "contracts",
+        "event",
+        "events",
+        "explicit",
+        "for",
+        "granting",
+        "hidden",
+        "inputs",
+        "inspectable",
+        "intent",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "replay",
+        "result",
+        "risks",
+        "route",
+        "runtime",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "state",
+        "step",
+        "technique",
+        "the",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-event-replay"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-event-replay"
+        }
+      }
+    },
+    {
+      "name": "titan-memory-loom",
+      "display_name": "Titan Memory Loom",
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Ingest Titan memory candidates",
+      "path": ".agents/skills/titan-memory-loom/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-memory-loom",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-memory-loom",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-memory-loom"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "authority",
+        "background",
+        "boundary",
+        "bounded",
+        "candidate",
+        "canonization",
+        "confidence",
+        "confirmation",
+        "contracts",
+        "explicit",
+        "for",
+        "hidden",
+        "initialize",
+        "inputs",
+        "intent",
+        "loom",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "records",
+        "refs",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "source",
+        "sovereignty",
+        "step",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "update",
+        "use",
+        "verification",
+        "warnings",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-memory-loom"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-memory-loom"
+        }
+      }
+    },
+    {
+      "name": "titan-memory-prune",
+      "display_name": "Titan Memory Prune",
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Prune Titan memory safely",
+      "path": ".agents/skills/titan-memory-prune/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-memory-prune",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-memory-prune",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-memory-prune"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "background",
+        "boundary",
+        "bounded",
+        "candidates",
+        "canon",
+        "canonization",
+        "confirmation",
+        "contracts",
+        "deletion",
+        "explicit",
+        "for",
+        "hidden",
+        "inputs",
+        "intent",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "propose",
+        "prune",
+        "pruning",
+        "redaction",
+        "rewrite",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "step",
+        "technique",
+        "titan",
+        "tombstone",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-memory-prune"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-memory-prune"
+        }
+      }
+    },
+    {
+      "name": "titan-mutation-gate",
+      "display_name": "Titan Mutation Gate",
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Gate Forge mutations",
+      "path": ".agents/skills/titan-mutation-gate/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-mutation-gate",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-mutation-gate",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-mutation-gate"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "background",
+        "boundary",
+        "bounded",
+        "canonization",
+        "confirmation",
+        "contracts",
+        "explicit",
+        "for",
+        "forge",
+        "gate",
+        "hidden",
+        "inputs",
+        "intent",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "outputs",
+        "owner",
+        "paths",
+        "points",
+        "posture",
+        "prechecks",
+        "procedure",
+        "project",
+        "proof",
+        "risks",
+        "rollback",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "step",
+        "stop",
+        "target",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "validation",
+        "verification",
+        "without",
+        "work",
+        "workspace-write"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-mutation-gate"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-mutation-gate"
+        }
+      }
+    },
+    {
+      "name": "titan-recall",
+      "display_name": "Titan Recall",
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Recall Titan candidates",
+      "path": ".agents/skills/titan-recall/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-recall",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-recall",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-recall"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "authority",
+        "background",
+        "boundary",
+        "bounded",
+        "candidate",
+        "canonization",
+        "confidence",
+        "confirmation",
+        "contracts",
+        "explicit",
+        "for",
+        "hidden",
+        "inputs",
+        "intent",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "note",
+        "outputs",
+        "owner",
+        "path",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "recall",
+        "record",
+        "records",
+        "retrieve",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "source",
+        "sovereignty",
+        "step",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-recall"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-recall"
+        }
+      }
+    },
+    {
+      "name": "titan-receipt",
+      "display_name": "Titan Receipt",
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Manage Titan receipts",
+      "path": ".agents/skills/titan-receipt/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-receipt",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-receipt",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-receipt"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "background",
+        "boundary",
+        "bounded",
+        "canonization",
+        "close",
+        "confirmation",
+        "contracts",
+        "create",
+        "explicit",
+        "final",
+        "for",
+        "hidden",
+        "inputs",
+        "intent",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "note",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "rather",
+        "receipt",
+        "receipts",
+        "risks",
+        "route",
+        "service-cohort",
+        "session",
+        "silent",
+        "sovereignty",
+        "step",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "truth",
+        "unreviewed",
+        "use",
+        "validate",
+        "verification",
+        "without",
+        "witnesses"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-receipt"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-receipt"
+        }
+      }
+    },
+    {
+      "name": "titan-runtime-gate",
+      "display_name": "Titan Runtime Gate",
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Open Titan runtime gates",
+      "path": ".agents/skills/titan-runtime-gate/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-runtime-gate",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-runtime-gate",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-runtime-gate"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "activate",
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "background",
+        "boundary",
+        "bounded",
+        "canonization",
+        "confirmation",
+        "contracts",
+        "delta",
+        "explicit",
+        "for",
+        "forge",
+        "gate",
+        "gates",
+        "hidden",
+        "inputs",
+        "intent",
+        "judgment",
+        "lanes",
+        "matching",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "receipt",
+        "risks",
+        "route",
+        "runtime",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "step",
+        "technique",
+        "through",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-runtime-gate"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-runtime-gate"
+        }
+      }
+    },
+    {
+      "name": "titan-summon",
+      "display_name": "Titan Summon",
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Summon Titan service cohort",
+      "path": ".agents/skills/titan-summon/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "none",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-summon",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-summon",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-summon"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "active",
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "atlas",
+        "background",
+        "begin",
+        "boundary",
+        "bounded",
+        "canonization",
+        "confirmation",
+        "contracts",
+        "delta",
+        "explicit",
+        "for",
+        "forge",
+        "hidden",
+        "inputs",
+        "intent",
+        "locked",
+        "memory",
+        "mneme",
+        "mutation",
+        "needs",
+        "not",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "risks",
+        "route",
+        "sentinel",
+        "service-cohort",
+        "session",
+        "silent",
+        "sovereignty",
+        "step",
+        "summon",
+        "technique",
+        "titan",
+        "traceability",
+        "trigger",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-summon"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-summon"
+        }
+      }
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "display_name": "Titan Thread Turn Binding",
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Bind Titan thread turns",
+      "path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+      "trust_posture": "project-overlay",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-thread-turn-binding",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-thread-turn-binding",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-thread-turn-binding"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agents",
+        "and",
+        "anti-patterns",
+        "approvals",
+        "background",
+        "bind",
+        "binding",
+        "boundary",
+        "bounded",
+        "bridge",
+        "canonization",
+        "confirmation",
+        "continuity",
+        "contracts",
+        "events",
+        "explicit",
+        "for",
+        "hidden",
+        "ids",
+        "inputs",
+        "inspectable",
+        "intent",
+        "memory",
+        "mutation",
+        "needs",
+        "not",
+        "outputs",
+        "owner",
+        "points",
+        "procedure",
+        "project",
+        "proof",
+        "replay",
+        "risks",
+        "route",
+        "service-cohort",
+        "silent",
+        "sovereignty",
+        "state",
+        "step",
+        "technique",
+        "thread",
+        "titan",
+        "traceability",
+        "trigger",
+        "turn",
+        "unreviewed",
+        "use",
+        "verification",
+        "without"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "titan-thread-turn-binding"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-thread-turn-binding"
+        }
+      }
     }
   ]
 }

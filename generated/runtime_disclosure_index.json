@@ -3220,6 +3220,1461 @@
         }
       },
       "disclose_card_markdown": "### atm10-source-of-truth-check\n- Summary: ATM10 source-of-truth overlay\n- Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    },
+    {
+      "name": "titan-approval-ledger",
+      "display_name": "Titan Approval Ledger",
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Record Titan approval gates",
+      "path": ".agents/skills/titan-approval-ledger/SKILL.md",
+      "skill_dir": ".agents/skills/titan-approval-ledger",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-approval-ledger/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to record an explicit Titan approval decision for a bounded Forge mutation or Delta judgment gate.",
+        "Trigger boundary": "an operator has approved a named Forge or Delta gate; the approval must be attached to a receipt, console ledger, or bridge ledger",
+        "Inputs": "receipt or ledger reference; approved Titan lane",
+        "Outputs": "approval record candidate; gate kind and target lane",
+        "Procedure": "confirm the approval is explicit; bind the approval to the receipt or bridge ledger",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Approval Ledger",
+        "short_description": "Record Titan approval gates",
+        "default_prompt": "Use $titan-approval-ledger to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-approval-ledger",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-approval-ledger",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-approval-ledger",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-approval-ledger to record the explicit operator approval for a Forge mutation or Delta judgment gate on a Titan receipt."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "record the explicit operator approval for a Forge mutation or Delta judgment gate on a Titan receipt."
+        ],
+        "negative": [
+          "The Titan route mentions approval in passing, but no operator decision, receipt, or gate kind is present, so no approval ledger entry should be made."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-approval-ledger",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-approval-ledger",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-approval-ledger"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-approval-ledger\n- Summary: Record Titan approval gates\n- Use when: Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-approval-loom",
+      "display_name": "Titan Approval Loom",
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan approval queue",
+      "path": ".agents/skills/titan-approval-loom/SKILL.md",
+      "skill_dir": ".agents/skills/titan-approval-loom",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-approval-loom/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to inspect, add, or resolve approval-queue items for the Titan app-server bridge.",
+        "Trigger boundary": "a bridge turn contains pending approvals; operator intent must be matched to a queued action",
+        "Inputs": "bridge state path; thread id and turn id",
+        "Outputs": "updated approval queue entry; decision event candidate",
+        "Procedure": "load the bridge state or event source; match the approval request to thread and turn",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Approval Loom",
+        "short_description": "Maintain Titan approval queue",
+        "default_prompt": "Use $titan-approval-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-approval-loom",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-approval-loom",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-approval-loom",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-approval-loom to resolve the pending Titan bridge approval queue item for this thread and turn while preserving Forge and Delta gates."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "resolve the pending Titan bridge approval queue item for this thread and turn while preserving Forge and Delta gates."
+        ],
+        "negative": [
+          "There is no pending bridge approval request, only a general note about future app-server work."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-approval-loom",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-approval-loom",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-approval-loom"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-approval-loom\n- Summary: Maintain Titan approval queue\n- Use when: Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "display_name": "Titan Appserver Bridge",
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Operate Titan bridge visibly",
+      "path": ".agents/skills/titan-appserver-bridge/SKILL.md",
+      "skill_dir": ".agents/skills/titan-appserver-bridge",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-appserver-bridge/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to prepare or inspect the Titan app-server bridge while keeping Codex execution visible and gated.",
+        "Trigger boundary": "a Titan console needs a JSON-RPC shaped bridge; thread and turn events need normalization",
+        "Inputs": "workspace root; bridge state path",
+        "Outputs": "bridge plan or state summary; normalized event candidates",
+        "Procedure": "confirm bridge purpose and non-execution posture; bind inputs to thread and turn",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Appserver Bridge",
+        "short_description": "Operate Titan bridge visibly",
+        "default_prompt": "Use $titan-appserver-bridge to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-appserver-bridge",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-appserver-bridge",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-appserver-bridge",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-appserver-bridge to inspect the Titan JSON-RPC bridge state, normalize turn events, and keep approvals visible without starting hidden execution."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "inspect the Titan JSON-RPC bridge state, normalize turn events, and keep approvals visible without starting hidden execution."
+        ],
+        "negative": [
+          "The request is to write role doctrine for Atlas, not to operate bridge state or normalize events."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-appserver-bridge",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-appserver-bridge",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-appserver-bridge"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-appserver-bridge\n- Summary: Operate Titan bridge visibly\n- Use when: Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-appserver-plan",
+      "display_name": "Titan Appserver Plan",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Plan Titan bridge launch",
+      "path": ".agents/skills/titan-appserver-plan/SKILL.md",
+      "skill_dir": ".agents/skills/titan-appserver-plan",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-appserver-plan/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to produce a launch plan for a Titan app-server route while leaving execution to a later explicit operator action.",
+        "Trigger boundary": "the operator wants a visible app-server launch plan; a console needs bridge startup commands described but not run",
+        "Inputs": "workspace root; console or bridge state ref",
+        "Outputs": "JSONL launch-plan entries; required prechecks",
+        "Procedure": "collect the requested bridge launch shape; write or return only plan entries",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Appserver Plan",
+        "short_description": "Plan Titan bridge launch",
+        "default_prompt": "Use $titan-appserver-plan to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-appserver-plan",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-appserver-plan",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-appserver-plan",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-appserver-plan to generate a JSONL Titan app-server launch plan without executing Codex or starting a server."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "generate a JSONL Titan app-server launch plan without executing Codex or starting a server."
+        ],
+        "negative": [
+          "The operator already asked to run the server directly, so planning-only posture is not enough without a separate execution gate."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-appserver-plan",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-appserver-plan",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-appserver-plan"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-appserver-plan\n- Summary: Plan Titan bridge launch\n- Use when: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-closeout",
+      "display_name": "Titan Closeout",
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Close Titan sessions honestly",
+      "path": ".agents/skills/titan-closeout/SKILL.md",
+      "skill_dir": ".agents/skills/titan-closeout",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-closeout/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill at the end of a Titan service-cohort session to close the local receipt without claiming final owner truth.",
+        "Trigger boundary": "a Titan receipt is ready to close; Atlas, Sentinel, and Mneme posture needs one summary",
+        "Inputs": "receipt path; operator summary",
+        "Outputs": "closed receipt or closeout packet; role and boundary summary",
+        "Procedure": "validate the receipt exists; summarize Atlas route, Sentinel risk, and Mneme provenance",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Closeout",
+        "short_description": "Close Titan sessions honestly",
+        "default_prompt": "Use $titan-closeout to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-closeout",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-closeout",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-closeout",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-closeout to close the Titan receipt with route, risk, provenance, gate, verification, and next-owner summary."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "close the Titan receipt with route, risk, provenance, gate, verification, and next-owner summary."
+        ],
+        "negative": [
+          "The Titan session has just started and has no receipt events to close."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-closeout",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-closeout",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-closeout"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-closeout\n- Summary: Close Titan sessions honestly\n- Use when: Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    },
+    {
+      "name": "titan-console",
+      "display_name": "Titan Console",
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan console state",
+      "path": ".agents/skills/titan-console/SKILL.md",
+      "skill_dir": ".agents/skills/titan-console",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-console/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to create, inspect, or update an operator-visible Titan console state.",
+        "Trigger boundary": "the operator wants a visible Titan lane dashboard; console state must show active, locked, or gated lanes",
+        "Inputs": "workspace root; console state path",
+        "Outputs": "console state summary; lane status table",
+        "Procedure": "load or initialize console state; show Atlas, Sentinel, Mneme, Forge, and Delta lanes",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Console",
+        "short_description": "Maintain Titan console state",
+        "default_prompt": "Use $titan-console to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-console",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-console",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-console",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-console to open a visible Titan operator console showing Atlas, Sentinel, Mneme, Forge, and Delta lane status."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "open a visible Titan operator console showing Atlas, Sentinel, Mneme, Forge, and Delta lane status."
+        ],
+        "negative": [
+          "The request only asks for source-of-truth docs and does not need console state."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-console",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-console",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-console"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-console\n- Summary: Maintain Titan console state\n- Use when: Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-event-replay",
+      "display_name": "Titan Event Replay",
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Replay Titan events visibly",
+      "path": ".agents/skills/titan-event-replay/SKILL.md",
+      "skill_dir": ".agents/skills/titan-event-replay",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-event-replay/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to replay Titan event logs and compare the resulting state to current bridge or console state.",
+        "Trigger boundary": "bridge state must be reconstructed from events; a digest or approval queue needs replay evidence",
+        "Inputs": "event log path; optional current state path",
+        "Outputs": "replayed state summary; event order report",
+        "Procedure": "load events in ledger order; filter by thread or turn when requested",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Event Replay",
+        "short_description": "Replay Titan events visibly",
+        "default_prompt": "Use $titan-event-replay to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-event-replay",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-event-replay",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-event-replay",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-event-replay to replay the Titan bridge ledger and compare the reconstructed state against the current console digest."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "replay the Titan bridge ledger and compare the reconstructed state against the current console digest."
+        ],
+        "negative": [
+          "There is no event log or replay target, only a static memory policy question."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-event-replay",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-event-replay",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-event-replay"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-event-replay\n- Summary: Replay Titan events visibly\n- Use when: Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    },
+    {
+      "name": "titan-memory-loom",
+      "display_name": "Titan Memory Loom",
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Ingest Titan memory candidates",
+      "path": ".agents/skills/titan-memory-loom/SKILL.md",
+      "skill_dir": ".agents/skills/titan-memory-loom",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-memory-loom/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to ingest Titan receipts or events into candidate-grade remembrance records.",
+        "Trigger boundary": "a Titan receipt or event should become recallable later; cross-session digest needs candidate memory entries",
+        "Inputs": "receipt or event source; bearer id or Titan name",
+        "Outputs": "candidate remembrance record; recall authority warning",
+        "Procedure": "identify the source receipt or event; extract candidate memory facts",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Memory Loom",
+        "short_description": "Ingest Titan memory candidates",
+        "default_prompt": "Use $titan-memory-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-memory-loom",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-memory-loom",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-memory-loom",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-memory-loom to ingest a Titan receipt into candidate memory with source refs, confidence, and recall authority warnings."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "ingest a Titan receipt into candidate memory with source refs, confidence, and recall authority warnings."
+        ],
+        "negative": [
+          "The user asks to edit canonical role docs, not to create candidate memory records."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-memory-loom",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-memory-loom",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-memory-loom"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-memory-loom\n- Summary: Ingest Titan memory candidates\n- Use when: Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-memory-prune",
+      "display_name": "Titan Memory Prune",
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Prune Titan memory safely",
+      "path": ".agents/skills/titan-memory-prune/SKILL.md",
+      "skill_dir": ".agents/skills/titan-memory-prune",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-memory-prune/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to review Titan memory records for retention, masking, tombstone, or pruning proposals.",
+        "Trigger boundary": "a Titan memory record may be stale, sensitive, or wrong; a recall result needs redaction handling",
+        "Inputs": "memory record id; source refs",
+        "Outputs": "redaction proposal; tombstone proposal",
+        "Procedure": "inspect the record and source refs; classify the reason for pruning",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Memory Prune",
+        "short_description": "Prune Titan memory safely",
+        "default_prompt": "Use $titan-memory-prune to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-memory-prune",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-memory-prune",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-memory-prune",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-memory-prune to propose a tombstone or redaction for a stale Titan remembrance record without deleting it silently."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "propose a tombstone or redaction for a stale Titan remembrance record without deleting it silently."
+        ],
+        "negative": [
+          "The memory record is current and source-backed, so no redaction or pruning review is needed."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-memory-prune",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-memory-prune",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-memory-prune"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-memory-prune\n- Summary: Prune Titan memory safely\n- Use when: Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-mutation-gate",
+      "display_name": "Titan Mutation Gate",
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Gate Forge mutations",
+      "path": ".agents/skills/titan-mutation-gate/SKILL.md",
+      "skill_dir": ".agents/skills/titan-mutation-gate",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-mutation-gate/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill before Forge performs any workspace-write or code mutation work.",
+        "Trigger boundary": "Forge is being asked to edit files; the mutation target and validation path need to be explicit",
+        "Inputs": "intent text; target repos and paths",
+        "Outputs": "mutation gate packet; allowed or blocked decision",
+        "Procedure": "verify explicit mutation intent; verify target repo and paths",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Mutation Gate",
+        "short_description": "Gate Forge mutations",
+        "default_prompt": "Use $titan-mutation-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-mutation-gate",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-mutation-gate",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-mutation-gate",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-mutation-gate before Forge edits files, naming intent, target paths, prechecks, validation, and rollback or stop posture."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "before Forge edits files, name intent, target paths, prechecks, validation, and rollback or stop posture."
+        ],
+        "negative": [
+          "The request is read-only analysis and does not ask Forge to mutate files."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-mutation-gate",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-mutation-gate",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-mutation-gate"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-mutation-gate\n- Summary: Gate Forge mutations\n- Use when: Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-recall",
+      "display_name": "Titan Recall",
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Recall Titan candidates",
+      "path": ".agents/skills/titan-recall/SKILL.md",
+      "skill_dir": ".agents/skills/titan-recall",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-recall/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to retrieve and present Titan remembrance records without treating recall as source truth.",
+        "Trigger boundary": "a user asks what a Titan remembers; a session needs bearer memory candidates",
+        "Inputs": "query text; bearer id or Titan name",
+        "Outputs": "matching remembrance records; record ids and source refs",
+        "Procedure": "search the candidate memory index; filter by bearer or session when provided",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Recall",
+        "short_description": "Recall Titan candidates",
+        "default_prompt": "Use $titan-recall to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-recall",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-recall",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-recall",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-recall to retrieve Titan candidate memory with record id, source refs, confidence, authority note, and verification path."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "retrieve Titan candidate memory with record id, source refs, confidence, authority note, and verification path."
+        ],
+        "negative": [
+          "The question asks for source-owned docs, not remembered candidate records."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-recall",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-recall",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-recall"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-recall\n- Summary: Recall Titan candidates\n- Use when: Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    },
+    {
+      "name": "titan-receipt",
+      "display_name": "Titan Receipt",
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Manage Titan receipts",
+      "path": ".agents/skills/titan-receipt/SKILL.md",
+      "skill_dir": ".agents/skills/titan-receipt",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-receipt/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to manage local Titan session receipts for summon, gate, note, validation, and closeout steps.",
+        "Trigger boundary": "a Titan session needs a receipt; an existing receipt needs validation or a note",
+        "Inputs": "workspace root; operator id",
+        "Outputs": "created or updated receipt; validation result",
+        "Procedure": "choose the receipt action; validate required fields and path",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Receipt",
+        "short_description": "Manage Titan receipts",
+        "default_prompt": "Use $titan-receipt to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-receipt",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-receipt",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-receipt",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-receipt to create, validate, note, or close a Titan session receipt as a witness rather than final truth."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "create, validate, note, or close a Titan session receipt as a witness rather than final truth."
+        ],
+        "negative": [
+          "The task has no Titan session or receipt surface to manage."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-receipt",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-receipt",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-receipt"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-receipt\n- Summary: Manage Titan receipts\n- Use when: Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-runtime-gate",
+      "display_name": "Titan Runtime Gate",
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Open Titan runtime gates",
+      "path": ".agents/skills/titan-runtime-gate/SKILL.md",
+      "skill_dir": ".agents/skills/titan-runtime-gate",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-runtime-gate/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill when a Titan session needs to activate Forge or Delta from locked to gated state.",
+        "Trigger boundary": "Forge needs a mutation gate; Delta needs a judgment gate",
+        "Inputs": "receipt path; requested Titan",
+        "Outputs": "updated gate state; allowed or blocked decision",
+        "Procedure": "confirm receipt exists; confirm requested Titan is Forge or Delta",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Runtime Gate",
+        "short_description": "Open Titan runtime gates",
+        "default_prompt": "Use $titan-runtime-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-runtime-gate",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-runtime-gate",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-runtime-gate",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-runtime-gate to open a Forge mutation or Delta judgment lane on an existing Titan receipt with matching gate kind."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "open a Forge mutation or Delta judgment lane on an existing Titan receipt with matching gate kind."
+        ],
+        "negative": [
+          "Atlas, Sentinel, and Mneme are active read-only lanes and do not need runtime gates."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-runtime-gate",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-runtime-gate",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-runtime-gate"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-runtime-gate\n- Summary: Open Titan runtime gates\n- Use when: Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+    },
+    {
+      "name": "titan-summon",
+      "display_name": "Titan Summon",
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Summon Titan service cohort",
+      "path": ".agents/skills/titan-summon/SKILL.md",
+      "skill_dir": ".agents/skills/titan-summon",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-summon/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to begin a Codex session with the first Titan service cohort after an explicit operator summon.",
+        "Trigger boundary": "the operator explicitly requests the Titan cohort; the session needs Atlas route, Sentinel risk, and Mneme provenance lanes",
+        "Inputs": "workspace root; summon prompt reference",
+        "Outputs": "summon receipt candidate; active and locked roster state",
+        "Procedure": "confirm explicit summon intent; use the service-cohort summon prompt",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Summon",
+        "short_description": "Summon Titan service cohort",
+        "default_prompt": "Use $titan-summon to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-summon",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-summon",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-summon",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-summon to begin the explicit Titan service cohort with Atlas, Sentinel, and Mneme active while Forge and Delta stay locked."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "begin the explicit Titan service cohort with Atlas, Sentinel, and Mneme active while Forge and Delta stay locked."
+        ],
+        "negative": [
+          "The user mentions Titans metaphorically but does not explicitly request a Titan service-cohort session."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-summon",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-summon",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-summon"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-summon\n- Summary: Summon Titan service cohort\n- Use when: Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "display_name": "Titan Thread Turn Binding",
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Bind Titan thread turns",
+      "path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
+      "skill_dir": ".agents/skills/titan-thread-turn-binding",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "project",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-only",
+        "aoa_source_skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to attach Titan bridge events and approvals to a specific thread and turn boundary.",
+        "Trigger boundary": "events need a thread-turn identity; approval or digest state must be scoped to one turn",
+        "Inputs": "thread id; turn id",
+        "Outputs": "thread-turn binding record; scoped event list",
+        "Procedure": "validate thread and turn identifiers; attach events and approvals to the binding",
+        "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
+        "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
+        "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ]
+      },
+      "policy": {
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "Titan Thread Turn Binding",
+        "short_description": "Bind Titan thread turns",
+        "default_prompt": "Use $titan-thread-turn-binding to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#6D28D9"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#titan-thread-turn-binding",
+      "context_retention_ref": "generated/context_retention_manifest.json#titan-thread-turn-binding",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#titan-thread-turn-binding",
+      "collision_family": "titan-service-cohort",
+      "collision_notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $titan-thread-turn-binding to bind Titan bridge events and approvals to a specific thread id and turn id for replayable continuity."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "bind Titan bridge events and approvals to a specific thread id and turn id for replayable continuity."
+        ],
+        "negative": [
+          "The bridge event has no thread id or turn id, so binding would invent continuity."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$titan-thread-turn-binding",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/titan-thread-turn-binding",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "titan-thread-turn-binding"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### titan-thread-turn-binding\n- Summary: Bind Titan thread turns\n- Use when: Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
     }
   ]
 }

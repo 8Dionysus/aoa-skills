@@ -361,6 +361,186 @@
           "skill_name": "atm10-source-of-truth-check"
         }
       }
+    },
+    {
+      "name": "titan-approval-ledger",
+      "codex_mention": "$titan-approval-ledger",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-approval-ledger",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-approval-ledger"
+        }
+      }
+    },
+    {
+      "name": "titan-approval-loom",
+      "codex_mention": "$titan-approval-loom",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-approval-loom",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-approval-loom"
+        }
+      }
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "codex_mention": "$titan-appserver-bridge",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-appserver-bridge",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-bridge"
+        }
+      }
+    },
+    {
+      "name": "titan-appserver-plan",
+      "codex_mention": "$titan-appserver-plan",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-appserver-plan",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-plan"
+        }
+      }
+    },
+    {
+      "name": "titan-closeout",
+      "codex_mention": "$titan-closeout",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-closeout",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-closeout"
+        }
+      }
+    },
+    {
+      "name": "titan-console",
+      "codex_mention": "$titan-console",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-console",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-console"
+        }
+      }
+    },
+    {
+      "name": "titan-event-replay",
+      "codex_mention": "$titan-event-replay",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-event-replay",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-event-replay"
+        }
+      }
+    },
+    {
+      "name": "titan-memory-loom",
+      "codex_mention": "$titan-memory-loom",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-memory-loom",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-memory-loom"
+        }
+      }
+    },
+    {
+      "name": "titan-memory-prune",
+      "codex_mention": "$titan-memory-prune",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-memory-prune",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-memory-prune"
+        }
+      }
+    },
+    {
+      "name": "titan-mutation-gate",
+      "codex_mention": "$titan-mutation-gate",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-mutation-gate",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-mutation-gate"
+        }
+      }
+    },
+    {
+      "name": "titan-recall",
+      "codex_mention": "$titan-recall",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-recall",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-recall"
+        }
+      }
+    },
+    {
+      "name": "titan-receipt",
+      "codex_mention": "$titan-receipt",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-receipt",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-receipt"
+        }
+      }
+    },
+    {
+      "name": "titan-runtime-gate",
+      "codex_mention": "$titan-runtime-gate",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-runtime-gate",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-runtime-gate"
+        }
+      }
+    },
+    {
+      "name": "titan-summon",
+      "codex_mention": "$titan-summon",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-summon",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-summon"
+        }
+      }
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "codex_mention": "$titan-thread-turn-binding",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/titan-thread-turn-binding",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "titan-thread-turn-binding"
+        }
+      }
     }
   ]
 }

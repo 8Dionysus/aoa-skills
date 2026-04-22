@@ -334,6 +334,171 @@
         "AOA-T-0013",
         "AOA-T-0002"
       ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-approval-ledger",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-approval-loom",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-appserver-bridge",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-appserver-plan",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-closeout",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-console",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-event-replay",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-memory-loom",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-memory-prune",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-mutation-gate",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-recall",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-receipt",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-runtime-gate",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-summon",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
+    },
+    {
+      "composition_class": "multi_technique",
+      "exception_review_path": null,
+      "name": "titan-thread-turn-binding",
+      "recommended_action": "keep_multi_technique",
+      "technique_count": 2,
+      "technique_ids": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ]
     }
   ],
   "source_of_truth": {
@@ -343,9 +508,9 @@
   },
   "summary": {
     "approved_exception_count": 2,
-    "multi_technique_skill_count": 28,
+    "multi_technique_skill_count": 43,
     "needs_reframe_count": 0,
     "single_technique_skill_count": 2,
-    "total_skill_count": 30
+    "total_skill_count": 45
   }
 }

@@ -73,7 +73,22 @@
               "aoa-summon",
               "aoa-tdd-slice",
               "atm10-change-protocol",
-              "atm10-source-of-truth-check"
+              "atm10-source-of-truth-check",
+              "titan-approval-ledger",
+              "titan-approval-loom",
+              "titan-appserver-bridge",
+              "titan-appserver-plan",
+              "titan-closeout",
+              "titan-console",
+              "titan-event-replay",
+              "titan-memory-loom",
+              "titan-memory-prune",
+              "titan-mutation-gate",
+              "titan-recall",
+              "titan-receipt",
+              "titan-runtime-gate",
+              "titan-summon",
+              "titan-thread-turn-binding"
             ]
           },
           "trust_store": {
@@ -133,7 +148,22 @@
               "aoa-summon",
               "aoa-tdd-slice",
               "atm10-change-protocol",
-              "atm10-source-of-truth-check"
+              "atm10-source-of-truth-check",
+              "titan-approval-ledger",
+              "titan-approval-loom",
+              "titan-appserver-bridge",
+              "titan-appserver-plan",
+              "titan-closeout",
+              "titan-console",
+              "titan-event-replay",
+              "titan-memory-loom",
+              "titan-memory-prune",
+              "titan-mutation-gate",
+              "titan-recall",
+              "titan-receipt",
+              "titan-runtime-gate",
+              "titan-summon",
+              "titan-thread-turn-binding"
             ]
           },
           "session_file": {
@@ -263,7 +293,22 @@
               "aoa-summon",
               "aoa-tdd-slice",
               "atm10-change-protocol",
-              "atm10-source-of-truth-check"
+              "atm10-source-of-truth-check",
+              "titan-approval-ledger",
+              "titan-approval-loom",
+              "titan-appserver-bridge",
+              "titan-appserver-plan",
+              "titan-closeout",
+              "titan-console",
+              "titan-event-replay",
+              "titan-memory-loom",
+              "titan-memory-prune",
+              "titan-mutation-gate",
+              "titan-recall",
+              "titan-receipt",
+              "titan-runtime-gate",
+              "titan-summon",
+              "titan-thread-turn-binding"
             ]
           },
           "session_file": {
@@ -341,7 +386,22 @@
               "aoa-summon",
               "aoa-tdd-slice",
               "atm10-change-protocol",
-              "atm10-source-of-truth-check"
+              "atm10-source-of-truth-check",
+              "titan-approval-ledger",
+              "titan-approval-loom",
+              "titan-appserver-bridge",
+              "titan-appserver-plan",
+              "titan-closeout",
+              "titan-console",
+              "titan-event-replay",
+              "titan-memory-loom",
+              "titan-memory-prune",
+              "titan-mutation-gate",
+              "titan-recall",
+              "titan-receipt",
+              "titan-runtime-gate",
+              "titan-summon",
+              "titan-thread-turn-binding"
             ]
           },
           "include_activation_call": {

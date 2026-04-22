@@ -151,6 +151,81 @@
       "description": "Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.",
       "short_description": "Abyss sanitized-share overlay",
       "default_prompt": "Use $abyss-sanitized-share to place sanitized abyss artifacts in repo-relative sharing surfaces with explicit local thresholds and review posture."
+    },
+    "titan-approval-ledger": {
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Record Titan approval gates",
+      "default_prompt": "Use $titan-approval-ledger to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-approval-loom": {
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan approval queue",
+      "default_prompt": "Use $titan-approval-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-appserver-bridge": {
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Operate Titan bridge visibly",
+      "default_prompt": "Use $titan-appserver-bridge to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-appserver-plan": {
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Plan Titan bridge launch",
+      "default_prompt": "Use $titan-appserver-plan to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-closeout": {
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Close Titan sessions honestly",
+      "default_prompt": "Use $titan-closeout to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-console": {
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Maintain Titan console state",
+      "default_prompt": "Use $titan-console to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-event-replay": {
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Replay Titan events visibly",
+      "default_prompt": "Use $titan-event-replay to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-memory-loom": {
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Ingest Titan memory candidates",
+      "default_prompt": "Use $titan-memory-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-memory-prune": {
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Prune Titan memory safely",
+      "default_prompt": "Use $titan-memory-prune to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-mutation-gate": {
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Gate Forge mutations",
+      "default_prompt": "Use $titan-mutation-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-recall": {
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Recall Titan candidates",
+      "default_prompt": "Use $titan-recall to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-receipt": {
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Manage Titan receipts",
+      "default_prompt": "Use $titan-receipt to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-runtime-gate": {
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Open Titan runtime gates",
+      "default_prompt": "Use $titan-runtime-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-summon": {
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Summon Titan service cohort",
+      "default_prompt": "Use $titan-summon to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
+    },
+    "titan-thread-turn-binding": {
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "short_description": "Bind Titan thread turns",
+      "default_prompt": "Use $titan-thread-turn-binding to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture."
     }
   }
 }

@@ -7,9 +7,9 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Summary
 
-- total skills: 30
+- total skills: 45
 - candidate ready without review: 0
-- blocked by pending lineage: 1
+- blocked by pending lineage: 16
 - canonical maintenance cohort: 12
 - comparative pending cohort: 3
 - review truth-sync gaps: 0
@@ -47,6 +47,21 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
 | atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
 | atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
+| titan-approval-ledger | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-approval-loom | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-appserver-bridge | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-appserver-plan | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-closeout | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-console | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-event-replay | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-memory-loom | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-memory-prune | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-mutation-gate | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-recall | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-receipt | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-runtime-gate | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-summon | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-thread-turn-binding | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
 
 ## Review truth sync
 
@@ -73,7 +88,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 ## Cohorts
 
 - `candidate_ready_without_review`: -
-- `blocked_by_pending_lineage`: aoa-summon
+- `blocked_by_pending_lineage`: aoa-summon, titan-approval-ledger, titan-approval-loom, titan-appserver-bridge, titan-appserver-plan, titan-closeout, titan-console, titan-event-replay, titan-memory-loom, titan-memory-prune, titan-mutation-gate, titan-recall, titan-receipt, titan-runtime-gate, titan-summon, titan-thread-turn-binding
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor
 - `review_truth_sync`: -

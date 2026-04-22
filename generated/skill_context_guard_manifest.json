@@ -968,6 +968,486 @@
           "session_file": ".aoa/skill-runtime-session.json"
         }
       }
+    },
+    {
+      "name": "titan-approval-ledger",
+      "display_name": "Titan Approval Ledger",
+      "source_scope": "repo",
+      "instruction_sha256": "d1d36221579ff58480acbd08f78a732177d860a1b913214284ad2b6c17feb224",
+      "dedupe_key": "titan-approval-ledger:d1d36221579ff58480acbd08f78a732177d860a1b913214284ad2b6c17feb224",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Record Titan approval gates",
+      "must_keep": [
+        "receipt or ledger reference",
+        "approved Titan lane",
+        "approval record candidate",
+        "gate kind and target lane"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: receipt or ledger reference, approved Titan lane, approval record candidate, gate kind and target lane.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-approval-ledger",
+          "explicit_handle": "$titan-approval-ledger",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-approval-loom",
+      "display_name": "Titan Approval Loom",
+      "source_scope": "repo",
+      "instruction_sha256": "6b84971fc090139451026977db877d9100f5b8c22379da6560d2bf0221762e4a",
+      "dedupe_key": "titan-approval-loom:6b84971fc090139451026977db877d9100f5b8c22379da6560d2bf0221762e4a",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Maintain Titan approval queue",
+      "must_keep": [
+        "bridge state path",
+        "thread id and turn id",
+        "updated approval queue entry",
+        "decision event candidate"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: bridge state path, thread id and turn id, updated approval queue entry, decision event candidate.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-approval-loom",
+          "explicit_handle": "$titan-approval-loom",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "display_name": "Titan Appserver Bridge",
+      "source_scope": "repo",
+      "instruction_sha256": "d3de4b8465c2d06c66af984601219c3afdb086b8d2773039e6f67210fdda6002",
+      "dedupe_key": "titan-appserver-bridge:d3de4b8465c2d06c66af984601219c3afdb086b8d2773039e6f67210fdda6002",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Operate Titan bridge visibly",
+      "must_keep": [
+        "workspace root",
+        "bridge state path",
+        "bridge plan or state summary",
+        "normalized event candidates"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: workspace root, bridge state path, bridge plan or state summary, normalized event candidates.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-bridge",
+          "explicit_handle": "$titan-appserver-bridge",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-appserver-plan",
+      "display_name": "Titan Appserver Plan",
+      "source_scope": "repo",
+      "instruction_sha256": "cd40f20ee1a7bc4773ca957e95f7ccf175e5d7bc84c9488cc389917733a62592",
+      "dedupe_key": "titan-appserver-plan:cd40f20ee1a7bc4773ca957e95f7ccf175e5d7bc84c9488cc389917733a62592",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Plan Titan bridge launch",
+      "must_keep": [
+        "workspace root",
+        "console or bridge state ref",
+        "JSONL launch-plan entries",
+        "required prechecks"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: workspace root, console or bridge state ref, JSONL launch-plan entries, required prechecks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-appserver-plan",
+          "explicit_handle": "$titan-appserver-plan",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-closeout",
+      "display_name": "Titan Closeout",
+      "source_scope": "repo",
+      "instruction_sha256": "5151168e94fc2200c374704fa4609309c3fd6d7550533b09135a807d489a6c75",
+      "dedupe_key": "titan-closeout:5151168e94fc2200c374704fa4609309c3fd6d7550533b09135a807d489a6c75",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Close Titan sessions honestly",
+      "must_keep": [
+        "receipt path",
+        "operator summary",
+        "closed receipt or closeout packet",
+        "role and boundary summary"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: receipt path, operator summary, closed receipt or closeout packet, role and boundary summary.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-closeout",
+          "explicit_handle": "$titan-closeout",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-console",
+      "display_name": "Titan Console",
+      "source_scope": "repo",
+      "instruction_sha256": "984918bc17819e71bbc3e0225b182bd1c996b5b7352f760c20d6b0ef7da86a07",
+      "dedupe_key": "titan-console:984918bc17819e71bbc3e0225b182bd1c996b5b7352f760c20d6b0ef7da86a07",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Maintain Titan console state",
+      "must_keep": [
+        "workspace root",
+        "console state path",
+        "console state summary",
+        "lane status table"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: workspace root, console state path, console state summary, lane status table.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-console",
+          "explicit_handle": "$titan-console",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-event-replay",
+      "display_name": "Titan Event Replay",
+      "source_scope": "repo",
+      "instruction_sha256": "796564bae34eae34b9ee803073e19781b4c1361a9a06bc186e6d469eb8c488e0",
+      "dedupe_key": "titan-event-replay:796564bae34eae34b9ee803073e19781b4c1361a9a06bc186e6d469eb8c488e0",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Replay Titan events visibly",
+      "must_keep": [
+        "event log path",
+        "optional current state path",
+        "replayed state summary",
+        "event order report"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: event log path, optional current state path, replayed state summary, event order report.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-event-replay",
+          "explicit_handle": "$titan-event-replay",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-memory-loom",
+      "display_name": "Titan Memory Loom",
+      "source_scope": "repo",
+      "instruction_sha256": "e7ed2696f59de079366a261edfc3e93508dd8d2e288fda34b5c07d20043ef783",
+      "dedupe_key": "titan-memory-loom:e7ed2696f59de079366a261edfc3e93508dd8d2e288fda34b5c07d20043ef783",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Ingest Titan memory candidates",
+      "must_keep": [
+        "receipt or event source",
+        "bearer id or Titan name",
+        "candidate remembrance record",
+        "recall authority warning"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: receipt or event source, bearer id or Titan name, candidate remembrance record, recall authority warning.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-memory-loom",
+          "explicit_handle": "$titan-memory-loom",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-memory-prune",
+      "display_name": "Titan Memory Prune",
+      "source_scope": "repo",
+      "instruction_sha256": "df3af50a84f22cff02e42cef188102db64ce8167270a70163b115c6e17b07d49",
+      "dedupe_key": "titan-memory-prune:df3af50a84f22cff02e42cef188102db64ce8167270a70163b115c6e17b07d49",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Prune Titan memory safely",
+      "must_keep": [
+        "memory record id",
+        "source refs",
+        "redaction proposal",
+        "tombstone proposal"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: memory record id, source refs, redaction proposal, tombstone proposal.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-memory-prune",
+          "explicit_handle": "$titan-memory-prune",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-mutation-gate",
+      "display_name": "Titan Mutation Gate",
+      "source_scope": "repo",
+      "instruction_sha256": "f20b566693b5c5fb9ab823df9b84e5b8e7e03da9a401162ec91949f484683b19",
+      "dedupe_key": "titan-mutation-gate:f20b566693b5c5fb9ab823df9b84e5b8e7e03da9a401162ec91949f484683b19",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Gate Forge mutations",
+      "must_keep": [
+        "intent text",
+        "target repos and paths",
+        "mutation gate packet",
+        "allowed or blocked decision"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: intent text, target repos and paths, mutation gate packet, allowed or blocked decision.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-mutation-gate",
+          "explicit_handle": "$titan-mutation-gate",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-recall",
+      "display_name": "Titan Recall",
+      "source_scope": "repo",
+      "instruction_sha256": "7854e39d2de3d7615fe2e7fc68613adbb18e5e83b3d275505d971df46b41901f",
+      "dedupe_key": "titan-recall:7854e39d2de3d7615fe2e7fc68613adbb18e5e83b3d275505d971df46b41901f",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Recall Titan candidates",
+      "must_keep": [
+        "query text",
+        "bearer id or Titan name",
+        "matching remembrance records",
+        "record ids and source refs"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: query text, bearer id or Titan name, matching remembrance records, record ids and source refs.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-recall",
+          "explicit_handle": "$titan-recall",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-receipt",
+      "display_name": "Titan Receipt",
+      "source_scope": "repo",
+      "instruction_sha256": "269c9b5d33dc5ebe63906ce3c4ba39751b29ce8512037b028ac39d847d2968da",
+      "dedupe_key": "titan-receipt:269c9b5d33dc5ebe63906ce3c4ba39751b29ce8512037b028ac39d847d2968da",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Manage Titan receipts",
+      "must_keep": [
+        "workspace root",
+        "operator id",
+        "created or updated receipt",
+        "validation result"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: workspace root, operator id, created or updated receipt, validation result.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-receipt",
+          "explicit_handle": "$titan-receipt",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-runtime-gate",
+      "display_name": "Titan Runtime Gate",
+      "source_scope": "repo",
+      "instruction_sha256": "cc2bd55486430f281755ea6e7aeb62e9eab0f4a3fba5db0744eee2c0a4e4c8d5",
+      "dedupe_key": "titan-runtime-gate:cc2bd55486430f281755ea6e7aeb62e9eab0f4a3fba5db0744eee2c0a4e4c8d5",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Open Titan runtime gates",
+      "must_keep": [
+        "receipt path",
+        "requested Titan",
+        "updated gate state",
+        "allowed or blocked decision"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: receipt path, requested Titan, updated gate state, allowed or blocked decision.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-runtime-gate",
+          "explicit_handle": "$titan-runtime-gate",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-summon",
+      "display_name": "Titan Summon",
+      "source_scope": "repo",
+      "instruction_sha256": "75aca6b236456e52850f30073b7824c8306ae30517407bda9a181f0be52edfb4",
+      "dedupe_key": "titan-summon:75aca6b236456e52850f30073b7824c8306ae30517407bda9a181f0be52edfb4",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Summon Titan service cohort",
+      "must_keep": [
+        "workspace root",
+        "summon prompt reference",
+        "summon receipt candidate",
+        "active and locked roster state"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: workspace root, summon prompt reference, summon receipt candidate, active and locked roster state.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-summon",
+          "explicit_handle": "$titan-summon",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "display_name": "Titan Thread Turn Binding",
+      "source_scope": "repo",
+      "instruction_sha256": "2bf59d84f6279fce4410c51eb4a903630ff340c56be80869097fab9a4dddb475",
+      "dedupe_key": "titan-thread-turn-binding:2bf59d84f6279fce4410c51eb4a903630ff340c56be80869097fab9a4dddb475",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Bind Titan thread turns",
+      "must_keep": [
+        "thread id",
+        "turn id",
+        "thread-turn binding record",
+        "scoped event list"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: thread id, turn id, thread-turn binding record, scoped event list.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "titan-thread-turn-binding",
+          "explicit_handle": "$titan-thread-turn-binding",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
     }
   ]
 }

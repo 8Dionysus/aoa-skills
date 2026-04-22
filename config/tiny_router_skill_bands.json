@@ -170,6 +170,48 @@
         "abyss-safe-infra-change",
         "abyss-sanitized-share"
       ]
+    },
+    {
+      "id": "titan-service-cohort",
+      "summary": "Titan service-cohort summon, receipt, gate, console, bridge, replay, and candidate-memory workflows.",
+      "cues": [
+        "titan",
+        "atlas",
+        "sentinel",
+        "mneme",
+        "forge",
+        "delta",
+        "service cohort",
+        "summon",
+        "titan receipt",
+        "runtime gate",
+        "mutation gate",
+        "judgment gate",
+        "operator console",
+        "app server bridge",
+        "approval loom",
+        "thread turn",
+        "memory loom",
+        "remembrance",
+        "candidate recall"
+      ],
+      "skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ]
     }
   ],
   "skill_overrides": {
@@ -621,6 +663,234 @@
         "base skill is sufficient",
         "underlying operational mutation"
       ]
+    },
+    "titan-approval-ledger": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "approval ledger",
+        "operator approval",
+        "forge approval",
+        "delta approval",
+        "gate approval"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-approval-loom": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "approval loom",
+        "approval queue",
+        "bridge approval",
+        "pending approval"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-appserver-bridge": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "app server bridge",
+        "json rpc bridge",
+        "bridge state",
+        "event normalizer"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-appserver-plan": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "appserver plan",
+        "launch plan",
+        "jsonl plan",
+        "do not execute"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-closeout": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "titan closeout",
+        "close receipt",
+        "session closeout",
+        "gate summary"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-console": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "operator console",
+        "console state",
+        "lane dashboard",
+        "visible titan lanes"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-event-replay": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "event replay",
+        "bridge replay",
+        "replay ledger",
+        "event order"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-memory-loom": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "memory loom",
+        "receipt ingest",
+        "candidate memory",
+        "remembrance record"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-memory-prune": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "memory prune",
+        "redaction",
+        "tombstone",
+        "retention"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-mutation-gate": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "mutation gate",
+        "forge gate",
+        "workspace write",
+        "rollback or stop"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-recall": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "titan recall",
+        "candidate recall",
+        "remembrance lookup",
+        "authority note"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-receipt": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "titan receipt",
+        "receipt create",
+        "receipt validate",
+        "receipt note"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-runtime-gate": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "runtime gate",
+        "forge mutation",
+        "delta judgment",
+        "locked lane"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-summon": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "titan summon",
+        "service cohort",
+        "atlas sentinel mneme",
+        "forge locked",
+        "delta locked"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
+    },
+    "titan-thread-turn-binding": {
+      "band": "titan-service-cohort",
+      "positive_cues": [
+        "thread turn",
+        "turn binding",
+        "thread id",
+        "turn id",
+        "bridge continuity"
+      ],
+      "negative_cues": [
+        "hidden background agents",
+        "silent mutation",
+        "owner truth replacement",
+        "memory canonization"
+      ]
     }
   },
   "companions": {
@@ -764,6 +1034,81 @@
     "abyss-sanitized-share": [
       "aoa-sanitized-share",
       "abyss-safe-infra-change"
+    ],
+    "titan-summon": [
+      "titan-receipt",
+      "titan-console",
+      "titan-runtime-gate"
+    ],
+    "titan-receipt": [
+      "titan-summon",
+      "titan-runtime-gate",
+      "titan-closeout"
+    ],
+    "titan-runtime-gate": [
+      "titan-receipt",
+      "titan-mutation-gate",
+      "titan-approval-ledger"
+    ],
+    "titan-mutation-gate": [
+      "titan-runtime-gate",
+      "titan-approval-ledger",
+      "titan-closeout"
+    ],
+    "titan-console": [
+      "titan-approval-loom",
+      "titan-appserver-plan",
+      "titan-closeout"
+    ],
+    "titan-appserver-bridge": [
+      "titan-thread-turn-binding",
+      "titan-event-replay",
+      "titan-approval-loom"
+    ],
+    "titan-appserver-plan": [
+      "titan-appserver-bridge",
+      "titan-console",
+      "titan-approval-loom"
+    ],
+    "titan-approval-loom": [
+      "titan-approval-ledger",
+      "titan-thread-turn-binding",
+      "titan-event-replay"
+    ],
+    "titan-approval-ledger": [
+      "titan-runtime-gate",
+      "titan-approval-loom",
+      "titan-receipt"
+    ],
+    "titan-event-replay": [
+      "titan-appserver-bridge",
+      "titan-thread-turn-binding",
+      "titan-console"
+    ],
+    "titan-thread-turn-binding": [
+      "titan-appserver-bridge",
+      "titan-event-replay",
+      "titan-approval-loom"
+    ],
+    "titan-memory-loom": [
+      "titan-recall",
+      "titan-memory-prune",
+      "titan-closeout"
+    ],
+    "titan-memory-prune": [
+      "titan-memory-loom",
+      "titan-recall",
+      "titan-closeout"
+    ],
+    "titan-recall": [
+      "titan-memory-loom",
+      "titan-memory-prune",
+      "titan-closeout"
+    ],
+    "titan-closeout": [
+      "titan-receipt",
+      "titan-memory-loom",
+      "titan-event-replay"
     ]
   }
 }

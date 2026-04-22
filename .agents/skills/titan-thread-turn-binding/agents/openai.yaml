@@ -1,0 +1,9 @@
+interface:
+  display_name: Titan Thread Turn Binding
+  short_description: Bind Titan thread turns
+  default_prompt: Use $titan-thread-turn-binding to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.
+  icon_small: ./assets/small-logo.svg
+  icon_large: ./assets/large-logo.svg
+  brand_color: '#6D28D9'
+policy:
+  allow_implicit_invocation: false

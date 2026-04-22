@@ -5,8 +5,8 @@ It is a boundary/readiness view, not a direct status surface.
 
 ## Summary
 
-- total skills: 30
-- multi-technique skills: 28
+- total skills: 45
+- multi-technique skills: 43
 - single-technique skills: 2
 - approved exceptions: 2
 - needs reframe: 0
@@ -43,4 +43,19 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-tdd-slice | 2 | multi_technique | keep_multi_technique | - |
 | atm10-change-protocol | 2 | multi_technique | keep_multi_technique | - |
 | atm10-source-of-truth-check | 2 | multi_technique | keep_multi_technique | - |
+| titan-approval-ledger | 2 | multi_technique | keep_multi_technique | - |
+| titan-approval-loom | 2 | multi_technique | keep_multi_technique | - |
+| titan-appserver-bridge | 2 | multi_technique | keep_multi_technique | - |
+| titan-appserver-plan | 2 | multi_technique | keep_multi_technique | - |
+| titan-closeout | 2 | multi_technique | keep_multi_technique | - |
+| titan-console | 2 | multi_technique | keep_multi_technique | - |
+| titan-event-replay | 2 | multi_technique | keep_multi_technique | - |
+| titan-memory-loom | 2 | multi_technique | keep_multi_technique | - |
+| titan-memory-prune | 2 | multi_technique | keep_multi_technique | - |
+| titan-mutation-gate | 2 | multi_technique | keep_multi_technique | - |
+| titan-recall | 2 | multi_technique | keep_multi_technique | - |
+| titan-receipt | 2 | multi_technique | keep_multi_technique | - |
+| titan-runtime-gate | 2 | multi_technique | keep_multi_technique | - |
+| titan-summon | 2 | multi_technique | keep_multi_technique | - |
+| titan-thread-turn-binding | 2 | multi_technique | keep_multi_technique | - |
 

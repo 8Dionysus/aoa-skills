@@ -125,6 +125,29 @@
         "Current live overlay families here are the atm10-* and abyss-* repo-local exemplars.",
         "Use the base AoA skill when the workflow does not need a thin project overlay."
       ]
+    },
+    {
+      "family": "titan-service-cohort",
+      "skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "notes": [
+        "Titan scaffold skills are explicit-only project overlays for summon, receipts, gates, console, bridge, replay, and candidate memory."
+      ]
     }
   ],
   "cases": [

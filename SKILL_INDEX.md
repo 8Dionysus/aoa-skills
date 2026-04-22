@@ -36,6 +36,22 @@ This file is the repository-wide map of public skills.
 | aoa-dry-run-first | risk | canonical | Codex skill for preferring simulation, inspection, or preview paths before real execution with operational consequences. |
 | aoa-safe-infra-change | risk | canonical | Codex skill for making bounded infrastructure or configuration changes with explicit risk framing and reversible execution discipline. |
 | aoa-sanitized-share | risk | canonical | Codex skill for preparing findings, logs, or diagnostics for sharing without leaking secrets or private operational detail. |
+| titan-approval-ledger | project | scaffold | Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. |
+| titan-approval-loom | project | scaffold | Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. |
+| titan-appserver-bridge | project | scaffold | Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. |
+| titan-appserver-plan | project | scaffold | Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. |
+| titan-closeout | project | scaffold | Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. |
+| titan-console | project | scaffold | Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. |
+| titan-event-replay | project | scaffold | Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. |
+| titan-memory-loom | project | scaffold | Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. |
+| titan-memory-prune | project | scaffold | Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. |
+| titan-mutation-gate | project | scaffold | Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. |
+| titan-recall | project | scaffold | Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. |
+| titan-receipt | project | scaffold | Create, validate, note, or close Titan session receipts as witnesses rather than final truth. |
+| titan-runtime-gate | project | scaffold | Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. |
+| titan-summon | project | scaffold | Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. |
+| titan-thread-turn-binding | project | scaffold | Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. |
+
 
 ## Project-Core Skill Kernel
 

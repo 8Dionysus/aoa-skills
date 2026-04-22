@@ -1,7 +1,22 @@
 {
   "cohorts": {
     "pending_lineage": [
-      "aoa-summon"
+      "aoa-summon",
+      "titan-approval-ledger",
+      "titan-approval-loom",
+      "titan-appserver-bridge",
+      "titan-appserver-plan",
+      "titan-closeout",
+      "titan-console",
+      "titan-event-replay",
+      "titan-memory-loom",
+      "titan-memory-prune",
+      "titan-mutation-gate",
+      "titan-recall",
+      "titan-receipt",
+      "titan-runtime-gate",
+      "titan-summon",
+      "titan-thread-turn-binding"
     ],
     "published_lineage": [
       "abyss-safe-infra-change",
@@ -400,6 +415,246 @@
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated",
       "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-approval-ledger",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-approval-loom",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-appserver-bridge",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-appserver-plan",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-closeout",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-closeout/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-console",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-console/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-event-replay",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-memory-loom",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-memory-prune",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-mutation-gate",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-recall",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-recall/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-receipt",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-receipt/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-runtime-gate",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-summon",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-summon/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
+    },
+    {
+      "lineage_blockers": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "lineage_state": "pending",
+      "manifest_canonical_path_ready": false,
+      "name": "titan-thread-turn-binding",
+      "pending_technique_count": 2,
+      "published_technique_count": 0,
+      "scope": "project",
+      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "status": "scaffold",
+      "tbd_ref_count": 2
     }
   ],
   "source_of_truth": {

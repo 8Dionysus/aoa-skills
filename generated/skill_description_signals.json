@@ -1244,6 +1244,651 @@
       "mirror_case_ids": [
         "desc-mirror-018-atm10-source-of-truth-check"
       ]
+    },
+    {
+      "name": "titan-approval-ledger",
+      "description": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "7a1fbafc8a05a66f8988eab275eb9ac58f25c1b6ec72fd9a4461931dfa065479",
+      "summary_clause": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-approval-ledger to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-01-explicit",
+        "titan-01-manual",
+        "titan-01-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-approval-loom",
+      "description": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "65b6846ba3485f41b7664a7cc7433e6f50107396eb433393a4a7dc98f5692aae",
+      "summary_clause": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-approval-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-02-explicit",
+        "titan-02-manual",
+        "titan-02-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-appserver-bridge",
+      "description": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "7931cb498844dc36e0c06e72a6953d5be5a9b7727f0e2d07c6edde8c119b6469",
+      "summary_clause": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-appserver-bridge to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-03-explicit",
+        "titan-03-manual",
+        "titan-03-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-appserver-plan",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "7d116ae2e69803393c55d55b56c487f78724a83be511deb6d0200f60d2681747",
+      "summary_clause": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-appserver-plan to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-04-explicit",
+        "titan-04-manual",
+        "titan-04-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-closeout",
+      "description": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "8cc9fed46ba8d565e65ae1b6d7391cfcb5cf6f5a922da8c2b1c9d7b63b22ed95",
+      "summary_clause": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-closeout to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-05-explicit",
+        "titan-05-manual",
+        "titan-05-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-console",
+      "description": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "793db2976fc27abcbde4b8d17732abcc1fed15b64b02e1ae574e59672a9e355f",
+      "summary_clause": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-console to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-06-explicit",
+        "titan-06-manual",
+        "titan-06-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-event-replay",
+      "description": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "a5631b0587ee599ec3a4e92239a8101048b42a137adc8afee35986ed900ea4c1",
+      "summary_clause": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-event-replay to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-07-explicit",
+        "titan-07-manual",
+        "titan-07-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-memory-loom",
+      "description": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "13bc25dd0844652048efbad8ea76002559e4c21652b41adbdf571c44bafea657",
+      "summary_clause": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-memory-loom to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-08-explicit",
+        "titan-08-manual",
+        "titan-08-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-memory-prune",
+      "description": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "346cc2a0654847fcc80970756857e3d2e790cc9bb1178d0e3dfcd90b8df61514",
+      "summary_clause": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-memory-prune to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-09-explicit",
+        "titan-09-manual",
+        "titan-09-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-mutation-gate",
+      "description": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "8367dbe6e147dcf7304e3cec59b362d0896a3b42e9672514a0ee65afd91a3516",
+      "summary_clause": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-mutation-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-10-explicit",
+        "titan-10-manual",
+        "titan-10-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-recall",
+      "description": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "4e29f7405a252b190467113d8e2c420c23a6a0cb43981adc0e6405ae84e5dfc5",
+      "summary_clause": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-recall to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-11-explicit",
+        "titan-11-manual",
+        "titan-11-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-receipt",
+      "description": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "d86c477424db249d64b6609c33ba6fef09c0ce2e5e4ef632f9dc2465c1d3b9d0",
+      "summary_clause": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-runtime-gate",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-receipt to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-12-explicit",
+        "titan-12-manual",
+        "titan-12-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-runtime-gate",
+      "description": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "02adc76acaa054649bf3112b5c01009e20fd1f10357fc66c6c80edbbeeac9644",
+      "summary_clause": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-summon",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-runtime-gate to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-13-explicit",
+        "titan-13-manual",
+        "titan-13-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-summon",
+      "description": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "f75ab351a0b314fcd15f9d4e1fd5168a46ad5d4df722dd817c10e61ed23fb34e",
+      "summary_clause": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-thread-turn-binding"
+      ],
+      "default_prompt": "Use $titan-summon to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-14-explicit",
+        "titan-14-manual",
+        "titan-14-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
+    },
+    {
+      "name": "titan-thread-turn-binding",
+      "description": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "695868fd6f199bb5f260fc896e71bb8a00255a723f4dcbbf3e804c7a6c2f538b",
+      "summary_clause": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity",
+      "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
+      "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
+      "invocation_mode": "explicit-only",
+      "allow_implicit_invocation": false,
+      "family": "titan-service-cohort",
+      "families": [
+        "titan-service-cohort"
+      ],
+      "adjacent_skills": [
+        "titan-approval-ledger",
+        "titan-approval-loom",
+        "titan-appserver-bridge",
+        "titan-appserver-plan",
+        "titan-closeout",
+        "titan-console",
+        "titan-event-replay",
+        "titan-memory-loom",
+        "titan-memory-prune",
+        "titan-mutation-gate",
+        "titan-recall",
+        "titan-receipt",
+        "titan-runtime-gate",
+        "titan-summon"
+      ],
+      "default_prompt": "Use $titan-thread-turn-binding to handle the bounded Titan step with explicit receipt, gate, source-ref, and owner-route posture.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger"
+      ],
+      "base_case_ids": [
+        "titan-15-explicit",
+        "titan-15-manual",
+        "titan-15-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": []
     }
   ]
 }
