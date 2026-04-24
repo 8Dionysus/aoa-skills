@@ -69,7 +69,7 @@ class StageSkillPackTests(unittest.TestCase):
             )
             self.assertEqual("repo-core-only", payload["profile"])
             self.assertRegex(payload["profile_revision"], r"^[0-9a-f]{64}$")
-            self.assertEqual("0.3.2", payload["release_identity"]["latest_tagged_version"])
+            self.assertEqual("0.3.3", payload["release_identity"]["latest_tagged_version"])
             self.assertRegex(payload["bundle_digest"], r"^[0-9a-f]{64}$")
             self.assertEqual(
                 str((bundle_root / "README.md").resolve()),
