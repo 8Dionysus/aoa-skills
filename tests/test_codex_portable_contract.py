@@ -206,8 +206,8 @@ class CodexPortableContractTests(unittest.TestCase):
             release_manifest["profile_count"],
             len(release_manifest["install_profile_revisions"]),
         )
-        self.assertEqual(release_manifest["release_identity"]["latest_tagged_version"], "0.3.2")
-        self.assertTrue(release_manifest["release_identity"]["has_unreleased_changes"])
+        self.assertEqual(release_manifest["release_identity"]["latest_tagged_version"], "0.3.3")
+        self.assertFalse(release_manifest["release_identity"]["has_unreleased_changes"])
         self.assertEqual(
             release_manifest["relationship_views"],
             [

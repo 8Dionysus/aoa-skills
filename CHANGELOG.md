@@ -7,21 +7,54 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-04-23
+
+### Summary
+
+- this patch adds Agon skill binding candidates, recurrence skill manifests,
+  Wave XV skill candidates, and recurrence observation boundaries across the
+  bounded workflow layer
+- Titan service-cohort skills and Experience wave3-wave5 workflow contracts
+  land beside adoption, governance, installation, office task, receipt
+  generation, sovereign-office, invocation, policy, and datetime guards
+- `aoa-skills` remains the reusable execution-workflow canon rather than a
+  routing, playbook, proof, or runtime authority
+
 ### Added
 
 - Agon Wave IV skill candidate bridge docs, seed/config, generated index, and
   explicit builder / validator / test surfaces
+- Agon recurrence skill manifests, Wave XV skill candidates, recurrence
+  live-observation and review-decision closure notes, and recurrence skill
+  observation boundaries
+- Titan service-cohort skills plus Experience adoption, governance runtime,
+  installation, office task boundary, receipt generation, sovereign-office,
+  and skill adoption/governance contract surfaces
+- release-facing skill-pack, portable-contract, install-profile, policy
+  matrix, tiny-router, and generated manifest surfaces for downstream Codex
+  and workspace installs
 
 ### Changed
 
 - root and docs entry routes now expose the Agon bounded-workflow companion
   bridge as a requested-not-landed surface rather than leaving it implicit
+- workspace closeout caution, Agon review follow-ups, skill adoption
+  regression gates, governance invocation checks, install/profile contracts,
+  generated release manifests, and Wave5 RFC3339 datetime validation were
+  tightened
 
 ### Validation
 
+- `python scripts/release_check.py`
 - `python scripts/build_agon_skill_binding_candidates.py --check`
 - `python scripts/validate_agon_skill_binding_candidates.py`
 - `python -m pytest -q tests/test_agon_skill_binding_candidates.py`
+
+### Notes
+
+- this patch expands skill-owned workflow surfaces while keeping scenario
+  composition in `aoa-playbooks`, routing in `aoa-routing`, and proof in
+  `aoa-evals`
 
 ## [0.3.2] - 2026-04-19
 
