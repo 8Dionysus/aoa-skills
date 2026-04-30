@@ -225,7 +225,7 @@ explicit project safety perimeter outside project-core:
 - it equals `repo-project-core-kernel + repo-project-core-outer-ring + repo-project-risk-guard-ring`
 - it is `repo`-scoped and keeps `symlink-preferred`
 - it intentionally excludes project overlays
-- it is the intended default for broad repo-local rollout and `/srv/.agents/skills`
+- it is the intended default for broad repo-local rollout and `/srv/AbyssOS/.agents/skills`
 - repeated symlink installs over already-matching portable exports must remain idempotent
 
 `repo-risk-explicit` remains as the backward-compatible alias for the same five

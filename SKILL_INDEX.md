@@ -146,7 +146,7 @@ That means:
 
 - `repo-project-foundation` equals `kernel + outer ring + risk guard ring` in canonical order
 - it intentionally excludes `abyss-*` and `atm10-*` overlays
-- it is the stable baseline for repo-local rollout and `/srv/.agents/skills`
+- it is the stable baseline for repo-local rollout and `/srv/AbyssOS/.agents/skills`
 - it does not replace `repo-default`, which remains the wider profile that can still carry overlays
 
 ## Notes
