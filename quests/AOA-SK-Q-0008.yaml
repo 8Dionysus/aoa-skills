@@ -43,12 +43,13 @@ evidence:
   - the remaining skill-layer status from that reread was still the reanchor-shaped candidate:risk:aoa-skills-layer-request, which stays a boundary warning rather than a promotion verdict
   - session:2026-04-17T15-28-42-371944Z-workspace-checkpoint-growth-74c888d1-3a8 preserved reviewed workspace closeout carry, but route-shaped and proof-shaped survivors landed in aoa-playbooks and aoa-evals before the skill layer was reread
   - the remaining skill-layer status from that reread was bounded workflow carry in candidate:growth:aoa-skills-owner-followthrough-code and candidate:growth:aoa-skills-pr-opened-public-share plus the same reanchor-shaped candidate:risk:aoa-skills-layer-request
+  - session:2026-04-24T00-40-24-854570Z-Agents-of-Abyss-checkpoint-growth-6737c0da-e58 closed the Agents-of-Abyss v0.4.0 release route through the checkpoint closeout bridge, produced donor/progression/quest artifacts, published six aoa-skills receipts, refreshed aoa-stats, and still left the bridge itself as an owner-layer telemetry/readout follow-through rather than a new skill request
 harvest:
   target: skill
-  trigger_count: 11
-  note: classify whether the bridge, hook review-note protocol, or owner-follow-through docs need a bounded skill-layer adjustment after another reviewed run
+  trigger_count: 12
+  note: classify whether the bridge, hook review-note protocol, owner-follow-through docs, or bridge-usage telemetry need a bounded skill-layer adjustment after another reviewed run
 opened_at: '2026-04-11'
-touched_at: '2026-04-20'
+touched_at: '2026-05-01'
 tags:
   - checkpoint
   - closeout
@@ -66,5 +67,8 @@ notes: >
   intact after downstream owner artifacts merged: aoa-skills may preserve
   workflow carry and boundary warning, but it still does not have honest
   authority to mint PR-opened, owner-follow-through, or layer-request skills
-  from this single reviewed route.
+  from this single reviewed route. The Agents-of-Abyss v0.4.0 release closeout
+  adds stronger bridge execution evidence, but it still points to owner-layer
+  readout hygiene rather than a duplicate generic commit-growth or closeout
+  skill.
 public_safe: true
