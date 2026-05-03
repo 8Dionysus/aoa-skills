@@ -515,8 +515,8 @@
       "allow_implicit_invocation": true,
       "manual_invocation_required": false,
       "project_overlay": false,
-      "summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.",
-      "summary_short": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.",
+      "summary": "Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and portable where needed.",
+      "summary_short": "Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and...",
       "description": "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding. Do not use for tiny local edits or when the boundary is already clear and the real task is contract validation.",
       "description_sha256": "735d43d6ab5652fb304178f0e2c746584bbc1a7455aa2f63fbfac82688dd6a06",
       "positive_cues": [
@@ -596,8 +596,8 @@
       "allow_implicit_invocation": true,
       "manual_invocation_required": false,
       "project_overlay": false,
-      "summary": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly.",
-      "summary_short": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly.",
+      "summary": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
+      "summary_short": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
       "description": "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.",
       "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
       "positive_cues": [
@@ -2129,8 +2129,8 @@
       "allow_implicit_invocation": true,
       "manual_invocation_required": false,
       "project_overlay": false,
-      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.",
-      "summary_short": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep...",
+      "summary": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.",
+      "summary_short": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational...",
       "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
       "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0",
       "positive_cues": [
@@ -2175,16 +2175,16 @@
         "authoritative",
         "canonical",
         "check",
-        "driven",
         "file",
         "files",
         "guidance",
         "keep",
-        "link",
         "short",
         "source",
         "truth",
-        "about"
+        "about",
+        "ambiguity",
+        "aoa"
       ],
       "companions": [
         "aoa-adr-write",

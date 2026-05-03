@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `d05107b7628c`
+- reviewed revision: `cf8c451a06fe`
 
 ## Target status
 
@@ -28,7 +28,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the bundle now carries portability guidance for mixed docs topologies and lightweight entrypoint snapshots while still clearing the evaluated floor that this record originally captured.
+- current bundle note: the bundle now carries portability guidance for mixed docs topologies, active-versus-legacy placement, and lightweight entrypoint snapshots while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 

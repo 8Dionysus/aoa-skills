@@ -166,10 +166,10 @@
     {
       "name": "aoa-change-protocol",
       "compact_summary": "Plan, scope, verify, report",
-      "activation_card_markdown": "Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n\nKeep in memory: target goal, touched files or surfaces, explicit plan, scoped change.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n\nKeep in memory: target goal, owner repository or route surface, explicit plan, scoped change.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "target goal",
-        "touched files or surfaces",
+        "owner repository or route surface",
         "explicit plan",
         "scoped change"
       ],
@@ -580,12 +580,12 @@
     {
       "name": "aoa-source-of-truth-check",
       "compact_summary": "Clarify authoritative docs",
-      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository docs surface, target area of ambiguity or overlap, clearer source-of-truth map, fan-out map when one source feeds multiple downstream consumers.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository docs surface, target area of ambiguity or overlap, clearer source-of-truth map, active/current versus historical/provenance/generated placement map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "repository docs surface",
         "target area of ambiguity or overlap",
         "clearer source-of-truth map",
-        "fan-out map when one source feeds multiple downstream consumers"
+        "active/current versus historical/provenance/generated placement map"
       ],
       "retain_sections": [
         "Trigger boundary",

@@ -371,9 +371,10 @@
         "named contexts or subsystems",
         "rough boundary map",
         "interface notes between contexts",
-        "ambiguity notes and recommended vocabulary"
+        "ambiguity notes and recommended vocabulary",
+        "owner split, stop-line, and portable-versus-integration vocabulary when those boundaries matter"
       ],
-      "pick_summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.",
+      "pick_summary": "Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and portable where needed.",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
       "status": "canonical",
@@ -398,7 +399,9 @@
         "a project mixes several domains or subsystems",
         "naming is drifting or overloaded",
         "the task needs a clearer boundary before coding safely",
-        "an agent is likely to confuse nearby concepts without sharper separation"
+        "an agent is likely to confuse nearby concepts without sharper separation",
+        "a repository has a dual posture, such as standalone public library and ecosystem organ",
+        "mechanics, skills, techniques, evals, playbooks, generated surfaces, or owner-local implementations are easy to blur together"
       ]
     },
     {
@@ -424,9 +427,10 @@
         "explicit plan",
         "scoped change",
         "named verification result",
+        "post-change route review when source-of-truth, generated, decision, roadmap, changelog, quest, mechanic, or owner surfaces may have moved",
         "concise final report"
       ],
-      "pick_summary": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly.",
+      "pick_summary": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
       "scope": "core",
       "skill_path": "skills/aoa-change-protocol/SKILL.md",
       "status": "canonical",
@@ -450,7 +454,8 @@
       "use_when": [
         "the change affects code, config, docs, or operational surfaces in a meaningful way",
         "the task benefits from an explicit plan and verification path",
-        "the task touches more than a trivial wording fix"
+        "the task touches more than a trivial wording fix",
+        "the request references previous work, sibling repositories, root surfaces, mechanics, generated outputs, or owner boundaries that must be inspected before planning"
       ]
     },
     {
@@ -1448,13 +1453,14 @@
       "name": "aoa-source-of-truth-check",
       "object_use_shape": [
         "clearer source-of-truth map",
+        "active/current versus historical/provenance/generated placement map",
         "fan-out map when one source feeds multiple downstream consumers",
         "note of overlaps or conflicts",
         "proposed or implemented document role clarification",
         "lightweight snapshot guidance for entrypoint docs when canonical homes already exist",
         "verification summary"
       ],
-      "pick_summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.",
+      "pick_summary": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
@@ -1482,7 +1488,9 @@
         "confusion exists between overview docs and authoritative docs",
         "one authoritative source must stay aligned across multiple downstream consumer surfaces",
         "top-level status docs such as README or MANIFEST are accumulating status/history that should live in canonical homes instead",
-        "the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven"
+        "the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven",
+        "root docs, mechanics packages, legacy receipts, provenance bridges, decisions, generated surfaces, or owner-local handoff docs are being confused with one another",
+        "a public repository must stay portable while still pointing to AoA, project, or downstream owner context"
       ]
     },
     {

@@ -205,8 +205,8 @@
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "source_scope": "repo",
-      "instruction_sha256": "c8076a39396275030b7cd8dfa7742437cb07338ff03d0de16f339d6e8a969bf9",
-      "dedupe_key": "aoa-bounded-context-map:c8076a39396275030b7cd8dfa7742437cb07338ff03d0de16f339d6e8a969bf9",
+      "instruction_sha256": "c5076d145a686b6ab4cd1b66cc6d1064ac28002cbf576a89f2503e8f0fad1119",
+      "dedupe_key": "aoa-bounded-context-map:c5076d145a686b6ab4cd1b66cc6d1064ac28002cbf576a89f2503e8f0fad1119",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -237,15 +237,15 @@
       "name": "aoa-change-protocol",
       "display_name": "AoA Change Protocol",
       "source_scope": "repo",
-      "instruction_sha256": "3bb9e74b87b26ffa6f530f40499318ceeb59924efece860ed95899e219e73ecb",
-      "dedupe_key": "aoa-change-protocol:3bb9e74b87b26ffa6f530f40499318ceeb59924efece860ed95899e219e73ecb",
+      "instruction_sha256": "8ecabfd696e5187382dc12e404726f6234cf2b4546b72f61e7e2d44344a9bf02",
+      "dedupe_key": "aoa-change-protocol:8ecabfd696e5187382dc12e404726f6234cf2b4546b72f61e7e2d44344a9bf02",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
       "compact_summary": "Plan, scope, verify, report",
       "must_keep": [
         "target goal",
-        "touched files or surfaces",
+        "owner repository or route surface",
         "explicit plan",
         "scoped change"
       ],
@@ -255,7 +255,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n\nKeep in memory: target goal, touched files or surfaces, explicit plan, scoped change.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan. Do not use for trivial wording fixes or when a more specific risk skill fits better.\n\nKeep in memory: target goal, owner repository or route surface, explicit plan, scoped change.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -813,8 +813,8 @@
       "name": "aoa-source-of-truth-check",
       "display_name": "AoA Source Of Truth Check",
       "source_scope": "repo",
-      "instruction_sha256": "633bac391a787e1a12cdfa8c1d8818271fda9240ef1e182fa168dd0fad42f6f0",
-      "dedupe_key": "aoa-source-of-truth-check:633bac391a787e1a12cdfa8c1d8818271fda9240ef1e182fa168dd0fad42f6f0",
+      "instruction_sha256": "28219ad546d7bdaf25ba07441365a72b60986897b9cb8347d4347fde246418e7",
+      "dedupe_key": "aoa-source-of-truth-check:28219ad546d7bdaf25ba07441365a72b60986897b9cb8347d4347fde246418e7",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -823,7 +823,7 @@
         "repository docs surface",
         "target area of ambiguity or overlap",
         "clearer source-of-truth map",
-        "fan-out map when one source feeds multiple downstream consumers"
+        "active/current versus historical/provenance/generated placement map"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -831,7 +831,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository docs surface, target area of ambiguity or overlap, clearer source-of-truth map, fan-out map when one source feeds multiple downstream consumers.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository docs surface, target area of ambiguity or overlap, clearer source-of-truth map, active/current versus historical/provenance/generated placement map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {

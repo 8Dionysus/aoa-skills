@@ -231,7 +231,7 @@
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
       "status": "canonical",
-      "summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware."
+      "summary": "Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and portable where needed."
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
@@ -256,7 +256,7 @@
       "scope": "core",
       "skill_path": "skills/aoa-change-protocol/SKILL.md",
       "status": "canonical",
-      "summary": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly."
+      "summary": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly."
     },
     {
       "candidate_review_path": null,
@@ -749,7 +749,7 @@
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
-      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist."
+      "summary": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist."
     },
     {
       "candidate_review_path": null,

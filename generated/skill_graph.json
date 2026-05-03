@@ -4428,7 +4428,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "7ac0c6e23aefff746443a0f8569c04bdf4e245cefeaad83e72a5d49b5cb98dbb",
+      "content_hash": "277d0a17463f39fe764b75d3adbd6deb00e859ed1d242bcdf4d53175fafef3cc",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4457,7 +4457,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "skill_revision": "7ac0c6e23aef",
+      "skill_revision": "277d0a17463f",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -4516,7 +4516,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "9dd2ca745b6864280e47073dfc4f63fefd003fc9ed8f38bdece8ba06edcf2ca3",
+      "content_hash": "714516e8fa914bf03ec18c786e1797dfb03e9a77a632587f815db2b7e5e67e12",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4545,7 +4545,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/aoa-change-protocol/SKILL.md",
-      "skill_revision": "9dd2ca745b68",
+      "skill_revision": "714516e8fa91",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -6102,7 +6102,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "88bfdb4421d0336f0780c0eecde48910a4feb57f45045636e3f90acb32ad487d",
+      "content_hash": "d4facdea4de6c909c5d7d5d3bff103d774a0e53f23d850d39e40fc797b8ac1c3",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6131,7 +6131,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "skill_revision": "88bfdb4421d0",
+      "skill_revision": "d4facdea4de6",
       "status": "canonical",
       "support_artifacts": [
         {

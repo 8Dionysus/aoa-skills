@@ -39,6 +39,14 @@
 - future follow-up should preserve the default-reference rationale and review drift rather than reopen the promotion decision
 - maintenance should stay comparative and not blur into a broader architecture review
 
+## 2026-05-03 maintenance audit
+
+- audit trigger: `aoa-techniques` now explicitly carries dual posture as standalone public library and AoA organ, while mechanics work repeatedly needs owner splits across techniques, skills, evals, routing, playbooks, generated companions, and center law.
+- evidence checked: `Agents-of-Abyss` federation rules and repo roles; `aoa-techniques` charter, technique atom/topology contracts, mechanics atlas, and active package cards.
+- runtime `SKILL.md` meaning changed: yes, boundedly.
+- decision: keep the skill canonical and strengthen it around layer/owner boundaries, portable-versus-integration wording, stop-lines, and handoffs to stronger owners.
+- blocker status: none; the update does not change status, scope, or invocation posture.
+
 ## Recommendation
 
 Keep `aoa-bounded-context-map` as a canonical default reference and use this review record as the maintenance surface for future drift checks.

@@ -41,6 +41,14 @@
 - future maintenance should preserve the document-authority boundary and avoid widening the skill into general roadmap or policy maintenance
 - future drift review should keep entrypoint-doc cleanup tied to canonical homes rather than turning the skill into generic docs cleanup
 
+## 2026-05-03 maintenance audit
+
+- audit trigger: `aoa-techniques` root cleanup and mechanics restructuring showed that document authority now routinely includes active surfaces, legacy/provenance bridges, generated companions, decisions, and owner-local handoff surfaces.
+- evidence checked: `Agents-of-Abyss` root surface law and mechanic package law; `aoa-techniques` root source-of-truth stack, Audit provenance for the former root roadmap, and Distillation/Agon active-first legacy bridges.
+- runtime `SKILL.md` meaning changed: yes, boundedly.
+- decision: keep the skill canonical and strengthen it around active/current versus historical/provenance/generated placement, portable public readability, and avoiding broad law blocks in unrelated surfaces.
+- blocker status: none; the update does not change status, scope, or invocation posture.
+
 ## Recommendation
 
 Keep `aoa-source-of-truth-check` as a canonical default reference and use this review record as the maintenance surface for future drift checks.

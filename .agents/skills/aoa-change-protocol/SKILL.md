@@ -16,13 +16,14 @@ metadata:
 # aoa-change-protocol
 
 ## Intent
-Use a visible, bounded workflow for non-trivial changes so the result remains reviewable and safer.
+Ground non-trivial changes in the owner route before editing, then keep the diff reviewable and explicitly verified without hidden scope expansion.
 
 ## Trigger boundary
 Use this skill when:
 - the change affects code, config, docs, or operational surfaces in a meaningful way
 - the task benefits from an explicit plan and verification path
 - the task touches more than a trivial wording fix
+- the request references previous work, sibling repositories, root surfaces, mechanics, generated outputs, or owner boundaries that must be inspected before planning
 
 Do not use this skill when:
 - the edit is tiny and has no meaningful review or operational consequence
@@ -30,7 +31,9 @@ Do not use this skill when:
 
 ## Inputs
 - target goal
+- owner repository or route surface
 - touched files or surfaces
+- source-of-truth or route-law surfaces that constrain the change
 - main risk
 - intended validation path
 - rollback idea
@@ -39,39 +42,50 @@ Do not use this skill when:
 - explicit plan
 - scoped change
 - named verification result
+- post-change route review when source-of-truth, generated, decision, roadmap, changelog, quest, mechanic, or owner surfaces may have moved
 - concise final report
 
 ## Procedure
-1. state the goal and touched surfaces
-2. identify the main risk and think about rollback before editing
-3. prepare the smallest reviewable change
-4. avoid unrelated cleanup or opportunistic refactors
-5. apply the change inside the declared scope
-6. run or name explicit verification
-7. report what changed, what was verified, and what remains risky
+1. choose the owner repository and read the nearest route card, `AGENTS.md`, source-of-truth surfaces, and local validation path before planning
+2. state the goal, touched surfaces, and evidence already inspected; if the request depends on prior work, inspect the current repo state rather than relying on memory
+3. identify the main risk, owner boundary, and rollback or recovery shape before editing
+4. prepare the smallest reviewable change that follows the current source route
+5. avoid unrelated cleanup, opportunistic refactors, or importing a sibling owner's authority into the local surface
+6. apply the change inside the declared scope
+7. run or name explicit verification, including generated/export rebuilds when source surfaces feed derived outputs
+8. perform the narrow post-change route review only for surfaces whose meaning actually moved
+9. report what changed, what was verified, what was skipped, what remains risky, and where the next owner route is
 
 ## Contracts
 - the change must remain reviewable
 - verification must be explicit, not implied
 - the change should stay inside the declared scope
 - rollback thinking should exist before apply
+- the plan should be grounded in inspected source surfaces, not only conversation memory or generic pattern recall
+- generated, exported, compact, or derived surfaces should be refreshed from source rather than hand-authored as truth
+- cross-repo or mechanics changes should name owner boundaries and stop-lines before moving content
 
 ## Risks and anti-patterns
 - over-formalizing trivial edits
 - symbolic verification that creates false safety
 - using the report as a substitute for a readable diff
 - silently expanding the task during implementation
+- planning from stale memory when the repository already has route cards, mechanics, or source-of-truth docs that answer the question
+- treating legacy, provenance, generated, or sibling-owner surfaces as if they were the active local contract
+- inserting broad law blocks into local surfaces instead of shaping the change through the existing route
 
 ## Verification
-- confirm a plan existed before apply
+- confirm the owner route and relevant source surfaces were inspected before apply
 - confirm the change stayed scoped
 - confirm at least one explicit verification step was run or intentionally skipped with explanation
-- confirm the report includes outcome and rollback thinking
+- confirm generated or export surfaces were rebuilt when canonical inputs changed
+- confirm the post-change route review touched only surfaces whose meaning moved
+- confirm the report includes outcome, rollback thinking, skipped checks, and remaining owner-route risk
 
 ## Technique traceability
 Manifest-backed techniques:
 - AOA-T-0001 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
-- AOA-T-0002 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: summary
+- AOA-T-0002 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 Project overlays should add:
@@ -79,3 +93,4 @@ Project overlays should add:
 - local validation commands
 - local risk tiers
 - approval or review rules
+- local post-change route review surfaces such as changelog, roadmap, decision records, generated indexes, questbooks, or mechanics ledgers
