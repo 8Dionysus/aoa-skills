@@ -4428,7 +4428,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "d7848e357cc9a6900e9eba329da39f67a597df1c69045514a051c3c3ada3fa11",
+      "content_hash": "277d0a17463f39fe764b75d3adbd6deb00e859ed1d242bcdf4d53175fafef3cc",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4457,7 +4457,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "skill_revision": "d7848e357cc9",
+      "skill_revision": "277d0a17463f",
       "status": "canonical",
       "support_artifacts": [
         {

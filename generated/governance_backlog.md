@@ -71,7 +71,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | b748332deeb3 | b748332deeb3 | False | - | true |
 | aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | 85363f128a32 | 85363f128a32 | True | - | true |
 | aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | 5f5fddc53dbf | 5f5fddc53dbf | True | - | true |
-| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 0b812ff0ad1b | 0b812ff0ad1b | False | - | true |
+| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 0b812ff0ad1b | 0b812ff0ad1b | True | - | true |
 | aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 630cd7200d6f | 630cd7200d6f | False | - | true |
 | aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | edc922f89c31 | edc922f89c31 | False | - | true |
 | aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | a36559876459 | a36559876459 | True | - | true |

@@ -99,7 +99,7 @@
       "name": "aoa-bounded-context-map",
       "review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "reviewed_revision": "0b812ff0ad1b",
-      "runtime_skill_md_meaning_changed": false,
+      "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },

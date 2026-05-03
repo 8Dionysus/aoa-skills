@@ -26,7 +26,7 @@
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
-- runtime `SKILL.md` meaning changed: `no`
+- runtime `SKILL.md` meaning changed: `yes`
 - current bundle note: the bundle still clears the evaluated floor that this record originally captured; the reviewed revision now reflects the 2026-05-03 bounded maintenance update to owner/layer boundary wording.
 
 ## Gaps and blockers
