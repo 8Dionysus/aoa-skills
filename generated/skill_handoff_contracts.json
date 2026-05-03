@@ -459,35 +459,43 @@
         "target area or subsystem",
         "current naming and responsibilities",
         "known neighboring contexts",
-        "ambiguous or overloaded terms"
+        "ambiguous or overloaded terms",
+        "owner layers, stronger owner repositories, or portability constraints that shape the boundary"
       ],
       "outputs": [
         "named contexts or subsystems",
         "rough boundary map",
         "interface notes between contexts",
-        "ambiguity notes and recommended vocabulary"
+        "ambiguity notes and recommended vocabulary",
+        "owner split, stop-line, and portable-versus-integration vocabulary when those boundaries matter"
       ],
       "verification": [
         "confirm the main ambiguity was reduced",
         "confirm interfaces or handoff points are named",
-        "confirm the output helps future scoped changes"
+        "confirm the output helps future scoped changes",
+        "confirm the map says what routes away when a stronger owner owns the truth",
+        "confirm portable and integration-only wording remain distinct when both are present"
       ],
       "contracts": [
         "boundaries should reduce semantic confusion, not create ceremony for its own sake",
         "neighboring contexts should be named explicitly when relevant",
-        "interface or translation points should be visible"
+        "interface or translation points should be visible",
+        "a context map should not transfer authority from a stronger owner into the local repository",
+        "portable core wording should remain usable without hidden ecosystem dependencies when the target surface is public"
       ],
       "consumes_artifact_tags": [
         "target-area-or-subsystem",
         "current-naming-and-responsibilities",
         "known-neighboring-contexts",
-        "ambiguous-or-overloaded-terms"
+        "ambiguous-or-overloaded-terms",
+        "owner-layers-stronger-owner-repositories-or-portability-constrai"
       ],
       "provides_artifact_tags": [
         "named-contexts-or-subsystems",
         "rough-boundary-map",
         "interface-notes-between-contexts",
-        "ambiguity-notes-and-recommended-vocabulary"
+        "ambiguity-notes-and-recommended-vocabulary",
+        "owner-split-stop-line-and-portable-versus-integration-vocabulary"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-bounded-context-map",
@@ -495,7 +503,8 @@
           "named-contexts-or-subsystems",
           "rough-boundary-map",
           "interface-notes-between-contexts",
-          "ambiguity-notes-and-recommended-vocabulary"
+          "ambiguity-notes-and-recommended-vocabulary",
+          "owner-split-stop-line-and-portable-versus-integration-vocabulary"
         ],
         "verification_notes": [
           "confirm the main ambiguity was reduced",
@@ -517,7 +526,9 @@
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "target goal",
+        "owner repository or route surface",
         "touched files or surfaces",
+        "source-of-truth or route-law surfaces that constrain the change",
         "main risk",
         "intended validation path",
         "rollback idea"
@@ -526,23 +537,31 @@
         "explicit plan",
         "scoped change",
         "named verification result",
+        "post-change route review when source-of-truth, generated, decision, roadmap, changelog, quest, mechanic, or owner surfaces may have moved",
         "concise final report"
       ],
       "verification": [
-        "confirm a plan existed before apply",
+        "confirm the owner route and relevant source surfaces were inspected before apply",
         "confirm the change stayed scoped",
         "confirm at least one explicit verification step was run or intentionally skipped with explanation",
-        "confirm the report includes outcome and rollback thinking"
+        "confirm generated or export surfaces were rebuilt when canonical inputs changed",
+        "confirm the post-change route review touched only surfaces whose meaning moved",
+        "confirm the report includes outcome, rollback thinking, skipped checks, and remaining owner-route risk"
       ],
       "contracts": [
         "the change must remain reviewable",
         "verification must be explicit, not implied",
         "the change should stay inside the declared scope",
-        "rollback thinking should exist before apply"
+        "rollback thinking should exist before apply",
+        "the plan should be grounded in inspected source surfaces, not only conversation memory or generic pattern recall",
+        "generated, exported, compact, or derived surfaces should be refreshed from source rather than hand-authored as truth",
+        "cross-repo or mechanics changes should name owner boundaries and stop-lines before moving content"
       ],
       "consumes_artifact_tags": [
         "target-goal",
+        "owner-repository-or-route-surface",
         "touched-files-or-surfaces",
+        "source-of-truth-or-route-law-surfaces-that-constrain-the-change",
         "main-risk",
         "intended-validation-path",
         "rollback-idea"
@@ -551,6 +570,7 @@
         "explicit-plan",
         "scoped-change",
         "named-verification-result",
+        "post-change-route-review-when-source-of-truth-generated-decision",
         "concise-final-report"
       ],
       "handoff_packet_template": {
@@ -559,10 +579,11 @@
           "explicit-plan",
           "scoped-change",
           "named-verification-result",
+          "post-change-route-review-when-source-of-truth-generated-decision",
           "concise-final-report"
         ],
         "verification_notes": [
-          "confirm a plan existed before apply",
+          "confirm the owner route and relevant source surfaces were inspected before apply",
           "confirm the change stayed scoped",
           "confirm at least one explicit verification step was run or intentionally skipped with explanation"
         ],
@@ -1838,10 +1859,13 @@
         "repository docs surface",
         "target area of ambiguity or overlap",
         "known canonical files if any",
+        "active, legacy, provenance, generated, or decision surfaces involved",
+        "owner repositories or stronger owner layers involved",
         "current contributor confusion points"
       ],
       "outputs": [
         "clearer source-of-truth map",
+        "active/current versus historical/provenance/generated placement map",
         "fan-out map when one source feeds multiple downstream consumers",
         "note of overlaps or conflicts",
         "proposed or implemented document role clarification",
@@ -1853,12 +1877,17 @@
         "confirm authoritative files are named explicitly",
         "confirm overlaps or conflicts were surfaced rather than hidden",
         "confirm summary docs stay short and route detail to canonical homes where those already exist",
+        "confirm active, legacy/provenance, generated, and decision surfaces keep distinct roles when they are involved",
+        "confirm public portable surfaces remain understandable without hidden local system knowledge",
         "confirm the result helps future contributors orient faster"
       ],
       "contracts": [
         "authoritative sources should be visible and named explicitly",
         "overview documents should not silently replace canonical ones",
         "lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters",
+        "active behavior should live in active surfaces; legacy and provenance should preserve lineage without becoming the first route",
+        "generated, exported, compact, and derived surfaces should remain subordinate to source-authored files",
+        "public portable docs should not require a full AoA deployment to make sense, even when AoA owner routes are linked",
         "role separation should reduce confusion, not create extra ceremony",
         "the resulting guidance should be understandable to another human or agent"
       ],
@@ -1866,10 +1895,13 @@
         "repository-docs-surface",
         "target-area-of-ambiguity-or-overlap",
         "known-canonical-files-if-any",
+        "active-legacy-provenance-generated-or-decision-surfaces-involved",
+        "owner-repositories-or-stronger-owner-layers-involved",
         "current-contributor-confusion-points"
       ],
       "provides_artifact_tags": [
         "clearer-source-of-truth-map",
+        "active-current-versus-historical-provenance-generated-placement-",
         "fan-out-map-when-one-source-feeds-multiple-downstream-consumers",
         "note-of-overlaps-or-conflicts",
         "proposed-or-implemented-document-role-clarification",
@@ -1880,6 +1912,7 @@
         "from_skill": "aoa-source-of-truth-check",
         "produced_artifacts": [
           "clearer-source-of-truth-map",
+          "active-current-versus-historical-provenance-generated-placement-",
           "fan-out-map-when-one-source-feeds-multiple-downstream-consumers",
           "note-of-overlaps-or-conflicts",
           "proposed-or-implemented-document-role-clarification",

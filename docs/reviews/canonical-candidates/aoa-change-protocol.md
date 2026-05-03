@@ -40,6 +40,14 @@
 - future follow-up should focus on preserving default-use clarity and reviewing drift rather than reopening the initial gate decision
 - the historical first cohort should remain documented comparatively rather than rewritten as if canonical status had been automatic
 
+## 2026-05-03 maintenance audit
+
+- audit trigger: repeated use during `aoa-techniques` mechanics and root source-of-truth work showed the skill still fit, but its runtime wording under-described owner-route reading before planning.
+- evidence checked: `Agents-of-Abyss` route law and mechanics package standard; `aoa-techniques` `CHARTER.md`, `docs/ROOT_SURFACE_LAW.md`, `ROADMAP.md`, `mechanics/AGENTS.md`, and active mechanics package surfaces.
+- runtime `SKILL.md` meaning changed: yes, boundedly.
+- decision: keep the skill canonical and strengthen it around owner-route inspection, source-grounded planning, generated/export rebuilds, and post-change route review.
+- blocker status: none; the update does not change status, scope, or invocation posture.
+
 ## Recommendation
 
 Canonical promotion landed in this pass.

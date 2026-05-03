@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `81d64fe3b35a`
+- reviewed revision: `0b812ff0ad1b`
 
 ## Target status
 
@@ -27,7 +27,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the bundle still clears the evaluated floor that this record originally captured.
+- current bundle note: the bundle still clears the evaluated floor that this record originally captured; the reviewed revision now reflects the 2026-05-03 bounded maintenance update to owner/layer boundary wording.
 
 ## Gaps and blockers
 

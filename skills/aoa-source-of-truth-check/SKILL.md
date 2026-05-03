@@ -2,7 +2,7 @@
 name: aoa-source-of-truth-check
 scope: core
 status: canonical
-summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.
+summary: Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0013
@@ -26,6 +26,8 @@ Use this skill when:
 - one authoritative source must stay aligned across multiple downstream consumer surfaces
 - top-level status docs such as `README` or `MANIFEST` are accumulating status/history that should live in canonical homes instead
 - the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven
+- root docs, mechanics packages, legacy receipts, provenance bridges, decisions, generated surfaces, or owner-local handoff docs are being confused with one another
+- a public repository must stay portable while still pointing to AoA, project, or downstream owner context
 
 Do not use this skill when:
 - the repository is tiny and has no meaningful source-of-truth ambiguity
@@ -40,11 +42,14 @@ Do not use this skill when:
 - repository docs surface
 - target area of ambiguity or overlap
 - known canonical files if any
+- active, legacy, provenance, generated, or decision surfaces involved
+- owner repositories or stronger owner layers involved
 - current contributor confusion points
 
 ## Outputs
 
 - clearer source-of-truth map
+- active/current versus historical/provenance/generated placement map
 - fan-out map when one source feeds multiple downstream consumers
 - note of overlaps or conflicts
 - proposed or implemented document role clarification
@@ -53,20 +58,24 @@ Do not use this skill when:
 
 ## Procedure
 
-1. identify the main docs or guidance files involved in the target area
-2. determine which file should be authoritative for each concern
-3. note any overlap, contradiction, or role ambiguity
+1. identify the main docs, route cards, generated outputs, mechanics surfaces, legacy/provenance bridges, and owner-local handoff files involved in the target area
+2. determine which file should be authoritative for each concern and which surfaces are entrypoints, active contracts, provenance bridges, historical receipts, generated companions, or decision rationale
+3. note any overlap, contradiction, role ambiguity, or stale route caused by old growth rather than current source truth
 4. if one source feeds multiple consumers, name each consumer and refresh them from the same source
 5. if top-level status docs are bloating, trim them into short snapshots and route detail to canonical homes
-6. clarify or propose clarifying document ownership and purpose
-7. keep the change bounded to the guidance surface under review
-8. verify that the result reduces ambiguity for future changes
+6. when historical or raw material matters, route it through legacy/provenance rather than letting it burden the active contract
+7. clarify or propose clarifying document ownership and purpose without inserting broad law blocks into unrelated sections
+8. keep the change bounded to the guidance surface under review
+9. verify that the result reduces ambiguity for future changes and preserves standalone readability where the repo is public
 
 ## Contracts
 
 - authoritative sources should be visible and named explicitly
 - overview documents should not silently replace canonical ones
 - lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters
+- active behavior should live in active surfaces; legacy and provenance should preserve lineage without becoming the first route
+- generated, exported, compact, and derived surfaces should remain subordinate to source-authored files
+- public portable docs should not require a full AoA deployment to make sense, even when AoA owner routes are linked
 - role separation should reduce confusion, not create extra ceremony
 - the resulting guidance should be understandable to another human or agent
 
@@ -78,6 +87,9 @@ Do not use this skill when:
 - letting summaries masquerade as canonical instructions
 - trimming top-level docs too aggressively before canonical homes are actually available
 - widening the skill into generic docs hygiene or derived surface maintenance
+- treating provenance as trash archive, or treating raw legacy as the active contract
+- inserting direct law/local-form blocks everywhere instead of making the existing route surface clearer
+- hiding sibling-owner authority inside a local docs surface because the local repo is nearby
 
 ## Verification
 
@@ -85,6 +97,8 @@ Do not use this skill when:
 - confirm authoritative files are named explicitly
 - confirm overlaps or conflicts were surfaced rather than hidden
 - confirm summary docs stay short and route detail to canonical homes where those already exist
+- confirm active, legacy/provenance, generated, and decision surfaces keep distinct roles when they are involved
+- confirm public portable surfaces remain understandable without hidden local system knowledge
 - confirm the result helps future contributors orient faster
 
 ## Technique traceability
@@ -104,3 +118,4 @@ Future project overlays may add:
 - repository-specific examples of authoritative surfaces
 - lightweight snapshot rules for README or MANIFEST surfaces
 - rules for keeping entrypoint docs short once deeper canonical homes already exist
+- legacy/provenance placement rules and generated-surface rebuild checks

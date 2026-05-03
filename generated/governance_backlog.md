@@ -71,7 +71,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | b748332deeb3 | b748332deeb3 | False | - | true |
 | aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | 85363f128a32 | 85363f128a32 | True | - | true |
 | aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | 5f5fddc53dbf | 5f5fddc53dbf | True | - | true |
-| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 81d64fe3b35a | 81d64fe3b35a | False | - | true |
+| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 0b812ff0ad1b | 0b812ff0ad1b | False | - | true |
 | aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 630cd7200d6f | 630cd7200d6f | False | - | true |
 | aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | edc922f89c31 | edc922f89c31 | False | - | true |
 | aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | a36559876459 | a36559876459 | True | - | true |
@@ -81,7 +81,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 583b00c7022b | 583b00c7022b | True | - | true |
 | aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | be3c837ac0ef | be3c837ac0ef | False | - | true |
 | aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 66e22f9be20a | 66e22f9be20a | True | - | true |
-| aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | d05107b7628c | d05107b7628c | True | - | true |
+| aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | cf8c451a06fe | cf8c451a06fe | True | - | true |
 | atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | d619f3e2e5c3 | d619f3e2e5c3 | False | - | true |
 | atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | 2e1ac0095772 | 2e1ac0095772 | False | - | true |
 

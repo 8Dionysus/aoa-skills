@@ -172,13 +172,13 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "9e0b77e6611d36468c0dd11d94f22775d1fccf7831a0707cbd964130f09f5527",
-      "bytes": 229032
+      "sha256": "a35adab4b66c8a18348243569ab81e01c02dc1a8be9b9910cc87e237a4bd81df",
+      "bytes": 234694
     },
     {
       "path": "generated/skill_catalog.min.json",
-      "sha256": "86760fd925fc84c1c694650e52eddcc40527538d62b31e8a1778393afd15857b",
-      "bytes": 17468
+      "sha256": "f4f3ddbb61d80e4dc6f4b6852fa1d915d19d0f31b7f1da7bfb2088591dfc53ab",
+      "bytes": 17518
     },
     {
       "path": "config/portable_skill_overrides.json",
@@ -244,13 +244,13 @@
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "d8312f3047b4ec2f0c88e3411cc102434e2b50f50dd475e7a7c73cba3f4a5871",
-      "bytes": 157291
+      "sha256": "4ae09dccc978cf13dc2a933902842758ab9ea46d82c05ebacadaf494f5ea304a",
+      "bytes": 160483
     },
     {
       "path": "generated/context_retention_manifest.json",
-      "sha256": "f6a9caaf95885d5a4fbe0c8d5ceb5604cd0ea0f2643ea0670e6a60e885d11566",
-      "bytes": 63813
+      "sha256": "de01b704cea2b293166e1cb4577719fe810f44392ea2c1698899bd73ea40dc23",
+      "bytes": 63837
     },
     {
       "path": "generated/trust_policy_matrix.json",
@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "87a46b5ebb252cb34bd2738ad37063382cc268b6469106aba15d6ef97d99839a",
-      "bytes": 298759
+      "sha256": "ce0350f1696b64e77ceb7208ee3d7fd7b72d952e6cc1a4e1a8c60e5e17e64a72",
+      "bytes": 299223
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -334,8 +334,8 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "a83885ccc277d29db9a1d296105e930a728063831ad920d4379d1fcb675e8de3",
-      "bytes": 89247
+      "sha256": "b4c1cfa3b09f5ba9354bc5470546b7f2dd7bf3783920b6753dc9a99a3787d0f2",
+      "bytes": 89271
     },
     {
       "path": "generated/runtime_guardrail_tool_schemas.json",
@@ -409,8 +409,8 @@
     },
     {
       "path": "generated/tiny_router_skill_signals.json",
-      "sha256": "91d0345710abdb96132e011f42185e292c7370a50c29e6b303ec38406607f0cb",
-      "bytes": 139574
+      "sha256": "1dd826dbd70ac57d03de92630272764428d5c57494b6609e01b19e494ab68c25",
+      "bytes": 139649
     },
     {
       "path": "generated/tiny_router_candidate_bands.json",
@@ -419,8 +419,8 @@
     },
     {
       "path": "generated/tiny_router_capsules.min.json",
-      "sha256": "6e205230fbce900e3d5c6d185da7d154ec9a38e5dedf074ffd6613d358c12a78",
-      "bytes": 44931
+      "sha256": "b6e8f0dd42ebf6f207e90f6772f634d61defaace64edce679c56804d1ed49bff",
+      "bytes": 44954
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "b8f0c17bddbc5beaa929934329945da5c6f8e53a52fb2112978b995e7450e000",
+      "sha256": "131b5b007ead50ea44b2ed18b780c1356261887de3334baef119d56d889b6107",
       "bytes": 127072
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "9341440af7e29f852b770992012096412685340b8bae91444f49ff83d8f730e5",
+      "sha256": "4c6dc3bf7e75ed00490e7aafa59cbc8b3b7cbf3df2572be96dd4f4c477437a2b",
       "bytes": 14832
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "b1d9ba341ded1fdc270c4a0353ce453ce08fe6636df776527257c582efb94568",
+      "sha256": "3b8e1f30d44a503c8e95a8466db875befe752512154c37571e0e85a322eb097d",
       "bytes": 233296
     },
     {
@@ -486,13 +486,13 @@
     },
     {
       "name": "aoa-bounded-context-map",
-      "skill_revision": "7ac0c6e23aef",
-      "content_hash": "7ac0c6e23aefff746443a0f8569c04bdf4e245cefeaad83e72a5d49b5cb98dbb"
+      "skill_revision": "d7848e357cc9",
+      "content_hash": "d7848e357cc9a6900e9eba329da39f67a597df1c69045514a051c3c3ada3fa11"
     },
     {
       "name": "aoa-change-protocol",
-      "skill_revision": "9dd2ca745b68",
-      "content_hash": "9dd2ca745b6864280e47073dfc4f63fefd003fc9ed8f38bdece8ba06edcf2ca3"
+      "skill_revision": "714516e8fa91",
+      "content_hash": "714516e8fa914bf03ec18c786e1797dfb03e9a77a632587f815db2b7e5e67e12"
     },
     {
       "name": "aoa-checkpoint-closeout-bridge",
@@ -581,8 +581,8 @@
     },
     {
       "name": "aoa-source-of-truth-check",
-      "skill_revision": "88bfdb4421d0",
-      "content_hash": "88bfdb4421d0336f0780c0eecde48910a4feb57f45045636e3f90acb32ad487d"
+      "skill_revision": "d4facdea4de6",
+      "content_hash": "d4facdea4de6c909c5d7d5d3bff103d774a0e53f23d850d39e40fc797b8ac1c3"
     },
     {
       "name": "aoa-summon",
@@ -731,7 +731,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "2bab044e702949a4f9b3ba015d1af8055047bf02aeadeff754fcca9822086e49"
+      "profile_revision": "b14d5b96186cee6dee5771ff33694401f41ed2742b2e87c49a8d56174dec6ceb"
     },
     {
       "name": "repo-default",
@@ -783,7 +783,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "155baa88742983c3418ac386358a541a4b311229a4293ea4a2dc8c7870d249f8"
+      "profile_revision": "80d00df7508d6865767d4598a36ad07a606580af424c50b1f5bede4eba20593b"
     },
     {
       "name": "repo-project-core-kernel",
@@ -815,7 +815,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "7faca7dde7492eabd4a06bce116c853ac1ad654b26213a2e8679ad07c5eca153"
+      "profile_revision": "847890d04d73df5f5060946c34b4c471ee135f052c8346db4c47d2a43c28073c"
     },
     {
       "name": "repo-project-foundation",
@@ -845,7 +845,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "9b583341ab953a8a7c7a82d9620bed2c5329d1cdd8450a00d2c900f6463b0667"
+      "profile_revision": "b600892e03f60af223eebd7ef57707c96e1c3a197dde0bf5f54715087f76acb5"
     },
     {
       "name": "repo-project-risk-guard-ring",
@@ -953,7 +953,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "c1cdeab9e6eabce93ddf89375b74abc941d2dbc34299a64617c6d9c86ecea255"
+      "profile_revision": "1dbe85b0dbd288bb5cd9deb1972dd117337ee7d1d04018ebc853dd1187af962f"
     }
   ],
   "release_identity": {

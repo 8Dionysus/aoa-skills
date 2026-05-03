@@ -261,7 +261,7 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-bounded-context-map/SKILL.md`
-- pick summary: Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.
+- pick summary: Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and portable where needed.
 
 ### Use when
 
@@ -269,6 +269,8 @@ Common expand sections:
 - naming is drifting or overloaded
 - the task needs a clearer boundary before coding safely
 - an agent is likely to confuse nearby concepts without sharper separation
+- a repository has a dual posture, such as standalone public library and ecosystem organ
+- mechanics, skills, techniques, evals, playbooks, generated surfaces, or owner-local implementations are easy to blur together
 
 ### Do not use when
 
@@ -282,6 +284,7 @@ Common expand sections:
 - rough boundary map
 - interface notes between contexts
 - ambiguity notes and recommended vocabulary
+- owner split, stop-line, and portable-versus-integration vocabulary when those boundaries matter
 
 ### Support artifacts
 
@@ -295,13 +298,14 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-change-protocol/SKILL.md`
-- pick summary: Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly.
+- pick summary: Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
 
 ### Use when
 
 - the change affects code, config, docs, or operational surfaces in a meaningful way
 - the task benefits from an explicit plan and verification path
 - the task touches more than a trivial wording fix
+- the request references previous work, sibling repositories, root surfaces, mechanics, generated outputs, or owner boundaries that must be inspected before planning
 
 ### Do not use when
 
@@ -313,6 +317,7 @@ Common expand sections:
 - explicit plan
 - scoped change
 - named verification result
+- post-change route review when source-of-truth, generated, decision, roadmap, changelog, quest, mechanic, or owner surfaces may have moved
 - concise final report
 
 ### Support artifacts
@@ -973,7 +978,7 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/aoa-source-of-truth-check/SKILL.md`
-- pick summary: Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.
+- pick summary: Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.
 
 ### Use when
 
@@ -984,6 +989,8 @@ Common expand sections:
 - one authoritative source must stay aligned across multiple downstream consumer surfaces
 - top-level status docs such as README or MANIFEST are accumulating status/history that should live in canonical homes instead
 - the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven
+- root docs, mechanics packages, legacy receipts, provenance bridges, decisions, generated surfaces, or owner-local handoff docs are being confused with one another
+- a public repository must stay portable while still pointing to AoA, project, or downstream owner context
 
 ### Do not use when
 
@@ -997,6 +1004,7 @@ Common expand sections:
 ### Object use shape
 
 - clearer source-of-truth map
+- active/current versus historical/provenance/generated placement map
 - fan-out map when one source feeds multiple downstream consumers
 - note of overlaps or conflicts
 - proposed or implemented document role clarification

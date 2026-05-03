@@ -92,13 +92,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "81d64fe3b35a",
+      "current_revision": "0b812ff0ad1b",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
-      "reviewed_revision": "81d64fe3b35a",
+      "reviewed_revision": "0b812ff0ad1b",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
       "truth_synced": true
@@ -212,13 +212,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "d05107b7628c",
+      "current_revision": "cf8c451a06fe",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
-      "reviewed_revision": "d05107b7628c",
+      "reviewed_revision": "cf8c451a06fe",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true

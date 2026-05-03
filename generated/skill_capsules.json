@@ -112,38 +112,38 @@
     {
       "inputs_short": "Needs: target area or subsystem; current naming and responsibilities; known neighboring contexts; ambiguous or overloaded terms.",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: inventing too many contexts for a small problem; renaming concepts without reducing confusion; treating context maps as proof of good architecture when interfaces remain muddy.",
+      "main_anti_patterns_short": "Avoid: inventing too many contexts for a small problem; renaming concepts without reducing confusion; treating context maps as proof of good architecture when interfaces remain muddy; copying center or sibling-repo...",
       "name": "aoa-bounded-context-map",
       "outputs_short": "Produces: named contexts or subsystems; rough boundary map; interface notes between contexts; ambiguity notes and recommended vocabulary.",
       "scope": "core",
       "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
       "status": "canonical",
-      "summary": "Clarify or carve system and domain boundaries so changes stay semantically scoped and interface-aware.",
+      "summary": "Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and portable where needed.",
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when a project mixes several domains or subsystems; naming is drifting or overloaded; Avoid when the change is tiny and fully local; the boundary is already clear and agreed on, and the real task is validating...",
-      "verification_short": "Checks: confirm the main ambiguity was reduced; confirm interfaces or handoff points are named; confirm the output helps future scoped changes.",
-      "workflow_short": "Purpose: bounded-context thinking to reduce semantic drift, mixed responsibilities, and unclear interfaces. Flow: identify the target area and the terms people use for it -> separate responsibilities into bounded contexts or subsystems -> name what..."
+      "verification_short": "Checks: confirm the main ambiguity was reduced; confirm interfaces or handoff points are named; confirm the output helps future scoped changes; confirm the map says what routes away when a stronger owner owns the truth.",
+      "workflow_short": "Purpose: bounded-context thinking to reduce semantic drift, mixed responsibilities, and unclear interfaces. Flow: identify the target area and the terms people use for it -> separate responsibilities into bounded contexts, subsystems, layers, or owner..."
     },
     {
-      "inputs_short": "Needs: target goal; touched files or surfaces; main risk; intended validation path.",
+      "inputs_short": "Needs: target goal; owner repository or route surface; touched files or surfaces; source-of-truth or route-law surfaces that constrain the change.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: over-formalizing trivial edits; symbolic verification that creates false safety; using the report as a substitute for a readable diff; silently expanding the task during implementation.",
       "name": "aoa-change-protocol",
-      "outputs_short": "Produces: explicit plan; scoped change; named verification result; concise final report.",
+      "outputs_short": "Produces: explicit plan; scoped change; named verification result; post-change route review when source-of-truth, generated, decision, roadmap, changelog, quest, mechanic, or owner surfaces may have moved.",
       "scope": "core",
       "skill_path": "skills/aoa-change-protocol/SKILL.md",
       "status": "canonical",
-      "summary": "Bounded workflow for Codex to plan a change, keep it scoped, verify it explicitly, and report it clearly.",
+      "summary": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the change affects code, config, docs, or operational surfaces in a meaningful way; the task benefits from an explicit plan and verification path; Avoid when the edit is tiny and has no meaningful review or...",
-      "verification_short": "Checks: confirm a plan existed before apply; confirm the change stayed scoped; confirm at least one explicit verification step was run or intentionally skipped with explanation; confirm the report includes outcome...",
-      "workflow_short": "Purpose: a visible, bounded workflow for non-trivial changes to keep results remains reviewable and safer. Flow: state the goal and touched surfaces -> identify the main risk and think about rollback before editing -> prepare the smallest reviewable..."
+      "verification_short": "Checks: confirm the owner route and relevant source surfaces were inspected before apply; confirm the change stayed scoped; confirm at least one explicit verification step was run or intentionally skipped with...",
+      "workflow_short": "Purpose: Ground non-trivial changes in the owner route before editing, then keep the diff reviewable and explicitly verified without hidden scope expansion. Flow: choose the owner repository and read the nearest route card, AGENTS.md, source-of-truth..."
     },
     {
       "inputs_short": "Needs: reviewed session artifact; optional local checkpoint note; optional reviewed surface closeout handoff; optional receipt refs from already published or staged session evidence.",
@@ -455,15 +455,15 @@
       "workflow_short": "Purpose: author a bounded REPAIRPACKET. Flow: start from the reviewed diagnosis rather than from general aspiration -> choose the smallest honest repair shape -> name the primary owner repo and target artifact class -> record checkpoint posture:..."
     },
     {
-      "inputs_short": "Needs: repository docs surface; target area of ambiguity or overlap; known canonical files if any; current contributor confusion points.",
+      "inputs_short": "Needs: repository docs surface; target area of ambiguity or overlap; known canonical files if any; active, legacy, provenance, generated, or decision surfaces involved.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: over-formalizing a tiny docs surface; creating many labels without reducing ambiguity; moving truth across files without clearly signaling the change; letting summaries masquerade as canonical instructions.",
       "name": "aoa-source-of-truth-check",
-      "outputs_short": "Produces: clearer source-of-truth map; fan-out map when one source feeds multiple downstream consumers; note of overlaps or conflicts; proposed or implemented document role clarification.",
+      "outputs_short": "Produces: clearer source-of-truth map; active/current versus historical/provenance/generated placement map; fan-out map when one source feeds multiple downstream consumers; note of overlaps or conflicts.",
       "scope": "core",
       "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
-      "summary": "Check whether repository guidance, canonical docs, and operational instructions have clear ownership, and keep top-level status surfaces short and link-driven once canonical homes already exist.",
+      "summary": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.",
       "technique_dependencies": [
         "AOA-T-0013",
         "AOA-T-0002",
@@ -471,7 +471,7 @@
       ],
       "trigger_boundary_short": "Use when a repository has several docs that may overlap or conflict; contributors may not know which file to trust first; Avoid when the repository is tiny and has no meaningful source-of-truth ambiguity; the task...",
       "verification_short": "Checks: confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly; confirm overlaps or conflicts were surfaced rather than hidden; confirm summary docs stay short and...",
-      "workflow_short": "Purpose: clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance. Flow: identify the main docs or guidance files involved in the target area -> determine which file should be authoritative for each..."
+      "workflow_short": "Purpose: clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance. Flow: identify the main docs, route cards, generated outputs, mechanics surfaces, legacy/provenance bridges, and owner-local handoff..."
     },
     {
       "inputs_short": "Needs: a quest passport with difficulty, risk, control mode, and delegate tier; a summon request with desired role or child target, transport preference, one parent anchor (routeanchor, parenttaskid, or sessionref),...",
