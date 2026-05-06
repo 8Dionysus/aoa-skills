@@ -9,6 +9,8 @@
 - `QUESTBOOK.md` — compact public index for durable skill-layer obligations
 - `mechanics/ROADMAP.md` — roadmap router; package roadmaps own future contours
 - `mechanics/` — owner-local skill-layer movement surfaces around AoA mechanics
+- `mechanics/ARTIFACT_TOPOLOGY.md` — placement law for mechanic-owned schemas,
+  examples, config, generated companions, manifests, scripts, tests, and quests
 - `mechanics/release-support/docs/RUNTIME_PATH.md` — main runtime guide for `pick -> inspect -> expand -> object use`
 - `mechanics/audit/docs/PUBLIC_SURFACE.md` — public guide to the current governance and product-signaling layer
 - `mechanics/method-growth/docs/PROMOTION_PATH.md` — public repository convention for maturity transitions
@@ -22,13 +24,13 @@
 - `templates/PROJECT_OVERLAY_SKILL.template.md` — canonical overlayed skill scaffold
 - `.agents/` — generated Codex-facing export layer
 - `config/` — repo-wide portable export, policy, profile, runtime, trigger-eval, and router inputs
-- `examples/` — root-owned examples only; mechanic examples live under `mechanics/<slug>/examples/`
+- `examples/` — root-owned examples only; mechanic examples live under the owning `mechanics/<slug>/` package or nearest part
 - `manifests/` — manifest route district; records live with owning mechanic packages or parts
 - `quests/` — lane-first durable obligation sources under `quests/<lane>/<state>/`
 - `skills/` — canonical skill source topology
 - `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, wave-4 runtime seam surfaces, wave-8 support-resource manifests, and trigger-eval seed data
-- `scripts/` — optional generation or validation helpers
-- `schemas/` — optional machine-readable schemas
+- `scripts/` — deterministic repo-wide builders, validators, reports, inspectors, and release helpers
+- `schemas/` — repo-wide machine-readable contracts; mechanic-local schemas live with their package or part
 
 ## Skill bundle shape
 

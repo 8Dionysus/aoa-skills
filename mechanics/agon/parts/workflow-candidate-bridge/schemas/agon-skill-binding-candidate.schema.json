@@ -1,5 +1,5 @@
 {
-  "$id": "https://github.com/8Dionysus/aoa-skills/schemas/agon-skill-binding-candidate.schema.json",
+  "$id": "https://github.com/8Dionysus/aoa-skills/mechanics/agon/parts/workflow-candidate-bridge/schemas/agon-skill-binding-candidate.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
   "properties": {

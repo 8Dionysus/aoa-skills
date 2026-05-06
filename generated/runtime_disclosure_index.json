@@ -554,7 +554,7 @@
         "Contracts": "this skill detects and packages automation opportunities; it does not create live automation authority; schedule hints remain hints, not runtime truth",
         "Risks and anti-patterns": "treating one exciting session as proof of repeatability; automating unstable, under-specified, or secret-heavy work too early",
         "Verification": "confirm each candidate names the current manual route; confirm evidence refs justify the repeat signal",
-        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Diony...",
+        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Diony...",
         "Adaptation points": "project overlays may add local execution modes, trigger classes, or schedule vocabularies; project overlays may add local approval classes or environment-risk labels"
       },
       "resource_inventory": {

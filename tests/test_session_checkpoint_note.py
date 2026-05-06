@@ -19,7 +19,7 @@ def _load_yaml(relative_path: str) -> dict:
 
 
 def test_session_checkpoint_note_schema_validates_example() -> None:
-    schema = _load_json("schemas/session_checkpoint_note.schema.json")
+    schema = _load_json("mechanics/checkpoint/schemas/session_checkpoint_note.schema.json")
     example = _load_json("mechanics/checkpoint/examples/session_checkpoint_note.example.json")
 
     Draft202012Validator.check_schema(schema)
@@ -68,7 +68,7 @@ def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
 
 
 def test_reviewed_owner_landing_bundle_schema_validates_example() -> None:
-    schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
+    schema = _load_json("mechanics/method-growth/schemas/reviewed_owner_landing_bundle.schema.json")
     example = _load_json("mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json")
 
     Draft202012Validator.check_schema(schema)
@@ -76,7 +76,7 @@ def test_reviewed_owner_landing_bundle_schema_validates_example() -> None:
 
 
 def test_reviewed_owner_landing_bundle_forbids_seed_or_object_refs() -> None:
-    schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
+    schema = _load_json("mechanics/method-growth/schemas/reviewed_owner_landing_bundle.schema.json")
     example = _load_json("mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json")
     example["seed_ref"] = "seed:aoa-skills:reviewed-donor-harvest"
     example["object_ref"] = "object:aoa-skills:reviewed-donor-harvest"
@@ -87,7 +87,7 @@ def test_reviewed_owner_landing_bundle_forbids_seed_or_object_refs() -> None:
 
 
 def test_reviewed_owner_landing_bundle_requires_terminal_drop_metadata() -> None:
-    schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
+    schema = _load_json("mechanics/method-growth/schemas/reviewed_owner_landing_bundle.schema.json")
     example = _load_json("mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json")
     example["status_posture"] = "dropped"
 
@@ -97,7 +97,7 @@ def test_reviewed_owner_landing_bundle_requires_terminal_drop_metadata() -> None
 
 
 def test_route_followthrough_decision_schema_validates_example() -> None:
-    schema = _load_json("schemas/route_followthrough_decision.schema.json")
+    schema = _load_json("mechanics/method-growth/schemas/route_followthrough_decision.schema.json")
     example = _load_json("mechanics/method-growth/examples/route_followthrough_decision.example.json")
 
     Draft202012Validator.check_schema(schema)
@@ -105,7 +105,7 @@ def test_route_followthrough_decision_schema_validates_example() -> None:
 
 
 def test_route_followthrough_decision_requires_reasoning_against_nearest_wrong_target() -> None:
-    schema = _load_json("schemas/route_followthrough_decision.schema.json")
+    schema = _load_json("mechanics/method-growth/schemas/route_followthrough_decision.schema.json")
     example = _load_json("mechanics/method-growth/examples/route_followthrough_decision.example.json")
     del example["why_not_nearest_wrong_target"]
 

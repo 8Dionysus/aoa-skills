@@ -1,25 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://aoa.local/aoa-skills/schemas/installation_skill_invocation_v1.json",
-  "title": "Installation Skill Invocation V1",
+  "$id": "https://aoa.local/aoa-skills/mechanics/experience/schemas/receipt_generation_skill_patch_v1.json",
+  "title": "Receipt Generation Skill Patch V1",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "allowed",
     "created_at",
     "evidence_refs",
     "id",
     "kind",
     "notes",
     "owner_repo",
+    "patch",
+    "skill",
     "status",
-    "surface",
     "version"
   ],
   "properties": {
-    "allowed": {
-      "type": "boolean"
-    },
     "created_at": {
       "type": "string",
       "minLength": 1,
@@ -40,7 +37,7 @@
     "kind": {
       "type": "string",
       "minLength": 1,
-      "const": "installation_skill_invocation_v1"
+      "const": "receipt_generation_skill_patch_v1"
     },
     "notes": {
       "type": "string",
@@ -50,6 +47,15 @@
       "type": "string",
       "minLength": 1,
       "const": "aoa-skills"
+    },
+    "patch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skill": {
+      "type": "string",
+      "minLength": 1,
+      "const": "emit_receipt"
     },
     "status": {
       "type": "string",
@@ -70,15 +76,10 @@
         "sealed"
       ]
     },
-    "surface": {
-      "type": "string",
-      "minLength": 1,
-      "const": "installation_skill_invocation_v1"
-    },
     "version": {
       "type": "string",
       "minLength": 1,
-      "const": "1.0.0"
+      "const": "1.1.0"
     }
   }
 }

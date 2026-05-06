@@ -136,7 +136,7 @@ What landed:
 - `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
 - `mechanics/checkpoint/parts/checkpoint-note-lane/README.md`
 - `mechanics/checkpoint/parts/closeout-bridge-boundary/README.md`
-- `schemas/session_checkpoint_note.schema.json`
+- `mechanics/checkpoint/schemas/session_checkpoint_note.schema.json`
 - `mechanics/checkpoint/examples/session_checkpoint_note.example.json`
 
 The landing covers checkpoint-note protocol and the explicit bridge into

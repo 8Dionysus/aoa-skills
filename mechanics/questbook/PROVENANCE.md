@@ -21,8 +21,8 @@ Current questbook source and projection surfaces are:
 
 - root `QUESTBOOK.md`
 - `quests/**/AOA-SK-Q-*.yaml`
-- `schemas/quest.schema.json`
-- `schemas/quest_dispatch.schema.json`
+- `mechanics/questbook/schemas/quest.schema.json`
+- `mechanics/questbook/schemas/quest_dispatch.schema.json`
 - `generated/quest_catalog.min.json`
 - `generated/quest_dispatch.min.json`
 - `generated/quest_catalog.min.example.json`

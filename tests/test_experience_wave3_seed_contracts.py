@@ -9,6 +9,7 @@ from jsonschema import Draft202012Validator
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SCHEMAS_ROOT = ROOT / "mechanics" / "method-growth" / "schemas"
 WAVE3_STEMS = (
     "skill_adoption_compatibility_report",
     "skill_adoption_owner_decision",
@@ -44,7 +45,7 @@ ENUM_ESCAPE_VALUE = "__wave3_not_allowed__"
 
 
 def load_contract(stem: str) -> tuple[dict[str, object], dict[str, object]]:
-    schema_path = ROOT / "schemas" / f"{stem}_v1.json"
+    schema_path = SCHEMAS_ROOT / f"{stem}_v1.json"
     example_path = ROOT / "mechanics" / "method-growth" / "examples" / f"{stem}.example.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     example = json.loads(example_path.read_text(encoding="utf-8"))
@@ -181,7 +182,7 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
     def test_experience_wave3_examples_match_schemas(self) -> None:
         missing_pairs: list[str] = []
         for stem in WAVE3_STEMS:
-            schema_path = ROOT / "schemas" / f"{stem}_v1.json"
+            schema_path = SCHEMAS_ROOT / f"{stem}_v1.json"
             example_path = ROOT / "mechanics" / "method-growth" / "examples" / f"{stem}.example.json"
             if not schema_path.exists():
                 missing_pairs.append(f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}")

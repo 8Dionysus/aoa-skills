@@ -7,7 +7,7 @@ import sys
 import unittest
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[5]
 CONFIG_PATH = (
     ROOT
     / "mechanics"
@@ -20,7 +20,15 @@ CONFIG_PATH = (
 
 
 def load_builder():
-    path = ROOT / "scripts" / "build_agon_skill_binding_candidates.py"
+    path = (
+        ROOT
+        / "mechanics"
+        / "agon"
+        / "parts"
+        / "workflow-candidate-bridge"
+        / "scripts"
+        / "build_agon_skill_binding_candidates.py"
+    )
     spec = importlib.util.spec_from_file_location("agon_skill_binding_builder_test", path)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
@@ -30,7 +38,11 @@ def load_builder():
 
 def test_agon_skill_binding_candidates_current() -> None:
     result = subprocess.run(
-        [sys.executable, "scripts/build_agon_skill_binding_candidates.py", "--check"],
+        [
+            sys.executable,
+            "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
+            "--check",
+        ],
         cwd=ROOT,
         text=True,
         capture_output=True,

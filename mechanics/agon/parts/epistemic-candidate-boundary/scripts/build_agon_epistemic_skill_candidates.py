@@ -8,7 +8,7 @@ import pathlib
 import sys
 from typing import Any
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
+ROOT = pathlib.Path(__file__).resolve().parents[5]
 SRC = (
     ROOT
     / "mechanics"

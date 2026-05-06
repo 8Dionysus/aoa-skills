@@ -111,9 +111,9 @@ Do not use this skill when:
 
 ## Technique traceability
 Manifest-backed techniques:
-- AOA-T-0086 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation
-- AOA-T-0087 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/human-loop-to-seed-lift/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation
-- AOA-T-0088 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation
+- AOA-T-0086 from `8Dionysus/aoa-techniques` at `7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation
+- AOA-T-0087 from `8Dionysus/aoa-techniques` at `7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9` using path `techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0088 from `8Dionysus/aoa-techniques` at `7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9` using path `techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 - project overlays may add local execution modes, trigger classes, or schedule vocabularies

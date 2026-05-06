@@ -1,10 +1,9 @@
-# Agon Examples
+# Agon Examples Route
 
-Public-safe examples for Agon-facing skill candidate companion shapes.
+Agon examples live with the owning part:
 
-These examples illustrate requested-only candidate payloads. They do not
-promote a skill, open live Agon authority, or replace the generated candidate
-indexes.
+- `mechanics/agon/parts/workflow-candidate-bridge/examples/`
+- `mechanics/agon/parts/epistemic-candidate-boundary/examples/`
 
-Source seed configs live under the owning Agon parts. Generated compact indexes
-remain root-published under `generated/`.
+This package-level directory is only a route card. It must not become a second
+example store or an alias over part-owned examples.

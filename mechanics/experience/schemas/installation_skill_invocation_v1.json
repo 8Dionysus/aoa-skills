@@ -1,29 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://aoa.local/aoa-skills/schemas/office_task_skill_boundary_v1.json",
-  "title": "Office Task Skill Boundary V1",
+  "$id": "https://aoa.local/aoa-skills/mechanics/experience/schemas/installation_skill_invocation_v1.json",
+  "title": "Installation Skill Invocation V1",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "allowed_skills",
+    "allowed",
     "created_at",
     "evidence_refs",
     "id",
     "kind",
     "notes",
-    "office_id",
     "owner_repo",
     "status",
+    "surface",
     "version"
   ],
   "properties": {
-    "allowed_skills": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "minItems": 1
+    "allowed": {
+      "type": "boolean"
     },
     "created_at": {
       "type": "string",
@@ -45,21 +40,11 @@
     "kind": {
       "type": "string",
       "minLength": 1,
-      "const": "office_task_skill_boundary_v1"
+      "const": "installation_skill_invocation_v1"
     },
     "notes": {
       "type": "string",
       "minLength": 1
-    },
-    "office_id": {
-      "type": "string",
-      "minLength": 1,
-      "enum": [
-        "notary.assistant",
-        "concierge.assistant",
-        "courier.assistant",
-        "monitor.assistant"
-      ]
     },
     "owner_repo": {
       "type": "string",
@@ -85,10 +70,15 @@
         "sealed"
       ]
     },
+    "surface": {
+      "type": "string",
+      "minLength": 1,
+      "const": "installation_skill_invocation_v1"
+    },
     "version": {
       "type": "string",
       "minLength": 1,
-      "const": "1.1.0"
+      "const": "1.0.0"
     }
   }
 }

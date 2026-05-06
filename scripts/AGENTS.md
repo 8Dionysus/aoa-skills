@@ -2,7 +2,12 @@
 
 ## Guidance for `scripts/`
 
-`scripts/` holds deterministic builders, validators, reports, and inspectors for the skill canon.
+`scripts/` holds deterministic builders, validators, reports, and inspectors
+for repo-wide skill canon surfaces.
+
+Mechanic-local builders and validators live with the owning mechanic package or
+part. Use `../mechanics/ARTIFACT_TOPOLOGY.md` before moving a script into or out
+of root `scripts/`.
 
 Prefer deterministic, repo-relative behavior. Scripts should not depend on hidden network state, private workspace paths, or ambient credentials unless the command explicitly documents that dependency.
 

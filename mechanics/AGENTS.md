@@ -41,7 +41,7 @@ It does not own:
 ## Start here
 
 1. Read the repository root `AGENTS.md`, `README.md`, `mechanics/README.md`,
-   and `mechanics/ROADMAP.md`.
+   `mechanics/ARTIFACT_TOPOLOGY.md`, and `mechanics/ROADMAP.md`.
 2. Read `mechanics/boundary-bridge/docs/LAYER_POSITION.md`, `docs/ARCHITECTURE.md`,
    `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`, and `mechanics/release-support/docs/RUNTIME_PATH.md`.
 3. Read the nearest package README, starting with its local `Mechanic card`.
@@ -60,6 +60,9 @@ It does not own:
 - Package README cards use `Local owns`, not `Center owns`.
 - `mechanics/ROADMAP.md` is a direction router. Package `ROADMAP.md` files own
   package future contours.
+- `mechanics/ARTIFACT_TOPOLOGY.md` owns placement law for mechanic-owned
+  schemas, examples, config, generated companions, manifests, scripts, tests,
+  and quests.
 - Generated artifacts remain evidence or export companions, not authority.
 - Legacy or source-preservation surfaces preserve lineage. They are not a junk
   drawer, and they must not be the only place current active behavior lives.

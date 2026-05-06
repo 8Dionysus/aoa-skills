@@ -21,6 +21,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "schemas/README.md",
             "mechanics/README.md",
             "mechanics/AGENTS.md",
+            "mechanics/ARTIFACT_TOPOLOGY.md",
             "mechanics/ROADMAP.md",
             "mechanics/OWNER_REQUEST_RECEIPTS.md",
             "mechanics/method-growth/README.md",
@@ -120,7 +121,18 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/agon/legacy/raw/README.md",
             "mechanics/agon/examples/README.md",
             "mechanics/agon/parts/workflow-candidate-bridge/config/README.md",
+            "mechanics/agon/parts/workflow-candidate-bridge/schemas/agon-skill-binding-candidate.schema.json",
+            "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
+            "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py",
+            "mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py",
+            "mechanics/agon/parts/workflow-candidate-bridge/examples/agon_skill_binding_candidate.example.json",
             "mechanics/agon/parts/epistemic-candidate-boundary/config/README.md",
+            "mechanics/agon/parts/epistemic-candidate-boundary/schemas/agon-epistemic-skill-candidate.schema.json",
+            "mechanics/agon/parts/epistemic-candidate-boundary/schemas/agon-epistemic-skill-candidate-registry.schema.json",
+            "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py",
+            "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py",
+            "mechanics/agon/parts/epistemic-candidate-boundary/tests/test_agon_epistemic_skill_candidates.py",
+            "mechanics/agon/parts/epistemic-candidate-boundary/examples/agon_epistemic_skill_candidate.example.json",
             "mechanics/agon/parts/recurrence-observation/manifests/README.md",
             "mechanics/audit/README.md",
             "mechanics/audit/AGENTS.md",
@@ -196,6 +208,52 @@ class MechanicsTopologyTests(unittest.TestCase):
         ):
             with self.subTest(moved_seed=moved_seed):
                 self.assertNotIn(moved_seed, config_files)
+
+        root_schemas = {path.name for path in (REPO_ROOT / "schemas").iterdir()}
+        for moved_schema in (
+            "agon-skill-binding-candidate.schema.json",
+            "agon-epistemic-skill-candidate.schema.json",
+            "agon-epistemic-skill-candidate-registry.schema.json",
+            "session_checkpoint_note.schema.json",
+            "reviewed_owner_landing_bundle.schema.json",
+            "route_followthrough_decision.schema.json",
+            "skill_adoption_compatibility_report_v1.json",
+            "skill_adoption_owner_decision_v1.json",
+            "skill_adoption_receipt_v1.json",
+            "skill_adoption_regression_case_v1.json",
+            "skill_adoption_retirement_v1.json",
+            "skill_pattern_adoption_patch_v1.json",
+            "governance_runtime_skill_invocation_v1.json",
+            "installation_skill_invocation_v1.json",
+            "office_task_skill_boundary_v1.json",
+            "receipt_generation_skill_patch_v1.json",
+            "rollback_drill_skill_invocation_v1.json",
+            "service_handoff_skill_patch_v1.json",
+            "skill_governance_patch_v1.json",
+            "skill_policy_hold_v1.json",
+            "quest.schema.json",
+            "quest_dispatch.schema.json",
+        ):
+            with self.subTest(moved_schema=moved_schema):
+                self.assertNotIn(moved_schema, root_schemas)
+
+        root_scripts = {path.name for path in (REPO_ROOT / "scripts").iterdir()}
+        for moved_script in (
+            "build_agon_skill_binding_candidates.py",
+            "validate_agon_skill_binding_candidates.py",
+            "build_agon_epistemic_skill_candidates.py",
+            "validate_agon_epistemic_skill_candidates.py",
+        ):
+            with self.subTest(moved_script=moved_script):
+                self.assertNotIn(moved_script, root_scripts)
+
+        root_tests = {path.name for path in (REPO_ROOT / "tests").iterdir()}
+        for moved_test in (
+            "test_agon_skill_binding_candidates.py",
+            "test_agon_epistemic_skill_candidates.py",
+        ):
+            with self.subTest(moved_test=moved_test):
+                self.assertNotIn(moved_test, root_tests)
 
         top_level_quest_files = sorted(
             path.name for path in (REPO_ROOT / "quests").iterdir() if path.is_file()
@@ -483,7 +541,7 @@ class MechanicsTopologyTests(unittest.TestCase):
         self.assertIn("docs/CHECKPOINT_NOTE_PATH.md", provenance)
         self.assertIn("mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md", provenance)
         self.assertIn("skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md", provenance)
-        self.assertIn("schemas/session_checkpoint_note.schema.json", provenance)
+        self.assertIn("mechanics/checkpoint/schemas/session_checkpoint_note.schema.json", provenance)
         self.assertIn(
             "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
             provenance,

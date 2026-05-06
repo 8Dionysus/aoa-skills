@@ -8,7 +8,7 @@ import unittest
 
 import jsonschema
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
+ROOT = pathlib.Path(__file__).resolve().parents[5]
 
 
 class AgonEpistemicSkillCandidateTests(unittest.TestCase):
@@ -31,7 +31,10 @@ class AgonEpistemicSkillCandidateTests(unittest.TestCase):
             subprocess.run(
                 [
                     sys.executable,
-                    str(ROOT / "scripts/build_agon_epistemic_skill_candidates.py"),
+                    str(
+                        ROOT
+                        / "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py"
+                    ),
                     "--check",
                 ],
                 cwd=ROOT,
@@ -42,7 +45,10 @@ class AgonEpistemicSkillCandidateTests(unittest.TestCase):
             subprocess.run(
                 [
                     sys.executable,
-                    str(ROOT / "scripts/validate_agon_epistemic_skill_candidates.py"),
+                    str(
+                        ROOT
+                        / "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py"
+                    ),
                 ],
                 cwd=ROOT,
             ).returncode,
@@ -51,9 +57,10 @@ class AgonEpistemicSkillCandidateTests(unittest.TestCase):
 
     def test_registry_schema_validates_without_ref_workaround(self) -> None:
         schema = json.loads(
-            (ROOT / "schemas/agon-epistemic-skill-candidate-registry.schema.json").read_text(
-                encoding="utf-8"
-            )
+            (
+                ROOT
+                / "mechanics/agon/parts/epistemic-candidate-boundary/schemas/agon-epistemic-skill-candidate-registry.schema.json"
+            ).read_text(encoding="utf-8")
         )
         registry = json.loads(
             (ROOT / "generated/agon_epistemic_skill_candidates.min.json").read_text(

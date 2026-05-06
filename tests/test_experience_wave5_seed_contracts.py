@@ -11,6 +11,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SCHEMAS_ROOT = ROOT / "mechanics" / "experience" / "schemas"
 ESCAPE_VALUE = "__wave5_not_allowed__"
 FORMAT_CHECKER = FormatChecker()
 RFC3339_DATETIME = re.compile(
@@ -111,7 +112,7 @@ WAVE5_CONTRACTS = (
 
 
 def load_contract(stem: str, schema_file: str) -> tuple[dict[str, object], dict[str, object]]:
-    schema_path = ROOT / "schemas" / schema_file
+    schema_path = SCHEMAS_ROOT / schema_file
     example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     example = json.loads(example_path.read_text(encoding="utf-8"))
@@ -338,7 +339,7 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
         self.assertTrue(WAVE5_CONTRACTS)
         missing_pairs: list[str] = []
         for stem, schema_file in WAVE5_CONTRACTS:
-            schema_path = ROOT / "schemas" / schema_file
+            schema_path = SCHEMAS_ROOT / schema_file
             example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
             if not schema_path.exists():
                 missing_pairs.append(f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}")

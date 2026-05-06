@@ -71,8 +71,8 @@ No public blocked or reanchor item is currently listed here.
 
 - `quests/**/AOA-SK-Q-*.yaml`
 - `quests/agon/<state>/AOS-Q-AGON-*.md`
-- `schemas/quest.schema.json`
-- `schemas/quest_dispatch.schema.json`
+- `mechanics/questbook/schemas/quest.schema.json`
+- `mechanics/questbook/schemas/quest_dispatch.schema.json`
 - generated summaries: `generated/quest_catalog.min.json`,
   `generated/quest_dispatch.min.json`, `generated/quest_catalog.min.example.json`,
   and `generated/quest_dispatch.min.example.json`

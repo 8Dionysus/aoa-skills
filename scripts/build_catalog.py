@@ -710,8 +710,8 @@ def questbook_surface_enabled(repo_root: Path) -> bool:
         / "docs"
         / "QUESTBOOK_SKILL_INTEGRATION.md",
         repo_root / "quests",
-        repo_root / "schemas" / "quest.schema.json",
-        repo_root / "schemas" / "quest_dispatch.schema.json",
+        repo_root / "mechanics" / "questbook" / "schemas" / "quest.schema.json",
+        repo_root / "mechanics" / "questbook" / "schemas" / "quest_dispatch.schema.json",
     )
     return repo_root == REPO_ROOT or any(path.exists() for path in markers)
 

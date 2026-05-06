@@ -62,8 +62,14 @@ QUESTBOOK_PATH = Path("QUESTBOOK.md")
 QUESTBOOK_INTEGRATION_PATH = (
     Path("mechanics") / "questbook" / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md"
 )
-QUEST_SCHEMA_PATH = Path("schemas") / "quest.schema.json"
-QUEST_DISPATCH_SCHEMA_PATH = Path("schemas") / "quest_dispatch.schema.json"
+QUEST_SCHEMA_PATH = Path("mechanics") / "questbook" / "schemas" / "quest.schema.json"
+QUEST_DISPATCH_SCHEMA_PATH = (
+    Path("mechanics") / "questbook" / "schemas" / "quest_dispatch.schema.json"
+)
+SCHEMA_PATH_OVERRIDES = {
+    "quest.schema.json": QUEST_SCHEMA_PATH,
+    "quest_dispatch.schema.json": QUEST_DISPATCH_SCHEMA_PATH,
+}
 QUEST_CATALOG_PATH = Path("generated") / "quest_catalog.min.json"
 QUEST_DISPATCH_PATH = Path("generated") / "quest_dispatch.min.json"
 QUEST_CATALOG_EXAMPLE_PATH = Path("generated") / "quest_catalog.min.example.json"
@@ -157,7 +163,10 @@ class ValidationIssue:
 
 @lru_cache(maxsize=None)
 def load_schema(schema_name: str) -> dict[str, Any]:
-    schema_path = REPO_ROOT / SCHEMAS_DIR_NAME / schema_name
+    schema_path = REPO_ROOT / SCHEMA_PATH_OVERRIDES.get(
+        schema_name,
+        Path(SCHEMAS_DIR_NAME) / schema_name,
+    )
     with schema_path.open(encoding="utf-8") as handle:
         return json.load(handle)
 

@@ -4318,7 +4318,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "fa65128f6536a7acfc8075f73d05f019772a448f22564cc5af76dbec42854a0f",
+      "content_hash": "9b542f1edf9d3466f43020fdbdbdda91aeb45c73af1be94c1b2dc65f25ed456a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4349,7 +4349,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "skill_revision": "fa65128f6536",
+      "skill_revision": "9b542f1edf9d",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -4374,21 +4374,21 @@
           "lineage_state": "published",
           "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9"
         },
         {
           "id": "AOA-T-0087",
           "lineage_state": "published",
-          "path": "techniques/governance/automation-readiness/human-loop-to-seed-lift/TECHNIQUE.md",
+          "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9"
         },
         {
           "id": "AOA-T-0088",
           "lineage_state": "published",
           "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9"
         }
       ]
     },
