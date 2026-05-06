@@ -40,7 +40,7 @@ The checkpoint note route is checked by:
 - `mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md` owns later
   session-growth packet and receipt examples after `candidate_ref` already
   exists.
-- `mechanics/questbook/QUESTBOOK.md` and `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md` own durable
+- `QUESTBOOK.md` and `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md` own durable
   obligations and quest-harvest posture.
 - `aoa-sdk` owns checkpoint controls, local ledgers, and closeout-context
   builders outside this repository.

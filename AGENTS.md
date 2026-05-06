@@ -27,13 +27,14 @@ It does not own:
 ## Start here
 
 1. `README.md`
-2. `mechanics/ROADMAP.md`
-3. `docs/ARCHITECTURE.md`
-4. `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
-5. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
-6. `mechanics/release-support/docs/RUNTIME_PATH.md`
-7. `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` when skills export, portable projection, or installed skill refresh is in scope
-8. `mechanics/README.md` when the change touches skill-layer movement around AoA mechanics
+2. `mechanics/README.md` when the change touches skill-layer movement
+3. `mechanics/ROADMAP.md` as the direction router, then the nearest package
+   `ROADMAP.md`
+4. `docs/ARCHITECTURE.md`
+5. `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
+6. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+7. `mechanics/release-support/docs/RUNTIME_PATH.md`
+8. `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` when skills export, portable projection, or installed skill refresh is in scope
 9. the target `skills/*/SKILL.md`
 10. affected generated or export surfaces
 11. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches

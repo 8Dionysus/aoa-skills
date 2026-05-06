@@ -17,9 +17,9 @@ surface. The move changes its route, not its authority level.
 
 ## Source And Projection Companions
 
-Current questbook source and projection surfaces remain in:
+Current questbook source and projection surfaces are:
 
-- `mechanics/questbook/QUESTBOOK.md`
+- root `QUESTBOOK.md`
 - `quests/**/AOA-SK-Q-*.yaml`
 - `schemas/quest.schema.json`
 - `schemas/quest_dispatch.schema.json`

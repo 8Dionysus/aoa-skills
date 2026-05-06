@@ -2,13 +2,15 @@
 
 ## Purpose
 
-This note shows how `mechanics/questbook/QUESTBOOK.md` fits into `aoa-skills` as the public tracked surface for deferred skill obligations.
+This note shows how root `QUESTBOOK.md` fits into `aoa-skills` as the public
+tracked surface for deferred skill obligations.
 
 ## Role split
 
 - skill bundles remain the source of skill meaning
 - `generated/public_surface.md`, `generated/governance_backlog.md`, and `generated/skill_evaluation_matrix.md` remain derived readouts
-- `mechanics/questbook/QUESTBOOK.md` holds deferred obligations that survive the current bounded diff
+- root `QUESTBOOK.md` holds deferred obligations that survive the current
+  bounded diff
 - overlay and local-adapter details may trigger quests, but they should not become a hidden second source of truth
 
 ## Good anchors in this repo

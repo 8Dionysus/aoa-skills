@@ -65,8 +65,8 @@ def write_text(path: Path, text: str) -> None:
 
 def write_valid_questbook_surface(repo_root: Path) -> None:
     write_text(
-        repo_root / "mechanics/questbook/QUESTBOOK.md",
-        (REPO_ROOT / "mechanics/questbook/QUESTBOOK.md").read_text(encoding="utf-8"),
+        repo_root / "QUESTBOOK.md",
+        (REPO_ROOT / "QUESTBOOK.md").read_text(encoding="utf-8"),
     )
     write_text(
         repo_root
@@ -612,7 +612,7 @@ class ValidateSkillsTests(unittest.TestCase):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
     def write_catalogs(self, repo_root: Path) -> None:
-        if not (repo_root / "mechanics/questbook/QUESTBOOK.md").is_file():
+        if not (repo_root / "QUESTBOOK.md").is_file():
             write_valid_questbook_surface(repo_root)
         config_path = repo_root / "config" / "skill_pack_profiles.json"
         if not config_path.exists():
@@ -3011,12 +3011,12 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             repo_root = Path(temp_dir) / "aoa-skills"
             self.write_valid_surface(repo_root)
-            (repo_root / "mechanics/questbook/QUESTBOOK.md").unlink()
+            (repo_root / "QUESTBOOK.md").unlink()
 
             issues = validate_skills.validate_questbook_surface(repo_root)
             self.assertTrue(
                 any(
-                    issue.location.endswith("mechanics/questbook/QUESTBOOK.md")
+                    issue.location.endswith("QUESTBOOK.md")
                     and issue.message == "file is missing"
                     for issue in issues
                 )
@@ -3178,7 +3178,7 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
 
             self.assertTrue(
                 any(
-                    issue.location.endswith("mechanics/questbook/QUESTBOOK.md")
+                    issue.location.endswith("QUESTBOOK.md")
                     and issue.message == "file is missing"
                     for issue in issues
                 )

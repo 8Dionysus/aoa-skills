@@ -703,7 +703,7 @@ def build_questbook_surface_outputs(repo_root: Path) -> dict[Path, str]:
 
 def questbook_surface_enabled(repo_root: Path) -> bool:
     markers = (
-        repo_root / "mechanics/questbook/QUESTBOOK.md",
+        repo_root / "QUESTBOOK.md",
         repo_root
         / "mechanics"
         / "questbook"

@@ -2,6 +2,14 @@
 
 Date: 2026-05-06
 
+Status: accepted
+
+Superseded in part by
+`2026-05-06-distributed-mechanics-roadmaps-and-root-questbook.md`: repo future
+direction is now routed through `mechanics/ROADMAP.md`, while package
+`ROADMAP.md` files own package contours and root `QUESTBOOK.md` owns the public
+quest index.
+
 ## Context
 
 Several active `aoa-skills` mechanics surfaces had outgrown the flat root and

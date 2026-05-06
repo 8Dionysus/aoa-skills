@@ -4,9 +4,9 @@ This package owns the `aoa-skills` side of the cross-project Questbook
 mechanic: durable skill obligations, session-harvest integration posture, and
 quest dispatch projection boundaries.
 
-`mechanics/questbook/QUESTBOOK.md` stays the public tracked obligation surface. This package keeps
-the movement around it legible without turning Questbook into a second roadmap
-or private scratchpad.
+Root `QUESTBOOK.md` stays the public tracked obligation surface. This package
+keeps the movement around it legible without turning Questbook into a second
+roadmap or private scratchpad.
 
 ## Mechanic card
 
@@ -22,12 +22,12 @@ bundle, playbook, proof verdict, memory object, or hidden task queue.
 
 This package owns questbook integration posture, session-harvest family
 relationship, allowed quest-harvest verdict surface, source/index boundary
-around `mechanics/questbook/QUESTBOOK.md` and lane-first `quests/`, and
+around root `QUESTBOOK.md` and lane-first `quests/`, and
 generated quest catalog/dispatch projection routes.
 
 ### Stronger owner split
 
-`Agents-of-Abyss` owns center Questbook law. `mechanics/questbook/QUESTBOOK.md`
+`Agents-of-Abyss` owns center Questbook law. Root `QUESTBOOK.md`
 and lane-first `quests/` own repo-local public obligations. `aoa-playbooks`
 owns recurring choreography.
 `aoa-evals` owns proof obligations. `aoa-memo` owns retained lessons. Owner
@@ -78,8 +78,9 @@ companions belong to the route.
 
 - [Direction](DIRECTION.md): current intent, boundaries, and route posture.
 - [Parts](PARTS.md): active part map.
-- [Provenance](PROVENANCE.md): active-first bridge to moved docs, source
-  questbook, schemas, generated quest projections, and neighbor mechanics.
+- [Provenance](PROVENANCE.md): active-first bridge to moved docs, root
+  questbook index, schemas, generated quest projections, and neighbor
+  mechanics.
 - [Landing Log](LANDING_LOG.md): dated accounting for checked landings.
 - [Roadmap](ROADMAP.md): next honest questbook passes.
 - [Docs](docs/README.md): active questbook contract docs.
@@ -87,7 +88,7 @@ companions belong to the route.
 ## Functioning parts
 
 - [Source Index Boundary](parts/source-index-boundary/README.md): root
-  `mechanics/questbook/QUESTBOOK.md`, lane-first `quests/`, schemas, and
+  `QUESTBOOK.md`, lane-first `quests/`, schemas, and
   generated projections.
 - [Session Harvest Posture](parts/session-harvest-posture/README.md):
   relationship between checkpoint, harvest, quest-harvest, and core family.
