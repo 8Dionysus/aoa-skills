@@ -12,6 +12,7 @@ class MechanicsTopologyTests(unittest.TestCase):
         expected_paths = (
             "mechanics/README.md",
             "mechanics/AGENTS.md",
+            "mechanics/OWNER_REQUEST_RECEIPTS.md",
             "mechanics/method-growth/README.md",
             "mechanics/method-growth/AGENTS.md",
             "mechanics/method-growth/DIRECTION.md",
@@ -107,6 +108,38 @@ class MechanicsTopologyTests(unittest.TestCase):
         for relative_path in expected_paths:
             with self.subTest(path=relative_path):
                 self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_owner_request_receipts_keep_center_statuses_honest(self) -> None:
+        receipts = (REPO_ROOT / "mechanics" / "OWNER_REQUEST_RECEIPTS.md").read_text(
+            encoding="utf-8"
+        )
+        mechanics_readme = (REPO_ROOT / "mechanics" / "README.md").read_text(
+            encoding="utf-8"
+        )
+
+        expected_statuses = {
+            "ORQ-METHOD-SKILLS-001": "landed",
+            "ORQ-DISTILLATION-SKILLS-001": "accepted",
+            "ORQ-GROWTHCYCLE-SKILLS-001": "landed",
+            "ORQ-CHECKPOINT-SKILLS-001": "landed",
+            "ORQ-EXPERIENCE-SKILLS-001": "accepted",
+            "ORQ-RPG-SKILLS-001": "landed",
+            "ORQ-AUDIT-SKILLS-001": "accepted",
+        }
+        for request_id, status in expected_statuses.items():
+            with self.subTest(request_id=request_id):
+                self.assertIn(f"## {request_id}", receipts)
+                self.assertIn(f"Owner-local status: `{status}`", receipts)
+
+        for phrase in (
+            "This is the owner-local receipt surface",
+            "do not treat `accepted` as `landed`",
+            "do not treat `landed` as proof",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, receipts)
+
+        self.assertIn("OWNER_REQUEST_RECEIPTS.md", mechanics_readme)
 
     def test_mechanics_card_standard_is_declared(self) -> None:
         mechanics_readme = (REPO_ROOT / "mechanics" / "README.md").read_text(

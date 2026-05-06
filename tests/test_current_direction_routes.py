@@ -26,6 +26,17 @@ class CurrentDirectionRoutesTestCase(unittest.TestCase):
         self.assertIn("mechanics/agon/parts/workflow-candidate-bridge/README.md", docs_readme)
         self.assertIn("agon_skill_binding_candidates", bridge_spec)
 
+    def test_owner_request_receipts_are_routable(self) -> None:
+        readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        docs_readme = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+        mechanics_readme = (REPO_ROOT / "mechanics" / "README.md").read_text(
+            encoding="utf-8"
+        )
+
+        for text in (readme, docs_readme, mechanics_readme):
+            with self.subTest(surface=text[:24]):
+                self.assertIn("mechanics/OWNER_REQUEST_RECEIPTS.md", text)
+
 
 if __name__ == "__main__":
     unittest.main()

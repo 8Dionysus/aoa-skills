@@ -36,6 +36,7 @@ class RoadmapParityTestCase(unittest.TestCase):
 
         for relative_path in (
             "generated/runtime_discovery_index.json",
+            "mechanics/OWNER_REQUEST_RECEIPTS.md",
             "mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md",
             "mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md",
             "mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md",

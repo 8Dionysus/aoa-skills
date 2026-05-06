@@ -7,6 +7,12 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+### Added
+
+- `mechanics/OWNER_REQUEST_RECEIPTS.md` records owner-local AoA request
+  receipts for skill-layer mechanics, separating landed requests from
+  accepted-but-not-landed future package pressure.
+
 ## [0.3.3] - 2026-04-23
 
 ### Summary

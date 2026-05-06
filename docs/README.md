@@ -20,7 +20,7 @@ an executable workflow for Codex.
 - If you need the checkpoint-to-reviewed-candidate identity seam, start with `../mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`, then `../mechanics/method-growth/docs/CANDIDATE_LINEAGE_CONTRACT.md`, and then `../mechanics/method-growth/docs/CANDIDATE_REF_REFINERY.md`.
 - If you need the first reviewed owner-status landing and the next bounded verdict after `candidate_ref` exists, start with `../mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md`, then `../mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md`, and then `../mechanics/method-growth/docs/CANDIDATE_REF_REFINERY.md`.
 - If you need explicit skill adoption lifecycle posture, start with `../mechanics/method-growth/parts/adoption-boundary/README.md`, then `../mechanics/method-growth/parts/adoption-evidence-receipts/README.md`, `../mechanics/method-growth/parts/retention-regression-retirement/README.md`, or `../mechanics/method-growth/parts/pattern-adoption-handoff/README.md`.
-- If you need owner-local skill mechanics, start with `../mechanics/README.md`; for Method-growth candidate and adoption movement, continue to `../mechanics/method-growth/README.md`; for Recurrence observation, continue to `../mechanics/recurrence/README.md`; for Antifragility risk posture, continue to `../mechanics/antifragility/README.md`; and for the Agon bounded-workflow companion bridge, continue to `../mechanics/agon/README.md`, `../mechanics/agon/parts/workflow-candidate-bridge/README.md`, `../mechanics/agon/parts/candidate-validation-gate/README.md`, and `../generated/agon_skill_binding_candidates.min.json`.
+- If you need owner-local skill mechanics, start with `../mechanics/README.md`; for AoA center owner-request receipts, use `../mechanics/OWNER_REQUEST_RECEIPTS.md`; for Method-growth candidate and adoption movement, continue to `../mechanics/method-growth/README.md`; for Recurrence observation, continue to `../mechanics/recurrence/README.md`; for Antifragility risk posture, continue to `../mechanics/antifragility/README.md`; and for the Agon bounded-workflow companion bridge, continue to `../mechanics/agon/README.md`, `../mechanics/agon/parts/workflow-candidate-bridge/README.md`, `../mechanics/agon/parts/candidate-validation-gate/README.md`, and `../generated/agon_skill_binding_candidates.min.json`.
 - If you need the later reviewed session-growth kernel packet and receipt examples after closeout carry and `candidate_ref` already exist, start with `../mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md`.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `EVALUATION_PATH.md`.
 - If you need the stress-era trigger and collision extension for timeout chaos, source-of-truth wins, and one-off incident suppression, start with `TRIGGER_EVALS.md` and then `../mechanics/antifragility/parts/collision-stress-program/README.md`.
@@ -51,48 +51,49 @@ an executable workflow for Codex.
 6. `PUBLIC_SURFACE.md` - the derived public-product and governance layer, kept separate from runtime inspection and evaluation evidence.
 7. `LAYER_POSITION.md` - repo-owned layer-position note for the boundary between techniques, skills, and playbooks.
 8. `../mechanics/README.md` - owner-local skill mechanics route and package-card standard.
-9. `../mechanics/growth-cycle/README.md` - adaptive orchestration and session-growth lifecycle movement.
-10. `../mechanics/checkpoint/README.md` - checkpoint-note protocol and reviewed closeout bridge boundary.
-11. `../mechanics/method-growth/README.md` - reviewed candidate-lineage, owner-status, followthrough, and adoption lifecycle movement.
-12. `../mechanics/rpg/README.md` - ability-card and loadout reader posture.
-13. `../mechanics/antifragility/README.md` - fallback, via negativa, and collision-stress posture.
-14. `../mechanics/agon/README.md` - Agon package-local mechanics route.
-15. `ARCHITECTURE.md` - high-level model of the repository.
-16. `BRIDGE_SPEC.md` - how skills reference and compose techniques.
-17. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
-18. `../ROADMAP.md` - canonical public roadmap for repository evolution.
-19. `RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
-20. `CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
-21. `COMPONENT_REFRESH_LAW.md` - owner refresh law for the portable export foundation when generated or adapter-facing surfaces drift.
-22. `LOCAL_ADAPTER_CONTRACT.md` - local runtime seams around that export, including the legacy activation shim.
-23. `OPENAI_SKILL_EXTENSIONS.md` and `CODEX_SKILL_MCP_WIRING.md` - optional OpenAI metadata seam plus named MCP wiring guidance for the generated export.
-24. `INSTALL_AND_PROFILES.md` - install roots, skill-pack profiles, and disable-snippet helpers.
-25. `CONTEXT_RETENTION.md` - generated retention-support metadata around the export.
-26. `UI_METADATA_AND_ASSETS.md` - icon and UI metadata rules for the export.
-27. `CODEX_CONFIG_SNIPPETS.md` - generated disable-profile snippets and example config surfaces.
-28. `THIRD_WAVE.md` - portable-layer hardening for install, trust, and config surfaces.
-29. `FOURTH_WAVE.md` - dedicated-tool runtime seam added around the same export.
-30. `RUNTIME_SEAM_SECOND_PATH.md` - primary wave-4 runtime path for discover, disclose, activate, and compact.
-31. `RUNTIME_TOOL_CONTRACTS.md` - tool-shaped contract for the wave-4 runtime seam.
-32. `SESSION_COMPACTION.md` - session state and compaction behavior for long-running local wrappers.
-33. `TRIGGER_EVALS.md` - policy-aware trigger-eval dataset and collision-family guidance.
-34. `../mechanics/antifragility/parts/collision-stress-program/README.md` - additive stress-era collision coverage for timeout chaos, source-of-truth wins, and thin incident suppression.
-35. `SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
-36. `DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
-37. `SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
-38. `EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
-39. `DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
-40. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
-41. `../mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
-42. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
-43. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
-44. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-45. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
-46. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
-47. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
-48. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
-49. `reviews/README.md` - public review-record conventions and review surfaces.
-50. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
+9. `../mechanics/OWNER_REQUEST_RECEIPTS.md` - owner-local receipts for AoA center requests assigned to `aoa-skills`.
+10. `../mechanics/growth-cycle/README.md` - adaptive orchestration and session-growth lifecycle movement.
+11. `../mechanics/checkpoint/README.md` - checkpoint-note protocol and reviewed closeout bridge boundary.
+12. `../mechanics/method-growth/README.md` - reviewed candidate-lineage, owner-status, followthrough, and adoption lifecycle movement.
+13. `../mechanics/rpg/README.md` - ability-card and loadout reader posture.
+14. `../mechanics/antifragility/README.md` - fallback, via negativa, and collision-stress posture.
+15. `../mechanics/agon/README.md` - Agon package-local mechanics route.
+16. `ARCHITECTURE.md` - high-level model of the repository.
+17. `BRIDGE_SPEC.md` - how skills reference and compose techniques.
+18. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
+19. `../ROADMAP.md` - canonical public roadmap for repository evolution.
+20. `RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
+21. `CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
+22. `COMPONENT_REFRESH_LAW.md` - owner refresh law for the portable export foundation when generated or adapter-facing surfaces drift.
+23. `LOCAL_ADAPTER_CONTRACT.md` - local runtime seams around that export, including the legacy activation shim.
+24. `OPENAI_SKILL_EXTENSIONS.md` and `CODEX_SKILL_MCP_WIRING.md` - optional OpenAI metadata seam plus named MCP wiring guidance for the generated export.
+25. `INSTALL_AND_PROFILES.md` - install roots, skill-pack profiles, and disable-snippet helpers.
+26. `CONTEXT_RETENTION.md` - generated retention-support metadata around the export.
+27. `UI_METADATA_AND_ASSETS.md` - icon and UI metadata rules for the export.
+28. `CODEX_CONFIG_SNIPPETS.md` - generated disable-profile snippets and example config surfaces.
+29. `THIRD_WAVE.md` - portable-layer hardening for install, trust, and config surfaces.
+30. `FOURTH_WAVE.md` - dedicated-tool runtime seam added around the same export.
+31. `RUNTIME_SEAM_SECOND_PATH.md` - primary wave-4 runtime path for discover, disclose, activate, and compact.
+32. `RUNTIME_TOOL_CONTRACTS.md` - tool-shaped contract for the wave-4 runtime seam.
+33. `SESSION_COMPACTION.md` - session state and compaction behavior for long-running local wrappers.
+34. `TRIGGER_EVALS.md` - policy-aware trigger-eval dataset and collision-family guidance.
+35. `../mechanics/antifragility/parts/collision-stress-program/README.md` - additive stress-era collision coverage for timeout chaos, source-of-truth wins, and thin incident suppression.
+36. `SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
+37. `DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
+38. `SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
+39. `EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
+40. `DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
+41. `BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
+42. `../mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
+43. `MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
+44. `PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
+45. `OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+46. `overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
+47. `overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
+48. `overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
+49. `overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
+50. `reviews/README.md` - public review-record conventions and review surfaces.
+51. `PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 

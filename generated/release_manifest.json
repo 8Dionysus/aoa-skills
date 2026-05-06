@@ -961,6 +961,6 @@
     "releasing_doc": "docs/RELEASING.md",
     "latest_tagged_version": "0.3.3",
     "latest_tagged_date": "2026-04-23",
-    "has_unreleased_changes": false
+    "has_unreleased_changes": true
   }
 }

@@ -23,6 +23,9 @@ The current `v0.3.x` release line also already carries:
   `mechanics/agon/parts/candidate-validation-gate/README.md`, and
   `generated/agon_skill_binding_candidates.min.json`, with all requests kept
   `requested_not_landed` until normal skill review accepts them
+- AoA owner-request receipt posture in `mechanics/OWNER_REQUEST_RECEIPTS.md`,
+  with landed skill-layer slices separated from accepted-but-not-landed future
+  package pressure
 - quest carry-forward and dispatch adjuncts in `generated/quest_catalog.min.json` and `generated/quest_dispatch.min.json`
 - local Codex or MCP disclosure plus adapter and compaction guidance in `docs/CODEX_SKILL_MCP_WIRING.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, and `docs/SESSION_COMPACTION.md`
 - packaging, governance, and overlay-maturity readouts in `generated/governance_backlog.md`, `generated/overlay_readiness.md`, `generated/skill_bundle_index.md`, `generated/skill_graph.md`, and `generated/release_manifest.json`
@@ -38,7 +41,8 @@ Already-shipped repo-owned support layers now include:
 - the first mechanics package routes under `mechanics/README.md`,
   `mechanics/growth-cycle/`, `mechanics/checkpoint/`,
   `mechanics/method-growth/`, `mechanics/questbook/`,
-  `mechanics/recurrence/`, and `mechanics/agon/`
+  `mechanics/recurrence/`, `mechanics/rpg/`, `mechanics/antifragility/`,
+  and `mechanics/agon/`
 
 The next steps should use that derived governance layer to keep core governance decisions honest, keep live overlay families aligned under one contract, and push packaging prep rather than only increase skill count.
 The first packaging pass should harden the portable release contract itself, then follow with compatibility/lineage depth rather than inventing another catalog surface.
@@ -71,7 +75,10 @@ landing, quest dispatch, and local Codex or MCP disclosure are now shipped
 surfaces and should stay visible in current-direction docs rather than only in
 release notes.
 Another planning risk is cross-repo rollout choreography: when a future wave splits source-owned bridge meaning from downstream consumption, merge order and rerun policy should be planned explicitly rather than left to PR folklore.
-Another structure risk is remaining recurrence and release-support pressure: component refresh law, manifest validation notes, and downstream drift-watch handoff should move one bounded package at a time through `mechanics/`, with active parts and provenance rather than another broad flat-doc wave.
+Another structure risk is remaining distillation, audit, experience,
+recurrence, and release-support pressure: accepted owner requests and residual
+flat docs should move one bounded package at a time through `mechanics/`, with
+active parts and provenance rather than another broad flat-doc wave.
 
 ## v0.3 public core hardening
 
