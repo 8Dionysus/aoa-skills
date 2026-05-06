@@ -14,7 +14,7 @@ skill-layer stress or pruning pressure
 
 ## Current contour
 
-- Skill meaning remains under `skills/*/SKILL.md`.
+- Skill meaning remains under `skills/**/SKILL.md`.
 - Fallback posture is an authoring cue, not a new schema mandate.
 - Via negativa asks whether a skill stays necessary, bounded, and
   non-redundant.

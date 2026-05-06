@@ -10,11 +10,12 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 import build_catalog
+import skill_layout
 import skill_runtime_surface
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 SUPPORTED_VIEWS = {"capsule", "sections", "full", "walkthrough", "evidence"}
 SUPPORTED_FORMATS = {"text", "json"}
 
@@ -80,7 +81,7 @@ def resolve_view_payload(
     skill_name: str,
     view_name: str,
 ) -> Mapping[str, Any]:
-    skill_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
+    skill_path = skill_layout.skill_md_path(repo_root, skill_name)
     if view_name not in SUPPORTED_VIEWS:
         raise InspectSkillError(f"unknown view '{view_name}'")
 

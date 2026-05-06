@@ -8,8 +8,8 @@ It does not own final harvest, progression, quest, memory, proof, or owner
 truth.
 
 Active surfaces include `docs/CHECKPOINT_NOTE_PATH.md`,
-`skills/aoa-commit-growth-seam/SKILL.md`,
-`skills/aoa-checkpoint-closeout-bridge/SKILL.md`,
+`skills/core/session-growth/aoa-commit-growth-seam/SKILL.md`,
+`skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`,
 `schemas/session_checkpoint_note.schema.json`, and provenance links to
 growth-cycle kernel maturity.
 

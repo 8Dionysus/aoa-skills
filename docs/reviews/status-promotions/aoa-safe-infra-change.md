@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `risk`
 - current lineage: `published`
-- reviewed revision: `7fd2fb96e1cb`
+- reviewed revision: `be0c1056c17a`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-safe-infra-change/SKILL.md`
-- `skills/aoa-safe-infra-change/techniques.yaml`
-- `skills/aoa-safe-infra-change/checks/review.md`
+- `skills/risk/aoa-safe-infra-change/SKILL.md`
+- `skills/risk/aoa-safe-infra-change/techniques.yaml`
+- `skills/risk/aoa-safe-infra-change/checks/review.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

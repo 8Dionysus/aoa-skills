@@ -14,6 +14,11 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 BUILD_SCRIPT_PATH = REPO_ROOT / "scripts" / "build_agent_skills.py"
 PUBLISH_SCRIPT_PATH = REPO_ROOT / "scripts" / "publish_core_skill_receipts.py"
 VALIDATE_SCRIPT_PATH = REPO_ROOT / "scripts" / "validate_agent_skills.py"
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import skill_layout
 
 
 def load_module(name: str, path: pathlib.Path):
@@ -211,7 +216,7 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
             for contract in kernel_doc["skill_contracts"]:
                 skill_name = contract["skill_name"]
                 for ref in {core_ref, contract["detail_receipt_schema_ref"]}:
-                    source_path = REPO_ROOT / "skills" / skill_name / ref
+                    source_path = skill_layout.skill_dir_path(REPO_ROOT, skill_name) / ref
                     source_dest = temp_repo / "skills" / skill_name / ref
                     export_dest = skills_root / skill_name / ref
                     source_dest.parent.mkdir(parents=True, exist_ok=True)

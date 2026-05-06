@@ -2,11 +2,18 @@ from __future__ import annotations
 
 import unittest
 from pathlib import Path
+import sys
 
 import yaml
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import skill_layout
+
 FIXTURES_PATH = REPO_ROOT / "tests" / "fixtures" / "skill_evaluation_cases.yaml"
 SNAPSHOTS_DIR = REPO_ROOT / "tests" / "fixtures" / "skill_evaluation_snapshots"
 RUNTIME_SECTIONS = [
@@ -88,7 +95,7 @@ def load_fixtures() -> dict:
 
 
 def load_skill_text(skill_name: str) -> str:
-    skill_path = REPO_ROOT / "skills" / skill_name / "SKILL.md"
+    skill_path = skill_layout.skill_md_path(REPO_ROOT, skill_name)
     return skill_path.read_text(encoding="utf-8")
 
 
@@ -162,12 +169,12 @@ class SkillEvaluationTests(unittest.TestCase):
         for case in self.fixtures["snapshot_cases"]:
             counts.setdefault(case["skill"], {"use": 0, "do_not_use": 0})[case["expected"]] += 1
 
-        skill_dirs = sorted(path for path in (REPO_ROOT / "skills").iterdir() if path.is_dir())
-        self.assertEqual(len(skill_dirs) * 2, len(self.fixtures["snapshot_cases"]))
-        for skill_dir in skill_dirs:
-            with self.subTest(skill=skill_dir.name):
-                self.assertGreaterEqual(counts.get(skill_dir.name, {}).get("use", 0), 1)
-                self.assertGreaterEqual(counts.get(skill_dir.name, {}).get("do_not_use", 0), 1)
+        skill_names = skill_layout.discover_skill_names(REPO_ROOT)
+        self.assertEqual(len(skill_names) * 2, len(self.fixtures["snapshot_cases"]))
+        for skill_name in skill_names:
+            with self.subTest(skill=skill_name):
+                self.assertGreaterEqual(counts.get(skill_name, {}).get("use", 0), 1)
+                self.assertGreaterEqual(counts.get(skill_name, {}).get("do_not_use", 0), 1)
 
     def test_snapshot_files_follow_heading_contract_and_exist(self) -> None:
         for case in self.fixtures["snapshot_cases"]:

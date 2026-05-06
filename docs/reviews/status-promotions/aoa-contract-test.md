@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `516b6371908c`
+- reviewed revision: `88ae350ac3d2`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-contract-test/SKILL.md`
-- `skills/aoa-contract-test/techniques.yaml`
-- `skills/aoa-contract-test/examples/example.md`
+- `skills/core/engineering/aoa-contract-test/SKILL.md`
+- `skills/core/engineering/aoa-contract-test/techniques.yaml`
+- `skills/core/engineering/aoa-contract-test/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

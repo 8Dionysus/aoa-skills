@@ -19,9 +19,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-tdd-slice/SKILL.md`
-- `skills/aoa-tdd-slice/techniques.yaml`
-- `skills/aoa-tdd-slice/examples/example.md`
+- `skills/core/engineering/aoa-tdd-slice/SKILL.md`
+- `skills/core/engineering/aoa-tdd-slice/techniques.yaml`
+- `skills/core/engineering/aoa-tdd-slice/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

@@ -26,7 +26,7 @@
       "status": "evaluated",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "source_skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0028",
         "AOA-T-0001"
@@ -61,7 +61,7 @@
       "status": "evaluated",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "source_skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0034",
         "AOA-T-0002"
@@ -96,7 +96,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "source_skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0080",
         "AOA-T-0081"
@@ -131,7 +131,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-adr-write/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0033",
         "AOA-T-0002"
@@ -167,7 +167,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0028"
       ],
@@ -202,7 +202,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0086",
         "AOA-T-0087",
@@ -248,7 +248,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0002"
@@ -284,7 +284,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
@@ -320,7 +320,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0084",
@@ -361,7 +361,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0028"
@@ -397,7 +397,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-contract-test/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0003",
         "AOA-T-0015"
@@ -433,7 +433,7 @@
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0015"
@@ -469,7 +469,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0004",
         "AOA-T-0028"
@@ -512,7 +512,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0017"
       ],
@@ -547,7 +547,7 @@
       "status": "evaluated",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0036",
         "AOA-T-0037",
@@ -592,7 +592,7 @@
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0015"
@@ -628,7 +628,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0017",
         "AOA-T-0007"
@@ -664,7 +664,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0089",
         "AOA-T-0090"
@@ -705,7 +705,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0028",
         "AOA-T-0001"
@@ -748,7 +748,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0034",
         "AOA-T-0002"
@@ -784,7 +784,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0076",
@@ -830,7 +830,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0084",
         "AOA-T-0085"
@@ -871,7 +871,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0078",
         "AOA-T-0079"
@@ -911,7 +911,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0080",
         "AOA-T-0081"
@@ -951,7 +951,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0082",
         "AOA-T-0083"
@@ -992,7 +992,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0013",
         "AOA-T-0002",
@@ -1029,7 +1029,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/aoa-summon/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-SUMMON-LANE-SELECTION",
         "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
@@ -1070,7 +1070,7 @@
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0014",
         "AOA-T-0001"
@@ -1106,7 +1106,7 @@
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "source_skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
@@ -1141,7 +1141,7 @@
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
       "allow_implicit_invocation": true,
-      "source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "source_skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0013",
         "AOA-T-0002"
@@ -1176,7 +1176,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1211,7 +1211,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-approval-loom/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1246,7 +1246,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1281,7 +1281,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1316,7 +1316,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-closeout/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1351,7 +1351,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-console/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-console/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1386,7 +1386,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-event-replay/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1421,7 +1421,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-memory-loom/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1456,7 +1456,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-memory-prune/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1491,7 +1491,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1526,7 +1526,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-recall/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1561,7 +1561,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-receipt/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1596,7 +1596,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1631,7 +1631,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-summon/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -1666,7 +1666,7 @@
       "status": "scaffold",
       "invocation_mode": "explicit-only",
       "allow_implicit_invocation": false,
-      "source_skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"

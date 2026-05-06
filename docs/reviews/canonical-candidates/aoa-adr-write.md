@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-adr-write/SKILL.md`
-- `skills/aoa-adr-write/techniques.yaml`
-- `skills/aoa-adr-write/examples/example.md`
-- `skills/aoa-adr-write/agents/openai.yaml`
+- `skills/core/engineering/aoa-adr-write/SKILL.md`
+- `skills/core/engineering/aoa-adr-write/techniques.yaml`
+- `skills/core/engineering/aoa-adr-write/examples/example.md`
+- `skills/core/engineering/aoa-adr-write/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

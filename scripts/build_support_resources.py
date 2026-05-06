@@ -2,7 +2,7 @@
 """Build wave-8 deterministic support-bundle manifests.
 
 This builder records canonical support resources that live under
-`skills/*/{scripts,references,assets}` for a targeted set of high-risk skills.
+`skills/**/{scripts,references,assets}` for a targeted set of high-risk skills.
 It does not mirror files into `.agents/skills/*`; the existing portable export
 builder remains the only portable-copy authority.
 """
@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any
 
 import release_manifest_contract
+import skill_layout
 
 
 PROFILE = "codex-facing-wave-8-support-bundles"
@@ -122,7 +123,7 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
     eval_cases: list[dict[str, Any]] = []
 
     for skill_name, intent in TARGETED_SKILLS.items():
-        skill_dir = repo_root / "skills" / skill_name
+        skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
         if not skill_dir.exists():
             raise SystemExit(f"missing targeted skill root: {skill_dir}")
 

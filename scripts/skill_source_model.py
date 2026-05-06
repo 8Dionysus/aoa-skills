@@ -9,9 +9,10 @@ import yaml
 import skill_artifact_contract
 import skill_catalog_contract
 import skill_section_contract
+import skill_layout
 
 
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
 CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
 
@@ -40,10 +41,7 @@ def relative_location(path: Path, repo_root: Path) -> str:
 
 
 def discover_skill_names(repo_root: Path) -> list[str]:
-    skills_dir = repo_root / SKILLS_DIR_NAME
-    if not skills_dir.is_dir():
-        raise FileNotFoundError(f"missing skills directory at {skills_dir}")
-    return sorted(path.name for path in skills_dir.iterdir() if path.is_dir())
+    return skill_layout.discover_skill_names(repo_root)
 
 
 def load_yaml(path: Path) -> Any:
@@ -102,7 +100,7 @@ def review_record_path(
 
 
 def load_policy_signal(repo_root: Path, skill_name: str) -> tuple[bool, Any]:
-    policy_path = repo_root / SKILLS_DIR_NAME / skill_name / "agents" / "openai.yaml"
+    policy_path = skill_layout.policy_path(repo_root, skill_name)
     policy_data = load_optional_yaml(policy_path)
     if not isinstance(policy_data, dict):
         return policy_path.is_file(), None
@@ -114,7 +112,7 @@ def load_policy_signal(repo_root: Path, skill_name: str) -> tuple[bool, Any]:
 
 def selected_runtime_artifact_path(repo_root: Path, skill_name: str) -> str | None:
     selected_path = skill_artifact_contract.preferred_runtime_artifact(
-        repo_root / SKILLS_DIR_NAME / skill_name
+        skill_layout.skill_dir_path(repo_root, skill_name)
     )
     if selected_path is None:
         return None
@@ -122,10 +120,10 @@ def selected_runtime_artifact_path(repo_root: Path, skill_name: str) -> str | No
 
 
 def load_skill_source(repo_root: Path, skill_name: str) -> SkillSource:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-    skill_md_path = skill_dir / "SKILL.md"
-    techniques_path = skill_dir / "techniques.yaml"
-    policy_path = skill_dir / "agents" / "openai.yaml"
+    skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
+    skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
+    techniques_path = skill_layout.techniques_path(repo_root, skill_name)
+    policy_path = skill_layout.policy_path(repo_root, skill_name)
 
     metadata, body = parse_skill_document(skill_md_path)
     manifest = load_yaml(techniques_path)

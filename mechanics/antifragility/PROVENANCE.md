@@ -28,8 +28,8 @@ release-support instead of treating it as pure antifragility source.
 
 Current antifragility companions remain in:
 
-- `skills/*/SKILL.md`
-- `skills/*/techniques.yaml`
+- `skills/**/SKILL.md`
+- `skills/**/techniques.yaml`
 - `mechanics/audit/docs/TRIGGER_EVALS.md`
 - `mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md`
 - `mechanics/audit/docs/SKILLS_REF_VALIDATION.md`

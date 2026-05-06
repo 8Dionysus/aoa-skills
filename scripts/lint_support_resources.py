@@ -5,6 +5,8 @@ import argparse
 import json
 from pathlib import Path
 
+import skill_layout
+
 
 TARGETED_SKILLS = (
     "aoa-safe-infra-change",
@@ -18,9 +20,10 @@ def lint(repo_root: Path) -> dict[str, object]:
     notes: list[str] = []
 
     for skill in TARGETED_SKILLS:
-        assets_dir = repo_root / "skills" / skill / "assets"
-        scripts_dir = repo_root / "skills" / skill / "scripts"
-        references_dir = repo_root / "skills" / skill / "references"
+        skill_dir = skill_layout.skill_dir_path(repo_root, skill)
+        assets_dir = skill_dir / "assets"
+        scripts_dir = skill_dir / "scripts"
+        references_dir = skill_dir / "references"
 
         template_files = sorted(assets_dir.glob("*.template.json"))
         schema_files = sorted(assets_dir.glob("*.schema.json"))

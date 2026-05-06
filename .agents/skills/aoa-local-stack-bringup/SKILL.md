@@ -7,7 +7,7 @@ metadata:
   aoa_scope: risk
   aoa_status: evaluated
   aoa_invocation_mode: explicit-only
-  aoa_source_skill_path: skills/aoa-local-stack-bringup/SKILL.md
+  aoa_source_skill_path: skills/risk/aoa-local-stack-bringup/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0036,AOA-T-0037,AOA-T-0028,AOA-T-0038
   aoa_portable_profile: codex-facing-wave-3

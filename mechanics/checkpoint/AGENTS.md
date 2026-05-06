@@ -22,7 +22,7 @@ core kernel surfaces, or tests, read those affected surfaces too.
 - It does not own checkpoint implementation authority, memory canon, proof
   verdicts, stats truth, runtime activation, owner acceptance, hidden
   scheduling, or autonomous self-repair.
-- The bridge skill remains canonical under `skills/aoa-checkpoint-closeout-bridge/`.
+- The bridge skill remains canonical under `skills/core/session-growth/aoa-checkpoint-closeout-bridge/`.
   This package may route to it, but must not copy its skill meaning into
   mechanics.
 

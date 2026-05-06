@@ -25,7 +25,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-session-donor-harvest/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
         "role": "contract"
       }
     ],
@@ -65,7 +65,7 @@
         }
       ],
       "chosen_next_artifact_refs": [
-        "skills/aoa-session-donor-harvest/SKILL.md"
+        "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md"
       ],
       "handoff_targets": [
         "aoa-session-route-forks"
@@ -94,7 +94,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-session-route-forks/SKILL.md",
         "role": "contract"
       }
     ],
@@ -128,7 +128,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-session-progression-lift/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
         "role": "contract"
       }
     ],
@@ -171,7 +171,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
         "role": "contract"
       }
     ],
@@ -206,7 +206,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-session-self-diagnose/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
         "role": "contract"
       }
     ],
@@ -261,7 +261,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-session-self-repair/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-session-self-repair/SKILL.md",
         "role": "contract"
       }
     ],
@@ -292,7 +292,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-session-progression-lift/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
         "role": "contract"
       }
     ],
@@ -333,7 +333,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
         "role": "contract"
       }
     ],
@@ -368,7 +368,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-session-route-forks/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-session-route-forks/SKILL.md",
         "role": "contract"
       }
     ],
@@ -404,7 +404,7 @@
       },
       {
         "kind": "skill_contract",
-        "ref": "repo:aoa-skills/skills/aoa-quest-harvest/SKILL.md",
+        "ref": "repo:aoa-skills/skills/core/session-growth/aoa-quest-harvest/SKILL.md",
         "role": "contract"
       }
     ],

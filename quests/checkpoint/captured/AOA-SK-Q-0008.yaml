@@ -3,7 +3,7 @@ id: AOA-SK-Q-0008
 title: Track checkpoint owner-promotion follow-through as an early skill-layer seam
 summary: Preserve the reviewed aoa-sdk checkpoint automation closeout as a skill-layer follow-through candidate without treating the checkpoint bridge or hook as final harvest authority.
 repo: aoa-skills
-owner_surface: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+owner_surface: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
 theme_ref: ''
 milestone_ref: ''
 kind: seam
@@ -31,7 +31,7 @@ activation:
   note: open when a reviewed checkpoint automation closeout needs immediate tracked owner follow-through while still staying below final skill promotion authority
 anchor_ref:
   artifact: checkpoint_owner_promotion_follow_through
-  ref: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+  ref: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
   note: owner follow-through should become tracked early status after reviewed closeout, not remain only in runtime-local checkpoint state
 handoff_role: skill-maintainer
 evidence:

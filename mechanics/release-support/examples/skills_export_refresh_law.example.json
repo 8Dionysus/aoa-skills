@@ -4,7 +4,7 @@
   "component_title": "AoA portable skill export foundation",
   "owner_repo": "aoa-skills",
   "source_authored_inputs": [
-    "skills/*/SKILL.md",
+    "skills/**/SKILL.md",
     "config/portable_skill_overrides.json",
     "config/openai_skill_extensions.json",
     "config/skill_pack_profiles.json",

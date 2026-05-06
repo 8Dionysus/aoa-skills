@@ -104,9 +104,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "abyss-safe-infra-change",
-      "review_check_path": "skills/abyss-safe-infra-change/checks/review.md",
+      "review_check_path": "skills/project/abyss/abyss-safe-infra-change/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -116,9 +116,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "abyss-sanitized-share",
-      "review_check_path": "skills/abyss-sanitized-share/checks/review.md",
+      "review_check_path": "skills/project/abyss/abyss-sanitized-share/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -128,9 +128,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "abyss-self-diagnostic-spine",
-      "review_check_path": "skills/abyss-self-diagnostic-spine/checks/review.md",
+      "review_check_path": "skills/project/abyss/abyss-self-diagnostic-spine/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -140,9 +140,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "atm10-change-protocol",
-      "review_check_path": "skills/atm10-change-protocol/checks/review.md",
+      "review_check_path": "skills/project/atm10/atm10-change-protocol/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -152,9 +152,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "atm10-source-of-truth-check",
-      "review_check_path": "skills/atm10-source-of-truth-check/checks/review.md",
+      "review_check_path": "skills/project/atm10/atm10-source-of-truth-check/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -164,9 +164,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-approval-ledger",
-      "review_check_path": "skills/titan-approval-ledger/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-approval-ledger/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -176,9 +176,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-approval-loom",
-      "review_check_path": "skills/titan-approval-loom/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-approval-loom/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -188,9 +188,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-appserver-bridge",
-      "review_check_path": "skills/titan-appserver-bridge/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-appserver-bridge/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -200,9 +200,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-appserver-plan",
-      "review_check_path": "skills/titan-appserver-plan/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-appserver-plan/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -212,9 +212,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-closeout",
-      "review_check_path": "skills/titan-closeout/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-closeout/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-closeout/SKILL.md",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -224,9 +224,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-console",
-      "review_check_path": "skills/titan-console/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-console/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-console/SKILL.md",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -236,9 +236,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-event-replay",
-      "review_check_path": "skills/titan-event-replay/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-event-replay/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -248,9 +248,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-memory-loom",
-      "review_check_path": "skills/titan-memory-loom/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-memory-loom/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -260,9 +260,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-memory-prune",
-      "review_check_path": "skills/titan-memory-prune/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-memory-prune/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -272,9 +272,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-mutation-gate",
-      "review_check_path": "skills/titan-mutation-gate/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-mutation-gate/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -284,9 +284,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-recall",
-      "review_check_path": "skills/titan-recall/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-recall/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-recall/SKILL.md",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -296,9 +296,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-receipt",
-      "review_check_path": "skills/titan-receipt/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-receipt/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-receipt/SKILL.md",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -308,9 +308,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-runtime-gate",
-      "review_check_path": "skills/titan-runtime-gate/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-runtime-gate/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -320,9 +320,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-summon",
-      "review_check_path": "skills/titan-summon/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-summon/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-summon/SKILL.md",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -332,9 +332,9 @@
       "has_adaptation_points": true,
       "has_policy_file": true,
       "name": "titan-thread-turn-binding",
-      "review_check_path": "skills/titan-thread-turn-binding/checks/review.md",
+      "review_check_path": "skills/project/titan/titan-thread-turn-binding/checks/review.md",
       "runtime_example_count": 1,
-      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold"
     }
   ],
@@ -342,9 +342,9 @@
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
     "overlay_docs": "mechanics/boundary-bridge/overlays/*/PROJECT_OVERLAY.md",
     "overlay_reviews": "mechanics/boundary-bridge/overlays/*/REVIEW.md",
-    "review_checks": "skills/*/checks/review.md",
-    "runtime_examples": "skills/*/examples/*.md",
-    "skill_markdown": "skills/*/SKILL.md"
+    "review_checks": "skills/**/checks/review.md",
+    "runtime_examples": "skills/**/examples/*.md",
+    "skill_markdown": "skills/**/SKILL.md"
   },
   "summary": {
     "eval_ready_project_skill_count": 20,

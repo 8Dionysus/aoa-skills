@@ -19,9 +19,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-invariant-coverage-audit/SKILL.md`
-- `skills/aoa-invariant-coverage-audit/techniques.yaml`
-- `skills/aoa-invariant-coverage-audit/examples/example.md`
+- `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`
+- `skills/core/engineering/aoa-invariant-coverage-audit/techniques.yaml`
+- `skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

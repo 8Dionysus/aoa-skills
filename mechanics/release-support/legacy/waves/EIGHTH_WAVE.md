@@ -40,7 +40,7 @@ At the repo level:
 
 ## Integration rule
 
-Canonical support bundles live under `skills/*/{scripts,references,assets}`.
+Canonical support bundles live under `skills/**/{scripts,references,assets}`.
 Portable resource bundles under `.agents/skills/*/{scripts,references,assets}`
 remain generated mirrors owned by `scripts/build_agent_skills.py`.
 

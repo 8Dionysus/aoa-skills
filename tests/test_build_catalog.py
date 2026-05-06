@@ -937,8 +937,8 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertEqual(1, full_catalog["catalog_version"])
         self.assertEqual(
             {
-                "skill_markdown": "skills/*/SKILL.md",
-                "technique_manifest": "skills/*/techniques.yaml",
+                "skill_markdown": "skills/**/SKILL.md",
+                "technique_manifest": "skills/**/techniques.yaml",
             },
             full_catalog["source_of_truth"],
         )
@@ -964,7 +964,7 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertEqual(1, capsules["capsule_version"])
         self.assertEqual(
             {
-                "skill_markdown": "skills/*/SKILL.md",
+                "skill_markdown": "skills/**/SKILL.md",
                 "frontmatter_fields": [
                     "name",
                     "scope",
@@ -1014,7 +1014,7 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertEqual(1, sections_payload["section_version"])
         self.assertEqual(
             {
-                "skill_markdown": "skills/*/SKILL.md",
+                "skill_markdown": "skills/**/SKILL.md",
                 "sections": [
                     "Intent",
                     "Trigger boundary",

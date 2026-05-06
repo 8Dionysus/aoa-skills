@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `03dde8604ec3`
+- reviewed revision: `8d5647f355c9`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-core-logic-boundary/SKILL.md`
-- `skills/aoa-core-logic-boundary/techniques.yaml`
-- `skills/aoa-core-logic-boundary/examples/example.md`
+- `skills/core/engineering/aoa-core-logic-boundary/SKILL.md`
+- `skills/core/engineering/aoa-core-logic-boundary/techniques.yaml`
+- `skills/core/engineering/aoa-core-logic-boundary/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

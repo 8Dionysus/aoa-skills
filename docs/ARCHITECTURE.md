@@ -67,6 +67,9 @@ The technique is sanitized, generalized, validated, and promoted into `aoa-techn
 A skill in `aoa-skills` references one or more techniques and composes them into
 a Codex-usable workflow. The expected shape is a package, not a 1:1 mirror of
 one technique.
+Canonical source bundles live in the recursive `skills/` topology. The source
+tree groups bundles by functional lane; the flat `.agents/skills/*` tree remains
+the generated portable export.
 
 ### Layer 4: project overlay
 A project-local overlay adds:

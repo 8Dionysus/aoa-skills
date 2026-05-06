@@ -8,17 +8,18 @@ from typing import Any, Mapping, Sequence
 import skill_artifact_contract
 import skill_catalog_contract
 import skill_section_contract
+import skill_layout
 import skill_source_model
 
 
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 WALKTHROUGH_VERSION = 1
 WALKTHROUGHS_JSON_PATH = Path("generated") / "skill_walkthroughs.json"
 WALKTHROUGHS_MARKDOWN_PATH = Path("generated") / "skill_walkthroughs.md"
 WALKTHROUGH_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "runtime_examples": "skills/*/examples/*.md",
-    "review_checks": "skills/*/checks/review.md",
+    "skill_markdown": "skills/**/SKILL.md",
+    "runtime_examples": "skills/**/examples/*.md",
+    "review_checks": "skills/**/checks/review.md",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
 }
@@ -228,7 +229,7 @@ def enforce_runtime_surface_contract(
 
 
 def build_skill_walkthrough_entry(repo_root: Path, skill_name: str) -> dict[str, Any]:
-    skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
+    skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
     metadata, body = parse_skill_document(skill_md_path)
     sections = parse_skill_sections(body)
 

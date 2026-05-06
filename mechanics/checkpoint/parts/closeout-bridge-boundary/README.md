@@ -31,7 +31,7 @@ or bridge-skill implementation work.
 ## Next Route
 
 Route execution to the canonical
-`skills/aoa-checkpoint-closeout-bridge/SKILL.md`. The bridge skill coordinates
+`skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`. The bridge skill coordinates
 the explicit closeout chain; this mechanics part only names the boundary.
 
 Source doc:

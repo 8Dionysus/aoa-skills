@@ -67,7 +67,7 @@ do not already provide them.
 Keep the layers separate:
 
 - canonical authoring
-  - `skills/*/SKILL.md`
+  - `skills/**/SKILL.md`
   - `generated/skill_sections.full.json`
   - `generated/skill_catalog.min.json`
 - Codex-facing export

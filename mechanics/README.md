@@ -21,7 +21,7 @@ and which center claims must still remain blocked by owner-local proof,
 canonical skill review, or later package work.
 
 The receipt surface answers the center queue. It does not replace
-`skills/*/SKILL.md`, generated exports, proof routes, or sibling-owner truth.
+`skills/**/SKILL.md`, generated exports, proof routes, or sibling-owner truth.
 
 ## Cross-mechanics map
 

@@ -4,11 +4,18 @@ import json
 from copy import deepcopy
 import unittest
 from pathlib import Path
+import sys
 
 from jsonschema import Draft202012Validator
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import skill_layout
+
 WORKSPACE_ROOT = REPO_ROOT.parent
 SDK_FIXTURE_PATH = (
     WORKSPACE_ROOT / "aoa-sdk" / "examples" / "a2a" / "summon_return_checkpoint_e2e.fixture.json"
@@ -21,12 +28,9 @@ def load_json(path: Path) -> dict:
 
 class AoaSummonE2EFixtureTests(unittest.TestCase):
     def test_aoa_summon_runtime_example_points_to_sdk_e2e_fixture(self) -> None:
-        skill_text = (REPO_ROOT / "skills" / "aoa-summon" / "SKILL.md").read_text(
-            encoding="utf-8"
-        )
-        runtime_text = (
-            REPO_ROOT / "skills" / "aoa-summon" / "examples" / "runtime.md"
-        ).read_text(encoding="utf-8")
+        skill_dir = skill_layout.skill_dir_path(REPO_ROOT, "aoa-summon")
+        skill_text = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
+        runtime_text = (skill_dir / "examples" / "runtime.md").read_text(encoding="utf-8")
 
         for text in (skill_text, runtime_text):
             self.assertIn(
@@ -38,19 +42,12 @@ class AoaSummonE2EFixtureTests(unittest.TestCase):
         if not SDK_FIXTURE_PATH.exists():
             self.skipTest("live aoa-sdk E2E fixture is unavailable")
 
+        skill_dir = skill_layout.skill_dir_path(REPO_ROOT, "aoa-summon")
         request_schema = load_json(
-            REPO_ROOT
-            / "skills"
-            / "aoa-summon"
-            / "references"
-            / "summon-request-v3.schema.json"
+            skill_dir / "references" / "summon-request-v3.schema.json"
         )
         result_schema = load_json(
-            REPO_ROOT
-            / "skills"
-            / "aoa-summon"
-            / "references"
-            / "summon-result-v3.schema.json"
+            skill_dir / "references" / "summon-result-v3.schema.json"
         )
         fixture = load_json(SDK_FIXTURE_PATH)
 

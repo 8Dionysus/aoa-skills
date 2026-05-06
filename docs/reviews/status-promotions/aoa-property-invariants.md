@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `791ea1c445d4`
+- reviewed revision: `e2c8e6d6054c`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-property-invariants/SKILL.md`
-- `skills/aoa-property-invariants/techniques.yaml`
-- `skills/aoa-property-invariants/examples/example.md`
+- `skills/core/engineering/aoa-property-invariants/SKILL.md`
+- `skills/core/engineering/aoa-property-invariants/techniques.yaml`
+- `skills/core/engineering/aoa-property-invariants/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

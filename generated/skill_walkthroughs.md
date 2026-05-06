@@ -29,7 +29,7 @@ Common expand sections:
 - scope: `project`
 - status: `evaluated`
 - invocation mode: `explicit-only`
-- skill path: `skills/abyss-safe-infra-change/SKILL.md`
+- skill path: `skills/project/abyss/abyss-safe-infra-change/SKILL.md`
 - pick summary: Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes.
 
 ### Use when
@@ -58,8 +58,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/abyss-safe-infra-change/examples/example.md`
-- `review_checklist`: `skills/abyss-safe-infra-change/checks/review.md`
+- `runtime_example` (selected): `skills/project/abyss/abyss-safe-infra-change/examples/example.md`
+- `review_checklist`: `skills/project/abyss/abyss-safe-infra-change/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/abyss-safe-infra-change.md`
 
 ## abyss-sanitized-share
@@ -67,7 +67,7 @@ Common expand sections:
 - scope: `project`
 - status: `evaluated`
 - invocation mode: `explicit-only`
-- skill path: `skills/abyss-sanitized-share/SKILL.md`
+- skill path: `skills/project/abyss/abyss-sanitized-share/SKILL.md`
 - pick summary: Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes.
 
 ### Use when
@@ -96,8 +96,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/abyss-sanitized-share/examples/example.md`
-- `review_checklist`: `skills/abyss-sanitized-share/checks/review.md`
+- `runtime_example` (selected): `skills/project/abyss/abyss-sanitized-share/examples/example.md`
+- `review_checklist`: `skills/project/abyss/abyss-sanitized-share/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/abyss-sanitized-share.md`
 
 ## abyss-self-diagnostic-spine
@@ -105,7 +105,7 @@ Common expand sections:
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/abyss-self-diagnostic-spine/SKILL.md`
+- skill path: `skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md`
 - pick summary: Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.
 
 ### Use when
@@ -138,15 +138,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/abyss-self-diagnostic-spine/examples/example.md`
-- `review_checklist`: `skills/abyss-self-diagnostic-spine/checks/review.md`
+- `runtime_example` (selected): `skills/project/abyss/abyss-self-diagnostic-spine/examples/example.md`
+- `review_checklist`: `skills/project/abyss/abyss-self-diagnostic-spine/checks/review.md`
 
 ## aoa-adr-write
 
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-adr-write/SKILL.md`
+- skill path: `skills/core/engineering/aoa-adr-write/SKILL.md`
 - pick summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.
 
 ### Use when
@@ -175,7 +175,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-adr-write/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-adr-write/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-adr-write.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-adr-write.md`
 
@@ -184,7 +184,7 @@ Common expand sections:
 - scope: `risk`
 - status: `canonical`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-approval-gate-check/SKILL.md`
+- skill path: `skills/risk/aoa-approval-gate-check/SKILL.md`
 - pick summary: Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.
 
 ### Use when
@@ -211,8 +211,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-approval-gate-check/examples/runtime.md`
-- `review_checklist`: `skills/aoa-approval-gate-check/checks/review.md`
+- `runtime_example` (selected): `skills/risk/aoa-approval-gate-check/examples/runtime.md`
+- `review_checklist`: `skills/risk/aoa-approval-gate-check/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-approval-gate-check.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`
 
@@ -221,7 +221,7 @@ Common expand sections:
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-automation-opportunity-scan/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md`
 - pick summary: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.
 
 ### Use when
@@ -252,15 +252,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-automation-opportunity-scan/examples/runtime.md`
-- `review_checklist`: `skills/aoa-automation-opportunity-scan/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-automation-opportunity-scan/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-automation-opportunity-scan/checks/review.md`
 
 ## aoa-bounded-context-map
 
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-bounded-context-map/SKILL.md`
+- skill path: `skills/core/engineering/aoa-bounded-context-map/SKILL.md`
 - pick summary: Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and portable where needed.
 
 ### Use when
@@ -288,7 +288,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-bounded-context-map/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-bounded-context-map/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-bounded-context-map.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-bounded-context-map.md`
 
@@ -297,7 +297,7 @@ Common expand sections:
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-change-protocol/SKILL.md`
+- skill path: `skills/core/engineering/aoa-change-protocol/SKILL.md`
 - pick summary: Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
 
 ### Use when
@@ -322,8 +322,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-change-protocol/examples/runtime.md`
-- `review_checklist`: `skills/aoa-change-protocol/checks/review.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-change-protocol/examples/runtime.md`
+- `review_checklist`: `skills/core/engineering/aoa-change-protocol/checks/review.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-change-protocol.md`
 
 ## aoa-checkpoint-closeout-bridge
@@ -331,7 +331,7 @@ Common expand sections:
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-checkpoint-closeout-bridge/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`
 - pick summary: Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.
 
 ### Use when
@@ -366,15 +366,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-checkpoint-closeout-bridge/examples/runtime.md`
-- `review_checklist`: `skills/aoa-checkpoint-closeout-bridge/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-checkpoint-closeout-bridge/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-checkpoint-closeout-bridge/checks/review.md`
 
 ## aoa-commit-growth-seam
 
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-commit-growth-seam/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-commit-growth-seam/SKILL.md`
 - pick summary: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.
 
 ### Use when
@@ -403,15 +403,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-commit-growth-seam/examples/runtime.md`
-- `review_checklist`: `skills/aoa-commit-growth-seam/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-commit-growth-seam/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-commit-growth-seam/checks/review.md`
 
 ## aoa-contract-test
 
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-contract-test/SKILL.md`
+- skill path: `skills/core/engineering/aoa-contract-test/SKILL.md`
 - pick summary: Design or extend contract-oriented validation at module, service, or workflow boundaries.
 
 ### Use when
@@ -437,7 +437,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-contract-test/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-contract-test/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-contract-test.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-contract-test.md`
 
@@ -446,7 +446,7 @@ Common expand sections:
 - scope: `core`
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-core-logic-boundary/SKILL.md`
+- skill path: `skills/core/engineering/aoa-core-logic-boundary/SKILL.md`
 - pick summary: Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.
 
 ### Use when
@@ -473,7 +473,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-core-logic-boundary/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-core-logic-boundary/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-core-logic-boundary.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md`
 
@@ -482,7 +482,7 @@ Common expand sections:
 - scope: `risk`
 - status: `canonical`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-dry-run-first/SKILL.md`
+- skill path: `skills/risk/aoa-dry-run-first/SKILL.md`
 - pick summary: Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.
 
 ### Use when
@@ -509,8 +509,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-dry-run-first/examples/runtime.md`
-- `review_checklist`: `skills/aoa-dry-run-first/checks/review.md`
+- `runtime_example` (selected): `skills/risk/aoa-dry-run-first/examples/runtime.md`
+- `review_checklist`: `skills/risk/aoa-dry-run-first/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-dry-run-first.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-dry-run-first.md`
 
@@ -519,7 +519,7 @@ Common expand sections:
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-invariant-coverage-audit/SKILL.md`
+- skill path: `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`
 - pick summary: Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.
 
 ### Use when
@@ -546,7 +546,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-invariant-coverage-audit/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md`
 
@@ -555,7 +555,7 @@ Common expand sections:
 - scope: `risk`
 - status: `evaluated`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-local-stack-bringup/SKILL.md`
+- skill path: `skills/risk/aoa-local-stack-bringup/SKILL.md`
 - pick summary: Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.
 
 ### Use when
@@ -584,8 +584,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-local-stack-bringup/examples/runtime.md`
-- `review_checklist`: `skills/aoa-local-stack-bringup/checks/review.md`
+- `runtime_example` (selected): `skills/risk/aoa-local-stack-bringup/examples/runtime.md`
+- `review_checklist`: `skills/risk/aoa-local-stack-bringup/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-local-stack-bringup.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md`
 
@@ -594,7 +594,7 @@ Common expand sections:
 - scope: `core`
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-port-adapter-refactor/SKILL.md`
+- skill path: `skills/core/engineering/aoa-port-adapter-refactor/SKILL.md`
 - pick summary: Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.
 
 ### Use when
@@ -621,7 +621,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-port-adapter-refactor/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-port-adapter-refactor/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-port-adapter-refactor.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md`
 
@@ -630,7 +630,7 @@ Common expand sections:
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-property-invariants/SKILL.md`
+- skill path: `skills/core/engineering/aoa-property-invariants/SKILL.md`
 - pick summary: Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.
 
 ### Use when
@@ -656,7 +656,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-property-invariants/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-property-invariants/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-property-invariants.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-property-invariants.md`
 
@@ -665,7 +665,7 @@ Common expand sections:
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-quest-harvest/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-quest-harvest/SKILL.md`
 - pick summary: Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.
 
 ### Use when
@@ -697,15 +697,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-quest-harvest/examples/runtime.md`
-- `review_checklist`: `skills/aoa-quest-harvest/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-quest-harvest/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-quest-harvest/checks/review.md`
 
 ## aoa-safe-infra-change
 
 - scope: `risk`
 - status: `canonical`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-safe-infra-change/SKILL.md`
+- skill path: `skills/risk/aoa-safe-infra-change/SKILL.md`
 - pick summary: Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.
 
 ### Use when
@@ -731,8 +731,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-safe-infra-change/examples/runtime.md`
-- `review_checklist`: `skills/aoa-safe-infra-change/checks/review.md`
+- `runtime_example` (selected): `skills/risk/aoa-safe-infra-change/examples/runtime.md`
+- `review_checklist`: `skills/risk/aoa-safe-infra-change/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-safe-infra-change.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`
 
@@ -741,7 +741,7 @@ Common expand sections:
 - scope: `risk`
 - status: `canonical`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-sanitized-share/SKILL.md`
+- skill path: `skills/risk/aoa-sanitized-share/SKILL.md`
 - pick summary: Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.
 
 ### Use when
@@ -767,8 +767,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-sanitized-share/examples/runtime.md`
-- `review_checklist`: `skills/aoa-sanitized-share/checks/review.md`
+- `runtime_example` (selected): `skills/risk/aoa-sanitized-share/examples/runtime.md`
+- `review_checklist`: `skills/risk/aoa-sanitized-share/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-sanitized-share.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-sanitized-share.md`
 
@@ -777,7 +777,7 @@ Common expand sections:
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-session-donor-harvest/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-session-donor-harvest/SKILL.md`
 - pick summary: Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.
 
 ### Use when
@@ -819,15 +819,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-session-donor-harvest/examples/runtime.md`
-- `review_checklist`: `skills/aoa-session-donor-harvest/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-session-donor-harvest/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-session-donor-harvest/checks/review.md`
 
 ## aoa-session-progression-lift
 
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-session-progression-lift/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-session-progression-lift/SKILL.md`
 - pick summary: Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.
 
 ### Use when
@@ -856,15 +856,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-session-progression-lift/examples/runtime.md`
-- `review_checklist`: `skills/aoa-session-progression-lift/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-session-progression-lift/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-session-progression-lift/checks/review.md`
 
 ## aoa-session-route-forks
 
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-session-route-forks/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-session-route-forks/SKILL.md`
 - pick summary: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.
 
 ### Use when
@@ -894,15 +894,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-session-route-forks/examples/runtime.md`
-- `review_checklist`: `skills/aoa-session-route-forks/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-session-route-forks/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-session-route-forks/checks/review.md`
 
 ## aoa-session-self-diagnose
 
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-session-self-diagnose/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-session-self-diagnose/SKILL.md`
 - pick summary: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.
 
 ### Use when
@@ -932,15 +932,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-session-self-diagnose/examples/runtime.md`
-- `review_checklist`: `skills/aoa-session-self-diagnose/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-session-self-diagnose/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-session-self-diagnose/checks/review.md`
 
 ## aoa-session-self-repair
 
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-session-self-repair/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-session-self-repair/SKILL.md`
 - pick summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
 
 ### Use when
@@ -969,15 +969,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-session-self-repair/examples/runtime.md`
-- `review_checklist`: `skills/aoa-session-self-repair/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-session-self-repair/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-session-self-repair/checks/review.md`
 
 ## aoa-source-of-truth-check
 
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-source-of-truth-check/SKILL.md`
+- skill path: `skills/core/engineering/aoa-source-of-truth-check/SKILL.md`
 - pick summary: Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.
 
 ### Use when
@@ -1013,7 +1013,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-source-of-truth-check/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-source-of-truth-check/examples/example.md`
 - `promotion_review`: `docs/reviews/status-promotions/aoa-source-of-truth-check.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md`
 
@@ -1022,7 +1022,7 @@ Common expand sections:
 - scope: `core`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/aoa-summon/SKILL.md`
+- skill path: `skills/core/session-growth/aoa-summon/SKILL.md`
 - pick summary: Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
 
 ### Use when
@@ -1051,15 +1051,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-summon/examples/runtime.md`
-- `review_checklist`: `skills/aoa-summon/checks/review.md`
+- `runtime_example` (selected): `skills/core/session-growth/aoa-summon/examples/runtime.md`
+- `review_checklist`: `skills/core/session-growth/aoa-summon/checks/review.md`
 
 ## aoa-tdd-slice
 
 - scope: `core`
 - status: `canonical`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/aoa-tdd-slice/SKILL.md`
+- skill path: `skills/core/engineering/aoa-tdd-slice/SKILL.md`
 - pick summary: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries.
 
 ### Use when
@@ -1085,7 +1085,7 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/aoa-tdd-slice/examples/example.md`
+- `runtime_example` (selected): `skills/core/engineering/aoa-tdd-slice/examples/example.md`
 - `candidate_review`: `docs/reviews/canonical-candidates/aoa-tdd-slice.md`
 
 ## atm10-change-protocol
@@ -1093,7 +1093,7 @@ Common expand sections:
 - scope: `project`
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/atm10-change-protocol/SKILL.md`
+- skill path: `skills/project/atm10/atm10-change-protocol/SKILL.md`
 - pick summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.
 
 ### Use when
@@ -1120,8 +1120,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/atm10-change-protocol/examples/example.md`
-- `review_checklist`: `skills/atm10-change-protocol/checks/review.md`
+- `runtime_example` (selected): `skills/project/atm10/atm10-change-protocol/examples/example.md`
+- `review_checklist`: `skills/project/atm10/atm10-change-protocol/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/atm10-change-protocol.md`
 
 ## atm10-source-of-truth-check
@@ -1129,7 +1129,7 @@ Common expand sections:
 - scope: `project`
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
-- skill path: `skills/atm10-source-of-truth-check/SKILL.md`
+- skill path: `skills/project/atm10/atm10-source-of-truth-check/SKILL.md`
 - pick summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.
 
 ### Use when
@@ -1156,8 +1156,8 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/atm10-source-of-truth-check/examples/example.md`
-- `review_checklist`: `skills/atm10-source-of-truth-check/checks/review.md`
+- `runtime_example` (selected): `skills/project/atm10/atm10-source-of-truth-check/examples/example.md`
+- `review_checklist`: `skills/project/atm10/atm10-source-of-truth-check/checks/review.md`
 - `promotion_review`: `docs/reviews/status-promotions/atm10-source-of-truth-check.md`
 
 ## titan-approval-ledger
@@ -1165,7 +1165,7 @@ Common expand sections:
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-approval-ledger/SKILL.md`
+- skill path: `skills/project/titan/titan-approval-ledger/SKILL.md`
 - pick summary: Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth.
 
 ### Use when
@@ -1189,15 +1189,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-approval-ledger/examples/runtime.md`
-- `review_checklist`: `skills/titan-approval-ledger/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-approval-ledger/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-approval-ledger/checks/review.md`
 
 ## titan-approval-loom
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-approval-loom/SKILL.md`
+- skill path: `skills/project/titan/titan-approval-loom/SKILL.md`
 - pick summary: Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent.
 
 ### Use when
@@ -1221,15 +1221,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-approval-loom/examples/runtime.md`
-- `review_checklist`: `skills/titan-approval-loom/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-approval-loom/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-approval-loom/checks/review.md`
 
 ## titan-appserver-bridge
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-appserver-bridge/SKILL.md`
+- skill path: `skills/project/titan/titan-appserver-bridge/SKILL.md`
 - pick summary: Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution.
 
 ### Use when
@@ -1254,15 +1254,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-appserver-bridge/examples/runtime.md`
-- `review_checklist`: `skills/titan-appserver-bridge/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-appserver-bridge/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-appserver-bridge/checks/review.md`
 
 ## titan-appserver-plan
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-appserver-plan/SKILL.md`
+- skill path: `skills/project/titan/titan-appserver-plan/SKILL.md`
 - pick summary: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex.
 
 ### Use when
@@ -1287,15 +1287,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-appserver-plan/examples/runtime.md`
-- `review_checklist`: `skills/titan-appserver-plan/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-appserver-plan/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-appserver-plan/checks/review.md`
 
 ## titan-closeout
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-closeout/SKILL.md`
+- skill path: `skills/project/titan/titan-closeout/SKILL.md`
 - pick summary: Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.
 
 ### Use when
@@ -1320,15 +1320,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-closeout/examples/runtime.md`
-- `review_checklist`: `skills/titan-closeout/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-closeout/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-closeout/checks/review.md`
 
 ## titan-console
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-console/SKILL.md`
+- skill path: `skills/project/titan/titan-console/SKILL.md`
 - pick summary: Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.
 
 ### Use when
@@ -1353,15 +1353,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-console/examples/runtime.md`
-- `review_checklist`: `skills/titan-console/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-console/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-console/checks/review.md`
 
 ## titan-event-replay
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-event-replay/SKILL.md`
+- skill path: `skills/project/titan/titan-event-replay/SKILL.md`
 - pick summary: Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.
 
 ### Use when
@@ -1386,15 +1386,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-event-replay/examples/runtime.md`
-- `review_checklist`: `skills/titan-event-replay/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-event-replay/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-event-replay/checks/review.md`
 
 ## titan-memory-loom
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-memory-loom/SKILL.md`
+- skill path: `skills/project/titan/titan-memory-loom/SKILL.md`
 - pick summary: Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings.
 
 ### Use when
@@ -1419,15 +1419,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-memory-loom/examples/runtime.md`
-- `review_checklist`: `skills/titan-memory-loom/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-memory-loom/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-memory-loom/checks/review.md`
 
 ## titan-memory-prune
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-memory-prune/SKILL.md`
+- skill path: `skills/project/titan/titan-memory-prune/SKILL.md`
 - pick summary: Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.
 
 ### Use when
@@ -1452,15 +1452,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-memory-prune/examples/runtime.md`
-- `review_checklist`: `skills/titan-memory-prune/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-memory-prune/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-memory-prune/checks/review.md`
 
 ## titan-mutation-gate
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-mutation-gate/SKILL.md`
+- skill path: `skills/project/titan/titan-mutation-gate/SKILL.md`
 - pick summary: Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture.
 
 ### Use when
@@ -1485,15 +1485,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-mutation-gate/examples/runtime.md`
-- `review_checklist`: `skills/titan-mutation-gate/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-mutation-gate/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-mutation-gate/checks/review.md`
 
 ## titan-recall
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-recall/SKILL.md`
+- skill path: `skills/project/titan/titan-recall/SKILL.md`
 - pick summary: Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.
 
 ### Use when
@@ -1518,15 +1518,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-recall/examples/runtime.md`
-- `review_checklist`: `skills/titan-recall/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-recall/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-recall/checks/review.md`
 
 ## titan-receipt
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-receipt/SKILL.md`
+- skill path: `skills/project/titan/titan-receipt/SKILL.md`
 - pick summary: Create, validate, note, or close Titan session receipts as witnesses rather than final truth.
 
 ### Use when
@@ -1551,15 +1551,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-receipt/examples/runtime.md`
-- `review_checklist`: `skills/titan-receipt/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-receipt/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-receipt/checks/review.md`
 
 ## titan-runtime-gate
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-runtime-gate/SKILL.md`
+- skill path: `skills/project/titan/titan-runtime-gate/SKILL.md`
 - pick summary: Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.
 
 ### Use when
@@ -1584,15 +1584,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-runtime-gate/examples/runtime.md`
-- `review_checklist`: `skills/titan-runtime-gate/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-runtime-gate/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-runtime-gate/checks/review.md`
 
 ## titan-summon
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-summon/SKILL.md`
+- skill path: `skills/project/titan/titan-summon/SKILL.md`
 - pick summary: Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.
 
 ### Use when
@@ -1617,15 +1617,15 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-summon/examples/runtime.md`
-- `review_checklist`: `skills/titan-summon/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-summon/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-summon/checks/review.md`
 
 ## titan-thread-turn-binding
 
 - scope: `project`
 - status: `scaffold`
 - invocation mode: `explicit-only`
-- skill path: `skills/titan-thread-turn-binding/SKILL.md`
+- skill path: `skills/project/titan/titan-thread-turn-binding/SKILL.md`
 - pick summary: Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.
 
 ### Use when
@@ -1650,6 +1650,6 @@ Common expand sections:
 
 ### Support artifacts
 
-- `runtime_example` (selected): `skills/titan-thread-turn-binding/examples/runtime.md`
-- `review_checklist`: `skills/titan-thread-turn-binding/checks/review.md`
+- `runtime_example` (selected): `skills/project/titan/titan-thread-turn-binding/examples/runtime.md`
+- `review_checklist`: `skills/project/titan/titan-thread-turn-binding/checks/review.md`
 

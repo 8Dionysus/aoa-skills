@@ -20,8 +20,8 @@ surfaces. The move changes their route, not their authority level.
 
 Current RPG reader companions remain in:
 
-- `skills/*/SKILL.md`
-- `skills/*/techniques.yaml`
+- `skills/**/SKILL.md`
+- `skills/**/techniques.yaml`
 - `generated/skill_evaluation_matrix.*`
 - `config/skill_pack_profiles.json`
 - `config/skill_policy_matrix.json`

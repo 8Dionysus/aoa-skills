@@ -7,6 +7,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+import skill_layout
+
 
 PROFILE = "codex-facing-wave-8-support-bundles"
 TARGETED_SKILLS = (
@@ -113,7 +115,7 @@ def validate(repo_root: Path, check_portable: bool) -> dict[str, Any]:
         errors.append("deterministic_resource_eval_cases.jsonl skill set mismatch")
 
     for skill in TARGETED_SKILLS:
-        skill_root = repo_root / "skills" / skill
+        skill_root = skill_layout.skill_dir_path(repo_root, skill)
         portable_root = repo_root / ".agents" / "skills" / skill
         manifest_entry = manifest_by_name.get(skill)
         index_entry = support_index_by_name.get(skill)

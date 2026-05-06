@@ -6,7 +6,7 @@
       "invocation_mode": "explicit-only",
       "name": "abyss-safe-infra-change",
       "scope": "project",
-      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "status": "evaluated",
       "summary": "Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes.",
       "technique_dependencies": [
@@ -50,7 +50,7 @@
       "invocation_mode": "explicit-only",
       "name": "abyss-sanitized-share",
       "scope": "project",
-      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "status": "evaluated",
       "summary": "Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes.",
       "technique_dependencies": [
@@ -98,7 +98,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "abyss-self-diagnostic-spine",
       "scope": "project",
-      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "status": "scaffold",
       "summary": "Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation.",
       "technique_dependencies": [
@@ -139,7 +139,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-adr-write",
       "scope": "core",
-      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "status": "canonical",
       "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.",
       "technique_dependencies": [
@@ -188,7 +188,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-approval-gate-check",
       "scope": "risk",
-      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
       "status": "canonical",
       "summary": "Classify whether a requested action should proceed, wait for explicit approval, or be refused at the current authority level.",
       "technique_dependencies": [
@@ -218,7 +218,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-automation-opportunity-scan",
       "scope": "core",
-      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "status": "scaffold",
       "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
       "technique_dependencies": [
@@ -276,7 +276,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-bounded-context-map",
       "scope": "core",
-      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "status": "canonical",
       "summary": "Clarify system, domain, layer, and owner boundaries so changes stay semantically scoped, interface-aware, and portable where needed.",
       "technique_dependencies": [
@@ -323,7 +323,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-change-protocol",
       "scope": "core",
-      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical",
       "summary": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
       "technique_dependencies": [
@@ -370,7 +370,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-checkpoint-closeout-bridge",
       "scope": "core",
-      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "status": "scaffold",
       "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
       "technique_dependencies": [
@@ -427,7 +427,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-commit-growth-seam",
       "scope": "core",
-      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "status": "scaffold",
       "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
       "technique_dependencies": [
@@ -474,7 +474,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-contract-test",
       "scope": "core",
-      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "status": "canonical",
       "summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries.",
       "technique_dependencies": [
@@ -514,7 +514,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-core-logic-boundary",
       "scope": "core",
-      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated",
       "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.",
       "technique_dependencies": [
@@ -559,7 +559,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-dry-run-first",
       "scope": "risk",
-      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "status": "canonical",
       "summary": "Prefer simulation, inspection, or preview paths before real execution, and require one explicit confirmation seam before any mutating step runs.",
       "technique_dependencies": [
@@ -600,7 +600,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-invariant-coverage-audit",
       "scope": "core",
-      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical",
       "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
       "technique_dependencies": [
@@ -631,7 +631,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-local-stack-bringup",
       "scope": "risk",
-      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
       "status": "evaluated",
       "summary": "Bring up a bounded local multi-service stack by reviewing rendered runtime truth, checking host readiness, and launching through one explicit lifecycle entrypoint.",
       "technique_dependencies": [
@@ -712,7 +712,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
-      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated",
       "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.",
       "technique_dependencies": [
@@ -757,7 +757,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-property-invariants",
       "scope": "core",
-      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "status": "canonical",
       "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.",
       "technique_dependencies": [
@@ -798,7 +798,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-quest-harvest",
       "scope": "core",
-      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "scaffold",
       "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
       "technique_dependencies": [
@@ -842,7 +842,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-safe-infra-change",
       "scope": "risk",
-      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "status": "canonical",
       "summary": "Make bounded infrastructure or configuration changes with explicit risk framing, verification, and reversible execution discipline.",
       "technique_dependencies": [
@@ -886,7 +886,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-sanitized-share",
       "scope": "risk",
-      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
       "status": "canonical",
       "summary": "Separate raw technical material from a shareable public-safe surface, place the sanitized output in the canonical sharing location, and verify that the lesson survives the redaction.",
       "technique_dependencies": [
@@ -935,7 +935,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-session-donor-harvest",
       "scope": "core",
-      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold",
       "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "technique_dependencies": [
@@ -992,7 +992,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-session-progression-lift",
       "scope": "core",
-      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "status": "scaffold",
       "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
       "technique_dependencies": [
@@ -1031,7 +1031,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-session-route-forks",
       "scope": "core",
-      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
       "status": "scaffold",
       "summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.",
       "technique_dependencies": [
@@ -1071,7 +1071,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-session-self-diagnose",
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "status": "scaffold",
       "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
       "technique_dependencies": [
@@ -1112,7 +1112,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-session-self-repair",
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "status": "scaffold",
       "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_dependencies": [
@@ -1152,7 +1152,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-source-of-truth-check",
       "scope": "core",
-      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
       "summary": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.",
       "technique_dependencies": [
@@ -1216,7 +1216,7 @@
       "invocation_mode": "explicit-only",
       "name": "aoa-summon",
       "scope": "core",
-      "skill_path": "skills/aoa-summon/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "scaffold",
       "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "technique_dependencies": [
@@ -1258,7 +1258,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "aoa-tdd-slice",
       "scope": "core",
-      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "status": "canonical",
       "summary": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries.",
       "technique_dependencies": [
@@ -1299,7 +1299,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "atm10-change-protocol",
       "scope": "project",
-      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "status": "evaluated",
       "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
       "technique_dependencies": [
@@ -1339,7 +1339,7 @@
       "invocation_mode": "explicit-preferred",
       "name": "atm10-source-of-truth-check",
       "scope": "project",
-      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated",
       "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
       "technique_dependencies": [
@@ -1386,7 +1386,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-approval-ledger",
       "scope": "project",
-      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "status": "scaffold",
       "summary": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth.",
       "technique_dependencies": [
@@ -1428,7 +1428,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-approval-loom",
       "scope": "project",
-      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "status": "scaffold",
       "summary": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent.",
       "technique_dependencies": [
@@ -1470,7 +1470,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-appserver-bridge",
       "scope": "project",
-      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "status": "scaffold",
       "summary": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution.",
       "technique_dependencies": [
@@ -1512,7 +1512,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-appserver-plan",
       "scope": "project",
-      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold",
       "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex.",
       "technique_dependencies": [
@@ -1554,7 +1554,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-closeout",
       "scope": "project",
-      "skill_path": "skills/titan-closeout/SKILL.md",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "status": "scaffold",
       "summary": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.",
       "technique_dependencies": [
@@ -1596,7 +1596,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-console",
       "scope": "project",
-      "skill_path": "skills/titan-console/SKILL.md",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
       "status": "scaffold",
       "summary": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.",
       "technique_dependencies": [
@@ -1638,7 +1638,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-event-replay",
       "scope": "project",
-      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "status": "scaffold",
       "summary": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.",
       "technique_dependencies": [
@@ -1680,7 +1680,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-memory-loom",
       "scope": "project",
-      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "status": "scaffold",
       "summary": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings.",
       "technique_dependencies": [
@@ -1722,7 +1722,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-memory-prune",
       "scope": "project",
-      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "status": "scaffold",
       "summary": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.",
       "technique_dependencies": [
@@ -1764,7 +1764,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-mutation-gate",
       "scope": "project",
-      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "status": "scaffold",
       "summary": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture.",
       "technique_dependencies": [
@@ -1806,7 +1806,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-recall",
       "scope": "project",
-      "skill_path": "skills/titan-recall/SKILL.md",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "status": "scaffold",
       "summary": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.",
       "technique_dependencies": [
@@ -1848,7 +1848,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-receipt",
       "scope": "project",
-      "skill_path": "skills/titan-receipt/SKILL.md",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "status": "scaffold",
       "summary": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth.",
       "technique_dependencies": [
@@ -1890,7 +1890,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-runtime-gate",
       "scope": "project",
-      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "status": "scaffold",
       "summary": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.",
       "technique_dependencies": [
@@ -1932,7 +1932,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-summon",
       "scope": "project",
-      "skill_path": "skills/titan-summon/SKILL.md",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "status": "scaffold",
       "summary": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.",
       "technique_dependencies": [
@@ -1974,7 +1974,7 @@
       "invocation_mode": "explicit-only",
       "name": "titan-thread-turn-binding",
       "scope": "project",
-      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold",
       "summary": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.",
       "technique_dependencies": [
@@ -2013,7 +2013,7 @@
     }
   ],
   "source_of_truth": {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml"
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml"
   }
 }

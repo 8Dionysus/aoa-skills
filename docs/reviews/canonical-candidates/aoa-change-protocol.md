@@ -19,9 +19,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-change-protocol/SKILL.md`
-- `skills/aoa-change-protocol/techniques.yaml`
-- `skills/aoa-change-protocol/checks/review.md`
+- `skills/core/engineering/aoa-change-protocol/SKILL.md`
+- `skills/core/engineering/aoa-change-protocol/techniques.yaml`
+- `skills/core/engineering/aoa-change-protocol/checks/review.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

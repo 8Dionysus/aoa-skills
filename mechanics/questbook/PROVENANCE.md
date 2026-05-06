@@ -35,8 +35,8 @@ quest projections into source truth.
 
 Canonical quest-harvest skill meaning remains in:
 
-- `skills/aoa-quest-harvest/SKILL.md`
-- `skills/aoa-quest-harvest/references/quest-promotion-receipt-schema.yaml`
+- `skills/core/session-growth/aoa-quest-harvest/SKILL.md`
+- `skills/core/session-growth/aoa-quest-harvest/references/quest-promotion-receipt-schema.yaml`
 
 ## Neighbor Routes
 

@@ -10,10 +10,11 @@ import yaml
 
 import build_catalog
 import skill_catalog_contract
+import skill_layout
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 DEFAULT_TECHNIQUES_REPO = REPO_ROOT.parent / "aoa-techniques"
 
 
@@ -78,9 +79,9 @@ def resolve_skill_names(
 
 
 def load_skill_bundle(repo_root: Path, skill_name: str) -> SkillTechniqueBundle:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-    skill_md_path = skill_dir / "SKILL.md"
-    techniques_path = skill_dir / "techniques.yaml"
+    skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
+    skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
+    techniques_path = skill_layout.techniques_path(repo_root, skill_name)
 
     metadata, body = build_catalog.parse_skill_document(skill_md_path)
     manifest = build_catalog.load_yaml(techniques_path)

@@ -24,10 +24,10 @@ SKILL_GRAPH_VERSION = 2
 SKILL_GRAPH_JSON_PATH = Path("generated") / "skill_graph.json"
 SKILL_GRAPH_MARKDOWN_PATH = Path("generated") / "skill_graph.md"
 BUNDLE_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml",
-    "runtime_examples": "skills/*/examples/*.md",
-    "review_checks": "skills/*/checks/review.md",
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml",
+    "runtime_examples": "skills/**/examples/*.md",
+    "review_checks": "skills/**/checks/review.md",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
 }

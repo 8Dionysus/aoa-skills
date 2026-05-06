@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `risk`
 - current lineage: `published`
-- reviewed revision: `df0cebb8654a`
+- reviewed revision: `1ae7817b49fa`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-sanitized-share/SKILL.md`
-- `skills/aoa-sanitized-share/techniques.yaml`
-- `skills/aoa-sanitized-share/checks/review.md`
+- `skills/risk/aoa-sanitized-share/SKILL.md`
+- `skills/risk/aoa-sanitized-share/techniques.yaml`
+- `skills/risk/aoa-sanitized-share/checks/review.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-dry-run-first/SKILL.md`
-- `skills/aoa-dry-run-first/techniques.yaml`
-- `skills/aoa-dry-run-first/checks/review.md`
-- `skills/aoa-dry-run-first/agents/openai.yaml`
+- `skills/risk/aoa-dry-run-first/SKILL.md`
+- `skills/risk/aoa-dry-run-first/techniques.yaml`
+- `skills/risk/aoa-dry-run-first/checks/review.md`
+- `skills/risk/aoa-dry-run-first/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

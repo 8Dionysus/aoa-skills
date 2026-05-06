@@ -14,7 +14,7 @@ canonical skill bundle
 
 ## Current contour
 
-- Skill meaning remains under `skills/*/SKILL.md`.
+- Skill meaning remains under `skills/**/SKILL.md`.
 - Ability cards remain generated reader surfaces.
 - Loadout means reviewable subset posture, not equipped runtime state.
 - Pack profiles and trust surfaces do the honest subset work first.

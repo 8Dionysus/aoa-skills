@@ -503,8 +503,8 @@
   ],
   "source_of_truth": {
     "exception_reviews": "docs/reviews/skill-composition-exceptions/*.md",
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml"
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml"
   },
   "summary": {
     "approved_exception_count": 2,

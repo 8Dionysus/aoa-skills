@@ -38,7 +38,7 @@ Keep these surfaces in their current homes:
 - `quests/`
 - quest schemas
 - generated quest catalog and dispatch projections
-- canonical `skills/aoa-quest-harvest/SKILL.md`
+- canonical `skills/core/session-growth/aoa-quest-harvest/SKILL.md`
 
 Add a package card, direction, parts, provenance, landing log, roadmap, active
 docs map, and active parts for source/index boundary, session-harvest posture,

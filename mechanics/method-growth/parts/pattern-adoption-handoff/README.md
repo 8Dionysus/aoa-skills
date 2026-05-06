@@ -19,7 +19,7 @@ meaning.
 - What local owner consent, shadow proof, rollback, and retention watch are
   needed before adoption?
 - Does the proposal have enough bounded execution shape for normal
-  `skills/*/SKILL.md` review?
+  `skills/**/SKILL.md` review?
 
 ## Active Outputs
 
@@ -32,5 +32,5 @@ meaning.
 ## Next Route
 
 Route reusable practice truth to `aoa-techniques`. Route bounded execution
-workflow changes through `skills/*/SKILL.md` review and generated catalog
+workflow changes through `skills/**/SKILL.md` review and generated catalog
 validation. Route recurring scenario choreography to `aoa-playbooks`.

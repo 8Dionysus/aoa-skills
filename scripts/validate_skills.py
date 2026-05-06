@@ -26,6 +26,7 @@ import skill_governance_backlog_surface
 import skill_governance_lane_contract
 import skill_governance_surface
 import skill_lineage_surface
+import skill_layout
 import skill_overlay_contract
 import skill_review_surface
 import skill_runtime_surface
@@ -35,7 +36,7 @@ import skill_bundle_surface
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 SKILL_INDEX_NAME = "SKILL_INDEX.md"
 SCHEMAS_DIR_NAME = "schemas"
 SKILL_NAME_PATTERN = r"(?:aoa|atm10|abyss|titan)-[a-z0-9-]+"
@@ -739,10 +740,10 @@ def find_support_artifacts(
 
 def validate_skill_bundle(repo_root: Path, skill_name: str) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-    skill_md_path = skill_dir / "SKILL.md"
-    techniques_path = skill_dir / "techniques.yaml"
-    policy_path = skill_dir / "agents" / "openai.yaml"
+    skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
+    skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
+    techniques_path = skill_layout.techniques_path(repo_root, skill_name)
+    policy_path = skill_layout.policy_path(repo_root, skill_name)
 
     if not skill_dir.is_dir():
         issues.append(
@@ -1377,7 +1378,7 @@ def validate_evaluation_floors(
 
     for skill_name in target_skills:
         metadata, _sections = parse_skill_markdown(
-            repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md",
+            skill_layout.skill_md_path(repo_root, skill_name),
             [],
         )
         if metadata is None:
@@ -1435,8 +1436,8 @@ def validate_canonical_status_floors(
     ] = []
 
     for skill_name in target_skills:
-        skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
-        techniques_path = repo_root / SKILLS_DIR_NAME / skill_name / "techniques.yaml"
+        skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
+        techniques_path = skill_layout.techniques_path(repo_root, skill_name)
         metadata, section_pairs = parse_skill_markdown(skill_md_path, [])
         if metadata is None or metadata.get("status") != "canonical":
             continue
@@ -1610,11 +1611,7 @@ def validate_skill_index(
     location = relative_location(index_path)
 
     if selected_skills is None:
-        skill_dirs = {
-            path.name
-            for path in (repo_root / SKILLS_DIR_NAME).iterdir()
-            if path.is_dir()
-        }
+        skill_dirs = set(skill_layout.discover_skill_names(repo_root))
         for name, count in sorted(counts.items()):
             if count > 1:
                 issues.append(
@@ -2315,7 +2312,7 @@ def validate_generated_sections(
             issues=issues,
         )
         for skill_name in skill_names:
-            skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
+            skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
             try:
                 metadata, body = build_catalog.parse_skill_document(skill_md_path)
                 expected_section_entry, contract_issues = skill_section_contract.build_sections_entry(

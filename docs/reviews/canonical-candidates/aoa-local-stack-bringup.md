@@ -20,10 +20,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-local-stack-bringup/SKILL.md`
-- `skills/aoa-local-stack-bringup/techniques.yaml`
-- `skills/aoa-local-stack-bringup/examples/runtime.md`
-- `skills/aoa-local-stack-bringup/checks/review.md`
+- `skills/risk/aoa-local-stack-bringup/SKILL.md`
+- `skills/risk/aoa-local-stack-bringup/techniques.yaml`
+- `skills/risk/aoa-local-stack-bringup/examples/runtime.md`
+- `skills/risk/aoa-local-stack-bringup/checks/review.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 - `docs/governance/lanes.md`
 

@@ -19,9 +19,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-property-invariants/SKILL.md`
-- `skills/aoa-property-invariants/techniques.yaml`
-- `skills/aoa-property-invariants/examples/example.md`
+- `skills/core/engineering/aoa-property-invariants/SKILL.md`
+- `skills/core/engineering/aoa-property-invariants/techniques.yaml`
+- `skills/core/engineering/aoa-property-invariants/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

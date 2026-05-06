@@ -7,7 +7,7 @@ metadata:
   aoa_scope: project
   aoa_status: scaffold
   aoa_invocation_mode: explicit-preferred
-  aoa_source_skill_path: skills/abyss-self-diagnostic-spine/SKILL.md
+  aoa_source_skill_path: skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0080,AOA-T-0081
   aoa_portable_profile: codex-facing-wave-3

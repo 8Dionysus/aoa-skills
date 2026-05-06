@@ -23,7 +23,7 @@ It does not change the base skill boundary.
 - verification path: use the smallest repo-relative check that matches the touched operational or sharing surface
 - family review doc: `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`
 - maintenance readout: use `generated/overlay_readiness.md` for family maturity and `generated/governance_backlog.md` for per-skill maintenance
-- bundle-local review checklists: `skills/abyss-safe-infra-change/checks/review.md`, `skills/abyss-sanitized-share/checks/review.md`, `skills/abyss-self-diagnostic-spine/checks/review.md`
+- bundle-local review checklists: `skills/project/abyss/abyss-safe-infra-change/checks/review.md`, `skills/project/abyss/abyss-sanitized-share/checks/review.md`, `skills/project/abyss/abyss-self-diagnostic-spine/checks/review.md`
 
 ## Overlayed skills
 

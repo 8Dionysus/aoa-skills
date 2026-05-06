@@ -11,7 +11,7 @@ GENERATED_DIR_NAME = "generated"
 SECTIONS_NAME = "skill_sections.full.json"
 SECTION_VERSION = 1
 SECTION_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
+    "skill_markdown": "skills/**/SKILL.md",
     "sections": [
         "Intent",
         "Trigger boundary",

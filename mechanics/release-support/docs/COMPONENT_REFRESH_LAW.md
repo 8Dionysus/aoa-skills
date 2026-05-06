@@ -13,7 +13,7 @@ repeat the same repair, or block adjacent routes.
 
 Keep this order:
 
-1. `skills/*/SKILL.md`
+1. `skills/**/SKILL.md`
 2. repo-owned export config under `config/`
 3. generated export and discovery surfaces under `.agents/skills/` and
    `generated/`
@@ -31,7 +31,7 @@ downstream workspace installs.
 - `component_ref`: `component:skills-export:foundation`
 - `owner_repo`: `aoa-skills`
 - source-authored inputs:
-  - `skills/*/SKILL.md`
+  - `skills/**/SKILL.md`
   - `config/portable_skill_overrides.json`
   - `config/openai_skill_extensions.json`
   - `config/skill_pack_profiles.json`
@@ -89,7 +89,7 @@ downstream workspace installs.
   - `python scripts/validate_tiny_router_inputs.py --repo-root .`
 
 Use `repair` only for a bounded owner fix that keeps source authorship in
-`skills/*` or `config/`. Use `reexport` or `rebuild` when the generated layer
+`skills/**` or `config/`. Use `reexport` or `rebuild` when the generated layer
 itself is stale.
 
 ## Proof and rollback

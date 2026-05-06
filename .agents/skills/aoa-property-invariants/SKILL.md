@@ -7,7 +7,7 @@ metadata:
   aoa_scope: core
   aoa_status: canonical
   aoa_invocation_mode: explicit-preferred
-  aoa_source_skill_path: skills/aoa-property-invariants/SKILL.md
+  aoa_source_skill_path: skills/core/engineering/aoa-property-invariants/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0017,AOA-T-0007
   aoa_portable_profile: codex-facing-wave-3

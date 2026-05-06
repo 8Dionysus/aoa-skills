@@ -34,4 +34,4 @@ invocation, receipt generation patches, policy holds, rollback drills, and the
 
 - Runtime implementation, release packaging, and owner acceptance.
 - In-app or narrative explanation of skill meaning that should stay in
-  `skills/*/SKILL.md`.
+  `skills/**/SKILL.md`.

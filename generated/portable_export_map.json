@@ -17,7 +17,7 @@
   "exports": [
     {
       "name": "abyss-safe-infra-change",
-      "source_skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "source_skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "target_dir": ".agents/skills/abyss-safe-infra-change",
       "target_skill_path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
       "target_openai_config_path": ".agents/skills/abyss-safe-infra-change/agents/openai.yaml",
@@ -34,7 +34,7 @@
     },
     {
       "name": "abyss-sanitized-share",
-      "source_skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "source_skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "target_dir": ".agents/skills/abyss-sanitized-share",
       "target_skill_path": ".agents/skills/abyss-sanitized-share/SKILL.md",
       "target_openai_config_path": ".agents/skills/abyss-sanitized-share/agents/openai.yaml",
@@ -51,7 +51,7 @@
     },
     {
       "name": "abyss-self-diagnostic-spine",
-      "source_skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "source_skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "target_dir": ".agents/skills/abyss-self-diagnostic-spine",
       "target_skill_path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
       "target_openai_config_path": ".agents/skills/abyss-self-diagnostic-spine/agents/openai.yaml",
@@ -68,7 +68,7 @@
     },
     {
       "name": "aoa-adr-write",
-      "source_skill_path": "skills/aoa-adr-write/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "target_dir": ".agents/skills/aoa-adr-write",
       "target_skill_path": ".agents/skills/aoa-adr-write/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
@@ -85,7 +85,7 @@
     },
     {
       "name": "aoa-approval-gate-check",
-      "source_skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
       "target_dir": ".agents/skills/aoa-approval-gate-check",
       "target_skill_path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
@@ -102,7 +102,7 @@
     },
     {
       "name": "aoa-automation-opportunity-scan",
-      "source_skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "target_dir": ".agents/skills/aoa-automation-opportunity-scan",
       "target_skill_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
@@ -128,7 +128,7 @@
     },
     {
       "name": "aoa-bounded-context-map",
-      "source_skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "target_dir": ".agents/skills/aoa-bounded-context-map",
       "target_skill_path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
@@ -145,7 +145,7 @@
     },
     {
       "name": "aoa-change-protocol",
-      "source_skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "target_dir": ".agents/skills/aoa-change-protocol",
       "target_skill_path": ".agents/skills/aoa-change-protocol/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
@@ -162,7 +162,7 @@
     },
     {
       "name": "aoa-checkpoint-closeout-bridge",
-      "source_skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "target_dir": ".agents/skills/aoa-checkpoint-closeout-bridge",
       "target_skill_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
@@ -183,7 +183,7 @@
     },
     {
       "name": "aoa-commit-growth-seam",
-      "source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "target_dir": ".agents/skills/aoa-commit-growth-seam",
       "target_skill_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
@@ -200,7 +200,7 @@
     },
     {
       "name": "aoa-contract-test",
-      "source_skill_path": "skills/aoa-contract-test/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "target_dir": ".agents/skills/aoa-contract-test",
       "target_skill_path": ".agents/skills/aoa-contract-test/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
@@ -217,7 +217,7 @@
     },
     {
       "name": "aoa-core-logic-boundary",
-      "source_skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "target_dir": ".agents/skills/aoa-core-logic-boundary",
       "target_skill_path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
@@ -234,7 +234,7 @@
     },
     {
       "name": "aoa-dry-run-first",
-      "source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "target_dir": ".agents/skills/aoa-dry-run-first",
       "target_skill_path": ".agents/skills/aoa-dry-run-first/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
@@ -259,7 +259,7 @@
     },
     {
       "name": "aoa-invariant-coverage-audit",
-      "source_skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "target_dir": ".agents/skills/aoa-invariant-coverage-audit",
       "target_skill_path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
@@ -276,7 +276,7 @@
     },
     {
       "name": "aoa-local-stack-bringup",
-      "source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
       "target_dir": ".agents/skills/aoa-local-stack-bringup",
       "target_skill_path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
@@ -301,7 +301,7 @@
     },
     {
       "name": "aoa-port-adapter-refactor",
-      "source_skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "target_dir": ".agents/skills/aoa-port-adapter-refactor",
       "target_skill_path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
@@ -318,7 +318,7 @@
     },
     {
       "name": "aoa-property-invariants",
-      "source_skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "target_dir": ".agents/skills/aoa-property-invariants",
       "target_skill_path": ".agents/skills/aoa-property-invariants/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
@@ -335,7 +335,7 @@
     },
     {
       "name": "aoa-quest-harvest",
-      "source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "target_dir": ".agents/skills/aoa-quest-harvest",
       "target_skill_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
@@ -357,7 +357,7 @@
     },
     {
       "name": "aoa-safe-infra-change",
-      "source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "target_dir": ".agents/skills/aoa-safe-infra-change",
       "target_skill_path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
@@ -382,7 +382,7 @@
     },
     {
       "name": "aoa-sanitized-share",
-      "source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "source_skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
       "target_dir": ".agents/skills/aoa-sanitized-share",
       "target_skill_path": ".agents/skills/aoa-sanitized-share/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
@@ -399,7 +399,7 @@
     },
     {
       "name": "aoa-session-donor-harvest",
-      "source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "target_dir": ".agents/skills/aoa-session-donor-harvest",
       "target_skill_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
@@ -425,7 +425,7 @@
     },
     {
       "name": "aoa-session-progression-lift",
-      "source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "target_dir": ".agents/skills/aoa-session-progression-lift",
       "target_skill_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
@@ -447,7 +447,7 @@
     },
     {
       "name": "aoa-session-route-forks",
-      "source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
       "target_dir": ".agents/skills/aoa-session-route-forks",
       "target_skill_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
@@ -468,7 +468,7 @@
     },
     {
       "name": "aoa-session-self-diagnose",
-      "source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "target_dir": ".agents/skills/aoa-session-self-diagnose",
       "target_skill_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
@@ -489,7 +489,7 @@
     },
     {
       "name": "aoa-session-self-repair",
-      "source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "target_dir": ".agents/skills/aoa-session-self-repair",
       "target_skill_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
@@ -511,7 +511,7 @@
     },
     {
       "name": "aoa-source-of-truth-check",
-      "source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "target_dir": ".agents/skills/aoa-source-of-truth-check",
       "target_skill_path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
@@ -528,7 +528,7 @@
     },
     {
       "name": "aoa-summon",
-      "source_skill_path": "skills/aoa-summon/SKILL.md",
+      "source_skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "target_dir": ".agents/skills/aoa-summon",
       "target_skill_path": ".agents/skills/aoa-summon/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
@@ -550,7 +550,7 @@
     },
     {
       "name": "aoa-tdd-slice",
-      "source_skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "source_skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "target_dir": ".agents/skills/aoa-tdd-slice",
       "target_skill_path": ".agents/skills/aoa-tdd-slice/SKILL.md",
       "target_openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
@@ -567,7 +567,7 @@
     },
     {
       "name": "atm10-change-protocol",
-      "source_skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "source_skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "target_dir": ".agents/skills/atm10-change-protocol",
       "target_skill_path": ".agents/skills/atm10-change-protocol/SKILL.md",
       "target_openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
@@ -584,7 +584,7 @@
     },
     {
       "name": "atm10-source-of-truth-check",
-      "source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "source_skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "target_dir": ".agents/skills/atm10-source-of-truth-check",
       "target_skill_path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
       "target_openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
@@ -601,7 +601,7 @@
     },
     {
       "name": "titan-approval-ledger",
-      "source_skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "target_dir": ".agents/skills/titan-approval-ledger",
       "target_skill_path": ".agents/skills/titan-approval-ledger/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-approval-ledger/agents/openai.yaml",
@@ -618,7 +618,7 @@
     },
     {
       "name": "titan-approval-loom",
-      "source_skill_path": "skills/titan-approval-loom/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "target_dir": ".agents/skills/titan-approval-loom",
       "target_skill_path": ".agents/skills/titan-approval-loom/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-approval-loom/agents/openai.yaml",
@@ -635,7 +635,7 @@
     },
     {
       "name": "titan-appserver-bridge",
-      "source_skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "target_dir": ".agents/skills/titan-appserver-bridge",
       "target_skill_path": ".agents/skills/titan-appserver-bridge/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-appserver-bridge/agents/openai.yaml",
@@ -652,7 +652,7 @@
     },
     {
       "name": "titan-appserver-plan",
-      "source_skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "target_dir": ".agents/skills/titan-appserver-plan",
       "target_skill_path": ".agents/skills/titan-appserver-plan/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-appserver-plan/agents/openai.yaml",
@@ -669,7 +669,7 @@
     },
     {
       "name": "titan-closeout",
-      "source_skill_path": "skills/titan-closeout/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "target_dir": ".agents/skills/titan-closeout",
       "target_skill_path": ".agents/skills/titan-closeout/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-closeout/agents/openai.yaml",
@@ -686,7 +686,7 @@
     },
     {
       "name": "titan-console",
-      "source_skill_path": "skills/titan-console/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-console/SKILL.md",
       "target_dir": ".agents/skills/titan-console",
       "target_skill_path": ".agents/skills/titan-console/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-console/agents/openai.yaml",
@@ -703,7 +703,7 @@
     },
     {
       "name": "titan-event-replay",
-      "source_skill_path": "skills/titan-event-replay/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "target_dir": ".agents/skills/titan-event-replay",
       "target_skill_path": ".agents/skills/titan-event-replay/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-event-replay/agents/openai.yaml",
@@ -720,7 +720,7 @@
     },
     {
       "name": "titan-memory-loom",
-      "source_skill_path": "skills/titan-memory-loom/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "target_dir": ".agents/skills/titan-memory-loom",
       "target_skill_path": ".agents/skills/titan-memory-loom/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-memory-loom/agents/openai.yaml",
@@ -737,7 +737,7 @@
     },
     {
       "name": "titan-memory-prune",
-      "source_skill_path": "skills/titan-memory-prune/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "target_dir": ".agents/skills/titan-memory-prune",
       "target_skill_path": ".agents/skills/titan-memory-prune/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-memory-prune/agents/openai.yaml",
@@ -754,7 +754,7 @@
     },
     {
       "name": "titan-mutation-gate",
-      "source_skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "target_dir": ".agents/skills/titan-mutation-gate",
       "target_skill_path": ".agents/skills/titan-mutation-gate/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-mutation-gate/agents/openai.yaml",
@@ -771,7 +771,7 @@
     },
     {
       "name": "titan-recall",
-      "source_skill_path": "skills/titan-recall/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "target_dir": ".agents/skills/titan-recall",
       "target_skill_path": ".agents/skills/titan-recall/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-recall/agents/openai.yaml",
@@ -788,7 +788,7 @@
     },
     {
       "name": "titan-receipt",
-      "source_skill_path": "skills/titan-receipt/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "target_dir": ".agents/skills/titan-receipt",
       "target_skill_path": ".agents/skills/titan-receipt/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-receipt/agents/openai.yaml",
@@ -805,7 +805,7 @@
     },
     {
       "name": "titan-runtime-gate",
-      "source_skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "target_dir": ".agents/skills/titan-runtime-gate",
       "target_skill_path": ".agents/skills/titan-runtime-gate/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-runtime-gate/agents/openai.yaml",
@@ -822,7 +822,7 @@
     },
     {
       "name": "titan-summon",
-      "source_skill_path": "skills/titan-summon/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "target_dir": ".agents/skills/titan-summon",
       "target_skill_path": ".agents/skills/titan-summon/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-summon/agents/openai.yaml",
@@ -839,7 +839,7 @@
     },
     {
       "name": "titan-thread-turn-binding",
-      "source_skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "source_skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "target_dir": ".agents/skills/titan-thread-turn-binding",
       "target_skill_path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
       "target_openai_config_path": ".agents/skills/titan-thread-turn-binding/agents/openai.yaml",

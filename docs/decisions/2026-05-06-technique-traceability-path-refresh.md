@@ -23,7 +23,7 @@ Refresh skill technique traceability from
 
 For each non-pending `AOA-T-*` reference:
 
-- update `skills/*/techniques.yaml` to the current `technique_path`
+- update `skills/**/techniques.yaml` to the current `technique_path`
 - update `source_ref` to the current `aoa-techniques` commit
 - regenerate each `SKILL.md` technique traceability section from the manifest
 - rebuild generated catalogs and the `.agents/skills` export

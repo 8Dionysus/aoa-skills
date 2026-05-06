@@ -8,6 +8,7 @@ from typing import Any, Mapping, Sequence
 import skill_artifact_contract
 import skill_catalog_contract
 import skill_evaluation_surface
+import skill_layout
 import skill_source_model
 import yaml
 
@@ -54,9 +55,9 @@ OVERLAY_READINESS_VERSION = 1
 OVERLAY_READINESS_JSON_PATH = Path("generated") / "overlay_readiness.json"
 OVERLAY_READINESS_MARKDOWN_PATH = Path("generated") / "overlay_readiness.md"
 OVERLAY_READINESS_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "runtime_examples": "skills/*/examples/*.md",
-    "review_checks": "skills/*/checks/review.md",
+    "skill_markdown": "skills/**/SKILL.md",
+    "runtime_examples": "skills/**/examples/*.md",
+    "review_checks": "skills/**/checks/review.md",
     "overlay_docs": "mechanics/boundary-bridge/overlays/*/PROJECT_OVERLAY.md",
     "overlay_reviews": "mechanics/boundary-bridge/overlays/*/REVIEW.md",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
@@ -110,28 +111,28 @@ def skill_family_name(skill_name: str) -> str | None:
 
 def family_skill_names(repo_root: Path, family: str) -> list[str]:
     prefix = f"{family}-"
-    skills_dir = repo_root / "skills"
-    if not skills_dir.is_dir():
+    try:
+        entries = skill_layout.discover_skill_bundle_paths(repo_root)
+    except FileNotFoundError:
         return []
     return sorted(
-        path.name
-        for path in skills_dir.iterdir()
-        if path.is_dir()
-        and path.name.startswith(prefix)
-        and load_skill_scope(path / "SKILL.md") == "project"
+        entry.name
+        for entry in entries
+        if entry.name.startswith(prefix)
+        and load_skill_scope(entry.skill_md_path) == "project"
     )
 
 
 def project_skill_families(repo_root: Path) -> list[str]:
-    skills_dir = repo_root / "skills"
-    if not skills_dir.is_dir():
+    try:
+        entries = skill_layout.discover_skill_bundle_paths(repo_root)
+    except FileNotFoundError:
         return []
     families = {
         family
-        for path in skills_dir.iterdir()
-        if path.is_dir()
-        for family in [skill_family_name(path.name)]
-        if family is not None and load_skill_scope(path / "SKILL.md") == "project"
+        for entry in entries
+        for family in [skill_family_name(entry.name)]
+        if family is not None and load_skill_scope(entry.skill_md_path) == "project"
     }
     return sorted(families)
 
@@ -428,13 +429,15 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
 
         for skill_name in actual:
             review_check_path = (
-                repo_root / "skills" / skill_name / "checks" / "review.md"
+                skill_layout.skill_dir_path(repo_root, skill_name)
+                / "checks"
+                / "review.md"
             )
             if not review_check_path.is_file():
                 issues.append(
                     OverlayContractIssue(
                         relative_location(review_check_path, repo_root),
-                        f"live overlay family '{family}' requires skills/{skill_name}/checks/review.md",
+                        f"live overlay family '{family}' requires {relative_location(review_check_path, repo_root)}",
                     )
                 )
 

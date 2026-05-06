@@ -16,8 +16,8 @@ GOVERNANCE_BACKLOG_VERSION = 5
 GOVERNANCE_BACKLOG_JSON_PATH = Path("generated") / "governance_backlog.json"
 GOVERNANCE_BACKLOG_MARKDOWN_PATH = Path("generated") / "governance_backlog.md"
 GOVERNANCE_BACKLOG_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml",
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",

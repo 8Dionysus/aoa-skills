@@ -2,12 +2,18 @@ from __future__ import annotations
 
 import unittest
 from pathlib import Path
+import sys
 
 import yaml
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIR = REPO_ROOT / "skills"
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import skill_layout
+
 FIXTURES_PATH = REPO_ROOT / "tests" / "fixtures" / "skill_evaluation_cases.yaml"
 
 
@@ -45,10 +51,10 @@ class CanonicalGateChecksTests(unittest.TestCase):
 
     def test_canonical_skills_meet_gate_requirements(self) -> None:
         canonical_skills: list[str] = []
-        for skill_dir in sorted(path for path in SKILLS_DIR.iterdir() if path.is_dir()):
-            metadata, _ = parse_skill_document(skill_dir / "SKILL.md")
+        for entry in skill_layout.discover_skill_bundle_paths(REPO_ROOT):
+            metadata, _ = parse_skill_document(entry.skill_md_path)
             if metadata.get("status") == "canonical":
-                canonical_skills.append(skill_dir.name)
+                canonical_skills.append(entry.name)
 
         if not canonical_skills:
             return
@@ -74,8 +80,8 @@ class CanonicalGateChecksTests(unittest.TestCase):
 
         for skill_name in canonical_skills:
             with self.subTest(skill=skill_name):
-                skill_dir = SKILLS_DIR / skill_name
-                metadata, body = parse_skill_document(skill_dir / "SKILL.md")
+                skill_dir = skill_layout.skill_dir_path(REPO_ROOT, skill_name)
+                metadata, body = parse_skill_document(skill_layout.skill_md_path(REPO_ROOT, skill_name))
                 self.assertIn("## Technique traceability", body)
                 self.assertNotIn("## Future traceability", body)
 

@@ -35,8 +35,8 @@ COMPOSITION_CLASS_MULTI_TECHNIQUE = "multi_technique"
 COMPOSITION_CLASS_SINGLE_EXCEPTION = "single_technique_exception"
 COMPOSITION_CLASS_SINGLE_NEEDS_REFRAME = "single_technique_needs_reframe"
 SKILL_COMPOSITION_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml",
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml",
     "exception_reviews": "docs/reviews/skill-composition-exceptions/*.md",
 }
 RECOMMENDATION_PATTERN = re.compile(

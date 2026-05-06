@@ -14,10 +14,12 @@ Before editing a bundle in this directory, read in this order:
 2. `../docs/ARCHITECTURE.md`
 3. `../mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
 4. `../mechanics/release-support/docs/RUNTIME_PATH.md`
-5. the target `skills/<skill>/SKILL.md`
-6. the target `skills/<skill>/techniques.yaml`
-7. any touched `checks/`, `examples/`, `references/`, or `agents/openai.yaml`
-8. for live overlay skills, `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` and the matching `../mechanics/boundary-bridge/overlays/<family>/PROJECT_OVERLAY.md`
+5. the nearest nested `AGENTS.md` for the target lane
+6. `README.md`
+7. the target `skills/**/<skill>/SKILL.md`
+8. the target `skills/**/<skill>/techniques.yaml`
+9. any touched `checks/`, `examples/`, `references/`, or `agents/openai.yaml`
+10. for live overlay skills, `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` and the matching `../mechanics/boundary-bridge/overlays/<family>/PROJECT_OVERLAY.md`
 
 ## Directory contract
 
@@ -31,7 +33,17 @@ Treat these as the canonical bundle surfaces when present:
 `SKILL.md` and `techniques.yaml` remain the canonical pair. Support artifacts should clarify, constrain, or verify the bundle. They should not silently override it.
 The generated Codex-facing export lives separately under `.agents/skills/*`; edit the canonical bundle first, then regenerate the export.
 
+Bundle discovery is recursive under `skills/`. Do not add flat alias
+directories at `skills/<name>` for compatibility. Compatibility belongs in the
+generated `.agents/skills/*` export and in deterministic builders that resolve
+the canonical source path.
+
 Do not add per-bundle `AGENTS.md` by default. A skill bundle already carries its own contract surface, and a deeper `AGENTS.md` only makes sense when there is a real local conflict that cannot be stated cleanly in the bundle itself.
+Lane-level `AGENTS.md` files are expected in this topology. They own local
+route law for functional branches such as core engineering, session growth,
+risk, and project overlays. Do not add lane `README.md` files by default; the
+root `skills/README.md` is the source topology atlas, while lane law belongs in
+the nearest `AGENTS.md`.
 
 ## Allowed changes
 
@@ -53,7 +65,9 @@ Use extra caution when:
 - changing the relation between a bundle and its support artifacts
 - removing support artifacts referenced by generated surfaces or review docs
 - turning a multi-technique skill into a single-technique exception or vice versa
-- changing live overlay family relationships such as `skills/atm10-*`
+- changing live overlay family relationships under `skills/project/*`
+- moving a bundle between topology lanes, because generated source paths,
+  support-resource manifests, catalog rows, and route docs must move with it
 
 ## Hard NO
 

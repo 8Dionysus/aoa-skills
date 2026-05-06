@@ -348,7 +348,7 @@ class MechanicsTopologyTests(unittest.TestCase):
                 self.assertIn(f"docs/{source_name}", provenance)
                 self.assertIn(f"mechanics/method-growth/docs/{source_name}", provenance)
 
-        self.assertIn("skills/aoa-session-donor-harvest/SKILL.md", provenance)
+        self.assertIn("skills/core/session-growth/aoa-session-donor-harvest/SKILL.md", provenance)
         self.assertIn(
             "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
             provenance,
@@ -482,7 +482,7 @@ class MechanicsTopologyTests(unittest.TestCase):
 
         self.assertIn("docs/CHECKPOINT_NOTE_PATH.md", provenance)
         self.assertIn("mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md", provenance)
-        self.assertIn("skills/aoa-checkpoint-closeout-bridge/SKILL.md", provenance)
+        self.assertIn("skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md", provenance)
         self.assertIn("schemas/session_checkpoint_note.schema.json", provenance)
         self.assertIn(
             "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
@@ -521,7 +521,7 @@ class MechanicsTopologyTests(unittest.TestCase):
         self.assertIn("QUESTBOOK.md", provenance)
         self.assertIn("quests/**/AOA-SK-Q-*.yaml", provenance)
         self.assertIn("generated/quest_catalog.min.json", provenance)
-        self.assertIn("skills/aoa-quest-harvest/SKILL.md", provenance)
+        self.assertIn("skills/core/session-growth/aoa-quest-harvest/SKILL.md", provenance)
 
     def test_recurrence_surfaces_moved_out_of_flat_docs(self) -> None:
         moved_paths = (

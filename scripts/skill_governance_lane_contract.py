@@ -9,6 +9,7 @@ import yaml
 
 import skill_catalog_contract
 import skill_evaluation_contract
+import skill_layout
 import skill_source_model
 
 
@@ -234,7 +235,7 @@ def validate_governance_lanes(
     except FileNotFoundError:
         discovered_skill_names = []
     for skill_name in discovered_skill_names:
-        skill_md_path = repo_root / "skills" / skill_name / "SKILL.md"
+        skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
         if not skill_md_path.is_file():
             continue
         try:

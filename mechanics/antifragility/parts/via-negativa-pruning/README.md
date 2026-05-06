@@ -31,5 +31,5 @@ technique.
 ## Next Route
 
 Every surviving skill should remain necessary, bounded, and non-redundant.
-Actual skill changes go through normal `skills/*/SKILL.md` review, generated
+Actual skill changes go through normal `skills/**/SKILL.md` review, generated
 catalog validation, and owner-route checks.

@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-core-logic-boundary/SKILL.md`
-- `skills/aoa-core-logic-boundary/techniques.yaml`
-- `skills/aoa-core-logic-boundary/examples/example.md`
-- `skills/aoa-core-logic-boundary/agents/openai.yaml`
+- `skills/core/engineering/aoa-core-logic-boundary/SKILL.md`
+- `skills/core/engineering/aoa-core-logic-boundary/techniques.yaml`
+- `skills/core/engineering/aoa-core-logic-boundary/examples/example.md`
+- `skills/core/engineering/aoa-core-logic-boundary/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 - `docs/governance/lanes.md`
 

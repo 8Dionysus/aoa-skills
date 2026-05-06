@@ -32,5 +32,5 @@ runtime behavior.
 ## Next Route
 
 When the posture becomes part of a real workflow, edit the canonical
-`skills/*/SKILL.md` through normal review and validation. Route runtime
+`skills/**/SKILL.md` through normal review and validation. Route runtime
 guardrails to runtime owners and proof claims to `aoa-evals`.

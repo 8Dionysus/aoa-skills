@@ -23,7 +23,7 @@ consumption.
 
 `abyss-stack` owns runtime infrastructure. `aoa-sdk` owns typed workspace
 helpers. Host runtimes own host behavior. Generated exports never replace
-authored `skills/*/SKILL.md`.
+authored `skills/**/SKILL.md`.
 
 ### Inputs
 

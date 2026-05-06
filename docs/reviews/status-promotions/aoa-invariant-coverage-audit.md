@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `c3bfe77e540d`
+- reviewed revision: `9c343d75ed0a`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-invariant-coverage-audit/SKILL.md`
-- `skills/aoa-invariant-coverage-audit/techniques.yaml`
-- `skills/aoa-invariant-coverage-audit/examples/example.md`
+- `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`
+- `skills/core/engineering/aoa-invariant-coverage-audit/techniques.yaml`
+- `skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

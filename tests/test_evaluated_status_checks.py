@@ -2,12 +2,18 @@ from __future__ import annotations
 
 import unittest
 from pathlib import Path
+import sys
 
 import yaml
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIR = REPO_ROOT / "skills"
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import skill_layout
+
 FIXTURES_PATH = REPO_ROOT / "tests" / "fixtures" / "skill_evaluation_cases.yaml"
 
 
@@ -45,10 +51,10 @@ class EvaluatedStatusChecksTests(unittest.TestCase):
 
     def test_evaluated_skills_have_minimum_evaluation_evidence(self) -> None:
         evaluated_skills: list[str] = []
-        for skill_dir in sorted(path for path in SKILLS_DIR.iterdir() if path.is_dir()):
-            metadata, _ = parse_skill_document(skill_dir / "SKILL.md")
+        for entry in skill_layout.discover_skill_bundle_paths(REPO_ROOT):
+            metadata, _ = parse_skill_document(entry.skill_md_path)
             if metadata.get("status") == "evaluated":
-                evaluated_skills.append(skill_dir.name)
+                evaluated_skills.append(entry.name)
 
         if not evaluated_skills:
             return

@@ -7,17 +7,18 @@ import skill_artifact_contract
 import skill_catalog_contract
 import skill_evaluation_contract
 import skill_governance_surface
+import skill_layout
 import skill_runtime_surface
 
 
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 EVALUATION_MATRIX_VERSION = 1
 EVALUATION_MATRIX_JSON_PATH = Path("generated") / "skill_evaluation_matrix.json"
 EVALUATION_MATRIX_MARKDOWN_PATH = Path("generated") / "skill_evaluation_matrix.md"
 EVALUATION_MATRIX_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "runtime_examples": "skills/*/examples/*.md",
-    "review_checks": "skills/*/checks/review.md",
+    "skill_markdown": "skills/**/SKILL.md",
+    "runtime_examples": "skills/**/examples/*.md",
+    "review_checks": "skills/**/checks/review.md",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
@@ -32,10 +33,7 @@ def relative_location(path: Path, repo_root: Path) -> str:
 
 
 def discover_skill_names(repo_root: Path) -> list[str]:
-    skills_dir = repo_root / SKILLS_DIR_NAME
-    if not skills_dir.is_dir():
-        raise FileNotFoundError(f"missing skills directory at {skills_dir}")
-    return sorted(path.name for path in skills_dir.iterdir() if path.is_dir())
+    return skill_layout.discover_skill_names(repo_root)
 
 
 def review_record_path(
@@ -51,7 +49,7 @@ def review_record_path(
 
 def selected_runtime_artifact_path(repo_root: Path, skill_name: str) -> str | None:
     selected_path = skill_artifact_contract.preferred_runtime_artifact(
-        repo_root / SKILLS_DIR_NAME / skill_name
+        skill_layout.skill_dir_path(repo_root, skill_name)
     )
     if selected_path is None:
         return None
@@ -65,7 +63,7 @@ def build_skill_evaluation_entry(
     evaluation_coverage_by_skill: Mapping[str, skill_governance_surface.EvaluationCoverage],
     snapshot_coverage_by_skill: Mapping[str, skill_evaluation_contract.SnapshotCoverage],
 ) -> dict[str, Any]:
-    skill_md_path = repo_root / SKILLS_DIR_NAME / skill_name / "SKILL.md"
+    skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
     metadata, _body = skill_runtime_surface.parse_skill_document(skill_md_path)
     evaluation_coverage = skill_governance_surface.coverage_for_skill(
         evaluation_coverage_by_skill,

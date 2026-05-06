@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `risk`
 - current lineage: `published`
-- reviewed revision: `1871a24198fe`
+- reviewed revision: `fcef34109123`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-dry-run-first/SKILL.md`
-- `skills/aoa-dry-run-first/techniques.yaml`
-- `skills/aoa-dry-run-first/checks/review.md`
+- `skills/risk/aoa-dry-run-first/SKILL.md`
+- `skills/risk/aoa-dry-run-first/techniques.yaml`
+- `skills/risk/aoa-dry-run-first/checks/review.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

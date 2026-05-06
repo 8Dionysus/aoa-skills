@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-approval-gate-check/SKILL.md`
-- `skills/aoa-approval-gate-check/techniques.yaml`
-- `skills/aoa-approval-gate-check/checks/review.md`
-- `skills/aoa-approval-gate-check/agents/openai.yaml`
+- `skills/risk/aoa-approval-gate-check/SKILL.md`
+- `skills/risk/aoa-approval-gate-check/techniques.yaml`
+- `skills/risk/aoa-approval-gate-check/checks/review.md`
+- `skills/risk/aoa-approval-gate-check/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

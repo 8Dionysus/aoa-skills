@@ -25,24 +25,24 @@ Use this surface for family maturity and `generated/governance_backlog.md` for p
 
 | name | family | status | review checklist | runtime examples | adaptation points | policy file | eval ready | blockers |
 |---|---|---|---|---:|---|---|---|---|
-| abyss-safe-infra-change | abyss | evaluated | skills/abyss-safe-infra-change/checks/review.md | 1 | true | true | true | - |
-| abyss-sanitized-share | abyss | evaluated | skills/abyss-sanitized-share/checks/review.md | 1 | true | true | true | - |
-| abyss-self-diagnostic-spine | abyss | scaffold | skills/abyss-self-diagnostic-spine/checks/review.md | 1 | true | true | true | - |
-| atm10-change-protocol | atm10 | evaluated | skills/atm10-change-protocol/checks/review.md | 1 | true | true | true | - |
-| atm10-source-of-truth-check | atm10 | evaluated | skills/atm10-source-of-truth-check/checks/review.md | 1 | true | true | true | - |
-| titan-approval-ledger | titan | scaffold | skills/titan-approval-ledger/checks/review.md | 1 | true | true | true | - |
-| titan-approval-loom | titan | scaffold | skills/titan-approval-loom/checks/review.md | 1 | true | true | true | - |
-| titan-appserver-bridge | titan | scaffold | skills/titan-appserver-bridge/checks/review.md | 1 | true | true | true | - |
-| titan-appserver-plan | titan | scaffold | skills/titan-appserver-plan/checks/review.md | 1 | true | true | true | - |
-| titan-closeout | titan | scaffold | skills/titan-closeout/checks/review.md | 1 | true | true | true | - |
-| titan-console | titan | scaffold | skills/titan-console/checks/review.md | 1 | true | true | true | - |
-| titan-event-replay | titan | scaffold | skills/titan-event-replay/checks/review.md | 1 | true | true | true | - |
-| titan-memory-loom | titan | scaffold | skills/titan-memory-loom/checks/review.md | 1 | true | true | true | - |
-| titan-memory-prune | titan | scaffold | skills/titan-memory-prune/checks/review.md | 1 | true | true | true | - |
-| titan-mutation-gate | titan | scaffold | skills/titan-mutation-gate/checks/review.md | 1 | true | true | true | - |
-| titan-recall | titan | scaffold | skills/titan-recall/checks/review.md | 1 | true | true | true | - |
-| titan-receipt | titan | scaffold | skills/titan-receipt/checks/review.md | 1 | true | true | true | - |
-| titan-runtime-gate | titan | scaffold | skills/titan-runtime-gate/checks/review.md | 1 | true | true | true | - |
-| titan-summon | titan | scaffold | skills/titan-summon/checks/review.md | 1 | true | true | true | - |
-| titan-thread-turn-binding | titan | scaffold | skills/titan-thread-turn-binding/checks/review.md | 1 | true | true | true | - |
+| abyss-safe-infra-change | abyss | evaluated | skills/project/abyss/abyss-safe-infra-change/checks/review.md | 1 | true | true | true | - |
+| abyss-sanitized-share | abyss | evaluated | skills/project/abyss/abyss-sanitized-share/checks/review.md | 1 | true | true | true | - |
+| abyss-self-diagnostic-spine | abyss | scaffold | skills/project/abyss/abyss-self-diagnostic-spine/checks/review.md | 1 | true | true | true | - |
+| atm10-change-protocol | atm10 | evaluated | skills/project/atm10/atm10-change-protocol/checks/review.md | 1 | true | true | true | - |
+| atm10-source-of-truth-check | atm10 | evaluated | skills/project/atm10/atm10-source-of-truth-check/checks/review.md | 1 | true | true | true | - |
+| titan-approval-ledger | titan | scaffold | skills/project/titan/titan-approval-ledger/checks/review.md | 1 | true | true | true | - |
+| titan-approval-loom | titan | scaffold | skills/project/titan/titan-approval-loom/checks/review.md | 1 | true | true | true | - |
+| titan-appserver-bridge | titan | scaffold | skills/project/titan/titan-appserver-bridge/checks/review.md | 1 | true | true | true | - |
+| titan-appserver-plan | titan | scaffold | skills/project/titan/titan-appserver-plan/checks/review.md | 1 | true | true | true | - |
+| titan-closeout | titan | scaffold | skills/project/titan/titan-closeout/checks/review.md | 1 | true | true | true | - |
+| titan-console | titan | scaffold | skills/project/titan/titan-console/checks/review.md | 1 | true | true | true | - |
+| titan-event-replay | titan | scaffold | skills/project/titan/titan-event-replay/checks/review.md | 1 | true | true | true | - |
+| titan-memory-loom | titan | scaffold | skills/project/titan/titan-memory-loom/checks/review.md | 1 | true | true | true | - |
+| titan-memory-prune | titan | scaffold | skills/project/titan/titan-memory-prune/checks/review.md | 1 | true | true | true | - |
+| titan-mutation-gate | titan | scaffold | skills/project/titan/titan-mutation-gate/checks/review.md | 1 | true | true | true | - |
+| titan-recall | titan | scaffold | skills/project/titan/titan-recall/checks/review.md | 1 | true | true | true | - |
+| titan-receipt | titan | scaffold | skills/project/titan/titan-receipt/checks/review.md | 1 | true | true | true | - |
+| titan-runtime-gate | titan | scaffold | skills/project/titan/titan-runtime-gate/checks/review.md | 1 | true | true | true | - |
+| titan-summon | titan | scaffold | skills/project/titan/titan-summon/checks/review.md | 1 | true | true | true | - |
+| titan-thread-turn-binding | titan | scaffold | skills/project/titan/titan-thread-turn-binding/checks/review.md | 1 | true | true | true | - |
 

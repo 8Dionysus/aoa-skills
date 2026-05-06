@@ -94,11 +94,11 @@ BUNDLE_INDEX_VERSION = skill_bundle_surface.BUNDLE_INDEX_VERSION
 SKILL_GRAPH_VERSION = skill_bundle_surface.SKILL_GRAPH_VERSION
 
 SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml",
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml",
 }
 CAPSULE_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
+    "skill_markdown": "skills/**/SKILL.md",
     "frontmatter_fields": [
         "name",
         "scope",

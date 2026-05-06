@@ -12,8 +12,8 @@ PUBLIC_SURFACE_VERSION = 3
 PUBLIC_SURFACE_JSON_PATH = Path("generated") / "public_surface.json"
 PUBLIC_SURFACE_MARKDOWN_PATH = Path("generated") / "public_surface.md"
 PUBLIC_SURFACE_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml",
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",

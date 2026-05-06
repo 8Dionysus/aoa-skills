@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `e2f144d405aa`
+- reviewed revision: `d25254009968`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-port-adapter-refactor/SKILL.md`
-- `skills/aoa-port-adapter-refactor/techniques.yaml`
-- `skills/aoa-port-adapter-refactor/examples/example.md`
+- `skills/core/engineering/aoa-port-adapter-refactor/SKILL.md`
+- `skills/core/engineering/aoa-port-adapter-refactor/techniques.yaml`
+- `skills/core/engineering/aoa-port-adapter-refactor/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

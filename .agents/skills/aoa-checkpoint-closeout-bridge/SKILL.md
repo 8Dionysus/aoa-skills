@@ -7,7 +7,7 @@ metadata:
   aoa_scope: core
   aoa_status: scaffold
   aoa_invocation_mode: explicit-preferred
-  aoa_source_skill_path: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+  aoa_source_skill_path: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0075,AOA-T-0084,AOA-T-0089
   aoa_portable_profile: codex-facing-wave-3

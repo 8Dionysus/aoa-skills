@@ -11,7 +11,7 @@ name: abyss-safe-infra-change
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `9241b2de96a9`
+- reviewed revision: `0e1ee104cc89`
 
 ## Target status
 
@@ -21,10 +21,10 @@ name: abyss-safe-infra-change
 
 ## Evidence reviewed
 
-- `skills/abyss-safe-infra-change/SKILL.md`
-- `skills/abyss-safe-infra-change/techniques.yaml`
-- `skills/abyss-safe-infra-change/examples/example.md`
-- `skills/abyss-safe-infra-change/checks/review.md`
+- `skills/project/abyss/abyss-safe-infra-change/SKILL.md`
+- `skills/project/abyss/abyss-safe-infra-change/techniques.yaml`
+- `skills/project/abyss/abyss-safe-infra-change/examples/example.md`
+- `skills/project/abyss/abyss-safe-infra-change/checks/review.md`
 - `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
