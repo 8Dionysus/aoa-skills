@@ -4,6 +4,11 @@ Date: 2026-05-06
 
 Status: accepted
 
+Superseded in part by
+`2026-05-06-distributed-mechanics-roadmaps-and-root-questbook.md`: the public
+tracked obligation index now lives at root `QUESTBOOK.md`. The source/index,
+generated-readout, and owner-boundary stop-lines in this decision still stand.
+
 ## Context
 
 After Growth-cycle and Checkpoint gained package-local homes, the remaining
@@ -28,7 +33,8 @@ Move only the active integration note:
 
 Keep these surfaces in their current homes:
 
-- `mechanics/questbook/QUESTBOOK.md`
+- `mechanics/questbook/QUESTBOOK.md` (superseded placement; now root
+  `QUESTBOOK.md`)
 - `quests/`
 - quest schemas
 - generated quest catalog and dispatch projections

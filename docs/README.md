@@ -28,7 +28,7 @@ an executable workflow for Codex.
 - If you are reading live project-overlay family maturity, use `../mechanics/audit/docs/PUBLIC_SURFACE.md` and then `../generated/overlay_readiness.md`.
 - If you are reading per-skill packaging membership or relationship topology, use `../generated/skill_bundle_index.md`, `../generated/skill_graph.md`, and then `../generated/release_manifest.json`.
 - If you need one bounded ability-reader layer that stays subordinate to live skill bundles, use `../mechanics/rpg/parts/ability-reader-boundary/README.md`, `../mechanics/rpg/parts/loadout-posture/README.md`, and `../generated/skill_ability_cards.min.example.json`.
-- If you are reading deferred workflow, recurring cross-repo follow-through, or session-harvest aftermath, start with `../mechanics/questbook/QUESTBOOK.md` and `../mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`.
+- If you are reading deferred workflow, recurring cross-repo follow-through, or session-harvest aftermath, start with `../QUESTBOOK.md` and `../mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`.
 
 ## Shortest canonical route
 
@@ -61,7 +61,8 @@ an executable workflow for Codex.
 16. `ARCHITECTURE.md` - high-level model of the repository.
 17. `../mechanics/boundary-bridge/docs/BRIDGE_SPEC.md` - how skills reference and compose techniques.
 18. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
-19. `../mechanics/ROADMAP.md` - canonical public roadmap for repository evolution.
+19. `../mechanics/ROADMAP.md` - roadmap router; package `ROADMAP.md` files own
+    future contours.
 20. `../mechanics/release-support/docs/RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
 21. `../mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
 22. `../mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` - owner refresh law for the portable export foundation when generated or adapter-facing surfaces drift.
@@ -146,5 +147,8 @@ The next focus is keeping selection, evidence reading, public status, and live o
 The repository now also permits thin live exemplar overlay packs such as `mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md`, `mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md`, and matching `skills/atm10-*` plus `skills/abyss-*` bundles.
 Those live exemplar packs also have family-level review docs at `mechanics/boundary-bridge/overlays/atm10/REVIEW.md` and `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`.
 Those overlays remain repo-local examples rather than live downstream integrations, and their maturity is read through `../generated/overlay_readiness.md` rather than core governance lanes.
-`../mechanics/ROADMAP.md` remains the canonical public roadmap, and the next packaging follow-up after compatibility/lineage depth is import/export polish rather than another packaging-contract bootstrap.
+`../mechanics/ROADMAP.md` remains the mechanics roadmap router. Package
+roadmaps own their future contours, and release-support owns the next packaging
+follow-up after compatibility/lineage depth: import/export polish rather than
+another packaging-contract bootstrap.
 `../mechanics/release-support/legacy/waves/PHASED_SKILL_PLAN.md` records the scaffold expansion that established the original skill-core rollout.

@@ -1,5 +1,24 @@
 # Questbook Landing Log
 
+## 2026-05-06 - Root Index Alignment
+
+Moved the public tracked obligation index to root `QUESTBOOK.md` so this
+package can stay a mechanic route rather than the public quest index itself.
+
+Changed route:
+
+- root `QUESTBOOK.md` is the compact public obligation index
+- `mechanics/questbook/` owns integration posture, parts, provenance, roadmap,
+  and generated projection boundaries
+- `quests/`, schemas, and generated projections keep their existing source and
+  read-model roles
+
+Preserved stop-lines:
+
+- no quest source object moved for symmetry
+- no generated surface became authority
+- no package roadmap became the public quest index
+
 ## 2026-05-06 - Integration Posture Slice
 
 Landed the first `aoa-skills` questbook package around skill-layer questbook
@@ -14,7 +33,8 @@ Changed route:
 
 Preserved stop-lines:
 
-- `QUESTBOOK.md` became the package-local public obligation source
+- the public obligation source was still inside the questbook package during
+  this slice and is now root `QUESTBOOK.md`
 - `quests/`, schemas, and generated projections stayed in place
 - no generated surface became authority
 - no quest closure, proof verdict, playbook choreography, memory canon, routing

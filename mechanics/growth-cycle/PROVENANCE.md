@@ -43,7 +43,7 @@ must follow the package-local active path.
   checkpoint capture before reviewed harvest.
 - `mechanics/method-growth/docs/CANDIDATE_REF_REFINERY.md` owns reviewed
   `candidate_ref` after donor harvest.
-- `mechanics/questbook/QUESTBOOK.md` and `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md` own durable
+- `QUESTBOOK.md` and `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md` own durable
   obligations and quest-harvest posture.
 
 ## Stop-Line

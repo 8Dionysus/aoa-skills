@@ -7,14 +7,14 @@ The active route is:
 
 ```text
 deferred obligation or session-harvest aftermath
-  -> mechanics/questbook/QUESTBOOK.md or quests/ source surface
+  -> root QUESTBOOK.md or quests/ source surface
   -> generated quest catalog/dispatch readout
   -> quest harvest verdict or owner route
 ```
 
 ## Current contour
 
-- `mechanics/questbook/QUESTBOOK.md` remains the public tracked obligation index.
+- Root `QUESTBOOK.md` remains the public tracked obligation index.
 - `quests/` remains the lane-first source object directory.
 - Generated quest catalog and dispatch files remain projections.
 - `aoa-quest-harvest` gives final promotion triage only for repeated reviewed
@@ -29,5 +29,5 @@ deferred obligation or session-harvest aftermath
 
 ## Current hold
 
-Do not flatten `QUESTBOOK.md`, `quests/`, quest schemas, or generated quest
-projections back into ambiguous root aliases.
+Do not flatten `quests/`, quest schemas, or generated quest projections into
+ambiguous root aliases. Keep root `QUESTBOOK.md` compact and link-driven.

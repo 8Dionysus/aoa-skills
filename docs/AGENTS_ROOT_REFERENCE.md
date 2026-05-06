@@ -109,7 +109,7 @@ Then branch by task:
   `mechanics/rpg/parts/ability-reader-boundary/README.md` and
   `mechanics/rpg/parts/loadout-posture/README.md`
 - quest carry-forward or quest dispatch:
-  `mechanics/questbook/QUESTBOOK.md` and
+  `QUESTBOOK.md` and
   `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`
 - portable export, component refresh, adapter, or runtime seams:
   `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`,

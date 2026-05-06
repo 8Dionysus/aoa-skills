@@ -2,7 +2,7 @@
 
 ## Use When
 
-Use this part when work touches `mechanics/questbook/QUESTBOOK.md`,
+Use this part when work touches root `QUESTBOOK.md`,
 lane-first `quests/`, quest schemas, or generated quest projections and needs
 to keep source, index, and read models separate.
 
@@ -14,7 +14,7 @@ roadmap.
 
 ## Route Check
 
-- Is the obligation source in `mechanics/questbook/QUESTBOOK.md` or
+- Is the obligation source in root `QUESTBOOK.md` or
   `quests/<lane>/<state>/`?
 - Are generated catalog and dispatch files read models only?
 - Is owner acceptance still external to this package?
@@ -29,7 +29,7 @@ roadmap.
 
 ## Next Route
 
-Route source edits to `mechanics/questbook/QUESTBOOK.md` or
+Route source edits to root `QUESTBOOK.md` or
 `quests/<lane>/<state>/`; route projections to the existing builders and
 validators.
 

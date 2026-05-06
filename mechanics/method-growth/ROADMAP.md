@@ -1,33 +1,45 @@
 # Method-Growth Roadmap
 
-## Current Slice
+## Current Contour
 
-The current package owns the reviewed candidate-lineage and adoption lifecycle
-route:
+Method-growth owns maturity, promotion, candidate lineage, owner-status landing,
+governed follow-through, adoption evidence, regression, retirement, and
+default-reference rationale for skill-layer methods.
 
-- candidate lineage
-- candidate-ref refinery
-- first owner-status landing
-- governed followthrough
-- adoption boundary
-- adoption evidence receipts
-- retention, regression, retirement
-- pattern adoption handoff
+Active surfaces include `docs/MATURITY_MODEL.md`, `docs/PROMOTION_PATH.md`,
+`docs/CANDIDATE_LINEAGE_CONTRACT.md`, `docs/CANDIDATE_REF_REFINERY.md`,
+`docs/OWNER_STATUS_SURFACES.md`, `docs/GOVERNED_FOLLOWTHROUGH.md`, adoption
+parts, `mechanics/OWNER_REQUEST_RECEIPTS.md`, and generated project-core
+outer-ring readiness readouts.
 
-## Next Honest Passes
+## Next Work
 
-- Decide whether maturity and promotion docs should stay under audit/public
-  status surfaces or become method-growth parts.
-- Decide whether governance v0.8 adoption surfaces belong in experience,
-  audit, or a later method-growth governance-consent slice after direct reading.
-- Keep session-growth maturity in its current neighbor route until growth-cycle
-  has its own package route.
-- Keep checkpoint note handling out of method-growth unless the work concerns
-  the exact handoff from provisional carry into reviewed donor harvest.
+- Keep `v0.5` maturity and governance consolidation here when it concerns
+  explicit default-reference rationale, stay-`evaluated` decisions,
+  promote-to-`canonical` decisions, and public promotion paths.
+- Preserve comparative guidance for neighboring skill groups such as
+  core-logic vs port-adapter vs bounded-context, dry-run vs infra-change vs
+  approval-gate, and ADR vs source-of-truth.
+- Keep the project-core outer ring classification-backed and soft-gated through
+  `generated/project_core_outer_ring_readiness.min.json`.
+- Keep `repo-core-only` equal to kernel plus outer ring, and keep
+  `repo-project-foundation` equal to kernel plus outer ring plus risk guard
+  ring.
+- Decide whether governance adoption surfaces belong in experience,
+  method-growth, or audit before moving them.
 
-## Stop-Lines
+## When Time Comes
 
-- Do not make method-growth a broad backlog for every future skill change.
-- Do not move governance, checkpoint, questbook, release-support, or audit docs
-  only because they mention candidates or adoption.
-- Do not claim downstream owner consent from an `aoa-skills` landing.
+- Promote a default reference only when comparison evidence, review records, and
+  adoption posture explain why this skill is the reference.
+- Add owner-status automation only after reviewed owner receipts repeat and the
+  boundary to checkpoint notes remains clear.
+- Retire or demote a skill only through reviewable regression and replacement
+  evidence.
+
+## Out Of Scope
+
+- A broad backlog for every future skill change.
+- Moving governance, checkpoint, questbook, release-support, or audit docs here
+  just because they mention maturity.
+- Claiming downstream owner consent from an `aoa-skills` landing.

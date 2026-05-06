@@ -68,7 +68,7 @@ The first owner-status and followthrough route is checked by:
 - `mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md` owns later
   session-growth packet and receipt examples after `candidate_ref` already
   exists.
-- `mechanics/questbook/QUESTBOOK.md` and `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md` own durable
+- `QUESTBOOK.md` and `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md` own durable
   obligations and quest-harvest posture.
 - `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md` remains a governance and experience
   pressure surface. It was not part of the v0.7 adoption lifecycle landing.

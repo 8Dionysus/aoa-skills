@@ -13,6 +13,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "config/README.md",
             "examples/README.md",
             "generated/README.md",
+            "QUESTBOOK.md",
             "manifests/AGENTS.md",
             "manifests/README.md",
             "quests/AGENTS.md",
@@ -503,7 +504,8 @@ class MechanicsTopologyTests(unittest.TestCase):
             with self.subTest(path=relative_path):
                 self.assertTrue((REPO_ROOT / relative_path).is_file())
 
-        self.assertTrue((REPO_ROOT / "mechanics/questbook/QUESTBOOK.md").is_file())
+        self.assertTrue((REPO_ROOT / "QUESTBOOK.md").is_file())
+        self.assertFalse((REPO_ROOT / "mechanics/questbook/QUESTBOOK.md").exists())
         self.assertTrue((REPO_ROOT / "quests").is_dir())
 
     def test_questbook_provenance_accounts_for_moved_doc(self) -> None:
@@ -516,7 +518,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md",
             provenance,
         )
-        self.assertIn("mechanics/questbook/QUESTBOOK.md", provenance)
+        self.assertIn("QUESTBOOK.md", provenance)
         self.assertIn("quests/**/AOA-SK-Q-*.yaml", provenance)
         self.assertIn("generated/quest_catalog.min.json", provenance)
         self.assertIn("skills/aoa-quest-harvest/SKILL.md", provenance)

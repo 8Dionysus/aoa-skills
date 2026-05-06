@@ -1,25 +1,50 @@
 # Growth-Cycle Roadmap
 
-## Current Slice
+## Current Contour
 
-The current package owns:
+Growth-cycle owns adaptive orchestration, reviewed-session harvest posture,
+session-growth kernel maturity, and harvest-note boundaries. It keeps growth
+evidence reviewable without becoming a hidden scheduler.
 
-- adaptive orchestration
-- session-growth kernel maturity
-- harvest-note boundary
+The permanent project-core session-growth kernel is:
 
-## Next Honest Passes
+- `aoa-session-donor-harvest`
+- `aoa-automation-opportunity-scan`
+- `aoa-session-route-forks`
+- `aoa-session-self-diagnose`
+- `aoa-session-self-repair`
+- `aoa-session-progression-lift`
+- `aoa-quest-harvest`
 
-- Decide whether `docs/session-harvests/` should remain as the public evidence
-  directory or move under this package through a separate provenance-heavy pass.
-- Decide whether quest-harvest and automation-opportunity scan need package
-  parts here or stay in questbook/release-support pressure groups.
-- Keep checkpoint protocol and candidate-ref identity in their own packages.
+The kernel is authored under `repo-project-core-kernel`, hard-gated repo-wide,
+and exported with one detail receipt schema plus the shared
+`core_skill_application_receipt` schema for each kernel skill. The per-skill
+gate readout is `generated/project_core_kernel_governance.min.json`.
+
+## Next Work
+
+- Keep `docs/session-harvests/` as public evidence only while it remains useful;
+  do not let it become promotion verdict authority.
+- Keep the session-harvest family after reviewed run, closure, or pause; do not
+  use it inside an active route.
+- Keep donor harvest, automation scan, route forks, self-diagnosis, self-repair,
+  progression lift, and quest harvest distinct so no leaf skill gains hidden
+  routing authority.
 - Keep project-core kernel skill meaning under `skills/`.
+- Keep checkpoint protocol and candidate-ref identity in their own packages.
 
-## Stop-Lines
+## When Time Comes
 
-- Do not make growth-cycle a hidden scheduler.
-- Do not make examples or notes into promotion verdicts.
-- Do not collapse checkpoint, method-growth, questbook, and stats into one
-  broad route.
+- Add a package-local receipt validator when repeated kernel receipt drift
+  appears outside existing release checks.
+- Promote a narrower profile only when it preserves the hard-gated kernel
+  contract and explains why the profile is useful.
+- Route final quest promotion triage through Questbook only after donor harvest
+  and progression lift evidence are reviewed.
+
+## Out Of Scope
+
+- Hidden scheduling, automatic promotion, or silent self-mutation.
+- Collapsing checkpoint, method-growth, questbook, stats, and memory into one
+  growth bucket.
+- Treating examples or checkpoint notes as final verdicts.

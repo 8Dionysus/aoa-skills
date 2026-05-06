@@ -10,12 +10,16 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 class CurrentDirectionRoutesTestCase(unittest.TestCase):
     def test_root_entrypoints_route_to_roadmap(self) -> None:
         roadmap_path = REPO_ROOT / "mechanics" / "ROADMAP.md"
+        questbook_path = REPO_ROOT / "QUESTBOOK.md"
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
 
         self.assertTrue(roadmap_path.is_file())
+        self.assertTrue(questbook_path.is_file())
         self.assertIn("mechanics/ROADMAP.md", readme)
         self.assertIn("mechanics/ROADMAP.md", agents)
+        self.assertIn("QUESTBOOK.md", readme)
+        self.assertIn("nearest mechanic", readme)
 
     def test_agon_skill_bridge_is_routable(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")

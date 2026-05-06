@@ -14,7 +14,8 @@ Use the shortest route by need:
 
 - first starter bundle: `skills/aoa-change-protocol/SKILL.md`
 - current skill surface: `SKILL_INDEX.md`
-- current direction: `mechanics/ROADMAP.md`
+- current direction router: `mechanics/ROADMAP.md`, then the nearest mechanic
+  package `ROADMAP.md`
 - runtime path: `mechanics/release-support/docs/RUNTIME_PATH.md`
 - orchestration and closeout path: `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
 - evaluation path: `mechanics/audit/docs/EVALUATION_PATH.md`
@@ -38,7 +39,7 @@ Use the shortest route by need:
 - checkpoint-to-closeout bridge orchestration: `skills/aoa-checkpoint-closeout-bridge/SKILL.md`, `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, and `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
 - ability-reader and loadout surfaces: `mechanics/rpg/parts/ability-reader-boundary/README.md`, `mechanics/rpg/parts/loadout-posture/README.md`, and `generated/skill_ability_cards.min.example.json`
 - evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
-- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `mechanics/questbook/QUESTBOOK.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
+- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
 - portable export, component refresh law, and local runtime seams: `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`, `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`, `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`, `mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md`, `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md`, `mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md`, `mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`, `mechanics/release-support/docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
 - named MCP dependency scaffolds and workspace-alignment checks: `mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json`, `mechanics/boundary-bridge/examples/openai.*.example.yaml`, `scripts/build_openai_yaml_examples.py`, and `scripts/validate_skill_mcp_wiring.py`
 - install, trust, config, and UI surfaces: `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`, `mechanics/release-support/docs/CONTEXT_RETENTION.md`, `mechanics/release-support/docs/UI_METADATA_AND_ASSETS.md`, `mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md`, `mechanics/release-support/docs/TRUST_GATE_AND_ALLOWLIST.md`, `mechanics/release-support/docs/SKILL_CONTEXT_GUARD.md`, and `mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md`

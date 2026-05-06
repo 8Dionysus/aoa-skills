@@ -3,9 +3,9 @@
 This directory holds tracked `aoa-skills` obligations that should survive the
 current diff.
 
-It is not a private scratchpad and not a second roadmap. Program direction
-belongs in `mechanics/ROADMAP.md`. The human quest surface is
-`mechanics/questbook/QUESTBOOK.md`.
+It is not a private scratchpad and not a second roadmap. Direction is routed
+through `mechanics/ROADMAP.md` and package roadmaps. The human quest surface is
+root `QUESTBOOK.md`.
 
 Quest sources live in lane-first lifecycle directories. Top-level
 `AOA-SK-Q-*` aliases are intentionally absent; route directly to
@@ -38,7 +38,7 @@ Each lane may contain `captured/`, `triaged/`, `ready/`, `active/`,
 
 ## Before Editing
 
-1. Check `mechanics/questbook/QUESTBOOK.md`.
+1. Check root `QUESTBOOK.md`.
 2. Choose lane first, then lifecycle state.
 3. Keep owner split explicit.
 4. Regenerate and validate quest read models.

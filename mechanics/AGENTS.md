@@ -40,15 +40,15 @@ It does not own:
 
 ## Start here
 
-1. Read the repository root `AGENTS.md`, `README.md`, and `mechanics/ROADMAP.md`.
+1. Read the repository root `AGENTS.md`, `README.md`, `mechanics/README.md`,
+   and `mechanics/ROADMAP.md`.
 2. Read `mechanics/boundary-bridge/docs/LAYER_POSITION.md`, `docs/ARCHITECTURE.md`,
    `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`, and `mechanics/release-support/docs/RUNTIME_PATH.md`.
-3. Read `mechanics/README.md`.
-4. Read the nearest package README, starting with its local `Mechanic card`.
-5. If the package has `DIRECTION.md`, `PARTS.md`, `PROVENANCE.md`,
+3. Read the nearest package README, starting with its local `Mechanic card`.
+4. If the package has `DIRECTION.md`, `PARTS.md`, `PROVENANCE.md`,
    `LANDING_LOG.md`, `ROADMAP.md`, or `parts/`, use those active route
    surfaces before opening historical material.
-6. If a package change touches skill bundles, generated/export outputs,
+5. If a package change touches skill bundles, generated/export outputs,
    reviews, quests, or config, follow the nearest nested `AGENTS.md` there too.
 
 ## Local law
@@ -58,6 +58,8 @@ It does not own:
 - Every cross-repo handoff must name the stronger owner and stop-line rather
   than importing that owner's authority into this repository.
 - Package README cards use `Local owns`, not `Center owns`.
+- `mechanics/ROADMAP.md` is a direction router. Package `ROADMAP.md` files own
+  package future contours.
 - Generated artifacts remain evidence or export companions, not authority.
 - Legacy or source-preservation surfaces preserve lineage. They are not a junk
   drawer, and they must not be the only place current active behavior lives.

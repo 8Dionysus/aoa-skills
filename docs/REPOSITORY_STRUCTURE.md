@@ -6,7 +6,8 @@
 - `SKILL_INDEX.md` — public map of current skills and their maturity
 - `docs/` — architecture, repository layout, review records, governance lanes,
   and preserved root reference
-- `mechanics/ROADMAP.md` — canonical public roadmap for repository evolution
+- `QUESTBOOK.md` — compact public index for durable skill-layer obligations
+- `mechanics/ROADMAP.md` — roadmap router; package roadmaps own future contours
 - `mechanics/` — owner-local skill-layer movement surfaces around AoA mechanics
 - `mechanics/release-support/docs/RUNTIME_PATH.md` — main runtime guide for `pick -> inspect -> expand -> object use`
 - `mechanics/audit/docs/PUBLIC_SURFACE.md` — public guide to the current governance and product-signaling layer
