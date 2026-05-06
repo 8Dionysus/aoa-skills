@@ -83,14 +83,20 @@ def write_valid_questbook_surface(repo_root: Path) -> None:
         ).read_text(encoding="utf-8"),
     )
     write_text(
-        repo_root / "schemas" / "quest.schema.json",
-        (REPO_ROOT / "schemas" / "quest.schema.json").read_text(encoding="utf-8"),
-    )
-    write_text(
-        repo_root / "schemas" / "quest_dispatch.schema.json",
-        (REPO_ROOT / "schemas" / "quest_dispatch.schema.json").read_text(
+        repo_root / "mechanics" / "questbook" / "schemas" / "quest.schema.json",
+        (REPO_ROOT / "mechanics" / "questbook" / "schemas" / "quest.schema.json").read_text(
             encoding="utf-8"
         ),
+    )
+    write_text(
+        repo_root / "mechanics" / "questbook" / "schemas" / "quest_dispatch.schema.json",
+        (
+            REPO_ROOT
+            / "mechanics"
+            / "questbook"
+            / "schemas"
+            / "quest_dispatch.schema.json"
+        ).read_text(encoding="utf-8"),
     )
     for quest_path in sorted((REPO_ROOT / "quests").glob("**/AOA-SK-Q-*.yaml")):
         write_text(

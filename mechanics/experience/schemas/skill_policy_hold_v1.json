@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://aoa.local/aoa-skills/schemas/skill_policy_hold_v1.json",
+  "$id": "https://aoa.local/aoa-skills/mechanics/experience/schemas/skill_policy_hold_v1.json",
   "title": "Skill Policy Hold V1",
   "type": "object",
   "additionalProperties": false,

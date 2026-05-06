@@ -148,13 +148,13 @@
   ],
   "owner_repo": "aoa-skills",
   "proof_surfaces": [
-    "python scripts/validate_agon_skill_binding_candidates.py"
+    "python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py"
   ],
   "refresh_routes": [
     {
       "action": "revalidate",
       "commands": [
-        "python scripts/validate_agon_skill_binding_candidates.py"
+        "python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py"
       ],
       "notes": "Owner-local validation path. Recurrence may suggest this route; it must not run it as hidden authority."
     }

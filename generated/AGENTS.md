@@ -38,12 +38,13 @@ This directory contains derived surfaces such as:
 - `skill_lineage_surface.json` and `skill_lineage_surface.md`
 - `overlay_readiness.json` and `overlay_readiness.md`
 - `skill_composition_audit.json` and `skill_composition_audit.md`
-- `agon_skill_binding_candidates.min.json`
 - `agent_skill_catalog.json` and `agent_skill_catalog.min.json`
 - `portable_export_map.json`
 - `local_adapter_manifest.json` and `local_adapter_manifest.min.json`
 - `skill_trigger_eval_cases.csv` and `skill_trigger_eval_cases.jsonl`
 - `skill_trigger_collision_matrix.json`
+- `agon_skill_binding_candidates.min.json`
+- `agon_epistemic_skill_candidates.min.json`
 
 Do not hand-author files in `generated/` as if they were canonical prose. Change the owning source or the generator, then regenerate.
 
@@ -86,8 +87,10 @@ For changes that affect derived outputs, run:
 - `python scripts/validate_skills.py`
 - `python scripts/validate_agent_skills.py --repo-root .`
 - `python scripts/lint_trigger_evals.py --repo-root .`
-- `python scripts/build_agon_skill_binding_candidates.py --check`
-- `python scripts/validate_agon_skill_binding_candidates.py`
+- `python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`
+- `python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py`
+- `python mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py --check`
+- `python mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py`
 - `python scripts/build_catalog.py --check`
 
 If a generated file changed unexpectedly, inspect the owning source before accepting the diff.

@@ -231,7 +231,7 @@
           "id": "AOA-T-0086",
           "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -243,9 +243,9 @@
         },
         {
           "id": "AOA-T-0087",
-          "path": "techniques/governance/automation-readiness/human-loop-to-seed-lift/TECHNIQUE.md",
+          "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
           "use_sections": [
             "Intent",
             "When to use",
@@ -259,7 +259,7 @@
           "id": "AOA-T-0088",
           "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
           "use_sections": [
             "Intent",
             "Inputs",

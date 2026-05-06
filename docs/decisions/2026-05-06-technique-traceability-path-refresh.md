@@ -32,6 +32,15 @@ For each non-pending `AOA-T-*` reference:
 
 Pending summon and titan technique references remain `TBD`.
 
+## Follow-up
+
+`aoa-techniques` commit `7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9`
+renamed the `AOA-T-0087` automation-readiness technique path from
+`human-loop-to-seed-lift` to `human-loop-to-first-landing` and adjusted adjacent
+automation-readiness wording. `aoa-automation-opportunity-scan` refreshes that
+bounded automation-readiness group to the newer ref while preserving skill
+meaning.
+
 ## Consequences
 
 - `report_technique_drift` can compare against current `aoa-techniques` paths

@@ -9,6 +9,7 @@ from jsonschema import Draft202012Validator
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SCHEMAS_ROOT = ROOT / "mechanics" / "experience" / "schemas"
 ENUM_ESCAPE_VALUE = "__wave4_not_allowed__"
 
 WAVE4_CONTRACTS = (
@@ -20,7 +21,7 @@ WAVE4_CONTRACTS = (
 
 
 def load_contract(stem: str, schema_file: str) -> tuple[dict[str, object], dict[str, object]]:
-    schema_path = ROOT / "schemas" / schema_file
+    schema_path = SCHEMAS_ROOT / schema_file
     example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     example = json.loads(example_path.read_text(encoding="utf-8"))
@@ -200,7 +201,7 @@ class ExperienceWave4SeedContractTests(unittest.TestCase):
         self.assertTrue(WAVE4_CONTRACTS)
         missing_pairs: list[str] = []
         for stem, schema_file in WAVE4_CONTRACTS:
-            schema_path = ROOT / "schemas" / schema_file
+            schema_path = SCHEMAS_ROOT / schema_file
             example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
             if not schema_path.exists():
                 missing_pairs.append(f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}")

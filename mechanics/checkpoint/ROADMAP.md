@@ -10,7 +10,7 @@ truth.
 Active surfaces include `docs/CHECKPOINT_NOTE_PATH.md`,
 `skills/core/session-growth/aoa-commit-growth-seam/SKILL.md`,
 `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`,
-`schemas/session_checkpoint_note.schema.json`, and provenance links to
+`mechanics/checkpoint/schemas/session_checkpoint_note.schema.json`, and provenance links to
 growth-cycle kernel maturity.
 
 ## Next Work

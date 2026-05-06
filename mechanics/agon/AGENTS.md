@@ -41,15 +41,15 @@ root `generated/`, `scripts/`, and `tests/` surfaces too.
 
 ## Validation
 
-The local narrow path includes `python scripts/build_agon_skill_binding_candidates.py --check`
+The local narrow path includes `python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`
 and `tests/test_mechanics_topology.py`.
 
 ```bash
-python scripts/build_agon_skill_binding_candidates.py --check
-python scripts/validate_agon_skill_binding_candidates.py
-python scripts/build_agon_epistemic_skill_candidates.py --check
-python scripts/validate_agon_epistemic_skill_candidates.py
-python -m pytest -q tests/test_agon_skill_binding_candidates.py tests/test_agon_epistemic_skill_candidates.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py
+python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check
+python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py
+python mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py --check
+python mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py
+python -m pytest -q mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py mechanics/agon/parts/epistemic-candidate-boundary/tests/test_agon_epistemic_skill_candidates.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py
 python scripts/validate_nested_agents.py
 ```
 

@@ -9,7 +9,7 @@ from typing import Any
 
 import jsonschema
 
-ROOT = pathlib.Path(__file__).resolve().parents[1]
+ROOT = pathlib.Path(__file__).resolve().parents[5]
 SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
@@ -30,8 +30,24 @@ KEY_FIELD = "skill_id"
 REQUIRED_FIELDS = ['bounded_workflow_for', 'candidate_outputs', 'forbidden_effects', 'live_protocol', 'owner_repo', 'runtime_effect', 'skill_id', 'status', 'trigger_boundary']
 FORBIDDEN_EFFECTS = ['live_verdict_authority', 'durable_scar_write', 'retention_execution', 'rank_mutation', 'trust_mutation', 'tree_of_sophia_promotion', 'kag_promotion', 'hidden_scheduler_action', 'assistant_contestant_drift', 'auto_doctrine_rewrite']
 ALLOWED_RUNTIME = ['none', 'candidate_only', 'local_dry_run_candidate_only', 'local_rehearsal_candidate_only']
-ITEM_SCHEMA = ROOT / "schemas" / "agon-epistemic-skill-candidate.schema.json"
-REGISTRY_SCHEMA = ROOT / "schemas" / "agon-epistemic-skill-candidate-registry.schema.json"
+ITEM_SCHEMA = (
+    ROOT
+    / "mechanics"
+    / "agon"
+    / "parts"
+    / "epistemic-candidate-boundary"
+    / "schemas"
+    / "agon-epistemic-skill-candidate.schema.json"
+)
+REGISTRY_SCHEMA = (
+    ROOT
+    / "mechanics"
+    / "agon"
+    / "parts"
+    / "epistemic-candidate-boundary"
+    / "schemas"
+    / "agon-epistemic-skill-candidate-registry.schema.json"
+)
 
 
 def fail(message: str) -> int:

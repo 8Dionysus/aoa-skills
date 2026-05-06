@@ -10,6 +10,10 @@ Mechanic-local schemas may live with a mechanic or part when the contract is
 private to that surface. Root schemas remain appropriate when several packages,
 tests, generated outputs, or public readers share the same contract.
 
+Use `mechanics/ARTIFACT_TOPOLOGY.md` before adding or moving a schema that is
+near a mechanic. If the schema only validates one mechanic package or part, keep
+it with that owner.
+
 ## Before Editing
 
 1. Identify the owner surface for the meaning.

@@ -33,7 +33,7 @@ REQUIRED_DOCS: tuple[AgentsDocSpec, ...] = (
             "# AGENTS.md",
             "`mechanics/agon/`",
             "requested-only",
-            "`python scripts/build_agon_skill_binding_candidates.py --check`",
+            "`python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`",
             "`tests/test_mechanics_topology.py`",
         ),
     ),

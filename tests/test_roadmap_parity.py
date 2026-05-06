@@ -104,9 +104,9 @@ class RoadmapParityTestCase(unittest.TestCase):
             "mechanics/agon/parts/candidate-validation-gate/README.md",
             "generated/agon_skill_binding_candidates.min.json",
             "mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json",
-            "scripts/build_agon_skill_binding_candidates.py",
-            "scripts/validate_agon_skill_binding_candidates.py",
-            "tests/test_agon_skill_binding_candidates.py",
+            "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
+            "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py",
+            "mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py",
         ):
             self.assertTrue((REPO_ROOT / relative_path).is_file())
 

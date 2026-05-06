@@ -27,7 +27,33 @@ RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/build_description_trigger_evals.py", "--repo-root", "."),
     ("python", "scripts/build_support_resources.py", "--repo-root", "."),
     ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", "."),
+    (
+        "python",
+        "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
+        "--check",
+    ),
+    (
+        "python",
+        "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py",
+    ),
+    (
+        "python",
+        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py",
+        "--check",
+    ),
+    (
+        "python",
+        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py",
+    ),
     ("python", "-m", "unittest", "discover", "-s", "tests"),
+    (
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "mechanics/agon/parts/workflow-candidate-bridge/tests",
+        "mechanics/agon/parts/epistemic-candidate-boundary/tests",
+    ),
     ("python", "scripts/validate_nested_agents.py"),
     ("python", "scripts/validate_skills.py"),
     ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),

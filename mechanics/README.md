@@ -23,6 +23,16 @@ canonical skill review, or later package work.
 The receipt surface answers the center queue. It does not replace
 `skills/**/SKILL.md`, generated exports, proof routes, or sibling-owner truth.
 
+## Artifact topology
+
+[mechanics/ARTIFACT_TOPOLOGY.md](ARTIFACT_TOPOLOGY.md) owns the placement law
+for schemas, examples, config, generated companions, manifests, scripts, tests,
+and quests that sit near mechanics.
+
+Use it before moving artifacts between root technical districts and mechanic
+homes. Root districts keep repo-wide contracts and root-published read models;
+mechanic-owned substance lives with the package or nearest part.
+
 ## Cross-mechanics map
 
 - [method-growth](method-growth/README.md): reviewed candidate lineage,
@@ -112,6 +122,7 @@ Prefer this shape:
 - provenance bridge in `PROVENANCE.md`
 - checked landing history in `LANDING_LOG.md`
 - future route pressure in `ROADMAP.md`
+- artifact placement law in root `ARTIFACT_TOPOLOGY.md`
 - source-to-active accounting in package-local `legacy/` when preserved source
   material exists
 

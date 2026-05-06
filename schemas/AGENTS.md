@@ -2,8 +2,10 @@
 
 ## Guidance for `schemas/`
 
-`schemas/` holds contract surfaces for skill-adjacent examples, receipts, checkpoints, follow-through decisions, and bounded integration artifacts.
-Read `README.md` before changing placement or adding a new schema family.
+`schemas/` holds repo-wide contract surfaces for skill catalogs, export,
+governance, release, evaluation, and public reader shapes.
+Read `README.md` and `../mechanics/ARTIFACT_TOPOLOGY.md` before changing
+placement or adding a new schema family near a mechanic.
 
 Schema edits are contract edits. Preserve `$schema`, stable `$id` or identifier posture when present, required fields, enums, and field descriptions that keep activation bounded.
 

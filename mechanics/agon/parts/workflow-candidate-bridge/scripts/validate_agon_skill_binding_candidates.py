@@ -4,8 +4,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
+ROOT = Path(__file__).resolve().parents[5]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from build_agon_skill_binding_candidates import (  # noqa: E402
     CONFIG_PATH,
