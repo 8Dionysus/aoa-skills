@@ -11,6 +11,18 @@ surfaces are canonical skill bundles.
 Skill bundles still live under `skills/`. Generated reader and export surfaces
 still live under `generated/` and `.agents/skills/`.
 
+## Owner-request receipts
+
+[mechanics/OWNER_REQUEST_RECEIPTS.md](OWNER_REQUEST_RECEIPTS.md) is the
+owner-local receipt surface for `Agents-of-Abyss` owner requests assigned to
+`aoa-skills`.
+It records which requests are landed here, which are accepted but not landed,
+and which center claims must still remain blocked by owner-local proof,
+canonical skill review, or later package work.
+
+The receipt surface answers the center queue. It does not replace
+`skills/*/SKILL.md`, generated exports, proof routes, or sibling-owner truth.
+
 ## Cross-mechanics map
 
 - [method-growth](method-growth/README.md): reviewed candidate lineage,
