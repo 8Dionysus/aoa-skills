@@ -115,7 +115,7 @@
       "notes": "Observation only. This hook binding must not create arena sessions, verdicts, scars, or automatic owner mutations.",
       "owner_repo": "aoa-skills",
       "path_globs": [
-        "docs/AGON_MOVE_SKILL_BRIDGE.md"
+        "mechanics/agon/parts/workflow-candidate-bridge/README.md"
       ],
       "producer": "harvest_pattern_watch",
       "signal_rules": [
@@ -135,7 +135,7 @@
     }
   ],
   "component_ref": "component:agon:skill-binding-surfaces",
-  "notes": "Agon recurrence adapter hook bindings. Hooks produce observations and review pressure only.",
+  "notes": "Agon recurrence observation hook bindings. Hooks produce observations and review pressure only.",
   "owner_repo": "aoa-skills",
   "schema_version": "aoa_hook_binding_set_v1"
 }

@@ -18,6 +18,89 @@ class AgentsDocSpec:
 
 REQUIRED_DOCS: tuple[AgentsDocSpec, ...] = (
     AgentsDocSpec(
+        Path("mechanics") / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/` owns skill-layer movement surfaces",
+            "`skills/` owns executable skill content",
+            "Package README cards use `Local owns`",
+            "`python scripts/validate_nested_agents.py`",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "agon" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/agon/`",
+            "requested-only",
+            "`python scripts/build_agon_skill_binding_candidates.py --check`",
+            "`tests/test_mechanics_topology.py`",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "method-growth" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/method-growth/`",
+            "candidate lineage",
+            "python -m pytest -q tests/test_session_checkpoint_note.py tests/test_session_growth_kernel_maturity.py",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "growth-cycle" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/growth-cycle/`",
+            "adaptive skill",
+            "python -m pytest -q tests/test_session_growth_kernel_maturity.py tests/test_session_checkpoint_note.py",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "checkpoint" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/checkpoint/`",
+            "checkpoint-note",
+            "python -m pytest -q tests/test_session_checkpoint_note.py tests/test_session_growth_kernel_maturity.py",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "questbook" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/questbook/`",
+            "questbook integration",
+            "python -m pytest -q tests/test_validate_skills.py tests/test_session_checkpoint_note.py",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "recurrence" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/recurrence/`",
+            "recurrence observation",
+            "python -m pytest -q tests/test_roadmap_parity.py tests/test_current_direction_routes.py",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "rpg" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/rpg/`",
+            "ability-reader",
+            "python -m pytest -q tests/test_generated_surface_schemas.py tests/test_roadmap_parity.py",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "antifragility" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "`mechanics/antifragility/`",
+            "collision-stress",
+            "python -m pytest -q tests/test_mechanics_topology.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py",
+        ),
+    ),
+    AgentsDocSpec(
         Path("skills") / "AGENTS.md",
         (
             "# AGENTS.md",

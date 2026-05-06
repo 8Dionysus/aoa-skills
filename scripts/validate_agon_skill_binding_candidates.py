@@ -25,7 +25,7 @@ def main() -> int:
         actual = read_json(GENERATED_PATH)
         if actual != expected:
             raise ValidationError(f"{GENERATED_PATH} is stale; rerun builder")
-        print(f"ok: {expected['total_candidates']} Agon Wave IV binding candidates validated")
+        print(f"ok: {expected['total_candidates']} Agon binding candidates validated")
         return 0
     except ValidationError as exc:
         print(f"error: {exc}", file=sys.stderr)

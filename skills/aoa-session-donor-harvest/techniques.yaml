@@ -3,8 +3,8 @@ composition_mode: bounded
 techniques:
   - id: AOA-T-0075
     repo: 8Dionysus/aoa-techniques
-    path: techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md
-    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    path: techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
     use_sections:
       - Intent
       - When to use
@@ -15,8 +15,8 @@ techniques:
       - Validation
   - id: AOA-T-0076
     repo: 8Dionysus/aoa-techniques
-    path: techniques/agent-workflows/owner-layer-triage/TECHNIQUE.md
-    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    path: techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
     use_sections:
       - Intent
       - When to use
@@ -26,8 +26,8 @@ techniques:
       - Validation
   - id: AOA-T-0077
     repo: 8Dionysus/aoa-techniques
-    path: techniques/agent-workflows/harvest-packet-contract/TECHNIQUE.md
-    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    path: techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
     use_sections:
       - Inputs
       - Outputs

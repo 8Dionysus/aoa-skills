@@ -41,7 +41,7 @@
         "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
         "Risks and anti-patterns": "hiding downstream authority inside vague local operational notes; turning a thin overlay into project doctrine or a scenario bundle",
         "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
-        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AO...",
+        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks,...",
         "Adaptation points": "repo-relative operational surfaces; local authority and approval notes"
       },
       "resource_inventory": {
@@ -144,7 +144,7 @@
         "Contracts": "preserve the base skill meaning; keep local paths and output placement repo-relative and explicit",
         "Risks and anti-patterns": "hiding local sharing thresholds in vague prose; collapsing a thin overlay into project doctrine or incident policy",
         "Verification": "confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly",
-        "Technique traceability": "AOA-T-0034 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validatio...",
+        "Technique traceability": "AOA-T-0034 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contra...",
         "Adaptation points": "repo-relative sharing surfaces; local sanitization thresholds"
       },
       "resource_inventory": {
@@ -247,7 +247,7 @@
         "Contracts": "preserve the base skill meaning; the overlay stays read-only and citation-friendly",
         "Risks and anti-patterns": "treating one axis failure as total collapse; confusing runtime drift with source-owned doctrine drift",
         "Verification": "confirm the base skill is still the correct workflow; confirm a concrete target exists",
-        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `cd276...",
         "Adaptation points": "repo-relative runtime evidence refs; local diagnostic target and last-good posture"
       },
       "resource_inventory": {
@@ -350,7 +350,7 @@
         "Contracts": "the note should explain why, not just what changed; the decision should be bounded and understandable",
         "Risks and anti-patterns": "writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning",
         "Verification": "confirm the decision was meaningful enough to record; confirm the rationale is explicit",
-        "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AO...",
+        "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts,...",
         "Adaptation points": "local ADR templates; alternative decision-note homes outside formal `docs/adr/` layouts"
       },
       "resource_inventory": {
@@ -448,7 +448,7 @@
         "Contracts": "unclear authority should not be silently interpreted as permission; classification should be explicit and reviewable",
         "Risks and anti-patterns": "assuming approval because a task sounds routine; collapsing several risk levels into a single vague warning",
         "Verification": "confirm the touched surfaces were identified; confirm the approval need was classified explicitly rather than as a vague warning",
-        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks,...",
         "Adaptation points": "local authority models; local risk categories"
       },
       "resource_inventory": {
@@ -554,7 +554,7 @@
         "Contracts": "this skill detects and packages automation opportunities; it does not create live automation authority; schedule hints remain hints, not runtime truth",
         "Risks and anti-patterns": "treating one exciting session as proof of repeatability; automating unstable, under-specified, or secret-heavy work too early",
         "Verification": "confirm each candidate names the current manual route; confirm evidence refs justify the repeat signal",
-        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Dionysus/aoa-techniqu...",
+        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Diony...",
         "Adaptation points": "project overlays may add local execution modes, trigger classes, or schedule vocabularies; project overlays may add local approval classes or environment-risk labels"
       },
       "resource_inventory": {
@@ -674,7 +674,7 @@
         "Contracts": "boundaries should reduce semantic confusion, not create ceremony for its own sake; neighboring contexts should be named explicitly when relevant",
         "Risks and anti-patterns": "inventing too many contexts for a small problem; renaming concepts without reducing confusion",
         "Verification": "confirm the main ambiguity was reduced; confirm interfaces or handoff points are named",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 from `8Dionysus/a...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 fr...",
         "Adaptation points": "local domain vocabulary; canonical docs that define terminology"
       },
       "resource_inventory": {
@@ -779,7 +779,7 @@
         "Contracts": "the change must remain reviewable; verification must be explicit, not implied",
         "Risks and anti-patterns": "over-formalizing trivial edits; symbolic verification that creates false safety",
         "Verification": "confirm the owner route and relevant source surfaces were inspected before apply; confirm the change stayed scoped",
-        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
         "Adaptation points": "local source-of-truth files; local validation commands"
       },
       "resource_inventory": {
@@ -885,7 +885,7 @@
         "Contracts": "checkpoint note stays provisional and lower-authority than reviewed closeout; `checkpoint-collect` never emits final harvest, progression, or quest verdicts",
         "Risks and anti-patterns": "treating checkpoint hints as if they were final donor harvest truth; treating `execute-closeout-chain` JSON as if it were the actual skill",
         "Verification": "confirm `checkpoint-collect` only updates local ledger surfaces; confirm the bridge never emits final verdicts during mid-session capture",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0084 from `8Dionysus/aoa-techniques` at `5c6f...",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0084 from `8Dionysus/aoa-techniques`...",
         "Adaptation points": "local reviewed artifact entrypoints; local receipt bundle locations"
       },
       "resource_inventory": {
@@ -994,7 +994,7 @@
         "Contracts": "the commit boundary matches the actual bounded diff; unrelated local state is not silently swept into the commit",
         "Risks and anti-patterns": "using one commit as a catch-all bucket for unrelated changes; writing a clean commit message that hides missing or weak verification",
         "Verification": "confirm the committed diff matches the named bounded unit; confirm unrelated local changes were excluded or explicitly deferred",
-        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `9cd5eecea303403f69a582be071cf2cad74bd1b8` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
         "Adaptation points": "local commit-message conventions or trailers; local validation commands that should be named before commit"
       },
       "resource_inventory": {
@@ -1097,7 +1097,7 @@
         "Contracts": "the contract should be visible to another human or agent; verification should be tied to the boundary, not only to internals",
         "Risks and anti-patterns": "vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary",
         "Verification": "confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary",
-        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/evaluation/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-techniques` a...",
+        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-t...",
         "Adaptation points": "local endpoints or module boundaries; local smoke or test commands"
       },
       "resource_inventory": {
@@ -1201,7 +1201,7 @@
         "Contracts": "reusable logic should not stay trapped in glue if that blocks testing or reuse; glue should not be over-promoted into domain logic without reason",
         "Risks and anti-patterns": "treating all logic as core logic and over-abstracting the system; moving orchestration detail into the core under the label of purity",
         "Verification": "confirm the core candidate is genuinely reusable or stability-shaped; confirm edge-specific code remains at the edge when appropriate",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-techniques`...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
         "Adaptation points": "local layering conventions; preferred directories or module boundaries"
       },
       "resource_inventory": {
@@ -1304,7 +1304,7 @@
         "Contracts": "dry-run should reduce uncertainty before execution; preview results should not be overstated",
         "Risks and anti-patterns": "treating a preview as complete validation; skipping preview because the real change looks small",
         "Verification": "confirm a preview or dry-run path was considered first; confirm the preview scope was named honestly",
-        "Technique traceability": "AOA-T-0004 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation; AOA-T-0028 from `8Dionysus/a...",
+        "Technique traceability": "AOA-T-0004 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Validation; AOA-T-0028 from `8Dio...",
         "Adaptation points": "local preview commands; dry-run limitations"
       },
       "resource_inventory": {
@@ -1417,7 +1417,7 @@
         "Contracts": "every claimed invariant must be traceable to at least one check; the audit should distinguish real constraint from mere example repetition",
         "Risks and anti-patterns": "counting examples as if they were invariants; letting random data hide thin coverage",
         "Verification": "confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded",
-        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
         "Adaptation points": "local test or check commands; domain-specific invariants and edge cases"
       },
       "resource_inventory": {
@@ -1518,7 +1518,7 @@
         "Contracts": "render review happens before startup; readiness checks stay tied to the selected runtime rather than acting like one global score",
         "Risks and anti-patterns": "treating rendered truth as proof that the host is ready or that startup will succeed; treating a passing doctor result as proof of post-start health",
         "Verification": "confirm the rendered output answered what would actually start before launch; confirm the readiness verdict was selector-aware and itemized with visible severity",
-        "Technique traceability": "AOA-T-0036 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-003...",
+        "Technique traceability": "AOA-T-0036 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Val...",
         "Adaptation points": "local render commands and safe storage rules for rendered config; local runtime selectors, profiles, or presets"
       },
       "resource_inventory": {
@@ -1630,7 +1630,7 @@
         "Contracts": "the extracted boundary should reduce coupling, not add decorative abstraction; the port should stay narrow and purpose-shaped",
         "Risks and anti-patterns": "introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it",
         "Verification": "confirm the concrete dependency pressure was real; confirm the new boundary is narrower and clearer than before",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-techniques`...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
         "Adaptation points": "local architecture conventions; preferred adapter locations"
       },
       "resource_inventory": {
@@ -1733,7 +1733,7 @@
         "Contracts": "each property should express a real invariant, not a wish; the test should broaden coverage beyond a small handpicked set",
         "Risks and anti-patterns": "writing weak properties that prove almost nothing; confusing random data with meaningful coverage",
         "Verification": "confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples",
-        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/evaluation/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 from `8Dion...",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fr...",
         "Adaptation points": "local generator tools; domain-specific invariants"
       },
       "resource_inventory": {
@@ -1834,7 +1834,7 @@
         "Contracts": "invocation must remain explicit and post-session; orchestrator class identity must not be promoted into a skill",
         "Risks and anti-patterns": "promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer",
         "Verification": "confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly",
-        "Technique traceability": "AOA-T-0089 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0090 from...",
+        "Technique traceability": "AOA-T-0089 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AO...",
         "Adaptation points": "local quest IDs and harvest entrypoints; local owner-repo route maps"
       },
       "resource_inventory": {
@@ -1948,7 +1948,7 @@
         "Contracts": "infrastructure changes should stay explicit and reviewable; risk should be named before apply, not after failure",
         "Risks and anti-patterns": "treating infra edits like ordinary code edits; making broad config or orchestration changes under a narrow task label",
         "Verification": "confirm the operational surface was named clearly; confirm the change stayed bounded",
-        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AO...",
+        "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks,...",
         "Adaptation points": "local risk classifications; approval rules"
       },
       "resource_inventory": {
@@ -2060,7 +2060,7 @@
         "Contracts": "shareable output should not leak secrets or private infrastructure detail; sanitization should preserve meaning where possible",
         "Risks and anti-patterns": "over-sanitizing until the artifact becomes meaningless; under-sanitizing because a value looks harmless in isolation",
         "Verification": "confirm obvious sensitive surfaces were checked; confirm the resulting artifact is still understandable",
-        "Technique traceability": "AOA-T-0034 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validatio...",
+        "Technique traceability": "AOA-T-0034 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contra...",
         "Adaptation points": "local sanitization rules; examples of sensitive surfaces"
       },
       "resource_inventory": {
@@ -2162,7 +2162,7 @@
         "Contracts": "invocation must remain explicit and post-session; the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
         "Risks and anti-patterns": "collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units",
         "Verification": "confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 from `8Dion...",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 fr...",
         "Adaptation points": "local session artifact entrypoints; local review packet templates"
       },
       "resource_inventory": {
@@ -2282,7 +2282,7 @@
         "Contracts": "progression remains evidence-backed; multi-axis only; no authoritative universal score",
         "Risks and anti-patterns": "inventing progress from mood; using progression as policy",
         "Verification": "confirm all meaningful axis claims cite reviewed evidence; confirm the verdict matches the evidence",
-        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniques` at `...",
+        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniq...",
         "Adaptation points": "local axis notes; role-affinity hints"
       },
       "resource_inventory": {
@@ -2396,7 +2396,7 @@
         "Contracts": "branch cards do not become routing authority; fork analysis must stay evidence-backed",
         "Risks and anti-patterns": "fake certainty about future routes; using fork cards as hidden routing policy",
         "Verification": "confirm each branch differs materially; confirm likely owner repo is named",
-        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techniques` at `5...",
+        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techn...",
         "Adaptation points": "local control-mode labels; local delegate tiers or approval classes"
       },
       "resource_inventory": {
@@ -2506,7 +2506,7 @@
         "Contracts": "diagnosis is read-only; one odd anecdote is not enough for structural certainty",
         "Risks and anti-patterns": "mistaking symptom for cause; using vague vibes as diagnosis",
         "Verification": "confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated",
-        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `cd276...",
         "Adaptation points": "local drift taxonomies; repo-specific failure classes"
       },
       "resource_inventory": {
@@ -2620,7 +2620,7 @@
         "Contracts": "self-repair is not free self-modification; important surface changes must pass checkpoint posture",
         "Risks and anti-patterns": "silent doctrine edits; approval bypass",
         "Verification": "confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape",
-        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa-technique...",
+        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa...",
         "Adaptation points": "local approval classes; repo-specific rollback anchors"
       },
       "resource_inventory": {
@@ -2735,7 +2735,7 @@
         "Contracts": "authoritative sources should be visible and named explicitly; overview documents should not silently replace canonical ones",
         "Risks and anti-patterns": "over-formalizing a tiny docs surface; creating many labels without reducing ambiguity",
         "Verification": "confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly",
-        "Technique traceability": "AOA-T-0013 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 from...",
+        "Technique traceability": "AOA-T-0013 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, V...",
         "Adaptation points": "local doc hierarchies; mixed ADR, architecture, and operations doc maps that split authority by concern"
       },
       "resource_inventory": {
@@ -2841,7 +2841,7 @@
         "Contracts": "this skill governs one bounded child route; it does not grant hidden; local Codex child targeting is the default first choice, not an afterthought",
         "Risks and anti-patterns": "treating delegation as progress without anchor or output clarity; using a remote child route to bypass local proof, approval, or closeout",
         "Verification": "confirm the passport and parent anchor exist; confirm expected outputs are named",
-        "Technique traceability": "AOA-T-PENDING-SUMMON-LANE-SELECTION from `8Dionysus/aoa-techniques` at `TBD`; AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE from `8Dionysus/aoa-techniques` at",
+        "Technique traceability": "AOA-T-PENDING-SUMMON-LANE-SELECTION from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sect...",
         "Adaptation points": "project overlays may add local child-role labels, control modes, or transport; project overlays may map local reviewed-closeout or checkpoint families onto"
       },
       "resource_inventory": {
@@ -2951,7 +2951,7 @@
         "Contracts": "behavior should be made explicit before implementation when reasonably possible; the implementation should stay bounded to the slice",
         "Risks and anti-patterns": "writing tests that merely mirror the implementation; turning a small slice into a hidden architectural rewrite",
         "Verification": "confirm tests were added or updated first when the task was suitable for TDD; confirm the implementation stayed bounded",
-        "Technique traceability": "AOA-T-0014 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/tdd-slice/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0001 from `8Dionysus/...",
+        "Technique traceability": "AOA-T-0014 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/tdd-slice/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0001 f...",
         "Adaptation points": "local test commands; local module boundaries"
       },
       "resource_inventory": {
@@ -3055,7 +3055,7 @@
         "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
         "Risks and anti-patterns": "hiding downstream authority inside vague local notes; turning a thin overlay into repo doctrine or a scenario bundle",
         "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
-        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
         "Adaptation points": "repo-relative change surfaces; local commands and verification steps"
       },
       "resource_inventory": {
@@ -3157,7 +3157,7 @@
         "Contracts": "preserve the base skill meaning; keep local file maps repo-relative and explicit",
         "Risks and anti-patterns": "inventing a broader docs governance framework inside a thin overlay; using family labels without reducing local ambiguity",
         "Verification": "confirm the base skill is still the right workflow; confirm authoritative repo-relative files are named explicitly",
-        "Technique traceability": "AOA-T-0013 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/docs/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 from...",
+        "Technique traceability": "AOA-T-0013 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, V...",
         "Adaptation points": "local doc hierarchies; repo-relative canonical-file patterns"
       },
       "resource_inventory": {
@@ -3259,7 +3259,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -3356,7 +3356,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -3453,7 +3453,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -3550,7 +3550,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -3647,7 +3647,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -3744,7 +3744,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -3841,7 +3841,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -3938,7 +3938,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -4035,7 +4035,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -4132,7 +4132,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -4229,7 +4229,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -4326,7 +4326,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -4423,7 +4423,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -4520,7 +4520,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {
@@ -4617,7 +4617,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence",
         "Verification": "confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded",
-        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "Technique traceability": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and section...",
         "Adaptation points": "Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law."
       },
       "resource_inventory": {

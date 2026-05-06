@@ -117,9 +117,9 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-0086 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation
-- AOA-T-0087 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation
-- AOA-T-0088 from `8Dionysus/aoa-techniques` at `5c6f0496edc3c2e74590baa35627c85fe58ef765` using path `techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation
+- AOA-T-0086 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation
+- AOA-T-0087 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/human-loop-to-seed-lift/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation
+- AOA-T-0088 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 

@@ -172,8 +172,8 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "a35adab4b66c8a18348243569ab81e01c02dc1a8be9b9910cc87e237a4bd81df",
-      "bytes": 234694
+      "sha256": "5cfd5566fbac50f66656bd04618e3ff900cecc07598a4f8aee10ecdfb7b4b23e",
+      "bytes": 239293
     },
     {
       "path": "generated/skill_catalog.min.json",
@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "ce0350f1696b64e77ceb7208ee3d7fd7b72d952e6cc1a4e1a8c60e5e17e64a72",
-      "bytes": 299223
+      "sha256": "77b176e1fe59106855553d851a432b7ff51fd718a8f2a72c60097b11c17d7656",
+      "bytes": 302492
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "b4c1cfa3b09f5ba9354bc5470546b7f2dd7bf3783920b6753dc9a99a3787d0f2",
+      "sha256": "237e5c34bd91365fc86efb82c7dee98ea7c593410ba4c2388f6417aee5706628",
       "bytes": 89271
     },
     {
@@ -434,18 +434,18 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "f847a0e4044d72d27e729f5a56f700c97548cc149120024c05a8bdc852b94f89",
-      "bytes": 127072
+      "sha256": "3b891efce4c39b230a8d9080228d9f9384f7a4661be5bcc33921ff21922d7b5e",
+      "bytes": 127993
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "108c2441a419f8b5c27dbfb7d4beb80f82135fe32921d474608fd0d28e6c8162",
+      "sha256": "072c9b94b0e96d1db9a915cfd888f0b687c10782570dca9c75378e6028a80b38",
       "bytes": 14832
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "848f6b387b7559457037a1f6f17ad7774f30f610d17a1902c5cb4e4bddbc2948",
-      "bytes": 233296
+      "sha256": "5e45298b242a635a31ae38065730c394d80a5110dfcdb12339982d506788aab6",
+      "bytes": 234217
     },
     {
       "path": "generated/skill_graph.md",
@@ -456,228 +456,228 @@
   "skill_bundle_revisions": [
     {
       "name": "abyss-safe-infra-change",
-      "skill_revision": "ae0c5c749dd3",
-      "content_hash": "ae0c5c749dd386d4b28821e4b533eb0b4a40f9c608d898ad924b7f00119fc16a"
+      "skill_revision": "56c5408f0fd0",
+      "content_hash": "56c5408f0fd0f4b243e7d97662aa0022d19731f425fbb7fc7921db4e539be0d3"
     },
     {
       "name": "abyss-sanitized-share",
-      "skill_revision": "af98350c0adb",
-      "content_hash": "af98350c0adb0365dda0becc045af4cc90e859f255e0d1fc4de9a79df184e302"
+      "skill_revision": "d48bd0145f6d",
+      "content_hash": "d48bd0145f6d9a81e48dc30be1047a0af51fbcda192ee58ba508725052299ff9"
     },
     {
       "name": "abyss-self-diagnostic-spine",
-      "skill_revision": "306115006f97",
-      "content_hash": "306115006f978052618cd7d94f21210d2bf537b5e0108c797c485677f608ce27"
+      "skill_revision": "b181245b5e0d",
+      "content_hash": "b181245b5e0d48139f7aab54ea602e8325c02766ab4c5d07c7cdededaffcee16"
     },
     {
       "name": "aoa-adr-write",
-      "skill_revision": "be22a9c462fe",
-      "content_hash": "be22a9c462fe4be3888b5841fb9cfeb65ba50912c3cd224f55034853545d5dc8"
+      "skill_revision": "a580f3fac785",
+      "content_hash": "a580f3fac785fbe7144896cdcd4896b24588e2236e2397f0e2c37dbb26ea1ba5"
     },
     {
       "name": "aoa-approval-gate-check",
-      "skill_revision": "1578440b45b9",
-      "content_hash": "1578440b45b9c0697f3100b3d3c705c20ac84a1f69a4f1cdfebc2904975f2505"
+      "skill_revision": "a2953cf56954",
+      "content_hash": "a2953cf569548c16db7831e1b31aac8b364b58b01e4355f7c2533dcad9341ffd"
     },
     {
       "name": "aoa-automation-opportunity-scan",
-      "skill_revision": "771abb2f9111",
-      "content_hash": "771abb2f9111a23376113f7083ae01ae098438d730fcc099dfc0baa01cc50f11"
+      "skill_revision": "5b065d446ac6",
+      "content_hash": "5b065d446ac6da055f5938209d889f97208ed4c6433fde30a3df627405378b34"
     },
     {
       "name": "aoa-bounded-context-map",
-      "skill_revision": "277d0a17463f",
-      "content_hash": "277d0a17463f39fe764b75d3adbd6deb00e859ed1d242bcdf4d53175fafef3cc"
+      "skill_revision": "470efe5f9148",
+      "content_hash": "470efe5f914863a08091b8d92e5899104bb5d7a7b647565e65da0b7c87ef5ccf"
     },
     {
       "name": "aoa-change-protocol",
-      "skill_revision": "714516e8fa91",
-      "content_hash": "714516e8fa914bf03ec18c786e1797dfb03e9a77a632587f815db2b7e5e67e12"
+      "skill_revision": "308d39d71923",
+      "content_hash": "308d39d71923d43c764f7f2b84e1cb995751aa7410439019079cab51b79c64ad"
     },
     {
       "name": "aoa-checkpoint-closeout-bridge",
-      "skill_revision": "cdfc561192a1",
-      "content_hash": "cdfc561192a121e75df3e9bb3ccf2a0d1be5cf59c636874d351e469f8dfce9fb"
+      "skill_revision": "0acfadded8a9",
+      "content_hash": "0acfadded8a91ac4f12658c5e7db463f3841b329126a6126750937be9b7a2a21"
     },
     {
       "name": "aoa-commit-growth-seam",
-      "skill_revision": "137125f73e61",
-      "content_hash": "137125f73e61cd36823d92b62417c9cf9c06678b58a25558d82dfef30b4785af"
+      "skill_revision": "117880cca8e2",
+      "content_hash": "117880cca8e2bdfca4e3715caf0d22ff9ea319f3a9727a1a97dc411244423459"
     },
     {
       "name": "aoa-contract-test",
-      "skill_revision": "d59aa844c337",
-      "content_hash": "d59aa844c3379d7795edad402c28a75d07003057988dc9305fcd3486d66fdaa3"
+      "skill_revision": "e0d386ba835b",
+      "content_hash": "e0d386ba835b814a5d4ebc7684431e968a7ff87b7cb996a9b112652528ba9af5"
     },
     {
       "name": "aoa-core-logic-boundary",
-      "skill_revision": "6e8ae0194eb3",
-      "content_hash": "6e8ae0194eb3e5513b9fa301eb23f7da0b8c64f595a7d90900095fc95f63cf29"
+      "skill_revision": "f73c15006fcd",
+      "content_hash": "f73c15006fcd75f72e4bf53d4c3479dbee7e0a3e9d3ff90226da908c308a5a11"
     },
     {
       "name": "aoa-dry-run-first",
-      "skill_revision": "27bb3abce18f",
-      "content_hash": "27bb3abce18f469292707a538c1fa692f6ed7d5d7c3dce63456115c4216779ba"
+      "skill_revision": "9e6111380efe",
+      "content_hash": "9e6111380efea32cdca6e2a14536dd1ff96ccc42f7708da5a1769aa817dcbb5c"
     },
     {
       "name": "aoa-invariant-coverage-audit",
-      "skill_revision": "574bd45e9f9a",
-      "content_hash": "574bd45e9f9a618adbc93f7dbc527b1815499322ad70576ad804511f7d6e07ca"
+      "skill_revision": "fa360d7c03b0",
+      "content_hash": "fa360d7c03b054f906266a662a303cc76670477722f2fb006205e329ce696228"
     },
     {
       "name": "aoa-local-stack-bringup",
-      "skill_revision": "5ec9fde1b223",
-      "content_hash": "5ec9fde1b223723fde901390daa164e44e4ef484d757c7af84e2a2e4296f761e"
+      "skill_revision": "b74c32e3fccf",
+      "content_hash": "b74c32e3fccfdbb6fd69ede6246b0d3da1da5769734c4cd595ba4347bcef6586"
     },
     {
       "name": "aoa-port-adapter-refactor",
-      "skill_revision": "d12dbff065ab",
-      "content_hash": "d12dbff065ab78f7a693f854692a71bc469f5bce4973f2606bc9658819f31b83"
+      "skill_revision": "af4724be311a",
+      "content_hash": "af4724be311a46cdebdc6d6d41437c78adacd3e0447c368a34dd9233cfcfbc72"
     },
     {
       "name": "aoa-property-invariants",
-      "skill_revision": "81de258f7363",
-      "content_hash": "81de258f73630c7bc0acc12d919d7128d154c4299ffa3afd1d6101d097c50b89"
+      "skill_revision": "c9e9775bf22b",
+      "content_hash": "c9e9775bf22b789e1d558bb1dcf720ca49191ddc3e1a60051e2e956ade7cb525"
     },
     {
       "name": "aoa-quest-harvest",
-      "skill_revision": "99c3da073258",
-      "content_hash": "99c3da073258dfc219d1c62e65b8645e279f538da2edf2a47c4b6ab30da9bf55"
+      "skill_revision": "2bbb884be3ff",
+      "content_hash": "2bbb884be3ff5deb40b7be74c733598324f0e7c1fd8cd78a753549201366252e"
     },
     {
       "name": "aoa-safe-infra-change",
-      "skill_revision": "0954e6c65a7a",
-      "content_hash": "0954e6c65a7a0627816316d3f670c6f14fa9046e5c01c0a5a7f73c9736096f9a"
+      "skill_revision": "93aba0b5e7e5",
+      "content_hash": "93aba0b5e7e5e1328c266383cd26c9d2e0bb78332602f2ceef12e8b4c59a92b0"
     },
     {
       "name": "aoa-sanitized-share",
-      "skill_revision": "d0dc3d5c43bd",
-      "content_hash": "d0dc3d5c43bd23e129c04d98937ac7839d2bb3379ef9fe556d6dcce4fde4fea4"
+      "skill_revision": "49909bfb8d72",
+      "content_hash": "49909bfb8d72d30508f8a2c66a84dd35740ceec37dd8c57eff3be3068f62f5c6"
     },
     {
       "name": "aoa-session-donor-harvest",
-      "skill_revision": "3f99e2c86d30",
-      "content_hash": "3f99e2c86d308804c82df7db93091ebe2d01053f0d2597a6826a4dae1cbb4c67"
+      "skill_revision": "2ede940e2fdc",
+      "content_hash": "2ede940e2fdc20e3d88b2d2c1f0eccb07cb4ab8938171d9520b57d6856317fe1"
     },
     {
       "name": "aoa-session-progression-lift",
-      "skill_revision": "44280190f2b2",
-      "content_hash": "44280190f2b265f806d8bdb3d0c3d961499f237d18456778493ab49c0a160653"
+      "skill_revision": "565e5a6389f6",
+      "content_hash": "565e5a6389f69fe4ca202e1046811ac449108c2e380b99b27282aa83fa4e5d59"
     },
     {
       "name": "aoa-session-route-forks",
-      "skill_revision": "efc420f58c34",
-      "content_hash": "efc420f58c34f12b5120febc37519a65529bc00ccd59196dd6b27eb5a82a6975"
+      "skill_revision": "df3969b2b878",
+      "content_hash": "df3969b2b878682769c92acea58856b10c8f4ae273ddd4239f0b3ab734a4b04e"
     },
     {
       "name": "aoa-session-self-diagnose",
-      "skill_revision": "ddd4b2685179",
-      "content_hash": "ddd4b26851793cfd5ef3403cc7c30eed233686f56438a335f928cb4eb4630378"
+      "skill_revision": "d67e6e6288f1",
+      "content_hash": "d67e6e6288f1b80caca70100dd8428640b3bac577d933b221a78e18fff2284ab"
     },
     {
       "name": "aoa-session-self-repair",
-      "skill_revision": "02e4d3925c6c",
-      "content_hash": "02e4d3925c6c1b712b961efce6421156eb51da784d108edda1ffb1ca8bd3ee4f"
+      "skill_revision": "e6d23abdc610",
+      "content_hash": "e6d23abdc61077b5bf01e148f3476e6bba018138e0b0e6a967b8f1ebf4387f2f"
     },
     {
       "name": "aoa-source-of-truth-check",
-      "skill_revision": "d4facdea4de6",
-      "content_hash": "d4facdea4de6c909c5d7d5d3bff103d774a0e53f23d850d39e40fc797b8ac1c3"
+      "skill_revision": "c68f93543bb7",
+      "content_hash": "c68f93543bb756872289b9f48a72ee2b0730738bf4b9232aea5e8591d2efbde4"
     },
     {
       "name": "aoa-summon",
-      "skill_revision": "f169ae2d8491",
-      "content_hash": "f169ae2d849122e8db110fc962527bf75e58dcc41664048b805deeaa7c03189e"
+      "skill_revision": "3a42e3f64918",
+      "content_hash": "3a42e3f649186a2a06c11bd10b2e1089a51c6c27ea181c633392331d19b4d6b2"
     },
     {
       "name": "aoa-tdd-slice",
-      "skill_revision": "8f2248b936d4",
-      "content_hash": "8f2248b936d4c6712af55cd5c7282b062439ee3c093990230aa3010da3452a9d"
+      "skill_revision": "4337c6bd6a26",
+      "content_hash": "4337c6bd6a264166a0f11b2806a3dd3629363e77003c4285d4fa882be17d2465"
     },
     {
       "name": "atm10-change-protocol",
-      "skill_revision": "d25310a900e1",
-      "content_hash": "d25310a900e1d021467a6d4153209221246d2cf9e9648bd094a23effa960f815"
+      "skill_revision": "7cc7c267b2e3",
+      "content_hash": "7cc7c267b2e381c654a306afb74491d612fc6f3766f64ff07dc8aee177364f58"
     },
     {
       "name": "atm10-source-of-truth-check",
-      "skill_revision": "75c5573bf6ee",
-      "content_hash": "75c5573bf6ee0907b01c850434b024f8ba74abf7c26803c54ceb53deed092aa3"
+      "skill_revision": "7427702890de",
+      "content_hash": "7427702890de969dbd7d3dc12370efc3ca396bd50ac7a5d9b5e02c5d0946081c"
     },
     {
       "name": "titan-approval-ledger",
-      "skill_revision": "82fa49f50d13",
-      "content_hash": "82fa49f50d13a57b9e106b9682a9a38099f4c2aff2b9b4ead18fde438286d358"
+      "skill_revision": "91bd92b07356",
+      "content_hash": "91bd92b073561522bad90ca8f550b596b4cac54c8f1379997007336aa226982a"
     },
     {
       "name": "titan-approval-loom",
-      "skill_revision": "68a37b7c7dad",
-      "content_hash": "68a37b7c7dad5d7e68a87840295b141c651ec32579f3462f336a6e098cf15311"
+      "skill_revision": "66b1a15c2907",
+      "content_hash": "66b1a15c2907f5577c256e90f3a09d959679d0ac8dd6be9e20fd72a2e91cfcb1"
     },
     {
       "name": "titan-appserver-bridge",
-      "skill_revision": "2a04b3b9f4ab",
-      "content_hash": "2a04b3b9f4ab6f01415fc1c8aee64272055396b6ed7b201ad7c494f36ecbc9f6"
+      "skill_revision": "8f03531f4528",
+      "content_hash": "8f03531f45288f72c83e59787844b477998c30942e546b368f6f066c84093b15"
     },
     {
       "name": "titan-appserver-plan",
-      "skill_revision": "25033d0fc373",
-      "content_hash": "25033d0fc3734dc649f2d157e8825c953fa8688523c0400b6f38c7052df7366d"
+      "skill_revision": "75f92873f38b",
+      "content_hash": "75f92873f38bd97ade70c21a2d111fa21ba6847889574403932e44e015946726"
     },
     {
       "name": "titan-closeout",
-      "skill_revision": "d6a91af07728",
-      "content_hash": "d6a91af0772835da03a639b20807c3e65bedaa5444c26a80b2b222e3073a6899"
+      "skill_revision": "032814eab7f9",
+      "content_hash": "032814eab7f96200bb48b682d0b54075a09200bac43ae7eec31c358c0fdadc17"
     },
     {
       "name": "titan-console",
-      "skill_revision": "80a96aab9852",
-      "content_hash": "80a96aab9852d8617f8889044b426c2768c504343c03adc4afa0f9eeb9750900"
+      "skill_revision": "b29318c92e54",
+      "content_hash": "b29318c92e544135ba5a846d16d879e7e948fc9b8cf69adef8871525d366d6f8"
     },
     {
       "name": "titan-event-replay",
-      "skill_revision": "328dcd6cc5d6",
-      "content_hash": "328dcd6cc5d6518d7e11fe99647808dce38f1708b7312108853a66dc807941c3"
+      "skill_revision": "5de7c33d2c64",
+      "content_hash": "5de7c33d2c641efa2d6d611f992616641523257de155014b41afaa8ca4b6106f"
     },
     {
       "name": "titan-memory-loom",
-      "skill_revision": "0eec6bd6567a",
-      "content_hash": "0eec6bd6567aacb74da023d562b3a92ea34331a70279018d80d5c0652efb0fa0"
+      "skill_revision": "aea7e0ac13af",
+      "content_hash": "aea7e0ac13af366624858500b2857687030572d93d88349fc9e71a461c5d9b11"
     },
     {
       "name": "titan-memory-prune",
-      "skill_revision": "f3a3e1eec0e3",
-      "content_hash": "f3a3e1eec0e3e5f42679a156f37e1f80d4545514b5df1c5252e3d6776dc70903"
+      "skill_revision": "ce1850b7475d",
+      "content_hash": "ce1850b7475d9f6d881d9df3f2f1804a28b420f23b2a8890644f9c3e2de64b85"
     },
     {
       "name": "titan-mutation-gate",
-      "skill_revision": "5b7c56789be9",
-      "content_hash": "5b7c56789be9c36b7e836431079b013aad353aca32eac24642e6c5e213143e76"
+      "skill_revision": "51f9adf08f67",
+      "content_hash": "51f9adf08f672ebcb189ff8962c61eb9642be6c961173745f61c6f7cb99a74b4"
     },
     {
       "name": "titan-recall",
-      "skill_revision": "ae99aa78caa4",
-      "content_hash": "ae99aa78caa4bf294c0fa59dfc3b9b160fcd4ec8a943a63a88f64e154e11f0d7"
+      "skill_revision": "9a097a1e7a56",
+      "content_hash": "9a097a1e7a56fa3b8115eff243049a31e58a28dd9b59026d3b916e2d8b23f66b"
     },
     {
       "name": "titan-receipt",
-      "skill_revision": "6867c6115e37",
-      "content_hash": "6867c6115e378adcdfff0b14c7ff93c87f36bf454f9537f74496999b8f07bdbb"
+      "skill_revision": "81c934af1165",
+      "content_hash": "81c934af116525a61c2a6f50508e6127d48b2f69e1a37dda67aab92a9e1ca2ac"
     },
     {
       "name": "titan-runtime-gate",
-      "skill_revision": "a906e0259551",
-      "content_hash": "a906e0259551c07b417652231ba2fd0d87e09984353dd35e4af072a6301b13c2"
+      "skill_revision": "be16b7d104ab",
+      "content_hash": "be16b7d104ab4f2fd1c586aba54571f828fa26b15719b8520dae745509fbd1ea"
     },
     {
       "name": "titan-summon",
-      "skill_revision": "2f2a834d1cad",
-      "content_hash": "2f2a834d1cadadb9a3e04a8a0d4d551cbbb9da01f3ed3e493eb32256f0b6efb3"
+      "skill_revision": "b43ad8081ad8",
+      "content_hash": "b43ad8081ad8d901ee5939281a8da5924b754fc7624d5f0178d685ba6b6ae042"
     },
     {
       "name": "titan-thread-turn-binding",
-      "skill_revision": "401c64eb421c",
-      "content_hash": "401c64eb421c998f8c768c3c1137d92f8618b2dc6ddd1d914fd300eece7ff13e"
+      "skill_revision": "6063b4ca638f",
+      "content_hash": "6063b4ca638f7d8f682c133feb39ba3bdee3c1e33102bdf6bb613a8822ae500e"
     }
   ],
   "install_profile_revisions": [
@@ -689,7 +689,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine"
       ],
-      "profile_revision": "8e5d271b42999b5dab01b9efd9f60b49049266de62274c526996793b9d9bd4ce"
+      "profile_revision": "cb8f5ecd6acbef5f4c06043e0f67fd8c2481003060ec546b4c868b1f71c31ba1"
     },
     {
       "name": "repo-atm10-overlay",
@@ -698,7 +698,7 @@
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ],
-      "profile_revision": "36bc73e1626ef30a44c193311748aab0e7bb84e952105fb4d41eb6e2c9335e4b"
+      "profile_revision": "da97ee6396ba3b3f34628bc934f1cc3381b53778223a5626f820851841f5a5b3"
     },
     {
       "name": "repo-automation-opportunity-scan-only",
@@ -706,7 +706,7 @@
       "skill_names": [
         "aoa-automation-opportunity-scan"
       ],
-      "profile_revision": "9d57b2b933a0c7e83d4ec5541dc15bd9fd6a29bd5d5d17e6f5b623fac3629169"
+      "profile_revision": "eebbeb7d4eeb61dc037a7c2445332f49ef27b05567226daf0bfe0a91ef33b955"
     },
     {
       "name": "repo-core-only",
@@ -731,7 +731,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "8c8fda615176a9e24e0782726efcf14cfddfa6c5fc361cfd4c54b5f7a4bfb482"
+      "profile_revision": "80800d3ee071239a7a445b427d281553b37202669d7dd4d61cbc46d1c2fd92c4"
     },
     {
       "name": "repo-default",
@@ -783,7 +783,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "6d9cc3425f4b26d3b8fd960fe2959b87208d7036a4164f0a93969979f4227022"
+      "profile_revision": "ac54e0ea57d479c78533c4b182f88c86460b17ad50d358a61abb28f6007788d5"
     },
     {
       "name": "repo-project-core-kernel",
@@ -798,7 +798,7 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "profile_revision": "5b8f6a96365a435ea1537b0ba37211e828e64c3f69ef25007df9ad9a4afcdbab"
+      "profile_revision": "d1603fef02a8e0b5e169426a6b528593065b49297ffeb9f122acc0adcf6a880f"
     },
     {
       "name": "repo-project-core-outer-ring",
@@ -815,7 +815,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "c3df7dbe26686ecda581214d837e607825860bbf2441d4d0f491a2ddf5854665"
+      "profile_revision": "2a172509dd174ebabdbc2da9938684d91a084324abe02a20e0faceccd974803d"
     },
     {
       "name": "repo-project-foundation",
@@ -845,7 +845,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "4164e7894b8bd04e485311d44ddc8f27c5290b3014d8c61392107d3a736c3a35"
+      "profile_revision": "98d614fbfd7d6c80315689bbf014f0901bea0cd749222a37dd18dd7da904fa2c"
     },
     {
       "name": "repo-project-risk-guard-ring",
@@ -857,7 +857,7 @@
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
-      "profile_revision": "7c9869c21dc3cd40206e2d3761e4a10b7a4a2f6ef7d53ca30a43c472bd0a618f"
+      "profile_revision": "15e429dccb9d8d4956738509ff77731bb45bbdeb843c84aba1efa90843ef5e50"
     },
     {
       "name": "repo-quest-harvest-only",
@@ -865,7 +865,7 @@
       "skill_names": [
         "aoa-quest-harvest"
       ],
-      "profile_revision": "12b57662d12b95cc11e2d6d4531ecd1115642e63d4ce8ab9246334c468c3e5b5"
+      "profile_revision": "7ca4a1a5269c194534f2472b1ea20665d78936b00ab085f740334e873b5deb88"
     },
     {
       "name": "repo-risk-explicit",
@@ -877,7 +877,7 @@
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
-      "profile_revision": "a693875b9530df21a94b47a2ac9962938b25d1ce57d0d7ce221c968886c182b7"
+      "profile_revision": "7ff314321dc2e1f2d8b94ccce079928af205a2c331d119eef6a7516ff8e56d46"
     },
     {
       "name": "repo-session-donor-harvest-only",
@@ -885,7 +885,7 @@
       "skill_names": [
         "aoa-session-donor-harvest"
       ],
-      "profile_revision": "d0f47641ed3b0c5e4c62a45a2f1805d5b37a2a9b181a3db12f08a9f6613a6556"
+      "profile_revision": "8b5f15a2ceba0f545df5a3cea66a32afb9daa5cf9be84ec3b16c2f34a4077c15"
     },
     {
       "name": "repo-session-harvest-family",
@@ -900,7 +900,7 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "profile_revision": "4d02a7f0da247334ba184cae974be8a84f0a55774b5158228c54ab22aef02aee"
+      "profile_revision": "d5933f0643dc9a95f453a54f46c342ed4b2f5b691f192bac05532faeb2dd5d3f"
     },
     {
       "name": "repo-summon-only",
@@ -908,7 +908,7 @@
       "skill_names": [
         "aoa-summon"
       ],
-      "profile_revision": "bf7b7bb5766767924df425f3cb799833aead05c0f4d223117ec2fd42ce568556"
+      "profile_revision": "c8437f7a2642ecb8c27089957d20a70e78926254a11d8f523d1397dae47942f3"
     },
     {
       "name": "repo-titan-overlay",
@@ -930,7 +930,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "3d5e1e58689917049d394414bb023b71d9251180a85af0c5dafc5535533697cd"
+      "profile_revision": "69a036340bb921ca10a95501fc92e1e7853fb0dba3f844e6e243e5d69a35a150"
     },
     {
       "name": "user-curated-core",
@@ -953,7 +953,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "1432328bc7da5279dc05b4f9626c598575837f2c92fea5c854fb6bb0caea5074"
+      "profile_revision": "eac226e753bc0e2fc1611e1105e90ebc51fbf6fe80697abf8f007a59e698a9be"
     }
   ],
   "release_identity": {

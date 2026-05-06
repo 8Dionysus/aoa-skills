@@ -17,9 +17,10 @@ Current public foundation:
 
 The current `v0.3.x` release line also already carries:
 - checkpoint-closeout and commit-growth follow-through skills such as `aoa-checkpoint-closeout-bridge`, `aoa-commit-growth-seam`, `aoa-automation-opportunity-scan`, `aoa-session-donor-harvest`, and the wider session-harvest family surfaced through `generated/runtime_discovery_index.json`
-- checkpoint-aware and reviewed owner-status follow-through guidance in `docs/CHECKPOINT_NOTE_PATH.md`, `docs/OWNER_STATUS_SURFACES.md`, and `docs/GOVERNED_FOLLOWTHROUGH.md`
-- Agon Wave IV bounded-workflow companion bridge surfaces in
-  `docs/AGON_MOVE_SKILL_BRIDGE.md`, `docs/AGON_WAVE4_SKILL_LANDING.md`, and
+- checkpoint-aware and reviewed owner-status follow-through guidance in `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`, `mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md`, and `mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md`
+- Agon bounded-workflow companion bridge surfaces in
+  `mechanics/agon/parts/workflow-candidate-bridge/README.md`,
+  `mechanics/agon/parts/candidate-validation-gate/README.md`, and
   `generated/agon_skill_binding_candidates.min.json`, with all requests kept
   `requested_not_landed` until normal skill review accepts them
 - quest carry-forward and dispatch adjuncts in `generated/quest_catalog.min.json` and `generated/quest_dispatch.min.json`
@@ -34,6 +35,10 @@ Already-shipped repo-owned support layers now include:
 - wave-7 description-first activation contract and soft conformance lane
 - wave-8 deterministic support-resource bundles for three high-risk skills
 - wave-9 tiny-router compression bridge for downstream routing
+- the first mechanics package routes under `mechanics/README.md`,
+  `mechanics/growth-cycle/`, `mechanics/checkpoint/`,
+  `mechanics/method-growth/`, `mechanics/questbook/`,
+  `mechanics/recurrence/`, and `mechanics/agon/`
 
 The next steps should use that derived governance layer to keep core governance decisions honest, keep live overlay families aligned under one contract, and push packaging prep rather than only increase skill count.
 The first packaging pass should harden the portable release contract itself, then follow with compatibility/lineage depth rather than inventing another catalog surface.
@@ -66,6 +71,7 @@ landing, quest dispatch, and local Codex or MCP disclosure are now shipped
 surfaces and should stay visible in current-direction docs rather than only in
 release notes.
 Another planning risk is cross-repo rollout choreography: when a future wave splits source-owned bridge meaning from downstream consumption, merge order and rerun policy should be planned explicitly rather than left to PR folklore.
+Another structure risk is remaining recurrence and release-support pressure: component refresh law, manifest validation notes, and downstream drift-watch handoff should move one bounded package at a time through `mechanics/`, with active parts and provenance rather than another broad flat-doc wave.
 
 ## v0.3 public core hardening
 

@@ -125,10 +125,14 @@ def const_escape_value(value: object) -> object:
 
 def documented_output_kinds() -> set[str]:
     output_kinds: set[str] = set()
-    for path in (ROOT / "docs").glob("*.md"):
+    paths = list((ROOT / "docs").glob("*.md"))
+    paths.extend(
+        (ROOT / "mechanics" / "method-growth" / "parts").glob("*/README.md")
+    )
+    for path in paths:
         in_outputs = False
         for line in path.read_text(encoding="utf-8").splitlines():
-            if line.strip() == "## Outputs":
+            if line.strip() in {"## Outputs", "## Active Outputs"}:
                 in_outputs = True
                 continue
             if line.startswith("## "):

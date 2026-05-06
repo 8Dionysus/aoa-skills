@@ -36,9 +36,9 @@ class RoadmapParityTestCase(unittest.TestCase):
 
         for relative_path in (
             "generated/runtime_discovery_index.json",
-            "docs/CHECKPOINT_NOTE_PATH.md",
-            "docs/OWNER_STATUS_SURFACES.md",
-            "docs/GOVERNED_FOLLOWTHROUGH.md",
+            "mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md",
+            "mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md",
+            "mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md",
             "generated/quest_catalog.min.json",
             "generated/quest_dispatch.min.json",
             "docs/CODEX_SKILL_MCP_WIRING.md",
@@ -58,13 +58,15 @@ class RoadmapParityTestCase(unittest.TestCase):
         self.assertIn("local Codex/MCP disclosure", changelog)
         self.assertIn("roadmap drift", roadmap)
 
-    def test_roadmap_names_agon_wave4_companion_bridge_surfaces(self) -> None:
+    def test_roadmap_names_agon_companion_bridge_surfaces(self) -> None:
         roadmap = (REPO_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
 
         for relative_path in (
-            "docs/AGON_MOVE_SKILL_BRIDGE.md",
-            "docs/AGON_WAVE4_SKILL_LANDING.md",
+            "mechanics/README.md",
+            "mechanics/agon/README.md",
+            "mechanics/agon/parts/workflow-candidate-bridge/README.md",
+            "mechanics/agon/parts/candidate-validation-gate/README.md",
             "generated/agon_skill_binding_candidates.min.json",
             "config/agon_skill_binding_candidates.seed.json",
             "scripts/build_agon_skill_binding_candidates.py",
@@ -73,10 +75,10 @@ class RoadmapParityTestCase(unittest.TestCase):
         ):
             self.assertTrue((REPO_ROOT / relative_path).is_file())
 
-        self.assertIn("AGON_MOVE_SKILL_BRIDGE", roadmap)
+        self.assertIn("mechanics/agon/parts/workflow-candidate-bridge/README.md", roadmap)
         self.assertIn("generated/agon_skill_binding_candidates.min.json", roadmap)
         self.assertIn("requested_not_landed", roadmap)
-        self.assertIn("docs/AGON_MOVE_SKILL_BRIDGE.md", readme)
+        self.assertIn("mechanics/agon/parts/workflow-candidate-bridge/README.md", readme)
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@
 - `.agents/` — generated Codex-facing export layer
 - `config/` — portable export description overrides, optional OpenAI metadata extensions, and wave-3 pack/trust authoring inputs
 - `examples/` — sample Codex config snippets for profile disable and install scenarios
+- `mechanics/` — owner-local skill-layer movement surfaces around AoA mechanics
 - `skills/` — skill bundles
 - `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, wave-4 runtime seam surfaces, wave-8 support-resource manifests, and trigger-eval seed data
 - `scripts/` — optional generation or validation helpers

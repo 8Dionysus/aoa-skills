@@ -27,8 +27,16 @@ def test_session_checkpoint_note_schema_validates_example() -> None:
 
 
 def test_checkpoint_docs_keep_pre_harvest_boundary_explicit() -> None:
-    checkpoint_doc = (REPO_ROOT / "docs" / "CHECKPOINT_NOTE_PATH.md").read_text(encoding="utf-8")
-    questbook_doc = (REPO_ROOT / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md").read_text(encoding="utf-8")
+    checkpoint_doc = (
+        REPO_ROOT / "mechanics" / "checkpoint" / "docs" / "CHECKPOINT_NOTE_PATH.md"
+    ).read_text(encoding="utf-8")
+    questbook_doc = (
+        REPO_ROOT
+        / "mechanics"
+        / "questbook"
+        / "docs"
+        / "QUESTBOOK_SKILL_INTEGRATION.md"
+    ).read_text(encoding="utf-8")
 
     assert "checkpoint capture is not harvest verdict" in checkpoint_doc
     assert "checkpoint capture does not mint `candidate_ref`" in checkpoint_doc
@@ -166,15 +174,21 @@ def test_kernel_stage_and_live_receipt_family_do_not_expand_for_checkpoints() ->
 
 
 def test_owner_landing_docs_keep_bounded_reviewed_boundary_explicit() -> None:
-    owner_status_doc = (REPO_ROOT / "docs" / "OWNER_STATUS_SURFACES.md").read_text(encoding="utf-8")
-    followthrough_doc = (REPO_ROOT / "docs" / "GOVERNED_FOLLOWTHROUGH.md").read_text(encoding="utf-8")
+    owner_status_doc = (
+        REPO_ROOT / "mechanics" / "method-growth" / "docs" / "OWNER_STATUS_SURFACES.md"
+    ).read_text(encoding="utf-8")
+    followthrough_doc = (
+        REPO_ROOT / "mechanics" / "method-growth" / "docs" / "GOVERNED_FOLLOWTHROUGH.md"
+    ).read_text(encoding="utf-8")
     docs_map = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
-    lineage_doc = (REPO_ROOT / "docs" / "CANDIDATE_REF_REFINERY.md").read_text(encoding="utf-8")
+    lineage_doc = (
+        REPO_ROOT / "mechanics" / "method-growth" / "docs" / "CANDIDATE_REF_REFINERY.md"
+    ).read_text(encoding="utf-8")
 
     assert "reviewed-only" in owner_status_doc
     assert "must not mint `seed_ref` or `object_ref`" in owner_status_doc
     assert "It does not become a queue, a runner," in followthrough_doc
     assert "or schedule authority." in followthrough_doc
-    assert "OWNER_STATUS_SURFACES.md" in docs_map
-    assert "GOVERNED_FOLLOWTHROUGH.md" in docs_map
+    assert "../mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md" in docs_map
+    assert "../mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md" in docs_map
     assert "Once `candidate_ref` exists" in lineage_doc

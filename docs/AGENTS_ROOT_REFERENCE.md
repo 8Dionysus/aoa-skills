@@ -100,17 +100,17 @@ Before making changes, read in this order:
 Then branch by task:
 
 - adaptive orchestration, closeout, or checkpoint capture:
-  `docs/ADAPTIVE_SKILL_ORCHESTRATION.md` and
-  `docs/CHECKPOINT_NOTE_PATH.md`
+  `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md` and
+  `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
 - Agon owner-binding workflow candidates:
-  `docs/AGON_MOVE_SKILL_BRIDGE.md` and
-  `docs/AGON_WAVE4_SKILL_LANDING.md`
+  `mechanics/agon/parts/workflow-candidate-bridge/README.md` and
+  `mechanics/agon/parts/candidate-validation-gate/README.md`
 - ability-card or loadout reader surfaces:
-  `docs/SKILL_ABILITY_MODEL.md` and
-  `docs/ABILITY_LOADOUT_POSTURE.md`
+  `mechanics/rpg/parts/ability-reader-boundary/README.md` and
+  `mechanics/rpg/parts/loadout-posture/README.md`
 - quest carry-forward or quest dispatch:
   `QUESTBOOK.md` and
-  `docs/QUESTBOOK_SKILL_INTEGRATION.md`
+  `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`
 - portable export, component refresh, adapter, or runtime seams:
   `docs/CODEX_PORTABLE_LAYER.md`,
   `docs/COMPONENT_REFRESH_LAW.md`,
@@ -207,7 +207,7 @@ python -m pytest -q tests
 python scripts/release_check.py
 ```
 
-If the task touches the Agon Wave IV skill candidate bridge, also run:
+If the task touches the Agon skill candidate bridge, also run:
 
 ```bash
 python scripts/build_agon_skill_binding_candidates.py --check

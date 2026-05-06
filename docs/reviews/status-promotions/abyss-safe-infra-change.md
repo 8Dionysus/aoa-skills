@@ -11,7 +11,7 @@ name: abyss-safe-infra-change
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `cd5c169a6c4c`
+- reviewed revision: `9241b2de96a9`
 
 ## Target status
 

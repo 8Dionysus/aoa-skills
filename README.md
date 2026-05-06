@@ -16,7 +16,7 @@ Use the shortest route by need:
 - current skill surface: `SKILL_INDEX.md`
 - current direction: `ROADMAP.md`
 - runtime path: `docs/RUNTIME_PATH.md`
-- orchestration and closeout path: `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
+- orchestration and closeout path: `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
 - evaluation path: `docs/EVALUATION_PATH.md`
 - public status and governance: `docs/PUBLIC_SURFACE.md`
 - verify current repo state: `python scripts/build_catalog.py --check`, `python scripts/validate_skills.py --fail-on-review-truth-sync`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift`, `python scripts/validate_agent_skills.py --repo-root .`, `python scripts/validate_support_resources.py --repo-root . --check-portable`, `python scripts/validate_tiny_router_inputs.py --repo-root .`, and `python -m pytest -q tests`
@@ -27,23 +27,24 @@ Use the shortest route by need:
 
 - packaging, relationship, and release-manifest views: `generated/skill_bundle_index.md`, `generated/skill_graph.md`, `generated/skill_composition_audit.md`, and `generated/release_manifest.json`
 - public status, governance, and overlay-maturity readouts: `generated/public_surface.md`, `generated/governance_backlog.md`, and `generated/overlay_readiness.md`
-- via negativa pruning checklist: `docs/VIA_NEGATIVA_CHECKLIST.md`
+- via negativa pruning checklist: `mechanics/antifragility/parts/via-negativa-pruning/README.md`
 - runtime inspect and walkthrough surfaces: `generated/skill_walkthroughs.md` and `scripts/inspect_skill.py`
-- additive degraded and receipt-authoring guidance for future skill bundles: `docs/ANTIFRAGILITY_SKILL_ADDENDUM.md`
-- checkpoint-aware pre-harvest session-growth capture: `docs/CHECKPOINT_NOTE_PATH.md`, `schemas/session_checkpoint_note.schema.json`, and `examples/session_checkpoint_note.example.json`
-- reviewed owner-status landing and bounded next-step followthrough after `candidate_ref` exists: `docs/OWNER_STATUS_SURFACES.md`, `docs/GOVERNED_FOLLOWTHROUGH.md`, `schemas/reviewed_owner_landing_bundle.schema.json`, `schemas/route_followthrough_decision.schema.json`, and matching examples under `examples/`
-- Agon Wave IV bounded-workflow companion bridge: `docs/AGON_MOVE_SKILL_BRIDGE.md`, `docs/AGON_WAVE4_SKILL_LANDING.md`, `generated/agon_skill_binding_candidates.min.json`, `python scripts/build_agon_skill_binding_candidates.py --check`, `python scripts/validate_agon_skill_binding_candidates.py`, and `python -m pytest -q tests/test_agon_skill_binding_candidates.py`
-- adaptive applicability, closeout, and harvest routing for multi-skill sessions: `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, `templates/SKILL_APPLICABILITY_MAP.template.md`, and `templates/SESSION_CANDIDATE_HARVEST.template.md`
-- checkpoint-to-closeout bridge orchestration: `skills/aoa-checkpoint-closeout-bridge/SKILL.md`, `docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, and `docs/CHECKPOINT_NOTE_PATH.md`
-- ability-reader and loadout surfaces: `docs/SKILL_ABILITY_MODEL.md`, `docs/ABILITY_LOADOUT_POSTURE.md`, and `generated/skill_ability_cards.min.example.json`
+- additive degraded and receipt-authoring guidance for future skill bundles: `mechanics/antifragility/parts/fallback-authoring-posture/README.md`
+- checkpoint-aware pre-harvest session-growth capture: `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`, `schemas/session_checkpoint_note.schema.json`, and `examples/session_checkpoint_note.example.json`
+- reviewed owner-status landing and bounded next-step followthrough after `candidate_ref` exists: `mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md`, `mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md`, `schemas/reviewed_owner_landing_bundle.schema.json`, `schemas/route_followthrough_decision.schema.json`, and matching examples under `examples/`
+- explicit skill adoption lifecycle posture: `mechanics/method-growth/parts/adoption-boundary/README.md`, `mechanics/method-growth/parts/adoption-evidence-receipts/README.md`, `mechanics/method-growth/parts/retention-regression-retirement/README.md`, and `mechanics/method-growth/parts/pattern-adoption-handoff/README.md`
+- owner-local mechanics, Checkpoint carry, Method-growth candidate/adoption movement, Questbook integration, Recurrence observation, Antifragility risk posture, and Agon bounded-workflow companion bridge: `mechanics/README.md`, `mechanics/checkpoint/README.md`, `mechanics/checkpoint/parts/checkpoint-note-lane/README.md`, `mechanics/method-growth/README.md`, `mechanics/method-growth/parts/candidate-lineage/README.md`, `mechanics/method-growth/parts/adoption-boundary/README.md`, `mechanics/method-growth/parts/adoption-evidence-receipts/README.md`, `mechanics/method-growth/parts/retention-regression-retirement/README.md`, `mechanics/method-growth/parts/pattern-adoption-handoff/README.md`, `mechanics/questbook/README.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `mechanics/recurrence/README.md`, `mechanics/recurrence/parts/live-observation-producers/README.md`, `mechanics/recurrence/parts/review-decision-closure/README.md`, `mechanics/antifragility/README.md`, `mechanics/antifragility/parts/fallback-authoring-posture/README.md`, `mechanics/antifragility/parts/via-negativa-pruning/README.md`, `mechanics/antifragility/parts/collision-stress-program/README.md`, `mechanics/agon/README.md`, `mechanics/agon/parts/workflow-candidate-bridge/README.md`, `mechanics/agon/parts/candidate-validation-gate/README.md`, `generated/agon_skill_binding_candidates.min.json`, `python scripts/build_agon_skill_binding_candidates.py --check`, `python scripts/validate_agon_skill_binding_candidates.py`, and `python -m pytest -q tests/test_agon_skill_binding_candidates.py`
+- adaptive applicability, closeout, and harvest routing for multi-skill sessions: `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, `templates/SKILL_APPLICABILITY_MAP.template.md`, and `templates/SESSION_CANDIDATE_HARVEST.template.md`
+- checkpoint-to-closeout bridge orchestration: `skills/aoa-checkpoint-closeout-bridge/SKILL.md`, `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, and `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
+- ability-reader and loadout surfaces: `mechanics/rpg/parts/ability-reader-boundary/README.md`, `mechanics/rpg/parts/loadout-posture/README.md`, and `generated/skill_ability_cards.min.example.json`
 - evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
-- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
+- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
 - portable export, component refresh law, and local runtime seams: `docs/CODEX_PORTABLE_LAYER.md`, `docs/COMPONENT_REFRESH_LAW.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, `docs/OPENAI_SKILL_EXTENSIONS.md`, `docs/CODEX_SKILL_MCP_WIRING.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `docs/RUNTIME_TOOL_CONTRACTS.md`, `docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
 - named MCP dependency scaffolds and workspace-alignment checks: `examples/skill_mcp_wiring.map.json`, `examples/openai.*.example.yaml`, `scripts/build_openai_yaml_examples.py`, and `scripts/validate_skill_mcp_wiring.py`
 - install, trust, config, and UI surfaces: `docs/INSTALL_AND_PROFILES.md`, `docs/CONTEXT_RETENTION.md`, `docs/UI_METADATA_AND_ASSETS.md`, `docs/CODEX_CONFIG_SNIPPETS.md`, `docs/TRUST_GATE_AND_ALLOWLIST.md`, `docs/SKILL_CONTEXT_GUARD.md`, and `docs/RUNTIME_GOVERNANCE_LAYER.md`
-- activation quality and conformance: `docs/TRIGGER_EVALS.md`, `docs/SKILL_COLLISION_CHAOS_WAVE1.md`, `docs/DESCRIPTION_TRIGGER_EVALS.md`, and `docs/SKILLS_REF_VALIDATION.md`
+- activation quality and conformance: `docs/TRIGGER_EVALS.md`, `mechanics/antifragility/parts/collision-stress-program/README.md`, `docs/DESCRIPTION_TRIGGER_EVALS.md`, and `docs/SKILLS_REF_VALIDATION.md`
 - deterministic resources and downstream tiny-router bridge: `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`, `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `docs/TWO_STAGE_SKILL_SELECTION.md`
-- project-core kernel receipts, Wave 4 maturity guidance, and bounded second-wave surface context: `config/project_core_skill_kernel.json`, `scripts/publish_core_skill_receipts.py`, `skills/*/references/core-skill-application-receipt-schema.yaml`, `docs/SESSION_GROWTH_KERNEL_MATURITY.md`, and `examples/session_growth_artifacts/*.wave4.json`
+- project-core kernel receipts, maturity guidance, and bounded follow-up surface context: `config/project_core_skill_kernel.json`, `scripts/publish_core_skill_receipts.py`, `skills/*/references/core-skill-application-receipt-schema.yaml`, `mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md`, and `examples/session_growth_artifacts/*.wave4.json`
 - promotion, maturity, and release posture: `docs/MATURITY_MODEL.md`, `docs/PROMOTION_PATH.md`, and `docs/RELEASING.md`
 - thin downstream overlays: `docs/OVERLAY_SPEC.md` and `docs/overlays/*`
 
@@ -87,12 +88,13 @@ Authored markdown still owns meaning. Generated catalogs, capsules, portable exp
 
 When project-core kernel receipts carry `surface_detection_context`, that
 payload stays advisory. It may preserve shortlist, ambiguity, and closeout-link
-truth for second-wave surface detection, but it does not let `aoa-skills`
+truth for follow-up surface detection, but it does not let `aoa-skills`
 claim non-skill activation authority.
 
 ## Repository layout
 
 - `skills/` for canonical skill bundles and deterministic support resources
+- `mechanics/` for owner-local skill-layer movement surfaces around AoA mechanics
 - `.agents/skills/` for the generated Codex-facing export layer
 - `config/` for portable export, policy, and profile inputs
 - `generated/` for derived catalogs, capsules, walkthroughs, evaluation matrices, and runtime manifests
