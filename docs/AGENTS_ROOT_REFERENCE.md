@@ -89,11 +89,11 @@ control plane.
 Before making changes, read in this order:
 
 1. `README.md`
-2. `ROADMAP.md`
+2. `mechanics/ROADMAP.md`
 3. `docs/ARCHITECTURE.md`
-4. `docs/BRIDGE_SPEC.md`
-5. `docs/LAYER_POSITION.md`
-6. `docs/RUNTIME_PATH.md`
+4. `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
+5. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+6. `mechanics/release-support/docs/RUNTIME_PATH.md`
 7. the target `skills/*/SKILL.md`
 8. any generated surfaces directly affected by the task
 
@@ -109,19 +109,19 @@ Then branch by task:
   `mechanics/rpg/parts/ability-reader-boundary/README.md` and
   `mechanics/rpg/parts/loadout-posture/README.md`
 - quest carry-forward or quest dispatch:
-  `QUESTBOOK.md` and
+  `mechanics/questbook/QUESTBOOK.md` and
   `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`
 - portable export, component refresh, adapter, or runtime seams:
-  `docs/CODEX_PORTABLE_LAYER.md`,
-  `docs/COMPONENT_REFRESH_LAW.md`,
-  `docs/LOCAL_ADAPTER_CONTRACT.md`,
-  `docs/RUNTIME_TOOL_CONTRACTS.md`, and
-  `docs/OPENAI_SKILL_EXTENSIONS.md`, and
-  `docs/CODEX_SKILL_MCP_WIRING.md`
+  `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`,
+  `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`,
+  `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`,
+  `mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`, and
+  `mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md`, and
+  `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md`
 - deterministic resources, tiny-router bridge, or support bundles:
-  `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`,
-  `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and
-  `docs/TWO_STAGE_SKILL_SELECTION.md`
+  `mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md`,
+  `mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and
+  `mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md`
 
 If the task touches technique dependencies, inspect the upstream technique
 bundles before editing.
@@ -136,7 +136,7 @@ The most important objects in this repository are:
 - dependency and policy inputs under `skills/*/techniques.yaml` and `config/`
 - deterministic support resources under `skills/*/{scripts,references,assets}`
 - generated catalogs, capsules, walkthroughs, evaluation matrices, ability-card surfaces, quest surfaces, export surfaces, and bridge manifests under `generated/` and `.agents/skills/`
-- architecture, runtime, portable-layer, orchestration, and reader-surface docs under `docs/`
+- architecture, runtime, portable-layer, orchestration, and reader-surface docs under `docs/` and `mechanics/`
 
 ## Hard NO
 
@@ -242,7 +242,7 @@ Do not claim checks you did not run.
 
 ## Audit contract
 
-For repository audits and GitHub review, read `AUDIT.md` after the core docs.
+For repository audits and GitHub review, read `mechanics/audit/docs/AUDIT_CONTRACT.md` after the core docs.
 
 ## Review guidelines
 

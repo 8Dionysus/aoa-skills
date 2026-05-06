@@ -11,7 +11,7 @@ Review checklist for the `atm10` source-of-truth overlay.
 
 ## Review checklist
 
-- [ ] confirm `docs/overlays/atm10/REVIEW.md` still describes the same family posture
+- [ ] confirm `mechanics/boundary-bridge/overlays/atm10/REVIEW.md` still describes the same family posture
 - [ ] confirm authoritative repo-relative docs are named explicitly
 - [ ] confirm the base `aoa-source-of-truth-check` meaning is unchanged
 - [ ] confirm local review posture remains visible rather than implied

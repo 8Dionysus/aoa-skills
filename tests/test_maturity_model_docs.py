@@ -8,7 +8,9 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILL_SCHEMA_PATH = REPO_ROOT / "schemas" / "skill-frontmatter.schema.json"
 SKILL_INDEX_PATH = REPO_ROOT / "SKILL_INDEX.md"
-MATURITY_MODEL_PATH = REPO_ROOT / "docs" / "MATURITY_MODEL.md"
+MATURITY_MODEL_PATH = (
+    REPO_ROOT / "mechanics" / "method-growth" / "docs" / "MATURITY_MODEL.md"
+)
 
 
 class MaturityModelDocsTests(unittest.TestCase):

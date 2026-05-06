@@ -18,7 +18,7 @@ skill beacon or repeated observation
 - Manifest and hook surfaces remain owner-local config sources.
 - Generated activation evidence remains a readout.
 - Agon recurrence remains inside `mechanics/agon/`.
-- Component refresh law stays in flat docs for now because it spans
+- Component refresh law stays in `mechanics/release-support/` because it spans
   release-support and downstream bridge pressure.
 
 ## Boundaries
@@ -31,5 +31,5 @@ skill beacon or repeated observation
 
 ## Current hold
 
-Do not move recurrence manifests, hook bindings, `docs/COMPONENT_REFRESH_LAW.md`,
+Do not move recurrence manifests, hook bindings, `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`,
 or Agon recurrence surfaces in this slice.

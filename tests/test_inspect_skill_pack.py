@@ -266,7 +266,7 @@ class InspectSkillPackTests(unittest.TestCase):
                             ],
                             "release_identity": {
                                 "changelog": "CHANGELOG.md",
-                                "releasing_doc": "docs/RELEASING.md",
+                                "releasing_doc": "mechanics/release-support/docs/RELEASING.md",
                             },
                             "file_digests": [
                                 {

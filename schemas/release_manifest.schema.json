@@ -129,7 +129,7 @@
       ],
       "properties": {
         "changelog": { "type": "string", "const": "CHANGELOG.md" },
-        "releasing_doc": { "type": "string", "const": "docs/RELEASING.md" },
+        "releasing_doc": { "type": "string", "const": "mechanics/release-support/docs/RELEASING.md" },
         "latest_tagged_version": {
           "type": "string",
           "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"

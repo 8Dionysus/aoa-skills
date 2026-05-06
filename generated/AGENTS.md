@@ -14,9 +14,9 @@ Before touching anything in `generated/`, read in this order:
 
 1. `../AGENTS.md`
 2. `../README.md`
-3. `../docs/RUNTIME_PATH.md`
-4. `../docs/EVALUATION_PATH.md`
-5. `../docs/PUBLIC_SURFACE.md`
+3. `../mechanics/release-support/docs/RUNTIME_PATH.md`
+4. `../mechanics/audit/docs/EVALUATION_PATH.md`
+5. `../mechanics/audit/docs/PUBLIC_SURFACE.md`
 6. the generator entrypoint in `../scripts/build_catalog.py`
 7. the authored source surface that actually owns the meaning you are trying to change
 

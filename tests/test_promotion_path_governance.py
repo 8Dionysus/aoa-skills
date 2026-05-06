@@ -9,7 +9,9 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = REPO_ROOT / "skills"
 DOCS_README_PATH = REPO_ROOT / "docs" / "README.md"
-PROMOTION_PATH = REPO_ROOT / "docs" / "PROMOTION_PATH.md"
+PROMOTION_PATH = (
+    REPO_ROOT / "mechanics" / "method-growth" / "docs" / "PROMOTION_PATH.md"
+)
 STATUS_PROMOTION_DIR = REPO_ROOT / "docs" / "reviews" / "status-promotions"
 CANONICAL_REVIEW_DIR = REPO_ROOT / "docs" / "reviews" / "canonical-candidates"
 

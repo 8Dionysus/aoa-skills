@@ -14,14 +14,14 @@ Use the shortest route by need:
 
 - first starter bundle: `skills/aoa-change-protocol/SKILL.md`
 - current skill surface: `SKILL_INDEX.md`
-- current direction: `ROADMAP.md`
-- runtime path: `docs/RUNTIME_PATH.md`
+- current direction: `mechanics/ROADMAP.md`
+- runtime path: `mechanics/release-support/docs/RUNTIME_PATH.md`
 - orchestration and closeout path: `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
-- evaluation path: `docs/EVALUATION_PATH.md`
-- public status and governance: `docs/PUBLIC_SURFACE.md`
+- evaluation path: `mechanics/audit/docs/EVALUATION_PATH.md`
+- public status and governance: `mechanics/audit/docs/PUBLIC_SURFACE.md`
 - verify current repo state: `python scripts/build_catalog.py --check`, `python scripts/validate_skills.py --fail-on-review-truth-sync`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift`, `python scripts/validate_agent_skills.py --repo-root .`, `python scripts/validate_support_resources.py --repo-root . --check-portable`, `python scripts/validate_tiny_router_inputs.py --repo-root .`, and `python -m pytest -q tests`
 - docs map: `docs/README.md`
-- layer position and boundaries: `docs/LAYER_POSITION.md`
+- layer position and boundaries: `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
 
 ## Route by need
 
@@ -38,15 +38,15 @@ Use the shortest route by need:
 - checkpoint-to-closeout bridge orchestration: `skills/aoa-checkpoint-closeout-bridge/SKILL.md`, `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, and `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
 - ability-reader and loadout surfaces: `mechanics/rpg/parts/ability-reader-boundary/README.md`, `mechanics/rpg/parts/loadout-posture/README.md`, and `generated/skill_ability_cards.min.example.json`
 - evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
-- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
-- portable export, component refresh law, and local runtime seams: `docs/CODEX_PORTABLE_LAYER.md`, `docs/COMPONENT_REFRESH_LAW.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`, `docs/OPENAI_SKILL_EXTENSIONS.md`, `docs/CODEX_SKILL_MCP_WIRING.md`, `docs/RUNTIME_SEAM_SECOND_PATH.md`, `docs/RUNTIME_TOOL_CONTRACTS.md`, `docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
+- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `mechanics/questbook/QUESTBOOK.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
+- portable export, component refresh law, and local runtime seams: `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`, `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`, `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`, `mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md`, `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md`, `mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md`, `mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`, `mechanics/release-support/docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
 - named MCP dependency scaffolds and workspace-alignment checks: `examples/skill_mcp_wiring.map.json`, `examples/openai.*.example.yaml`, `scripts/build_openai_yaml_examples.py`, and `scripts/validate_skill_mcp_wiring.py`
-- install, trust, config, and UI surfaces: `docs/INSTALL_AND_PROFILES.md`, `docs/CONTEXT_RETENTION.md`, `docs/UI_METADATA_AND_ASSETS.md`, `docs/CODEX_CONFIG_SNIPPETS.md`, `docs/TRUST_GATE_AND_ALLOWLIST.md`, `docs/SKILL_CONTEXT_GUARD.md`, and `docs/RUNTIME_GOVERNANCE_LAYER.md`
-- activation quality and conformance: `docs/TRIGGER_EVALS.md`, `mechanics/antifragility/parts/collision-stress-program/README.md`, `docs/DESCRIPTION_TRIGGER_EVALS.md`, and `docs/SKILLS_REF_VALIDATION.md`
-- deterministic resources and downstream tiny-router bridge: `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`, `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `docs/TWO_STAGE_SKILL_SELECTION.md`
+- install, trust, config, and UI surfaces: `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`, `mechanics/release-support/docs/CONTEXT_RETENTION.md`, `mechanics/release-support/docs/UI_METADATA_AND_ASSETS.md`, `mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md`, `mechanics/release-support/docs/TRUST_GATE_AND_ALLOWLIST.md`, `mechanics/release-support/docs/SKILL_CONTEXT_GUARD.md`, and `mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md`
+- activation quality and conformance: `mechanics/audit/docs/TRIGGER_EVALS.md`, `mechanics/antifragility/parts/collision-stress-program/README.md`, `mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md`, and `mechanics/audit/docs/SKILLS_REF_VALIDATION.md`
+- deterministic resources and downstream tiny-router bridge: `mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md`, `mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md`
 - project-core kernel receipts, maturity guidance, and bounded follow-up surface context: `config/project_core_skill_kernel.json`, `scripts/publish_core_skill_receipts.py`, `skills/*/references/core-skill-application-receipt-schema.yaml`, `mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md`, and `examples/session_growth_artifacts/*.wave4.json`
-- promotion, maturity, and release posture: `docs/MATURITY_MODEL.md`, `docs/PROMOTION_PATH.md`, and `docs/RELEASING.md`
-- thin downstream overlays: `docs/OVERLAY_SPEC.md` and `docs/overlays/*`
+- promotion, maturity, and release posture: `mechanics/method-growth/docs/MATURITY_MODEL.md`, `mechanics/method-growth/docs/PROMOTION_PATH.md`, and `mechanics/release-support/docs/RELEASING.md`
+- thin downstream overlays: `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` and `mechanics/boundary-bridge/overlays/*`
 
 ## What belongs here
 

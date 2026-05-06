@@ -5,8 +5,8 @@
   "description": "Skill bundle canon, activation quality, applicability maps, and harvest-pressure surfaces.",
   "source_inputs": [
     "skills/**/*.md",
-    "docs/TRIGGER_EVALS.md",
-    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "mechanics/audit/docs/TRIGGER_EVALS.md",
+    "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
     "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
     "templates/SKILL_APPLICABILITY_MAP.template.md",
     "templates/SESSION_CANDIDATE_HARVEST.template.md"
@@ -21,8 +21,8 @@
     ".agents/skills/*"
   ],
   "contract_surfaces": [
-    "docs/TRIGGER_EVALS.md",
-    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "mechanics/audit/docs/TRIGGER_EVALS.md",
+    "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
     "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
   ],
   "documentation_surfaces": [
@@ -100,8 +100,8 @@
     "open_window_days": 10
   },
   "rollback_anchors": [
-    "docs/TRIGGER_EVALS.md",
-    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "mechanics/audit/docs/TRIGGER_EVALS.md",
+    "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
     "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
   ],
   "tags": [
@@ -144,7 +144,7 @@
       "input_ref": "trigger-eval-suite",
       "kind": "trigger_eval",
       "path_globs": [
-        "docs/TRIGGER_EVALS.md"
+        "mechanics/audit/docs/TRIGGER_EVALS.md"
       ],
       "notes": "older seed and regression trigger suite"
     },
@@ -211,7 +211,7 @@
     {
       "beacon_ref": "skills.trigger_drift.description_boundary",
       "kind": "skill_trigger_drift",
-      "decision_surface": "docs/TRIGGER_EVALS.md",
+      "decision_surface": "mechanics/audit/docs/TRIGGER_EVALS.md",
       "target_repo": "aoa-skills",
       "observation_inputs": [
         "change_signal",
@@ -291,8 +291,8 @@
   ],
   "decision_surfaces": [
     "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
-    "docs/TRIGGER_EVALS.md",
-    "docs/DESCRIPTION_TRIGGER_EVALS.md",
+    "mechanics/audit/docs/TRIGGER_EVALS.md",
+    "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
     "templates/SESSION_CANDIDATE_HARVEST.template.md"
   ],
   "candidate_targets": [

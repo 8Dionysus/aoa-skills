@@ -11,7 +11,7 @@ name: atm10-change-protocol
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `7b38b337c372`
+- reviewed revision: `7da6f549a807`
 
 ## Target status
 
@@ -25,7 +25,7 @@ name: atm10-change-protocol
 - `skills/atm10-change-protocol/techniques.yaml`
 - `skills/atm10-change-protocol/examples/example.md`
 - `skills/atm10-change-protocol/checks/review.md`
-- `docs/overlays/atm10/REVIEW.md`
+- `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

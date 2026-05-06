@@ -12,7 +12,9 @@ class RoadmapParityTestCase(unittest.TestCase):
     def test_roadmap_matches_current_v0_3_release_surfaces(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
         changelog = (REPO_ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
-        roadmap = (REPO_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
+        roadmap = (REPO_ROOT / "mechanics" / "ROADMAP.md").read_text(
+            encoding="utf-8"
+        )
         runtime_index = json.loads(
             (REPO_ROOT / "generated" / "runtime_discovery_index.json").read_text(
                 encoding="utf-8"
@@ -42,9 +44,9 @@ class RoadmapParityTestCase(unittest.TestCase):
             "mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md",
             "generated/quest_catalog.min.json",
             "generated/quest_dispatch.min.json",
-            "docs/CODEX_SKILL_MCP_WIRING.md",
-            "docs/LOCAL_ADAPTER_CONTRACT.md",
-            "docs/SESSION_COMPACTION.md",
+            "mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md",
+            "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
+            "mechanics/release-support/docs/SESSION_COMPACTION.md",
             "generated/governance_backlog.md",
             "generated/overlay_readiness.md",
             "generated/skill_bundle_index.md",
@@ -60,7 +62,9 @@ class RoadmapParityTestCase(unittest.TestCase):
         self.assertIn("roadmap drift", roadmap)
 
     def test_roadmap_names_agon_companion_bridge_surfaces(self) -> None:
-        roadmap = (REPO_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
+        roadmap = (REPO_ROOT / "mechanics" / "ROADMAP.md").read_text(
+            encoding="utf-8"
+        )
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
 
         for relative_path in (

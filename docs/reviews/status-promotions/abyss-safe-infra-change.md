@@ -25,7 +25,7 @@ name: abyss-safe-infra-change
 - `skills/abyss-safe-infra-change/techniques.yaml`
 - `skills/abyss-safe-infra-change/examples/example.md`
 - `skills/abyss-safe-infra-change/checks/review.md`
-- `docs/overlays/abyss/REVIEW.md`
+- `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

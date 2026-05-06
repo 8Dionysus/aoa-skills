@@ -26,11 +26,11 @@ parent: null
 depends_on: []
 activation:
   mode: on_recurrence
-  ref: docs/BRIDGE_SPEC.md
+  ref: mechanics/boundary-bridge/docs/BRIDGE_SPEC.md
   note: open when the same upstream-merge -> downstream drift detect -> refresh -> review truth-sync route recurs, or when maintainers want an explicit automation-readiness scan after a reviewed closeout
 anchor_ref:
   artifact: bridge-spec
-  ref: docs/BRIDGE_SPEC.md
+  ref: mechanics/boundary-bridge/docs/BRIDGE_SPEC.md
   note: the current manual bridge/drift workflow is the source route that must stay honest before any automation or playbook lift
 handoff_role: skill-layer-maintainer
 evidence:

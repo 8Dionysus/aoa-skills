@@ -39,7 +39,7 @@ recurrence evidence into source truth.
   applicability and closeout routing before recurrence becomes review pressure.
 - `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md` owns durable
   quest-shaped obligations after reviewed evidence survives.
-- `docs/COMPONENT_REFRESH_LAW.md` remains broader release-support and
+- `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` remains broader release-support and
   downstream refresh pressure in this slice.
 
 ## Source Bridge

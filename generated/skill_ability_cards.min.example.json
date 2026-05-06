@@ -44,8 +44,8 @@
       },
       "evidence_refs": [
         "generated/skill_evaluation_matrix.md#aoa-change-protocol",
-        "docs/CODEX_PORTABLE_LAYER.md",
-        "docs/OVERLAY_SPEC.md"
+        "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
+        "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md"
       ],
       "public_safe": true
     },
@@ -92,7 +92,7 @@
       },
       "evidence_refs": [
         "generated/skill_evaluation_matrix.md#aoa-safe-infra-change",
-        "docs/LOCAL_ADAPTER_CONTRACT.md",
+        "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
         "generated/skill_runtime_contracts.json"
       ],
       "public_safe": true

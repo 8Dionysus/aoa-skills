@@ -25,7 +25,7 @@ name: abyss-sanitized-share
 - `skills/abyss-sanitized-share/techniques.yaml`
 - `skills/abyss-sanitized-share/examples/example.md`
 - `skills/abyss-sanitized-share/checks/review.md`
-- `docs/overlays/abyss/REVIEW.md`
+- `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

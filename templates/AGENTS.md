@@ -12,8 +12,8 @@ Before editing a template, read in this order:
 
 1. `../AGENTS.md`
 2. `../docs/REPOSITORY_STRUCTURE.md`
-3. `../docs/BRIDGE_SPEC.md`
-4. `../docs/OVERLAY_SPEC.md` when the template is overlay-related
+3. `../mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
+4. `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` when the template is overlay-related
 5. the live source objects that the template is meant to model
 6. any validator or test that currently checks the same contract
 

@@ -4,11 +4,14 @@
 
 - `README.md` — project entry point
 - `SKILL_INDEX.md` — public map of current skills and their maturity
-- `docs/` — architecture, bridge rules, roadmap, conventions
-- `docs/RUNTIME_PATH.md` — main runtime guide for `pick -> inspect -> expand -> object use`
-- `docs/PUBLIC_SURFACE.md` — public guide to the current governance and product-signaling layer
-- `docs/PROMOTION_PATH.md` — public repository convention for maturity transitions
-- `docs/OVERLAY_SPEC.md` — repo-local contract for thin project overlays and stub-only downstream adaptation
+- `docs/` — architecture, repository layout, review records, governance lanes,
+  and preserved root reference
+- `mechanics/ROADMAP.md` — canonical public roadmap for repository evolution
+- `mechanics/` — owner-local skill-layer movement surfaces around AoA mechanics
+- `mechanics/release-support/docs/RUNTIME_PATH.md` — main runtime guide for `pick -> inspect -> expand -> object use`
+- `mechanics/audit/docs/PUBLIC_SURFACE.md` — public guide to the current governance and product-signaling layer
+- `mechanics/method-growth/docs/PROMOTION_PATH.md` — public repository convention for maturity transitions
+- `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` — repo-local contract for thin project overlays and stub-only downstream adaptation
 - `docs/reviews/` — public review records for candidate and promotion work
 - `docs/reviews/canonical-candidates/` — canonical-candidate review records
 - `docs/reviews/status-promotions/` — review records for non-canonical promotion steps
@@ -19,7 +22,6 @@
 - `.agents/` — generated Codex-facing export layer
 - `config/` — portable export description overrides, optional OpenAI metadata extensions, and wave-3 pack/trust authoring inputs
 - `examples/` — sample Codex config snippets for profile disable and install scenarios
-- `mechanics/` — owner-local skill-layer movement surfaces around AoA mechanics
 - `skills/` — skill bundles
 - `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, wave-4 runtime seam surfaces, wave-8 support-resource manifests, and trigger-eval seed data
 - `scripts/` — optional generation or validation helpers

@@ -25,7 +25,7 @@ task execution
 
 - Checkpoint note protocol lives in `mechanics/checkpoint/`.
 - Reviewed candidate identity lives in `mechanics/method-growth/`.
-- Questbook obligations remain in root `QUESTBOOK.md`.
+- Questbook obligations remain in `mechanics/questbook/QUESTBOOK.md`.
 - Canonical skill execution remains under `skills/`.
 
 ## Current hold

@@ -8,9 +8,9 @@
 ## Читать перед стартом
 - `README.md`
 - `docs/ARCHITECTURE.md`
-- `docs/BRIDGE_SPEC.md`
-- `docs/RUNTIME_PATH.md`
-- `docs/EVALUATION_PATH.md`
+- `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
+- `mechanics/release-support/docs/RUNTIME_PATH.md`
+- `mechanics/audit/docs/EVALUATION_PATH.md`
 - `SKILL_INDEX.md`
 
 ## Форма роя

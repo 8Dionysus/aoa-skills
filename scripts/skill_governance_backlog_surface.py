@@ -36,8 +36,8 @@ DOCS_TRUTH_SYNC = "docs_truth_sync"
 DOCS_TRUTH_PATHS = (
     Path("README.md"),
     Path("docs") / "README.md",
-    Path("ROADMAP.md"),
-    Path("docs") / "MATURITY_MODEL.md",
+    Path("mechanics") / "ROADMAP.md",
+    Path("mechanics") / "method-growth" / "docs" / "MATURITY_MODEL.md",
 )
 STALE_DOC_PHRASES = (
     "13 skills",

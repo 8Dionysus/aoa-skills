@@ -224,25 +224,25 @@
       "truth_synced": true
     },
     {
-      "current_revision": "7b38b337c372",
+      "current_revision": "7da6f549a807",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "atm10-change-protocol",
       "review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
-      "reviewed_revision": "7b38b337c372",
+      "reviewed_revision": "7da6f549a807",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "5a04a9a05082",
+      "current_revision": "b5bf512142eb",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
-      "reviewed_revision": "5a04a9a05082",
+      "reviewed_revision": "b5bf512142eb",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true

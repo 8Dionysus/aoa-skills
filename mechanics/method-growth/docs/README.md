@@ -15,6 +15,10 @@ before opening them.
   owner-status landing after `candidate_ref`.
 - [Governed Followthrough](GOVERNED_FOLLOWTHROUGH.md): one bounded next-step
   verdict after owner-status context exists.
+- [Maturity Model](MATURITY_MODEL.md): status ladder, promotion rules, and
+  canonical-candidate review guidance.
+- [Promotion Path](PROMOTION_PATH.md): public convention for moving skills
+  through the maturity ladder.
 
 ## Boundary
 

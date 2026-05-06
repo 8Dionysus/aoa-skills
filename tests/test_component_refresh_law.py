@@ -32,11 +32,23 @@ class ComponentRefreshLawTests(unittest.TestCase):
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
         docs_readme = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
-        portable = (REPO_ROOT / "docs" / "CODEX_PORTABLE_LAYER.md").read_text(encoding="utf-8")
-        law = (REPO_ROOT / "docs" / "COMPONENT_REFRESH_LAW.md").read_text(encoding="utf-8")
+        portable = (
+            REPO_ROOT
+            / "mechanics"
+            / "release-support"
+            / "docs"
+            / "CODEX_PORTABLE_LAYER.md"
+        ).read_text(encoding="utf-8")
+        law = (
+            REPO_ROOT
+            / "mechanics"
+            / "release-support"
+            / "docs"
+            / "COMPONENT_REFRESH_LAW.md"
+        ).read_text(encoding="utf-8")
 
-        self.assertIn("docs/COMPONENT_REFRESH_LAW.md", readme)
-        self.assertIn("docs/COMPONENT_REFRESH_LAW.md", agents)
+        self.assertIn("mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md", readme)
+        self.assertIn("mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md", agents)
         self.assertIn("COMPONENT_REFRESH_LAW.md", docs_readme)
         self.assertIn("COMPONENT_REFRESH_LAW.md", portable)
 

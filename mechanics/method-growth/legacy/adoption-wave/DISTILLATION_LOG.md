@@ -17,7 +17,7 @@ Decision:
 - distill active behavior into four method-growth parts:
   adoption boundary, adoption evidence receipts, retention/regression/
   retirement, and pattern adoption handoff
-- leave `docs/GOVERNANCE_SKILL_ADOPTION.md` in place because it belongs to the
+- leave `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md` in place because it belongs to the
   later experience/polis-governance contour, not this adoption lifecycle slice
 
 Stop-line:

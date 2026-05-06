@@ -15,7 +15,7 @@ Changed route:
 Preserved stop-lines:
 
 - recurrence manifests and hooks stayed in place
-- `docs/COMPONENT_REFRESH_LAW.md` stayed in the broader release-support lane
+- `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` stayed in the broader release-support lane
 - Agon recurrence stayed under `mechanics/agon/`
 - generated activation evidence stayed advisory
 - no automatic activation, component refresh, proof verdict, memory canon,

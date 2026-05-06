@@ -13,7 +13,7 @@ import yaml
 
 
 OVERLAY_STUBS_DIR = Path("tests") / "fixtures" / "overlay_stubs"
-LIVE_OVERLAYS_DIR = Path("docs") / "overlays"
+LIVE_OVERLAYS_DIR = Path("mechanics") / "boundary-bridge" / "overlays"
 PROJECT_OVERLAY_FILE = "PROJECT_OVERLAY.md"
 LIVE_OVERLAY_REVIEW_FILE = "REVIEW.md"
 PROJECT_OVERLAY_SKILL_FILE = "PROJECT_OVERLAY_SKILL.md"
@@ -57,8 +57,8 @@ OVERLAY_READINESS_SOURCE_OF_TRUTH = {
     "skill_markdown": "skills/*/SKILL.md",
     "runtime_examples": "skills/*/examples/*.md",
     "review_checks": "skills/*/checks/review.md",
-    "overlay_docs": "docs/overlays/*/PROJECT_OVERLAY.md",
-    "overlay_reviews": "docs/overlays/*/REVIEW.md",
+    "overlay_docs": "mechanics/boundary-bridge/overlays/*/PROJECT_OVERLAY.md",
+    "overlay_reviews": "mechanics/boundary-bridge/overlays/*/REVIEW.md",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
 }
 OVERLAY_SKILL_BULLET_PATTERN = re.compile(r"^\s*-\s*`([a-z0-9-]+)`")
@@ -315,7 +315,7 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
             issues.append(
                 OverlayContractIssue(
                     relative_location(overlay_path, repo_root),
-                    f"live overlay family '{family}' is missing docs/overlays/{family}/PROJECT_OVERLAY.md",
+                    f"live overlay family '{family}' is missing mechanics/boundary-bridge/overlays/{family}/PROJECT_OVERLAY.md",
                 )
             )
             continue
@@ -324,7 +324,7 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
             issues.append(
                 OverlayContractIssue(
                     relative_location(review_path, repo_root),
-                    f"live overlay family '{family}' is missing docs/overlays/{family}/REVIEW.md",
+                    f"live overlay family '{family}' is missing mechanics/boundary-bridge/overlays/{family}/REVIEW.md",
                 )
             )
         else:

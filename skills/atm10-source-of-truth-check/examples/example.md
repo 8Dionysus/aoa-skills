@@ -18,7 +18,7 @@ repo-relative guide with a separate local review rule and a visible family revie
 - the overlapping repo-relative docs
 - the local concern under review, such as startup, deployment, or maintenance guidance
 - any local review rule that decides how doc changes are approved
-- the family review doc at `docs/overlays/atm10/REVIEW.md`
+- the family review doc at `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`
 
 ## Expected outputs
 

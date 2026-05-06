@@ -18,7 +18,7 @@ commands, approval posture, and review surface named explicitly before editing.
 - the local files or surfaces under change
 - the smallest repo-relative check, such as `python -m pytest` or `python scripts/[local-check].py`
 - any local approval or review rule that still requires a maintainer decision
-- the family review doc at `docs/overlays/atm10/REVIEW.md`
+- the family review doc at `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`
 
 ## Expected outputs
 

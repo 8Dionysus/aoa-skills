@@ -39,7 +39,7 @@ SKILLS_DIR_NAME = "skills"
 SKILL_INDEX_NAME = "SKILL_INDEX.md"
 SCHEMAS_DIR_NAME = "schemas"
 SKILL_NAME_PATTERN = r"(?:aoa|atm10|abyss|titan)-[a-z0-9-]+"
-LAYER_POSITION_DOC = Path("docs") / "LAYER_POSITION.md"
+LAYER_POSITION_DOC = Path("mechanics") / "boundary-bridge" / "docs" / "LAYER_POSITION.md"
 README_PATH = Path("README.md")
 DOCS_README_PATH = Path("docs") / "README.md"
 STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
@@ -57,7 +57,7 @@ GENERATED_SURFACE_SCHEMA_BY_PATH = {
     build_catalog.BUNDLE_INDEX_JSON_PATH: "skill_bundle_index.schema.json",
     build_catalog.SKILL_GRAPH_JSON_PATH: "skill_graph.schema.json",
 }
-QUESTBOOK_PATH = Path("QUESTBOOK.md")
+QUESTBOOK_PATH = Path("mechanics/questbook/QUESTBOOK.md")
 QUESTBOOK_INTEGRATION_PATH = (
     Path("mechanics") / "questbook" / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md"
 )
@@ -81,12 +81,12 @@ QUESTBOOK_REQUIRED_INTEGRATION_TOKENS = (
     "generated/public_surface.md",
     "generated/governance_backlog.md",
     "generated/skill_evaluation_matrix.md",
-    "docs/RUNTIME_PATH.md",
-    "docs/EVALUATION_PATH.md",
-    "docs/CODEX_PORTABLE_LAYER.md",
-    "docs/LOCAL_ADAPTER_CONTRACT.md",
-    "docs/OVERLAY_SPEC.md",
-    "docs/TWO_STAGE_SKILL_SELECTION.md",
+    "mechanics/release-support/docs/RUNTIME_PATH.md",
+    "mechanics/audit/docs/EVALUATION_PATH.md",
+    "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
+    "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
+    "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md",
+    "mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md",
     "hidden second source of truth",
 )
 QUEST_SCHEMA_REQUIRED_FIELDS = (
@@ -126,7 +126,7 @@ QUEST_DISPATCH_REQUIRED_FIELDS = (
     "public_safe",
 )
 QUESTBOOK_FORBIDDEN_ANCHORS = (
-    "docs/overlays/atm10/PROJECT_OVERLAY.md",
+    "mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md",
     "ATM10-Agent",
 )
 
@@ -390,18 +390,18 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
         if quest_id == "AOA-SK-Q-0004":
             activation = payload.get("activation")
             anchor_ref = payload.get("anchor_ref")
-            if not isinstance(activation, dict) or activation.get("ref") != "docs/OVERLAY_SPEC.md":
+            if not isinstance(activation, dict) or activation.get("ref") != "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md":
                 issues.append(
                     ValidationIssue(
                         location,
-                        "AOA-SK-Q-0004 must keep activation.ref 'docs/OVERLAY_SPEC.md'",
+                        "AOA-SK-Q-0004 must keep activation.ref 'mechanics/boundary-bridge/docs/OVERLAY_SPEC.md'",
                     )
                 )
-            if not isinstance(anchor_ref, dict) or anchor_ref.get("ref") != "docs/OVERLAY_SPEC.md":
+            if not isinstance(anchor_ref, dict) or anchor_ref.get("ref") != "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md":
                 issues.append(
                     ValidationIssue(
                         location,
-                        "AOA-SK-Q-0004 must keep anchor_ref.ref 'docs/OVERLAY_SPEC.md'",
+                        "AOA-SK-Q-0004 must keep anchor_ref.ref 'mechanics/boundary-bridge/docs/OVERLAY_SPEC.md'",
                     )
                 )
         for token in QUESTBOOK_FORBIDDEN_ANCHORS:
@@ -1654,11 +1654,11 @@ def validate_repo_doc_entrypoints(repo_root: Path) -> list[ValidationIssue]:
 
     if readme_exists:
         readme_text = readme_path.read_text(encoding="utf-8")
-        if "docs/LAYER_POSITION.md" not in readme_text:
+        if "mechanics/boundary-bridge/docs/LAYER_POSITION.md" not in readme_text:
             issues.append(
                 ValidationIssue(
                     relative_location(readme_path),
-                    "README.md must link to docs/LAYER_POSITION.md from the public entrypoint",
+                    "README.md must link to mechanics/boundary-bridge/docs/LAYER_POSITION.md from the public entrypoint",
                 )
             )
 

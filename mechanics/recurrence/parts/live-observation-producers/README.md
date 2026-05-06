@@ -30,7 +30,7 @@ authority.
 
 ## Next Route
 
-Route trigger gaps to `docs/TRIGGER_EVALS.md` or
-`docs/DESCRIPTION_TRIGGER_EVALS.md`. Route applicability and closeout pressure
+Route trigger gaps to `mechanics/audit/docs/TRIGGER_EVALS.md` or
+`mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md`. Route applicability and closeout pressure
 to `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`. Route durable
 quest-shaped obligations to `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`.

@@ -118,8 +118,8 @@ Prefer:
 - or 1 focused refresh to an existing skill
 - or 1 clear repository-level docs or template improvement
 
-Promotion or maturity-changing PRs should also align with `docs/MATURITY_MODEL.md`
-and `docs/PROMOTION_PATH.md`, and make the supporting evidence explicit.
+Promotion or maturity-changing PRs should also align with `mechanics/method-growth/docs/MATURITY_MODEL.md`
+and `mechanics/method-growth/docs/PROMOTION_PATH.md`, and make the supporting evidence explicit.
 
 ## Recommended PR title format
 
@@ -146,7 +146,7 @@ PRs are reviewed for:
 ## Maturity and promotion
 
 Status changes are governance changes, not cosmetic relabeling.
-The repository-level promotion path lives in `docs/PROMOTION_PATH.md`.
+The repository-level promotion path lives in `mechanics/method-growth/docs/PROMOTION_PATH.md`.
 
 When proposing a promotion step:
 - state the current and target maturity status
@@ -178,7 +178,7 @@ A good PR should make it clear:
 - whether the skill meaning changed
 - whether only metadata changed
 - whether project overlays also require updates
-- whether the change belongs in `docs/OVERLAY_SPEC.md` as a repo-local overlay contract clarification or in a live exemplar skill bundle
+- whether the change belongs in `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` as a repo-local overlay contract clarification or in a live exemplar skill bundle
 - whether `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, or trigger-eval seed data changed
 
 If you think a richer integration would need another repository, leave a local stub or TODO note instead of adding live cross-repo behavior in this repository wave.

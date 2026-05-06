@@ -46,8 +46,8 @@ Changed route:
   package-local legacy
 - distilled active behavior into adoption boundary, adoption evidence receipts,
   retention/regression/retirement, and pattern adoption handoff parts
-- kept governance v0.8 in flat `docs/` for a later experience or governance
-  pass
+- kept governance v0.8 out of the method-growth slice; the relevant
+  governance and experience surfaces now route through `mechanics/experience/`
 
 Preserved stop-lines:
 
