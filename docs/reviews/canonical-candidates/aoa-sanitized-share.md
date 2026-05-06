@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-sanitized-share/SKILL.md`
-- `skills/aoa-sanitized-share/techniques.yaml`
-- `skills/aoa-sanitized-share/checks/review.md`
-- `skills/aoa-sanitized-share/agents/openai.yaml`
+- `skills/risk/aoa-sanitized-share/SKILL.md`
+- `skills/risk/aoa-sanitized-share/techniques.yaml`
+- `skills/risk/aoa-sanitized-share/checks/review.md`
+- `skills/risk/aoa-sanitized-share/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

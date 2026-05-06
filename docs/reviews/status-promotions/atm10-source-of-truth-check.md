@@ -11,7 +11,7 @@ name: atm10-source-of-truth-check
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `b5bf512142eb`
+- reviewed revision: `902b2bdcd7ba`
 
 ## Target status
 
@@ -21,10 +21,10 @@ name: atm10-source-of-truth-check
 
 ## Evidence reviewed
 
-- `skills/atm10-source-of-truth-check/SKILL.md`
-- `skills/atm10-source-of-truth-check/techniques.yaml`
-- `skills/atm10-source-of-truth-check/examples/example.md`
-- `skills/atm10-source-of-truth-check/checks/review.md`
+- `skills/project/atm10/atm10-source-of-truth-check/SKILL.md`
+- `skills/project/atm10/atm10-source-of-truth-check/techniques.yaml`
+- `skills/project/atm10/atm10-source-of-truth-check/examples/example.md`
+- `skills/project/atm10/atm10-source-of-truth-check/checks/review.md`
 - `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 

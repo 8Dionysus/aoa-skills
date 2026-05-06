@@ -62,7 +62,7 @@ What landed:
 The landing gives `aoa-skills` an owner-local candidate identity, owner-status,
 followthrough, and adoption route for skill-shaped work. It does not make the
 AoA center the source of final skill truth, and it does not promote any
-candidate into a canonical `skills/*/SKILL.md` bundle by itself.
+candidate into a canonical `skills/**/SKILL.md` bundle by itself.
 
 Validation evidence:
 
@@ -80,7 +80,7 @@ What is accepted:
 - `aoa-skills` accepts the need for bounded workflows that turn reviewed
   artifacts or packets into reusable outputs without forcing promotion.
 - The closest landed evidence is the session-growth family, especially
-  `skills/aoa-session-donor-harvest/SKILL.md`, plus route-fork, diagnosis,
+  `skills/core/session-growth/aoa-session-donor-harvest/SKILL.md`, plus route-fork, diagnosis,
   repair, progression, automation, and quest-harvest companions.
 - `mechanics/README.md` keeps `distillation` as future package pressure until a
   dedicated active route or narrower superseding request lands.
@@ -100,13 +100,13 @@ Owner-local status: `landed`
 
 What landed:
 
-- `skills/aoa-session-donor-harvest/SKILL.md`
-- `skills/aoa-session-progression-lift/SKILL.md`
-- `skills/aoa-session-route-forks/SKILL.md`
-- `skills/aoa-automation-opportunity-scan/SKILL.md`
-- `skills/aoa-session-self-diagnose/SKILL.md`
-- `skills/aoa-session-self-repair/SKILL.md`
-- `skills/aoa-quest-harvest/SKILL.md`
+- `skills/core/session-growth/aoa-session-donor-harvest/SKILL.md`
+- `skills/core/session-growth/aoa-session-progression-lift/SKILL.md`
+- `skills/core/session-growth/aoa-session-route-forks/SKILL.md`
+- `skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md`
+- `skills/core/session-growth/aoa-session-self-diagnose/SKILL.md`
+- `skills/core/session-growth/aoa-session-self-repair/SKILL.md`
+- `skills/core/session-growth/aoa-quest-harvest/SKILL.md`
 - `mechanics/growth-cycle/README.md`
 - `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
 - `mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md`
@@ -131,7 +131,7 @@ Owner-local status: `landed`
 
 What landed:
 
-- `skills/aoa-checkpoint-closeout-bridge/SKILL.md`
+- `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`
 - `mechanics/checkpoint/README.md`
 - `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
 - `mechanics/checkpoint/parts/checkpoint-note-lane/README.md`
@@ -209,7 +209,7 @@ What is accepted:
 - `aoa-skills` accepts the owner-local need for bounded executable audit
   workflows with triggers, procedures, risks, and verification boundaries.
 - Existing audit-adjacent evidence includes
-  `skills/aoa-invariant-coverage-audit/SKILL.md`, evaluation-path docs,
+  `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`, evaluation-path docs,
   public-surface docs, maturity docs, promotion docs, trigger-eval docs, and
   governance backlog readouts.
 - `mechanics/README.md` keeps `audit` as future package pressure.

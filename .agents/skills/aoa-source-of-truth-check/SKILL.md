@@ -7,7 +7,7 @@ metadata:
   aoa_scope: core
   aoa_status: canonical
   aoa_invocation_mode: explicit-preferred
-  aoa_source_skill_path: skills/aoa-source-of-truth-check/SKILL.md
+  aoa_source_skill_path: skills/core/engineering/aoa-source-of-truth-check/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0013,AOA-T-0002,AOA-T-0009
   aoa_portable_profile: codex-facing-wave-3

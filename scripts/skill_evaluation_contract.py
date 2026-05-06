@@ -8,6 +8,7 @@ import yaml
 
 import skill_artifact_contract
 import skill_catalog_contract
+import skill_layout
 
 
 EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.yaml"
@@ -163,10 +164,10 @@ def trigger_cases(fixtures: Mapping[str, Any] | None) -> list[Mapping[str, Any]]
 
 
 def discover_skill_names(repo_root: Path) -> list[str]:
-    skills_dir = repo_root / "skills"
-    if not skills_dir.is_dir():
+    try:
+        return skill_layout.discover_skill_names(repo_root)
+    except FileNotFoundError:
         return []
-    return sorted(path.name for path in skills_dir.iterdir() if path.is_dir())
 
 
 def fixture_location_with_case(index: int, field_name: str | None = None) -> str:

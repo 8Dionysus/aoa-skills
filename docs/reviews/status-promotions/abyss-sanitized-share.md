@@ -11,7 +11,7 @@ name: abyss-sanitized-share
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `ece4e85825d5`
+- reviewed revision: `4a6daab9622e`
 
 ## Target status
 
@@ -21,10 +21,10 @@ name: abyss-sanitized-share
 
 ## Evidence reviewed
 
-- `skills/abyss-sanitized-share/SKILL.md`
-- `skills/abyss-sanitized-share/techniques.yaml`
-- `skills/abyss-sanitized-share/examples/example.md`
-- `skills/abyss-sanitized-share/checks/review.md`
+- `skills/project/abyss/abyss-sanitized-share/SKILL.md`
+- `skills/project/abyss/abyss-sanitized-share/techniques.yaml`
+- `skills/project/abyss/abyss-sanitized-share/examples/example.md`
+- `skills/project/abyss/abyss-sanitized-share/checks/review.md`
 - `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 

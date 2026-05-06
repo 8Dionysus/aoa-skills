@@ -7,7 +7,7 @@ metadata:
   aoa_scope: project
   aoa_status: scaffold
   aoa_invocation_mode: explicit-only
-  aoa_source_skill_path: skills/titan-summon/SKILL.md
+  aoa_source_skill_path: skills/project/titan/titan-summon/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE
   aoa_portable_profile: codex-facing-wave-3

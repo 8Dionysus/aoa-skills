@@ -3,7 +3,7 @@
   "profile": "codex-facing-wave-8-support-bundles",
   "skills": {
     "aoa-safe-infra-change": {
-      "canonical_root": "skills/aoa-safe-infra-change",
+      "canonical_root": "skills/risk/aoa-safe-infra-change",
       "legacy_support_dirs": {
         "agents": [
           "openai.yaml"
@@ -31,7 +31,7 @@
       }
     },
     "aoa-local-stack-bringup": {
-      "canonical_root": "skills/aoa-local-stack-bringup",
+      "canonical_root": "skills/risk/aoa-local-stack-bringup",
       "legacy_support_dirs": {
         "agents": [
           "openai.yaml"
@@ -59,7 +59,7 @@
       }
     },
     "aoa-dry-run-first": {
-      "canonical_root": "skills/aoa-dry-run-first",
+      "canonical_root": "skills/risk/aoa-dry-run-first",
       "legacy_support_dirs": {
         "agents": [
           "openai.yaml"

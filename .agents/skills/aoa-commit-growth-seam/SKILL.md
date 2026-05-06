@@ -7,7 +7,7 @@ metadata:
   aoa_scope: core
   aoa_status: scaffold
   aoa_invocation_mode: explicit-only
-  aoa_source_skill_path: skills/aoa-commit-growth-seam/SKILL.md
+  aoa_source_skill_path: skills/core/session-growth/aoa-commit-growth-seam/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-0001,AOA-T-0028
   aoa_portable_profile: codex-facing-wave-3

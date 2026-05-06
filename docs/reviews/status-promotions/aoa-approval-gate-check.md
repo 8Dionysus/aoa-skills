@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `risk`
 - current lineage: `published`
-- reviewed revision: `9779fde8cb33`
+- reviewed revision: `aaf152665bb6`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-approval-gate-check/SKILL.md`
-- `skills/aoa-approval-gate-check/techniques.yaml`
-- `skills/aoa-approval-gate-check/checks/review.md`
+- `skills/risk/aoa-approval-gate-check/SKILL.md`
+- `skills/risk/aoa-approval-gate-check/techniques.yaml`
+- `skills/risk/aoa-approval-gate-check/checks/review.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

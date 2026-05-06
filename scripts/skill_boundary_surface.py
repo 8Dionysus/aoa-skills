@@ -14,8 +14,8 @@ BOUNDARY_MATRIX_VERSION = 2
 BOUNDARY_MATRIX_JSON_PATH = Path("generated") / "skill_boundary_matrix.json"
 BOUNDARY_MATRIX_MARKDOWN_PATH = Path("generated") / "skill_boundary_matrix.md"
 BOUNDARY_MATRIX_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml",
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml",
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
     "evaluation_snapshots": "tests/fixtures/skill_evaluation_snapshots/*/*.md",
     "governance_lanes": skill_governance_lane_contract.GOVERNANCE_LANES_PATH.as_posix(),

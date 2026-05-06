@@ -3,7 +3,7 @@ id: AOA-SK-Q-0007
 title: Carry checkpoint closeout bridge follow-through into bounded workflow upkeep
 summary: Track the reviewed closeout evidence that now points from the checkpoint closeout bridge into explicit self-diagnose and owner-follow-through, without turning the bridge into hidden runtime authority or widening aoa closeout run.
 repo: aoa-skills
-owner_surface: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+owner_surface: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
 theme_ref: ''
 milestone_ref: ''
 kind: seam
@@ -27,11 +27,11 @@ depends_on:
   - AOA-SK-Q-0006
 activation:
   mode: on_review_of
-  ref: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+  ref: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
   note: open when reviewed closeout proves the bridge is working but leaves bounded workflow follow-through or self-diagnose upkeep to the skill layer
 anchor_ref:
   artifact: checkpoint_closeout_bridge
-  ref: skills/aoa-checkpoint-closeout-bridge/SKILL.md
+  ref: skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md
   note: the bridge must remain explicit, reviewed-closeout only, and downstream from checkpoint collection
 handoff_role: skill-maintainer
 evidence:

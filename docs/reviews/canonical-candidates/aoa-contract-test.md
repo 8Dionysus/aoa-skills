@@ -19,9 +19,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-contract-test/SKILL.md`
-- `skills/aoa-contract-test/techniques.yaml`
-- `skills/aoa-contract-test/examples/example.md`
+- `skills/core/engineering/aoa-contract-test/SKILL.md`
+- `skills/core/engineering/aoa-contract-test/techniques.yaml`
+- `skills/core/engineering/aoa-contract-test/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

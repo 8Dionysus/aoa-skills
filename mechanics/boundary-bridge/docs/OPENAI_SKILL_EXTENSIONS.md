@@ -17,11 +17,11 @@ Keep canonical routing and risk posture elsewhere:
 - trigger text stays in `config/portable_skill_overrides.json`
 - invocation policy stays derived from canonical invocation mode
 - pack/profile and trust posture stay in `config/skill_pack_profiles.json` and `config/skill_policy_matrix.json`
-- canonical authoring still lives in `skills/*/SKILL.md` and the generated AoA catalogs
+- canonical authoring still lives in `skills/**/SKILL.md` and the generated AoA catalogs
 
 For named MCP dependency wiring in this repository:
 
-- keep `skills/*/agents/openai.yaml` policy-only
+- keep `skills/**/agents/openai.yaml` policy-only
 - author generated-export MCP dependencies here
 - rebuild `.agents/skills/*/agents/openai.yaml` through `scripts/build_agent_skills.py`
 - use `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md` for the workspace-facing discipline and example route families

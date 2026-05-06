@@ -94,7 +94,7 @@ Before making changes, read in this order:
 4. `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
 5. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
 6. `mechanics/release-support/docs/RUNTIME_PATH.md`
-7. the target `skills/*/SKILL.md`
+7. the target `skills/**/SKILL.md`
 8. any generated surfaces directly affected by the task
 
 Then branch by task:
@@ -132,9 +132,9 @@ If a deeper directory defines its own `AGENTS.md`, follow the nearest one.
 
 The most important objects in this repository are:
 
-- canonical skill bundles under `skills/*/SKILL.md`
-- dependency and policy inputs under `skills/*/techniques.yaml` and `config/`
-- deterministic support resources under `skills/*/{scripts,references,assets}`
+- canonical skill bundles under `skills/**/SKILL.md`
+- dependency and policy inputs under `skills/**/techniques.yaml` and `config/`
+- deterministic support resources under `skills/**/{scripts,references,assets}`
 - generated catalogs, capsules, walkthroughs, evaluation matrices, ability-card surfaces, quest surfaces, export surfaces, and bridge manifests under `generated/` and `.agents/skills/`
 - architecture, runtime, portable-layer, orchestration, and reader-surface docs under `docs/` and `mechanics/`
 
@@ -149,14 +149,14 @@ Do not:
 - collapse scenario-level playbooks into the skill layer
 - let ability cards or loadouts become canonical skill truth
 - let quest surfaces become live quest state, campaign authority, or a hidden runtime ledger
-- move full Codex-facing interface or named MCP dependency metadata into source `skills/*/agents/openai.yaml`; keep that file policy-only and route generated-export metadata through `config/openai_skill_extensions.json`
+- move full Codex-facing interface or named MCP dependency metadata into source `skills/**/agents/openai.yaml`; keep that file policy-only and route generated-export metadata through `config/openai_skill_extensions.json`
 - commit secrets, tokens, internal-only URLs, or sensitive infrastructure detail
 - hide destructive workflows behind vague trigger boundaries
 - silently widen scope beyond the stated task
 
 Do not hand-edit `.agents/skills/*` unless the task is explicitly about export
 debugging.
-Canonical authoring remains in `skills/*`, `config/`, and the documented
+Canonical authoring remains in `skills/**`, `config/`, and the documented
 generated manifests.
 
 ## Contribution doctrine

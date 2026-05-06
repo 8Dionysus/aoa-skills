@@ -6,7 +6,7 @@
 
 Prefer deterministic, repo-relative behavior. Scripts should not depend on hidden network state, private workspace paths, or ambient credentials unless the command explicitly documents that dependency.
 
-When changing builders, preserve authored-source ownership: `skills/*/SKILL.md`, `techniques.yaml`, and support resources own meaning; generated catalogs, portable exports, tiny-router inputs, and reports summarize it.
+When changing builders, preserve authored-source ownership: `skills/**/SKILL.md`, `techniques.yaml`, and support resources own meaning; generated catalogs, portable exports, tiny-router inputs, and reports summarize it.
 
 When changing validators, keep failure messages actionable and tied to concrete files. Do not weaken validation to pass a broken corpus.
 

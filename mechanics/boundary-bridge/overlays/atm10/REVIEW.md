@@ -7,14 +7,14 @@
 - evaluated skills: `atm10-change-protocol`, `atm10-source-of-truth-check`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
-- family review surface: `mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md`, `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`, `skills/atm10-change-protocol/checks/review.md`, `skills/atm10-source-of-truth-check/checks/review.md`
+- family review surface: `mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md`, `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`, `skills/project/atm10/atm10-change-protocol/checks/review.md`, `skills/project/atm10/atm10-source-of-truth-check/checks/review.md`
 
 ## Evidence reviewed
 
 - `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`
 - `mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md`
-- `skills/atm10-change-protocol/SKILL.md`
-- `skills/atm10-source-of-truth-check/SKILL.md`
+- `skills/project/atm10/atm10-change-protocol/SKILL.md`
+- `skills/project/atm10/atm10-source-of-truth-check/SKILL.md`
 - bundle-local review checklists under `skills/atm10-*/checks/review.md`
 - overlay evaluation fixtures in `tests/fixtures/skill_evaluation_cases.yaml`
 

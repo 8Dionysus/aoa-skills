@@ -29,7 +29,7 @@ core ability.
 
 ## Next Route
 
-Keep ability cards below `skills/*/SKILL.md`,
-`skills/*/techniques.yaml`, evaluation surfaces, pack profiles, portable-layer
+Keep ability cards below `skills/**/SKILL.md`,
+`skills/**/techniques.yaml`, evaluation surfaces, pack profiles, portable-layer
 docs, adapter contracts, and overlay contracts. Route scenario choreography to
 `aoa-playbooks`.

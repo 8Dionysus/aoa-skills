@@ -411,7 +411,7 @@
       "name": "abyss-safe-infra-change",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -426,7 +426,7 @@
       "name": "abyss-sanitized-share",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -442,7 +442,7 @@
       "name": "abyss-self-diagnostic-spine",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -459,7 +459,7 @@
       "name": "aoa-adr-write",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "status": "canonical"
     },
     {
@@ -479,7 +479,7 @@
       "name": "aoa-approval-gate-check",
       "required_adjacency_coverage": true,
       "scope": "risk",
-      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
       "status": "canonical"
     },
     {
@@ -492,7 +492,7 @@
       "name": "aoa-automation-opportunity-scan",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -512,7 +512,7 @@
       "name": "aoa-bounded-context-map",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "status": "canonical"
     },
     {
@@ -529,7 +529,7 @@
       "name": "aoa-change-protocol",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical"
     },
     {
@@ -542,7 +542,7 @@
       "name": "aoa-checkpoint-closeout-bridge",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -555,7 +555,7 @@
       "name": "aoa-commit-growth-seam",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -572,7 +572,7 @@
       "name": "aoa-contract-test",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "status": "canonical"
     },
     {
@@ -590,7 +590,7 @@
       "name": "aoa-core-logic-boundary",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -609,7 +609,7 @@
       "name": "aoa-dry-run-first",
       "required_adjacency_coverage": true,
       "scope": "risk",
-      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "status": "canonical"
     },
     {
@@ -626,7 +626,7 @@
       "name": "aoa-invariant-coverage-audit",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical"
     },
     {
@@ -644,7 +644,7 @@
       "name": "aoa-local-stack-bringup",
       "required_adjacency_coverage": true,
       "scope": "risk",
-      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -662,7 +662,7 @@
       "name": "aoa-port-adapter-refactor",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -679,7 +679,7 @@
       "name": "aoa-property-invariants",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "status": "canonical"
     },
     {
@@ -692,7 +692,7 @@
       "name": "aoa-quest-harvest",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -712,7 +712,7 @@
       "name": "aoa-safe-infra-change",
       "required_adjacency_coverage": true,
       "scope": "risk",
-      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "status": "canonical"
     },
     {
@@ -731,7 +731,7 @@
       "name": "aoa-sanitized-share",
       "required_adjacency_coverage": true,
       "scope": "risk",
-      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
       "status": "canonical"
     },
     {
@@ -744,7 +744,7 @@
       "name": "aoa-session-donor-harvest",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -757,7 +757,7 @@
       "name": "aoa-session-progression-lift",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -770,7 +770,7 @@
       "name": "aoa-session-route-forks",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -783,7 +783,7 @@
       "name": "aoa-session-self-diagnose",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -796,7 +796,7 @@
       "name": "aoa-session-self-repair",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -813,7 +813,7 @@
       "name": "aoa-source-of-truth-check",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical"
     },
     {
@@ -826,7 +826,7 @@
       "name": "aoa-summon",
       "required_adjacency_coverage": false,
       "scope": "core",
-      "skill_path": "skills/aoa-summon/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -843,7 +843,7 @@
       "name": "aoa-tdd-slice",
       "required_adjacency_coverage": true,
       "scope": "core",
-      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "status": "canonical"
     },
     {
@@ -858,7 +858,7 @@
       "name": "atm10-change-protocol",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -873,7 +873,7 @@
       "name": "atm10-source-of-truth-check",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -886,7 +886,7 @@
       "name": "titan-approval-ledger",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -899,7 +899,7 @@
       "name": "titan-approval-loom",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -912,7 +912,7 @@
       "name": "titan-appserver-bridge",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -925,7 +925,7 @@
       "name": "titan-appserver-plan",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -938,7 +938,7 @@
       "name": "titan-closeout",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-closeout/SKILL.md",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -951,7 +951,7 @@
       "name": "titan-console",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-console/SKILL.md",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -964,7 +964,7 @@
       "name": "titan-event-replay",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -977,7 +977,7 @@
       "name": "titan-memory-loom",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -990,7 +990,7 @@
       "name": "titan-memory-prune",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1003,7 +1003,7 @@
       "name": "titan-mutation-gate",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1016,7 +1016,7 @@
       "name": "titan-recall",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-recall/SKILL.md",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1029,7 +1029,7 @@
       "name": "titan-receipt",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-receipt/SKILL.md",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1042,7 +1042,7 @@
       "name": "titan-runtime-gate",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1055,7 +1055,7 @@
       "name": "titan-summon",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-summon/SKILL.md",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1068,7 +1068,7 @@
       "name": "titan-thread-turn-binding",
       "required_adjacency_coverage": false,
       "scope": "project",
-      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold"
     }
   ],
@@ -1076,7 +1076,7 @@
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
     "evaluation_snapshots": "tests/fixtures/skill_evaluation_snapshots/*/*.md",
     "governance_lanes": "docs/governance/lanes.yaml",
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml"
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml"
   }
 }

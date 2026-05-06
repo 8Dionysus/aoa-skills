@@ -12,6 +12,7 @@ import shutil
 from typing import Any
 
 import release_manifest_contract
+import skill_layout
 import yaml
 
 RESOURCE_DIR_NAMES = ("scripts", "references", "assets")
@@ -519,7 +520,7 @@ def build_project_core_kernel_governance_doc(
     for skill_name in kernel_doc["skills"]:
         contract = skill_contracts[skill_name]
         export_entry = export_by_name.get(skill_name, {})
-        source_skill_dir = repo_root / "skills" / skill_name
+        source_skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
         export_skill_dir = skills_root / skill_name
         references = set((export_entry.get("resource_inventory") or {}).get("references", []))
         blockers: list[str] = []
@@ -982,7 +983,10 @@ def main() -> int:
         skill_dir = skills_root / skill["name"]
         (skill_dir / "agents").mkdir(parents=True)
 
-        inventory = copy_optional_resources(repo_root / "skills" / skill["name"], skill_dir)
+        inventory = copy_optional_resources(
+            skill_layout.skill_dir_path(repo_root, skill["name"]),
+            skill_dir,
+        )
         icon_paths = ensure_scope_assets(skill_dir, skill["scope"])
 
         skill_md_path = skill_dir / "SKILL.md"

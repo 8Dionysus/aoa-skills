@@ -94,6 +94,6 @@ packages.
 - Do not store package task inventories here.
 - Do not turn release history into roadmap authority.
 - Do not treat generated readouts as source truth.
-- Do not move skill meaning out of `skills/*/SKILL.md`.
+- Do not move skill meaning out of `skills/**/SKILL.md`.
 - Do not make `aoa-skills` the owner of AoA center doctrine, downstream runtime
   truth, playbook scenario canon, memory truth, or eval authority.

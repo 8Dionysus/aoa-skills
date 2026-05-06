@@ -1391,8 +1391,8 @@ class ValidateSkillsTests(unittest.TestCase):
         self.assertEqual(1, full_catalog["catalog_version"])
         self.assertEqual(
             {
-                "skill_markdown": "skills/*/SKILL.md",
-                "technique_manifest": "skills/*/techniques.yaml",
+                "skill_markdown": "skills/**/SKILL.md",
+                "technique_manifest": "skills/**/techniques.yaml",
             },
             full_catalog["source_of_truth"],
         )
@@ -1438,8 +1438,8 @@ class ValidateSkillsTests(unittest.TestCase):
             {
                 "catalog_version": 1,
                 "source_of_truth": {
-                    "skill_markdown": "skills/*/SKILL.md",
-                    "technique_manifest": "skills/*/techniques.yaml",
+                    "skill_markdown": "skills/**/SKILL.md",
+                    "technique_manifest": "skills/**/techniques.yaml",
                 },
                 "skills": [
                     {

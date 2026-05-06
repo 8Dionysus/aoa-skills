@@ -2,12 +2,18 @@ from __future__ import annotations
 
 import unittest
 from pathlib import Path
+import sys
 
 import yaml
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIR = REPO_ROOT / "skills"
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+import skill_layout
+
 DOCS_README_PATH = REPO_ROOT / "docs" / "README.md"
 PROMOTION_PATH = (
     REPO_ROOT / "mechanics" / "method-growth" / "docs" / "PROMOTION_PATH.md"
@@ -18,8 +24,8 @@ CANONICAL_REVIEW_DIR = REPO_ROOT / "docs" / "reviews" / "canonical-candidates"
 
 def load_skill_statuses() -> dict[str, str]:
     statuses: dict[str, str] = {}
-    for skill_dir in sorted(path for path in SKILLS_DIR.iterdir() if path.is_dir()):
-        skill_md_path = skill_dir / "SKILL.md"
+    for entry in skill_layout.discover_skill_bundle_paths(REPO_ROOT):
+        skill_md_path = entry.skill_md_path
         text = skill_md_path.read_text(encoding="utf-8")
         lines = text.splitlines()
         if not lines or lines[0].strip() != "---":
@@ -41,7 +47,7 @@ def load_skill_statuses() -> dict[str, str]:
         status = metadata.get("status")
         if not isinstance(status, str):
             raise AssertionError(f"{skill_md_path} is missing a string status")
-        statuses[skill_dir.name] = status
+        statuses[entry.name] = status
     return statuses
 
 

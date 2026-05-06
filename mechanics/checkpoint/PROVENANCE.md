@@ -19,9 +19,9 @@ surface. The move changes its route, not its authority level.
 
 Canonical bridge skill meaning remains in:
 
-- `skills/aoa-checkpoint-closeout-bridge/SKILL.md`
-- `skills/aoa-checkpoint-closeout-bridge/references/checkpoint-closeout-execution-report-schema.yaml`
-- `skills/aoa-checkpoint-closeout-bridge/references/core-skill-application-receipt-schema.yaml`
+- `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`
+- `skills/core/session-growth/aoa-checkpoint-closeout-bridge/references/checkpoint-closeout-execution-report-schema.yaml`
+- `skills/core/session-growth/aoa-checkpoint-closeout-bridge/references/core-skill-application-receipt-schema.yaml`
 
 This package may point to those surfaces, but it must not copy their skill
 bundle meaning into mechanics.

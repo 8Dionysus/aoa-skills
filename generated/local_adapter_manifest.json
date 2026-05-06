@@ -40,7 +40,7 @@
         "aoa_scope": "project",
         "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+        "aoa_source_skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0001",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -70,7 +70,7 @@
         "aoa_scope": "project",
         "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/abyss-sanitized-share/SKILL.md",
+        "aoa_source_skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0034,AOA-T-0002",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -100,7 +100,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+        "aoa_source_skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0080,AOA-T-0081",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -130,7 +130,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-adr-write/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0033,AOA-T-0002",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -160,7 +160,7 @@
         "aoa_scope": "risk",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+        "aoa_source_skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0028",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -199,7 +199,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0086,AOA-T-0087,AOA-T-0088",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -229,7 +229,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0002",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -259,7 +259,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-change-protocol/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -293,7 +293,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0075,AOA-T-0084,AOA-T-0089",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -323,7 +323,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0028",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -353,7 +353,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-contract-test/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0003,AOA-T-0015",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -383,7 +383,7 @@
         "aoa_scope": "core",
         "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -421,7 +421,7 @@
         "aoa_scope": "risk",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-dry-run-first/SKILL.md",
+        "aoa_source_skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0004,AOA-T-0028",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -451,7 +451,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0017",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -489,7 +489,7 @@
         "aoa_scope": "risk",
         "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+        "aoa_source_skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0036,AOA-T-0037,AOA-T-0028,AOA-T-0038",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -519,7 +519,7 @@
         "aoa_scope": "core",
         "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0016,AOA-T-0015",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -549,7 +549,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-property-invariants/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0017,AOA-T-0007",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -584,7 +584,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-quest-harvest/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0089,AOA-T-0090",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -622,7 +622,7 @@
         "aoa_scope": "risk",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+        "aoa_source_skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0001",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -652,7 +652,7 @@
         "aoa_scope": "risk",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-sanitized-share/SKILL.md",
+        "aoa_source_skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0034,AOA-T-0002",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -691,7 +691,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0075,AOA-T-0076,AOA-T-0077",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -726,7 +726,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0084,AOA-T-0085",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -760,7 +760,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-session-route-forks/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0078,AOA-T-0079",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -794,7 +794,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0080,AOA-T-0081",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -829,7 +829,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-session-self-repair/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0082,AOA-T-0083",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -859,7 +859,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002,AOA-T-0009",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -894,7 +894,7 @@
         "aoa_scope": "core",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/aoa-summon/SKILL.md",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-SUMMON-LANE-SELECTION,AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -924,7 +924,7 @@
         "aoa_scope": "core",
         "aoa_status": "canonical",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/aoa-tdd-slice/SKILL.md",
+        "aoa_source_skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0014,AOA-T-0001",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -954,7 +954,7 @@
         "aoa_scope": "project",
         "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/atm10-change-protocol/SKILL.md",
+        "aoa_source_skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0001,AOA-T-0002",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -984,7 +984,7 @@
         "aoa_scope": "project",
         "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-preferred",
-        "aoa_source_skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+        "aoa_source_skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1014,7 +1014,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-approval-ledger/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1044,7 +1044,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-approval-loom/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1074,7 +1074,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-appserver-bridge/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1104,7 +1104,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-appserver-plan/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1134,7 +1134,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-closeout/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-closeout/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1164,7 +1164,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-console/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-console/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1194,7 +1194,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-event-replay/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1224,7 +1224,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-memory-loom/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1254,7 +1254,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-memory-prune/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1284,7 +1284,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-mutation-gate/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1314,7 +1314,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-recall/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-recall/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1344,7 +1344,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-receipt/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-receipt/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1374,7 +1374,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-runtime-gate/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1404,7 +1404,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-summon/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-summon/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"
@@ -1434,7 +1434,7 @@
         "aoa_scope": "project",
         "aoa_status": "scaffold",
         "aoa_invocation_mode": "explicit-only",
-        "aoa_source_skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+        "aoa_source_skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
         "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
         "aoa_portable_profile": "codex-facing-wave-3"

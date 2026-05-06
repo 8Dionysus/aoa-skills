@@ -8,15 +8,15 @@
 - scaffold skills: `abyss-self-diagnostic-spine`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
-- family review surface: `mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md`, `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`, `skills/abyss-safe-infra-change/checks/review.md`, `skills/abyss-sanitized-share/checks/review.md`, `skills/abyss-self-diagnostic-spine/checks/review.md`
+- family review surface: `mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md`, `mechanics/boundary-bridge/overlays/abyss/REVIEW.md`, `skills/project/abyss/abyss-safe-infra-change/checks/review.md`, `skills/project/abyss/abyss-sanitized-share/checks/review.md`, `skills/project/abyss/abyss-self-diagnostic-spine/checks/review.md`
 
 ## Evidence reviewed
 
 - `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`
 - `mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md`
-- `skills/abyss-safe-infra-change/SKILL.md`
-- `skills/abyss-sanitized-share/SKILL.md`
-- `skills/abyss-self-diagnostic-spine/SKILL.md`
+- `skills/project/abyss/abyss-safe-infra-change/SKILL.md`
+- `skills/project/abyss/abyss-sanitized-share/SKILL.md`
+- `skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md`
 - bundle-local review checklists under `skills/abyss-*/checks/review.md`
 - overlay evaluation fixtures in `tests/fixtures/skill_evaluation_cases.yaml`
 

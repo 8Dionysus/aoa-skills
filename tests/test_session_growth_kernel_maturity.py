@@ -19,27 +19,27 @@ PACKET_PATHS = {
 DETAIL_RECEIPT_CASES = {
     "decision_fork": (
         "mechanics/growth-cycle/examples/session_growth_artifacts/decision_fork_receipt.wave4.json",
-        "skills/aoa-session-route-forks/references/decision-fork-receipt-schema.yaml",
+        "skills/core/session-growth/aoa-session-route-forks/references/decision-fork-receipt-schema.yaml",
         PACKET_PATHS["decision_fork"],
     ),
     "diagnosis_packet": (
         "mechanics/growth-cycle/examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json",
-        "skills/aoa-session-self-diagnose/references/diagnosis-packet-receipt-schema.yaml",
+        "skills/core/session-growth/aoa-session-self-diagnose/references/diagnosis-packet-receipt-schema.yaml",
         PACKET_PATHS["diagnosis_packet"],
     ),
     "repair_cycle": (
         "mechanics/growth-cycle/examples/session_growth_artifacts/repair_cycle_receipt.wave4.json",
-        "skills/aoa-session-self-repair/references/repair-cycle-receipt-schema.yaml",
+        "skills/core/session-growth/aoa-session-self-repair/references/repair-cycle-receipt-schema.yaml",
         PACKET_PATHS["repair_cycle"],
     ),
     "progression_delta": (
         "mechanics/growth-cycle/examples/session_growth_artifacts/progression_delta_receipt.wave4.json",
-        "skills/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml",
+        "skills/core/session-growth/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml",
         PACKET_PATHS["progression_delta"],
     ),
     "automation_candidate": (
         "mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate_receipt.wave4.json",
-        "skills/aoa-automation-opportunity-scan/references/automation-candidate-receipt-schema.yaml",
+        "skills/core/session-growth/aoa-automation-opportunity-scan/references/automation-candidate-receipt-schema.yaml",
         PACKET_PATHS["automation_candidate"],
     ),
 }

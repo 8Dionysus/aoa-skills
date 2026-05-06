@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `eccfc4de7849`
+- reviewed revision: `e5194ddf2296`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-source-of-truth-check/SKILL.md`
-- `skills/aoa-source-of-truth-check/techniques.yaml`
-- `skills/aoa-source-of-truth-check/examples/example.md`
+- `skills/core/engineering/aoa-source-of-truth-check/SKILL.md`
+- `skills/core/engineering/aoa-source-of-truth-check/techniques.yaml`
+- `skills/core/engineering/aoa-source-of-truth-check/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 - `tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/*`
 

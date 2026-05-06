@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `09b00a875a30`
+- reviewed revision: `6e348aabdbb2`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-adr-write/SKILL.md`
-- `skills/aoa-adr-write/techniques.yaml`
-- `skills/aoa-adr-write/examples/example.md`
+- `skills/core/engineering/aoa-adr-write/SKILL.md`
+- `skills/core/engineering/aoa-adr-write/techniques.yaml`
+- `skills/core/engineering/aoa-adr-write/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

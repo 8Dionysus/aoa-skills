@@ -153,10 +153,10 @@ One upstream source technique can stay aligned across multiple skill bundles wit
 - source:
   - `AOA-T-0001` from `aoa-techniques`
 - target consumer surfaces:
-  - `skills/aoa-change-protocol/techniques.yaml`
-  - `skills/aoa-change-protocol/SKILL.md`
-  - `skills/aoa-safe-infra-change/techniques.yaml`
-  - `skills/aoa-safe-infra-change/SKILL.md`
+  - `skills/core/engineering/aoa-change-protocol/techniques.yaml`
+  - `skills/core/engineering/aoa-change-protocol/SKILL.md`
+  - `skills/risk/aoa-safe-infra-change/techniques.yaml`
+  - `skills/risk/aoa-safe-infra-change/SKILL.md`
 - drift control:
   - `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --skill aoa-change-protocol --skill aoa-safe-infra-change`
   - `python scripts/refresh_skill_from_techniques.py --skill aoa-change-protocol --skill aoa-safe-infra-change --techniques-repo ../aoa-techniques`
@@ -175,10 +175,10 @@ Shared-donor refresh example:
 - shared upstream donor:
   - `AOA-T-0017` from `aoa-techniques`
 - target consumer surfaces:
-  - `skills/aoa-invariant-coverage-audit/techniques.yaml`
-  - `skills/aoa-invariant-coverage-audit/SKILL.md`
-  - `skills/aoa-property-invariants/techniques.yaml`
-  - `skills/aoa-property-invariants/SKILL.md`
+  - `skills/core/engineering/aoa-invariant-coverage-audit/techniques.yaml`
+  - `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`
+  - `skills/core/engineering/aoa-property-invariants/techniques.yaml`
+  - `skills/core/engineering/aoa-property-invariants/SKILL.md`
 - review posture:
   - both bundles may be refreshed against the same resolved local target ref in one bounded wave
   - the refresh remains acceptable even when only one referenced technique in the bundle is currently `drifted`

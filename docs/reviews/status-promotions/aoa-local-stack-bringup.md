@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `risk`
 - current lineage: `published`
-- reviewed revision: `2b902decb446`
+- reviewed revision: `962e39b9bcbe`
 
 ## Target status
 
@@ -17,10 +17,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-local-stack-bringup/SKILL.md`
-- `skills/aoa-local-stack-bringup/techniques.yaml`
-- `skills/aoa-local-stack-bringup/examples/runtime.md`
-- `skills/aoa-local-stack-bringup/checks/review.md`
+- `skills/risk/aoa-local-stack-bringup/SKILL.md`
+- `skills/risk/aoa-local-stack-bringup/techniques.yaml`
+- `skills/risk/aoa-local-stack-bringup/examples/runtime.md`
+- `skills/risk/aoa-local-stack-bringup/checks/review.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

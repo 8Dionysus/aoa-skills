@@ -13,7 +13,7 @@ It is a routing aid, not a second doctrine layer.
 
 This repository already has two different `agents/openai.yaml` surfaces:
 
-- `skills/*/agents/openai.yaml` is the source policy seam. Keep it narrow and
+- `skills/**/agents/openai.yaml` is the source policy seam. Keep it narrow and
   policy-only.
 - `.agents/skills/*/agents/openai.yaml` is the generated full Codex-facing
   export.
@@ -22,7 +22,7 @@ This repository already has two different `agents/openai.yaml` surfaces:
 
 That means the first honest place to author named MCP dependencies here is
 `config/openai_skill_extensions.json`, not the source policy file under
-`skills/*/agents/openai.yaml`.
+`skills/**/agents/openai.yaml`.
 
 ## What to keep where
 
@@ -34,7 +34,7 @@ That means the first honest place to author named MCP dependencies here is
 - fallbacks and guardrails
 - resource contracts for `scripts/`, `references/`, and `assets/`
 
-### Keep in `skills/*/agents/openai.yaml`
+### Keep in `skills/**/agents/openai.yaml`
 
 - source invocation policy
 - narrow notes about policy posture

@@ -7,7 +7,7 @@ metadata:
   aoa_scope: core
   aoa_status: scaffold
   aoa_invocation_mode: explicit-only
-  aoa_source_skill_path: skills/aoa-summon/SKILL.md
+  aoa_source_skill_path: skills/core/session-growth/aoa-summon/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
   aoa_technique_dependencies: AOA-T-PENDING-SUMMON-LANE-SELECTION,AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE
   aoa_portable_profile: codex-facing-wave-3

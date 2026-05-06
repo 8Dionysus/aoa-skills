@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-source-of-truth-check/SKILL.md`
-- `skills/aoa-source-of-truth-check/techniques.yaml`
-- `skills/aoa-source-of-truth-check/examples/example.md`
-- `skills/aoa-source-of-truth-check/agents/openai.yaml`
+- `skills/core/engineering/aoa-source-of-truth-check/SKILL.md`
+- `skills/core/engineering/aoa-source-of-truth-check/techniques.yaml`
+- `skills/core/engineering/aoa-source-of-truth-check/examples/example.md`
+- `skills/core/engineering/aoa-source-of-truth-check/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 - `tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/*`
 

@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-safe-infra-change/SKILL.md`
-- `skills/aoa-safe-infra-change/techniques.yaml`
-- `skills/aoa-safe-infra-change/checks/review.md`
-- `skills/aoa-safe-infra-change/agents/openai.yaml`
+- `skills/risk/aoa-safe-infra-change/SKILL.md`
+- `skills/risk/aoa-safe-infra-change/techniques.yaml`
+- `skills/risk/aoa-safe-infra-change/checks/review.md`
+- `skills/risk/aoa-safe-infra-change/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

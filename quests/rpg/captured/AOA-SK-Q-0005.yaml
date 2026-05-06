@@ -48,5 +48,5 @@ tags:
   - loadout
   - skill-layer
 notes: >
-  Do not add RPG authority fields to `skills/*/SKILL.md`, `.agents/skills/*`, or pack-profile sources in this pass. Keep the new surfaces adjunct and reviewable.
+  Do not add RPG authority fields to `skills/**/SKILL.md`, `.agents/skills/*`, or pack-profile sources in this pass. Keep the new surfaces adjunct and reviewable.
 public_safe: true

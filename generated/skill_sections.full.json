@@ -56,7 +56,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -114,7 +114,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -172,7 +172,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -230,7 +230,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "status": "canonical"
     },
     {
@@ -288,7 +288,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
       "status": "canonical"
     },
     {
@@ -346,7 +346,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -404,7 +404,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "status": "canonical"
     },
     {
@@ -462,7 +462,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical"
     },
     {
@@ -520,7 +520,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -578,7 +578,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -636,7 +636,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "status": "canonical"
     },
     {
@@ -694,7 +694,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -752,7 +752,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "status": "canonical"
     },
     {
@@ -810,7 +810,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical"
     },
     {
@@ -868,7 +868,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -926,7 +926,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -984,7 +984,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "status": "canonical"
     },
     {
@@ -1042,7 +1042,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1100,7 +1100,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "status": "canonical"
     },
     {
@@ -1158,7 +1158,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
       "status": "canonical"
     },
     {
@@ -1216,7 +1216,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1274,7 +1274,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1332,7 +1332,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1390,7 +1390,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1448,7 +1448,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1506,7 +1506,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical"
     },
     {
@@ -1564,7 +1564,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-summon/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1622,7 +1622,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "status": "canonical"
     },
     {
@@ -1680,7 +1680,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -1738,7 +1738,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -1796,7 +1796,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1854,7 +1854,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1912,7 +1912,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1970,7 +1970,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2028,7 +2028,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-closeout/SKILL.md",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2086,7 +2086,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-console/SKILL.md",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2144,7 +2144,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2202,7 +2202,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2260,7 +2260,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2318,7 +2318,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2376,7 +2376,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-recall/SKILL.md",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2434,7 +2434,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-receipt/SKILL.md",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2492,7 +2492,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2550,7 +2550,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-summon/SKILL.md",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -2608,7 +2608,7 @@
           "key": "adaptation_points"
         }
       ],
-      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold"
     }
   ],
@@ -2625,6 +2625,6 @@
       "Technique traceability",
       "Adaptation points"
     ],
-    "skill_markdown": "skills/*/SKILL.md"
+    "skill_markdown": "skills/**/SKILL.md"
   }
 }

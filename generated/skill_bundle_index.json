@@ -10,17 +10,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/abyss-safe-infra-change/SKILL.md",
-        "skills/abyss-safe-infra-change/techniques.yaml",
-        "skills/abyss-safe-infra-change/agents/openai.yaml",
-        "skills/abyss-safe-infra-change/examples/example.md",
-        "skills/abyss-safe-infra-change/checks/review.md",
-        "docs/reviews/status-promotions/abyss-safe-infra-change.md"
+        "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
+        "skills/project/abyss/abyss-safe-infra-change/techniques.yaml",
+        "skills/project/abyss/abyss-safe-infra-change/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "b5d0cd4514d3d903c25163c79ae9cc6e853cc7be8faf65bf5dbe11822b17056d",
+      "content_hash": "0e1ee104cc891863f59324a76784d9ebc5cd56a3c136d7661b06de8502a84488",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -45,17 +42,17 @@
       "name": "abyss-safe-infra-change",
       "promotion_review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
       "scope": "project",
-      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
-      "skill_revision": "b5d0cd4514d3",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
+      "skill_revision": "0e1ee104cc89",
       "status": "evaluated",
       "support_artifacts": [
         {
-          "path": "skills/abyss-safe-infra-change/examples/example.md",
+          "path": "skills/project/abyss/abyss-safe-infra-change/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/abyss-safe-infra-change/checks/review.md",
+          "path": "skills/project/abyss/abyss-safe-infra-change/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -95,17 +92,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/abyss-sanitized-share/SKILL.md",
-        "skills/abyss-sanitized-share/techniques.yaml",
-        "skills/abyss-sanitized-share/agents/openai.yaml",
-        "skills/abyss-sanitized-share/examples/example.md",
-        "skills/abyss-sanitized-share/checks/review.md",
-        "docs/reviews/status-promotions/abyss-sanitized-share.md"
+        "skills/project/abyss/abyss-sanitized-share/SKILL.md",
+        "skills/project/abyss/abyss-sanitized-share/techniques.yaml",
+        "skills/project/abyss/abyss-sanitized-share/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "98a642f94495cfc1dbd7abe7b3ad164d47dcb2782b7c17f4ba0cee795d0aca5a",
+      "content_hash": "4a6daab9622eda6815f118440ff7d780027af7de642aa15aa0dcaee2fe109d4c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -130,17 +124,17 @@
       "name": "abyss-sanitized-share",
       "promotion_review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
       "scope": "project",
-      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
-      "skill_revision": "98a642f94495",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
+      "skill_revision": "4a6daab9622e",
       "status": "evaluated",
       "support_artifacts": [
         {
-          "path": "skills/abyss-sanitized-share/examples/example.md",
+          "path": "skills/project/abyss/abyss-sanitized-share/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/abyss-sanitized-share/checks/review.md",
+          "path": "skills/project/abyss/abyss-sanitized-share/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -180,16 +174,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/abyss-self-diagnostic-spine/SKILL.md",
-        "skills/abyss-self-diagnostic-spine/techniques.yaml",
-        "skills/abyss-self-diagnostic-spine/agents/openai.yaml",
-        "skills/abyss-self-diagnostic-spine/examples/example.md",
-        "skills/abyss-self-diagnostic-spine/checks/review.md"
+        "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
+        "skills/project/abyss/abyss-self-diagnostic-spine/techniques.yaml",
+        "skills/project/abyss/abyss-self-diagnostic-spine/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "b181245b5e0d48139f7aab54ea602e8325c02766ab4c5d07c7cdededaffcee16",
+      "content_hash": "35c8d6346471d21679ca25c484adc5425d1e51c701e9e78445ecf00776da4374",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -214,17 +206,17 @@
       "name": "abyss-self-diagnostic-spine",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
-      "skill_revision": "b181245b5e0d",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_revision": "35c8d6346471",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/abyss-self-diagnostic-spine/examples/example.md",
+          "path": "skills/project/abyss/abyss-self-diagnostic-spine/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/abyss-self-diagnostic-spine/checks/review.md",
+          "path": "skills/project/abyss/abyss-self-diagnostic-spine/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -259,17 +251,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-adr-write/SKILL.md",
-        "skills/aoa-adr-write/techniques.yaml",
-        "skills/aoa-adr-write/agents/openai.yaml",
-        "skills/aoa-adr-write/examples/example.md",
-        "docs/reviews/status-promotions/aoa-adr-write.md",
-        "docs/reviews/canonical-candidates/aoa-adr-write.md"
+        "skills/core/engineering/aoa-adr-write/SKILL.md",
+        "skills/core/engineering/aoa-adr-write/techniques.yaml",
+        "skills/core/engineering/aoa-adr-write/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "a580f3fac785fbe7144896cdcd4896b24588e2236e2397f0e2c37dbb26ea1ba5",
+      "content_hash": "6e348aabdbb22fd1ba2fca346976951f5b6032f9138f01aaeb1d1fa8be16133e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -297,12 +286,12 @@
       "name": "aoa-adr-write",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
       "scope": "core",
-      "skill_path": "skills/aoa-adr-write/SKILL.md",
-      "skill_revision": "a580f3fac785",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
+      "skill_revision": "6e348aabdbb2",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-adr-write/examples/example.md",
+          "path": "skills/core/engineering/aoa-adr-write/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -347,18 +336,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-approval-gate-check/SKILL.md",
-        "skills/aoa-approval-gate-check/techniques.yaml",
-        "skills/aoa-approval-gate-check/agents/openai.yaml",
-        "skills/aoa-approval-gate-check/examples/runtime.md",
-        "skills/aoa-approval-gate-check/checks/review.md",
-        "docs/reviews/status-promotions/aoa-approval-gate-check.md",
-        "docs/reviews/canonical-candidates/aoa-approval-gate-check.md"
+        "skills/risk/aoa-approval-gate-check/SKILL.md",
+        "skills/risk/aoa-approval-gate-check/techniques.yaml",
+        "skills/risk/aoa-approval-gate-check/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "a2953cf569548c16db7831e1b31aac8b364b58b01e4355f7c2533dcad9341ffd",
+      "content_hash": "aaf152665bb616a4d59488710d59d0438cb1f64fb126b0708ccbbecc5408f7b5",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -385,17 +370,17 @@
       "name": "aoa-approval-gate-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
       "scope": "risk",
-      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
-      "skill_revision": "a2953cf56954",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
+      "skill_revision": "aaf152665bb6",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-approval-gate-check/examples/runtime.md",
+          "path": "skills/risk/aoa-approval-gate-check/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-approval-gate-check/checks/review.md",
+          "path": "skills/risk/aoa-approval-gate-check/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -432,16 +417,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-automation-opportunity-scan/SKILL.md",
-        "skills/aoa-automation-opportunity-scan/techniques.yaml",
-        "skills/aoa-automation-opportunity-scan/agents/openai.yaml",
-        "skills/aoa-automation-opportunity-scan/examples/runtime.md",
-        "skills/aoa-automation-opportunity-scan/checks/review.md"
+        "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
+        "skills/core/session-growth/aoa-automation-opportunity-scan/techniques.yaml",
+        "skills/core/session-growth/aoa-automation-opportunity-scan/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "5b065d446ac6da055f5938209d889f97208ed4c6433fde30a3df627405378b34",
+      "content_hash": "fa65128f6536a7acfc8075f73d05f019772a448f22564cc5af76dbec42854a0f",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -471,17 +454,17 @@
       "name": "aoa-automation-opportunity-scan",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
-      "skill_revision": "5b065d446ac6",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
+      "skill_revision": "fa65128f6536",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-automation-opportunity-scan/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-automation-opportunity-scan/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-automation-opportunity-scan/checks/review.md",
+          "path": "skills/core/session-growth/aoa-automation-opportunity-scan/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -524,17 +507,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-bounded-context-map/SKILL.md",
-        "skills/aoa-bounded-context-map/techniques.yaml",
-        "skills/aoa-bounded-context-map/agents/openai.yaml",
-        "skills/aoa-bounded-context-map/examples/example.md",
-        "docs/reviews/status-promotions/aoa-bounded-context-map.md",
-        "docs/reviews/canonical-candidates/aoa-bounded-context-map.md"
+        "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
+        "skills/core/engineering/aoa-bounded-context-map/techniques.yaml",
+        "skills/core/engineering/aoa-bounded-context-map/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "470efe5f914863a08091b8d92e5899104bb5d7a7b647565e65da0b7c87ef5ccf",
+      "content_hash": "d87267ec67a80a3f0c6057c36ed09a2d56d7dcd3493a2a5441c3269ad1a9a738",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -562,12 +542,12 @@
       "name": "aoa-bounded-context-map",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "scope": "core",
-      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
-      "skill_revision": "470efe5f9148",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
+      "skill_revision": "d87267ec67a8",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-bounded-context-map/examples/example.md",
+          "path": "skills/core/engineering/aoa-bounded-context-map/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -612,17 +592,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-change-protocol/SKILL.md",
-        "skills/aoa-change-protocol/techniques.yaml",
-        "skills/aoa-change-protocol/agents/openai.yaml",
-        "skills/aoa-change-protocol/examples/runtime.md",
-        "skills/aoa-change-protocol/checks/review.md",
-        "docs/reviews/canonical-candidates/aoa-change-protocol.md"
+        "skills/core/engineering/aoa-change-protocol/SKILL.md",
+        "skills/core/engineering/aoa-change-protocol/techniques.yaml",
+        "skills/core/engineering/aoa-change-protocol/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "308d39d71923d43c764f7f2b84e1cb995751aa7410439019079cab51b79c64ad",
+      "content_hash": "c3c8e308200a063b075fdc985f4a6a2c31c52c4b2d375e824daaa12d403e08dd",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -650,17 +627,17 @@
       "name": "aoa-change-protocol",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-change-protocol/SKILL.md",
-      "skill_revision": "308d39d71923",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
+      "skill_revision": "c3c8e308200a",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-change-protocol/examples/runtime.md",
+          "path": "skills/core/engineering/aoa-change-protocol/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-change-protocol/checks/review.md",
+          "path": "skills/core/engineering/aoa-change-protocol/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -700,16 +677,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
-        "skills/aoa-checkpoint-closeout-bridge/techniques.yaml",
-        "skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
-        "skills/aoa-checkpoint-closeout-bridge/examples/runtime.md",
-        "skills/aoa-checkpoint-closeout-bridge/checks/review.md"
+        "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+        "skills/core/session-growth/aoa-checkpoint-closeout-bridge/techniques.yaml",
+        "skills/core/session-growth/aoa-checkpoint-closeout-bridge/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "0acfadded8a91ac4f12658c5e7db463f3841b329126a6126750937be9b7a2a21",
+      "content_hash": "ec7b7e52fb550a9b6e906461d477320b57eb78e1362d58a1a1f7ed3f9de1b7b1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -737,17 +712,17 @@
       "name": "aoa-checkpoint-closeout-bridge",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "skill_revision": "0acfadded8a9",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "skill_revision": "ec7b7e52fb55",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-checkpoint-closeout-bridge/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-checkpoint-closeout-bridge/checks/review.md",
+          "path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -790,16 +765,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-commit-growth-seam/SKILL.md",
-        "skills/aoa-commit-growth-seam/techniques.yaml",
-        "skills/aoa-commit-growth-seam/agents/openai.yaml",
-        "skills/aoa-commit-growth-seam/examples/runtime.md",
-        "skills/aoa-commit-growth-seam/checks/review.md"
+        "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
+        "skills/core/session-growth/aoa-commit-growth-seam/techniques.yaml",
+        "skills/core/session-growth/aoa-commit-growth-seam/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "117880cca8e2bdfca4e3715caf0d22ff9ea319f3a9727a1a97dc411244423459",
+      "content_hash": "1a2f466c2a1efa8cf3047b76cd1343920a035b170434f824e11a711460a76a70",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -823,17 +796,17 @@
       "name": "aoa-commit-growth-seam",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
-      "skill_revision": "117880cca8e2",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
+      "skill_revision": "1a2f466c2a1e",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-commit-growth-seam/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-commit-growth-seam/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-commit-growth-seam/checks/review.md",
+          "path": "skills/core/session-growth/aoa-commit-growth-seam/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -868,17 +841,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-contract-test/SKILL.md",
-        "skills/aoa-contract-test/techniques.yaml",
-        "skills/aoa-contract-test/agents/openai.yaml",
-        "skills/aoa-contract-test/examples/example.md",
-        "docs/reviews/status-promotions/aoa-contract-test.md",
-        "docs/reviews/canonical-candidates/aoa-contract-test.md"
+        "skills/core/engineering/aoa-contract-test/SKILL.md",
+        "skills/core/engineering/aoa-contract-test/techniques.yaml",
+        "skills/core/engineering/aoa-contract-test/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "e0d386ba835b814a5d4ebc7684431e968a7ff87b7cb996a9b112652528ba9af5",
+      "content_hash": "88ae350ac3d2d95fd16568100b36e519e16e0757a5700c22a9a6803cbc26d4c6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -906,12 +876,12 @@
       "name": "aoa-contract-test",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
       "scope": "core",
-      "skill_path": "skills/aoa-contract-test/SKILL.md",
-      "skill_revision": "e0d386ba835b",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
+      "skill_revision": "88ae350ac3d2",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-contract-test/examples/example.md",
+          "path": "skills/core/engineering/aoa-contract-test/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -956,17 +926,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-core-logic-boundary/SKILL.md",
-        "skills/aoa-core-logic-boundary/techniques.yaml",
-        "skills/aoa-core-logic-boundary/agents/openai.yaml",
-        "skills/aoa-core-logic-boundary/examples/example.md",
-        "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
-        "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md"
+        "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+        "skills/core/engineering/aoa-core-logic-boundary/techniques.yaml",
+        "skills/core/engineering/aoa-core-logic-boundary/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "f73c15006fcd75f72e4bf53d4c3479dbee7e0a3e9d3ff90226da908c308a5a11",
+      "content_hash": "8d5647f355c9884ac9df5b381506fdef3810cf4f0b62f9a8b6ed5f1703e401ef",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -994,12 +961,12 @@
       "name": "aoa-core-logic-boundary",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
       "scope": "core",
-      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
-      "skill_revision": "f73c15006fcd",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+      "skill_revision": "8d5647f355c9",
       "status": "evaluated",
       "support_artifacts": [
         {
-          "path": "skills/aoa-core-logic-boundary/examples/example.md",
+          "path": "skills/core/engineering/aoa-core-logic-boundary/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -1045,18 +1012,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-dry-run-first/SKILL.md",
-        "skills/aoa-dry-run-first/techniques.yaml",
-        "skills/aoa-dry-run-first/agents/openai.yaml",
-        "skills/aoa-dry-run-first/examples/runtime.md",
-        "skills/aoa-dry-run-first/checks/review.md",
-        "docs/reviews/status-promotions/aoa-dry-run-first.md",
-        "docs/reviews/canonical-candidates/aoa-dry-run-first.md"
+        "skills/risk/aoa-dry-run-first/SKILL.md",
+        "skills/risk/aoa-dry-run-first/techniques.yaml",
+        "skills/risk/aoa-dry-run-first/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-dry-run-first.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "9e6111380efea32cdca6e2a14536dd1ff96ccc42f7708da5a1769aa817dcbb5c",
+      "content_hash": "fcef34109123b862de66f6ffc38d385bb10093d91840e7a2d8fac6e6663d79f0",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1083,17 +1046,17 @@
       "name": "aoa-dry-run-first",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
       "scope": "risk",
-      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
-      "skill_revision": "9e6111380efe",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
+      "skill_revision": "fcef34109123",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-dry-run-first/examples/runtime.md",
+          "path": "skills/risk/aoa-dry-run-first/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-dry-run-first/checks/review.md",
+          "path": "skills/risk/aoa-dry-run-first/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -1138,17 +1101,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-invariant-coverage-audit/SKILL.md",
-        "skills/aoa-invariant-coverage-audit/techniques.yaml",
-        "skills/aoa-invariant-coverage-audit/agents/openai.yaml",
-        "skills/aoa-invariant-coverage-audit/examples/example.md",
-        "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
-        "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md"
+        "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
+        "skills/core/engineering/aoa-invariant-coverage-audit/techniques.yaml",
+        "skills/core/engineering/aoa-invariant-coverage-audit/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "fa360d7c03b054f906266a662a303cc76670477722f2fb006205e329ce696228",
+      "content_hash": "9c343d75ed0a04be952b89c8a06c493f1aa962cd85d406a19ace8a70999f7bd6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1175,12 +1135,12 @@
       "name": "aoa-invariant-coverage-audit",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
       "scope": "core",
-      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
-      "skill_revision": "fa360d7c03b0",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
+      "skill_revision": "9c343d75ed0a",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-invariant-coverage-audit/examples/example.md",
+          "path": "skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -1218,18 +1178,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-local-stack-bringup/SKILL.md",
-        "skills/aoa-local-stack-bringup/techniques.yaml",
-        "skills/aoa-local-stack-bringup/agents/openai.yaml",
-        "skills/aoa-local-stack-bringup/examples/runtime.md",
-        "skills/aoa-local-stack-bringup/checks/review.md",
-        "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
-        "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md"
+        "skills/risk/aoa-local-stack-bringup/SKILL.md",
+        "skills/risk/aoa-local-stack-bringup/techniques.yaml",
+        "skills/risk/aoa-local-stack-bringup/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "b74c32e3fccfdbb6fd69ede6246b0d3da1da5769734c4cd595ba4347bcef6586",
+      "content_hash": "962e39b9bcbeaa7b35c0a1d3bf3aa329e426d07b8f695dab6717a80ccc0cfc74",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1256,17 +1212,17 @@
       "name": "aoa-local-stack-bringup",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
       "scope": "risk",
-      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
-      "skill_revision": "b74c32e3fccf",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
+      "skill_revision": "962e39b9bcbe",
       "status": "evaluated",
       "support_artifacts": [
         {
-          "path": "skills/aoa-local-stack-bringup/examples/runtime.md",
+          "path": "skills/risk/aoa-local-stack-bringup/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-local-stack-bringup/checks/review.md",
+          "path": "skills/risk/aoa-local-stack-bringup/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -1327,17 +1283,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-port-adapter-refactor/SKILL.md",
-        "skills/aoa-port-adapter-refactor/techniques.yaml",
-        "skills/aoa-port-adapter-refactor/agents/openai.yaml",
-        "skills/aoa-port-adapter-refactor/examples/example.md",
-        "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
-        "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md"
+        "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
+        "skills/core/engineering/aoa-port-adapter-refactor/techniques.yaml",
+        "skills/core/engineering/aoa-port-adapter-refactor/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "af4724be311a46cdebdc6d6d41437c78adacd3e0447c368a34dd9233cfcfbc72",
+      "content_hash": "d25254009968fddd6925159240b85aa28c10b9e3a029a61069e7d69ef34753d1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1365,12 +1318,12 @@
       "name": "aoa-port-adapter-refactor",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
       "scope": "core",
-      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
-      "skill_revision": "af4724be311a",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
+      "skill_revision": "d25254009968",
       "status": "evaluated",
       "support_artifacts": [
         {
-          "path": "skills/aoa-port-adapter-refactor/examples/example.md",
+          "path": "skills/core/engineering/aoa-port-adapter-refactor/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -1415,17 +1368,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-property-invariants/SKILL.md",
-        "skills/aoa-property-invariants/techniques.yaml",
-        "skills/aoa-property-invariants/agents/openai.yaml",
-        "skills/aoa-property-invariants/examples/example.md",
-        "docs/reviews/status-promotions/aoa-property-invariants.md",
-        "docs/reviews/canonical-candidates/aoa-property-invariants.md"
+        "skills/core/engineering/aoa-property-invariants/SKILL.md",
+        "skills/core/engineering/aoa-property-invariants/techniques.yaml",
+        "skills/core/engineering/aoa-property-invariants/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "c9e9775bf22b789e1d558bb1dcf720ca49191ddc3e1a60051e2e956ade7cb525",
+      "content_hash": "e2c8e6d6054c3614a34798824e3f31a869fbff3ba582e639c071fc16b26bf481",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1453,12 +1403,12 @@
       "name": "aoa-property-invariants",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
       "scope": "core",
-      "skill_path": "skills/aoa-property-invariants/SKILL.md",
-      "skill_revision": "c9e9775bf22b",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
+      "skill_revision": "e2c8e6d6054c",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-property-invariants/examples/example.md",
+          "path": "skills/core/engineering/aoa-property-invariants/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -1503,16 +1453,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-quest-harvest/SKILL.md",
-        "skills/aoa-quest-harvest/techniques.yaml",
-        "skills/aoa-quest-harvest/agents/openai.yaml",
-        "skills/aoa-quest-harvest/examples/runtime.md",
-        "skills/aoa-quest-harvest/checks/review.md"
+        "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
+        "skills/core/session-growth/aoa-quest-harvest/techniques.yaml",
+        "skills/core/session-growth/aoa-quest-harvest/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "2bbb884be3ff5deb40b7be74c733598324f0e7c1fd8cd78a753549201366252e",
+      "content_hash": "67ca3301b829bd8e4db0918742b8ed3baa00927513a98aa03711523f25eafcb9",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1542,17 +1490,17 @@
       "name": "aoa-quest-harvest",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "2bbb884be3ff",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
+      "skill_revision": "67ca3301b829",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-quest-harvest/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-quest-harvest/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-quest-harvest/checks/review.md",
+          "path": "skills/core/session-growth/aoa-quest-harvest/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -1588,18 +1536,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-safe-infra-change/SKILL.md",
-        "skills/aoa-safe-infra-change/techniques.yaml",
-        "skills/aoa-safe-infra-change/agents/openai.yaml",
-        "skills/aoa-safe-infra-change/examples/runtime.md",
-        "skills/aoa-safe-infra-change/checks/review.md",
-        "docs/reviews/status-promotions/aoa-safe-infra-change.md",
-        "docs/reviews/canonical-candidates/aoa-safe-infra-change.md"
+        "skills/risk/aoa-safe-infra-change/SKILL.md",
+        "skills/risk/aoa-safe-infra-change/techniques.yaml",
+        "skills/risk/aoa-safe-infra-change/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "93aba0b5e7e5e1328c266383cd26c9d2e0bb78332602f2ceef12e8b4c59a92b0",
+      "content_hash": "be0c1056c17a706e552fc2ad2da05e07a34a4dbd0194055c69823d191797e7b6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1626,17 +1570,17 @@
       "name": "aoa-safe-infra-change",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
       "scope": "risk",
-      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
-      "skill_revision": "93aba0b5e7e5",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
+      "skill_revision": "be0c1056c17a",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-safe-infra-change/examples/runtime.md",
+          "path": "skills/risk/aoa-safe-infra-change/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-safe-infra-change/checks/review.md",
+          "path": "skills/risk/aoa-safe-infra-change/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -1681,18 +1625,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-sanitized-share/SKILL.md",
-        "skills/aoa-sanitized-share/techniques.yaml",
-        "skills/aoa-sanitized-share/agents/openai.yaml",
-        "skills/aoa-sanitized-share/examples/runtime.md",
-        "skills/aoa-sanitized-share/checks/review.md",
-        "docs/reviews/status-promotions/aoa-sanitized-share.md",
-        "docs/reviews/canonical-candidates/aoa-sanitized-share.md"
+        "skills/risk/aoa-sanitized-share/SKILL.md",
+        "skills/risk/aoa-sanitized-share/techniques.yaml",
+        "skills/risk/aoa-sanitized-share/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "49909bfb8d72d30508f8a2c66a84dd35740ceec37dd8c57eff3be3068f62f5c6",
+      "content_hash": "1ae7817b49fa8f4e32f2b9058e58a56d2a00bdf56145c12952227fff0bba5d10",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1719,17 +1659,17 @@
       "name": "aoa-sanitized-share",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
       "scope": "risk",
-      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
-      "skill_revision": "49909bfb8d72",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
+      "skill_revision": "1ae7817b49fa",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-sanitized-share/examples/runtime.md",
+          "path": "skills/risk/aoa-sanitized-share/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-sanitized-share/checks/review.md",
+          "path": "skills/risk/aoa-sanitized-share/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -1774,16 +1714,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-session-donor-harvest/SKILL.md",
-        "skills/aoa-session-donor-harvest/techniques.yaml",
-        "skills/aoa-session-donor-harvest/agents/openai.yaml",
-        "skills/aoa-session-donor-harvest/examples/runtime.md",
-        "skills/aoa-session-donor-harvest/checks/review.md"
+        "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
+        "skills/core/session-growth/aoa-session-donor-harvest/techniques.yaml",
+        "skills/core/session-growth/aoa-session-donor-harvest/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "2ede940e2fdc20e3d88b2d2c1f0eccb07cb4ab8938171d9520b57d6856317fe1",
+      "content_hash": "51cbab3eade513b29658196f955657b06ca91cd3bea91499bf525d024f003e2c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1813,17 +1751,17 @@
       "name": "aoa-session-donor-harvest",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "2ede940e2fdc",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
+      "skill_revision": "51cbab3eade5",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-session-donor-harvest/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-session-donor-harvest/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-session-donor-harvest/checks/review.md",
+          "path": "skills/core/session-growth/aoa-session-donor-harvest/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -1866,16 +1804,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-session-progression-lift/SKILL.md",
-        "skills/aoa-session-progression-lift/techniques.yaml",
-        "skills/aoa-session-progression-lift/agents/openai.yaml",
-        "skills/aoa-session-progression-lift/examples/runtime.md",
-        "skills/aoa-session-progression-lift/checks/review.md"
+        "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
+        "skills/core/session-growth/aoa-session-progression-lift/techniques.yaml",
+        "skills/core/session-growth/aoa-session-progression-lift/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "565e5a6389f69fe4ca202e1046811ac449108c2e380b99b27282aa83fa4e5d59",
+      "content_hash": "8e3f43f202fe8597bdc1daf0968eb1cf6c6cc0d7dba4ac43929194f34c2813a0",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1904,17 +1840,17 @@
       "name": "aoa-session-progression-lift",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
-      "skill_revision": "565e5a6389f6",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
+      "skill_revision": "8e3f43f202fe",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-session-progression-lift/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-session-progression-lift/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-session-progression-lift/checks/review.md",
+          "path": "skills/core/session-growth/aoa-session-progression-lift/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -1949,16 +1885,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-session-route-forks/SKILL.md",
-        "skills/aoa-session-route-forks/techniques.yaml",
-        "skills/aoa-session-route-forks/agents/openai.yaml",
-        "skills/aoa-session-route-forks/examples/runtime.md",
-        "skills/aoa-session-route-forks/checks/review.md"
+        "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
+        "skills/core/session-growth/aoa-session-route-forks/techniques.yaml",
+        "skills/core/session-growth/aoa-session-route-forks/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "df3969b2b878682769c92acea58856b10c8f4ae273ddd4239f0b3ab734a4b04e",
+      "content_hash": "c327cd4a554117945c503fd46e6248961dadce2bad7c1cbf21a43c7fcf0a4d42",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1987,17 +1921,17 @@
       "name": "aoa-session-route-forks",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
-      "skill_revision": "df3969b2b878",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
+      "skill_revision": "c327cd4a5541",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-session-route-forks/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-session-route-forks/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-session-route-forks/checks/review.md",
+          "path": "skills/core/session-growth/aoa-session-route-forks/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2032,16 +1966,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-session-self-diagnose/SKILL.md",
-        "skills/aoa-session-self-diagnose/techniques.yaml",
-        "skills/aoa-session-self-diagnose/agents/openai.yaml",
-        "skills/aoa-session-self-diagnose/examples/runtime.md",
-        "skills/aoa-session-self-diagnose/checks/review.md"
+        "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
+        "skills/core/session-growth/aoa-session-self-diagnose/techniques.yaml",
+        "skills/core/session-growth/aoa-session-self-diagnose/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "d67e6e6288f1b80caca70100dd8428640b3bac577d933b221a78e18fff2284ab",
+      "content_hash": "8c5e2ed8b6714cd1c25837fc20a4760f3163fee42e69f997b4b183983283d101",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2070,17 +2002,17 @@
       "name": "aoa-session-self-diagnose",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
-      "skill_revision": "d67e6e6288f1",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
+      "skill_revision": "8c5e2ed8b671",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-session-self-diagnose/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-session-self-diagnose/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-session-self-diagnose/checks/review.md",
+          "path": "skills/core/session-growth/aoa-session-self-diagnose/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2115,16 +2047,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-session-self-repair/SKILL.md",
-        "skills/aoa-session-self-repair/techniques.yaml",
-        "skills/aoa-session-self-repair/agents/openai.yaml",
-        "skills/aoa-session-self-repair/examples/runtime.md",
-        "skills/aoa-session-self-repair/checks/review.md"
+        "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+        "skills/core/session-growth/aoa-session-self-repair/techniques.yaml",
+        "skills/core/session-growth/aoa-session-self-repair/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "e6d23abdc61077b5bf01e148f3476e6bba018138e0b0e6a967b8f1ebf4387f2f",
+      "content_hash": "2060bc9cb9ef1060bdd2639c653f24e2916d71b6ca77b1af4d234f97174831a2",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2153,17 +2083,17 @@
       "name": "aoa-session-self-repair",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "e6d23abdc610",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+      "skill_revision": "2060bc9cb9ef",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-session-self-repair/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-session-self-repair/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-session-self-repair/checks/review.md",
+          "path": "skills/core/session-growth/aoa-session-self-repair/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2198,17 +2128,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-source-of-truth-check/SKILL.md",
-        "skills/aoa-source-of-truth-check/techniques.yaml",
-        "skills/aoa-source-of-truth-check/agents/openai.yaml",
-        "skills/aoa-source-of-truth-check/examples/example.md",
-        "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
-        "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md"
+        "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+        "skills/core/engineering/aoa-source-of-truth-check/techniques.yaml",
+        "skills/core/engineering/aoa-source-of-truth-check/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "c68f93543bb756872289b9f48a72ee2b0730738bf4b9232aea5e8591d2efbde4",
+      "content_hash": "e5194ddf229692e49a20529b0a1771591c8f338cc3f36a56b8f2a676fe49a18a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2236,12 +2163,12 @@
       "name": "aoa-source-of-truth-check",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "scope": "core",
-      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
-      "skill_revision": "c68f93543bb7",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+      "skill_revision": "e5194ddf2296",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-source-of-truth-check/examples/example.md",
+          "path": "skills/core/engineering/aoa-source-of-truth-check/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -2294,16 +2221,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-summon/SKILL.md",
-        "skills/aoa-summon/techniques.yaml",
-        "skills/aoa-summon/agents/openai.yaml",
-        "skills/aoa-summon/examples/runtime.md",
-        "skills/aoa-summon/checks/review.md"
+        "skills/core/session-growth/aoa-summon/SKILL.md",
+        "skills/core/session-growth/aoa-summon/techniques.yaml",
+        "skills/core/session-growth/aoa-summon/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "3a42e3f649186a2a06c11bd10b2e1089a51c6c27ea181c633392331d19b4d6b2",
+      "content_hash": "f548e9c66e842500175eeaf29d85d39b80e78bce3f7781ca841cb5715c16d1e8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2328,17 +2253,17 @@
       "name": "aoa-summon",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-summon/SKILL.md",
-      "skill_revision": "3a42e3f64918",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
+      "skill_revision": "f548e9c66e84",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/aoa-summon/examples/runtime.md",
+          "path": "skills/core/session-growth/aoa-summon/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/aoa-summon/checks/review.md",
+          "path": "skills/core/session-growth/aoa-summon/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2373,16 +2298,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/aoa-tdd-slice/SKILL.md",
-        "skills/aoa-tdd-slice/techniques.yaml",
-        "skills/aoa-tdd-slice/agents/openai.yaml",
-        "skills/aoa-tdd-slice/examples/example.md",
-        "docs/reviews/canonical-candidates/aoa-tdd-slice.md"
+        "skills/core/engineering/aoa-tdd-slice/SKILL.md",
+        "skills/core/engineering/aoa-tdd-slice/techniques.yaml",
+        "skills/core/engineering/aoa-tdd-slice/agents/openai.yaml"
       ],
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "4337c6bd6a264166a0f11b2806a3dd3629363e77003c4285d4fa882be17d2465",
+      "content_hash": "6433a46304f8e56504dadf479b7cb754c4ec7047077def6b0bd86fb39a770268",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2410,12 +2333,12 @@
       "name": "aoa-tdd-slice",
       "promotion_review_path": null,
       "scope": "core",
-      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
-      "skill_revision": "4337c6bd6a26",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
+      "skill_revision": "6433a46304f8",
       "status": "canonical",
       "support_artifacts": [
         {
-          "path": "skills/aoa-tdd-slice/examples/example.md",
+          "path": "skills/core/engineering/aoa-tdd-slice/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
@@ -2455,17 +2378,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/atm10-change-protocol/SKILL.md",
-        "skills/atm10-change-protocol/techniques.yaml",
-        "skills/atm10-change-protocol/agents/openai.yaml",
-        "skills/atm10-change-protocol/examples/example.md",
-        "skills/atm10-change-protocol/checks/review.md",
-        "docs/reviews/status-promotions/atm10-change-protocol.md"
+        "skills/project/atm10/atm10-change-protocol/SKILL.md",
+        "skills/project/atm10/atm10-change-protocol/techniques.yaml",
+        "skills/project/atm10/atm10-change-protocol/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c5f5ceccf29862b12717e05faa2b6886c62d4bcd1498e409deec10be81f0d851",
+      "content_hash": "91afd96b4d3a0a889fb95cf40fe53050357a9b7534b89a2e2ada64635c29f871",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2490,17 +2410,17 @@
       "name": "atm10-change-protocol",
       "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
       "scope": "project",
-      "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "skill_revision": "c5f5ceccf298",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
+      "skill_revision": "91afd96b4d3a",
       "status": "evaluated",
       "support_artifacts": [
         {
-          "path": "skills/atm10-change-protocol/examples/example.md",
+          "path": "skills/project/atm10/atm10-change-protocol/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/atm10-change-protocol/checks/review.md",
+          "path": "skills/project/atm10/atm10-change-protocol/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -2540,17 +2460,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/atm10-source-of-truth-check/SKILL.md",
-        "skills/atm10-source-of-truth-check/techniques.yaml",
-        "skills/atm10-source-of-truth-check/agents/openai.yaml",
-        "skills/atm10-source-of-truth-check/examples/example.md",
-        "skills/atm10-source-of-truth-check/checks/review.md",
-        "docs/reviews/status-promotions/atm10-source-of-truth-check.md"
+        "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
+        "skills/project/atm10/atm10-source-of-truth-check/techniques.yaml",
+        "skills/project/atm10/atm10-source-of-truth-check/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "be92b47bb3a19260ef4cd1040080e40459bb955c6f04db18c1fa51c3d80c75e8",
+      "content_hash": "902b2bdcd7badafde23b693bb9009aca2af850a161a73b08d9fe3358e3947bf2",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2575,17 +2492,17 @@
       "name": "atm10-source-of-truth-check",
       "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
       "scope": "project",
-      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "skill_revision": "be92b47bb3a1",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
+      "skill_revision": "902b2bdcd7ba",
       "status": "evaluated",
       "support_artifacts": [
         {
-          "path": "skills/atm10-source-of-truth-check/examples/example.md",
+          "path": "skills/project/atm10/atm10-source-of-truth-check/examples/example.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/atm10-source-of-truth-check/checks/review.md",
+          "path": "skills/project/atm10/atm10-source-of-truth-check/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         },
@@ -2625,16 +2542,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-approval-ledger/SKILL.md",
-        "skills/titan-approval-ledger/techniques.yaml",
-        "skills/titan-approval-ledger/agents/openai.yaml",
-        "skills/titan-approval-ledger/examples/runtime.md",
-        "skills/titan-approval-ledger/checks/review.md"
+        "skills/project/titan/titan-approval-ledger/SKILL.md",
+        "skills/project/titan/titan-approval-ledger/techniques.yaml",
+        "skills/project/titan/titan-approval-ledger/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "91bd92b073561522bad90ca8f550b596b4cac54c8f1379997007336aa226982a",
+      "content_hash": "431f6db9349c424cb9213572a0690412c18b22743a0a560cba15dd4b3377ac8d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2659,17 +2574,17 @@
       "name": "titan-approval-ledger",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-approval-ledger/SKILL.md",
-      "skill_revision": "91bd92b07356",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
+      "skill_revision": "431f6db9349c",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-approval-ledger/examples/runtime.md",
+          "path": "skills/project/titan/titan-approval-ledger/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-approval-ledger/checks/review.md",
+          "path": "skills/project/titan/titan-approval-ledger/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2704,16 +2619,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-approval-loom/SKILL.md",
-        "skills/titan-approval-loom/techniques.yaml",
-        "skills/titan-approval-loom/agents/openai.yaml",
-        "skills/titan-approval-loom/examples/runtime.md",
-        "skills/titan-approval-loom/checks/review.md"
+        "skills/project/titan/titan-approval-loom/SKILL.md",
+        "skills/project/titan/titan-approval-loom/techniques.yaml",
+        "skills/project/titan/titan-approval-loom/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "66b1a15c2907f5577c256e90f3a09d959679d0ac8dd6be9e20fd72a2e91cfcb1",
+      "content_hash": "5b6bc112391790c2c20d98210b5aa0943ac469c42f650a183b51ef9e75360569",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2738,17 +2651,17 @@
       "name": "titan-approval-loom",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-approval-loom/SKILL.md",
-      "skill_revision": "66b1a15c2907",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
+      "skill_revision": "5b6bc1123917",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-approval-loom/examples/runtime.md",
+          "path": "skills/project/titan/titan-approval-loom/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-approval-loom/checks/review.md",
+          "path": "skills/project/titan/titan-approval-loom/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2783,16 +2696,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-appserver-bridge/SKILL.md",
-        "skills/titan-appserver-bridge/techniques.yaml",
-        "skills/titan-appserver-bridge/agents/openai.yaml",
-        "skills/titan-appserver-bridge/examples/runtime.md",
-        "skills/titan-appserver-bridge/checks/review.md"
+        "skills/project/titan/titan-appserver-bridge/SKILL.md",
+        "skills/project/titan/titan-appserver-bridge/techniques.yaml",
+        "skills/project/titan/titan-appserver-bridge/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "8f03531f45288f72c83e59787844b477998c30942e546b368f6f066c84093b15",
+      "content_hash": "0278b10ff9d85dc54ae90f4717c68f6cd0ddf46f3eea9b62d905e16cde51441a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2817,17 +2728,17 @@
       "name": "titan-appserver-bridge",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
-      "skill_revision": "8f03531f4528",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
+      "skill_revision": "0278b10ff9d8",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-appserver-bridge/examples/runtime.md",
+          "path": "skills/project/titan/titan-appserver-bridge/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-appserver-bridge/checks/review.md",
+          "path": "skills/project/titan/titan-appserver-bridge/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2862,16 +2773,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-appserver-plan/SKILL.md",
-        "skills/titan-appserver-plan/techniques.yaml",
-        "skills/titan-appserver-plan/agents/openai.yaml",
-        "skills/titan-appserver-plan/examples/runtime.md",
-        "skills/titan-appserver-plan/checks/review.md"
+        "skills/project/titan/titan-appserver-plan/SKILL.md",
+        "skills/project/titan/titan-appserver-plan/techniques.yaml",
+        "skills/project/titan/titan-appserver-plan/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "75f92873f38bd97ade70c21a2d111fa21ba6847889574403932e44e015946726",
+      "content_hash": "7d3da6dba17cec42b6cc3bd4a9165d0d35059ca068d9a127a24e19c31bb3d806",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2896,17 +2805,17 @@
       "name": "titan-appserver-plan",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-appserver-plan/SKILL.md",
-      "skill_revision": "75f92873f38b",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
+      "skill_revision": "7d3da6dba17c",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-appserver-plan/examples/runtime.md",
+          "path": "skills/project/titan/titan-appserver-plan/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-appserver-plan/checks/review.md",
+          "path": "skills/project/titan/titan-appserver-plan/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -2941,16 +2850,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-closeout/SKILL.md",
-        "skills/titan-closeout/techniques.yaml",
-        "skills/titan-closeout/agents/openai.yaml",
-        "skills/titan-closeout/examples/runtime.md",
-        "skills/titan-closeout/checks/review.md"
+        "skills/project/titan/titan-closeout/SKILL.md",
+        "skills/project/titan/titan-closeout/techniques.yaml",
+        "skills/project/titan/titan-closeout/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "032814eab7f96200bb48b682d0b54075a09200bac43ae7eec31c358c0fdadc17",
+      "content_hash": "ad0c300b7328cf39026c6a305c65e0dc05ca1c476eb5ccd0f10579a0818ba371",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2975,17 +2882,17 @@
       "name": "titan-closeout",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-closeout/SKILL.md",
-      "skill_revision": "032814eab7f9",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
+      "skill_revision": "ad0c300b7328",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-closeout/examples/runtime.md",
+          "path": "skills/project/titan/titan-closeout/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-closeout/checks/review.md",
+          "path": "skills/project/titan/titan-closeout/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3020,16 +2927,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-console/SKILL.md",
-        "skills/titan-console/techniques.yaml",
-        "skills/titan-console/agents/openai.yaml",
-        "skills/titan-console/examples/runtime.md",
-        "skills/titan-console/checks/review.md"
+        "skills/project/titan/titan-console/SKILL.md",
+        "skills/project/titan/titan-console/techniques.yaml",
+        "skills/project/titan/titan-console/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "b29318c92e544135ba5a846d16d879e7e948fc9b8cf69adef8871525d366d6f8",
+      "content_hash": "7ce3fc5b7c3e19a21bbfd1dae2b5d9fee15d1fb2e500582688f93c73927e9451",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3054,17 +2959,17 @@
       "name": "titan-console",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-console/SKILL.md",
-      "skill_revision": "b29318c92e54",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
+      "skill_revision": "7ce3fc5b7c3e",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-console/examples/runtime.md",
+          "path": "skills/project/titan/titan-console/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-console/checks/review.md",
+          "path": "skills/project/titan/titan-console/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3099,16 +3004,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-event-replay/SKILL.md",
-        "skills/titan-event-replay/techniques.yaml",
-        "skills/titan-event-replay/agents/openai.yaml",
-        "skills/titan-event-replay/examples/runtime.md",
-        "skills/titan-event-replay/checks/review.md"
+        "skills/project/titan/titan-event-replay/SKILL.md",
+        "skills/project/titan/titan-event-replay/techniques.yaml",
+        "skills/project/titan/titan-event-replay/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "5de7c33d2c641efa2d6d611f992616641523257de155014b41afaa8ca4b6106f",
+      "content_hash": "a367fe12e5dc8d1a5d847d588b06928d0234621f9c211482e0397f752c0e0f9e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3133,17 +3036,17 @@
       "name": "titan-event-replay",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-event-replay/SKILL.md",
-      "skill_revision": "5de7c33d2c64",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
+      "skill_revision": "a367fe12e5dc",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-event-replay/examples/runtime.md",
+          "path": "skills/project/titan/titan-event-replay/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-event-replay/checks/review.md",
+          "path": "skills/project/titan/titan-event-replay/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3178,16 +3081,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-memory-loom/SKILL.md",
-        "skills/titan-memory-loom/techniques.yaml",
-        "skills/titan-memory-loom/agents/openai.yaml",
-        "skills/titan-memory-loom/examples/runtime.md",
-        "skills/titan-memory-loom/checks/review.md"
+        "skills/project/titan/titan-memory-loom/SKILL.md",
+        "skills/project/titan/titan-memory-loom/techniques.yaml",
+        "skills/project/titan/titan-memory-loom/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "aea7e0ac13af366624858500b2857687030572d93d88349fc9e71a461c5d9b11",
+      "content_hash": "32693dc43ecc13bcc6b5a92290a72f08480670fc420023bd92f05b1b2e923b3b",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3212,17 +3113,17 @@
       "name": "titan-memory-loom",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-memory-loom/SKILL.md",
-      "skill_revision": "aea7e0ac13af",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
+      "skill_revision": "32693dc43ecc",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-memory-loom/examples/runtime.md",
+          "path": "skills/project/titan/titan-memory-loom/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-memory-loom/checks/review.md",
+          "path": "skills/project/titan/titan-memory-loom/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3257,16 +3158,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-memory-prune/SKILL.md",
-        "skills/titan-memory-prune/techniques.yaml",
-        "skills/titan-memory-prune/agents/openai.yaml",
-        "skills/titan-memory-prune/examples/runtime.md",
-        "skills/titan-memory-prune/checks/review.md"
+        "skills/project/titan/titan-memory-prune/SKILL.md",
+        "skills/project/titan/titan-memory-prune/techniques.yaml",
+        "skills/project/titan/titan-memory-prune/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "ce1850b7475d9f6d881d9df3f2f1804a28b420f23b2a8890644f9c3e2de64b85",
+      "content_hash": "82c419c22512d503968bf1b71efdb42e17b560b7119f9037720f548e6c88667a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3291,17 +3190,17 @@
       "name": "titan-memory-prune",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-memory-prune/SKILL.md",
-      "skill_revision": "ce1850b7475d",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
+      "skill_revision": "82c419c22512",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-memory-prune/examples/runtime.md",
+          "path": "skills/project/titan/titan-memory-prune/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-memory-prune/checks/review.md",
+          "path": "skills/project/titan/titan-memory-prune/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3336,16 +3235,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-mutation-gate/SKILL.md",
-        "skills/titan-mutation-gate/techniques.yaml",
-        "skills/titan-mutation-gate/agents/openai.yaml",
-        "skills/titan-mutation-gate/examples/runtime.md",
-        "skills/titan-mutation-gate/checks/review.md"
+        "skills/project/titan/titan-mutation-gate/SKILL.md",
+        "skills/project/titan/titan-mutation-gate/techniques.yaml",
+        "skills/project/titan/titan-mutation-gate/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "51f9adf08f672ebcb189ff8962c61eb9642be6c961173745f61c6f7cb99a74b4",
+      "content_hash": "3b6585488087496832eb92d808513bf2f806480cb96b604701c87659df8a4b1e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3370,17 +3267,17 @@
       "name": "titan-mutation-gate",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-mutation-gate/SKILL.md",
-      "skill_revision": "51f9adf08f67",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
+      "skill_revision": "3b6585488087",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-mutation-gate/examples/runtime.md",
+          "path": "skills/project/titan/titan-mutation-gate/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-mutation-gate/checks/review.md",
+          "path": "skills/project/titan/titan-mutation-gate/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3415,16 +3312,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-recall/SKILL.md",
-        "skills/titan-recall/techniques.yaml",
-        "skills/titan-recall/agents/openai.yaml",
-        "skills/titan-recall/examples/runtime.md",
-        "skills/titan-recall/checks/review.md"
+        "skills/project/titan/titan-recall/SKILL.md",
+        "skills/project/titan/titan-recall/techniques.yaml",
+        "skills/project/titan/titan-recall/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "9a097a1e7a56fa3b8115eff243049a31e58a28dd9b59026d3b916e2d8b23f66b",
+      "content_hash": "c074d2a6bf4d47f7411e629ca8740a7e8e0a72d63f564b5aad325404a80f56ca",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3449,17 +3344,17 @@
       "name": "titan-recall",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-recall/SKILL.md",
-      "skill_revision": "9a097a1e7a56",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
+      "skill_revision": "c074d2a6bf4d",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-recall/examples/runtime.md",
+          "path": "skills/project/titan/titan-recall/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-recall/checks/review.md",
+          "path": "skills/project/titan/titan-recall/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3494,16 +3389,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-receipt/SKILL.md",
-        "skills/titan-receipt/techniques.yaml",
-        "skills/titan-receipt/agents/openai.yaml",
-        "skills/titan-receipt/examples/runtime.md",
-        "skills/titan-receipt/checks/review.md"
+        "skills/project/titan/titan-receipt/SKILL.md",
+        "skills/project/titan/titan-receipt/techniques.yaml",
+        "skills/project/titan/titan-receipt/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "81c934af116525a61c2a6f50508e6127d48b2f69e1a37dda67aab92a9e1ca2ac",
+      "content_hash": "fad07dd713f70bf5ba7e8ccd5f69db8143eef176ef53152bb8216e21dd06e5c7",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3528,17 +3421,17 @@
       "name": "titan-receipt",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-receipt/SKILL.md",
-      "skill_revision": "81c934af1165",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
+      "skill_revision": "fad07dd713f7",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-receipt/examples/runtime.md",
+          "path": "skills/project/titan/titan-receipt/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-receipt/checks/review.md",
+          "path": "skills/project/titan/titan-receipt/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3573,16 +3466,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-runtime-gate/SKILL.md",
-        "skills/titan-runtime-gate/techniques.yaml",
-        "skills/titan-runtime-gate/agents/openai.yaml",
-        "skills/titan-runtime-gate/examples/runtime.md",
-        "skills/titan-runtime-gate/checks/review.md"
+        "skills/project/titan/titan-runtime-gate/SKILL.md",
+        "skills/project/titan/titan-runtime-gate/techniques.yaml",
+        "skills/project/titan/titan-runtime-gate/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "be16b7d104ab4f2fd1c586aba54571f828fa26b15719b8520dae745509fbd1ea",
+      "content_hash": "fe2cc198ca1e4bd5abf2c2a54d7eefb2c9d452cfe158a8fe846315d95bf88db8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3607,17 +3498,17 @@
       "name": "titan-runtime-gate",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-runtime-gate/SKILL.md",
-      "skill_revision": "be16b7d104ab",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
+      "skill_revision": "fe2cc198ca1e",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-runtime-gate/examples/runtime.md",
+          "path": "skills/project/titan/titan-runtime-gate/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-runtime-gate/checks/review.md",
+          "path": "skills/project/titan/titan-runtime-gate/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3652,16 +3543,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-summon/SKILL.md",
-        "skills/titan-summon/techniques.yaml",
-        "skills/titan-summon/agents/openai.yaml",
-        "skills/titan-summon/examples/runtime.md",
-        "skills/titan-summon/checks/review.md"
+        "skills/project/titan/titan-summon/SKILL.md",
+        "skills/project/titan/titan-summon/techniques.yaml",
+        "skills/project/titan/titan-summon/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "b43ad8081ad8d901ee5939281a8da5924b754fc7624d5f0178d685ba6b6ae042",
+      "content_hash": "ff332da9acedda6b468ec65bedd7a659b0310f0fd1d58b5c2165c696434cf5de",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3686,17 +3575,17 @@
       "name": "titan-summon",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-summon/SKILL.md",
-      "skill_revision": "b43ad8081ad8",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
+      "skill_revision": "ff332da9aced",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-summon/examples/runtime.md",
+          "path": "skills/project/titan/titan-summon/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-summon/checks/review.md",
+          "path": "skills/project/titan/titan-summon/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3731,16 +3620,14 @@
         "tiny_router"
       ],
       "bundle_files": [
-        "skills/titan-thread-turn-binding/SKILL.md",
-        "skills/titan-thread-turn-binding/techniques.yaml",
-        "skills/titan-thread-turn-binding/agents/openai.yaml",
-        "skills/titan-thread-turn-binding/examples/runtime.md",
-        "skills/titan-thread-turn-binding/checks/review.md"
+        "skills/project/titan/titan-thread-turn-binding/SKILL.md",
+        "skills/project/titan/titan-thread-turn-binding/techniques.yaml",
+        "skills/project/titan/titan-thread-turn-binding/agents/openai.yaml"
       ],
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "6063b4ca638f7d8f682c133feb39ba3bdee3c1e33102bdf6bb613a8822ae500e",
+      "content_hash": "e8ea8e2a07f670afaef89def5148bdeb8303a2ac1bcd5b465a8d4138ab62528b",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3765,17 +3652,17 @@
       "name": "titan-thread-turn-binding",
       "promotion_review_path": null,
       "scope": "project",
-      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
-      "skill_revision": "6063b4ca638f",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
+      "skill_revision": "e8ea8e2a07f6",
       "status": "scaffold",
       "support_artifacts": [
         {
-          "path": "skills/titan-thread-turn-binding/examples/runtime.md",
+          "path": "skills/project/titan/titan-thread-turn-binding/examples/runtime.md",
           "selected_for_runtime_inspection": true,
           "type": "runtime_example"
         },
         {
-          "path": "skills/titan-thread-turn-binding/checks/review.md",
+          "path": "skills/project/titan/titan-thread-turn-binding/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
         }
@@ -3804,10 +3691,10 @@
   ],
   "source_of_truth": {
     "canonical_candidate_reviews": "docs/reviews/canonical-candidates/*.md",
-    "review_checks": "skills/*/checks/review.md",
-    "runtime_examples": "skills/*/examples/*.md",
-    "skill_markdown": "skills/*/SKILL.md",
+    "review_checks": "skills/**/checks/review.md",
+    "runtime_examples": "skills/**/examples/*.md",
+    "skill_markdown": "skills/**/SKILL.md",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
-    "technique_manifest": "skills/*/techniques.yaml"
+    "technique_manifest": "skills/**/techniques.yaml"
   }
 }

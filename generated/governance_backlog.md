@@ -67,23 +67,23 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 | name | status | lineage | governance decision | review path | reviewed revision | current revision | meaning changed | issues | synced |
 |---|---|---|---|---|---|---|---|---|---|
-| abyss-safe-infra-change | evaluated | published | - | docs/reviews/status-promotions/abyss-safe-infra-change.md | 9241b2de96a9 | 9241b2de96a9 | False | - | true |
-| abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | ece4e85825d5 | ece4e85825d5 | False | - | true |
-| aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | 09b00a875a30 | 09b00a875a30 | True | - | true |
-| aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | 9779fde8cb33 | 9779fde8cb33 | True | - | true |
-| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 053ae549a248 | 053ae549a248 | True | - | true |
-| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 516b6371908c | 516b6371908c | False | - | true |
-| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 03dde8604ec3 | 03dde8604ec3 | False | - | true |
-| aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | 1871a24198fe | 1871a24198fe | True | - | true |
-| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | c3bfe77e540d | c3bfe77e540d | True | - | true |
-| aoa-local-stack-bringup | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-local-stack-bringup.md | 2b902decb446 | 2b902decb446 | False | - | true |
-| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | e2f144d405aa | e2f144d405aa | False | - | true |
-| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 791ea1c445d4 | 791ea1c445d4 | True | - | true |
-| aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | 7fd2fb96e1cb | 7fd2fb96e1cb | False | - | true |
-| aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | df0cebb8654a | df0cebb8654a | True | - | true |
-| aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | eccfc4de7849 | eccfc4de7849 | True | - | true |
-| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | 7da6f549a807 | 7da6f549a807 | False | - | true |
-| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | b5bf512142eb | b5bf512142eb | False | - | true |
+| abyss-safe-infra-change | evaluated | published | - | docs/reviews/status-promotions/abyss-safe-infra-change.md | 0e1ee104cc89 | 0e1ee104cc89 | False | - | true |
+| abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | 4a6daab9622e | 4a6daab9622e | False | - | true |
+| aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | 6e348aabdbb2 | 6e348aabdbb2 | True | - | true |
+| aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | aaf152665bb6 | aaf152665bb6 | True | - | true |
+| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | d87267ec67a8 | d87267ec67a8 | True | - | true |
+| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 88ae350ac3d2 | 88ae350ac3d2 | False | - | true |
+| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 8d5647f355c9 | 8d5647f355c9 | False | - | true |
+| aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | fcef34109123 | fcef34109123 | True | - | true |
+| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | 9c343d75ed0a | 9c343d75ed0a | True | - | true |
+| aoa-local-stack-bringup | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-local-stack-bringup.md | 962e39b9bcbe | 962e39b9bcbe | False | - | true |
+| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | d25254009968 | d25254009968 | False | - | true |
+| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | e2c8e6d6054c | e2c8e6d6054c | True | - | true |
+| aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | be0c1056c17a | be0c1056c17a | False | - | true |
+| aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 1ae7817b49fa | 1ae7817b49fa | True | - | true |
+| aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | e5194ddf2296 | e5194ddf2296 | True | - | true |
+| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | 91afd96b4d3a | 91afd96b4d3a | False | - | true |
+| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | 902b2bdcd7ba | 902b2bdcd7ba | False | - | true |
 
 ## Cohorts
 

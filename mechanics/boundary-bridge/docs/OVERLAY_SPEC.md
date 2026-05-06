@@ -104,11 +104,11 @@ These packs are intentionally small. They exist to support validator coverage fo
 The current live family overlay layout is:
 
 - `mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md`
-- `skills/atm10-change-protocol/`
-- `skills/atm10-source-of-truth-check/`
+- `skills/project/atm10/atm10-change-protocol/`
+- `skills/project/atm10/atm10-source-of-truth-check/`
 - `mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md`
-- `skills/abyss-safe-infra-change/`
-- `skills/abyss-sanitized-share/`
+- `skills/project/abyss/abyss-safe-infra-change/`
+- `skills/project/abyss/abyss-sanitized-share/`
 
 Future live packs should keep the same shape:
 

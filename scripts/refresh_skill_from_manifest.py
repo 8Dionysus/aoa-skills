@@ -12,9 +12,11 @@ from typing import Any, Sequence
 
 import yaml
 
+import skill_layout
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 TRACEABILITY_HEADINGS = {
     "## Technique traceability",
     "## Future traceability",
@@ -62,10 +64,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 
 
 def discover_skill_names(repo_root: Path) -> list[str]:
-    skills_dir = repo_root / SKILLS_DIR_NAME
-    if not skills_dir.is_dir():
-        raise FileNotFoundError(f"missing skills directory at {skills_dir}")
-    return sorted(path.name for path in skills_dir.iterdir() if path.is_dir())
+    return skill_layout.discover_skill_names(repo_root)
 
 
 def load_yaml(path: Path) -> Any:
@@ -224,9 +223,8 @@ def relative_path(path: Path, repo_root: Path) -> str:
 
 
 def build_refresh_result(repo_root: Path, skill_name: str) -> RefreshResult:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
-    skill_md_path = skill_dir / "SKILL.md"
-    manifest_path = skill_dir / "techniques.yaml"
+    skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
+    manifest_path = skill_layout.techniques_path(repo_root, skill_name)
 
     metadata, frontmatter_lines, body_text = parse_skill_document(skill_md_path)
     manifest = load_yaml(manifest_path)

@@ -51,6 +51,6 @@ Each targeted skill should have:
 ## Portable mirror rule
 
 Portable copies under `.agents/skills/*` are generated from canonical support
-resources under `skills/*`. Byte-identical parity is required for the canonical
+resources under `skills/**`. Byte-identical parity is required for the canonical
 support files themselves, while generated logo assets remain additive extras in
 portable `assets/`.

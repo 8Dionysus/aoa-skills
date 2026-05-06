@@ -36,8 +36,8 @@ Default reading order for audits:
 7. `mechanics/audit/docs/PUBLIC_SURFACE.md`
 8. `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`
 9. `SKILL_INDEX.md`
-10. the target `skills/*/SKILL.md`
-11. the target `skills/*/techniques.yaml`
+10. the target `skills/**/SKILL.md`
+11. the target `skills/**/techniques.yaml`
 12. any matching `docs/reviews/...` records
 13. the matching generated surfaces as **derived evidence only**:
    - `generated/skill_bundle_index.md`
@@ -52,14 +52,14 @@ Also apply the nearest nested `AGENTS.md` when working in subdirectories.
 
 ### Skill meaning and boundary posture
 
-- `skills/*/SKILL.md`
+- `skills/**/SKILL.md`
 - invocation mode, trigger boundary, inputs/outputs, contracts, anti-patterns, and verification wording
 - risk-heavy skills, especially `explicit-only` bundles
 - any wording that turns a bounded workflow into a vague super-skill
 
 ### Technique bridge and lineage
 
-- `skills/*/techniques.yaml`
+- `skills/**/techniques.yaml`
 - `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
 - `scripts/report_technique_drift.py`
 - `scripts/refresh_skill_from_manifest.py`

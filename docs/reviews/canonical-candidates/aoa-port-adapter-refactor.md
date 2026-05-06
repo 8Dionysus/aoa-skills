@@ -19,10 +19,10 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-port-adapter-refactor/SKILL.md`
-- `skills/aoa-port-adapter-refactor/techniques.yaml`
-- `skills/aoa-port-adapter-refactor/examples/example.md`
-- `skills/aoa-port-adapter-refactor/agents/openai.yaml`
+- `skills/core/engineering/aoa-port-adapter-refactor/SKILL.md`
+- `skills/core/engineering/aoa-port-adapter-refactor/techniques.yaml`
+- `skills/core/engineering/aoa-port-adapter-refactor/examples/example.md`
+- `skills/core/engineering/aoa-port-adapter-refactor/agents/openai.yaml`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 - `docs/governance/lanes.md`
 

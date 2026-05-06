@@ -25,16 +25,23 @@
 - `examples/` — root-owned examples only; mechanic examples live under `mechanics/<slug>/examples/`
 - `manifests/` — manifest route district; records live with owning mechanic packages or parts
 - `quests/` — lane-first durable obligation sources under `quests/<lane>/<state>/`
-- `skills/` — skill bundles
+- `skills/` — canonical skill source topology
 - `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, wave-4 runtime seam surfaces, wave-8 support-resource manifests, and trigger-eval seed data
 - `scripts/` — optional generation or validation helpers
 - `schemas/` — optional machine-readable schemas
 
 ## Skill bundle shape
 
-Each skill lives in:
+Each skill lives under the recursive source topology:
 
-`skills/<skill-name>/`
+- `skills/core/engineering/<skill-name>/`
+- `skills/core/session-growth/<skill-name>/`
+- `skills/risk/<skill-name>/`
+- `skills/project/<family>/<skill-name>/`
+
+The bundle identifier remains the leaf directory name. Do not add flat
+compatibility aliases at `skills/<skill-name>/`; the generated Codex-facing
+export under `.agents/skills/*` is the flat compatibility surface.
 
 Recommended contents:
 
@@ -53,13 +60,15 @@ Use one of these prefixes:
 - `aoa-` for public core skills
 - `atm10-` for project-family skills around `atm10-agent`
 - `abyss-` for project-family skills around `abyss-stack`
+- `titan-` for Titan project-family skills
 
 Examples:
 - `aoa-change-protocol`
 - `aoa-tdd-slice`
 - `aoa-contract-test`
-- `atm10-perception-tests`
-- `abyss-port-exposure-guard`
+- `atm10-change-protocol`
+- `abyss-safe-infra-change`
+- `titan-runtime-gate`
 
 ## Files that belong in the skill
 

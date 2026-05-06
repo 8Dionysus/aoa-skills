@@ -6,7 +6,7 @@ This document defines the portable Agent Skills layer that makes `aoa-skills` di
 
 The target shape is:
 
-- canonical AoA authoring remains in `skills/*/SKILL.md` plus generated AoA catalogs
+- canonical AoA authoring remains in `skills/**/SKILL.md` plus generated AoA catalogs
 - Codex-facing export lives in `.agents/skills/*`
 - local-friendly runtimes wrap or mirror the Codex-facing export rather than replacing it
 
@@ -147,7 +147,7 @@ Wave 9 adds a tiny-router compression bridge for downstream two-stage routing:
 These files remain skill-derived compression surfaces only. They are not routing
 policy authority and they must not turn `aoa-skills` into a second router canon.
 
-Those files describe canonical `skills/*/{scripts,references,assets}` resources and their bridge back to existing AoA support dirs.
+Those files describe canonical `skills/**/{scripts,references,assets}` resources and their bridge back to existing AoA support dirs.
 The portable export still stays generated from canonical skill roots; `scripts/build_support_resources.py` records the support layer, but it does not become a second portable-sync authority.
 
 ## Release verification
@@ -157,7 +157,7 @@ Use `generated/release_manifest.json` when you need one machine-readable view ov
 It intentionally keeps three things separate:
 
 - repo-level release identity still lives in `CHANGELOG.md`, `mechanics/release-support/docs/RELEASING.md`, tags, and GitHub release notes
-- bundle-level meaning and per-skill compatibility still live in `skills/*/SKILL.md`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`
+- bundle-level meaning and per-skill compatibility still live in `skills/**/SKILL.md`, `generated/skill_bundle_index.*`, and `generated/skill_graph.*`
 - the release manifest only pins which portable artifact groups and relationship views exist and which bundle/profile revisions they currently expose
 - a staged profile bundle carries its own `bundle_manifest.json` as the narrow handoff contract over one profile subset
 - a staged profile bundle also carries a generated `README.md` as the portable human-facing handoff guide

@@ -44,205 +44,205 @@
   "governance_backlog_version": 5,
   "review_truth_sync": [
     {
-      "current_revision": "9241b2de96a9",
+      "current_revision": "0e1ee104cc89",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "abyss-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
-      "reviewed_revision": "9241b2de96a9",
+      "reviewed_revision": "0e1ee104cc89",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "ece4e85825d5",
+      "current_revision": "4a6daab9622e",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "abyss-sanitized-share",
       "review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
-      "reviewed_revision": "ece4e85825d5",
+      "reviewed_revision": "4a6daab9622e",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "09b00a875a30",
+      "current_revision": "6e348aabdbb2",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-adr-write",
       "review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
-      "reviewed_revision": "09b00a875a30",
+      "reviewed_revision": "6e348aabdbb2",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "9779fde8cb33",
+      "current_revision": "aaf152665bb6",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-approval-gate-check",
       "review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
-      "reviewed_revision": "9779fde8cb33",
+      "reviewed_revision": "aaf152665bb6",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "053ae549a248",
+      "current_revision": "d87267ec67a8",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
-      "reviewed_revision": "053ae549a248",
+      "reviewed_revision": "d87267ec67a8",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "516b6371908c",
+      "current_revision": "88ae350ac3d2",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
-      "reviewed_revision": "516b6371908c",
+      "reviewed_revision": "88ae350ac3d2",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "03dde8604ec3",
+      "current_revision": "8d5647f355c9",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
       "review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
-      "reviewed_revision": "03dde8604ec3",
+      "reviewed_revision": "8d5647f355c9",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "1871a24198fe",
+      "current_revision": "fcef34109123",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-dry-run-first",
       "review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
-      "reviewed_revision": "1871a24198fe",
+      "reviewed_revision": "fcef34109123",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "c3bfe77e540d",
+      "current_revision": "9c343d75ed0a",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
       "review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
-      "reviewed_revision": "c3bfe77e540d",
+      "reviewed_revision": "9c343d75ed0a",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "2b902decb446",
+      "current_revision": "962e39b9bcbe",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-local-stack-bringup",
       "review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
-      "reviewed_revision": "2b902decb446",
+      "reviewed_revision": "962e39b9bcbe",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "e2f144d405aa",
+      "current_revision": "d25254009968",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
       "review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
-      "reviewed_revision": "e2f144d405aa",
+      "reviewed_revision": "d25254009968",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "791ea1c445d4",
+      "current_revision": "e2c8e6d6054c",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
-      "reviewed_revision": "791ea1c445d4",
+      "reviewed_revision": "e2c8e6d6054c",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "7fd2fb96e1cb",
+      "current_revision": "be0c1056c17a",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
-      "reviewed_revision": "7fd2fb96e1cb",
+      "reviewed_revision": "be0c1056c17a",
       "runtime_skill_md_meaning_changed": false,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "df0cebb8654a",
+      "current_revision": "1ae7817b49fa",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-sanitized-share",
       "review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
-      "reviewed_revision": "df0cebb8654a",
+      "reviewed_revision": "1ae7817b49fa",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "eccfc4de7849",
+      "current_revision": "e5194ddf2296",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
-      "reviewed_revision": "eccfc4de7849",
+      "reviewed_revision": "e5194ddf2296",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "7da6f549a807",
+      "current_revision": "91afd96b4d3a",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "atm10-change-protocol",
       "review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
-      "reviewed_revision": "7da6f549a807",
+      "reviewed_revision": "91afd96b4d3a",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "b5bf512142eb",
+      "current_revision": "902b2bdcd7ba",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
-      "reviewed_revision": "b5bf512142eb",
+      "reviewed_revision": "902b2bdcd7ba",
       "runtime_skill_md_meaning_changed": false,
       "status": "evaluated",
       "truth_synced": true
@@ -263,7 +263,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "scope": "project",
-      "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -280,7 +280,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "scope": "project",
-      "skill_path": "skills/abyss-sanitized-share/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -299,7 +299,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_federation_ready",
       "scope": "project",
-      "skill_path": "skills/abyss-self-diagnostic-spine/SKILL.md",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -321,7 +321,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-adr-write/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "status": "canonical"
     },
     {
@@ -356,7 +356,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
-      "skill_path": "skills/aoa-approval-gate-check/SKILL.md",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
       "status": "canonical"
     },
     {
@@ -375,7 +375,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-automation-opportunity-scan/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -404,7 +404,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-bounded-context-map/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "status": "canonical"
     },
     {
@@ -426,7 +426,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-change-protocol/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical"
     },
     {
@@ -445,7 +445,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -465,7 +465,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-commit-growth-seam/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -487,7 +487,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-contract-test/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "status": "canonical"
     },
     {
@@ -513,7 +513,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-core-logic-boundary/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -545,7 +545,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
-      "skill_path": "skills/aoa-dry-run-first/SKILL.md",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "status": "canonical"
     },
     {
@@ -567,7 +567,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-invariant-coverage-audit/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical"
     },
     {
@@ -589,7 +589,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
-      "skill_path": "skills/aoa-local-stack-bringup/SKILL.md",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -615,7 +615,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-port-adapter-refactor/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -637,7 +637,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-property-invariants/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "status": "canonical"
     },
     {
@@ -656,7 +656,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-quest-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -691,7 +691,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
-      "skill_path": "skills/aoa-safe-infra-change/SKILL.md",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "status": "canonical"
     },
     {
@@ -723,7 +723,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "risk",
-      "skill_path": "skills/aoa-sanitized-share/SKILL.md",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
       "status": "canonical"
     },
     {
@@ -742,7 +742,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-session-donor-harvest/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -762,7 +762,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-session-progression-lift/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -782,7 +782,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-session-route-forks/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -802,7 +802,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-diagnose/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -822,7 +822,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-session-self-repair/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -844,7 +844,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical"
     },
     {
@@ -867,7 +867,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "scope": "core",
-      "skill_path": "skills/aoa-summon/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -889,7 +889,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
-      "skill_path": "skills/aoa-tdd-slice/SKILL.md",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "status": "canonical"
     },
     {
@@ -906,7 +906,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "scope": "project",
-      "skill_path": "skills/atm10-change-protocol/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -923,7 +923,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
       "readiness_reconciliation": "project_overlay_federation_ready",
       "scope": "project",
-      "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated"
     },
     {
@@ -946,7 +946,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-approval-ledger/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -969,7 +969,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-approval-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -992,7 +992,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-appserver-bridge/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1015,7 +1015,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-appserver-plan/SKILL.md",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1038,7 +1038,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-closeout/SKILL.md",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1061,7 +1061,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-console/SKILL.md",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1084,7 +1084,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-event-replay/SKILL.md",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1107,7 +1107,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-memory-loom/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1130,7 +1130,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-memory-prune/SKILL.md",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1153,7 +1153,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-mutation-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1176,7 +1176,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-recall/SKILL.md",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1199,7 +1199,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-receipt/SKILL.md",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1222,7 +1222,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-runtime-gate/SKILL.md",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1245,7 +1245,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-summon/SKILL.md",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "status": "scaffold"
     },
     {
@@ -1268,7 +1268,7 @@
       "promotion_review_path": null,
       "readiness_reconciliation": "project_overlay_eval_ready",
       "scope": "project",
-      "skill_path": "skills/titan-thread-turn-binding/SKILL.md",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold"
     }
   ],
@@ -1280,8 +1280,8 @@
     "overlay_readiness": "generated/overlay_readiness.json",
     "public_surface": "generated/public_surface.json",
     "review_truth_sync": "docs/reviews/status-promotions/*.md",
-    "skill_markdown": "skills/*/SKILL.md",
+    "skill_markdown": "skills/**/SKILL.md",
     "status_promotion_reviews": "docs/reviews/status-promotions/*.md",
-    "technique_manifest": "skills/*/techniques.yaml"
+    "technique_manifest": "skills/**/techniques.yaml"
   }
 }

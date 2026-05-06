@@ -22,7 +22,7 @@
     "deferred:session-growth:theme-only-residue"
   ],
   "chosen_next_artifact_refs": [
-    "skills/aoa-session-donor-harvest/SKILL.md"
+    "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md"
   ],
   "candidate_lineage_refs": [
     "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
@@ -39,7 +39,7 @@
       "owner_shape": "skill",
       "repeat_signal": "reviewed-repeat",
       "owner_repo": "aoa-skills",
-      "chosen_next_surface": "skills/aoa-session-donor-harvest/SKILL.md",
+      "chosen_next_surface": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "nearest_wrong_target": "aoa-playbooks",
       "rejected_nearest_wrong_target_note": "The unit is a bounded executable leaf workflow, not a recurring multi-step route.",
       "status_posture": "early",

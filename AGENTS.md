@@ -35,7 +35,7 @@ It does not own:
 6. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
 7. `mechanics/release-support/docs/RUNTIME_PATH.md`
 8. `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` when skills export, portable projection, or installed skill refresh is in scope
-9. the target `skills/*/SKILL.md`
+9. the target `skills/**/SKILL.md`
 10. affected generated or export surfaces
 11. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches
 

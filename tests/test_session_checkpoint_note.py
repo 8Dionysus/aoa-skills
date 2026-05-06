@@ -47,7 +47,7 @@ def test_checkpoint_docs_keep_pre_harvest_boundary_explicit() -> None:
 
 def test_candidate_lineage_receipt_schema_validates_example() -> None:
     schema = _load_yaml(
-        "skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
+        "skills/core/session-growth/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
     )
     example = _load_json("mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
 
@@ -57,7 +57,7 @@ def test_candidate_lineage_receipt_schema_validates_example() -> None:
 
 def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
     schema = _load_yaml(
-        "skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
+        "skills/core/session-growth/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
     )
     example = _load_json("mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
     del example["nearest_wrong_target"]
@@ -126,7 +126,7 @@ def test_owner_landing_and_followthrough_examples_keep_lineage_aligned() -> None
 
 def test_harvest_packet_receipt_allows_candidate_lineage_entries_without_seed_or_object_refs() -> None:
     schema = _load_yaml(
-        "skills/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml"
+        "skills/core/session-growth/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml"
     )
     receipt_family = json.loads(
         (

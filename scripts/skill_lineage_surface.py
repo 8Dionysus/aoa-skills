@@ -12,8 +12,8 @@ LINEAGE_SURFACE_VERSION = 1
 LINEAGE_SURFACE_JSON_PATH = Path("generated") / "skill_lineage_surface.json"
 LINEAGE_SURFACE_MARKDOWN_PATH = Path("generated") / "skill_lineage_surface.md"
 LINEAGE_SURFACE_SOURCE_OF_TRUTH = {
-    "skill_markdown": "skills/*/SKILL.md",
-    "technique_manifest": "skills/*/techniques.yaml",
+    "skill_markdown": "skills/**/SKILL.md",
+    "technique_manifest": "skills/**/techniques.yaml",
 }
 PUBLISHED_LINEAGE_COHORT = "published_lineage"
 PENDING_LINEAGE_COHORT = "pending_lineage"

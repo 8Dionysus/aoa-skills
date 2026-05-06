@@ -15,6 +15,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import validate_support_resources
+import skill_layout
 
 
 def run_json(*args: str) -> dict:
@@ -38,7 +39,7 @@ class SupportBundleScriptTests(unittest.TestCase):
             shutil.copy2(REPO_ROOT / rel_path, target_path)
         for skill in validate_support_resources.TARGETED_SKILLS:
             shutil.copytree(
-                REPO_ROOT / "skills" / skill,
+                skill_layout.skill_dir_path(REPO_ROOT, skill),
                 repo_root / "skills" / skill,
             )
             shutil.copytree(
@@ -48,41 +49,41 @@ class SupportBundleScriptTests(unittest.TestCase):
         return repo_root
 
     def test_dry_run_contract(self) -> None:
-        payload = REPO_ROOT / "skills/aoa-dry-run-first/assets/dry_run_contract.template.json"
-        result = run_json("skills/aoa-dry-run-first/scripts/dry_run_contract.py", str(payload))
+        payload = REPO_ROOT / "skills/risk/aoa-dry-run-first/assets/dry_run_contract.template.json"
+        result = run_json("skills/risk/aoa-dry-run-first/scripts/dry_run_contract.py", str(payload))
         self.assertEqual(result["skill"], "aoa-dry-run-first")
         self.assertEqual(result["workflow_state"], "ready_for_confirmation")
         self.assertEqual(result["preview_verdict"], "ok")
 
     def test_preview_gap_check(self) -> None:
-        payload = REPO_ROOT / "skills/aoa-dry-run-first/assets/dry_run_contract.template.json"
-        result = run_json("skills/aoa-dry-run-first/scripts/preview_gap_check.py", str(payload))
+        payload = REPO_ROOT / "skills/risk/aoa-dry-run-first/assets/dry_run_contract.template.json"
+        result = run_json("skills/risk/aoa-dry-run-first/scripts/preview_gap_check.py", str(payload))
         self.assertEqual(result["status"], "ok")
         self.assertFalse(result["gaps"])
 
     def test_infra_change_contract(self) -> None:
-        payload = REPO_ROOT / "skills/aoa-safe-infra-change/assets/infra_change_contract.template.json"
-        result = run_json("skills/aoa-safe-infra-change/scripts/infra_change_contract.py", str(payload))
+        payload = REPO_ROOT / "skills/risk/aoa-safe-infra-change/assets/infra_change_contract.template.json"
+        result = run_json("skills/risk/aoa-safe-infra-change/scripts/infra_change_contract.py", str(payload))
         self.assertEqual(result["skill"], "aoa-safe-infra-change")
         self.assertIn(result["risk_band"], {"medium", "high"})
         self.assertTrue(result["rollback_ready"])
 
     def test_risk_surface_scan(self) -> None:
-        payload = REPO_ROOT / "skills/aoa-safe-infra-change/assets/infra_change_contract.template.json"
-        result = run_json("skills/aoa-safe-infra-change/scripts/risk_surface_scan.py", str(payload))
+        payload = REPO_ROOT / "skills/risk/aoa-safe-infra-change/assets/infra_change_contract.template.json"
+        result = run_json("skills/risk/aoa-safe-infra-change/scripts/risk_surface_scan.py", str(payload))
         self.assertEqual(result["status"], "ok")
         self.assertGreaterEqual(len(result["detected"]), 1)
 
     def test_bringup_contract(self) -> None:
-        payload = REPO_ROOT / "skills/aoa-local-stack-bringup/assets/local_stack_bringup.template.json"
-        result = run_json("skills/aoa-local-stack-bringup/scripts/bringup_contract.py", str(payload))
+        payload = REPO_ROOT / "skills/risk/aoa-local-stack-bringup/assets/local_stack_bringup.template.json"
+        result = run_json("skills/risk/aoa-local-stack-bringup/scripts/bringup_contract.py", str(payload))
         self.assertEqual(result["skill"], "aoa-local-stack-bringup")
         self.assertEqual(result["verdict"], "ready_for_confirmation")
         self.assertEqual(result["blocker_count"], 0)
 
     def test_readiness_summary(self) -> None:
-        payload = REPO_ROOT / "skills/aoa-local-stack-bringup/assets/local_stack_bringup.template.json"
-        result = run_json("skills/aoa-local-stack-bringup/scripts/readiness_summary.py", str(payload))
+        payload = REPO_ROOT / "skills/risk/aoa-local-stack-bringup/assets/local_stack_bringup.template.json"
+        result = run_json("skills/risk/aoa-local-stack-bringup/scripts/readiness_summary.py", str(payload))
         self.assertEqual(result["overall"], "warn")
         self.assertEqual(result["counts"]["warn"], 1)
 
@@ -107,7 +108,7 @@ class SupportBundleScriptTests(unittest.TestCase):
                 encoding="utf-8",
             )
             result = run_json(
-                "skills/aoa-local-stack-bringup/scripts/bringup_contract.py",
+                "skills/risk/aoa-local-stack-bringup/scripts/bringup_contract.py",
                 str(payload_path),
             )
             self.assertEqual("hold", result["verdict"])
@@ -140,7 +141,7 @@ class SupportBundleScriptTests(unittest.TestCase):
             completed = subprocess.run(
                 [
                     sys.executable,
-                    "skills/aoa-dry-run-first/scripts/dry_run_contract.py",
+                    "skills/risk/aoa-dry-run-first/scripts/dry_run_contract.py",
                     str(payload_path),
                 ],
                 cwd=REPO_ROOT,

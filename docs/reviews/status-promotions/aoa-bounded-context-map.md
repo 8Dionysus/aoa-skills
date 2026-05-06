@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `053ae549a248`
+- reviewed revision: `d87267ec67a8`
 
 ## Target status
 
@@ -17,9 +17,9 @@
 
 ## Evidence reviewed
 
-- `skills/aoa-bounded-context-map/SKILL.md`
-- `skills/aoa-bounded-context-map/techniques.yaml`
-- `skills/aoa-bounded-context-map/examples/example.md`
+- `skills/core/engineering/aoa-bounded-context-map/SKILL.md`
+- `skills/core/engineering/aoa-bounded-context-map/techniques.yaml`
+- `skills/core/engineering/aoa-bounded-context-map/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

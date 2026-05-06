@@ -13,7 +13,7 @@ import yaml
 
 HEADER_LINES = (
     "# Example generated Codex-facing openai.yaml scaffold.",
-    "# Do not copy this into skills/*/agents/openai.yaml unchanged.",
+    "# Do not copy this into skills/**/agents/openai.yaml unchanged.",
     "# In aoa-skills, named MCP dependencies belong in config/openai_skill_extensions.json",
     "# and then flow into the generated export under .agents/skills/*/agents/openai.yaml.",
 )

@@ -8,7 +8,8 @@ an executable workflow for Codex.
 
 ## Quick route by question
 
-- If you want one concrete source-authored skill before any derived layer, start with `../skills/aoa-change-protocol/SKILL.md` and then `../mechanics/release-support/docs/RUNTIME_PATH.md`.
+- If you want one concrete source-authored skill before any derived layer, start with `../skills/core/engineering/aoa-change-protocol/SKILL.md` and then `../mechanics/release-support/docs/RUNTIME_PATH.md`.
+- If you need to navigate source bundle placement, start with `../skills/README.md`.
 - If you want the current canonical surface at a glance, start with `../SKILL_INDEX.md`.
 - If you are choosing or using a skill, start with `../mechanics/release-support/docs/RUNTIME_PATH.md`.
 - If you need named MCP dependency wiring or workspace-server alignment for the generated Codex export, start with `../mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md` and `../mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md`.
@@ -32,7 +33,7 @@ an executable workflow for Codex.
 
 ## Shortest canonical route
 
-1. `../skills/aoa-change-protocol/SKILL.md` - one concrete source-authored skill bundle.
+1. `../skills/core/engineering/aoa-change-protocol/SKILL.md` - one concrete source-authored skill bundle.
 2. `../SKILL_INDEX.md` - the current repo-wide skill map.
 3. `../mechanics/release-support/docs/RUNTIME_PATH.md` - how to inspect and use a bounded skill object.
 4. `../mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md` - how to build applicability maps, close out a session honestly, and hand off to harvest only when needed.
@@ -43,7 +44,7 @@ an executable workflow for Codex.
 
 ## Read in this order
 
-1. `../skills/aoa-change-protocol/SKILL.md` - one concrete source-authored starter bundle.
+1. `../skills/core/engineering/aoa-change-protocol/SKILL.md` - one concrete source-authored starter bundle.
 2. `../SKILL_INDEX.md` - the current skill map across the repo.
 3. `../mechanics/release-support/docs/RUNTIME_PATH.md` - the runtime inspection guide for `pick -> inspect -> expand -> object use`.
 4. `../mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md` - adaptive protocol for applicability maps, closeout, and harvest handoff.

@@ -4,7 +4,7 @@
     {
       "ability_id": "ability.aoa-change-protocol",
       "skill_name": "aoa-change-protocol",
-      "source_skill_ref": "skills/aoa-change-protocol/SKILL.md",
+      "source_skill_ref": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "summary": "Bounded change workflow that keeps plan, diff, verification, and reporting legible.",
       "school_tags": [
         "change",
@@ -52,7 +52,7 @@
     {
       "ability_id": "ability.aoa-safe-infra-change",
       "skill_name": "aoa-safe-infra-change",
-      "source_skill_ref": "skills/aoa-safe-infra-change/SKILL.md",
+      "source_skill_ref": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "summary": "Risk-heavy infra change workflow that keeps mutating actions explicit, reviewable, and adapter-aware.",
       "school_tags": [
         "infra",

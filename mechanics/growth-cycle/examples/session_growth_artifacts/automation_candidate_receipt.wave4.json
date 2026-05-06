@@ -19,7 +19,7 @@
     },
     {
       "kind": "skill_contract",
-      "ref": "repo:aoa-skills/skills/aoa-automation-opportunity-scan/SKILL.md",
+      "ref": "repo:aoa-skills/skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "role": "contract"
     }
   ],

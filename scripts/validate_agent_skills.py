@@ -15,6 +15,7 @@ from typing import Any
 import release_manifest_contract
 import yaml
 import build_catalog
+import skill_layout
 
 from skill_runtime_guardrails import (
     activate_guarded_payload,
@@ -696,7 +697,7 @@ def main() -> int:
                     errors.append(f"generated/local_adapter_manifest.json allowlist path does not exist: {allowlist_path}")
 
         if skill_dir.name in TARGETED_SUPPORT_SKILLS:
-            source_skill_root = repo_root / "skills" / skill_dir.name
+            source_skill_root = skill_layout.skill_dir_path(repo_root, skill_dir.name)
             support_manifest_entry = support_manifest_by_name.get(skill_dir.name)
             support_index_entry = support_index_by_name.get(skill_dir.name)
             support_bridge_entry = support_bridge_by_name.get(skill_dir.name)
@@ -1180,7 +1181,7 @@ def main() -> int:
         contract = skill_contracts_by_name.get(skill_name, {})
         export_entry = export_by_name.get(skill_name, {})
         exported_references = set((export_entry.get("resource_inventory") or {}).get("references", []))
-        source_skill_dir = repo_root / "skills" / skill_name
+        source_skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
         exported_skill_dir = skills_root / skill_name
         detail_ref = contract.get("detail_receipt_schema_ref")
         core_ref = governance_contract.get("core_receipt_schema_ref")

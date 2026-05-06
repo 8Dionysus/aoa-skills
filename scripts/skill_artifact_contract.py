@@ -7,9 +7,10 @@ from pathlib import Path
 from typing import Any, Sequence
 
 import skill_catalog_contract
+import skill_layout
 
 
-SKILLS_DIR_NAME = "skills"
+SKILLS_DIR_NAME = skill_layout.SKILLS_DIR_NAME
 RUNTIME_EXAMPLE_HEADINGS = (
     "Scenario",
     "Why this skill fits",
@@ -165,7 +166,7 @@ def collect_skill_artifact_issues(
     repo_root: Path,
     skill_name: str,
 ) -> list[ArtifactContractIssue]:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
+    skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
     issues: list[ArtifactContractIssue] = []
     examples_dir = skill_dir / "examples"
     if examples_dir.is_dir():
@@ -200,7 +201,7 @@ def collect_support_artifacts(
     repo_root: Path,
     skill_name: str,
 ) -> list[dict[str, Any]]:
-    skill_dir = repo_root / SKILLS_DIR_NAME / skill_name
+    skill_dir = skill_layout.skill_dir_path(repo_root, skill_name)
     selected_runtime_artifact = preferred_runtime_artifact(skill_dir)
     artifacts: list[dict[str, Any]] = []
 

@@ -23,7 +23,7 @@ It does not change the base skill boundary.
 - verification path: use the smallest repo-relative check that matches the touched surface
 - family review doc: `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`
 - maintenance readout: use `generated/overlay_readiness.md` for family maturity and `generated/governance_backlog.md` for per-skill maintenance
-- bundle-local review checklists: `skills/atm10-change-protocol/checks/review.md`, `skills/atm10-source-of-truth-check/checks/review.md`
+- bundle-local review checklists: `skills/project/atm10/atm10-change-protocol/checks/review.md`, `skills/project/atm10/atm10-source-of-truth-check/checks/review.md`
 
 ## Overlayed skills
 

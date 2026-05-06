@@ -10,7 +10,7 @@
     {
       "name": "aoa-safe-infra-change",
       "targeted": true,
-      "canonical_root": "skills/aoa-safe-infra-change",
+      "canonical_root": "skills/risk/aoa-safe-infra-change",
       "standard_dirs": {
         "scripts": [
           {
@@ -76,7 +76,7 @@
     {
       "name": "aoa-local-stack-bringup",
       "targeted": true,
-      "canonical_root": "skills/aoa-local-stack-bringup",
+      "canonical_root": "skills/risk/aoa-local-stack-bringup",
       "standard_dirs": {
         "scripts": [
           {
@@ -142,7 +142,7 @@
     {
       "name": "aoa-dry-run-first",
       "targeted": true,
-      "canonical_root": "skills/aoa-dry-run-first",
+      "canonical_root": "skills/risk/aoa-dry-run-first",
       "standard_dirs": {
         "scripts": [
           {
