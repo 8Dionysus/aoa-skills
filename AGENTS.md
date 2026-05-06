@@ -33,9 +33,10 @@ It does not own:
 5. `docs/LAYER_POSITION.md`
 6. `docs/RUNTIME_PATH.md`
 7. `docs/COMPONENT_REFRESH_LAW.md` when skills export, portable projection, or installed skill refresh is in scope
-8. the target `skills/*/SKILL.md`
-9. affected generated or export surfaces
-10. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches
+8. `mechanics/README.md` when the change touches skill-layer movement around AoA mechanics
+9. the target `skills/*/SKILL.md`
+10. affected generated or export surfaces
+11. `docs/AGENTS_ROOT_REFERENCE.md` for preserved full root branches
 
 
 ## AGENTS stack law

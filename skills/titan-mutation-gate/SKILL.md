@@ -75,9 +75,9 @@ Do not use this skill when:
 
 ## Technique traceability
 
-Pending Titan workflow techniques:
-- AOA-T-PENDING-TITAN-GATE-DISCIPLINE
-- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE
+Manifest-backed techniques:
+- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation
+- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 

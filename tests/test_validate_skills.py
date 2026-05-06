@@ -69,10 +69,18 @@ def write_valid_questbook_surface(repo_root: Path) -> None:
         (REPO_ROOT / "QUESTBOOK.md").read_text(encoding="utf-8"),
     )
     write_text(
-        repo_root / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md",
-        (REPO_ROOT / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md").read_text(
-            encoding="utf-8"
-        ),
+        repo_root
+        / "mechanics"
+        / "questbook"
+        / "docs"
+        / "QUESTBOOK_SKILL_INTEGRATION.md",
+        (
+            REPO_ROOT
+            / "mechanics"
+            / "questbook"
+            / "docs"
+            / "QUESTBOOK_SKILL_INTEGRATION.md"
+        ).read_text(encoding="utf-8"),
     )
     write_text(
         repo_root / "schemas" / "quest.schema.json",

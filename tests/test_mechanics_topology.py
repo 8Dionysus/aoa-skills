@@ -1,0 +1,606 @@
+from __future__ import annotations
+
+import unittest
+from pathlib import Path
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+class MechanicsTopologyTests(unittest.TestCase):
+    def test_mechanics_root_and_packages_are_routable(self) -> None:
+        expected_paths = (
+            "mechanics/README.md",
+            "mechanics/AGENTS.md",
+            "mechanics/method-growth/README.md",
+            "mechanics/method-growth/AGENTS.md",
+            "mechanics/method-growth/DIRECTION.md",
+            "mechanics/method-growth/PARTS.md",
+            "mechanics/method-growth/PROVENANCE.md",
+            "mechanics/method-growth/LANDING_LOG.md",
+            "mechanics/method-growth/ROADMAP.md",
+            "mechanics/method-growth/docs/README.md",
+            "mechanics/method-growth/docs/CANDIDATE_LINEAGE_CONTRACT.md",
+            "mechanics/method-growth/docs/CANDIDATE_REF_REFINERY.md",
+            "mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md",
+            "mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md",
+            "mechanics/method-growth/parts/adoption-boundary/README.md",
+            "mechanics/method-growth/parts/adoption-evidence-receipts/README.md",
+            "mechanics/method-growth/parts/retention-regression-retirement/README.md",
+            "mechanics/method-growth/parts/pattern-adoption-handoff/README.md",
+            "mechanics/method-growth/legacy/README.md",
+            "mechanics/method-growth/legacy/adoption-wave/INDEX.md",
+            "mechanics/method-growth/legacy/adoption-wave/DISTILLATION_LOG.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_COMPATIBILITY.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_RECEIPTS.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_REGRESSION.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_RETIREMENT.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_PATTERN_ADOPTION.md",
+            "mechanics/growth-cycle/README.md",
+            "mechanics/growth-cycle/AGENTS.md",
+            "mechanics/growth-cycle/DIRECTION.md",
+            "mechanics/growth-cycle/PARTS.md",
+            "mechanics/growth-cycle/PROVENANCE.md",
+            "mechanics/growth-cycle/LANDING_LOG.md",
+            "mechanics/growth-cycle/ROADMAP.md",
+            "mechanics/growth-cycle/docs/README.md",
+            "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+            "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
+            "mechanics/questbook/README.md",
+            "mechanics/questbook/AGENTS.md",
+            "mechanics/questbook/DIRECTION.md",
+            "mechanics/questbook/PARTS.md",
+            "mechanics/questbook/PROVENANCE.md",
+            "mechanics/questbook/LANDING_LOG.md",
+            "mechanics/questbook/ROADMAP.md",
+            "mechanics/questbook/docs/README.md",
+            "mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md",
+            "mechanics/recurrence/README.md",
+            "mechanics/recurrence/AGENTS.md",
+            "mechanics/recurrence/DIRECTION.md",
+            "mechanics/recurrence/PARTS.md",
+            "mechanics/recurrence/PROVENANCE.md",
+            "mechanics/recurrence/LANDING_LOG.md",
+            "mechanics/recurrence/ROADMAP.md",
+            "mechanics/recurrence/parts/live-observation-producers/README.md",
+            "mechanics/recurrence/parts/review-decision-closure/README.md",
+            "mechanics/antifragility/README.md",
+            "mechanics/antifragility/AGENTS.md",
+            "mechanics/antifragility/DIRECTION.md",
+            "mechanics/antifragility/PARTS.md",
+            "mechanics/antifragility/PROVENANCE.md",
+            "mechanics/antifragility/LANDING_LOG.md",
+            "mechanics/antifragility/ROADMAP.md",
+            "mechanics/antifragility/parts/fallback-authoring-posture/README.md",
+            "mechanics/antifragility/parts/via-negativa-pruning/README.md",
+            "mechanics/antifragility/parts/collision-stress-program/README.md",
+            "mechanics/rpg/README.md",
+            "mechanics/rpg/AGENTS.md",
+            "mechanics/rpg/DIRECTION.md",
+            "mechanics/rpg/PARTS.md",
+            "mechanics/rpg/PROVENANCE.md",
+            "mechanics/rpg/LANDING_LOG.md",
+            "mechanics/rpg/ROADMAP.md",
+            "mechanics/rpg/parts/ability-reader-boundary/README.md",
+            "mechanics/rpg/parts/loadout-posture/README.md",
+            "mechanics/checkpoint/README.md",
+            "mechanics/checkpoint/AGENTS.md",
+            "mechanics/checkpoint/DIRECTION.md",
+            "mechanics/checkpoint/PARTS.md",
+            "mechanics/checkpoint/PROVENANCE.md",
+            "mechanics/checkpoint/LANDING_LOG.md",
+            "mechanics/checkpoint/ROADMAP.md",
+            "mechanics/checkpoint/docs/README.md",
+            "mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md",
+            "mechanics/agon/README.md",
+            "mechanics/agon/AGENTS.md",
+            "mechanics/agon/DIRECTION.md",
+            "mechanics/agon/PARTS.md",
+            "mechanics/agon/PROVENANCE.md",
+            "mechanics/agon/LANDING_LOG.md",
+            "mechanics/agon/ROADMAP.md",
+            "mechanics/agon/legacy/README.md",
+            "mechanics/agon/legacy/INDEX.md",
+            "mechanics/agon/legacy/DISTILLATION_LOG.md",
+            "mechanics/agon/legacy/raw/README.md",
+        )
+        for relative_path in expected_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_mechanics_card_standard_is_declared(self) -> None:
+        mechanics_readme = (REPO_ROOT / "mechanics" / "README.md").read_text(
+            encoding="utf-8"
+        )
+        agon_readme = (REPO_ROOT / "mechanics" / "agon" / "README.md").read_text(
+            encoding="utf-8"
+        )
+        method_growth_readme = (
+            REPO_ROOT / "mechanics" / "method-growth" / "README.md"
+        ).read_text(encoding="utf-8")
+        growth_cycle_readme = (
+            REPO_ROOT / "mechanics" / "growth-cycle" / "README.md"
+        ).read_text(encoding="utf-8")
+        checkpoint_readme = (
+            REPO_ROOT / "mechanics" / "checkpoint" / "README.md"
+        ).read_text(encoding="utf-8")
+        questbook_readme = (
+            REPO_ROOT / "mechanics" / "questbook" / "README.md"
+        ).read_text(encoding="utf-8")
+        recurrence_readme = (
+            REPO_ROOT / "mechanics" / "recurrence" / "README.md"
+        ).read_text(encoding="utf-8")
+        antifragility_readme = (
+            REPO_ROOT / "mechanics" / "antifragility" / "README.md"
+        ).read_text(encoding="utf-8")
+        rpg_readme = (REPO_ROOT / "mechanics" / "rpg" / "README.md").read_text(
+            encoding="utf-8"
+        )
+        for heading in (
+            "## Mechanic card",
+            "### Trigger",
+            "### Local owns",
+            "### Stronger owner split",
+            "### Inputs",
+            "### Outputs",
+            "### Must not claim",
+            "### Validation",
+            "### Next route",
+        ):
+            with self.subTest(heading=heading):
+                self.assertIn(heading, mechanics_readme)
+                self.assertIn(heading, agon_readme)
+                self.assertIn(heading, method_growth_readme)
+                self.assertIn(heading, growth_cycle_readme)
+                self.assertIn(heading, checkpoint_readme)
+                self.assertIn(heading, questbook_readme)
+                self.assertIn(heading, recurrence_readme)
+                self.assertIn(heading, antifragility_readme)
+                self.assertIn(heading, rpg_readme)
+
+    def test_method_growth_lineage_surfaces_moved_out_of_flat_docs(self) -> None:
+        moved_paths = (
+            "docs/CANDIDATE_LINEAGE_CONTRACT.md",
+            "docs/CANDIDATE_REF_REFINERY.md",
+            "docs/OWNER_STATUS_SURFACES.md",
+            "docs/GOVERNED_FOLLOWTHROUGH.md",
+        )
+        for relative_path in moved_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        active_docs = (
+            "mechanics/method-growth/docs/CANDIDATE_LINEAGE_CONTRACT.md",
+            "mechanics/method-growth/docs/CANDIDATE_REF_REFINERY.md",
+            "mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md",
+            "mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md",
+        )
+        for relative_path in active_docs:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+        active_parts = (
+            "mechanics/method-growth/parts/candidate-lineage/README.md",
+            "mechanics/method-growth/parts/owner-status-landing/README.md",
+            "mechanics/method-growth/parts/governed-followthrough/README.md",
+            "mechanics/method-growth/parts/adoption-boundary/README.md",
+            "mechanics/method-growth/parts/adoption-evidence-receipts/README.md",
+            "mechanics/method-growth/parts/retention-regression-retirement/README.md",
+            "mechanics/method-growth/parts/pattern-adoption-handoff/README.md",
+        )
+        for relative_path in active_parts:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_method_growth_provenance_accounts_for_moved_docs(self) -> None:
+        provenance = (
+            REPO_ROOT / "mechanics" / "method-growth" / "PROVENANCE.md"
+        ).read_text(encoding="utf-8")
+
+        for source_name in (
+            "CANDIDATE_LINEAGE_CONTRACT.md",
+            "CANDIDATE_REF_REFINERY.md",
+            "OWNER_STATUS_SURFACES.md",
+            "GOVERNED_FOLLOWTHROUGH.md",
+        ):
+            with self.subTest(source_name=source_name):
+                self.assertIn(f"docs/{source_name}", provenance)
+                self.assertIn(f"mechanics/method-growth/docs/{source_name}", provenance)
+
+        self.assertIn("skills/aoa-session-donor-harvest/SKILL.md", provenance)
+        self.assertIn(
+            "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
+            provenance,
+        )
+        self.assertIn("mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md", provenance)
+
+    def test_method_growth_adoption_surfaces_moved_out_of_flat_docs(self) -> None:
+        moved_paths = (
+            "docs/SKILL_ADOPTION_COMPATIBILITY.md",
+            "docs/SKILL_ADOPTION_RECEIPTS.md",
+            "docs/SKILL_ADOPTION_REGRESSION.md",
+            "docs/SKILL_ADOPTION_RETIREMENT.md",
+            "docs/SKILL_PATTERN_ADOPTION.md",
+        )
+        for relative_path in moved_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        raw_paths = (
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_COMPATIBILITY.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_RECEIPTS.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_REGRESSION.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_ADOPTION_RETIREMENT.md",
+            "mechanics/method-growth/legacy/adoption-wave/raw/SKILL_PATTERN_ADOPTION.md",
+        )
+        for relative_path in raw_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+        self.assertTrue((REPO_ROOT / "docs" / "GOVERNANCE_SKILL_ADOPTION.md").is_file())
+
+    def test_method_growth_adoption_provenance_accounts_for_raw_sources(self) -> None:
+        provenance = (
+            REPO_ROOT / "mechanics" / "method-growth" / "PROVENANCE.md"
+        ).read_text(encoding="utf-8")
+        index = (
+            REPO_ROOT
+            / "mechanics"
+            / "method-growth"
+            / "legacy"
+            / "adoption-wave"
+            / "INDEX.md"
+        ).read_text(encoding="utf-8")
+
+        for source_name in (
+            "SKILL_ADOPTION_COMPATIBILITY.md",
+            "SKILL_ADOPTION_RECEIPTS.md",
+            "SKILL_ADOPTION_REGRESSION.md",
+            "SKILL_ADOPTION_RETIREMENT.md",
+            "SKILL_PATTERN_ADOPTION.md",
+        ):
+            with self.subTest(source_name=source_name):
+                self.assertIn(f"docs/{source_name}", provenance)
+                self.assertIn(f"raw/{source_name}", index)
+
+        for active_part in (
+            "parts/adoption-boundary/README.md",
+            "parts/adoption-evidence-receipts/README.md",
+            "parts/retention-regression-retirement/README.md",
+            "parts/pattern-adoption-handoff/README.md",
+        ):
+            with self.subTest(active_part=active_part):
+                self.assertIn(active_part, provenance)
+                self.assertIn(active_part, index)
+
+        self.assertIn("docs/GOVERNANCE_SKILL_ADOPTION.md", provenance)
+
+    def test_growth_cycle_surfaces_moved_out_of_flat_docs(self) -> None:
+        moved_paths = (
+            "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+            "docs/SESSION_GROWTH_KERNEL_MATURITY.md",
+        )
+        for relative_path in moved_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        active_paths = (
+            "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+            "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
+            "mechanics/growth-cycle/parts/adaptive-orchestration/README.md",
+            "mechanics/growth-cycle/parts/session-kernel-maturity/README.md",
+            "mechanics/growth-cycle/parts/harvest-note-boundary/README.md",
+        )
+        for relative_path in active_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_growth_cycle_provenance_accounts_for_moved_docs(self) -> None:
+        provenance = (
+            REPO_ROOT / "mechanics" / "growth-cycle" / "PROVENANCE.md"
+        ).read_text(encoding="utf-8")
+
+        for source_name in (
+            "ADAPTIVE_SKILL_ORCHESTRATION.md",
+            "SESSION_GROWTH_KERNEL_MATURITY.md",
+        ):
+            with self.subTest(source_name=source_name):
+                self.assertIn(f"docs/{source_name}", provenance)
+                self.assertIn(f"mechanics/growth-cycle/docs/{source_name}", provenance)
+
+        self.assertIn("docs/session-harvests/", provenance)
+        self.assertIn(
+            "manifests/recurrence/component.skills.bundle-and-activation-beacons.json",
+            provenance,
+        )
+
+    def test_checkpoint_note_surface_moved_out_of_flat_docs(self) -> None:
+        self.assertFalse((REPO_ROOT / "docs" / "CHECKPOINT_NOTE_PATH.md").exists())
+
+        active_paths = (
+            "mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md",
+            "mechanics/checkpoint/parts/checkpoint-note-lane/README.md",
+            "mechanics/checkpoint/parts/closeout-bridge-boundary/README.md",
+        )
+        for relative_path in active_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_checkpoint_provenance_accounts_for_moved_doc(self) -> None:
+        provenance = (
+            REPO_ROOT / "mechanics" / "checkpoint" / "PROVENANCE.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("docs/CHECKPOINT_NOTE_PATH.md", provenance)
+        self.assertIn("mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md", provenance)
+        self.assertIn("skills/aoa-checkpoint-closeout-bridge/SKILL.md", provenance)
+        self.assertIn("schemas/session_checkpoint_note.schema.json", provenance)
+        self.assertIn(
+            "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
+            provenance,
+        )
+
+    def test_questbook_integration_surface_moved_out_of_flat_docs(self) -> None:
+        self.assertFalse(
+            (REPO_ROOT / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md").exists()
+        )
+
+        active_paths = (
+            "mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md",
+            "mechanics/questbook/parts/source-index-boundary/README.md",
+            "mechanics/questbook/parts/session-harvest-posture/README.md",
+            "mechanics/questbook/parts/dispatch-projection/README.md",
+        )
+        for relative_path in active_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+        self.assertTrue((REPO_ROOT / "QUESTBOOK.md").is_file())
+        self.assertTrue((REPO_ROOT / "quests").is_dir())
+
+    def test_questbook_provenance_accounts_for_moved_doc(self) -> None:
+        provenance = (
+            REPO_ROOT / "mechanics" / "questbook" / "PROVENANCE.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("docs/QUESTBOOK_SKILL_INTEGRATION.md", provenance)
+        self.assertIn(
+            "mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md",
+            provenance,
+        )
+        self.assertIn("QUESTBOOK.md", provenance)
+        self.assertIn("quests/*.yaml", provenance)
+        self.assertIn("generated/quest_catalog.min.json", provenance)
+        self.assertIn("skills/aoa-quest-harvest/SKILL.md", provenance)
+
+    def test_recurrence_surfaces_moved_out_of_flat_docs(self) -> None:
+        moved_paths = (
+            "docs/RECURRENCE_LIVE_OBSERVATION_PRODUCERS.md",
+            "docs/RECURRENCE_REVIEW_DECISION_CLOSURE.md",
+        )
+        for relative_path in moved_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        active_paths = (
+            "mechanics/recurrence/parts/live-observation-producers/README.md",
+            "mechanics/recurrence/parts/review-decision-closure/README.md",
+        )
+        for relative_path in active_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_recurrence_provenance_accounts_for_moved_docs(self) -> None:
+        provenance = (
+            REPO_ROOT / "mechanics" / "recurrence" / "PROVENANCE.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("docs/RECURRENCE_LIVE_OBSERVATION_PRODUCERS.md", provenance)
+        self.assertIn("docs/RECURRENCE_REVIEW_DECISION_CLOSURE.md", provenance)
+        self.assertIn(
+            "mechanics/recurrence/parts/live-observation-producers/README.md",
+            provenance,
+        )
+        self.assertIn(
+            "mechanics/recurrence/parts/review-decision-closure/README.md",
+            provenance,
+        )
+        self.assertIn(
+            "manifests/recurrence/component.skills.bundle-and-activation-beacons.json",
+            provenance,
+        )
+        self.assertIn(
+            "mechanics/agon/parts/recurrence-observation/README.md",
+            provenance,
+        )
+
+    def test_rpg_reader_surfaces_moved_out_of_flat_docs(self) -> None:
+        moved_paths = (
+            "docs/SKILL_ABILITY_MODEL.md",
+            "docs/ABILITY_LOADOUT_POSTURE.md",
+        )
+        for relative_path in moved_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        active_paths = (
+            "mechanics/rpg/parts/ability-reader-boundary/README.md",
+            "mechanics/rpg/parts/loadout-posture/README.md",
+        )
+        for relative_path in active_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_rpg_provenance_accounts_for_moved_docs(self) -> None:
+        provenance = (REPO_ROOT / "mechanics" / "rpg" / "PROVENANCE.md").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("docs/SKILL_ABILITY_MODEL.md", provenance)
+        self.assertIn("docs/ABILITY_LOADOUT_POSTURE.md", provenance)
+        self.assertIn(
+            "mechanics/rpg/parts/ability-reader-boundary/README.md",
+            provenance,
+        )
+        self.assertIn("mechanics/rpg/parts/loadout-posture/README.md", provenance)
+        self.assertIn("generated/skill_ability_cards.min.example.json", provenance)
+        self.assertIn("schemas/skill_ability_catalog.schema.json", provenance)
+
+    def test_antifragility_surfaces_moved_out_of_flat_docs(self) -> None:
+        moved_paths = (
+            "docs/ANTIFRAGILITY_SKILL_ADDENDUM.md",
+            "docs/VIA_NEGATIVA_CHECKLIST.md",
+            "docs/SKILL_COLLISION_CHAOS_WAVE1.md",
+        )
+        for relative_path in moved_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        active_paths = (
+            "mechanics/antifragility/parts/fallback-authoring-posture/README.md",
+            "mechanics/antifragility/parts/via-negativa-pruning/README.md",
+            "mechanics/antifragility/parts/collision-stress-program/README.md",
+        )
+        for relative_path in active_paths:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+        self.assertTrue((REPO_ROOT / "docs" / "ROLLBACK_DRILL_SKILL.md").is_file())
+
+    def test_antifragility_provenance_accounts_for_moved_docs(self) -> None:
+        provenance = (
+            REPO_ROOT / "mechanics" / "antifragility" / "PROVENANCE.md"
+        ).read_text(encoding="utf-8")
+
+        for source_name in (
+            "ANTIFRAGILITY_SKILL_ADDENDUM.md",
+            "VIA_NEGATIVA_CHECKLIST.md",
+            "SKILL_COLLISION_CHAOS_WAVE1.md",
+        ):
+            with self.subTest(source_name=source_name):
+                self.assertIn(f"docs/{source_name}", provenance)
+
+        self.assertIn(
+            "mechanics/antifragility/parts/fallback-authoring-posture/README.md",
+            provenance,
+        )
+        self.assertIn(
+            "mechanics/antifragility/parts/via-negativa-pruning/README.md",
+            provenance,
+        )
+        self.assertIn(
+            "mechanics/antifragility/parts/collision-stress-program/README.md",
+            provenance,
+        )
+        self.assertIn("docs/ROLLBACK_DRILL_SKILL.md", provenance)
+        self.assertIn("generated/skill_trigger_collision_matrix.json", provenance)
+        self.assertIn("config/project_risk_guard_ring.json", provenance)
+
+    def test_agon_flat_docs_surfaces_moved_to_parts(self) -> None:
+        moved_paths = (
+            "docs/AGON_MOVE_SKILL_BRIDGE.md",
+            "docs/AGON_WAVE4_SKILL_LANDING.md",
+            "docs/AGON_RECURRENCE_ADAPTER.md",
+            "docs/AGON_WAVE15_SKILLS_LANDING.md",
+            "docs/AGON_EPISTEMIC_WORKFLOW_BOUNDARY.md",
+            "docs/AGON_EPISTEMIC_SKILL_CANDIDATES.md",
+        )
+        for relative_path in moved_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        legacy_snapshots = (
+            "mechanics/agon/legacy/raw/AGON_MOVE_SKILL_BRIDGE.md",
+            "mechanics/agon/legacy/raw/AGON_WAVE4_SKILL_LANDING.md",
+            "mechanics/agon/legacy/raw/AGON_RECURRENCE_ADAPTER.md",
+            "mechanics/agon/legacy/raw/AGON_WAVE15_SKILLS_LANDING.md",
+            "mechanics/agon/legacy/raw/AGON_EPISTEMIC_WORKFLOW_BOUNDARY.md",
+            "mechanics/agon/legacy/raw/AGON_EPISTEMIC_SKILL_CANDIDATES.md",
+        )
+        for relative_path in legacy_snapshots:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+        self.assertFalse((REPO_ROOT / "mechanics/agon/legacy/docs-root").exists())
+
+        legacy_part_paths = (
+            "mechanics/agon/parts/move-skill-bridge/README.md",
+            "mechanics/agon/parts/wave4-skill-landing/README.md",
+            "mechanics/agon/parts/recurrence-adapter/README.md",
+            "mechanics/agon/parts/wave15-skills-landing/README.md",
+            "mechanics/agon/parts/epistemic-workflow-boundary/README.md",
+            "mechanics/agon/parts/epistemic-skill-candidates/README.md",
+        )
+        for relative_path in legacy_part_paths:
+            with self.subTest(path=relative_path):
+                self.assertFalse((REPO_ROOT / relative_path).exists())
+
+        active_parts = (
+            "mechanics/agon/parts/workflow-candidate-bridge/README.md",
+            "mechanics/agon/parts/candidate-validation-gate/README.md",
+            "mechanics/agon/parts/recurrence-observation/README.md",
+            "mechanics/agon/parts/epistemic-candidate-boundary/README.md",
+        )
+        for relative_path in active_parts:
+            with self.subTest(path=relative_path):
+                self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_agon_legacy_has_source_to_active_accounting(self) -> None:
+        index = (
+            REPO_ROOT / "mechanics" / "agon" / "legacy" / "INDEX.md"
+        ).read_text(encoding="utf-8")
+        log = (
+            REPO_ROOT / "mechanics" / "agon" / "legacy" / "DISTILLATION_LOG.md"
+        ).read_text(encoding="utf-8")
+
+        for source_name in (
+            "AGON_MOVE_SKILL_BRIDGE.md",
+            "AGON_WAVE4_SKILL_LANDING.md",
+            "AGON_RECURRENCE_ADAPTER.md",
+            "AGON_WAVE15_SKILLS_LANDING.md",
+            "AGON_EPISTEMIC_WORKFLOW_BOUNDARY.md",
+            "AGON_EPISTEMIC_SKILL_CANDIDATES.md",
+        ):
+            with self.subTest(source_name=source_name):
+                self.assertIn(f"raw/{source_name}", index)
+                self.assertIn(source_name, log)
+
+        self.assertIn("workflow-candidate-bridge", index)
+        self.assertIn("candidate-validation-gate", index)
+        self.assertIn("recurrence-observation", index)
+        self.assertIn("epistemic-candidate-boundary", index)
+
+    def test_agon_active_parts_use_functional_names(self) -> None:
+        active_surfaces = (
+            REPO_ROOT / "mechanics" / "agon" / "README.md",
+            REPO_ROOT / "mechanics" / "agon" / "PARTS.md",
+        )
+        forbidden_active_terms = (
+            "Wave IV",
+            "Wave 4",
+            "Wave15",
+            "Wave 15",
+            "wave4-skill-landing",
+            "wave15-skills-landing",
+            "epistemic-workflow-boundary",
+            "epistemic-skill-candidates",
+        )
+        for surface in active_surfaces:
+            text = surface.read_text(encoding="utf-8")
+            for term in forbidden_active_terms:
+                with self.subTest(surface=surface.name, term=term):
+                    self.assertNotIn(term, text)
+
+    def test_entrypoints_reference_mechanics_route(self) -> None:
+        readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
+        docs_readme = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
+        agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        roadmap = (REPO_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
+
+        for text in (readme, docs_readme, agents, roadmap):
+            with self.subTest(surface=text[:24]):
+                self.assertIn("mechanics/README.md", text)
+
+
+if __name__ == "__main__":
+    unittest.main()

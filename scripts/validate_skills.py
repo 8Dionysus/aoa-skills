@@ -58,7 +58,9 @@ GENERATED_SURFACE_SCHEMA_BY_PATH = {
     build_catalog.SKILL_GRAPH_JSON_PATH: "skill_graph.schema.json",
 }
 QUESTBOOK_PATH = Path("QUESTBOOK.md")
-QUESTBOOK_INTEGRATION_PATH = Path("docs") / "QUESTBOOK_SKILL_INTEGRATION.md"
+QUESTBOOK_INTEGRATION_PATH = (
+    Path("mechanics") / "questbook" / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md"
+)
 QUEST_SCHEMA_PATH = Path("schemas") / "quest.schema.json"
 QUEST_DISPATCH_SCHEMA_PATH = Path("schemas") / "quest_dispatch.schema.json"
 QUEST_CATALOG_PATH = Path("generated") / "quest_catalog.min.json"

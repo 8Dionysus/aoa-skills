@@ -7,7 +7,7 @@
     "skills/**/*.md",
     "docs/TRIGGER_EVALS.md",
     "docs/DESCRIPTION_TRIGGER_EVALS.md",
-    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+    "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
     "templates/SKILL_APPLICABILITY_MAP.template.md",
     "templates/SESSION_CANDIDATE_HARVEST.template.md"
   ],
@@ -23,7 +23,7 @@
   "contract_surfaces": [
     "docs/TRIGGER_EVALS.md",
     "docs/DESCRIPTION_TRIGGER_EVALS.md",
-    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
+    "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
   ],
   "documentation_surfaces": [
     "README.md",
@@ -102,7 +102,7 @@
   "rollback_anchors": [
     "docs/TRIGGER_EVALS.md",
     "docs/DESCRIPTION_TRIGGER_EVALS.md",
-    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
+    "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md"
   ],
   "tags": [
     "skills",
@@ -169,7 +169,7 @@
     {
       "beacon_ref": "skills.unused_skill.activation_gap",
       "kind": "unused_skill_opportunity",
-      "decision_surface": "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+      "decision_surface": "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
       "target_repo": "aoa-skills",
       "observation_inputs": [
         "change_signal",
@@ -290,7 +290,7 @@
     }
   ],
   "decision_surfaces": [
-    "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
+    "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
     "docs/TRIGGER_EVALS.md",
     "docs/DESCRIPTION_TRIGGER_EVALS.md",
     "templates/SESSION_CANDIDATE_HARVEST.template.md"

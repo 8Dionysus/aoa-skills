@@ -143,12 +143,8 @@ Do not use this skill when:
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-SUMMON-LANE-SELECTION from `8Dionysus/aoa-techniques` at `TBD`
-  using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure,
-  Contracts, Validation
-- AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE from `8Dionysus/aoa-techniques` at
-  `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks,
-  Validation
+- AOA-T-PENDING-SUMMON-LANE-SELECTION from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation
+- AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation
 
 ## Adaptation points
 

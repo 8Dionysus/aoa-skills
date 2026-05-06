@@ -32,7 +32,7 @@ activation:
   note: open when the second-wave ability slice is ready to land after the first-wave progression spine exists
 anchor_ref:
   artifact: skill_ability_model
-  ref: docs/SKILL_ABILITY_MODEL.md
+  ref: mechanics/rpg/parts/ability-reader-boundary/README.md
   note: ability cards must stay derived from existing skill ownership surfaces
 handoff_role: skill-layer-maintainer
 evidence:

@@ -67,8 +67,9 @@ The newer case classes are:
 - `should-not-trigger`
 - `prefer-other-skill`
 
-Chaos-wave stress coverage stays inside the same contract.
-Use `docs/SKILL_COLLISION_CHAOS_WAVE1.md` when you need the bounded stress-specific extension for:
+Chaos-wave stress coverage stays inside the same contract. Use
+`../mechanics/antifragility/parts/collision-stress-program/README.md` when you
+need the bounded stress-specific extension for:
 
 - timeout or repair prompts that should stay manual
 - source-of-truth wins over ADR drafting under stress-doc overlap

@@ -95,16 +95,21 @@ def _load_module(name: str, path: Path):
 
 
 def test_session_growth_kernel_maturity_docs_route_to_live_wave4_family() -> None:
-    doc = (REPO_ROOT / "docs" / "SESSION_GROWTH_KERNEL_MATURITY.md").read_text(encoding="utf-8")
+    doc = (
+        REPO_ROOT / "mechanics" / "growth-cycle" / "docs" / "SESSION_GROWTH_KERNEL_MATURITY.md"
+    ).read_text(encoding="utf-8")
     docs_map = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
     readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
-    candidate_doc = (REPO_ROOT / "docs" / "CANDIDATE_REF_REFINERY.md").read_text(encoding="utf-8")
+    candidate_doc = (
+        REPO_ROOT / "mechanics" / "method-growth" / "docs" / "CANDIDATE_REF_REFINERY.md"
+    ).read_text(encoding="utf-8")
 
     assert "examples/session_growth_artifacts/" in doc
     assert "examples/session-growth-kernel/" in doc
-    assert "SESSION_GROWTH_KERNEL_MATURITY.md" in docs_map
-    assert "SESSION_GROWTH_KERNEL_MATURITY.md" in readme
+    assert "../mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md" in docs_map
+    assert "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md" in readme
     assert "SESSION_GROWTH_KERNEL_MATURITY.md" in candidate_doc
+    assert "../../method-growth/docs/CANDIDATE_REF_REFINERY.md" in doc
     assert "must not mint `seed_ref` or `object_ref`" in doc
 
 

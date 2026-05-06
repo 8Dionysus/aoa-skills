@@ -3,8 +3,8 @@ composition_mode: bounded
 techniques:
   - id: AOA-T-0086
     repo: 8Dionysus/aoa-techniques
-    path: techniques/agent-workflows/automation-fit-matrix/TECHNIQUE.md
-    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    path: techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
     use_sections:
       - Intent
       - Inputs
@@ -14,8 +14,8 @@ techniques:
       - Validation
   - id: AOA-T-0087
     repo: 8Dionysus/aoa-techniques
-    path: techniques/agent-workflows/human-loop-to-seed-lift/TECHNIQUE.md
-    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    path: techniques/governance/automation-readiness/human-loop-to-seed-lift/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
     use_sections:
       - Intent
       - When to use
@@ -25,8 +25,8 @@ techniques:
       - Validation
   - id: AOA-T-0088
     repo: 8Dionysus/aoa-techniques
-    path: techniques/agent-workflows/approval-sensitivity-check/TECHNIQUE.md
-    source_ref: 5c6f0496edc3c2e74590baa35627c85fe58ef765
+    path: techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
     use_sections:
       - Intent
       - Inputs
