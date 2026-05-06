@@ -38,7 +38,7 @@ Distill active behavior into four parts:
 - `parts/retention-regression-retirement/`
 - `parts/pattern-adoption-handoff/`
 
-Keep `docs/GOVERNANCE_SKILL_ADOPTION.md` in place because it belongs to the
+Keep `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md` in place because it belongs to the
 later v0.8 experience/polis-governance contour, not this v0.7 adoption
 lifecycle slice.
 

@@ -13,7 +13,7 @@ EXPORT_PROFILE = "codex-facing-wave-3"
 SKILL_ROOT = ".agents/skills"
 RELEASE_MANIFEST_PATH = "generated/release_manifest.json"
 CHANGELOG_PATH = "CHANGELOG.md"
-RELEASING_DOC_PATH = "docs/RELEASING.md"
+RELEASING_DOC_PATH = "mechanics/release-support/docs/RELEASING.md"
 TEXT_FILE_SUFFIXES = {
     ".csv",
     ".json",

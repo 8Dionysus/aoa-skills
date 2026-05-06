@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "3b891efce4c39b230a8d9080228d9f9384f7a4661be5bcc33921ff21922d7b5e",
+      "sha256": "909da60eed7568c4d177dc8c8f67696e83cfd0bfd723e0bdbe8f64bbcbf2e813",
       "bytes": 127993
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "072c9b94b0e96d1db9a915cfd888f0b687c10782570dca9c75378e6028a80b38",
+      "sha256": "9be3114f5418a1a45ae5340eaf5fee7f0fa645e010948155655066a0e984cd83",
       "bytes": 14832
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "5e45298b242a635a31ae38065730c394d80a5110dfcdb12339982d506788aab6",
+      "sha256": "cf5469ece04dd897b339eb90bfb52b9f8f37639aae39203a32c3f3dbb56cbd39",
       "bytes": 234217
     },
     {
@@ -456,13 +456,13 @@
   "skill_bundle_revisions": [
     {
       "name": "abyss-safe-infra-change",
-      "skill_revision": "56c5408f0fd0",
-      "content_hash": "56c5408f0fd0f4b243e7d97662aa0022d19731f425fbb7fc7921db4e539be0d3"
+      "skill_revision": "b5d0cd4514d3",
+      "content_hash": "b5d0cd4514d3d903c25163c79ae9cc6e853cc7be8faf65bf5dbe11822b17056d"
     },
     {
       "name": "abyss-sanitized-share",
-      "skill_revision": "d48bd0145f6d",
-      "content_hash": "d48bd0145f6d9a81e48dc30be1047a0af51fbcda192ee58ba508725052299ff9"
+      "skill_revision": "98a642f94495",
+      "content_hash": "98a642f94495cfc1dbd7abe7b3ad164d47dcb2782b7c17f4ba0cee795d0aca5a"
     },
     {
       "name": "abyss-self-diagnostic-spine",
@@ -596,13 +596,13 @@
     },
     {
       "name": "atm10-change-protocol",
-      "skill_revision": "7cc7c267b2e3",
-      "content_hash": "7cc7c267b2e381c654a306afb74491d612fc6f3766f64ff07dc8aee177364f58"
+      "skill_revision": "c5f5ceccf298",
+      "content_hash": "c5f5ceccf29862b12717e05faa2b6886c62d4bcd1498e409deec10be81f0d851"
     },
     {
       "name": "atm10-source-of-truth-check",
-      "skill_revision": "7427702890de",
-      "content_hash": "7427702890de969dbd7d3dc12370efc3ca396bd50ac7a5d9b5e02c5d0946081c"
+      "skill_revision": "be92b47bb3a1",
+      "content_hash": "be92b47bb3a19260ef4cd1040080e40459bb955c6f04db18c1fa51c3d80c75e8"
     },
     {
       "name": "titan-approval-ledger",
@@ -689,7 +689,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine"
       ],
-      "profile_revision": "cb8f5ecd6acbef5f4c06043e0f67fd8c2481003060ec546b4c868b1f71c31ba1"
+      "profile_revision": "01dba3a91bb17f1188b73b2390502a2aa1d02618270754eae715e74c77ff88d9"
     },
     {
       "name": "repo-atm10-overlay",
@@ -698,7 +698,7 @@
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ],
-      "profile_revision": "da97ee6396ba3b3f34628bc934f1cc3381b53778223a5626f820851841f5a5b3"
+      "profile_revision": "07936d4babc6897629cc7848b9df12eaacfdf24570f3bc717366f176c66f3dc2"
     },
     {
       "name": "repo-automation-opportunity-scan-only",
@@ -783,7 +783,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "ac54e0ea57d479c78533c4b182f88c86460b17ad50d358a61abb28f6007788d5"
+      "profile_revision": "f8d3a21229661414f8f75d027193640c8fabd6696c8794ed7ece65d12ae1d6fa"
     },
     {
       "name": "repo-project-core-kernel",
@@ -958,7 +958,7 @@
   ],
   "release_identity": {
     "changelog": "CHANGELOG.md",
-    "releasing_doc": "docs/RELEASING.md",
+    "releasing_doc": "mechanics/release-support/docs/RELEASING.md",
     "latest_tagged_version": "0.3.3",
     "latest_tagged_date": "2026-04-23",
     "has_unreleased_changes": true

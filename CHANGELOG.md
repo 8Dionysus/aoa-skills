@@ -12,6 +12,16 @@ Tracking starts with the community-docs baseline for this repository.
 - `mechanics/OWNER_REQUEST_RECEIPTS.md` records owner-local AoA request
   receipts for skill-layer mechanics, separating landed requests from
   accepted-but-not-landed future package pressure.
+- mechanics packages for audit, boundary-bridge, experience, and
+  release-support now provide local route cards, provenance, landing logs, and
+  active docs maps for previously flat mechanics surfaces.
+
+### Changed
+
+- mechanics-shaped root and flat-doc surfaces now route through `mechanics/`,
+  including `mechanics/ROADMAP.md`, `mechanics/questbook/QUESTBOOK.md`,
+  audit evidence, boundary bridge overlays, experience workflow posture,
+  method-growth maturity docs, and release-support runtime/release surfaces.
 
 ## [0.3.3] - 2026-04-23
 
@@ -171,8 +181,8 @@ Tracking starts with the community-docs baseline for this repository.
   `aoa-automation-opportunity-scan`, `aoa-checkpoint-closeout-bridge`,
   `aoa-commit-growth-seam`, and `abyss-self-diagnostic-spine`
 - governance and install-profile refreshes across `docs/`, `SKILL_INDEX.md`,
-  `.agents/`, `.github/`, `README.md`, `AGENTS.md`, `AUDIT.md`, `templates/`,
-  `tests/`, `QUESTBOOK.md`, and `quests/`, including project-core kernel and
+  `.agents/`, `.github/`, `README.md`, `AGENTS.md`, `mechanics/audit/docs/AUDIT_CONTRACT.md`, `templates/`,
+  `tests/`, `mechanics/questbook/QUESTBOOK.md`, and `quests/`, including project-core kernel and
   risk rings, foundation-pack rollout, live receipt publication, via negativa
   guidance, checkpoint-note growth, and cross-repo follow-through capture
 
@@ -233,7 +243,7 @@ This changelog entry uses the release-prep merge date.
 ### Added
 
 - public baseline release of `17` committed skill bundles across core, risk, and project-overlay surfaces
-- repo-level release foundation through `docs/RELEASING.md` and `python scripts/release_check.py`
+- repo-level release foundation through `mechanics/release-support/docs/RELEASING.md` and `python scripts/release_check.py`
 - release-backed validation path in `.github/workflows/repo-validation.yml`
 - public repository entry docs and community docs including `README.md`, `AGENTS.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, and `SKILL_INDEX.md`
 

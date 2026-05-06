@@ -17,9 +17,9 @@ Use this surface for family maturity and `generated/governance_backlog.md` for p
 
 | family | skills | listed parity | family review | bundle review checks | eval-ready skills | repo-relative evidence | boundary evidence | readiness |
 |---|---:|---|---|---:|---:|---|---|---|
-| abyss | 3 | true | docs/overlays/abyss/REVIEW.md | 3 | 3 | true | true | reviewable |
-| atm10 | 2 | true | docs/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |
-| titan | 15 | true | docs/overlays/titan/REVIEW.md | 15 | 15 | true | true | reviewable |
+| abyss | 3 | true | mechanics/boundary-bridge/overlays/abyss/REVIEW.md | 3 | 3 | true | true | reviewable |
+| atm10 | 2 | true | mechanics/boundary-bridge/overlays/atm10/REVIEW.md | 2 | 2 | true | true | reviewable |
+| titan | 15 | true | mechanics/boundary-bridge/overlays/titan/REVIEW.md | 15 | 15 | true | true | reviewable |
 
 ## Project skills
 

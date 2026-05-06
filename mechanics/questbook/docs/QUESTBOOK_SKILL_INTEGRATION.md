@@ -2,27 +2,27 @@
 
 ## Purpose
 
-This note shows how `QUESTBOOK.md` fits into `aoa-skills` as the public tracked surface for deferred skill obligations.
+This note shows how `mechanics/questbook/QUESTBOOK.md` fits into `aoa-skills` as the public tracked surface for deferred skill obligations.
 
 ## Role split
 
 - skill bundles remain the source of skill meaning
 - `generated/public_surface.md`, `generated/governance_backlog.md`, and `generated/skill_evaluation_matrix.md` remain derived readouts
-- `QUESTBOOK.md` holds deferred obligations that survive the current bounded diff
+- `mechanics/questbook/QUESTBOOK.md` holds deferred obligations that survive the current bounded diff
 - overlay and local-adapter details may trigger quests, but they should not become a hidden second source of truth
 
 ## Good anchors in this repo
 
 Use stable anchors such as:
-- `docs/RUNTIME_PATH.md`
-- `docs/EVALUATION_PATH.md`
-- `docs/BRIDGE_SPEC.md`
+- `mechanics/release-support/docs/RUNTIME_PATH.md`
+- `mechanics/audit/docs/EVALUATION_PATH.md`
+- `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
 - `generated/governance_backlog.md`
 - `generated/skill_evaluation_matrix.md`
-- `docs/CODEX_PORTABLE_LAYER.md`
-- `docs/LOCAL_ADAPTER_CONTRACT.md`
-- `docs/OVERLAY_SPEC.md`
-- `docs/TWO_STAGE_SKILL_SELECTION.md`
+- `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`
+- `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`
+- `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`
+- `mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md`
 
 ## Initial posture
 

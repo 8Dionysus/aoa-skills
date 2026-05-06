@@ -12,7 +12,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine"
       ],
-      "project_overlay_path": "docs/overlays/abyss/PROJECT_OVERLAY.md",
+      "project_overlay_path": "mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md",
       "project_skill_count": 3,
       "project_skill_names": [
         "abyss-safe-infra-change",
@@ -22,7 +22,7 @@
       "readiness_state": "reviewable",
       "repo_relative_statement_present": true,
       "review_mentions_all_skills": true,
-      "review_path": "docs/overlays/abyss/REVIEW.md"
+      "review_path": "mechanics/boundary-bridge/overlays/abyss/REVIEW.md"
     },
     {
       "authority_section_present": true,
@@ -35,7 +35,7 @@
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ],
-      "project_overlay_path": "docs/overlays/atm10/PROJECT_OVERLAY.md",
+      "project_overlay_path": "mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md",
       "project_skill_count": 2,
       "project_skill_names": [
         "atm10-change-protocol",
@@ -44,7 +44,7 @@
       "readiness_state": "reviewable",
       "repo_relative_statement_present": true,
       "review_mentions_all_skills": true,
-      "review_path": "docs/overlays/atm10/REVIEW.md"
+      "review_path": "mechanics/boundary-bridge/overlays/atm10/REVIEW.md"
     },
     {
       "authority_section_present": true,
@@ -70,7 +70,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "project_overlay_path": "docs/overlays/titan/PROJECT_OVERLAY.md",
+      "project_overlay_path": "mechanics/boundary-bridge/overlays/titan/PROJECT_OVERLAY.md",
       "project_skill_count": 15,
       "project_skill_names": [
         "titan-approval-ledger",
@@ -92,7 +92,7 @@
       "readiness_state": "reviewable",
       "repo_relative_statement_present": true,
       "review_mentions_all_skills": true,
-      "review_path": "docs/overlays/titan/REVIEW.md"
+      "review_path": "mechanics/boundary-bridge/overlays/titan/REVIEW.md"
     }
   ],
   "overlay_readiness_version": 1,
@@ -340,8 +340,8 @@
   ],
   "source_of_truth": {
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
-    "overlay_docs": "docs/overlays/*/PROJECT_OVERLAY.md",
-    "overlay_reviews": "docs/overlays/*/REVIEW.md",
+    "overlay_docs": "mechanics/boundary-bridge/overlays/*/PROJECT_OVERLAY.md",
+    "overlay_reviews": "mechanics/boundary-bridge/overlays/*/REVIEW.md",
     "review_checks": "skills/*/checks/review.md",
     "runtime_examples": "skills/*/examples/*.md",
     "skill_markdown": "skills/*/SKILL.md"

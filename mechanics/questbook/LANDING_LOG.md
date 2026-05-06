@@ -14,7 +14,7 @@ Changed route:
 
 Preserved stop-lines:
 
-- `QUESTBOOK.md` stayed root public obligation source
+- `QUESTBOOK.md` became the package-local public obligation source
 - `quests/`, schemas, and generated projections stayed in place
 - no generated surface became authority
 - no quest closure, proof verdict, playbook choreography, memory canon, routing

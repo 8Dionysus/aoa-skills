@@ -12,12 +12,12 @@ Before editing a bundle in this directory, read in this order:
 
 1. `../AGENTS.md`
 2. `../docs/ARCHITECTURE.md`
-3. `../docs/BRIDGE_SPEC.md`
-4. `../docs/RUNTIME_PATH.md`
+3. `../mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
+4. `../mechanics/release-support/docs/RUNTIME_PATH.md`
 5. the target `skills/<skill>/SKILL.md`
 6. the target `skills/<skill>/techniques.yaml`
 7. any touched `checks/`, `examples/`, `references/`, or `agents/openai.yaml`
-8. for live overlay skills, `../docs/OVERLAY_SPEC.md` and the matching `../docs/overlays/<family>/PROJECT_OVERLAY.md`
+8. for live overlay skills, `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` and the matching `../mechanics/boundary-bridge/overlays/<family>/PROJECT_OVERLAY.md`
 
 ## Directory contract
 

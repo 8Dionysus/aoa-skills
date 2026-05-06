@@ -12,6 +12,7 @@ class MechanicsTopologyTests(unittest.TestCase):
         expected_paths = (
             "mechanics/README.md",
             "mechanics/AGENTS.md",
+            "mechanics/ROADMAP.md",
             "mechanics/OWNER_REQUEST_RECEIPTS.md",
             "mechanics/method-growth/README.md",
             "mechanics/method-growth/AGENTS.md",
@@ -104,6 +105,53 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/agon/legacy/INDEX.md",
             "mechanics/agon/legacy/DISTILLATION_LOG.md",
             "mechanics/agon/legacy/raw/README.md",
+            "mechanics/audit/README.md",
+            "mechanics/audit/AGENTS.md",
+            "mechanics/audit/DIRECTION.md",
+            "mechanics/audit/PARTS.md",
+            "mechanics/audit/PROVENANCE.md",
+            "mechanics/audit/LANDING_LOG.md",
+            "mechanics/audit/ROADMAP.md",
+            "mechanics/audit/docs/README.md",
+            "mechanics/audit/docs/AUDIT_CONTRACT.md",
+            "mechanics/audit/docs/EVALUATION_PATH.md",
+            "mechanics/audit/docs/PUBLIC_SURFACE.md",
+            "mechanics/audit/docs/TRIGGER_EVALS.md",
+            "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
+            "mechanics/audit/docs/SKILLS_REF_VALIDATION.md",
+            "mechanics/experience/README.md",
+            "mechanics/experience/AGENTS.md",
+            "mechanics/experience/DIRECTION.md",
+            "mechanics/experience/PARTS.md",
+            "mechanics/experience/PROVENANCE.md",
+            "mechanics/experience/LANDING_LOG.md",
+            "mechanics/experience/ROADMAP.md",
+            "mechanics/experience/docs/README.md",
+            "mechanics/boundary-bridge/README.md",
+            "mechanics/boundary-bridge/AGENTS.md",
+            "mechanics/boundary-bridge/DIRECTION.md",
+            "mechanics/boundary-bridge/PARTS.md",
+            "mechanics/boundary-bridge/PROVENANCE.md",
+            "mechanics/boundary-bridge/LANDING_LOG.md",
+            "mechanics/boundary-bridge/ROADMAP.md",
+            "mechanics/boundary-bridge/docs/README.md",
+            "mechanics/boundary-bridge/docs/LAYER_POSITION.md",
+            "mechanics/boundary-bridge/docs/BRIDGE_SPEC.md",
+            "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md",
+            "mechanics/boundary-bridge/overlays/AGENTS.md",
+            "mechanics/release-support/README.md",
+            "mechanics/release-support/AGENTS.md",
+            "mechanics/release-support/DIRECTION.md",
+            "mechanics/release-support/PARTS.md",
+            "mechanics/release-support/PROVENANCE.md",
+            "mechanics/release-support/LANDING_LOG.md",
+            "mechanics/release-support/ROADMAP.md",
+            "mechanics/release-support/docs/README.md",
+            "mechanics/release-support/docs/RUNTIME_PATH.md",
+            "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
+            "mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md",
+            "mechanics/release-support/docs/RELEASING.md",
+            "mechanics/release-support/legacy/waves/README.md",
         )
         for relative_path in expected_paths:
             with self.subTest(path=relative_path):
@@ -270,7 +318,15 @@ class MechanicsTopologyTests(unittest.TestCase):
             with self.subTest(path=relative_path):
                 self.assertTrue((REPO_ROOT / relative_path).is_file())
 
-        self.assertTrue((REPO_ROOT / "docs" / "GOVERNANCE_SKILL_ADOPTION.md").is_file())
+        self.assertTrue(
+            (
+                REPO_ROOT
+                / "mechanics"
+                / "experience"
+                / "docs"
+                / "GOVERNANCE_SKILL_ADOPTION.md"
+            ).is_file()
+        )
 
     def test_method_growth_adoption_provenance_accounts_for_raw_sources(self) -> None:
         provenance = (
@@ -306,7 +362,7 @@ class MechanicsTopologyTests(unittest.TestCase):
                 self.assertIn(active_part, provenance)
                 self.assertIn(active_part, index)
 
-        self.assertIn("docs/GOVERNANCE_SKILL_ADOPTION.md", provenance)
+        self.assertIn("mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md", provenance)
 
     def test_growth_cycle_surfaces_moved_out_of_flat_docs(self) -> None:
         moved_paths = (
@@ -388,7 +444,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             with self.subTest(path=relative_path):
                 self.assertTrue((REPO_ROOT / relative_path).is_file())
 
-        self.assertTrue((REPO_ROOT / "QUESTBOOK.md").is_file())
+        self.assertTrue((REPO_ROOT / "mechanics/questbook/QUESTBOOK.md").is_file())
         self.assertTrue((REPO_ROOT / "quests").is_dir())
 
     def test_questbook_provenance_accounts_for_moved_doc(self) -> None:
@@ -401,7 +457,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md",
             provenance,
         )
-        self.assertIn("QUESTBOOK.md", provenance)
+        self.assertIn("mechanics/questbook/QUESTBOOK.md", provenance)
         self.assertIn("quests/*.yaml", provenance)
         self.assertIn("generated/quest_catalog.min.json", provenance)
         self.assertIn("skills/aoa-quest-harvest/SKILL.md", provenance)
@@ -498,7 +554,15 @@ class MechanicsTopologyTests(unittest.TestCase):
             with self.subTest(path=relative_path):
                 self.assertTrue((REPO_ROOT / relative_path).is_file())
 
-        self.assertTrue((REPO_ROOT / "docs" / "ROLLBACK_DRILL_SKILL.md").is_file())
+        self.assertTrue(
+            (
+                REPO_ROOT
+                / "mechanics"
+                / "experience"
+                / "docs"
+                / "ROLLBACK_DRILL_SKILL.md"
+            ).is_file()
+        )
 
     def test_antifragility_provenance_accounts_for_moved_docs(self) -> None:
         provenance = (
@@ -525,7 +589,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/antifragility/parts/collision-stress-program/README.md",
             provenance,
         )
-        self.assertIn("docs/ROLLBACK_DRILL_SKILL.md", provenance)
+        self.assertIn("mechanics/experience/docs/ROLLBACK_DRILL_SKILL.md", provenance)
         self.assertIn("generated/skill_trigger_collision_matrix.json", provenance)
         self.assertIn("config/project_risk_guard_ring.json", provenance)
 
@@ -628,7 +692,9 @@ class MechanicsTopologyTests(unittest.TestCase):
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
         docs_readme = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
-        roadmap = (REPO_ROOT / "ROADMAP.md").read_text(encoding="utf-8")
+        roadmap = (REPO_ROOT / "mechanics" / "ROADMAP.md").read_text(
+            encoding="utf-8"
+        )
 
         for text in (readme, docs_readme, agents, roadmap):
             with self.subTest(surface=text[:24]):

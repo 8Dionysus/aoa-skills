@@ -6,7 +6,9 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-MATURITY_MODEL_PATH = REPO_ROOT / "docs" / "MATURITY_MODEL.md"
+MATURITY_MODEL_PATH = (
+    REPO_ROOT / "mechanics" / "method-growth" / "docs" / "MATURITY_MODEL.md"
+)
 REVIEW_DIR = REPO_ROOT / "docs" / "reviews" / "canonical-candidates"
 TEMPLATE_PATH = REPO_ROOT / "templates" / "CANDIDATE_REVIEW.template.md"
 REQUIRED_SECTIONS = [

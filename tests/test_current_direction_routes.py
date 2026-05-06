@@ -9,18 +9,20 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 class CurrentDirectionRoutesTestCase(unittest.TestCase):
     def test_root_entrypoints_route_to_roadmap(self) -> None:
-        roadmap_path = REPO_ROOT / "ROADMAP.md"
+        roadmap_path = REPO_ROOT / "mechanics" / "ROADMAP.md"
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
         agents = (REPO_ROOT / "AGENTS.md").read_text(encoding="utf-8")
 
         self.assertTrue(roadmap_path.is_file())
-        self.assertIn("ROADMAP.md", readme)
-        self.assertIn("ROADMAP.md", agents)
+        self.assertIn("mechanics/ROADMAP.md", readme)
+        self.assertIn("mechanics/ROADMAP.md", agents)
 
     def test_agon_skill_bridge_is_routable(self) -> None:
         readme = (REPO_ROOT / "README.md").read_text(encoding="utf-8")
         docs_readme = (REPO_ROOT / "docs" / "README.md").read_text(encoding="utf-8")
-        bridge_spec = (REPO_ROOT / "docs" / "BRIDGE_SPEC.md").read_text(encoding="utf-8")
+        bridge_spec = (
+            REPO_ROOT / "mechanics" / "boundary-bridge" / "docs" / "BRIDGE_SPEC.md"
+        ).read_text(encoding="utf-8")
 
         self.assertIn("mechanics/agon/parts/workflow-candidate-bridge/README.md", readme)
         self.assertIn("mechanics/agon/parts/workflow-candidate-bridge/README.md", docs_readme)

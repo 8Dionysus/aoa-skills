@@ -27,9 +27,9 @@ Current RPG reader companions remain in:
 - `config/skill_policy_matrix.json`
 - `generated/skill_ability_cards.min.example.json`
 - `schemas/skill_ability_catalog.schema.json`
-- `docs/CODEX_PORTABLE_LAYER.md`
-- `docs/LOCAL_ADAPTER_CONTRACT.md`
-- `docs/OVERLAY_SPEC.md`
+- `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`
+- `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`
+- `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`
 
 This package may route to those surfaces, but it does not turn generated
 ability cards into skill truth.

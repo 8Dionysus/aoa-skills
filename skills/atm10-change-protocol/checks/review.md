@@ -11,7 +11,7 @@ Review checklist for the `atm10` change-protocol overlay.
 
 ## Review checklist
 
-- [ ] confirm `docs/overlays/atm10/REVIEW.md` still describes the same family posture
+- [ ] confirm `mechanics/boundary-bridge/overlays/atm10/REVIEW.md` still describes the same family posture
 - [ ] confirm repo-relative files and commands are named explicitly
 - [ ] confirm the base `aoa-change-protocol` meaning is unchanged
 - [ ] confirm downstream authority remains explicit

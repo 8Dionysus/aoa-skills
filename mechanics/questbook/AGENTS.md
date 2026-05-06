@@ -11,7 +11,7 @@ Read the repository root `AGENTS.md`, `mechanics/AGENTS.md`, this card,
 `README.md`, `DIRECTION.md`, `PARTS.md`, and `PROVENANCE.md` before changing
 files in this lane.
 
-If the change touches `QUESTBOOK.md`, `quests/`, quest schemas, generated quest
+If the change touches `mechanics/questbook/QUESTBOOK.md`, `quests/`, quest schemas, generated quest
 catalogs, the quest-harvest skill, validators, or tests, read those affected
 surfaces too.
 
@@ -23,7 +23,7 @@ surfaces too.
 - It does not own a second roadmap, private scratchpad, playbook choreography,
   proof verdicts, memory canon, routing authority, closure proof, or owner
   acceptance.
-- `QUESTBOOK.md` and `quests/` remain source surfaces in this slice.
+- `mechanics/questbook/QUESTBOOK.md` and `quests/` remain source surfaces in this slice.
 
 ## Editing posture
 

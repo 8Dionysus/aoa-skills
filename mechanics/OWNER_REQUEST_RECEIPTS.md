@@ -160,12 +160,12 @@ What is accepted:
   adoption, release, office, and service-operation skill surfaces.
 - Existing Experience-shaped docs remain owner-local evidence and future
   package pressure:
-  - `docs/GOVERNANCE_SKILL_ADOPTION.md`
-  - `docs/RECEIPT_GENERATION_SKILLS.md`
-  - `docs/OFFICE_TASK_BOUNDARY_SKILLS.md`
-  - `docs/SERVICE_HANDOFF_SKILLS.md`
-  - `docs/ROLLBACK_DRILL_SKILL.md`
-  - `docs/INSTALLATION_SKILL_SURFACES.md`
+  - `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md`
+  - `mechanics/experience/docs/RECEIPT_GENERATION_SKILLS.md`
+  - `mechanics/experience/docs/OFFICE_TASK_BOUNDARY_SKILLS.md`
+  - `mechanics/experience/docs/SERVICE_HANDOFF_SKILLS.md`
+  - `mechanics/experience/docs/ROLLBACK_DRILL_SKILL.md`
+  - `mechanics/experience/docs/INSTALLATION_SKILL_SURFACES.md`
 
 Not landed yet:
 

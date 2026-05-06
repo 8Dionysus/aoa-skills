@@ -12,7 +12,7 @@ that the note is active mechanics guidance: it describes how deferred skill
 obligations, session-harvest posture, and quest-harvest verdict pressure move
 around `aoa-skills`.
 
-The root `QUESTBOOK.md` and `quests/` surfaces have a different role. They are
+`mechanics/questbook/QUESTBOOK.md` and `quests/` have a different role. They are
 public tracked obligation sources for this repository, not package internals.
 Moving them in the same slice would make the package look cleaner while making
 the public obligation route less honest.
@@ -28,7 +28,7 @@ Move only the active integration note:
 
 Keep these surfaces in their current homes:
 
-- `QUESTBOOK.md`
+- `mechanics/questbook/QUESTBOOK.md`
 - `quests/`
 - quest schemas
 - generated quest catalog and dispatch projections

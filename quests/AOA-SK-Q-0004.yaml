@@ -27,11 +27,11 @@ parent: null
 depends_on: []
 activation:
   mode: on_recurrence
-  ref: docs/OVERLAY_SPEC.md
+  ref: mechanics/boundary-bridge/docs/OVERLAY_SPEC.md
   note: open once the same exception appears often enough to deserve promotion
 anchor_ref:
   artifact: overlay-spec
-  ref: docs/OVERLAY_SPEC.md
+  ref: mechanics/boundary-bridge/docs/OVERLAY_SPEC.md
 handoff_role: skill-maintainer
 evidence:
   - repeated overlay exceptions are named

@@ -19,7 +19,7 @@
 ## Local paths and commands
 
 - keep all paths repository-relative to the downstream repo
-- example docs surface: `README.md`, `docs/ARCHITECTURE.md`, `docs/PROMOTION_PATH.md`
+- example docs surface: `README.md`, `docs/ARCHITECTURE.md`, `mechanics/method-growth/docs/PROMOTION_PATH.md`
 - example commands: `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`
 
 ## Local verification

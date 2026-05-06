@@ -30,7 +30,7 @@ activation:
   mode: immediate
 anchor_ref:
   artifact: local-adapter-contract
-  ref: docs/LOCAL_ADAPTER_CONTRACT.md
+  ref: mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md
   note: runtime seam around .agents/skills export
 handoff_role: skill-maintainer
 evidence:

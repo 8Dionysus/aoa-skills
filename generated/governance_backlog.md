@@ -82,8 +82,8 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | 7fd2fb96e1cb | 7fd2fb96e1cb | False | - | true |
 | aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | df0cebb8654a | df0cebb8654a | True | - | true |
 | aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | eccfc4de7849 | eccfc4de7849 | True | - | true |
-| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | 7b38b337c372 | 7b38b337c372 | False | - | true |
-| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | 5a04a9a05082 | 5a04a9a05082 | False | - | true |
+| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | 7da6f549a807 | 7da6f549a807 | False | - | true |
+| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | b5bf512142eb | b5bf512142eb | False | - | true |
 
 ## Cohorts
 

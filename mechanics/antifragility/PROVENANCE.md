@@ -19,9 +19,10 @@ surfaces. The move changes their route, not their authority level.
 
 ## Held Surface
 
-`docs/ROLLBACK_DRILL_SKILL.md` stayed in flat `docs/` during this landing. Its
-own text ties it to v1.0 installation and release posture, so it needs a later
-release-support or experience pass before movement.
+`mechanics/experience/docs/ROLLBACK_DRILL_SKILL.md` moved with the experience
+surface family. Its own text still ties rollback drill posture to installation
+and release support, so future changes should coordinate experience and
+release-support instead of treating it as pure antifragility source.
 
 ## Source And Projection Companions
 
@@ -29,9 +30,9 @@ Current antifragility companions remain in:
 
 - `skills/*/SKILL.md`
 - `skills/*/techniques.yaml`
-- `docs/TRIGGER_EVALS.md`
-- `docs/DESCRIPTION_TRIGGER_EVALS.md`
-- `docs/SKILLS_REF_VALIDATION.md`
+- `mechanics/audit/docs/TRIGGER_EVALS.md`
+- `mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md`
+- `mechanics/audit/docs/SKILLS_REF_VALIDATION.md`
 - `config/project_risk_guard_ring.json`
 - `config/skill_policy_matrix.json`
 - `config/description_trigger_eval_policy.json`
@@ -41,19 +42,19 @@ Current antifragility companions remain in:
 - `generated/description_trigger_eval_manifest.json`
 - `generated/tiny_router_eval_cases.jsonl`
 - `generated/tiny_router_overlay_manifest.json`
-- `docs/RUNTIME_GOVERNANCE_LAYER.md`
-- `docs/RUNTIME_TOOL_CONTRACTS.md`
-- `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`
+- `mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md`
+- `mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`
+- `mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md`
 
 This package may route to those surfaces, but it does not turn generated
 collision matrices or risk rings into skill truth.
 
 ## Neighbor Routes
 
-- `docs/EVALUATION_PATH.md` owns evaluation evidence orientation.
-- `docs/PUBLIC_SURFACE.md` owns derived public and governance status.
-- `docs/RUNTIME_PATH.md` owns skill runtime inspection.
-- `docs/RELEASING.md` and release-support surfaces own release execution.
+- `mechanics/audit/docs/EVALUATION_PATH.md` owns evaluation evidence orientation.
+- `mechanics/audit/docs/PUBLIC_SURFACE.md` owns derived public and governance status.
+- `mechanics/release-support/docs/RUNTIME_PATH.md` owns skill runtime inspection.
+- `mechanics/release-support/docs/RELEASING.md` and release-support surfaces own release execution.
 - `mechanics/recurrence/README.md` owns observation and review decision closure
   when stress reappears as recurring pressure.
 - `mechanics/method-growth/README.md` owns adoption and followthrough once a

@@ -40,9 +40,9 @@ It does not own:
 
 ## Start here
 
-1. Read the repository root `AGENTS.md`, `README.md`, and `ROADMAP.md`.
-2. Read `docs/LAYER_POSITION.md`, `docs/ARCHITECTURE.md`,
-   `docs/BRIDGE_SPEC.md`, and `docs/RUNTIME_PATH.md`.
+1. Read the repository root `AGENTS.md`, `README.md`, and `mechanics/ROADMAP.md`.
+2. Read `mechanics/boundary-bridge/docs/LAYER_POSITION.md`, `docs/ARCHITECTURE.md`,
+   `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`, and `mechanics/release-support/docs/RUNTIME_PATH.md`.
 3. Read `mechanics/README.md`.
 4. Read the nearest package README, starting with its local `Mechanic card`.
 5. If the package has `DIRECTION.md`, `PARTS.md`, `PROVENANCE.md`,

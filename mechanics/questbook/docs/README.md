@@ -13,5 +13,5 @@ before opening them.
 ## Boundary
 
 These docs are active questbook contracts, not raw legacy. They do not replace
-`QUESTBOOK.md`, `quests/`, canonical quest-harvest skill meaning, schemas,
+`mechanics/questbook/QUESTBOOK.md`, `quests/`, canonical quest-harvest skill meaning, schemas,
 examples, or generated projections.

@@ -9,7 +9,7 @@ State that the overlay does not change the base skill boundary.
 ## Authority
 
 - overlay family: `[atm10|abyss|other repo-local family name]`
-- canonical overlay doc: `docs/overlays/[family-name]/PROJECT_OVERLAY.md`
+- canonical overlay doc: `mechanics/boundary-bridge/overlays/[family-name]/PROJECT_OVERLAY.md`
 - base skill canon: `aoa-skills`
 - upstream technique canon: `aoa-techniques`
 - explicit approval rules: `[state the local rule]`

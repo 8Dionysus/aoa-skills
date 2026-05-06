@@ -101,6 +101,46 @@ REQUIRED_DOCS: tuple[AgentsDocSpec, ...] = (
         ),
     ),
     AgentsDocSpec(
+        Path("mechanics") / "audit" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "Audit package guidance",
+            "skill-layer audit posture",
+            "docs/AUDIT_CONTRACT.md",
+            "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "boundary-bridge" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "Boundary-bridge package guidance",
+            "skill-layer boundary bridges",
+            "overlays/AGENTS.md",
+            "python scripts/validate_tiny_router_inputs.py --repo-root .",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "experience" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "Experience package guidance",
+            "adoption consent",
+            "rollback",
+            "python scripts/validate_skills.py --fail-on-review-truth-sync",
+        ),
+    ),
+    AgentsDocSpec(
+        Path("mechanics") / "release-support" / "AGENTS.md",
+        (
+            "# AGENTS.md",
+            "Release-support package guidance",
+            "portable export",
+            "legacy/waves/",
+            "python scripts/release_check.py",
+        ),
+    ),
+    AgentsDocSpec(
         Path("skills") / "AGENTS.md",
         (
             "# AGENTS.md",
@@ -132,7 +172,7 @@ REQUIRED_DOCS: tuple[AgentsDocSpec, ...] = (
         ),
     ),
     AgentsDocSpec(
-        Path("docs") / "overlays" / "AGENTS.md",
+        Path("mechanics") / "boundary-bridge" / "overlays" / "AGENTS.md",
         (
             "# AGENTS.md",
             "`PROJECT_OVERLAY.md`",

@@ -29,10 +29,10 @@ activation:
   mode: immediate
 anchor_ref:
   artifact: public-surface
-  ref: docs/PUBLIC_SURFACE.md
+  ref: mechanics/audit/docs/PUBLIC_SURFACE.md
 handoff_role: skill-maintainer
 evidence:
-  - QUESTBOOK.md exists
+  - mechanics/questbook/QUESTBOOK.md exists
   - quest and dispatch schemas exist
   - starter quest and dispatch examples exist
 harvest:

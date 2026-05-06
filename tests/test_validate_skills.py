@@ -65,8 +65,8 @@ def write_text(path: Path, text: str) -> None:
 
 def write_valid_questbook_surface(repo_root: Path) -> None:
     write_text(
-        repo_root / "QUESTBOOK.md",
-        (REPO_ROOT / "QUESTBOOK.md").read_text(encoding="utf-8"),
+        repo_root / "mechanics/questbook/QUESTBOOK.md",
+        (REPO_ROOT / "mechanics/questbook/QUESTBOOK.md").read_text(encoding="utf-8"),
     )
     write_text(
         repo_root
@@ -606,7 +606,7 @@ class ValidateSkillsTests(unittest.TestCase):
             return validate_skills.main(argv or [], repo_root=repo_root)
 
     def write_catalogs(self, repo_root: Path) -> None:
-        if not (repo_root / "QUESTBOOK.md").is_file():
+        if not (repo_root / "mechanics/questbook/QUESTBOOK.md").is_file():
             write_valid_questbook_surface(repo_root)
         config_path = repo_root / "config" / "skill_pack_profiles.json"
         if not config_path.exists():
@@ -749,7 +749,9 @@ class ValidateSkillsTests(unittest.TestCase):
         review_check_skill_names: list[str] | None = None,
         review_mentions_skill_names: list[str] | None = None,
     ) -> None:
-        overlay_dir = repo_root / "docs" / "overlays" / family
+        overlay_dir = (
+            repo_root / "mechanics" / "boundary-bridge" / "overlays" / family
+        )
         overlay_dir.mkdir(parents=True, exist_ok=True)
         listed_skill_names = skill_names if listed_skill_names is None else listed_skill_names
         review_check_skill_names = (
@@ -798,7 +800,7 @@ class ValidateSkillsTests(unittest.TestCase):
             "## Local surface",
             "",
             local_surface_line,
-            f"- family review doc: `docs/overlays/{family}/REVIEW.md`",
+            f"- family review doc: `mechanics/boundary-bridge/overlays/{family}/REVIEW.md`",
             review_refs,
             "",
             "## Overlayed skills",
@@ -830,7 +832,7 @@ class ValidateSkillsTests(unittest.TestCase):
                 "",
                 "## Evidence reviewed",
                 "",
-                f"- `docs/overlays/{family}/PROJECT_OVERLAY.md`",
+                f"- `mechanics/boundary-bridge/overlays/{family}/PROJECT_OVERLAY.md`",
                 f"- bundle-local review checklists under `skills/{family}-*/checks/review.md`",
                 "",
                 "## Findings",
@@ -1990,7 +1992,7 @@ class ValidateSkillsTests(unittest.TestCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            f"live overlay family '{family}' is missing docs/overlays/{family}/REVIEW.md",
+            f"live overlay family '{family}' is missing mechanics/boundary-bridge/overlays/{family}/REVIEW.md",
             messages,
         )
 
@@ -3003,12 +3005,12 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             repo_root = Path(temp_dir) / "aoa-skills"
             self.write_valid_surface(repo_root)
-            (repo_root / "QUESTBOOK.md").unlink()
+            (repo_root / "mechanics/questbook/QUESTBOOK.md").unlink()
 
             issues = validate_skills.validate_questbook_surface(repo_root)
             self.assertTrue(
                 any(
-                    issue.location.endswith("QUESTBOOK.md")
+                    issue.location.endswith("mechanics/questbook/QUESTBOOK.md")
                     and issue.message == "file is missing"
                     for issue in issues
                 )
@@ -3022,13 +3024,13 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
                 repo_root / "quests" / "AOA-SK-Q-0004.yaml",
                 (repo_root / "quests" / "AOA-SK-Q-0004.yaml")
                 .read_text(encoding="utf-8")
-                .replace("docs/OVERLAY_SPEC.md", "docs/overlays/atm10/PROJECT_OVERLAY.md", 1),
+                .replace("mechanics/boundary-bridge/docs/OVERLAY_SPEC.md", "mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md", 1),
             )
 
             issues = validate_skills.validate_questbook_surface(repo_root)
             messages = [issue.message for issue in issues]
             self.assertIn(
-                "AOA-SK-Q-0004 must keep activation.ref 'docs/OVERLAY_SPEC.md'",
+                "AOA-SK-Q-0004 must keep activation.ref 'mechanics/boundary-bridge/docs/OVERLAY_SPEC.md'",
                 messages,
             )
 
@@ -3163,7 +3165,7 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
 
             self.assertTrue(
                 any(
-                    issue.location.endswith("QUESTBOOK.md")
+                    issue.location.endswith("mechanics/questbook/QUESTBOOK.md")
                     and issue.message == "file is missing"
                     for issue in issues
                 )

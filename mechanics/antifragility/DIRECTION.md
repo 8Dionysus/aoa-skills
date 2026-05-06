@@ -34,6 +34,6 @@ skill-layer stress or pruning pressure
 
 ## Current hold
 
-Do not move `docs/ROLLBACK_DRILL_SKILL.md` in this slice. It belongs to the
-v1.0 installation and release posture and needs a release-support or
-experience route before any antifragility split would be honest.
+`mechanics/experience/docs/ROLLBACK_DRILL_SKILL.md` belongs to the experience
+workflow lane, with release-support coordination when release posture changes.
+Do not fold it into antifragility just because rollback is a risk word.

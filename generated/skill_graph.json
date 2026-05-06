@@ -3914,7 +3914,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "56c5408f0fd0f4b243e7d97662aa0022d19731f425fbb7fc7921db4e539be0d3",
+      "content_hash": "b5d0cd4514d3d903c25163c79ae9cc6e853cc7be8faf65bf5dbe11822b17056d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3940,7 +3940,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
       "scope": "project",
       "skill_path": "skills/abyss-safe-infra-change/SKILL.md",
-      "skill_revision": "56c5408f0fd0",
+      "skill_revision": "b5d0cd4514d3",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -3999,7 +3999,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "d48bd0145f6d9a81e48dc30be1047a0af51fbcda192ee58ba508725052299ff9",
+      "content_hash": "98a642f94495cfc1dbd7abe7b3ad164d47dcb2782b7c17f4ba0cee795d0aca5a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4025,7 +4025,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
       "scope": "project",
       "skill_path": "skills/abyss-sanitized-share/SKILL.md",
-      "skill_revision": "d48bd0145f6d",
+      "skill_revision": "98a642f94495",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -6359,7 +6359,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "7cc7c267b2e381c654a306afb74491d612fc6f3766f64ff07dc8aee177364f58",
+      "content_hash": "c5f5ceccf29862b12717e05faa2b6886c62d4bcd1498e409deec10be81f0d851",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6385,7 +6385,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
       "scope": "project",
       "skill_path": "skills/atm10-change-protocol/SKILL.md",
-      "skill_revision": "7cc7c267b2e3",
+      "skill_revision": "c5f5ceccf298",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -6444,7 +6444,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "7427702890de969dbd7d3dc12370efc3ca396bd50ac7a5d9b5e02c5d0946081c",
+      "content_hash": "be92b47bb3a19260ef4cd1040080e40459bb955c6f04db18c1fa51c3d80c75e8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6470,7 +6470,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
       "scope": "project",
       "skill_path": "skills/atm10-source-of-truth-check/SKILL.md",
-      "skill_revision": "7427702890de",
+      "skill_revision": "be92b47bb3a1",
       "status": "evaluated",
       "support_artifacts": [
         {

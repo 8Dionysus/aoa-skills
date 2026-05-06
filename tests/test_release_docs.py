@@ -8,7 +8,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 CHANGELOG_PATH = REPO_ROOT / "CHANGELOG.md"
 README_PATH = REPO_ROOT / "README.md"
 DOCS_README_PATH = REPO_ROOT / "docs" / "README.md"
-RELEASING_PATH = REPO_ROOT / "docs" / "RELEASING.md"
+RELEASING_PATH = (
+    REPO_ROOT / "mechanics" / "release-support" / "docs" / "RELEASING.md"
+)
 
 
 class ReleaseDocsTests(unittest.TestCase):

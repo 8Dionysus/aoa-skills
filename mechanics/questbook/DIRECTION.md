@@ -1,20 +1,20 @@
 # Questbook Direction
 
 This package starts with the smallest honest `aoa-skills` questbook slice:
-integration posture around existing root quest surfaces.
+integration posture around the local questbook index and quest object surfaces.
 
 The active route is:
 
 ```text
 deferred obligation or session-harvest aftermath
-  -> QUESTBOOK.md or quests/ source surface
+  -> mechanics/questbook/QUESTBOOK.md or quests/ source surface
   -> generated quest catalog/dispatch readout
   -> quest harvest verdict or owner route
 ```
 
 ## Current contour
 
-- `QUESTBOOK.md` remains the public tracked obligation index.
+- `mechanics/questbook/QUESTBOOK.md` remains the public tracked obligation index.
 - `quests/` remains the source object directory.
 - Generated quest catalog and dispatch files remain projections.
 - `aoa-quest-harvest` gives final promotion triage only for repeated reviewed
@@ -29,5 +29,5 @@ deferred obligation or session-harvest aftermath
 
 ## Current hold
 
-Do not move root `QUESTBOOK.md`, `quests/`, quest schemas, or generated quest
-projections in this slice.
+Do not move `QUESTBOOK.md`, `quests/`, quest schemas, or generated quest
+projections out of their current owner surfaces in this slice.

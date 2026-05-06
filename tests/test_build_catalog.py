@@ -846,7 +846,9 @@ class BuildCatalogTests(unittest.TestCase):
         listed_skill_names: list[str] | None = None,
         include_authority_section: bool = True,
     ) -> None:
-        overlay_dir = repo_root / "docs" / "overlays" / family
+        overlay_dir = (
+            repo_root / "mechanics" / "boundary-bridge" / "overlays" / family
+        )
         overlay_dir.mkdir(parents=True, exist_ok=True)
         listed_skill_names = skill_names if listed_skill_names is None else listed_skill_names
         checklist_refs = ", ".join(
@@ -863,7 +865,7 @@ class BuildCatalogTests(unittest.TestCase):
             "## Local surface",
             "",
             "- repo-relative docs and commands remain explicit",
-            f"- family review doc: `docs/overlays/{family}/REVIEW.md`",
+            f"- family review doc: `mechanics/boundary-bridge/overlays/{family}/REVIEW.md`",
             f"- bundle-local review checklists: {checklist_refs}",
             "",
             "## Overlayed skills",
@@ -901,7 +903,7 @@ class BuildCatalogTests(unittest.TestCase):
             "",
             "## Evidence reviewed",
             "",
-            f"- `docs/overlays/{family}/PROJECT_OVERLAY.md`",
+            f"- `mechanics/boundary-bridge/overlays/{family}/PROJECT_OVERLAY.md`",
             f"- bundle-local review checklists under `skills/{family}-*/checks/review.md`",
             "",
             "## Findings",
@@ -1754,8 +1756,8 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertEqual(
             {
                 "family": family,
-                "project_overlay_path": f"docs/overlays/{family}/PROJECT_OVERLAY.md",
-                "review_path": f"docs/overlays/{family}/REVIEW.md",
+                "project_overlay_path": f"mechanics/boundary-bridge/overlays/{family}/PROJECT_OVERLAY.md",
+                "review_path": f"mechanics/boundary-bridge/overlays/{family}/REVIEW.md",
                 "project_skill_names": skill_names,
                 "listed_skill_names": skill_names,
                 "listed_matches_actual": True,
@@ -1785,7 +1787,7 @@ class BuildCatalogTests(unittest.TestCase):
             markdown,
         )
         self.assertIn(
-            f"| {family} | 2 | true | docs/overlays/{family}/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            f"| {family} | 2 | true | mechanics/boundary-bridge/overlays/{family}/REVIEW.md | 2 | 2 | true | true | reviewable |",
             markdown,
         )
         self.assertIn(
@@ -1906,11 +1908,11 @@ class BuildCatalogTests(unittest.TestCase):
         )
         self.assertTrue(all(entry["eval_ready"] for entry in payload["skills"]))
         self.assertIn(
-            "| cinder | 2 | true | docs/overlays/cinder/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            "| cinder | 2 | true | mechanics/boundary-bridge/overlays/cinder/REVIEW.md | 2 | 2 | true | true | reviewable |",
             markdown,
         )
         self.assertIn(
-            "| harbor | 2 | true | docs/overlays/harbor/REVIEW.md | 2 | 2 | true | true | reviewable |",
+            "| harbor | 2 | true | mechanics/boundary-bridge/overlays/harbor/REVIEW.md | 2 | 2 | true | true | reviewable |",
             markdown,
         )
 

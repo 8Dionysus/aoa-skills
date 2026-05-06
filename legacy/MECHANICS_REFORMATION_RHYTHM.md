@@ -52,9 +52,9 @@ surface:
 3. `aoa-skills/README.md`
 4. `aoa-skills/ROADMAP.md`
 5. `aoa-skills/docs/ARCHITECTURE.md`
-6. `aoa-skills/docs/LAYER_POSITION.md`
-7. `aoa-skills/docs/BRIDGE_SPEC.md`
-8. `aoa-skills/docs/RUNTIME_PATH.md`
+6. `aoa-skills/mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+7. `aoa-skills/mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
+8. `aoa-skills/mechanics/release-support/docs/RUNTIME_PATH.md`
 9. `aoa-skills/mechanics/AGENTS.md`
 10. `aoa-skills/mechanics/README.md`
 11. target package card and nearest local `AGENTS.md`
@@ -406,12 +406,12 @@ mechanic:
     `mechanics/method-growth/parts/retention-regression-retirement/README.md`,
     `mechanics/method-growth/parts/pattern-adoption-handoff/README.md`,
     `mechanics/method-growth/legacy/adoption-wave/INDEX.md`,
-    `docs/GOVERNANCE_SKILL_ADOPTION.md`,
+    `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md`,
     `mechanics/method-growth/docs/CANDIDATE_LINEAGE_CONTRACT.md`,
     `mechanics/method-growth/docs/CANDIDATE_REF_REFINERY.md`,
     `mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md`,
     `mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md`,
-    `docs/MATURITY_MODEL.md`, `docs/PROMOTION_PATH.md`,
+    `mechanics/method-growth/docs/MATURITY_MODEL.md`, `mechanics/method-growth/docs/PROMOTION_PATH.md`,
     review candidate/status promotion docs, and project-core ring governance.
   canonical skill surfaces touched: only when adoption pressure becomes an
     actual skill edit through normal review.
@@ -453,12 +453,12 @@ mechanic:
   current pressure: evaluation path, trigger quality, public surface, maturity,
     promotion review, governance backlog, description-first activation checks,
     skills-ref conformance, and collision stress.
-  current surfaces: `docs/EVALUATION_PATH.md`, `docs/PUBLIC_SURFACE.md`,
-    `docs/TRIGGER_EVALS.md`, `docs/DESCRIPTION_TRIGGER_EVALS.md`,
-    `docs/SKILLS_REF_VALIDATION.md`,
+  current surfaces: `mechanics/audit/docs/EVALUATION_PATH.md`, `mechanics/audit/docs/PUBLIC_SURFACE.md`,
+    `mechanics/audit/docs/TRIGGER_EVALS.md`, `mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md`,
+    `mechanics/audit/docs/SKILLS_REF_VALIDATION.md`,
     `mechanics/antifragility/parts/collision-stress-program/README.md`,
-    `docs/MATURITY_MODEL.md`,
-    `docs/PROMOTION_PATH.md`, `docs/reviews/`, and generated evaluation
+    `mechanics/method-growth/docs/MATURITY_MODEL.md`,
+    `mechanics/method-growth/docs/PROMOTION_PATH.md`, `docs/reviews/`, and generated evaluation
     readouts.
   canonical skill surfaces touched: none unless an audit finding becomes a
     reviewed skill wording change.
@@ -493,7 +493,7 @@ mechanic:
     self-repair, progression lift, quest harvest, and automation scan.
   current surfaces: `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`,
     `mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md`,
-    `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`, `QUESTBOOK.md`,
+    `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`, `mechanics/questbook/QUESTBOOK.md`,
     session-harvest docs, kernel skill references, and project-core kernel
     governance.
   canonical skill surfaces touched: session-growth kernel bundles remain
@@ -529,7 +529,7 @@ mechanic:
 mechanic:
   current pressure: durable skill obligations that survive a bounded diff,
     quest dispatch, promotion/harvest verdicts, and project-core follow-through.
-  current surfaces: `QUESTBOOK.md`,
+  current surfaces: `mechanics/questbook/QUESTBOOK.md`,
     `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`,
     `quests/*.yaml`, quest schemas, generated quest catalog and dispatch
     examples, `aoa-quest-harvest` references.
@@ -547,10 +547,10 @@ mechanic:
     automatic promotion.
   landed package parts: source index boundary, session-harvest posture, and
     dispatch projection.
-  legacy/provenance need: low-to-moderate; root `QUESTBOOK.md` may remain root
+  legacy/provenance need: low-to-moderate; `mechanics/questbook/QUESTBOOK.md` may remain package-local
     if it is the public tracked obligation surface.
   first honest move: landed the integration posture slice after
-    growth-cycle/checkpoint split became clear. The root `QUESTBOOK.md`,
+    growth-cycle/checkpoint split became clear. `mechanics/questbook/QUESTBOOK.md`,
     `quests/`, schemas, and generated projections stayed in place.
   next honest move: decide later whether root quest object route receipts or
     generated quest validation notes need a package-local companion. Do not
@@ -595,16 +595,16 @@ mechanic:
   current pressure: Codex portable export, install profiles, local adapter,
     runtime seam, governed runtime guardrails, support resources, release
     manifest, import/export/stage/verify pack scripts, and downstream feeds.
-  current surfaces: `docs/CODEX_PORTABLE_LAYER.md`,
-    `docs/COMPONENT_REFRESH_LAW.md`, `docs/LOCAL_ADAPTER_CONTRACT.md`,
-    `docs/RUNTIME_PATH.md`, `docs/INSTALL_AND_PROFILES.md`,
-    `docs/DETERMINISTIC_RESOURCE_BUNDLES.md`,
-    `docs/RUNTIME_SEAM_SECOND_PATH.md`,
-    `docs/RUNTIME_TOOL_CONTRACTS.md`,
-    `docs/RUNTIME_GOVERNANCE_LAYER.md`,
-    `docs/TRUST_GATE_AND_ALLOWLIST.md`,
-    `docs/CONTEXT_RETENTION.md`, `docs/SESSION_COMPACTION.md`,
-    `docs/SKILL_CONTEXT_GUARD.md`, `docs/RELEASING.md`,
+  current surfaces: `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`,
+    `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`, `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`,
+    `mechanics/release-support/docs/RUNTIME_PATH.md`, `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`,
+    `mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md`,
+    `mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md`,
+    `mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`,
+    `mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md`,
+    `mechanics/release-support/docs/TRUST_GATE_AND_ALLOWLIST.md`,
+    `mechanics/release-support/docs/CONTEXT_RETENTION.md`, `mechanics/release-support/docs/SESSION_COMPACTION.md`,
+    `mechanics/release-support/docs/SKILL_CONTEXT_GUARD.md`, `mechanics/release-support/docs/RELEASING.md`,
     generated runtime/export manifests, support resource manifests, and pack
     scripts.
   canonical skill surfaces touched: support bundles under `skills/*` only when
@@ -638,11 +638,11 @@ mechanic:
   current pressure: layer position, bridge spec, support-dir bridge, overlays,
     two-stage skill selection, tiny-router downstream cues, OpenAI/MCP wiring,
     and owner stop-lines.
-  current surfaces: `docs/LAYER_POSITION.md`, `docs/BRIDGE_SPEC.md`,
-    `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`,
-    `docs/TWO_STAGE_SKILL_SELECTION.md`, `docs/OVERLAY_SPEC.md`,
-    `docs/CODEX_SKILL_MCP_WIRING.md`,
-    `docs/OPENAI_SKILL_EXTENSIONS.md`, overlay docs, tiny-router config and
+  current surfaces: `mechanics/boundary-bridge/docs/LAYER_POSITION.md`, `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`,
+    `mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`,
+    `mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md`, `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`,
+    `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md`,
+    `mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md`, overlay docs, tiny-router config and
     generated capsules.
   canonical skill surfaces touched: only when a real skill dependency or
     overlay changes through its source policy path.
@@ -673,7 +673,7 @@ mechanic:
   current surfaces:
     `mechanics/recurrence/parts/live-observation-producers/README.md`,
     `mechanics/recurrence/parts/review-decision-closure/README.md`,
-    `docs/COMPONENT_REFRESH_LAW.md`, recurrence manifests, Agon recurrence
+    `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`, recurrence manifests, Agon recurrence
     part, and refresh scripts.
   canonical skill surfaces touched: none unless a recurring observation becomes
     reviewed skill change.
@@ -701,13 +701,13 @@ mechanic:
   current pressure: office/service handoff, receipt generation, task
     boundaries, installation surfaces, runtime governance skills, stay orders,
     skill policy holds, governed adoption, and local owner consent.
-  current surfaces: `docs/SERVICE_HANDOFF_SKILLS.md`,
-    `docs/OFFICE_TASK_BOUNDARY_SKILLS.md`,
-    `docs/RECEIPT_GENERATION_SKILLS.md`,
-    `docs/INSTALLATION_SKILL_SURFACES.md`,
-    `docs/GOVERNANCE_RUNTIME_SKILLS.md`,
-    `docs/STAY_ORDER_SKILL.md`, `docs/SKILL_POLICY_HOLD.md`,
-    `docs/GOVERNANCE_SKILL_ADOPTION.md`, adoption docs, and governance lanes.
+  current surfaces: `mechanics/experience/docs/SERVICE_HANDOFF_SKILLS.md`,
+    `mechanics/experience/docs/OFFICE_TASK_BOUNDARY_SKILLS.md`,
+    `mechanics/experience/docs/RECEIPT_GENERATION_SKILLS.md`,
+    `mechanics/experience/docs/INSTALLATION_SKILL_SURFACES.md`,
+    `mechanics/experience/docs/GOVERNANCE_RUNTIME_SKILLS.md`,
+    `mechanics/experience/docs/STAY_ORDER_SKILL.md`, `mechanics/experience/docs/SKILL_POLICY_HOLD.md`,
+    `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md`, adoption docs, and governance lanes.
   canonical skill surfaces touched: only if a live skill contract changes
     through normal review.
   config seeds: governance lanes, policy matrix, install profiles.
@@ -737,7 +737,7 @@ mechanic:
   current surfaces:
     `mechanics/antifragility/parts/fallback-authoring-posture/README.md`,
     `mechanics/antifragility/parts/via-negativa-pruning/README.md`,
-    `docs/ROLLBACK_DRILL_SKILL.md`,
+    `mechanics/experience/docs/ROLLBACK_DRILL_SKILL.md`,
     `mechanics/antifragility/parts/collision-stress-program/README.md`,
     risk-guard ring config, risk skill bundles and deterministic resource
     bundles.
@@ -864,7 +864,7 @@ Likely sources to inspect:
 - `mechanics/method-growth/parts/adoption-evidence-receipts/README.md`
 - `mechanics/method-growth/parts/retention-regression-retirement/README.md`
 - `mechanics/method-growth/parts/pattern-adoption-handoff/README.md`
-- `docs/GOVERNANCE_SKILL_ADOPTION.md`
+- `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md`
 - maturity model
 - promotion path
 - governance backlog
@@ -893,7 +893,7 @@ Pressure to inventory:
 
 Likely sources to inspect:
 
-- `docs/EVALUATION_PATH.md`
+- `mechanics/audit/docs/EVALUATION_PATH.md`
 - trigger eval docs and fixtures
 - generated evaluation matrix
 - governance backlog
@@ -938,14 +938,14 @@ Do not claim:
 
 Pressure to inventory:
 
-- root `QUESTBOOK.md`
+- `mechanics/questbook/QUESTBOOK.md`
 - quest dispatch
 - durable skill obligations
 - recurring cross-repo follow-through
 
 Likely sources to inspect:
 
-- `QUESTBOOK.md`
+- `mechanics/questbook/QUESTBOOK.md`
 - `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`
 - generated quest catalog and dispatch
 - quest harvest skill
@@ -991,11 +991,11 @@ Pressure to inventory:
 
 Likely sources to inspect:
 
-- `docs/CODEX_PORTABLE_LAYER.md`
-- `docs/COMPONENT_REFRESH_LAW.md`
-- `docs/LOCAL_ADAPTER_CONTRACT.md`
-- `docs/RUNTIME_PATH.md`
-- `docs/INSTALL_AND_PROFILES.md`
+- `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`
+- `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`
+- `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`
+- `mechanics/release-support/docs/RUNTIME_PATH.md`
+- `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`
 - generated release manifest
 - `.agents/skills/*`
 - export builders
@@ -1018,10 +1018,10 @@ Pressure to inventory:
 
 Likely sources to inspect:
 
-- `docs/LAYER_POSITION.md`
-- `docs/OVERLAY_SPEC.md`
-- `docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`
-- `docs/TWO_STAGE_SKILL_SELECTION.md`
+- `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+- `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`
+- `mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`
+- `mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md`
 - overlay docs
 - config skill pack profiles
 - generated tiny-router and support bridge maps

@@ -32,7 +32,7 @@ Keep these surfaces in their current homes:
 
 - recurrence component manifests and hook bindings
 - Agon-local recurrence observation under `mechanics/agon/`
-- `docs/COMPONENT_REFRESH_LAW.md`
+- `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`
 - generated activation and evaluation readouts
 
 ## Consequences

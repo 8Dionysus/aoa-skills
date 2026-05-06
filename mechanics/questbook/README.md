@@ -4,7 +4,7 @@ This package owns the `aoa-skills` side of the cross-project Questbook
 mechanic: durable skill obligations, session-harvest integration posture, and
 quest dispatch projection boundaries.
 
-`QUESTBOOK.md` stays the public tracked obligation surface. This package keeps
+`mechanics/questbook/QUESTBOOK.md` stays the public tracked obligation surface. This package keeps
 the movement around it legible without turning Questbook into a second roadmap
 or private scratchpad.
 
@@ -22,12 +22,12 @@ bundle, playbook, proof verdict, memory object, or hidden task queue.
 
 This package owns questbook integration posture, session-harvest family
 relationship, allowed quest-harvest verdict surface, source/index boundary
-around `QUESTBOOK.md` and `quests/`, and generated quest catalog/dispatch
+around `mechanics/questbook/QUESTBOOK.md` and `quests/`, and generated quest catalog/dispatch
 projection routes.
 
 ### Stronger owner split
 
-`Agents-of-Abyss` owns center Questbook law. `QUESTBOOK.md` and `quests/` own
+`Agents-of-Abyss` owns center Questbook law. `mechanics/questbook/QUESTBOOK.md` and `quests/` own
 repo-local public obligations. `aoa-playbooks` owns recurring choreography.
 `aoa-evals` owns proof obligations. `aoa-memo` owns retained lessons. Owner
 repositories own local acceptance and closure. Generated quest views reflect
@@ -86,7 +86,7 @@ companions belong to the route.
 ## Functioning parts
 
 - [Source Index Boundary](parts/source-index-boundary/README.md): root
-  `QUESTBOOK.md`, `quests/`, schemas, and generated projections.
+  `mechanics/questbook/QUESTBOOK.md`, `quests/`, schemas, and generated projections.
 - [Session Harvest Posture](parts/session-harvest-posture/README.md):
   relationship between checkpoint, harvest, quest-harvest, and core family.
 - [Dispatch Projection](parts/dispatch-projection/README.md): generated quest

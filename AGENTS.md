@@ -27,12 +27,12 @@ It does not own:
 ## Start here
 
 1. `README.md`
-2. `ROADMAP.md`
+2. `mechanics/ROADMAP.md`
 3. `docs/ARCHITECTURE.md`
-4. `docs/BRIDGE_SPEC.md`
-5. `docs/LAYER_POSITION.md`
-6. `docs/RUNTIME_PATH.md`
-7. `docs/COMPONENT_REFRESH_LAW.md` when skills export, portable projection, or installed skill refresh is in scope
+4. `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
+5. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+6. `mechanics/release-support/docs/RUNTIME_PATH.md`
+7. `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` when skills export, portable projection, or installed skill refresh is in scope
 8. `mechanics/README.md` when the change touches skill-layer movement around AoA mechanics
 9. the target `skills/*/SKILL.md`
 10. affected generated or export surfaces

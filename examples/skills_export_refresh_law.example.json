@@ -77,8 +77,8 @@
     "python -m pytest -q tests"
   ],
   "rollback_anchors": [
-    "docs/CODEX_PORTABLE_LAYER.md",
-    "docs/LOCAL_ADAPTER_CONTRACT.md",
+    "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
+    "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
     "generated/local_adapter_manifest.min.json",
     "generated/runtime_discovery_index.json"
   ],

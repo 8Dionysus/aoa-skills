@@ -5,7 +5,7 @@
 `aoa-skills` is a public repository of reusable Codex skills.
 It is the operational companion to `aoa-techniques`.
 It is one bounded execution layer in the AoA ontology spine; see
-`docs/LAYER_POSITION.md` for the repo-owned boundary note.
+`mechanics/boundary-bridge/docs/LAYER_POSITION.md` for the repo-owned boundary note.
 
 - `aoa-techniques` answers: what is the technique, when should it be used, what are its invariants, risks, and validation rules?
 - `aoa-skills` answers: how should Codex apply techniques in a concrete agent workflow?

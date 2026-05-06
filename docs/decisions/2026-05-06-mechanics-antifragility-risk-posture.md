@@ -30,7 +30,7 @@ slice:
 Add a package card, direction, parts, provenance, landing log, roadmap, and
 active parts.
 
-Keep `docs/ROLLBACK_DRILL_SKILL.md` in place because its own text routes to the
+Keep `mechanics/experience/docs/ROLLBACK_DRILL_SKILL.md` in place because its own text routes to the
 v1.0 installation and first sovereign release wave. A later release-support or
 experience pass should decide its honest home.
 
