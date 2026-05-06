@@ -49,9 +49,9 @@ Reviewed candidate identity remains anchored in the existing donor-harvest path:
 - `skills/aoa-session-donor-harvest/SKILL.md`
 - `skills/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml`
 - `skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml`
-- `examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json`
-- `examples/reviewed_owner_landing_bundle.example.json`
-- `examples/route_followthrough_decision.example.json`
+- `mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json`
+- `mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json`
+- `mechanics/method-growth/examples/route_followthrough_decision.example.json`
 
 This landing patches the existing `harvest_packet_receipt` shape.
 It does not create a second competing receipt kind.

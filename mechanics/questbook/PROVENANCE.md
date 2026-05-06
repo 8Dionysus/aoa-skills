@@ -20,7 +20,7 @@ surface. The move changes its route, not its authority level.
 Current questbook source and projection surfaces remain in:
 
 - `mechanics/questbook/QUESTBOOK.md`
-- `quests/*.yaml`
+- `quests/**/AOA-SK-Q-*.yaml`
 - `schemas/quest.schema.json`
 - `schemas/quest_dispatch.schema.json`
 - `generated/quest_catalog.min.json`

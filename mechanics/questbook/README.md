@@ -22,13 +22,14 @@ bundle, playbook, proof verdict, memory object, or hidden task queue.
 
 This package owns questbook integration posture, session-harvest family
 relationship, allowed quest-harvest verdict surface, source/index boundary
-around `mechanics/questbook/QUESTBOOK.md` and `quests/`, and generated quest catalog/dispatch
-projection routes.
+around `mechanics/questbook/QUESTBOOK.md` and lane-first `quests/`, and
+generated quest catalog/dispatch projection routes.
 
 ### Stronger owner split
 
-`Agents-of-Abyss` owns center Questbook law. `mechanics/questbook/QUESTBOOK.md` and `quests/` own
-repo-local public obligations. `aoa-playbooks` owns recurring choreography.
+`Agents-of-Abyss` owns center Questbook law. `mechanics/questbook/QUESTBOOK.md`
+and lane-first `quests/` own repo-local public obligations. `aoa-playbooks`
+owns recurring choreography.
 `aoa-evals` owns proof obligations. `aoa-memo` owns retained lessons. Owner
 repositories own local acceptance and closure. Generated quest views reflect
 source obligations without authoring them.
@@ -86,7 +87,8 @@ companions belong to the route.
 ## Functioning parts
 
 - [Source Index Boundary](parts/source-index-boundary/README.md): root
-  `mechanics/questbook/QUESTBOOK.md`, `quests/`, schemas, and generated projections.
+  `mechanics/questbook/QUESTBOOK.md`, lane-first `quests/`, schemas, and
+  generated projections.
 - [Session Harvest Posture](parts/session-harvest-posture/README.md):
   relationship between checkpoint, harvest, quest-harvest, and core family.
 - [Dispatch Projection](parts/dispatch-projection/README.md): generated quest

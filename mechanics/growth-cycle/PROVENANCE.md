@@ -21,7 +21,7 @@ surfaces. The move changes their route, not their authority level.
 Current evidence companions remain in:
 
 - `docs/session-harvests/`
-- `examples/session_growth_artifacts/`
+- `mechanics/growth-cycle/examples/session_growth_artifacts/`
 - `templates/SKILL_APPLICABILITY_MAP.template.md`
 - `templates/SESSION_CANDIDATE_HARVEST.template.md`
 - `config/project_core_skill_kernel.json`
@@ -33,7 +33,7 @@ or examples into promotion truth.
 ## Recurrence Companion
 
 The recurrence component
-`manifests/recurrence/component.skills.bundle-and-activation-beacons.json`
+`mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json`
 observes adaptive orchestration and harvest pressure. Its decision-surface refs
 must follow the package-local active path.
 

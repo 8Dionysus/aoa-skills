@@ -9,7 +9,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r1_repo_local",
-    "source_path": "quests/AOA-SK-Q-0001.yaml",
+    "source_path": "quests/questbook/done/AOA-SK-Q-0001.yaml",
     "state": "done",
     "theme_ref": "",
     "title": "Land repo-local questbook surface for bounded workflow and runtime-seam obligations"
@@ -24,7 +24,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r1_repo_local",
-    "source_path": "quests/AOA-SK-Q-0002.yaml",
+    "source_path": "quests/audit/done/AOA-SK-Q-0002.yaml",
     "state": "done",
     "theme_ref": "",
     "title": "Track skill-eval alignment debts from the evaluation matrix and governance backlog"
@@ -39,7 +39,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r2_contract",
-    "source_path": "quests/AOA-SK-Q-0003.yaml",
+    "source_path": "quests/release-support/triaged/AOA-SK-Q-0003.yaml",
     "state": "triaged",
     "theme_ref": "",
     "title": "Tighten the Codex portable layer and local adapter contract for .agents/skills export"
@@ -54,7 +54,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r1_repo_local",
-    "source_path": "quests/AOA-SK-Q-0004.yaml",
+    "source_path": "quests/boundary-bridge/captured/AOA-SK-Q-0004.yaml",
     "state": "captured",
     "theme_ref": "",
     "title": "Harvest repeated overlay-specific exceptions into stable skill bundles or playbooks"
@@ -69,7 +69,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r2_contract",
-    "source_path": "quests/AOA-SK-Q-0005.yaml",
+    "source_path": "quests/rpg/captured/AOA-SK-Q-0005.yaml",
     "state": "captured",
     "theme_ref": "",
     "title": "Reflect bounded skill bundles as abilities with pack-profile-aware unlock posture"
@@ -84,7 +84,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r2_contract",
-    "source_path": "quests/AOA-SK-Q-0006.yaml",
+    "source_path": "quests/boundary-bridge/captured/AOA-SK-Q-0006.yaml",
     "state": "captured",
     "theme_ref": "",
     "title": "Classify the cross-repo technique refresh and truth-sync route for bounded automation follow-through"
@@ -99,7 +99,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r2_contract",
-    "source_path": "quests/AOA-SK-Q-0007.yaml",
+    "source_path": "quests/checkpoint/done/AOA-SK-Q-0007.yaml",
     "state": "done",
     "theme_ref": "",
     "title": "Carry checkpoint closeout bridge follow-through into bounded workflow upkeep"
@@ -114,7 +114,7 @@
     "public_safe": true,
     "repo": "aoa-skills",
     "risk": "r2_contract",
-    "source_path": "quests/AOA-SK-Q-0008.yaml",
+    "source_path": "quests/checkpoint/captured/AOA-SK-Q-0008.yaml",
     "state": "captured",
     "theme_ref": "",
     "title": "Track checkpoint owner-promotion follow-through as an early skill-layer seam"

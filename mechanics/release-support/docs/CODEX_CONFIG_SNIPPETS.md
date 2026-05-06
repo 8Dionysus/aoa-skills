@@ -21,11 +21,11 @@ python scripts/render_codex_config.py --repo-root . --profile repo-risk-explicit
 
 ## Example artifacts
 
-- `examples/user-config.toml`
-- `examples/project-config.toml`
-- `examples/disable-risk-skills.toml`
-- `examples/skill_mcp_wiring.map.json`
-- `examples/openai.*.example.yaml`
+- `mechanics/release-support/examples/user-config.toml`
+- `mechanics/release-support/examples/project-config.toml`
+- `mechanics/release-support/examples/disable-risk-skills.toml`
+- `mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json`
+- `mechanics/boundary-bridge/examples/openai.*.example.yaml`
 
 These are examples only.
 They are not authoritative repo config.

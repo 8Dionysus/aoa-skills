@@ -30,7 +30,7 @@ It must not own:
 The seed adds:
 
 ```text
-config/agon_skill_binding_candidates.seed.json
+mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json
 generated/agon_skill_binding_candidates.min.json
 ```
 

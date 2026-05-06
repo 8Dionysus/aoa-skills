@@ -3,6 +3,7 @@
 ## Guidance for `schemas/`
 
 `schemas/` holds contract surfaces for skill-adjacent examples, receipts, checkpoints, follow-through decisions, and bounded integration artifacts.
+Read `README.md` before changing placement or adding a new schema family.
 
 Schema edits are contract edits. Preserve `$schema`, stable `$id` or identifier posture when present, required fields, enums, and field descriptions that keep activation bounded.
 

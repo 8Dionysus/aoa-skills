@@ -20,10 +20,10 @@ surfaces. The move changes their route, not their authority level.
 
 Current recurrence config and projection companions remain in:
 
-- `manifests/recurrence/component.skills.bundle-and-activation-beacons.json`
-- `manifests/recurrence/hooks/component.skills.bundle-and-activation-beacons.hooks.json`
-- `manifests/recurrence/component.agon.skill-binding-surfaces.json`
-- `manifests/recurrence/hooks/component.agon.skill-binding-surfaces.hooks.json`
+- `mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json`
+- `mechanics/recurrence/manifests/hooks/component.skills.bundle-and-activation-beacons.hooks.json`
+- `mechanics/agon/parts/recurrence-observation/manifests/component.agon.skill-binding-surfaces.json`
+- `mechanics/agon/parts/recurrence-observation/manifests/hooks/component.agon.skill-binding-surfaces.hooks.json`
 - `generated/description_trigger_eval_manifest.json`
 - `generated/skill_evaluation_matrix.md`
 - `generated/quest_dispatch.min.json`

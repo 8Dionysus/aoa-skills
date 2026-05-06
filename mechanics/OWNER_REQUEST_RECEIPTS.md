@@ -137,7 +137,7 @@ What landed:
 - `mechanics/checkpoint/parts/checkpoint-note-lane/README.md`
 - `mechanics/checkpoint/parts/closeout-bridge-boundary/README.md`
 - `schemas/session_checkpoint_note.schema.json`
-- `examples/session_checkpoint_note.example.json`
+- `mechanics/checkpoint/examples/session_checkpoint_note.example.json`
 
 The landing covers checkpoint-note protocol and the explicit bridge into
 reviewed closeout. Checkpoint notes remain provisional; final donor harvest,

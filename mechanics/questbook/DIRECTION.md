@@ -15,7 +15,7 @@ deferred obligation or session-harvest aftermath
 ## Current contour
 
 - `mechanics/questbook/QUESTBOOK.md` remains the public tracked obligation index.
-- `quests/` remains the source object directory.
+- `quests/` remains the lane-first source object directory.
 - Generated quest catalog and dispatch files remain projections.
 - `aoa-quest-harvest` gives final promotion triage only for repeated reviewed
   quest-shaped units.
@@ -29,5 +29,5 @@ deferred obligation or session-harvest aftermath
 
 ## Current hold
 
-Do not move `QUESTBOOK.md`, `quests/`, quest schemas, or generated quest
-projections out of their current owner surfaces in this slice.
+Do not flatten `QUESTBOOK.md`, `quests/`, quest schemas, or generated quest
+projections back into ambiguous root aliases.

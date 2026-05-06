@@ -73,7 +73,7 @@ class RoadmapParityTestCase(unittest.TestCase):
             "mechanics/agon/parts/workflow-candidate-bridge/README.md",
             "mechanics/agon/parts/candidate-validation-gate/README.md",
             "generated/agon_skill_binding_candidates.min.json",
-            "config/agon_skill_binding_candidates.seed.json",
+            "mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json",
             "scripts/build_agon_skill_binding_candidates.py",
             "scripts/validate_agon_skill_binding_candidates.py",
             "tests/test_agon_skill_binding_candidates.py",

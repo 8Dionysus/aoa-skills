@@ -23,7 +23,7 @@ multi-technique and/or multi-action composition.
 A skill that references only one technique must carry an explicit exception
 review explaining why it still deserves a skill boundary.
 A skill can use selected sections from each referenced technique.
-Wave IV Agon companion requests under `config/agon_skill_binding_candidates.seed.json`
+Wave IV Agon companion requests under `mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json`
 and `generated/agon_skill_binding_candidates.min.json` are bridge inputs only:
 they remain `requested_not_landed` and do not bypass the normal bundle review
 path or the explicit single-technique exception rule.

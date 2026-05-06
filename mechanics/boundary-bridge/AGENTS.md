@@ -17,7 +17,8 @@ as doctrine.
 2. `DIRECTION.md`
 3. `PARTS.md`
 4. the relevant active doc under `docs/`
-5. `overlays/AGENTS.md` for overlay family edits
+5. `examples/README.md` for MCP/OpenAI scaffold examples
+6. `overlays/AGENTS.md` for overlay family edits
 
 ## Validation
 

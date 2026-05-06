@@ -63,8 +63,8 @@ Start narrow:
 2. stats observability
 3. seed route and planting navigation
 
-The examples in `examples/skill_mcp_wiring.map.json` and
-`examples/openai.*.example.yaml` describe those route families as scaffolds.
+The examples in `mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json` and
+`mechanics/boundary-bridge/examples/openai.*.example.yaml` describe those route families as scaffolds.
 They are not new skill canon by themselves.
 
 ## Source alignment rule
@@ -83,7 +83,7 @@ Use these layers together:
 
 1. keep the workspace server names stable: `aoa_workspace`, `aoa_stats`,
    `dionysus`
-2. maintain route-family examples in `examples/skill_mcp_wiring.map.json`
+2. maintain route-family examples in `mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json`
 3. author real per-skill MCP dependencies in `config/openai_skill_extensions.json`
 4. rebuild the generated export
 5. validate the generated export and optional workspace config alignment

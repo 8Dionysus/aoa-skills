@@ -2,7 +2,9 @@
 
 ## Guidance for `config/`
 
-`config/` holds portable export, policy, profile, and project-core kernel inputs for the skill layer.
+`config/` holds repo-wide portable export, policy, profile, project-core,
+runtime guardrail, trigger-eval, and router inputs for the skill layer.
+Mechanic-local seed configs belong with the owning mechanic package or part.
 
 Config changes are small contract changes. Keep them explicit, reviewable, and subordinate to source skill bundles and documented public-surface policy.
 

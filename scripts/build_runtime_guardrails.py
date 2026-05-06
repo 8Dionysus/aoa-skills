@@ -508,9 +508,21 @@ def main() -> int:
         generated_dir / "runtime_guardrail_tool_schemas.json": dump_json(tool_schemas_doc),
         generated_dir / "runtime_guardrail_prompt_blocks.json": dump_json(prompt_blocks_doc),
         generated_dir / "runtime_guardrail_manifest.json": dump_json(guardrail_manifest_doc),
-        repo_root / "examples" / "repo-trust-store.json": dump_json(example_trust_store),
-        repo_root / "examples" / "permission-allowlist.json": dump_json(example_allowlist),
-        repo_root / "examples" / "guardrailed-runtime-config.json": dump_json(example_runtime_config),
+        repo_root
+        / "mechanics"
+        / "release-support"
+        / "examples"
+        / "repo-trust-store.json": dump_json(example_trust_store),
+        repo_root
+        / "mechanics"
+        / "release-support"
+        / "examples"
+        / "permission-allowlist.json": dump_json(example_allowlist),
+        repo_root
+        / "mechanics"
+        / "release-support"
+        / "examples"
+        / "guardrailed-runtime-config.json": dump_json(example_runtime_config),
     }
     release_doc = release_manifest_contract.build_release_manifest(
         repo_root,

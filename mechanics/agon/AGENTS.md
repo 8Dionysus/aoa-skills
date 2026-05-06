@@ -13,8 +13,8 @@ files in this lane. Open `legacy/README.md` only when the task needs old source
 snapshots or migration accounting.
 
 If the change touches candidate seed data, generated candidates, recurrence
-manifests, or tests, read the affected `config/`, `generated/`, `manifests/`,
-`scripts/`, and `tests/` surfaces too.
+manifests, or tests, read the affected part-local `config/` and `manifests/`,
+root `generated/`, `scripts/`, and `tests/` surfaces too.
 
 ## Boundaries
 

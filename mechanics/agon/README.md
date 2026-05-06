@@ -37,8 +37,8 @@ Downstream repositories own local adoption and runtime use.
 ### Inputs
 
 - center-side Agon owner-binding requests
-- `config/agon_skill_binding_candidates.seed.json`
-- `config/agon_epistemic_skill_candidates.seed.json`
+- `mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json`
+- `mechanics/agon/parts/epistemic-candidate-boundary/config/agon_epistemic_skill_candidates.seed.json`
 - generated Agon candidate companions
 - recurrence manifests that observe this package
 - reviewed practice or skill evidence that still needs normal bundle review
