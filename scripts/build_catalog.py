@@ -185,17 +185,32 @@ def quest_id_sort_key(quest_id: str) -> tuple[int, str]:
         return (sys.maxsize, quest_id)
 
 
-def discover_quest_ids(repo_root: Path) -> tuple[str, ...]:
-    quest_ids = tuple(
+def discover_quest_paths(repo_root: Path) -> tuple[Path, ...]:
+    return tuple(
         sorted(
             (
-                path.stem
-                for path in (repo_root / "quests").glob("AOA-SK-Q-*.yaml")
+                path
+                for path in (repo_root / "quests").glob("**/AOA-SK-Q-*.yaml")
                 if path.is_file()
             ),
-            key=quest_id_sort_key,
+            key=lambda path: quest_id_sort_key(path.stem),
         )
     )
+
+
+def discover_quest_source_paths(repo_root: Path) -> dict[str, str]:
+    return {
+        path.stem: relative_path(path, repo_root)
+        for path in discover_quest_paths(repo_root)
+    }
+
+
+def discover_quest_path_map(repo_root: Path) -> dict[str, Path]:
+    return {path.stem: path for path in discover_quest_paths(repo_root)}
+
+
+def discover_quest_ids(repo_root: Path) -> tuple[str, ...]:
+    quest_ids = tuple(path.stem for path in discover_quest_paths(repo_root))
     if not quest_ids:
         return FOUNDATION_QUEST_IDS
     return quest_ids
@@ -547,6 +562,7 @@ def build_sections_text(repo_root: Path) -> str:
 
 def load_quest_payloads(repo_root: Path) -> dict[str, dict[str, Any]]:
     quest_ids = discover_quest_ids(repo_root)
+    quest_paths = discover_quest_path_map(repo_root)
     missing_foundation_ids = missing_foundation_quest_ids(quest_ids)
     if missing_foundation_ids:
         raise ValueError(
@@ -555,7 +571,7 @@ def load_quest_payloads(repo_root: Path) -> dict[str, dict[str, Any]]:
 
     payloads: dict[str, dict[str, Any]] = {}
     for quest_id in quest_ids:
-        quest_path = repo_root / "quests" / f"{quest_id}.yaml"
+        quest_path = quest_paths.get(quest_id, repo_root / "quests" / f"{quest_id}.yaml")
         payload = load_yaml(quest_path)
         if not isinstance(payload, dict):
             raise ValueError(f"{relative_path(quest_path, repo_root)} must be a YAML mapping")
@@ -573,7 +589,12 @@ def load_quest_payloads(repo_root: Path) -> dict[str, dict[str, Any]]:
     return payloads
 
 
-def build_quest_catalog_entry(quest_id: str, payload: Mapping[str, Any]) -> dict[str, Any]:
+def build_quest_catalog_entry(
+    quest_id: str,
+    payload: Mapping[str, Any],
+    *,
+    source_path: str,
+) -> dict[str, Any]:
     return {
         "id": quest_id,
         "title": payload["title"],
@@ -586,7 +607,7 @@ def build_quest_catalog_entry(quest_id: str, payload: Mapping[str, Any]) -> dict
         "difficulty": payload["difficulty"],
         "risk": payload["risk"],
         "owner_surface": payload["owner_surface"],
-        "source_path": f"quests/{quest_id}.yaml",
+        "source_path": source_path,
         "public_safe": payload["public_safe"],
     }
 
@@ -597,14 +618,24 @@ def build_quest_catalog_payload(
     payloads: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     quest_payloads = payloads if payloads is not None else load_quest_payloads(repo_root)
+    source_paths = discover_quest_source_paths(repo_root)
     return [
-        build_quest_catalog_entry(quest_id, quest_payloads[quest_id])
+        build_quest_catalog_entry(
+            quest_id,
+            quest_payloads[quest_id],
+            source_path=source_paths.get(quest_id, f"quests/{quest_id}.yaml"),
+        )
         for quest_id in discover_quest_ids(repo_root)
         if quest_id in quest_payloads
     ]
 
 
-def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dict[str, Any]:
+def build_quest_dispatch_entry(
+    quest_id: str,
+    payload: Mapping[str, Any],
+    *,
+    source_path: str,
+) -> dict[str, Any]:
     requires_artifacts = QUEST_DISPATCH_ARTIFACTS.get(
         quest_id,
         ["recurrence_evidence", "promotion_decision"]
@@ -613,10 +644,10 @@ def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dic
     )
     activation = payload.get("activation")
     if not isinstance(activation, Mapping):
-        raise ValueError(f"quests/{quest_id}.yaml must keep activation as an object")
+        raise ValueError(f"{source_path} must keep activation as an object")
     activation_mode = activation.get("mode")
     if not isinstance(activation_mode, str) or not activation_mode:
-        raise ValueError(f"quests/{quest_id}.yaml must keep activation.mode as a non-empty string")
+        raise ValueError(f"{source_path} must keep activation.mode as a non-empty string")
     entry = {
         "schema_version": "quest_dispatch_v1",
         "id": quest_id,
@@ -631,7 +662,7 @@ def build_quest_dispatch_entry(quest_id: str, payload: Mapping[str, Any]) -> dic
         "write_scope": payload["write_scope"],
         "requires_artifacts": requires_artifacts,
         "activation_mode": activation_mode,
-        "source_path": f"quests/{quest_id}.yaml",
+        "source_path": source_path,
         "public_safe": payload["public_safe"],
     }
     if "fallback_tier" in payload:
@@ -647,8 +678,13 @@ def build_quest_dispatch_payload(
     payloads: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> list[dict[str, Any]]:
     quest_payloads = payloads if payloads is not None else load_quest_payloads(repo_root)
+    source_paths = discover_quest_source_paths(repo_root)
     return [
-        build_quest_dispatch_entry(quest_id, quest_payloads[quest_id])
+        build_quest_dispatch_entry(
+            quest_id,
+            quest_payloads[quest_id],
+            source_path=source_paths.get(quest_id, f"quests/{quest_id}.yaml"),
+        )
         for quest_id in discover_quest_ids(repo_root)
         if quest_id in quest_payloads
     ]

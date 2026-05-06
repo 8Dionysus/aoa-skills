@@ -29,11 +29,11 @@ REQUIRED_DOCS: tuple[AgentsDocSpec, ...] = (
     AgentsDocSpec(
         Path('examples/AGENTS.md'),
         (
-            'public-safe examples',
+            'root example district',
+            'mechanics/<slug>/examples/',
             'schema-backed shape',
             'neutral placeholders',
             'bounded posture',
-            'skill_mcp_wiring.map.json',
         ),
     ),
     AgentsDocSpec(

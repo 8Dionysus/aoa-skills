@@ -42,8 +42,8 @@ and nested route validation.
 
 ```bash
 python -m pytest -q tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py
-python -m json.tool manifests/recurrence/component.skills.bundle-and-activation-beacons.json
-python -m json.tool manifests/recurrence/hooks/component.skills.bundle-and-activation-beacons.hooks.json
+python -m json.tool mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json
+python -m json.tool mechanics/recurrence/manifests/hooks/component.skills.bundle-and-activation-beacons.hooks.json
 python scripts/validate_nested_agents.py
 ```
 

@@ -13,12 +13,13 @@ The main source-owned meaning still lives in authored inputs such as `skills/*/S
 Before touching anything in `generated/`, read in this order:
 
 1. `../AGENTS.md`
-2. `../README.md`
-3. `../mechanics/release-support/docs/RUNTIME_PATH.md`
-4. `../mechanics/audit/docs/EVALUATION_PATH.md`
-5. `../mechanics/audit/docs/PUBLIC_SURFACE.md`
-6. the generator entrypoint in `../scripts/build_catalog.py`
-7. the authored source surface that actually owns the meaning you are trying to change
+2. `README.md`
+3. `../README.md`
+4. `../mechanics/release-support/docs/RUNTIME_PATH.md`
+5. `../mechanics/audit/docs/EVALUATION_PATH.md`
+6. `../mechanics/audit/docs/PUBLIC_SURFACE.md`
+7. the generator entrypoint in `../scripts/build_catalog.py`
+8. the authored source surface that actually owns the meaning you are trying to change
 
 ## Directory contract
 

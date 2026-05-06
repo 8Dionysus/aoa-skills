@@ -213,6 +213,11 @@ def collect_paths(repo_root: Path, explicit_paths: list[Path]) -> list[Path]:
     if explicit_paths:
         return explicit_paths
     discovered = list((repo_root / ".agents" / "skills").glob("*/agents/openai.yaml"))
+    discovered.extend(
+        (repo_root / "mechanics" / "boundary-bridge" / "examples").glob(
+            "openai.*.example.yaml"
+        )
+    )
     discovered.extend((repo_root / "examples").glob("openai.*.example.yaml"))
     return sorted(set(discovered))
 

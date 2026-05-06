@@ -77,6 +77,16 @@ QUESTBOOK_REQUIRED_INDEX_TOKENS = (
     "Harvest candidates",
 )
 CLOSED_QUEST_STATES = {"done", "dropped"}
+QUEST_LIFECYCLE_STATES = {
+    "captured",
+    "triaged",
+    "ready",
+    "active",
+    "blocked",
+    "reanchor",
+    "done",
+    "dropped",
+}
 QUESTBOOK_REQUIRED_INTEGRATION_TOKENS = (
     "generated/public_surface.md",
     "generated/governance_backlog.md",
@@ -286,6 +296,7 @@ def validate_quest_schema_envelope(
 def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     quest_ids = build_catalog.discover_quest_ids(repo_root)
+    quest_paths = build_catalog.discover_quest_path_map(repo_root)
     missing_foundation_ids = build_catalog.missing_foundation_quest_ids(quest_ids)
     required_paths = (
         repo_root / QUESTBOOK_PATH,
@@ -367,12 +378,12 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
     for quest_id in missing_foundation_ids:
         issues.append(
             ValidationIssue(
-                relative_location(repo_root / "quests" / f"{quest_id}.yaml"),
+                f"quests/**/{quest_id}.yaml",
                 "file is missing",
             )
         )
     for quest_id in quest_ids:
-        quest_path = repo_root / "quests" / f"{quest_id}.yaml"
+        quest_path = quest_paths.get(quest_id, repo_root / "quests" / f"{quest_id}.yaml")
         payload = load_yaml_file(quest_path, issues)
         location = relative_location(quest_path)
         if payload is None:
@@ -387,6 +398,14 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             issues.append(ValidationIssue(location, "repo must be 'aoa-skills'"))
         if payload.get("public_safe") is not True:
             issues.append(ValidationIssue(location, "public_safe must be true"))
+        path_state = quest_path.parent.name
+        if path_state in QUEST_LIFECYCLE_STATES and payload.get("state") != path_state:
+            issues.append(
+                ValidationIssue(
+                    location,
+                    f"state must match quest path state '{path_state}'",
+                )
+            )
         if quest_id == "AOA-SK-Q-0004":
             activation = payload.get("activation")
             anchor_ref = payload.get("anchor_ref")
@@ -457,7 +476,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             issues.append(
                 ValidationIssue(
                     relative_location(repo_root / QUEST_CATALOG_PATH),
-                    "live catalog must stay aligned with quests/*.yaml",
+                    "live catalog must stay aligned with quests/**/AOA-SK-Q-*.yaml",
                 )
             )
     elif live_catalog_payload is not None:
@@ -483,7 +502,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             issues.append(
                 ValidationIssue(
                     relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
-                    "example catalog must stay aligned with quests/*.yaml",
+                    "example catalog must stay aligned with quests/**/AOA-SK-Q-*.yaml",
                 )
             )
         else:
@@ -547,7 +566,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
                 issues.append(
                     ValidationIssue(
                         relative_location(repo_root / QUEST_DISPATCH_PATH),
-                        f"dispatch entry '{quest_id}' must map to a quest declared in quests/*.yaml",
+                        f"dispatch entry '{quest_id}' must map to a quest declared in quests/**/AOA-SK-Q-*.yaml",
                     )
                 )
             requires_artifacts = entry.get("requires_artifacts")
@@ -578,7 +597,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
                         for quest_id in comparable_live_dispatch_ids
                         if live_dispatch_by_id.get(quest_id) != expected_dispatch_by_id[quest_id]
                     )
-                    + "' must stay aligned with quests/*.yaml",
+                    + "' must stay aligned with quests/**/AOA-SK-Q-*.yaml",
                 )
             )
     elif live_dispatch_payload is not None:
@@ -616,7 +635,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
                 issues.append(
                     ValidationIssue(
                         relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                        f"example dispatch entry '{quest_id}' must map to a quest declared in quests/*.yaml",
+                        f"example dispatch entry '{quest_id}' must map to a quest declared in quests/**/AOA-SK-Q-*.yaml",
                     )
                 )
             if entry_valid and isinstance(quest_id, str) and quest_id in expected_dispatch_by_id:
@@ -633,7 +652,7 @@ def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
             issues.append(
                 ValidationIssue(
                     relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                    "example dispatch must stay aligned with quests/*.yaml",
+                    "example dispatch must stay aligned with quests/**/AOA-SK-Q-*.yaml",
                 )
             )
         else:

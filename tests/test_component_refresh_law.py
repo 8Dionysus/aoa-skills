@@ -6,7 +6,13 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-EXAMPLE_PATH = REPO_ROOT / "examples" / "skills_export_refresh_law.example.json"
+EXAMPLE_PATH = (
+    REPO_ROOT
+    / "mechanics"
+    / "release-support"
+    / "examples"
+    / "skills_export_refresh_law.example.json"
+)
 ALLOWED_ROUTE_CLASSES = {
     "observe",
     "revalidate",

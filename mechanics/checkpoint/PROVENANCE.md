@@ -31,7 +31,7 @@ bundle meaning into mechanics.
 The checkpoint note route is checked by:
 
 - `schemas/session_checkpoint_note.schema.json`
-- `examples/session_checkpoint_note.example.json`
+- `mechanics/checkpoint/examples/session_checkpoint_note.example.json`
 
 ## Neighbor Routes
 

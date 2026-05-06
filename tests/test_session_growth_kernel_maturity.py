@@ -9,36 +9,36 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLISH_SCRIPT_PATH = REPO_ROOT / "scripts" / "publish_core_skill_receipts.py"
 
 PACKET_PATHS = {
-    "decision_fork": "examples/session_growth_artifacts/decision_fork.wave4.json",
-    "diagnosis_packet": "examples/session_growth_artifacts/diagnosis_packet.wave4.json",
-    "repair_cycle": "examples/session_growth_artifacts/repair_cycle.wave4.json",
-    "progression_delta": "examples/session_growth_artifacts/progression_delta.wave4.json",
-    "automation_candidate": "examples/session_growth_artifacts/automation_candidate.wave4.json",
+    "decision_fork": "mechanics/growth-cycle/examples/session_growth_artifacts/decision_fork.wave4.json",
+    "diagnosis_packet": "mechanics/growth-cycle/examples/session_growth_artifacts/diagnosis_packet.wave4.json",
+    "repair_cycle": "mechanics/growth-cycle/examples/session_growth_artifacts/repair_cycle.wave4.json",
+    "progression_delta": "mechanics/growth-cycle/examples/session_growth_artifacts/progression_delta.wave4.json",
+    "automation_candidate": "mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate.wave4.json",
 }
 
 DETAIL_RECEIPT_CASES = {
     "decision_fork": (
-        "examples/session_growth_artifacts/decision_fork_receipt.wave4.json",
+        "mechanics/growth-cycle/examples/session_growth_artifacts/decision_fork_receipt.wave4.json",
         "skills/aoa-session-route-forks/references/decision-fork-receipt-schema.yaml",
         PACKET_PATHS["decision_fork"],
     ),
     "diagnosis_packet": (
-        "examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json",
+        "mechanics/growth-cycle/examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json",
         "skills/aoa-session-self-diagnose/references/diagnosis-packet-receipt-schema.yaml",
         PACKET_PATHS["diagnosis_packet"],
     ),
     "repair_cycle": (
-        "examples/session_growth_artifacts/repair_cycle_receipt.wave4.json",
+        "mechanics/growth-cycle/examples/session_growth_artifacts/repair_cycle_receipt.wave4.json",
         "skills/aoa-session-self-repair/references/repair-cycle-receipt-schema.yaml",
         PACKET_PATHS["repair_cycle"],
     ),
     "progression_delta": (
-        "examples/session_growth_artifacts/progression_delta_receipt.wave4.json",
+        "mechanics/growth-cycle/examples/session_growth_artifacts/progression_delta_receipt.wave4.json",
         "skills/aoa-session-progression-lift/references/progression-delta-receipt-schema.yaml",
         PACKET_PATHS["progression_delta"],
     ),
     "automation_candidate": (
-        "examples/session_growth_artifacts/automation_candidate_receipt.wave4.json",
+        "mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate_receipt.wave4.json",
         "skills/aoa-automation-opportunity-scan/references/automation-candidate-receipt-schema.yaml",
         PACKET_PATHS["automation_candidate"],
     ),
@@ -104,7 +104,7 @@ def test_session_growth_kernel_maturity_docs_route_to_live_wave4_family() -> Non
         REPO_ROOT / "mechanics" / "method-growth" / "docs" / "CANDIDATE_REF_REFINERY.md"
     ).read_text(encoding="utf-8")
 
-    assert "examples/session_growth_artifacts/" in doc
+    assert "mechanics/growth-cycle/examples/session_growth_artifacts/" in doc
     assert "examples/session-growth-kernel/" in doc
     assert "../mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md" in docs_map
     assert "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md" in readme
@@ -165,7 +165,7 @@ def test_wave4_detail_receipts_follow_skill_contracts_and_point_back_to_packets(
 
 def test_wave4_core_receipts_validate_against_live_kernel_publisher() -> None:
     module = _load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
-    receipts = _load_json("examples/session_growth_artifacts/core_skill_application_receipts.wave4.json")
+    receipts = _load_json("mechanics/growth-cycle/examples/session_growth_artifacts/core_skill_application_receipts.wave4.json")
     detail_receipt_refs = {
         f"repo:aoa-skills/{receipt_path}" for receipt_path, _, _ in DETAIL_RECEIPT_CASES.values()
     }

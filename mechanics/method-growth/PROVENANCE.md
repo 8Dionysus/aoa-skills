@@ -51,9 +51,9 @@ The first owner-status and followthrough route is checked by:
 
 - `schemas/reviewed_owner_landing_bundle.schema.json`
 - `schemas/route_followthrough_decision.schema.json`
-- `examples/reviewed_owner_landing_bundle.example.json`
-- `examples/route_followthrough_decision.example.json`
-- `examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json`
+- `mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json`
+- `mechanics/method-growth/examples/route_followthrough_decision.example.json`
+- `mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json`
 - `schemas/skill_adoption_compatibility_report_v1.json`
 - `schemas/skill_adoption_owner_decision_v1.json`
 - `schemas/skill_adoption_receipt_v1.json`

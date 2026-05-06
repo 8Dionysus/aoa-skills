@@ -23,7 +23,7 @@ surfaces too.
 - It does not own a second roadmap, private scratchpad, playbook choreography,
   proof verdicts, memory canon, routing authority, closure proof, or owner
   acceptance.
-- `mechanics/questbook/QUESTBOOK.md` and `quests/` remain source surfaces in this slice.
+- `mechanics/questbook/QUESTBOOK.md` and lane-first `quests/` remain source surfaces in this slice.
 
 ## Editing posture
 

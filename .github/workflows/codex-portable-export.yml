@@ -139,7 +139,7 @@ jobs:
             generated/skill_bundle_index.md \
             generated/skill_graph.json \
             generated/skill_graph.md \
-            examples/repo-trust-store.json \
-            examples/permission-allowlist.json \
-            examples/guardrailed-runtime-config.json \
+            mechanics/release-support/examples/repo-trust-store.json \
+            mechanics/release-support/examples/permission-allowlist.json \
+            mechanics/release-support/examples/guardrailed-runtime-config.json \
             generated/release_manifest.json

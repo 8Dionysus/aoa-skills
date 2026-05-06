@@ -28,12 +28,12 @@ part names, or route order.
 
 ## Active inputs
 
-- `config/agon_skill_binding_candidates.seed.json`
-- `config/agon_epistemic_skill_candidates.seed.json`
+- `mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json`
+- `mechanics/agon/parts/epistemic-candidate-boundary/config/agon_epistemic_skill_candidates.seed.json`
 - `generated/agon_skill_binding_candidates.min.json`
 - `generated/agon_epistemic_skill_candidates.min.json`
-- `manifests/recurrence/component.agon.skill-binding-surfaces.json`
-- `manifests/recurrence/hooks/component.agon.skill-binding-surfaces.hooks.json`
+- `mechanics/agon/parts/recurrence-observation/manifests/component.agon.skill-binding-surfaces.json`
+- `mechanics/agon/parts/recurrence-observation/manifests/hooks/component.agon.skill-binding-surfaces.hooks.json`
 
 These inputs and companions stay below accepted skill truth.
 Existing generated/config fields that preserve old wave labels are lineage

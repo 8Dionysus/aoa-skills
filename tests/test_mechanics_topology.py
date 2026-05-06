@@ -10,6 +10,14 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 class MechanicsTopologyTests(unittest.TestCase):
     def test_mechanics_root_and_packages_are_routable(self) -> None:
         expected_paths = (
+            "config/README.md",
+            "examples/README.md",
+            "generated/README.md",
+            "manifests/AGENTS.md",
+            "manifests/README.md",
+            "quests/AGENTS.md",
+            "quests/README.md",
+            "schemas/README.md",
             "mechanics/README.md",
             "mechanics/AGENTS.md",
             "mechanics/ROADMAP.md",
@@ -26,6 +34,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/method-growth/docs/CANDIDATE_REF_REFINERY.md",
             "mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md",
             "mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md",
+            "mechanics/method-growth/examples/README.md",
             "mechanics/method-growth/parts/adoption-boundary/README.md",
             "mechanics/method-growth/parts/adoption-evidence-receipts/README.md",
             "mechanics/method-growth/parts/retention-regression-retirement/README.md",
@@ -48,6 +57,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/growth-cycle/docs/README.md",
             "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
             "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md",
+            "mechanics/growth-cycle/examples/README.md",
             "mechanics/questbook/README.md",
             "mechanics/questbook/AGENTS.md",
             "mechanics/questbook/DIRECTION.md",
@@ -66,6 +76,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/recurrence/ROADMAP.md",
             "mechanics/recurrence/parts/live-observation-producers/README.md",
             "mechanics/recurrence/parts/review-decision-closure/README.md",
+            "mechanics/recurrence/manifests/README.md",
             "mechanics/antifragility/README.md",
             "mechanics/antifragility/AGENTS.md",
             "mechanics/antifragility/DIRECTION.md",
@@ -94,6 +105,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/checkpoint/ROADMAP.md",
             "mechanics/checkpoint/docs/README.md",
             "mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md",
+            "mechanics/checkpoint/examples/README.md",
             "mechanics/agon/README.md",
             "mechanics/agon/AGENTS.md",
             "mechanics/agon/DIRECTION.md",
@@ -105,6 +117,10 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/agon/legacy/INDEX.md",
             "mechanics/agon/legacy/DISTILLATION_LOG.md",
             "mechanics/agon/legacy/raw/README.md",
+            "mechanics/agon/examples/README.md",
+            "mechanics/agon/parts/workflow-candidate-bridge/config/README.md",
+            "mechanics/agon/parts/epistemic-candidate-boundary/config/README.md",
+            "mechanics/agon/parts/recurrence-observation/manifests/README.md",
             "mechanics/audit/README.md",
             "mechanics/audit/AGENTS.md",
             "mechanics/audit/DIRECTION.md",
@@ -127,6 +143,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/experience/LANDING_LOG.md",
             "mechanics/experience/ROADMAP.md",
             "mechanics/experience/docs/README.md",
+            "mechanics/experience/examples/README.md",
             "mechanics/boundary-bridge/README.md",
             "mechanics/boundary-bridge/AGENTS.md",
             "mechanics/boundary-bridge/DIRECTION.md",
@@ -138,6 +155,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/boundary-bridge/docs/LAYER_POSITION.md",
             "mechanics/boundary-bridge/docs/BRIDGE_SPEC.md",
             "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md",
+            "mechanics/boundary-bridge/examples/README.md",
             "mechanics/boundary-bridge/overlays/AGENTS.md",
             "mechanics/release-support/README.md",
             "mechanics/release-support/AGENTS.md",
@@ -151,11 +169,52 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
             "mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md",
             "mechanics/release-support/docs/RELEASING.md",
+            "mechanics/release-support/examples/README.md",
             "mechanics/release-support/legacy/waves/README.md",
         )
         for relative_path in expected_paths:
             with self.subTest(path=relative_path):
                 self.assertTrue((REPO_ROOT / relative_path).is_file())
+
+    def test_root_companion_districts_do_not_keep_mechanic_records(self) -> None:
+        route_only_files = ["AGENTS.md", "README.md"]
+
+        for root_district in ("examples", "manifests"):
+            with self.subTest(root_district=root_district):
+                files = sorted(
+                    str(path.relative_to(REPO_ROOT / root_district))
+                    for path in (REPO_ROOT / root_district).rglob("*")
+                    if path.is_file()
+                )
+                self.assertEqual(route_only_files, files)
+
+        config_files = {path.name for path in (REPO_ROOT / "config").iterdir()}
+        for moved_seed in (
+            "agon_skill_binding_candidates.seed.json",
+            "agon_epistemic_skill_candidates.seed.json",
+        ):
+            with self.subTest(moved_seed=moved_seed):
+                self.assertNotIn(moved_seed, config_files)
+
+        top_level_quest_files = sorted(
+            path.name for path in (REPO_ROOT / "quests").iterdir() if path.is_file()
+        )
+        self.assertEqual(route_only_files, top_level_quest_files)
+
+        for flat_quest in (
+            "AOA-SK-Q-0001.yaml",
+            "AOA-SK-Q-0002.yaml",
+            "AOA-SK-Q-0003.yaml",
+            "AOA-SK-Q-0004.yaml",
+            "AOA-SK-Q-0005.yaml",
+            "AOA-SK-Q-0006.yaml",
+            "AOA-SK-Q-0007.yaml",
+            "AOA-SK-Q-0008.yaml",
+            "AOS-Q-AGON-0001-skill-binding-candidates.md",
+            "AOS-Q-AGON-0002-epistemic-skill-candidates.md",
+        ):
+            with self.subTest(flat_quest=flat_quest):
+                self.assertFalse((REPO_ROOT / "quests" / flat_quest).exists())
 
     def test_owner_request_receipts_keep_center_statuses_honest(self) -> None:
         receipts = (REPO_ROOT / "mechanics" / "OWNER_REQUEST_RECEIPTS.md").read_text(
@@ -399,7 +458,7 @@ class MechanicsTopologyTests(unittest.TestCase):
 
         self.assertIn("docs/session-harvests/", provenance)
         self.assertIn(
-            "manifests/recurrence/component.skills.bundle-and-activation-beacons.json",
+            "mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json",
             provenance,
         )
 
@@ -458,7 +517,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             provenance,
         )
         self.assertIn("mechanics/questbook/QUESTBOOK.md", provenance)
-        self.assertIn("quests/*.yaml", provenance)
+        self.assertIn("quests/**/AOA-SK-Q-*.yaml", provenance)
         self.assertIn("generated/quest_catalog.min.json", provenance)
         self.assertIn("skills/aoa-quest-harvest/SKILL.md", provenance)
 
@@ -495,7 +554,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             provenance,
         )
         self.assertIn(
-            "manifests/recurrence/component.skills.bundle-and-activation-beacons.json",
+            "mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json",
             provenance,
         )
         self.assertIn(

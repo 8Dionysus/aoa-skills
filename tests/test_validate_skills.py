@@ -92,11 +92,10 @@ def write_valid_questbook_surface(repo_root: Path) -> None:
             encoding="utf-8"
         ),
     )
-    for quest_path in sorted((REPO_ROOT / "quests").glob("AOA-SK-Q-*.yaml")):
-        quest_id = quest_path.stem
+    for quest_path in sorted((REPO_ROOT / "quests").glob("**/AOA-SK-Q-*.yaml")):
         write_text(
-            repo_root / "quests" / f"{quest_id}.yaml",
-            (REPO_ROOT / "quests" / f"{quest_id}.yaml").read_text(encoding="utf-8"),
+            repo_root / quest_path.relative_to(REPO_ROOT),
+            quest_path.read_text(encoding="utf-8"),
         )
     write_text(
         repo_root / "generated" / "quest_catalog.min.json",
@@ -122,6 +121,13 @@ def write_valid_questbook_surface(repo_root: Path) -> None:
             encoding="utf-8"
         ),
     )
+
+
+def quest_fixture_path(repo_root: Path, quest_id: str) -> Path:
+    matches = sorted((repo_root / "quests").glob(f"**/{quest_id}.yaml"))
+    if not matches:
+        return repo_root / "quests" / f"{quest_id}.yaml"
+    return matches[0]
 
 
 class ValidateSkillsTests(unittest.TestCase):
@@ -3020,11 +3026,14 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             repo_root = Path(temp_dir) / "aoa-skills"
             self.write_valid_surface(repo_root)
+            quest_path = quest_fixture_path(repo_root, "AOA-SK-Q-0004")
             write_text(
-                repo_root / "quests" / "AOA-SK-Q-0004.yaml",
-                (repo_root / "quests" / "AOA-SK-Q-0004.yaml")
-                .read_text(encoding="utf-8")
-                .replace("mechanics/boundary-bridge/docs/OVERLAY_SPEC.md", "mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md", 1),
+                quest_path,
+                quest_path.read_text(encoding="utf-8").replace(
+                    "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md",
+                    "mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md",
+                    1,
+                ),
             )
 
             issues = validate_skills.validate_questbook_surface(repo_root)
@@ -3038,11 +3047,13 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             repo_root = Path(temp_dir) / "aoa-skills"
             self.write_valid_surface(repo_root)
+            quest_path = quest_fixture_path(repo_root, "AOA-SK-Q-0002")
             write_text(
-                repo_root / "quests" / "AOA-SK-Q-0002.yaml",
-                (repo_root / "quests" / "AOA-SK-Q-0002.yaml")
-                .read_text(encoding="utf-8")
-                .replace("repo: aoa-skills", "repo: aoa-evals"),
+                quest_path,
+                quest_path.read_text(encoding="utf-8").replace(
+                    "repo: aoa-skills",
+                    "repo: aoa-evals",
+                ),
             )
 
             issues = validate_skills.validate_questbook_surface(repo_root)
@@ -3059,7 +3070,7 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
                 (repo_root / "generated" / "quest_catalog.min.example.json")
                 .read_text(encoding="utf-8")
                 .replace(
-                    '"source_path": "quests/AOA-SK-Q-0004.yaml"',
+                    '"source_path": "quests/boundary-bridge/captured/AOA-SK-Q-0004.yaml"',
                     '"source_path": "quests/AOA-SK-Q-9999.yaml"',
                 ),
             )
@@ -3067,7 +3078,8 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
             issues = validate_skills.validate_questbook_surface(repo_root)
             self.assertTrue(
                 any(
-                    issue.message == "example catalog must stay aligned with quests/*.yaml"
+                    issue.message
+                    == "example catalog must stay aligned with quests/**/AOA-SK-Q-*.yaml"
                     for issue in issues
                 )
             )
@@ -3096,7 +3108,7 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
                 (repo_root / "generated" / "quest_dispatch.min.json")
                 .read_text(encoding="utf-8")
                 .replace(
-                    '"source_path":"quests/AOA-SK-Q-0004.yaml"',
+                    '"source_path":"quests/boundary-bridge/captured/AOA-SK-Q-0004.yaml"',
                     '"source_path":"quests/AOA-SK-Q-9999.yaml"',
                 ),
             )
@@ -3105,7 +3117,7 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
             self.assertTrue(
                 any(
                     issue.message
-                    == "dispatch entry 'AOA-SK-Q-0004' must stay aligned with quests/*.yaml"
+                    == "dispatch entry 'AOA-SK-Q-0004' must stay aligned with quests/**/AOA-SK-Q-*.yaml"
                     for issue in issues
                 )
             )
@@ -3114,7 +3126,7 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             repo_root = Path(temp_dir) / "aoa-skills"
             self.write_valid_surface(repo_root)
-            quest_path = repo_root / "quests" / "AOA-SK-Q-0001.yaml"
+            quest_path = quest_fixture_path(repo_root, "AOA-SK-Q-0001")
             quest_text = quest_path.read_text(encoding="utf-8")
             write_text(
                 quest_path,
@@ -3152,7 +3164,8 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
             )
             self.assertFalse(
                 any(
-                    issue.message == "example dispatch must stay aligned with quests/*.yaml"
+                    issue.message
+                    == "example dispatch must stay aligned with quests/**/AOA-SK-Q-*.yaml"
                     for issue in issues
                 )
             )

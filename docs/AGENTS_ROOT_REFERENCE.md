@@ -199,7 +199,7 @@ resources, or bridge inputs:
 ```bash
 python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
 python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
-python scripts/build_openai_yaml_examples.py --map examples/skill_mcp_wiring.map.json --output-dir examples --check
+python scripts/build_openai_yaml_examples.py --map mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json --output-dir mechanics/boundary-bridge/examples --check
 python scripts/validate_agent_skills.py --repo-root .
 python scripts/validate_support_resources.py --repo-root . --check-portable
 python scripts/validate_tiny_router_inputs.py --repo-root .

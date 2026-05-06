@@ -20,8 +20,10 @@
 - `templates/PROJECT_OVERLAY.template.md` — canonical project overlay scaffold
 - `templates/PROJECT_OVERLAY_SKILL.template.md` — canonical overlayed skill scaffold
 - `.agents/` — generated Codex-facing export layer
-- `config/` — portable export description overrides, optional OpenAI metadata extensions, and wave-3 pack/trust authoring inputs
-- `examples/` — sample Codex config snippets for profile disable and install scenarios
+- `config/` — repo-wide portable export, policy, profile, runtime, trigger-eval, and router inputs
+- `examples/` — root-owned examples only; mechanic examples live under `mechanics/<slug>/examples/`
+- `manifests/` — manifest route district; records live with owning mechanic packages or parts
+- `quests/` — lane-first durable obligation sources under `quests/<lane>/<state>/`
 - `skills/` — skill bundles
 - `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, wave-4 runtime seam surfaces, wave-8 support-resource manifests, and trigger-eval seed data
 - `scripts/` — optional generation or validation helpers

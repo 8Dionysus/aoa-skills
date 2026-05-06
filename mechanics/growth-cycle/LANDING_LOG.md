@@ -25,7 +25,7 @@ Checks:
 
 - `python -m pytest -q tests/test_session_growth_kernel_maturity.py tests/test_session_checkpoint_note.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py`
 - `python scripts/validate_nested_agents.py`
-- `python -m json.tool manifests/recurrence/component.skills.bundle-and-activation-beacons.json`
+- `python -m json.tool mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json`
 - `python scripts/build_catalog.py --check`
 - `python scripts/validate_skills.py --fail-on-review-truth-sync`
 - `python -m unittest discover -s tests`

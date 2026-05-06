@@ -9,7 +9,15 @@ import sys
 from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SRC = ROOT / "config" / "agon_epistemic_skill_candidates.seed.json"
+SRC = (
+    ROOT
+    / "mechanics"
+    / "agon"
+    / "parts"
+    / "epistemic-candidate-boundary"
+    / "config"
+    / "agon_epistemic_skill_candidates.seed.json"
+)
 OUT = ROOT / "generated" / "agon_epistemic_skill_candidates.min.json"
 ITEM_KEY = "skills"
 REGISTRY_ID = "agon.epistemic_skill_candidates.registry.v1"

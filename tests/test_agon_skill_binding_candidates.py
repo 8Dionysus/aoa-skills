@@ -8,6 +8,15 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+CONFIG_PATH = (
+    ROOT
+    / "mechanics"
+    / "agon"
+    / "parts"
+    / "workflow-candidate-bridge"
+    / "config"
+    / "agon_skill_binding_candidates.seed.json"
+)
 
 
 def load_builder():
@@ -39,7 +48,7 @@ def test_agon_skill_binding_candidate_shape() -> None:
 
 def test_builder_rejects_missing_scope_widening_boundary() -> None:
     builder = load_builder()
-    config = json.loads((ROOT / "config" / "agon_skill_binding_candidates.seed.json").read_text(encoding="utf-8"))
+    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     config["candidates"][0]["must_not"] = [
         item for item in config["candidates"][0]["must_not"] if "silently widen task scope" not in item
     ]
@@ -50,7 +59,7 @@ def test_builder_rejects_missing_scope_widening_boundary() -> None:
 
 def test_builder_rejects_missing_source_owner_binding() -> None:
     builder = load_builder()
-    config = json.loads((ROOT / "config" / "agon_skill_binding_candidates.seed.json").read_text(encoding="utf-8"))
+    config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     config["candidates"][0]["source_owner_binding"] = "Agents-of-Abyss/generated/missing.json"
     case = unittest.TestCase()
     with case.assertRaisesRegex(builder.ValidationError, "source_owner_binding must be"):

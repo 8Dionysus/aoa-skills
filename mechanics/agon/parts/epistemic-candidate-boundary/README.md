@@ -11,7 +11,7 @@ agent standing, activate live sessions, or promote a candidate into protocol.
 
 ## Inputs
 
-- `config/agon_epistemic_skill_candidates.seed.json`
+- `mechanics/agon/parts/epistemic-candidate-boundary/config/agon_epistemic_skill_candidates.seed.json`
 - `generated/agon_epistemic_skill_candidates.min.json`
 - reviewed practice evidence from the stronger owner route
 

@@ -20,7 +20,7 @@ def _load_yaml(relative_path: str) -> dict:
 
 def test_session_checkpoint_note_schema_validates_example() -> None:
     schema = _load_json("schemas/session_checkpoint_note.schema.json")
-    example = _load_json("examples/session_checkpoint_note.example.json")
+    example = _load_json("mechanics/checkpoint/examples/session_checkpoint_note.example.json")
 
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(example)
@@ -49,7 +49,7 @@ def test_candidate_lineage_receipt_schema_validates_example() -> None:
     schema = _load_yaml(
         "skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
     )
-    example = _load_json("examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
+    example = _load_json("mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
 
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(example)
@@ -59,7 +59,7 @@ def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
     schema = _load_yaml(
         "skills/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
     )
-    example = _load_json("examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
+    example = _load_json("mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
     del example["nearest_wrong_target"]
 
     errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]
@@ -69,7 +69,7 @@ def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
 
 def test_reviewed_owner_landing_bundle_schema_validates_example() -> None:
     schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
-    example = _load_json("examples/reviewed_owner_landing_bundle.example.json")
+    example = _load_json("mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json")
 
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(example)
@@ -77,7 +77,7 @@ def test_reviewed_owner_landing_bundle_schema_validates_example() -> None:
 
 def test_reviewed_owner_landing_bundle_forbids_seed_or_object_refs() -> None:
     schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
-    example = _load_json("examples/reviewed_owner_landing_bundle.example.json")
+    example = _load_json("mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json")
     example["seed_ref"] = "seed:aoa-skills:reviewed-donor-harvest"
     example["object_ref"] = "object:aoa-skills:reviewed-donor-harvest"
 
@@ -88,7 +88,7 @@ def test_reviewed_owner_landing_bundle_forbids_seed_or_object_refs() -> None:
 
 def test_reviewed_owner_landing_bundle_requires_terminal_drop_metadata() -> None:
     schema = _load_json("schemas/reviewed_owner_landing_bundle.schema.json")
-    example = _load_json("examples/reviewed_owner_landing_bundle.example.json")
+    example = _load_json("mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json")
     example["status_posture"] = "dropped"
 
     errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]
@@ -98,7 +98,7 @@ def test_reviewed_owner_landing_bundle_requires_terminal_drop_metadata() -> None
 
 def test_route_followthrough_decision_schema_validates_example() -> None:
     schema = _load_json("schemas/route_followthrough_decision.schema.json")
-    example = _load_json("examples/route_followthrough_decision.example.json")
+    example = _load_json("mechanics/method-growth/examples/route_followthrough_decision.example.json")
 
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(example)
@@ -106,7 +106,7 @@ def test_route_followthrough_decision_schema_validates_example() -> None:
 
 def test_route_followthrough_decision_requires_reasoning_against_nearest_wrong_target() -> None:
     schema = _load_json("schemas/route_followthrough_decision.schema.json")
-    example = _load_json("examples/route_followthrough_decision.example.json")
+    example = _load_json("mechanics/method-growth/examples/route_followthrough_decision.example.json")
     del example["why_not_nearest_wrong_target"]
 
     errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]
@@ -115,8 +115,8 @@ def test_route_followthrough_decision_requires_reasoning_against_nearest_wrong_t
 
 
 def test_owner_landing_and_followthrough_examples_keep_lineage_aligned() -> None:
-    landing = _load_json("examples/reviewed_owner_landing_bundle.example.json")
-    decision = _load_json("examples/route_followthrough_decision.example.json")
+    landing = _load_json("mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json")
+    decision = _load_json("mechanics/method-growth/examples/route_followthrough_decision.example.json")
 
     assert landing["candidate_ref"] == decision["candidate_ref"]
     assert landing["cluster_ref"] == decision["cluster_ref"]
@@ -129,9 +129,13 @@ def test_harvest_packet_receipt_allows_candidate_lineage_entries_without_seed_or
         "skills/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml"
     )
     receipt_family = json.loads(
-        (REPO_ROOT / "examples" / "session_harvest_family.receipts.example.json").read_text(
-            encoding="utf-8"
-        )
+        (
+            REPO_ROOT
+            / "mechanics"
+            / "growth-cycle"
+            / "examples"
+            / "session_harvest_family.receipts.example.json"
+        ).read_text(encoding="utf-8")
     )
     harvest_receipt = receipt_family[0]
     lineage_entries = harvest_receipt["payload"]["candidate_lineage_entries"]

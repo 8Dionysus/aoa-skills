@@ -171,7 +171,7 @@ Allowed `aoa-quest-harvest` verdicts:
 
 ## Backing files
 
-- `quests/*.yaml`
+- `quests/**/AOA-SK-Q-*.yaml`
 - `schemas/quest.schema.json`
 - `schemas/quest_dispatch.schema.json`
 - `generated/quest_catalog.min.example.json`

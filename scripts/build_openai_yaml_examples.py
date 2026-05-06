@@ -104,7 +104,7 @@ def parse_args() -> argparse.Namespace:
         "--map",
         required=True,
         type=Path,
-        help="Path to examples/skill_mcp_wiring.map.json",
+        help="Path to mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json",
     )
     parser.add_argument(
         "--output-dir",

@@ -16,7 +16,8 @@ exports as authored skill truth.
 2. `DIRECTION.md`
 3. `PARTS.md`
 4. the relevant active doc under `docs/`
-5. `legacy/waves/` only for historical wave accounting
+5. `examples/README.md` for local adapter and guardrail examples
+6. `legacy/waves/` only for historical wave accounting
 
 ## Validation
 
