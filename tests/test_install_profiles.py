@@ -174,7 +174,6 @@ class InstallProfilesTests(unittest.TestCase):
                 "--mode",
                 "symlink",
                 "--execute",
-                "--overwrite",
                 "--format",
                 "json",
             ]
