@@ -123,6 +123,71 @@ class SupportBundleScriptTests(unittest.TestCase):
             self.assertIn("preview-steps-not-list", result["gaps"])
             self.assertEqual("", completed.stderr)
 
+    def test_preview_gap_check_preserves_falsy_malformed_shapes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "dry-run-report.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "preview_steps": False,
+                        "apply_step": False,
+                        "limitations": False,
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-dry-run-first/scripts/preview_gap_check.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("fail", result["status"])
+            self.assertIn("preview-steps-not-list", result["gaps"])
+            self.assertIn("apply-step-not-object", result["gaps"])
+            self.assertIn("limitations-not-list", result["gaps"])
+            self.assertEqual("", completed.stderr)
+
+    def test_dry_run_contract_preserves_falsy_malformed_shapes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "dry-run.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "preview_steps": False,
+                        "apply_step": False,
+                        "limitations": False,
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-dry-run-first/scripts/dry_run_contract.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertIn("preview_steps must be a list.", result["errors"])
+            self.assertIn("apply_step must be an object.", result["errors"])
+            self.assertIn("limitations must be a list.", result["errors"])
+            self.assertEqual("", completed.stderr)
+
     def test_infra_change_contract(self) -> None:
         payload = REPO_ROOT / "skills/risk/aoa-safe-infra-change/assets/infra_change_contract.template.json"
         result = run_json("skills/risk/aoa-safe-infra-change/scripts/infra_change_contract.py", str(payload))

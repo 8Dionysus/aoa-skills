@@ -147,13 +147,13 @@
         "scripts": [
           {
             "path": "dry_run_contract.py",
-            "sha256": "3b89c4e81335e3774fc7199977ed36ab43630dfbb88a272700030dc2a879144b",
-            "bytes": "5710"
+            "sha256": "679498e2f8e139bc6c68fbaeb023c82a68f062a2aab04557a9e4b6d89f5adc94",
+            "bytes": "5952"
           },
           {
             "path": "preview_gap_check.py",
-            "sha256": "eff7b6f572ff2b03bcda62cfb10a729c22c124792595f1df8a32b68e64dae3fd",
-            "bytes": "3307"
+            "sha256": "e87633e8ddb0a07a9ad703148c7dc82c5b2c20c46d2fa9b8a9948365224a9ade",
+            "bytes": "3643"
           }
         ],
         "references": [
