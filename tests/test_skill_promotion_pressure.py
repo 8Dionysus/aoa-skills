@@ -48,7 +48,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
             report["source_of_truth"]["skill_quality"],
         )
 
-    def test_report_routes_used_skill_with_bridge_findings_to_promotion_review(self) -> None:
+    def test_report_routes_used_skill_with_lived_usage_to_promotion_review(self) -> None:
         report = self.run_report()
         by_name = {entry["name"]: entry for entry in report["skills"]}
 
@@ -65,6 +65,10 @@ class SkillPromotionPressureTests(unittest.TestCase):
             0,
         )
         self.assertIn(
+            "missing_autonomy_check",
+            by_name["aoa-session-self-repair"]["quality_findings"],
+        )
+        self.assertNotIn(
             "technique_source_drift",
             by_name["aoa-session-self-repair"]["quality_findings"],
         )

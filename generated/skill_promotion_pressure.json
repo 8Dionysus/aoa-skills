@@ -3,7 +3,7 @@
   "scan_summary": {
     "adoption_targets_scanned": 16,
     "dispatch_files_scanned": 105,
-    "hook_files_scanned": 6049,
+    "hook_files_scanned": 6069,
     "session_files_scanned": 249
   },
   "schema_version": 1,
@@ -43,7 +43,7 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 63,
+        "session_mention_count": 68,
         "usage_score": 27
       }
     },
@@ -66,9 +66,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "must_confirm": 67,
-          "suggest_next": 12
+          "suggest_next": 11
         },
-        "dispatch_event_count": 79,
+        "dispatch_event_count": 78,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -77,7 +77,7 @@
         },
         "reality_trial_event_count": 2,
         "session_mention_count": 42,
-        "usage_score": 286
+        "usage_score": 283
       }
     },
     {
@@ -99,9 +99,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "must_confirm": 67,
-          "suggest_next": 4
+          "suggest_next": 5
         },
-        "dispatch_event_count": 71,
+        "dispatch_event_count": 72,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -109,7 +109,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 46,
-        "usage_score": 258
+        "usage_score": 261
       }
     },
     {
@@ -131,9 +131,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 15,
-          "suggest_next": 38
+          "suggest_next": 37
         },
-        "dispatch_event_count": 53,
+        "dispatch_event_count": 52,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -141,8 +141,8 @@
           "suggest_next": 3
         },
         "reality_trial_event_count": 4,
-        "session_mention_count": 684,
-        "usage_score": 216
+        "session_mention_count": 687,
+        "usage_score": 213
       }
     },
     {
@@ -215,6 +215,38 @@
       "default_reference_readiness_blockers": [],
       "governance_decision": "default_reference",
       "lineage_state": "published",
+      "name": "aoa-sanitized-share",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 24,
+          "suggest_next": 6
+        },
+        "dispatch_event_count": 30,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 28,
+        "usage_score": 135
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "pressure_reason": "already canonical; keep maintenance and drift visible",
       "promotion_pressure": "canonical_monitor",
@@ -245,38 +277,6 @@
       "default_reference_readiness_blockers": [],
       "governance_decision": "default_reference",
       "lineage_state": "published",
-      "name": "aoa-sanitized-share",
-      "pressure_reason": "already canonical; keep maintenance and drift visible",
-      "promotion_pressure": "canonical_monitor",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "risk",
-      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
-      "status": "canonical",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "must_confirm": 24,
-          "suggest_next": 5
-        },
-        "dispatch_event_count": 29,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "must_confirm": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 28,
-        "usage_score": 132
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "default_reference",
-      "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "pressure_reason": "already canonical; keep maintenance and drift visible",
       "promotion_pressure": "canonical_monitor",
@@ -290,9 +290,9 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "suggest_next": 21
+          "suggest_next": 23
         },
-        "dispatch_event_count": 21,
+        "dispatch_event_count": 23,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -300,7 +300,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 268,
-        "usage_score": 108
+        "usage_score": 114
       }
     },
     {
@@ -322,9 +322,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 5,
-          "suggest_next": 6
+          "suggest_next": 7
         },
-        "dispatch_event_count": 11,
+        "dispatch_event_count": 12,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -332,7 +332,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 78,
-        "usage_score": 78
+        "usage_score": 81
       }
     },
     {
@@ -365,7 +365,7 @@
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 76,
+        "session_mention_count": 77,
         "usage_score": 77
       }
     },
@@ -425,8 +425,8 @@
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 14,
-        "usage_score": 42
+        "session_mention_count": 15,
+        "usage_score": 43
       }
     },
     {
@@ -1109,9 +1109,9 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "activate_now": 37,
+          "activate_now": 39,
           "must_confirm": 60,
-          "suggest_next": 17
+          "suggest_next": 15
         },
         "dispatch_event_count": 114,
         "hook_prompt_mention_count": 0,
@@ -1120,7 +1120,7 @@
           "must_confirm": 1
         },
         "reality_trial_event_count": 1,
-        "session_mention_count": 164,
+        "session_mention_count": 166,
         "usage_score": 387
       }
     },
@@ -1144,8 +1144,8 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 39,
-          "suggest_next": 36
+          "must_confirm": 41,
+          "suggest_next": 34
         },
         "dispatch_event_count": 75,
         "hook_prompt_mention_count": 0,
@@ -1154,7 +1154,7 @@
           "suggest_next": 2
         },
         "reality_trial_event_count": 2,
-        "session_mention_count": 110,
+        "session_mention_count": 111,
         "usage_score": 274
       }
     },
@@ -1181,8 +1181,45 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 37,
+          "must_confirm": 40,
           "suggest_next": 12
+        },
+        "dispatch_event_count": 52,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 90,
+        "usage_score": 201
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-session-self-repair",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [
+        "missing_autonomy_check"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 38,
+          "suggest_next": 11
         },
         "dispatch_event_count": 49,
         "hook_prompt_mention_count": 0,
@@ -1198,29 +1235,25 @@
     {
       "default_reference_readiness": "blocked",
       "default_reference_readiness_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "governance_decision": null,
       "lineage_state": "published",
-      "name": "aoa-session-self-repair",
+      "name": "aoa-quest-harvest",
       "pressure_reason": "usage pressure should open the next status/promotion review",
       "promotion_pressure": "promotion_review_now",
-      "quality_findings": [
-        "missing_autonomy_check",
-        "technique_source_drift"
-      ],
+      "quality_findings": [],
       "quality_verdict": "working_scaffold_needs_promotion_review",
       "readiness_reconciliation": "eval_ready_but_governance_blocked",
       "repeated_usage_signal": true,
       "scope": "core",
-      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "scaffold",
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 36,
-          "suggest_next": 12
+          "must_confirm": 39,
+          "suggest_next": 9
         },
         "dispatch_event_count": 48,
         "hook_prompt_mention_count": 0,
@@ -1229,7 +1262,7 @@
           "suggest_next": 1
         },
         "reality_trial_event_count": 1,
-        "session_mention_count": 84,
+        "session_mention_count": 435,
         "usage_score": 189
       }
     },
@@ -1255,50 +1288,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 37,
-          "suggest_next": 10
+          "must_confirm": 40,
+          "suggest_next": 9
         },
-        "dispatch_event_count": 47,
+        "dispatch_event_count": 49,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 322,
-        "usage_score": 182
-      }
-    },
-    {
-      "default_reference_readiness": "blocked",
-      "default_reference_readiness_blockers": [
-        "status_below_evaluated"
-      ],
-      "governance_decision": null,
-      "lineage_state": "published",
-      "name": "aoa-quest-harvest",
-      "pressure_reason": "usage pressure should open the next status/promotion review",
-      "promotion_pressure": "promotion_review_now",
-      "quality_findings": [],
-      "quality_verdict": "working_scaffold_needs_promotion_review",
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "status": "scaffold",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "must_confirm": 36,
-          "suggest_next": 9
-        },
-        "dispatch_event_count": 45,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "suggest_next": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 433,
-        "usage_score": 180
+        "session_mention_count": 325,
+        "usage_score": 188
       }
     },
     {
@@ -1324,16 +1323,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 36,
+          "must_confirm": 39,
           "suggest_next": 1
         },
-        "dispatch_event_count": 37,
+        "dispatch_event_count": 40,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 101,
-        "usage_score": 152
+        "session_mention_count": 102,
+        "usage_score": 161
       }
     },
     {
@@ -1359,16 +1358,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 29,
+          "must_confirm": 32,
           "suggest_next": 1
         },
-        "dispatch_event_count": 30,
+        "dispatch_event_count": 33,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 161,
-        "usage_score": 131
+        "session_mention_count": 162,
+        "usage_score": 140
       }
     },
     {
@@ -1399,7 +1398,7 @@
         "installed_target_count": 1,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 31,
+        "session_mention_count": 32,
         "usage_score": 26
       }
     },
@@ -1422,9 +1421,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "must_confirm": 17,
-          "suggest_next": 22
+          "suggest_next": 24
         },
-        "dispatch_event_count": 39,
+        "dispatch_event_count": 41,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -1433,7 +1432,7 @@
         },
         "reality_trial_event_count": 2,
         "session_mention_count": 20,
-        "usage_score": 161
+        "usage_score": 167
       }
     },
     {
@@ -1483,15 +1482,15 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "suggest_next": 6
+          "suggest_next": 9
         },
-        "dispatch_event_count": 6,
+        "dispatch_event_count": 9,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
         "session_mention_count": 13,
-        "usage_score": 47
+        "usage_score": 56
       }
     }
   ],

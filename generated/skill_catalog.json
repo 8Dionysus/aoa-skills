@@ -1124,7 +1124,7 @@
           "id": "AOA-T-0082",
           "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1137,7 +1137,7 @@
           "id": "AOA-T-0083",
           "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
           "use_sections": [
             "Outputs",
             "Contracts",

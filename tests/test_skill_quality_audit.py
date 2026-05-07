@@ -54,11 +54,11 @@ class SkillQualityAuditTests(unittest.TestCase):
         by_name = {entry["name"]: entry for entry in report["skills"]}
 
         self.assertIn("missing_autonomy_check", by_name["aoa-session-self-repair"]["findings"])
-        self.assertIn("technique_source_drift", by_name["aoa-session-self-repair"]["findings"])
+        self.assertNotIn("technique_source_drift", by_name["aoa-session-self-repair"]["findings"])
         self.assertIn("pending_technique_lineage", by_name["aoa-summon"]["findings"])
         self.assertIn("pending_technique_lineage", by_name["titan-console"]["findings"])
         self.assertEqual("healthy", by_name["aoa-change-protocol"]["verdict"])
-        self.assertEqual(1, report["summary"]["technique_drift"]["state_counts"]["drifted"])
+        self.assertEqual(0, report["summary"]["technique_drift"]["state_counts"].get("drifted", 0))
 
     def test_quality_audit_markdown_has_upgrade_targets_and_matrix(self) -> None:
         completed = subprocess.run(

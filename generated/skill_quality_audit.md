@@ -16,8 +16,8 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 ## Technique Drift
 
 - repo: `/srv/AbyssOS/aoa-techniques`
-- target ref: `6a29004259f3aa4b9642777a717b15e519b3e933`
-- states: clean=61, drifted=1, pending=32
+- target ref: `bfb4281c60295ab85605e188b350e0f6008b3184`
+- states: clean=62, pending=32
 
 ## Findings
 
@@ -27,7 +27,6 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 - `pending_markers_in_skill_body`: 16
 - `pending_technique_lineage`: 16
 - `risks_below_4`: 1
-- `technique_source_drift`: 1
 - `verification_below_4`: 1
 
 ## Upgrade Targets
@@ -45,7 +44,7 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 | `aoa-session-progression-lift` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check` |
 | `aoa-session-route-forks` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check` |
 | `aoa-session-self-diagnose` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check` |
-| `aoa-session-self-repair` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check`, `technique_source_drift` |
+| `aoa-session-self-repair` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check` |
 | `aoa-summon` | `scaffold` | `core` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check`, `pending_markers_in_skill_body`, `pending_technique_lineage` |
 | `titan-approval-ledger` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check`, `pending_markers_in_skill_body`, `pending_technique_lineage` |
 | `titan-approval-loom` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `missing_autonomy_check`, `pending_markers_in_skill_body`, `pending_technique_lineage` |
@@ -91,7 +90,7 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 | `aoa-session-progression-lift` | `scaffold` | `published` | `clean2` | `a0/u2/d1/su1/sd1` | `out7/c9/r7/v7/p9` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-session-route-forks` | `scaffold` | `published` | `clean2` | `a0/u2/d1/su1/sd1` | `out7/c9/r7/v7/p10` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-session-self-diagnose` | `scaffold` | `published` | `clean2` | `a0/u2/d1/su1/sd1` | `out7/c9/r7/v7/p9` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
-| `aoa-session-self-repair` | `scaffold` | `published` | `clean1/drifted1` | `a0/u2/d1/su1/sd1` | `out6/c10/r6/v7/p9` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
+| `aoa-session-self-repair` | `scaffold` | `published` | `clean2` | `a0/u2/d1/su1/sd1` | `out6/c10/r6/v7/p9` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-source-of-truth-check` | `canonical` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out7/c8/r9/v7/p9` | `portable-core, none, implicit=true` | `healthy` |
 | `aoa-summon` | `scaffold` | `pending` | `pending2` | `a0/u1/d1/su1/sd1` | `out6/c10/r6/v10/p14` | `portable-core, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-tdd-slice` | `canonical` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out4/c4/r4/v4/p6` | `portable-core, repo, implicit=true` | `healthy` |
