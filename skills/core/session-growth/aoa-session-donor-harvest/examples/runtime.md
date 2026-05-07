@@ -2,12 +2,14 @@
 
 ## Scenario
 
-A reviewed session artifact contains three potentially reusable outcomes:
+A reviewed session artifact contains several potentially reusable outcomes:
 1. a repeatable practice for turning raw post-session notes into a bounded donor packet
 2. one bounded leaf workflow for explicit post-session harvesting by Codex
 3. one broader recurring rollout route that spans skill drafting, review, and later proof updates
 4. one unresolved post-session branch where the next route should stay explicit
 5. one repeated manual review-closeout ritual that may be ripe for automation but still needs explicit readiness classification
+6. one checkpoint hint that looks relevant but must be accepted or rejected
+   against the reviewed artifact before it can influence candidate minting
 
 ## Why this skill fits
 
@@ -23,6 +25,8 @@ The task is no longer about executing the original work. It is about extracting 
 ## Expected outputs
 
 - one `HARVEST_PACKET`
+- one reviewed intake note that accepts, rejects, or carries checkpoint and
+  closeout-handoff hints before any `candidate_ref` is minted
 - one reviewed accepted candidate with a minted `candidate_ref`
 - one carried `cluster_ref` when the reviewed source already named it
 - one candidate routed to `aoa-techniques` as reusable practice meaning
@@ -47,6 +51,8 @@ The task is no longer about executing the original work. It is about extracting 
 ## Verification notes
 
 - Confirm the kept units are reusable objects rather than themes.
+- Confirm checkpoint and handoff hints were filtered through reviewed evidence
+  instead of becoming candidates by presence alone.
 - Confirm `candidate_ref` was minted only after reviewed owner-shaping.
 - Confirm the chosen owner layer matches the unit shape.
 - Confirm each accepted candidate names the next artifact, not only the repo.

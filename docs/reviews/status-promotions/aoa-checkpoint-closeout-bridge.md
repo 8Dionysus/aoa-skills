@@ -11,7 +11,7 @@ name: aoa-checkpoint-closeout-bridge
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `62cd61eb883f`
+- reviewed revision: `08e3d7b2e558`
 
 ## Target status
 
@@ -31,8 +31,11 @@ name: aoa-checkpoint-closeout-bridge
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the bridge is mature enough for evaluated use while still staying subordinate to reviewed artifacts and owner truth.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the bridge now treats checkpoint hints as focus inputs,
+  records explicit stage statuses, and preserves the donor -> progression ->
+  quest order without forcing verdicts when reviewed evidence supports a skip,
+  defer, or stop.
 
 ## Gaps and blockers
 

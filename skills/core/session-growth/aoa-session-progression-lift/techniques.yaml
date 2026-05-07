@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0084
     repo: 8Dionysus/aoa-techniques
     path: techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
     use_sections:
       - Intent
       - Inputs
@@ -14,7 +14,7 @@ techniques:
   - id: AOA-T-0085
     repo: 8Dionysus/aoa-techniques
     path: techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
     use_sections:
       - Outputs
       - Risks

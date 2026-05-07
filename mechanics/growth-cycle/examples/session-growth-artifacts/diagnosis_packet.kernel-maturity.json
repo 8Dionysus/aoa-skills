@@ -1,7 +1,7 @@
 {
   "artifact_kind": "diagnosis_packet",
   "packet_kind": "DIAGNOSIS_PACKET",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "route_ref": "route:session-growth-kernel",
   "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
   "lineage_refs": {
@@ -19,14 +19,19 @@
     "approval_ambiguity"
   ],
   "symptom_refs": [
-    "artifact:wave4/manual-loop-repeats",
-    "artifact:wave4/approval-boundary-fuzzy"
+    "artifact:kernel-maturity/manual-loop-repeats",
+    "artifact:kernel-maturity/approval-boundary-fuzzy"
   ],
   "probable_cause_hypotheses": [
     "checkpoint posture is not yet preserved as an explicit prerequisite",
     "rollback and health-check notes are still too thin for a seed-ready verdict"
   ],
   "confidence_band": "medium",
+  "evidence_posture": {
+    "symptoms": "reviewed_symptom_refs",
+    "probable_causes": "reviewed_inference_with_unknowns",
+    "automation_blocker": "provisional_until_bounded_repair"
+  },
   "blocked_automation_causes": [
     "review gate is clear but the repair prerequisites are still spread across notes"
   ],

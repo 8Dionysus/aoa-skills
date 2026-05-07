@@ -1,0 +1,28 @@
+{
+  "artifact_kind": "progression_delta",
+  "session_ref": "session:2026-04-06:derived-visibility-handoff",
+  "route_ref": "route:session-growth",
+  "scope": "route_scoped",
+  "baseline_posture": "prior_delta_ref",
+  "baseline_ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta.reviewed-donor-harvest.json",
+  "verdict": "advance",
+  "axes": {
+    "boundary_integrity": "hold",
+    "execution_reliability": "advance",
+    "change_legibility": "advance",
+    "review_sharpness": "advance",
+    "proof_discipline": "advance",
+    "provenance_hygiene": "advance",
+    "deep_readiness": "advance"
+  },
+  "axis_evidence_posture": {
+    "boundary_integrity": "no_movement",
+    "execution_reliability": "confirmed",
+    "change_legibility": "confirmed",
+    "review_sharpness": "confirmed",
+    "proof_discipline": "confirmed",
+    "provenance_hygiene": "confirmed",
+    "deep_readiness": "confirmed"
+  },
+  "cautions": []
+}

@@ -18,11 +18,13 @@ hidden loop.
 - one bounded local diff
 - `git status` showing whether unrelated changes are present
 - the explicit validation results that justify the commit boundary
+- explicit operator authorization for one local commit now
 - the intended stop line after commit
 
 ## Expected outputs
 
 - one bounded commit-or-defer decision
+- `commit_authorization_posture: authorized_now`
 - one local commit that matches the intended diff
 - one short note on what was verified and what remains outside the commit
 - one explicit stop line before push, PR, or publish
@@ -30,6 +32,8 @@ hidden loop.
 ## Boundary notes
 
 - Do not use this skill when the task still clearly needs more repair or verification.
+- Do not cross the commit boundary when the operator only asked for review,
+  preparation, or analysis.
 - Do not use this skill as a hidden push or publish workflow.
 - If the main question is whether the mutation is authorized at all, use the approval-gate skill first.
 - If the main need is the broader coding workflow rather than the commit boundary itself, use `aoa-change-protocol`.
@@ -38,5 +42,6 @@ hidden loop.
 
 - Confirm the commit boundary matched the actual diff.
 - Confirm unrelated local changes were not swept in silently.
+- Confirm commit authorization was explicit before mutation.
 - Confirm the validation story was named honestly.
 - Confirm the route stopped after the local commit boundary.

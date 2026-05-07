@@ -2,4 +2,6 @@ policy:
   allow_implicit_invocation: false
 notes:
   - Keep this skill explicit-only because progression overlays should stay evidence-backed and visibly bounded.
+  - Name baseline posture before calling anything movement.
+  - Treat checkpoint and closeout axis hints as provisional until reviewed evidence confirms the movement.
   - Do not let progression language become routing policy or sovereign authority.

@@ -8,7 +8,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 - total skills: 45
 - default references: 12
 - default-reference ready skills: 13
-- pending technique bridge lineage: 16
+- pending technique bridge lineage: 15
 - risk surfaces: 5
 
 ## Default references
@@ -44,13 +44,12 @@ It is built from committed skill bundles, review records, and evaluation fixture
 | aoa-session-route-forks | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-route-forks.md` | - |
 | aoa-session-self-diagnose | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-self-diagnose.md` | - |
 | aoa-session-self-repair | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-self-repair.md` | - |
-| aoa-summon | evaluated | ready | core | explicit-only | pending | stay_evaluated | session_growth_closeout | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-summon.md` | - |
+| aoa-summon | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-summon.md` | - |
 
 ## Pending technique bridge lineage
 
 | name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | technique bridge | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| aoa-summon | evaluated | ready | core | explicit-only | pending | stay_evaluated | session_growth_closeout | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-summon.md` | - |
 | titan-approval-ledger | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 | titan-approval-loom | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 | titan-appserver-bridge | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |

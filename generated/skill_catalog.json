@@ -220,7 +220,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "status": "evaluated",
-      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
+      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, name the highest honest automation mode, and route them without granting schedule or mutation authority.",
       "technique_dependencies": [
         "AOA-T-0086",
         "AOA-T-0087",
@@ -231,7 +231,7 @@
           "id": "AOA-T-0086",
           "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -245,7 +245,7 @@
           "id": "AOA-T-0087",
           "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -259,7 +259,7 @@
           "id": "AOA-T-0088",
           "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -288,7 +288,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -304,7 +304,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -372,7 +372,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "status": "evaluated",
-      "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
+      "summary": "Bridge local checkpoint focus hints into one reviewed closeout execution chain without turning provisional notes, mechanical reports, or skipped stages into final harvest, progression, or quest authority.",
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0084",
@@ -383,7 +383,7 @@
           "id": "AOA-T-0075",
           "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -396,7 +396,7 @@
           "id": "AOA-T-0084",
           "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -409,7 +409,7 @@
           "id": "AOA-T-0089",
           "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -429,7 +429,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "status": "evaluated",
-      "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
+      "summary": "Turn a validated bounded diff into one authorized local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0028"
@@ -439,7 +439,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -455,7 +455,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -486,7 +486,7 @@
           "id": "AOA-T-0003",
           "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -499,7 +499,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -526,7 +526,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -540,7 +540,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -611,7 +611,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -724,7 +724,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -738,7 +738,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -769,7 +769,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -785,7 +785,7 @@
           "id": "AOA-T-0007",
           "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "summary",
             "Validation"
@@ -800,7 +800,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "evaluated",
-      "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
+      "summary": "Triage one isolated repeated reviewed quest unit with explicit repeat evidence posture into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, memory, or downstream acceptance.",
       "technique_dependencies": [
         "AOA-T-0089",
         "AOA-T-0090"
@@ -810,7 +810,7 @@
           "id": "AOA-T-0089",
           "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -825,7 +825,7 @@
           "id": "AOA-T-0090",
           "path": "techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -937,7 +937,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "status": "evaluated",
-      "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
+      "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, filter checkpoint or handoff hints through reviewed evidence, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0076",
@@ -948,7 +948,7 @@
           "id": "AOA-T-0075",
           "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -963,7 +963,7 @@
           "id": "AOA-T-0076",
           "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -977,7 +977,7 @@
           "id": "AOA-T-0077",
           "path": "techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Inputs",
             "Outputs",
@@ -994,7 +994,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "status": "evaluated",
-      "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
+      "summary": "Lift reviewed session evidence into a multi-axis progression delta with baseline posture, per-axis evidence posture, bounded unlock hints, quest reflection cues, and no fake single-score or checkpoint-hint authority.",
       "technique_dependencies": [
         "AOA-T-0084",
         "AOA-T-0085"
@@ -1004,7 +1004,7 @@
           "id": "AOA-T-0084",
           "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1017,7 +1017,7 @@
           "id": "AOA-T-0085",
           "path": "techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Outputs",
             "Risks",
@@ -1043,7 +1043,7 @@
           "id": "AOA-T-0078",
           "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1056,7 +1056,7 @@
           "id": "AOA-T-0079",
           "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -1073,7 +1073,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "status": "evaluated",
-      "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
+      "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet with explicit evidence posture and no mutation.",
       "technique_dependencies": [
         "AOA-T-0080",
         "AOA-T-0081"
@@ -1083,7 +1083,7 @@
           "id": "AOA-T-0080",
           "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -1095,7 +1095,7 @@
           "id": "AOA-T-0081",
           "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1114,7 +1114,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "status": "evaluated",
-      "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
+      "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, execution posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_dependencies": [
         "AOA-T-0082",
         "AOA-T-0083"
@@ -1124,7 +1124,7 @@
           "id": "AOA-T-0082",
           "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1137,7 +1137,7 @@
           "id": "AOA-T-0083",
           "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -1220,15 +1220,17 @@
       "status": "evaluated",
       "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
-        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+        "AOA-T-0078",
+        "AOA-T-0079",
+        "AOA-T-0062",
+        "AOA-T-0058"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-SUMMON-LANE-SELECTION",
-          "path": "TBD",
+          "id": "AOA-T-0078",
+          "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1239,13 +1241,42 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
-          "path": "TBD",
+          "id": "AOA-T-0079",
+          "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0062",
+          "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0058",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+          "use_sections": [
+            "Intent",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"

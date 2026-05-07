@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0017
     repo: 8Dionysus/aoa-techniques
     path: techniques/proof/skill-support/property-invariants/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: fbead87e01b82df6c56e3d92a074cd7515131847
     use_sections:
       - Intent
       - When to use

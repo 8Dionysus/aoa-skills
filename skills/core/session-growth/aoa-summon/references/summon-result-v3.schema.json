@@ -29,6 +29,7 @@
     "codex_local_target": {"type": ["object", "null"]},
     "return_plan": {"type": ["object", "null"]},
     "checkpoint_bridge_plan": {"type": ["object", "null"]},
+    "return_receipt_plan": {"type": ["object", "null"]},
     "memo_export_plan": {"type": ["object", "null"]},
     "owner_publication_plan": {
       "type": "array",

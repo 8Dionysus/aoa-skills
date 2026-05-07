@@ -9,6 +9,7 @@ evidence reviewable without becoming a hidden scheduler.
 The permanent project-core session-growth kernel is:
 
 - `aoa-session-donor-harvest`
+- `aoa-checkpoint-closeout-bridge`
 - `aoa-automation-opportunity-scan`
 - `aoa-session-route-forks`
 - `aoa-session-self-diagnose`
@@ -27,9 +28,12 @@ gate readout is `generated/project_core_kernel_governance.min.json`.
   do not let it become promotion verdict authority.
 - Keep the session-harvest family after reviewed run, closure, or pause; do not
   use it inside an active route.
-- Keep donor harvest, automation scan, route forks, self-diagnosis, self-repair,
-  progression lift, and quest harvest distinct so no leaf skill gains hidden
-  routing authority.
+- Keep donor harvest, checkpoint closeout bridge, automation scan, route forks,
+  self-diagnosis, self-repair, progression lift, and quest harvest distinct so
+  no leaf skill gains hidden routing authority.
+- Keep `aoa-commit-growth-seam` and `aoa-summon` as explicit session-growth
+  companion skills outside the hard-gated kernel until they receive the same
+  detail-receipt contract.
 - Keep project-core kernel skill meaning under `skills/`.
 - Keep checkpoint protocol and candidate-ref identity in their own packages.
 

@@ -1,6 +1,6 @@
 {
   "artifact_kind": "diagnosis_packet",
-  "session_ref": "session:2026-04-06-beta",
+  "session_ref": "session:2026-04-06:derived-visibility-handoff",
   "route_ref": "route:session-growth",
   "skill_name": "aoa-session-self-diagnose",
   "diagnosis_types": [
@@ -8,14 +8,19 @@
     "derived_layer_gap"
   ],
   "symptom_refs": [
-    "artifact:session-growth-beta/handoff-gap",
-    "artifact:session-growth-beta/reuse-locality"
+    "artifact:session-growth/derived-visibility-handoff/handoff-gap",
+    "artifact:session-growth/derived-visibility-handoff/reuse-locality"
   ],
   "probable_cause_hypotheses": [
     "missing shared derived observability layer",
     "core finish telemetry not yet connected to derived stats"
   ],
   "confidence_band": "high",
+  "evidence_posture": {
+    "symptoms": "reviewed_symptom_refs",
+    "probable_causes": "reviewed_inference",
+    "automation_blocker": "reviewed_prerequisite_gap"
+  },
   "owner_hints": [
     "aoa-stats",
     "aoa-skills"

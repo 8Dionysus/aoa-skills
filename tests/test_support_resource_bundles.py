@@ -61,6 +61,133 @@ class SupportBundleScriptTests(unittest.TestCase):
         self.assertEqual(result["status"], "ok")
         self.assertFalse(result["gaps"])
 
+    def test_preview_gap_check_reports_malformed_preview_steps(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "dry-run-report.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "preview_steps": ["readlink current", {"command": "ls current"}],
+                        "apply_step": {"command": "ln -sfn previous current"},
+                        "limitations": ["preview does not prove runtime health"],
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-dry-run-first/scripts/preview_gap_check.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("fail", result["status"])
+            self.assertIn("preview-step-not-object", result["gaps"])
+            self.assertEqual("", completed.stderr)
+
+    def test_preview_gap_check_rejects_scalar_preview_steps(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "dry-run-report.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "preview_steps": 3,
+                        "apply_step": {"command": "ln -sfn previous current"},
+                        "limitations": ["preview does not prove runtime health"],
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-dry-run-first/scripts/preview_gap_check.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("fail", result["status"])
+            self.assertIn("preview-steps-not-list", result["gaps"])
+            self.assertEqual("", completed.stderr)
+
+    def test_preview_gap_check_preserves_falsy_malformed_shapes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "dry-run-report.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "preview_steps": False,
+                        "apply_step": False,
+                        "limitations": False,
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-dry-run-first/scripts/preview_gap_check.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("fail", result["status"])
+            self.assertIn("preview-steps-not-list", result["gaps"])
+            self.assertIn("apply-step-not-object", result["gaps"])
+            self.assertIn("limitations-not-list", result["gaps"])
+            self.assertEqual("", completed.stderr)
+
+    def test_dry_run_contract_preserves_falsy_malformed_shapes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "dry-run.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "preview_steps": False,
+                        "apply_step": False,
+                        "limitations": False,
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-dry-run-first/scripts/dry_run_contract.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertIn("preview_steps must be a list.", result["errors"])
+            self.assertIn("apply_step must be an object.", result["errors"])
+            self.assertIn("limitations must be a list.", result["errors"])
+            self.assertEqual("", completed.stderr)
+
     def test_infra_change_contract(self) -> None:
         payload = REPO_ROOT / "skills/risk/aoa-safe-infra-change/assets/infra_change_contract.template.json"
         result = run_json("skills/risk/aoa-safe-infra-change/scripts/infra_change_contract.py", str(payload))
@@ -86,6 +213,67 @@ class SupportBundleScriptTests(unittest.TestCase):
         result = run_json("skills/risk/aoa-local-stack-bringup/scripts/readiness_summary.py", str(payload))
         self.assertEqual(result["overall"], "warn")
         self.assertEqual(result["counts"]["warn"], 1)
+
+    def test_readiness_summary_normalizes_mixed_dict_items(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "readiness.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "readiness_items": [
+                            "ok: config rendered",
+                            {"severity": "fail", "label": "health probe failed"},
+                        ]
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-local-stack-bringup/scripts/readiness_summary.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("fail", result["overall"])
+            self.assertEqual(1, result["counts"]["ok"])
+            self.assertEqual(1, result["counts"]["fail"])
+            self.assertEqual("", completed.stderr)
+
+    def test_readiness_summary_rejects_scalar_readiness_items(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "readiness.json"
+            payload_path.write_text(
+                json.dumps({"readiness_items": "ok: database up"}) + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-local-stack-bringup/scripts/readiness_summary.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("fail", result["overall"])
+            self.assertEqual(1, result["counts"]["fail"])
+            self.assertEqual(
+                "readiness_items must be a list when present.",
+                result["items"][0]["label"],
+            )
+            self.assertEqual("", completed.stderr)
 
     def test_bringup_contract_treats_unknown_readiness_severity_as_blocker(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

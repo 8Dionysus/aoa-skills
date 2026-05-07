@@ -11,7 +11,7 @@ name: aoa-quest-harvest
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `00f1ed14f257`
+- reviewed revision: `03eadddc3c91`
 
 ## Target status
 
@@ -31,8 +31,11 @@ name: aoa-quest-harvest
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the skill is evaluated for final quest-promotion triage, not for broad donor extraction.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the skill now requires one isolated repeated reviewed
+  unit and keeps the promotion verdict smaller than downstream authoring or
+  owner acceptance, with repeat evidence posture visible before target
+  selection.
 
 ## Gaps and blockers
 

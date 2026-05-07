@@ -16,6 +16,8 @@ of one repeated quest unit.
 ## Expected object
 
 A bounded progression delta that stays evidence-backed and multi-axis.
+It records baseline posture and axis evidence posture instead of one promotion
+verdict.
 
 ## Boundary notes
 
@@ -24,5 +26,7 @@ This is a session-progression-lift case, not a quest-harvest case.
 ## Verification hooks
 
 - cite reviewed evidence for every delta
+- name baseline posture before movement
 - keep movement multi-axis instead of one global score
+- keep provisional hints from becoming movement without reviewed support
 - avoid granting hidden routing authority

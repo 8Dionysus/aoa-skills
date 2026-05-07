@@ -17,6 +17,8 @@ another diagnosis pass.
 ## Expected object
 
 A repair packet with rollback, health check, and owner targets from an existing diagnosis.
+The repair packet should include execution posture rather than implying that
+planning, execution, and verification are the same state.
 
 ## Boundary notes
 
@@ -26,4 +28,5 @@ This is a session-self-repair case, not a session-self-diagnose case.
 
 - cite the reviewed diagnosis packet
 - name rollback and health-check posture
+- distinguish prepared repair from executed or verified repair
 - keep repair authority bounded and owner-routed

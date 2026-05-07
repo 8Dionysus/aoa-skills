@@ -26,6 +26,7 @@ automation is honest yet.
 - one `AUTOMATION_OPPORTUNITY_PACKET`
 - one `AUTOMATION_CANDIDATE` card for the doc drift check
 - an explicit `seed_ready` or `not_now` verdict
+- `automation_mode_posture: dry_run_preview` when the first honest automation mode is preview-only
 - `checkpoint_required: false` if the route is read-only and previewable
 - a next-artifact suggestion such as `skill` or `playbook_seed`
 - one `AUTOMATION_CANDIDATE_RECEIPT` with repeat signal posture,
@@ -44,6 +45,7 @@ automation is honest yet.
 - Confirm the candidate names the current manual route.
 - Confirm repeat evidence is explicit.
 - Confirm the likely owner layer is named honestly.
+- Confirm the automation mode posture is conservative.
 - Confirm schedule hints stay hints.
 - Confirm the finish receipt stays detector-shaped and does not pretend to
   grant schedule authority.

@@ -93,13 +93,13 @@
     {
       "inputs_short": "Needs: reviewed session artifact, harvest packet, or recurring project slice; evidence of repeated manual work; known current manual route; known triggers, inputs, outputs, or their current ambiguity.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating one exciting session as proof of repeatability; automating unstable, under-specified, or secret-heavy work too early; confusing a bounded skill with a recurring scenario seed; using automation desire...",
+      "main_anti_patterns_short": "Avoid: treating one exciting session as proof of repeatability; treating seedready as a synonym for unattended execution; automating unstable, under-specified, or secret-heavy work too early; confusing a bounded...",
       "name": "aoa-automation-opportunity-scan",
-      "outputs_short": "Produces: AUTOMATIONOPPORTUNITYPACKET; one or more AUTOMATIONCANDIDATE cards; seedready or notnow verdict for each candidate; checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries.",
+      "outputs_short": "Produces: AUTOMATIONOPPORTUNITYPACKET; one or more AUTOMATIONCANDIDATE cards; seedready or notnow verdict for each candidate; automationmodeposture for the highest honest mode the candidate may claim now.",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "status": "evaluated",
-      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
+      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, name the highest honest automation mode, and route them without granting schedule or mutation authority.",
       "technique_dependencies": [
         "AOA-T-0086",
         "AOA-T-0087",
@@ -154,7 +154,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "status": "evaluated",
-      "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
+      "summary": "Bridge local checkpoint focus hints into one reviewed closeout execution chain without turning provisional notes, mechanical reports, or skipped stages into final harvest, progression, or quest authority.",
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0084",
@@ -165,21 +165,21 @@
       "workflow_short": "Purpose: connect checkpoint-led session growth with explicit reviewed closeout execution. Flow: during checkpoint collection, keep the note append-only and provisional -> treat checkpoint candidates and progression-axis hints as shortlist inputs, not..."
     },
     {
-      "inputs_short": "Needs: one bounded local diff; working tree status, including any unrelated local changes; validation results or explicit validation debt; intended commit scope and message shape.",
+      "inputs_short": "Needs: one bounded local diff; working tree status, including any unrelated local changes; validation results or explicit validation debt; explicit commit authorization or a defer marker.",
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: using one commit as a catch-all bucket for unrelated changes; writing a clean commit message that hides missing or weak verification; treating the local commit boundary as silent permission to push or...",
       "name": "aoa-commit-growth-seam",
-      "outputs_short": "Produces: one bounded commit-or-defer decision; one intentional local commit, or one explicit refusal to commit yet; one honest commit message that matches the bounded unit; one carry-forward note for what was...",
+      "outputs_short": "Produces: one bounded commit-or-defer decision; commitauthorizationposture, such as authorizednow, defercommit, needssplit, or needsverification; one intentional local commit, or one explicit refusal to commit yet;...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "status": "evaluated",
-      "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
+      "summary": "Turn a validated bounded diff into one authorized local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0028"
       ],
       "trigger_boundary_short": "Use when a bounded code, config, or docs diff is already prepared locally; the next honest move is one local commit boundary rather than more coding; Avoid when the task still needs more coding, repair, or...",
-      "verification_short": "Checks: confirm the committed diff matches the named bounded unit; confirm unrelated local changes were excluded or explicitly deferred; confirm the validation state was named honestly before the commit happened;...",
+      "verification_short": "Checks: confirm the committed diff matches the named bounded unit; confirm commitauthorizationposture was authorizednow before the commit; confirm unrelated local changes were excluded or explicitly deferred;...",
       "workflow_short": "Purpose: cross one honest local commit boundary after a bounded change is already prepared and reviewed enough to stop widening the working session. Flow: reread git status and the target diff to isolate the exact bounded unit -> stop if unrelated changes..."
     },
     {
@@ -310,22 +310,22 @@
       "workflow_short": "Purpose: invariant-oriented thinking to test broad behavior and stable artifact relationships through properties rather than only through a short list of fixed examples. Flow: identify what must remain true across many cases -> separate strong invariants..."
     },
     {
-      "inputs_short": "Needs: source quest or quest family; reviewed run summary or harvest pack; repeat count and repeat shape; owner layer and touched surfaces.",
+      "inputs_short": "Needs: source quest or quest family; reviewed run summary or harvest pack; repeat count and repeat shape; isolated repeated unit ref, or an explicit statement that the unit was isolated during reviewed harvest.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer; collapsing recurring route method into a single skill; treating proof debt as skill meaning.",
+      "main_anti_patterns_short": "Avoid: promoting a theme instead of a repeatable workflow; treating repeated discussion, urgency, or excitement as repeat evidence; hiding weak or contested repeat evidence behind a confident promotion target;...",
       "name": "aoa-quest-harvest",
-      "outputs_short": "Produces: promotion verdict; owner repo and follow-up surface; explicit reason for promotion or non-promotion; named next artifact or next quest action.",
+      "outputs_short": "Produces: promotion verdict; owner repo and follow-up surface; explicit reason for promotion or non-promotion; repeat evidence posture such as reviewedrepeatisolated, reviewedrepeatweak, contestedrepeat,...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "evaluated",
-      "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
+      "summary": "Triage one isolated repeated reviewed quest unit with explicit repeat evidence posture into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, memory, or downstream acceptance.",
       "technique_dependencies": [
         "AOA-T-0089",
         "AOA-T-0090"
       ],
       "trigger_boundary_short": "Use when a bounded work pattern has repeated and now needs an explicit promotion decision; reviewed evidence exists, but the correct destination is still unclear; Avoid when the route is still active and the...",
-      "verification_short": "Checks: confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly; confirm the chosen promotion target matches the owner layer; confirm the nearest wrong target is explicitly...",
-      "workflow_short": "Purpose: decide whether a repeated, reviewed quest-shaped pattern should remain a quest or be promoted into the next honest owner surface. Flow: collect a bounded reviewed harvest pack rather than raw runtime state -> name what actually repeated: leaf..."
+      "verification_short": "Checks: confirm the harvest pack is reviewed and bounded; confirm exactly one repeated reviewed unit is isolated before final triage; confirm repeat evidence posture is named and supports the verdict; confirm the...",
+      "workflow_short": "Purpose: decide whether one repeated, reviewed quest-shaped unit should remain a quest or be promoted into the next honest owner surface. Flow: collect a bounded reviewed harvest pack rather than raw runtime state -> confirm there is exactly one isolated..."
     },
     {
       "inputs_short": "Needs: target change; touched operational surfaces; stated authority or approval state; validation path.",
@@ -368,37 +368,37 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units; routing authored meaning into aoa-routing or aoa-kag first; turning agent class law...",
       "name": "aoa-session-donor-harvest",
-      "outputs_short": "Produces: one bounded HARVESTPACKET; named candidates, each with; candidate ref minted only after reviewed harvest; source cluster ref when the reviewed input carried one.",
+      "outputs_short": "Produces: one bounded HARVESTPACKET; one reviewed intake note that says which checkpoint or handoff hints were accepted, rejected, or carried as unresolved focus only; named candidates, each with; candidate ref...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "status": "evaluated",
-      "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
+      "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, filter checkpoint or handoff hints through reviewed evidence, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "technique_dependencies": [
         "AOA-T-0075",
         "AOA-T-0076",
         "AOA-T-0077"
       ],
       "trigger_boundary_short": "Use when a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units; the work is post-session and reviewable rather than live execution; Avoid when...",
-      "verification_short": "Checks: confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic; confirm each accepted candidate has one primary owner layer; confirm the nearest...",
+      "verification_short": "Checks: confirm the source artifact is reviewed and bounded; confirm checkpoint, closeout-handoff, or ledger hints were dispositioned as accepted, rejected, stale, cross-session, contaminated, or unresolved before...",
       "workflow_short": "Purpose: metabolize a reviewed session artifact into a bounded HARVESTPACKET that names reusable units, routes each one to the right AoA owner layer, and drafts the next honest artifact without forcing promotion. Flow: start from a reviewed session..."
     },
     {
-      "inputs_short": "Needs: reviewed session artifact or harvest packet; named evidence refs; relevant role or cohort context if known; existing progression baseline if available.",
+      "inputs_short": "Needs: reviewed session artifact or harvest packet; named evidence refs; optional donor harvest output, checkpoint-closeout stage result, or provisional axis hints; current-session boundary for separating stale or...",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: inventing progress from mood; using progression as policy; granting authority without cited evidence; flattening multi-axis growth into one number.",
+      "main_anti_patterns_short": "Avoid: inventing progress from mood; promoting checkpoint axis hints or generated summaries into movement without reviewed evidence; calling a first observation an improvement without naming the absent baseline;...",
       "name": "aoa-session-progression-lift",
-      "outputs_short": "Produces: PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints; optional automation-readiness hint when reviewed evidence supports it; optional rank reflection note if evidence is strong enough;...",
+      "outputs_short": "Produces: PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints; baseline posture such as baselineref, priordeltaref, firstobserved, baselinemissing, baselinestale, or baselinecontested; one axis...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "status": "evaluated",
-      "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
+      "summary": "Lift reviewed session evidence into a multi-axis progression delta with baseline posture, per-axis evidence posture, bounded unlock hints, quest reflection cues, and no fake single-score or checkpoint-hint authority.",
       "technique_dependencies": [
         "AOA-T-0084",
         "AOA-T-0085"
       ],
-      "trigger_boundary_short": "Use when a reviewed session generated meaningful mastery evidence; the route needs progression legibility without mutating source role profiles; Avoid when there is no reviewed evidence; the request wants one global...",
-      "verification_short": "Checks: confirm all meaningful axis claims cite reviewed evidence; confirm the verdict matches the evidence; confirm zero or negative movement remains allowed; confirm unlock hints are small and explicit.",
-      "workflow_short": "Purpose: author a PROGRESSIONDELTA from reviewed evidence. Flow: collect reviewed evidence refs -> assess movement qualitatively across boundaryintegrity, executionreliability, changelegibility, reviewsharpness, proofdiscipline, provenancehygiene, and..."
+      "trigger_boundary_short": "Use when a reviewed session generated meaningful mastery evidence; the route needs progression legibility without mutating source role profiles; Avoid when there is no reviewed evidence; the only input is a...",
+      "verification_short": "Checks: confirm all meaningful axis claims cite reviewed evidence; confirm the delta declares baseline posture before comparative movement claims; confirm provisional, stale, contested, and no-movement axes are...",
+      "workflow_short": "Purpose: author a PROGRESSIONDELTA from reviewed evidence. Flow: collect reviewed evidence refs -> separate confirmed current-session evidence from checkpoint hints, closeout-handoff cues, generated summaries, stale residue, and neighboring session..."
     },
     {
       "inputs_short": "Needs: reviewed session artifact or harvest packet; candidate next routes; known risks, dependencies, and blockers; desired control mode or approval posture.",
@@ -423,36 +423,36 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: mistaking symptom for cause; using vague vibes as diagnosis; smuggling repair work into diagnosis; turning every inconvenience into a system flaw.",
       "name": "aoa-session-self-diagnose",
-      "outputs_short": "Produces: DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints; severity or urgency notes when evidence supports them; explicit unknowns when diagnosis remains incomplete;...",
+      "outputs_short": "Produces: DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints; evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference,...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "status": "evaluated",
-      "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
+      "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet with explicit evidence posture and no mutation.",
       "technique_dependencies": [
         "AOA-T-0080",
         "AOA-T-0081"
       ],
       "trigger_boundary_short": "Use when a reviewed session contains repeated friction, contradiction, or drift; the next honest move is diagnosis before repair; Avoid when the session is still live; the issue is already fully diagnosed and only...",
-      "verification_short": "Checks: confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated; confirm a likely owner layer is named; confirm unknowns are preserved where needed.",
-      "workflow_short": "Purpose: turn a reviewed session into a DIAGNOSISPACKET. Flow: gather reviewed symptoms and evidence refs -> separate symptom from probable cause -> classify drift types such as boundary drift, proof debt, role leakage, memory contamination, route..."
+      "verification_short": "Checks: confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated; confirm each meaningful probable cause carries an evidence posture and does not outrun its evidence; confirm a likely...",
+      "workflow_short": "Purpose: turn a reviewed session into a DIAGNOSISPACKET. Flow: gather reviewed symptoms and evidence refs, separating confirmed session evidence from checkpoint hints, closeout cues, generated summaries, stale evidence, or neighboring-session echoes ->..."
     },
     {
       "inputs_short": "Needs: reviewed diagnosis packet; owner-layer candidates; risk and approval posture; known validation surfaces.",
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: silent doctrine edits; approval bypass; retry loops disguised as repair; using repair to hide broader governance debt.",
       "name": "aoa-session-self-repair",
-      "outputs_short": "Produces: REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub; optional repair quest when execution should remain deferred; optional...",
+      "outputs_short": "Produces: REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub; explicit repair execution posture such as proposed, prepared, executing,...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "status": "evaluated",
-      "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
+      "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, execution posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_dependencies": [
         "AOA-T-0082",
         "AOA-T-0083"
       ],
       "trigger_boundary_short": "Use when a reviewed diagnosis already exists; the next honest move is a bounded repair plan or repair-ready packet; Avoid when there is no reviewed diagnosis yet; the repair is actually a large scenario rollout...",
-      "verification_short": "Checks: confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape; confirm checkpoint fields are present; confirm validation and rollback posture are named.",
-      "workflow_short": "Purpose: author a bounded REPAIRPACKET. Flow: start from the reviewed diagnosis rather than from general aspiration -> choose the smallest honest repair shape -> name the primary owner repo and target artifact class -> record checkpoint posture:..."
+      "verification_short": "Checks: confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape; confirm checkpoint fields are present; confirm repair execution posture is explicit and does not overclaim...",
+      "workflow_short": "Purpose: author a bounded REPAIRPACKET. Flow: start from the reviewed diagnosis rather than from general aspiration -> choose the smallest honest repair shape -> name the primary owner repo and target artifact class -> state the repair execution posture..."
     },
     {
       "inputs_short": "Needs: repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces; target area of ambiguity or overlap; known canonical files or source-owned surfaces if any;...",
@@ -476,7 +476,7 @@
     {
       "inputs_short": "Needs: a quest passport with difficulty, risk, control mode, and delegate tier; a summon request with desired role or child target, transport preference, one parent anchor (routeanchor, parenttaskid, or sessionref),...",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating delegation as progress without anchor or output clarity; using a remote child route to bypass local proof, approval, or closeout posture; allowing child scope to widen beyond the parent passport;...",
+      "main_anti_patterns_short": "Avoid: treating delegation as progress without anchor or output clarity; using summon to skip branch choice when several next routes still compete; using a remote child route to bypass local proof, approval, or...",
       "name": "aoa-summon",
       "outputs_short": "Produces: one summon decision with allowed or blocked posture; one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate; executionsurface, cohortpattern, reasoncodes,...",
       "scope": "core",
@@ -484,11 +484,13 @@
       "status": "evaluated",
       "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "technique_dependencies": [
-        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
-        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+        "AOA-T-0078",
+        "AOA-T-0079",
+        "AOA-T-0062",
+        "AOA-T-0058"
       ],
       "trigger_boundary_short": "Use when a parent route already has a real anchor and named expected outputs; a narrower child actor would help through bounded review, evaluation, leaf implementation, or local verification; Avoid when the parent...",
-      "verification_short": "Checks: confirm the passport and parent anchor exist; confirm expected outputs are named; confirm the chosen lane matches difficulty, risk, control mode, and requested role; confirm any E2E fixture check validates...",
+      "verification_short": "Checks: confirm the passport and parent anchor exist; confirm expected outputs are named; confirm branch choice is already settled; otherwise route to aoa-session-route-forks; confirm the chosen lane matches...",
       "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to codexlocal when the request..."
     },
     {

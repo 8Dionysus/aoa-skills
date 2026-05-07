@@ -6,8 +6,8 @@ use
 ## Why
 The coding and verification work are already bounded enough that the main remaining seam is one honest local commit boundary rather than more implementation.
 ## Expected object
-A bounded local commit decision that carries forward the real validation state and stops before push or publish.
+A bounded local commit decision that carries forward the real validation state, names `commit_authorization_posture`, and stops before push or publish.
 ## Boundary notes
 Use this skill when the diff is already ready and the route needs one intentional local commit. Do not widen it into push, PR, or publish choreography.
 ## Verification hooks
-The response should mention the bounded diff, the named validation state, and the explicit stop line before push or publish.
+The response should mention the bounded diff, the named validation state, explicit commit authorization, and the explicit stop line before push or publish.

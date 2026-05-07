@@ -296,10 +296,12 @@
       "exception_review_path": null,
       "name": "aoa-summon",
       "recommended_action": "keep_multi_technique",
-      "technique_count": 2,
+      "technique_count": 4,
       "technique_ids": [
-        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
-        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+        "AOA-T-0078",
+        "AOA-T-0079",
+        "AOA-T-0062",
+        "AOA-T-0058"
       ]
     },
     {

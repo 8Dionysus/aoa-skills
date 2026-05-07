@@ -11,7 +11,7 @@ name: aoa-commit-growth-seam
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `16b19f6f72b4`
+- reviewed revision: `d6dba9d156f8`
 
 ## Target status
 
@@ -30,8 +30,8 @@ name: aoa-commit-growth-seam
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the skill is evaluated as a commit-boundary workflow, not as a substitute for unfinished repair or publish approval.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the skill is evaluated as a commit-boundary workflow, now requires explicit commit authorization posture, and is not a substitute for unfinished repair or publish approval.
 
 ## Gaps and blockers
 

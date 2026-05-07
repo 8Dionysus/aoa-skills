@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0082
     repo: 8Dionysus/aoa-techniques
     path: techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md
-    source_ref: bfb4281c60295ab85605e188b350e0f6008b3184
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
     use_sections:
       - Intent
       - Inputs
@@ -14,7 +14,7 @@ techniques:
   - id: AOA-T-0083
     repo: 8Dionysus/aoa-techniques
     path: techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md
-    source_ref: bfb4281c60295ab85605e188b350e0f6008b3184
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
     use_sections:
       - Outputs
       - Contracts

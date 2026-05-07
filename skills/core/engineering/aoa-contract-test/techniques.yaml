@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0003
     repo: 8Dionysus/aoa-techniques
     path: techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: fbead87e01b82df6c56e3d92a074cd7515131847
     use_sections:
       - Intent
       - When to use
@@ -14,7 +14,7 @@ techniques:
   - id: AOA-T-0015
     repo: 8Dionysus/aoa-techniques
     path: techniques/proof/skill-support/contract-test-design/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: fbead87e01b82df6c56e3d92a074cd7515131847
     use_sections:
       - Intent
       - Inputs

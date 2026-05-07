@@ -1519,7 +1519,7 @@ adjacency_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-automation-opportunity-scan/automation_opportunity_scan_vs_route_forks_boundary.md
     required_output_phrases:
       - This is an automation-opportunity-scan case, not a session-route-forks case.
-      - An automation opportunity packet that classifies readiness without granting automation authority.
+      - An automation opportunity packet that classifies readiness and automation mode posture without granting automation authority.
     forbidden_output_phrases: []
   - skill: aoa-session-route-forks
     case_id: session_route_forks_vs_automation_scan_boundary
@@ -1589,7 +1589,7 @@ adjacency_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-commit-growth-seam/commit_growth_seam_vs_donor_harvest_boundary.md
     required_output_phrases:
       - This is a commit-growth-seam case, not a session-donor-harvest case.
-      - A bounded local commit decision that preserves validation state and stops before push.
+      - A bounded local commit decision that preserves validation state, names commit authorization posture, and stops before push.
     forbidden_output_phrases: []
 
 snapshot_cases:
@@ -1672,7 +1672,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-commit-growth-seam/commit_growth_seam_bounded_verified_diff.md
     required_output_phrases:
       - use
-      - A bounded local commit decision that carries forward the real validation state and stops before push or publish.
+      - A bounded local commit decision that carries forward the real validation state, names `commit_authorization_posture`, and stops before push or publish.
     forbidden_output_phrases: []
   - skill: aoa-commit-growth-seam
     case_id: commit_growth_seam_still_needs_repair
@@ -1933,7 +1933,7 @@ snapshot_cases:
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-automation-opportunity-scan/automation_opportunity_scan_recurring_review_closeout_route.md
     required_output_phrases:
       - use
-      - An automation opportunity packet plus one automation-candidate receipt that names the current manual route, the readiness verdict, and the likely first owner layer.
+      - An automation opportunity packet plus one automation-candidate receipt that names the current manual route, the readiness verdict, the highest honest automation mode posture, and the likely first owner layer.
     forbidden_output_phrases: []
   - skill: aoa-session-route-forks
     case_id: session_route_forks_reviewed_branch_choice

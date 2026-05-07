@@ -21,7 +21,7 @@ surfaces. The move changes their route, not their authority level.
 Current evidence companions remain in:
 
 - `docs/session-harvests/`
-- `mechanics/growth-cycle/examples/session_growth_artifacts/`
+- `mechanics/growth-cycle/examples/session-growth-artifacts/`
 - `templates/SKILL_APPLICABILITY_MAP.template.md`
 - `templates/SESSION_CANDIDATE_HARVEST.template.md`
 - `config/project_core_skill_kernel.json`
@@ -29,6 +29,10 @@ Current evidence companions remain in:
 
 This package may route to those surfaces, but it does not turn evidence notes
 or examples into promotion truth.
+
+Example families use semantic suffixes. `reviewed-donor-harvest`,
+`derived-visibility-handoff`, and `kernel-maturity` are active evidence-family
+names, not pass numbers or maturity scores.
 
 ## Recurrence Companion
 

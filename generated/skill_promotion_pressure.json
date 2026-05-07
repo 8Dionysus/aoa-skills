@@ -2,9 +2,9 @@
   "report_kind": "skill_promotion_pressure",
   "scan_summary": {
     "adoption_targets_scanned": 16,
-    "dispatch_files_scanned": 105,
-    "hook_files_scanned": 6088,
-    "session_files_scanned": 249
+    "dispatch_files_scanned": 106,
+    "hook_files_scanned": 6298,
+    "session_files_scanned": 250
   },
   "schema_version": 1,
   "skill_count": 45,
@@ -28,9 +28,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "must_confirm": 67,
-          "suggest_next": 11
+          "suggest_next": 20
         },
-        "dispatch_event_count": 78,
+        "dispatch_event_count": 87,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -39,7 +39,40 @@
         },
         "reality_trial_event_count": 2,
         "session_mention_count": 42,
-        "usage_score": 283
+        "usage_score": 310
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-change-protocol",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 17,
+          "suggest_next": 50
+        },
+        "dispatch_event_count": 67,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "activate_now": 1,
+          "suggest_next": 3
+        },
+        "reality_trial_event_count": 4,
+        "session_mention_count": 723,
+        "usage_score": 258
       }
     },
     {
@@ -79,39 +112,6 @@
       "default_reference_readiness_blockers": [],
       "governance_decision": "default_reference",
       "lineage_state": "published",
-      "name": "aoa-change-protocol",
-      "pressure_reason": "already canonical; keep maintenance and drift visible",
-      "promotion_pressure": "canonical_monitor",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
-      "status": "canonical",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "activate_now": 15,
-          "suggest_next": 36
-        },
-        "dispatch_event_count": 51,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "activate_now": 1,
-          "suggest_next": 3
-        },
-        "reality_trial_event_count": 4,
-        "session_mention_count": 692,
-        "usage_score": 210
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "default_reference",
-      "lineage_state": "published",
       "name": "aoa-adr-write",
       "pressure_reason": "already canonical; keep maintenance and drift visible",
       "promotion_pressure": "canonical_monitor",
@@ -125,18 +125,19 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "activate_now": 5,
-          "suggest_next": 36
+          "activate_now": 4,
+          "must_confirm": 1,
+          "suggest_next": 46
         },
-        "dispatch_event_count": 41,
+        "dispatch_event_count": 51,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
           "activate_now": 1
         },
         "reality_trial_event_count": 1,
-        "session_mention_count": 58,
-        "usage_score": 168
+        "session_mention_count": 107,
+        "usage_score": 198
       }
     },
     {
@@ -190,16 +191,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "activate_now": 9,
-          "suggest_next": 23
+          "activate_now": 10,
+          "suggest_next": 21
         },
-        "dispatch_event_count": 32,
+        "dispatch_event_count": 31,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 153,
-        "usage_score": 137
+        "session_mention_count": 205,
+        "usage_score": 134
       }
     },
     {
@@ -221,9 +222,9 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "must_confirm": 24,
-          "suggest_next": 5
+          "suggest_next": 3
         },
-        "dispatch_event_count": 29,
+        "dispatch_event_count": 27,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
@@ -231,70 +232,7 @@
         },
         "reality_trial_event_count": 1,
         "session_mention_count": 28,
-        "usage_score": 132
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "default_reference",
-      "lineage_state": "published",
-      "name": "aoa-source-of-truth-check",
-      "pressure_reason": "already canonical; keep maintenance and drift visible",
-      "promotion_pressure": "canonical_monitor",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
-      "status": "canonical",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "suggest_next": 23
-        },
-        "dispatch_event_count": 23,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "suggest_next": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 268,
-        "usage_score": 114
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "default_reference",
-      "lineage_state": "published",
-      "name": "aoa-invariant-coverage-audit",
-      "pressure_reason": "already canonical; keep maintenance and drift visible",
-      "promotion_pressure": "canonical_monitor",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
-      "status": "canonical",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "activate_now": 5,
-          "suggest_next": 8
-        },
-        "dispatch_event_count": 13,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "activate_now": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 78,
-        "usage_score": 84
+        "usage_score": 126
       }
     },
     {
@@ -316,15 +254,107 @@
       "usage_evidence": {
         "dispatch_buckets": {
           "activate_now": 1,
-          "suggest_next": 12
+          "suggest_next": 13
         },
-        "dispatch_event_count": 13,
-        "hook_prompt_mention_count": 0,
+        "dispatch_event_count": 14,
+        "hook_prompt_mention_count": 17,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 77,
-        "usage_score": 80
+        "session_mention_count": 116,
+        "usage_score": 93
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-source-of-truth-check",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "suggest_next": 16
+        },
+        "dispatch_event_count": 16,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 281,
+        "usage_score": 93
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-invariant-coverage-audit",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 3,
+          "suggest_next": 6
+        },
+        "dispatch_event_count": 9,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "activate_now": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 88,
+        "usage_score": 72
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-property-invariants",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "suggest_next": 4
+        },
+        "dispatch_event_count": 4,
+        "hook_prompt_mention_count": 17,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 40,
+        "usage_score": 63
       }
     },
     {
@@ -352,37 +382,8 @@
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 21,
-        "usage_score": 49
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "default_reference",
-      "lineage_state": "published",
-      "name": "aoa-property-invariants",
-      "pressure_reason": "already canonical; keep maintenance and drift visible",
-      "promotion_pressure": "canonical_monitor",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
-      "status": "canonical",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "suggest_next": 4
-        },
-        "dispatch_event_count": 4,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {},
-        "reality_trial_event_count": 0,
-        "session_mention_count": 15,
-        "usage_score": 43
+        "session_mention_count": 30,
+        "usage_score": 53
       }
     },
     {
@@ -489,8 +490,8 @@
         "installed_target_count": 2,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 2,
-        "usage_score": 4
+        "session_mention_count": 3,
+        "usage_score": 5
       }
     },
     {
@@ -516,8 +517,8 @@
         "installed_target_count": 2,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 2,
-        "usage_score": 4
+        "session_mention_count": 3,
+        "usage_score": 5
       }
     },
     {
@@ -1033,19 +1034,19 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "activate_now": 37,
-          "must_confirm": 60,
-          "suggest_next": 16
+          "activate_now": 45,
+          "must_confirm": 50,
+          "suggest_next": 12
         },
-        "dispatch_event_count": 113,
+        "dispatch_event_count": 107,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
           "must_confirm": 1
         },
         "reality_trial_event_count": 1,
-        "session_mention_count": 166,
-        "usage_score": 384
+        "session_mention_count": 173,
+        "usage_score": 366
       }
     },
     {
@@ -1066,114 +1067,18 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 39,
-          "suggest_next": 35
+          "must_confirm": 47,
+          "suggest_next": 29
         },
-        "dispatch_event_count": 74,
+        "dispatch_event_count": 76,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {
           "suggest_next": 2
         },
         "reality_trial_event_count": 2,
-        "session_mention_count": 111,
-        "usage_score": 271
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "stay_evaluated",
-      "lineage_state": "published",
-      "name": "aoa-session-route-forks",
-      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
-      "promotion_pressure": "revisit_stay_evaluated",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "status": "evaluated",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "must_confirm": 38,
-          "suggest_next": 12
-        },
-        "dispatch_event_count": 50,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "suggest_next": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 90,
-        "usage_score": 195
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "stay_evaluated",
-      "lineage_state": "published",
-      "name": "aoa-session-self-repair",
-      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
-      "promotion_pressure": "revisit_stay_evaluated",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "status": "evaluated",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "must_confirm": 36,
-          "suggest_next": 12
-        },
-        "dispatch_event_count": 48,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "suggest_next": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 89,
-        "usage_score": 189
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "stay_evaluated",
-      "lineage_state": "published",
-      "name": "aoa-quest-harvest",
-      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
-      "promotion_pressure": "revisit_stay_evaluated",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "status": "evaluated",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "must_confirm": 37,
-          "suggest_next": 10
-        },
-        "dispatch_event_count": 47,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {
-          "suggest_next": 1
-        },
-        "reality_trial_event_count": 1,
-        "session_mention_count": 435,
-        "usage_score": 186
+        "session_mention_count": 116,
+        "usage_score": 277
       }
     },
     {
@@ -1194,16 +1099,142 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 38,
-          "suggest_next": 9
+          "must_confirm": 46,
+          "suggest_next": 10
         },
-        "dispatch_event_count": 47,
+        "dispatch_event_count": 56,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 325,
-        "usage_score": 182
+        "session_mention_count": 332,
+        "usage_score": 209
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "stay_evaluated",
+      "lineage_state": "published",
+      "name": "aoa-quest-harvest",
+      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
+      "promotion_pressure": "revisit_stay_evaluated",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 45,
+          "suggest_next": 8
+        },
+        "dispatch_event_count": 53,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 450,
+        "usage_score": 204
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "stay_evaluated",
+      "lineage_state": "published",
+      "name": "aoa-session-route-forks",
+      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
+      "promotion_pressure": "revisit_stay_evaluated",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 46,
+          "suggest_next": 7
+        },
+        "dispatch_event_count": 53,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 103,
+        "usage_score": 204
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "stay_evaluated",
+      "lineage_state": "published",
+      "name": "aoa-session-self-repair",
+      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
+      "promotion_pressure": "revisit_stay_evaluated",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 44,
+          "suggest_next": 8
+        },
+        "dispatch_event_count": 52,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 93,
+        "usage_score": 201
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "stay_evaluated",
+      "lineage_state": "published",
+      "name": "aoa-session-self-diagnose",
+      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
+      "promotion_pressure": "revisit_stay_evaluated",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 45,
+          "suggest_next": 1
+        },
+        "dispatch_event_count": 46,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 106,
+        "usage_score": 179
       }
     },
     {
@@ -1235,38 +1266,8 @@
           "suggest_next": 1
         },
         "reality_trial_event_count": 2,
-        "session_mention_count": 20,
-        "usage_score": 161
-      }
-    },
-    {
-      "default_reference_readiness": "ready",
-      "default_reference_readiness_blockers": [],
-      "governance_decision": "stay_evaluated",
-      "lineage_state": "published",
-      "name": "aoa-session-self-diagnose",
-      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
-      "promotion_pressure": "revisit_stay_evaluated",
-      "quality_findings": [],
-      "quality_verdict": "healthy",
-      "readiness_reconciliation": "governance_and_eval_ready",
-      "repeated_usage_signal": true,
-      "scope": "core",
-      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "status": "evaluated",
-      "technique_bridge_findings": [],
-      "usage_evidence": {
-        "dispatch_buckets": {
-          "must_confirm": 37,
-          "suggest_next": 1
-        },
-        "dispatch_event_count": 38,
-        "hook_prompt_mention_count": 0,
-        "installed_target_count": 16,
-        "reality_trial_buckets": {},
-        "reality_trial_event_count": 0,
-        "session_mention_count": 102,
-        "usage_score": 155
+        "session_mention_count": 21,
+        "usage_score": 162
       }
     },
     {
@@ -1287,16 +1288,16 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "must_confirm": 30,
+          "must_confirm": 39,
           "suggest_next": 1
         },
-        "dispatch_event_count": 31,
+        "dispatch_event_count": 40,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 162,
-        "usage_score": 134
+        "session_mention_count": 170,
+        "usage_score": 161
       }
     },
     {
@@ -1324,8 +1325,8 @@
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 13,
-        "usage_score": 59
+        "session_mention_count": 20,
+        "usage_score": 66
       }
     },
     {
@@ -1346,48 +1347,42 @@
       "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {
-          "suggest_next": 6
+          "suggest_next": 8
         },
-        "dispatch_event_count": 6,
+        "dispatch_event_count": 8,
         "hook_prompt_mention_count": 0,
         "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 13,
-        "usage_score": 47
+        "session_mention_count": 29,
+        "usage_score": 65
       }
     },
     {
       "default_reference_readiness": "ready",
       "default_reference_readiness_blockers": [],
       "governance_decision": "stay_evaluated",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "aoa-summon",
       "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
       "promotion_pressure": "revisit_stay_evaluated",
-      "quality_findings": [
-        "pending_technique_lineage"
-      ],
-      "quality_verdict": "working_with_maintenance_findings",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
       "readiness_reconciliation": "governance_and_eval_ready",
       "repeated_usage_signal": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "evaluated",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
+      "technique_bridge_findings": [],
       "usage_evidence": {
         "dispatch_buckets": {},
         "dispatch_event_count": 0,
         "hook_prompt_mention_count": 1,
-        "installed_target_count": 1,
+        "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 69,
-        "usage_score": 27
+        "session_mention_count": 104,
+        "usage_score": 42
       }
     },
     {
@@ -1410,11 +1405,11 @@
         "dispatch_buckets": {},
         "dispatch_event_count": 0,
         "hook_prompt_mention_count": 0,
-        "installed_target_count": 1,
+        "installed_target_count": 16,
         "reality_trial_buckets": {},
         "reality_trial_event_count": 0,
-        "session_mention_count": 32,
-        "usage_score": 26
+        "session_mention_count": 38,
+        "usage_score": 41
       }
     }
   ],

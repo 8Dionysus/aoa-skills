@@ -555,9 +555,9 @@
         "Outputs": "`AUTOMATION_OPPORTUNITY_PACKET`; one or more `AUTOMATION_CANDIDATE` cards",
         "Procedure": "start from reviewed evidence, not from vague enthusiasm; isolate the current manual route as actually practiced",
         "Contracts": "this skill detects and packages automation opportunities; it does not create live automation authority; schedule hints remain hints, not runtime truth",
-        "Risks and anti-patterns": "treating one exciting session as proof of repeatability; automating unstable, under-specified, or secret-heavy work too early",
+        "Risks and anti-patterns": "treating one exciting session as proof of repeatability; treating `seed_ready` as a synonym for unattended execution",
         "Verification": "confirm each candidate names the current manual route; confirm evidence refs justify the repeat signal",
-        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Diony...",
+        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Diony...",
         "Adaptation points": "project overlays may add local execution modes, trigger classes, or schedule vocabularies; project overlays may add local approval classes or environment-risk labels"
       },
       "resource_inventory": {
@@ -677,7 +677,7 @@
         "Contracts": "boundaries should reduce semantic confusion, not create ceremony for its own sake; neighboring contexts should be named explicitly when relevant",
         "Risks and anti-patterns": "inventing too many contexts for a small problem; renaming concepts without reducing confusion",
         "Verification": "confirm the main ambiguity was reduced; confirm interfaces or handoff points are named",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 fr...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 fr...",
         "Adaptation points": "local domain vocabulary; canonical docs that define terminology"
       },
       "resource_inventory": {
@@ -890,7 +890,7 @@
         "Contracts": "checkpoint note stays provisional and lower-authority than reviewed closeout; `checkpoint-collect` never emits final harvest, progression, or quest verdicts",
         "Risks and anti-patterns": "treating checkpoint hints as if they were final donor harvest truth; treating `execute-closeout-chain` JSON as if it were the actual skill",
         "Verification": "confirm `checkpoint-collect` only updates local ledger surfaces; confirm the bridge never emits final verdicts during mid-session capture",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0084 from `8Dionysus/aoa-techniques`...",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0084 from `8Dionysus/aoa-techniques`...",
         "Adaptation points": "local reviewed artifact entrypoints; local receipt bundle locations"
       },
       "resource_inventory": {
@@ -994,12 +994,12 @@
         "Intent": "Use this skill to cross one honest local commit boundary after a bounded change is already prepared and reviewed enough to stop widening the working session. The goal is not \"commit because work happened.\" The goal is to preserve one bounded unit with an honest message, explic...",
         "Trigger boundary": "a bounded code, config, or docs diff is already prepared locally; the next honest move is one local commit boundary rather than more coding",
         "Inputs": "one bounded local diff; working tree status, including any unrelated local changes",
-        "Outputs": "one bounded commit-or-defer decision; one intentional local commit, or one explicit refusal to commit yet",
+        "Outputs": "one bounded commit-or-defer decision; `commit_authorization_posture`, such as `authorized_now`, `defer_commit`,",
         "Procedure": "reread `git status` and the target diff to isolate the exact bounded unit; stop if unrelated changes are mixed in and cannot be excluded cleanly",
         "Contracts": "the commit boundary matches the actual bounded diff; unrelated local state is not silently swept into the commit",
         "Risks and anti-patterns": "using one commit as a catch-all bucket for unrelated changes; writing a clean commit message that hides missing or weak verification",
-        "Verification": "confirm the committed diff matches the named bounded unit; confirm unrelated local changes were excluded or explicitly deferred",
-        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
+        "Verification": "confirm the committed diff matches the named bounded unit; confirm `commit_authorization_posture` was `authorized_now` before the commit",
+        "Technique traceability": "AOA-T-0001 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Vali...",
         "Adaptation points": "local commit-message conventions or trailers; local validation commands that should be named before commit"
       },
       "resource_inventory": {
@@ -1102,7 +1102,7 @@
         "Contracts": "the contract should be visible to another human or agent; verification should be tied to the boundary, not only to internals",
         "Risks and anti-patterns": "vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary",
         "Verification": "confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary",
-        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-t...",
+        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-t...",
         "Adaptation points": "local endpoints or module boundaries; local smoke or test commands"
       },
       "resource_inventory": {
@@ -1208,7 +1208,7 @@
         "Contracts": "reusable logic should not stay trapped in glue if that blocks testing or reuse; glue should not be over-promoted into domain logic without reason",
         "Risks and anti-patterns": "treating all logic as core logic and over-abstracting the system; moving orchestration detail into the core under the label of purity",
         "Verification": "confirm the core candidate is genuinely reusable or stability-shaped; confirm edge-specific code remains at the edge when appropriate",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
         "Adaptation points": "local layering conventions; preferred directories or module boundaries"
       },
       "resource_inventory": {
@@ -1426,7 +1426,7 @@
         "Contracts": "every claimed invariant must be traceable to at least one check; the audit should distinguish real constraint from mere example repetition",
         "Risks and anti-patterns": "counting examples as if they were invariants; letting random data hide thin coverage",
         "Verification": "confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded",
-        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
         "Adaptation points": "local test or check commands; domain-specific invariants and edge cases"
       },
       "resource_inventory": {
@@ -1641,7 +1641,7 @@
         "Contracts": "the extracted boundary should reduce coupling, not add decorative abstraction; the port should stay narrow and purpose-shaped",
         "Risks and anti-patterns": "introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it",
         "Verification": "confirm the concrete dependency pressure was real; confirm the new boundary is narrower and clearer than before",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
         "Adaptation points": "local architecture conventions; preferred adapter locations"
       },
       "resource_inventory": {
@@ -1746,7 +1746,7 @@
         "Contracts": "each property should express a real invariant, not a wish; the test should broaden coverage beyond a small handpicked set",
         "Risks and anti-patterns": "writing weak properties that prove almost nothing; confusing random data with meaningful coverage",
         "Verification": "confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples",
-        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fr...",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fr...",
         "Adaptation points": "local generator tools; domain-specific invariants"
       },
       "resource_inventory": {
@@ -1841,15 +1841,15 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to decide whether a repeated, reviewed quest-shaped pattern should remain a quest or be promoted into the next honest owner surface.",
+        "Intent": "Use this skill to decide whether one repeated, reviewed quest-shaped unit should remain a quest or be promoted into the next honest owner surface. The output is a promotion verdict, not authorship completion and not acceptance by the destination owner repository. It should als...",
         "Trigger boundary": "a bounded work pattern has repeated and now needs an explicit promotion decision; reviewed evidence exists, but the correct destination is still unclear",
         "Inputs": "source quest or quest family; reviewed run summary or harvest pack",
         "Outputs": "promotion verdict; owner repo and follow-up surface",
-        "Procedure": "collect a bounded reviewed harvest pack rather than raw runtime state; name what actually repeated: leaf workflow, route, proof pattern, recall pattern, or boundary law",
+        "Procedure": "collect a bounded reviewed harvest pack rather than raw runtime state; confirm there is exactly one isolated repeated unit; if several units remain",
         "Contracts": "invocation must remain explicit and post-session; orchestrator class identity must not be promoted into a skill",
-        "Risks and anti-patterns": "promoting a theme instead of a repeatable workflow; collapsing orchestrator class law into the skill layer",
-        "Verification": "confirm the harvest pack is reviewed and bounded; confirm the repeated unit is named explicitly",
-        "Technique traceability": "AOA-T-0089 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AO...",
+        "Risks and anti-patterns": "promoting a theme instead of a repeatable workflow; treating repeated discussion, urgency, or excitement as repeat evidence",
+        "Verification": "confirm the harvest pack is reviewed and bounded; confirm exactly one repeated reviewed unit is isolated before final triage",
+        "Technique traceability": "AOA-T-0089 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AO...",
         "Adaptation points": "local quest IDs and harvest entrypoints; local owner-repo route maps"
       },
       "resource_inventory": {
@@ -2172,12 +2172,12 @@
         "Intent": "Use this skill to metabolize a reviewed session artifact into a bounded `HARVEST_PACKET` that names reusable units, routes each one to the right AoA owner layer, and drafts the next honest artifact without forcing promotion.",
         "Trigger boundary": "a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units; the work is post-session and reviewable rather than live execution",
         "Inputs": "reviewed session artifact; session goal and closure state",
-        "Outputs": "one bounded `HARVEST_PACKET`; named candidates, each with:",
-        "Procedure": "start from a reviewed session artifact rather than transient chat memory; extract candidate reusable units, not topics; prefer explicit moves, laws, checklists, structures, routes, or proof patterns",
+        "Outputs": "one bounded `HARVEST_PACKET`; one reviewed intake note that says which checkpoint or handoff hints were",
+        "Procedure": "start from a reviewed session artifact rather than transient chat memory; inventory any checkpoint, closeout-handoff, or ledger hints as focus inputs;",
         "Contracts": "invocation must remain explicit and post-session; the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
         "Risks and anti-patterns": "collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units",
-        "Verification": "confirm the source artifact is reviewed and bounded; confirm each kept candidate names one reusable unit rather than a topic",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 fr...",
+        "Verification": "confirm the source artifact is reviewed and bounded; confirm checkpoint, closeout-handoff, or ledger hints were dispositioned as",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 fr...",
         "Adaptation points": "local session artifact entrypoints; local review packet templates"
       },
       "resource_inventory": {
@@ -2289,15 +2289,15 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to author a `PROGRESSION_DELTA` from reviewed evidence. This is not score inflation. It is an evidence-backed overlay that says what mastery axes moved, what should hold or reanchor, and what small unlock hints are now safer.",
+        "Intent": "Use this skill to author a `PROGRESSION_DELTA` from reviewed evidence. This is not score inflation. It is an evidence-backed overlay that says what mastery axes moved, what should hold or reanchor, what baseline the movement is compared against, and what small unlock hints are...",
         "Trigger boundary": "a reviewed session generated meaningful mastery evidence; the route needs progression legibility without mutating source role profiles",
         "Inputs": "reviewed session artifact or harvest packet; named evidence refs",
-        "Outputs": "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints; optional automation-readiness hint when reviewed evidence supports it",
-        "Procedure": "collect reviewed evidence refs; assess movement qualitatively across `boundary_integrity`,",
+        "Outputs": "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints; baseline posture such as `baseline_ref`, `prior_delta_ref`,",
+        "Procedure": "collect reviewed evidence refs; separate confirmed current-session evidence from checkpoint hints,",
         "Contracts": "progression remains evidence-backed; multi-axis only; no authoritative universal score",
-        "Risks and anti-patterns": "inventing progress from mood; using progression as policy",
-        "Verification": "confirm all meaningful axis claims cite reviewed evidence; confirm the verdict matches the evidence",
-        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniq...",
+        "Risks and anti-patterns": "inventing progress from mood; promoting checkpoint axis hints or generated summaries into movement without",
+        "Verification": "confirm all meaningful axis claims cite reviewed evidence; confirm the delta declares baseline posture before comparative movement claims",
+        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniq...",
         "Adaptation points": "local axis notes; role-affinity hints"
       },
       "resource_inventory": {
@@ -2411,7 +2411,7 @@
         "Contracts": "branch cards do not become routing authority; fork analysis must stay evidence-backed",
         "Risks and anti-patterns": "fake certainty about future routes; using fork cards as hidden routing policy",
         "Verification": "confirm each branch differs materially; confirm likely owner repo is named",
-        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techn...",
+        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techn...",
         "Adaptation points": "local control-mode labels; local delegate tiers or approval classes"
       },
       "resource_inventory": {
@@ -2513,15 +2513,15 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to turn a reviewed session into a `DIAGNOSIS_PACKET`. It should answer: what drifted, what hurt, what boundary blurred, what proof is missing, and what repair shape is most plausible.",
+        "Intent": "Use this skill to turn a reviewed session into a `DIAGNOSIS_PACKET`. It should answer: what drifted, what hurt, what boundary blurred, what proof is missing, what is only a hypothesis, and what repair shape is most plausible.",
         "Trigger boundary": "a reviewed session contains repeated friction, contradiction, or drift; the next honest move is diagnosis before repair",
         "Inputs": "reviewed session artifact or harvest packet; observed frictions, failures, or contradictions",
-        "Outputs": "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints; severity or urgency notes when evidence supports them",
-        "Procedure": "gather reviewed symptoms and evidence refs; separate symptom from probable cause",
+        "Outputs": "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints; evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown",
+        "Procedure": "gather reviewed symptoms and evidence refs, separating confirmed session evidence from checkpoint hints, closeout cues, generated summaries, stale evidence, or neighboring-session echoes; separate symptom from probable cause and assign an evidence posture before naming any cau...",
         "Contracts": "diagnosis is read-only; one odd anecdote is not enough for structural certainty",
         "Risks and anti-patterns": "mistaking symptom for cause; using vague vibes as diagnosis",
         "Verification": "confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated",
-        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `cd276...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `b0f7e...",
         "Adaptation points": "local drift taxonomies; repo-specific failure classes"
       },
       "resource_inventory": {
@@ -2627,15 +2627,15 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to author a bounded `REPAIR_PACKET`. The repair packet should be small, explicit, reversible where needed, and aligned with checkpoint posture before any important system surface is changed.",
+        "Intent": "Use this skill to author a bounded `REPAIR_PACKET`. The repair packet should be small, explicit, reversible where needed, and aligned with checkpoint posture before any important system surface is changed. It should also say whether the repair is only proposed, prepared, execu...",
         "Trigger boundary": "a reviewed diagnosis already exists; the next honest move is a bounded repair plan or repair-ready packet",
         "Inputs": "reviewed diagnosis packet; owner-layer candidates",
-        "Outputs": "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub; optional repair quest when execution should remain deferred",
+        "Outputs": "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub; explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required",
         "Procedure": "start from the reviewed diagnosis rather than from general aspiration; choose the smallest honest repair shape",
         "Contracts": "self-repair is not free self-modification; important surface changes must pass checkpoint posture",
         "Risks and anti-patterns": "silent doctrine edits; approval bypass",
         "Verification": "confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape",
-        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `bfb4281c60295ab85605e188b350e0f6008b3184` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa...",
+        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa...",
         "Adaptation points": "local approval classes; repo-specific rollback anchors"
       },
       "resource_inventory": {
@@ -2834,7 +2834,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-SUMMON-LANE-SELECTION,AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
+        "aoa_technique_dependencies": "AOA-T-0078,AOA-T-0079,AOA-T-0062,AOA-T-0058",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -2856,9 +2856,9 @@
         "Outputs": "one summon decision with allowed or blocked posture; one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,",
         "Procedure": "start from the parent anchor and quest passport, not from raw pressure to delegate; default `transport_preference` to `codex_local` when the request leaves it open",
         "Contracts": "this skill governs one bounded child route; it does not grant hidden; local Codex child targeting is the default first choice, not an afterthought",
-        "Risks and anti-patterns": "treating delegation as progress without anchor or output clarity; using a remote child route to bypass local proof, approval, or closeout",
+        "Risks and anti-patterns": "treating delegation as progress without anchor or output clarity; using summon to skip branch choice when several next routes still compete",
         "Verification": "confirm the passport and parent anchor exist; confirm expected outputs are named",
-        "Technique traceability": "AOA-T-PENDING-SUMMON-LANE-SELECTION from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sect...",
+        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0079 from `8Dionysu...",
         "Adaptation points": "project overlays may add local child-role labels, control modes, or transport; project overlays may map local reviewed-closeout or checkpoint families onto"
       },
       "resource_inventory": {

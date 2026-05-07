@@ -1,10 +1,10 @@
 skill_name: aoa-summon
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-SUMMON-LANE-SELECTION
+  - id: AOA-T-0078
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
     use_sections:
       - Intent
       - Inputs
@@ -12,17 +12,40 @@ techniques:
       - Core procedure
       - Contracts
       - Validation
-  - id: AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE
+  - id: AOA-T-0079
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    use_sections:
+      - Intent
+      - Inputs
+      - Outputs
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0062
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
     use_sections:
       - Intent
       - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0058
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md
+    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    use_sections:
+      - Intent
+      - Outputs
+      - Core procedure
       - Contracts
       - Risks
       - Validation
 notes:
   - Keep runtime SKILL.md self-contained.
-  - Replace AOA-T-PENDING-SUMMON-LANE-SELECTION and AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE, path TBD, and source_ref TBD after publish.
+  - Use published techniques as bridge evidence for lane choice, passport posture, bounded episode checkpoints, and explicit return receipt.
   - Keep child traces subordinate to reviewed closeout and owner-local publication.

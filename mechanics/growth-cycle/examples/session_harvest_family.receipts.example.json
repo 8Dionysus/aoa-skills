@@ -4,7 +4,7 @@
     "event_id": "evt-harvest-0001",
     "observed_at": "2026-04-05T10:00:00Z",
     "run_ref": "run-session-growth-001",
-    "session_ref": "session:2026-04-05-alpha",
+    "session_ref": "session:2026-04-05:reviewed-donor-harvest",
     "actor_ref": "aoa-skills:session-donor-harvest",
     "object_ref": {
       "repo": "aoa-skills",
@@ -15,12 +15,12 @@
     "evidence_refs": [
       {
         "kind": "harvest_packet",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/harvest_packet.alpha.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/harvest_packet.reviewed-donor-harvest.json",
         "role": "primary"
       },
       {
         "kind": "candidate_lineage_receipt",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json",
         "role": "candidate-lineage"
       },
       {
@@ -46,7 +46,7 @@
         "deferred:session-growth:theme-only-residue"
       ],
       "candidate_lineage_refs": [
-        "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
+        "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json"
       ],
       "candidate_lineage_entries": [
         {
@@ -57,7 +57,7 @@
           "nearest_wrong_target": "aoa-playbooks",
           "status_posture": "early",
           "evidence_refs": [
-            "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
+            "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json"
           ],
           "supersedes": [],
           "merged_into": null,
@@ -78,7 +78,7 @@
     "event_id": "evt-fork-0001",
     "observed_at": "2026-04-05T10:05:00Z",
     "run_ref": "run-session-growth-001",
-    "session_ref": "session:2026-04-05-alpha",
+    "session_ref": "session:2026-04-05:reviewed-donor-harvest",
     "actor_ref": "aoa-skills:session-route-forks",
     "object_ref": {
       "repo": "aoa-skills",
@@ -89,7 +89,7 @@
     "evidence_refs": [
       {
         "kind": "fork_card",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/decision_fork.alpha.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/decision_fork.reviewed-donor-harvest.json",
         "role": "primary"
       },
       {
@@ -112,7 +112,7 @@
     "event_id": "evt-prog-0001",
     "observed_at": "2026-04-05T10:12:00Z",
     "run_ref": "run-session-growth-001",
-    "session_ref": "session:2026-04-05-alpha",
+    "session_ref": "session:2026-04-05:reviewed-donor-harvest",
     "actor_ref": "aoa-skills:session-progression-lift",
     "object_ref": {
       "repo": "aoa-skills",
@@ -123,7 +123,7 @@
     "evidence_refs": [
       {
         "kind": "progression_packet",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/progression_delta.alpha.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta.reviewed-donor-harvest.json",
         "role": "primary"
       },
       {
@@ -133,20 +133,29 @@
       }
     ],
     "payload": {
-      "route_ref": "route:session-growth",
-      "scope": "route_scoped",
+      "scope_ref": "route:session-growth",
+      "baseline_posture": "first_observed",
       "verdict": "hold",
-      "axis_deltas": {
-        "boundary_integrity": 0,
-        "execution_reliability": 1,
-        "change_legibility": 1,
-        "review_sharpness": 0,
-        "proof_discipline": 1,
-        "provenance_hygiene": 0,
-        "deep_readiness": 0
+      "axis_delta_summary": {
+        "boundary_integrity": "first_observed",
+        "execution_reliability": "first_observed",
+        "change_legibility": "first_observed",
+        "review_sharpness": "hold",
+        "proof_discipline": "first_observed",
+        "provenance_hygiene": "hold",
+        "deep_readiness": "hold"
       },
-      "cautions": [
-        "automation candidate still requires explicit checkpoint"
+      "axis_evidence_posture": {
+        "boundary_integrity": "confirmed",
+        "execution_reliability": "confirmed",
+        "change_legibility": "confirmed",
+        "review_sharpness": "no_movement",
+        "proof_discipline": "confirmed",
+        "provenance_hygiene": "no_movement",
+        "deep_readiness": "no_movement"
+      },
+      "caution_refs": [
+        "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta.reviewed-donor-harvest.json#cautions"
       ]
     }
   },
@@ -155,7 +164,7 @@
     "event_id": "evt-auto-0001",
     "observed_at": "2026-04-05T10:20:00Z",
     "run_ref": "run-session-growth-001",
-    "session_ref": "session:2026-04-05-alpha",
+    "session_ref": "session:2026-04-05:reviewed-donor-harvest",
     "actor_ref": "aoa-skills:automation-opportunity-scan",
     "object_ref": {
       "repo": "aoa-skills",
@@ -166,7 +175,7 @@
     "evidence_refs": [
       {
         "kind": "automation_candidate",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate.alpha.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/automation_candidate.reviewed-donor-harvest.json",
         "role": "primary"
       },
       {
@@ -176,10 +185,15 @@
       }
     ],
     "payload": {
+      "manual_route_ref": "manual-route:reviewed-donor-harvest:session-growth-automation-scan",
       "pipeline_ref": "pipeline:session-growth",
       "repeat_signal": "present",
+      "repeat_signal_posture": "present",
       "deterministic_ready": true,
+      "determinism_posture": "stable-input-output",
       "reversible_ready": true,
+      "reversibility_posture": "bounded-rollback",
+      "automation_mode_posture": "manual_only",
       "checkpoint_required": true,
       "seed_ready": false,
       "next_artifact_hint": "repair-prompt"
@@ -190,7 +204,7 @@
     "event_id": "evt-diagnose-0001",
     "observed_at": "2026-04-06T09:00:00Z",
     "run_ref": "run-session-growth-002",
-    "session_ref": "session:2026-04-06-beta",
+    "session_ref": "session:2026-04-06:derived-visibility-handoff",
     "actor_ref": "aoa-skills:session-self-diagnose",
     "object_ref": {
       "repo": "aoa-skills",
@@ -201,7 +215,7 @@
     "evidence_refs": [
       {
         "kind": "diagnosis_packet",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/diagnosis_packet.beta.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/diagnosis_packet.derived-visibility-handoff.json",
         "role": "primary"
       },
       {
@@ -219,14 +233,19 @@
         "derived_layer_gap"
       ],
       "symptom_refs": [
-        "artifact:session-growth-beta/handoff-gap",
-        "artifact:session-growth-beta/reuse-locality"
+        "artifact:session-growth/derived-visibility-handoff/handoff-gap",
+        "artifact:session-growth/derived-visibility-handoff/reuse-locality"
       ],
       "probable_cause_hypotheses": [
         "missing shared derived observability layer",
         "core finish telemetry not yet connected to derived stats"
       ],
       "confidence_band": "high",
+      "evidence_posture": {
+        "symptoms": "reviewed_symptom_refs",
+        "probable_causes": "reviewed_inference",
+        "automation_blocker": "reviewed_prerequisite_gap"
+      },
       "owner_hints": [
         "aoa-stats",
         "aoa-skills"
@@ -245,7 +264,7 @@
     "event_id": "evt-repair-0001",
     "observed_at": "2026-04-06T09:08:00Z",
     "run_ref": "run-session-growth-002",
-    "session_ref": "session:2026-04-06-beta",
+    "session_ref": "session:2026-04-06:derived-visibility-handoff",
     "actor_ref": "aoa-skills:session-self-repair",
     "object_ref": {
       "repo": "aoa-skills",
@@ -256,7 +275,7 @@
     "evidence_refs": [
       {
         "kind": "repair_packet",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/repair_cycle.beta.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/repair_cycle.derived-visibility-handoff.json",
         "role": "primary"
       },
       {
@@ -267,8 +286,20 @@
     ],
     "payload": {
       "route_ref": "route:session-growth",
+      "repair_cycle_state": "verified",
+      "execution_posture": "verified_with_one_artifact",
+      "linked_diagnosis_refs": [
+        "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/diagnosis_packet_receipt.derived-visibility-handoff.json"
+      ],
+      "action_family": "derived-visibility-handoff",
+      "approval_posture": "reviewed",
+      "rollback_marker": "git:derived-visibility-handoff-pre-repair",
+      "health_check_refs": [
+        "cmd:python scripts/validate_skills.py"
+      ],
       "resolution_status": "resolved",
-      "verification_artifact_count": 1
+      "verification_artifact_count": 1,
+      "iteration_limit": 1
     }
   },
   {
@@ -276,7 +307,7 @@
     "event_id": "evt-prog-0002",
     "observed_at": "2026-04-06T09:15:00Z",
     "run_ref": "run-session-growth-002",
-    "session_ref": "session:2026-04-06-beta",
+    "session_ref": "session:2026-04-06:derived-visibility-handoff",
     "actor_ref": "aoa-skills:session-progression-lift",
     "object_ref": {
       "repo": "aoa-skills",
@@ -287,7 +318,7 @@
     "evidence_refs": [
       {
         "kind": "progression_packet",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/progression_delta.beta.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta.derived-visibility-handoff.json",
         "role": "primary"
       },
       {
@@ -297,19 +328,28 @@
       }
     ],
     "payload": {
-      "route_ref": "route:session-growth",
-      "scope": "route_scoped",
+      "scope_ref": "route:session-growth",
+      "baseline_posture": "prior_delta_ref",
       "verdict": "advance",
-      "axis_deltas": {
-        "boundary_integrity": 0,
-        "execution_reliability": 1,
-        "change_legibility": 1,
-        "review_sharpness": 1,
-        "proof_discipline": 1,
-        "provenance_hygiene": 1,
-        "deep_readiness": 1
+      "axis_delta_summary": {
+        "boundary_integrity": "hold",
+        "execution_reliability": "advance",
+        "change_legibility": "advance",
+        "review_sharpness": "advance",
+        "proof_discipline": "advance",
+        "provenance_hygiene": "advance",
+        "deep_readiness": "advance"
       },
-      "cautions": []
+      "axis_evidence_posture": {
+        "boundary_integrity": "no_movement",
+        "execution_reliability": "confirmed",
+        "change_legibility": "confirmed",
+        "review_sharpness": "confirmed",
+        "proof_discipline": "confirmed",
+        "provenance_hygiene": "confirmed",
+        "deep_readiness": "confirmed"
+      },
+      "caution_refs": []
     }
   },
   {
@@ -317,7 +357,7 @@
     "event_id": "evt-auto-0002",
     "observed_at": "2026-04-06T09:22:00Z",
     "run_ref": "run-session-growth-002",
-    "session_ref": "session:2026-04-06-beta",
+    "session_ref": "session:2026-04-06:derived-visibility-handoff",
     "actor_ref": "aoa-skills:automation-opportunity-scan",
     "object_ref": {
       "repo": "aoa-skills",
@@ -328,7 +368,7 @@
     "evidence_refs": [
       {
         "kind": "automation_candidate",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate.beta.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/automation_candidate.derived-visibility-handoff.json",
         "role": "primary"
       },
       {
@@ -338,10 +378,15 @@
       }
     ],
     "payload": {
+      "manual_route_ref": "manual-route:derived-visibility-handoff:session-growth-automation-scan",
       "pipeline_ref": "pipeline:session-growth",
       "repeat_signal": "strong",
+      "repeat_signal_posture": "repeated",
       "deterministic_ready": true,
+      "determinism_posture": "stable-input-output",
       "reversible_ready": true,
+      "reversibility_posture": "bounded-rollback",
+      "automation_mode_posture": "dry_run_preview",
       "checkpoint_required": false,
       "seed_ready": true,
       "next_artifact_hint": "seed-pack"
@@ -352,7 +397,7 @@
     "event_id": "evt-fork-0002",
     "observed_at": "2026-04-06T09:30:00Z",
     "run_ref": "run-session-growth-002",
-    "session_ref": "session:2026-04-06-beta",
+    "session_ref": "session:2026-04-06:derived-visibility-handoff",
     "actor_ref": "aoa-skills:session-route-forks",
     "object_ref": {
       "repo": "aoa-skills",
@@ -363,7 +408,7 @@
     "evidence_refs": [
       {
         "kind": "fork_card",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/decision_fork.beta.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/decision_fork.derived-visibility-handoff.json",
         "role": "primary"
       },
       {
@@ -379,7 +424,7 @@
       "predicted_gain": "live derived stats layer",
       "predicted_risk": "moderate",
       "realized_outcome_refs": [
-        "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate.beta.json"
+        "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/automation_candidate.derived-visibility-handoff.json"
       ]
     }
   },
@@ -388,7 +433,7 @@
     "event_id": "evt-quest-0001",
     "observed_at": "2026-04-06T09:38:00Z",
     "run_ref": "run-session-growth-002",
-    "session_ref": "session:2026-04-06-beta",
+    "session_ref": "session:2026-04-06:derived-visibility-handoff",
     "actor_ref": "aoa-skills:quest-harvest",
     "object_ref": {
       "repo": "aoa-skills",
@@ -399,7 +444,7 @@
     "evidence_refs": [
       {
         "kind": "promotion_triage",
-        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/quest_promotion.beta.json",
+        "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/quest_promotion.derived-visibility-handoff.json",
         "role": "primary"
       },
       {
@@ -410,11 +455,13 @@
     ],
     "payload": {
       "promotion_verdict": "promote_to_playbook",
+      "repeat_evidence_posture": "reviewed_repeat_isolated",
       "owner_repo": "aoa-playbooks",
       "next_surface": "PLAYBOOK.md",
       "nearest_wrong_target": "promote_to_skill",
       "repeat_shape": "route",
-      "bounded_unit_ref": "route:session-growth"
+      "bounded_unit_ref": "route:session-growth",
+      "downstream_acceptance_status": "proposal_only"
     }
   }
 ]

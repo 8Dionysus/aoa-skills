@@ -1,10 +1,11 @@
 {
   "artifact_kind": "automation_candidate",
-  "session_ref": "session:2026-04-05-alpha",
+  "session_ref": "session:2026-04-05:reviewed-donor-harvest",
   "pipeline_ref": "pipeline:session-growth",
   "repeat_signal": "present",
   "deterministic_ready": true,
   "reversible_ready": true,
+  "automation_mode_posture": "manual_only",
   "checkpoint_required": true,
   "seed_ready": false,
   "next_artifact_hint": "repair-prompt"

@@ -8,7 +8,7 @@ The live route stays:
 `aoa-sdk -> aoa-skills -> aoa-playbooks -> aoa-stats`
 
 Inside this repo, the active home is the existing
-`mechanics/growth-cycle/examples/session_growth_artifacts/` family. The staging pack suggested
+`mechanics/growth-cycle/examples/session-growth-artifacts/` family. The staging pack suggested
 `examples/session-growth-kernel/`; this repo keeps the live family name instead
 of creating a second competing example tree.
 
@@ -77,8 +77,8 @@ Each core receipt:
 
 Maturity examples live in:
 
-- `mechanics/growth-cycle/examples/session_growth_artifacts/*.wave4.json`
-- `mechanics/growth-cycle/examples/session_growth_artifacts/core_skill_application_receipts.wave4.json`
+- `mechanics/growth-cycle/examples/session-growth-artifacts/*.kernel-maturity.json`
+- `mechanics/growth-cycle/examples/session-growth-artifacts/core_skill_application_receipts.kernel-maturity.json`
 
 The shared reviewed closeout source for this slice is:
 

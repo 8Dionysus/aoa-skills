@@ -16,6 +16,8 @@ promotion triage rather than broad extraction from a mixed session artifact.
 ## Expected object
 
 A final promotion verdict for one repeated reviewed quest unit.
+The repeated unit should already be isolated before this verdict is written.
+Repeat evidence posture should be explicit before the owner target is chosen.
 
 ## Boundary notes
 
@@ -24,5 +26,7 @@ This is a quest-harvest case, not a session-donor-harvest case.
 ## Verification hooks
 
 - confirm repeated reviewed quest evidence exists
+- confirm repeat evidence posture supports the verdict
 - name the chosen owner surface and nearest rejected target
+- keep the verdict smaller than downstream authoring or owner acceptance
 - avoid reopening broad donor extraction

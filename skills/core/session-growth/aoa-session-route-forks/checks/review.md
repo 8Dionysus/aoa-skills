@@ -21,6 +21,7 @@ harvest packet into explicit next-route forks.
 - [ ] Each branch names a likely gain, cost, and risk.
 - [ ] Risky or expensive branches include explicit stop conditions.
 - [ ] Hold, defer, or reanchor remains available when uncertainty is real.
+- [ ] A single selected child route was not launched from the fork cards; if it is anchored and output-named, it was routed to `aoa-summon`.
 - [ ] Quest-board language stays reflective rather than authoritative.
 - [ ] `aoa-routing` and `aoa-kag` were not treated as first-authoring targets.
 - [ ] Any `DECISION_FORK_RECEIPT` stayed evidence-linked and subordinate to the fork cards.
@@ -30,4 +31,5 @@ harvest packet into explicit next-route forks.
 
 - sessions that still need first-pass donor harvest
 - routes with only one obvious next bounded move
+- single anchored child-route launches that belong to `aoa-summon`
 - final promotion triage for one repeated quest unit

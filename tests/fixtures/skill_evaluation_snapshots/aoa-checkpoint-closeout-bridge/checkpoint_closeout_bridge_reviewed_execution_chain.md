@@ -22,7 +22,8 @@ running the donor -> progression -> quest chain in order.
 
 A closeout-context bundle plus one explicit donor -> progression -> quest
 execution chain that rereads the reviewed artifact instead of trusting
-checkpoint notes alone.
+checkpoint notes alone. Stage results remain visible as executed, skipped,
+deferred, or stopped rather than being forced into final verdicts.
 
 ## Boundary notes
 
@@ -36,3 +37,5 @@ The response should require a reviewed artifact, should treat checkpoint note
 and closeout handoff as shortlist hints, should preserve donor -> progression
 -> quest order, and should keep `aoa closeout run` separate from the explicit
 bridge execution.
+It should record evidence-linked reasons for any stage that cannot honestly
+run to a verdict.

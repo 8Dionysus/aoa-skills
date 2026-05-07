@@ -18,11 +18,13 @@ mutation.
 - risk and approval posture
 - known validation surfaces
 - rollback anchors if available
+- whether the repair is proposed, prepared, executing, verified, blocked, or handed off
 
 ## Expected outputs
 
 - one `REPAIR_PACKET`
 - a smallest diff shape or repair quest
+- execution posture that distinguishes prepared repair from executed or verified repair
 - approval need, rollback marker, health check, and improvement-log stub
 - explicit stop conditions and escalation points
 - one `REPAIR_CYCLE_RECEIPT` with diagnosis refs, checkpoint posture, and
@@ -39,6 +41,7 @@ mutation.
 ## Verification notes
 
 - Confirm checkpoint fields are present.
+- Confirm execution posture is present and does not overclaim validation.
 - Confirm the repair stays bounded.
 - Confirm escalation is named if the route widens.
 - Confirm the finish receipt cites rollback and health-check posture without

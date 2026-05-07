@@ -1,4 +1,6 @@
 policy:
   allow_implicit_invocation: false
 notes:
-  - This scaffold is explicit-only because quest promotion triage should stay a visible post-session decision rather than an automatic semantic trigger.
+  - This skill is explicit-only because quest promotion triage should stay a visible post-session decision rather than an automatic semantic trigger.
+  - Use it only after one repeated reviewed unit is isolated; the verdict proposes follow-through and does not mean downstream owner acceptance.
+  - Name repeat evidence posture before naming a promotion target.

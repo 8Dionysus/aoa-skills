@@ -11,7 +11,7 @@ name: aoa-automation-opportunity-scan
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `9ccc2dece835`
+- reviewed revision: `4f4be50c823b`
 
 ## Target status
 
@@ -31,8 +31,8 @@ name: aoa-automation-opportunity-scan
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the skill is evidence-backed as a detector and intentionally does not grant automation authority.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the skill is evidence-backed as a detector, now requires explicit automation-mode posture, and intentionally does not grant automation authority.
 
 ## Gaps and blockers
 

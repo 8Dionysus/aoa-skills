@@ -1,6 +1,6 @@
 {
   "artifact_kind": "decision_fork",
-  "session_ref": "session:2026-04-05-alpha",
+  "session_ref": "session:2026-04-05:reviewed-donor-harvest",
   "route_ref": "route:session-growth",
   "chosen_branch": "automation-first",
   "branch_options_count": 3,

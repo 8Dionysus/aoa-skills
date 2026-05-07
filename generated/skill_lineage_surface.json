@@ -1,7 +1,6 @@
 {
   "cohorts": {
     "pending_lineage": [
-      "aoa-summon",
       "titan-approval-ledger",
       "titan-approval-loom",
       "titan-appserver-bridge",
@@ -45,6 +44,7 @@
       "aoa-session-self-diagnose",
       "aoa-session-self-repair",
       "aoa-source-of-truth-check",
+      "aoa-summon",
       "aoa-tdd-slice",
       "atm10-change-protocol",
       "atm10-source-of-truth-check"
@@ -365,20 +365,16 @@
       "tbd_ref_count": 0
     },
     {
-      "lineage_blockers": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ],
-      "lineage_state": "pending",
-      "manifest_canonical_path_ready": false,
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
       "name": "aoa-summon",
-      "pending_technique_count": 2,
-      "published_technique_count": 0,
+      "pending_technique_count": 0,
+      "published_technique_count": 4,
       "scope": "core",
       "skill_path": "session-growth/aoa-summon/SKILL.md",
       "status": "evaluated",
-      "tbd_ref_count": 2
+      "tbd_ref_count": 0
     },
     {
       "lineage_blockers": [],

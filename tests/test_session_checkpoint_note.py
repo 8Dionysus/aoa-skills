@@ -49,7 +49,7 @@ def test_candidate_lineage_receipt_schema_validates_example() -> None:
     schema = _load_yaml(
         "skills/core/session-growth/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
     )
-    example = _load_json("mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
+    example = _load_json("mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json")
 
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(example)
@@ -59,7 +59,7 @@ def test_candidate_lineage_receipt_schema_requires_posture_context() -> None:
     schema = _load_yaml(
         "skills/core/session-growth/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml"
     )
-    example = _load_json("mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json")
+    example = _load_json("mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json")
     del example["nearest_wrong_target"]
 
     errors = [error.message for error in Draft202012Validator(schema).iter_errors(example)]

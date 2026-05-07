@@ -11,7 +11,7 @@ name: aoa-session-self-diagnose
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `347a52c5b08c`
+- reviewed revision: `58723d297fc1`
 
 ## Target status
 
@@ -31,8 +31,8 @@ name: aoa-session-self-diagnose
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the skill is evaluated as a diagnosis packet workflow, not as repair execution.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the skill is evaluated as a diagnosis packet workflow with explicit evidence posture, so hints, generated summaries, and stale neighboring claims cannot become settled root-cause evidence.
 
 ## Gaps and blockers
 

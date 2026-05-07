@@ -11,3 +11,4 @@ A deflection that keeps the work as an active or still-unproven quest instead of
 Do not use this skill while the route is active or before review. Promotion should wait until the pattern is honestly repeated and the evidence is bounded.
 ## Verification hooks
 The response should say that reviewed repetition is missing and should avoid inventing a promotion target prematurely.
+It should not invent repeat evidence posture when the route is still active and anecdotal.

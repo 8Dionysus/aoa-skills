@@ -1,10 +1,11 @@
 {
   "artifact_kind": "automation_candidate",
-  "session_ref": "session:2026-04-06-beta",
+  "session_ref": "session:2026-04-06:derived-visibility-handoff",
   "pipeline_ref": "pipeline:session-growth",
   "repeat_signal": "strong",
   "deterministic_ready": true,
   "reversible_ready": true,
+  "automation_mode_posture": "dry_run_preview",
   "checkpoint_required": false,
   "seed_ready": true,
   "next_artifact_hint": "seed-pack"

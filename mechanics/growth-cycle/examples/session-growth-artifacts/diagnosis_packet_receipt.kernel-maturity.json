@@ -1,9 +1,9 @@
 {
   "event_kind": "diagnosis_packet_receipt",
-  "event_id": "evt-wave4-diagnose-0001",
+  "event_id": "evt-kernel-maturity-diagnose-0001",
   "observed_at": "2026-04-12T01:12:00Z",
-  "run_ref": "run-wave4-kernel-001",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "run_ref": "run-kernel-maturity-001",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "actor_ref": "aoa-skills:session-self-diagnose",
   "object_ref": {
     "repo": "aoa-skills",
@@ -14,7 +14,7 @@
   "evidence_refs": [
     {
       "kind": "diagnosis_packet",
-      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/diagnosis_packet.wave4.json",
+      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/diagnosis_packet.kernel-maturity.json",
       "role": "primary"
     },
     {
@@ -32,14 +32,19 @@
       "approval_ambiguity"
     ],
     "symptom_refs": [
-      "artifact:wave4/manual-loop-repeats",
-      "artifact:wave4/approval-boundary-fuzzy"
+      "artifact:kernel-maturity/manual-loop-repeats",
+      "artifact:kernel-maturity/approval-boundary-fuzzy"
     ],
     "probable_cause_hypotheses": [
       "checkpoint posture is not yet preserved as an explicit prerequisite",
       "rollback and health-check notes are still too thin for a seed-ready verdict"
     ],
     "confidence_band": "medium",
+    "evidence_posture": {
+      "symptoms": "reviewed_symptom_refs",
+      "probable_causes": "reviewed_inference_with_unknowns",
+      "automation_blocker": "provisional_until_bounded_repair"
+    },
     "owner_hints": [
       "aoa-skills",
       "aoa-playbooks"

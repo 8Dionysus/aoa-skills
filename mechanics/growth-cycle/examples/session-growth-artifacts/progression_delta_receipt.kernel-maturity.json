@@ -1,9 +1,9 @@
 {
   "event_kind": "progression_delta_receipt",
-  "event_id": "evt-wave4-progression-0001",
+  "event_id": "evt-kernel-maturity-progression-0001",
   "observed_at": "2026-04-12T01:22:00Z",
-  "run_ref": "run-wave4-kernel-001",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "run_ref": "run-kernel-maturity-001",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "actor_ref": "aoa-skills:session-progression-lift",
   "object_ref": {
     "repo": "aoa-skills",
@@ -14,7 +14,7 @@
   "evidence_refs": [
     {
       "kind": "progression_packet",
-      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/progression_delta.wave4.json",
+      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta.kernel-maturity.json",
       "role": "primary"
     },
     {
@@ -25,6 +25,7 @@
   ],
   "payload": {
     "scope_ref": "route:session-growth-kernel",
+    "baseline_posture": "prior_delta_ref",
     "axis_delta_summary": {
       "boundary_integrity": "advance",
       "execution_reliability": "hold",
@@ -34,12 +35,21 @@
       "provenance_hygiene": "advance",
       "deep_readiness": "thin-evidence"
     },
+    "axis_evidence_posture": {
+      "boundary_integrity": "confirmed",
+      "execution_reliability": "no_movement",
+      "change_legibility": "confirmed",
+      "review_sharpness": "no_movement",
+      "proof_discipline": "no_movement",
+      "provenance_hygiene": "confirmed",
+      "deep_readiness": "provisional"
+    },
     "verdict": "hold",
     "caution_refs": [
-      "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate.wave4.json#defer_condition"
+      "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/automation_candidate.kernel-maturity.json#defer_condition"
     ],
     "unlock_hint_refs": [
-      "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/progression_delta.wave4.json#unlock_hints[0]"
+      "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta.kernel-maturity.json#unlock_hints[0]"
     ],
     "automation_readiness_hint": "candidate exists but keep seed-ready conditional"
   }

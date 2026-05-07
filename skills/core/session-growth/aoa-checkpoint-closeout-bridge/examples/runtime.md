@@ -26,12 +26,17 @@ triage in sequence.
 
 - one closeout context bundle
 - one ordered reviewed-closeout execution chain
+- accepted, rejected, and unresolved focus hints before the chain starts
+- one status per downstream stage: `executed`, `skipped`, `deferred`, or
+  `stopped`
 - one execution report naming the emitted artifacts and receipts
 
 ## Boundary notes
 
 - Do not use this skill to mint final verdicts from checkpoint notes alone.
 - Do not hide it inside `aoa closeout run`.
+- Do not force a downstream verdict when the reviewed evidence only supports a
+  skipped or deferred stage.
 - Do not refresh stats before the explicit closeout chain finishes.
 
 ## Verification notes
@@ -40,6 +45,7 @@ triage in sequence.
 - Confirm the reviewed artifact is reread during donor harvest, progression
   lift, and quest harvest.
 - Confirm the execution order stays donor -> progression -> quest.
+- Confirm stage statuses are visible and evidence-linked.
 - Confirm checkpoint note and closeout handoff act as shortlist hints rather
   than sole evidence.
 - Confirm stats refresh remains downstream of the bridge.

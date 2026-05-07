@@ -19,6 +19,8 @@ bounded `DIAGNOSIS_PACKET`.
 - [ ] Each diagnosis cites concrete evidence refs.
 - [ ] Symptoms and probable causes stay separate.
 - [ ] Probable causes remain probabilistic when evidence is thin.
+- [ ] Each meaningful symptom and probable cause carries an evidence posture such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown.
+- [ ] Checkpoint, closeout, generated, or stale hints were not treated as settled diagnosis evidence.
 - [ ] A likely owner layer is named without pretending the verdict is already final.
 - [ ] Unknowns are preserved where evidence is incomplete.
 - [ ] No hidden mutation or silent repair happened.
