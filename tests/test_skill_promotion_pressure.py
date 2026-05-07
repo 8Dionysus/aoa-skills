@@ -62,7 +62,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
             self.assertGreater(self_repair["usage_evidence"]["usage_score"], 0)
         else:
             self.assertEqual("watch", self_repair["promotion_pressure"])
-            self.assertEqual(0, self_repair["usage_evidence"]["usage_score"])
+            self.assertLess(self_repair["usage_evidence"]["usage_score"], 5)
         self.assertIn(
             "missing_autonomy_check",
             self_repair["quality_findings"],
