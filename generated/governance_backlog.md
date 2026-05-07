@@ -12,7 +12,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 - pending technique bridge lineage: 15
 - canonical maintenance cohort: 12
 - comparative pending cohort: 13
-- review truth-sync gaps: 6
+- review truth-sync gaps: 0
 - docs truth-sync issues: 0
 
 | name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |
@@ -72,16 +72,16 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | d73659d46c84 | d73659d46c84 | True | - | true |
 | aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | aaf152665bb6 | aaf152665bb6 | True | - | true |
 | aoa-automation-opportunity-scan | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-automation-opportunity-scan.md | f23c6710e33b | f23c6710e33b | True | - | true |
-| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | e921dd56d297 | fa79051e3727 | True | reviewed_revision_mismatch(expected=fa79051e3727, recorded=e921dd56d297) | false |
+| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | fa79051e3727 | fa79051e3727 | True | - | true |
 | aoa-checkpoint-closeout-bridge | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md | c835d142ef43 | c835d142ef43 | True | - | true |
 | aoa-commit-growth-seam | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-commit-growth-seam.md | e27275438ccf | e27275438ccf | True | - | true |
-| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 897b7fddb02f | bc94632f32d5 | True | reviewed_revision_mismatch(expected=bc94632f32d5, recorded=897b7fddb02f) | false |
-| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | cc0dc8cd84d8 | 0a168a1da64c | True | reviewed_revision_mismatch(expected=0a168a1da64c, recorded=cc0dc8cd84d8) | false |
+| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | bc94632f32d5 | bc94632f32d5 | True | - | true |
+| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 0a168a1da64c | 0a168a1da64c | True | - | true |
 | aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | fcef34109123 | fcef34109123 | True | - | true |
-| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | feeb4ae634fb | c54d00def754 | True | reviewed_revision_mismatch(expected=c54d00def754, recorded=feeb4ae634fb) | false |
+| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | c54d00def754 | c54d00def754 | True | - | true |
 | aoa-local-stack-bringup | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-local-stack-bringup.md | 962e39b9bcbe | 962e39b9bcbe | False | - | true |
-| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | 38a599987abb | 335bffcde5a2 | True | reviewed_revision_mismatch(expected=335bffcde5a2, recorded=38a599987abb) | false |
-| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | d79309999a7c | 31a6de877187 | True | reviewed_revision_mismatch(expected=31a6de877187, recorded=d79309999a7c) | false |
+| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | 335bffcde5a2 | 335bffcde5a2 | True | - | true |
+| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 31a6de877187 | 31a6de877187 | True | - | true |
 | aoa-quest-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-quest-harvest.md | beb109a2ad4a | beb109a2ad4a | True | - | true |
 | aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | be0c1056c17a | be0c1056c17a | False | - | true |
 | aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 1ae7817b49fa | 1ae7817b49fa | True | - | true |
@@ -101,6 +101,6 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 - `blocked_by_pending_lineage`: titan-approval-ledger, titan-approval-loom, titan-appserver-bridge, titan-appserver-plan, titan-closeout, titan-console, titan-event-replay, titan-memory-loom, titan-memory-prune, titan-mutation-gate, titan-recall, titan-receipt, titan-runtime-gate, titan-summon, titan-thread-turn-binding
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
-- `review_truth_sync`: aoa-bounded-context-map, aoa-contract-test, aoa-core-logic-boundary, aoa-invariant-coverage-audit, aoa-port-adapter-refactor, aoa-property-invariants
+- `review_truth_sync`: -
 - `docs_truth_sync`: -
 

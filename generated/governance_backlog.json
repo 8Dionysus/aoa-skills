@@ -59,14 +59,7 @@
       "aoa-summon"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": [
-      "aoa-bounded-context-map",
-      "aoa-contract-test",
-      "aoa-core-logic-boundary",
-      "aoa-invariant-coverage-audit",
-      "aoa-port-adapter-refactor",
-      "aoa-property-invariants"
-    ]
+    "review_truth_sync": []
   },
   "governance_backlog_version": 5,
   "review_truth_sync": [
@@ -133,16 +126,14 @@
     {
       "current_revision": "fa79051e3727",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=fa79051e3727, recorded=e921dd56d297)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
-      "reviewed_revision": "e921dd56d297",
+      "reviewed_revision": "fa79051e3727",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "c835d142ef43",
@@ -171,30 +162,26 @@
     {
       "current_revision": "bc94632f32d5",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=bc94632f32d5, recorded=897b7fddb02f)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
-      "reviewed_revision": "897b7fddb02f",
+      "reviewed_revision": "bc94632f32d5",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "0a168a1da64c",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=0a168a1da64c, recorded=cc0dc8cd84d8)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
       "review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
-      "reviewed_revision": "cc0dc8cd84d8",
+      "reviewed_revision": "0a168a1da64c",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "fcef34109123",
@@ -211,16 +198,14 @@
     {
       "current_revision": "c54d00def754",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=c54d00def754, recorded=feeb4ae634fb)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
       "review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
-      "reviewed_revision": "feeb4ae634fb",
+      "reviewed_revision": "c54d00def754",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "962e39b9bcbe",
@@ -237,30 +222,26 @@
     {
       "current_revision": "335bffcde5a2",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=335bffcde5a2, recorded=38a599987abb)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
       "review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
-      "reviewed_revision": "38a599987abb",
+      "reviewed_revision": "335bffcde5a2",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "31a6de877187",
       "governance_decision": "default_reference",
-      "issues": [
-        "reviewed_revision_mismatch(expected=31a6de877187, recorded=d79309999a7c)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
-      "reviewed_revision": "d79309999a7c",
+      "reviewed_revision": "31a6de877187",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "beb109a2ad4a",
