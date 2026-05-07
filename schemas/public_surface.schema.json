@@ -72,6 +72,7 @@
           "invocation_mode",
           "skill_path",
           "lineage_state",
+          "technique_bridge_findings",
           "is_default_reference",
           "governance_decision",
           "governance_lane_ids",
@@ -101,6 +102,11 @@
           },
           "skill_path": { "type": "string", "minLength": 1 },
           "lineage_state": { "type": "string", "enum": ["published", "pending"] },
+          "technique_bridge_findings": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
           "is_default_reference": { "type": "boolean" },
           "governance_decision": {
             "type": ["string", "null"],

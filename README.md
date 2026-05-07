@@ -2,9 +2,9 @@
 
 Public library of reusable Codex-facing skills for coding agents and humans.
 
-`aoa-skills` is the operational companion to `aoa-techniques`. Where `aoa-techniques` stores reusable engineering practice, `aoa-skills` stores **skill bundles** that package one or more techniques and bounded actions into reviewable workflows for agents. A skill is normally a multi-technique or multi-step package. A single-technique skill is an explicit reviewed exception, not the default shape.
+`aoa-skills` is the operational companion to `aoa-techniques`. Where `aoa-techniques` stores reusable engineering practice, `aoa-skills` stores **skill bundles**: self-contained workflows an agent can execute. A skill may package techniques and bounded actions, and a mature skill may also produce technique extraction work. Technique links are bridge evidence, not runtime dependency or automatic status blockers. A single-technique skill is an explicit reviewed exception, not the default shape.
 
-A skill here is not a random prompt and not a hidden project hack. It is a reusable agent-facing workflow with clear trigger boundaries, explicit contracts, risks, verification guidance, and technique traceability.
+A skill here is not a random prompt and not a hidden project hack. It is a reusable agent-facing workflow with clear trigger boundaries, explicit contracts, risks, verification guidance, and honest technique bridge traceability when such a bridge is declared.
 
 > Current release: `v0.3.3`. See [CHANGELOG](CHANGELOG.md) for release notes.
 
@@ -40,8 +40,12 @@ Use the shortest route by need:
 - checkpoint-to-closeout bridge orchestration: `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`, `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, and `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
 - ability-reader and loadout surfaces: `mechanics/rpg/parts/ability-reader-boundary/README.md`, `mechanics/rpg/parts/loadout-posture/README.md`, and `generated/skill_ability_cards.min.example.json`
 - evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
+- authored skill quality audit across bodies, evidence, runtime, lineage, and upgrade targets: `scripts/audit_skill_quality.py`, `generated/skill_quality_audit.md`, and `generated/skill_quality_audit.json`
+- real repository skill-dispatch trials: `scripts/run_skill_reality_trials.py`, `generated/skill_reality_trials.md`, and `generated/skill_reality_trials.json`
+- lived-use promotion pressure for non-canonical skills: `mechanics/method-growth/docs/PROMOTION_PRESSURE.md`, `scripts/report_skill_promotion_pressure.py`, `generated/skill_promotion_pressure.md`, and `generated/skill_promotion_pressure.json`
 - deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
 - portable export, component refresh law, and local runtime seams: `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`, `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`, `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`, `mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md`, `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md`, `mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md`, `mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`, `mechanics/release-support/docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
+- workspace and repo adoption audit before rollout: `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`, `scripts/audit_workspace_skill_adoption.py`, `generated/workspace_skill_adoption_audit.md`, and `generated/workspace_skill_adoption_audit.json`
 - named MCP dependency scaffolds and workspace-alignment checks: `mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json`, `mechanics/boundary-bridge/examples/openai.*.example.yaml`, `scripts/build_openai_yaml_examples.py`, and `scripts/validate_skill_mcp_wiring.py`
 - install, trust, config, and UI surfaces: `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`, `mechanics/release-support/docs/CONTEXT_RETENTION.md`, `mechanics/release-support/docs/UI_METADATA_AND_ASSETS.md`, `mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md`, `mechanics/release-support/docs/TRUST_GATE_AND_ALLOWLIST.md`, `mechanics/release-support/docs/SKILL_CONTEXT_GUARD.md`, and `mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md`
 - activation quality and conformance: `mechanics/audit/docs/TRIGGER_EVALS.md`, `mechanics/antifragility/parts/collision-stress-program/README.md`, `mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md`, and `mechanics/audit/docs/SKILLS_REF_VALIDATION.md`
@@ -80,7 +84,7 @@ Bad candidates:
 
 In short:
 
-`origin project -> technique canon -> skill canon -> project overlay`
+`origin project -> technique canon <-> skill canon -> project overlay`
 
 The runtime path for public skill use remains:
 

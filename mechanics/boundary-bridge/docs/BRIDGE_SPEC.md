@@ -1,13 +1,17 @@
 # Bridge spec
 
-This document defines how `aoa-skills` should consume and compose techniques from `aoa-techniques`.
+This document defines how `aoa-skills` relates to techniques in
+`aoa-techniques` without making the skill layer dependent on live technique
+resolution.
 
 ## Goal
 
 Keep techniques as the canonical source of reusable engineering practice while
-allowing skills to package those practices into Codex-friendly workflows.
-Skills are expected to act as composition packages, not as thin mirrors of a
-single technique.
+keeping skills as self-contained Codex-friendly workflows.
+The bridge is bidirectional: techniques can be composed into skills, and stable
+skill workflows can be decomposed into technique extraction requests.
+Skills are expected to act as execution packages, not as thin mirrors of a
+single technique and not as runtime links to another repository.
 `mechanics/boundary-bridge/docs/LAYER_POSITION.md` is the repo-owned boundary note for where this bridge
 fits in the wider AoA layer map.
 
@@ -15,11 +19,14 @@ fits in the wider AoA layer map.
 
 Skills should not be thin links that require Codex to fetch a remote repository at runtime to understand the technique.
 The runtime artifact should remain self-contained enough to execute reviewably.
+Technique bridge state should not be used as the only reason to block a
+skill-native maturity or promotion review. It should instead name bridge repair,
+refresh, extraction, or upstream technique work.
 
 ## Composition model
 
 Each skill may reference one or more techniques by ID, but the default shape is
-multi-technique and/or multi-action composition.
+multi-technique and/or multi-action execution.
 A skill that references only one technique must carry an explicit exception
 review explaining why it still deserves a skill boundary.
 A skill can use selected sections from each referenced technique.
@@ -96,6 +103,21 @@ Preferred model:
 5. keep the final committed `SKILL.md` human-reviewable
 
 This keeps skill execution stable and reproducible.
+
+## Skill-to-technique extraction
+
+The reverse route is also first-class:
+
+1. observe repeated skill execution, dispatch, session, or reality-trial evidence
+2. separate the stable reusable practice from the skill's agent-facing workflow
+3. route the reusable practice to `aoa-techniques` as an extraction or promotion
+   request
+4. keep the original skill self-contained while the technique route matures
+5. refresh the bridge manifest only when the technique side has a concrete
+   owner-local landing or pinned source ref
+
+This keeps living skill workflows from being trapped behind technique
+publication while preserving the direct relationship between the layers.
 
 Current local helper:
 
@@ -225,6 +247,8 @@ when the skill layer does not add a real package boundary.
 ## Drift policy
 
 If a technique changes materially in `aoa-techniques`, dependent skills should be reviewed and refreshed.
+If a skill changes materially through repeated use, the technique bridge should
+be reviewed for possible extraction or updated adjacency.
 
 Recommended local workflow:
 
@@ -240,6 +264,8 @@ For multi-skill refreshes, prefer explicit `--skill` lists against a local `../a
 If a selected skill is mixed-lineage, refresh only its published refs and keep pending entries at `TBD` until the upstream technique is published.
 Future technique harvests should pass through the composition filter above
 before any skill file is created or refreshed.
+Future skill-native harvests should pass through the extraction route above
+before turning lived workflow practice into reusable technique canon.
 
 ## Invocation policy
 

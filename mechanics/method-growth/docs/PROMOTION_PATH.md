@@ -5,10 +5,23 @@ This document defines the public repository convention for moving a skill throug
 Status changes are governance changes, not cosmetic relabeling.
 Machine-checkable floors make promotion safer, but they do not replace human review and explicit promotion decisions.
 
+Repeated live use is tracked separately in `PROMOTION_PRESSURE.md` and
+`generated/skill_promotion_pressure.md`. That evidence does not promote a skill
+automatically. It tells reviewers when a non-canonical skill is used enough that
+the next status or canonical review should stop being manual memory.
+
+Technique bridge evidence is adjacent to this path, not identical with it.
+Skills can be composed from techniques, and stable skill workflows can be
+decomposed into technique extraction requests. Pending or drifted bridge state
+routes bridge repair or upstream technique work; it does not by itself settle
+whether the skill execution object is mature.
+
 ## `scaffold -> linked`
 
 - machine-checkable floor:
-  published techniques use concrete pinned `source_ref` values; pending techniques may remain honest `AOA-T-PENDING-*` entries with `path: TBD` and `source_ref: TBD`
+  the skill keeps an honest bridge manifest when a technique relationship is
+  declared; pending techniques may remain honest `AOA-T-PENDING-*` entries with
+  `path: TBD` and `source_ref: TBD`
 - required public review surface:
   no dedicated review record is required in this first step; the change may land as traceability hardening if the PR makes the bridge update explicit
 - still requires human judgment:
@@ -40,7 +53,9 @@ Read the current derived evidence layer with:
 ## `evaluated -> canonical`
 
 - machine-checkable floor:
-  the skill passes the lower floors, uses `## Technique traceability`, contains no pending lineage, no `TBD` path or `source_ref`, and retains full evaluation coverage
+  the skill passes the lower floors, remains self-contained, separates
+  skill-native evidence from technique bridge findings, and retains full
+  evaluation coverage
 - required public review surface:
   `docs/reviews/canonical-candidates/<skill-name>.md`
 - still requires human judgment:
@@ -52,6 +67,8 @@ Public review records should say:
 
 - whether the current machine-checkable floors pass
 - whether the runtime `SKILL.md` meaning changed or only metadata/evidence changed
+- whether any technique bridge finding is a blocker for a bridge-completeness
+  claim or only a follow-up route to `aoa-techniques`
 - what still blocks the next status step after the current decision
 - where to read the evaluation matrix and snapshot-backed coverage before making the promotion claim
 
@@ -59,3 +76,9 @@ Use:
 
 - `templates/STATUS_PROMOTION_REVIEW.template.md` for non-canonical promotion work
 - `templates/CANDIDATE_REVIEW.template.md` for canonical-candidate and canonical-promotion work
+
+Before deciding that a heavily used skill should remain non-canonical, read:
+
+- `generated/skill_promotion_pressure.md`
+- `generated/skill_quality_audit.md`
+- `generated/governance_backlog.md`

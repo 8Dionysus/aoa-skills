@@ -7,6 +7,7 @@ governed follow-through, adoption evidence, regression, retirement, and
 default-reference rationale for skill-layer methods.
 
 Active surfaces include `docs/MATURITY_MODEL.md`, `docs/PROMOTION_PATH.md`,
+`docs/PROMOTION_PRESSURE.md`,
 `docs/CANDIDATE_LINEAGE_CONTRACT.md`, `docs/CANDIDATE_REF_REFINERY.md`,
 `docs/OWNER_STATUS_SURFACES.md`, `docs/GOVERNED_FOLLOWTHROUGH.md`, adoption
 parts, `mechanics/OWNER_REQUEST_RECEIPTS.md`, and generated project-core
@@ -22,6 +23,9 @@ outer-ring readiness readouts.
   approval-gate, and ADR vs source-of-truth.
 - Keep the project-core outer ring classification-backed and soft-gated through
   `generated/project_core_outer_ring_readiness.min.json`.
+- Keep lived-use promotion pressure generated and review-oriented so repeated
+  installed or dispatched skill use opens the right next review instead of
+  becoming manual memory.
 - Keep `repo-core-only` equal to kernel plus outer ring, and keep
   `repo-project-foundation` equal to kernel plus outer ring plus risk guard
   ring.

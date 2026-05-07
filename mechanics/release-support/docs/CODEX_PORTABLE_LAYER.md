@@ -92,6 +92,10 @@ These surfaces make installation, local adaptation, trust checks, and context re
 `scripts/inspect_skill_pack.py` is the first self-contained handoff inspection primitive over that bundle-local contract: it checks manifest integrity, staged file digests, bundle digest, and archive layout before any install step.
 `scripts/import_skill_pack.py` is the preferred receiver-side path on top of that same contract: it always inspects first, then optionally installs and verifies one staged bundle or ZIP handoff as one repo-local flow.
 `scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` remain the lower-level advanced path when install and verification need to stay separate without introducing a new registry surface.
+`scripts/audit_workspace_skill_adoption.py` is the read-only workspace pass over
+the same profile verification contract: it checks root and repo install
+surfaces before rollout, but it does not install, approve, or accept skills for
+downstream owners.
 
 Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 
@@ -179,6 +183,10 @@ Validate the result:
 Verify one installed profile/root against the current export:
 
     python scripts/verify_skill_pack.py --repo-root . --profile repo-default --format json
+
+Audit real workspace and repo install roots before rollout:
+
+    python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
 
 Stage one profile-scoped handoff bundle:
 

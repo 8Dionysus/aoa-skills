@@ -19,6 +19,8 @@ before opening them.
   canonical-candidate review guidance.
 - [Promotion Path](PROMOTION_PATH.md): public convention for moving skills
   through the maturity ladder.
+- [Promotion Pressure](PROMOTION_PRESSURE.md): derived lived-use signal that
+  routes heavily used non-canonical skills to review or blocker repair.
 
 ## Boundary
 

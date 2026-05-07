@@ -12,6 +12,7 @@ If you are trying to choose or execute an object, this is the wrong layer.
 The current signaling layer is intentionally derived from facts that already exist:
 - skill `status`
 - technique lineage in `techniques.yaml`
+- technique bridge findings when traceability, pinned refs, or extraction routes need review
 - public review records
 - evaluation fixtures
 - governance lane decisions in `docs/governance/lanes.yaml`
@@ -34,6 +35,11 @@ The maintenance and readiness companion is:
 
 - `generated/governance_backlog.md`
 
+The lived-use promotion-pressure companion is:
+
+- `mechanics/method-growth/docs/PROMOTION_PRESSURE.md`
+- `generated/skill_promotion_pressure.md`
+
 The overlay-maturity companion is:
 
 - `generated/overlay_readiness.md`
@@ -47,11 +53,12 @@ The packaging and relationship companions are:
 - `generated/skill_boundary_matrix.md`
 
 Read the live counts in those derived surfaces instead of treating this guide as a second status ledger.
-`generated/public_surface.md` and `generated/governance_backlog.md` are the authoritative readouts for the current total-skill count, default-reference cohort, default-reference-ready cohort, pending-lineage state, and maintenance/readiness view.
+`generated/public_surface.md` and `generated/governance_backlog.md` are the authoritative readouts for the current total-skill count, default-reference cohort, default-reference-ready cohort, technique-bridge state, and maintenance/readiness view.
 
 These derived surfaces stay separate on purpose:
 - `generated/public_surface.*` is the status and promotion readout
 - `generated/governance_backlog.*` is the maintenance and readiness queue
+- `generated/skill_promotion_pressure.*` is the lived-use review-pressure queue
 - `generated/overlay_readiness.*` is the family-level maturity surface for repo-local project overlays
 - `generated/skill_boundary_matrix.*` cross-links adjacency evidence to governance lanes
 - `generated/skill_bundle_index.*` and `generated/skill_graph.*` are packaging and relationship views
@@ -87,6 +94,27 @@ It does not:
 - decide default-reference authority
 - replace review judgment
 - imply that promotion is automatic
+- treat technique bridge incompleteness as the only measure of skill maturity
+
+### `promotion_pressure`
+
+`promotion_pressure` is the derived lived-use signal for non-canonical skills.
+It combines governance readiness, quality findings, workspace adoption, runtime
+dispatch reports, local session mentions, hook prompts, and reality trials.
+
+It does not:
+- change `status`
+- overrule skill-native gate blockers
+- promote project overlays into core canon
+- replace review records
+
+It does:
+- reveal scaffold or evaluated skills that are already operating as important
+  workflows
+- route heavily used blocked skills toward blocker repair before promotion
+- route heavily used skills with only bridge findings toward promotion review plus
+  bridge repair or extraction
+- route heavily used ready skills toward status or canonical review
 
 The legacy `candidate_ready` cohort is still emitted in `generated/public_surface.json` as a compatibility alias for the `default_reference_ready` cohort.
 
@@ -106,11 +134,17 @@ For a live family, read `generated/overlay_readiness.md` first and then the matc
 
 This is why a skill can be `ready` for default-reference consideration and still carry `stay_evaluated` as the explicit governance outcome.
 
-### `pending lineage`
+### `technique bridge findings`
 
-`pending lineage` means upstream technique publication or manifest completeness still blocks the canonical path.
-It does not cancel `evaluated`.
-It means the skill is reviewed and tested at the skill layer, but the upstream technique layer is not fully published yet.
+Technique bridge findings mean upstream technique publication, manifest
+completeness, pinned refs, drift, or extraction routing still need review.
+They do not cancel `evaluated`, and they do not by themselves decide whether the
+skill execution object can move through maturity.
+
+They do:
+- keep the direct skill-technique relationship visible
+- route reusable practice extraction or refresh work to `aoa-techniques`
+- prevent bridge-completeness claims when the bridge is still pending
 
 ### `explicit-only`
 
@@ -141,11 +175,12 @@ Use this order when orienting in the public surface:
 6. `mechanics/audit/docs/PUBLIC_SURFACE.md`
 7. `generated/public_surface.md`
 8. `generated/governance_backlog.md`
-9. `generated/overlay_readiness.md`
-10. `generated/skill_boundary_matrix.md`
-11. `generated/skill_bundle_index.md`
-12. `generated/skill_graph.md`
-13. `docs/README.md`
+9. `generated/skill_promotion_pressure.md`
+10. `generated/overlay_readiness.md`
+11. `generated/skill_boundary_matrix.md`
+12. `generated/skill_bundle_index.md`
+13. `generated/skill_graph.md`
+14. `docs/README.md`
 
 ## What this layer does not do
 

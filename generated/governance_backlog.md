@@ -9,7 +9,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 - total skills: 45
 - candidate ready without review: 0
-- blocked by pending lineage: 16
+- pending technique bridge lineage: 16
 - canonical maintenance cohort: 12
 - comparative pending cohort: 3
 - review truth-sync gaps: 0

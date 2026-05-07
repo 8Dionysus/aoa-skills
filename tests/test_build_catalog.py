@@ -1578,7 +1578,7 @@ class BuildCatalogTests(unittest.TestCase):
         self.assertIn("included_in_profile", edge_kinds)
         self.assertIn("available_in_artifact_group", edge_kinds)
 
-    def test_write_public_surface_marks_pending_lineage_and_resolves_both_review_paths(self) -> None:
+    def test_write_public_surface_keeps_pending_lineage_as_bridge_finding(self) -> None:
         repo_root = self.make_repo(
             status="evaluated",
             techniques=[PENDING_TECHNIQUE],
@@ -1590,25 +1590,20 @@ class BuildCatalogTests(unittest.TestCase):
 
         payload = self.load_public_surface(repo_root)
         skill_entry = payload["skills"][0]
-        self.assertEqual("blocked", skill_entry["default_reference_readiness"])
+        self.assertEqual("ready", skill_entry["default_reference_readiness"])
         self.assertEqual("pending", skill_entry["lineage_state"])
-        self.assertFalse(skill_entry["canonical_candidate_ready"])
+        self.assertTrue(skill_entry["canonical_candidate_ready"])
+        self.assertEqual([], skill_entry["default_reference_readiness_blockers"])
+        self.assertEqual([], skill_entry["canonical_candidate_blockers"])
         self.assertIn(
             "pending_technique_dependencies",
-            skill_entry["default_reference_readiness_blockers"],
-        )
-        self.assertIn(
-            "pending_technique_dependencies",
-            skill_entry["canonical_candidate_blockers"],
+            skill_entry["technique_bridge_findings"],
         )
         self.assertIn(
             "pending_technique_entries",
-            skill_entry["canonical_candidate_blockers"],
+            skill_entry["technique_bridge_findings"],
         )
-        self.assertIn(
-            "tbd_technique_refs",
-            skill_entry["canonical_candidate_blockers"],
-        )
+        self.assertIn("tbd_technique_refs", skill_entry["technique_bridge_findings"])
         self.assertEqual(
             "docs/reviews/status-promotions/aoa-test-skill.md",
             skill_entry["promotion_review_path"],
@@ -1654,7 +1649,7 @@ class BuildCatalogTests(unittest.TestCase):
         markdown = self.load_public_surface_markdown(repo_root)
         self.assertIn("## Default-reference ready cohort", markdown)
         self.assertIn(
-            "| aoa-test-skill | evaluated | ready | core | explicit-preferred | published | - | - | - | `docs/reviews/status-promotions/aoa-test-skill.md` | - |",
+            "| aoa-test-skill | evaluated | ready | core | explicit-preferred | published | - | - | - | - | `docs/reviews/status-promotions/aoa-test-skill.md` | - |",
             markdown,
         )
 

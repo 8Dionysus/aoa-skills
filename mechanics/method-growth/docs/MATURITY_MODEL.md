@@ -6,6 +6,9 @@ The repository currently has a mixed-status public surface with canonical, evalu
 
 `status` in the canonical skill bundle is the maturity signal.
 The derived public surface now keeps default-reference readiness separate from that maturity ladder so a skill can be `evaluated` or even `canonical` in maturity terms without collapsing governance-readiness and promotion authority into the same word.
+Technique bridge state is also separate from the maturity ladder. A skill must
+remain a self-contained execution object; technique links record adjacency,
+composition, decomposition, refresh, or extraction pressure.
 
 ## Status ladder
 
@@ -15,6 +18,7 @@ The skill shape exists and is public-safe, but it is still early.
 Typical characteristics:
 - bounded `SKILL.md`
 - honest `techniques.yaml`
+- self-contained runtime wording, even when bridge lineage is pending
 - first support artifact
 - no claim yet that the skill is strongly reviewed or evaluation-backed
 
@@ -58,6 +62,8 @@ Typical characteristics:
 - its meaning is stable enough for broad reuse
 - it has explicit promotion rationale
 - it is treated as a reference surface, not just a good scaffold
+- its technique bridge findings are visible and routed, without replacing
+  skill-native review judgment
 
 ### `deprecated`
 
@@ -75,18 +81,27 @@ but should not be the default choice for new use.
 ## Canonical gate checks
 
 Before a skill can move to `canonical`, it should pass these repository-level gates:
-- `SKILL.md` uses `## Technique traceability`, not `## Future traceability`
-- frontmatter `technique_dependencies` contains no `AOA-T-PENDING-*`
-- `techniques.yaml` contains no pending IDs and no `path: TBD` or `source_ref: TBD`
+- `SKILL.md` remains self-contained and human-reviewable
+- trigger boundaries, contracts, risks, and verification guidance are coherent
 - evaluation coverage exists in `tests/fixtures/skill_evaluation_cases.yaml`:
   one autonomy check
   at least one `use` trigger case
   at least one `do_not_use` trigger case
 - if the skill is `explicit-only`, existing validator policy checks must still pass
+- technique bridge findings are visible when `Technique traceability`,
+  `techniques.yaml`, pinned refs, or extraction routes are incomplete
 
 These gates do not promote a skill by themselves.
 They define the minimum machine-checkable floor before canonical promotion is even considered.
 In `generated/public_surface.*`, that floor appears as `default_reference_readiness`, not as a replacement for the underlying maturity status.
+Pending technique lineage does not automatically block skill-native promotion.
+It blocks only claims that the technique bridge itself is complete.
+
+Repeated live use is also not a promotion by itself.
+It is promotion pressure: evidence that the next review should happen soon.
+Read `PROMOTION_PRESSURE.md` and `generated/skill_promotion_pressure.md` when
+a scaffold or evaluated skill is repeatedly installed, dispatched, or cited
+across the workspace.
 
 ## Machine-checkable floors vs human decisions
 
@@ -100,6 +115,7 @@ That does not replace human review or promotion judgment.
 
 Use this checklist when proposing any status change beyond `scaffold`:
 - bridge metadata is current and honest
+- bridge findings are separated from skill-native maturity blockers
 - runtime selection and inspection stay separate from public-product signaling
 - runtime `SKILL.md` remains self-contained
 - evaluation evidence is readable in `mechanics/audit/docs/EVALUATION_PATH.md`

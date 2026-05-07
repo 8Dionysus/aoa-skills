@@ -851,9 +851,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -930,9 +927,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -953,9 +947,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -976,9 +967,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -999,9 +987,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1022,9 +1007,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1045,9 +1027,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1068,9 +1047,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1091,9 +1067,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1114,9 +1087,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1137,9 +1107,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1160,9 +1127,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1183,9 +1147,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1206,9 +1167,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1229,9 +1187,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
@@ -1252,9 +1207,6 @@
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
         "status_below_evaluated",
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs",
         "missing_autonomy_check"
       ],
       "canonical_candidate_ready": false,
