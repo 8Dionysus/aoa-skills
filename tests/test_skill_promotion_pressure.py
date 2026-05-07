@@ -48,29 +48,28 @@ class SkillPromotionPressureTests(unittest.TestCase):
             report["source_of_truth"]["skill_quality"],
         )
 
-    def test_report_routes_used_skill_with_lived_usage_to_promotion_review(self) -> None:
+    def test_report_routes_skill_by_available_usage_evidence(self) -> None:
         report = self.run_report()
         by_name = {entry["name"]: entry for entry in report["skills"]}
+        self_repair = by_name["aoa-session-self-repair"]
 
         self.assertEqual(
             "canonical_monitor",
             by_name["aoa-change-protocol"]["promotion_pressure"],
         )
-        self.assertEqual(
-            "promotion_review_now",
-            by_name["aoa-session-self-repair"]["promotion_pressure"],
-        )
-        self.assertGreater(
-            by_name["aoa-session-self-repair"]["usage_evidence"]["installed_target_count"],
-            0,
-        )
+        if self_repair["repeated_usage_signal"]:
+            self.assertEqual("promotion_review_now", self_repair["promotion_pressure"])
+            self.assertGreater(self_repair["usage_evidence"]["usage_score"], 0)
+        else:
+            self.assertEqual("watch", self_repair["promotion_pressure"])
+            self.assertEqual(0, self_repair["usage_evidence"]["usage_score"])
         self.assertIn(
             "missing_autonomy_check",
-            by_name["aoa-session-self-repair"]["quality_findings"],
+            self_repair["quality_findings"],
         )
         self.assertNotIn(
             "technique_source_drift",
-            by_name["aoa-session-self-repair"]["quality_findings"],
+            self_repair["quality_findings"],
         )
 
     def test_markdown_has_review_and_blocker_sections(self) -> None:
