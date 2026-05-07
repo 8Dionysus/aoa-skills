@@ -288,7 +288,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -304,7 +304,7 @@
           "id": "AOA-T-0002",
           "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -486,7 +486,7 @@
           "id": "AOA-T-0003",
           "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -499,7 +499,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -526,7 +526,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -540,7 +540,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -611,7 +611,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -724,7 +724,7 @@
           "id": "AOA-T-0016",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -738,7 +738,7 @@
           "id": "AOA-T-0015",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -769,7 +769,7 @@
           "id": "AOA-T-0017",
           "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "Intent",
             "When to use",
@@ -785,7 +785,7 @@
           "id": "AOA-T-0007",
           "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
           "use_sections": [
             "summary",
             "Validation"

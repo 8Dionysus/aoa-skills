@@ -520,7 +520,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "e921dd56d2978353418e98b83095ed183db308a6a40e146ac303eb8437741750",
+      "content_hash": "fa79051e3727d04b30ba27f9004794fc091e51e231228ecea53f40ae69c0ca86",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -549,7 +549,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
-      "skill_revision": "e921dd56d297",
+      "skill_revision": "fa79051e3727",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -578,14 +578,14 @@
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         },
         {
           "id": "AOA-T-0002",
           "lineage_state": "published",
           "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         }
       ]
     },
@@ -866,7 +866,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "897b7fddb02f4a50d3782a6d21a4d2a41886c503938c35e3fda72707c63a3897",
+      "content_hash": "bc94632f32d58beaf95fc614daca6fc9f10b1b57e6800c0e9afbe4bcf929d9ff",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -895,7 +895,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
-      "skill_revision": "897b7fddb02f",
+      "skill_revision": "bc94632f32d5",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -924,14 +924,14 @@
           "lineage_state": "published",
           "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         },
         {
           "id": "AOA-T-0015",
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         }
       ]
     },
@@ -951,7 +951,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "cc0dc8cd84d8ace8b724f949b3d79ba6a695cbd0b2f7cef46441a89a83673836",
+      "content_hash": "0a168a1da64cb26c192cb91ae44c40e6a46ce39de72ae54514b2f2a20d5a1923",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -980,7 +980,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
-      "skill_revision": "cc0dc8cd84d8",
+      "skill_revision": "0a168a1da64c",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1009,14 +1009,14 @@
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         },
         {
           "id": "AOA-T-0015",
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         }
       ]
     },
@@ -1126,7 +1126,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "feeb4ae634fb6fcfec6bbe1a43eb57456e9b7a6e0bd76931e462e7d95dc61d0d",
+      "content_hash": "c54d00def754cb536d6861623169836eb15e453c203a84d2fd682d2dfdae0c70",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1154,7 +1154,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
-      "skill_revision": "feeb4ae634fb",
+      "skill_revision": "c54d00def754",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -1182,7 +1182,7 @@
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         }
       ]
     },
@@ -1308,7 +1308,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "38a599987abb7a916c6219bb54c8c99eb7da70459bddcd8672745427e8e70aea",
+      "content_hash": "335bffcde5a2a873febb64ff63759848b98165bc44b614f9fef1de8ea2f20f89",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1337,7 +1337,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
-      "skill_revision": "38a599987abb",
+      "skill_revision": "335bffcde5a2",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1366,14 +1366,14 @@
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         },
         {
           "id": "AOA-T-0015",
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         }
       ]
     },
@@ -1393,7 +1393,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "d79309999a7cdf75ecc2a0d966b20d839c8bd7201f0508ff6a25854468f1307e",
+      "content_hash": "31a6de877187cedf7d3acd0d9004c65148c816343b0c47781f428123eaf9b3be",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1422,7 +1422,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
-      "skill_revision": "d79309999a7c",
+      "skill_revision": "31a6de877187",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -1451,14 +1451,14 @@
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         },
         {
           "id": "AOA-T-0007",
           "lineage_state": "published",
           "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
         }
       ]
     },

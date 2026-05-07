@@ -677,7 +677,7 @@
         "Contracts": "boundaries should reduce semantic confusion, not create ceremony for its own sake; neighboring contexts should be named explicitly when relevant",
         "Risks and anti-patterns": "inventing too many contexts for a small problem; renaming concepts without reducing confusion",
         "Verification": "confirm the main ambiguity was reduced; confirm interfaces or handoff points are named",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 fr...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0002 fr...",
         "Adaptation points": "local domain vocabulary; canonical docs that define terminology"
       },
       "resource_inventory": {
@@ -1102,7 +1102,7 @@
         "Contracts": "the contract should be visible to another human or agent; verification should be tied to the boundary, not only to internals",
         "Risks and anti-patterns": "vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary",
         "Verification": "confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary",
-        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-t...",
+        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-t...",
         "Adaptation points": "local endpoints or module boundaries; local smoke or test commands"
       },
       "resource_inventory": {
@@ -1208,7 +1208,7 @@
         "Contracts": "reusable logic should not stay trapped in glue if that blocks testing or reuse; glue should not be over-promoted into domain logic without reason",
         "Risks and anti-patterns": "treating all logic as core logic and over-abstracting the system; moving orchestration detail into the core under the label of purity",
         "Verification": "confirm the core candidate is genuinely reusable or stability-shaped; confirm edge-specific code remains at the edge when appropriate",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
         "Adaptation points": "local layering conventions; preferred directories or module boundaries"
       },
       "resource_inventory": {
@@ -1426,7 +1426,7 @@
         "Contracts": "every claimed invariant must be traceable to at least one check; the audit should distinguish real constraint from mere example repetition",
         "Risks and anti-patterns": "counting examples as if they were invariants; letting random data hide thin coverage",
         "Verification": "confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded",
-        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
         "Adaptation points": "local test or check commands; domain-specific invariants and edge cases"
       },
       "resource_inventory": {
@@ -1641,7 +1641,7 @@
         "Contracts": "the extracted boundary should reduce coupling, not add decorative abstraction; the port should stay narrow and purpose-shaped",
         "Risks and anti-patterns": "introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it",
         "Verification": "confirm the concrete dependency pressure was real; confirm the new boundary is narrower and clearer than before",
-        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
+        "Technique traceability": "AOA-T-0016 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation; AOA-T-0015 from `8Dionysus/a...",
         "Adaptation points": "local architecture conventions; preferred adapter locations"
       },
       "resource_inventory": {
@@ -1746,7 +1746,7 @@
         "Contracts": "each property should express a real invariant, not a wish; the test should broaden coverage beyond a small handpicked set",
         "Risks and anti-patterns": "writing weak properties that prove almost nothing; confusing random data with meaningful coverage",
         "Verification": "confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples",
-        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fr...",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fr...",
         "Adaptation points": "local generator tools; domain-specific invariants"
       },
       "resource_inventory": {
