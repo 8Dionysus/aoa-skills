@@ -18,7 +18,18 @@
       "titan-summon",
       "titan-thread-turn-binding"
     ],
-    "candidate_ready_without_review": [],
+    "candidate_ready_without_review": [
+      "aoa-automation-opportunity-scan",
+      "aoa-checkpoint-closeout-bridge",
+      "aoa-commit-growth-seam",
+      "aoa-quest-harvest",
+      "aoa-session-donor-harvest",
+      "aoa-session-progression-lift",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair",
+      "aoa-summon"
+    ],
     "canonical_maintenance": [
       "aoa-adr-write",
       "aoa-approval-gate-check",
@@ -34,9 +45,19 @@
       "aoa-tdd-slice"
     ],
     "comparative_pending": [
+      "aoa-automation-opportunity-scan",
+      "aoa-checkpoint-closeout-bridge",
+      "aoa-commit-growth-seam",
       "aoa-core-logic-boundary",
       "aoa-local-stack-bringup",
-      "aoa-port-adapter-refactor"
+      "aoa-port-adapter-refactor",
+      "aoa-quest-harvest",
+      "aoa-session-donor-harvest",
+      "aoa-session-progression-lift",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair",
+      "aoa-summon"
     ],
     "docs_truth_sync": [],
     "review_truth_sync": []
@@ -92,6 +113,18 @@
       "truth_synced": true
     },
     {
+      "current_revision": "9ccc2dece835",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-automation-opportunity-scan",
+      "review_path": "docs/reviews/status-promotions/aoa-automation-opportunity-scan.md",
+      "reviewed_revision": "9ccc2dece835",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
       "current_revision": "d87267ec67a8",
       "governance_decision": "default_reference",
       "issues": [],
@@ -104,14 +137,38 @@
       "truth_synced": true
     },
     {
-      "current_revision": "88ae350ac3d2",
+      "current_revision": "62cd61eb883f",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
+      "reviewed_revision": "62cd61eb883f",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "16b19f6f72b4",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-commit-growth-seam",
+      "review_path": "docs/reviews/status-promotions/aoa-commit-growth-seam.md",
+      "reviewed_revision": "16b19f6f72b4",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "e2fa19aaa04f",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
-      "reviewed_revision": "88ae350ac3d2",
-      "runtime_skill_md_meaning_changed": false,
+      "reviewed_revision": "e2fa19aaa04f",
+      "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
@@ -176,15 +233,27 @@
       "truth_synced": true
     },
     {
-      "current_revision": "e2c8e6d6054c",
+      "current_revision": "649639ee42cc",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
-      "reviewed_revision": "e2c8e6d6054c",
+      "reviewed_revision": "649639ee42cc",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "00f1ed14f257",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-quest-harvest",
+      "review_path": "docs/reviews/status-promotions/aoa-quest-harvest.md",
+      "reviewed_revision": "00f1ed14f257",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
       "truth_synced": true
     },
     {
@@ -212,6 +281,66 @@
       "truth_synced": true
     },
     {
+      "current_revision": "1e7448b352da",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-session-donor-harvest",
+      "review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
+      "reviewed_revision": "1e7448b352da",
+      "runtime_skill_md_meaning_changed": true,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "362d916f5421",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-session-progression-lift",
+      "review_path": "docs/reviews/status-promotions/aoa-session-progression-lift.md",
+      "reviewed_revision": "362d916f5421",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "125641cc64a8",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-session-route-forks",
+      "review_path": "docs/reviews/status-promotions/aoa-session-route-forks.md",
+      "reviewed_revision": "125641cc64a8",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "347a52c5b08c",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-session-self-diagnose",
+      "review_path": "docs/reviews/status-promotions/aoa-session-self-diagnose.md",
+      "reviewed_revision": "347a52c5b08c",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "71dbe19cf32e",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "published",
+      "name": "aoa-session-self-repair",
+      "review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
+      "reviewed_revision": "71dbe19cf32e",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
+      "truth_synced": true
+    },
+    {
       "current_revision": "e5194ddf2296",
       "governance_decision": "default_reference",
       "issues": [],
@@ -221,6 +350,18 @@
       "reviewed_revision": "e5194ddf2296",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
+      "truth_synced": true
+    },
+    {
+      "current_revision": "033352280eb1",
+      "governance_decision": "stay_evaluated",
+      "issues": [],
+      "lineage_state": "pending",
+      "name": "aoa-summon",
+      "review_path": "docs/reviews/status-promotions/aoa-summon.md",
+      "reviewed_revision": "033352280eb1",
+      "runtime_skill_md_meaning_changed": false,
+      "status": "evaluated",
       "truth_synced": true
     },
     {
@@ -361,22 +502,33 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-automation-opportunity-scan",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-automation-opportunity-scan.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
@@ -431,42 +583,63 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-checkpoint-closeout-bridge",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-commit-growth-seam",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-commit-growth-seam.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
@@ -642,22 +815,33 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-quest-harvest",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-quest-harvest.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
@@ -728,102 +912,153 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-session-progression-lift",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-progression-lift.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-session-route-forks",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-route-forks.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-session-self-diagnose",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-diagnose.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "published",
       "name": "aoa-session-self-repair",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
@@ -849,23 +1084,33 @@
     },
     {
       "candidate_review_path": null,
-      "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
-      ],
-      "canonical_candidate_ready": false,
+      "canonical_candidate_blockers": [],
+      "canonical_candidate_ready": true,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "governance_decision": null,
-      "governance_evidence_case_ids": [],
-      "governance_lane_ids": [],
+      "governance_decision": "stay_evaluated",
+      "governance_evidence_case_ids": [
+        "automation_opportunity_scan_vs_route_forks_boundary",
+        "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+        "commit_growth_seam_vs_donor_harvest_boundary",
+        "quest_harvest_vs_donor_harvest_boundary",
+        "session_donor_harvest_vs_quest_harvest_adjacency",
+        "session_progression_lift_vs_quest_harvest_boundary",
+        "session_route_forks_vs_automation_scan_boundary",
+        "session_self_diagnose_vs_self_repair_boundary",
+        "session_self_repair_vs_self_diagnose_boundary",
+        "summon_vs_route_forks_boundary"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "lineage_state": "pending",
       "name": "aoa-summon",
-      "promotion_review_path": null,
-      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-summon.md",
+      "readiness_reconciliation": "governance_and_eval_ready",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
@@ -926,8 +1171,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -946,8 +1190,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -966,8 +1209,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -986,8 +1228,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1006,8 +1247,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1026,8 +1266,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1046,8 +1285,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1066,8 +1304,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1086,8 +1323,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1106,8 +1342,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1126,8 +1361,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1146,8 +1380,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1166,8 +1399,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1186,8 +1418,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],
@@ -1206,8 +1437,7 @@
     {
       "candidate_review_path": null,
       "canonical_candidate_blockers": [
-        "status_below_evaluated",
-        "missing_autonomy_check"
+        "status_below_evaluated"
       ],
       "canonical_candidate_ready": false,
       "canonical_eval_blockers": [],

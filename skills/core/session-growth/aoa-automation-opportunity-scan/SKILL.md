@@ -1,7 +1,7 @@
 ---
 name: aoa-automation-opportunity-scan
 scope: core
-status: scaffold
+status: evaluated
 summary: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.
 invocation_mode: explicit-only
 technique_dependencies:

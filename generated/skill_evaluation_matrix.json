@@ -95,11 +95,11 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-automation-opportunity-scan",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-automation-opportunity-scan.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-automation-opportunity-scan/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 2,
       "use_snapshot_count": 1
     },
@@ -146,16 +146,16 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-checkpoint-closeout-bridge",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -163,11 +163,11 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-commit-growth-seam",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-commit-growth-seam.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-commit-growth-seam/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -299,11 +299,11 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-quest-harvest",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-quest-harvest.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-quest-harvest/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 2,
       "use_snapshot_count": 1
     },
@@ -350,16 +350,16 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-session-donor-harvest",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-donor-harvest/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 3,
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -367,16 +367,16 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-session-progression-lift",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-progression-lift.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-progression-lift/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -384,16 +384,16 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-session-route-forks",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-route-forks.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-route-forks/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -401,16 +401,16 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-session-self-diagnose",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-diagnose.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-self-diagnose/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -418,11 +418,11 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-session-self-repair",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-self-repair/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 2,
       "use_snapshot_count": 1
     },
@@ -444,7 +444,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -452,11 +452,11 @@
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-only",
       "name": "aoa-summon",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-summon.md",
       "scope": "core",
       "selected_runtime_artifact_path": "skills/core/session-growth/aoa-summon/examples/runtime.md",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "use_case_count": 1,
       "use_snapshot_count": 1
     },
@@ -512,7 +512,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -529,7 +529,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -546,7 +546,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -563,7 +563,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -580,7 +580,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -597,7 +597,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -614,7 +614,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -631,7 +631,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -648,7 +648,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -665,7 +665,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -682,7 +682,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -699,7 +699,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -716,7 +716,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -733,7 +733,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
@@ -750,7 +750,7 @@
       "use_snapshot_count": 1
     },
     {
-      "autonomy_check_count": 0,
+      "autonomy_check_count": 1,
       "candidate_review_path": null,
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,

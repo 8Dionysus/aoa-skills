@@ -219,7 +219,7 @@ Common expand sections:
 ## aoa-automation-opportunity-scan
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md`
 - pick summary: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.
@@ -254,6 +254,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-automation-opportunity-scan/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-automation-opportunity-scan/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-automation-opportunity-scan.md`
 
 ## aoa-bounded-context-map
 
@@ -329,7 +330,7 @@ Common expand sections:
 ## aoa-checkpoint-closeout-bridge
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`
 - pick summary: Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.
@@ -368,11 +369,12 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-checkpoint-closeout-bridge/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-checkpoint-closeout-bridge/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md`
 
 ## aoa-commit-growth-seam
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-commit-growth-seam/SKILL.md`
 - pick summary: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.
@@ -405,6 +407,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-commit-growth-seam/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-commit-growth-seam/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-commit-growth-seam.md`
 
 ## aoa-contract-test
 
@@ -663,7 +666,7 @@ Common expand sections:
 ## aoa-quest-harvest
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-quest-harvest/SKILL.md`
 - pick summary: Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.
@@ -699,6 +702,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-quest-harvest/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-quest-harvest/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-quest-harvest.md`
 
 ## aoa-safe-infra-change
 
@@ -775,7 +779,7 @@ Common expand sections:
 ## aoa-session-donor-harvest
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-donor-harvest/SKILL.md`
 - pick summary: Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.
@@ -821,11 +825,12 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-session-donor-harvest/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-session-donor-harvest/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-session-donor-harvest.md`
 
 ## aoa-session-progression-lift
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-progression-lift/SKILL.md`
 - pick summary: Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.
@@ -858,11 +863,12 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-session-progression-lift/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-session-progression-lift/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-session-progression-lift.md`
 
 ## aoa-session-route-forks
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-route-forks/SKILL.md`
 - pick summary: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.
@@ -896,11 +902,12 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-session-route-forks/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-session-route-forks/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-session-route-forks.md`
 
 ## aoa-session-self-diagnose
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-self-diagnose/SKILL.md`
 - pick summary: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.
@@ -934,11 +941,12 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-session-self-diagnose/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-session-self-diagnose/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-session-self-diagnose.md`
 
 ## aoa-session-self-repair
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-self-repair/SKILL.md`
 - pick summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
@@ -971,6 +979,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-session-self-repair/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-session-self-repair/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-session-self-repair.md`
 
 ## aoa-source-of-truth-check
 
@@ -1020,7 +1029,7 @@ Common expand sections:
 ## aoa-summon
 
 - scope: `core`
-- status: `scaffold`
+- status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-summon/SKILL.md`
 - pick summary: Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
@@ -1053,6 +1062,7 @@ Common expand sections:
 
 - `runtime_example` (selected): `skills/core/session-growth/aoa-summon/examples/runtime.md`
 - `review_checklist`: `skills/core/session-growth/aoa-summon/checks/review.md`
+- `promotion_review`: `docs/reviews/status-promotions/aoa-summon.md`
 
 ## aoa-tdd-slice
 

@@ -396,6 +396,126 @@
       "prompt": "In an abyss repository, choose between runtime diagnosis normalization and self-repair because the evidence still needs to be gathered into one honest diagnostic artifact before any repair packet can be justified.",
       "skill": "abyss-self-diagnostic-spine",
       "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/abyss-self-diagnostic-spine/abyss_self_diagnostic_spine_vs_session_self_repair_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-route-forks",
+      "blockers": [],
+      "case_id": "summon_vs_route_forks_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare bounded child-route delegation with post-session branch analysis when the parent route already has an anchor, named child outputs, and a need for one local reviewer child.",
+      "skill": "aoa-summon",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-summon/summon_vs_route_forks_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-donor-harvest",
+      "blockers": [],
+      "case_id": "checkpoint_closeout_bridge_vs_donor_harvest_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare a full checkpoint-aware reviewed closeout chain with donor harvest alone when checkpoint hints already point to donor, progression, and quest follow-through.",
+      "skill": "aoa-checkpoint-closeout-bridge",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-checkpoint-closeout-bridge/checkpoint_closeout_bridge_vs_donor_harvest_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-route-forks",
+      "blockers": [],
+      "case_id": "automation_opportunity_scan_vs_route_forks_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare automation-readiness classification with ordinary branch cards when a repeated manual route is visible and the honest question is whether it can become automation.",
+      "skill": "aoa-automation-opportunity-scan",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-automation-opportunity-scan/automation_opportunity_scan_vs_route_forks_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-automation-opportunity-scan",
+      "blockers": [],
+      "case_id": "session_route_forks_vs_automation_scan_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare branch-choice work with automation scanning when several next moves exist, including staying manual, becoming a skill, or becoming a playbook seed.",
+      "skill": "aoa-session-route-forks",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-session-route-forks/session_route_forks_vs_automation_scan_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-self-diagnose",
+      "blockers": [],
+      "case_id": "session_self_repair_vs_self_diagnose_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare repair planning with diagnosis when a reviewed diagnosis packet already exists and the next honest move is a bounded repair packet.",
+      "skill": "aoa-session-self-repair",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-session-self-repair/session_self_repair_vs_self_diagnose_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-donor-harvest",
+      "blockers": [],
+      "case_id": "quest_harvest_vs_donor_harvest_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare final quest-promotion triage with broader donor harvest when the evidence is one repeated reviewed quest unit and the remaining ambiguity is only its next owner surface.",
+      "skill": "aoa-quest-harvest",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-quest-harvest/quest_harvest_vs_donor_harvest_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-quest-harvest",
+      "blockers": [],
+      "case_id": "session_donor_harvest_vs_quest_harvest_adjacency",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare donor harvest with final quest triage when the reviewed artifact still contains several reusable units that need owner-layer routing first.",
+      "skill": "aoa-session-donor-harvest",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-session-donor-harvest/session_donor_harvest_vs_quest_harvest_adjacency.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-self-repair",
+      "blockers": [],
+      "case_id": "session_self_diagnose_vs_self_repair_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare diagnosis with repair planning when a reviewed session shows repeated drift and no reviewed diagnosis packet exists yet.",
+      "skill": "aoa-session-self-diagnose",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-session-self-diagnose/session_self_diagnose_vs_self_repair_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-quest-harvest",
+      "blockers": [],
+      "case_id": "session_progression_lift_vs_quest_harvest_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare progression reflection with quest promotion when reviewed evidence shows mastery movement across several axes rather than one repeated quest unit.",
+      "skill": "aoa-session-progression-lift",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-session-progression-lift/session_progression_lift_vs_quest_harvest_boundary.md"
+    },
+    {
+      "adjacent_skill": "aoa-session-donor-harvest",
+      "blockers": [],
+      "case_id": "commit_growth_seam_vs_donor_harvest_boundary",
+      "expected": "use",
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
+      "prompt": "Compare commit-boundary work with donor harvest when a bounded diff is already verified and the next honest move is one local commit, not post-session extraction.",
+      "skill": "aoa-commit-growth-seam",
+      "snapshot_path": "tests/fixtures/skill_evaluation_snapshots/aoa-commit-growth-seam/commit_growth_seam_vs_donor_harvest_boundary.md"
     }
   ],
   "skills": [
@@ -485,15 +605,19 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-session-route-forks"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-automation-opportunity-scan",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
@@ -535,28 +659,36 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-session-donor-harvest"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-checkpoint-closeout-bridge",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-session-donor-harvest"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-commit-growth-seam",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
@@ -685,15 +817,19 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-session-donor-harvest"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-quest-harvest",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
@@ -737,67 +873,87 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-quest-harvest"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-session-donor-harvest",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-quest-harvest"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-session-progression-lift",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-automation-opportunity-scan"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-session-route-forks",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-session-self-repair"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-session-self-diagnose",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-session-self-diagnose"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-session-self-repair",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],
@@ -819,15 +975,19 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
-      "adjacency_ready": false,
-      "adjacency_use_count": 0,
-      "adjacent_skill_names": [],
-      "governance_lane_ids": [],
+      "adjacency_ready": true,
+      "adjacency_use_count": 1,
+      "adjacent_skill_names": [
+        "aoa-session-route-forks"
+      ],
+      "governance_lane_ids": [
+        "session_growth_closeout"
+      ],
       "name": "aoa-summon",
-      "required_adjacency_coverage": false,
+      "required_adjacency_coverage": true,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "status": "scaffold"
+      "status": "evaluated"
     },
     {
       "adjacency_blockers": [],

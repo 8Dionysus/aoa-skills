@@ -53,10 +53,12 @@ class SkillQualityAuditTests(unittest.TestCase):
         report = self.run_audit()
         by_name = {entry["name"]: entry for entry in report["skills"]}
 
-        self.assertIn("missing_autonomy_check", by_name["aoa-session-self-repair"]["findings"])
+        self.assertEqual([], by_name["aoa-session-self-repair"]["findings"])
         self.assertNotIn("technique_source_drift", by_name["aoa-session-self-repair"]["findings"])
         self.assertIn("pending_technique_lineage", by_name["aoa-summon"]["findings"])
+        self.assertNotIn("pending_markers_in_skill_body", by_name["aoa-summon"]["findings"])
         self.assertIn("pending_technique_lineage", by_name["titan-console"]["findings"])
+        self.assertNotIn("missing_autonomy_check", by_name["titan-console"]["findings"])
         self.assertEqual("healthy", by_name["aoa-change-protocol"]["verdict"])
         self.assertEqual(0, report["summary"]["technique_drift"]["state_counts"].get("drifted", 0))
 

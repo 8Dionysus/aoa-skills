@@ -1,7 +1,7 @@
 ---
 name: aoa-quest-harvest
 scope: core
-status: scaffold
+status: evaluated
 summary: Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.
 invocation_mode: explicit-only
 technique_dependencies:

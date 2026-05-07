@@ -197,7 +197,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -291,7 +291,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -321,7 +321,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -582,7 +582,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -689,7 +689,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -724,7 +724,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -758,7 +758,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -792,7 +792,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -827,7 +827,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
@@ -892,7 +892,7 @@
       },
       "metadata": {
         "aoa_scope": "core",
-        "aoa_status": "scaffold",
+        "aoa_status": "evaluated",
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",

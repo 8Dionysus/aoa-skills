@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `e2c8e6d6054c`
+- reviewed revision: `649639ee42cc`
 
 ## Target status
 
@@ -27,7 +27,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the technique-refresh wave tightened the invariant wording around underspecified stable truth, generator complexity, and failure reporting while the bundle still clears the evaluated floor that this record originally captured.
+- current bundle note: the bundle now makes failure-to-protected-rule traceability an explicit contract while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 

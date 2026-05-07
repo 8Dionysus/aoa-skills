@@ -54,16 +54,19 @@ Do not use this skill when:
 - the contract should be visible to another human or agent
 - verification should be tied to the boundary, not only to internals
 - downstream assumptions should be named when relevant
+- out-of-contract behavior should stay explicit when it affects consumers
 
 ## Risks and anti-patterns
 - vague contracts that do not actually constrain behavior
 - treating a smoke summary as proof when it does not cover the real boundary
 - changing interface behavior without downstream impact notes
+- asserting internal implementation details as if they were public contract
 
 ## Verification
 - confirm the contract is visible and reviewable
 - confirm validation is tied to the interface or boundary
 - confirm downstream impact was considered when relevant
+- confirm the report names any known contract limits or exclusions
 
 ## Technique traceability
 Manifest-backed techniques:

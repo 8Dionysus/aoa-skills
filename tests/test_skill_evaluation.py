@@ -87,6 +87,16 @@ ADJACENCY_EXPECTATIONS = {
         "aoa-session-self-repair",
     ],
     "abyss-sanitized-share": ["abyss-safe-infra-change"],
+    "aoa-summon": ["aoa-session-route-forks"],
+    "aoa-checkpoint-closeout-bridge": ["aoa-session-donor-harvest"],
+    "aoa-automation-opportunity-scan": ["aoa-session-route-forks"],
+    "aoa-session-route-forks": ["aoa-automation-opportunity-scan"],
+    "aoa-session-self-repair": ["aoa-session-self-diagnose"],
+    "aoa-quest-harvest": ["aoa-session-donor-harvest"],
+    "aoa-session-donor-harvest": ["aoa-quest-harvest"],
+    "aoa-session-self-diagnose": ["aoa-session-self-repair"],
+    "aoa-session-progression-lift": ["aoa-quest-harvest"],
+    "aoa-commit-growth-seam": ["aoa-session-donor-harvest"],
 }
 
 

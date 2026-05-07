@@ -56,6 +56,7 @@ Do not use this skill when:
 - each property should express a real invariant, not a wish
 - the test should broaden coverage beyond a small handpicked set
 - generator assumptions should remain understandable
+- failures should point back to the protected rule rather than only to generated data
 
 ## Risks and anti-patterns
 

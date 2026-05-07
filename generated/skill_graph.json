@@ -348,7 +348,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_automation_opportunity_scan",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -603,7 +603,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_checkpoint_closeout_bridge",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -688,7 +688,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_commit_growth_seam",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -1308,7 +1308,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_quest_harvest",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -1553,7 +1553,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_session_donor_harvest",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -1648,7 +1648,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_session_progression_lift",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -1733,7 +1733,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_session_route_forks",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -1818,7 +1818,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_session_self_diagnose",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -1903,7 +1903,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_session_self_repair",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -2073,7 +2073,7 @@
     {
       "kind": "maturity",
       "source": "skill_aoa_summon",
-      "target": "status_scaffold"
+      "target": "status_evaluated"
     },
     {
       "kind": "scope",
@@ -4316,9 +4316,9 @@
         "skills/core/session-growth/aoa-automation-opportunity-scan/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "9b542f1edf9d3466f43020fdbdbdda91aeb45c73af1be94c1b2dc65f25ed456a",
+      "content_hash": "9ccc2dece835cc1ca3119ecbfe225efad07644629aaf266b12d2dca5b809a324",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4346,11 +4346,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-automation-opportunity-scan",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-automation-opportunity-scan.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "skill_revision": "9b542f1edf9d",
-      "status": "scaffold",
+      "skill_revision": "9ccc2dece835",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-automation-opportunity-scan/examples/runtime.md",
@@ -4361,6 +4361,11 @@
           "path": "skills/core/session-growth/aoa-automation-opportunity-scan/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-automation-opportunity-scan.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -4576,9 +4581,9 @@
         "skills/core/session-growth/aoa-checkpoint-closeout-bridge/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "ec7b7e52fb550a9b6e906461d477320b57eb78e1362d58a1a1f7ed3f9de1b7b1",
+      "content_hash": "62cd61eb883fcb11d477054a7145b1b75bda3a26a48dccc6187a56a57b458e99",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4604,11 +4609,11 @@
       "invocation_mode": "explicit-preferred",
       "lineage_state": "published",
       "name": "aoa-checkpoint-closeout-bridge",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "skill_revision": "ec7b7e52fb55",
-      "status": "scaffold",
+      "skill_revision": "62cd61eb883f",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/examples/runtime.md",
@@ -4619,6 +4624,11 @@
           "path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -4664,9 +4674,9 @@
         "skills/core/session-growth/aoa-commit-growth-seam/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "1a2f466c2a1efa8cf3047b76cd1343920a035b170434f824e11a711460a76a70",
+      "content_hash": "16b19f6f72b4cdfe588a9720359ef110e6275dc7e7979c8c03d2012d9ae9d4df",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4688,11 +4698,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-commit-growth-seam",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-commit-growth-seam.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
-      "skill_revision": "1a2f466c2a1e",
-      "status": "scaffold",
+      "skill_revision": "16b19f6f72b4",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-commit-growth-seam/examples/runtime.md",
@@ -4703,6 +4713,11 @@
           "path": "skills/core/session-growth/aoa-commit-growth-seam/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-commit-growth-seam.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -4742,7 +4757,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "88ae350ac3d2d95fd16568100b36e519e16e0757a5700c22a9a6803cbc26d4c6",
+      "content_hash": "e2fa19aaa04f89869fdeb31740e62ce95ef498459cc0b2bf706ec08e96d4672d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4771,7 +4786,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
-      "skill_revision": "88ae350ac3d2",
+      "skill_revision": "e2fa19aaa04f",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -5269,7 +5284,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "e2c8e6d6054c3614a34798824e3f31a869fbff3ba582e639c071fc16b26bf481",
+      "content_hash": "649639ee42cc379f1d8ad58394cb160084985e996d6ac9e384df42926f0c7f33",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5298,7 +5313,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
-      "skill_revision": "e2c8e6d6054c",
+      "skill_revision": "649639ee42cc",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -5352,9 +5367,9 @@
         "skills/core/session-growth/aoa-quest-harvest/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "67ca3301b829bd8e4db0918742b8ed3baa00927513a98aa03711523f25eafcb9",
+      "content_hash": "00f1ed14f257da540fb7b90bc1a2fbfd1af6df58151ff27ea7d0b9ab7f8759ee",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5382,11 +5397,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-quest-harvest",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-quest-harvest.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "67ca3301b829",
-      "status": "scaffold",
+      "skill_revision": "00f1ed14f257",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-quest-harvest/examples/runtime.md",
@@ -5397,6 +5412,11 @@
           "path": "skills/core/session-growth/aoa-quest-harvest/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-quest-harvest.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -5613,9 +5633,9 @@
         "skills/core/session-growth/aoa-session-donor-harvest/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "51cbab3eade513b29658196f955657b06ca91cd3bea91499bf525d024f003e2c",
+      "content_hash": "1e7448b352da625efc30ba8dfdda333b1f5dc51c474fba9bd9643de7449de2f0",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5643,11 +5663,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "51cbab3eade5",
-      "status": "scaffold",
+      "skill_revision": "1e7448b352da",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-session-donor-harvest/examples/runtime.md",
@@ -5658,6 +5678,11 @@
           "path": "skills/core/session-growth/aoa-session-donor-harvest/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -5703,9 +5728,9 @@
         "skills/core/session-growth/aoa-session-progression-lift/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "8e3f43f202fe8597bdc1daf0968eb1cf6c6cc0d7dba4ac43929194f34c2813a0",
+      "content_hash": "362d916f54213d4bcc9fdb3c3a630023bc932b1548011fc46ff18d15db990dbb",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5732,11 +5757,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-session-progression-lift",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-progression-lift.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
-      "skill_revision": "8e3f43f202fe",
-      "status": "scaffold",
+      "skill_revision": "362d916f5421",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-session-progression-lift/examples/runtime.md",
@@ -5747,6 +5772,11 @@
           "path": "skills/core/session-growth/aoa-session-progression-lift/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-session-progression-lift.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -5784,9 +5814,9 @@
         "skills/core/session-growth/aoa-session-route-forks/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "c327cd4a554117945c503fd46e6248961dadce2bad7c1cbf21a43c7fcf0a4d42",
+      "content_hash": "125641cc64a8db132e6d9bfd0661c43d47869d27b8bf7568db0e25fcded774c1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5813,11 +5843,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-session-route-forks",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-route-forks.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "skill_revision": "c327cd4a5541",
-      "status": "scaffold",
+      "skill_revision": "125641cc64a8",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-session-route-forks/examples/runtime.md",
@@ -5828,6 +5858,11 @@
           "path": "skills/core/session-growth/aoa-session-route-forks/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-session-route-forks.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -5865,9 +5900,9 @@
         "skills/core/session-growth/aoa-session-self-diagnose/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "8c5e2ed8b6714cd1c25837fc20a4760f3163fee42e69f997b4b183983283d101",
+      "content_hash": "347a52c5b08ca062c2fd171b90546d669f6ac229ec9ac6a3626c61a1e9276543",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5894,11 +5929,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-session-self-diagnose",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-diagnose.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "skill_revision": "8c5e2ed8b671",
-      "status": "scaffold",
+      "skill_revision": "347a52c5b08c",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-session-self-diagnose/examples/runtime.md",
@@ -5909,6 +5944,11 @@
           "path": "skills/core/session-growth/aoa-session-self-diagnose/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-session-self-diagnose.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -5946,9 +5986,9 @@
         "skills/core/session-growth/aoa-session-self-repair/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "149bb73ef481842d3626db26b62f1e793d69cc29f02d21266cfd743fc33e471b",
+      "content_hash": "71dbe19cf32eb57ff8f5f1c5a2d750e924948ab97a111a9763b4713b9ee5b06f",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -5975,11 +6015,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "published",
       "name": "aoa-session-self-repair",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "149bb73ef481",
-      "status": "scaffold",
+      "skill_revision": "71dbe19cf32e",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-session-self-repair/examples/runtime.md",
@@ -5990,6 +6030,11 @@
           "path": "skills/core/session-growth/aoa-session-self-repair/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [
@@ -6120,9 +6165,9 @@
         "skills/core/session-growth/aoa-summon/agents/openai.yaml"
       ],
       "candidate_review_path": null,
-      "canonical_candidate_ready": false,
+      "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "f548e9c66e842500175eeaf29d85d39b80e78bce3f7781ca841cb5715c16d1e8",
+      "content_hash": "033352280eb18695fe6cb3417366e5174814ba6c58b60c2cc932b683cc119340",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6145,11 +6190,11 @@
       "invocation_mode": "explicit-only",
       "lineage_state": "pending",
       "name": "aoa-summon",
-      "promotion_review_path": null,
+      "promotion_review_path": "docs/reviews/status-promotions/aoa-summon.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "skill_revision": "f548e9c66e84",
-      "status": "scaffold",
+      "skill_revision": "033352280eb1",
+      "status": "evaluated",
       "support_artifacts": [
         {
           "path": "skills/core/session-growth/aoa-summon/examples/runtime.md",
@@ -6160,6 +6205,11 @@
           "path": "skills/core/session-growth/aoa-summon/checks/review.md",
           "selected_for_runtime_inspection": false,
           "type": "review_checklist"
+        },
+        {
+          "path": "docs/reviews/status-promotions/aoa-summon.md",
+          "selected_for_runtime_inspection": false,
+          "type": "promotion_review"
         }
       ],
       "technique_dependencies": [

@@ -1,7 +1,7 @@
 ---
 name: aoa-session-route-forks
 scope: core
-status: scaffold
+status: evaluated
 summary: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.
 invocation_mode: explicit-only
 technique_dependencies:

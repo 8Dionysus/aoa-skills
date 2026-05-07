@@ -7,7 +7,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 - total skills: 45
 - default references: 12
-- default-reference ready skills: 3
+- default-reference ready skills: 13
 - pending technique bridge lineage: 16
 - risk surfaces: 5
 
@@ -32,15 +32,25 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | technique bridge | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| aoa-automation-opportunity-scan | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-automation-opportunity-scan.md` | - |
+| aoa-checkpoint-closeout-bridge | evaluated | ready | core | explicit-preferred | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md` | - |
+| aoa-commit-growth-seam | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-commit-growth-seam.md` | - |
 | aoa-core-logic-boundary | evaluated | ready | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | - | `docs/reviews/status-promotions/aoa-core-logic-boundary.md` | `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md` |
 | aoa-local-stack-bringup | evaluated | ready | risk | explicit-only | published | stay_evaluated | local_runtime_bringup | - | - | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` |
 | aoa-port-adapter-refactor | evaluated | ready | core | explicit-preferred | published | stay_evaluated | core_boundary_refactor | - | - | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md` |
+| aoa-quest-harvest | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-quest-harvest.md` | - |
+| aoa-session-donor-harvest | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-donor-harvest.md` | - |
+| aoa-session-progression-lift | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-progression-lift.md` | - |
+| aoa-session-route-forks | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-route-forks.md` | - |
+| aoa-session-self-diagnose | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-self-diagnose.md` | - |
+| aoa-session-self-repair | evaluated | ready | core | explicit-only | published | stay_evaluated | session_growth_closeout | - | - | `docs/reviews/status-promotions/aoa-session-self-repair.md` | - |
+| aoa-summon | evaluated | ready | core | explicit-only | pending | stay_evaluated | session_growth_closeout | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-summon.md` | - |
 
 ## Pending technique bridge lineage
 
 | name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | technique bridge | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| aoa-summon | scaffold | blocked | core | explicit-only | pending | - | - | status_below_evaluated, missing_autonomy_check | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
+| aoa-summon | evaluated | ready | core | explicit-only | pending | stay_evaluated | session_growth_closeout | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | `docs/reviews/status-promotions/aoa-summon.md` | - |
 | titan-approval-ledger | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 | titan-approval-loom | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
 | titan-appserver-bridge | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
