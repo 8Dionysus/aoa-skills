@@ -16,6 +16,7 @@ Use this checklist when reviewing a change that claims to follow
 
 - [ ] The exact bounded diff was isolated before the commit.
 - [ ] Unrelated local changes were excluded or explicitly deferred.
+- [ ] `commit_authorization_posture` was `authorized_now` before the local commit happened.
 - [ ] The validation state was named honestly before the commit happened.
 - [ ] The commit message matches the bounded unit rather than generic success language.
 - [ ] The workflow stopped at the local commit boundary instead of widening silently into push, PR, or publish work.

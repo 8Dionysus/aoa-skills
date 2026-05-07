@@ -1,7 +1,7 @@
 {
   "artifact_kind": "progression_delta",
   "packet_kind": "PROGRESSION_DELTA",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "route_ref": "route:session-growth-kernel",
   "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
   "lineage_refs": {
@@ -10,6 +10,8 @@
   },
   "status_posture": "thin-evidence",
   "owner_target": "aoa-playbooks",
+  "baseline_posture": "prior_delta_ref",
+  "baseline_ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/progression_delta.derived-visibility-handoff.json",
   "verdict": "hold",
   "axes": {
     "boundary_integrity": "advance",
@@ -19,6 +21,15 @@
     "proof_discipline": "hold",
     "provenance_hygiene": "advance",
     "deep_readiness": "thin-evidence"
+  },
+  "axis_evidence_posture": {
+    "boundary_integrity": "confirmed",
+    "execution_reliability": "no_movement",
+    "change_legibility": "confirmed",
+    "review_sharpness": "no_movement",
+    "proof_discipline": "no_movement",
+    "provenance_hygiene": "confirmed",
+    "deep_readiness": "provisional"
   },
   "unlock_hints": [
     "add one reviewed automation real-run note before promotion"

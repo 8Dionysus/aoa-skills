@@ -1,7 +1,7 @@
 {
   "artifact_kind": "harvest_packet",
   "packet_version": "aoa_harvest_packet_v1",
-  "source_session_ref": "session:2026-04-05-alpha",
+  "source_session_ref": "session:2026-04-05:reviewed-donor-harvest",
   "route_ref": "route:session-growth",
   "owner_repo": "aoa-skills",
   "reviewed_artifacts": [
@@ -25,7 +25,7 @@
     "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md"
   ],
   "candidate_lineage_refs": [
-    "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json"
+    "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json"
   ],
   "evidence_density": "reviewed",
   "candidates": [

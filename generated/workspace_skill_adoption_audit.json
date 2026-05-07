@@ -7,8 +7,7 @@
   "strict_root": false,
   "target_count": 16,
   "summary": {
-    "verified": 14,
-    "verified_with_extra_dirs": 2
+    "verified_with_extra_dirs": 16
   },
   "targets": [
     {
@@ -16,170 +15,200 @@
       "target_root": "/srv/AbyssOS",
       "install_root": "/srv/AbyssOS/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "8Dionysus",
       "target_root": "/srv/AbyssOS/8Dionysus",
       "install_root": "/srv/AbyssOS/8Dionysus/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "Agents-of-Abyss",
       "target_root": "/srv/AbyssOS/Agents-of-Abyss",
       "install_root": "/srv/AbyssOS/Agents-of-Abyss/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-agents",
       "target_root": "/srv/AbyssOS/aoa-agents",
       "install_root": "/srv/AbyssOS/aoa-agents/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-evals",
       "target_root": "/srv/AbyssOS/aoa-evals",
       "install_root": "/srv/AbyssOS/aoa-evals/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-kag",
       "target_root": "/srv/AbyssOS/aoa-kag",
       "install_root": "/srv/AbyssOS/aoa-kag/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-memo",
       "target_root": "/srv/AbyssOS/aoa-memo",
       "install_root": "/srv/AbyssOS/aoa-memo/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-playbooks",
       "target_root": "/srv/AbyssOS/aoa-playbooks",
       "install_root": "/srv/AbyssOS/aoa-playbooks/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-routing",
       "target_root": "/srv/AbyssOS/aoa-routing",
       "install_root": "/srv/AbyssOS/aoa-routing/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-sdk",
       "target_root": "/srv/AbyssOS/aoa-sdk",
       "install_root": "/srv/AbyssOS/aoa-sdk/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-skills",
@@ -226,39 +255,25 @@
       "target_root": "/srv/AbyssOS/aoa-stats",
       "install_root": "/srv/AbyssOS/aoa-stats/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "aoa-techniques",
       "target_root": "/srv/AbyssOS/aoa-techniques",
       "install_root": "/srv/AbyssOS/aoa-techniques/.agents/skills",
-      "profile": "repo-project-foundation",
-      "state": "verified",
-      "verified": true,
-      "expected_skill_count": 23,
-      "verified_skill_count": 23,
-      "installed_skill_count": 23,
-      "missing_skill_count": 0,
-      "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
-      "missing_skills": [],
-      "mismatched_skills": [],
-      "extra_skill_dirs": []
-    },
-    {
-      "target": "ATM10-Agent",
-      "target_root": "/srv/AbyssOS/ATM10-Agent",
-      "install_root": "/srv/AbyssOS/ATM10-Agent/.agents/skills",
       "profile": "repo-project-foundation",
       "state": "verified_with_extra_dirs",
       "verified": true,
@@ -271,6 +286,28 @@
       "missing_skills": [],
       "mismatched_skills": [],
       "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
+    },
+    {
+      "target": "ATM10-Agent",
+      "target_root": "/srv/AbyssOS/ATM10-Agent",
+      "install_root": "/srv/AbyssOS/ATM10-Agent/.agents/skills",
+      "profile": "repo-project-foundation",
+      "state": "verified_with_extra_dirs",
+      "verified": true,
+      "expected_skill_count": 23,
+      "verified_skill_count": 23,
+      "installed_skill_count": 27,
+      "missing_skill_count": 0,
+      "mismatched_skill_count": 0,
+      "extra_skill_count": 4,
+      "missing_skills": [],
+      "mismatched_skills": [],
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon",
         "atm10-change-protocol",
         "atm10-source-of-truth-check"
       ]
@@ -280,34 +317,40 @@
       "target_root": "/srv/AbyssOS/Dionysus",
       "install_root": "/srv/AbyssOS/Dionysus/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     },
     {
       "target": "Tree-of-Sophia",
       "target_root": "/srv/AbyssOS/Tree-of-Sophia",
       "install_root": "/srv/AbyssOS/Tree-of-Sophia/.agents/skills",
       "profile": "repo-project-foundation",
-      "state": "verified",
+      "state": "verified_with_extra_dirs",
       "verified": true,
       "expected_skill_count": 23,
       "verified_skill_count": 23,
-      "installed_skill_count": 23,
+      "installed_skill_count": 25,
       "missing_skill_count": 0,
       "mismatched_skill_count": 0,
-      "extra_skill_count": 0,
+      "extra_skill_count": 2,
       "missing_skills": [],
       "mismatched_skills": [],
-      "extra_skill_dirs": []
+      "extra_skill_dirs": [
+        "aoa-commit-growth-seam",
+        "aoa-summon"
+      ]
     }
   ]
 }

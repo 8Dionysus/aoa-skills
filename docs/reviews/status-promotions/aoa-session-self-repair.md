@@ -11,7 +11,7 @@ name: aoa-session-self-repair
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `71dbe19cf32e`
+- reviewed revision: `aeb50edcd1ed`
 
 ## Target status
 
@@ -31,8 +31,8 @@ name: aoa-session-self-repair
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the skill is evaluated as repair planning, not as silent self-mutation or proof authority.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the skill is evaluated as bounded repair with explicit execution posture, so prepared, executed, verified, blocked, and handoff states do not collapse into one overclaimed outcome.
 
 ## Gaps and blockers
 

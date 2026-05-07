@@ -11,7 +11,7 @@ name: aoa-session-progression-lift
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `362d916f5421`
+- reviewed revision: `3c0e0a1dd572`
 
 ## Target status
 
@@ -30,8 +30,11 @@ name: aoa-session-progression-lift
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the skill is evaluated for small evidence-backed deltas, not universal scoring or hidden route authority.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the skill now records baseline posture plus per-axis
+  evidence posture so checkpoint, donor, closeout, and generated hints can
+  focus attention without becoming comparative progression claims until
+  reviewed evidence and a visible baseline support them.
 
 ## Gaps and blockers
 

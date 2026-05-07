@@ -19,6 +19,7 @@ from reviewed evidence and packages them into a bounded
 - [ ] Repeat signal and friction are evidenced rather than asserted from enthusiasm.
 - [ ] Input clarity, output clarity, proof surface, reversibility, and approval sensitivity were assessed explicitly.
 - [ ] Each candidate received an explicit `seed_ready` or `not_now` verdict.
+- [ ] Each candidate named an `automation_mode_posture` that is no stronger than the evidence supports.
 - [ ] The next artifact and likely owner layer were named.
 - [ ] The nearest wrong target was rejected explicitly.
 - [ ] `checkpoint_required` was raised for self-changing, approval-heavy, or important mutation routes.

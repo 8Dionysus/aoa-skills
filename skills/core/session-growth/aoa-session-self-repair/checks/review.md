@@ -17,6 +17,8 @@ bounded `REPAIR_PACKET`.
 - [ ] A reviewed diagnosis exists and is cited explicitly.
 - [ ] The chosen repair is the smallest honest shape.
 - [ ] The primary owner repo and artifact class are named.
+- [ ] Repair execution posture is explicit: proposed, prepared, executing, verified, blocked, or handoff_required.
+- [ ] Prepared repair is not described as executed, and executed repair is not described as verified without validation evidence.
 - [ ] Checkpoint posture is explicit: policy fit, approval gate, rollback marker, health check, iteration limit, and improvement log.
 - [ ] Validation and stop conditions are named.
 - [ ] Escalation exists if the repair widens beyond one bounded unit.

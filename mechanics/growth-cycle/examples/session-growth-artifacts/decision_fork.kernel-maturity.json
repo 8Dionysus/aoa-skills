@@ -1,7 +1,7 @@
 {
   "artifact_kind": "decision_fork",
   "packet_kind": "FORK_CARDS",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "route_ref": "route:session-growth-kernel",
   "source_reviewed_artifact_ref": "repo:aoa-sdk/examples/closeout_followthrough_decision.example.json",
   "lineage_refs": {

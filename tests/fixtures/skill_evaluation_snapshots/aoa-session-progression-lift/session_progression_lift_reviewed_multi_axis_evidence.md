@@ -18,6 +18,7 @@ authority.
 
 A bounded progression delta plus one progression-delta receipt with multi-axis
 movement and explicit verdicts.
+It also records baseline posture and evidence posture for each meaningful axis.
 
 ## Boundary notes
 
@@ -30,3 +31,6 @@ routing policy.
 The response should cite evidence, keep movement qualitative, allow hold,
 reanchor, or downgrade instead of forcing positive inflation, and keep any
 finish receipt non-sovereign.
+Baseline posture should be named before comparative movement.
+Checkpoint or closeout hints should remain provisional unless reviewed evidence
+confirms the movement.

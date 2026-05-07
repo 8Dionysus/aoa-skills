@@ -1,9 +1,9 @@
 {
   "event_kind": "repair_cycle_receipt",
-  "event_id": "evt-wave4-repair-0001",
+  "event_id": "evt-kernel-maturity-repair-0001",
   "observed_at": "2026-04-12T01:18:00Z",
-  "run_ref": "run-wave4-kernel-001",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "run_ref": "run-kernel-maturity-001",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "actor_ref": "aoa-skills:session-self-repair",
   "object_ref": {
     "repo": "aoa-skills",
@@ -14,7 +14,7 @@
   "evidence_refs": [
     {
       "kind": "repair_packet",
-      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/repair_cycle.wave4.json",
+      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/repair_cycle.kernel-maturity.json",
       "role": "primary"
     },
     {
@@ -25,12 +25,13 @@
   ],
   "payload": {
     "repair_cycle_state": "prepared",
+    "execution_posture": "prepared_not_executed",
     "linked_diagnosis_refs": [
-      "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/diagnosis_packet_receipt.wave4.json"
+      "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/diagnosis_packet_receipt.kernel-maturity.json"
     ],
     "action_family": "docs-and-example-update",
     "approval_posture": "review_required",
-    "rollback_marker": "git:wave4-kernel-pre-repair",
+    "rollback_marker": "git:kernel-maturity-pre-repair",
     "health_check_refs": [
       "cmd:python scripts/validate_skills.py --fail-on-review-truth-sync"
     ],

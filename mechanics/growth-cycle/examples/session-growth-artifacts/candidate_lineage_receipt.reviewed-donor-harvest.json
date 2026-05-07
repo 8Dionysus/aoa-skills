@@ -8,7 +8,7 @@
   "nearest_wrong_target": "aoa-playbooks",
   "status_posture": "early",
   "evidence_refs": [
-    "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/harvest_packet.alpha.json#candidates[0]"
+    "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/harvest_packet.reviewed-donor-harvest.json#candidates[0]"
   ],
   "supersedes": [],
   "merged_into": null,

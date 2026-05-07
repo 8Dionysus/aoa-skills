@@ -1,0 +1,9 @@
+{
+  "artifact_kind": "repair_cycle",
+  "session_ref": "session:2026-04-06:derived-visibility-handoff",
+  "route_ref": "route:session-growth",
+  "repair_cycle_state": "verified",
+  "execution_posture": "verified_with_one_artifact",
+  "resolution_status": "resolved",
+  "verification_artifact_count": 1
+}

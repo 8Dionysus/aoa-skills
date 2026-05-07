@@ -11,7 +11,7 @@ name: aoa-session-route-forks
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `125641cc64a8`
+- reviewed revision: `f293a9bc116e`
 
 ## Target status
 
@@ -30,8 +30,8 @@ name: aoa-session-route-forks
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the bundle now clears the evaluated floor without claiming that branch cards are the default for every post-session decision.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the bundle now makes the summon boundary explicit: fork cards may surface a child-route candidate, but an anchored child launch belongs to `aoa-summon`, not to branch analysis.
 
 ## Gaps and blockers
 

@@ -9,7 +9,7 @@
   "status_posture": "early",
   "reviewed_at": "2026-04-12T00:32:00Z",
   "evidence_refs": [
-    "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json",
+    "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json",
     "repo:aoa-sdk/examples/closeout_owner_followthrough_map.example.json#owner_followthrough_map[0]"
   ],
   "status_note": "first reviewed owner-local landing for the bounded skill candidate before stable object truth exists",

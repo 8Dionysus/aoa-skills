@@ -159,6 +159,42 @@ class InstallProfilesTests(unittest.TestCase):
             self.assertIn("aoa-safe-infra-change", installed)
             self.assertNotIn("abyss-safe-infra-change", installed)
 
+    def test_session_growth_profile_copy_mode_includes_full_lane_without_rings(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            command = [
+                sys.executable,
+                "scripts/install_skill_pack.py",
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-session-growth",
+                "--dest-root",
+                str(dest_root),
+                "--mode",
+                "copy",
+                "--execute",
+            ]
+            completed = subprocess.run(
+                command,
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=f"command failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+            )
+            installed = sorted(path.name for path in dest_root.iterdir() if path.is_dir())
+            self.assertIn("aoa-checkpoint-closeout-bridge", installed)
+            self.assertIn("aoa-commit-growth-seam", installed)
+            self.assertIn("aoa-summon", installed)
+            self.assertNotIn("aoa-change-protocol", installed)
+            self.assertNotIn("aoa-safe-infra-change", installed)
+            self.assertNotIn("titan-summon", installed)
+
     def test_install_profile_symlink_reinstall_is_idempotent_when_target_matches_source(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             dest_root = pathlib.Path(tmpdir) / "skills"

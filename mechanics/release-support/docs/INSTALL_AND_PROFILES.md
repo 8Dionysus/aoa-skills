@@ -184,8 +184,25 @@ installing the permanent explicit post-session project-core kernel:
   `repo-default`.
 
 `repo-session-harvest-family` remains available as a backward-compatible
-operational alias for the same seven-skill kernel when existing rollout or
+operational alias for the same hard-gated kernel when existing rollout or
 automation surfaces still name the older profile.
+
+`repo-session-growth` is the full core session-growth lane profile:
+
+- it includes the hard-gated `repo-project-core-kernel`
+- it also includes the explicit companion skills `aoa-commit-growth-seam` and
+  `aoa-summon`
+- it does not include the engineering outer ring, risk guard ring, or project
+  overlays
+- use it when the task is to audit or refresh the whole
+  `skills/core/session-growth/` branch across repository-local installs
+- cross-repo rollout should still use `copy` mode so each installed surface
+  remains reviewable and commit-safe
+
+The companion skills stay outside the hard-gated kernel until they receive the
+same detail-receipt contract as kernel members. Their absence from
+`repo-project-core-kernel` is therefore not a rollout blocker for the full
+session-growth lane.
 
 This kernel is also repo-wide hard-gated in `aoa-skills`:
 

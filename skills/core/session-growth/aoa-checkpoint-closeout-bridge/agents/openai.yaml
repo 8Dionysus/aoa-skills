@@ -3,3 +3,4 @@ policy:
 notes:
   - This skill is explicit-preferred overall.
   - Wrappers may use its checkpoint-collect posture automatically, but reviewed-closeout execution stays explicit.
+  - Fixed donor -> progression -> quest order permits explicit skip, defer, or stop statuses when reviewed evidence does not support a stage.

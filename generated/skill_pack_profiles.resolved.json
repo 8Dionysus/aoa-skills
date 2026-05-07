@@ -780,7 +780,7 @@
       ]
     },
     "repo-project-core-kernel": {
-      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "install_root": ".agents/skills",
@@ -1054,6 +1054,94 @@
           "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
           "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        }
+      ]
+    },
+    "repo-session-growth": {
+      "description": "Install the full core session-growth lane into a repository root: the hard-gated project-core kernel plus explicit commit and child-route companions, without engineering, risk, or project overlays.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "install_root": ".agents/skills",
+      "skills": [
+        {
+          "name": "aoa-session-donor-harvest",
+          "source_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-checkpoint-closeout-bridge",
+          "source_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "target_path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
+          "allow_implicit_invocation": true,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-automation-opportunity-scan",
+          "source_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "target_path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-route-forks",
+          "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-diagnose",
+          "source_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-self-repair",
+          "source_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-self-repair/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-session-progression-lift",
+          "source_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "target_path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-quest-harvest",
+          "source_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "target_path": ".agents/skills/aoa-quest-harvest/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-commit-growth-seam",
+          "source_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+          "target_path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-summon",
+          "source_path": ".agents/skills/aoa-summon/SKILL.md",
+          "target_path": ".agents/skills/aoa-summon/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "trust_posture": "portable-core"
         }

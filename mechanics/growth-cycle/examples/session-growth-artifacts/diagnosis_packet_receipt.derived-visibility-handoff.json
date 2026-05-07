@@ -3,7 +3,7 @@
   "event_id": "evt-diagnose-0001",
   "observed_at": "2026-04-06T09:00:00Z",
   "run_ref": "run-session-growth-002",
-  "session_ref": "session:2026-04-06-beta",
+  "session_ref": "session:2026-04-06:derived-visibility-handoff",
   "actor_ref": "aoa-skills:session-self-diagnose",
   "object_ref": {
     "repo": "aoa-skills",
@@ -14,7 +14,7 @@
   "evidence_refs": [
     {
       "kind": "diagnosis_packet",
-      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/diagnosis_packet.beta.json",
+      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/diagnosis_packet.derived-visibility-handoff.json",
       "role": "primary"
     },
     {
@@ -32,14 +32,19 @@
       "derived_layer_gap"
     ],
     "symptom_refs": [
-      "artifact:session-growth-beta/handoff-gap",
-      "artifact:session-growth-beta/reuse-locality"
+      "artifact:session-growth/derived-visibility-handoff/handoff-gap",
+      "artifact:session-growth/derived-visibility-handoff/reuse-locality"
     ],
     "probable_cause_hypotheses": [
       "missing shared derived observability layer",
       "core finish telemetry not yet connected to derived stats"
     ],
     "confidence_band": "high",
+    "evidence_posture": {
+      "symptoms": "reviewed_symptom_refs",
+      "probable_causes": "reviewed_inference",
+      "automation_blocker": "reviewed_prerequisite_gap"
+    },
     "owner_hints": [
       "aoa-stats",
       "aoa-skills"

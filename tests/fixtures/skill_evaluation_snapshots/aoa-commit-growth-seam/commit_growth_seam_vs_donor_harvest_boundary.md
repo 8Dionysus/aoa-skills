@@ -16,7 +16,7 @@ extraction from a session artifact.
 
 ## Expected object
 
-A bounded local commit decision that preserves validation state and stops before push.
+A bounded local commit decision that preserves validation state, names commit authorization posture, and stops before push.
 
 ## Boundary notes
 
@@ -26,4 +26,5 @@ This is a commit-growth-seam case, not a session-donor-harvest case.
 
 - confirm the diff is already bounded
 - carry forward the actual checks run
+- confirm the local commit is authorized now
 - stop before push or publish unless that is separately requested

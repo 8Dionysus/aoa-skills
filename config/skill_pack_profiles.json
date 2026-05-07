@@ -142,7 +142,7 @@
       ]
     },
     "repo-project-core-kernel": {
-      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "skills": [
@@ -198,6 +198,23 @@
         "aoa-session-self-repair",
         "aoa-session-progression-lift",
         "aoa-quest-harvest"
+      ]
+    },
+    "repo-session-growth": {
+      "description": "Install the full core session-growth lane into a repository root: the hard-gated project-core kernel plus explicit commit and child-route companions, without engineering, risk, or project overlays.",
+      "scope": "repo",
+      "install_mode": "symlink-preferred",
+      "skills": [
+        "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-automation-opportunity-scan",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest",
+        "aoa-commit-growth-seam",
+        "aoa-summon"
       ]
     },
     "repo-risk-explicit": {

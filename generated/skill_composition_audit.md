@@ -39,7 +39,7 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-session-self-diagnose | 2 | multi_technique | keep_multi_technique | - |
 | aoa-session-self-repair | 2 | multi_technique | keep_multi_technique | - |
 | aoa-source-of-truth-check | 3 | multi_technique | keep_multi_technique | - |
-| aoa-summon | 2 | multi_technique | keep_multi_technique | - |
+| aoa-summon | 4 | multi_technique | keep_multi_technique | - |
 | aoa-tdd-slice | 2 | multi_technique | keep_multi_technique | - |
 | atm10-change-protocol | 2 | multi_technique | keep_multi_technique | - |
 | atm10-source-of-truth-check | 2 | multi_technique | keep_multi_technique | - |

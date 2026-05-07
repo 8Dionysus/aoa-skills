@@ -230,7 +230,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md`
-- pick summary: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.
+- pick summary: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, name the highest honest automation mode, and route them without granting schedule or mutation authority.
 
 ### Use when
 
@@ -253,6 +253,7 @@ Common expand sections:
 - AUTOMATIONOPPORTUNITYPACKET
 - one or more AUTOMATIONCANDIDATE cards
 - seedready or notnow verdict for each candidate
+- automationmodeposture for the highest honest mode the candidate may claim now
 - checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries
 - next-artifact suggestion such as skill, playbookseed, techniquecandidate, repairquest, quest, or defer
 - one AUTOMATIONCANDIDATERECEIPT using references/stats-event-envelope.md and references/automation-candidate-receipt-schema.yaml
@@ -346,13 +347,14 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`
-- pick summary: Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.
+- pick summary: Bridge local checkpoint focus hints into one reviewed closeout execution chain without turning provisional notes, mechanical reports, or skipped stages into final harvest, progression, or quest authority.
 
 ### Use when
 
 - checkpoint notes already carry harvest, progression, or upgrade candidates
 - reviewed closeout must use those candidates as focus hints without treating them as final authority
 - the route needs one explicit bridge from local checkpoint evidence into the reviewed session-harvest family
+- the agent must distinguish accepted focus hints from stale, cross-session, or contaminated checkpoint residue before downstream skills run
 - the honest next move is not raw recap, but a bounded session-end chain
 
 ### Do not use when
@@ -362,6 +364,7 @@ Common expand sections:
 - the task is to implement or patch the bridge itself rather than execute a reviewed closeout chain
 - the task wants final harvest, progression, or quest verdicts from checkpoint notes alone
 - the request tries to make aoa closeout run a hidden skill runner
+- the request demands that all three downstream stages produce verdicts even when reviewed evidence only supports a skip, defer, or stop
 
 ### Object use shape
 
@@ -371,10 +374,12 @@ Common expand sections:
 - ordered session-end target list
 - in reviewed-closeout-execute mode
 - one explicit execution context bundle
+- accepted, rejected, and unresolved focus hints before the first downstream skill runs
 - one explicit run of
 - aoa-session-donor-harvest
 - aoa-session-progression-lift
 - aoa-quest-harvest
+- explicit stage statuses: executed, skipped, deferred, or stopped
 - one execution report that records what ran, what was skipped, and which artifacts or receipts were emitted
 - one agent-authored closeout summary that says which conclusions came from reread session evidence, which checkpoint hints were accepted, and which hints were rejected as stale, cross-session, or contaminated
 
@@ -390,7 +395,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-commit-growth-seam/SKILL.md`
-- pick summary: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.
+- pick summary: Turn a validated bounded diff into one authorized local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.
 
 ### Use when
 
@@ -398,12 +403,14 @@ Common expand sections:
 - the next honest move is one local commit boundary rather than more coding
 - the commit needs to preserve what was verified and what remains unresolved
 - the working tree may contain unrelated changes that must stay outside the commit
+- visible operator intent authorizes this local commit boundary now
 - the workflow needs a visible stop line before push, PR, release, or broader closeout follow-through
 
 ### Do not use when
 
 - the task still needs more coding, repair, or verification before any commit is honest
 - no bounded diff exists yet
+- the operator only asked for review, preparation, or a report and did not authorize a local commit now
 - the main question is whether a mutating step is authorized at all; use aoa-approval-gate-check
 - the main task is push, PR, release, or public-share rather than the local commit boundary itself
 - the route should trigger or classify a post-commit review artifact rather than author the commit boundary itself
@@ -411,6 +418,7 @@ Common expand sections:
 ### Object use shape
 
 - one bounded commit-or-defer decision
+- commitauthorizationposture, such as authorizednow, defercommit, needssplit, or needsverification
 - one intentional local commit, or one explicit refusal to commit yet
 - one honest commit message that matches the bounded unit
 - one carry-forward note for what was verified and what remains unresolved
@@ -705,12 +713,14 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-quest-harvest/SKILL.md`
-- pick summary: Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.
+- pick summary: Triage one isolated repeated reviewed quest unit with explicit repeat evidence posture into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, memory, or downstream acceptance.
 
 ### Use when
 
 - a bounded work pattern has repeated and now needs an explicit promotion decision
 - reviewed evidence exists, but the correct destination is still unclear
+- donor harvest or equivalent review has already isolated one repeated unit from broader session residue
+- the repeat signal needs to be distinguished from topic recurrence, conversation recurrence, owner-pending follow-through, or mixed donor residue
 - the decision must distinguish between skill, playbook, orchestrator surface, proof surface, memo surface, or staying a quest
 - the route needs a compact final promotion triage rather than another free-form discussion
 
@@ -719,6 +729,8 @@ Common expand sections:
 - the route is still active and the evidence has not been reviewed yet
 - there is only one anecdotal occurrence with no honest repeat signal
 - the task is to invent net-new doctrine rather than classify a repeated pattern
+- the repeated unit is still mixed with several reusable donor units, unresolved route forks, diagnosis, repair, automation-readiness questions, or progression reflection
+- the repeat evidence posture cannot be stated without guessing
 - the route is already clearly scenario-shaped and only needs playbook authoring
 - the source is a reviewed session artifact with multiple candidate donor units that still need owner-layer routing first; use aoa-session-donor-harvest
 - the source still needs explicit automation-readiness classification for a repeated manual route; use aoa-automation-opportunity-scan
@@ -729,6 +741,8 @@ Common expand sections:
 - promotion verdict
 - owner repo and follow-up surface
 - explicit reason for promotion or non-promotion
+- repeat evidence posture such as reviewedrepeatisolated, reviewedrepeatweak, contestedrepeat, topiconlyrepeat, mixedresidue, or ownerpending
+- explicit statement that the verdict is smaller than authoring or owner acceptance in the destination repo
 - named next artifact or next quest action
 - concise note on what boundary must remain intact
 - one QUESTPROMOTIONRECEIPT using references/stats-event-envelope.md and references/quest-promotion-receipt-schema.yaml
@@ -818,7 +832,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-donor-harvest/SKILL.md`
-- pick summary: Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.
+- pick summary: Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, filter checkpoint or handoff hints through reviewed evidence, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.
 
 ### Use when
 
@@ -827,6 +841,7 @@ Common expand sections:
 - candidate outputs may belong in technique canon, aoa-skills, aoa-playbooks, aoa-evals, aoa-memo, aoa-agents, or a hold/quest lane
 - a repeated manual route may also need an explicit automation-readiness seam instead of staying vague donor residue
 - the session may also have produced decision forks, diagnosis clues, repair candidates, progression evidence, or quest residue that should be made explicit rather than buried in recap prose
+- checkpoint notes, closeout handoffs, or other lower-authority hints need to be accepted, rejected, or carried without becoming candidates on their own
 - the question is not merely "what happened?" but "what reusable object, if any, emerged here?"
 
 ### Do not use when
@@ -840,6 +855,7 @@ Common expand sections:
 ### Object use shape
 
 - one bounded HARVESTPACKET
+- one reviewed intake note that says which checkpoint or handoff hints were accepted, rejected, or carried as unresolved focus only
 - named candidates, each with
 - candidate ref minted only after reviewed harvest
 - source cluster ref when the reviewed input carried one
@@ -869,18 +885,22 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-progression-lift/SKILL.md`
-- pick summary: Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.
+- pick summary: Lift reviewed session evidence into a multi-axis progression delta with baseline posture, per-axis evidence posture, bounded unlock hints, quest reflection cues, and no fake single-score or checkpoint-hint authority.
 
 ### Use when
 
 - a reviewed session generated meaningful mastery evidence
 - the route needs progression legibility without mutating source role profiles
+- donor harvest, checkpoint closeout, or a reviewed handoff produced provisional axis hints that must be accepted, rejected, or carried without becoming growth claims by themselves
+- movement needs to be distinguished from first observation, stale baseline, missing baseline, or regression against a known prior state
 - quest or RPG reflection would help continuation
 - the output needs to stay small, evidence-backed, and multi-axis
 
 ### Do not use when
 
 - there is no reviewed evidence
+- the only input is a checkpoint axis hint, mood note, or generated summary that has not been reread against reviewed session evidence
+- the route wants comparative movement while refusing to name a baseline or admit that the baseline is missing, stale, or contested
 - the request wants one global power number
 - progression is being used as hidden routing policy
 - the route is trying to mint authority rights without evidence
@@ -888,6 +908,8 @@ Common expand sections:
 ### Object use shape
 
 - PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints
+- baseline posture such as baselineref, priordeltaref, firstobserved, baselinemissing, baselinestale, or baselinecontested
+- one axis table where each meaningful axis names movement, evidence refs, evidence posture, and any defer or no-movement reason
 - optional automation-readiness hint when reviewed evidence supports it
 - optional rank reflection note if evidence is strong enough
 - quest hooks or chronicle stub when useful
@@ -920,6 +942,7 @@ Common expand sections:
 ### Do not use when
 
 - there is only one obvious next bounded move
+- one bounded child route is already chosen, anchored, and output-named; use aoa-summon for the launch gate instead
 - the session still needs first-pass donor harvest
 - the question is final promotion of a repeated quest unit
 - the route needs scenario canon immediately rather than branch analysis
@@ -946,7 +969,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-self-diagnose/SKILL.md`
-- pick summary: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.
+- pick summary: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet with explicit evidence posture and no mutation.
 
 ### Use when
 
@@ -955,6 +978,7 @@ Common expand sections:
 - boundary confusion or missing proof may be more important than immediate output production
 - blocked automation readiness may need root-cause classification before any automation claim becomes honest
 - the same class of problem may be appearing across sessions
+- checkpoint, closeout, generated, or earlier-session hints suggest a problem but must be reread against reviewed evidence before becoming diagnosis
 
 ### Do not use when
 
@@ -962,10 +986,12 @@ Common expand sections:
 - the issue is already fully diagnosed and only needs repair execution
 - the material is a celebration recap with no meaningful friction
 - the route is actually a single quest-promotion decision
+- the only input is an unreviewed checkpoint note, live frustration, generated summary, or stale neighboring-session hint
 
 ### Object use shape
 
 - DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints
+- evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown
 - severity or urgency notes when evidence supports them
 - explicit unknowns when diagnosis remains incomplete
 - optional blocked-automation findings such as unstable inputs, hidden approval, rollback gaps, or secret coupling
@@ -985,7 +1011,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-session-self-repair/SKILL.md`
-- pick summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
+- pick summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, execution posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
 
 ### Use when
 
@@ -994,6 +1020,7 @@ Common expand sections:
 - the route may change skill, playbook, agent, eval, or memo surfaces and needs explicit checkpoint posture
 - the route may need prerequisite repair before later automation becomes honest
 - repair can still be kept inside one bounded execution unit
+- a prepared repair packet or receipt must not be mistaken for executed or verified repair
 
 ### Do not use when
 
@@ -1001,10 +1028,12 @@ Common expand sections:
 - the repair is actually a large scenario rollout better owned by a playbook
 - the route is trying to bypass approval, rollback, or health-check posture
 - the request is vague self-improvement rhetoric with no bounded target
+- the route only needs a diagnosis packet, route fork, automation-readiness scan, or final quest-promotion verdict
 
 ### Object use shape
 
 - REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub
+- explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoffrequired
 - optional repair quest when execution should remain deferred
 - optional automation-readiness prerequisite packet when the real need is to stabilize a route before later automation scanning or seeding
 - explicit stop conditions and escalation points
@@ -1081,6 +1110,7 @@ Common expand sections:
 ### Do not use when
 
 - the parent route still lacks a real anchor or named outputs
+- multiple plausible next routes still compete and need fork cards first
 - the route is d3+ and still needs a split before any child launch
 - delegation would widen authority, hide approval posture, or bypass a human gate
 - the task is asking for a whole orchestration mesh rather than one bounded child route
@@ -1093,6 +1123,7 @@ Common expand sections:
 - executionsurface, cohortpattern, reasoncodes, and blockedactions
 - optional codexlocaltarget
 - returnplan, checkpointbridgeplan, memoexportplan, and ownerpublicationplan
+- return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary
 - closeoutrequired, checkpointrequired, and progressionrequired
 
 ### Support artifacts

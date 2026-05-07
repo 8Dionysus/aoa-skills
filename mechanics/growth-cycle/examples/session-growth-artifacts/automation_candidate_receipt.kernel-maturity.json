@@ -1,9 +1,9 @@
 {
   "event_kind": "automation_candidate_receipt",
-  "event_id": "evt-wave4-automation-0001",
+  "event_id": "evt-kernel-maturity-automation-0001",
   "observed_at": "2026-04-12T01:28:00Z",
-  "run_ref": "run-wave4-kernel-001",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "run_ref": "run-kernel-maturity-001",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "actor_ref": "aoa-skills:automation-opportunity-scan",
   "object_ref": {
     "repo": "aoa-skills",
@@ -14,7 +14,7 @@
   "evidence_refs": [
     {
       "kind": "automation_packet",
-      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/automation_candidate.wave4.json",
+      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/automation_candidate.kernel-maturity.json",
       "role": "primary"
     },
     {
@@ -24,10 +24,11 @@
     }
   ],
   "payload": {
-    "manual_route_ref": "manual-route:wave4:reviewed-automation-followthrough-assembly",
+    "manual_route_ref": "manual-route:kernel-maturity:reviewed-automation-followthrough-assembly",
     "repeat_signal_posture": "repeated",
     "determinism_posture": "stable-input-output",
     "reversibility_posture": "bounded-rollback",
+    "automation_mode_posture": "human_approved_execution",
     "checkpoint_required": true,
     "seed_ready": true,
     "next_artifact_hint": "playbook_seed",

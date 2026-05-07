@@ -17,7 +17,11 @@ Use this checklist when reviewing work that claims to follow
 
 - [ ] Checkpoint collection stays provisional and does not emit final donor, progression, or quest verdicts.
 - [ ] Reviewed closeout rereads the reviewed artifact rather than trusting checkpoint notes alone.
+- [ ] Accepted, rejected, and unresolved focus hints are named before the first downstream skill runs.
 - [ ] The explicit execution chain preserves the fixed order donor -> progression -> quest.
+- [ ] Each downstream stage records `executed`, `skipped`, `deferred`, or
+      `stopped` with an evidence-linked reason.
+- [ ] A skipped or deferred stage was not presented as a successful final verdict.
 - [ ] Stats refresh remains downstream and outside the bridge skill itself.
 - [ ] The bridge coordinates core skills without replacing their contracts.
 

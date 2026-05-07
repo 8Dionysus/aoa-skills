@@ -9,26 +9,24 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 
 ## Verdicts
 
-- `healthy`: 28
+- `healthy`: 29
 - `working_scaffold_needs_promotion_review`: 16
-- `working_with_maintenance_findings`: 1
 
 ## Technique Drift
 
 - repo: `/srv/AbyssOS/aoa-techniques`
-- target ref: `ab981e7c9b4e929b6165b942bcf7a344d406030f`
-- states: clean=62, pending=32
+- target ref: `b4e5c1446469f142c60a85d0a7a4d9de7835ea65`
+- states: clean=66, pending=30
 
 ## Findings
 
-- `pending_technique_lineage`: 16
+- `pending_technique_lineage`: 15
 
 ## Upgrade Targets
 
 | skill | status | scope | verdict | findings |
 |---|---|---|---|---|
 | `abyss-self-diagnostic-spine` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | - |
-| `aoa-summon` | `evaluated` | `core` | `working_with_maintenance_findings` | `pending_technique_lineage` |
 | `titan-approval-ledger` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `pending_technique_lineage` |
 | `titan-approval-loom` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `pending_technique_lineage` |
 | `titan-appserver-bridge` | `scaffold` | `project` | `working_scaffold_needs_promotion_review` | `pending_technique_lineage` |
@@ -54,11 +52,11 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 | `abyss-self-diagnostic-spine` | `scaffold` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out9/c7/r6/v7/p8` | `project-overlay, none, implicit=true` | `working_scaffold_needs_promotion_review` |
 | `aoa-adr-write` | `canonical` | `published` | `clean2` | `a1/u2/d6/su1/sd1` | `out7/c9/r11/v10/p10` | `portable-core, repo, implicit=true` | `healthy` |
 | `aoa-approval-gate-check` | `canonical` | `published` | `clean1` | `a1/u1/d1/su1/sd1` | `out5/c6/r6/v6/p6` | `explicit-risk, none, implicit=false` | `healthy` |
-| `aoa-automation-opportunity-scan` | `evaluated` | `published` | `clean3` | `a1/u2/d1/su1/sd1` | `out7/c9/r7/v9/p10` | `portable-core, none, implicit=false` | `healthy` |
+| `aoa-automation-opportunity-scan` | `evaluated` | `published` | `clean3` | `a1/u2/d1/su1/sd1` | `out8/c10/r8/v10/p11` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-bounded-context-map` | `canonical` | `published` | `clean2` | `a1/u2/d4/su1/sd1` | `out6/c6/r9/v7/p9` | `portable-core, none, implicit=true` | `healthy` |
 | `aoa-change-protocol` | `canonical` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c7/r7/v6/p9` | `portable-core, repo, implicit=true` | `healthy` |
-| `aoa-checkpoint-closeout-bridge` | `evaluated` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out12/c11/r7/v8/p11` | `portable-core, none, implicit=true` | `healthy` |
-| `aoa-commit-growth-seam` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c5/r5/v5/p8` | `portable-core, repo, implicit=false` | `healthy` |
+| `aoa-checkpoint-closeout-bridge` | `evaluated` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out14/c12/r8/v9/p13` | `portable-core, none, implicit=true` | `healthy` |
+| `aoa-commit-growth-seam` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out6/c6/r6/v6/p9` | `portable-core, repo, implicit=false` | `healthy` |
 | `aoa-contract-test` | `canonical` | `published` | `clean2` | `a1/u3/d3/su1/sd1` | `out5/c7/r7/v6/p7` | `portable-core, repo, implicit=true` | `healthy` |
 | `aoa-core-logic-boundary` | `evaluated` | `published` | `clean2` | `a1/u3/d3/su1/sd1` | `out5/c6/r7/v6/p7` | `portable-core, repo, implicit=true` | `healthy` |
 | `aoa-dry-run-first` | `canonical` | `published` | `clean2` | `a1/u1/d2/su1/sd1` | `out5/c6/r6/v7/p7` | `explicit-risk, runtime, implicit=false` | `healthy` |
@@ -66,16 +64,16 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 | `aoa-local-stack-bringup` | `evaluated` | `published` | `clean4` | `a1/u1/d1/su1/sd1` | `out5/c6/r6/v6/p7` | `explicit-risk, runtime, implicit=false` | `healthy` |
 | `aoa-port-adapter-refactor` | `evaluated` | `published` | `clean2` | `a1/u2/d2/su1/sd1` | `out5/c7/r7/v6/p8` | `portable-core, repo, implicit=true` | `healthy` |
 | `aoa-property-invariants` | `canonical` | `published` | `clean2` | `a1/u2/d3/su1/sd1` | `out5/c6/r9/v6/p8` | `portable-core, repo, implicit=true` | `healthy` |
-| `aoa-quest-harvest` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c10/r6/v8/p12` | `portable-core, none, implicit=false` | `healthy` |
+| `aoa-quest-harvest` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out9/c13/r9/v11/p15` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-safe-infra-change` | `canonical` | `published` | `clean2` | `a1/u1/d2/su1/sd1` | `out4/c4/r4/v5/p6` | `explicit-risk, runtime, implicit=false` | `healthy` |
 | `aoa-sanitized-share` | `canonical` | `published` | `clean2` | `a1/u1/d3/su1/sd1` | `out4/c6/r17/v7/p7` | `explicit-risk, sharing, implicit=false` | `healthy` |
-| `aoa-session-donor-harvest` | `evaluated` | `published` | `clean3` | `a1/u3/d2/su1/sd1` | `out17/c13/r10/v13/p25` | `portable-core, none, implicit=false` | `healthy` |
-| `aoa-session-progression-lift` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c9/r7/v7/p9` | `portable-core, none, implicit=false` | `healthy` |
-| `aoa-session-route-forks` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c9/r7/v7/p10` | `portable-core, none, implicit=false` | `healthy` |
-| `aoa-session-self-diagnose` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c9/r7/v7/p9` | `portable-core, none, implicit=false` | `healthy` |
-| `aoa-session-self-repair` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out6/c10/r6/v7/p9` | `portable-core, none, implicit=false` | `healthy` |
+| `aoa-session-donor-harvest` | `evaluated` | `published` | `clean3` | `a1/u3/d2/su1/sd1` | `out18/c14/r12/v15/p27` | `portable-core, none, implicit=false` | `healthy` |
+| `aoa-session-progression-lift` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out9/c11/r10/v9/p15` | `portable-core, none, implicit=false` | `healthy` |
+| `aoa-session-route-forks` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c10/r7/v8/p11` | `portable-core, none, implicit=false` | `healthy` |
+| `aoa-session-self-diagnose` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out8/c10/r9/v8/p10` | `portable-core, none, implicit=false` | `healthy` |
+| `aoa-session-self-repair` | `evaluated` | `published` | `clean2` | `a1/u2/d1/su1/sd1` | `out7/c11/r7/v8/p11` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-source-of-truth-check` | `canonical` | `published` | `clean3` | `a1/u2/d2/su1/sd1` | `out7/c8/r10/v8/p10` | `portable-core, none, implicit=true` | `healthy` |
-| `aoa-summon` | `evaluated` | `pending` | `pending2` | `a1/u1/d1/su1/sd1` | `out6/c10/r6/v10/p14` | `portable-core, none, implicit=false` | `working_with_maintenance_findings` |
+| `aoa-summon` | `evaluated` | `published` | `clean4` | `a1/u1/d1/su1/sd1` | `out7/c12/r7/v12/p15` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-tdd-slice` | `canonical` | `published` | `clean2` | `a1/u2/d2/su1/sd1` | `out5/c7/r6/v5/p7` | `portable-core, repo, implicit=true` | `healthy` |
 | `atm10-change-protocol` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, repo, implicit=true` | `healthy` |
 | `atm10-source-of-truth-check` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, none, implicit=true` | `healthy` |

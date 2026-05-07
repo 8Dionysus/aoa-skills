@@ -395,6 +395,7 @@
         "`AUTOMATION_OPPORTUNITY_PACKET`",
         "one or more `AUTOMATION_CANDIDATE` cards",
         "`seed_ready` or `not_now` verdict for each candidate",
+        "`automation_mode_posture` for the highest honest mode the candidate may claim now",
         "`checkpoint_required` flag when the route crosses self-change or approval-sensitive boundaries",
         "next-artifact suggestion such as `skill`, `playbook_seed`, `technique_candidate`, `repair_quest`, `quest`, or `defer`",
         "one `AUTOMATION_CANDIDATE_RECEIPT` using",
@@ -405,6 +406,7 @@
         "confirm evidence refs justify the repeat signal",
         "confirm stable input and output posture is assessed explicitly",
         "confirm `seed_ready` or `not_now` is explicit for each candidate",
+        "confirm `automation_mode_posture` names the highest honest mode without granting extra authority",
         "confirm a first owner layer and next artifact are named",
         "confirm the nearest wrong target is rejected when classification pressure exists",
         "confirm checkpoint posture appears for self-changing or approval-heavy routes",
@@ -414,6 +416,7 @@
       "contracts": [
         "this skill detects and packages automation opportunities; it does not create live automation authority",
         "schedule hints remain hints, not runtime truth",
+        "`automation_mode_posture` is a boundary statement, not permission to execute",
         "recurring scenario candidates belong in `aoa-playbooks` as seed candidates rather than hidden playbooks inside a skill",
         "self-changing or approval-heavy candidates must surface checkpoint posture explicitly",
         "unresolved candidates may become repair quests instead of fake-ready automations",
@@ -433,6 +436,7 @@
         "automation-opportunity-packet",
         "one-or-more-automation-candidate-cards",
         "seed-ready-or-not-now-verdict-for-each-candidate",
+        "automation-mode-posture-for-the-highest-honest-mode-the-candidat",
         "checkpoint-required-flag-when-the-route-crosses-self-change-or-a",
         "next-artifact-suggestion-such-as-skill-playbook-seed-technique-c",
         "one-automation-candidate-receipt-using",
@@ -444,6 +448,7 @@
           "automation-opportunity-packet",
           "one-or-more-automation-candidate-cards",
           "seed-ready-or-not-now-verdict-for-each-candidate",
+          "automation-mode-posture-for-the-highest-honest-mode-the-candidat",
           "checkpoint-required-flag-when-the-route-crosses-self-change-or-a",
           "next-artifact-suggestion-such-as-skill-playbook-seed-technique-c",
           "one-automation-candidate-receipt-using",
@@ -457,7 +462,7 @@
         "contract_notes": [
           "this skill detects and packages automation opportunities; it does not create live automation authority",
           "schedule hints remain hints, not runtime truth",
-          "recurring scenario candidates belong in `aoa-playbooks` as seed candidates rather than hidden playbooks inside a skill"
+          "`automation_mode_posture` is a boundary statement, not permission to execute"
         ],
         "next_recommended_skills": []
       }
@@ -635,10 +640,12 @@
         "ordered session-end target list",
         "in `reviewed-closeout-execute` mode:",
         "one explicit execution context bundle",
+        "accepted, rejected, and unresolved focus hints before the first downstream",
         "one explicit run of:",
         "`aoa-session-donor-harvest`",
         "`aoa-session-progression-lift`",
         "`aoa-quest-harvest`",
+        "explicit stage statuses: `executed`, `skipped`, `deferred`, or `stopped`",
         "one execution report that records what ran, what was skipped, and which",
         "one agent-authored closeout summary that says which conclusions came from"
       ],
@@ -647,6 +654,7 @@
         "confirm the bridge never emits final verdicts during mid-session capture",
         "confirm reviewed closeout refuses to run without a reviewed artifact",
         "confirm the core skill order is fixed and visible",
+        "confirm each downstream stage records `executed`, `skipped`, `deferred`, or",
         "confirm checkpoint note and reviewed handoff are treated as hints rather than",
         "confirm the final answer distinguishes current-session evidence from",
         "confirm the execution report's mechanical bridge outputs were not presented",
@@ -661,6 +669,7 @@
         "`aoa-session-donor-harvest`",
         "`aoa-session-progression-lift`",
         "`aoa-quest-harvest`",
+        "fixed order means the dependency order for evaluation and reporting; it does",
         "this bridge skill coordinates core skills; it does not replace their meaning",
         "`aoa closeout run` remains a separate receipt-first publisher path",
         "stats refresh is not part of this skill"
@@ -680,8 +689,8 @@
         "ordered-session-end-target-list",
         "in-reviewed-closeout-execute-mode",
         "one-explicit-execution-context-bundle",
-        "one-explicit-run-of",
-        "aoa-session-donor-harvest"
+        "accepted-rejected-and-unresolved-focus-hints-before-the-first-do",
+        "one-explicit-run-of"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-checkpoint-closeout-bridge",
@@ -692,8 +701,8 @@
           "ordered-session-end-target-list",
           "in-reviewed-closeout-execute-mode",
           "one-explicit-execution-context-bundle",
-          "one-explicit-run-of",
-          "aoa-session-donor-harvest"
+          "accepted-rejected-and-unresolved-focus-hints-before-the-first-do",
+          "one-explicit-run-of"
         ],
         "verification_notes": [
           "confirm `checkpoint-collect` only updates local ledger surfaces",
@@ -717,11 +726,13 @@
         "one bounded local diff",
         "working tree status, including any unrelated local changes",
         "validation results or explicit validation debt",
+        "explicit commit authorization or a defer marker",
         "intended commit scope and message shape",
         "explicit next stop line after the commit"
       ],
       "outputs": [
         "one bounded commit-or-defer decision",
+        "`commit_authorization_posture`, such as `authorized_now`, `defer_commit`,",
         "one intentional local commit, or one explicit refusal to commit yet",
         "one honest commit message that matches the bounded unit",
         "one carry-forward note for what was verified and what remains unresolved",
@@ -729,6 +740,7 @@
       ],
       "verification": [
         "confirm the committed diff matches the named bounded unit",
+        "confirm `commit_authorization_posture` was `authorized_now` before the commit",
         "confirm unrelated local changes were excluded or explicitly deferred",
         "confirm the validation state was named honestly before the commit happened",
         "confirm the commit message reflects the real change rather than generic",
@@ -738,6 +750,7 @@
         "the commit boundary matches the actual bounded diff",
         "unrelated local state is not silently swept into the commit",
         "verification status stays attached to the commit story",
+        "`authorized_now` is required before the skill mutates the local repository",
         "the local commit does not imply push, publish, merge, or release",
         "if the route needs a new approval seam or broader workflow, it hands off"
       ],
@@ -745,11 +758,13 @@
         "one-bounded-local-diff",
         "working-tree-status-including-any-unrelated-local-changes",
         "validation-results-or-explicit-validation-debt",
+        "explicit-commit-authorization-or-a-defer-marker",
         "intended-commit-scope-and-message-shape",
         "explicit-next-stop-line-after-the-commit"
       ],
       "provides_artifact_tags": [
         "one-bounded-commit-or-defer-decision",
+        "commit-authorization-posture-such-as-authorized-now-defer-commit",
         "one-intentional-local-commit-or-one-explicit-refusal-to-commit-y",
         "one-honest-commit-message-that-matches-the-bounded-unit",
         "one-carry-forward-note-for-what-was-verified-and-what-remains-un",
@@ -759,6 +774,7 @@
         "from_skill": "aoa-commit-growth-seam",
         "produced_artifacts": [
           "one-bounded-commit-or-defer-decision",
+          "commit-authorization-posture-such-as-authorized-now-defer-commit",
           "one-intentional-local-commit-or-one-explicit-refusal-to-commit-y",
           "one-honest-commit-message-that-matches-the-bounded-unit",
           "one-carry-forward-note-for-what-was-verified-and-what-remains-un",
@@ -766,8 +782,8 @@
         ],
         "verification_notes": [
           "confirm the committed diff matches the named bounded unit",
-          "confirm unrelated local changes were excluded or explicitly deferred",
-          "confirm the validation state was named honestly before the commit happened"
+          "confirm `commit_authorization_posture` was `authorized_now` before the commit",
+          "confirm unrelated local changes were excluded or explicitly deferred"
         ],
         "contract_notes": [
           "the commit boundary matches the actual bounded diff",
@@ -1294,6 +1310,8 @@
         "source quest or quest family",
         "reviewed run summary or harvest pack",
         "repeat count and repeat shape",
+        "isolated repeated unit ref, or an explicit statement that the unit was",
+        "repeat evidence posture",
         "owner layer and touched surfaces",
         "difficulty, risk, and control posture",
         "residual ambiguity or reasons to defer promotion"
@@ -1302,6 +1320,8 @@
         "promotion verdict",
         "owner repo and follow-up surface",
         "explicit reason for promotion or non-promotion",
+        "repeat evidence posture such as `reviewed_repeat_isolated`,",
+        "explicit statement that the verdict is smaller than authoring or owner",
         "named next artifact or next quest action",
         "concise note on what boundary must remain intact",
         "one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md`",
@@ -1309,11 +1329,14 @@
       ],
       "verification": [
         "confirm the harvest pack is reviewed and bounded",
+        "confirm exactly one repeated reviewed unit is isolated before final triage",
+        "confirm repeat evidence posture is named and supports the verdict",
         "confirm the repeated unit is named explicitly",
         "confirm the chosen promotion target matches the owner layer",
         "confirm the nearest wrong target is explicitly rejected",
         "confirm class identity is not being defined by quest metadata",
         "confirm the result is one of the allowed outcomes: keep or open quest, skill, playbook, orchestrator surface, proof surface, or memo surface",
+        "confirm the next artifact is framed as a proposal or follow-through target,",
         "confirm any emitted receipt stays evidence-linked and subordinate to the closed triage",
         "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the"
       ],
@@ -1324,6 +1347,9 @@
         "a playbook promotion must stay route-shaped",
         "proof and memory promotions must stay in their owner layers",
         "one good run is not enough to justify promotion by itself",
+        "repeated discussion is not the same thing as repeated work",
+        "repeat evidence posture must stay visible when repetition is weak, mixed,",
+        "a promotion verdict is not downstream authoring, downstream acceptance, or",
         "active quest state must not be copied into memo canon as if it were settled truth",
         "`QUEST_PROMOTION_RECEIPT` is verdict telemetry, not promotion authority",
         "`CORE_SKILL_APPLICATION_RECEIPT` is generic kernel telemetry, not promotion",
@@ -1333,6 +1359,8 @@
         "source-quest-or-quest-family",
         "reviewed-run-summary-or-harvest-pack",
         "repeat-count-and-repeat-shape",
+        "isolated-repeated-unit-ref-or-an-explicit-statement-that-the-uni",
+        "repeat-evidence-posture",
         "owner-layer-and-touched-surfaces",
         "difficulty-risk-and-control-posture",
         "residual-ambiguity-or-reasons-to-defer-promotion"
@@ -1341,10 +1369,11 @@
         "promotion-verdict",
         "owner-repo-and-follow-up-surface",
         "explicit-reason-for-promotion-or-non-promotion",
+        "repeat-evidence-posture-such-as-reviewed-repeat-isolated",
+        "explicit-statement-that-the-verdict-is-smaller-than-authoring-or",
         "named-next-artifact-or-next-quest-action",
         "concise-note-on-what-boundary-must-remain-intact",
-        "one-quest-promotion-receipt-using-references-stats-event-envelop",
-        "one-core-skill-application-receipt-using"
+        "one-quest-promotion-receipt-using-references-stats-event-envelop"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-quest-harvest",
@@ -1352,15 +1381,16 @@
           "promotion-verdict",
           "owner-repo-and-follow-up-surface",
           "explicit-reason-for-promotion-or-non-promotion",
+          "repeat-evidence-posture-such-as-reviewed-repeat-isolated",
+          "explicit-statement-that-the-verdict-is-smaller-than-authoring-or",
           "named-next-artifact-or-next-quest-action",
           "concise-note-on-what-boundary-must-remain-intact",
-          "one-quest-promotion-receipt-using-references-stats-event-envelop",
-          "one-core-skill-application-receipt-using"
+          "one-quest-promotion-receipt-using-references-stats-event-envelop"
         ],
         "verification_notes": [
           "confirm the harvest pack is reviewed and bounded",
-          "confirm the repeated unit is named explicitly",
-          "confirm the chosen promotion target matches the owner layer"
+          "confirm exactly one repeated reviewed unit is isolated before final triage",
+          "confirm repeat evidence posture is named and supports the verdict"
         ],
         "contract_notes": [
           "invocation must remain explicit and post-session",
@@ -1512,11 +1542,14 @@
         "session goal and closure state",
         "candidate repeat signals or reuse signals",
         "touched repos or AoA layers",
+        "optional checkpoint `cluster_ref` values, closeout-handoff hints, or other",
+        "current-session evidence boundary, especially when hints came from a ledger",
         "explicit uncertainty and boundary risks",
         "desired output posture: classify-only, draft-stub, or patch-ready proposal"
       ],
       "outputs": [
         "one bounded `HARVEST_PACKET`",
+        "one reviewed intake note that says which checkpoint or handoff hints were",
         "named candidates, each with:",
         "candidate ref minted only after reviewed harvest",
         "source cluster ref when the reviewed input carried one",
@@ -1536,10 +1569,12 @@
       ],
       "verification": [
         "confirm the source artifact is reviewed and bounded",
+        "confirm checkpoint, closeout-handoff, or ledger hints were dispositioned as",
         "confirm each kept candidate names one reusable unit rather than a topic",
         "confirm each accepted candidate has one primary owner layer",
         "confirm the nearest wrong target is rejected explicitly",
         "confirm `candidate_ref` was minted only for reviewed bounded units",
+        "confirm every `candidate_ref` is supported by reviewed artifact or receipt",
         "confirm any surviving checkpoint `cluster_ref` stayed linked when available",
         "confirm no candidate routes source-owned meaning first into derivative layers",
         "confirm hold and defer outcomes remain available",
@@ -1552,6 +1587,7 @@
       "contracts": [
         "invocation must remain explicit and post-session",
         "the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
+        "checkpoint notes, closeout handoffs, and ledgers are focus inputs only until",
         "one candidate must map to one primary owner layer",
         "`candidate_ref` appears only after reviewed donor harvest",
         "`usefulness` is a reuse signal, not an owner layer by itself",
@@ -1569,40 +1605,42 @@
         "session-goal-and-closure-state",
         "candidate-repeat-signals-or-reuse-signals",
         "touched-repos-or-aoa-layers",
+        "optional-checkpoint-cluster-ref-values-closeout-handoff-hints-or",
+        "current-session-evidence-boundary-especially-when-hints-came-fro",
         "explicit-uncertainty-and-boundary-risks",
         "desired-output-posture-classify-only-draft-stub-or-patch-ready-p"
       ],
       "provides_artifact_tags": [
         "one-bounded-harvest-packet",
+        "one-reviewed-intake-note-that-says-which-checkpoint-or-handoff-h",
         "named-candidates-each-with",
         "candidate-ref-minted-only-after-reviewed-harvest",
         "source-cluster-ref-when-the-reviewed-input-carried-one",
         "reusable-unit-name",
         "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
-        "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold",
-        "owner-hypothesis-and-owner-repo-recommendation"
+        "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-session-donor-harvest",
         "produced_artifacts": [
           "one-bounded-harvest-packet",
+          "one-reviewed-intake-note-that-says-which-checkpoint-or-handoff-h",
           "named-candidates-each-with",
           "candidate-ref-minted-only-after-reviewed-harvest",
           "source-cluster-ref-when-the-reviewed-input-carried-one",
           "reusable-unit-name",
           "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
-          "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold",
-          "owner-hypothesis-and-owner-repo-recommendation"
+          "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold"
         ],
         "verification_notes": [
           "confirm the source artifact is reviewed and bounded",
-          "confirm each kept candidate names one reusable unit rather than a topic",
-          "confirm each accepted candidate has one primary owner layer"
+          "confirm checkpoint, closeout-handoff, or ledger hints were dispositioned as",
+          "confirm each kept candidate names one reusable unit rather than a topic"
         ],
         "contract_notes": [
           "invocation must remain explicit and post-session",
           "the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
-          "one candidate must map to one primary owner layer"
+          "checkpoint notes, closeout handoffs, and ledgers are focus inputs only until"
         ],
         "next_recommended_skills": []
       }
@@ -1615,11 +1653,16 @@
       "inputs": [
         "reviewed session artifact or harvest packet",
         "named evidence refs",
+        "optional donor harvest output, checkpoint-closeout stage result, or",
+        "current-session boundary for separating stale or neighboring evidence",
+        "baseline ref, prior delta ref, or an explicit no-baseline marker",
         "relevant role or cohort context if known",
         "existing progression baseline if available"
       ],
       "outputs": [
         "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
+        "baseline posture such as `baseline_ref`, `prior_delta_ref`,",
+        "one axis table where each meaningful axis names movement, evidence refs,",
         "optional automation-readiness hint when reviewed evidence supports it",
         "optional rank reflection note if evidence is strong enough",
         "quest hooks or chronicle stub when useful",
@@ -1629,6 +1672,8 @@
       ],
       "verification": [
         "confirm all meaningful axis claims cite reviewed evidence",
+        "confirm the delta declares baseline posture before comparative movement claims",
+        "confirm provisional, stale, contested, and no-movement axes are marked rather",
         "confirm the verdict matches the evidence",
         "confirm zero or negative movement remains allowed",
         "confirm unlock hints are small and explicit",
@@ -1639,6 +1684,8 @@
       "contracts": [
         "progression remains evidence-backed",
         "multi-axis only; no authoritative universal score",
+        "movement claims must name their baseline posture; missing baseline can support",
+        "checkpoint, donor, and closeout hints may focus the review but do not become",
         "rank labels are descriptive, not sovereign",
         "unlock hints must stay reviewable and small",
         "progression does not replace owner-layer truth or routing authority",
@@ -1650,38 +1697,43 @@
       "consumes_artifact_tags": [
         "reviewed-session-artifact-or-harvest-packet",
         "named-evidence-refs",
+        "optional-donor-harvest-output-checkpoint-closeout-stage-result-o",
+        "current-session-boundary-for-separating-stale-or-neighboring-evi",
+        "baseline-ref-prior-delta-ref-or-an-explicit-no-baseline-marker",
         "relevant-role-or-cohort-context-if-known",
         "existing-progression-baseline-if-available"
       ],
       "provides_artifact_tags": [
         "progression-delta-with-axis-movement-verdict-and-optional-unlock",
+        "baseline-posture-such-as-baseline-ref-prior-delta-ref",
+        "one-axis-table-where-each-meaningful-axis-names-movement-evidenc",
         "optional-automation-readiness-hint-when-reviewed-evidence-suppor",
         "optional-rank-reflection-note-if-evidence-is-strong-enough",
         "quest-hooks-or-chronicle-stub-when-useful",
         "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad",
-        "one-progression-delta-receipt-using-references-stats-event-envel",
-        "one-core-skill-application-receipt-using"
+        "one-progression-delta-receipt-using-references-stats-event-envel"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-session-progression-lift",
         "produced_artifacts": [
           "progression-delta-with-axis-movement-verdict-and-optional-unlock",
+          "baseline-posture-such-as-baseline-ref-prior-delta-ref",
+          "one-axis-table-where-each-meaningful-axis-names-movement-evidenc",
           "optional-automation-readiness-hint-when-reviewed-evidence-suppor",
           "optional-rank-reflection-note-if-evidence-is-strong-enough",
           "quest-hooks-or-chronicle-stub-when-useful",
           "negative-or-cautionary-evidence-when-a-hold-reanchor-or-downgrad",
-          "one-progression-delta-receipt-using-references-stats-event-envel",
-          "one-core-skill-application-receipt-using"
+          "one-progression-delta-receipt-using-references-stats-event-envel"
         ],
         "verification_notes": [
           "confirm all meaningful axis claims cite reviewed evidence",
-          "confirm the verdict matches the evidence",
-          "confirm zero or negative movement remains allowed"
+          "confirm the delta declares baseline posture before comparative movement claims",
+          "confirm provisional, stale, contested, and no-movement axes are marked rather"
         ],
         "contract_notes": [
           "progression remains evidence-backed",
           "multi-axis only; no authoritative universal score",
-          "rank labels are descriptive, not sovereign"
+          "movement claims must name their baseline posture; missing baseline can support"
         ],
         "next_recommended_skills": []
       }
@@ -1713,6 +1765,7 @@
         "confirm at least one cost or risk is explicit",
         "confirm stop conditions exist for risky branches",
         "confirm hold or defer remains possible when uncertainty is real",
+        "confirm selected child-route work is routed to `aoa-summon` rather than launched from fork cards",
         "confirm any emitted receipt stays evidence-linked and subordinate to the fork cards",
         "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the fork"
       ],
@@ -1723,6 +1776,7 @@
         "stop conditions are first-class, not footnotes",
         "a fork card may recommend but must not hide alternatives",
         "automation-shaped branches must not be read as schedule authority",
+        "child-route-shaped branches must not launch from fork analysis; `aoa-summon` owns that gate after anchor, outputs, and passport are clear",
         "`DECISION_FORK_RECEIPT` is descriptive branch telemetry, not routing policy",
         "`CORE_SKILL_APPLICATION_RECEIPT` is generic kernel telemetry, not branch",
         "receipt corrections use `supersedes` rather than silent overwrite"
@@ -1776,10 +1830,13 @@
         "reviewed session artifact or harvest packet",
         "observed frictions, failures, or contradictions",
         "relevant owner layers and touched repos",
-        "previous related session evidence if available"
+        "previous related session evidence if available",
+        "checkpoint, closeout, generated, or earlier-session hints clearly marked as hints, not diagnosis evidence",
+        "known stale, contested, or missing evidence refs"
       ],
       "outputs": [
         "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints",
+        "evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown",
         "severity or urgency notes when evidence supports them",
         "explicit unknowns when diagnosis remains incomplete",
         "optional blocked-automation findings such as unstable inputs, hidden approval,",
@@ -1790,6 +1847,7 @@
       "verification": [
         "confirm each diagnosis cites evidence refs",
         "confirm symptoms and causes are separated",
+        "confirm each meaningful probable cause carries an evidence posture and does not outrun its evidence",
         "confirm a likely owner layer is named",
         "confirm unknowns are preserved where needed",
         "confirm no mutation happened",
@@ -1800,6 +1858,7 @@
         "diagnosis is read-only",
         "one odd anecdote is not enough for structural certainty",
         "probable cause must remain probabilistic when evidence is thin",
+        "evidence posture must stay visible when a claim comes from a hint, stale source, generated summary, or contested evidence",
         "owner hints must not override owner-layer law",
         "no hidden mutation or silent patching",
         "diagnosis does not grant automation readiness by itself",
@@ -1811,10 +1870,13 @@
         "reviewed-session-artifact-or-harvest-packet",
         "observed-frictions-failures-or-contradictions",
         "relevant-owner-layers-and-touched-repos",
-        "previous-related-session-evidence-if-available"
+        "previous-related-session-evidence-if-available",
+        "checkpoint-closeout-generated-or-earlier-session-hints-clearly-m",
+        "known-stale-contested-or-missing-evidence-refs"
       ],
       "provides_artifact_tags": [
         "diagnosis-packet-with-drift-types-symptoms-probable-causes-repai",
+        "evidence-posture-for-each-meaningful-symptom-and-probable-cause-",
         "severity-or-urgency-notes-when-evidence-supports-them",
         "explicit-unknowns-when-diagnosis-remains-incomplete",
         "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
@@ -1826,6 +1888,7 @@
         "from_skill": "aoa-session-self-diagnose",
         "produced_artifacts": [
           "diagnosis-packet-with-drift-types-symptoms-probable-causes-repai",
+          "evidence-posture-for-each-meaningful-symptom-and-probable-cause-",
           "severity-or-urgency-notes-when-evidence-supports-them",
           "explicit-unknowns-when-diagnosis-remains-incomplete",
           "optional-blocked-automation-findings-such-as-unstable-inputs-hid",
@@ -1836,7 +1899,7 @@
         "verification_notes": [
           "confirm each diagnosis cites evidence refs",
           "confirm symptoms and causes are separated",
-          "confirm a likely owner layer is named"
+          "confirm each meaningful probable cause carries an evidence posture and does not outrun its evidence"
         ],
         "contract_notes": [
           "diagnosis is read-only",
@@ -1856,10 +1919,13 @@
         "owner-layer candidates",
         "risk and approval posture",
         "known validation surfaces",
-        "current rollback anchors if any"
+        "current rollback anchors if any",
+        "current execution state, if a repair packet already exists",
+        "evidence showing whether validation actually ran or is only planned"
       ],
       "outputs": [
         "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
+        "explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required",
         "optional repair quest when execution should remain deferred",
         "optional automation-readiness prerequisite packet when the real need is to",
         "explicit stop conditions and escalation points",
@@ -1870,6 +1936,7 @@
         "confirm diagnosis exists and is cited",
         "confirm the chosen repair is the smallest honest shape",
         "confirm checkpoint fields are present",
+        "confirm repair execution posture is explicit and does not overclaim validation",
         "confirm validation and rollback posture are named",
         "confirm escalation route exists if the repair widens",
         "confirm any emitted receipt cites diagnosis and validation refs without duplicating the whole packet",
@@ -1879,6 +1946,7 @@
         "self-repair is not free self-modification",
         "important surface changes must pass checkpoint posture",
         "repair packets stay bounded and reviewable",
+        "prepared repair packets are not executed repairs, and executed repairs are not verified repairs unless validation evidence is present",
         "role law changes route to `aoa-agents`",
         "proof-law changes route to `aoa-evals`",
         "scenario-scale repair routes to `aoa-playbooks`",
@@ -1892,10 +1960,13 @@
         "owner-layer-candidates",
         "risk-and-approval-posture",
         "known-validation-surfaces",
-        "current-rollback-anchors-if-any"
+        "current-rollback-anchors-if-any",
+        "current-execution-state-if-a-repair-packet-already-exists",
+        "evidence-showing-whether-validation-actually-ran-or-is-only-plan"
       ],
       "provides_artifact_tags": [
         "repair-packet-with-target-owner-repo-smallest-diff-shape-approva",
+        "explicit-repair-execution-posture-such-as-proposed-prepared-exec",
         "optional-repair-quest-when-execution-should-remain-deferred",
         "optional-automation-readiness-prerequisite-packet-when-the-real-",
         "explicit-stop-conditions-and-escalation-points",
@@ -1906,6 +1977,7 @@
         "from_skill": "aoa-session-self-repair",
         "produced_artifacts": [
           "repair-packet-with-target-owner-repo-smallest-diff-shape-approva",
+          "explicit-repair-execution-posture-such-as-proposed-prepared-exec",
           "optional-repair-quest-when-execution-should-remain-deferred",
           "optional-automation-readiness-prerequisite-packet-when-the-real-",
           "explicit-stop-conditions-and-escalation-points",
@@ -2025,23 +2097,27 @@
         "`execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`",
         "optional `codex_local_target`",
         "`return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and",
+        "return receipt or acceptance expectation when the child crosses an actor,",
         "`closeout_required`, `checkpoint_required`, and `progression_required`"
       ],
       "verification": [
         "confirm the passport and parent anchor exist",
         "confirm expected outputs are named",
+        "confirm branch choice is already settled; otherwise route to",
         "confirm the chosen lane matches difficulty, risk, control mode, and requested",
         "confirm any E2E fixture check validates `summon_request` and `summon_result`",
         "confirm `d3+` routes split before summon",
         "confirm stress only narrows or blocks",
         "confirm progression and self-agent gates are not bypassed",
         "confirm return, checkpoint bridge, and publication plans stay explicit for",
+        "confirm cross-boundary child work has a return receipt or acceptance",
         "confirm terminal publication stays owner-local and memo export stays reviewed",
         "confirm traces stay subordinate to reviewed closeout and parent reread"
       ],
       "contracts": [
         "this skill governs one bounded child route; it does not grant hidden",
         "local Codex child targeting is the default first choice, not an afterthought",
+        "branch choice must already be settled; unresolved route choice belongs to",
         "the SDK-owned E2E fixture at",
         "stress may narrow or block, but it may never widen authority",
         "remote transport follows the same passport, return, checkpoint, and closeout",
@@ -2049,7 +2125,8 @@
         "progression and self-agent gates are real blockers when required evidence is",
         "child traces, memos, and receipts do not replace rereading the reviewed",
         "terminal publication stays inside canonical owner families, and memo export",
-        "failed, narrowed, or blocked child results still map into an explicit return"
+        "failed, narrowed, or blocked child results still map into an explicit return",
+        "cross-boundary child work needs an explicit receipt or acceptance expectation"
       ],
       "consumes_artifact_tags": [
         "a-quest-passport-with-difficulty-risk-control-mode-and-delegate-",
@@ -2063,6 +2140,7 @@
         "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
         "optional-codex-local-target",
         "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
+        "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
         "closeout-required-checkpoint-required-and-progression-required"
       ],
       "handoff_packet_template": {
@@ -2073,17 +2151,18 @@
           "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
           "optional-codex-local-target",
           "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
+          "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
           "closeout-required-checkpoint-required-and-progression-required"
         ],
         "verification_notes": [
           "confirm the passport and parent anchor exist",
           "confirm expected outputs are named",
-          "confirm the chosen lane matches difficulty, risk, control mode, and requested"
+          "confirm branch choice is already settled; otherwise route to"
         ],
         "contract_notes": [
           "this skill governs one bounded child route; it does not grant hidden",
           "local Codex child targeting is the default first choice, not an afterthought",
-          "the SDK-owned E2E fixture at"
+          "branch choice must already be settled; unresolved route choice belongs to"
         ],
         "next_recommended_skills": []
       }

@@ -18,11 +18,13 @@ causes and names the likely owner layers involved.
 - observed frictions, contradictions, or failures
 - touched owner layers and repos
 - any earlier related evidence if available
+- checkpoint, closeout, generated, or earlier-session hints marked as hints
 
 ## Expected outputs
 
 - one `DIAGNOSIS_PACKET`
 - named drift types, symptoms, probable causes, and repair shapes
+- evidence posture for each meaningful symptom and probable cause
 - owner hints and explicit unknowns
 - optional handoff to `aoa-session-self-repair`
 - one `DIAGNOSIS_PACKET_RECEIPT` that records diagnosis types, confidence
@@ -40,6 +42,7 @@ causes and names the likely owner layers involved.
 
 - Confirm the diagnosis cites evidence.
 - Confirm symptoms and causes are separated.
+- Confirm likely causes do not outrun their evidence posture.
 - Confirm unknowns stay visible where evidence is weak.
 - Confirm the finish receipt stays smaller than the diagnosis packet and does
   not read like a final repair verdict.

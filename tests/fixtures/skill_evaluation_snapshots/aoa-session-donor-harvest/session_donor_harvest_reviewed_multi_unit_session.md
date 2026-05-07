@@ -16,7 +16,8 @@ The source is already a reviewed session artifact, several reusable units may ex
 
 A HARVEST_PACKET plus one bounded harvest-packet receipt that names each
 reusable unit, its owner layer, the next artifact, and the nearest wrong
-target without duplicating the whole packet.
+target without duplicating the whole packet. Any checkpoint or handoff hint is
+accepted or rejected against reviewed evidence before a `candidate_ref` exists.
 
 ## Boundary notes
 
@@ -27,3 +28,5 @@ Use this skill when a reviewed session needs donor extraction across multiple ca
 The response should separate the units cleanly, map each one to one primary
 owner layer, name a concrete next artifact for each accepted candidate, and
 keep any finish receipt evidence-linked and smaller than the packet.
+It should not let lower-authority hints become candidates without reviewed
+artifact support.

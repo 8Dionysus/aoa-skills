@@ -1,7 +1,6 @@
 {
   "cohorts": {
     "blocked_by_pending_lineage": [
-      "aoa-summon",
       "titan-approval-ledger",
       "titan-approval-loom",
       "titan-appserver-bridge",
@@ -233,7 +232,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "status": "evaluated",
-      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
+      "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, name the highest honest automation mode, and route them without granting schedule or mutation authority.",
       "technique_bridge_findings": []
     },
     {
@@ -326,7 +325,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "status": "evaluated",
-      "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
+      "summary": "Bridge local checkpoint focus hints into one reviewed closeout execution chain without turning provisional notes, mechanical reports, or skipped stages into final harvest, progression, or quest authority.",
       "technique_bridge_findings": []
     },
     {
@@ -360,7 +359,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "status": "evaluated",
-      "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
+      "summary": "Turn a validated bounded diff into one authorized local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
       "technique_bridge_findings": []
     },
     {
@@ -594,7 +593,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "status": "evaluated",
-      "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
+      "summary": "Triage one isolated repeated reviewed quest unit with explicit repeat evidence posture into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, memory, or downstream acceptance.",
       "technique_bridge_findings": []
     },
     {
@@ -703,7 +702,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "status": "evaluated",
-      "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
+      "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, filter checkpoint or handoff hints through reviewed evidence, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "technique_bridge_findings": []
     },
     {
@@ -737,7 +736,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "status": "evaluated",
-      "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
+      "summary": "Lift reviewed session evidence into a multi-axis progression delta with baseline posture, per-axis evidence posture, bounded unlock hints, quest reflection cues, and no fake single-score or checkpoint-hint authority.",
       "technique_bridge_findings": []
     },
     {
@@ -805,7 +804,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "status": "evaluated",
-      "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
+      "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet with explicit evidence posture and no mutation.",
       "technique_bridge_findings": []
     },
     {
@@ -839,7 +838,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "status": "evaluated",
-      "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
+      "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, execution posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_bridge_findings": []
     },
     {
@@ -892,7 +891,7 @@
       ],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "evaluated",
       "name": "aoa-summon",
       "promotion_review_path": "docs/reviews/status-promotions/aoa-summon.md",
@@ -900,11 +899,7 @@
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "evaluated",
       "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",

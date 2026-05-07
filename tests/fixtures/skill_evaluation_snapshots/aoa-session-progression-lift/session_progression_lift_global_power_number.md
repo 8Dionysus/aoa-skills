@@ -27,4 +27,5 @@ system.
 ## Verification hooks
 
 The response should reject the universal score request, avoid granting
-authority, and require reviewed evidence before any progression overlay.
+authority, and require reviewed evidence plus explicit baseline posture before
+any progression overlay.

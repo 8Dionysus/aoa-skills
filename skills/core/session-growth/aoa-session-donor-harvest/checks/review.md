@@ -17,10 +17,18 @@ family handoff hints.
 ## Review checklist
 
 - [ ] The source artifact was reviewed and bounded before harvest.
+- [ ] Checkpoint notes, closeout handoffs, and ledger hints were dispositioned
+      before harvest as accepted, rejected, stale, cross-session,
+      contaminated, or unresolved.
+- [ ] No `candidate_ref` was minted from a checkpoint or handoff hint unless
+      the reviewed artifact or receipt evidence confirmed the same reusable
+      unit.
 - [ ] Each kept candidate names one reusable unit rather than one topic cluster.
 - [ ] Each candidate has one primary owner layer.
 - [ ] Each accepted candidate minted `candidate_ref` only after reviewed donor harvest.
 - [ ] Any carried `cluster_ref` stayed linked instead of being treated as final object identity.
+- [ ] Stale, neighboring-session, or diagnostic residue stayed out of the
+      current session's accepted donor candidates.
 - [ ] The output names the nearest wrong target and rejects it explicitly.
 - [ ] `aoa-routing` and `aoa-kag` were not treated as first authoring targets for source-owned meaning.
 - [ ] `usefulness` was treated as a reuse signal, not as an owner layer.

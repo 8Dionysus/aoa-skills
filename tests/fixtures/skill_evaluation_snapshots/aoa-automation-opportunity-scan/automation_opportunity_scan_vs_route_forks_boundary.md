@@ -16,7 +16,7 @@ route options.
 
 ## Expected object
 
-An automation opportunity packet that classifies readiness without granting automation authority.
+An automation opportunity packet that classifies readiness and automation mode posture without granting automation authority.
 
 ## Boundary notes
 
@@ -25,5 +25,5 @@ This is an automation-opportunity-scan case, not a session-route-forks case.
 ## Verification hooks
 
 - name the repeated manual route
-- classify readiness and risk without scheduling automation
+- classify readiness, risk, and automation mode posture without scheduling automation
 - route any seed-ready outcome to the correct owner layer

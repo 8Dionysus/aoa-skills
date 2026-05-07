@@ -1,9 +1,9 @@
 {
   "event_kind": "decision_fork_receipt",
-  "event_id": "evt-wave4-fork-0001",
+  "event_id": "evt-kernel-maturity-fork-0001",
   "observed_at": "2026-04-12T01:08:00Z",
-  "run_ref": "run-wave4-kernel-001",
-  "session_ref": "session:2026-04-11:wave4-kernel-automation",
+  "run_ref": "run-kernel-maturity-001",
+  "session_ref": "session:2026-04-11:kernel-maturity-automation",
   "actor_ref": "aoa-skills:session-route-forks",
   "object_ref": {
     "repo": "aoa-skills",
@@ -14,7 +14,7 @@
   "evidence_refs": [
     {
       "kind": "fork_packet",
-      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/decision_fork.wave4.json",
+      "ref": "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/decision_fork.kernel-maturity.json",
       "role": "primary"
     },
     {
@@ -36,7 +36,7 @@
     "predicted_risk_posture": "checkpoint-sensitive",
     "chosen_branch": "automation_seed_candidate",
     "stop_condition_refs": [
-      "repo:aoa-skills/mechanics/growth-cycle/examples/session_growth_artifacts/decision_fork.wave4.json#defer_condition"
+      "repo:aoa-skills/mechanics/growth-cycle/examples/session-growth-artifacts/decision_fork.kernel-maturity.json#defer_condition"
     ],
     "realized_outcome_refs": [],
     "owner_targets": [

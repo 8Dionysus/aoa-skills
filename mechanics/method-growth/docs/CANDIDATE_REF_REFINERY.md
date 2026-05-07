@@ -49,7 +49,7 @@ Reviewed candidate identity remains anchored in the existing donor-harvest path:
 - `skills/core/session-growth/aoa-session-donor-harvest/SKILL.md`
 - `skills/core/session-growth/aoa-session-donor-harvest/references/harvest-packet-receipt-schema.yaml`
 - `skills/core/session-growth/aoa-session-donor-harvest/references/candidate-lineage-receipt-schema.yaml`
-- `mechanics/growth-cycle/examples/session_growth_artifacts/candidate_lineage_receipt.alpha.json`
+- `mechanics/growth-cycle/examples/session-growth-artifacts/candidate_lineage_receipt.reviewed-donor-harvest.json`
 - `mechanics/method-growth/examples/reviewed_owner_landing_bundle.example.json`
 - `mechanics/method-growth/examples/route_followthrough_decision.example.json`
 

@@ -17,7 +17,7 @@
       "config": {
         "receipt_globs": [
           ".aoa/live_receipts/skill-receipts.jsonl",
-          "mechanics/growth-cycle/examples/session_growth_artifacts/*.wave4.json"
+          "mechanics/growth-cycle/examples/session-growth-artifacts/*.kernel-maturity.json"
         ],
         "case_class_field": "case_class",
         "skill_field": "skill_name",

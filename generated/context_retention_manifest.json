@@ -212,12 +212,12 @@
     {
       "name": "aoa-commit-growth-seam",
       "compact_summary": "Commit bounded diffs honestly",
-      "activation_card_markdown": "Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n\nKeep in memory: one bounded local diff, working tree status, including any unrelated local changes, one bounded commit-or-defer decision, one intentional local commit, or one explicit refusal to commit yet.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n\nKeep in memory: one bounded local diff, working tree status, including any unrelated local changes, one bounded commit-or-defer decision, `commit_authorization_posture`, such as `authorized_now`, `defer_commit`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "one bounded local diff",
         "working tree status, including any unrelated local changes",
         "one bounded commit-or-defer decision",
-        "one intentional local commit, or one explicit refusal to commit yet"
+        "`commit_authorization_posture`, such as `authorized_now`, `defer_commit`,"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -465,12 +465,12 @@
     {
       "name": "aoa-session-donor-harvest",
       "compact_summary": "Harvest reusable units from sessions",
-      "activation_card_markdown": "Use when: Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded `HARVEST_PACKET`, named candidates, each with:.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded `HARVEST_PACKET`, one reviewed intake note that says which checkpoint or handoff hints were.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact",
         "session goal and closure state",
         "one bounded `HARVEST_PACKET`",
-        "named candidates, each with:"
+        "one reviewed intake note that says which checkpoint or handoff hints were"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -488,12 +488,12 @@
     {
       "name": "aoa-session-progression-lift",
       "compact_summary": "Lift reviewed progression signals",
-      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, optional automation-readiness hint when reviewed evidence supports it.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, baseline posture such as `baseline_ref`, `prior_delta_ref`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact or harvest packet",
         "named evidence refs",
         "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
-        "optional automation-readiness hint when reviewed evidence supports it"
+        "baseline posture such as `baseline_ref`, `prior_delta_ref`,"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -534,12 +534,12 @@
     {
       "name": "aoa-session-self-diagnose",
       "compact_summary": "Diagnose reviewed session drift",
-      "activation_card_markdown": "Use when: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.\n\nKeep in memory: reviewed session artifact or harvest packet, observed frictions, failures, or contradictions, `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints, severity or urgency notes when evidence supports them.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.\n\nKeep in memory: reviewed session artifact or harvest packet, observed frictions, failures, or contradictions, `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints, evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact or harvest packet",
         "observed frictions, failures, or contradictions",
         "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints",
-        "severity or urgency notes when evidence supports them"
+        "evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -557,12 +557,12 @@
     {
       "name": "aoa-session-self-repair",
       "compact_summary": "Author checkpointed repair packets",
-      "activation_card_markdown": "Use when: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.\n\nKeep in memory: reviewed diagnosis packet, owner-layer candidates, `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub, optional repair quest when execution should remain deferred.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.\n\nKeep in memory: reviewed diagnosis packet, owner-layer candidates, `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub, explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed diagnosis packet",
         "owner-layer candidates",
         "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
-        "optional repair quest when execution should remain deferred"
+        "explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required"
       ],
       "retain_sections": [
         "Trigger boundary",

@@ -18,6 +18,8 @@ another diagnosis or a playbook-scale rollout.
 
 A repair packet plus one bounded repair-cycle receipt with checkpoint posture,
 rollback thinking, and explicit owner targets.
+The packet should also state execution posture so prepared, executed, and
+verified repair states stay distinct.
 
 ## Boundary notes
 
@@ -29,3 +31,5 @@ let it turn into silent self-mutation or an approval bypass.
 The response should name rollback and health-check posture, keep the repair
 small, show what escalation path exists if the repair widens, and keep any
 finish receipt diagnosis-linked instead of verification-theater.
+It should not describe a prepared repair packet as verified repair unless a
+validation artifact exists.

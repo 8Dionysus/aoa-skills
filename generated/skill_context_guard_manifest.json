@@ -173,8 +173,8 @@
       "name": "aoa-automation-opportunity-scan",
       "display_name": "AoA Automation Opportunity Scan",
       "source_scope": "repo",
-      "instruction_sha256": "60148537d2c4050f2cafeed805eb840e54f7a75d3b76a8a0a98a2f680c654b18",
-      "dedupe_key": "aoa-automation-opportunity-scan:60148537d2c4050f2cafeed805eb840e54f7a75d3b76a8a0a98a2f680c654b18",
+      "instruction_sha256": "ae8b300f04188433a2d7a31aceb204b6453a543945e57091273f1dee5548878a",
+      "dedupe_key": "aoa-automation-opportunity-scan:ae8b300f04188433a2d7a31aceb204b6453a543945e57091273f1dee5548878a",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -269,8 +269,8 @@
       "name": "aoa-checkpoint-closeout-bridge",
       "display_name": "AoA Checkpoint Closeout Bridge",
       "source_scope": "repo",
-      "instruction_sha256": "71e9fce908f821b1b95c25bbdeba81b9a6995f336420b765f92e17eaf5d3e58b",
-      "dedupe_key": "aoa-checkpoint-closeout-bridge:71e9fce908f821b1b95c25bbdeba81b9a6995f336420b765f92e17eaf5d3e58b",
+      "instruction_sha256": "c02903f6b74c0398b501920354f18f1f4e1a8444aeab2e8308845031b7fa749e",
+      "dedupe_key": "aoa-checkpoint-closeout-bridge:c02903f6b74c0398b501920354f18f1f4e1a8444aeab2e8308845031b7fa749e",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -301,8 +301,8 @@
       "name": "aoa-commit-growth-seam",
       "display_name": "AoA Commit Growth Seam",
       "source_scope": "repo",
-      "instruction_sha256": "b3fd66d80d17cfbb557e1e90d2cf39f8e3500ea15add528e2671fdb4769a9184",
-      "dedupe_key": "aoa-commit-growth-seam:b3fd66d80d17cfbb557e1e90d2cf39f8e3500ea15add528e2671fdb4769a9184",
+      "instruction_sha256": "ad4c4f63b2447a0b9095b2d5c31f0ea6c371581e17831efca0848c8c3cfdf606",
+      "dedupe_key": "aoa-commit-growth-seam:ad4c4f63b2447a0b9095b2d5c31f0ea6c371581e17831efca0848c8c3cfdf606",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -311,7 +311,7 @@
         "one bounded local diff",
         "working tree status, including any unrelated local changes",
         "one bounded commit-or-defer decision",
-        "one intentional local commit, or one explicit refusal to commit yet"
+        "`commit_authorization_posture`, such as `authorized_now`, `defer_commit`,"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -319,7 +319,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n\nKeep in memory: one bounded local diff, working tree status, including any unrelated local changes, one bounded commit-or-defer decision, one intentional local commit, or one explicit refusal to commit yet.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n\nKeep in memory: one bounded local diff, working tree status, including any unrelated local changes, one bounded commit-or-defer decision, `commit_authorization_posture`, such as `authorized_now`, `defer_commit`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -557,8 +557,8 @@
       "name": "aoa-quest-harvest",
       "display_name": "AoA Quest Harvest",
       "source_scope": "repo",
-      "instruction_sha256": "2440150884954f10ddea3d05c294c10fb57511d2b556337309921e36ea8387b6",
-      "dedupe_key": "aoa-quest-harvest:2440150884954f10ddea3d05c294c10fb57511d2b556337309921e36ea8387b6",
+      "instruction_sha256": "6d570abd73c2ea47db2a944197a13d78cecb74b0da6f0e8efd604a4eef74a636",
+      "dedupe_key": "aoa-quest-harvest:6d570abd73c2ea47db2a944197a13d78cecb74b0da6f0e8efd604a4eef74a636",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -653,8 +653,8 @@
       "name": "aoa-session-donor-harvest",
       "display_name": "AoA Session Donor Harvest",
       "source_scope": "repo",
-      "instruction_sha256": "f1652c8cc47548fb9d40df5a82826239b1c98040d78aa448d15dd76adccf1d9e",
-      "dedupe_key": "aoa-session-donor-harvest:f1652c8cc47548fb9d40df5a82826239b1c98040d78aa448d15dd76adccf1d9e",
+      "instruction_sha256": "e56da8205bc9adef99ad7f6a476a80fe45af825aec442d1e470ed799b4a9c098",
+      "dedupe_key": "aoa-session-donor-harvest:e56da8205bc9adef99ad7f6a476a80fe45af825aec442d1e470ed799b4a9c098",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -663,7 +663,7 @@
         "reviewed session artifact",
         "session goal and closure state",
         "one bounded `HARVEST_PACKET`",
-        "named candidates, each with:"
+        "one reviewed intake note that says which checkpoint or handoff hints were"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -671,7 +671,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded `HARVEST_PACKET`, named candidates, each with:.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded `HARVEST_PACKET`, one reviewed intake note that says which checkpoint or handoff hints were.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -685,8 +685,8 @@
       "name": "aoa-session-progression-lift",
       "display_name": "AoA Session Progression Lift",
       "source_scope": "repo",
-      "instruction_sha256": "31f23d137f6092f32d713ef6162a9c8b854c6d070ca0f9b49574a08ae97e397e",
-      "dedupe_key": "aoa-session-progression-lift:31f23d137f6092f32d713ef6162a9c8b854c6d070ca0f9b49574a08ae97e397e",
+      "instruction_sha256": "acf10a1d00e599f1fc3dd53983ff1c75fff32b6c7f18930c4572acc59a610e88",
+      "dedupe_key": "aoa-session-progression-lift:acf10a1d00e599f1fc3dd53983ff1c75fff32b6c7f18930c4572acc59a610e88",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -695,7 +695,7 @@
         "reviewed session artifact or harvest packet",
         "named evidence refs",
         "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
-        "optional automation-readiness hint when reviewed evidence supports it"
+        "baseline posture such as `baseline_ref`, `prior_delta_ref`,"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -703,7 +703,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, optional automation-readiness hint when reviewed evidence supports it.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, baseline posture such as `baseline_ref`, `prior_delta_ref`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -717,8 +717,8 @@
       "name": "aoa-session-route-forks",
       "display_name": "AoA Session Route Forks",
       "source_scope": "repo",
-      "instruction_sha256": "22ad946dd4134aead63e99190c6d1c108cca7ba8cbc7b590080eada6503e41d0",
-      "dedupe_key": "aoa-session-route-forks:22ad946dd4134aead63e99190c6d1c108cca7ba8cbc7b590080eada6503e41d0",
+      "instruction_sha256": "7e6df2a07e5d08af01093ce16072be5441f64f3b0db3b5ecaeb598b6ce9fb6fa",
+      "dedupe_key": "aoa-session-route-forks:7e6df2a07e5d08af01093ce16072be5441f64f3b0db3b5ecaeb598b6ce9fb6fa",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -749,8 +749,8 @@
       "name": "aoa-session-self-diagnose",
       "display_name": "AoA Session Self Diagnose",
       "source_scope": "repo",
-      "instruction_sha256": "5a144732c94f4a36578c4d62b2301ed7b6a5d448310cd80638e6b4950a269393",
-      "dedupe_key": "aoa-session-self-diagnose:5a144732c94f4a36578c4d62b2301ed7b6a5d448310cd80638e6b4950a269393",
+      "instruction_sha256": "9b0f70bd9498049536290b4f898a26796c0aa5c509a2f408e4606ac2f2ba569c",
+      "dedupe_key": "aoa-session-self-diagnose:9b0f70bd9498049536290b4f898a26796c0aa5c509a2f408e4606ac2f2ba569c",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -759,7 +759,7 @@
         "reviewed session artifact or harvest packet",
         "observed frictions, failures, or contradictions",
         "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints",
-        "severity or urgency notes when evidence supports them"
+        "evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -767,7 +767,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.\n\nKeep in memory: reviewed session artifact or harvest packet, observed frictions, failures, or contradictions, `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints, severity or urgency notes when evidence supports them.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.\n\nKeep in memory: reviewed session artifact or harvest packet, observed frictions, failures, or contradictions, `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints, evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -781,8 +781,8 @@
       "name": "aoa-session-self-repair",
       "display_name": "AoA Session Self Repair",
       "source_scope": "repo",
-      "instruction_sha256": "c052bb873106fb973e08cd6a6a8008a29c664013a264233f324d5bb9873d4a05",
-      "dedupe_key": "aoa-session-self-repair:c052bb873106fb973e08cd6a6a8008a29c664013a264233f324d5bb9873d4a05",
+      "instruction_sha256": "8a91aa138625eb140d47d4ce40ba295e8018ad43c7ccd48bc7358d7a948da48a",
+      "dedupe_key": "aoa-session-self-repair:8a91aa138625eb140d47d4ce40ba295e8018ad43c7ccd48bc7358d7a948da48a",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -791,7 +791,7 @@
         "reviewed diagnosis packet",
         "owner-layer candidates",
         "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
-        "optional repair quest when execution should remain deferred"
+        "explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -799,7 +799,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.\n\nKeep in memory: reviewed diagnosis packet, owner-layer candidates, `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub, optional repair quest when execution should remain deferred.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.\n\nKeep in memory: reviewed diagnosis packet, owner-layer candidates, `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub, explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -845,8 +845,8 @@
       "name": "aoa-summon",
       "display_name": "AoA Summon",
       "source_scope": "repo",
-      "instruction_sha256": "f962f3fa6bea6bfe05f39db57f2cb1771dff5c58bee47ab70a206a80a4c7ee90",
-      "dedupe_key": "aoa-summon:f962f3fa6bea6bfe05f39db57f2cb1771dff5c58bee47ab70a206a80a4c7ee90",
+      "instruction_sha256": "0d1e78b37c2fc12b2c99b9a7936cdd89bed1bfdd1b533abeae7846852f177b42",
+      "dedupe_key": "aoa-summon:0d1e78b37c2fc12b2c99b9a7936cdd89bed1bfdd1b533abeae7846852f177b42",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",

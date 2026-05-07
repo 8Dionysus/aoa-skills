@@ -55,7 +55,8 @@ class SkillQualityAuditTests(unittest.TestCase):
 
         self.assertEqual([], by_name["aoa-session-self-repair"]["findings"])
         self.assertNotIn("technique_source_drift", by_name["aoa-session-self-repair"]["findings"])
-        self.assertIn("pending_technique_lineage", by_name["aoa-summon"]["findings"])
+        self.assertNotIn("pending_technique_lineage", by_name["aoa-summon"]["findings"])
+        self.assertEqual("healthy", by_name["aoa-summon"]["verdict"])
         self.assertNotIn("pending_markers_in_skill_body", by_name["aoa-summon"]["findings"])
         self.assertIn("pending_technique_lineage", by_name["titan-console"]["findings"])
         self.assertNotIn("missing_autonomy_check", by_name["titan-console"]["findings"])

@@ -1049,8 +1049,10 @@
       "allow_implicit_invocation": false,
       "source_skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
-        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+        "AOA-T-0078",
+        "AOA-T-0079",
+        "AOA-T-0062",
+        "AOA-T-0058"
       ],
       "trust_posture": "portable-core",
       "mutation_surface": "none",
