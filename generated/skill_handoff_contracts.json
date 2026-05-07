@@ -232,7 +232,8 @@
         "context and problem statement",
         "relevant options or alternatives",
         "chosen path and rationale",
-        "known consequences or tradeoffs"
+        "known consequences or tradeoffs",
+        "owner, source, evidence, placement, or lifecycle boundaries that shape the decision"
       ],
       "outputs": [
         "concise decision note or ADR draft",
@@ -240,15 +241,20 @@
         "consequence notes",
         "canonical placement or reference for the note",
         "verification that the note landed in the expected decision surface",
-        "verification that the note matches the actual change"
+        "verification that the note matches the actual change",
+        "decision-boundary notes that say what the ADR records and what stays with stronger owners, evidence surfaces, generated or derived outputs, or follow-up routes"
       ],
       "verification": [
         "confirm the decision was meaningful enough to record",
         "confirm the rationale is explicit",
         "confirm consequences or tradeoffs are named",
+        "confirm at least one rejected option or accepted tradeoff is visible when alternatives shaped the choice",
         "confirm the note aligns with the real change surface",
         "confirm the note is placed where future reviewers will look for it",
-        "confirm the canonical location or reference is part of the result, not an afterthought"
+        "confirm the canonical location or reference is part of the result, not an afterthought",
+        "confirm a lighter artifact would not preserve enough rationale before creating a durable ADR",
+        "confirm evidence, generated, planning, workflow, or runtime-facing surfaces are cited as context rather than promoted into decision authority",
+        "confirm any selected decision lenses are necessary and narrow enough for this one decision"
       ],
       "contracts": [
         "the note should explain why, not just what changed",
@@ -256,6 +262,9 @@
         "tradeoffs should not be hidden behind certainty theater",
         "the note should help future reviewers, not merely satisfy process",
         "the note should have an explicit canonical placement, not a hidden or implied home",
+        "the note should distinguish the decision from the evidence, planning surface, generated output, audit result, workflow event, or runtime-facing event that motivated it",
+        "decision lenses should be selected only when they clarify the decision's authority, placement, or future effect",
+        "the skill should prefer no ADR when a lighter artifact preserves enough rationale for future work",
         "verification should check both rationale quality and note placement"
       ],
       "consumes_artifact_tags": [
@@ -263,7 +272,8 @@
         "context-and-problem-statement",
         "relevant-options-or-alternatives",
         "chosen-path-and-rationale",
-        "known-consequences-or-tradeoffs"
+        "known-consequences-or-tradeoffs",
+        "owner-source-evidence-placement-or-lifecycle-boundaries-that-sha"
       ],
       "provides_artifact_tags": [
         "concise-decision-note-or-adr-draft",
@@ -271,7 +281,8 @@
         "consequence-notes",
         "canonical-placement-or-reference-for-the-note",
         "verification-that-the-note-landed-in-the-expected-decision-surfa",
-        "verification-that-the-note-matches-the-actual-change"
+        "verification-that-the-note-matches-the-actual-change",
+        "decision-boundary-notes-that-say-what-the-adr-records-and-what-s"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-adr-write",
@@ -281,7 +292,8 @@
           "consequence-notes",
           "canonical-placement-or-reference-for-the-note",
           "verification-that-the-note-landed-in-the-expected-decision-surfa",
-          "verification-that-the-note-matches-the-actual-change"
+          "verification-that-the-note-matches-the-actual-change",
+          "decision-boundary-notes-that-say-what-the-adr-records-and-what-s"
         ],
         "verification_notes": [
           "confirm the decision was meaningful enough to record",
@@ -460,26 +472,31 @@
         "current naming and responsibilities",
         "known neighboring contexts",
         "ambiguous or overloaded terms",
-        "owner layers, stronger owner repositories, or portability constraints that shape the boundary"
+        "owner layers, stronger source surfaces, or portability constraints that shape the boundary",
+        "active boundary lenses when the ambiguity spans several kinds of difference"
       ],
       "outputs": [
         "named contexts or subsystems",
         "rough boundary map",
         "interface notes between contexts",
         "ambiguity notes and recommended vocabulary",
-        "owner split, stop-line, and portable-versus-integration vocabulary when those boundaries matter"
+        "owner split, stop-line, and portable-versus-integration vocabulary when those boundaries matter",
+        "selected lens notes that explain which kinds of boundary matter for this task and which ones are intentionally out of scope"
       ],
       "verification": [
         "confirm the main ambiguity was reduced",
         "confirm interfaces or handoff points are named",
         "confirm the output helps future scoped changes",
         "confirm the map says what routes away when a stronger owner owns the truth",
-        "confirm portable and integration-only wording remain distinct when both are present"
+        "confirm portable and integration-only wording remain distinct when both are present",
+        "confirm a future change can tell what stays out of scope, not only what was renamed",
+        "confirm the selected lenses are necessary and enough for the next change, with unused lenses left out rather than padded in"
       ],
       "contracts": [
         "boundaries should reduce semantic confusion, not create ceremony for its own sake",
         "neighboring contexts should be named explicitly when relevant",
         "interface or translation points should be visible",
+        "boundary lenses should be selected because they reduce the current ambiguity, not because a checklist exists",
         "a context map should not transfer authority from a stronger owner into the local repository",
         "portable core wording should remain usable without hidden ecosystem dependencies when the target surface is public"
       ],
@@ -488,14 +505,16 @@
         "current-naming-and-responsibilities",
         "known-neighboring-contexts",
         "ambiguous-or-overloaded-terms",
-        "owner-layers-stronger-owner-repositories-or-portability-constrai"
+        "owner-layers-stronger-source-surfaces-or-portability-constraints",
+        "active-boundary-lenses-when-the-ambiguity-spans-several-kinds-of"
       ],
       "provides_artifact_tags": [
         "named-contexts-or-subsystems",
         "rough-boundary-map",
         "interface-notes-between-contexts",
         "ambiguity-notes-and-recommended-vocabulary",
-        "owner-split-stop-line-and-portable-versus-integration-vocabulary"
+        "owner-split-stop-line-and-portable-versus-integration-vocabulary",
+        "selected-lens-notes-that-explain-which-kinds-of-boundary-matter-"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-bounded-context-map",
@@ -504,7 +523,8 @@
           "rough-boundary-map",
           "interface-notes-between-contexts",
           "ambiguity-notes-and-recommended-vocabulary",
-          "owner-split-stop-line-and-portable-versus-integration-vocabulary"
+          "owner-split-stop-line-and-portable-versus-integration-vocabulary",
+          "selected-lens-notes-that-explain-which-kinds-of-boundary-matter-"
         ],
         "verification_notes": [
           "confirm the main ambiguity was reduced",
@@ -764,47 +784,59 @@
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "boundary under review",
+        "producer and named consumer",
         "expected inputs and outputs",
         "current verification surface",
-        "known downstream dependencies"
+        "known downstream dependencies",
+        "contract limits and out-of-contract behavior"
       ],
       "outputs": [
         "explicit contract assumptions",
-        "tests or smoke summary changes",
+        "tests, fixture checks, schema checks, smoke summaries, or structured validation notes",
         "verification notes",
-        "downstream impact notes"
+        "downstream impact notes",
+        "contract limits that say what the check does not prove"
       ],
       "verification": [
         "confirm the contract is visible and reviewable",
         "confirm validation is tied to the interface or boundary",
         "confirm downstream impact was considered when relevant",
-        "confirm the report names any known contract limits or exclusions"
+        "confirm the report names any known contract limits or exclusions",
+        "confirm the named consumer and producer are both clear",
+        "confirm generated or exported surfaces are checked as derived consumers, not promoted into source truth"
       ],
       "contracts": [
         "the contract should be visible to another human or agent",
         "verification should be tied to the boundary, not only to internals",
         "downstream assumptions should be named when relevant",
-        "out-of-contract behavior should stay explicit when it affects consumers"
+        "out-of-contract behavior should stay explicit when it affects consumers",
+        "a contract test should protect the named seam, not claim the whole system is correct",
+        "generated, exported, adapter, and derived surfaces should remain subordinate to their source owners",
+        "consumer convenience should not become new source authority"
       ],
       "consumes_artifact_tags": [
         "boundary-under-review",
+        "producer-and-named-consumer",
         "expected-inputs-and-outputs",
         "current-verification-surface",
-        "known-downstream-dependencies"
+        "known-downstream-dependencies",
+        "contract-limits-and-out-of-contract-behavior"
       ],
       "provides_artifact_tags": [
         "explicit-contract-assumptions",
-        "tests-or-smoke-summary-changes",
+        "tests-fixture-checks-schema-checks-smoke-summaries-or-structured",
         "verification-notes",
-        "downstream-impact-notes"
+        "downstream-impact-notes",
+        "contract-limits-that-say-what-the-check-does-not-prove"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-contract-test",
         "produced_artifacts": [
           "explicit-contract-assumptions",
-          "tests-or-smoke-summary-changes",
+          "tests-fixture-checks-schema-checks-smoke-summaries-or-structured",
           "verification-notes",
-          "downstream-impact-notes"
+          "downstream-impact-notes",
+          "contract-limits-that-say-what-the-check-does-not-prove"
         ],
         "verification_notes": [
           "confirm the contract is visible and reviewable",
@@ -825,39 +857,47 @@
       "description": "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
-        "target module, service, or slice",
+        "target module, service, repository surface, layer surface, or slice",
         "current responsibilities",
         "repeated or reusable logic candidates",
-        "surrounding glue or orchestration context"
+        "surrounding glue, projection, rendering, runtime, infrastructure, or orchestration context",
+        "source owner and edge consumers when the split crosses generated, exported, adapter, or downstream surfaces"
       ],
       "outputs": [
         "clarified boundary between core logic and surrounding glue",
         "notes on what should stay reusable versus edge-specific",
         "small refactor proposal or bounded implementation",
+        "source-owner and derived-surface stop-lines when relevant",
         "verification summary"
       ],
       "verification": [
         "confirm the core candidate is genuinely reusable or stability-shaped",
         "confirm edge-specific code remains at the edge when appropriate",
         "confirm the refactor improved clarity for future changes",
-        "confirm no unrelated structural churn was introduced"
+        "confirm no unrelated structural churn was introduced",
+        "confirm source-owned meaning stays stronger than generated, exported, adapter, or presentation surfaces",
+        "confirm the split says what future changes should update together and what should remain independent"
       ],
       "contracts": [
         "reusable logic should not stay trapped in glue if that blocks testing or reuse",
         "glue should not be over-promoted into domain logic without reason",
         "the boundary should improve clarity, not just aesthetics",
-        "the change should remain reviewable and bounded"
+        "the change should remain reviewable and bounded",
+        "derived, generated, exported, adapter, and presentation surfaces should not become source authority just because they are convenient",
+        "reusable center can mean stable rule, mapping, scoring logic, role contract, recall rule, receipt envelope, route choice, or scenario phase, but it must stay named and bounded"
       ],
       "consumes_artifact_tags": [
-        "target-module-service-or-slice",
+        "target-module-service-repository-surface-layer-surface-or-slice",
         "current-responsibilities",
         "repeated-or-reusable-logic-candidates",
-        "surrounding-glue-or-orchestration-context"
+        "surrounding-glue-projection-rendering-runtime-infrastructure-or-",
+        "source-owner-and-edge-consumers-when-the-split-crosses-generated"
       ],
       "provides_artifact_tags": [
         "clarified-boundary-between-core-logic-and-surrounding-glue",
         "notes-on-what-should-stay-reusable-versus-edge-specific",
         "small-refactor-proposal-or-bounded-implementation",
+        "source-owner-and-derived-surface-stop-lines-when-relevant",
         "verification-summary"
       ],
       "handoff_packet_template": {
@@ -866,6 +906,7 @@
           "clarified-boundary-between-core-logic-and-surrounding-glue",
           "notes-on-what-should-stay-reusable-versus-edge-specific",
           "small-refactor-proposal-or-bounded-implementation",
+          "source-owner-and-derived-surface-stop-lines-when-relevant",
           "verification-summary"
         ],
         "verification_notes": [
@@ -958,20 +999,23 @@
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "target rule or stable truth",
-        "current tests, checks, or examples",
+        "current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples",
         "known edge cases and stress cases",
-        "the input space or states that matter most"
+        "the input space or states that matter most",
+        "known claim limits or downstream surfaces that rely on the invariant"
       ],
       "outputs": [
         "invariant coverage map",
         "gap list for weak or missing checks",
         "bounded follow-up checks or revisions",
         "concise verification summary",
-        "audit verdict on whether coverage is strong enough for the current stable truth"
+        "audit verdict on whether coverage is strong enough for the current stable truth",
+        "claim-limit notes that say what the current validation surface does not prove"
       ],
       "verification": [
         "confirm each core invariant is named and mapped to a check",
         "confirm the coverage gap list is specific and bounded",
+        "confirm non-test validation surfaces are judged by their constrained claim and claim limit",
         "confirm another human can follow why the existing surface is or is not sufficient",
         "confirm the result names the next bounded follow-up, if one is needed",
         "confirm the skill reads like an operational audit rather than a plain technique lift"
@@ -979,22 +1023,26 @@
       "contracts": [
         "every claimed invariant must be traceable to at least one check",
         "the audit should distinguish real constraint from mere example repetition",
+        "schema, report, generated, fixture, and proof surfaces should be audited by the stable claim they constrain, not by how complete they look",
         "the result should stay reviewable without sprawling into a full test strategy",
         "the skill should stay an audit package rather than a general testing doctrine",
-        "the output should make the next coverage move obvious"
+        "the output should make the next coverage move obvious",
+        "claim limits should remain visible when downstream readers may over-trust the surface"
       ],
       "consumes_artifact_tags": [
         "target-rule-or-stable-truth",
-        "current-tests-checks-or-examples",
+        "current-tests-checks-schemas-fixtures-reports-generated-parity-c",
         "known-edge-cases-and-stress-cases",
-        "the-input-space-or-states-that-matter-most"
+        "the-input-space-or-states-that-matter-most",
+        "known-claim-limits-or-downstream-surfaces-that-rely-on-the-invar"
       ],
       "provides_artifact_tags": [
         "invariant-coverage-map",
         "gap-list-for-weak-or-missing-checks",
         "bounded-follow-up-checks-or-revisions",
         "concise-verification-summary",
-        "audit-verdict-on-whether-coverage-is-strong-enough-for-the-curre"
+        "audit-verdict-on-whether-coverage-is-strong-enough-for-the-curre",
+        "claim-limit-notes-that-say-what-the-current-validation-surface-d"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-invariant-coverage-audit",
@@ -1003,17 +1051,18 @@
           "gap-list-for-weak-or-missing-checks",
           "bounded-follow-up-checks-or-revisions",
           "concise-verification-summary",
-          "audit-verdict-on-whether-coverage-is-strong-enough-for-the-curre"
+          "audit-verdict-on-whether-coverage-is-strong-enough-for-the-curre",
+          "claim-limit-notes-that-say-what-the-current-validation-surface-d"
         ],
         "verification_notes": [
           "confirm each core invariant is named and mapped to a check",
           "confirm the coverage gap list is specific and bounded",
-          "confirm another human can follow why the existing surface is or is not sufficient"
+          "confirm non-test validation surfaces are judged by their constrained claim and claim limit"
         ],
         "contract_notes": [
           "every claimed invariant must be traceable to at least one check",
           "the audit should distinguish real constraint from mere example repetition",
-          "the result should stay reviewable without sprawling into a full test strategy"
+          "schema, report, generated, fixture, and proof surfaces should be audited by the stable claim they constrain, not by how complete they look"
         ],
         "next_recommended_skills": []
       }
@@ -1095,39 +1144,50 @@
       "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
-        "target module or slice",
-        "concrete dependency that currently leaks into the core logic",
+        "target module, builder, tool, workflow, or slice",
+        "concrete dependency or runtime concern that currently leaks into reusable logic",
         "desired scope of refactor",
-        "validation expectations"
+        "validation expectations",
+        "behavior the reusable center actually needs from the dependency",
+        "callers, consumers, or generated/export surfaces affected by the seam"
       ],
       "outputs": [
         "clearer boundary between logic and infrastructure",
         "proposed or implemented port shape",
         "proposed or implemented adapter shape",
+        "notes on what remains inside the reusable center and what the adapter owns",
         "verification summary"
       ],
       "verification": [
         "confirm the concrete dependency pressure was real",
         "confirm the new boundary is narrower and clearer than before",
         "confirm behavior did not drift silently",
-        "confirm the refactor stayed inside the declared scope"
+        "confirm the refactor stayed inside the declared scope",
+        "confirm the adapter owns the concrete dependency details and the reusable center depends only on the narrow port",
+        "confirm any generated/export or consumer-visible behavior still has its own contract validation when needed"
       ],
       "contracts": [
         "the extracted boundary should reduce coupling, not add decorative abstraction",
         "the port should stay narrow and purpose-shaped",
+        "the port should describe the reusable center's need, not mirror the provider API",
+        "adapters should own translation, retries, transport, local paths, credentials, process calls, or runtime discovery when those details are the dependency pressure",
         "the refactor should not widen into a hidden rewrite",
-        "the final result should remain understandable to another human or agent"
+        "the final result should remain understandable to another human or agent",
+        "generated, exported, or runtime-facing consumers should keep their explicit contract checks separate from the adapter refactor"
       ],
       "consumes_artifact_tags": [
-        "target-module-or-slice",
-        "concrete-dependency-that-currently-leaks-into-the-core-logic",
+        "target-module-builder-tool-workflow-or-slice",
+        "concrete-dependency-or-runtime-concern-that-currently-leaks-into",
         "desired-scope-of-refactor",
-        "validation-expectations"
+        "validation-expectations",
+        "behavior-the-reusable-center-actually-needs-from-the-dependency",
+        "callers-consumers-or-generated-export-surfaces-affected-by-the-s"
       ],
       "provides_artifact_tags": [
         "clearer-boundary-between-logic-and-infrastructure",
         "proposed-or-implemented-port-shape",
         "proposed-or-implemented-adapter-shape",
+        "notes-on-what-remains-inside-the-reusable-center-and-what-the-ad",
         "verification-summary"
       ],
       "handoff_packet_template": {
@@ -1136,6 +1196,7 @@
           "clearer-boundary-between-logic-and-infrastructure",
           "proposed-or-implemented-port-shape",
           "proposed-or-implemented-adapter-shape",
+          "notes-on-what-remains-inside-the-reusable-center-and-what-the-ad",
           "verification-summary"
         ],
         "verification_notes": [
@@ -1146,7 +1207,7 @@
         "contract_notes": [
           "the extracted boundary should reduce coupling, not add decorative abstraction",
           "the port should stay narrow and purpose-shaped",
-          "the refactor should not widen into a hidden rewrite"
+          "the port should describe the reusable center's need, not mirror the provider API"
         ],
         "next_recommended_skills": []
       }
@@ -1160,37 +1221,47 @@
         "target rule or domain truth",
         "current examples or tests",
         "input space or generators",
-        "known edge cases"
+        "known edge cases",
+        "artifact families, transformations, lifecycle states, or generated/export surfaces when the invariant is not simple data behavior",
+        "invalid cases, exclusion rules, and claim limits for the property"
       ],
       "outputs": [
         "explicit invariants",
         "property-oriented tests or checks",
         "notes on generator assumptions",
-        "verification summary"
+        "verification summary",
+        "notes on what the property proves and what remains outside its claim"
       ],
       "verification": [
         "confirm the property expresses a meaningful invariant",
         "confirm the invariant broadens coverage beyond fixed examples",
         "confirm the report names which stable truth was violated or protected, not only that generated inputs failed",
-        "confirm the result is understandable to another human or agent"
+        "confirm the result is understandable to another human or agent",
+        "confirm the input generator or artifact set is bounded and reviewable",
+        "confirm the claim limit is visible when the property does not cover all states, artifacts, or consumers"
       ],
       "contracts": [
         "each property should express a real invariant, not a wish",
         "the test should broaden coverage beyond a small handpicked set",
         "generator assumptions should remain understandable",
-        "failures should point back to the protected rule rather than only to generated data"
+        "failures should point back to the protected rule rather than only to generated data",
+        "generated/export, workflow, provenance, lifecycle, and structural invariants should stay tied to the source truth they protect",
+        "a property should name its claim limit so broad input coverage does not pretend to prove total quality"
       ],
       "consumes_artifact_tags": [
         "target-rule-or-domain-truth",
         "current-examples-or-tests",
         "input-space-or-generators",
-        "known-edge-cases"
+        "known-edge-cases",
+        "artifact-families-transformations-lifecycle-states-or-generated-",
+        "invalid-cases-exclusion-rules-and-claim-limits-for-the-property"
       ],
       "provides_artifact_tags": [
         "explicit-invariants",
         "property-oriented-tests-or-checks",
         "notes-on-generator-assumptions",
-        "verification-summary"
+        "verification-summary",
+        "notes-on-what-the-property-proves-and-what-remains-outside-its-c"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-property-invariants",
@@ -1198,7 +1269,8 @@
           "explicit-invariants",
           "property-oriented-tests-or-checks",
           "notes-on-generator-assumptions",
-          "verification-summary"
+          "verification-summary",
+          "notes-on-what-the-property-proves-and-what-remains-outside-its-c"
         ],
         "verification_notes": [
           "confirm the property expresses a meaningful invariant",
@@ -1859,9 +1931,9 @@
       "description": "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
-        "repository docs surface",
+        "repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces",
         "target area of ambiguity or overlap",
-        "known canonical files if any",
+        "known canonical files or source-owned surfaces if any",
         "active, legacy, provenance, generated, or decision surfaces involved",
         "owner repositories or stronger owner layers involved",
         "current contributor confusion points"
@@ -1881,6 +1953,7 @@
         "confirm overlaps or conflicts were surfaced rather than hidden",
         "confirm summary docs stay short and route detail to canonical homes where those already exist",
         "confirm active, legacy/provenance, generated, and decision surfaces keep distinct roles when they are involved",
+        "confirm generated, exported, compact, installed, and runtime receipt surfaces remain weaker than their source owners",
         "confirm public portable surfaces remain understandable without hidden local system knowledge",
         "confirm the result helps future contributors orient faster"
       ],
@@ -1890,14 +1963,14 @@
         "lightweight entrypoint docs should link outward instead of duplicating chronology or changing counters",
         "active behavior should live in active surfaces; legacy and provenance should preserve lineage without becoming the first route",
         "generated, exported, compact, and derived surfaces should remain subordinate to source-authored files",
-        "public portable docs should not require a full AoA deployment to make sense, even when AoA owner routes are linked",
+        "public portable surfaces should not require a full local ecosystem deployment to make sense, even when project-owner routes are linked",
         "role separation should reduce confusion, not create extra ceremony",
         "the resulting guidance should be understandable to another human or agent"
       ],
       "consumes_artifact_tags": [
-        "repository-docs-surface",
+        "repository-guidance-source-configuration-schema-manifest-generat",
         "target-area-of-ambiguity-or-overlap",
-        "known-canonical-files-if-any",
+        "known-canonical-files-or-source-owned-surfaces-if-any",
         "active-legacy-provenance-generated-or-decision-surfaces-involved",
         "owner-repositories-or-stronger-owner-layers-involved",
         "current-contributor-confusion-points"
@@ -2022,39 +2095,47 @@
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "desired behavior",
-        "target module or slice",
+        "target module, command, builder, validator, adapter, generated/export path, or workflow step",
         "constraints and non-goals",
-        "available test surface"
+        "available test surface",
+        "fixture, golden, schema, fake adapter, CLI, or focused smoke surface when relevant"
       ],
       "outputs": [
         "new or updated tests",
         "minimal implementation",
         "small refactor if needed",
-        "verification summary"
+        "verification summary",
+        "explicit slice boundary and untouched behavior"
       ],
       "verification": [
         "confirm tests were added or updated first when the task was suitable for TDD",
         "confirm the implementation stayed bounded",
         "confirm the relevant test suite passed",
-        "confirm the report names the covered behavior and the untouched behavior"
+        "confirm the report names the covered behavior and the untouched behavior",
+        "confirm any generated/export or workflow assertion still points back to the source-owned behavior under test"
       ],
       "contracts": [
         "behavior should be made explicit before implementation when reasonably possible",
         "the implementation should stay bounded to the slice",
         "unrelated refactors should be avoided",
-        "tests should express behavior, not incidental implementation detail"
+        "tests should express behavior, not incidental implementation detail",
+        "generated/export behavior should be tested through the source-owned builder or fixture path, not by hand-editing derived output",
+        "workflow or CLI behavior should test the stable machine-readable contract, exit state, or observable route rather than incidental log prose",
+        "refactor work should start only after the focused behavior check is green"
       ],
       "consumes_artifact_tags": [
         "desired-behavior",
-        "target-module-or-slice",
+        "target-module-command-builder-validator-adapter-generated-export",
         "constraints-and-non-goals",
-        "available-test-surface"
+        "available-test-surface",
+        "fixture-golden-schema-fake-adapter-cli-or-focused-smoke-surface-"
       ],
       "provides_artifact_tags": [
         "new-or-updated-tests",
         "minimal-implementation",
         "small-refactor-if-needed",
-        "verification-summary"
+        "verification-summary",
+        "explicit-slice-boundary-and-untouched-behavior"
       ],
       "handoff_packet_template": {
         "from_skill": "aoa-tdd-slice",
@@ -2062,7 +2143,8 @@
           "new-or-updated-tests",
           "minimal-implementation",
           "small-refactor-if-needed",
-          "verification-summary"
+          "verification-summary",
+          "explicit-slice-boundary-and-untouched-behavior"
         ],
         "verification_notes": [
           "confirm tests were added or updated first when the task was suitable for TDD",

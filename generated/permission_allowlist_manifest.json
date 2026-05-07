@@ -173,7 +173,10 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/decision-boundary-lenses.md",
+          "references/decision-note.template.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -311,7 +314,10 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/boundary-lenses.md",
+          "references/context-map.template.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -487,7 +493,9 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -530,7 +538,9 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/core-boundary-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -624,7 +634,9 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/coverage-audit-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -718,7 +730,9 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/adapter-seam-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -761,7 +775,9 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/invariant-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -1188,7 +1204,9 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/authority-surface-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -1279,7 +1297,9 @@
       ],
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/tdd-slice-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"

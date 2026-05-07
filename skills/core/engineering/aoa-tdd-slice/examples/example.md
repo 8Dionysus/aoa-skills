@@ -2,34 +2,36 @@
 
 ## Scenario
 
-A task-tracking service needs a new rule: creating a task with a title longer than 120 characters should fail with a validation error, while existing valid titles should continue to work unchanged.
+A catalog builder needs a new behavior: when a source bundle declares an optional support reference, the generated compact export should include that reference once with its source path, while existing bundles without support references should continue to export unchanged.
 
 ## Why this skill fits
 
 - the desired behavior is clear before implementation starts
 - the change is small enough to stay inside one bounded slice
-- confidence matters because the validation rule affects user-facing behavior
+- confidence matters because downstream readers rely on the generated export shape
+- the test can drive the source-to-output mapping without hand-editing the generated artifact
 
 ## Expected inputs
 
-- the desired validation rule and the exact failure condition
-- the module or service method that creates tasks
-- the existing test surface for task creation behavior
-- non-goals such as database migrations or UI redesign
+- the desired source-to-export behavior and the exact fixture shape
+- the builder or command that produces the compact export
+- the existing test surface for builder behavior
+- non-goals such as redesigning catalog schema, rewriting routing, or changing unrelated export fields
 
 ## Expected outputs
 
-- a failing test that expresses the new limit before implementation
+- a failing test that expresses the new support-reference mapping before implementation
 - the smallest implementation change that makes the test pass
 - a short verification summary naming the relevant passing tests
 
 ## Boundary notes
 
 - this example is about a bounded behavior slice, not a broader rewrite of the validation framework
-- unrelated cleanup such as renaming modules or changing API response shape stays out of scope
+- unrelated cleanup such as renaming modules, changing generated sort order, or rewriting export packaging stays out of scope
+- it is not a source-of-truth decision because the source owner is already clear; the task is to specify one observable builder behavior
 
 ## Verification notes
 
-- add or update the task-creation tests first
-- run the focused test suite that covers valid and invalid title lengths
-- report the covered behavior and note that unrelated task fields were left untouched
+- add or update the builder fixture test first
+- run the focused test suite that covers source bundles with and without support references
+- report the covered behavior and note that unrelated export fields were left untouched

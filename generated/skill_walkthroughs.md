@@ -147,7 +147,7 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-adr-write/SKILL.md`
-- pick summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.
+- pick summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale without confusing it with the evidence that revealed it.
 
 ### Use when
 
@@ -156,6 +156,8 @@ Common expand sections:
 - several plausible options existed and the reasoning matters
 - the team or project risks repeating the same debate later
 - the note needs a clear canonical home, not just a one-off comment
+- the decision crosses ownership, layer, evidence, lifecycle, portability, runtime-facing, handoff, risk, or scale boundaries and needs a durable rationale
+- reviewed evidence, planning work, generated output, audit results, or operational receipts have revealed a decision that must stay separate from the evidence that revealed it
 
 ### Do not use when
 
@@ -163,6 +165,11 @@ Common expand sections:
 - the note would only restate an obvious diff with no real decision content
 - the main problem is unclear authoritative documentation rather than decision rationale; use aoa-source-of-truth-check first
 - the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first
+- no decision exists yet and the next step is still discovery, option framing, or owner-route clarification
+- the boundary itself is still ambiguous; use aoa-bounded-context-map before recording the decision
+- the request is to record every possible lens, provisional hint, planning idea, or generated observation without one reviewed decision to preserve
+- the decision is an ordinary implementation choice whose rationale is already clear from the diff, tests, commit message, or review summary
+- the next honest move is a runbook, incident note, risk approval, or operational follow-up rather than durable decision rationale
 
 ### Object use shape
 
@@ -172,6 +179,7 @@ Common expand sections:
 - canonical placement or reference for the note
 - verification that the note landed in the expected decision surface
 - verification that the note matches the actual change
+- decision-boundary notes that say what the ADR records and what stays with stronger owners, evidence surfaces, generated or derived outputs, or follow-up routes
 
 ### Support artifacts
 
@@ -270,14 +278,18 @@ Common expand sections:
 - naming is drifting or overloaded
 - the task needs a clearer boundary before coding safely
 - an agent is likely to confuse nearby concepts without sharper separation
-- a repository has a dual posture, such as standalone public library and ecosystem organ
-- mechanics, skills, techniques, evals, playbooks, generated surfaces, or owner-local implementations are easy to blur together
+- a repository has a dual posture, such as standalone public package and ecosystem component
+- practice patterns, execution workflows, evaluation artifacts, scenarios, generated/export surfaces, or owner-local implementations are easy to blur together
+- the same work changes shape across task, session, repository, layer, surface, or process context
+- several boundary types may matter at once, such as owner, layer, lifecycle, authority, surface-state, portability, proof, runtime, or handoff
 
 ### Do not use when
 
 - the change is tiny and fully local
 - the boundary is already clear and agreed on, and the real task is validating the interface contract; use aoa-contract-test
 - the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first
+- the request is a broad architecture redesign, taxonomy program, or durable governance map rather than one bounded ambiguity-reduction pass
+- the request asks to apply every boundary lens exhaustively without one concrete ambiguity or next change to constrain
 
 ### Object use shape
 
@@ -286,6 +298,7 @@ Common expand sections:
 - interface notes between contexts
 - ambiguity notes and recommended vocabulary
 - owner split, stop-line, and portable-versus-integration vocabulary when those boundaries matter
+- selected lens notes that explain which kinds of boundary matter for this task and which ones are intentionally out of scope
 
 ### Support artifacts
 
@@ -415,12 +428,15 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-contract-test/SKILL.md`
-- pick summary: Design or extend contract-oriented validation at module, service, or workflow boundaries.
+- pick summary: Design or extend contract-oriented validation across stable module, service, schema, generated/export, workflow, or repo handoff boundaries.
 
 ### Use when
 
 - two modules or services interact across a meaningful boundary
 - a smoke path or interface needs a stable validation contract
+- a module, service, CLI, schema, manifest, report, receipt, generated/export surface, workflow handoff, or repo-to-repo seam has consumers that rely on stable shape or behavior
+- a source-owned surface feeds generated, exported, adapter, or downstream consumer surfaces
+- a reusable practice, execution workflow, evaluation artifact, scenario, memory or recall object, role contract, router, SDK, metric, or generated/export surface exposes a stable object shape that other surfaces consume
 - a change risks breaking downstream assumptions
 
 ### Do not use when
@@ -429,14 +445,17 @@ Common expand sections:
 - the boundary itself is still semantically unclear and naming is drifting; use aoa-bounded-context-map
 - the main problem is expressing a broad invariant rather than a boundary contract; use aoa-property-invariants
 - the main problem is auditing whether existing checks really cover a stable rule; use aoa-invariant-coverage-audit
+- the output is incidental logs, debug prose, or a one-off snapshot with no named consumer
+- the request would freeze internal implementation details or current incidental output as a public contract
 - a broad system rewrite is needed before the boundary itself is stable
 
 ### Object use shape
 
 - explicit contract assumptions
-- tests or smoke summary changes
+- tests, fixture checks, schema checks, smoke summaries, or structured validation notes
 - verification notes
 - downstream impact notes
+- contract limits that say what the check does not prove
 
 ### Support artifacts
 
@@ -450,21 +469,25 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-core-logic-boundary/SKILL.md`
-- pick summary: Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.
+- pick summary: Separate reusable rules, mappings, and decision logic from glue, orchestration, projection, infrastructure, and presentation detail.
 
 ### Use when
 
 - a module mixes stable rules with wiring or execution detail
+- an execution workflow, practice pattern, evaluation artifact, scenario, memory or recall object, role contract, router, SDK, metric, generated/export, or process surface mixes reusable meaning with projection, report, runtime, or local delivery detail
 - the same logic is starting to appear in several places
 - tests or reviews are muddy because the center of responsibility is unclear
 - you need to decide whether something belongs in the core or at the edges
+- generated, exported, adapter, report, or presentation surfaces are starting to look like they own the reusable rule they only carry
 
 ### Do not use when
 
 - the task is a tiny isolated fix with no meaningful boundary ambiguity
 - the code is already clearly partitioned
 - the result would only rename folders without improving understanding
+- the owner, context, or source-of-truth boundary is still unclear; use aoa-bounded-context-map first
 - the main problem is recording decision rationale rather than boundary placement; use aoa-adr-write first
+- the main problem is validating a consumer-visible contract after the boundary is clear; use aoa-contract-test
 - the boundary is already clear and the main task is introducing a port or adapter around a concrete dependency; use aoa-port-adapter-refactor
 
 ### Object use shape
@@ -472,6 +495,7 @@ Common expand sections:
 - clarified boundary between core logic and surrounding glue
 - notes on what should stay reusable versus edge-specific
 - small refactor proposal or bounded implementation
+- source-owner and derived-surface stop-lines when relevant
 - verification summary
 
 ### Support artifacts
@@ -523,14 +547,15 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`
-- pick summary: Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.
+- pick summary: Audit whether existing validation or proof surfaces actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.
 
 ### Use when
 
-- an existing test or check surface needs a review for invariant strength
+- an existing test, check, schema, fixture, generated/export parity check, report, receipt, or proof surface needs a review for invariant strength
 - the question is whether current checks really constrain the stable rule
 - you need to turn a loose example set into a bounded coverage audit
 - you want an audit result that names the gap, not just the invariant
+- a validation surface may look broad, but its claim limits and blind spots need review
 
 ### Do not use when
 
@@ -546,6 +571,7 @@ Common expand sections:
 - bounded follow-up checks or revisions
 - concise verification summary
 - audit verdict on whether coverage is strong enough for the current stable truth
+- claim-limit notes that say what the current validation surface does not prove
 
 ### Support artifacts
 
@@ -598,7 +624,7 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-port-adapter-refactor/SKILL.md`
-- pick summary: Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.
+- pick summary: Refactor code, builders, tools, or workflow implementations toward clearer ports and adapters so reusable logic is less entangled with concrete dependencies or runtime details.
 
 ### Use when
 
@@ -606,6 +632,8 @@ Common expand sections:
 - tests are hard to write because external concerns leak into the core logic
 - the same dependency pattern is beginning to repeat across modules
 - a module needs a clearer seam before further change
+- a builder, CLI, SDK facade, generated/export writer, storage layer, filesystem path, environment lookup, clock, network client, subprocess, or provider API leaks into reusable logic
+- the boundary is already named, and the next honest move is a narrow dependency seam rather than another context map
 
 ### Do not use when
 
@@ -614,12 +642,15 @@ Common expand sections:
 - the code would become more ceremonial than useful after extraction
 - the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first
 - the main problem is clarifying repository docs or source-of-truth ownership; use aoa-source-of-truth-check first
+- the main problem is validating a stable consumer-visible interface after the seam is clear; use aoa-contract-test
+- the dependency is only incidental setup or test fixture detail, not a real source of coupling
 
 ### Object use shape
 
 - clearer boundary between logic and infrastructure
 - proposed or implemented port shape
 - proposed or implemented adapter shape
+- notes on what remains inside the reusable center and what the adapter owns
 - verification summary
 
 ### Support artifacts
@@ -634,7 +665,7 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-property-invariants/SKILL.md`
-- pick summary: Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.
+- pick summary: Express stable behavior, structural, lifecycle, generated/export, workflow, or domain truths as invariant-oriented tests and checks rather than only enumerating examples.
 
 ### Use when
 
@@ -642,6 +673,8 @@ Common expand sections:
 - examples alone feel too narrow
 - the system has conservation, monotonicity, idempotency, or structural invariants
 - safety or correctness depends on broad input coverage
+- a stable relationship should hold across artifacts, transformations, generated/export outputs, workflow phases, route choices, or provenance chains
+- correctness depends on repeatability, round-trip behavior, source-ref preservation, lifecycle ordering, uniqueness, freshness bounds, or authorization limits
 
 ### Do not use when
 
@@ -649,6 +682,8 @@ Common expand sections:
 - the main problem is checking whether existing checks really cover the invariant; use aoa-invariant-coverage-audit first
 - the main problem is a boundary contract rather than a stable invariant; use aoa-contract-test
 - no meaningful invariant is yet understood
+- the proposed property would only restate one example with random inputs around it
+- the input generator or artifact family cannot be bounded enough for review
 
 ### Object use shape
 
@@ -656,6 +691,7 @@ Common expand sections:
 - property-oriented tests or checks
 - notes on generator assumptions
 - verification summary
+- notes on what the property proves and what remains outside its claim
 
 ### Support artifacts
 
@@ -987,28 +1023,29 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-source-of-truth-check/SKILL.md`
-- pick summary: Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.
+- pick summary: Clarify which repository guidance, source, configuration, generated/export, operational, status, or provenance surfaces are authoritative, then keep entrypoints short once canonical homes exist.
 
 ### Use when
 
 - a repository has several docs that may overlap or conflict
-- contributors may not know which file to trust first
-- a change touches docs, process, or operational guidance and the question is which file is authoritative
+- contributors may not know which file, source surface, config, schema, manifest, report, or export to trust first
+- a change touches docs, source, config, process, generated output, or operational guidance and the question is which surface is authoritative
 - confusion exists between overview docs and authoritative docs
 - one authoritative source must stay aligned across multiple downstream consumer surfaces
 - top-level status docs such as README or MANIFEST are accumulating status/history that should live in canonical homes instead
 - the repository already has canonical detail surfaces and the summary docs should stay short, navigable, and link-driven
-- root docs, mechanics packages, legacy receipts, provenance bridges, decisions, generated surfaces, or owner-local handoff docs are being confused with one another
-- a public repository must stay portable while still pointing to AoA, project, or downstream owner context
+- root docs, mechanics packages, source/config/schema surfaces, legacy receipts, provenance bridges, decisions, generated surfaces, runtime receipts, or owner-local handoff docs are being confused with one another
+- a public repository must stay portable while still pointing to project-local, ecosystem, or downstream owner context
 
 ### Do not use when
 
 - the repository is tiny and has no meaningful source-of-truth ambiguity
-- the task is purely code-local with no documentation or policy impact
+- the task is purely code-local with no guidance, configuration, generated/export, or policy authority impact
 - the authoritative files are already clear and the main need is recording rationale for a decision; use aoa-adr-write
 - the main problem is deciding whether logic belongs in the core or at the edge; use aoa-core-logic-boundary first
 - the main problem is broader policy design rather than document authority or ownership
 - the task is only about building or maintaining a derived docs surface; that belongs in a separate review-surface workflow
+- the generated or exported surface has a known source owner and only needs a deterministic rebuild or no-drift check
 
 ### Object use shape
 
@@ -1070,13 +1107,14 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-tdd-slice/SKILL.md`
-- pick summary: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries.
+- pick summary: Implement a bounded behavior slice across code, CLI, builder, validator, generated/export, adapter, or workflow surfaces through test-first discipline and explicit refactor boundaries.
 
 ### Use when
 
 - a behavior change can be expressed as tests before implementation
+- a module, CLI, builder, parser, validator, schema check, generated/export path, adapter, router, or workflow step has observable behavior that can be specified before implementation
 - the task fits a bounded slice rather than a broad rewrite
-- confidence and regression resistance matter
+- confidence and regression resistance matter enough to justify a red-green-refactor loop
 
 ### Do not use when
 
@@ -1084,6 +1122,8 @@ Common expand sections:
 - the task is mostly one-off glue with no reusable logic
 - the main problem is a stable interface or boundary contract rather than a feature slice; use aoa-contract-test
 - the main problem is invariant coverage rather than slice implementation; use aoa-property-invariants
+- the main problem is source-of-truth, ownership, or guidance authority rather than observable behavior; use aoa-source-of-truth-check
+- the behavior cannot be observed without broad architecture work, long-running discovery, or a new proof strategy
 - broader architectural restructuring is the real need
 
 ### Object use shape
@@ -1092,6 +1132,7 @@ Common expand sections:
 - minimal implementation
 - small refactor if needed
 - verification summary
+- explicit slice boundary and untouched behavior
 
 ### Support artifacts
 

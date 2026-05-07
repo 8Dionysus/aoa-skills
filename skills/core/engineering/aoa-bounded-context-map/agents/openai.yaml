@@ -1,4 +1,5 @@
 policy:
   allow_implicit_invocation: true
 notes:
-  - This skill is explicit-preferred, but may later be allowed implicitly for bounded non-trivial changes.
+  - "Implicit invocation is currently allowed for bounded context, responsibility, interface-mapping, and multi-layer scoping prompts."
+  - "Keep tiny local edits, already-clear contract validation, exhaustive lens checklists, and broad architecture-program requests routed away from this skill."

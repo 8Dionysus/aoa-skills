@@ -156,10 +156,11 @@ def eval_examples_by_skill(eval_cases: list[dict[str, Any]]) -> dict[str, dict[s
         prompt = case["prompt"]
         expected = case["expected_behavior"]
         mode = case.get("mode")
-        if mode == "explicit" and expected == "invoke-skill":
-            bucket["explicit"].append(prompt)
-        elif mode == "implicit" and expected == "invoke-skill":
-            bucket["implicit"].append(prompt)
+        if expected == "invoke-skill":
+            if mode == "explicit":
+                bucket["explicit"].append(prompt)
+            else:
+                bucket["implicit"].append(prompt)
         elif expected == "manual-invocation-required":
             bucket["manual"].append(prompt)
         else:

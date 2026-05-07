@@ -133,6 +133,21 @@ class CodexPortableContractTests(unittest.TestCase):
             self.assertFalse(should_trigger & negative_controls, entry["name"])
             self.assertFalse(manual_required & negative_controls, entry["name"])
 
+    def test_runtime_router_hints_keep_collision_invocations_out_of_negative_controls(self):
+        router = load_json(REPO_ROOT / "generated" / "runtime_router_hints.json")
+        trigger_cases = load_jsonl(REPO_ROOT / "generated" / "skill_trigger_eval_cases.jsonl")
+        router_by_name = {entry["name"]: entry for entry in router["skills"]}
+
+        offenders = []
+        for case in trigger_cases:
+            if case.get("mode") != "collision" or case.get("expected_behavior") != "invoke-skill":
+                continue
+            router_entry = router_by_name[case["skill_name"]]
+            if case["prompt"] in set(router_entry.get("negative_controls", [])):
+                offenders.append(case["case_id"])
+
+        self.assertEqual(offenders, [])
+
     def test_discovery_and_disclosure_do_not_expose_full_instructions(self):
         discovery = load_json(REPO_ROOT / "generated" / "runtime_discovery_index.json")
         disclosure = load_json(REPO_ROOT / "generated" / "runtime_disclosure_index.json")

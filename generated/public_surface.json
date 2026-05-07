@@ -160,7 +160,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "status": "canonical",
-      "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.",
+      "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale without confusing it with the evidence that revealed it.",
       "technique_bridge_findings": []
     },
     {
@@ -386,7 +386,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "status": "canonical",
-      "summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries.",
+      "summary": "Design or extend contract-oriented validation across stable module, service, schema, generated/export, workflow, or repo handoff boundaries.",
       "technique_bridge_findings": []
     },
     {
@@ -416,7 +416,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated",
-      "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.",
+      "summary": "Separate reusable rules, mappings, and decision logic from glue, orchestration, projection, infrastructure, and presentation detail.",
       "technique_bridge_findings": []
     },
     {
@@ -478,7 +478,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical",
-      "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
+      "summary": "Audit whether existing validation or proof surfaces actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
       "technique_bridge_findings": []
     },
     {
@@ -534,7 +534,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated",
-      "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.",
+      "summary": "Refactor code, builders, tools, or workflow implementations toward clearer ports and adapters so reusable logic is less entangled with concrete dependencies or runtime details.",
       "technique_bridge_findings": []
     },
     {
@@ -560,7 +560,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "status": "canonical",
-      "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.",
+      "summary": "Express stable behavior, structural, lifecycle, generated/export, workflow, or domain truths as invariant-oriented tests and checks rather than only enumerating examples.",
       "technique_bridge_findings": []
     },
     {
@@ -865,7 +865,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
-      "summary": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.",
+      "summary": "Clarify which repository guidance, source, configuration, generated/export, operational, status, or provenance surfaces are authoritative, then keep entrypoints short once canonical homes exist.",
       "technique_bridge_findings": []
     },
     {
@@ -929,7 +929,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "status": "canonical",
-      "summary": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries.",
+      "summary": "Implement a bounded behavior slice across code, CLI, builder, validator, generated/export, adapter, or workflow surfaces through test-first discipline and explicit refactor boundaries.",
       "technique_bridge_findings": []
     },
     {

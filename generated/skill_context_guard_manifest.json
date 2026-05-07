@@ -109,8 +109,8 @@
       "name": "aoa-adr-write",
       "display_name": "AoA ADR Write",
       "source_scope": "repo",
-      "instruction_sha256": "38d9477d46ac784d486d2e4dfb1620609072b9c6329d90556bea64255cc84702",
-      "dedupe_key": "aoa-adr-write:38d9477d46ac784d486d2e4dfb1620609072b9c6329d90556bea64255cc84702",
+      "instruction_sha256": "b463ac8bd6da632e56f1ec672d7f9ee8f4402c9ad1ae9f7f93ec3d5c052ac8ca",
+      "dedupe_key": "aoa-adr-write:b463ac8bd6da632e56f1ec672d7f9ee8f4402c9ad1ae9f7f93ec3d5c052ac8ca",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -205,8 +205,8 @@
       "name": "aoa-bounded-context-map",
       "display_name": "AoA Bounded Context Map",
       "source_scope": "repo",
-      "instruction_sha256": "55b91419ad49d70ba985f3a848dee71f1765f4691a65566d26ceea4951b530b0",
-      "dedupe_key": "aoa-bounded-context-map:55b91419ad49d70ba985f3a848dee71f1765f4691a65566d26ceea4951b530b0",
+      "instruction_sha256": "0e154843019ae3bb971bf55af9edb22fa43bf5eba2a60b02e7b93034cd6b8de8",
+      "dedupe_key": "aoa-bounded-context-map:0e154843019ae3bb971bf55af9edb22fa43bf5eba2a60b02e7b93034cd6b8de8",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -333,17 +333,17 @@
       "name": "aoa-contract-test",
       "display_name": "AoA Contract Test",
       "source_scope": "repo",
-      "instruction_sha256": "ce0073531c97dbd6f59c5a76729c92234cee04449caf3a8b2c1db03a2a4935b3",
-      "dedupe_key": "aoa-contract-test:ce0073531c97dbd6f59c5a76729c92234cee04449caf3a8b2c1db03a2a4935b3",
+      "instruction_sha256": "436f41190f2d22767336503c1c75b7e64c103585f74fb85ce9efb1d883dced77",
+      "dedupe_key": "aoa-contract-test:436f41190f2d22767336503c1c75b7e64c103585f74fb85ce9efb1d883dced77",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
       "compact_summary": "Strengthen interface contracts",
       "must_keep": [
         "boundary under review",
-        "expected inputs and outputs",
+        "producer and named consumer",
         "explicit contract assumptions",
-        "tests or smoke summary changes"
+        "tests, fixture checks, schema checks, smoke summaries, or structured validation notes"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -351,7 +351,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n\nKeep in memory: boundary under review, expected inputs and outputs, explicit contract assumptions, tests or smoke summary changes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n\nKeep in memory: boundary under review, producer and named consumer, explicit contract assumptions, tests, fixture checks, schema checks, smoke summaries, or structured validation notes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -365,14 +365,14 @@
       "name": "aoa-core-logic-boundary",
       "display_name": "AoA Core Logic Boundary",
       "source_scope": "repo",
-      "instruction_sha256": "65759b694816be0ae29a19d8d01d373349cc35a9c0b3843352e004cf7bb1a2c0",
-      "dedupe_key": "aoa-core-logic-boundary:65759b694816be0ae29a19d8d01d373349cc35a9c0b3843352e004cf7bb1a2c0",
+      "instruction_sha256": "09508640da38558774a326760f23876d5868012f9a4e57ed9cb4b7294884cd30",
+      "dedupe_key": "aoa-core-logic-boundary:09508640da38558774a326760f23876d5868012f9a4e57ed9cb4b7294884cd30",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
       "compact_summary": "Separate core logic from glue",
       "must_keep": [
-        "target module, service, or slice",
+        "target module, service, repository surface, layer surface, or slice",
         "current responsibilities",
         "clarified boundary between core logic and surrounding glue",
         "notes on what should stay reusable versus edge-specific"
@@ -383,7 +383,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.\n\nKeep in memory: target module, service, or slice, current responsibilities, clarified boundary between core logic and surrounding glue, notes on what should stay reusable versus edge-specific.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.\n\nKeep in memory: target module, service, repository surface, layer surface, or slice, current responsibilities, clarified boundary between core logic and surrounding glue, notes on what should stay reusable versus edge-specific.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -429,15 +429,15 @@
       "name": "aoa-invariant-coverage-audit",
       "display_name": "AoA Invariant Coverage Audit",
       "source_scope": "repo",
-      "instruction_sha256": "e823b6cbb7e5a879b1467d8e185934c0403a8c91bdda68e17f06321e8b47f27a",
-      "dedupe_key": "aoa-invariant-coverage-audit:e823b6cbb7e5a879b1467d8e185934c0403a8c91bdda68e17f06321e8b47f27a",
+      "instruction_sha256": "488d8a9e5795e4f7010b02d6054701d99e293402d1dce0104aa8ad21507dd554",
+      "dedupe_key": "aoa-invariant-coverage-audit:488d8a9e5795e4f7010b02d6054701d99e293402d1dce0104aa8ad21507dd554",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
       "compact_summary": "Audit invariant coverage",
       "must_keep": [
         "target rule or stable truth",
-        "current tests, checks, or examples",
+        "current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples",
         "invariant coverage map",
         "gap list for weak or missing checks"
       ],
@@ -447,7 +447,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.\n\nKeep in memory: target rule or stable truth, current tests, checks, or examples, invariant coverage map, gap list for weak or missing checks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.\n\nKeep in memory: target rule or stable truth, current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples, invariant coverage map, gap list for weak or missing checks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -493,15 +493,15 @@
       "name": "aoa-port-adapter-refactor",
       "display_name": "AoA Port Adapter Refactor",
       "source_scope": "repo",
-      "instruction_sha256": "8b8a8bee49a2ab7ad4c66b44977b7d3bb882e0aaafe640233757ae3f99652bdc",
-      "dedupe_key": "aoa-port-adapter-refactor:8b8a8bee49a2ab7ad4c66b44977b7d3bb882e0aaafe640233757ae3f99652bdc",
+      "instruction_sha256": "7295ff4a59668652e6822bd5ae86247c0babfec45e0f114cbe180561aedabd64",
+      "dedupe_key": "aoa-port-adapter-refactor:7295ff4a59668652e6822bd5ae86247c0babfec45e0f114cbe180561aedabd64",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
       "compact_summary": "Refactor toward ports/adapters",
       "must_keep": [
-        "target module or slice",
-        "concrete dependency that currently leaks into the core logic",
+        "target module, builder, tool, workflow, or slice",
+        "concrete dependency or runtime concern that currently leaks into reusable logic",
         "clearer boundary between logic and infrastructure",
         "proposed or implemented port shape"
       ],
@@ -511,7 +511,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.\n\nKeep in memory: target module or slice, concrete dependency that currently leaks into the core logic, clearer boundary between logic and infrastructure, proposed or implemented port shape.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.\n\nKeep in memory: target module, builder, tool, workflow, or slice, concrete dependency or runtime concern that currently leaks into reusable logic, clearer boundary between logic and infrastructure, proposed or implemented port shape.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -525,8 +525,8 @@
       "name": "aoa-property-invariants",
       "display_name": "AoA Property Invariants",
       "source_scope": "repo",
-      "instruction_sha256": "32032f4b8169ce286ee2265edf9e4712998b04b40b6100ab652f9659fad061cd",
-      "dedupe_key": "aoa-property-invariants:32032f4b8169ce286ee2265edf9e4712998b04b40b6100ab652f9659fad061cd",
+      "instruction_sha256": "d5c72cca6b8b7e571ea9a7f37e81491bb29dcb117d1c4652a71906f870ed1dba",
+      "dedupe_key": "aoa-property-invariants:d5c72cca6b8b7e571ea9a7f37e81491bb29dcb117d1c4652a71906f870ed1dba",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -813,14 +813,14 @@
       "name": "aoa-source-of-truth-check",
       "display_name": "AoA Source Of Truth Check",
       "source_scope": "repo",
-      "instruction_sha256": "647d0fdc090023b515e0f271cfb62e2e715157ffc30919c6f8c7d50b405cc799",
-      "dedupe_key": "aoa-source-of-truth-check:647d0fdc090023b515e0f271cfb62e2e715157ffc30919c6f8c7d50b405cc799",
+      "instruction_sha256": "87366a4cc15b2baed6b155c1c2ef86239731bca24ff59257cab5dbb132b53399",
+      "dedupe_key": "aoa-source-of-truth-check:87366a4cc15b2baed6b155c1c2ef86239731bca24ff59257cab5dbb132b53399",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
       "compact_summary": "Clarify authoritative docs",
       "must_keep": [
-        "repository docs surface",
+        "repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces",
         "target area of ambiguity or overlap",
         "clearer source-of-truth map",
         "active/current versus historical/provenance/generated placement map"
@@ -831,7 +831,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository docs surface, target area of ambiguity or overlap, clearer source-of-truth map, active/current versus historical/provenance/generated placement map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces, target area of ambiguity or overlap, clearer source-of-truth map, active/current versus historical/provenance/generated placement map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -877,15 +877,15 @@
       "name": "aoa-tdd-slice",
       "display_name": "AoA TDD Slice",
       "source_scope": "repo",
-      "instruction_sha256": "a0fa1ab28e3dff2aec5c7191575ad9c7e883c0fdfa6116fdec35720887fff134",
-      "dedupe_key": "aoa-tdd-slice:a0fa1ab28e3dff2aec5c7191575ad9c7e883c0fdfa6116fdec35720887fff134",
+      "instruction_sha256": "c26f60ebcd52734146d27b26b584518ecff10f2d146ea4705de0f34ea64fe3aa",
+      "dedupe_key": "aoa-tdd-slice:c26f60ebcd52734146d27b26b584518ecff10f2d146ea4705de0f34ea64fe3aa",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
       "compact_summary": "Build slices test-first",
       "must_keep": [
         "desired behavior",
-        "target module or slice",
+        "target module, command, builder, validator, adapter, generated/export path, or workflow step",
         "new or updated tests",
         "minimal implementation"
       ],
@@ -895,7 +895,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.\n\nKeep in memory: desired behavior, target module or slice, new or updated tests, minimal implementation.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.\n\nKeep in memory: desired behavior, target module, command, builder, validator, adapter, generated/export path, or workflow step, new or updated tests, minimal implementation.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {

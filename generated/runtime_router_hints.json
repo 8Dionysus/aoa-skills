@@ -56,12 +56,12 @@
         "aoa-session-self-repair"
       ],
       "should_trigger": [
-        "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim."
+        "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim.",
+        "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature.",
-        "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
+        "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature."
       ],
       "notes": [
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
@@ -151,12 +151,12 @@
       ],
       "should_trigger": [
         "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding.",
-        "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written."
+        "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written.",
+        "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The edit is tiny, fully local, and there is no meaningful ambiguity about boundaries or interfaces.",
-        "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code."
+        "The edit is tiny, fully local, and there is no meaningful ambiguity about boundaries or interfaces."
       ],
       "notes": [
         "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
@@ -176,13 +176,13 @@
         "aoa-commit-growth-seam"
       ],
       "should_trigger": [
-        "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan."
+        "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan.",
+        "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it.",
+        "Apply the bounded change workflow in this generic service repo. There is no atm10 overlay or project-specific path layer here."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "This is just a trivial wording fix with no meaningful review, verification, or operational consequence.",
-        "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it.",
-        "Apply the bounded change workflow in this generic service repo. There is no atm10 overlay or project-specific path layer here."
+        "This is just a trivial wording fix with no meaningful review, verification, or operational consequence."
       ],
       "notes": [
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
@@ -200,12 +200,12 @@
         "aoa-quest-harvest"
       ],
       "should_trigger": [
-        "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order."
+        "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order.",
+        "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The session is still active, there is no reviewed artifact yet, and the request is to let aoa closeout run silently decide donor, progression, and quest verdicts straight from checkpoint notes.",
-        "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
+        "The session is still active, there is no reviewed artifact yet, and the request is to let aoa closeout run silently decide donor, progression, and quest verdicts straight from checkpoint notes."
       ],
       "notes": [
         "aoa-summon decides whether one anchored parent route may launch a bounded child helper and what lane, gates, and return posture apply.",
@@ -245,12 +245,12 @@
         "aoa-tdd-slice"
       ],
       "should_trigger": [
-        "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract."
+        "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract.",
+        "The webhook producer and consumer disagree on payload shape. Add contract-oriented validation so the boundary is explicit and regressions are obvious."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The change is entirely local and does not cross or exercise any meaningful module, service, or workflow boundary.",
-        "The webhook producer and consumer disagree on payload shape. Add contract-oriented validation so the boundary is explicit and regressions are obvious."
+        "The change is entirely local and does not cross or exercise any meaningful module, service, or workflow boundary."
       ],
       "notes": [
         "aoa-change-protocol is the generic bounded-change workflow.",
@@ -268,12 +268,12 @@
         "aoa-port-adapter-refactor"
       ],
       "should_trigger": [
-        "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear."
+        "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear.",
+        "The discount rules are mixed into orchestration code and cron wiring. Separate reusable business rules from glue without widening the refactor."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The task is a tiny isolated fix and there is no meaningful confusion between reusable rules and glue code.",
-        "The discount rules are mixed into orchestration code and cron wiring. Separate reusable business rules from glue without widening the refactor."
+        "The task is a tiny isolated fix and there is no meaningful confusion between reusable rules and glue code."
       ],
       "notes": [
         "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
@@ -313,12 +313,12 @@
         "aoa-property-invariants"
       ],
       "should_trigger": [
-        "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps."
+        "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps.",
+        "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The real problem is that we have not identified the invariant yet, so this is not an audit of existing coverage.",
-        "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps."
+        "The real problem is that we have not identified the invariant yet, so this is not an audit of existing coverage."
       ],
       "notes": [
         "aoa-property-invariants authors new invariant or property checks.",
@@ -357,12 +357,12 @@
         "aoa-core-logic-boundary"
       ],
       "should_trigger": [
-        "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change."
+        "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change.",
+        "Our service layer is tightly coupled to the concrete Stripe client. Introduce a narrow port and adapter so tests stop depending on the live SDK shape."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "This is a tiny local fix with no architectural pressure to isolate a concrete dependency behind a port or adapter.",
-        "Our service layer is tightly coupled to the concrete Stripe client. Introduce a narrow port and adapter so tests stop depending on the live SDK shape."
+        "This is a tiny local fix with no architectural pressure to isolate a concrete dependency behind a port or adapter."
       ],
       "notes": [
         "aoa-bounded-context-map is about naming contexts and interfaces at the system or domain level.",
@@ -378,12 +378,12 @@
         "aoa-invariant-coverage-audit"
       ],
       "should_trigger": [
-        "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules."
+        "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules.",
+        "Write invariant-oriented checks for this parser so we verify idempotency and structural preservation across many generated inputs."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases.",
-        "Write invariant-oriented checks for this parser so we verify idempotency and structural preservation across many generated inputs."
+        "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases."
       ],
       "notes": [
         "aoa-property-invariants authors new invariant or property checks.",
@@ -615,13 +615,13 @@
         "aoa-bounded-context-map"
       ],
       "should_trigger": [
-        "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust."
+        "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust.",
+        "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
+        "This abyss repo now has a diagnostic spine note, runbook fragments, and overlay guidance that disagree about which file is authoritative. Map the canonical docs and shorten the entrypoints instead of producing a runtime artifact."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
-        "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map.",
-        "This abyss repo now has a diagnostic spine note, runbook fragments, and overlay guidance that disagree about which file is authoritative. Map the canonical docs and shorten the entrypoints instead of producing a runtime artifact."
+        "The repository is tiny and there is no meaningful ambiguity about which file is authoritative."
       ],
       "notes": [
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
@@ -662,12 +662,12 @@
         "aoa-contract-test"
       ],
       "should_trigger": [
-        "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters."
+        "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters.",
+        "Add the new password-reset behavior test-first: define the expected flow in tests, implement the smallest passing slice, and keep the refactor bounded."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "The work is still exploratory and the behavior is not defined enough to drive implementation from tests first.",
-        "Add the new password-reset behavior test-first: define the expected flow in tests, implement the smallest passing slice, and keep the refactor bounded."
+        "The work is still exploratory and the behavior is not defined enough to drive implementation from tests first."
       ],
       "notes": [
         "aoa-change-protocol is the generic bounded-change workflow.",
@@ -684,12 +684,12 @@
         "aoa-change-protocol"
       ],
       "should_trigger": [
-        "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces."
+        "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces.",
+        "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough.",
-        "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
+        "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough."
       ],
       "notes": [
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",
@@ -705,12 +705,12 @@
         "aoa-source-of-truth-check"
       ],
       "should_trigger": [
-        "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo."
+        "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo.",
+        "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
       ],
       "manual_invocation_required": [],
       "negative_controls": [
-        "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository.",
-        "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
+        "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository."
       ],
       "notes": [
         "Use a project overlay only when the repository actually matches that overlay family and the repo-relative adaptation matters.",

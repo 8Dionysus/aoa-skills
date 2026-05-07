@@ -57,7 +57,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 1,
+      "do_not_use_case_count": 6,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-adr-write",
@@ -66,7 +66,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-adr-write/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "status": "canonical",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -108,7 +108,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 2,
+      "do_not_use_case_count": 4,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-bounded-context-map",
@@ -117,7 +117,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-bounded-context-map/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "status": "canonical",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -176,7 +176,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 1,
+      "do_not_use_case_count": 3,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-contract-test",
@@ -185,7 +185,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-contract-test/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "status": "canonical",
-      "use_case_count": 1,
+      "use_case_count": 3,
       "use_snapshot_count": 1
     },
     {
@@ -193,7 +193,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 1,
+      "do_not_use_case_count": 3,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-core-logic-boundary",
@@ -202,7 +202,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-core-logic-boundary/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated",
-      "use_case_count": 1,
+      "use_case_count": 3,
       "use_snapshot_count": 1
     },
     {
@@ -261,7 +261,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 1,
+      "do_not_use_case_count": 2,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-port-adapter-refactor",
@@ -270,7 +270,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-port-adapter-refactor/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -278,7 +278,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 2,
+      "do_not_use_case_count": 3,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-property-invariants",
@@ -287,7 +287,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-property-invariants/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "status": "canonical",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -431,7 +431,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 1,
+      "do_not_use_case_count": 2,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-source-of-truth-check",
@@ -440,7 +440,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-source-of-truth-check/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {
@@ -465,7 +465,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
       "canonical_eval_blockers": [],
       "canonical_eval_ready": true,
-      "do_not_use_case_count": 1,
+      "do_not_use_case_count": 2,
       "do_not_use_snapshot_count": 1,
       "invocation_mode": "explicit-preferred",
       "name": "aoa-tdd-slice",
@@ -474,7 +474,7 @@
       "selected_runtime_artifact_path": "skills/core/engineering/aoa-tdd-slice/examples/example.md",
       "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "status": "canonical",
-      "use_case_count": 1,
+      "use_case_count": 2,
       "use_snapshot_count": 1
     },
     {

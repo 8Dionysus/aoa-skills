@@ -103,7 +103,10 @@
       "default_prompt": "Use $aoa-adr-write to record a meaningful architectural or workflow decision, place it in the canonical decision surface, and verify the rationale is easy to find.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/decision-boundary-lenses.md",
+          "references/decision-note.template.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -196,7 +199,10 @@
       "default_prompt": "Use $aoa-bounded-context-map to name the relevant contexts, clarify what belongs inside each boundary, and note the interfaces between them.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/boundary-lenses.md",
+          "references/context-map.template.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -312,7 +318,9 @@
       "default_prompt": "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -340,7 +348,9 @@
       "default_prompt": "Use $aoa-core-logic-boundary to decide what belongs in reusable core logic versus glue or infrastructure detail, then keep the refactor bounded.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/core-boundary-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -403,7 +413,9 @@
       "default_prompt": "Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/coverage-audit-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -466,7 +478,9 @@
       "default_prompt": "Use $aoa-port-adapter-refactor to isolate a concrete dependency behind a narrow port and adapter without turning the change into a hidden rewrite.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/adapter-seam-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -494,7 +508,9 @@
       "default_prompt": "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/invariant-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -785,7 +801,9 @@
       "default_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/authority-surface-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -846,7 +864,9 @@
       "default_prompt": "Use $aoa-tdd-slice to define behavior in tests first, make the smallest implementation change, and report what stays out of scope.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/tdd-slice-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"

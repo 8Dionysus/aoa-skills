@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `649639ee42cc`
+- reviewed revision: `d79309999a7c`
 
 ## Target status
 
@@ -20,6 +20,7 @@
 - `skills/core/engineering/aoa-property-invariants/SKILL.md`
 - `skills/core/engineering/aoa-property-invariants/techniques.yaml`
 - `skills/core/engineering/aoa-property-invariants/examples/example.md`
+- `skills/core/engineering/aoa-property-invariants/references/invariant-shapes.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
@@ -27,7 +28,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the bundle now makes failure-to-protected-rule traceability an explicit contract while still clearing the evaluated floor that this record originally captured.
+- current bundle note: the bundle now covers behavior, structural, lifecycle, generated/export, workflow, route, provenance, uniqueness, repeatability, and source-ref preservation invariants through portable shape language while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 

@@ -89,13 +89,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "6e348aabdbb2",
+      "current_revision": "d73659d46c84",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-adr-write",
       "review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
-      "reviewed_revision": "6e348aabdbb2",
+      "reviewed_revision": "d73659d46c84",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
@@ -125,13 +125,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "d87267ec67a8",
+      "current_revision": "e921dd56d297",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-bounded-context-map",
       "review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
-      "reviewed_revision": "d87267ec67a8",
+      "reviewed_revision": "e921dd56d297",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
@@ -161,26 +161,26 @@
       "truth_synced": true
     },
     {
-      "current_revision": "e2fa19aaa04f",
+      "current_revision": "897b7fddb02f",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-contract-test",
       "review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
-      "reviewed_revision": "e2fa19aaa04f",
+      "reviewed_revision": "897b7fddb02f",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
     },
     {
-      "current_revision": "8d5647f355c9",
+      "current_revision": "cc0dc8cd84d8",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-core-logic-boundary",
       "review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
-      "reviewed_revision": "8d5647f355c9",
-      "runtime_skill_md_meaning_changed": false,
+      "reviewed_revision": "cc0dc8cd84d8",
+      "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
@@ -197,13 +197,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "9c343d75ed0a",
+      "current_revision": "feeb4ae634fb",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-invariant-coverage-audit",
       "review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
-      "reviewed_revision": "9c343d75ed0a",
+      "reviewed_revision": "feeb4ae634fb",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
@@ -221,25 +221,25 @@
       "truth_synced": true
     },
     {
-      "current_revision": "d25254009968",
+      "current_revision": "38a599987abb",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-port-adapter-refactor",
       "review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
-      "reviewed_revision": "d25254009968",
-      "runtime_skill_md_meaning_changed": false,
+      "reviewed_revision": "38a599987abb",
+      "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "649639ee42cc",
+      "current_revision": "d79309999a7c",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-property-invariants",
       "review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
-      "reviewed_revision": "649639ee42cc",
+      "reviewed_revision": "d79309999a7c",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true
@@ -341,13 +341,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "e5194ddf2296",
+      "current_revision": "5d049efb957c",
       "governance_decision": "default_reference",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
-      "reviewed_revision": "e5194ddf2296",
+      "reviewed_revision": "5d049efb957c",
       "runtime_skill_md_meaning_changed": true,
       "status": "canonical",
       "truth_synced": true

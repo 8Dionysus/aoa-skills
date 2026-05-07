@@ -2,7 +2,7 @@
 name: aoa-port-adapter-refactor
 scope: core
 status: evaluated
-summary: Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.
+summary: Refactor code, builders, tools, or workflow implementations toward clearer ports and adapters so reusable logic is less entangled with concrete dependencies or runtime details.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0016
@@ -13,7 +13,7 @@ technique_dependencies:
 
 ## Intent
 
-Use this skill to separate domain or application logic from concrete infrastructure details by introducing or clarifying ports and adapters.
+Use this skill to separate reusable domain, application, builder, or workflow logic from concrete dependencies and runtime details by introducing or clarifying ports and adapters.
 
 ## Trigger boundary
 
@@ -22,6 +22,8 @@ Use this skill when:
 - tests are hard to write because external concerns leak into the core logic
 - the same dependency pattern is beginning to repeat across modules
 - a module needs a clearer seam before further change
+- a builder, CLI, SDK facade, generated/export writer, storage layer, filesystem path, environment lookup, clock, network client, subprocess, or provider API leaks into reusable logic
+- the boundary is already named, and the next honest move is a narrow dependency seam rather than another context map
 
 Do not use this skill when:
 - the task is a tiny local fix with no architectural pressure
@@ -29,36 +31,46 @@ Do not use this skill when:
 - the code would become more ceremonial than useful after extraction
 - the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first
 - the main problem is clarifying repository docs or source-of-truth ownership; use `aoa-source-of-truth-check` first
+- the main problem is validating a stable consumer-visible interface after the seam is clear; use `aoa-contract-test`
+- the dependency is only incidental setup or test fixture detail, not a real source of coupling
 
 ## Inputs
 
-- target module or slice
-- concrete dependency that currently leaks into the core logic
+- target module, builder, tool, workflow, or slice
+- concrete dependency or runtime concern that currently leaks into reusable logic
 - desired scope of refactor
 - validation expectations
+- behavior the reusable center actually needs from the dependency
+- callers, consumers, or generated/export surfaces affected by the seam
 
 ## Outputs
 
 - clearer boundary between logic and infrastructure
 - proposed or implemented port shape
 - proposed or implemented adapter shape
+- notes on what remains inside the reusable center and what the adapter owns
 - verification summary
 
 ## Procedure
 
 1. identify the concrete dependency that is making change or testing harder
-2. isolate the reusable logic from the infrastructure-specific behavior
-3. define a narrow port around what the core actually needs
-4. move infrastructure-specific behavior behind an adapter or equivalent seam
-5. keep the refactor bounded and avoid unrelated cleanup
-6. verify that the new boundary improves clarity and does not silently change behavior
+2. confirm the broader context and core-versus-edge boundary are already clear enough to make a seam; otherwise route to `aoa-bounded-context-map` or `aoa-core-logic-boundary`
+3. when the dependency is not a simple service client, choose the smallest useful shape from `references/adapter-seam-shapes.md`
+4. isolate the reusable logic from the infrastructure-specific behavior
+5. define a narrow port around what the reusable center actually needs
+6. move infrastructure-specific behavior behind an adapter or equivalent seam
+7. keep the refactor bounded and avoid unrelated cleanup
+8. verify that the new boundary improves clarity and does not silently change behavior
 
 ## Contracts
 
 - the extracted boundary should reduce coupling, not add decorative abstraction
 - the port should stay narrow and purpose-shaped
+- the port should describe the reusable center's need, not mirror the provider API
+- adapters should own translation, retries, transport, local paths, credentials, process calls, or runtime discovery when those details are the dependency pressure
 - the refactor should not widen into a hidden rewrite
 - the final result should remain understandable to another human or agent
+- generated, exported, or runtime-facing consumers should keep their explicit contract checks separate from the adapter refactor
 
 ## Risks and anti-patterns
 
@@ -66,6 +78,9 @@ Do not use this skill when:
 - extracting a port that mirrors an overgrown concrete dependency instead of narrowing it
 - using the refactor as a pretext for unrelated architectural churn
 - making tests more indirect without improving clarity
+- wrapping every helper in an interface because ports are fashionable
+- hiding source-of-truth or core-logic ambiguity under a new adapter name
+- treating adapter introduction as proof that downstream contracts are validated
 
 ## Verification
 
@@ -73,6 +88,8 @@ Do not use this skill when:
 - confirm the new boundary is narrower and clearer than before
 - confirm behavior did not drift silently
 - confirm the refactor stayed inside the declared scope
+- confirm the adapter owns the concrete dependency details and the reusable center depends only on the narrow port
+- confirm any generated/export or consumer-visible behavior still has its own contract validation when needed
 
 ## Technique traceability
 
@@ -86,4 +103,5 @@ Future project overlays may add:
 - local architecture conventions
 - preferred adapter locations
 - local test commands
+- local adapter seam examples from `references/adapter-seam-shapes.md`
 - repository-specific review rules

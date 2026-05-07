@@ -235,12 +235,12 @@
     {
       "name": "aoa-contract-test",
       "compact_summary": "Strengthen interface contracts",
-      "activation_card_markdown": "Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n\nKeep in memory: boundary under review, expected inputs and outputs, explicit contract assumptions, tests or smoke summary changes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.\n\nKeep in memory: boundary under review, producer and named consumer, explicit contract assumptions, tests, fixture checks, schema checks, smoke summaries, or structured validation notes.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "boundary under review",
-        "expected inputs and outputs",
+        "producer and named consumer",
         "explicit contract assumptions",
-        "tests or smoke summary changes"
+        "tests, fixture checks, schema checks, smoke summaries, or structured validation notes"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -258,9 +258,9 @@
     {
       "name": "aoa-core-logic-boundary",
       "compact_summary": "Separate core logic from glue",
-      "activation_card_markdown": "Use when: Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.\n\nKeep in memory: target module, service, or slice, current responsibilities, clarified boundary between core logic and surrounding glue, notes on what should stay reusable versus edge-specific.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear. Do not use for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency.\n\nKeep in memory: target module, service, repository surface, layer surface, or slice, current responsibilities, clarified boundary between core logic and surrounding glue, notes on what should stay reusable versus edge-specific.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
-        "target module, service, or slice",
+        "target module, service, repository surface, layer surface, or slice",
         "current responsibilities",
         "clarified boundary between core logic and surrounding glue",
         "notes on what should stay reusable versus edge-specific"
@@ -304,10 +304,10 @@
     {
       "name": "aoa-invariant-coverage-audit",
       "compact_summary": "Audit invariant coverage",
-      "activation_card_markdown": "Use when: Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.\n\nKeep in memory: target rule or stable truth, current tests, checks, or examples, invariant coverage map, gap list for weak or missing checks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps. Do not use when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage.\n\nKeep in memory: target rule or stable truth, current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples, invariant coverage map, gap list for weak or missing checks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "target rule or stable truth",
-        "current tests, checks, or examples",
+        "current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples",
         "invariant coverage map",
         "gap list for weak or missing checks"
       ],
@@ -350,10 +350,10 @@
     {
       "name": "aoa-port-adapter-refactor",
       "compact_summary": "Refactor toward ports/adapters",
-      "activation_card_markdown": "Use when: Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.\n\nKeep in memory: target module or slice, concrete dependency that currently leaks into the core logic, clearer boundary between logic and infrastructure, proposed or implemented port shape.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.\n\nKeep in memory: target module, builder, tool, workflow, or slice, concrete dependency or runtime concern that currently leaks into reusable logic, clearer boundary between logic and infrastructure, proposed or implemented port shape.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
-        "target module or slice",
-        "concrete dependency that currently leaks into the core logic",
+        "target module, builder, tool, workflow, or slice",
+        "concrete dependency or runtime concern that currently leaks into reusable logic",
         "clearer boundary between logic and infrastructure",
         "proposed or implemented port shape"
       ],
@@ -580,9 +580,9 @@
     {
       "name": "aoa-source-of-truth-check",
       "compact_summary": "Clarify authoritative docs",
-      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository docs surface, target area of ambiguity or overlap, clearer source-of-truth map, active/current versus historical/provenance/generated placement map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust. Do not use for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale.\n\nKeep in memory: repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces, target area of ambiguity or overlap, clearer source-of-truth map, active/current versus historical/provenance/generated placement map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
-        "repository docs surface",
+        "repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces",
         "target area of ambiguity or overlap",
         "clearer source-of-truth map",
         "active/current versus historical/provenance/generated placement map"
@@ -626,10 +626,10 @@
     {
       "name": "aoa-tdd-slice",
       "compact_summary": "Build slices test-first",
-      "activation_card_markdown": "Use when: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.\n\nKeep in memory: desired behavior, target module or slice, new or updated tests, minimal implementation.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters. Do not use for undefined exploratory work, one-off glue, or broader architectural restructuring.\n\nKeep in memory: desired behavior, target module, command, builder, validator, adapter, generated/export path, or workflow step, new or updated tests, minimal implementation.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "desired behavior",
-        "target module or slice",
+        "target module, command, builder, validator, adapter, generated/export path, or workflow step",
         "new or updated tests",
         "minimal implementation"
       ],

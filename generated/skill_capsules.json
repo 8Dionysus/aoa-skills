@@ -58,20 +58,20 @@
     {
       "inputs_short": "Needs: decision to record; context and problem statement; relevant options or alternatives; chosen path and rationale.",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning; recording the chosen path without naming consequences; letting the ADR drift away from the actual change.",
+      "main_anti_patterns_short": "Avoid: writing an ADR for a trivial edit with no real decision; writing a decision record before a decision actually exists; using inflated language to mask weak reasoning; recording the chosen path without naming...",
       "name": "aoa-adr-write",
       "outputs_short": "Produces: concise decision note or ADR draft; statement of rationale; consequence notes; canonical placement or reference for the note.",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "status": "canonical",
-      "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.",
+      "summary": "Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale without confusing it with the evidence that revealed it.",
       "technique_dependencies": [
         "AOA-T-0033",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when a decision changes structure, boundaries, tooling, or workflow expectations; future contributors will need to know why a path was chosen; Avoid when the change is tiny and self-evident; the note would only...",
-      "verification_short": "Checks: confirm the decision was meaningful enough to record; confirm the rationale is explicit; confirm consequences or tradeoffs are named; confirm the note aligns with the real change surface.",
-      "workflow_short": "Purpose: capture an architectural, structural, or workflow decision in a concise reviewable note, then place and verify that note in the canonical repo surface to the rationale stays findable. Flow: state the context and the problem the decision..."
+      "verification_short": "Checks: confirm the decision was meaningful enough to record; confirm the rationale is explicit; confirm consequences or tradeoffs are named; confirm at least one rejected option or accepted tradeoff is visible when...",
+      "workflow_short": "Purpose: capture an architectural, structural, or workflow decision in a concise reviewable note, then place and verify that note in the canonical repo surface to the rationale stays findable. Flow: confirm a real decision exists and is meaningful enough..."
     },
     {
       "inputs_short": "Needs: requested action; touched surfaces; known approval state; risk signals.",
@@ -125,7 +125,7 @@
       ],
       "trigger_boundary_short": "Use when a project mixes several domains or subsystems; naming is drifting or overloaded; Avoid when the change is tiny and fully local; the boundary is already clear and agreed on, and the real task is validating...",
       "verification_short": "Checks: confirm the main ambiguity was reduced; confirm interfaces or handoff points are named; confirm the output helps future scoped changes; confirm the map says what routes away when a stronger owner owns the truth.",
-      "workflow_short": "Purpose: bounded-context thinking to reduce semantic drift, mixed responsibilities, and unclear interfaces. Flow: identify the target area and the terms people use for it -> separate responsibilities into bounded contexts, subsystems, layers, or owner..."
+      "workflow_short": "Purpose: bounded-context thinking to reduce semantic drift, mixed responsibilities, and unclear interfaces. Flow: confirm the task has one concrete ambiguity or scoping problem; if it asks for a broad architecture program, narrow or route away first ->..."
     },
     {
       "inputs_short": "Needs: target goal; owner repository or route surface; touched files or surfaces; source-of-truth or route-law surfaces that constrain the change.",
@@ -183,40 +183,40 @@
       "workflow_short": "Purpose: cross one honest local commit boundary after a bounded change is already prepared and reviewed enough to stop widening the working session. Flow: reread git status and the target diff to isolate the exact bounded unit -> stop if unrelated changes..."
     },
     {
-      "inputs_short": "Needs: boundary under review; expected inputs and outputs; current verification surface; known downstream dependencies.",
+      "inputs_short": "Needs: boundary under review; producer and named consumer; expected inputs and outputs; current verification surface.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary; changing interface behavior without downstream impact notes; asserting...",
       "name": "aoa-contract-test",
-      "outputs_short": "Produces: explicit contract assumptions; tests or smoke summary changes; verification notes; downstream impact notes.",
+      "outputs_short": "Produces: explicit contract assumptions; tests, fixture checks, schema checks, smoke summaries, or structured validation notes; verification notes; downstream impact notes.",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "status": "canonical",
-      "summary": "Design or extend contract-oriented validation at module, service, or workflow boundaries.",
+      "summary": "Design or extend contract-oriented validation across stable module, service, schema, generated/export, workflow, or repo handoff boundaries.",
       "technique_dependencies": [
         "AOA-T-0003",
         "AOA-T-0015"
       ],
       "trigger_boundary_short": "Use when two modules or services interact across a meaningful boundary; a smoke path or interface needs a stable validation contract; Avoid when the change is entirely local and does not affect a meaningful...",
       "verification_short": "Checks: confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary; confirm downstream impact was considered when relevant; confirm the report names any known contract...",
-      "workflow_short": "Purpose: Strengthen boundary reliability by making expected inputs, outputs, and validation summaries explicit. Flow: identify the boundary and its consumers -> state the expected input/output behavior -> express the contract in tests, smoke summaries, or..."
+      "workflow_short": "Purpose: Strengthen boundary reliability by making stable producer-consumer expectations, validation surfaces, and claim limits explicit. Flow: identify the boundary and its consumers -> when the boundary is not a simple module or service interface,..."
     },
     {
-      "inputs_short": "Needs: target module, service, or slice; current responsibilities; repeated or reusable logic candidates; surrounding glue or orchestration context.",
+      "inputs_short": "Needs: target module, service, repository surface, layer surface, or slice; current responsibilities; repeated or reusable logic candidates; surrounding glue, projection, rendering, runtime, infrastructure, or...",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: treating all logic as core logic and over-abstracting the system; moving orchestration detail into the core under the label of purity; renaming layers without reducing actual confusion; hiding a broad rewrite...",
       "name": "aoa-core-logic-boundary",
-      "outputs_short": "Produces: clarified boundary between core logic and surrounding glue; notes on what should stay reusable versus edge-specific; small refactor proposal or bounded implementation; verification summary.",
+      "outputs_short": "Produces: clarified boundary between core logic and surrounding glue; notes on what should stay reusable versus edge-specific; small refactor proposal or bounded implementation; source-owner and derived-surface...",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "status": "evaluated",
-      "summary": "Clarify which logic belongs in the reusable core and which parts should remain glue, orchestration, or infrastructure detail.",
+      "summary": "Separate reusable rules, mappings, and decision logic from glue, orchestration, projection, infrastructure, and presentation detail.",
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0015"
       ],
-      "trigger_boundary_short": "Use when a module mixes stable rules with wiring or execution detail; the same logic is starting to appear in several places; Avoid when the task is a tiny isolated fix with no meaningful boundary ambiguity; the...",
+      "trigger_boundary_short": "Use when a module mixes stable rules with wiring or execution detail; an execution workflow, practice pattern, evaluation artifact, scenario, memory or recall object, role contract, router, SDK, metric,...",
       "verification_short": "Checks: confirm the core candidate is genuinely reusable or stability-shaped; confirm edge-specific code remains at the edge when appropriate; confirm the refactor improved clarity for future changes; confirm no...",
-      "workflow_short": "Purpose: separate reusable core logic from surrounding glue, orchestration, or infrastructure detail to future changes land in the right place. Flow: identify which rules or behaviors are stable enough to count as reusable core logic -> identify which..."
+      "workflow_short": "Purpose: separate a stable reusable center from surrounding glue, orchestration, projection, infrastructure, or presentation detail to future changes land in the right place. Flow: identify which rules or behaviors are stable enough to count as reusable..."
     },
     {
       "inputs_short": "Needs: requested action; available preview or dry-run mechanisms; touched surfaces; known limits of the preview path.",
@@ -237,21 +237,21 @@
       "workflow_short": "Purpose: run a preview-first workflow that stops at inspection until one concrete mutation is ready, then asks for a visible confirmation before the real action proceeds. Flow: identify whether a preview, simulation, inspect-only, or dry-run path exists..."
     },
     {
-      "inputs_short": "Needs: target rule or stable truth; current tests, checks, or examples; known edge cases and stress cases; the input space or states that matter most.",
+      "inputs_short": "Needs: target rule or stable truth; current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples; known edge cases and stress cases; the input space or states that matter most.",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: counting examples as if they were invariants; letting random data hide thin coverage; widening into generic test design or full suite architecture; making the audit so abstract that no one can act on it.",
+      "main_anti_patterns_short": "Avoid: counting examples as if they were invariants; letting random data hide thin coverage; treating schema validity, report completeness, or generated freshness as proof of the underlying invariant; widening into...",
       "name": "aoa-invariant-coverage-audit",
       "outputs_short": "Produces: invariant coverage map; gap list for weak or missing checks; bounded follow-up checks or revisions; concise verification summary.",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "status": "canonical",
-      "summary": "Audit whether existing tests or checks actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
+      "summary": "Audit whether existing validation or proof surfaces actually cover the stable invariants that matter, and identify the smallest bounded gaps that still leave example-only coverage too thin.",
       "technique_dependencies": [
         "AOA-T-0017"
       ],
-      "trigger_boundary_short": "Use when an existing test or check surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule; Avoid when the main problem is defining the invariant itself...",
-      "verification_short": "Checks: confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded; confirm another human can follow why the existing surface is or is not sufficient; confirm...",
-      "workflow_short": "Purpose: invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, and turn that judgment into a bounded audit package instead of a loose example review. Flow: name the stable truth in plain language..."
+      "trigger_boundary_short": "Use when an existing test, check, schema, fixture, generated/export parity check, report, receipt, or proof surface needs a review for invariant strength; the question is whether current checks really constrain the...",
+      "verification_short": "Checks: confirm each core invariant is named and mapped to a check; confirm the coverage gap list is specific and bounded; confirm non-test validation surfaces are judged by their constrained claim and claim limit;...",
+      "workflow_short": "Purpose: invariant-oriented coverage to judge whether an existing validation or proof surface really constrains the stable truth, and turn that judgment into a bounded audit package instead of a loose example review. Flow: name the stable truth in plain..."
     },
     {
       "inputs_short": "Needs: selected local runtime, profile, or preset; available render-truth surface for the chosen runtime; available readiness or doctor surface for the chosen runtime; one explicit local lifecycle entrypoint.",
@@ -274,22 +274,22 @@
       "workflow_short": "Purpose: turn local multi-service startup into a reviewable bring-up workflow with a visible pre-start seam and one explicit launch path. Flow: name the selected runtime, the expected service set, and the explicit launch surface before starting anything..."
     },
     {
-      "inputs_short": "Needs: target module or slice; concrete dependency that currently leaks into the core logic; desired scope of refactor; validation expectations.",
+      "inputs_short": "Needs: target module, builder, tool, workflow, or slice; concrete dependency or runtime concern that currently leaks into reusable logic; desired scope of refactor; validation expectations.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it; using the refactor as a pretext for unrelated architectural...",
       "name": "aoa-port-adapter-refactor",
-      "outputs_short": "Produces: clearer boundary between logic and infrastructure; proposed or implemented port shape; proposed or implemented adapter shape; verification summary.",
+      "outputs_short": "Produces: clearer boundary between logic and infrastructure; proposed or implemented port shape; proposed or implemented adapter shape; notes on what remains inside the reusable center and what the adapter owns.",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "status": "evaluated",
-      "summary": "Refactor code toward clearer ports and adapters so reusable logic is less entangled with infrastructure details.",
+      "summary": "Refactor code, builders, tools, or workflow implementations toward clearer ports and adapters so reusable logic is less entangled with concrete dependencies or runtime details.",
       "technique_dependencies": [
         "AOA-T-0016",
         "AOA-T-0015"
       ],
       "trigger_boundary_short": "Use when business or domain logic is tightly coupled to a concrete dependency; tests are hard to write because external concerns leak into the core logic; Avoid when the task is a tiny local fix with no...",
       "verification_short": "Checks: confirm the concrete dependency pressure was real; confirm the new boundary is narrower and clearer than before; confirm behavior did not drift silently; confirm the refactor stayed inside the declared scope.",
-      "workflow_short": "Purpose: separate domain or application logic from concrete infrastructure details by introducing or clarifying ports and adapters. Flow: identify the concrete dependency that is making change or testing harder -> isolate the reusable logic from the..."
+      "workflow_short": "Purpose: separate reusable domain, application, builder, or workflow logic from concrete dependencies and runtime details by introducing or clarifying ports and adapters. Flow: identify the concrete dependency that is making change or testing harder ->..."
     },
     {
       "inputs_short": "Needs: target rule or domain truth; current examples or tests; input space or generators; known edge cases.",
@@ -300,14 +300,14 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "status": "canonical",
-      "summary": "Express stable system or domain truths as invariant-oriented tests and checks rather than only enumerating examples.",
+      "summary": "Express stable behavior, structural, lifecycle, generated/export, workflow, or domain truths as invariant-oriented tests and checks rather than only enumerating examples.",
       "technique_dependencies": [
         "AOA-T-0017",
         "AOA-T-0007"
       ],
       "trigger_boundary_short": "Use when a rule should hold across many inputs or states; examples alone feel too narrow; Avoid when the behavior is mostly about presentation details or narrow snapshots; the main problem is checking whether...",
       "verification_short": "Checks: confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples; confirm the report names which stable truth was violated or protected, not only that...",
-      "workflow_short": "Purpose: invariant-oriented thinking to test broad behavior through properties rather than only through a short list of fixed examples. Flow: identify what must remain true across many cases -> separate strong invariants from weak hopes or vague..."
+      "workflow_short": "Purpose: invariant-oriented thinking to test broad behavior and stable artifact relationships through properties rather than only through a short list of fixed examples. Flow: identify what must remain true across many cases -> separate strong invariants..."
     },
     {
       "inputs_short": "Needs: source quest or quest family; reviewed run summary or harvest pack; repeat count and repeat shape; owner layer and touched surfaces.",
@@ -455,7 +455,7 @@
       "workflow_short": "Purpose: author a bounded REPAIRPACKET. Flow: start from the reviewed diagnosis rather than from general aspiration -> choose the smallest honest repair shape -> name the primary owner repo and target artifact class -> record checkpoint posture:..."
     },
     {
-      "inputs_short": "Needs: repository docs surface; target area of ambiguity or overlap; known canonical files if any; active, legacy, provenance, generated, or decision surfaces involved.",
+      "inputs_short": "Needs: repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces; target area of ambiguity or overlap; known canonical files or source-owned surfaces if any;...",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: over-formalizing a tiny docs surface; creating many labels without reducing ambiguity; moving truth across files without clearly signaling the change; letting summaries masquerade as canonical instructions.",
       "name": "aoa-source-of-truth-check",
@@ -463,15 +463,15 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "status": "canonical",
-      "summary": "Check whether repository guidance, canonical docs, active surfaces, legacy/provenance bridges, and operational instructions have clear ownership, then keep entrypoints short once canonical homes exist.",
+      "summary": "Clarify which repository guidance, source, configuration, generated/export, operational, status, or provenance surfaces are authoritative, then keep entrypoints short once canonical homes exist.",
       "technique_dependencies": [
         "AOA-T-0013",
         "AOA-T-0002",
         "AOA-T-0009"
       ],
-      "trigger_boundary_short": "Use when a repository has several docs that may overlap or conflict; contributors may not know which file to trust first; Avoid when the repository is tiny and has no meaningful source-of-truth ambiguity; the task...",
+      "trigger_boundary_short": "Use when a repository has several docs that may overlap or conflict; contributors may not know which file, source surface, config, schema, manifest, report, or export to trust first; Avoid when the repository is...",
       "verification_short": "Checks: confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly; confirm overlaps or conflicts were surfaced rather than hidden; confirm summary docs stay short and...",
-      "workflow_short": "Purpose: clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance. Flow: identify the main docs, route cards, generated outputs, mechanics surfaces, legacy/provenance bridges, and owner-local handoff..."
+      "workflow_short": "Purpose: clarify which repository surfaces are authoritative for status, architecture, source behavior, configuration, run instructions, policy, and change guidance. Flow: identify the main docs, source/config/schema surfaces, route cards, generated..."
     },
     {
       "inputs_short": "Needs: a quest passport with difficulty, risk, control mode, and delegate tier; a summon request with desired role or child target, transport preference, one parent anchor (routeanchor, parenttaskid, or sessionref),...",
@@ -492,7 +492,7 @@
       "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to codexlocal when the request..."
     },
     {
-      "inputs_short": "Needs: desired behavior; target module or slice; constraints and non-goals; available test surface.",
+      "inputs_short": "Needs: desired behavior; target module, command, builder, validator, adapter, generated/export path, or workflow step; constraints and non-goals; available test surface.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: writing tests that merely mirror the implementation; turning a small slice into a hidden architectural rewrite; using TDD ritualistically where the problem is not well-shaped yet; overfitting tests to brittle...",
       "name": "aoa-tdd-slice",
@@ -500,14 +500,14 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "status": "canonical",
-      "summary": "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries.",
+      "summary": "Implement a bounded behavior slice across code, CLI, builder, validator, generated/export, adapter, or workflow surfaces through test-first discipline and explicit refactor boundaries.",
       "technique_dependencies": [
         "AOA-T-0014",
         "AOA-T-0001"
       ],
-      "trigger_boundary_short": "Use when a behavior change can be expressed as tests before implementation; the task fits a bounded slice rather than a broad rewrite; Avoid when the task is purely exploratory and behavior is still undefined; the...",
+      "trigger_boundary_short": "Use when a behavior change can be expressed as tests before implementation; a module, CLI, builder, parser, validator, schema check, generated/export path, adapter, router, or workflow step has observable behavior...",
       "verification_short": "Checks: confirm tests were added or updated first when the task was suitable for TDD; confirm the implementation stayed bounded; confirm the relevant test suite passed; confirm the report names the covered behavior...",
-      "workflow_short": "Purpose: test-first discipline to implement a small feature slice with a clear behavioral target and explicit verification. Flow: define the desired behavior in a bounded way -> add or update tests before implementation -> make the smallest change that..."
+      "workflow_short": "Purpose: test-first discipline to implement a small behavior slice with a clear observable target, minimal implementation, and explicit verification. Flow: define the desired behavior in a bounded way -> when the behavior is wider than a simple module..."
     },
     {
       "inputs_short": "Needs: target goal and touched local surface; repo-relative source-of-truth files; repo-relative commands or checks; local approval or review rules.",

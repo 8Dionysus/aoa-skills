@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `9c343d75ed0a`
+- reviewed revision: `feeb4ae634fb`
 
 ## Target status
 
@@ -20,6 +20,7 @@
 - `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`
 - `skills/core/engineering/aoa-invariant-coverage-audit/techniques.yaml`
 - `skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md`
+- `skills/core/engineering/aoa-invariant-coverage-audit/references/coverage-audit-shapes.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
@@ -27,7 +28,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the composition-boundary wave clarified why this remains a reviewed single-technique exception while the bundle still clears the evaluated floor that this record originally captured.
+- current bundle note: the bundle now audits invariant coverage across ordinary tests plus schemas, fixtures, generated/export parity, reports, receipts, proof surfaces, adapters, workflow/role scenarios, memory/provenance, and metrics through reference shapes while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 
