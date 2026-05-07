@@ -11,7 +11,7 @@ name: aoa-quest-harvest
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `beb109a2ad4a`
+- reviewed revision: `03eadddc3c91`
 
 ## Target status
 

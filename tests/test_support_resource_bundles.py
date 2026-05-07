@@ -151,6 +151,34 @@ class SupportBundleScriptTests(unittest.TestCase):
             self.assertEqual(1, result["counts"]["fail"])
             self.assertEqual("", completed.stderr)
 
+    def test_readiness_summary_rejects_scalar_readiness_items(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "readiness.json"
+            payload_path.write_text(
+                json.dumps({"readiness_items": "ok: database up"}) + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-local-stack-bringup/scripts/readiness_summary.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("fail", result["overall"])
+            self.assertEqual(1, result["counts"]["fail"])
+            self.assertEqual(
+                "readiness_items must be a list when present.",
+                result["items"][0]["label"],
+            )
+            self.assertEqual("", completed.stderr)
+
     def test_bringup_contract_treats_unknown_readiness_severity_as_blocker(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             payload_path = Path(tmpdir) / "bringup.json"

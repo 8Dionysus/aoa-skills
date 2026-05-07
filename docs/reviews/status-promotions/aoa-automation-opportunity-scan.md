@@ -11,7 +11,7 @@ name: aoa-automation-opportunity-scan
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `f23c6710e33b`
+- reviewed revision: `4f4be50c823b`
 
 ## Target status
 

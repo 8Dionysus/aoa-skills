@@ -112,13 +112,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "f23c6710e33b",
+      "current_revision": "4f4be50c823b",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-automation-opportunity-scan",
       "review_path": "docs/reviews/status-promotions/aoa-automation-opportunity-scan.md",
-      "reviewed_revision": "f23c6710e33b",
+      "reviewed_revision": "4f4be50c823b",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
@@ -136,25 +136,25 @@
       "truth_synced": true
     },
     {
-      "current_revision": "c835d142ef43",
+      "current_revision": "08e3d7b2e558",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-checkpoint-closeout-bridge",
       "review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
-      "reviewed_revision": "c835d142ef43",
+      "reviewed_revision": "08e3d7b2e558",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "e27275438ccf",
+      "current_revision": "d6dba9d156f8",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-commit-growth-seam",
       "review_path": "docs/reviews/status-promotions/aoa-commit-growth-seam.md",
-      "reviewed_revision": "e27275438ccf",
+      "reviewed_revision": "d6dba9d156f8",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
@@ -244,13 +244,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "beb109a2ad4a",
+      "current_revision": "03eadddc3c91",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-quest-harvest",
       "review_path": "docs/reviews/status-promotions/aoa-quest-harvest.md",
-      "reviewed_revision": "beb109a2ad4a",
+      "reviewed_revision": "03eadddc3c91",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
@@ -280,61 +280,61 @@
       "truth_synced": true
     },
     {
-      "current_revision": "a9dbfbe54953",
+      "current_revision": "bf2ae17c72ae",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
       "review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
-      "reviewed_revision": "a9dbfbe54953",
+      "reviewed_revision": "bf2ae17c72ae",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "3c0e0a1dd572",
+      "current_revision": "66b3b60852d1",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-progression-lift",
       "review_path": "docs/reviews/status-promotions/aoa-session-progression-lift.md",
-      "reviewed_revision": "3c0e0a1dd572",
+      "reviewed_revision": "66b3b60852d1",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "f293a9bc116e",
+      "current_revision": "fcf35f22a7b4",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-route-forks",
       "review_path": "docs/reviews/status-promotions/aoa-session-route-forks.md",
-      "reviewed_revision": "f293a9bc116e",
+      "reviewed_revision": "fcf35f22a7b4",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "8699efef95b6",
+      "current_revision": "58723d297fc1",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-self-diagnose",
       "review_path": "docs/reviews/status-promotions/aoa-session-self-diagnose.md",
-      "reviewed_revision": "8699efef95b6",
+      "reviewed_revision": "58723d297fc1",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "aeb50edcd1ed",
+      "current_revision": "2fb59f41edbc",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-self-repair",
       "review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
-      "reviewed_revision": "aeb50edcd1ed",
+      "reviewed_revision": "2fb59f41edbc",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
@@ -352,13 +352,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "ba7c03bf9d25",
+      "current_revision": "99c7d6287e66",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-summon",
       "review_path": "docs/reviews/status-promotions/aoa-summon.md",
-      "reviewed_revision": "ba7c03bf9d25",
+      "reviewed_revision": "99c7d6287e66",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true

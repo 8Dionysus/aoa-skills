@@ -11,7 +11,7 @@ name: aoa-session-route-forks
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `f293a9bc116e`
+- reviewed revision: `fcf35f22a7b4`
 
 ## Target status
 

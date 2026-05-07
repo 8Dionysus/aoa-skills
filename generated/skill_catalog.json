@@ -231,7 +231,7 @@
           "id": "AOA-T-0086",
           "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -245,7 +245,7 @@
           "id": "AOA-T-0087",
           "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -259,7 +259,7 @@
           "id": "AOA-T-0088",
           "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -383,7 +383,7 @@
           "id": "AOA-T-0075",
           "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -396,7 +396,7 @@
           "id": "AOA-T-0084",
           "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -409,7 +409,7 @@
           "id": "AOA-T-0089",
           "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -439,7 +439,7 @@
           "id": "AOA-T-0001",
           "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -455,7 +455,7 @@
           "id": "AOA-T-0028",
           "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -810,7 +810,7 @@
           "id": "AOA-T-0089",
           "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -825,7 +825,7 @@
           "id": "AOA-T-0090",
           "path": "techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -948,7 +948,7 @@
           "id": "AOA-T-0075",
           "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -963,7 +963,7 @@
           "id": "AOA-T-0076",
           "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "When to use",
@@ -977,7 +977,7 @@
           "id": "AOA-T-0077",
           "path": "techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Inputs",
             "Outputs",
@@ -1004,7 +1004,7 @@
           "id": "AOA-T-0084",
           "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1017,7 +1017,7 @@
           "id": "AOA-T-0085",
           "path": "techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Outputs",
             "Risks",
@@ -1043,7 +1043,7 @@
           "id": "AOA-T-0078",
           "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1056,7 +1056,7 @@
           "id": "AOA-T-0079",
           "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -1083,7 +1083,7 @@
           "id": "AOA-T-0080",
           "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -1095,7 +1095,7 @@
           "id": "AOA-T-0081",
           "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1124,7 +1124,7 @@
           "id": "AOA-T-0082",
           "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1137,7 +1137,7 @@
           "id": "AOA-T-0083",
           "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Outputs",
             "Contracts",
@@ -1230,7 +1230,7 @@
           "id": "AOA-T-0078",
           "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1244,7 +1244,7 @@
           "id": "AOA-T-0079",
           "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1258,7 +1258,7 @@
           "id": "AOA-T-0062",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -1272,7 +1272,7 @@
           "id": "AOA-T-0058",
           "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b4e5c1446469f142c60a85d0a7a4d9de7835ea65",
+          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
           "use_sections": [
             "Intent",
             "Outputs",
