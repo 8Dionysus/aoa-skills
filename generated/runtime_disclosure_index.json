@@ -2620,7 +2620,7 @@
         "Contracts": "self-repair is not free self-modification; important surface changes must pass checkpoint posture",
         "Risks and anti-patterns": "silent doctrine edits; approval bypass",
         "Verification": "confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape",
-        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa...",
+        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `bfb4281c60295ab85605e188b350e0f6008b3184` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa...",
         "Adaptation points": "local approval classes; repo-specific rollback anchors"
       },
       "resource_inventory": {

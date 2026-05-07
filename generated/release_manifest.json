@@ -172,7 +172,7 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "ff024f6614fc3330ad627c080f265d81141dd0916135ae01a0fbc0bb00e77e58",
+      "sha256": "24e4f3c7bc053155fff18fc70868a5d8b9307d8a9be076bfb9a2253ed34bcf55",
       "bytes": 239973
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "2b3229f6df49171d11925379955f56439fb4358079780431914a5de87e1073f5",
+      "sha256": "97b86b0da1901771e5e747b5aa15153e7a9f08924b3453a4c5695de37a6408c8",
       "bytes": 303167
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "1f0e0b40899e74bad1b1f04f9c0cf4a0a3d9233561790844adfe79a8d2ef575d",
+      "sha256": "55df1ddbf44666e4514045ff3242ba7d4f33c4751a42e3b632bbb7a84d0fdeeb",
       "bytes": 89271
     },
     {
@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "419e57e1cc3b3e3ba83a7b78f63b2955fe671b729a84fee7a951e900b4dfaef2",
+      "sha256": "8cc9677506eecc94663b6f0573a8f8e6782b5771ede91c0c9a3faf4614db2b78",
       "bytes": 124984
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "89c98b2c771dbfb1ce440b3f04b88f31509bf5b5249674fa048ee9d44fba5898",
+      "sha256": "861ce3b9de7569aff4a68016c7afa512ca10fc89c88a724041f5484a6e869932",
       "bytes": 14832
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "1e2c1ee3aa507610a71616f5466e5b5f7891b1ca6cbe0f685c81fc34b31fab5e",
+      "sha256": "c5b4d9d29a1b0015030db874c13b5ae311935a2d8dfef86ef01d8a4b02367c56",
       "bytes": 231208
     },
     {
@@ -576,8 +576,8 @@
     },
     {
       "name": "aoa-session-self-repair",
-      "skill_revision": "2060bc9cb9ef",
-      "content_hash": "2060bc9cb9ef1060bdd2639c653f24e2916d71b6ca77b1af4d234f97174831a2"
+      "skill_revision": "149bb73ef481",
+      "content_hash": "149bb73ef481842d3626db26b62f1e793d69cc29f02d21266cfd743fc33e471b"
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -731,7 +731,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "5ff3d142b15bb632c8433a9fd85575faacdc774e5a02706eac35d86d4294224d"
+      "profile_revision": "caa25ad9938b3f565bf22535c867a3638fa363f7d0c899e298ad77559acec975"
     },
     {
       "name": "repo-default",
@@ -783,7 +783,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "fcac9e56abd75ac583f97090cfe1995fe2e7c236c31b0291ebafd73d98924fcd"
+      "profile_revision": "c8c59b4b4468f3962d63e82631c86e14433e9dde38895ae1839015ccef199fc9"
     },
     {
       "name": "repo-project-core-kernel",
@@ -798,7 +798,7 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "profile_revision": "6060e06bc788b32ad00ab7625396ff4ec920a2bcd09dc9777a3e763ee769e745"
+      "profile_revision": "e7c5a412112db9c8a499e84b178532fcc18bf930a9dd0c162df6a0085ceb787d"
     },
     {
       "name": "repo-project-core-outer-ring",
@@ -845,7 +845,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "07f41e864440b756228e010cde9e1efa0054a6735b5888d4f4b2b9d0fbe47ec4"
+      "profile_revision": "ecf74933fe802640d6b30605bb4a8fdf50b04a54138a83b1b4dde947b042940b"
     },
     {
       "name": "repo-project-risk-guard-ring",
@@ -900,7 +900,7 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "profile_revision": "d3667b024384d82226eb02a071f34edd770af772e222e1ff1dd21cda406d9f2d"
+      "profile_revision": "5de5517a5449551cbf86aa13d9e9ef5e59fd42ee58ca2a31410fa340b7267824"
     },
     {
       "name": "repo-summon-only",
@@ -953,7 +953,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "01208cbdfb6920ecca4aa5dd561217c2799429c130162564e223b4682cd44703"
+      "profile_revision": "d221d51f61aa260440e0abb10d48ddd05c6e24ec3ed83bfe5e04b70fdfdc31cf"
     }
   ],
   "release_identity": {

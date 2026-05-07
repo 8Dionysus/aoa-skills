@@ -1,0 +1,3908 @@
+{
+  "report_kind": "skill_quality_audit",
+  "schema_version": 1,
+  "skill_count": 45,
+  "skills": [
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 42,
+        "trigger_bullets": {
+          "do_not_use": 6,
+          "use": 4
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
+        "selected_runtime_artifact_path": "skills/project/abyss/abyss-safe-infra-change/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "abyss-safe-infra-change",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "runtime",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated",
+      "technique_dependencies": [
+        "AOA-T-0028",
+        "AOA-T-0001"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0028"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0001"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 42,
+        "trigger_bullets": {
+          "do_not_use": 6,
+          "use": 4
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
+        "selected_runtime_artifact_path": "skills/project/abyss/abyss-sanitized-share/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "abyss-sanitized-share",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "sharing",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated",
+      "technique_dependencies": [
+        "AOA-T-0034",
+        "AOA-T-0002"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0034"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 7,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 9,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 8,
+        "risks_count": 6,
+        "runtime_line_count": 59,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 5
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/abyss/abyss-self-diagnostic-spine/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "abyss-self-diagnostic-spine",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "none",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0080",
+        "AOA-T-0081"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0080"
+          },
+          {
+            "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0081"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 6,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 6,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 8,
+        "risks_count": 6,
+        "runtime_line_count": 50,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 5
+        },
+        "verification_count": 6
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-adr-write/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-adr-write",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0033",
+        "AOA-T-0002"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0033"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 6,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 6,
+        "risks_count": 6,
+        "runtime_line_count": 46,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 6
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-approval-gate-check.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-approval-gate-check.md",
+        "selected_runtime_artifact_path": "skills/risk/aoa-approval-gate-check/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-approval-gate-check",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "explicit-risk"
+      },
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0028"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0028"
+          }
+        ],
+        "state_counts": {
+          "clean": 1
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 9,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 7,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 10,
+        "risks_count": 7,
+        "runtime_line_count": 78,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 5
+        },
+        "verification_count": 9
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-automation-opportunity-scan/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 2,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-automation-opportunity-scan",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0086",
+        "AOA-T-0087",
+        "AOA-T-0088"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
+            "pinned_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0086"
+          },
+          {
+            "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
+            "pinned_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0087"
+          },
+          {
+            "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
+            "pinned_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0088"
+          }
+        ],
+        "state_counts": {
+          "clean": 3
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 5,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 7,
+        "risks_count": 6,
+        "runtime_line_count": 46,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 6
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
+        "do_not_use_case_count": 2,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-bounded-context-map/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-bounded-context-map",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0016",
+        "AOA-T-0002"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0016"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 7,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 7,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 9,
+        "risks_count": 7,
+        "runtime_line_count": 51,
+        "trigger_bullets": {
+          "do_not_use": 2,
+          "use": 4
+        },
+        "verification_count": 6
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-change-protocol.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-change-protocol/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-change-protocol",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0001"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 11,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 6,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 12,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 11,
+        "risks_count": 7,
+        "runtime_line_count": 104,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 4
+        },
+        "verification_count": 8
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0075",
+        "AOA-T-0084",
+        "AOA-T-0089"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0075"
+          },
+          {
+            "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0084"
+          },
+          {
+            "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0089"
+          }
+        ],
+        "state_counts": {
+          "clean": 3
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 5,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 8,
+        "risks_count": 5,
+        "runtime_line_count": 67,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 5
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-commit-growth-seam/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-commit-growth-seam",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0028"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0001"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0028"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 3,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [
+          "contracts_below_4",
+          "risks_below_4",
+          "verification_below_4"
+        ],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 3,
+        "runtime_line_count": 34,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 3
+        },
+        "verification_count": 3
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-contract-test/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "contracts_below_4",
+        "risks_below_4",
+        "verification_below_4"
+      ],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-contract-test",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0003",
+        "AOA-T-0015"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0003"
+          },
+          {
+            "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0015"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_with_maintenance_findings"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 6,
+        "risks_count": 4,
+        "runtime_line_count": 39,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 4
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-core-logic-boundary/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "stay_evaluated",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-core-logic-boundary",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated",
+      "technique_dependencies": [
+        "AOA-T-0016",
+        "AOA-T-0015"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0016"
+          },
+          {
+            "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0015"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 6,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 7,
+        "risks_count": 6,
+        "runtime_line_count": 47,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-dry-run-first.md",
+        "do_not_use_case_count": 2,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-dry-run-first.md",
+        "selected_runtime_artifact_path": "skills/risk/aoa-dry-run-first/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-dry-run-first",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "runtime",
+        "trust_posture": "explicit-risk"
+      },
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0004",
+        "AOA-T-0028"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0004"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0028"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 5,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 6,
+        "risks_count": 6,
+        "runtime_line_count": 43,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-invariant-coverage-audit.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-invariant-coverage-audit",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0017"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0017"
+          }
+        ],
+        "state_counts": {
+          "clean": 1
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 6,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 7,
+        "risks_count": 6,
+        "runtime_line_count": 49,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 5
+        },
+        "verification_count": 6
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
+        "selected_runtime_artifact_path": "skills/risk/aoa-local-stack-bringup/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "stay_evaluated",
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-local-stack-bringup",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "runtime",
+        "trust_posture": "explicit-risk"
+      },
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
+      "status": "evaluated",
+      "technique_dependencies": [
+        "AOA-T-0036",
+        "AOA-T-0037",
+        "AOA-T-0028",
+        "AOA-T-0038"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0036"
+          },
+          {
+            "path": "techniques/execution/runtime-truth-lifecycle/contextual-host-doctor/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0037"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0028"
+          },
+          {
+            "path": "techniques/execution/runtime-truth-lifecycle/one-command-service-lifecycle/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0038"
+          }
+        ],
+        "state_counts": {
+          "clean": 4
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 6,
+        "risks_count": 4,
+        "runtime_line_count": 39,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 4
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-port-adapter-refactor/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "stay_evaluated",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-port-adapter-refactor",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
+      "status": "evaluated",
+      "technique_dependencies": [
+        "AOA-T-0016",
+        "AOA-T-0015"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0016"
+          },
+          {
+            "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0015"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 3,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [
+          "contracts_below_4"
+        ],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 6,
+        "runtime_line_count": 38,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
+        "do_not_use_case_count": 2,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-property-invariants/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "contracts_below_4"
+      ],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-property-invariants",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0017",
+        "AOA-T-0007"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0017"
+          },
+          {
+            "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0007"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_with_maintenance_findings"
+    },
+    {
+      "body": {
+        "contracts_count": 10,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 6,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 7,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 12,
+        "risks_count": 6,
+        "runtime_line_count": 72,
+        "trigger_bullets": {
+          "do_not_use": 7,
+          "use": 4
+        },
+        "verification_count": 8
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-quest-harvest/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 2,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-quest-harvest",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0089",
+        "AOA-T-0090"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0089"
+          },
+          {
+            "path": "techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0090"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 6,
+        "risks_count": 4,
+        "runtime_line_count": 40,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 3
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-safe-infra-change.md",
+        "do_not_use_case_count": 2,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-safe-infra-change.md",
+        "selected_runtime_artifact_path": "skills/risk/aoa-safe-infra-change/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-safe-infra-change",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "runtime",
+        "trust_posture": "explicit-risk"
+      },
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0028",
+        "AOA-T-0001"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0028"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0001"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 6,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 7,
+        "risks_count": 17,
+        "runtime_line_count": 71,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-sanitized-share.md",
+        "do_not_use_case_count": 3,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-sanitized-share.md",
+        "selected_runtime_artifact_path": "skills/risk/aoa-sanitized-share/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-sanitized-share",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "sharing",
+        "trust_posture": "explicit-risk"
+      },
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0034",
+        "AOA-T-0002"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0034"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 13,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 6,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 17,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [
+          5,
+          21
+        ],
+        "procedure_step_count": 25,
+        "risks_count": 10,
+        "runtime_line_count": 141,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 6
+        },
+        "verification_count": 13
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 2,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-donor-harvest/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 3,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "duplicate_procedure_numbering"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-session-donor-harvest",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0075",
+        "AOA-T-0076",
+        "AOA-T-0077"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0075"
+          },
+          {
+            "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0076"
+          },
+          {
+            "path": "techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0077"
+          }
+        ],
+        "state_counts": {
+          "clean": 3
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 9,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 7,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 9,
+        "risks_count": 7,
+        "runtime_line_count": 68,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-progression-lift/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 2,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-session-progression-lift",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0084",
+        "AOA-T-0085"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0084"
+          },
+          {
+            "path": "techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0085"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 9,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 7,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 10,
+        "risks_count": 7,
+        "runtime_line_count": 70,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 5
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-route-forks/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 2,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-session-route-forks",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0078",
+        "AOA-T-0079"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0078"
+          },
+          {
+            "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0079"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 9,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 7,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 9,
+        "risks_count": 7,
+        "runtime_line_count": 68,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 5
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-self-diagnose/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 2,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-session-self-diagnose",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0080",
+        "AOA-T-0081"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0080"
+          },
+          {
+            "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0081"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 10,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 6,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 9,
+        "risks_count": 6,
+        "runtime_line_count": 66,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 5
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-session-self-repair/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 2,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "published",
+      "name": "aoa-session-self-repair",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-0082",
+        "AOA-T-0083"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
+            "pinned_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0082"
+          },
+          {
+            "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
+            "pinned_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0083"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 8,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 6,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 7,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 9,
+        "risks_count": 9,
+        "runtime_line_count": 65,
+        "trigger_bullets": {
+          "do_not_use": 6,
+          "use": 9
+        },
+        "verification_count": 7
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-source-of-truth-check/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "promotion_review",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-source-of-truth-check",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0013",
+        "AOA-T-0002",
+        "AOA-T-0009"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0013"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/lightweight-status-snapshot/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0009"
+          }
+        ],
+        "state_counts": {
+          "clean": 3
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 10,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 6,
+        "pending_markers": [
+          "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+          "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 14,
+        "risks_count": 6,
+        "runtime_line_count": 105,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 4
+        },
+        "verification_count": 10
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-summon/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "aoa-summon",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-SUMMON-LANE-SELECTION",
+        "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-SUMMON-LANE-SELECTION"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 4,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 6,
+        "risks_count": 4,
+        "runtime_line_count": 38,
+        "trigger_bullets": {
+          "do_not_use": 5,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/core/engineering/aoa-tdd-slice/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "candidate_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": "default_reference",
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-tdd-slice",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "portable-core"
+      },
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
+      "status": "canonical",
+      "technique_dependencies": [
+        "AOA-T-0014",
+        "AOA-T-0001"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/agent-workflows-core/tdd-slice/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0014"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0001"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 40,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
+        "selected_runtime_artifact_path": "skills/project/atm10/atm10-change-protocol/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "atm10-change-protocol",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
+      "status": "evaluated",
+      "technique_dependencies": [
+        "AOA-T-0001",
+        "AOA-T-0002"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0001"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 40,
+        "trigger_bullets": {
+          "do_not_use": 4,
+          "use": 4
+        },
+        "verification_count": 5
+      },
+      "evidence": {
+        "autonomy_check_count": 1,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
+        "selected_runtime_artifact_path": "skills/project/atm10/atm10-source-of-truth-check/examples/example.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist",
+          "promotion_review"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [],
+      "governance_decision": null,
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "atm10-source-of-truth-check",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "runtime": {
+        "allow_implicit_invocation": true,
+        "mutation_surface": "none",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
+      "status": "evaluated",
+      "technique_dependencies": [
+        "AOA-T-0013",
+        "AOA-T-0002"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0013"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-0002"
+          }
+        ],
+        "state_counts": {
+          "clean": 2
+        }
+      },
+      "verdict": "healthy"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 36,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-approval-ledger/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-approval-ledger",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 4,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 36,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-approval-loom/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-approval-loom",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-appserver-bridge/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-appserver-bridge",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-appserver-plan/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-appserver-plan",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-closeout/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-closeout",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-console/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-console",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-event-replay/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-event-replay",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-memory-loom/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-memory-loom",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-memory-prune/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-memory-prune",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 6,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 38,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-mutation-gate/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-mutation-gate",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-recall/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-recall",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-receipt/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-receipt",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-runtime-gate/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-runtime-gate",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-summon/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-summon",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "none",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "body": {
+        "contracts_count": 4,
+        "extra_headings": [],
+        "heading_count": 10,
+        "inputs_count": 5,
+        "low_count_findings": [],
+        "missing_headings": [],
+        "outputs_count": 5,
+        "pending_markers": [
+          "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+          "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+          "TBD"
+        ],
+        "procedure_duplicate_numbers": [],
+        "procedure_step_count": 5,
+        "risks_count": 4,
+        "runtime_line_count": 37,
+        "trigger_bullets": {
+          "do_not_use": 3,
+          "use": 3
+        },
+        "verification_count": 4
+      },
+      "evidence": {
+        "autonomy_check_count": 0,
+        "candidate_review_path": null,
+        "do_not_use_case_count": 1,
+        "do_not_use_snapshot_count": 1,
+        "promotion_review_path": null,
+        "selected_runtime_artifact_path": "skills/project/titan/titan-thread-turn-binding/examples/runtime.md",
+        "support_artifact_kinds": [
+          "runtime_example",
+          "review_checklist"
+        ],
+        "use_case_count": 1,
+        "use_snapshot_count": 1
+      },
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "governance_decision": null,
+      "invocation_mode": "explicit-only",
+      "lineage_state": "pending",
+      "name": "titan-thread-turn-binding",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "runtime": {
+        "allow_implicit_invocation": false,
+        "mutation_surface": "repo",
+        "trust_posture": "project-overlay"
+      },
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
+      "status": "scaffold",
+      "technique_dependencies": [
+        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
+        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+      ],
+      "technique_drift": {
+        "records": [
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+          },
+          {
+            "path": "TBD",
+            "pinned_ref": "TBD",
+            "state": "pending",
+            "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+          }
+        ],
+        "state_counts": {
+          "pending": 2
+        }
+      },
+      "verdict": "working_scaffold_needs_promotion_review"
+    }
+  ],
+  "source_of_truth": [
+    "skills/**/SKILL.md",
+    "skills/**/techniques.yaml",
+    "tests/fixtures/skill_evaluation_cases.yaml",
+    "generated/skill_bundle_index.json",
+    "generated/skill_evaluation_matrix.json",
+    "generated/runtime_discovery_index.json",
+    "generated/public_surface.json",
+    "generated/governance_backlog.json",
+    "local aoa-techniques drift check"
+  ],
+  "summary": {
+    "findings": {
+      "contracts_below_4": 2,
+      "duplicate_procedure_numbering": 1,
+      "missing_autonomy_check": 21,
+      "pending_markers_in_skill_body": 16,
+      "pending_technique_lineage": 16,
+      "risks_below_4": 1,
+      "verification_below_4": 1
+    },
+    "technique_drift": {
+      "available": true,
+      "state_counts": {
+        "clean": 62,
+        "pending": 32
+      },
+      "target_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
+      "techniques_repo": "/srv/AbyssOS/aoa-techniques"
+    },
+    "verdicts": {
+      "healthy": 17,
+      "working_scaffold_needs_promotion_review": 26,
+      "working_with_maintenance_findings": 2
+    }
+  },
+  "upgrade_targets": [
+    {
+      "findings": [],
+      "name": "abyss-self-diagnostic-spine",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [],
+      "name": "aoa-automation-opportunity-scan",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [],
+      "name": "aoa-checkpoint-closeout-bridge",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "name": "aoa-commit-growth-seam",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "contracts_below_4",
+        "risks_below_4",
+        "verification_below_4"
+      ],
+      "name": "aoa-contract-test",
+      "scope": "core",
+      "status": "canonical",
+      "verdict": "working_with_maintenance_findings"
+    },
+    {
+      "findings": [
+        "contracts_below_4"
+      ],
+      "name": "aoa-property-invariants",
+      "scope": "core",
+      "status": "canonical",
+      "verdict": "working_with_maintenance_findings"
+    },
+    {
+      "findings": [],
+      "name": "aoa-quest-harvest",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "duplicate_procedure_numbering"
+      ],
+      "name": "aoa-session-donor-harvest",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "name": "aoa-session-progression-lift",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "name": "aoa-session-route-forks",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "name": "aoa-session-self-diagnose",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check"
+      ],
+      "name": "aoa-session-self-repair",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "aoa-summon",
+      "scope": "core",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-approval-ledger",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-approval-loom",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-appserver-bridge",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-appserver-plan",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-closeout",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-console",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-event-replay",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-memory-loom",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-memory-prune",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-mutation-gate",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-recall",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-receipt",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-runtime-gate",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-summon",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    },
+    {
+      "findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "name": "titan-thread-turn-binding",
+      "scope": "project",
+      "status": "scaffold",
+      "verdict": "working_scaffold_needs_promotion_review"
+    }
+  ]
+}

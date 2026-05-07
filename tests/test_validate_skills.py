@@ -2299,7 +2299,7 @@ class ValidateSkillsTests(unittest.TestCase):
         messages = [issue.message for issue in issues]
         self.assertIn("published techniques cannot use source_ref 'TBD'", messages)
 
-    def test_canonical_status_rejects_pending_lineage(self) -> None:
+    def test_canonical_status_allows_pending_technique_bridge_lineage(self) -> None:
         repo_root = self.make_repo(
             status="canonical",
             review_record_surface="canonical-candidates",
@@ -2308,8 +2308,8 @@ class ValidateSkillsTests(unittest.TestCase):
         )
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
-        self.assertIn("status 'canonical' cannot use pending technique_dependencies", messages)
-        self.assertIn("status 'canonical' cannot use pending techniques in techniques.yaml", messages)
+        self.assertNotIn("status 'canonical' cannot use pending technique_dependencies", messages)
+        self.assertNotIn("status 'canonical' cannot use pending techniques in techniques.yaml", messages)
 
     def test_canonical_status_rejects_legacy_future_traceability(self) -> None:
         repo_root = self.make_repo(
@@ -2319,10 +2319,8 @@ class ValidateSkillsTests(unittest.TestCase):
         )
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
-        self.assertIn(
-            "status 'canonical' requires 'Technique traceability' and forbids legacy 'Future traceability'",
-            messages,
-        )
+        self.assertIn("missing required section 'Technique traceability'", messages)
+        self.assertIn("unexpected top-level section 'Future traceability'", messages)
 
     def test_canonical_status_rejects_tbd_traceability_values(self) -> None:
         repo_root = self.make_repo(
@@ -2341,7 +2339,7 @@ class ValidateSkillsTests(unittest.TestCase):
         issues = validate_skills.run_validation(repo_root)
         messages = [issue.message for issue in issues]
         self.assertIn(
-            "status 'canonical' requires concrete path and source_ref for every technique",
+            "published techniques cannot use source_ref 'TBD'",
             messages,
         )
 

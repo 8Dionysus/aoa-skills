@@ -15,6 +15,7 @@ That means this repo owns:
 - reusable Codex-facing workflow bundles
 - explicit runtime boundaries for agent use
 - technique traceability and composition records
+- skill-native extraction pressure when repeated execution reveals reusable practice
 - derived runtime, evaluation, and governance reader surfaces built from
   committed skill sources
 
@@ -22,16 +23,20 @@ It does not own the reusable practice canon itself, scenario-level method,
 verdict doctrine, routing policy, runtime infrastructure policy, or memory
 objects.
 
-## What Skills Inherit From Techniques
+## What Skills Exchange With Techniques
 
-Skills inherit reusable practice from `aoa-techniques`.
+Skills exchange reusable practice with `aoa-techniques`.
 
 - `aoa-techniques` owns technique meaning, bounded practice contracts, risks,
   validation, and adaptation notes
-- `aoa-skills` packages one or more of those techniques into a reviewable
-  agent-facing workflow
+- `aoa-skills` owns the self-contained agent-facing workflow
+- techniques may be composed into skills when reusable practice already exists
+- stable skill workflows may be decomposed into technique requests when repeated
+  execution reveals reusable practice
 - a skill may summarize or compose techniques, but it should not silently
   replace technique canon or drift into a second technique repository
+- pending or drifted technique bridge state is a routeable bridge finding, not
+  by itself a verdict that the skill execution object is immature
 
 This is the skill-side landing slice for the AoA ontology spine: skills are one
 bounded execution layer, not a place to absorb every neighboring layer.
@@ -56,7 +61,9 @@ skills package workflows, while recurring scenario canon stays upstream in
 When authoring or reviewing changes here:
 
 - inherit reusable practice from `aoa-techniques`
+- preserve skill self-sufficiency before bridge metadata
 - keep execution bundles bounded and reviewable
+- route reusable-practice extraction pressure to `aoa-techniques`
 - route recurring scenario method up to `aoa-playbooks`
 - route verdict doctrine to `aoa-evals`
 - route routing policy, runtime policy, and memory meaning to their own repos

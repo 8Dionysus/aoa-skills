@@ -72,6 +72,13 @@ python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bun
 python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bundle-archive /tmp/repo-core-only.zip --install-root /tmp/aoa-skills --format json
 ```
 
+Audit real workspace and repo install roots without installing anything:
+
+```bash
+python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
+python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --write-json generated/workspace_skill_adoption_audit.json --write-markdown generated/workspace_skill_adoption_audit.md --format markdown
+```
+
 Render a disable snippet for a profile:
 
 ```bash
@@ -134,6 +141,26 @@ python scripts/import_skill_pack.py --repo-root . --profile repo-core-only --bun
 That keeps the first handoff object profile-scoped, deterministic, and fully offline.
 
 Use `install_skill_pack.py` plus `verify_skill_pack.py` directly when you want the lower-level advanced path or need to keep install and verification as separate steps.
+
+## Workspace adoption audit
+
+`scripts/audit_workspace_skill_adoption.py` is the read-only first pass before
+workspace-wide rollout. It verifies a selected profile against:
+
+- the workspace root install surface, normally `/srv/AbyssOS/.agents/skills`
+- each discovered sibling repository install surface,
+  `<repo>/.agents/skills`
+- any explicit `--target` path supplied by the operator
+
+The audit uses the same verification contract as `verify_skill_pack.py`.
+It reports `verified`, `verified_with_extra_dirs`, `not_installed`, `partial`,
+or `drift` per target. It does not install skills, approve owner adoption,
+or turn `aoa-skills` into the source of another repository's behavior.
+
+For broad repo-local rollout, audit `repo-project-foundation` first. It is the
+baseline profile for the project-core kernel, engineering outer ring, and risk
+guard ring. Use narrower profiles only when a repo owner wants a smaller first
+adoption slice.
 
 ## Narrow rollout lane
 

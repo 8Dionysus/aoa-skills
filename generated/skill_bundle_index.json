@@ -2054,7 +2054,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "2060bc9cb9ef1060bdd2639c653f24e2916d71b6ca77b1af4d234f97174831a2",
+      "content_hash": "149bb73ef481842d3626db26b62f1e793d69cc29f02d21266cfd743fc33e471b",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2084,7 +2084,7 @@
       "promotion_review_path": null,
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "2060bc9cb9ef",
+      "skill_revision": "149bb73ef481",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2108,14 +2108,14 @@
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "bfb4281c60295ab85605e188b350e0f6008b3184"
         },
         {
           "id": "AOA-T-0083",
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "bfb4281c60295ab85605e188b350e0f6008b3184"
         }
       ]
     },

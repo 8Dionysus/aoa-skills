@@ -117,3 +117,9 @@ Method-growth mechanics can make reviewed candidate and adoption movement
 explicit. They do not accept the candidate for a downstream owner, replace the
 canonical skill bundle that performs donor harvest, or approve durable adoption
 without local owner consent.
+
+Promotion pressure is a local review signal, not a shortcut.
+Use [Promotion Pressure](docs/PROMOTION_PRESSURE.md) and
+`generated/skill_promotion_pressure.md` to see which heavily used skills should
+receive blocker repair, status review, canonical review, or overlay adoption
+review next.

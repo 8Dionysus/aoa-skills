@@ -3,8 +3,9 @@
 `aoa-skills` is the Codex-facing companion to `aoa-techniques`.
 
 Where `aoa-techniques` stores public, reusable, validated engineering techniques,
-`aoa-skills` stores reusable agent skills that compose one or more techniques into
-an executable workflow for Codex.
+`aoa-skills` stores reusable agent skills: self-contained executable workflows
+for Codex. Skills may compose techniques into workflows, and repeated skill
+execution may also produce technique extraction requests.
 
 ## Quick route by question
 
@@ -26,6 +27,7 @@ an executable workflow for Codex.
 - If you are checking evidence, fixtures, or snapshot-backed coverage, start with `../mechanics/audit/docs/EVALUATION_PATH.md`.
 - If you need the stress-era trigger and collision extension for timeout chaos, source-of-truth wins, and one-off incident suppression, start with `../mechanics/audit/docs/TRIGGER_EVALS.md` and then `../mechanics/antifragility/parts/collision-stress-program/README.md`.
 - If you are reading status, promotion, or governance state, start with `../mechanics/audit/docs/PUBLIC_SURFACE.md`.
+- If you are asking why a repeatedly used skill is not canonical yet, start with `../mechanics/method-growth/docs/PROMOTION_PRESSURE.md` and `../generated/skill_promotion_pressure.md`.
 - If you are reading live project-overlay family maturity, use `../mechanics/audit/docs/PUBLIC_SURFACE.md` and then `../generated/overlay_readiness.md`.
 - If you are reading per-skill packaging membership or relationship topology, use `../generated/skill_bundle_index.md`, `../generated/skill_graph.md`, and then `../generated/release_manifest.json`.
 - If you need one bounded ability-reader layer that stays subordinate to live skill bundles, use `../mechanics/rpg/parts/ability-reader-boundary/README.md`, `../mechanics/rpg/parts/loadout-posture/README.md`, and `../generated/skill_ability_cards.min.example.json`.
@@ -89,21 +91,24 @@ an executable workflow for Codex.
 42. `../mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
 43. `../mechanics/method-growth/docs/MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
 44. `../mechanics/method-growth/docs/PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
-45. `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
-46. `../mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
-47. `../mechanics/boundary-bridge/overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
-48. `../mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
-49. `../mechanics/boundary-bridge/overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
-50. `reviews/README.md` - public review-record conventions and review surfaces.
-51. `../mechanics/release-support/legacy/waves/PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
+45. `../mechanics/method-growth/docs/PROMOTION_PRESSURE.md` - lived-use review-pressure readout for non-canonical skills.
+46. `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including fixture stubs and live exemplar packs.
+47. `../mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
+48. `../mechanics/boundary-bridge/overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
+49. `../mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
+50. `../mechanics/boundary-bridge/overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
+51. `reviews/README.md` - public review-record conventions and review surfaces.
+52. `../mechanics/release-support/legacy/waves/PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
 - techniques are the canonical source of reusable engineering knowledge
-- skills are the agent-facing operational interface
+- skills are the agent-facing operational interface with self-contained execution meaning
 - `../mechanics/boundary-bridge/docs/LAYER_POSITION.md` is the repo-owned boundary note for how skills inherit reusable practice from `aoa-techniques` while recurring scenario method stays in `aoa-playbooks`
 - skills should be self-contained at runtime
+- technique links are bridge evidence, not live runtime dependencies or automatic promotion blockers
 - technique composition should happen at build time, not by live remote fetch
+- stable skill execution may later be decomposed into techniques when it reveals reusable practice
 - live exemplar overlay packs may live here as repo-local examples
 - live exemplar overlay packs should include a family-level review doc and bundle-local review checklists
 - real downstream overlay adoption still belongs in downstream repositories
@@ -118,6 +123,7 @@ an executable workflow for Codex.
 - public-product and governance signals live in `../mechanics/audit/docs/PUBLIC_SURFACE.md`
 - `../generated/public_surface.md` is the derived status and promotion surface
 - `../generated/governance_backlog.md` is the per-skill maintenance and readiness surface
+- `../generated/skill_promotion_pressure.md` is the derived lived-use pressure surface that routes heavily used non-canonical skills to review or blocker repair
 - `../generated/overlay_readiness.md` is the family-maturity surface for repo-local project overlays
 - `../generated/skill_bundle_index.md` is the per-skill packaging, profile-membership, and technique-lineage surface
 - `../generated/skill_graph.md` is the relationship topology surface across skills, techniques, install profiles, and portable artifact groups
@@ -141,6 +147,7 @@ honest bridge manifests with pinned source refs, and local validation coverage.
 The live governance counts now belong to `../generated/public_surface.md` and `../generated/governance_backlog.md`, while this docs map stays focused on how to read the layers.
 The repository now also has a documented maturity ladder and promotion guidance.
 The repository now also has a documented public promotion path in `../mechanics/method-growth/docs/PROMOTION_PATH.md`.
+The repository now also has a lived-use promotion-pressure readout in `../mechanics/method-growth/docs/PROMOTION_PRESSURE.md` and `../generated/skill_promotion_pressure.md`.
 The repository now also has a repo-level release runbook in `../mechanics/release-support/docs/RELEASING.md` and a bounded release-check CLI at `../scripts/release_check.py`.
 The repository now also has a runtime inspection guide in `../mechanics/release-support/docs/RUNTIME_PATH.md`, an evaluation evidence guide in `../mechanics/audit/docs/EVALUATION_PATH.md`, a derived evaluation matrix in `../generated/skill_evaluation_matrix.md`, and a separate derived public-surface layer in `../mechanics/audit/docs/PUBLIC_SURFACE.md` and `../generated/public_surface.md`.
 The repository now also has a generated Codex-facing export in `../.agents/skills/`, portable discovery surfaces in `../generated/agent_skill_catalog*.json`, a legacy-compatible local adapter seam in `../mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md` and `../generated/local_adapter_manifest*.json`, named MCP dependency wiring guidance in `../mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md` plus example scaffolds under `../mechanics/boundary-bridge/examples/openai.*.example.yaml`, a wave-4 runtime seam in `../mechanics/release-support/legacy/waves/FOURTH_WAVE.md`, `../mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md`, `../mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`, `../mechanics/release-support/docs/SESSION_COMPACTION.md`, and `../generated/runtime_*.json`, wave-3 install and trust surfaces in `../mechanics/release-support/docs/INSTALL_AND_PROFILES.md`, `../mechanics/release-support/docs/CONTEXT_RETENTION.md`, `../mechanics/release-support/docs/UI_METADATA_AND_ASSETS.md`, `../mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md`, policy-aware trigger-eval data documented in `../mechanics/audit/docs/TRIGGER_EVALS.md`, and a wave-8 deterministic support-resource bridge documented in `../mechanics/release-support/legacy/waves/EIGHTH_WAVE.md`, `../mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md`, `../mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `../generated/deterministic_resource_manifest.json`.

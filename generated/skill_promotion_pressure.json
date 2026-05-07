@@ -1,0 +1,1541 @@
+{
+  "report_kind": "skill_promotion_pressure",
+  "scan_summary": {
+    "adoption_targets_scanned": 16,
+    "dispatch_files_scanned": 105,
+    "hook_files_scanned": 6069,
+    "session_files_scanned": 249
+  },
+  "schema_version": 1,
+  "skill_count": 45,
+  "skills": [
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "aoa-summon",
+      "pressure_reason": "usage exists, but promotion review must clear hard blockers first",
+      "promotion_pressure": "blockers_first",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 1,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 68,
+        "usage_score": 27
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-approval-gate-check",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 67,
+          "suggest_next": 11
+        },
+        "dispatch_event_count": 78,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1,
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 2,
+        "session_mention_count": 42,
+        "usage_score": 283
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-dry-run-first",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 67,
+          "suggest_next": 5
+        },
+        "dispatch_event_count": 72,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 46,
+        "usage_score": 261
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-change-protocol",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 15,
+          "suggest_next": 37
+        },
+        "dispatch_event_count": 52,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "activate_now": 1,
+          "suggest_next": 3
+        },
+        "reality_trial_event_count": 4,
+        "session_mention_count": 687,
+        "usage_score": 213
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-adr-write",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 5,
+          "suggest_next": 35
+        },
+        "dispatch_event_count": 40,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "activate_now": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 58,
+        "usage_score": 165
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-safe-infra-change",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 33,
+          "suggest_next": 5
+        },
+        "dispatch_event_count": 38,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1,
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 2,
+        "session_mention_count": 29,
+        "usage_score": 163
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-sanitized-share",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 24,
+          "suggest_next": 6
+        },
+        "dispatch_event_count": 30,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 28,
+        "usage_score": 135
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-bounded-context-map",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 9,
+          "suggest_next": 22
+        },
+        "dispatch_event_count": 31,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 150,
+        "usage_score": 134
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-source-of-truth-check",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "suggest_next": 23
+        },
+        "dispatch_event_count": 23,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 268,
+        "usage_score": 114
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-invariant-coverage-audit",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 5,
+          "suggest_next": 7
+        },
+        "dispatch_event_count": 12,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "activate_now": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 78,
+        "usage_score": 81
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-contract-test",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [
+        "contracts_below_4",
+        "risks_below_4",
+        "verification_below_4"
+      ],
+      "quality_verdict": "working_with_maintenance_findings",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 1,
+          "suggest_next": 11
+        },
+        "dispatch_event_count": 12,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 77,
+        "usage_score": 77
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-tdd-slice",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "suggest_next": 4
+        },
+        "dispatch_event_count": 4,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 21,
+        "usage_score": 49
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "default_reference",
+      "lineage_state": "published",
+      "name": "aoa-property-invariants",
+      "pressure_reason": "already canonical; keep maintenance and drift visible",
+      "promotion_pressure": "canonical_monitor",
+      "quality_findings": [
+        "contracts_below_4"
+      ],
+      "quality_verdict": "working_with_maintenance_findings",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
+      "status": "canonical",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "suggest_next": 4
+        },
+        "dispatch_event_count": 4,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 15,
+        "usage_score": 43
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "abyss-self-diagnostic-spine",
+      "pressure_reason": "project overlay use should route to owner adoption review",
+      "promotion_pressure": "overlay_adoption_review",
+      "quality_findings": [],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "repeated_usage_signal": true,
+      "scope": "project",
+      "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 45,
+        "usage_score": 26
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "abyss-safe-infra-change",
+      "pressure_reason": "project overlay use should route to owner adoption review",
+      "promotion_pressure": "overlay_adoption_review",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "repeated_usage_signal": true,
+      "scope": "project",
+      "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 24,
+        "usage_score": 25
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "abyss-sanitized-share",
+      "pressure_reason": "project overlay use should route to owner adoption review",
+      "promotion_pressure": "overlay_adoption_review",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "repeated_usage_signal": true,
+      "scope": "project",
+      "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 24,
+        "usage_score": 25
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "atm10-change-protocol",
+      "pressure_reason": "project overlay use should route to owner adoption review",
+      "promotion_pressure": "overlay_adoption_review",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "repeated_usage_signal": true,
+      "scope": "project",
+      "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 2,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 2,
+        "usage_score": 4
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "atm10-source-of-truth-check",
+      "pressure_reason": "project overlay use should route to owner adoption review",
+      "promotion_pressure": "overlay_adoption_review",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "project_overlay_federation_ready",
+      "repeated_usage_signal": true,
+      "scope": "project",
+      "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 2,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 2,
+        "usage_score": 4
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-mutation-gate",
+      "pressure_reason": "project overlay use should route to owner adoption review",
+      "promotion_pressure": "overlay_adoption_review",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 3,
+        "usage_score": 4
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-approval-ledger",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-approval-loom",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-appserver-bridge",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-appserver-plan",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-closeout",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-console",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-console/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-event-replay",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-memory-loom",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-memory-prune",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-recall",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-recall/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-receipt",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-runtime-gate",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-summon",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-summon/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "not_applicable",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": null,
+      "lineage_state": "pending",
+      "name": "titan-thread-turn-binding",
+      "pressure_reason": "project overlay is not a core canonical-reference candidate by default",
+      "promotion_pressure": "overlay_watch",
+      "quality_findings": [
+        "missing_autonomy_check",
+        "pending_markers_in_skill_body",
+        "pending_technique_lineage"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "project_overlay_eval_ready",
+      "repeated_usage_signal": false,
+      "scope": "project",
+      "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [
+        "pending_technique_dependencies",
+        "pending_technique_entries",
+        "tbd_technique_refs"
+      ],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 0,
+        "usage_score": 1
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-checkpoint-closeout-bridge",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "activate_now": 39,
+          "must_confirm": 60,
+          "suggest_next": 15
+        },
+        "dispatch_event_count": 114,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 166,
+        "usage_score": 387
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-automation-opportunity-scan",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 41,
+          "suggest_next": 34
+        },
+        "dispatch_event_count": 75,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 2
+        },
+        "reality_trial_event_count": 2,
+        "session_mention_count": 111,
+        "usage_score": 274
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-session-route-forks",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [
+        "missing_autonomy_check"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 40,
+          "suggest_next": 12
+        },
+        "dispatch_event_count": 52,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 90,
+        "usage_score": 201
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-session-self-repair",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [
+        "missing_autonomy_check"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 38,
+          "suggest_next": 11
+        },
+        "dispatch_event_count": 49,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 89,
+        "usage_score": 192
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-quest-harvest",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 39,
+          "suggest_next": 9
+        },
+        "dispatch_event_count": 48,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 1,
+        "session_mention_count": 435,
+        "usage_score": 189
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-session-donor-harvest",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [
+        "duplicate_procedure_numbering"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 40,
+          "suggest_next": 9
+        },
+        "dispatch_event_count": 49,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 325,
+        "usage_score": 188
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-session-self-diagnose",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [
+        "missing_autonomy_check"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 39,
+          "suggest_next": 1
+        },
+        "dispatch_event_count": 40,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 102,
+        "usage_score": 161
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-session-progression-lift",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [
+        "missing_autonomy_check"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 32,
+          "suggest_next": 1
+        },
+        "dispatch_event_count": 33,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 162,
+        "usage_score": 140
+      }
+    },
+    {
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated",
+        "missing_autonomy_check"
+      ],
+      "governance_decision": null,
+      "lineage_state": "published",
+      "name": "aoa-commit-growth-seam",
+      "pressure_reason": "usage pressure should open the next status/promotion review",
+      "promotion_pressure": "promotion_review_now",
+      "quality_findings": [
+        "missing_autonomy_check"
+      ],
+      "quality_verdict": "working_scaffold_needs_promotion_review",
+      "readiness_reconciliation": "eval_ready_but_governance_blocked",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
+      "status": "scaffold",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {},
+        "dispatch_event_count": 0,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 1,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 32,
+        "usage_score": 26
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "stay_evaluated",
+      "lineage_state": "published",
+      "name": "aoa-local-stack-bringup",
+      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
+      "promotion_pressure": "revisit_stay_evaluated",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "risk",
+      "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "must_confirm": 17,
+          "suggest_next": 24
+        },
+        "dispatch_event_count": 41,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {
+          "must_confirm": 1,
+          "suggest_next": 1
+        },
+        "reality_trial_event_count": 2,
+        "session_mention_count": 20,
+        "usage_score": 167
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "stay_evaluated",
+      "lineage_state": "published",
+      "name": "aoa-port-adapter-refactor",
+      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
+      "promotion_pressure": "revisit_stay_evaluated",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "suggest_next": 10
+        },
+        "dispatch_event_count": 10,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 13,
+        "usage_score": 59
+      }
+    },
+    {
+      "default_reference_readiness": "ready",
+      "default_reference_readiness_blockers": [],
+      "governance_decision": "stay_evaluated",
+      "lineage_state": "published",
+      "name": "aoa-core-logic-boundary",
+      "pressure_reason": "usage pressure justifies revisiting the stay_evaluated decision",
+      "promotion_pressure": "revisit_stay_evaluated",
+      "quality_findings": [],
+      "quality_verdict": "healthy",
+      "readiness_reconciliation": "governance_and_eval_ready",
+      "repeated_usage_signal": true,
+      "scope": "core",
+      "skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
+      "status": "evaluated",
+      "technique_bridge_findings": [],
+      "usage_evidence": {
+        "dispatch_buckets": {
+          "suggest_next": 9
+        },
+        "dispatch_event_count": 9,
+        "hook_prompt_mention_count": 0,
+        "installed_target_count": 16,
+        "reality_trial_buckets": {},
+        "reality_trial_event_count": 0,
+        "session_mention_count": 13,
+        "usage_score": 56
+      }
+    }
+  ],
+  "source_of_truth": {
+    "dispatch_root": "/srv/AbyssOS/aoa-sdk/.aoa/skill-dispatch",
+    "governance_backlog": "generated/governance_backlog.json",
+    "hooks_root": "/srv/AbyssOS/.codex/generated/codex/hooks",
+    "reality_trials": "generated/skill_reality_trials.json",
+    "sessions_root": "/home/dionysus/.codex/sessions",
+    "skill_quality": "generated/skill_quality_audit.json",
+    "status_and_governance": "generated/public_surface.json",
+    "workspace_adoption": "generated/workspace_skill_adoption_audit.json"
+  },
+  "summary": {
+    "blockers_first": [
+      "aoa-summon"
+    ],
+    "pressure_counts": {
+      "blockers_first": 1,
+      "canonical_monitor": 12,
+      "overlay_adoption_review": 6,
+      "overlay_watch": 14,
+      "promotion_review_now": 9,
+      "revisit_stay_evaluated": 3
+    },
+    "review_pressure": [
+      "abyss-safe-infra-change",
+      "abyss-sanitized-share",
+      "abyss-self-diagnostic-spine",
+      "aoa-automation-opportunity-scan",
+      "aoa-checkpoint-closeout-bridge",
+      "aoa-commit-growth-seam",
+      "aoa-core-logic-boundary",
+      "aoa-local-stack-bringup",
+      "aoa-port-adapter-refactor",
+      "aoa-quest-harvest",
+      "aoa-session-donor-harvest",
+      "aoa-session-progression-lift",
+      "aoa-session-route-forks",
+      "aoa-session-self-diagnose",
+      "aoa-session-self-repair",
+      "atm10-change-protocol",
+      "atm10-source-of-truth-check",
+      "titan-mutation-gate"
+    ]
+  },
+  "workspace_root": "/srv/AbyssOS"
+}

@@ -7,8 +7,8 @@ It is the operational companion to `aoa-techniques`.
 It is one bounded execution layer in the AoA ontology spine; see
 `mechanics/boundary-bridge/docs/LAYER_POSITION.md` for the repo-owned boundary note.
 
-- `aoa-techniques` answers: what is the technique, when should it be used, what are its invariants, risks, and validation rules?
-- `aoa-skills` answers: how should Codex apply techniques in a concrete agent workflow?
+- `aoa-techniques` answers: what is the reusable practice, when should it be used, what are its invariants, risks, and validation rules?
+- `aoa-skills` answers: what self-contained agent workflow should Codex execute, and how does that workflow relate to reusable practice?
 
 ## Conceptual model
 
@@ -28,6 +28,11 @@ It packages:
 - optional assets
 - invocation policy
 - technique composition metadata
+
+The committed `SKILL.md` must stand on its own. Technique links can explain
+lineage, composition, decomposition, refresh pressure, or future extraction, but
+they are not runtime dependencies and should not become the only evidence that a
+skill is mature.
 
 The repository may also publish a generated Codex-facing export under `.agents/skills/*`.
 That export is built from the canonical authored bundle plus portable export config,
@@ -50,8 +55,9 @@ The same derived posture now applies to `.agents/skills/*`, `generated/agent_ski
 `generated/expected_existing_aoa_support_dirs.json`, and `generated/release_manifest.json`:
 they are generated operational interfaces, not authored meaning.
 
-A skill normally relies on several techniques and/or several bounded actions.
-A single-technique skill is allowed only as an explicit reviewed exception.
+A skill normally relates to one or more techniques and/or several bounded
+actions, but its identity is the bounded workflow it gives an agent. A
+single-technique skill is allowed only as an explicit reviewed exception.
 A skill is not the home of recurring scenario method; that boundary stays in
 `aoa-playbooks`.
 
@@ -64,9 +70,14 @@ A technique is born in a real project such as `atm10-agent` or `abyss-stack`.
 The technique is sanitized, generalized, validated, and promoted into `aoa-techniques`.
 
 ### Layer 3: skill canon
-A skill in `aoa-skills` references one or more techniques and composes them into
-a Codex-usable workflow. The expected shape is a package, not a 1:1 mirror of
-one technique.
+A skill in `aoa-skills` is a Codex-usable workflow. It may be assembled from
+techniques, and it may later be decomposed into techniques when live execution
+reveals reusable practice. The bridge is bidirectional:
+
+- techniques -> skill: compose reusable practices into an executable workflow
+- skill -> techniques: extract stable practice from repeated execution
+
+The expected shape is a workflow package, not a thin mirror of one technique.
 Canonical source bundles live in the recursive `skills/` topology. The source
 tree groups bundles by functional lane; the flat `.agents/skills/*` tree remains
 the generated portable export.
@@ -82,14 +93,18 @@ A project-local overlay adds:
 
 ## Design rules
 
-1. techniques are the source of truth for reusable practice
-2. skills are allowed to summarize or compose techniques, but should not silently drift from them
-3. recurring scenario method stays in `aoa-playbooks`, even when a skill is executable
-4. runtime skill execution should not depend on live remote fetches
-5. build-time composition is preferred over runtime remote dependency
-6. project overlays should remain thin
-7. dangerous or operationally sensitive skills should default to explicit invocation
-8. a single-technique skill needs an explicit exception review that justifies the skill layer
+1. skills are self-contained execution objects
+2. techniques are the source of truth for reusable practice
+3. technique links are adjacent bridge evidence, not live runtime dependencies
+4. skills may compose techniques into workflows, and mature skill workflows may
+   produce technique extraction requests
+5. skills should not silently rewrite technique canon when they claim a technique bridge
+6. recurring scenario method stays in `aoa-playbooks`, even when a skill is executable
+7. runtime skill execution should not depend on live remote fetches
+8. build-time composition is preferred over runtime remote dependency
+9. project overlays should remain thin
+10. dangerous or operationally sensitive skills should default to explicit invocation
+11. a single-technique skill needs an explicit exception review that justifies the skill layer
 
 ## Skill categories
 

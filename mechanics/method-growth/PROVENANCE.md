@@ -61,6 +61,20 @@ The first owner-status and followthrough route is checked by:
 - `mechanics/method-growth/schemas/skill_adoption_retirement_v1.json`
 - `mechanics/method-growth/schemas/skill_pattern_adoption_patch_v1.json`
 
+## Derived Promotion Pressure
+
+The lived-use promotion-pressure landing added a derived readout rather than a
+moved flat source doc:
+
+- `mechanics/method-growth/docs/PROMOTION_PRESSURE.md`
+- `scripts/report_skill_promotion_pressure.py`
+- `generated/skill_promotion_pressure.json`
+- `generated/skill_promotion_pressure.md`
+
+It reads public status, governance backlog, quality audit, adoption audit,
+reality trials, local dispatch reports, hooks, and sessions. These are evidence
+inputs, not source authority.
+
 ## Neighbor Routes
 
 - `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md` owns lower-authority
@@ -79,4 +93,4 @@ The first owner-status and followthrough route is checked by:
 
 The method-growth package preserves lineage, decision, and adoption movement.
 It does not prove, seed, accept, schedule, adopt, or promote the candidate by
-itself.
+itself. Promotion pressure only routes review attention.

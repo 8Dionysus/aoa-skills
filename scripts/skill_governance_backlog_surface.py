@@ -277,7 +277,7 @@ def render_governance_backlog_markdown(payload: Mapping[str, Any]) -> str:
         "",
         f"- total skills: {len(skill_entries)}",
         f"- candidate ready without review: {len(cohorts.get(CANDIDATE_READY_WITHOUT_REVIEW, []))}",
-        f"- blocked by pending lineage: {len(cohorts.get(BLOCKED_BY_PENDING_LINEAGE, []))}",
+        f"- pending technique bridge lineage: {len(cohorts.get(BLOCKED_BY_PENDING_LINEAGE, []))}",
         f"- canonical maintenance cohort: {len(cohorts.get(CANONICAL_MAINTENANCE, []))}",
         f"- comparative pending cohort: {len(cohorts.get(COMPARATIVE_PENDING, []))}",
         f"- review truth-sync gaps: {len(cohorts.get(REVIEW_TRUTH_SYNC, []))}",

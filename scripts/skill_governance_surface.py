@@ -45,6 +45,12 @@ PENDING_LINEAGE_BLOCKERS = {
     BLOCKER_PENDING_TECHNIQUE_ENTRIES,
     BLOCKER_TBD_TECHNIQUE_REFS,
 }
+TECHNIQUE_BRIDGE_FINDINGS = {
+    BLOCKER_PENDING_TECHNIQUE_DEPENDENCIES,
+    BLOCKER_PENDING_TECHNIQUE_ENTRIES,
+    BLOCKER_TBD_TECHNIQUE_REFS,
+    BLOCKER_MISSING_TRACEABILITY_HEADING,
+}
 
 
 @dataclass(frozen=True)
@@ -192,14 +198,6 @@ def derive_canonical_candidate_blockers(
 
     if status not in {"evaluated", "canonical"}:
         blockers.append(BLOCKER_STATUS_BELOW_EVALUATED)
-    if has_pending_technique_dependencies(technique_dependencies):
-        blockers.append(BLOCKER_PENDING_TECHNIQUE_DEPENDENCIES)
-    if has_pending_technique_entries(techniques):
-        blockers.append(BLOCKER_PENDING_TECHNIQUE_ENTRIES)
-    if has_tbd_technique_refs(techniques):
-        blockers.append(BLOCKER_TBD_TECHNIQUE_REFS)
-    if not has_technique_traceability_heading(headings):
-        blockers.append(BLOCKER_MISSING_TRACEABILITY_HEADING)
     if not evaluation_coverage.has_autonomy_check:
         blockers.append(BLOCKER_MISSING_AUTONOMY_CHECK)
     if evaluation_coverage.use_case_count < 1:
@@ -214,6 +212,24 @@ def derive_canonical_candidate_blockers(
         blockers.append(BLOCKER_EXPLICIT_ONLY_POLICY_VIOLATION)
 
     return blockers
+
+
+def derive_technique_bridge_findings(
+    *,
+    headings: set[str],
+    technique_dependencies: Sequence[Any],
+    techniques: Sequence[Mapping[str, Any]],
+) -> list[str]:
+    findings: list[str] = []
+    if has_pending_technique_dependencies(technique_dependencies):
+        findings.append(BLOCKER_PENDING_TECHNIQUE_DEPENDENCIES)
+    if has_pending_technique_entries(techniques):
+        findings.append(BLOCKER_PENDING_TECHNIQUE_ENTRIES)
+    if has_tbd_technique_refs(techniques):
+        findings.append(BLOCKER_TBD_TECHNIQUE_REFS)
+    if not has_technique_traceability_heading(headings):
+        findings.append(BLOCKER_MISSING_TRACEABILITY_HEADING)
+    return findings
 
 
 def canonical_candidate_path_applies(
@@ -273,6 +289,11 @@ def derive_public_surface_skill_entry(
     governance_signals: skill_governance_lane_contract.GovernanceSkillSignals,
 ) -> dict[str, Any]:
     technique_dependencies = list(metadata.get("technique_dependencies", []))
+    bridge_findings = derive_technique_bridge_findings(
+        headings=headings,
+        technique_dependencies=technique_dependencies,
+        techniques=techniques,
+    )
     blockers = derive_canonical_candidate_blockers(
         status=metadata.get("status"),
         headings=headings,
@@ -311,6 +332,7 @@ def derive_public_surface_skill_entry(
         "invocation_mode": metadata.get("invocation_mode"),
         "skill_path": skill_path,
         "lineage_state": derive_lineage_state(technique_dependencies, techniques),
+        "technique_bridge_findings": bridge_findings,
         "is_default_reference": is_default_reference,
         "governance_decision": governance_signals.governance_decision,
         "governance_lane_ids": list(governance_signals.governance_lane_ids),
@@ -423,7 +445,7 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
         f"- total skills: {len(skill_entries)}",
         f"- default references: {len(default_reference_entries)}",
         f"- default-reference ready skills: {len(default_reference_ready_entries)}",
-        f"- blocked by pending lineage: {len(blocked_by_pending_entries)}",
+        f"- pending technique bridge lineage: {len(blocked_by_pending_entries)}",
         f"- risk surfaces: {len(risk_entries)}",
         "",
     ]
@@ -433,12 +455,12 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
             [
                 f"## {title}",
                 "",
-                "| name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | promotion review | candidate review |",
-                "|---|---|---|---|---|---|---|---|---|---|---|",
+                "| name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | technique bridge | promotion review | candidate review |",
+                "|---|---|---|---|---|---|---|---|---|---|---|---|",
             ]
         )
         if not entries:
-            lines.append("| - | - | - | - | - | - | - | - | - | - | - |")
+            lines.append("| - | - | - | - | - | - | - | - | - | - | - | - |")
         else:
             for entry in entries:
                 lines.append(
@@ -456,6 +478,9 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
                             format_blockers_or_dash(
                                 entry["default_reference_readiness_blockers"]
                             ),
+                            format_blockers_or_dash(
+                                entry.get("technique_bridge_findings", [])
+                            ),
                             format_path_or_dash(entry["promotion_review_path"]),
                             format_path_or_dash(entry["candidate_review_path"]),
                         ]
@@ -466,7 +491,7 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
 
     append_table("Default references", default_reference_entries)
     append_table("Default-reference ready cohort", default_reference_ready_entries)
-    append_table("Blocked by pending lineage", blocked_by_pending_entries)
+    append_table("Pending technique bridge lineage", blocked_by_pending_entries)
     append_table("Risk surfaces", risk_entries)
 
     lines.extend(
@@ -479,7 +504,7 @@ def render_public_surface_markdown(payload: Mapping[str, Any]) -> str:
             "- `blocked` means the default-reference path applies, but machine-checkable blockers remain visible.",
             "- `not_applicable` means the default-reference path does not currently apply, most notably for project overlays without a governance lane.",
             "- `stay_evaluated` means the current governance lane decision is to keep the skill evaluated in this wave even though its canonical gate checks may already pass.",
-            "- `pending lineage` means upstream technique publication or refresh still blocks the canonical path.",
+            "- `pending lineage` means upstream technique publication or refresh still needs bridge review; it does not by itself define whether the skill execution object is mature.",
             "- `explicit-only` means the skill requires an explicit invocation posture and policy alignment.",
             "- `candidate_ready` remains in the JSON payload as a compatibility alias for the `default_reference_ready` cohort.",
             "",

@@ -18,6 +18,10 @@ shared pattern or skill uptake pressure
   -> adoption boundary
   -> owner decision or receipt
   -> regression, retention, retirement, pattern handoff, hold, or owner route
+
+repeated skill use pressure
+  -> promotion pressure readout
+  -> blocker repair, status review, canonical review, overlay adoption review, or watch
 ```
 
 ## Current contour
@@ -32,6 +36,8 @@ shared pattern or skill uptake pressure
 - `aoa-skills` may preserve adoption compatibility, owner-decision,
   regression, retention, retirement, and pattern-handoff posture without
   approving adoption for another owner.
+- `aoa-skills` may derive lived-use promotion pressure without changing skill
+  status or canonical authority.
 
 ## Boundaries
 
@@ -42,6 +48,7 @@ shared pattern or skill uptake pressure
 - Owner-local consent, rollback, shadow proof, and retention evidence stay
   mandatory before durable behavior changes.
 - Generated readouts and runtime notes are evidence companions, not authority.
+- Promotion pressure is a review queue signal, not automatic promotion.
 
 ## Current hold
 

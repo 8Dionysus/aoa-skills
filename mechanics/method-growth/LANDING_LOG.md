@@ -61,3 +61,30 @@ Checks:
 
 - `python -m pytest -q tests/test_experience_wave3_seed_contracts.py tests/test_mechanics_topology.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py`
 - `python scripts/validate_nested_agents.py`
+
+## 2026-05-07 - Lived-Use Promotion Pressure
+
+Landed a derived promotion-pressure readout so repeatedly used non-canonical
+skills no longer depend on manual memory.
+
+Changed route:
+
+- added `docs/PROMOTION_PRESSURE.md`
+- added `scripts/report_skill_promotion_pressure.py`
+- added generated `skill_promotion_pressure` JSON and Markdown readouts
+- linked promotion pressure from public-surface, promotion-path, maturity, and
+  docs-map surfaces
+
+Preserved stop-lines:
+
+- no skill status changed
+- no automatic canonical promotion was added
+- runtime, session, hook, dispatch, and install evidence remain evidence
+  companions, not authority
+- project overlays route to owner adoption review rather than core canonical
+  promotion
+
+Checks:
+
+- `python scripts/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS --format markdown`
+- `python -m pytest -q tests/test_skill_promotion_pressure.py`
