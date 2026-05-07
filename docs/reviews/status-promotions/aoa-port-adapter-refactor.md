@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `d25254009968`
+- reviewed revision: `38a599987abb`
 
 ## Target status
 
@@ -20,14 +20,15 @@
 - `skills/core/engineering/aoa-port-adapter-refactor/SKILL.md`
 - `skills/core/engineering/aoa-port-adapter-refactor/techniques.yaml`
 - `skills/core/engineering/aoa-port-adapter-refactor/examples/example.md`
+- `skills/core/engineering/aoa-port-adapter-refactor/references/adapter-seam-shapes.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the current governance decision keeps the bundle evaluated until a stronger comparative default-reference rationale is recorded.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the current governance decision keeps the bundle evaluated while the live bundle now supports concrete dependency seams across services, storage, filesystem/env, CLI/subprocess, generated/export writers, runtime discovery, SDK facades, and schedulers through a portable reference shape.
 
 ## Gaps and blockers
 

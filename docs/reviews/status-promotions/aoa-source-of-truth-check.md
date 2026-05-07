@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `e5194ddf2296`
+- reviewed revision: `5d049efb957c`
 
 ## Target status
 
@@ -20,6 +20,7 @@
 - `skills/core/engineering/aoa-source-of-truth-check/SKILL.md`
 - `skills/core/engineering/aoa-source-of-truth-check/techniques.yaml`
 - `skills/core/engineering/aoa-source-of-truth-check/examples/example.md`
+- `skills/core/engineering/aoa-source-of-truth-check/references/authority-surface-shapes.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 - `tests/fixtures/skill_evaluation_snapshots/aoa-source-of-truth-check/*`
 
@@ -28,7 +29,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the bundle now carries portability guidance for mixed docs topologies, active-versus-legacy placement, and lightweight entrypoint snapshots while still clearing the evaluated floor that this record originally captured.
+- current bundle note: the bundle now carries portability guidance for mixed authority surfaces, active-versus-legacy placement, source-to-generated subordination, and lightweight entrypoint snapshots while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 

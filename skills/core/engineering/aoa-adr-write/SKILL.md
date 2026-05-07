@@ -2,7 +2,7 @@
 name: aoa-adr-write
 scope: core
 status: canonical
-summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale rather than only the outcome.
+summary: Record a meaningful architectural or workflow decision, place it in the canonical note surface, and verify that future readers can find the rationale without confusing it with the evidence that revealed it.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0033
@@ -23,12 +23,19 @@ Use this skill when:
 - several plausible options existed and the reasoning matters
 - the team or project risks repeating the same debate later
 - the note needs a clear canonical home, not just a one-off comment
+- the decision crosses ownership, layer, evidence, lifecycle, portability, runtime-facing, handoff, risk, or scale boundaries and needs a durable rationale
+- reviewed evidence, planning work, generated output, audit results, or operational receipts have revealed a decision that must stay separate from the evidence that revealed it
 
 Do not use this skill when:
 - the change is tiny and self-evident
 - the note would only restate an obvious diff with no real decision content
 - the main problem is unclear authoritative documentation rather than decision rationale; use `aoa-source-of-truth-check` first
 - the main problem is deciding whether logic belongs in the core or at the edge; use `aoa-core-logic-boundary` first
+- no decision exists yet and the next step is still discovery, option framing, or owner-route clarification
+- the boundary itself is still ambiguous; use `aoa-bounded-context-map` before recording the decision
+- the request is to record every possible lens, provisional hint, planning idea, or generated observation without one reviewed decision to preserve
+- the decision is an ordinary implementation choice whose rationale is already clear from the diff, tests, commit message, or review summary
+- the next honest move is a runbook, incident note, risk approval, or operational follow-up rather than durable decision rationale
 
 ## Inputs
 
@@ -37,6 +44,7 @@ Do not use this skill when:
 - relevant options or alternatives
 - chosen path and rationale
 - known consequences or tradeoffs
+- owner, source, evidence, placement, or lifecycle boundaries that shape the decision
 
 ## Outputs
 
@@ -46,17 +54,20 @@ Do not use this skill when:
 - canonical placement or reference for the note
 - verification that the note landed in the expected decision surface
 - verification that the note matches the actual change
+- decision-boundary notes that say what the ADR records and what stays with stronger owners, evidence surfaces, generated or derived outputs, or follow-up routes
 
 ## Procedure
 
-1. state the context and the problem the decision addresses
-2. list the main options if they meaningfully shaped the choice
-3. record the chosen decision in clear language
-4. note why it was chosen and what tradeoffs it introduces
-5. place the note in the canonical decision surface or repo-local home that future reviewers should use
-6. connect the note to the actual change surface when relevant
-7. verify that the note explains the decision rather than narrating the diff only
-8. verify that the note is reachable from the intended canonical location
+1. confirm a real decision exists and is meaningful enough to record; if not, route to discovery rather than writing an ADR
+2. when placement, owner, evidence, or lifecycle could blur the record, choose the smallest useful decision-lens set from `references/decision-boundary-lenses.md`
+3. state the context and the problem the decision addresses
+4. list the main options if they meaningfully shaped the choice
+5. record the chosen decision in clear language
+6. note why it was chosen and what tradeoffs it introduces
+7. place the note in the canonical decision surface or repo-local home that future reviewers should use
+8. connect the note to the actual change surface when relevant
+9. verify that the note explains the decision rather than narrating the diff only
+10. verify that the note is reachable from the intended canonical location
 
 ## Contracts
 
@@ -65,25 +76,37 @@ Do not use this skill when:
 - tradeoffs should not be hidden behind certainty theater
 - the note should help future reviewers, not merely satisfy process
 - the note should have an explicit canonical placement, not a hidden or implied home
+- the note should distinguish the decision from the evidence, planning surface, generated output, audit result, workflow event, or runtime-facing event that motivated it
+- decision lenses should be selected only when they clarify the decision's authority, placement, or future effect
+- the skill should prefer no ADR when a lighter artifact preserves enough rationale for future work
 - verification should check both rationale quality and note placement
 
 ## Risks and anti-patterns
 
 - writing an ADR for a trivial edit with no real decision
+- writing a decision record before a decision actually exists
 - using inflated language to mask weak reasoning
 - recording the chosen path without naming consequences
 - letting the ADR drift away from the actual change
 - treating placement as optional after the note is written
 - using the skill when the main work is still source-of-truth clarification
+- treating a provisional note, generated observation, planning wish, or workflow candidate as a reviewed decision without owner evidence
+- copying stronger owner law into a local ADR instead of naming the decision's handoff and authority limit
+- creating ADR clutter for ordinary implementation choices that need verification or review summary instead
+- applying decision lenses exhaustively until the ADR becomes a governance essay
 
 ## Verification
 
 - confirm the decision was meaningful enough to record
 - confirm the rationale is explicit
 - confirm consequences or tradeoffs are named
+- confirm at least one rejected option or accepted tradeoff is visible when alternatives shaped the choice
 - confirm the note aligns with the real change surface
 - confirm the note is placed where future reviewers will look for it
 - confirm the canonical location or reference is part of the result, not an afterthought
+- confirm a lighter artifact would not preserve enough rationale before creating a durable ADR
+- confirm evidence, generated, planning, workflow, or runtime-facing surfaces are cited as context rather than promoted into decision authority
+- confirm any selected decision lenses are necessary and narrow enough for this one decision
 
 ## Technique traceability
 
@@ -96,6 +119,8 @@ Manifest-backed techniques:
 Future project overlays may add:
 - local ADR templates
 - alternative decision-note homes outside formal `docs/adr/` layouts
+- a short decision-lens pass from `references/decision-boundary-lenses.md` when durable rationale crosses owner, layer, evidence, workflow, runtime-facing, or scale boundaries
+- a compact note skeleton from `references/decision-note.template.md` when no repo-local template exists
 - local placement rules
 - local template variants that still preserve context, options, decision, and consequences
 - architecture review expectations

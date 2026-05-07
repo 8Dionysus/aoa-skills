@@ -1,4 +1,5 @@
 policy:
   allow_implicit_invocation: true
 notes:
-  - This skill is explicit-preferred, but may later be allowed implicitly for bounded non-trivial changes.
+  - This skill is explicit-preferred, but may be invoked implicitly when the task is clearly about authority drift across docs, source, config, generated/export, operational, status, or provenance surfaces.
+  - Do not invoke it for a plain rebuild/no-drift check when the source owner is already clear.

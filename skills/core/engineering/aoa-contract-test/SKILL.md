@@ -2,7 +2,7 @@
 name: aoa-contract-test
 scope: core
 status: canonical
-summary: Design or extend contract-oriented validation at module, service, or workflow boundaries.
+summary: Design or extend contract-oriented validation across stable module, service, schema, generated/export, workflow, or repo handoff boundaries.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0003
@@ -13,13 +13,16 @@ technique_dependencies:
 
 ## Intent
 
-Strengthen boundary reliability by making expected inputs, outputs, and validation summaries explicit.
+Strengthen boundary reliability by making stable producer-consumer expectations, validation surfaces, and claim limits explicit.
 
 ## Trigger boundary
 
 Use this skill when:
 - two modules or services interact across a meaningful boundary
 - a smoke path or interface needs a stable validation contract
+- a module, service, CLI, schema, manifest, report, receipt, generated/export surface, workflow handoff, or repo-to-repo seam has consumers that rely on stable shape or behavior
+- a source-owned surface feeds generated, exported, adapter, or downstream consumer surfaces
+- a reusable practice, execution workflow, evaluation artifact, scenario, memory or recall object, role contract, router, SDK, metric, or generated/export surface exposes a stable object shape that other surfaces consume
 - a change risks breaking downstream assumptions
 
 Do not use this skill when:
@@ -27,29 +30,36 @@ Do not use this skill when:
 - the boundary itself is still semantically unclear and naming is drifting; use `aoa-bounded-context-map`
 - the main problem is expressing a broad invariant rather than a boundary contract; use `aoa-property-invariants`
 - the main problem is auditing whether existing checks really cover a stable rule; use `aoa-invariant-coverage-audit`
+- the output is incidental logs, debug prose, or a one-off snapshot with no named consumer
+- the request would freeze internal implementation details or current incidental output as a public contract
 - a broad system rewrite is needed before the boundary itself is stable
 
 ## Inputs
 
 - boundary under review
+- producer and named consumer
 - expected inputs and outputs
 - current verification surface
 - known downstream dependencies
+- contract limits and out-of-contract behavior
 
 ## Outputs
 
 - explicit contract assumptions
-- tests or smoke summary changes
+- tests, fixture checks, schema checks, smoke summaries, or structured validation notes
 - verification notes
 - downstream impact notes
+- contract limits that say what the check does not prove
 
 ## Procedure
 
 1. identify the boundary and its consumers
-2. state the expected input/output behavior
-3. express the contract in tests, smoke summaries, or structured checks
-4. verify both the boundary behavior and the reporting shape
-5. report what became explicit and what remains weak
+2. when the boundary is not a simple module or service interface, choose the smallest useful shape from `references/contract-shapes.md`
+3. state the expected input, output, behavior, report, receipt, schema, or handoff shape
+4. state what remains out of contract so the check does not become a whole-system proof
+5. express the contract in tests, fixture checks, schema checks, smoke summaries, or structured checks
+6. verify both the boundary behavior and the reporting shape
+7. report what became explicit, which consumers were protected, and what remains weak
 
 ## Contracts
 
@@ -57,6 +67,9 @@ Do not use this skill when:
 - verification should be tied to the boundary, not only to internals
 - downstream assumptions should be named when relevant
 - out-of-contract behavior should stay explicit when it affects consumers
+- a contract test should protect the named seam, not claim the whole system is correct
+- generated, exported, adapter, and derived surfaces should remain subordinate to their source owners
+- consumer convenience should not become new source authority
 
 ## Risks and anti-patterns
 
@@ -64,6 +77,9 @@ Do not use this skill when:
 - treating a smoke summary as proof when it does not cover the real boundary
 - changing interface behavior without downstream impact notes
 - asserting internal implementation details as if they were public contract
+- freezing incidental output, debug logs, or transient runtime text as stable contract
+- turning a local boundary check into federation-wide law
+- widening the skill into generic test strategy instead of one named producer-consumer contract
 
 ## Verification
 
@@ -71,6 +87,8 @@ Do not use this skill when:
 - confirm validation is tied to the interface or boundary
 - confirm downstream impact was considered when relevant
 - confirm the report names any known contract limits or exclusions
+- confirm the named consumer and producer are both clear
+- confirm generated or exported surfaces are checked as derived consumers, not promoted into source truth
 
 ## Technique traceability
 
@@ -84,3 +102,5 @@ Project overlays should add:
 - local endpoints or module boundaries
 - local smoke or test commands
 - boundary-specific invariants
+- local schema, receipt, registry, report, export, or handoff contract examples
+- local source-owner and downstream-consumer names

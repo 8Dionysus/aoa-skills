@@ -62,14 +62,14 @@
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0028"
           },
           {
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0001"
           }
         ],
@@ -138,14 +138,14 @@
             "path": "techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0034"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -213,14 +213,14 @@
             "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0080"
           },
           {
             "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0081"
           }
         ],
@@ -232,28 +232,28 @@
     },
     {
       "body": {
-        "contracts_count": 6,
+        "contracts_count": 9,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 5,
+        "inputs_count": 6,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 6,
+        "outputs_count": 7,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 8,
-        "risks_count": 6,
-        "runtime_line_count": 50,
+        "procedure_step_count": 10,
+        "risks_count": 11,
+        "runtime_line_count": 73,
         "trigger_bullets": {
-          "do_not_use": 4,
-          "use": 5
+          "do_not_use": 9,
+          "use": 7
         },
-        "verification_count": 6
+        "verification_count": 10
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
-        "do_not_use_case_count": 1,
+        "do_not_use_case_count": 6,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-adr-write/examples/example.md",
@@ -262,7 +262,7 @@
           "promotion_review",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -289,14 +289,14 @@
             "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0033"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -365,7 +365,7 @@
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0028"
           }
         ],
@@ -435,21 +435,21 @@
             "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
             "pinned_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0086"
           },
           {
             "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
             "pinned_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0087"
           },
           {
             "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
             "pinned_ref": "7f17c22ddd96de4b63873eff4c8e9e4c94a6aee9",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0088"
           }
         ],
@@ -461,28 +461,28 @@
     },
     {
       "body": {
-        "contracts_count": 5,
+        "contracts_count": 6,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 5,
+        "inputs_count": 6,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 5,
+        "outputs_count": 6,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 7,
-        "risks_count": 6,
-        "runtime_line_count": 46,
+        "procedure_step_count": 9,
+        "risks_count": 9,
+        "runtime_line_count": 60,
         "trigger_bullets": {
-          "do_not_use": 3,
-          "use": 6
+          "do_not_use": 5,
+          "use": 8
         },
-        "verification_count": 5
+        "verification_count": 7
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-bounded-context-map.md",
-        "do_not_use_case_count": 2,
+        "do_not_use_case_count": 4,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-bounded-context-map.md",
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-bounded-context-map/examples/example.md",
@@ -491,7 +491,7 @@
           "promotion_review",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -518,14 +518,14 @@
             "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0016"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -594,14 +594,14 @@
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0001"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -671,21 +671,21 @@
             "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0075"
           },
           {
             "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0084"
           },
           {
             "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0089"
           }
         ],
@@ -754,14 +754,14 @@
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0001"
           },
           {
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0028"
           }
         ],
@@ -773,28 +773,28 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 7,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 4,
+        "inputs_count": 6,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 4,
+        "outputs_count": 5,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "procedure_step_count": 7,
+        "risks_count": 7,
+        "runtime_line_count": 55,
         "trigger_bullets": {
-          "do_not_use": 5,
-          "use": 3
+          "do_not_use": 7,
+          "use": 6
         },
-        "verification_count": 4
+        "verification_count": 6
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
-        "do_not_use_case_count": 1,
+        "do_not_use_case_count": 3,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-contract-test/examples/example.md",
@@ -803,7 +803,7 @@
           "promotion_review",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 3,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -830,14 +830,14 @@
             "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0003"
           },
           {
             "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0015"
           }
         ],
@@ -849,28 +849,28 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 6,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 4,
+        "inputs_count": 5,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 4,
+        "outputs_count": 5,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 6,
-        "risks_count": 4,
-        "runtime_line_count": 39,
+        "procedure_step_count": 7,
+        "risks_count": 7,
+        "runtime_line_count": 53,
         "trigger_bullets": {
-          "do_not_use": 5,
-          "use": 4
+          "do_not_use": 7,
+          "use": 6
         },
-        "verification_count": 4
+        "verification_count": 6
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-core-logic-boundary.md",
-        "do_not_use_case_count": 1,
+        "do_not_use_case_count": 3,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-core-logic-boundary.md",
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-core-logic-boundary/examples/example.md",
@@ -879,7 +879,7 @@
           "promotion_review",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 3,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -906,14 +906,14 @@
             "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0016"
           },
           {
             "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0015"
           }
         ],
@@ -983,14 +983,14 @@
             "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0004"
           },
           {
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0028"
           }
         ],
@@ -1002,23 +1002,23 @@
     },
     {
       "body": {
-        "contracts_count": 5,
+        "contracts_count": 7,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 4,
+        "inputs_count": 5,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 5,
+        "outputs_count": 6,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 6,
-        "risks_count": 6,
-        "runtime_line_count": 43,
+        "procedure_step_count": 7,
+        "risks_count": 7,
+        "runtime_line_count": 51,
         "trigger_bullets": {
           "do_not_use": 4,
-          "use": 4
+          "use": 5
         },
-        "verification_count": 5
+        "verification_count": 6
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -1058,7 +1058,7 @@
             "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0017"
           }
         ],
@@ -1130,28 +1130,28 @@
             "path": "techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0036"
           },
           {
             "path": "techniques/execution/runtime-truth-lifecycle/contextual-host-doctor/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0037"
           },
           {
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0028"
           },
           {
             "path": "techniques/execution/runtime-truth-lifecycle/one-command-service-lifecycle/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0038"
           }
         ],
@@ -1163,28 +1163,28 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 7,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 4,
+        "inputs_count": 6,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 4,
+        "outputs_count": 5,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 6,
-        "risks_count": 4,
-        "runtime_line_count": 39,
+        "procedure_step_count": 8,
+        "risks_count": 7,
+        "runtime_line_count": 56,
         "trigger_bullets": {
-          "do_not_use": 5,
-          "use": 4
+          "do_not_use": 7,
+          "use": 6
         },
-        "verification_count": 4
+        "verification_count": 6
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
-        "do_not_use_case_count": 1,
+        "do_not_use_case_count": 2,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-port-adapter-refactor.md",
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-port-adapter-refactor/examples/example.md",
@@ -1193,7 +1193,7 @@
           "promotion_review",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -1220,14 +1220,14 @@
             "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0016"
           },
           {
             "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0015"
           }
         ],
@@ -1239,28 +1239,28 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 6,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 4,
+        "inputs_count": 6,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 4,
+        "outputs_count": 5,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 5,
-        "risks_count": 6,
-        "runtime_line_count": 39,
+        "procedure_step_count": 8,
+        "risks_count": 9,
+        "runtime_line_count": 56,
         "trigger_bullets": {
-          "do_not_use": 4,
-          "use": 4
+          "do_not_use": 6,
+          "use": 6
         },
-        "verification_count": 4
+        "verification_count": 6
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
-        "do_not_use_case_count": 2,
+        "do_not_use_case_count": 3,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-property-invariants/examples/example.md",
@@ -1269,7 +1269,7 @@
           "promotion_review",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -1296,14 +1296,14 @@
             "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0017"
           },
           {
             "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0007"
           }
         ],
@@ -1372,14 +1372,14 @@
             "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0089"
           },
           {
             "path": "techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0090"
           }
         ],
@@ -1449,14 +1449,14 @@
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0028"
           },
           {
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0001"
           }
         ],
@@ -1526,14 +1526,14 @@
             "path": "techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0034"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -1603,21 +1603,21 @@
             "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0075"
           },
           {
             "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0076"
           },
           {
             "path": "techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0077"
           }
         ],
@@ -1686,14 +1686,14 @@
             "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0084"
           },
           {
             "path": "techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0085"
           }
         ],
@@ -1762,14 +1762,14 @@
             "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0078"
           },
           {
             "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0079"
           }
         ],
@@ -1838,14 +1838,14 @@
             "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0080"
           },
           {
             "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0081"
           }
         ],
@@ -1914,14 +1914,14 @@
             "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
             "pinned_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0082"
           },
           {
             "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
             "pinned_ref": "bfb4281c60295ab85605e188b350e0f6008b3184",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0083"
           }
         ],
@@ -1942,19 +1942,19 @@
         "outputs_count": 7,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 9,
-        "risks_count": 9,
-        "runtime_line_count": 65,
+        "procedure_step_count": 10,
+        "risks_count": 10,
+        "runtime_line_count": 69,
         "trigger_bullets": {
-          "do_not_use": 6,
+          "do_not_use": 7,
           "use": 9
         },
-        "verification_count": 7
+        "verification_count": 8
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-source-of-truth-check.md",
-        "do_not_use_case_count": 1,
+        "do_not_use_case_count": 2,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": "docs/reviews/status-promotions/aoa-source-of-truth-check.md",
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-source-of-truth-check/examples/example.md",
@@ -1963,7 +1963,7 @@
           "promotion_review",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -1991,21 +1991,21 @@
             "path": "techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0013"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           },
           {
             "path": "techniques/instruction/docs-boundary/lightweight-status-snapshot/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0009"
           }
         ],
@@ -2076,14 +2076,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-SUMMON-LANE-SELECTION"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-SUMMON-RETURN-GOVERNANCE"
           }
         ],
@@ -2095,28 +2095,28 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 7,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 4,
+        "inputs_count": 5,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 4,
+        "outputs_count": 5,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 6,
-        "risks_count": 4,
-        "runtime_line_count": 38,
+        "procedure_step_count": 7,
+        "risks_count": 6,
+        "runtime_line_count": 50,
         "trigger_bullets": {
-          "do_not_use": 5,
-          "use": 3
+          "do_not_use": 7,
+          "use": 4
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
         "candidate_review_path": "docs/reviews/canonical-candidates/aoa-tdd-slice.md",
-        "do_not_use_case_count": 1,
+        "do_not_use_case_count": 2,
         "do_not_use_snapshot_count": 1,
         "promotion_review_path": null,
         "selected_runtime_artifact_path": "skills/core/engineering/aoa-tdd-slice/examples/example.md",
@@ -2124,7 +2124,7 @@
           "runtime_example",
           "candidate_review"
         ],
-        "use_case_count": 1,
+        "use_case_count": 2,
         "use_snapshot_count": 1
       },
       "findings": [],
@@ -2151,14 +2151,14 @@
             "path": "techniques/execution/agent-workflows-core/tdd-slice/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0014"
           },
           {
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0001"
           }
         ],
@@ -2227,14 +2227,14 @@
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0001"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -2303,14 +2303,14 @@
             "path": "techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0013"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -2380,14 +2380,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2457,14 +2457,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2534,14 +2534,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2611,14 +2611,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2688,14 +2688,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2765,14 +2765,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2842,14 +2842,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2919,14 +2919,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -2996,14 +2996,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -3073,14 +3073,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -3150,14 +3150,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -3227,14 +3227,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -3304,14 +3304,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -3381,14 +3381,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -3458,14 +3458,14 @@
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
           },
           {
             "path": "TBD",
             "pinned_ref": "TBD",
             "state": "pending",
-            "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+            "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
             "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
           }
         ],
@@ -3497,7 +3497,7 @@
         "clean": 62,
         "pending": 32
       },
-      "target_ref": "4267cea713e95c5faff877f8621d10847bdd2e86",
+      "target_ref": "ab981e7c9b4e929b6165b942bcf7a344d406030f",
       "techniques_repo": "/srv/AbyssOS/aoa-techniques"
     },
     "verdicts": {

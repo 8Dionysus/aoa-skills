@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `6e348aabdbb2`
+- reviewed revision: `d73659d46c84`
 
 ## Target status
 
@@ -20,6 +20,8 @@
 - `skills/core/engineering/aoa-adr-write/SKILL.md`
 - `skills/core/engineering/aoa-adr-write/techniques.yaml`
 - `skills/core/engineering/aoa-adr-write/examples/example.md`
+- `skills/core/engineering/aoa-adr-write/references/decision-boundary-lenses.md`
+- `skills/core/engineering/aoa-adr-write/references/decision-note.template.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings
@@ -27,7 +29,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the bundle now carries portability guidance for varied ADR templates and note homes while still clearing the evaluated floor that this record originally captured.
+- current bundle note: the bundle now carries portability guidance for varied ADR templates and note homes, includes explicit no-decision, unresolved-boundary, unreviewed-evidence-hint, ordinary-implementation, and runbook/incident/risk-follow-up stop-lines, adds decision-specific boundary lenses, and still clears the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 

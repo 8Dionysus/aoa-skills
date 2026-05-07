@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `e2fa19aaa04f`
+- reviewed revision: `897b7fddb02f`
 
 ## Target status
 
@@ -19,6 +19,7 @@
 
 - `skills/core/engineering/aoa-contract-test/SKILL.md`
 - `skills/core/engineering/aoa-contract-test/techniques.yaml`
+- `skills/core/engineering/aoa-contract-test/references/contract-shapes.md`
 - `skills/core/engineering/aoa-contract-test/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
 
@@ -27,7 +28,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the bundle now states out-of-contract limits, public-contract risk, and report expectations more explicitly while still clearing the evaluated floor that this record originally captured.
+- current bundle note: the bundle now covers producer-consumer contract shapes across code, schemas, generated/export, receipts, reports, roles, routing, memory/recall, proof, metrics, scenario and practice handoffs, and includes no-harm stop lines for incidental logs or internal details while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 

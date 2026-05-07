@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `d87267ec67a8`
+- reviewed revision: `e921dd56d297`
 
 ## Target status
 
@@ -18,6 +18,8 @@
 ## Evidence reviewed
 
 - `skills/core/engineering/aoa-bounded-context-map/SKILL.md`
+- `skills/core/engineering/aoa-bounded-context-map/references/boundary-lenses.md`
+- `skills/core/engineering/aoa-bounded-context-map/references/context-map.template.md`
 - `skills/core/engineering/aoa-bounded-context-map/techniques.yaml`
 - `skills/core/engineering/aoa-bounded-context-map/examples/example.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
@@ -27,7 +29,7 @@
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: the bundle still clears the evaluated floor that this record originally captured; the reviewed revision now reflects the 2026-05-03 bounded maintenance update to owner/layer boundary wording.
+- current bundle note: the bundle still clears the evaluated floor that this record originally captured; the reviewed revision now reflects the bounded ambiguity precheck, broad-architecture stop-line, portable component/layer/surface trigger language, compact context-map template, and reusable boundary-lens reference now present in the live bundle.
 
 ## Gaps and blockers
 

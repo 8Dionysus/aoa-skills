@@ -287,12 +287,12 @@
           "Use $abyss-self-diagnostic-spine to turn repo-relative runtime evidence plus optional reviewed session refs into one bounded diagnostic session artifact with an honest exit class and no silent repair authority."
         ],
         "implicit": [
-          "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim."
+          "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim.",
+          "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature.",
-          "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
+          "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature."
         ]
       },
       "explicit_handles": {
@@ -346,16 +346,19 @@
         "Trigger boundary": "a decision changes structure, boundaries, tooling, or workflow expectations; future contributors will need to know why a path was chosen",
         "Inputs": "decision to record; context and problem statement",
         "Outputs": "concise decision note or ADR draft; statement of rationale",
-        "Procedure": "state the context and the problem the decision addresses; list the main options if they meaningfully shaped the choice",
+        "Procedure": "confirm a real decision exists and is meaningful enough to record; if not, route to discovery rather than writing an ADR; when placement, owner, evidence, or lifecycle could blur the record, choose the smallest useful decision-lens set from `references/decision-boundary-lenses...",
         "Contracts": "the note should explain why, not just what changed; the decision should be bounded and understandable",
-        "Risks and anti-patterns": "writing an ADR for a trivial edit with no real decision; using inflated language to mask weak reasoning",
+        "Risks and anti-patterns": "writing an ADR for a trivial edit with no real decision; writing a decision record before a decision actually exists",
         "Verification": "confirm the decision was meaningful enough to record; confirm the rationale is explicit",
         "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts,...",
         "Adaptation points": "local ADR templates; alternative decision-note homes outside formal `docs/adr/` layouts"
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/decision-boundary-lenses.md",
+          "references/decision-note.template.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -670,7 +673,7 @@
         "Trigger boundary": "a project mixes several domains or subsystems; naming is drifting or overloaded",
         "Inputs": "target area or subsystem; current naming and responsibilities",
         "Outputs": "named contexts or subsystems; rough boundary map",
-        "Procedure": "identify the target area and the terms people use for it; separate responsibilities into bounded contexts, subsystems, layers, or owner repositories",
+        "Procedure": "confirm the task has one concrete ambiguity or scoping problem; if it asks for a broad architecture program, narrow or route away first; when several kinds of boundary are mixed, choose the smallest useful lens set from `references/boundary-lenses.md`",
         "Contracts": "boundaries should reduce semantic confusion, not create ceremony for its own sake; neighboring contexts should be named explicitly when relevant",
         "Risks and anti-patterns": "inventing too many contexts for a small problem; renaming concepts without reducing confusion",
         "Verification": "confirm the main ambiguity was reduced; confirm interfaces or handoff points are named",
@@ -679,7 +682,10 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/boundary-lenses.md",
+          "references/context-map.template.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -720,8 +726,7 @@
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The edit is tiny, fully local, and there is no meaningful ambiguity about boundaries or interfaces.",
-          "The terms account, tenant, workspace, and organization are overloaded across this repo. Map the bounded contexts and the interfaces between them before we change code."
+          "The edit is tiny, fully local, and there is no meaningful ambiguity about boundaries or interfaces."
         ]
       },
       "explicit_handles": {
@@ -822,12 +827,12 @@
           "Use $aoa-change-protocol to plan, apply, verify, and report a bounded non-trivial repository change."
         ],
         "implicit": [
-          "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan."
+          "Plan and execute a bounded, non-trivial repository change with explicit verification and reporting. Use when code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan.",
+          "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "This is just a trivial wording fix with no meaningful review, verification, or operational consequence.",
-          "Make a bounded non-trivial repository change across code and docs, verify it, and report exactly what changed and how you checked it."
+          "This is just a trivial wording fix with no meaningful review, verification, or operational consequence."
         ]
       },
       "explicit_handles": {
@@ -931,12 +936,12 @@
           "Use $aoa-checkpoint-closeout-bridge to build one closeout context from reviewed evidence, keep checkpoint hints provisional, and run donor harvest, progression lift, and quest harvest in order."
         ],
         "implicit": [
-          "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order."
+          "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order.",
+          "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The session is still active, there is no reviewed artifact yet, and the request is to let aoa closeout run silently decide donor, progression, and quest verdicts straight from checkpoint notes.",
-          "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
+          "The session is still active, there is no reviewed artifact yet, and the request is to let aoa closeout run silently decide donor, progression, and quest verdicts straight from checkpoint notes."
         ]
       },
       "explicit_handles": {
@@ -1089,11 +1094,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Strengthen boundary reliability by making expected inputs, outputs, and validation summaries explicit.",
+        "Intent": "Strengthen boundary reliability by making stable producer-consumer expectations, validation surfaces, and claim limits explicit.",
         "Trigger boundary": "two modules or services interact across a meaningful boundary; a smoke path or interface needs a stable validation contract",
-        "Inputs": "boundary under review; expected inputs and outputs",
-        "Outputs": "explicit contract assumptions; tests or smoke summary changes",
-        "Procedure": "identify the boundary and its consumers; state the expected input/output behavior",
+        "Inputs": "boundary under review; producer and named consumer",
+        "Outputs": "explicit contract assumptions; tests, fixture checks, schema checks, smoke summaries, or structured validation notes",
+        "Procedure": "identify the boundary and its consumers; when the boundary is not a simple module or service interface, choose the smallest useful shape from `references/contract-shapes.md`",
         "Contracts": "the contract should be visible to another human or agent; verification should be tied to the boundary, not only to internals",
         "Risks and anti-patterns": "vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary",
         "Verification": "confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary",
@@ -1102,7 +1107,9 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/contract-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -1138,12 +1145,12 @@
           "Use $aoa-contract-test to make a boundary contract explicit in tests or structured checks and report what the validation now proves."
         ],
         "implicit": [
-          "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract."
+          "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract.",
+          "The webhook producer and consumer disagree on payload shape. Add contract-oriented validation so the boundary is explicit and regressions are obvious."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The change is entirely local and does not cross or exercise any meaningful module, service, or workflow boundary.",
-          "The webhook producer and consumer disagree on payload shape. Add contract-oriented validation so the boundary is explicit and regressions are obvious."
+          "The change is entirely local and does not cross or exercise any meaningful module, service, or workflow boundary."
         ]
       },
       "explicit_handles": {
@@ -1193,11 +1200,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to separate reusable core logic from surrounding glue, orchestration, or infrastructure detail so future changes land in the right place.",
-        "Trigger boundary": "a module mixes stable rules with wiring or execution detail; the same logic is starting to appear in several places",
-        "Inputs": "target module, service, or slice; current responsibilities",
+        "Intent": "Use this skill to separate a stable reusable center from surrounding glue, orchestration, projection, infrastructure, or presentation detail so future changes land in the right place.",
+        "Trigger boundary": "a module mixes stable rules with wiring or execution detail; an execution workflow, practice pattern, evaluation artifact, scenario, memory or recall object, role contract, router, SDK, metric, generated/export, or process surface mixes reusable meaning with projection, report...",
+        "Inputs": "target module, service, repository surface, layer surface, or slice; current responsibilities",
         "Outputs": "clarified boundary between core logic and surrounding glue; notes on what should stay reusable versus edge-specific",
-        "Procedure": "identify which rules or behaviors are stable enough to count as reusable core logic; identify which parts are mostly wiring, orchestration, I/O, or environment detail",
+        "Procedure": "identify which rules or behaviors are stable enough to count as reusable core logic; when the target is not a simple code module, choose the smallest useful shape from `references/core-boundary-shapes.md`",
         "Contracts": "reusable logic should not stay trapped in glue if that blocks testing or reuse; glue should not be over-promoted into domain logic without reason",
         "Risks and anti-patterns": "treating all logic as core logic and over-abstracting the system; moving orchestration detail into the core under the label of purity",
         "Verification": "confirm the core candidate is genuinely reusable or stability-shaped; confirm edge-specific code remains at the edge when appropriate",
@@ -1206,7 +1213,9 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/core-boundary-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -1241,12 +1250,12 @@
           "Use $aoa-core-logic-boundary to decide what belongs in reusable core logic versus glue or infrastructure detail, then keep the refactor bounded."
         ],
         "implicit": [
-          "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear."
+          "Separate reusable core logic from glue, orchestration, and infrastructure detail. Use when stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear.",
+          "The discount rules are mixed into orchestration code and cron wiring. Separate reusable business rules from glue without widening the refactor."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The task is a tiny isolated fix and there is no meaningful confusion between reusable rules and glue code.",
-          "The discount rules are mixed into orchestration code and cron wiring. Separate reusable business rules from glue without widening the refactor."
+          "The task is a tiny isolated fix and there is no meaningful confusion between reusable rules and glue code."
         ]
       },
       "explicit_handles": {
@@ -1409,9 +1418,9 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use invariant-oriented coverage to judge whether an existing validation surface really constrains the stable truth, and turn that judgment into a bounded audit package instead of a loose example review.",
-        "Trigger boundary": "an existing test or check surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule",
-        "Inputs": "target rule or stable truth; current tests, checks, or examples",
+        "Intent": "Use invariant-oriented coverage to judge whether an existing validation or proof surface really constrains the stable truth, and turn that judgment into a bounded audit package instead of a loose example review.",
+        "Trigger boundary": "an existing test, check, schema, fixture, generated/export parity check, report, receipt, or proof surface needs a review for invariant strength; the question is whether current checks really constrain the stable rule",
+        "Inputs": "target rule or stable truth; current tests, checks, schemas, fixtures, reports, generated parity checks, proof reports, or examples",
         "Outputs": "invariant coverage map; gap list for weak or missing checks",
         "Procedure": "name the stable truth in plain language; map each existing check to the invariant it constrains",
         "Contracts": "every claimed invariant must be traceable to at least one check; the audit should distinguish real constraint from mere example repetition",
@@ -1422,7 +1431,9 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/coverage-audit-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -1455,12 +1466,12 @@
           "Use $aoa-invariant-coverage-audit to map checks to invariants, identify the thinnest coverage gaps, and report what the current suite does and does not prove."
         ],
         "implicit": [
-          "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps."
+          "Audit whether existing tests and checks actually constrain the stable invariants that matter. Use when you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps.",
+          "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The real problem is that we have not identified the invariant yet, so this is not an audit of existing coverage.",
-          "Review the current test suite and tell me whether it actually proves the important invariants for this parser, then name the thinnest gaps."
+          "The real problem is that we have not identified the invariant yet, so this is not an audit of existing coverage."
         ]
       },
       "explicit_handles": {
@@ -1622,11 +1633,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to separate domain or application logic from concrete infrastructure details by introducing or clarifying ports and adapters.",
+        "Intent": "Use this skill to separate reusable domain, application, builder, or workflow logic from concrete dependencies and runtime details by introducing or clarifying ports and adapters.",
         "Trigger boundary": "business or domain logic is tightly coupled to a concrete dependency; tests are hard to write because external concerns leak into the core logic",
-        "Inputs": "target module or slice; concrete dependency that currently leaks into the core logic",
+        "Inputs": "target module, builder, tool, workflow, or slice; concrete dependency or runtime concern that currently leaks into reusable logic",
         "Outputs": "clearer boundary between logic and infrastructure; proposed or implemented port shape",
-        "Procedure": "identify the concrete dependency that is making change or testing harder; isolate the reusable logic from the infrastructure-specific behavior",
+        "Procedure": "identify the concrete dependency that is making change or testing harder; confirm the broader context and core-versus-edge boundary are already clear enough to make a seam; otherwise route to `aoa-bounded-context-map` or `aoa-core-logic-boundary`",
         "Contracts": "the extracted boundary should reduce coupling, not add decorative abstraction; the port should stay narrow and purpose-shaped",
         "Risks and anti-patterns": "introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it",
         "Verification": "confirm the concrete dependency pressure was real; confirm the new boundary is narrower and clearer than before",
@@ -1635,7 +1646,9 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/adapter-seam-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -1670,12 +1683,12 @@
           "Use $aoa-port-adapter-refactor to isolate a concrete dependency behind a narrow port and adapter without turning the change into a hidden rewrite."
         ],
         "implicit": [
-          "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change."
+          "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change.",
+          "Our service layer is tightly coupled to the concrete Stripe client. Introduce a narrow port and adapter so tests stop depending on the live SDK shape."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "This is a tiny local fix with no architectural pressure to isolate a concrete dependency behind a port or adapter.",
-          "Our service layer is tightly coupled to the concrete Stripe client. Introduce a narrow port and adapter so tests stop depending on the live SDK shape."
+          "This is a tiny local fix with no architectural pressure to isolate a concrete dependency behind a port or adapter."
         ]
       },
       "explicit_handles": {
@@ -1725,7 +1738,7 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use invariant-oriented thinking to test broad behavior through properties rather than only through a short list of fixed examples.",
+        "Intent": "Use invariant-oriented thinking to test broad behavior and stable artifact relationships through properties rather than only through a short list of fixed examples.",
         "Trigger boundary": "a rule should hold across many inputs or states; examples alone feel too narrow",
         "Inputs": "target rule or domain truth; current examples or tests",
         "Outputs": "explicit invariants; property-oriented tests or checks",
@@ -1738,7 +1751,9 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/invariant-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -1771,12 +1786,12 @@
           "Use $aoa-property-invariants to identify the stable truth that must hold across many cases and express it as bounded property-oriented checks."
         ],
         "implicit": [
-          "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules."
+          "Express stable system or domain truths as invariant-oriented tests or checks rather than only fixed examples. Use when correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules.",
+          "Write invariant-oriented checks for this parser so we verify idempotency and structural preservation across many generated inputs."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases.",
-          "Write invariant-oriented checks for this parser so we verify idempotency and structural preservation across many generated inputs."
+          "The behavior is mostly presentation detail and narrow snapshots, not a stable truth that should hold across many cases."
         ]
       },
       "explicit_handles": {
@@ -2727,11 +2742,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to clarify which files are authoritative for status, architecture, run instructions, policy, and change guidance.",
-        "Trigger boundary": "a repository has several docs that may overlap or conflict; contributors may not know which file to trust first",
-        "Inputs": "repository docs surface; target area of ambiguity or overlap",
+        "Intent": "Use this skill to clarify which repository surfaces are authoritative for status, architecture, source behavior, configuration, run instructions, policy, and change guidance.",
+        "Trigger boundary": "a repository has several docs that may overlap or conflict; contributors may not know which file, source surface, config, schema, manifest, report, or export to trust first",
+        "Inputs": "repository guidance, source, configuration, schema, manifest, generated/export, operational, and status surfaces; target area of ambiguity or overlap",
         "Outputs": "clearer source-of-truth map; active/current versus historical/provenance/generated placement map",
-        "Procedure": "identify the main docs, route cards, generated outputs, mechanics surfaces, legacy/provenance bridges, and owner-local handoff files involved in the target area; determine which file should be authoritative for each concern and which surfaces are entrypoints, active contracts,...",
+        "Procedure": "identify the main docs, source/config/schema surfaces, route cards, generated outputs, mechanics surfaces, runtime receipts, legacy/provenance bridges, and owner-local handoff files involved in the target area; when the authority question spans more than ordinary docs, choose...",
         "Contracts": "authoritative sources should be visible and named explicitly; overview documents should not silently replace canonical ones",
         "Risks and anti-patterns": "over-formalizing a tiny docs surface; creating many labels without reducing ambiguity",
         "Verification": "confirm the main source-of-truth ambiguity was reduced; confirm authoritative files are named explicitly",
@@ -2740,7 +2755,9 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/authority-surface-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -2778,12 +2795,12 @@
           "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven."
         ],
         "implicit": [
-          "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust."
+          "Clarify which files are authoritative for repository guidance, operational instructions, architecture, and status, and keep entrypoint docs short and link-driven once canonical homes exist. Use when docs overlap, conflict, or confuse contributors about which file to trust.",
+          "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
-          "This repo has three conflicting architecture guides and two outdated runbooks. Identify which files are authoritative and shorten the entrypoints into a link-driven map."
+          "The repository is tiny and there is no meaningful ambiguity about which file is authoritative."
         ]
       },
       "explicit_handles": {
@@ -2943,11 +2960,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use test-first discipline to implement a small feature slice with a clear behavioral target and explicit verification.",
-        "Trigger boundary": "a behavior change can be expressed as tests before implementation; the task fits a bounded slice rather than a broad rewrite",
-        "Inputs": "desired behavior; target module or slice",
+        "Intent": "Use test-first discipline to implement a small behavior slice with a clear observable target, minimal implementation, and explicit verification.",
+        "Trigger boundary": "a behavior change can be expressed as tests before implementation; a module, CLI, builder, parser, validator, schema check, generated/export path, adapter, router, or workflow step has observable behavior that can be specified before implementation",
+        "Inputs": "desired behavior; target module, command, builder, validator, adapter, generated/export path, or workflow step",
         "Outputs": "new or updated tests; minimal implementation",
-        "Procedure": "define the desired behavior in a bounded way; add or update tests before implementation",
+        "Procedure": "define the desired behavior in a bounded way; when the behavior is wider than a simple module change, choose the smallest useful shape from `references/tdd-slice-shapes.md`",
         "Contracts": "behavior should be made explicit before implementation when reasonably possible; the implementation should stay bounded to the slice",
         "Risks and anti-patterns": "writing tests that merely mirror the implementation; turning a small slice into a hidden architectural rewrite",
         "Verification": "confirm tests were added or updated first when the task was suitable for TDD; confirm the implementation stayed bounded",
@@ -2956,7 +2973,9 @@
       },
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/tdd-slice-shapes.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
@@ -2992,12 +3011,12 @@
           "Use $aoa-tdd-slice to define behavior in tests first, make the smallest implementation change, and report what stays out of scope."
         ],
         "implicit": [
-          "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters."
+          "Implement a bounded feature slice through test-first discipline, minimal implementation, and explicit refactor boundaries. Use when a behavior change can be specified in tests before code and confidence or regression resistance matters.",
+          "Add the new password-reset behavior test-first: define the expected flow in tests, implement the smallest passing slice, and keep the refactor bounded."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "The work is still exploratory and the behavior is not defined enough to drive implementation from tests first.",
-          "Add the new password-reset behavior test-first: define the expected flow in tests, implement the smallest passing slice, and keep the refactor bounded."
+          "The work is still exploratory and the behavior is not defined enough to drive implementation from tests first."
         ]
       },
       "explicit_handles": {
@@ -3094,12 +3113,12 @@
           "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes."
         ],
         "implicit": [
-          "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces."
+          "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces.",
+          "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough.",
-          "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
+          "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough."
         ]
       },
       "explicit_handles": {
@@ -3196,12 +3215,12 @@
           "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture."
         ],
         "implicit": [
-          "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo."
+          "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo.",
+          "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
         ],
         "manual_invocation_required": [],
         "negative": [
-          "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository.",
-          "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
+          "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository."
         ]
       },
       "explicit_handles": {

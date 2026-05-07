@@ -195,6 +195,71 @@ class InstallProfilesTests(unittest.TestCase):
             self.assertEqual(0, first.returncode, msg=first.stderr or first.stdout)
             self.assertEqual(0, second.returncode, msg=second.stderr or second.stdout)
 
+    def test_install_profile_copy_overwrite_replaces_symlink_target(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            dest_root = pathlib.Path(tmpdir) / "skills"
+            symlink_command = [
+                sys.executable,
+                "scripts/install_skill_pack.py",
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-core-only",
+                "--dest-root",
+                str(dest_root),
+                "--mode",
+                "symlink",
+                "--execute",
+                "--format",
+                "json",
+            ]
+            copy_command = [
+                sys.executable,
+                "scripts/install_skill_pack.py",
+                "--repo-root",
+                ".",
+                "--profile",
+                "repo-core-only",
+                "--dest-root",
+                str(dest_root),
+                "--mode",
+                "copy",
+                "--execute",
+                "--overwrite",
+                "--format",
+                "json",
+            ]
+
+            symlink_install = subprocess.run(
+                symlink_command,
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(
+                0,
+                symlink_install.returncode,
+                msg=symlink_install.stderr or symlink_install.stdout,
+            )
+            installed_skill = dest_root / "aoa-change-protocol"
+            self.assertTrue(installed_skill.is_symlink())
+
+            copy_install = subprocess.run(
+                copy_command,
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(
+                0,
+                copy_install.returncode,
+                msg=copy_install.stderr or copy_install.stdout,
+            )
+            self.assertFalse(installed_skill.is_symlink())
+            self.assertTrue((installed_skill / "SKILL.md").is_file())
+
     def test_install_profile_json_plan_includes_revision_and_verify_command(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             dest_root = pathlib.Path(tmpdir) / "skills"

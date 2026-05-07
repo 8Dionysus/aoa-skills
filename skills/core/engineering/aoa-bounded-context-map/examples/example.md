@@ -2,7 +2,7 @@
 
 ## Scenario
 
-A public practice repository is both a standalone library and one organ in a larger ecosystem. Contributors keep mixing reusable practice, executable skill workflows, proof doctrine, generated reader surfaces, and ecosystem route law because the same words appear across neighboring repositories.
+A public practice repository is both a standalone library and one component in a larger ecosystem. Contributors keep mixing reusable practice patterns, execution skills, proof doctrine, generated reader surfaces, and ecosystem route law because the same words appear across neighboring repositories.
 
 ## Why this skill fits
 
@@ -15,7 +15,7 @@ A public practice repository is both a standalone library and one organ in a lar
 
 - the target repo or subsystem where terminology is overloaded
 - the current names and responsibilities attached to "practice", "skill", "proof", "route", or another overloaded term
-- known neighboring contexts such as technique canon, skill execution, proof evaluation, routing, generated surfaces, and ecosystem center law
+- known neighboring contexts such as practice canon, skill execution, proof evaluation, routing, generated surfaces, and ecosystem center law
 - confusion points that have caused mis-scoped changes
 
 ## Expected outputs
