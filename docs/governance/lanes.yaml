@@ -113,3 +113,40 @@ lanes:
         decision: default_reference
       - name: aoa-property-invariants
         decision: default_reference
+  - id: session_growth_closeout
+    title: Session growth and closeout
+    scope: core
+    state: comparative_pending
+    review_path: docs/governance/lanes.md#session_growth_closeout
+    evidence_case_ids:
+      - summon_vs_route_forks_boundary
+      - checkpoint_closeout_bridge_vs_donor_harvest_boundary
+      - automation_opportunity_scan_vs_route_forks_boundary
+      - session_route_forks_vs_automation_scan_boundary
+      - session_self_repair_vs_self_diagnose_boundary
+      - quest_harvest_vs_donor_harvest_boundary
+      - session_donor_harvest_vs_quest_harvest_adjacency
+      - session_self_diagnose_vs_self_repair_boundary
+      - session_progression_lift_vs_quest_harvest_boundary
+      - commit_growth_seam_vs_donor_harvest_boundary
+    skills:
+      - name: aoa-summon
+        decision: stay_evaluated
+      - name: aoa-checkpoint-closeout-bridge
+        decision: stay_evaluated
+      - name: aoa-automation-opportunity-scan
+        decision: stay_evaluated
+      - name: aoa-session-route-forks
+        decision: stay_evaluated
+      - name: aoa-session-self-repair
+        decision: stay_evaluated
+      - name: aoa-quest-harvest
+        decision: stay_evaluated
+      - name: aoa-session-donor-harvest
+        decision: stay_evaluated
+      - name: aoa-session-self-diagnose
+        decision: stay_evaluated
+      - name: aoa-session-progression-lift
+        decision: stay_evaluated
+      - name: aoa-commit-growth-seam
+        decision: stay_evaluated

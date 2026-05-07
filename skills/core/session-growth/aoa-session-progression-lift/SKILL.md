@@ -1,7 +1,7 @@
 ---
 name: aoa-session-progression-lift
 scope: core
-status: scaffold
+status: evaluated
 summary: Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.
 invocation_mode: explicit-only
 technique_dependencies:

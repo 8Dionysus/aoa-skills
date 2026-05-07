@@ -98,7 +98,7 @@
       "outputs_short": "Produces: AUTOMATIONOPPORTUNITYPACKET; one or more AUTOMATIONCANDIDATE cards; seedready or notnow verdict for each candidate; checkpointrequired flag when the route crosses self-change or approval-sensitive boundaries.",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
       "technique_dependencies": [
         "AOA-T-0086",
@@ -153,7 +153,7 @@
       "outputs_short": "Produces: in checkpoint-collect mode; updated local checkpoint note; updated provisional progression-axis hints; ordered session-end target list.",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
       "technique_dependencies": [
         "AOA-T-0075",
@@ -172,7 +172,7 @@
       "outputs_short": "Produces: one bounded commit-or-defer decision; one intentional local commit, or one explicit refusal to commit yet; one honest commit message that matches the bounded unit; one carry-forward note for what was...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
       "technique_dependencies": [
         "AOA-T-0001",
@@ -185,7 +185,7 @@
     {
       "inputs_short": "Needs: boundary under review; expected inputs and outputs; current verification surface; known downstream dependencies.",
       "invocation_mode": "explicit-preferred",
-      "main_anti_patterns_short": "Avoid: vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary; changing interface behavior without downstream impact notes.",
+      "main_anti_patterns_short": "Avoid: vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary; changing interface behavior without downstream impact notes; asserting...",
       "name": "aoa-contract-test",
       "outputs_short": "Produces: explicit contract assumptions; tests or smoke summary changes; verification notes; downstream impact notes.",
       "scope": "core",
@@ -197,7 +197,7 @@
         "AOA-T-0015"
       ],
       "trigger_boundary_short": "Use when two modules or services interact across a meaningful boundary; a smoke path or interface needs a stable validation contract; Avoid when the change is entirely local and does not affect a meaningful...",
-      "verification_short": "Checks: confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary; confirm downstream impact was considered when relevant.",
+      "verification_short": "Checks: confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary; confirm downstream impact was considered when relevant; confirm the report names any known contract...",
       "workflow_short": "Purpose: Strengthen boundary reliability by making expected inputs, outputs, and validation summaries explicit. Flow: identify the boundary and its consumers -> state the expected input/output behavior -> express the contract in tests, smoke summaries, or..."
     },
     {
@@ -317,7 +317,7 @@
       "outputs_short": "Produces: promotion verdict; owner repo and follow-up surface; explicit reason for promotion or non-promotion; named next artifact or next quest action.",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
       "technique_dependencies": [
         "AOA-T-0089",
@@ -371,7 +371,7 @@
       "outputs_short": "Produces: one bounded HARVESTPACKET; named candidates, each with; candidate ref minted only after reviewed harvest; source cluster ref when the reviewed input carried one.",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "technique_dependencies": [
         "AOA-T-0075",
@@ -390,7 +390,7 @@
       "outputs_short": "Produces: PROGRESSIONDELTA with axis movement, verdict, and optional unlock hints; optional automation-readiness hint when reviewed evidence supports it; optional rank reflection note if evidence is strong enough;...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
       "technique_dependencies": [
         "AOA-T-0084",
@@ -408,7 +408,7 @@
       "outputs_short": "Produces: FORKCARDS with likely gain, cost, risk, owner repo, and stop conditions; one suggested default route if evidence is strong enough; one explicit hold or defer option when honest uncertainty remains;...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.",
       "technique_dependencies": [
         "AOA-T-0078",
@@ -426,7 +426,7 @@
       "outputs_short": "Produces: DIAGNOSISPACKET with drift types, symptoms, probable causes, repair shapes, and owner hints; severity or urgency notes when evidence supports them; explicit unknowns when diagnosis remains incomplete;...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
       "technique_dependencies": [
         "AOA-T-0080",
@@ -444,7 +444,7 @@
       "outputs_short": "Produces: REPAIRPACKET with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub; optional repair quest when execution should remain deferred; optional...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_dependencies": [
         "AOA-T-0082",
@@ -481,7 +481,7 @@
       "outputs_short": "Produces: one summon decision with allowed or blocked posture; one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate; executionsurface, cohortpattern, reasoncodes,...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "technique_dependencies": [
         "AOA-T-PENDING-SUMMON-LANE-SELECTION",

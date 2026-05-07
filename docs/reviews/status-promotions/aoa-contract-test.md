@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `88ae350ac3d2`
+- reviewed revision: `e2fa19aaa04f`
 
 ## Target status
 
@@ -26,8 +26,8 @@
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `default_reference`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the bundle still clears the evaluated floor that this record originally captured.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the bundle now states out-of-contract limits, public-contract risk, and report expectations more explicitly while still clearing the evaluated floor that this record originally captured.
 
 ## Gaps and blockers
 

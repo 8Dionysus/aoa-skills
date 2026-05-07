@@ -5,7 +5,7 @@ license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
   aoa_scope: core
-  aoa_status: scaffold
+  aoa_status: evaluated
   aoa_invocation_mode: explicit-only
   aoa_source_skill_path: skills/core/session-growth/aoa-session-donor-harvest/SKILL.md
   aoa_source_repo: 8Dionysus/aoa-skills
@@ -78,45 +78,45 @@ Do not use this skill when:
    - by owner shape: technique, skill, playbook, eval, memo, agent, or hold
 5. mint `candidate_ref` only after the reviewed unit is bounded and the owner
    hypothesis plus nearest-wrong target are explicit
-5. mark `automation_candidate` only when a repeated manual route is stable
+6. mark `automation_candidate` only when a repeated manual route is stable
    enough to name the current inputs, outputs, and risk posture, but the
    surviving question is still automation readiness rather than owner canon
-6. reject theme-only repetition, aesthetic resonance, and broad "good idea" residue unless a bounded reusable unit exists
-7. route reusable practice meaning to technique canon first
-8. route bounded executable leaf workflows to `aoa-skills`
-9. route multi-step recurring scenario methods to `aoa-playbooks`
-10. route rubrics, verdict postures, and proof surfaces to `aoa-evals`
-11. route recall, writeback, recurrence, and memory-support patterns to `aoa-memo`
-12. route role law, orchestrator class law, handoff law, and actor-boundary rules to `aoa-agents`
-13. keep `aoa-routing` and `aoa-kag` out of first-authoring unless the source-owned object already exists elsewhere and the session only discovered a derivative bridge update
-14. preserve quest residue without forcing promotion when the reviewed session
+7. reject theme-only repetition, aesthetic resonance, and broad "good idea" residue unless a bounded reusable unit exists
+8. route reusable practice meaning to technique canon first
+9. route bounded executable leaf workflows to `aoa-skills`
+10. route multi-step recurring scenario methods to `aoa-playbooks`
+11. route rubrics, verdict postures, and proof surfaces to `aoa-evals`
+12. route recall, writeback, recurrence, and memory-support patterns to `aoa-memo`
+13. route role law, orchestrator class law, handoff law, and actor-boundary rules to `aoa-agents`
+14. keep `aoa-routing` and `aoa-kag` out of first-authoring unless the source-owned object already exists elsewhere and the session only discovered a derivative bridge update
+15. preserve quest residue without forcing promotion when the reviewed session
     is still mixed, early, or weakly repeated
-15. hand off to `aoa-automation-opportunity-scan` when the main surviving
+16. hand off to `aoa-automation-opportunity-scan` when the main surviving
     question is whether a repeated manual route is honestly automation-ready
-16. hand off to `aoa-session-route-forks` when the main post-session need is
+17. hand off to `aoa-session-route-forks` when the main post-session need is
     explicit next-route choice rather than donor extraction itself
-17. hand off to `aoa-session-self-diagnose` when the dominant surviving object
+18. hand off to `aoa-session-self-diagnose` when the dominant surviving object
     is drift, contradiction, proof gap, or ownership confusion
-18. hand off to `aoa-session-progression-lift` when the main surviving object is
+19. hand off to `aoa-session-progression-lift` when the main surviving object is
     evidence-backed progression reflection rather than owner placement
-19. when the candidate is a repeated reviewed quest unit and the remaining
+20. when the candidate is a repeated reviewed quest unit and the remaining
     ambiguity is specifically the final promotion target among quest, skill,
     playbook, agent, eval, or memo, hand off to `aoa-quest-harvest`
-20. draft the smallest next artifact for each accepted candidate, such as
+21. draft the smallest next artifact for each accepted candidate, such as
     `TECHNIQUE.md`, `SKILL.md`, `PLAYBOOK.md`, `EVAL.md`, memory object seed,
     or agent/orchestrator surface note
-21. keep `cluster_ref`, `owner_hypothesis`, `owner_shape`,
+22. keep `cluster_ref`, `owner_hypothesis`, `owner_shape`,
     `nearest_wrong_target`, `status_posture`, `evidence_refs`, `supersedes`,
     `merged_into`, and `drop_reason` on each accepted candidate when that carry
     exists or becomes explicit during reviewed harvest
-21. emit one `HARVEST_PACKET_RECEIPT` when the packet is complete, using the
+23. emit one `HARVEST_PACKET_RECEIPT` when the packet is complete, using the
     shared event envelope and a bounded receipt payload instead of duplicating
     the full donor packet
-22. when the finish path is complete, emit one
+24. when the finish path is complete, emit one
     `CORE_SKILL_APPLICATION_RECEIPT` that points back to the bounded detail
     receipt, keeps `application_stage=finish`, and stays generic enough to act
     as project-core kernel telemetry rather than a second donor packet
-23. record one clear reason for the chosen owner and one clear reason against
+25. record one clear reason for the chosen owner and one clear reason against
     the nearest wrong owner
 
 ## Contracts

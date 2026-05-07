@@ -1,7 +1,7 @@
 ---
 name: aoa-checkpoint-closeout-bridge
 scope: core
-status: scaffold
+status: evaluated
 summary: Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.
 invocation_mode: explicit-preferred
 technique_dependencies:

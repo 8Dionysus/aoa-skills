@@ -219,7 +219,7 @@
       "name": "aoa-automation-opportunity-scan",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority.",
       "technique_dependencies": [
         "AOA-T-0086",
@@ -371,7 +371,7 @@
       "name": "aoa-checkpoint-closeout-bridge",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Bridge local checkpoint evidence into one reviewed closeout execution chain without turning provisional notes into final harvest, progression, or quest authority.",
       "technique_dependencies": [
         "AOA-T-0075",
@@ -428,7 +428,7 @@
       "name": "aoa-commit-growth-seam",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.",
       "technique_dependencies": [
         "AOA-T-0001",
@@ -799,7 +799,7 @@
       "name": "aoa-quest-harvest",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Triage repeated reviewed quest evidence into the right promotion target without confusing skills, playbooks, orchestrator classes, proof, or memory.",
       "technique_dependencies": [
         "AOA-T-0089",
@@ -936,7 +936,7 @@
       "name": "aoa-session-donor-harvest",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Harvest reusable donor units from a reviewed session into a bounded HARVEST_PACKET, route each unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed.",
       "technique_dependencies": [
         "AOA-T-0075",
@@ -993,7 +993,7 @@
       "name": "aoa-session-progression-lift",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Lift reviewed session evidence into a multi-axis progression delta with bounded unlock hints, quest reflection cues, and no fake single-score authority.",
       "technique_dependencies": [
         "AOA-T-0084",
@@ -1032,7 +1032,7 @@
       "name": "aoa-session-route-forks",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory.",
       "technique_dependencies": [
         "AOA-T-0078",
@@ -1072,7 +1072,7 @@
       "name": "aoa-session-self-diagnose",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.",
       "technique_dependencies": [
         "AOA-T-0080",
@@ -1113,7 +1113,7 @@
       "name": "aoa-session-self-repair",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.",
       "technique_dependencies": [
         "AOA-T-0082",
@@ -1217,7 +1217,7 @@
       "name": "aoa-summon",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "status": "scaffold",
+      "status": "evaluated",
       "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "technique_dependencies": [
         "AOA-T-PENDING-SUMMON-LANE-SELECTION",

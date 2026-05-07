@@ -115,7 +115,6 @@ def body_metrics(skill_text: str) -> dict[str, Any]:
     sections = {heading: section_text(skill_text, heading) for heading in EXPECTED_HEADINGS}
     trigger_counts = trigger_group_counts(sections["Trigger boundary"])
     procedure_nums = procedure_numbers(sections["Procedure"])
-    pending_markers = sorted(set(PENDING_PATTERN.findall(skill_text)))
     low_count_findings: list[str] = []
     count_specs = {
         "outputs": bullet_count(sections["Outputs"]),
@@ -134,6 +133,7 @@ def body_metrics(skill_text: str) -> dict[str, Any]:
         low_count_findings.append("procedure_below_4_steps")
 
     runtime_text = "\n".join(sections[heading] for heading in RUNTIME_HEADINGS)
+    pending_markers = sorted(set(PENDING_PATTERN.findall(runtime_text)))
     return {
         "heading_count": len(headings),
         "missing_headings": missing_headings,

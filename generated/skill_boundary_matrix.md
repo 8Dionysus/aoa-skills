@@ -6,8 +6,8 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 ## Summary
 
 - total skills: 45
-- adjacency cases: 34
-- skills with required adjacency coverage: 15
+- adjacency cases: 44
+- skills with required adjacency coverage: 25
 - required adjacency gaps: 0
 
 | name | status | scope | required coverage | use cases | do_not_use cases | adjacent skills | lane ids | ready | blockers |
@@ -17,11 +17,11 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | abyss-self-diagnostic-spine | scaffold | project | false | 2 | 0 | aoa-session-self-diagnose, aoa-session-self-repair | - | true | - |
 | aoa-adr-write | canonical | core | true | 1 | 0 | aoa-source-of-truth-check | decision_docs_authority | true | - |
 | aoa-approval-gate-check | canonical | risk | true | 3 | 0 | aoa-dry-run-first, aoa-safe-infra-change, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
-| aoa-automation-opportunity-scan | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-automation-opportunity-scan | evaluated | core | true | 1 | 0 | aoa-session-route-forks | session_growth_closeout | true | - |
 | aoa-bounded-context-map | canonical | core | true | 3 | 0 | aoa-contract-test, aoa-core-logic-boundary, aoa-port-adapter-refactor | context_vs_contract, core_boundary_refactor | true | - |
 | aoa-change-protocol | canonical | core | true | 1 | 0 | aoa-tdd-slice | change_workflows | true | - |
-| aoa-checkpoint-closeout-bridge | scaffold | core | false | 0 | 0 | - | - | false | - |
-| aoa-commit-growth-seam | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-checkpoint-closeout-bridge | evaluated | core | true | 1 | 0 | aoa-session-donor-harvest | session_growth_closeout | true | - |
+| aoa-commit-growth-seam | evaluated | core | true | 1 | 0 | aoa-session-donor-harvest | session_growth_closeout | true | - |
 | aoa-contract-test | canonical | core | true | 1 | 0 | aoa-bounded-context-map | context_vs_contract | true | - |
 | aoa-core-logic-boundary | evaluated | core | true | 2 | 0 | aoa-bounded-context-map, aoa-port-adapter-refactor | core_boundary_refactor | true | - |
 | aoa-dry-run-first | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-safe-infra-change, aoa-sanitized-share | risk_authority_preview_execution | true | - |
@@ -29,16 +29,16 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | aoa-local-stack-bringup | evaluated | risk | true | 2 | 0 | aoa-approval-gate-check, aoa-safe-infra-change | local_runtime_bringup | true | - |
 | aoa-port-adapter-refactor | evaluated | core | true | 2 | 0 | aoa-bounded-context-map, aoa-core-logic-boundary | core_boundary_refactor | true | - |
 | aoa-property-invariants | canonical | core | true | 1 | 0 | aoa-invariant-coverage-audit | invariant_authoring_vs_audit | true | - |
-| aoa-quest-harvest | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-quest-harvest | evaluated | core | true | 1 | 0 | aoa-session-donor-harvest | session_growth_closeout | true | - |
 | aoa-safe-infra-change | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-sanitized-share | local_runtime_bringup, risk_authority_preview_execution | true | - |
 | aoa-sanitized-share | canonical | risk | true | 3 | 0 | aoa-approval-gate-check, aoa-dry-run-first, aoa-safe-infra-change | risk_authority_preview_execution | true | - |
-| aoa-session-donor-harvest | scaffold | core | false | 0 | 0 | - | - | false | - |
-| aoa-session-progression-lift | scaffold | core | false | 0 | 0 | - | - | false | - |
-| aoa-session-route-forks | scaffold | core | false | 0 | 0 | - | - | false | - |
-| aoa-session-self-diagnose | scaffold | core | false | 0 | 0 | - | - | false | - |
-| aoa-session-self-repair | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-session-donor-harvest | evaluated | core | true | 1 | 0 | aoa-quest-harvest | session_growth_closeout | true | - |
+| aoa-session-progression-lift | evaluated | core | true | 1 | 0 | aoa-quest-harvest | session_growth_closeout | true | - |
+| aoa-session-route-forks | evaluated | core | true | 1 | 0 | aoa-automation-opportunity-scan | session_growth_closeout | true | - |
+| aoa-session-self-diagnose | evaluated | core | true | 1 | 0 | aoa-session-self-repair | session_growth_closeout | true | - |
+| aoa-session-self-repair | evaluated | core | true | 1 | 0 | aoa-session-self-diagnose | session_growth_closeout | true | - |
 | aoa-source-of-truth-check | canonical | core | true | 1 | 0 | aoa-adr-write | decision_docs_authority | true | - |
-| aoa-summon | scaffold | core | false | 0 | 0 | - | - | false | - |
+| aoa-summon | evaluated | core | true | 1 | 0 | aoa-session-route-forks | session_growth_closeout | true | - |
 | aoa-tdd-slice | canonical | core | true | 1 | 0 | aoa-change-protocol | change_workflows | true | - |
 | atm10-change-protocol | evaluated | project | false | 1 | 0 | atm10-source-of-truth-check | - | true | - |
 | atm10-source-of-truth-check | evaluated | project | false | 1 | 0 | atm10-change-protocol | - | true | - |
@@ -96,4 +96,14 @@ It is built from committed adjacency cases and snapshot-backed evidence only.
 | abyss-sanitized-share | abyss-safe-infra-change | abyss_sanitized_share_vs_safe_infra_change_boundary | use | - | - |
 | abyss-self-diagnostic-spine | aoa-session-self-diagnose | abyss_self_diagnostic_spine_vs_session_self_diagnose_boundary | use | - | - |
 | abyss-self-diagnostic-spine | aoa-session-self-repair | abyss_self_diagnostic_spine_vs_session_self_repair_boundary | use | - | - |
+| aoa-summon | aoa-session-route-forks | summon_vs_route_forks_boundary | use | session_growth_closeout | - |
+| aoa-checkpoint-closeout-bridge | aoa-session-donor-harvest | checkpoint_closeout_bridge_vs_donor_harvest_boundary | use | session_growth_closeout | - |
+| aoa-automation-opportunity-scan | aoa-session-route-forks | automation_opportunity_scan_vs_route_forks_boundary | use | session_growth_closeout | - |
+| aoa-session-route-forks | aoa-automation-opportunity-scan | session_route_forks_vs_automation_scan_boundary | use | session_growth_closeout | - |
+| aoa-session-self-repair | aoa-session-self-diagnose | session_self_repair_vs_self_diagnose_boundary | use | session_growth_closeout | - |
+| aoa-quest-harvest | aoa-session-donor-harvest | quest_harvest_vs_donor_harvest_boundary | use | session_growth_closeout | - |
+| aoa-session-donor-harvest | aoa-quest-harvest | session_donor_harvest_vs_quest_harvest_adjacency | use | session_growth_closeout | - |
+| aoa-session-self-diagnose | aoa-session-self-repair | session_self_diagnose_vs_self_repair_boundary | use | session_growth_closeout | - |
+| aoa-session-progression-lift | aoa-quest-harvest | session_progression_lift_vs_quest_harvest_boundary | use | session_growth_closeout | - |
+| aoa-commit-growth-seam | aoa-session-donor-harvest | commit_growth_seam_vs_donor_harvest_boundary | use | session_growth_closeout | - |
 

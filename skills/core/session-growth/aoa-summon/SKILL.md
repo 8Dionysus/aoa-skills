@@ -1,7 +1,7 @@
 ---
 name: aoa-summon
 scope: core
-status: scaffold
+status: evaluated
 summary: Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
 invocation_mode: explicit-only
 technique_dependencies:

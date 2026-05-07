@@ -777,12 +777,14 @@
       "verification": [
         "confirm the contract is visible and reviewable",
         "confirm validation is tied to the interface or boundary",
-        "confirm downstream impact was considered when relevant"
+        "confirm downstream impact was considered when relevant",
+        "confirm the report names any known contract limits or exclusions"
       ],
       "contracts": [
         "the contract should be visible to another human or agent",
         "verification should be tied to the boundary, not only to internals",
-        "downstream assumptions should be named when relevant"
+        "downstream assumptions should be named when relevant",
+        "out-of-contract behavior should stay explicit when it affects consumers"
       ],
       "consumes_artifact_tags": [
         "boundary-under-review",
@@ -1175,7 +1177,8 @@
       "contracts": [
         "each property should express a real invariant, not a wish",
         "the test should broaden coverage beyond a small handpicked set",
-        "generator assumptions should remain understandable"
+        "generator assumptions should remain understandable",
+        "failures should point back to the protected rule rather than only to generated data"
       ],
       "consumes_artifact_tags": [
         "target-rule-or-domain-truth",

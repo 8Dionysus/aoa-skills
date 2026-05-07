@@ -143,6 +143,132 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-commit-growth-seam
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-summon
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-session-route-forks
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-session-self-diagnose
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-session-self-repair
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: aoa-session-progression-lift
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-approval-ledger
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-approval-loom
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-appserver-bridge
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-appserver-plan
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-closeout
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-console
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-event-replay
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-memory-loom
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-memory-prune
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-mutation-gate
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-recall
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-receipt
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-runtime-gate
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-summon
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
+  - skill: titan-thread-turn-binding
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
 
 trigger_cases:
   - skill: aoa-adr-write
@@ -1201,6 +1327,106 @@ adjacency_cases:
     required_output_phrases:
       - This is an abyss-self-diagnostic-spine case, not an aoa-session-self-repair case.
       - A bounded runtime-owned diagnostic session artifact with repo-relative evidence refs and one explicit exit class.
+    forbidden_output_phrases: []
+  - skill: aoa-summon
+    case_id: summon_vs_route_forks_boundary
+    prompt: Compare bounded child-route delegation with post-session branch analysis when the parent route already has an anchor, named child outputs, and a need for one local reviewer child.
+    expected: use
+    adjacent_skill: aoa-session-route-forks
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-summon/summon_vs_route_forks_boundary.md
+    required_output_phrases:
+      - This is a summon case, not a session-route-forks case.
+      - A summon decision with lane, gates, and explicit return planning for one bounded child route.
+    forbidden_output_phrases: []
+  - skill: aoa-checkpoint-closeout-bridge
+    case_id: checkpoint_closeout_bridge_vs_donor_harvest_boundary
+    prompt: Compare a full checkpoint-aware reviewed closeout chain with donor harvest alone when checkpoint hints already point to donor, progression, and quest follow-through.
+    expected: use
+    adjacent_skill: aoa-session-donor-harvest
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-checkpoint-closeout-bridge/checkpoint_closeout_bridge_vs_donor_harvest_boundary.md
+    required_output_phrases:
+      - This is a checkpoint-closeout-bridge case, not a donor-harvest-only case.
+      - A closeout-context bundle that runs donor harvest, progression lift, and quest harvest in order from reviewed evidence.
+    forbidden_output_phrases: []
+  - skill: aoa-automation-opportunity-scan
+    case_id: automation_opportunity_scan_vs_route_forks_boundary
+    prompt: Compare automation-readiness classification with ordinary branch cards when a repeated manual route is visible and the honest question is whether it can become automation.
+    expected: use
+    adjacent_skill: aoa-session-route-forks
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-automation-opportunity-scan/automation_opportunity_scan_vs_route_forks_boundary.md
+    required_output_phrases:
+      - This is an automation-opportunity-scan case, not a session-route-forks case.
+      - An automation opportunity packet that classifies readiness without granting automation authority.
+    forbidden_output_phrases: []
+  - skill: aoa-session-route-forks
+    case_id: session_route_forks_vs_automation_scan_boundary
+    prompt: Compare branch-choice work with automation scanning when several next moves exist, including staying manual, becoming a skill, or becoming a playbook seed.
+    expected: use
+    adjacent_skill: aoa-automation-opportunity-scan
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-route-forks/session_route_forks_vs_automation_scan_boundary.md
+    required_output_phrases:
+      - This is a session-route-forks case, not an automation-opportunity-scan case.
+      - A set of fork cards that compares manual, skill, and playbook-seed routes with stop conditions.
+    forbidden_output_phrases: []
+  - skill: aoa-session-self-repair
+    case_id: session_self_repair_vs_self_diagnose_boundary
+    prompt: Compare repair planning with diagnosis when a reviewed diagnosis packet already exists and the next honest move is a bounded repair packet.
+    expected: use
+    adjacent_skill: aoa-session-self-diagnose
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-repair/session_self_repair_vs_self_diagnose_boundary.md
+    required_output_phrases:
+      - This is a session-self-repair case, not a session-self-diagnose case.
+      - A repair packet with rollback, health check, and owner targets from an existing diagnosis.
+    forbidden_output_phrases: []
+  - skill: aoa-quest-harvest
+    case_id: quest_harvest_vs_donor_harvest_boundary
+    prompt: Compare final quest-promotion triage with broader donor harvest when the evidence is one repeated reviewed quest unit and the remaining ambiguity is only its next owner surface.
+    expected: use
+    adjacent_skill: aoa-session-donor-harvest
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-quest-harvest/quest_harvest_vs_donor_harvest_boundary.md
+    required_output_phrases:
+      - This is a quest-harvest case, not a session-donor-harvest case.
+      - A final promotion verdict for one repeated reviewed quest unit.
+    forbidden_output_phrases: []
+  - skill: aoa-session-donor-harvest
+    case_id: session_donor_harvest_vs_quest_harvest_adjacency
+    prompt: Compare donor harvest with final quest triage when the reviewed artifact still contains several reusable units that need owner-layer routing first.
+    expected: use
+    adjacent_skill: aoa-quest-harvest
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-donor-harvest/session_donor_harvest_vs_quest_harvest_adjacency.md
+    required_output_phrases:
+      - This is a session-donor-harvest case, not a quest-harvest case.
+      - A HARVEST_PACKET that routes multiple reusable donor units before final quest triage.
+    forbidden_output_phrases: []
+  - skill: aoa-session-self-diagnose
+    case_id: session_self_diagnose_vs_self_repair_boundary
+    prompt: Compare diagnosis with repair planning when a reviewed session shows repeated drift and no reviewed diagnosis packet exists yet.
+    expected: use
+    adjacent_skill: aoa-session-self-repair
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-self-diagnose/session_self_diagnose_vs_self_repair_boundary.md
+    required_output_phrases:
+      - This is a session-self-diagnose case, not a session-self-repair case.
+      - A diagnosis packet that classifies symptoms, causes, and repair shapes before patching.
+    forbidden_output_phrases: []
+  - skill: aoa-session-progression-lift
+    case_id: session_progression_lift_vs_quest_harvest_boundary
+    prompt: Compare progression reflection with quest promotion when reviewed evidence shows mastery movement across several axes rather than one repeated quest unit.
+    expected: use
+    adjacent_skill: aoa-quest-harvest
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-progression-lift/session_progression_lift_vs_quest_harvest_boundary.md
+    required_output_phrases:
+      - This is a session-progression-lift case, not a quest-harvest case.
+      - A bounded progression delta that stays evidence-backed and multi-axis.
+    forbidden_output_phrases: []
+  - skill: aoa-commit-growth-seam
+    case_id: commit_growth_seam_vs_donor_harvest_boundary
+    prompt: Compare commit-boundary work with donor harvest when a bounded diff is already verified and the next honest move is one local commit, not post-session extraction.
+    expected: use
+    adjacent_skill: aoa-session-donor-harvest
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-commit-growth-seam/commit_growth_seam_vs_donor_harvest_boundary.md
+    required_output_phrases:
+      - This is a commit-growth-seam case, not a session-donor-harvest case.
+      - A bounded local commit decision that preserves validation state and stops before push.
     forbidden_output_phrases: []
 
 snapshot_cases:

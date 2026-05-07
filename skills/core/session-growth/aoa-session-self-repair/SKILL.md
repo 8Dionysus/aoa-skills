@@ -1,7 +1,7 @@
 ---
 name: aoa-session-self-repair
 scope: core
-status: scaffold
+status: evaluated
 summary: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation.
 invocation_mode: explicit-only
 technique_dependencies:

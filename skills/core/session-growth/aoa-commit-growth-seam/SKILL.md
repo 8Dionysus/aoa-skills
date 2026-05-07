@@ -1,7 +1,7 @@
 ---
 name: aoa-commit-growth-seam
 scope: core
-status: scaffold
+status: evaluated
 summary: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish.
 invocation_mode: explicit-only
 technique_dependencies:

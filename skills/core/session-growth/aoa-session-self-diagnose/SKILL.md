@@ -1,7 +1,7 @@
 ---
 name: aoa-session-self-diagnose
 scope: core
-status: scaffold
+status: evaluated
 summary: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet.
 invocation_mode: explicit-only
 technique_dependencies:

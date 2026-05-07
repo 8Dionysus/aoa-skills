@@ -59,13 +59,13 @@ class SkillPromotionPressureTests(unittest.TestCase):
             by_name["aoa-change-protocol"]["promotion_pressure"],
         )
         if self_repair["repeated_usage_signal"]:
-            self.assertEqual("promotion_review_now", self_repair["promotion_pressure"])
+            self.assertEqual("revisit_stay_evaluated", self_repair["promotion_pressure"])
             self.assertGreater(self_repair["usage_evidence"]["usage_score"], 0)
         else:
-            self.assertEqual("watch", self_repair["promotion_pressure"])
+            self.assertEqual("candidate_ready_watch", self_repair["promotion_pressure"])
             self.assertLess(self_repair["usage_evidence"]["usage_score"], 5)
-        self.assertIn(
-            "missing_autonomy_check",
+        self.assertEqual(
+            [],
             self_repair["quality_findings"],
         )
         self.assertNotIn(

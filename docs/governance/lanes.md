@@ -62,3 +62,10 @@ This document explains the same lane decisions in prose without changing status 
 - default references: `aoa-invariant-coverage-audit`, `aoa-property-invariants`
 - rationale: both are already stable defaults for adjacent but distinct invariant-authoring and invariant-audit workflows
 - review sources: `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md`, `docs/reviews/canonical-candidates/aoa-property-invariants.md`
+
+## session_growth_closeout
+
+- state: `comparative_pending`
+- stay-evaluated decisions: `aoa-summon`, `aoa-checkpoint-closeout-bridge`, `aoa-automation-opportunity-scan`, `aoa-session-route-forks`, `aoa-session-self-repair`, `aoa-quest-harvest`, `aoa-session-donor-harvest`, `aoa-session-self-diagnose`, `aoa-session-progression-lift`, `aoa-commit-growth-seam`
+- rationale: these session-growth skills are already installed, dispatched, snapshot-backed, and actively used, so their maturity should be recorded as evaluated; the lane intentionally stops short of default-reference/canonical claims until comparative owner reasoning is reviewed across closeout, harvest, progression, repair, summon, and commit-boundary workflows
+- review sources: `docs/reviews/status-promotions/aoa-summon.md`, `docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md`, `docs/reviews/status-promotions/aoa-automation-opportunity-scan.md`, `docs/reviews/status-promotions/aoa-session-route-forks.md`, `docs/reviews/status-promotions/aoa-session-self-repair.md`, `docs/reviews/status-promotions/aoa-quest-harvest.md`, `docs/reviews/status-promotions/aoa-session-donor-harvest.md`, `docs/reviews/status-promotions/aoa-session-self-diagnose.md`, `docs/reviews/status-promotions/aoa-session-progression-lift.md`, `docs/reviews/status-promotions/aoa-commit-growth-seam.md`
