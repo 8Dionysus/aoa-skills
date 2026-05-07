@@ -4,6 +4,7 @@ import json
 import pathlib
 import subprocess
 import sys
+import tempfile
 import unittest
 
 
@@ -70,6 +71,66 @@ class SkillPromotionPressureTests(unittest.TestCase):
         self.assertNotIn(
             "technique_source_drift",
             self_repair["quality_findings"],
+        )
+
+    def test_workspace_root_drives_default_hook_and_dispatch_roots(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            workspace_root = pathlib.Path(temp_dir)
+            hooks_root = workspace_root / ".codex" / "generated" / "codex" / "hooks"
+            dispatch_root = workspace_root / "aoa-sdk" / ".aoa" / "skill-dispatch"
+            hooks_root.mkdir(parents=True)
+            dispatch_root.mkdir(parents=True)
+            (hooks_root / "hook.json").write_text(
+                json.dumps({"event": {"prompt": "aoa-session-self-repair"}}),
+                encoding="utf-8",
+            )
+            (dispatch_root / "dispatch.json").write_text(
+                json.dumps(
+                    {
+                        "report": {
+                            "suggest_next": [
+                                {"skill_name": "aoa-session-self-repair"}
+                            ]
+                        }
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "scripts/report_skill_promotion_pressure.py",
+                    "--repo-root",
+                    ".",
+                    "--workspace-root",
+                    str(workspace_root),
+                    "--skip-session-scan",
+                    "--format",
+                    "json",
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+        self.assertEqual(0, completed.returncode, msg=completed.stderr or completed.stdout)
+        report = json.loads(completed.stdout)
+        self.assertEqual(1, report["scan_summary"]["hook_files_scanned"])
+        self.assertEqual(1, report["scan_summary"]["dispatch_files_scanned"])
+        by_name = {entry["name"]: entry for entry in report["skills"]}
+        self.assertEqual(
+            1,
+            by_name["aoa-session-self-repair"]["usage_evidence"][
+                "hook_prompt_mention_count"
+            ],
+        )
+        self.assertEqual(
+            1,
+            by_name["aoa-session-self-repair"]["usage_evidence"][
+                "dispatch_event_count"
+            ],
         )
 
     def test_markdown_has_review_and_blocker_sections(self) -> None:

@@ -571,8 +571,8 @@ def main() -> int:
     parser.add_argument("--repo-root", default=".")
     parser.add_argument("--workspace-root", default=str(DEFAULT_WORKSPACE_ROOT))
     parser.add_argument("--sessions-root", default=str(DEFAULT_SESSIONS_ROOT))
-    parser.add_argument("--hooks-root", default=str(DEFAULT_HOOKS_ROOT))
-    parser.add_argument("--dispatch-root", default=str(DEFAULT_DISPATCH_ROOT))
+    parser.add_argument("--hooks-root", default=None)
+    parser.add_argument("--dispatch-root", default=None)
     parser.add_argument("--skip-session-scan", action="store_true")
     parser.add_argument("--skip-hooks-scan", action="store_true")
     parser.add_argument("--skip-dispatch-scan", action="store_true")
@@ -583,18 +583,24 @@ def main() -> int:
 
     repo_root = Path(args.repo_root).expanduser().resolve()
     workspace_root = Path(args.workspace_root).expanduser().resolve()
+    hooks_root = (
+        Path(args.hooks_root).expanduser().resolve()
+        if args.hooks_root
+        else workspace_root / ".codex" / "generated" / "codex" / "hooks"
+    )
+    dispatch_root = (
+        Path(args.dispatch_root).expanduser().resolve()
+        if args.dispatch_root
+        else workspace_root / "aoa-sdk" / ".aoa" / "skill-dispatch"
+    )
     report = build_report(
         repo_root=repo_root,
         workspace_root=workspace_root,
         sessions_root=None
         if args.skip_session_scan
         else Path(args.sessions_root).expanduser().resolve(),
-        hooks_root=None
-        if args.skip_hooks_scan
-        else Path(args.hooks_root).expanduser().resolve(),
-        dispatch_root=None
-        if args.skip_dispatch_scan
-        else Path(args.dispatch_root).expanduser().resolve(),
+        hooks_root=None if args.skip_hooks_scan else hooks_root,
+        dispatch_root=None if args.skip_dispatch_scan else dispatch_root,
     )
     json_text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     markdown_text = render_markdown(report)
