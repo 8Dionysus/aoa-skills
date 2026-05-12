@@ -15,7 +15,7 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 ## Technique Drift
 
 - repo: `/srv/AbyssOS/aoa-techniques`
-- target ref: `b4e5c1446469f142c60a85d0a7a4d9de7835ea65`
+- target ref: `b62014daeb3bd0870f9b62610fd5d5c42ff746aa`
 - states: clean=66, pending=30
 
 ## Findings
@@ -49,13 +49,13 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 |---|---|---|---|---|---|---|---|
 | `abyss-safe-infra-change` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, runtime, implicit=false` | `healthy` |
 | `abyss-sanitized-share` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, sharing, implicit=false` | `healthy` |
-| `abyss-self-diagnostic-spine` | `scaffold` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out9/c7/r6/v7/p8` | `project-overlay, none, implicit=true` | `working_scaffold_needs_promotion_review` |
+| `abyss-self-diagnostic-spine` | `scaffold` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out9/c7/r6/v7/p8` | `project-overlay, none, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `aoa-adr-write` | `canonical` | `published` | `clean2` | `a1/u2/d6/su1/sd1` | `out7/c9/r11/v10/p10` | `portable-core, repo, implicit=true` | `healthy` |
 | `aoa-approval-gate-check` | `canonical` | `published` | `clean1` | `a1/u1/d1/su1/sd1` | `out5/c6/r6/v6/p6` | `explicit-risk, none, implicit=false` | `healthy` |
 | `aoa-automation-opportunity-scan` | `evaluated` | `published` | `clean3` | `a1/u2/d1/su1/sd1` | `out8/c10/r8/v10/p11` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-bounded-context-map` | `canonical` | `published` | `clean2` | `a1/u2/d4/su1/sd1` | `out6/c6/r9/v7/p9` | `portable-core, none, implicit=true` | `healthy` |
 | `aoa-change-protocol` | `canonical` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c7/r7/v6/p9` | `portable-core, repo, implicit=true` | `healthy` |
-| `aoa-checkpoint-closeout-bridge` | `evaluated` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out14/c12/r8/v9/p13` | `portable-core, none, implicit=true` | `healthy` |
+| `aoa-checkpoint-closeout-bridge` | `evaluated` | `published` | `clean3` | `a1/u1/d1/su1/sd1` | `out14/c12/r8/v9/p13` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-commit-growth-seam` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out6/c6/r6/v6/p9` | `portable-core, repo, implicit=false` | `healthy` |
 | `aoa-contract-test` | `canonical` | `published` | `clean2` | `a1/u3/d3/su1/sd1` | `out5/c7/r7/v6/p7` | `portable-core, repo, implicit=true` | `healthy` |
 | `aoa-core-logic-boundary` | `evaluated` | `published` | `clean2` | `a1/u3/d3/su1/sd1` | `out5/c6/r7/v6/p7` | `portable-core, repo, implicit=true` | `healthy` |
@@ -75,8 +75,8 @@ lineage. Generated surfaces are evidence; `skills/**/SKILL.md` and
 | `aoa-source-of-truth-check` | `canonical` | `published` | `clean3` | `a1/u2/d2/su1/sd1` | `out7/c8/r10/v8/p10` | `portable-core, none, implicit=true` | `healthy` |
 | `aoa-summon` | `evaluated` | `published` | `clean4` | `a1/u1/d1/su1/sd1` | `out7/c12/r7/v12/p15` | `portable-core, none, implicit=false` | `healthy` |
 | `aoa-tdd-slice` | `canonical` | `published` | `clean2` | `a1/u2/d2/su1/sd1` | `out5/c7/r6/v5/p7` | `portable-core, repo, implicit=true` | `healthy` |
-| `atm10-change-protocol` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, repo, implicit=true` | `healthy` |
-| `atm10-source-of-truth-check` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, none, implicit=true` | `healthy` |
+| `atm10-change-protocol` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, repo, implicit=false` | `healthy` |
+| `atm10-source-of-truth-check` | `evaluated` | `published` | `clean2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v5/p5` | `project-overlay, none, implicit=false` | `healthy` |
 | `titan-approval-ledger` | `scaffold` | `pending` | `pending2` | `a1/u1/d1/su1/sd1` | `out4/c4/r4/v4/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-approval-loom` | `scaffold` | `pending` | `pending2` | `a1/u1/d1/su1/sd1` | `out4/c4/r4/v4/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |
 | `titan-appserver-bridge` | `scaffold` | `pending` | `pending2` | `a1/u1/d1/su1/sd1` | `out5/c4/r4/v4/p5` | `project-overlay, repo, implicit=false` | `working_scaffold_needs_promotion_review` |

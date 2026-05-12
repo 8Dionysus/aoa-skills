@@ -291,7 +291,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical",
-      "summary": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
+      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
       "technique_bridge_findings": []
     },
     {
@@ -898,7 +898,7 @@
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "evaluated",
-      "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
+      "summary": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "technique_bridge_findings": []
     },
     {
@@ -1070,7 +1070,7 @@
       "scope": "project",
       "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold",
-      "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex.",
+      "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.",
       "technique_bridge_findings": [
         "pending_technique_dependencies",
         "pending_technique_entries",

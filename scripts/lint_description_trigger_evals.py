@@ -9,6 +9,12 @@ import pathlib
 import sys
 from typing import Any
 
+from skill_activation_policy import (
+    allow_implicit_invocation,
+    required_case_classes as activation_required_case_classes,
+    resolve_implicit_activation_policy,
+)
+
 
 def load_json(path: pathlib.Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -31,8 +37,10 @@ def main() -> int:
     manifest_doc = load_json(generated_dir / "description_trigger_eval_manifest.json")
     cases = load_jsonl(generated_dir / "description_trigger_eval_cases.jsonl")
     policy_doc = load_json(config_dir / "description_trigger_eval_policy.json")
+    activation_policy_doc = load_json(config_dir / "skill_policy_matrix.json")
 
     signals = {entry["name"]: entry for entry in signals_doc.get("skills", [])}
+    activation_by_name = activation_policy_doc.get("skills", {})
     manifest_by_name = {entry["name"]: entry for entry in manifest_doc.get("skills", [])}
     case_index: dict[str, list[dict[str, Any]]] = {name: [] for name in signals}
     errors: list[str] = []
@@ -44,8 +52,15 @@ def main() -> int:
             continue
         case_index[skill_name].append(case)
         signal = signals[skill_name]
+        activation_policy = resolve_implicit_activation_policy(
+            activation_by_name.get(skill_name),
+            skill_name,
+        )
+        allow_implicit = allow_implicit_invocation(activation_by_name.get(skill_name), skill_name)
         if case.get("description_sha256") != signal.get("description_sha256"):
             errors.append(f"{case['case_id']}: description hash mismatch for {skill_name}")
+        if case.get("implicit_activation_policy") != activation_policy:
+            errors.append(f"{case['case_id']}: activation policy mismatch for {skill_name}")
         if case.get("source") not in {"portable-description", "collision-family", "mirrored-collision-family"}:
             errors.append(f"{case['case_id']}: unknown source {case.get('source')!r}")
         if case.get("case_class") == "prefer-other-skill":
@@ -54,15 +69,15 @@ def main() -> int:
                 errors.append(f"{case['case_id']}: prefer-other-skill must point at another skill")
             elif expected_skill not in signal.get("adjacent_skills", []):
                 errors.append(f"{case['case_id']}: expected_skill {expected_skill!r} is not adjacent to {skill_name}")
-        if signal.get("invocation_mode") == "explicit-only" and case.get("case_class") == "should-trigger":
-            errors.append(f"{case['case_id']}: explicit-only skill {skill_name} must not have should-trigger implicit cases")
+        if not allow_implicit and case.get("case_class") == "should-trigger":
+            errors.append(f"{case['case_id']}: non-invoke skill {skill_name} must not have should-trigger implicit cases")
         if (
-            signal.get("invocation_mode") != "explicit-only"
+            allow_implicit
             and case.get("case_class") == "manual-invocation-required"
             and case.get("source") == "portable-description"
         ):
             errors.append(
-                f"{case['case_id']}: implicit-preferred skill {skill_name} should not require manual invocation for its base description case"
+                f"{case['case_id']}: invoke-policy skill {skill_name} should not require manual invocation for its base description case"
             )
 
     total_case_counter: dict[str, int] = {}
@@ -72,14 +87,22 @@ def main() -> int:
         for case in skill_cases:
             totals[case["case_class"]] = totals.get(case["case_class"], 0) + 1
             total_case_counter[case["case_class"]] = total_case_counter.get(case["case_class"], 0) + 1
-        required = policy_doc["required_case_classes"][signal["invocation_mode"]]
+        activation_policy = resolve_implicit_activation_policy(
+            activation_by_name.get(skill_name),
+            skill_name,
+        )
+        required = activation_required_case_classes(
+            policy_doc,
+            activation_policy=activation_policy,
+            invocation_mode=signal["invocation_mode"],
+        )
         for case_class in required:
             if totals.get(case_class, 0) < 1:
                 errors.append(f"{skill_name}: missing required description-trigger case class {case_class!r}")
         if (
             signal.get("family")
             and totals.get("prefer-other-skill", 0) < 1
-            and signal["invocation_mode"] != "explicit-only"
+            and activation_policy != "manual"
             and policy_doc.get("mirror_collision_cases", True)
         ):
             errors.append(f"{skill_name}: missing prefer-other-skill mirror coverage")

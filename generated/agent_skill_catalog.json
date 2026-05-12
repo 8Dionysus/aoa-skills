@@ -25,7 +25,10 @@
       "scope": "project",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0028",
@@ -42,6 +45,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -60,7 +69,10 @@
       "scope": "project",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0034",
@@ -77,6 +89,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -95,7 +113,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0080",
@@ -112,6 +133,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -130,7 +157,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0033",
@@ -151,6 +181,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -169,7 +203,10 @@
       "scope": "risk",
       "status": "canonical",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/risk/aoa-approval-gate-check/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0028"
@@ -186,6 +223,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -204,7 +247,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0086",
@@ -232,6 +278,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -250,7 +302,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-bounded-context-map/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0016",
@@ -271,6 +326,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -289,7 +348,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0001",
@@ -307,6 +369,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -325,7 +393,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": true,
       "source_skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0075",
@@ -348,6 +419,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -366,7 +443,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-commit-growth-seam/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0001",
@@ -384,6 +464,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -402,7 +488,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0003",
@@ -422,6 +511,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -440,7 +533,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-core-logic-boundary/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0016",
@@ -460,6 +556,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -478,7 +578,10 @@
       "scope": "risk",
       "status": "canonical",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/risk/aoa-dry-run-first/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0004",
@@ -503,6 +606,12 @@
           "assets/dry_run_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -521,7 +630,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0017"
@@ -540,6 +652,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -558,7 +674,10 @@
       "scope": "risk",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0036",
@@ -585,6 +704,12 @@
           "assets/local_stack_bringup.template.json",
           "assets/local_stack_report.schema.json",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -603,7 +728,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0016",
@@ -623,6 +751,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -641,7 +773,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0017",
@@ -661,6 +796,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -679,7 +818,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0089",
@@ -702,6 +844,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -720,7 +868,10 @@
       "scope": "risk",
       "status": "canonical",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/risk/aoa-safe-infra-change/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0028",
@@ -745,6 +896,12 @@
           "assets/infra_change_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -763,7 +920,10 @@
       "scope": "risk",
       "status": "canonical",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/risk/aoa-sanitized-share/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0034",
@@ -781,6 +941,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -799,7 +965,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0075",
@@ -827,6 +996,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -845,7 +1020,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0084",
@@ -868,6 +1046,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -886,7 +1070,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0078",
@@ -908,6 +1095,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -926,7 +1119,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0080",
@@ -948,6 +1144,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -966,7 +1168,10 @@
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0082",
@@ -989,6 +1194,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1007,7 +1218,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-source-of-truth-check/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0013",
@@ -1028,6 +1242,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -1039,14 +1257,17 @@
     {
       "name": "aoa-summon",
       "display_name": "AoA Summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
       "short_description": "Summon one bounded child route",
       "path": ".agents/skills/aoa-summon/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0078",
@@ -1071,6 +1292,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1089,7 +1316,10 @@
       "scope": "core",
       "status": "canonical",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "source_skill_path": "skills/core/engineering/aoa-tdd-slice/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0014",
@@ -1109,6 +1339,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -1127,7 +1361,10 @@
       "scope": "project",
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0001",
@@ -1144,6 +1381,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -1162,7 +1405,10 @@
       "scope": "project",
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0013",
@@ -1179,6 +1425,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "ui": {
@@ -1197,7 +1449,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1214,6 +1469,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1232,7 +1493,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1249,6 +1513,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1267,7 +1537,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1284,6 +1557,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1295,14 +1574,17 @@
     {
       "name": "titan-appserver-plan",
       "display_name": "Titan Appserver Plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
       "short_description": "Plan Titan bridge launch",
       "path": ".agents/skills/titan-appserver-plan/SKILL.md",
       "openai_config_path": ".agents/skills/titan-appserver-plan/agents/openai.yaml",
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1319,6 +1601,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1337,7 +1625,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1354,6 +1645,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1372,7 +1669,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-console/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1389,6 +1689,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1407,7 +1713,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1424,6 +1733,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1442,7 +1757,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1459,6 +1777,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1477,7 +1801,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1494,6 +1821,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1512,7 +1845,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1529,6 +1865,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1547,7 +1889,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1564,6 +1909,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1582,7 +1933,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1599,6 +1953,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1617,7 +1977,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1634,6 +1997,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1652,7 +2021,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1669,6 +2041,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {
@@ -1687,7 +2065,10 @@
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
@@ -1704,6 +2085,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "ui": {

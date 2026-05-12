@@ -7,7 +7,7 @@
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `335bffcde5a2`
+- reviewed revision: `1b87f9d61c48`
 
 ## Target status
 

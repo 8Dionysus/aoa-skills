@@ -141,11 +141,15 @@ def collision_maps(collision_doc: dict[str, Any]) -> tuple[dict[str, dict[str, A
     return family_by_skill, competing
 
 
-def eval_examples_by_skill(eval_cases: list[dict[str, Any]]) -> dict[str, dict[str, list[str]]]:
+def eval_examples_by_skill(
+    eval_cases: list[dict[str, Any]],
+    allow_implicit_by_skill: dict[str, bool],
+) -> dict[str, dict[str, list[str]]]:
     out: dict[str, dict[str, list[str]]] = {}
     for case in eval_cases:
+        skill_name = case["skill_name"]
         bucket = out.setdefault(
-            case["skill_name"],
+            skill_name,
             {
                 "explicit": [],
                 "implicit": [],
@@ -159,8 +163,10 @@ def eval_examples_by_skill(eval_cases: list[dict[str, Any]]) -> dict[str, dict[s
         if expected == "invoke-skill":
             if mode == "explicit":
                 bucket["explicit"].append(prompt)
-            else:
+            elif allow_implicit_by_skill.get(skill_name, False):
                 bucket["implicit"].append(prompt)
+            else:
+                bucket["manual"].append(prompt)
         elif expected == "manual-invocation-required":
             bucket["manual"].append(prompt)
         else:
@@ -415,7 +421,11 @@ def main() -> int:
     context_by_name = {entry["name"]: entry for entry in context_retention.get("skills", [])}
     trust_by_name = {entry["name"]: entry for entry in trust_policy.get("skills", [])}
     family_by_skill, competing_by_skill = collision_maps(collision_doc)
-    evals_by_skill = eval_examples_by_skill(eval_cases)
+    allow_implicit_by_skill = {
+        name: bool(entry.get("allow_implicit_invocation"))
+        for name, entry in runtime_by_name.items()
+    }
+    evals_by_skill = eval_examples_by_skill(eval_cases, allow_implicit_by_skill)
 
     discovery_records: list[dict[str, Any]] = []
     disclosure_records: list[dict[str, Any]] = []
@@ -448,7 +458,9 @@ def main() -> int:
             "path": entry["path"],
             "trust_posture": entry["trust_posture"],
             "invocation_mode": entry["invocation_mode"],
+            "implicit_activation_policy": entry["implicit_activation_policy"],
             "allow_implicit_invocation": entry["allow_implicit_invocation"],
+            "candidate_only": entry.get("candidate_only", False),
             "mutation_surface": entry["mutation_surface"],
             "recommended_install_scopes": entry.get("recommended_install_scopes", []),
             "explicit_handles": handles,
@@ -553,6 +565,7 @@ def main() -> int:
                 "description": entry["description"],
                 "trust_posture": entry["trust_posture"],
                 "invocation_mode": entry["invocation_mode"],
+                "implicit_activation_policy": entry["implicit_activation_policy"],
                 "allow_implicit_invocation": entry["allow_implicit_invocation"],
             }
             for entry in discovery_records

@@ -2,7 +2,7 @@
 name: titan-appserver-plan
 scope: project
 status: scaffold
-summary: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex.
+summary: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.
 invocation_mode: explicit-only
 technique_dependencies:
   - AOA-T-PENDING-TITAN-GATE-DISCIPLINE
@@ -48,7 +48,7 @@ Do not use this skill when:
 1. collect the requested bridge launch shape
 2. write or return only plan entries
 3. include receipt and approval refs
-4. state that no Codex process was started
+4. state that no hidden agent process was started
 5. name the validation command or manual check
 
 ## Contracts

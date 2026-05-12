@@ -242,13 +242,20 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
         skill_description_cases = description_cases_by_skill.get(skill_name, [])
         skill_base_cases = base_cases_by_skill.get(skill_name, [])
         allow_implicit = bool(local_entry["allow_implicit_invocation"])
+        activation_policy = str(local_entry.get("implicit_activation_policy") or "manual")
+        manual_required = activation_policy != "invoke"
+        candidate_only = activation_policy == "suggest"
         positive_case = choose_case(
             skill_description_cases,
-            preferred_classes=["should-trigger", "manual-invocation-required", "explicit-handle"],
+            preferred_classes=(
+                ["should-trigger", "explicit-handle", "manual-invocation-required"]
+                if activation_policy == "invoke"
+                else ["manual-invocation-required", "explicit-handle", "should-trigger"]
+            ),
         ) or choose_case(
             skill_base_cases,
             preferred_modes=["implicit", "explicit"],
-            expected_behavior="invoke-skill",
+            expected_behavior=("invoke-skill" if activation_policy == "invoke" else None),
         )
         negative_case = choose_case(
             skill_description_cases,
@@ -268,8 +275,10 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
             "scope": catalog_entry["scope"],
             "status": catalog_entry["status"],
             "invocation_mode": catalog_entry["invocation_mode"],
+            "implicit_activation_policy": activation_policy,
             "allow_implicit_invocation": allow_implicit,
-            "manual_invocation_required": not allow_implicit,
+            "manual_invocation_required": manual_required,
+            "candidate_only": candidate_only,
             "project_overlay": catalog_entry["scope"] == "project",
             "summary": catalog_entry["summary"],
             "summary_short": short_summary(catalog_entry["summary"], 118),
@@ -302,6 +311,8 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
                 "cue_tokens": signal["cue_tokens"][:8],
                 "negative_phrases": signal["negative_cues"][:3],
                 "manual_invocation_required": signal["manual_invocation_required"],
+                "implicit_activation_policy": signal["implicit_activation_policy"],
+                "candidate_only": signal["candidate_only"],
                 "project_overlay": signal["project_overlay"],
                 "companions": signal["companions"][:3],
                 "description_sha256": signal["description_sha256"],
@@ -377,6 +388,7 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
                 "cues": band["cues"],
                 "skills": [entry["name"] for entry in skills],
                 "manual_only_skills": [entry["name"] for entry in skills if entry["manual_invocation_required"]],
+                "suggest_only_skills": [entry["name"] for entry in skills if entry["candidate_only"]],
                 "overlay_skills": [entry["name"] for entry in skills if entry["project_overlay"]],
             }
         )
@@ -390,6 +402,7 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
             "generated/local_adapter_manifest.json",
             "generated/skill_trigger_eval_cases.jsonl",
             "generated/description_trigger_eval_cases.jsonl",
+            "config/skill_policy_matrix.json",
             "config/tiny_router_skill_bands.json",
         ],
         "skill_count": len(signals),
@@ -399,7 +412,9 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
             {
                 "name": entry["name"],
                 "band": entry["band"],
+                "implicit_activation_policy": entry["implicit_activation_policy"],
                 "manual_invocation_required": entry["manual_invocation_required"],
+                "candidate_only": entry["candidate_only"],
                 "project_overlay": entry["project_overlay"],
                 "description_sha256": entry["description_sha256"],
             }

@@ -13,6 +13,7 @@ from pathlib import Path
 RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/build_catalog.py"),
     ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
+    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", "."),
     (
         "python",
         "scripts/build_openai_yaml_examples.py",
@@ -67,6 +68,7 @@ RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_support_resources.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"),
+    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_catalog.py", "--check"),

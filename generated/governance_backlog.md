@@ -67,33 +67,33 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 | name | status | lineage | governance decision | review path | reviewed revision | current revision | meaning changed | issues | synced |
 |---|---|---|---|---|---|---|---|---|---|
-| abyss-safe-infra-change | evaluated | published | - | docs/reviews/status-promotions/abyss-safe-infra-change.md | 0e1ee104cc89 | 0e1ee104cc89 | False | - | true |
-| abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | 4a6daab9622e | 4a6daab9622e | False | - | true |
-| aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | d73659d46c84 | d73659d46c84 | True | - | true |
-| aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | aaf152665bb6 | aaf152665bb6 | True | - | true |
-| aoa-automation-opportunity-scan | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-automation-opportunity-scan.md | 4f4be50c823b | 4f4be50c823b | True | - | true |
-| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | fa79051e3727 | fa79051e3727 | True | - | true |
-| aoa-checkpoint-closeout-bridge | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md | 08e3d7b2e558 | 08e3d7b2e558 | True | - | true |
-| aoa-commit-growth-seam | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-commit-growth-seam.md | d6dba9d156f8 | d6dba9d156f8 | True | - | true |
-| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | bc94632f32d5 | bc94632f32d5 | True | - | true |
-| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 0a168a1da64c | 0a168a1da64c | True | - | true |
-| aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | fcef34109123 | fcef34109123 | True | - | true |
-| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | c54d00def754 | c54d00def754 | True | - | true |
-| aoa-local-stack-bringup | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-local-stack-bringup.md | 962e39b9bcbe | 962e39b9bcbe | False | - | true |
-| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | 335bffcde5a2 | 335bffcde5a2 | True | - | true |
-| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 31a6de877187 | 31a6de877187 | True | - | true |
-| aoa-quest-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-quest-harvest.md | 03eadddc3c91 | 03eadddc3c91 | True | - | true |
-| aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | be0c1056c17a | be0c1056c17a | False | - | true |
-| aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 1ae7817b49fa | 1ae7817b49fa | True | - | true |
-| aoa-session-donor-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-donor-harvest.md | bf2ae17c72ae | bf2ae17c72ae | True | - | true |
-| aoa-session-progression-lift | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-progression-lift.md | 66b3b60852d1 | 66b3b60852d1 | True | - | true |
-| aoa-session-route-forks | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-route-forks.md | fcf35f22a7b4 | fcf35f22a7b4 | True | - | true |
-| aoa-session-self-diagnose | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-diagnose.md | 58723d297fc1 | 58723d297fc1 | True | - | true |
-| aoa-session-self-repair | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-repair.md | 2fb59f41edbc | 2fb59f41edbc | True | - | true |
-| aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | 5d049efb957c | 5d049efb957c | True | - | true |
-| aoa-summon | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-summon.md | 99c7d6287e66 | 99c7d6287e66 | True | - | true |
-| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | 91afd96b4d3a | 91afd96b4d3a | False | - | true |
-| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | 902b2bdcd7ba | 902b2bdcd7ba | False | - | true |
+| abyss-safe-infra-change | evaluated | published | - | docs/reviews/status-promotions/abyss-safe-infra-change.md | 5d927c2a034e | 5d927c2a034e | False | - | true |
+| abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | 67fab93e13ff | 67fab93e13ff | False | - | true |
+| aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | a2f205f916c0 | a2f205f916c0 | True | - | true |
+| aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | a9093bc2b6b3 | a9093bc2b6b3 | True | - | true |
+| aoa-automation-opportunity-scan | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-automation-opportunity-scan.md | a6095d450a17 | a6095d450a17 | True | - | true |
+| aoa-bounded-context-map | canonical | published | default_reference | docs/reviews/status-promotions/aoa-bounded-context-map.md | 6f7aa701df3c | 6f7aa701df3c | True | - | true |
+| aoa-checkpoint-closeout-bridge | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md | d934a5b62bfb | d934a5b62bfb | True | - | true |
+| aoa-commit-growth-seam | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-commit-growth-seam.md | 6326b5e4985a | 6326b5e4985a | True | - | true |
+| aoa-contract-test | canonical | published | default_reference | docs/reviews/status-promotions/aoa-contract-test.md | 4e13118e6094 | 4e13118e6094 | True | - | true |
+| aoa-core-logic-boundary | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-core-logic-boundary.md | 4c1fe5d5fc55 | 4c1fe5d5fc55 | True | - | true |
+| aoa-dry-run-first | canonical | published | default_reference | docs/reviews/status-promotions/aoa-dry-run-first.md | fe0e70f084f5 | fe0e70f084f5 | True | - | true |
+| aoa-invariant-coverage-audit | canonical | published | default_reference | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md | 9ec574c0f128 | 9ec574c0f128 | True | - | true |
+| aoa-local-stack-bringup | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-local-stack-bringup.md | c126c3a41720 | c126c3a41720 | False | - | true |
+| aoa-port-adapter-refactor | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-port-adapter-refactor.md | 1b87f9d61c48 | 1b87f9d61c48 | True | - | true |
+| aoa-property-invariants | canonical | published | default_reference | docs/reviews/status-promotions/aoa-property-invariants.md | 25d31fa59624 | 25d31fa59624 | True | - | true |
+| aoa-quest-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-quest-harvest.md | b9e9568a5f1c | b9e9568a5f1c | True | - | true |
+| aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | 882901e7a920 | 882901e7a920 | False | - | true |
+| aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 4a48a4e10b5d | 4a48a4e10b5d | True | - | true |
+| aoa-session-donor-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-donor-harvest.md | ba0484678a8d | ba0484678a8d | True | - | true |
+| aoa-session-progression-lift | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-progression-lift.md | 179c5348cd75 | 179c5348cd75 | True | - | true |
+| aoa-session-route-forks | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-route-forks.md | 2781c7c38bc3 | 2781c7c38bc3 | True | - | true |
+| aoa-session-self-diagnose | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-diagnose.md | d319db0ea57d | d319db0ea57d | True | - | true |
+| aoa-session-self-repair | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-repair.md | 17edbf208692 | 17edbf208692 | True | - | true |
+| aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | 7f6e64468a52 | 7f6e64468a52 | True | - | true |
+| aoa-summon | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-summon.md | 7e8c8fcae843 | 7e8c8fcae843 | True | - | true |
+| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | 8a902dd379b3 | 8a902dd379b3 | False | - | true |
+| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | 414fd4a607c3 | 414fd4a607c3 | False | - | true |
 
 ## Cohorts
 

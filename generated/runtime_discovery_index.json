@@ -16,7 +16,9 @@
       "path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "runtime",
       "recommended_install_scopes": [
         "repo"
@@ -119,7 +121,9 @@
       "path": ".agents/skills/abyss-sanitized-share/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "sharing",
       "recommended_install_scopes": [
         "repo"
@@ -217,7 +221,9 @@
       "path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo"
@@ -331,7 +337,9 @@
       "path": ".agents/skills/aoa-adr-write/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -428,7 +436,9 @@
       "path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
       "trust_posture": "explicit-risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -522,7 +532,9 @@
       "path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -636,7 +648,9 @@
       "path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -734,7 +748,9 @@
       "path": ".agents/skills/aoa-change-protocol/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -825,7 +841,9 @@
       "path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "candidate_only": true,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -935,7 +953,9 @@
       "path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -1039,7 +1059,9 @@
       "path": ".agents/skills/aoa-contract-test/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -1135,7 +1157,9 @@
       "path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -1233,7 +1257,9 @@
       "path": ".agents/skills/aoa-dry-run-first/SKILL.md",
       "trust_posture": "explicit-risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "runtime",
       "recommended_install_scopes": [
         "repo"
@@ -1337,7 +1363,9 @@
       "path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -1433,7 +1461,9 @@
       "path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
       "trust_posture": "explicit-risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "runtime",
       "recommended_install_scopes": [
         "repo"
@@ -1537,7 +1567,9 @@
       "path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -1639,7 +1671,9 @@
       "path": ".agents/skills/aoa-property-invariants/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -1742,7 +1776,9 @@
       "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -1861,7 +1897,9 @@
       "path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
       "trust_posture": "explicit-risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "runtime",
       "recommended_install_scopes": [
         "repo"
@@ -1957,7 +1995,9 @@
       "path": ".agents/skills/aoa-sanitized-share/SKILL.md",
       "trust_posture": "explicit-risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "sharing",
       "recommended_install_scopes": [
         "repo",
@@ -2060,7 +2100,9 @@
       "path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -2179,7 +2221,9 @@
       "path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -2282,7 +2326,9 @@
       "path": ".agents/skills/aoa-session-route-forks/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -2396,7 +2442,9 @@
       "path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -2503,7 +2551,9 @@
       "path": ".agents/skills/aoa-session-self-repair/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -2604,7 +2654,9 @@
       "path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -2701,12 +2753,14 @@
     {
       "name": "aoa-summon",
       "display_name": "AoA Summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
       "short_description": "Summon one bounded child route",
       "path": ".agents/skills/aoa-summon/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo",
@@ -2742,7 +2796,7 @@
         "bypass",
         "child",
         "closeout",
-        "codex",
+        "coding-agent",
         "contracts",
         "core",
         "defaults",
@@ -2764,7 +2818,7 @@
         "law",
         "layer",
         "leaf",
-        "local-first",
+        "local",
         "move",
         "named",
         "narrower",
@@ -2826,7 +2880,9 @@
       "path": ".agents/skills/aoa-tdd-slice/SKILL.md",
       "trust_posture": "portable-core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo",
@@ -2922,7 +2978,9 @@
       "path": ".agents/skills/atm10-change-protocol/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3017,7 +3075,9 @@
       "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo"
@@ -3116,7 +3176,9 @@
       "path": ".agents/skills/titan-approval-ledger/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3209,7 +3271,9 @@
       "path": ".agents/skills/titan-approval-loom/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3306,7 +3370,9 @@
       "path": ".agents/skills/titan-appserver-bridge/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3397,12 +3463,14 @@
     {
       "name": "titan-appserver-plan",
       "display_name": "Titan Appserver Plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
       "short_description": "Plan Titan bridge launch",
       "path": ".agents/skills/titan-appserver-plan/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3424,6 +3492,7 @@
       },
       "keywords": [
         "adaptation",
+        "agent",
         "agents",
         "and",
         "anti-patterns",
@@ -3433,7 +3502,7 @@
         "boundary",
         "bounded",
         "canonization",
-        "codex",
+        "coding",
         "confirmation",
         "contracts",
         "equivalent",
@@ -3447,6 +3516,7 @@
         "intent",
         "jsonl",
         "launch",
+        "local",
         "memory",
         "mutation",
         "needs",
@@ -3466,6 +3536,7 @@
         "sovereignty",
         "step",
         "technique",
+        "the",
         "titan",
         "traceability",
         "trigger",
@@ -3495,7 +3566,9 @@
       "path": ".agents/skills/titan-closeout/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo"
@@ -3586,7 +3659,9 @@
       "path": ".agents/skills/titan-console/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3682,7 +3757,9 @@
       "path": ".agents/skills/titan-event-replay/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo"
@@ -3776,7 +3853,9 @@
       "path": ".agents/skills/titan-memory-loom/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3868,7 +3947,9 @@
       "path": ".agents/skills/titan-memory-prune/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -3959,7 +4040,9 @@
       "path": ".agents/skills/titan-mutation-gate/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -4052,7 +4135,9 @@
       "path": ".agents/skills/titan-recall/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo"
@@ -4144,7 +4229,9 @@
       "path": ".agents/skills/titan-receipt/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -4237,7 +4324,9 @@
       "path": ".agents/skills/titan-runtime-gate/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"
@@ -4330,7 +4419,9 @@
       "path": ".agents/skills/titan-summon/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "none",
       "recommended_install_scopes": [
         "repo"
@@ -4422,7 +4513,9 @@
       "path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
       "trust_posture": "project-overlay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "candidate_only": false,
       "mutation_surface": "repo",
       "recommended_install_scopes": [
         "repo"

@@ -29,6 +29,9 @@ PROMOTION_PRESSURE_JSON_PATH = GENERATED_DIR / "skill_promotion_pressure.json"
 PROMOTION_PRESSURE_MARKDOWN_PATH = GENERATED_DIR / "skill_promotion_pressure.md"
 
 HARD_PROMOTION_FINDINGS = {
+    "implicit_policy_collapse",
+    "missing_portable_checks_examples",
+    "missing_runtime_card",
     "missing_candidate_review",
     "missing_do_not_use_case",
     "missing_do_not_use_snapshot",
@@ -36,6 +39,8 @@ HARD_PROMOTION_FINDINGS = {
     "missing_use_case",
     "missing_use_snapshot",
     "pending_markers_in_skill_body",
+    "unapproved_codex_source_wording",
+    "unsupported_canonical_promotion",
 }
 SESSION_EVENT_TYPES = {"event_msg", "response_item"}
 PROMOTION_BUCKETS = (

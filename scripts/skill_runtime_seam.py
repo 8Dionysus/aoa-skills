@@ -19,7 +19,7 @@ import yaml
 
 PROFILE = "codex-facing-wave-4-runtime-seam"
 ROOT = ".agents/skills"
-RESOURCE_DIR_NAMES = ("scripts", "references", "assets")
+RESOURCE_DIR_NAMES = ("scripts", "references", "assets", "checks", "examples")
 DEFAULT_WRAP_MODE = "structured"
 
 
@@ -279,6 +279,7 @@ def activate_payload(repo_root: pathlib.Path, indexes: dict[str, Any], skill_nam
             "compatibility": frontmatter.get("compatibility"),
             "metadata": frontmatter.get("metadata", {}),
             "allow_implicit_invocation": discovery["allow_implicit_invocation"],
+            "implicit_activation_policy": discovery.get("implicit_activation_policy"),
             "invocation_mode": discovery["invocation_mode"],
         },
         "activation": {

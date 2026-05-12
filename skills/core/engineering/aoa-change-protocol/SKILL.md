@@ -2,7 +2,7 @@
 name: aoa-change-protocol
 scope: core
 status: canonical
-summary: Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
+summary: Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
 invocation_mode: explicit-preferred
 technique_dependencies:
   - AOA-T-0001

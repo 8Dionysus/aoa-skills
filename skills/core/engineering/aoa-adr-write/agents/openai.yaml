@@ -1,5 +1,6 @@
 policy:
   allow_implicit_invocation: true
+  implicit_activation_policy: invoke
 notes:
-  - "Implicit invocation is currently allowed for bounded, non-trivial decision-rationale prompts."
-  - "Keep tiny, no-decision, source-of-truth, unresolved-boundary, and unreviewed evidence-hint cases routed away from this skill."
+- Implicit invocation is currently allowed for bounded, non-trivial decision-rationale prompts.
+- Keep tiny, no-decision, source-of-truth, unresolved-boundary, and unreviewed evidence-hint cases routed away from this skill.

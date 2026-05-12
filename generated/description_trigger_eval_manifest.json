@@ -4,6 +4,7 @@
   "source_files": [
     "config/portable_skill_overrides.json",
     "config/description_trigger_eval_policy.json",
+    "config/skill_policy_matrix.json",
     "generated/skill_trigger_eval_cases.jsonl",
     "generated/skill_trigger_collision_matrix.json",
     "generated/agent_skill_catalog.json",
@@ -15,15 +16,16 @@
   "total_cases": 205,
   "case_class_totals": {
     "explicit-handle": 46,
-    "manual-invocation-required": 48,
+    "manual-invocation-required": 56,
     "prefer-other-skill": 31,
     "should-not-trigger": 46,
-    "should-trigger": 34
+    "should-trigger": 26
   },
   "skills": [
     {
       "name": "abyss-safe-infra-change",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "e11ba355727d8866164caeb20c148111295c4486fdc868a212d164382ff4da55",
       "family": "overlay-vs-base-skill",
       "total_cases": 5,
@@ -43,6 +45,7 @@
     {
       "name": "abyss-sanitized-share",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "f05959672d5e9437dfb398491815a99a183875aa237d0c2e8b9b3e7e12423b84",
       "family": "overlay-vs-base-skill",
       "total_cases": 4,
@@ -62,20 +65,20 @@
     {
       "name": "abyss-self-diagnostic-spine",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "description_sha256": "3696a20155eab40023408030f20e145cab3ce3b95863f8a41e2eb22b88fe6cf9",
       "family": "overlay-vs-base-skill",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
+        "manual-invocation-required": 2,
         "prefer-other-skill": 1,
-        "should-not-trigger": 1,
-        "should-trigger": 2
+        "should-not-trigger": 1
       },
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "coverage_ok": true,
       "has_collision_coverage": true
@@ -83,6 +86,7 @@
     {
       "name": "aoa-adr-write",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "f1f4cb3d68b8da03557ea671e72452a3e883eb989f7e093686eee8b1dd73fc94",
       "family": "decision-and-doc-authority",
       "total_cases": 6,
@@ -104,6 +108,7 @@
     {
       "name": "aoa-approval-gate-check",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "0242f9151a193c21c95ac982a226f7884c162fb174127b45bcda65e2a6f99d0c",
       "family": "safety-and-mutation-gating",
       "total_cases": 5,
@@ -123,6 +128,7 @@
     {
       "name": "aoa-automation-opportunity-scan",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "b9b512a3f0c82a77b9ae897c7ab0cf03c2cdcf6385285a1bc2cd6f30628a4cd7",
       "family": "session-harvest-family",
       "total_cases": 5,
@@ -142,6 +148,7 @@
     {
       "name": "aoa-bounded-context-map",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "735d43d6ab5652fb304178f0e2c746584bbc1a7455aa2f63fbfac82688dd6a06",
       "family": "boundary-shaping",
       "total_cases": 9,
@@ -163,6 +170,7 @@
     {
       "name": "aoa-change-protocol",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
       "family": "change-execution-vs-test-first",
       "total_cases": 10,
@@ -184,18 +192,19 @@
     {
       "name": "aoa-checkpoint-closeout-bridge",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
       "description_sha256": "417755266b47a9c47b0556216821716b52acb98cd81173bd1d8556892cc00350",
       "family": "session-harvest-family",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
+        "manual-invocation-required": 2,
         "prefer-other-skill": 1,
-        "should-not-trigger": 1,
-        "should-trigger": 2
+        "should-not-trigger": 1
       },
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
+        "manual-invocation-required",
         "should-not-trigger",
         "prefer-other-skill"
       ],
@@ -205,6 +214,7 @@
     {
       "name": "aoa-commit-growth-seam",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "9d966375cec8d8bacf356d382c5866c18b41884e072affa5ebfae9a7e110ac12",
       "family": "change-execution-vs-test-first",
       "total_cases": 5,
@@ -225,6 +235,7 @@
     {
       "name": "aoa-contract-test",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "9bc2710777cc9b6a70a74df503ba7925b7dace767ee141b879357cd3106d440e",
       "family": "change-execution-vs-test-first",
       "total_cases": 5,
@@ -246,6 +257,7 @@
     {
       "name": "aoa-core-logic-boundary",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "664701e603b988ed90f66e269c021c532c9c0b6b02a3f03b21d71fc4e7ced112",
       "family": "boundary-shaping",
       "total_cases": 6,
@@ -267,6 +279,7 @@
     {
       "name": "aoa-dry-run-first",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "1a18696fe0798220e72c2582a17829dd4f8656cbd651bb2bae757039332b20bc",
       "family": "safety-and-mutation-gating",
       "total_cases": 4,
@@ -286,6 +299,7 @@
     {
       "name": "aoa-invariant-coverage-audit",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "65f3dc67fa694db586e881ca32ed304a246225c9fc3f3539094c3cd3115a8158",
       "family": "property-authoring-vs-coverage-audit",
       "total_cases": 5,
@@ -307,6 +321,7 @@
     {
       "name": "aoa-local-stack-bringup",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516",
       "family": "safety-and-mutation-gating",
       "total_cases": 4,
@@ -326,6 +341,7 @@
     {
       "name": "aoa-port-adapter-refactor",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "e47ea2a0e2307feeff4d3c14974e7115fbb99a6cf81a1a86c1514aa24055b508",
       "family": "boundary-shaping",
       "total_cases": 6,
@@ -347,6 +363,7 @@
     {
       "name": "aoa-property-invariants",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "2bf02fb83803f295670eb33af7b09d7dac89afd32857f82eb477db6f11dd2839",
       "family": "property-authoring-vs-coverage-audit",
       "total_cases": 5,
@@ -368,6 +385,7 @@
     {
       "name": "aoa-quest-harvest",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "331b01d53c27c36b8b793b7e32ac8a6630766b0bd1c2a47844ef4474f3a79dda",
       "family": "session-harvest-family",
       "total_cases": 6,
@@ -388,6 +406,7 @@
     {
       "name": "aoa-safe-infra-change",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "c9f9c2af3a97385a9810e4397887785b6f5602fb8d75fb6b333ae747c3b6f69a",
       "family": "overlay-vs-base-skill",
       "total_cases": 5,
@@ -408,6 +427,7 @@
     {
       "name": "aoa-sanitized-share",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "01a00dd8a32d808ea6fb153f7d95f7e7d98adcecb1f6f70b73bd4954142beeae",
       "family": "overlay-vs-base-skill",
       "total_cases": 4,
@@ -427,6 +447,7 @@
     {
       "name": "aoa-session-donor-harvest",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "12327a955b20f8d5256b711c4584c87a2cc9db0100d2083697cd4565c49801b2",
       "family": "session-harvest-family",
       "total_cases": 5,
@@ -447,6 +468,7 @@
     {
       "name": "aoa-session-progression-lift",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "2715c77c3d5ed19ab16fe4cde3e8dedcc4963fb2e140a14e8062c7e47cfe0961",
       "family": "session-harvest-family",
       "total_cases": 5,
@@ -467,6 +489,7 @@
     {
       "name": "aoa-session-route-forks",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "22824ec5994207065055b7d44afc266c05c0f8458f1d1794441823ae8f191ed9",
       "family": "session-harvest-family",
       "total_cases": 4,
@@ -486,6 +509,7 @@
     {
       "name": "aoa-session-self-diagnose",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed",
       "family": "session-harvest-family",
       "total_cases": 5,
@@ -506,6 +530,7 @@
     {
       "name": "aoa-session-self-repair",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869",
       "family": "session-harvest-family",
       "total_cases": 5,
@@ -526,6 +551,7 @@
     {
       "name": "aoa-source-of-truth-check",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "f1b3b6b5651315efb2e8182a557be4abad76a13eed6a4956674aa21d150d4fd0",
       "family": "decision-and-doc-authority",
       "total_cases": 7,
@@ -547,7 +573,8 @@
     {
       "name": "aoa-summon",
       "invocation_mode": "explicit-only",
-      "description_sha256": "711452125c6e7cb10c60f080098acdc081b5322852a6265f3018b7c555b639e4",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "6aa550228eb7918497730de730de520ba45831b6dd4e65736b8ee42fda4e416e",
       "family": "summon-and-route-governance",
       "total_cases": 4,
       "case_class_totals": {
@@ -566,6 +593,7 @@
     {
       "name": "aoa-tdd-slice",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "description_sha256": "0e24f2dda744301b9c7f5c75b499a1a15c1f754b41d90e6c1e4abd09547dbeb9",
       "family": "change-execution-vs-test-first",
       "total_cases": 6,
@@ -587,20 +615,20 @@
     {
       "name": "atm10-change-protocol",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "description_sha256": "e0f5533ad013bea96c55ee9d27f0cee6e1ccd9a0f7e88fc3466c5aa1f5cfe4ea",
       "family": "overlay-vs-base-skill",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
+        "manual-invocation-required": 2,
         "prefer-other-skill": 1,
-        "should-not-trigger": 1,
-        "should-trigger": 2
+        "should-not-trigger": 1
       },
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "coverage_ok": true,
       "has_collision_coverage": true
@@ -608,20 +636,20 @@
     {
       "name": "atm10-source-of-truth-check",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "description_sha256": "e0c744178c0b7c1f9e4f1bb39dc6b3b1338f8c77b8d1f66e5d989a8724a046d4",
       "family": "overlay-vs-base-skill",
       "total_cases": 5,
       "case_class_totals": {
         "explicit-handle": 1,
+        "manual-invocation-required": 2,
         "prefer-other-skill": 1,
-        "should-not-trigger": 1,
-        "should-trigger": 2
+        "should-not-trigger": 1
       },
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "coverage_ok": true,
       "has_collision_coverage": true
@@ -629,6 +657,7 @@
     {
       "name": "titan-approval-ledger",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "7a1fbafc8a05a66f8988eab275eb9ac58f25c1b6ec72fd9a4461931dfa065479",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -648,6 +677,7 @@
     {
       "name": "titan-approval-loom",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "65b6846ba3485f41b7664a7cc7433e6f50107396eb433393a4a7dc98f5692aae",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -667,6 +697,7 @@
     {
       "name": "titan-appserver-bridge",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "7931cb498844dc36e0c06e72a6953d5be5a9b7727f0e2d07c6edde8c119b6469",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -686,7 +717,8 @@
     {
       "name": "titan-appserver-plan",
       "invocation_mode": "explicit-only",
-      "description_sha256": "7d116ae2e69803393c55d55b56c487f78724a83be511deb6d0200f60d2681747",
+      "implicit_activation_policy": "manual",
+      "description_sha256": "f5b0c661510d6f255010fec85c145006f4897381396cc5c7ee9684a6385e85fa",
       "family": "titan-service-cohort",
       "total_cases": 3,
       "case_class_totals": {
@@ -705,6 +737,7 @@
     {
       "name": "titan-closeout",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "8cc9fed46ba8d565e65ae1b6d7391cfcb5cf6f5a922da8c2b1c9d7b63b22ed95",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -724,6 +757,7 @@
     {
       "name": "titan-console",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "793db2976fc27abcbde4b8d17732abcc1fed15b64b02e1ae574e59672a9e355f",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -743,6 +777,7 @@
     {
       "name": "titan-event-replay",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "a5631b0587ee599ec3a4e92239a8101048b42a137adc8afee35986ed900ea4c1",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -762,6 +797,7 @@
     {
       "name": "titan-memory-loom",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "13bc25dd0844652048efbad8ea76002559e4c21652b41adbdf571c44bafea657",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -781,6 +817,7 @@
     {
       "name": "titan-memory-prune",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "346cc2a0654847fcc80970756857e3d2e790cc9bb1178d0e3dfcd90b8df61514",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -800,6 +837,7 @@
     {
       "name": "titan-mutation-gate",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "8367dbe6e147dcf7304e3cec59b362d0896a3b42e9672514a0ee65afd91a3516",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -819,6 +857,7 @@
     {
       "name": "titan-recall",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "4e29f7405a252b190467113d8e2c420c23a6a0cb43981adc0e6405ae84e5dfc5",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -838,6 +877,7 @@
     {
       "name": "titan-receipt",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "d86c477424db249d64b6609c33ba6fef09c0ce2e5e4ef632f9dc2465c1d3b9d0",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -857,6 +897,7 @@
     {
       "name": "titan-runtime-gate",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "02adc76acaa054649bf3112b5c01009e20fd1f10357fc66c6c80edbbeeac9644",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -876,6 +917,7 @@
     {
       "name": "titan-summon",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "f75ab351a0b314fcd15f9d4e1fd5168a46ad5d4df722dd817c10e61ed23fb34e",
       "family": "titan-service-cohort",
       "total_cases": 3,
@@ -895,6 +937,7 @@
     {
       "name": "titan-thread-turn-binding",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "description_sha256": "695868fd6f199bb5f260fc896e71bb8a00255a723f4dcbbf3e804c7a6c2f538b",
       "family": "titan-service-cohort",
       "total_cases": 3,

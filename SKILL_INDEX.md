@@ -26,7 +26,7 @@ This file is the repository-wide map of public skills.
 | aoa-session-self-repair | core | scaffold | Codex skill for turning a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, and explicit owner-layer targets. |
 | aoa-session-progression-lift | core | scaffold | Codex skill for lifting reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints and no fake single-score authority. |
 | aoa-source-of-truth-check | core | canonical | Codex skill for checking whether canonical docs and repository guidance have clear ownership and do not silently conflict. |
-| aoa-summon | core | scaffold | Codex skill for delegating one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates, governed return, and checkpoint-aware reviewed closeout planning. |
+| aoa-summon | core | scaffold | Skill for delegating one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates, governed return, and checkpoint-aware reviewed closeout planning. |
 | abyss-safe-infra-change | project | evaluated | Thin abyss overlay for bounded infrastructure or configuration changes with repo-relative operational surfaces, explicit local authority, and reviewable risk notes. |
 | abyss-sanitized-share | project | evaluated | Thin abyss overlay for turning raw repo-local technical material into a shareable public-safe surface with explicit local thresholds and canonical placement notes. |
 | abyss-self-diagnostic-spine | project | scaffold | Thin abyss overlay for turning runtime-body evidence plus optional reviewed session references into one bounded diagnostic session artifact and an honest next-move class without granting silent self-mutation. |
@@ -39,7 +39,7 @@ This file is the repository-wide map of public skills.
 | titan-approval-ledger | project | scaffold | Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. |
 | titan-approval-loom | project | scaffold | Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. |
 | titan-appserver-bridge | project | scaffold | Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. |
-| titan-appserver-plan | project | scaffold | Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. |
+| titan-appserver-plan | project | scaffold | Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution. |
 | titan-closeout | project | scaffold | Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. |
 | titan-console | project | scaffold | Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. |
 | titan-event-replay | project | scaffold | Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. |

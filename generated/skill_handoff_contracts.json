@@ -2083,7 +2083,7 @@
     {
       "name": "aoa-summon",
       "display_name": "AoA Summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
       "invocation_mode": "explicit-only",
       "inputs": [
         "a quest passport with difficulty, risk, control mode, and delegate tier",
@@ -2093,9 +2093,9 @@
       ],
       "outputs": [
         "one summon decision with allowed or blocked posture",
-        "one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,",
+        "one chosen lane such as local leaf execution, local reviewed execution,",
         "`execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`",
-        "optional `codex_local_target`",
+        "optional local child target",
         "`return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and",
         "return receipt or acceptance expectation when the child crosses an actor,",
         "`closeout_required`, `checkpoint_required`, and `progression_required`"
@@ -2116,7 +2116,7 @@
       ],
       "contracts": [
         "this skill governs one bounded child route; it does not grant hidden",
-        "local Codex child targeting is the default first choice, not an afterthought",
+        "local coding-agent child targeting is the default first choice, not an afterthought",
         "branch choice must already be settled; unresolved route choice belongs to",
         "the SDK-owned E2E fixture at",
         "stress may narrow or block, but it may never widen authority",
@@ -2136,9 +2136,9 @@
       ],
       "provides_artifact_tags": [
         "one-summon-decision-with-allowed-or-blocked-posture",
-        "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed",
+        "one-chosen-lane-such-as-local-leaf-execution-local-reviewed-exec",
         "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
-        "optional-codex-local-target",
+        "optional-local-child-target",
         "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
         "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
         "closeout-required-checkpoint-required-and-progression-required"
@@ -2147,9 +2147,9 @@
         "from_skill": "aoa-summon",
         "produced_artifacts": [
           "one-summon-decision-with-allowed-or-blocked-posture",
-          "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed",
+          "one-chosen-lane-such-as-local-leaf-execution-local-reviewed-exec",
           "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
-          "optional-codex-local-target",
+          "optional-local-child-target",
           "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
           "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
           "closeout-required-checkpoint-required-and-progression-required"
@@ -2161,7 +2161,7 @@
         ],
         "contract_notes": [
           "this skill governs one bounded child route; it does not grant hidden",
-          "local Codex child targeting is the default first choice, not an afterthought",
+          "local coding-agent child targeting is the default first choice, not an afterthought",
           "branch choice must already be settled; unresolved route choice belongs to"
         ],
         "next_recommended_skills": []
@@ -2572,7 +2572,7 @@
     {
       "name": "titan-appserver-plan",
       "display_name": "Titan Appserver Plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
       "invocation_mode": "explicit-only",
       "inputs": [
         "workspace root",

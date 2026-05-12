@@ -15,6 +15,11 @@ from typing import Any
 import release_manifest_contract
 import yaml
 import build_catalog
+from skill_activation_policy import (
+    allow_implicit_invocation,
+    required_case_classes as activation_required_case_classes,
+    resolve_implicit_activation_policy,
+)
 import skill_layout
 
 from skill_runtime_guardrails import (
@@ -38,6 +43,7 @@ TARGETED_SUPPORT_SKILLS = {
 }
 SUPPORT_STANDARD_DIRS = ("scripts", "references", "assets")
 SUPPORT_LEGACY_DIRS = ("agents", "checks", "examples")
+PORTABLE_RESOURCE_DIRS = ("scripts", "references", "assets", "checks", "examples")
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 HEX_COLOR_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
 REQUIRED_METADATA = {
@@ -631,6 +637,21 @@ def main() -> int:
         allow_implicit = policy.get("allow_implicit_invocation")
         if not isinstance(allow_implicit, bool):
             errors.append(f"{openai_yaml}: policy.allow_implicit_invocation must be a boolean")
+        policy_matrix_entry = (policy_doc.get("skills") or {}).get(skill_dir.name)
+        try:
+            activation_policy = resolve_implicit_activation_policy(
+                policy_matrix_entry,
+                skill_dir.name,
+            )
+            expected_allow = allow_implicit_invocation(policy_matrix_entry, skill_dir.name)
+        except ValueError as exc:
+            errors.append(str(exc))
+            activation_policy = "manual"
+            expected_allow = False
+        if policy.get("implicit_activation_policy") != activation_policy:
+            errors.append(
+                f"{openai_yaml}: policy.implicit_activation_policy does not match config/skill_policy_matrix.json"
+            )
 
         dependency_tools: list[dict[str, Any]] = []
         dependencies = openai_doc.get("dependencies", {})
@@ -659,11 +680,10 @@ def main() -> int:
         if source_entry is None:
             errors.append(f"generated/skill_catalog.min.json missing {skill_dir.name}")
         if source_entry is not None:
-            expected_allow = source_invocation_mode != "explicit-only"
             if allow_implicit != expected_allow:
                 errors.append(
                     f"{openai_yaml}: policy.allow_implicit_invocation={allow_implicit} does not match "
-                    f"canonical invocation_mode={source_invocation_mode!r}"
+                    f"implicit_activation_policy={activation_policy!r}"
                 )
 
         agent_entry = agent_by_name.get(skill_dir.name)
@@ -676,6 +696,10 @@ def main() -> int:
                 errors.append(f"generated/agent_skill_catalog.json openai_config_path mismatch for {skill_dir.name}")
             if agent_entry.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/agent_skill_catalog.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if agent_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/agent_skill_catalog.json implicit_activation_policy mismatch for {skill_dir.name}")
+            if agent_entry.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/agent_skill_catalog.json candidate_only mismatch for {skill_dir.name}")
 
         export_entry = export_by_name.get(skill_dir.name)
         if export_entry is None:
@@ -683,6 +707,12 @@ def main() -> int:
         else:
             if export_entry.get("target_skill_path") != skill_md.relative_to(repo_root).as_posix():
                 errors.append(f"generated/portable_export_map.json target_skill_path mismatch for {skill_dir.name}")
+            if export_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/portable_export_map.json implicit_activation_policy mismatch for {skill_dir.name}")
+            if export_entry.get("allow_implicit_invocation") != allow_implicit:
+                errors.append(f"generated/portable_export_map.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if export_entry.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/portable_export_map.json candidate_only mismatch for {skill_dir.name}")
 
         manifest_entry = manifest_by_name.get(skill_dir.name)
         if manifest_entry is None:
@@ -690,14 +720,47 @@ def main() -> int:
         else:
             if manifest_entry.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/local_adapter_manifest.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if manifest_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/local_adapter_manifest.json implicit_activation_policy mismatch for {skill_dir.name}")
             if manifest_entry.get("trust_posture") != runtime_by_name.get(skill_dir.name, {}).get("trust_posture"):
                 errors.append(f"generated/local_adapter_manifest.json trust_posture mismatch for {skill_dir.name}")
             for allowlist_path in manifest_entry.get("allowlist_paths", []):
                 if not (repo_root / allowlist_path).exists():
                     errors.append(f"generated/local_adapter_manifest.json allowlist path does not exist: {allowlist_path}")
 
+        source_skill_root = skill_layout.skill_dir_path(repo_root, skill_dir.name)
+        for dirname in ("checks", "examples"):
+            canonical_dir = source_skill_root / dirname
+            if not canonical_dir.exists():
+                continue
+            exported_dir = skill_dir / dirname
+            if not exported_dir.exists():
+                errors.append(f"{skill_dir}: missing exported {dirname}/ from canonical source")
+                continue
+            expected_inventory = sorted(
+                f"{dirname}/{path.relative_to(canonical_dir).as_posix()}"
+                for path in canonical_dir.rglob("*")
+                if path.is_file()
+            )
+            actual_inventory = sorted(
+                str(path.relative_to(skill_dir).as_posix())
+                for path in exported_dir.rglob("*")
+                if path.is_file()
+            )
+            if actual_inventory != expected_inventory:
+                errors.append(f"{skill_dir}: exported {dirname}/ inventory does not match canonical source")
+            for owner_label, owner_entry in {
+                "generated/agent_skill_catalog.json": agent_entry,
+                "generated/portable_export_map.json": export_entry,
+                "generated/local_adapter_manifest.json": manifest_entry,
+            }.items():
+                if owner_entry is None:
+                    continue
+                resource_inventory = owner_entry.get("resource_inventory", {})
+                if resource_inventory.get(dirname) != expected_inventory:
+                    errors.append(f"{owner_label} {dirname} resource inventory mismatch for {skill_dir.name}")
+
         if skill_dir.name in TARGETED_SUPPORT_SKILLS:
-            source_skill_root = skill_layout.skill_dir_path(repo_root, skill_dir.name)
             support_manifest_entry = support_manifest_by_name.get(skill_dir.name)
             support_index_entry = support_index_by_name.get(skill_dir.name)
             support_bridge_entry = support_bridge_by_name.get(skill_dir.name)
@@ -808,8 +871,14 @@ def main() -> int:
         if runtime_entry is None:
             errors.append(f"generated/skill_runtime_contracts.json missing {skill_dir.name}")
         else:
+            if runtime_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/skill_runtime_contracts.json implicit_activation_policy mismatch for {skill_dir.name}")
             if runtime_entry.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/skill_runtime_contracts.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if runtime_entry.get("manual_invocation_required") != (activation_policy != "invoke"):
+                errors.append(f"generated/skill_runtime_contracts.json manual_invocation_required mismatch for {skill_dir.name}")
+            if runtime_entry.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/skill_runtime_contracts.json candidate_only mismatch for {skill_dir.name}")
             if runtime_entry.get("context_retention_ref") != f"generated/context_retention_manifest.json#{skill_dir.name}":
                 errors.append(f"generated/skill_runtime_contracts.json context_retention_ref mismatch for {skill_dir.name}")
 
@@ -819,9 +888,13 @@ def main() -> int:
         else:
             if source_entry and trust_entry.get("invocation_mode") != source_entry.get("invocation_mode"):
                 errors.append(f"generated/trust_policy_matrix.json invocation_mode mismatch for {skill_dir.name}")
-            requires_manual = source_entry and source_entry.get("invocation_mode") == "explicit-only"
+            if trust_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/trust_policy_matrix.json implicit_activation_policy mismatch for {skill_dir.name}")
+            requires_manual = activation_policy != "invoke"
             if trust_entry.get("requires_manual_invocation") != requires_manual:
                 errors.append(f"generated/trust_policy_matrix.json requires_manual_invocation mismatch for {skill_dir.name}")
+            if trust_entry.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/trust_policy_matrix.json candidate_only mismatch for {skill_dir.name}")
 
         context_entry = context_by_name.get(skill_dir.name)
         if context_entry is None:
@@ -882,6 +955,10 @@ def main() -> int:
                 errors.append(f"generated/runtime_discovery_index.json path mismatch for {skill_dir.name}")
             if discovery_entry.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/runtime_discovery_index.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if discovery_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/runtime_discovery_index.json implicit_activation_policy mismatch for {skill_dir.name}")
+            if discovery_entry.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/runtime_discovery_index.json candidate_only mismatch for {skill_dir.name}")
             if discovery_entry.get("invocation_mode") != frontmatter.get("metadata", {}).get("aoa_invocation_mode"):
                 errors.append(f"generated/runtime_discovery_index.json invocation_mode mismatch for {skill_dir.name}")
             if "instructions_markdown" in discovery_entry:
@@ -895,6 +972,8 @@ def main() -> int:
         else:
             if discovery_min_entry.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/runtime_discovery_index.min.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            if discovery_min_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/runtime_discovery_index.min.json implicit_activation_policy mismatch for {skill_dir.name}")
 
         disclosure_entry = disclosure_by_name.get(skill_dir.name)
         if disclosure_entry is None:
@@ -958,6 +1037,8 @@ def main() -> int:
                 errors.append(f"generated/skill_description_signals.json description_sha256 mismatch for {skill_dir.name}")
             if description_signal.get("invocation_mode") != source_invocation_mode:
                 errors.append(f"generated/skill_description_signals.json invocation_mode mismatch for {skill_dir.name}")
+            if description_signal.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/skill_description_signals.json implicit_activation_policy mismatch for {skill_dir.name}")
             if description_signal.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/skill_description_signals.json allow_implicit_invocation mismatch for {skill_dir.name}")
             if description_signal.get("family") != expected_family:
@@ -974,12 +1055,22 @@ def main() -> int:
         if description_manifest_entry is None:
             errors.append(f"generated/description_trigger_eval_manifest.json missing {skill_dir.name}")
         else:
-            required_classes = description_eval_policy["required_case_classes"].get(source_invocation_mode)
-            if required_classes is None:
-                errors.append(
-                    f"generated/description_trigger_eval_manifest.json cannot resolve required_case_classes for {skill_dir.name}"
+            try:
+                required_classes = list(
+                    activation_required_case_classes(
+                        description_eval_policy,
+                        activation_policy=activation_policy,
+                        invocation_mode=str(source_invocation_mode),
+                    )
                 )
-            elif description_manifest_entry.get("required_case_classes") != required_classes:
+            except ValueError as exc:
+                errors.append(
+                    f"generated/description_trigger_eval_manifest.json cannot resolve required_case_classes for {skill_dir.name}: {exc}"
+                )
+                required_classes = []
+            if description_manifest_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/description_trigger_eval_manifest.json implicit_activation_policy mismatch for {skill_dir.name}")
+            if required_classes and description_manifest_entry.get("required_case_classes") != required_classes:
                 errors.append(f"generated/description_trigger_eval_manifest.json required_case_classes mismatch for {skill_dir.name}")
             if description_signal is not None and description_manifest_entry.get("description_sha256") != description_signal.get("description_sha256"):
                 errors.append(f"generated/description_trigger_eval_manifest.json description_sha256 mismatch for {skill_dir.name}")
@@ -1009,10 +1100,14 @@ def main() -> int:
                 errors.append(f"generated/tiny_router_skill_signals.json band mismatch for {skill_dir.name}")
             if tiny_router_signal.get("invocation_mode") != source_invocation_mode:
                 errors.append(f"generated/tiny_router_skill_signals.json invocation_mode mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/tiny_router_skill_signals.json implicit_activation_policy mismatch for {skill_dir.name}")
             if tiny_router_signal.get("allow_implicit_invocation") != allow_implicit:
                 errors.append(f"generated/tiny_router_skill_signals.json allow_implicit_invocation mismatch for {skill_dir.name}")
-            if tiny_router_signal.get("manual_invocation_required") != (not allow_implicit):
+            if tiny_router_signal.get("manual_invocation_required") != (activation_policy != "invoke"):
                 errors.append(f"generated/tiny_router_skill_signals.json manual_invocation_required mismatch for {skill_dir.name}")
+            if tiny_router_signal.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/tiny_router_skill_signals.json candidate_only mismatch for {skill_dir.name}")
             if tiny_router_signal.get("project_overlay") != (source_scope == "project"):
                 errors.append(f"generated/tiny_router_skill_signals.json project_overlay mismatch for {skill_dir.name}")
             if tiny_router_signal.get("description") != description:
@@ -1032,8 +1127,12 @@ def main() -> int:
             expected_band = tiny_router_policy["skill_overrides"][skill_dir.name]["band"]
             if tiny_router_capsule.get("band") != expected_band:
                 errors.append(f"generated/tiny_router_capsules.min.json band mismatch for {skill_dir.name}")
-            if tiny_router_capsule.get("manual_invocation_required") != (not allow_implicit):
+            if tiny_router_capsule.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/tiny_router_capsules.min.json implicit_activation_policy mismatch for {skill_dir.name}")
+            if tiny_router_capsule.get("manual_invocation_required") != (activation_policy != "invoke"):
                 errors.append(f"generated/tiny_router_capsules.min.json manual_invocation_required mismatch for {skill_dir.name}")
+            if tiny_router_capsule.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/tiny_router_capsules.min.json candidate_only mismatch for {skill_dir.name}")
             if tiny_router_capsule.get("project_overlay") != (source_scope == "project"):
                 errors.append(f"generated/tiny_router_capsules.min.json project_overlay mismatch for {skill_dir.name}")
             if description_signal is not None and tiny_router_capsule.get("description_sha256") != description_signal.get("description_sha256"):
@@ -1045,8 +1144,12 @@ def main() -> int:
             expected_band = tiny_router_policy["skill_overrides"][skill_dir.name]["band"]
             if tiny_router_manifest_entry.get("band") != expected_band:
                 errors.append(f"generated/tiny_router_overlay_manifest.json band mismatch for {skill_dir.name}")
-            if tiny_router_manifest_entry.get("manual_invocation_required") != (not allow_implicit):
+            if tiny_router_manifest_entry.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"generated/tiny_router_overlay_manifest.json implicit_activation_policy mismatch for {skill_dir.name}")
+            if tiny_router_manifest_entry.get("manual_invocation_required") != (activation_policy != "invoke"):
                 errors.append(f"generated/tiny_router_overlay_manifest.json manual_invocation_required mismatch for {skill_dir.name}")
+            if tiny_router_manifest_entry.get("candidate_only") != (activation_policy == "suggest"):
+                errors.append(f"generated/tiny_router_overlay_manifest.json candidate_only mismatch for {skill_dir.name}")
             if tiny_router_manifest_entry.get("project_overlay") != (source_scope == "project"):
                 errors.append(f"generated/tiny_router_overlay_manifest.json project_overlay mismatch for {skill_dir.name}")
             if description_signal is not None and tiny_router_manifest_entry.get("description_sha256") != description_signal.get("description_sha256"):
@@ -1057,20 +1160,29 @@ def main() -> int:
             class_totals[case["case_class"]] = class_totals.get(case["case_class"], 0) + 1
             if description_signal is not None and case.get("description_sha256") != description_signal.get("description_sha256"):
                 errors.append(f"{case['case_id']}: description trigger case hash mismatch for {skill_dir.name}")
-            if case.get("case_class") == "should-trigger" and source_invocation_mode == "explicit-only":
-                errors.append(f"{case['case_id']}: explicit-only skill must not have should-trigger cases")
+            if case.get("implicit_activation_policy") != activation_policy:
+                errors.append(f"{case['case_id']}: description trigger activation policy mismatch for {skill_dir.name}")
+            if case.get("case_class") == "should-trigger" and activation_policy != "invoke":
+                errors.append(f"{case['case_id']}: non-invoke skill must not have should-trigger cases")
             if case.get("case_class") == "prefer-other-skill":
                 expected_skill = case.get("expected_skill")
                 if expected_skill == skill_dir.name:
                     errors.append(f"{case['case_id']}: prefer-other-skill must defer to another skill")
-        required_classes = description_eval_policy["required_case_classes"].get(source_invocation_mode)
-        if required_classes is None:
-            errors.append(f"{skill_dir.name}: unknown invocation_mode for description-trigger coverage")
-        else:
-            for case_class in required_classes:
-                if class_totals.get(case_class, 0) < 1:
-                    errors.append(f"{skill_dir.name}: missing description-trigger class {case_class!r}")
-        if router_entry is not None and router_entry.get("collision_family") and source_invocation_mode != "explicit-only":
+        try:
+            required_classes = list(
+                activation_required_case_classes(
+                    description_eval_policy,
+                    activation_policy=activation_policy,
+                    invocation_mode=str(source_invocation_mode),
+                )
+            )
+        except ValueError as exc:
+            errors.append(f"{skill_dir.name}: unknown description-trigger coverage policy: {exc}")
+            required_classes = []
+        for case_class in required_classes:
+            if class_totals.get(case_class, 0) < 1:
+                errors.append(f"{skill_dir.name}: missing description-trigger class {case_class!r}")
+        if router_entry is not None and router_entry.get("collision_family") and activation_policy != "manual":
             if class_totals.get("prefer-other-skill", 0) < 1:
                 errors.append(f"{skill_dir.name}: missing mirrored defer coverage in description-trigger cases")
 
@@ -1649,11 +1761,16 @@ def main() -> int:
         expected_manual_only = sorted(
             entry["name"] for entry in signal_entries if entry.get("manual_invocation_required")
         )
+        expected_suggest_only = sorted(
+            entry["name"] for entry in signal_entries if entry.get("candidate_only")
+        )
         expected_overlay = sorted(entry["name"] for entry in signal_entries if entry.get("project_overlay"))
         if band_entry.get("skills") != expected_band_skills:
             errors.append(f"generated/tiny_router_candidate_bands.json skills mismatch for band {band_id}")
         if sorted(band_entry.get("manual_only_skills", [])) != expected_manual_only:
             errors.append(f"generated/tiny_router_candidate_bands.json manual_only_skills mismatch for band {band_id}")
+        if sorted(band_entry.get("suggest_only_skills", [])) != expected_suggest_only:
+            errors.append(f"generated/tiny_router_candidate_bands.json suggest_only_skills mismatch for band {band_id}")
         if sorted(band_entry.get("overlay_skills", [])) != expected_overlay:
             errors.append(f"generated/tiny_router_candidate_bands.json overlay_skills mismatch for band {band_id}")
 

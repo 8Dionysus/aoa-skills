@@ -10,6 +10,7 @@
       "use_when_clause": "the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo",
       "do_not_use_clause": "when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "overlay-vs-base-skill",
       "families": [
@@ -52,6 +53,7 @@
       "use_when_clause": "the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo",
       "do_not_use_clause": "when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "overlay-vs-base-skill",
       "families": [
@@ -92,7 +94,8 @@
       "use_when_clause": "the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest",
       "do_not_use_clause": "when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
       "family": "overlay-vs-base-skill",
       "families": [
         "overlay-vs-base-skill"
@@ -112,9 +115,8 @@
       "default_prompt": "Use $abyss-self-diagnostic-spine to turn repo-relative abyss runtime evidence into one bounded diagnostic session artifact with an exit class and honest handoff toward diagnosis, repair, progression, or quest surfaces.",
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "base_case_ids": [
         "27-explicit",
@@ -137,6 +139,7 @@
       "use_when_clause": "structure, boundaries, tooling, or workflow expectations change and future contributors need to know why",
       "do_not_use_clause": "for tiny self-evident edits or when the real problem is source-of-truth ambiguity rather than decision rationale",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "decision-and-doc-authority",
       "families": [
@@ -175,6 +178,7 @@
       "use_when_clause": "a task may be destructive, security-sensitive, or operationally sensitive and the authority boundary is unclear",
       "do_not_use_clause": "for clearly low-risk work or when the main need is previewing a mutation rather than deciding whether it may proceed",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "safety-and-mutation-gating",
       "families": [
@@ -212,6 +216,7 @@
       "use_when_clause": "a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate",
       "do_not_use_clause": "for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
@@ -252,6 +257,7 @@
       "use_when_clause": "naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding",
       "do_not_use_clause": "for tiny local edits or when the boundary is already clear and the real task is contract validation",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "boundary-shaping",
       "families": [
@@ -296,6 +302,7 @@
       "use_when_clause": "code, config, docs, or operational surfaces change in a meaningful way and the task benefits from an explicit plan",
       "do_not_use_clause": "for trivial wording fixes or when a more specific risk skill fits better",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "change-execution-vs-test-first",
       "families": [
@@ -355,7 +362,8 @@
       "use_when_clause": "a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order",
       "do_not_use_clause": "for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
         "session-harvest-family",
@@ -375,7 +383,7 @@
       "default_prompt": "Use $aoa-checkpoint-closeout-bridge to build one closeout context from reviewed evidence, keep checkpoint hints provisional, and run donor harvest, progression lift, and quest harvest in order.",
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
+        "manual-invocation-required",
         "should-not-trigger",
         "prefer-other-skill"
       ],
@@ -400,6 +408,7 @@
       "use_when_clause": "a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding",
       "do_not_use_clause": "when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "change-execution-vs-test-first",
       "families": [
@@ -437,6 +446,7 @@
       "use_when_clause": "two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract",
       "do_not_use_clause": "for purely local changes or when the real need is invariant or property testing instead of boundary validation",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "change-execution-vs-test-first",
       "families": [
@@ -475,6 +485,7 @@
       "use_when_clause": "stable rules are mixed with wiring, the same logic repeats in several places, or reviews are muddy because the responsibility center is unclear",
       "do_not_use_clause": "for tiny isolated fixes or when the real task is introducing a port or adapter around a concrete dependency",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "boundary-shaping",
       "families": [
@@ -513,6 +524,7 @@
       "use_when_clause": "the action can be previewed and mistakes would be costly, such as delete, restore, migrate, or reconfigure operations",
       "do_not_use_clause": "for purely analytical tasks or when the primary question is whether execution is authorized at all",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "safety-and-mutation-gating",
       "families": [
@@ -549,6 +561,7 @@
       "use_when_clause": "you need to judge if current coverage proves a rule or only repeats examples, and you want the smallest bounded follow-up gaps",
       "do_not_use_clause": "when the invariant itself is still undefined or when the real task is to author new invariants rather than audit coverage",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "property-authoring-vs-coverage-audit",
       "families": [
@@ -585,6 +598,7 @@
       "use_when_clause": "profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch",
       "do_not_use_clause": "for remote deployment, pure diagnostics without launch intent, or generic infra-change work",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "safety-and-mutation-gating",
       "families": [
@@ -621,6 +635,7 @@
       "use_when_clause": "concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change",
       "do_not_use_clause": "for tiny local fixes or when there is no meaningful boundary to clarify",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "boundary-shaping",
       "families": [
@@ -659,6 +674,7 @@
       "use_when_clause": "correctness depends on behavior that should hold across many inputs or states, such as monotonicity, idempotency, conservation, or structural rules",
       "do_not_use_clause": "when no meaningful invariant is known yet or when the real task is auditing existing coverage instead of writing the properties",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "property-authoring-vs-coverage-audit",
       "families": [
@@ -695,6 +711,7 @@
       "use_when_clause": "a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface",
       "do_not_use_clause": "when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
@@ -740,6 +757,7 @@
       "use_when_clause": "a change has runtime or deployment implications and needs stronger discipline than a normal code edit",
       "do_not_use_clause": "for purely local code changes, or when the main need is approval classification or preview-first execution",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "overlay-vs-base-skill",
       "families": [
@@ -787,6 +805,7 @@
       "use_when_clause": "logs, configs, diagnostics, or reports may contain secrets, topology, or internal identifiers",
       "do_not_use_clause": "when the material is already clearly public-safe or when the task is to perform the underlying operational change",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "overlay-vs-base-skill",
       "families": [
@@ -831,6 +850,7 @@
       "use_when_clause": "the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened",
       "do_not_use_clause": "for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
@@ -872,6 +892,7 @@
       "use_when_clause": "a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority",
       "do_not_use_clause": "when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
@@ -913,6 +934,7 @@
       "use_when_clause": "a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation",
       "do_not_use_clause": "when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
@@ -955,6 +977,7 @@
       "use_when_clause": "the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur",
       "do_not_use_clause": "for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
@@ -997,6 +1020,7 @@
       "use_when_clause": "diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet",
       "do_not_use_clause": "without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "session-harvest-family",
       "families": [
@@ -1039,6 +1063,7 @@
       "use_when_clause": "docs overlap, conflict, or confuse contributors about which file to trust",
       "do_not_use_clause": "for purely code-local tasks or when authoritative files are already clear and the main need is decision rationale",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "decision-and-doc-authority",
       "families": [
@@ -1084,12 +1109,13 @@
     },
     {
       "name": "aoa-summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
-      "description_sha256": "711452125c6e7cb10c60f080098acdc081b5322852a6265f3018b7c555b639e4",
-      "summary_clause": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description_sha256": "6aa550228eb7918497730de730de520ba45831b6dd4e65736b8ee42fda4e416e",
+      "summary_clause": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout",
       "use_when_clause": "a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer",
       "do_not_use_clause": "when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "summon-and-route-governance",
       "families": [
@@ -1125,6 +1151,7 @@
       "use_when_clause": "a behavior change can be specified in tests before code and confidence or regression resistance matters",
       "do_not_use_clause": "for undefined exploratory work, one-off glue, or broader architectural restructuring",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
       "family": "change-execution-vs-test-first",
       "families": [
@@ -1165,7 +1192,8 @@
       "use_when_clause": "the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces",
       "do_not_use_clause": "when the base skill is sufficient without local adaptation or when a broader playbook is needed",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
       "family": "overlay-vs-base-skill",
       "families": [
         "overlay-vs-base-skill"
@@ -1183,9 +1211,8 @@
       "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes.",
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "base_case_ids": [
         "16-explicit",
@@ -1208,7 +1235,8 @@
       "use_when_clause": "contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo",
       "do_not_use_clause": "when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
       "family": "overlay-vs-base-skill",
       "families": [
         "overlay-vs-base-skill"
@@ -1228,9 +1256,8 @@
       "default_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.",
       "required_case_classes": [
         "explicit-handle",
-        "should-trigger",
-        "should-not-trigger",
-        "prefer-other-skill"
+        "manual-invocation-required",
+        "should-not-trigger"
       ],
       "base_case_ids": [
         "17-explicit",
@@ -1253,6 +1280,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1296,6 +1324,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1339,6 +1368,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1376,12 +1406,13 @@
     },
     {
       "name": "titan-appserver-plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
-      "description_sha256": "7d116ae2e69803393c55d55b56c487f78724a83be511deb6d0200f60d2681747",
-      "summary_clause": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description_sha256": "f5b0c661510d6f255010fec85c145006f4897381396cc5c7ee9684a6385e85fa",
+      "summary_clause": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent",
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1425,6 +1456,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1468,6 +1500,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1511,6 +1544,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1554,6 +1588,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1597,6 +1632,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1640,6 +1676,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1683,6 +1720,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1726,6 +1764,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1769,6 +1808,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1812,6 +1852,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [
@@ -1855,6 +1896,7 @@
       "use_when_clause": "a Titan service-cohort route needs this explicit bounded step",
       "do_not_use_clause": "for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
       "family": "titan-service-cohort",
       "families": [

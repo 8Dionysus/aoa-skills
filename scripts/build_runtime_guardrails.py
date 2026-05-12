@@ -89,7 +89,7 @@ def allowlist_templates(name: str) -> dict[str, list[str]]:
     repo_base = f"$REPO_ROOT/{rel_base}"
     user_base = f"$HOME/.agents/skills/{name}"
     admin_base = f"/etc/codex/skills/{name}"
-    suffixes = ["", "/scripts", "/references", "/assets"]
+    suffixes = ["", "/scripts", "/references", "/assets", "/checks", "/examples"]
     return {
         "repo": [repo_base + suffix for suffix in suffixes],
         "user": [user_base + suffix for suffix in suffixes],
@@ -106,6 +106,7 @@ def trust_gate_entry(entry: dict[str, Any], source_scope: str) -> dict[str, Any]
         "trust_posture": entry["trust_posture"],
         "mutation_surface": entry["mutation_surface"],
         "invocation_mode": entry["invocation_mode"],
+        "implicit_activation_policy": entry.get("implicit_activation_policy"),
         "recommended_install_scopes": entry.get("recommended_install_scopes", []),
         "scope_policy": {
             "repo": "require-trusted-repo",
@@ -137,11 +138,13 @@ def allowlist_entry(entry: dict[str, Any], source_scope: str) -> dict[str, Any]:
             f"{rel_base}/scripts",
             f"{rel_base}/references",
             f"{rel_base}/assets",
+            f"{rel_base}/checks",
+            f"{rel_base}/examples",
         ],
         "resource_inventory": entry.get("resource_inventory", {}),
         "notes": (
             "List bundled resources without eager reads. Local wrappers should allow read access "
-            "to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+            "to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
         ),
     }
 

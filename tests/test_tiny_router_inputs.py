@@ -51,8 +51,9 @@ class TinyRouterInputsTest(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in manifest["skills"]}, actual_names)
         self.assertEqual(manifest["skill_count"], len(actual_names))
 
-    def test_explicit_only_skills_stay_manual_and_project_skills_stay_overlays(self) -> None:
+    def test_non_invoke_skills_stay_manual_and_project_skills_stay_overlays(self) -> None:
         catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
+        policy_doc = load_json(REPO_ROOT / "config" / "skill_policy_matrix.json")
         overlay_readiness = load_json(REPO_ROOT / "generated" / "overlay_readiness.json")
         signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
         eval_cases = load_jsonl(REPO_ROOT / "generated" / "tiny_router_eval_cases.jsonl")
@@ -60,7 +61,9 @@ class TinyRouterInputsTest(unittest.TestCase):
 
         for entry in signals["skills"]:
             source = catalog_by_name[entry["name"]]
-            self.assertEqual(entry["manual_invocation_required"], source["invocation_mode"] == "explicit-only")
+            expected_activation = policy_doc["skills"][entry["name"]]["implicit_activation_policy"]
+            self.assertEqual(entry["manual_invocation_required"], expected_activation != "invoke")
+            self.assertEqual(entry["implicit_activation_policy"], expected_activation)
             self.assertEqual(entry["project_overlay"], source["scope"] == "project")
 
         overlay_cases = [case for case in eval_cases if case.get("repo_family_hint")]

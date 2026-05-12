@@ -313,7 +313,7 @@ Common expand sections:
 - status: `canonical`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/core/engineering/aoa-change-protocol/SKILL.md`
-- pick summary: Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
+- pick summary: Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.
 
 ### Use when
 
@@ -934,7 +934,7 @@ Common expand sections:
 ### Use when
 
 - a reviewed session ended with multiple plausible next moves
-- the operator or Codex needs explicit branch choices instead of a buried recommendation
+- the operator or local coding agent needs explicit branch choices instead of a buried recommendation
 - the next route may change owner repo, risk posture, or difficulty posture
 - the choice may include staying manual, becoming a bounded skill, becoming a playbook automation seed candidate, or waiting for prerequisite repair
 - the session needs quest-board legibility without pretending to be runtime state
@@ -1098,14 +1098,14 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-only`
 - skill path: `skills/core/session-growth/aoa-summon/SKILL.md`
-- pick summary: Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
+- pick summary: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
 
 ### Use when
 
 - a parent route already has a real anchor and named expected outputs
 - a narrower child actor would help through bounded review, evaluation, leaf implementation, or local verification
 - the child result must map back into return, closeout, and owner-publication surfaces
-- local Codex execution is the honest default unless a separate execution surface is actually required
+- local coding-agent execution is the honest default unless a separate execution surface is actually required
 
 ### Do not use when
 
@@ -1119,9 +1119,9 @@ Common expand sections:
 ### Object use shape
 
 - one summon decision with allowed or blocked posture
-- one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate
+- one chosen lane such as local leaf execution, local reviewed execution, remotereviewed, splitrequired, or humangate
 - executionsurface, cohortpattern, reasoncodes, and blockedactions
-- optional codexlocaltarget
+- optional local child target
 - returnplan, checkpointbridgeplan, memoexportplan, and ownerpublicationplan
 - return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary
 - closeoutrequired, checkpointrequired, and progressionrequired
@@ -1323,7 +1323,7 @@ Common expand sections:
 ### Do not use when
 
 - the request asks for hidden background agents
-- the bridge would execute Codex without an operator-visible plan
+- the bridge would start hidden agent execution without an operator-visible plan
 - role truth or memory truth would be moved into the bridge
 
 ### Object use shape
@@ -1345,7 +1345,7 @@ Common expand sections:
 - status: `scaffold`
 - invocation mode: `explicit-only`
 - skill path: `skills/project/titan/titan-appserver-plan/SKILL.md`
-- pick summary: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex.
+- pick summary: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.
 
 ### Use when
 

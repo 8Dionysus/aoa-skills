@@ -31,6 +31,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "runtime",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -51,6 +52,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "sharing",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -71,6 +73,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -91,6 +94,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -112,6 +116,7 @@
       "trust_posture": "explicit-risk",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -133,6 +138,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -154,6 +160,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -175,6 +182,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -196,6 +204,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -217,6 +226,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -238,6 +248,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -259,6 +270,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -280,6 +292,7 @@
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -300,6 +313,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -321,6 +335,7 @@
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -341,6 +356,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -362,6 +378,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -383,6 +400,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -404,6 +422,7 @@
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -424,6 +443,7 @@
       "trust_posture": "explicit-risk",
       "mutation_surface": "sharing",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -445,6 +465,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -466,6 +487,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -487,6 +509,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -508,6 +531,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -529,6 +553,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -550,6 +575,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -566,11 +592,12 @@
     {
       "name": "aoa-summon",
       "display_name": "AoA Summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
       "source_scope": "repo",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -592,6 +619,7 @@
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "recommended_install_scopes": [
         "repo",
         "user"
@@ -613,6 +641,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -633,6 +662,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -653,6 +683,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -673,6 +704,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -693,6 +725,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -708,11 +741,12 @@
     {
       "name": "titan-appserver-plan",
       "display_name": "Titan Appserver Plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
       "source_scope": "repo",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -733,6 +767,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -753,6 +788,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -773,6 +809,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -793,6 +830,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -813,6 +851,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -833,6 +872,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -853,6 +893,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -873,6 +914,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -893,6 +935,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -913,6 +956,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],
@@ -933,6 +977,7 @@
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "recommended_install_scopes": [
         "repo"
       ],

@@ -55,11 +55,11 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "should_trigger": [
+      "should_trigger": [],
+      "manual_invocation_required": [
         "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim.",
         "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
       ],
-      "manual_invocation_required": [],
       "negative_controls": [
         "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature."
       ],
@@ -199,11 +199,11 @@
         "aoa-session-progression-lift",
         "aoa-quest-harvest"
       ],
-      "should_trigger": [
+      "should_trigger": [],
+      "manual_invocation_required": [
         "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order.",
         "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
       ],
-      "manual_invocation_required": [],
       "negative_controls": [
         "The session is still active, there is no reviewed artifact yet, and the request is to let aoa closeout run silently decide donor, progression, and quest verdicts straight from checkpoint notes."
       ],
@@ -631,7 +631,7 @@
     },
     {
       "name": "aoa-summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
       "collision_family": "summon-and-route-governance",
       "competing_skills": [
         "aoa-session-route-forks",
@@ -640,7 +640,7 @@
       ],
       "should_trigger": [],
       "manual_invocation_required": [
-        "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer.",
+        "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer.",
         "The parent route already has a quest passport, a concrete anchor, and named outputs, and it needs one bounded local reviewer child to inspect a narrow package fix before the parent continues. Decide the honest child lane, gates, and return plan."
       ],
       "negative_controls": [
@@ -683,11 +683,11 @@
       "competing_skills": [
         "aoa-change-protocol"
       ],
-      "should_trigger": [
+      "should_trigger": [],
+      "manual_invocation_required": [
         "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces.",
         "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
       ],
-      "manual_invocation_required": [],
       "negative_controls": [
         "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough."
       ],
@@ -704,11 +704,11 @@
       "competing_skills": [
         "aoa-source-of-truth-check"
       ],
-      "should_trigger": [
+      "should_trigger": [],
+      "manual_invocation_required": [
         "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo.",
         "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
       ],
-      "manual_invocation_required": [],
       "negative_controls": [
         "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository."
       ],
@@ -768,12 +768,12 @@
     },
     {
       "name": "titan-appserver-plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
       "collision_family": "titan-service-cohort",
       "competing_skills": [],
       "should_trigger": [],
       "manual_invocation_required": [
-        "generate a JSONL Titan app-server launch plan without executing Codex or starting a server."
+        "generate a JSONL Titan app-server launch plan without starting hidden agent execution or starting a server."
       ],
       "negative_controls": [
         "The operator already asked to run the server directly, so planning-only posture is not enough without a separate execution gate."

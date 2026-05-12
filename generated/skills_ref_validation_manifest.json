@@ -284,7 +284,7 @@
         "validate",
         ".agents/skills/aoa-summon"
       ],
-      "description_sha256": "711452125c6e7cb10c60f080098acdc081b5322852a6265f3018b7c555b639e4"
+      "description_sha256": "6aa550228eb7918497730de730de520ba45831b6dd4e65736b8ee42fda4e416e"
     },
     {
       "skill_name": "aoa-tdd-slice",
@@ -354,7 +354,7 @@
         "validate",
         ".agents/skills/titan-appserver-plan"
       ],
-      "description_sha256": "7d116ae2e69803393c55d55b56c487f78724a83be511deb6d0200f60d2681747"
+      "description_sha256": "f5b0c661510d6f255010fec85c145006f4897381396cc5c7ee9684a6385e85fa"
     },
     {
       "skill_name": "titan-closeout",

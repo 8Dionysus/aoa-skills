@@ -1,6 +1,7 @@
 policy:
   allow_implicit_invocation: false
+  implicit_activation_policy: manual
 notes:
-  - Keep this skill explicit-only because diagnosis should stay a visible reviewed pass before any repair work.
-  - Preserve read-only posture and keep probable causes honest when evidence is thin.
-  - Mark checkpoint, closeout, generated, stale, or contested hints as posture-limited evidence rather than settled diagnosis.
+- Keep this skill explicit-only because diagnosis should stay a visible reviewed pass before any repair work.
+- Preserve read-only posture and keep probable causes honest when evidence is thin.
+- Mark checkpoint, closeout, generated, stale, or contested hints as posture-limited evidence rather than settled diagnosis.

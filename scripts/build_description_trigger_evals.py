@@ -15,6 +15,11 @@ import pathlib
 from typing import Any
 
 import release_manifest_contract
+from skill_activation_policy import (
+    allow_implicit_invocation,
+    required_case_classes as activation_required_case_classes,
+    resolve_implicit_activation_policy,
+)
 import yaml
 
 PROFILE = "codex-facing-wave-7-description-trigger-evals"
@@ -122,6 +127,8 @@ def main() -> int:
     collision_doc = load_json(generated_dir / "skill_trigger_collision_matrix.json")
     overrides_doc = load_json(config_dir / "portable_skill_overrides.json")
     policy_doc = load_json(config_dir / "description_trigger_eval_policy.json")
+    activation_doc = load_json(config_dir / "skill_policy_matrix.json")
+    activation_policy_by_name = activation_doc.get("skills", {})
 
     source_names = {entry["name"] for entry in catalog_doc.get("skills", [])}
     expected_sets = {
@@ -169,6 +176,7 @@ def main() -> int:
         "source",
         "description_sha256",
         "invocation_mode",
+        "implicit_activation_policy",
         "allow_implicit_invocation",
         "expected_behavior",
         "expected_skill",
@@ -189,8 +197,16 @@ def main() -> int:
         parts = split_description(description)
         description_sha = hashlib.sha256(description.encode("utf-8")).hexdigest()
         invocation_mode = entry.get("invocation_mode", "explicit-preferred")
-        allow_implicit = invocation_mode != "explicit-only"
-        required_case_classes = policy_doc["required_case_classes"][invocation_mode]
+        policy_entry = activation_policy_by_name.get(skill_name)
+        activation_policy = resolve_implicit_activation_policy(policy_entry, skill_name)
+        allow_implicit = allow_implicit_invocation(policy_entry, skill_name)
+        required_case_classes = list(
+            activation_required_case_classes(
+                policy_doc,
+                activation_policy=activation_policy,
+                invocation_mode=invocation_mode,
+            )
+        )
         families = sorted(family_by_skill.get(skill_name, []))
         family = families[0] if families else None
         signal = {
@@ -201,6 +217,7 @@ def main() -> int:
             "use_when_clause": parts["use_when_clause"],
             "do_not_use_clause": parts["do_not_use_clause"],
             "invocation_mode": invocation_mode,
+            "implicit_activation_policy": activation_policy,
             "allow_implicit_invocation": allow_implicit,
             "family": family,
             "families": families,
@@ -220,7 +237,13 @@ def main() -> int:
             ("adjacent-negative", "do-not-invoke-skill"): "should-not-trigger",
         }
         for base_case in base_cases_by_skill.get(skill_name, []):
-            key = (base_case.get("mode"), base_case.get("expected_behavior"))
+            base_mode = base_case.get("mode")
+            expected_behavior = base_case["expected_behavior"]
+            expected_skill = base_case.get("expected_skill")
+            if base_mode == "implicit" and expected_behavior == "invoke-skill" and not allow_implicit:
+                expected_behavior = "manual-invocation-required"
+                expected_skill = None
+            key = (base_mode, expected_behavior)
             case_class = mode_to_case_class.get(key)
             if case_class is None:
                 continue
@@ -234,9 +257,10 @@ def main() -> int:
                     "source": "portable-description",
                     "description_sha256": description_sha,
                     "invocation_mode": invocation_mode,
+                    "implicit_activation_policy": activation_policy,
                     "allow_implicit_invocation": allow_implicit,
-                    "expected_behavior": base_case["expected_behavior"],
-                    "expected_skill": base_case.get("expected_skill"),
+                    "expected_behavior": expected_behavior,
+                    "expected_skill": expected_skill,
                     "competing_skills": base_case.get("competing_skills", []),
                     "prompt_origin": "wave-2-trigger-seed",
                     "prompt": base_case["prompt"],
@@ -251,6 +275,11 @@ def main() -> int:
         skill_name = collision_case["skill_name"]
         signal = signals_by_name[skill_name]
         primary_case_id = f"desc-collision-{collision_case['case_id']}"
+        expected_behavior = collision_case["expected_behavior"]
+        expected_skill = collision_case.get("expected_skill")
+        if expected_behavior == "invoke-skill" and not signal["allow_implicit_invocation"]:
+            expected_behavior = "manual-invocation-required"
+            expected_skill = None
         append_case(
             {
                 "case_id": primary_case_id,
@@ -259,15 +288,16 @@ def main() -> int:
                 "family": signal.get("family"),
                 "case_class": (
                     "manual-invocation-required"
-                    if collision_case.get("expected_behavior") == "manual-invocation-required"
+                    if expected_behavior == "manual-invocation-required"
                     else "should-trigger"
                 ),
                 "source": "collision-family",
                 "description_sha256": signal["description_sha256"],
                 "invocation_mode": signal["invocation_mode"],
+                "implicit_activation_policy": signal["implicit_activation_policy"],
                 "allow_implicit_invocation": signal["allow_implicit_invocation"],
-                "expected_behavior": collision_case["expected_behavior"],
-                "expected_skill": collision_case.get("expected_skill"),
+                "expected_behavior": expected_behavior,
+                "expected_skill": expected_skill,
                 "competing_skills": collision_case.get("competing_skills", []),
                 "prompt_origin": "collision-matrix",
                 "prompt": collision_case["prompt"],
@@ -297,6 +327,7 @@ def main() -> int:
                     "source": "mirrored-collision-family",
                     "description_sha256": competing_signal["description_sha256"],
                     "invocation_mode": competing_signal["invocation_mode"],
+                    "implicit_activation_policy": competing_signal["implicit_activation_policy"],
                     "allow_implicit_invocation": competing_signal["allow_implicit_invocation"],
                     "expected_behavior": "defer-to-other-skill",
                     "expected_skill": collision_case["expected_skill"],
@@ -329,6 +360,7 @@ def main() -> int:
             {
                 "name": signal["name"],
                 "invocation_mode": signal["invocation_mode"],
+                "implicit_activation_policy": signal["implicit_activation_policy"],
                 "description_sha256": signal["description_sha256"],
                 "family": signal.get("family"),
                 "total_cases": len(cases),
@@ -345,6 +377,7 @@ def main() -> int:
         "source_files": [
             "config/portable_skill_overrides.json",
             "config/description_trigger_eval_policy.json",
+            "config/skill_policy_matrix.json",
             "generated/skill_trigger_eval_cases.jsonl",
             "generated/skill_trigger_collision_matrix.json",
             "generated/agent_skill_catalog.json",

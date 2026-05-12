@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from skill_activation_policy import allow_implicit_invocation, resolve_implicit_activation_policy
+
 
 PROFILE = "codex-facing-wave-9-tiny-router-inputs"
 REQUIRED_GENERATED_FILES = (
@@ -44,6 +46,8 @@ def validate(repo_root: Path) -> dict[str, Any]:
         return {"status": "fail", "errors": errors, "warnings": warnings}
 
     policy = load_json(config_path)
+    activation_policy_path = repo_root / "config" / "skill_policy_matrix.json"
+    activation_policy_doc = load_json(activation_policy_path) if activation_policy_path.exists() else {"skills": {}}
     skill_catalog = load_json(repo_root / "generated" / "skill_catalog.min.json")
     description_signals = load_json(repo_root / "generated" / "skill_description_signals.json")
     description_eval_cases = load_jsonl(repo_root / "generated" / "description_trigger_eval_cases.jsonl")
@@ -70,6 +74,7 @@ def validate(repo_root: Path) -> dict[str, Any]:
     capsule_by_name = {entry["name"]: entry for entry in capsules.get("skills", [])}
     manifest_by_name = {entry["name"]: entry for entry in manifest.get("skills", [])}
     policy_names = set((policy.get("skill_overrides") or {}).keys())
+    activation_policy_by_name = activation_policy_doc.get("skills", {})
     defer_case_by_source_and_prompt = {
         (case["skill_name"], case["prompt"]): case
         for case in description_eval_cases
@@ -162,7 +167,15 @@ def validate(repo_root: Path) -> dict[str, Any]:
             continue
 
         expected_band = policy["skill_overrides"][skill_name]["band"]
-        expected_manual = source_entry["invocation_mode"] == "explicit-only"
+        policy_entry = activation_policy_by_name.get(skill_name) or {
+            "implicit_activation_policy": signal.get("implicit_activation_policy")
+            or description_entry.get("implicit_activation_policy")
+            or ("invoke" if signal.get("allow_implicit_invocation") else "manual")
+        }
+        expected_activation = resolve_implicit_activation_policy(policy_entry, skill_name)
+        expected_allow = allow_implicit_invocation(policy_entry, skill_name)
+        expected_manual = expected_activation != "invoke"
+        expected_candidate_only = expected_activation == "suggest"
         expected_overlay = source_entry["scope"] == "project"
         if signal.get("band") != expected_band:
             errors.append(f"{skill_name}: tiny_router_skill_signals.json band mismatch")
@@ -172,8 +185,20 @@ def validate(repo_root: Path) -> dict[str, Any]:
             errors.append(f"{skill_name}: tiny_router_skill_signals.json manual flag mismatch")
         if capsule.get("manual_invocation_required") != expected_manual:
             errors.append(f"{skill_name}: tiny_router_capsules.min.json manual flag mismatch")
-        if signal.get("allow_implicit_invocation") != (not expected_manual):
+        if signal.get("allow_implicit_invocation") != expected_allow:
             errors.append(f"{skill_name}: tiny_router_skill_signals.json implicit flag mismatch")
+        if signal.get("implicit_activation_policy") != expected_activation:
+            errors.append(f"{skill_name}: tiny_router_skill_signals.json activation policy mismatch")
+        if capsule.get("implicit_activation_policy") != expected_activation:
+            errors.append(f"{skill_name}: tiny_router_capsules.min.json activation policy mismatch")
+        if manifest_entry.get("implicit_activation_policy") != expected_activation:
+            errors.append(f"{skill_name}: tiny_router_overlay_manifest.json activation policy mismatch")
+        if signal.get("candidate_only") != expected_candidate_only:
+            errors.append(f"{skill_name}: tiny_router_skill_signals.json candidate_only mismatch")
+        if capsule.get("candidate_only") != expected_candidate_only:
+            errors.append(f"{skill_name}: tiny_router_capsules.min.json candidate_only mismatch")
+        if manifest_entry.get("candidate_only") != expected_candidate_only:
+            errors.append(f"{skill_name}: tiny_router_overlay_manifest.json candidate_only mismatch")
         if signal.get("project_overlay") != expected_overlay:
             errors.append(f"{skill_name}: tiny_router_skill_signals.json project_overlay mismatch")
         if capsule.get("project_overlay") != expected_overlay:
@@ -198,6 +223,11 @@ def validate(repo_root: Path) -> dict[str, Any]:
             for entry in signals.get("skills", [])
             if entry["band"] == band_id and entry["manual_invocation_required"]
         )
+        expected_suggest = sorted(
+            entry["name"]
+            for entry in signals.get("skills", [])
+            if entry["band"] == band_id and entry.get("candidate_only")
+        )
         expected_overlay = sorted(
             entry["name"]
             for entry in signals.get("skills", [])
@@ -207,6 +237,8 @@ def validate(repo_root: Path) -> dict[str, Any]:
             errors.append(f"{band_id}: tiny_router_candidate_bands.json skills mismatch")
         if sorted(band_entry.get("manual_only_skills", [])) != expected_manual:
             errors.append(f"{band_id}: tiny_router_candidate_bands.json manual_only_skills mismatch")
+        if sorted(band_entry.get("suggest_only_skills", [])) != expected_suggest:
+            errors.append(f"{band_id}: tiny_router_candidate_bands.json suggest_only_skills mismatch")
         if sorted(band_entry.get("overlay_skills", [])) != expected_overlay:
             errors.append(f"{band_id}: tiny_router_candidate_bands.json overlay_skills mismatch")
 

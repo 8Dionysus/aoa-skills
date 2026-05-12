@@ -11,7 +11,7 @@ name: aoa-commit-growth-seam
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `d6dba9d156f8`
+- reviewed revision: `6326b5e4985a`
 
 ## Target status
 
