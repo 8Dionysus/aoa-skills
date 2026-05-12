@@ -53,8 +53,8 @@
         "agents": [
           {
             "path": "openai.yaml",
-            "sha256": "2867453909e8897dfcc963fee94f5c3a1d8e0a36981550871c459473ee57b1b9",
-            "bytes": "165"
+            "sha256": "d6b1aec6668a6aaac5e0dcab7856c77ad09bc0d4c10fa85b024aa3614ce6f48d",
+            "bytes": "200"
           }
         ],
         "checks": [
@@ -119,8 +119,8 @@
         "agents": [
           {
             "path": "openai.yaml",
-            "sha256": "99c31f0f7f9b19fbe4b3819b26dafb900d75217a109d0eca3f7d59bdecf97241",
-            "bytes": "212"
+            "sha256": "a8d083465400b26565d50ad8a8fa8bca3e35ba2779153982141fa72295e0e395",
+            "bytes": "247"
           }
         ],
         "checks": [
@@ -185,8 +185,8 @@
         "agents": [
           {
             "path": "openai.yaml",
-            "sha256": "cf787ec2104b1ca7c2b70e28e1ebe98598e68c3197e2a5af66e9f7cc503277f9",
-            "bytes": "180"
+            "sha256": "aa9a491fa38f4471793d80ec921d08bc952a8d93299acdda18fb0281731b9925",
+            "bytes": "215"
           }
         ],
         "checks": [

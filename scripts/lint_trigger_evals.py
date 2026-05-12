@@ -9,6 +9,8 @@ import pathlib
 import sys
 from typing import Any
 
+from skill_activation_policy import allow_implicit_invocation, resolve_implicit_activation_policy
+
 
 def load_json(path: pathlib.Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -31,7 +33,9 @@ def main() -> int:
 
     repo_root = pathlib.Path(args.repo_root).resolve()
     generated_dir = repo_root / "generated"
+    config_dir = repo_root / "config"
     source_catalog = load_json(generated_dir / "skill_catalog.min.json")
+    policy_doc = load_json(config_dir / "skill_policy_matrix.json")
     cases = load_jsonl(generated_dir / "skill_trigger_eval_cases.jsonl")
     collision_doc = load_json(generated_dir / "skill_trigger_collision_matrix.json")
 
@@ -52,7 +56,9 @@ def main() -> int:
                 errors.append(f"case {case.get('case_id')}: unknown competing skill {competing_skill!r}")
 
     for skill_name, entry in skills.items():
-        invocation_mode = entry.get("invocation_mode")
+        policy_entry = policy_doc.get("skills", {}).get(skill_name)
+        activation_policy = resolve_implicit_activation_policy(policy_entry, skill_name)
+        allow_implicit = allow_implicit_invocation(policy_entry, skill_name)
         skill_cases = case_index[skill_name]
 
         explicit_positive = [
@@ -75,16 +81,16 @@ def main() -> int:
             if case.get("mode") == "implicit" and case.get("expected_behavior") == "manual-invocation-required"
         ]
 
-        if invocation_mode == "explicit-only":
+        if not allow_implicit:
             if implicit_positive:
-                errors.append(f"{skill_name}: explicit-only skills must not have implicit positive trigger cases")
+                errors.append(f"{skill_name}: non-invoke skills must not have implicit positive trigger cases")
             if not implicit_manual:
-                errors.append(f"{skill_name}: explicit-only skills need an implicit manual-invocation-required case")
+                errors.append(f"{skill_name}: non-invoke skills need an implicit manual-invocation-required case")
         else:
             if not implicit_positive:
-                errors.append(f"{skill_name}: implicit-preferred skills need an implicit positive trigger case")
+                errors.append(f"{skill_name}: invoke-policy skills need an implicit positive trigger case")
             if implicit_manual:
-                errors.append(f"{skill_name}: implicit-preferred skills should not require manual invocation in implicit base cases")
+                errors.append(f"{skill_name}: invoke-policy skills should not require manual invocation in implicit base cases")
 
     family_skills = {
         skill_name

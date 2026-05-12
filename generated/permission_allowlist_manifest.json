@@ -21,26 +21,34 @@
           "$REPO_ROOT/.agents/skills/abyss-safe-infra-change",
           "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/scripts",
           "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/references",
-          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/assets"
+          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/assets",
+          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/checks",
+          "$REPO_ROOT/.agents/skills/abyss-safe-infra-change/examples"
         ],
         "user": [
           "$HOME/.agents/skills/abyss-safe-infra-change",
           "$HOME/.agents/skills/abyss-safe-infra-change/scripts",
           "$HOME/.agents/skills/abyss-safe-infra-change/references",
-          "$HOME/.agents/skills/abyss-safe-infra-change/assets"
+          "$HOME/.agents/skills/abyss-safe-infra-change/assets",
+          "$HOME/.agents/skills/abyss-safe-infra-change/checks",
+          "$HOME/.agents/skills/abyss-safe-infra-change/examples"
         ],
         "admin": [
           "/etc/codex/skills/abyss-safe-infra-change",
           "/etc/codex/skills/abyss-safe-infra-change/scripts",
           "/etc/codex/skills/abyss-safe-infra-change/references",
-          "/etc/codex/skills/abyss-safe-infra-change/assets"
+          "/etc/codex/skills/abyss-safe-infra-change/assets",
+          "/etc/codex/skills/abyss-safe-infra-change/checks",
+          "/etc/codex/skills/abyss-safe-infra-change/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/abyss-safe-infra-change",
         ".agents/skills/abyss-safe-infra-change/scripts",
         ".agents/skills/abyss-safe-infra-change/references",
-        ".agents/skills/abyss-safe-infra-change/assets"
+        ".agents/skills/abyss-safe-infra-change/assets",
+        ".agents/skills/abyss-safe-infra-change/checks",
+        ".agents/skills/abyss-safe-infra-change/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -48,9 +56,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "abyss-sanitized-share",
@@ -64,26 +78,34 @@
           "$REPO_ROOT/.agents/skills/abyss-sanitized-share",
           "$REPO_ROOT/.agents/skills/abyss-sanitized-share/scripts",
           "$REPO_ROOT/.agents/skills/abyss-sanitized-share/references",
-          "$REPO_ROOT/.agents/skills/abyss-sanitized-share/assets"
+          "$REPO_ROOT/.agents/skills/abyss-sanitized-share/assets",
+          "$REPO_ROOT/.agents/skills/abyss-sanitized-share/checks",
+          "$REPO_ROOT/.agents/skills/abyss-sanitized-share/examples"
         ],
         "user": [
           "$HOME/.agents/skills/abyss-sanitized-share",
           "$HOME/.agents/skills/abyss-sanitized-share/scripts",
           "$HOME/.agents/skills/abyss-sanitized-share/references",
-          "$HOME/.agents/skills/abyss-sanitized-share/assets"
+          "$HOME/.agents/skills/abyss-sanitized-share/assets",
+          "$HOME/.agents/skills/abyss-sanitized-share/checks",
+          "$HOME/.agents/skills/abyss-sanitized-share/examples"
         ],
         "admin": [
           "/etc/codex/skills/abyss-sanitized-share",
           "/etc/codex/skills/abyss-sanitized-share/scripts",
           "/etc/codex/skills/abyss-sanitized-share/references",
-          "/etc/codex/skills/abyss-sanitized-share/assets"
+          "/etc/codex/skills/abyss-sanitized-share/assets",
+          "/etc/codex/skills/abyss-sanitized-share/checks",
+          "/etc/codex/skills/abyss-sanitized-share/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/abyss-sanitized-share",
         ".agents/skills/abyss-sanitized-share/scripts",
         ".agents/skills/abyss-sanitized-share/references",
-        ".agents/skills/abyss-sanitized-share/assets"
+        ".agents/skills/abyss-sanitized-share/assets",
+        ".agents/skills/abyss-sanitized-share/checks",
+        ".agents/skills/abyss-sanitized-share/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -91,9 +113,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "abyss-self-diagnostic-spine",
@@ -107,26 +135,34 @@
           "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine",
           "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/scripts",
           "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/references",
-          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/assets"
+          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/assets",
+          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/checks",
+          "$REPO_ROOT/.agents/skills/abyss-self-diagnostic-spine/examples"
         ],
         "user": [
           "$HOME/.agents/skills/abyss-self-diagnostic-spine",
           "$HOME/.agents/skills/abyss-self-diagnostic-spine/scripts",
           "$HOME/.agents/skills/abyss-self-diagnostic-spine/references",
-          "$HOME/.agents/skills/abyss-self-diagnostic-spine/assets"
+          "$HOME/.agents/skills/abyss-self-diagnostic-spine/assets",
+          "$HOME/.agents/skills/abyss-self-diagnostic-spine/checks",
+          "$HOME/.agents/skills/abyss-self-diagnostic-spine/examples"
         ],
         "admin": [
           "/etc/codex/skills/abyss-self-diagnostic-spine",
           "/etc/codex/skills/abyss-self-diagnostic-spine/scripts",
           "/etc/codex/skills/abyss-self-diagnostic-spine/references",
-          "/etc/codex/skills/abyss-self-diagnostic-spine/assets"
+          "/etc/codex/skills/abyss-self-diagnostic-spine/assets",
+          "/etc/codex/skills/abyss-self-diagnostic-spine/checks",
+          "/etc/codex/skills/abyss-self-diagnostic-spine/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/abyss-self-diagnostic-spine",
         ".agents/skills/abyss-self-diagnostic-spine/scripts",
         ".agents/skills/abyss-self-diagnostic-spine/references",
-        ".agents/skills/abyss-self-diagnostic-spine/assets"
+        ".agents/skills/abyss-self-diagnostic-spine/assets",
+        ".agents/skills/abyss-self-diagnostic-spine/checks",
+        ".agents/skills/abyss-self-diagnostic-spine/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -134,9 +170,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-adr-write",
@@ -150,26 +192,34 @@
           "$REPO_ROOT/.agents/skills/aoa-adr-write",
           "$REPO_ROOT/.agents/skills/aoa-adr-write/scripts",
           "$REPO_ROOT/.agents/skills/aoa-adr-write/references",
-          "$REPO_ROOT/.agents/skills/aoa-adr-write/assets"
+          "$REPO_ROOT/.agents/skills/aoa-adr-write/assets",
+          "$REPO_ROOT/.agents/skills/aoa-adr-write/checks",
+          "$REPO_ROOT/.agents/skills/aoa-adr-write/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-adr-write",
           "$HOME/.agents/skills/aoa-adr-write/scripts",
           "$HOME/.agents/skills/aoa-adr-write/references",
-          "$HOME/.agents/skills/aoa-adr-write/assets"
+          "$HOME/.agents/skills/aoa-adr-write/assets",
+          "$HOME/.agents/skills/aoa-adr-write/checks",
+          "$HOME/.agents/skills/aoa-adr-write/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-adr-write",
           "/etc/codex/skills/aoa-adr-write/scripts",
           "/etc/codex/skills/aoa-adr-write/references",
-          "/etc/codex/skills/aoa-adr-write/assets"
+          "/etc/codex/skills/aoa-adr-write/assets",
+          "/etc/codex/skills/aoa-adr-write/checks",
+          "/etc/codex/skills/aoa-adr-write/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-adr-write",
         ".agents/skills/aoa-adr-write/scripts",
         ".agents/skills/aoa-adr-write/references",
-        ".agents/skills/aoa-adr-write/assets"
+        ".agents/skills/aoa-adr-write/assets",
+        ".agents/skills/aoa-adr-write/checks",
+        ".agents/skills/aoa-adr-write/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -180,9 +230,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-approval-gate-check",
@@ -196,26 +250,34 @@
           "$REPO_ROOT/.agents/skills/aoa-approval-gate-check",
           "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/scripts",
           "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/references",
-          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/assets"
+          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/assets",
+          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/checks",
+          "$REPO_ROOT/.agents/skills/aoa-approval-gate-check/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-approval-gate-check",
           "$HOME/.agents/skills/aoa-approval-gate-check/scripts",
           "$HOME/.agents/skills/aoa-approval-gate-check/references",
-          "$HOME/.agents/skills/aoa-approval-gate-check/assets"
+          "$HOME/.agents/skills/aoa-approval-gate-check/assets",
+          "$HOME/.agents/skills/aoa-approval-gate-check/checks",
+          "$HOME/.agents/skills/aoa-approval-gate-check/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-approval-gate-check",
           "/etc/codex/skills/aoa-approval-gate-check/scripts",
           "/etc/codex/skills/aoa-approval-gate-check/references",
-          "/etc/codex/skills/aoa-approval-gate-check/assets"
+          "/etc/codex/skills/aoa-approval-gate-check/assets",
+          "/etc/codex/skills/aoa-approval-gate-check/checks",
+          "/etc/codex/skills/aoa-approval-gate-check/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-approval-gate-check",
         ".agents/skills/aoa-approval-gate-check/scripts",
         ".agents/skills/aoa-approval-gate-check/references",
-        ".agents/skills/aoa-approval-gate-check/assets"
+        ".agents/skills/aoa-approval-gate-check/assets",
+        ".agents/skills/aoa-approval-gate-check/checks",
+        ".agents/skills/aoa-approval-gate-check/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -223,9 +285,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-automation-opportunity-scan",
@@ -239,26 +307,34 @@
           "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan",
           "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/scripts",
           "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/references",
-          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/assets"
+          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/assets",
+          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/checks",
+          "$REPO_ROOT/.agents/skills/aoa-automation-opportunity-scan/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-automation-opportunity-scan",
           "$HOME/.agents/skills/aoa-automation-opportunity-scan/scripts",
           "$HOME/.agents/skills/aoa-automation-opportunity-scan/references",
-          "$HOME/.agents/skills/aoa-automation-opportunity-scan/assets"
+          "$HOME/.agents/skills/aoa-automation-opportunity-scan/assets",
+          "$HOME/.agents/skills/aoa-automation-opportunity-scan/checks",
+          "$HOME/.agents/skills/aoa-automation-opportunity-scan/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-automation-opportunity-scan",
           "/etc/codex/skills/aoa-automation-opportunity-scan/scripts",
           "/etc/codex/skills/aoa-automation-opportunity-scan/references",
-          "/etc/codex/skills/aoa-automation-opportunity-scan/assets"
+          "/etc/codex/skills/aoa-automation-opportunity-scan/assets",
+          "/etc/codex/skills/aoa-automation-opportunity-scan/checks",
+          "/etc/codex/skills/aoa-automation-opportunity-scan/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-automation-opportunity-scan",
         ".agents/skills/aoa-automation-opportunity-scan/scripts",
         ".agents/skills/aoa-automation-opportunity-scan/references",
-        ".agents/skills/aoa-automation-opportunity-scan/assets"
+        ".agents/skills/aoa-automation-opportunity-scan/assets",
+        ".agents/skills/aoa-automation-opportunity-scan/checks",
+        ".agents/skills/aoa-automation-opportunity-scan/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -275,9 +351,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-bounded-context-map",
@@ -291,26 +373,34 @@
           "$REPO_ROOT/.agents/skills/aoa-bounded-context-map",
           "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/scripts",
           "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/references",
-          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/assets"
+          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/assets",
+          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/checks",
+          "$REPO_ROOT/.agents/skills/aoa-bounded-context-map/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-bounded-context-map",
           "$HOME/.agents/skills/aoa-bounded-context-map/scripts",
           "$HOME/.agents/skills/aoa-bounded-context-map/references",
-          "$HOME/.agents/skills/aoa-bounded-context-map/assets"
+          "$HOME/.agents/skills/aoa-bounded-context-map/assets",
+          "$HOME/.agents/skills/aoa-bounded-context-map/checks",
+          "$HOME/.agents/skills/aoa-bounded-context-map/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-bounded-context-map",
           "/etc/codex/skills/aoa-bounded-context-map/scripts",
           "/etc/codex/skills/aoa-bounded-context-map/references",
-          "/etc/codex/skills/aoa-bounded-context-map/assets"
+          "/etc/codex/skills/aoa-bounded-context-map/assets",
+          "/etc/codex/skills/aoa-bounded-context-map/checks",
+          "/etc/codex/skills/aoa-bounded-context-map/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-bounded-context-map",
         ".agents/skills/aoa-bounded-context-map/scripts",
         ".agents/skills/aoa-bounded-context-map/references",
-        ".agents/skills/aoa-bounded-context-map/assets"
+        ".agents/skills/aoa-bounded-context-map/assets",
+        ".agents/skills/aoa-bounded-context-map/checks",
+        ".agents/skills/aoa-bounded-context-map/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -321,9 +411,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-change-protocol",
@@ -337,26 +431,34 @@
           "$REPO_ROOT/.agents/skills/aoa-change-protocol",
           "$REPO_ROOT/.agents/skills/aoa-change-protocol/scripts",
           "$REPO_ROOT/.agents/skills/aoa-change-protocol/references",
-          "$REPO_ROOT/.agents/skills/aoa-change-protocol/assets"
+          "$REPO_ROOT/.agents/skills/aoa-change-protocol/assets",
+          "$REPO_ROOT/.agents/skills/aoa-change-protocol/checks",
+          "$REPO_ROOT/.agents/skills/aoa-change-protocol/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-change-protocol",
           "$HOME/.agents/skills/aoa-change-protocol/scripts",
           "$HOME/.agents/skills/aoa-change-protocol/references",
-          "$HOME/.agents/skills/aoa-change-protocol/assets"
+          "$HOME/.agents/skills/aoa-change-protocol/assets",
+          "$HOME/.agents/skills/aoa-change-protocol/checks",
+          "$HOME/.agents/skills/aoa-change-protocol/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-change-protocol",
           "/etc/codex/skills/aoa-change-protocol/scripts",
           "/etc/codex/skills/aoa-change-protocol/references",
-          "/etc/codex/skills/aoa-change-protocol/assets"
+          "/etc/codex/skills/aoa-change-protocol/assets",
+          "/etc/codex/skills/aoa-change-protocol/checks",
+          "/etc/codex/skills/aoa-change-protocol/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-change-protocol",
         ".agents/skills/aoa-change-protocol/scripts",
         ".agents/skills/aoa-change-protocol/references",
-        ".agents/skills/aoa-change-protocol/assets"
+        ".agents/skills/aoa-change-protocol/assets",
+        ".agents/skills/aoa-change-protocol/checks",
+        ".agents/skills/aoa-change-protocol/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -364,9 +466,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-checkpoint-closeout-bridge",
@@ -380,26 +488,34 @@
           "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge",
           "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/scripts",
           "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/references",
-          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/assets"
+          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/assets",
+          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/checks",
+          "$REPO_ROOT/.agents/skills/aoa-checkpoint-closeout-bridge/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge",
           "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/scripts",
           "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/references",
-          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/assets"
+          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/assets",
+          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/checks",
+          "$HOME/.agents/skills/aoa-checkpoint-closeout-bridge/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-checkpoint-closeout-bridge",
           "/etc/codex/skills/aoa-checkpoint-closeout-bridge/scripts",
           "/etc/codex/skills/aoa-checkpoint-closeout-bridge/references",
-          "/etc/codex/skills/aoa-checkpoint-closeout-bridge/assets"
+          "/etc/codex/skills/aoa-checkpoint-closeout-bridge/assets",
+          "/etc/codex/skills/aoa-checkpoint-closeout-bridge/checks",
+          "/etc/codex/skills/aoa-checkpoint-closeout-bridge/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-checkpoint-closeout-bridge",
         ".agents/skills/aoa-checkpoint-closeout-bridge/scripts",
         ".agents/skills/aoa-checkpoint-closeout-bridge/references",
-        ".agents/skills/aoa-checkpoint-closeout-bridge/assets"
+        ".agents/skills/aoa-checkpoint-closeout-bridge/assets",
+        ".agents/skills/aoa-checkpoint-closeout-bridge/checks",
+        ".agents/skills/aoa-checkpoint-closeout-bridge/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -411,9 +527,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-commit-growth-seam",
@@ -427,26 +549,34 @@
           "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam",
           "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam/scripts",
           "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam/references",
-          "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam/assets"
+          "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam/assets",
+          "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam/checks",
+          "$REPO_ROOT/.agents/skills/aoa-commit-growth-seam/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-commit-growth-seam",
           "$HOME/.agents/skills/aoa-commit-growth-seam/scripts",
           "$HOME/.agents/skills/aoa-commit-growth-seam/references",
-          "$HOME/.agents/skills/aoa-commit-growth-seam/assets"
+          "$HOME/.agents/skills/aoa-commit-growth-seam/assets",
+          "$HOME/.agents/skills/aoa-commit-growth-seam/checks",
+          "$HOME/.agents/skills/aoa-commit-growth-seam/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-commit-growth-seam",
           "/etc/codex/skills/aoa-commit-growth-seam/scripts",
           "/etc/codex/skills/aoa-commit-growth-seam/references",
-          "/etc/codex/skills/aoa-commit-growth-seam/assets"
+          "/etc/codex/skills/aoa-commit-growth-seam/assets",
+          "/etc/codex/skills/aoa-commit-growth-seam/checks",
+          "/etc/codex/skills/aoa-commit-growth-seam/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-commit-growth-seam",
         ".agents/skills/aoa-commit-growth-seam/scripts",
         ".agents/skills/aoa-commit-growth-seam/references",
-        ".agents/skills/aoa-commit-growth-seam/assets"
+        ".agents/skills/aoa-commit-growth-seam/assets",
+        ".agents/skills/aoa-commit-growth-seam/checks",
+        ".agents/skills/aoa-commit-growth-seam/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -454,9 +584,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-contract-test",
@@ -470,26 +606,34 @@
           "$REPO_ROOT/.agents/skills/aoa-contract-test",
           "$REPO_ROOT/.agents/skills/aoa-contract-test/scripts",
           "$REPO_ROOT/.agents/skills/aoa-contract-test/references",
-          "$REPO_ROOT/.agents/skills/aoa-contract-test/assets"
+          "$REPO_ROOT/.agents/skills/aoa-contract-test/assets",
+          "$REPO_ROOT/.agents/skills/aoa-contract-test/checks",
+          "$REPO_ROOT/.agents/skills/aoa-contract-test/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-contract-test",
           "$HOME/.agents/skills/aoa-contract-test/scripts",
           "$HOME/.agents/skills/aoa-contract-test/references",
-          "$HOME/.agents/skills/aoa-contract-test/assets"
+          "$HOME/.agents/skills/aoa-contract-test/assets",
+          "$HOME/.agents/skills/aoa-contract-test/checks",
+          "$HOME/.agents/skills/aoa-contract-test/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-contract-test",
           "/etc/codex/skills/aoa-contract-test/scripts",
           "/etc/codex/skills/aoa-contract-test/references",
-          "/etc/codex/skills/aoa-contract-test/assets"
+          "/etc/codex/skills/aoa-contract-test/assets",
+          "/etc/codex/skills/aoa-contract-test/checks",
+          "/etc/codex/skills/aoa-contract-test/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-contract-test",
         ".agents/skills/aoa-contract-test/scripts",
         ".agents/skills/aoa-contract-test/references",
-        ".agents/skills/aoa-contract-test/assets"
+        ".agents/skills/aoa-contract-test/assets",
+        ".agents/skills/aoa-contract-test/checks",
+        ".agents/skills/aoa-contract-test/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -499,9 +643,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-core-logic-boundary",
@@ -515,26 +663,34 @@
           "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary",
           "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/scripts",
           "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/references",
-          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/assets"
+          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/assets",
+          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/checks",
+          "$REPO_ROOT/.agents/skills/aoa-core-logic-boundary/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-core-logic-boundary",
           "$HOME/.agents/skills/aoa-core-logic-boundary/scripts",
           "$HOME/.agents/skills/aoa-core-logic-boundary/references",
-          "$HOME/.agents/skills/aoa-core-logic-boundary/assets"
+          "$HOME/.agents/skills/aoa-core-logic-boundary/assets",
+          "$HOME/.agents/skills/aoa-core-logic-boundary/checks",
+          "$HOME/.agents/skills/aoa-core-logic-boundary/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-core-logic-boundary",
           "/etc/codex/skills/aoa-core-logic-boundary/scripts",
           "/etc/codex/skills/aoa-core-logic-boundary/references",
-          "/etc/codex/skills/aoa-core-logic-boundary/assets"
+          "/etc/codex/skills/aoa-core-logic-boundary/assets",
+          "/etc/codex/skills/aoa-core-logic-boundary/checks",
+          "/etc/codex/skills/aoa-core-logic-boundary/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-core-logic-boundary",
         ".agents/skills/aoa-core-logic-boundary/scripts",
         ".agents/skills/aoa-core-logic-boundary/references",
-        ".agents/skills/aoa-core-logic-boundary/assets"
+        ".agents/skills/aoa-core-logic-boundary/assets",
+        ".agents/skills/aoa-core-logic-boundary/checks",
+        ".agents/skills/aoa-core-logic-boundary/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -544,9 +700,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-dry-run-first",
@@ -560,26 +720,34 @@
           "$REPO_ROOT/.agents/skills/aoa-dry-run-first",
           "$REPO_ROOT/.agents/skills/aoa-dry-run-first/scripts",
           "$REPO_ROOT/.agents/skills/aoa-dry-run-first/references",
-          "$REPO_ROOT/.agents/skills/aoa-dry-run-first/assets"
+          "$REPO_ROOT/.agents/skills/aoa-dry-run-first/assets",
+          "$REPO_ROOT/.agents/skills/aoa-dry-run-first/checks",
+          "$REPO_ROOT/.agents/skills/aoa-dry-run-first/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-dry-run-first",
           "$HOME/.agents/skills/aoa-dry-run-first/scripts",
           "$HOME/.agents/skills/aoa-dry-run-first/references",
-          "$HOME/.agents/skills/aoa-dry-run-first/assets"
+          "$HOME/.agents/skills/aoa-dry-run-first/assets",
+          "$HOME/.agents/skills/aoa-dry-run-first/checks",
+          "$HOME/.agents/skills/aoa-dry-run-first/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-dry-run-first",
           "/etc/codex/skills/aoa-dry-run-first/scripts",
           "/etc/codex/skills/aoa-dry-run-first/references",
-          "/etc/codex/skills/aoa-dry-run-first/assets"
+          "/etc/codex/skills/aoa-dry-run-first/assets",
+          "/etc/codex/skills/aoa-dry-run-first/checks",
+          "/etc/codex/skills/aoa-dry-run-first/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-dry-run-first",
         ".agents/skills/aoa-dry-run-first/scripts",
         ".agents/skills/aoa-dry-run-first/references",
-        ".agents/skills/aoa-dry-run-first/assets"
+        ".agents/skills/aoa-dry-run-first/assets",
+        ".agents/skills/aoa-dry-run-first/checks",
+        ".agents/skills/aoa-dry-run-first/examples"
       ],
       "resource_inventory": {
         "scripts": [
@@ -595,9 +763,15 @@
           "assets/dry_run_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-invariant-coverage-audit",
@@ -611,26 +785,34 @@
           "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit",
           "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/scripts",
           "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/references",
-          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/assets"
+          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/assets",
+          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/checks",
+          "$REPO_ROOT/.agents/skills/aoa-invariant-coverage-audit/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-invariant-coverage-audit",
           "$HOME/.agents/skills/aoa-invariant-coverage-audit/scripts",
           "$HOME/.agents/skills/aoa-invariant-coverage-audit/references",
-          "$HOME/.agents/skills/aoa-invariant-coverage-audit/assets"
+          "$HOME/.agents/skills/aoa-invariant-coverage-audit/assets",
+          "$HOME/.agents/skills/aoa-invariant-coverage-audit/checks",
+          "$HOME/.agents/skills/aoa-invariant-coverage-audit/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-invariant-coverage-audit",
           "/etc/codex/skills/aoa-invariant-coverage-audit/scripts",
           "/etc/codex/skills/aoa-invariant-coverage-audit/references",
-          "/etc/codex/skills/aoa-invariant-coverage-audit/assets"
+          "/etc/codex/skills/aoa-invariant-coverage-audit/assets",
+          "/etc/codex/skills/aoa-invariant-coverage-audit/checks",
+          "/etc/codex/skills/aoa-invariant-coverage-audit/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-invariant-coverage-audit",
         ".agents/skills/aoa-invariant-coverage-audit/scripts",
         ".agents/skills/aoa-invariant-coverage-audit/references",
-        ".agents/skills/aoa-invariant-coverage-audit/assets"
+        ".agents/skills/aoa-invariant-coverage-audit/assets",
+        ".agents/skills/aoa-invariant-coverage-audit/checks",
+        ".agents/skills/aoa-invariant-coverage-audit/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -640,9 +822,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-local-stack-bringup",
@@ -656,26 +842,34 @@
           "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup",
           "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/scripts",
           "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/references",
-          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/assets"
+          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/assets",
+          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/checks",
+          "$REPO_ROOT/.agents/skills/aoa-local-stack-bringup/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-local-stack-bringup",
           "$HOME/.agents/skills/aoa-local-stack-bringup/scripts",
           "$HOME/.agents/skills/aoa-local-stack-bringup/references",
-          "$HOME/.agents/skills/aoa-local-stack-bringup/assets"
+          "$HOME/.agents/skills/aoa-local-stack-bringup/assets",
+          "$HOME/.agents/skills/aoa-local-stack-bringup/checks",
+          "$HOME/.agents/skills/aoa-local-stack-bringup/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-local-stack-bringup",
           "/etc/codex/skills/aoa-local-stack-bringup/scripts",
           "/etc/codex/skills/aoa-local-stack-bringup/references",
-          "/etc/codex/skills/aoa-local-stack-bringup/assets"
+          "/etc/codex/skills/aoa-local-stack-bringup/assets",
+          "/etc/codex/skills/aoa-local-stack-bringup/checks",
+          "/etc/codex/skills/aoa-local-stack-bringup/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-local-stack-bringup",
         ".agents/skills/aoa-local-stack-bringup/scripts",
         ".agents/skills/aoa-local-stack-bringup/references",
-        ".agents/skills/aoa-local-stack-bringup/assets"
+        ".agents/skills/aoa-local-stack-bringup/assets",
+        ".agents/skills/aoa-local-stack-bringup/checks",
+        ".agents/skills/aoa-local-stack-bringup/examples"
       ],
       "resource_inventory": {
         "scripts": [
@@ -691,9 +885,15 @@
           "assets/local_stack_bringup.template.json",
           "assets/local_stack_report.schema.json",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-port-adapter-refactor",
@@ -707,26 +907,34 @@
           "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor",
           "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/scripts",
           "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/references",
-          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/assets"
+          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/assets",
+          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/checks",
+          "$REPO_ROOT/.agents/skills/aoa-port-adapter-refactor/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-port-adapter-refactor",
           "$HOME/.agents/skills/aoa-port-adapter-refactor/scripts",
           "$HOME/.agents/skills/aoa-port-adapter-refactor/references",
-          "$HOME/.agents/skills/aoa-port-adapter-refactor/assets"
+          "$HOME/.agents/skills/aoa-port-adapter-refactor/assets",
+          "$HOME/.agents/skills/aoa-port-adapter-refactor/checks",
+          "$HOME/.agents/skills/aoa-port-adapter-refactor/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-port-adapter-refactor",
           "/etc/codex/skills/aoa-port-adapter-refactor/scripts",
           "/etc/codex/skills/aoa-port-adapter-refactor/references",
-          "/etc/codex/skills/aoa-port-adapter-refactor/assets"
+          "/etc/codex/skills/aoa-port-adapter-refactor/assets",
+          "/etc/codex/skills/aoa-port-adapter-refactor/checks",
+          "/etc/codex/skills/aoa-port-adapter-refactor/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-port-adapter-refactor",
         ".agents/skills/aoa-port-adapter-refactor/scripts",
         ".agents/skills/aoa-port-adapter-refactor/references",
-        ".agents/skills/aoa-port-adapter-refactor/assets"
+        ".agents/skills/aoa-port-adapter-refactor/assets",
+        ".agents/skills/aoa-port-adapter-refactor/checks",
+        ".agents/skills/aoa-port-adapter-refactor/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -736,9 +944,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-property-invariants",
@@ -752,26 +964,34 @@
           "$REPO_ROOT/.agents/skills/aoa-property-invariants",
           "$REPO_ROOT/.agents/skills/aoa-property-invariants/scripts",
           "$REPO_ROOT/.agents/skills/aoa-property-invariants/references",
-          "$REPO_ROOT/.agents/skills/aoa-property-invariants/assets"
+          "$REPO_ROOT/.agents/skills/aoa-property-invariants/assets",
+          "$REPO_ROOT/.agents/skills/aoa-property-invariants/checks",
+          "$REPO_ROOT/.agents/skills/aoa-property-invariants/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-property-invariants",
           "$HOME/.agents/skills/aoa-property-invariants/scripts",
           "$HOME/.agents/skills/aoa-property-invariants/references",
-          "$HOME/.agents/skills/aoa-property-invariants/assets"
+          "$HOME/.agents/skills/aoa-property-invariants/assets",
+          "$HOME/.agents/skills/aoa-property-invariants/checks",
+          "$HOME/.agents/skills/aoa-property-invariants/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-property-invariants",
           "/etc/codex/skills/aoa-property-invariants/scripts",
           "/etc/codex/skills/aoa-property-invariants/references",
-          "/etc/codex/skills/aoa-property-invariants/assets"
+          "/etc/codex/skills/aoa-property-invariants/assets",
+          "/etc/codex/skills/aoa-property-invariants/checks",
+          "/etc/codex/skills/aoa-property-invariants/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-property-invariants",
         ".agents/skills/aoa-property-invariants/scripts",
         ".agents/skills/aoa-property-invariants/references",
-        ".agents/skills/aoa-property-invariants/assets"
+        ".agents/skills/aoa-property-invariants/assets",
+        ".agents/skills/aoa-property-invariants/checks",
+        ".agents/skills/aoa-property-invariants/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -781,9 +1001,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-quest-harvest",
@@ -797,26 +1021,34 @@
           "$REPO_ROOT/.agents/skills/aoa-quest-harvest",
           "$REPO_ROOT/.agents/skills/aoa-quest-harvest/scripts",
           "$REPO_ROOT/.agents/skills/aoa-quest-harvest/references",
-          "$REPO_ROOT/.agents/skills/aoa-quest-harvest/assets"
+          "$REPO_ROOT/.agents/skills/aoa-quest-harvest/assets",
+          "$REPO_ROOT/.agents/skills/aoa-quest-harvest/checks",
+          "$REPO_ROOT/.agents/skills/aoa-quest-harvest/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-quest-harvest",
           "$HOME/.agents/skills/aoa-quest-harvest/scripts",
           "$HOME/.agents/skills/aoa-quest-harvest/references",
-          "$HOME/.agents/skills/aoa-quest-harvest/assets"
+          "$HOME/.agents/skills/aoa-quest-harvest/assets",
+          "$HOME/.agents/skills/aoa-quest-harvest/checks",
+          "$HOME/.agents/skills/aoa-quest-harvest/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-quest-harvest",
           "/etc/codex/skills/aoa-quest-harvest/scripts",
           "/etc/codex/skills/aoa-quest-harvest/references",
-          "/etc/codex/skills/aoa-quest-harvest/assets"
+          "/etc/codex/skills/aoa-quest-harvest/assets",
+          "/etc/codex/skills/aoa-quest-harvest/checks",
+          "/etc/codex/skills/aoa-quest-harvest/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-quest-harvest",
         ".agents/skills/aoa-quest-harvest/scripts",
         ".agents/skills/aoa-quest-harvest/references",
-        ".agents/skills/aoa-quest-harvest/assets"
+        ".agents/skills/aoa-quest-harvest/assets",
+        ".agents/skills/aoa-quest-harvest/checks",
+        ".agents/skills/aoa-quest-harvest/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -829,9 +1061,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-safe-infra-change",
@@ -845,26 +1083,34 @@
           "$REPO_ROOT/.agents/skills/aoa-safe-infra-change",
           "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/scripts",
           "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/references",
-          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/assets"
+          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/assets",
+          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/checks",
+          "$REPO_ROOT/.agents/skills/aoa-safe-infra-change/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-safe-infra-change",
           "$HOME/.agents/skills/aoa-safe-infra-change/scripts",
           "$HOME/.agents/skills/aoa-safe-infra-change/references",
-          "$HOME/.agents/skills/aoa-safe-infra-change/assets"
+          "$HOME/.agents/skills/aoa-safe-infra-change/assets",
+          "$HOME/.agents/skills/aoa-safe-infra-change/checks",
+          "$HOME/.agents/skills/aoa-safe-infra-change/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-safe-infra-change",
           "/etc/codex/skills/aoa-safe-infra-change/scripts",
           "/etc/codex/skills/aoa-safe-infra-change/references",
-          "/etc/codex/skills/aoa-safe-infra-change/assets"
+          "/etc/codex/skills/aoa-safe-infra-change/assets",
+          "/etc/codex/skills/aoa-safe-infra-change/checks",
+          "/etc/codex/skills/aoa-safe-infra-change/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-safe-infra-change",
         ".agents/skills/aoa-safe-infra-change/scripts",
         ".agents/skills/aoa-safe-infra-change/references",
-        ".agents/skills/aoa-safe-infra-change/assets"
+        ".agents/skills/aoa-safe-infra-change/assets",
+        ".agents/skills/aoa-safe-infra-change/checks",
+        ".agents/skills/aoa-safe-infra-change/examples"
       ],
       "resource_inventory": {
         "scripts": [
@@ -880,9 +1126,15 @@
           "assets/infra_change_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-sanitized-share",
@@ -896,26 +1148,34 @@
           "$REPO_ROOT/.agents/skills/aoa-sanitized-share",
           "$REPO_ROOT/.agents/skills/aoa-sanitized-share/scripts",
           "$REPO_ROOT/.agents/skills/aoa-sanitized-share/references",
-          "$REPO_ROOT/.agents/skills/aoa-sanitized-share/assets"
+          "$REPO_ROOT/.agents/skills/aoa-sanitized-share/assets",
+          "$REPO_ROOT/.agents/skills/aoa-sanitized-share/checks",
+          "$REPO_ROOT/.agents/skills/aoa-sanitized-share/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-sanitized-share",
           "$HOME/.agents/skills/aoa-sanitized-share/scripts",
           "$HOME/.agents/skills/aoa-sanitized-share/references",
-          "$HOME/.agents/skills/aoa-sanitized-share/assets"
+          "$HOME/.agents/skills/aoa-sanitized-share/assets",
+          "$HOME/.agents/skills/aoa-sanitized-share/checks",
+          "$HOME/.agents/skills/aoa-sanitized-share/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-sanitized-share",
           "/etc/codex/skills/aoa-sanitized-share/scripts",
           "/etc/codex/skills/aoa-sanitized-share/references",
-          "/etc/codex/skills/aoa-sanitized-share/assets"
+          "/etc/codex/skills/aoa-sanitized-share/assets",
+          "/etc/codex/skills/aoa-sanitized-share/checks",
+          "/etc/codex/skills/aoa-sanitized-share/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-sanitized-share",
         ".agents/skills/aoa-sanitized-share/scripts",
         ".agents/skills/aoa-sanitized-share/references",
-        ".agents/skills/aoa-sanitized-share/assets"
+        ".agents/skills/aoa-sanitized-share/assets",
+        ".agents/skills/aoa-sanitized-share/checks",
+        ".agents/skills/aoa-sanitized-share/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -923,9 +1183,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-session-donor-harvest",
@@ -939,26 +1205,34 @@
           "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest",
           "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/scripts",
           "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/references",
-          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/assets"
+          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/assets",
+          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/checks",
+          "$REPO_ROOT/.agents/skills/aoa-session-donor-harvest/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-session-donor-harvest",
           "$HOME/.agents/skills/aoa-session-donor-harvest/scripts",
           "$HOME/.agents/skills/aoa-session-donor-harvest/references",
-          "$HOME/.agents/skills/aoa-session-donor-harvest/assets"
+          "$HOME/.agents/skills/aoa-session-donor-harvest/assets",
+          "$HOME/.agents/skills/aoa-session-donor-harvest/checks",
+          "$HOME/.agents/skills/aoa-session-donor-harvest/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-donor-harvest",
           "/etc/codex/skills/aoa-session-donor-harvest/scripts",
           "/etc/codex/skills/aoa-session-donor-harvest/references",
-          "/etc/codex/skills/aoa-session-donor-harvest/assets"
+          "/etc/codex/skills/aoa-session-donor-harvest/assets",
+          "/etc/codex/skills/aoa-session-donor-harvest/checks",
+          "/etc/codex/skills/aoa-session-donor-harvest/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-session-donor-harvest",
         ".agents/skills/aoa-session-donor-harvest/scripts",
         ".agents/skills/aoa-session-donor-harvest/references",
-        ".agents/skills/aoa-session-donor-harvest/assets"
+        ".agents/skills/aoa-session-donor-harvest/assets",
+        ".agents/skills/aoa-session-donor-harvest/checks",
+        ".agents/skills/aoa-session-donor-harvest/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -975,9 +1249,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-session-progression-lift",
@@ -991,26 +1271,34 @@
           "$REPO_ROOT/.agents/skills/aoa-session-progression-lift",
           "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/scripts",
           "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/references",
-          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/assets"
+          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/assets",
+          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/checks",
+          "$REPO_ROOT/.agents/skills/aoa-session-progression-lift/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-session-progression-lift",
           "$HOME/.agents/skills/aoa-session-progression-lift/scripts",
           "$HOME/.agents/skills/aoa-session-progression-lift/references",
-          "$HOME/.agents/skills/aoa-session-progression-lift/assets"
+          "$HOME/.agents/skills/aoa-session-progression-lift/assets",
+          "$HOME/.agents/skills/aoa-session-progression-lift/checks",
+          "$HOME/.agents/skills/aoa-session-progression-lift/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-progression-lift",
           "/etc/codex/skills/aoa-session-progression-lift/scripts",
           "/etc/codex/skills/aoa-session-progression-lift/references",
-          "/etc/codex/skills/aoa-session-progression-lift/assets"
+          "/etc/codex/skills/aoa-session-progression-lift/assets",
+          "/etc/codex/skills/aoa-session-progression-lift/checks",
+          "/etc/codex/skills/aoa-session-progression-lift/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-session-progression-lift",
         ".agents/skills/aoa-session-progression-lift/scripts",
         ".agents/skills/aoa-session-progression-lift/references",
-        ".agents/skills/aoa-session-progression-lift/assets"
+        ".agents/skills/aoa-session-progression-lift/assets",
+        ".agents/skills/aoa-session-progression-lift/checks",
+        ".agents/skills/aoa-session-progression-lift/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1023,9 +1311,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-session-route-forks",
@@ -1039,26 +1333,34 @@
           "$REPO_ROOT/.agents/skills/aoa-session-route-forks",
           "$REPO_ROOT/.agents/skills/aoa-session-route-forks/scripts",
           "$REPO_ROOT/.agents/skills/aoa-session-route-forks/references",
-          "$REPO_ROOT/.agents/skills/aoa-session-route-forks/assets"
+          "$REPO_ROOT/.agents/skills/aoa-session-route-forks/assets",
+          "$REPO_ROOT/.agents/skills/aoa-session-route-forks/checks",
+          "$REPO_ROOT/.agents/skills/aoa-session-route-forks/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-session-route-forks",
           "$HOME/.agents/skills/aoa-session-route-forks/scripts",
           "$HOME/.agents/skills/aoa-session-route-forks/references",
-          "$HOME/.agents/skills/aoa-session-route-forks/assets"
+          "$HOME/.agents/skills/aoa-session-route-forks/assets",
+          "$HOME/.agents/skills/aoa-session-route-forks/checks",
+          "$HOME/.agents/skills/aoa-session-route-forks/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-route-forks",
           "/etc/codex/skills/aoa-session-route-forks/scripts",
           "/etc/codex/skills/aoa-session-route-forks/references",
-          "/etc/codex/skills/aoa-session-route-forks/assets"
+          "/etc/codex/skills/aoa-session-route-forks/assets",
+          "/etc/codex/skills/aoa-session-route-forks/checks",
+          "/etc/codex/skills/aoa-session-route-forks/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-session-route-forks",
         ".agents/skills/aoa-session-route-forks/scripts",
         ".agents/skills/aoa-session-route-forks/references",
-        ".agents/skills/aoa-session-route-forks/assets"
+        ".agents/skills/aoa-session-route-forks/assets",
+        ".agents/skills/aoa-session-route-forks/checks",
+        ".agents/skills/aoa-session-route-forks/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1070,9 +1372,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-session-self-diagnose",
@@ -1086,26 +1394,34 @@
           "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose",
           "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/scripts",
           "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/references",
-          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/assets"
+          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/assets",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/checks",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-diagnose/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-session-self-diagnose",
           "$HOME/.agents/skills/aoa-session-self-diagnose/scripts",
           "$HOME/.agents/skills/aoa-session-self-diagnose/references",
-          "$HOME/.agents/skills/aoa-session-self-diagnose/assets"
+          "$HOME/.agents/skills/aoa-session-self-diagnose/assets",
+          "$HOME/.agents/skills/aoa-session-self-diagnose/checks",
+          "$HOME/.agents/skills/aoa-session-self-diagnose/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-self-diagnose",
           "/etc/codex/skills/aoa-session-self-diagnose/scripts",
           "/etc/codex/skills/aoa-session-self-diagnose/references",
-          "/etc/codex/skills/aoa-session-self-diagnose/assets"
+          "/etc/codex/skills/aoa-session-self-diagnose/assets",
+          "/etc/codex/skills/aoa-session-self-diagnose/checks",
+          "/etc/codex/skills/aoa-session-self-diagnose/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-session-self-diagnose",
         ".agents/skills/aoa-session-self-diagnose/scripts",
         ".agents/skills/aoa-session-self-diagnose/references",
-        ".agents/skills/aoa-session-self-diagnose/assets"
+        ".agents/skills/aoa-session-self-diagnose/assets",
+        ".agents/skills/aoa-session-self-diagnose/checks",
+        ".agents/skills/aoa-session-self-diagnose/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1117,9 +1433,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-session-self-repair",
@@ -1133,26 +1455,34 @@
           "$REPO_ROOT/.agents/skills/aoa-session-self-repair",
           "$REPO_ROOT/.agents/skills/aoa-session-self-repair/scripts",
           "$REPO_ROOT/.agents/skills/aoa-session-self-repair/references",
-          "$REPO_ROOT/.agents/skills/aoa-session-self-repair/assets"
+          "$REPO_ROOT/.agents/skills/aoa-session-self-repair/assets",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-repair/checks",
+          "$REPO_ROOT/.agents/skills/aoa-session-self-repair/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-session-self-repair",
           "$HOME/.agents/skills/aoa-session-self-repair/scripts",
           "$HOME/.agents/skills/aoa-session-self-repair/references",
-          "$HOME/.agents/skills/aoa-session-self-repair/assets"
+          "$HOME/.agents/skills/aoa-session-self-repair/assets",
+          "$HOME/.agents/skills/aoa-session-self-repair/checks",
+          "$HOME/.agents/skills/aoa-session-self-repair/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-session-self-repair",
           "/etc/codex/skills/aoa-session-self-repair/scripts",
           "/etc/codex/skills/aoa-session-self-repair/references",
-          "/etc/codex/skills/aoa-session-self-repair/assets"
+          "/etc/codex/skills/aoa-session-self-repair/assets",
+          "/etc/codex/skills/aoa-session-self-repair/checks",
+          "/etc/codex/skills/aoa-session-self-repair/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-session-self-repair",
         ".agents/skills/aoa-session-self-repair/scripts",
         ".agents/skills/aoa-session-self-repair/references",
-        ".agents/skills/aoa-session-self-repair/assets"
+        ".agents/skills/aoa-session-self-repair/assets",
+        ".agents/skills/aoa-session-self-repair/checks",
+        ".agents/skills/aoa-session-self-repair/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1165,9 +1495,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -1181,26 +1517,34 @@
           "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check",
           "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/scripts",
           "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/references",
-          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/assets"
+          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/assets",
+          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/checks",
+          "$REPO_ROOT/.agents/skills/aoa-source-of-truth-check/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-source-of-truth-check",
           "$HOME/.agents/skills/aoa-source-of-truth-check/scripts",
           "$HOME/.agents/skills/aoa-source-of-truth-check/references",
-          "$HOME/.agents/skills/aoa-source-of-truth-check/assets"
+          "$HOME/.agents/skills/aoa-source-of-truth-check/assets",
+          "$HOME/.agents/skills/aoa-source-of-truth-check/checks",
+          "$HOME/.agents/skills/aoa-source-of-truth-check/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-source-of-truth-check",
           "/etc/codex/skills/aoa-source-of-truth-check/scripts",
           "/etc/codex/skills/aoa-source-of-truth-check/references",
-          "/etc/codex/skills/aoa-source-of-truth-check/assets"
+          "/etc/codex/skills/aoa-source-of-truth-check/assets",
+          "/etc/codex/skills/aoa-source-of-truth-check/checks",
+          "/etc/codex/skills/aoa-source-of-truth-check/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-source-of-truth-check",
         ".agents/skills/aoa-source-of-truth-check/scripts",
         ".agents/skills/aoa-source-of-truth-check/references",
-        ".agents/skills/aoa-source-of-truth-check/assets"
+        ".agents/skills/aoa-source-of-truth-check/assets",
+        ".agents/skills/aoa-source-of-truth-check/checks",
+        ".agents/skills/aoa-source-of-truth-check/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1210,9 +1554,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-summon",
@@ -1226,26 +1574,34 @@
           "$REPO_ROOT/.agents/skills/aoa-summon",
           "$REPO_ROOT/.agents/skills/aoa-summon/scripts",
           "$REPO_ROOT/.agents/skills/aoa-summon/references",
-          "$REPO_ROOT/.agents/skills/aoa-summon/assets"
+          "$REPO_ROOT/.agents/skills/aoa-summon/assets",
+          "$REPO_ROOT/.agents/skills/aoa-summon/checks",
+          "$REPO_ROOT/.agents/skills/aoa-summon/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-summon",
           "$HOME/.agents/skills/aoa-summon/scripts",
           "$HOME/.agents/skills/aoa-summon/references",
-          "$HOME/.agents/skills/aoa-summon/assets"
+          "$HOME/.agents/skills/aoa-summon/assets",
+          "$HOME/.agents/skills/aoa-summon/checks",
+          "$HOME/.agents/skills/aoa-summon/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-summon",
           "/etc/codex/skills/aoa-summon/scripts",
           "/etc/codex/skills/aoa-summon/references",
-          "/etc/codex/skills/aoa-summon/assets"
+          "/etc/codex/skills/aoa-summon/assets",
+          "/etc/codex/skills/aoa-summon/checks",
+          "/etc/codex/skills/aoa-summon/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-summon",
         ".agents/skills/aoa-summon/scripts",
         ".agents/skills/aoa-summon/references",
-        ".agents/skills/aoa-summon/assets"
+        ".agents/skills/aoa-summon/assets",
+        ".agents/skills/aoa-summon/checks",
+        ".agents/skills/aoa-summon/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1258,9 +1614,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "aoa-tdd-slice",
@@ -1274,26 +1636,34 @@
           "$REPO_ROOT/.agents/skills/aoa-tdd-slice",
           "$REPO_ROOT/.agents/skills/aoa-tdd-slice/scripts",
           "$REPO_ROOT/.agents/skills/aoa-tdd-slice/references",
-          "$REPO_ROOT/.agents/skills/aoa-tdd-slice/assets"
+          "$REPO_ROOT/.agents/skills/aoa-tdd-slice/assets",
+          "$REPO_ROOT/.agents/skills/aoa-tdd-slice/checks",
+          "$REPO_ROOT/.agents/skills/aoa-tdd-slice/examples"
         ],
         "user": [
           "$HOME/.agents/skills/aoa-tdd-slice",
           "$HOME/.agents/skills/aoa-tdd-slice/scripts",
           "$HOME/.agents/skills/aoa-tdd-slice/references",
-          "$HOME/.agents/skills/aoa-tdd-slice/assets"
+          "$HOME/.agents/skills/aoa-tdd-slice/assets",
+          "$HOME/.agents/skills/aoa-tdd-slice/checks",
+          "$HOME/.agents/skills/aoa-tdd-slice/examples"
         ],
         "admin": [
           "/etc/codex/skills/aoa-tdd-slice",
           "/etc/codex/skills/aoa-tdd-slice/scripts",
           "/etc/codex/skills/aoa-tdd-slice/references",
-          "/etc/codex/skills/aoa-tdd-slice/assets"
+          "/etc/codex/skills/aoa-tdd-slice/assets",
+          "/etc/codex/skills/aoa-tdd-slice/checks",
+          "/etc/codex/skills/aoa-tdd-slice/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/aoa-tdd-slice",
         ".agents/skills/aoa-tdd-slice/scripts",
         ".agents/skills/aoa-tdd-slice/references",
-        ".agents/skills/aoa-tdd-slice/assets"
+        ".agents/skills/aoa-tdd-slice/assets",
+        ".agents/skills/aoa-tdd-slice/checks",
+        ".agents/skills/aoa-tdd-slice/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1303,9 +1673,13 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "atm10-change-protocol",
@@ -1319,26 +1693,34 @@
           "$REPO_ROOT/.agents/skills/atm10-change-protocol",
           "$REPO_ROOT/.agents/skills/atm10-change-protocol/scripts",
           "$REPO_ROOT/.agents/skills/atm10-change-protocol/references",
-          "$REPO_ROOT/.agents/skills/atm10-change-protocol/assets"
+          "$REPO_ROOT/.agents/skills/atm10-change-protocol/assets",
+          "$REPO_ROOT/.agents/skills/atm10-change-protocol/checks",
+          "$REPO_ROOT/.agents/skills/atm10-change-protocol/examples"
         ],
         "user": [
           "$HOME/.agents/skills/atm10-change-protocol",
           "$HOME/.agents/skills/atm10-change-protocol/scripts",
           "$HOME/.agents/skills/atm10-change-protocol/references",
-          "$HOME/.agents/skills/atm10-change-protocol/assets"
+          "$HOME/.agents/skills/atm10-change-protocol/assets",
+          "$HOME/.agents/skills/atm10-change-protocol/checks",
+          "$HOME/.agents/skills/atm10-change-protocol/examples"
         ],
         "admin": [
           "/etc/codex/skills/atm10-change-protocol",
           "/etc/codex/skills/atm10-change-protocol/scripts",
           "/etc/codex/skills/atm10-change-protocol/references",
-          "/etc/codex/skills/atm10-change-protocol/assets"
+          "/etc/codex/skills/atm10-change-protocol/assets",
+          "/etc/codex/skills/atm10-change-protocol/checks",
+          "/etc/codex/skills/atm10-change-protocol/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/atm10-change-protocol",
         ".agents/skills/atm10-change-protocol/scripts",
         ".agents/skills/atm10-change-protocol/references",
-        ".agents/skills/atm10-change-protocol/assets"
+        ".agents/skills/atm10-change-protocol/assets",
+        ".agents/skills/atm10-change-protocol/checks",
+        ".agents/skills/atm10-change-protocol/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1346,9 +1728,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -1362,26 +1750,34 @@
           "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check",
           "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/scripts",
           "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/references",
-          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/assets"
+          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/assets",
+          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/checks",
+          "$REPO_ROOT/.agents/skills/atm10-source-of-truth-check/examples"
         ],
         "user": [
           "$HOME/.agents/skills/atm10-source-of-truth-check",
           "$HOME/.agents/skills/atm10-source-of-truth-check/scripts",
           "$HOME/.agents/skills/atm10-source-of-truth-check/references",
-          "$HOME/.agents/skills/atm10-source-of-truth-check/assets"
+          "$HOME/.agents/skills/atm10-source-of-truth-check/assets",
+          "$HOME/.agents/skills/atm10-source-of-truth-check/checks",
+          "$HOME/.agents/skills/atm10-source-of-truth-check/examples"
         ],
         "admin": [
           "/etc/codex/skills/atm10-source-of-truth-check",
           "/etc/codex/skills/atm10-source-of-truth-check/scripts",
           "/etc/codex/skills/atm10-source-of-truth-check/references",
-          "/etc/codex/skills/atm10-source-of-truth-check/assets"
+          "/etc/codex/skills/atm10-source-of-truth-check/assets",
+          "/etc/codex/skills/atm10-source-of-truth-check/checks",
+          "/etc/codex/skills/atm10-source-of-truth-check/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/atm10-source-of-truth-check",
         ".agents/skills/atm10-source-of-truth-check/scripts",
         ".agents/skills/atm10-source-of-truth-check/references",
-        ".agents/skills/atm10-source-of-truth-check/assets"
+        ".agents/skills/atm10-source-of-truth-check/assets",
+        ".agents/skills/atm10-source-of-truth-check/checks",
+        ".agents/skills/atm10-source-of-truth-check/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1389,9 +1785,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-approval-ledger",
@@ -1405,26 +1807,34 @@
           "$REPO_ROOT/.agents/skills/titan-approval-ledger",
           "$REPO_ROOT/.agents/skills/titan-approval-ledger/scripts",
           "$REPO_ROOT/.agents/skills/titan-approval-ledger/references",
-          "$REPO_ROOT/.agents/skills/titan-approval-ledger/assets"
+          "$REPO_ROOT/.agents/skills/titan-approval-ledger/assets",
+          "$REPO_ROOT/.agents/skills/titan-approval-ledger/checks",
+          "$REPO_ROOT/.agents/skills/titan-approval-ledger/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-approval-ledger",
           "$HOME/.agents/skills/titan-approval-ledger/scripts",
           "$HOME/.agents/skills/titan-approval-ledger/references",
-          "$HOME/.agents/skills/titan-approval-ledger/assets"
+          "$HOME/.agents/skills/titan-approval-ledger/assets",
+          "$HOME/.agents/skills/titan-approval-ledger/checks",
+          "$HOME/.agents/skills/titan-approval-ledger/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-approval-ledger",
           "/etc/codex/skills/titan-approval-ledger/scripts",
           "/etc/codex/skills/titan-approval-ledger/references",
-          "/etc/codex/skills/titan-approval-ledger/assets"
+          "/etc/codex/skills/titan-approval-ledger/assets",
+          "/etc/codex/skills/titan-approval-ledger/checks",
+          "/etc/codex/skills/titan-approval-ledger/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-approval-ledger",
         ".agents/skills/titan-approval-ledger/scripts",
         ".agents/skills/titan-approval-ledger/references",
-        ".agents/skills/titan-approval-ledger/assets"
+        ".agents/skills/titan-approval-ledger/assets",
+        ".agents/skills/titan-approval-ledger/checks",
+        ".agents/skills/titan-approval-ledger/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1432,9 +1842,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-approval-loom",
@@ -1448,26 +1864,34 @@
           "$REPO_ROOT/.agents/skills/titan-approval-loom",
           "$REPO_ROOT/.agents/skills/titan-approval-loom/scripts",
           "$REPO_ROOT/.agents/skills/titan-approval-loom/references",
-          "$REPO_ROOT/.agents/skills/titan-approval-loom/assets"
+          "$REPO_ROOT/.agents/skills/titan-approval-loom/assets",
+          "$REPO_ROOT/.agents/skills/titan-approval-loom/checks",
+          "$REPO_ROOT/.agents/skills/titan-approval-loom/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-approval-loom",
           "$HOME/.agents/skills/titan-approval-loom/scripts",
           "$HOME/.agents/skills/titan-approval-loom/references",
-          "$HOME/.agents/skills/titan-approval-loom/assets"
+          "$HOME/.agents/skills/titan-approval-loom/assets",
+          "$HOME/.agents/skills/titan-approval-loom/checks",
+          "$HOME/.agents/skills/titan-approval-loom/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-approval-loom",
           "/etc/codex/skills/titan-approval-loom/scripts",
           "/etc/codex/skills/titan-approval-loom/references",
-          "/etc/codex/skills/titan-approval-loom/assets"
+          "/etc/codex/skills/titan-approval-loom/assets",
+          "/etc/codex/skills/titan-approval-loom/checks",
+          "/etc/codex/skills/titan-approval-loom/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-approval-loom",
         ".agents/skills/titan-approval-loom/scripts",
         ".agents/skills/titan-approval-loom/references",
-        ".agents/skills/titan-approval-loom/assets"
+        ".agents/skills/titan-approval-loom/assets",
+        ".agents/skills/titan-approval-loom/checks",
+        ".agents/skills/titan-approval-loom/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1475,9 +1899,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-appserver-bridge",
@@ -1491,26 +1921,34 @@
           "$REPO_ROOT/.agents/skills/titan-appserver-bridge",
           "$REPO_ROOT/.agents/skills/titan-appserver-bridge/scripts",
           "$REPO_ROOT/.agents/skills/titan-appserver-bridge/references",
-          "$REPO_ROOT/.agents/skills/titan-appserver-bridge/assets"
+          "$REPO_ROOT/.agents/skills/titan-appserver-bridge/assets",
+          "$REPO_ROOT/.agents/skills/titan-appserver-bridge/checks",
+          "$REPO_ROOT/.agents/skills/titan-appserver-bridge/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-appserver-bridge",
           "$HOME/.agents/skills/titan-appserver-bridge/scripts",
           "$HOME/.agents/skills/titan-appserver-bridge/references",
-          "$HOME/.agents/skills/titan-appserver-bridge/assets"
+          "$HOME/.agents/skills/titan-appserver-bridge/assets",
+          "$HOME/.agents/skills/titan-appserver-bridge/checks",
+          "$HOME/.agents/skills/titan-appserver-bridge/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-appserver-bridge",
           "/etc/codex/skills/titan-appserver-bridge/scripts",
           "/etc/codex/skills/titan-appserver-bridge/references",
-          "/etc/codex/skills/titan-appserver-bridge/assets"
+          "/etc/codex/skills/titan-appserver-bridge/assets",
+          "/etc/codex/skills/titan-appserver-bridge/checks",
+          "/etc/codex/skills/titan-appserver-bridge/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-appserver-bridge",
         ".agents/skills/titan-appserver-bridge/scripts",
         ".agents/skills/titan-appserver-bridge/references",
-        ".agents/skills/titan-appserver-bridge/assets"
+        ".agents/skills/titan-appserver-bridge/assets",
+        ".agents/skills/titan-appserver-bridge/checks",
+        ".agents/skills/titan-appserver-bridge/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1518,9 +1956,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-appserver-plan",
@@ -1534,26 +1978,34 @@
           "$REPO_ROOT/.agents/skills/titan-appserver-plan",
           "$REPO_ROOT/.agents/skills/titan-appserver-plan/scripts",
           "$REPO_ROOT/.agents/skills/titan-appserver-plan/references",
-          "$REPO_ROOT/.agents/skills/titan-appserver-plan/assets"
+          "$REPO_ROOT/.agents/skills/titan-appserver-plan/assets",
+          "$REPO_ROOT/.agents/skills/titan-appserver-plan/checks",
+          "$REPO_ROOT/.agents/skills/titan-appserver-plan/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-appserver-plan",
           "$HOME/.agents/skills/titan-appserver-plan/scripts",
           "$HOME/.agents/skills/titan-appserver-plan/references",
-          "$HOME/.agents/skills/titan-appserver-plan/assets"
+          "$HOME/.agents/skills/titan-appserver-plan/assets",
+          "$HOME/.agents/skills/titan-appserver-plan/checks",
+          "$HOME/.agents/skills/titan-appserver-plan/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-appserver-plan",
           "/etc/codex/skills/titan-appserver-plan/scripts",
           "/etc/codex/skills/titan-appserver-plan/references",
-          "/etc/codex/skills/titan-appserver-plan/assets"
+          "/etc/codex/skills/titan-appserver-plan/assets",
+          "/etc/codex/skills/titan-appserver-plan/checks",
+          "/etc/codex/skills/titan-appserver-plan/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-appserver-plan",
         ".agents/skills/titan-appserver-plan/scripts",
         ".agents/skills/titan-appserver-plan/references",
-        ".agents/skills/titan-appserver-plan/assets"
+        ".agents/skills/titan-appserver-plan/assets",
+        ".agents/skills/titan-appserver-plan/checks",
+        ".agents/skills/titan-appserver-plan/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1561,9 +2013,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-closeout",
@@ -1577,26 +2035,34 @@
           "$REPO_ROOT/.agents/skills/titan-closeout",
           "$REPO_ROOT/.agents/skills/titan-closeout/scripts",
           "$REPO_ROOT/.agents/skills/titan-closeout/references",
-          "$REPO_ROOT/.agents/skills/titan-closeout/assets"
+          "$REPO_ROOT/.agents/skills/titan-closeout/assets",
+          "$REPO_ROOT/.agents/skills/titan-closeout/checks",
+          "$REPO_ROOT/.agents/skills/titan-closeout/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-closeout",
           "$HOME/.agents/skills/titan-closeout/scripts",
           "$HOME/.agents/skills/titan-closeout/references",
-          "$HOME/.agents/skills/titan-closeout/assets"
+          "$HOME/.agents/skills/titan-closeout/assets",
+          "$HOME/.agents/skills/titan-closeout/checks",
+          "$HOME/.agents/skills/titan-closeout/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-closeout",
           "/etc/codex/skills/titan-closeout/scripts",
           "/etc/codex/skills/titan-closeout/references",
-          "/etc/codex/skills/titan-closeout/assets"
+          "/etc/codex/skills/titan-closeout/assets",
+          "/etc/codex/skills/titan-closeout/checks",
+          "/etc/codex/skills/titan-closeout/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-closeout",
         ".agents/skills/titan-closeout/scripts",
         ".agents/skills/titan-closeout/references",
-        ".agents/skills/titan-closeout/assets"
+        ".agents/skills/titan-closeout/assets",
+        ".agents/skills/titan-closeout/checks",
+        ".agents/skills/titan-closeout/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1604,9 +2070,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-console",
@@ -1620,26 +2092,34 @@
           "$REPO_ROOT/.agents/skills/titan-console",
           "$REPO_ROOT/.agents/skills/titan-console/scripts",
           "$REPO_ROOT/.agents/skills/titan-console/references",
-          "$REPO_ROOT/.agents/skills/titan-console/assets"
+          "$REPO_ROOT/.agents/skills/titan-console/assets",
+          "$REPO_ROOT/.agents/skills/titan-console/checks",
+          "$REPO_ROOT/.agents/skills/titan-console/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-console",
           "$HOME/.agents/skills/titan-console/scripts",
           "$HOME/.agents/skills/titan-console/references",
-          "$HOME/.agents/skills/titan-console/assets"
+          "$HOME/.agents/skills/titan-console/assets",
+          "$HOME/.agents/skills/titan-console/checks",
+          "$HOME/.agents/skills/titan-console/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-console",
           "/etc/codex/skills/titan-console/scripts",
           "/etc/codex/skills/titan-console/references",
-          "/etc/codex/skills/titan-console/assets"
+          "/etc/codex/skills/titan-console/assets",
+          "/etc/codex/skills/titan-console/checks",
+          "/etc/codex/skills/titan-console/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-console",
         ".agents/skills/titan-console/scripts",
         ".agents/skills/titan-console/references",
-        ".agents/skills/titan-console/assets"
+        ".agents/skills/titan-console/assets",
+        ".agents/skills/titan-console/checks",
+        ".agents/skills/titan-console/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1647,9 +2127,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-event-replay",
@@ -1663,26 +2149,34 @@
           "$REPO_ROOT/.agents/skills/titan-event-replay",
           "$REPO_ROOT/.agents/skills/titan-event-replay/scripts",
           "$REPO_ROOT/.agents/skills/titan-event-replay/references",
-          "$REPO_ROOT/.agents/skills/titan-event-replay/assets"
+          "$REPO_ROOT/.agents/skills/titan-event-replay/assets",
+          "$REPO_ROOT/.agents/skills/titan-event-replay/checks",
+          "$REPO_ROOT/.agents/skills/titan-event-replay/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-event-replay",
           "$HOME/.agents/skills/titan-event-replay/scripts",
           "$HOME/.agents/skills/titan-event-replay/references",
-          "$HOME/.agents/skills/titan-event-replay/assets"
+          "$HOME/.agents/skills/titan-event-replay/assets",
+          "$HOME/.agents/skills/titan-event-replay/checks",
+          "$HOME/.agents/skills/titan-event-replay/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-event-replay",
           "/etc/codex/skills/titan-event-replay/scripts",
           "/etc/codex/skills/titan-event-replay/references",
-          "/etc/codex/skills/titan-event-replay/assets"
+          "/etc/codex/skills/titan-event-replay/assets",
+          "/etc/codex/skills/titan-event-replay/checks",
+          "/etc/codex/skills/titan-event-replay/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-event-replay",
         ".agents/skills/titan-event-replay/scripts",
         ".agents/skills/titan-event-replay/references",
-        ".agents/skills/titan-event-replay/assets"
+        ".agents/skills/titan-event-replay/assets",
+        ".agents/skills/titan-event-replay/checks",
+        ".agents/skills/titan-event-replay/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1690,9 +2184,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-memory-loom",
@@ -1706,26 +2206,34 @@
           "$REPO_ROOT/.agents/skills/titan-memory-loom",
           "$REPO_ROOT/.agents/skills/titan-memory-loom/scripts",
           "$REPO_ROOT/.agents/skills/titan-memory-loom/references",
-          "$REPO_ROOT/.agents/skills/titan-memory-loom/assets"
+          "$REPO_ROOT/.agents/skills/titan-memory-loom/assets",
+          "$REPO_ROOT/.agents/skills/titan-memory-loom/checks",
+          "$REPO_ROOT/.agents/skills/titan-memory-loom/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-memory-loom",
           "$HOME/.agents/skills/titan-memory-loom/scripts",
           "$HOME/.agents/skills/titan-memory-loom/references",
-          "$HOME/.agents/skills/titan-memory-loom/assets"
+          "$HOME/.agents/skills/titan-memory-loom/assets",
+          "$HOME/.agents/skills/titan-memory-loom/checks",
+          "$HOME/.agents/skills/titan-memory-loom/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-memory-loom",
           "/etc/codex/skills/titan-memory-loom/scripts",
           "/etc/codex/skills/titan-memory-loom/references",
-          "/etc/codex/skills/titan-memory-loom/assets"
+          "/etc/codex/skills/titan-memory-loom/assets",
+          "/etc/codex/skills/titan-memory-loom/checks",
+          "/etc/codex/skills/titan-memory-loom/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-memory-loom",
         ".agents/skills/titan-memory-loom/scripts",
         ".agents/skills/titan-memory-loom/references",
-        ".agents/skills/titan-memory-loom/assets"
+        ".agents/skills/titan-memory-loom/assets",
+        ".agents/skills/titan-memory-loom/checks",
+        ".agents/skills/titan-memory-loom/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1733,9 +2241,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-memory-prune",
@@ -1749,26 +2263,34 @@
           "$REPO_ROOT/.agents/skills/titan-memory-prune",
           "$REPO_ROOT/.agents/skills/titan-memory-prune/scripts",
           "$REPO_ROOT/.agents/skills/titan-memory-prune/references",
-          "$REPO_ROOT/.agents/skills/titan-memory-prune/assets"
+          "$REPO_ROOT/.agents/skills/titan-memory-prune/assets",
+          "$REPO_ROOT/.agents/skills/titan-memory-prune/checks",
+          "$REPO_ROOT/.agents/skills/titan-memory-prune/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-memory-prune",
           "$HOME/.agents/skills/titan-memory-prune/scripts",
           "$HOME/.agents/skills/titan-memory-prune/references",
-          "$HOME/.agents/skills/titan-memory-prune/assets"
+          "$HOME/.agents/skills/titan-memory-prune/assets",
+          "$HOME/.agents/skills/titan-memory-prune/checks",
+          "$HOME/.agents/skills/titan-memory-prune/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-memory-prune",
           "/etc/codex/skills/titan-memory-prune/scripts",
           "/etc/codex/skills/titan-memory-prune/references",
-          "/etc/codex/skills/titan-memory-prune/assets"
+          "/etc/codex/skills/titan-memory-prune/assets",
+          "/etc/codex/skills/titan-memory-prune/checks",
+          "/etc/codex/skills/titan-memory-prune/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-memory-prune",
         ".agents/skills/titan-memory-prune/scripts",
         ".agents/skills/titan-memory-prune/references",
-        ".agents/skills/titan-memory-prune/assets"
+        ".agents/skills/titan-memory-prune/assets",
+        ".agents/skills/titan-memory-prune/checks",
+        ".agents/skills/titan-memory-prune/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1776,9 +2298,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-mutation-gate",
@@ -1792,26 +2320,34 @@
           "$REPO_ROOT/.agents/skills/titan-mutation-gate",
           "$REPO_ROOT/.agents/skills/titan-mutation-gate/scripts",
           "$REPO_ROOT/.agents/skills/titan-mutation-gate/references",
-          "$REPO_ROOT/.agents/skills/titan-mutation-gate/assets"
+          "$REPO_ROOT/.agents/skills/titan-mutation-gate/assets",
+          "$REPO_ROOT/.agents/skills/titan-mutation-gate/checks",
+          "$REPO_ROOT/.agents/skills/titan-mutation-gate/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-mutation-gate",
           "$HOME/.agents/skills/titan-mutation-gate/scripts",
           "$HOME/.agents/skills/titan-mutation-gate/references",
-          "$HOME/.agents/skills/titan-mutation-gate/assets"
+          "$HOME/.agents/skills/titan-mutation-gate/assets",
+          "$HOME/.agents/skills/titan-mutation-gate/checks",
+          "$HOME/.agents/skills/titan-mutation-gate/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-mutation-gate",
           "/etc/codex/skills/titan-mutation-gate/scripts",
           "/etc/codex/skills/titan-mutation-gate/references",
-          "/etc/codex/skills/titan-mutation-gate/assets"
+          "/etc/codex/skills/titan-mutation-gate/assets",
+          "/etc/codex/skills/titan-mutation-gate/checks",
+          "/etc/codex/skills/titan-mutation-gate/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-mutation-gate",
         ".agents/skills/titan-mutation-gate/scripts",
         ".agents/skills/titan-mutation-gate/references",
-        ".agents/skills/titan-mutation-gate/assets"
+        ".agents/skills/titan-mutation-gate/assets",
+        ".agents/skills/titan-mutation-gate/checks",
+        ".agents/skills/titan-mutation-gate/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1819,9 +2355,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-recall",
@@ -1835,26 +2377,34 @@
           "$REPO_ROOT/.agents/skills/titan-recall",
           "$REPO_ROOT/.agents/skills/titan-recall/scripts",
           "$REPO_ROOT/.agents/skills/titan-recall/references",
-          "$REPO_ROOT/.agents/skills/titan-recall/assets"
+          "$REPO_ROOT/.agents/skills/titan-recall/assets",
+          "$REPO_ROOT/.agents/skills/titan-recall/checks",
+          "$REPO_ROOT/.agents/skills/titan-recall/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-recall",
           "$HOME/.agents/skills/titan-recall/scripts",
           "$HOME/.agents/skills/titan-recall/references",
-          "$HOME/.agents/skills/titan-recall/assets"
+          "$HOME/.agents/skills/titan-recall/assets",
+          "$HOME/.agents/skills/titan-recall/checks",
+          "$HOME/.agents/skills/titan-recall/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-recall",
           "/etc/codex/skills/titan-recall/scripts",
           "/etc/codex/skills/titan-recall/references",
-          "/etc/codex/skills/titan-recall/assets"
+          "/etc/codex/skills/titan-recall/assets",
+          "/etc/codex/skills/titan-recall/checks",
+          "/etc/codex/skills/titan-recall/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-recall",
         ".agents/skills/titan-recall/scripts",
         ".agents/skills/titan-recall/references",
-        ".agents/skills/titan-recall/assets"
+        ".agents/skills/titan-recall/assets",
+        ".agents/skills/titan-recall/checks",
+        ".agents/skills/titan-recall/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1862,9 +2412,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-receipt",
@@ -1878,26 +2434,34 @@
           "$REPO_ROOT/.agents/skills/titan-receipt",
           "$REPO_ROOT/.agents/skills/titan-receipt/scripts",
           "$REPO_ROOT/.agents/skills/titan-receipt/references",
-          "$REPO_ROOT/.agents/skills/titan-receipt/assets"
+          "$REPO_ROOT/.agents/skills/titan-receipt/assets",
+          "$REPO_ROOT/.agents/skills/titan-receipt/checks",
+          "$REPO_ROOT/.agents/skills/titan-receipt/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-receipt",
           "$HOME/.agents/skills/titan-receipt/scripts",
           "$HOME/.agents/skills/titan-receipt/references",
-          "$HOME/.agents/skills/titan-receipt/assets"
+          "$HOME/.agents/skills/titan-receipt/assets",
+          "$HOME/.agents/skills/titan-receipt/checks",
+          "$HOME/.agents/skills/titan-receipt/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-receipt",
           "/etc/codex/skills/titan-receipt/scripts",
           "/etc/codex/skills/titan-receipt/references",
-          "/etc/codex/skills/titan-receipt/assets"
+          "/etc/codex/skills/titan-receipt/assets",
+          "/etc/codex/skills/titan-receipt/checks",
+          "/etc/codex/skills/titan-receipt/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-receipt",
         ".agents/skills/titan-receipt/scripts",
         ".agents/skills/titan-receipt/references",
-        ".agents/skills/titan-receipt/assets"
+        ".agents/skills/titan-receipt/assets",
+        ".agents/skills/titan-receipt/checks",
+        ".agents/skills/titan-receipt/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1905,9 +2469,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-runtime-gate",
@@ -1921,26 +2491,34 @@
           "$REPO_ROOT/.agents/skills/titan-runtime-gate",
           "$REPO_ROOT/.agents/skills/titan-runtime-gate/scripts",
           "$REPO_ROOT/.agents/skills/titan-runtime-gate/references",
-          "$REPO_ROOT/.agents/skills/titan-runtime-gate/assets"
+          "$REPO_ROOT/.agents/skills/titan-runtime-gate/assets",
+          "$REPO_ROOT/.agents/skills/titan-runtime-gate/checks",
+          "$REPO_ROOT/.agents/skills/titan-runtime-gate/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-runtime-gate",
           "$HOME/.agents/skills/titan-runtime-gate/scripts",
           "$HOME/.agents/skills/titan-runtime-gate/references",
-          "$HOME/.agents/skills/titan-runtime-gate/assets"
+          "$HOME/.agents/skills/titan-runtime-gate/assets",
+          "$HOME/.agents/skills/titan-runtime-gate/checks",
+          "$HOME/.agents/skills/titan-runtime-gate/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-runtime-gate",
           "/etc/codex/skills/titan-runtime-gate/scripts",
           "/etc/codex/skills/titan-runtime-gate/references",
-          "/etc/codex/skills/titan-runtime-gate/assets"
+          "/etc/codex/skills/titan-runtime-gate/assets",
+          "/etc/codex/skills/titan-runtime-gate/checks",
+          "/etc/codex/skills/titan-runtime-gate/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-runtime-gate",
         ".agents/skills/titan-runtime-gate/scripts",
         ".agents/skills/titan-runtime-gate/references",
-        ".agents/skills/titan-runtime-gate/assets"
+        ".agents/skills/titan-runtime-gate/assets",
+        ".agents/skills/titan-runtime-gate/checks",
+        ".agents/skills/titan-runtime-gate/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1948,9 +2526,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-summon",
@@ -1964,26 +2548,34 @@
           "$REPO_ROOT/.agents/skills/titan-summon",
           "$REPO_ROOT/.agents/skills/titan-summon/scripts",
           "$REPO_ROOT/.agents/skills/titan-summon/references",
-          "$REPO_ROOT/.agents/skills/titan-summon/assets"
+          "$REPO_ROOT/.agents/skills/titan-summon/assets",
+          "$REPO_ROOT/.agents/skills/titan-summon/checks",
+          "$REPO_ROOT/.agents/skills/titan-summon/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-summon",
           "$HOME/.agents/skills/titan-summon/scripts",
           "$HOME/.agents/skills/titan-summon/references",
-          "$HOME/.agents/skills/titan-summon/assets"
+          "$HOME/.agents/skills/titan-summon/assets",
+          "$HOME/.agents/skills/titan-summon/checks",
+          "$HOME/.agents/skills/titan-summon/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-summon",
           "/etc/codex/skills/titan-summon/scripts",
           "/etc/codex/skills/titan-summon/references",
-          "/etc/codex/skills/titan-summon/assets"
+          "/etc/codex/skills/titan-summon/assets",
+          "/etc/codex/skills/titan-summon/checks",
+          "/etc/codex/skills/titan-summon/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-summon",
         ".agents/skills/titan-summon/scripts",
         ".agents/skills/titan-summon/references",
-        ".agents/skills/titan-summon/assets"
+        ".agents/skills/titan-summon/assets",
+        ".agents/skills/titan-summon/checks",
+        ".agents/skills/titan-summon/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -1991,9 +2583,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
       "name": "titan-thread-turn-binding",
@@ -2007,26 +2605,34 @@
           "$REPO_ROOT/.agents/skills/titan-thread-turn-binding",
           "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/scripts",
           "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/references",
-          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/assets"
+          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/assets",
+          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/checks",
+          "$REPO_ROOT/.agents/skills/titan-thread-turn-binding/examples"
         ],
         "user": [
           "$HOME/.agents/skills/titan-thread-turn-binding",
           "$HOME/.agents/skills/titan-thread-turn-binding/scripts",
           "$HOME/.agents/skills/titan-thread-turn-binding/references",
-          "$HOME/.agents/skills/titan-thread-turn-binding/assets"
+          "$HOME/.agents/skills/titan-thread-turn-binding/assets",
+          "$HOME/.agents/skills/titan-thread-turn-binding/checks",
+          "$HOME/.agents/skills/titan-thread-turn-binding/examples"
         ],
         "admin": [
           "/etc/codex/skills/titan-thread-turn-binding",
           "/etc/codex/skills/titan-thread-turn-binding/scripts",
           "/etc/codex/skills/titan-thread-turn-binding/references",
-          "/etc/codex/skills/titan-thread-turn-binding/assets"
+          "/etc/codex/skills/titan-thread-turn-binding/assets",
+          "/etc/codex/skills/titan-thread-turn-binding/checks",
+          "/etc/codex/skills/titan-thread-turn-binding/examples"
         ]
       },
       "repo_relative_paths": [
         ".agents/skills/titan-thread-turn-binding",
         ".agents/skills/titan-thread-turn-binding/scripts",
         ".agents/skills/titan-thread-turn-binding/references",
-        ".agents/skills/titan-thread-turn-binding/assets"
+        ".agents/skills/titan-thread-turn-binding/assets",
+        ".agents/skills/titan-thread-turn-binding/checks",
+        ".agents/skills/titan-thread-turn-binding/examples"
       ],
       "resource_inventory": {
         "scripts": [],
@@ -2034,9 +2640,15 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
-      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, and assets do not trigger per-file permission prompts."
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     }
   ]
 }

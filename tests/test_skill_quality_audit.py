@@ -37,10 +37,14 @@ class SkillQualityAuditTests(unittest.TestCase):
         self.assertEqual(
             {
                 "generated/governance_backlog.json",
+                "generated/agent_skill_catalog.json",
+                "generated/local_adapter_manifest.json",
+                "generated/portable_export_map.json",
                 "generated/public_surface.json",
                 "generated/runtime_discovery_index.json",
                 "generated/skill_bundle_index.json",
                 "generated/skill_evaluation_matrix.json",
+                "config/skill_policy_matrix.json",
                 "skills/**/SKILL.md",
                 "skills/**/techniques.yaml",
                 "tests/fixtures/skill_evaluation_cases.yaml",

@@ -1,4 +1,5 @@
 policy:
   allow_implicit_invocation: false
+  implicit_activation_policy: manual
 notes:
-  - This scaffold is explicit-only because infrastructure and operational changes require visible operator intent.
+- This scaffold is explicit-only because infrastructure and operational changes require visible operator intent.

@@ -14,6 +14,14 @@
         "allow_implicit_invocation"
       ],
       "properties": {
+        "implicit_activation_policy": {
+          "type": "string",
+          "enum": [
+            "invoke",
+            "suggest",
+            "manual"
+          ]
+        },
         "allow_implicit_invocation": {
           "type": "boolean"
         }

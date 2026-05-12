@@ -11,7 +11,7 @@ name: aoa-session-donor-harvest
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `bf2ae17c72ae`
+- reviewed revision: `ba0484678a8d`
 
 ## Target status
 

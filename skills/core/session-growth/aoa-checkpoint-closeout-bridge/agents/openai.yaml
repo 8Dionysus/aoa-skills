@@ -1,6 +1,7 @@
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false
+  implicit_activation_policy: suggest
 notes:
-  - This skill is explicit-preferred overall.
-  - Wrappers may use its checkpoint-collect posture automatically, but reviewed-closeout execution stays explicit.
-  - Fixed donor -> progression -> quest order permits explicit skip, defer, or stop statuses when reviewed evidence does not support a stage.
+- This skill is suggestion-eligible but not silently invoked.
+- Checkpoint collection may surface it as a candidate; reviewed-closeout execution stays explicit.
+- Fixed donor -> progression -> quest order permits deterministic planning without hidden final authority.

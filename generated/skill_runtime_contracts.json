@@ -11,7 +11,10 @@
       "path": ".agents/skills/abyss-safe-infra-change/SKILL.md",
       "openai_config_path": ".agents/skills/abyss-safe-infra-change/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "runtime",
       "requires_confirmation_seam": true,
@@ -25,6 +28,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#abyss-safe-infra-change",
@@ -38,7 +47,10 @@
       "path": ".agents/skills/abyss-sanitized-share/SKILL.md",
       "openai_config_path": ".agents/skills/abyss-sanitized-share/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "sharing",
       "requires_confirmation_seam": false,
@@ -52,6 +64,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#abyss-sanitized-share",
@@ -65,7 +83,10 @@
       "path": ".agents/skills/abyss-self-diagnostic-spine/SKILL.md",
       "openai_config_path": ".agents/skills/abyss-self-diagnostic-spine/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -79,6 +100,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#abyss-self-diagnostic-spine",
@@ -92,7 +119,10 @@
       "path": ".agents/skills/aoa-adr-write/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-adr-write/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -110,6 +140,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-adr-write",
@@ -123,7 +157,10 @@
       "path": ".agents/skills/aoa-approval-gate-check/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-approval-gate-check/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "explicit-risk",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -138,6 +175,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-approval-gate-check",
@@ -151,7 +194,10 @@
       "path": ".agents/skills/aoa-automation-opportunity-scan/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -175,6 +221,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-automation-opportunity-scan",
@@ -188,7 +240,10 @@
       "path": ".agents/skills/aoa-bounded-context-map/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-bounded-context-map/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -206,6 +261,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-bounded-context-map",
@@ -219,7 +278,10 @@
       "path": ".agents/skills/aoa-change-protocol/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-change-protocol/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -234,6 +296,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-change-protocol",
@@ -247,7 +315,10 @@
       "path": ".agents/skills/aoa-checkpoint-closeout-bridge/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": true,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -266,6 +337,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-checkpoint-closeout-bridge",
@@ -279,7 +356,10 @@
       "path": ".agents/skills/aoa-commit-growth-seam/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -294,6 +374,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-commit-growth-seam",
@@ -307,7 +393,10 @@
       "path": ".agents/skills/aoa-contract-test/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-contract-test/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -324,6 +413,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-contract-test",
@@ -337,7 +430,10 @@
       "path": ".agents/skills/aoa-core-logic-boundary/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -354,6 +450,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-core-logic-boundary",
@@ -367,7 +467,10 @@
       "path": ".agents/skills/aoa-dry-run-first/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-dry-run-first/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "requires_confirmation_seam": true,
@@ -389,6 +492,12 @@
           "assets/dry_run_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-dry-run-first",
@@ -402,7 +511,10 @@
       "path": ".agents/skills/aoa-invariant-coverage-audit/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-invariant-coverage-audit/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -419,6 +531,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-invariant-coverage-audit",
@@ -432,7 +548,10 @@
       "path": ".agents/skills/aoa-local-stack-bringup/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-local-stack-bringup/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "requires_confirmation_seam": true,
@@ -454,6 +573,12 @@
           "assets/local_stack_bringup.template.json",
           "assets/local_stack_report.schema.json",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-local-stack-bringup",
@@ -467,7 +592,10 @@
       "path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-port-adapter-refactor/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -484,6 +612,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-port-adapter-refactor",
@@ -497,7 +629,10 @@
       "path": ".agents/skills/aoa-property-invariants/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-property-invariants/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -514,6 +649,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-property-invariants",
@@ -527,7 +666,10 @@
       "path": ".agents/skills/aoa-quest-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-quest-harvest/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -547,6 +689,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-quest-harvest",
@@ -560,7 +708,10 @@
       "path": ".agents/skills/aoa-safe-infra-change/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-safe-infra-change/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "requires_confirmation_seam": true,
@@ -582,6 +733,12 @@
           "assets/infra_change_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-safe-infra-change",
@@ -595,7 +752,10 @@
       "path": ".agents/skills/aoa-sanitized-share/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-sanitized-share/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "explicit-risk",
       "mutation_surface": "sharing",
       "requires_confirmation_seam": false,
@@ -610,6 +770,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-sanitized-share",
@@ -623,7 +789,10 @@
       "path": ".agents/skills/aoa-session-donor-harvest/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-donor-harvest/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -647,6 +816,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-donor-harvest",
@@ -660,7 +835,10 @@
       "path": ".agents/skills/aoa-session-progression-lift/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-progression-lift/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -680,6 +858,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-progression-lift",
@@ -693,7 +877,10 @@
       "path": ".agents/skills/aoa-session-route-forks/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-route-forks/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -712,6 +899,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-route-forks",
@@ -725,7 +918,10 @@
       "path": ".agents/skills/aoa-session-self-diagnose/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-self-diagnose/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -744,6 +940,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-self-diagnose",
@@ -757,7 +959,10 @@
       "path": ".agents/skills/aoa-session-self-repair/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-session-self-repair/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -777,6 +982,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-session-self-repair",
@@ -790,7 +1001,10 @@
       "path": ".agents/skills/aoa-source-of-truth-check/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-source-of-truth-check/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -807,6 +1021,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-source-of-truth-check",
@@ -815,12 +1033,15 @@
     {
       "name": "aoa-summon",
       "display_name": "AoA Summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
       "short_description": "Summon one bounded child route",
       "path": ".agents/skills/aoa-summon/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-summon/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -840,10 +1061,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-summon",
-      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with Codex-local defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
+      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with local coding-agent defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
     },
     {
       "name": "aoa-tdd-slice",
@@ -853,7 +1080,10 @@
       "path": ".agents/skills/aoa-tdd-slice/SKILL.md",
       "openai_config_path": ".agents/skills/aoa-tdd-slice/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "allow_implicit_invocation": true,
+      "manual_invocation_required": false,
+      "candidate_only": false,
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -870,6 +1100,10 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-tdd-slice",
@@ -883,7 +1117,10 @@
       "path": ".agents/skills/atm10-change-protocol/SKILL.md",
       "openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -897,6 +1134,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#atm10-change-protocol",
@@ -910,7 +1153,10 @@
       "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
       "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
       "invocation_mode": "explicit-preferred",
-      "allow_implicit_invocation": true,
+      "implicit_activation_policy": "manual",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -924,6 +1170,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#atm10-source-of-truth-check",
@@ -937,7 +1189,10 @@
       "path": ".agents/skills/titan-approval-ledger/SKILL.md",
       "openai_config_path": ".agents/skills/titan-approval-ledger/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": true,
@@ -951,6 +1206,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-approval-ledger",
@@ -964,7 +1225,10 @@
       "path": ".agents/skills/titan-approval-loom/SKILL.md",
       "openai_config_path": ".agents/skills/titan-approval-loom/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": true,
@@ -978,6 +1242,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-approval-loom",
@@ -991,7 +1261,10 @@
       "path": ".agents/skills/titan-appserver-bridge/SKILL.md",
       "openai_config_path": ".agents/skills/titan-appserver-bridge/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -1005,6 +1278,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-appserver-bridge",
@@ -1013,12 +1292,15 @@
     {
       "name": "titan-appserver-plan",
       "display_name": "Titan Appserver Plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
       "short_description": "Plan Titan bridge launch",
       "path": ".agents/skills/titan-appserver-plan/SKILL.md",
       "openai_config_path": ".agents/skills/titan-appserver-plan/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -1032,10 +1314,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-appserver-plan",
-      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     {
       "name": "titan-closeout",
@@ -1045,7 +1333,10 @@
       "path": ".agents/skills/titan-closeout/SKILL.md",
       "openai_config_path": ".agents/skills/titan-closeout/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -1059,6 +1350,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-closeout",
@@ -1072,7 +1369,10 @@
       "path": ".agents/skills/titan-console/SKILL.md",
       "openai_config_path": ".agents/skills/titan-console/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -1086,6 +1386,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-console",
@@ -1099,7 +1405,10 @@
       "path": ".agents/skills/titan-event-replay/SKILL.md",
       "openai_config_path": ".agents/skills/titan-event-replay/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -1113,6 +1422,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-event-replay",
@@ -1126,7 +1441,10 @@
       "path": ".agents/skills/titan-memory-loom/SKILL.md",
       "openai_config_path": ".agents/skills/titan-memory-loom/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -1140,6 +1458,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-memory-loom",
@@ -1153,7 +1477,10 @@
       "path": ".agents/skills/titan-memory-prune/SKILL.md",
       "openai_config_path": ".agents/skills/titan-memory-prune/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -1167,6 +1494,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-memory-prune",
@@ -1180,7 +1513,10 @@
       "path": ".agents/skills/titan-mutation-gate/SKILL.md",
       "openai_config_path": ".agents/skills/titan-mutation-gate/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": true,
@@ -1194,6 +1530,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-mutation-gate",
@@ -1207,7 +1549,10 @@
       "path": ".agents/skills/titan-recall/SKILL.md",
       "openai_config_path": ".agents/skills/titan-recall/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -1221,6 +1566,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-recall",
@@ -1234,7 +1585,10 @@
       "path": ".agents/skills/titan-receipt/SKILL.md",
       "openai_config_path": ".agents/skills/titan-receipt/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -1248,6 +1602,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-receipt",
@@ -1261,7 +1621,10 @@
       "path": ".agents/skills/titan-runtime-gate/SKILL.md",
       "openai_config_path": ".agents/skills/titan-runtime-gate/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": true,
@@ -1275,6 +1638,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-runtime-gate",
@@ -1288,7 +1657,10 @@
       "path": ".agents/skills/titan-summon/SKILL.md",
       "openai_config_path": ".agents/skills/titan-summon/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_confirmation_seam": false,
@@ -1302,6 +1674,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-summon",
@@ -1315,7 +1693,10 @@
       "path": ".agents/skills/titan-thread-turn-binding/SKILL.md",
       "openai_config_path": ".agents/skills/titan-thread-turn-binding/agents/openai.yaml",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": false,
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_confirmation_seam": false,
@@ -1329,6 +1710,12 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "context_retention_ref": "generated/context_retention_manifest.json#titan-thread-turn-binding",

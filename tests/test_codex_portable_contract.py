@@ -213,9 +213,14 @@ class CodexPortableContractTests(unittest.TestCase):
             self.assertTrue((REPO_ROOT / rel_path).exists(), msg=rel_path)
 
         self.assertEqual(release_manifest["skill_count"], len(source_catalog["skills"]))
+        policy_doc = load_json(REPO_ROOT / "config" / "skill_policy_matrix.json")
         self.assertEqual(
             release_manifest["explicit_only_count"],
-            sum(1 for entry in source_catalog["skills"] if entry["invocation_mode"] == "explicit-only"),
+            sum(
+                1
+                for entry in policy_doc["skills"].values()
+                if entry["implicit_activation_policy"] != "invoke"
+            ),
         )
         self.assertEqual(
             release_manifest["profile_count"],
@@ -348,36 +353,41 @@ class CodexPortableContractTests(unittest.TestCase):
             self.assertIn("refusing to delete existing external contents", completed.stderr)
             self.assertTrue((output_root / "keep.txt").exists())
 
-    def test_explicit_only_skills_have_no_implicit_positive_cases(self):
-        source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
+    def test_non_invoke_skills_have_no_implicit_positive_cases(self):
+        policy_doc = load_json(REPO_ROOT / "config" / "skill_policy_matrix.json")
         cases = load_jsonl(REPO_ROOT / "generated" / "skill_trigger_eval_cases.jsonl")
-        explicit_only = {
-            entry["name"] for entry in source_catalog["skills"] if entry["invocation_mode"] == "explicit-only"
+        non_invoke = {
+            name
+            for name, entry in policy_doc["skills"].items()
+            if entry["implicit_activation_policy"] != "invoke"
         }
         offenders = []
         for case in cases:
             if (
-                case["skill_name"] in explicit_only
+                case["skill_name"] in non_invoke
                 and case["mode"] == "implicit"
                 and case["expected_behavior"] == "invoke-skill"
             ):
                 offenders.append(case["case_id"])
         self.assertEqual(offenders, [])
 
-    def test_description_trigger_suite_respects_explicit_only_policy(self):
-        source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
+    def test_description_trigger_suite_respects_activation_policy(self):
+        policy_doc = load_json(REPO_ROOT / "config" / "skill_policy_matrix.json")
         cases = load_jsonl(REPO_ROOT / "generated" / "description_trigger_eval_cases.jsonl")
-        explicit_only = {
-            entry["name"] for entry in source_catalog["skills"] if entry["invocation_mode"] == "explicit-only"
+        non_invoke = {
+            name
+            for name, entry in policy_doc["skills"].items()
+            if entry["implicit_activation_policy"] != "invoke"
         }
         offenders = []
         for case in cases:
-            if case["skill_name"] in explicit_only and case["case_class"] == "should-trigger":
+            if case["skill_name"] in non_invoke and case["case_class"] == "should-trigger":
                 offenders.append(case["case_id"])
         self.assertEqual(offenders, [])
 
     def test_tiny_router_surfaces_respect_invocation_mode_and_overlay_scope(self):
         source_catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
+        policy_doc = load_json(REPO_ROOT / "config" / "skill_policy_matrix.json")
         tiny_router_signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
         tiny_router_bands = load_json(REPO_ROOT / "generated" / "tiny_router_candidate_bands.json")
         source_by_name = {entry["name"]: entry for entry in source_catalog["skills"]}
@@ -385,7 +395,9 @@ class CodexPortableContractTests(unittest.TestCase):
 
         for name, source in source_by_name.items():
             signal = signal_by_name[name]
-            self.assertEqual(signal["manual_invocation_required"], source["invocation_mode"] == "explicit-only")
+            expected_activation = policy_doc["skills"][name]["implicit_activation_policy"]
+            self.assertEqual(signal["manual_invocation_required"], expected_activation != "invoke")
+            self.assertEqual(signal["implicit_activation_policy"], expected_activation)
             self.assertEqual(signal["project_overlay"], source["scope"] == "project")
 
         band_skill_names = set()

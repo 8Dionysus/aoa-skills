@@ -269,8 +269,8 @@
       "name": "aoa-checkpoint-closeout-bridge",
       "display_name": "AoA Checkpoint Closeout Bridge",
       "source_scope": "repo",
-      "instruction_sha256": "7b9a931fad0c1320de23694a443a1bb4098ed2f7fd341a3991a618000c02df7f",
-      "dedupe_key": "aoa-checkpoint-closeout-bridge:7b9a931fad0c1320de23694a443a1bb4098ed2f7fd341a3991a618000c02df7f",
+      "instruction_sha256": "b083b47aa6b401aa28abeb149d8175d816e9d4c6c9cb4a9f342a72b18a9045c8",
+      "dedupe_key": "aoa-checkpoint-closeout-bridge:b083b47aa6b401aa28abeb149d8175d816e9d4c6c9cb4a9f342a72b18a9045c8",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -717,8 +717,8 @@
       "name": "aoa-session-route-forks",
       "display_name": "AoA Session Route Forks",
       "source_scope": "repo",
-      "instruction_sha256": "f11848bfa9123baa41df30c968b32a20c8687ba676759b4f81c5fcaa28394984",
-      "dedupe_key": "aoa-session-route-forks:f11848bfa9123baa41df30c968b32a20c8687ba676759b4f81c5fcaa28394984",
+      "instruction_sha256": "eaf7246a4721b35f594d59c36aac3467f6af546bd7fc96837afbf9f99ac0b415",
+      "dedupe_key": "aoa-session-route-forks:eaf7246a4721b35f594d59c36aac3467f6af546bd7fc96837afbf9f99ac0b415",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -845,8 +845,8 @@
       "name": "aoa-summon",
       "display_name": "AoA Summon",
       "source_scope": "repo",
-      "instruction_sha256": "ebab28fcf37686d89f7e5d8ea9b181f9fa91b3c0b0239c951cb7d5ef7029a476",
-      "dedupe_key": "aoa-summon:ebab28fcf37686d89f7e5d8ea9b181f9fa91b3c0b0239c951cb7d5ef7029a476",
+      "instruction_sha256": "1ae471f554bea2f1512892edaa18c39e806f3d937ec0309ffb3f705fd2b26695",
+      "dedupe_key": "aoa-summon:1ae471f554bea2f1512892edaa18c39e806f3d937ec0309ffb3f705fd2b26695",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -855,7 +855,7 @@
         "a quest passport with difficulty, risk, control mode, and delegate tier",
         "a summon request with desired role or child target, transport preference, one",
         "one summon decision with allowed or blocked posture",
-        "one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,"
+        "one chosen lane such as local leaf execution, local reviewed execution,"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -863,7 +863,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one, one summon decision with allowed or blocked posture, one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one, one summon decision with allowed or blocked posture, one chosen lane such as local leaf execution, local reviewed execution,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -1037,8 +1037,8 @@
       "name": "titan-appserver-bridge",
       "display_name": "Titan Appserver Bridge",
       "source_scope": "repo",
-      "instruction_sha256": "f109af60a447f38d26bcc7c37e1fd3f29518976ffb0dc863fb8921b1815d965c",
-      "dedupe_key": "titan-appserver-bridge:f109af60a447f38d26bcc7c37e1fd3f29518976ffb0dc863fb8921b1815d965c",
+      "instruction_sha256": "d7b43a4e437de450ff8f7b896637fa7ccca14bb1ae5c008503c849496c12001d",
+      "dedupe_key": "titan-appserver-bridge:d7b43a4e437de450ff8f7b896637fa7ccca14bb1ae5c008503c849496c12001d",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -1069,8 +1069,8 @@
       "name": "titan-appserver-plan",
       "display_name": "Titan Appserver Plan",
       "source_scope": "repo",
-      "instruction_sha256": "04581d384be2e41892f2c41e7e3c81f59bf448e9e4b4d7f0355080d696f4fc9f",
-      "dedupe_key": "titan-appserver-plan:04581d384be2e41892f2c41e7e3c81f59bf448e9e4b4d7f0355080d696f4fc9f",
+      "instruction_sha256": "04a2f462025357dc07ececdba6f7592e233b90261766861ae102c997dafc3aec",
+      "dedupe_key": "titan-appserver-plan:04a2f462025357dc07ececdba6f7592e233b90261766861ae102c997dafc3aec",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -1087,7 +1087,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: workspace root, console or bridge state ref, JSONL launch-plan entries, required prechecks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n\nKeep in memory: workspace root, console or bridge state ref, JSONL launch-plan entries, required prechecks.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
@@ -1389,8 +1389,8 @@
       "name": "titan-summon",
       "display_name": "Titan Summon",
       "source_scope": "repo",
-      "instruction_sha256": "b5b3337d871c670dd67ea3c4cfa10d551599a4a93086f446a215e64f580e52ff",
-      "dedupe_key": "titan-summon:b5b3337d871c670dd67ea3c4cfa10d551599a4a93086f446a215e64f580e52ff",
+      "instruction_sha256": "b412b098d13cc1fc81c8a9378ced66f7b28f0455bcd865952b08c0b3bb3687b7",
+      "dedupe_key": "titan-summon:b412b098d13cc1fc81c8a9378ced66f7b28f0455bcd865952b08c0b3bb3687b7",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",

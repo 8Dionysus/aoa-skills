@@ -1,4 +1,5 @@
 policy:
   allow_implicit_invocation: false
+  implicit_activation_policy: manual
 notes:
-  - This scaffold is explicit-only because it classifies authority and execution boundaries for potentially sensitive actions.
+- This scaffold is explicit-only because it classifies authority and execution boundaries for potentially sensitive actions.

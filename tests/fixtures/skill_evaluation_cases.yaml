@@ -701,7 +701,7 @@ trigger_cases:
       - the route needs a compact final promotion triage rather than another free-form discussion
   - skill: aoa-session-donor-harvest
     case_id: session_donor_harvest_reviewed_multi_unit_session
-    prompt: A reviewed session compaction note contains one reusable practice, one bounded Codex workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
+    prompt: A reviewed session compaction note contains one reusable practice, one bounded local coding-agent workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
     expected: use
     required_phrases:
       - a session transcript, compaction note, review packet, or bounded recap exists and must be distilled into reusable donor units
@@ -793,7 +793,7 @@ trigger_cases:
     expected: use
     required_phrases:
       - a reviewed session ended with multiple plausible next moves
-      - the operator or Codex needs explicit branch choices instead of a buried recommendation
+      - the operator or local coding agent needs explicit branch choices instead of a buried recommendation
   - skill: aoa-session-route-forks
     case_id: session_route_forks_single_obvious_move
     prompt: There is only one obvious next bounded move after the reviewed session, so making branch cards would just restate the same route in several cosmetic variants.
@@ -807,7 +807,7 @@ trigger_cases:
     expected: use
     required_phrases:
       - the choice may include staying manual, becoming a bounded skill, becoming a playbook automation seed candidate, or waiting for prerequisite repair
-      - the operator or Codex needs explicit branch choices instead of a buried recommendation
+      - the operator or local coding agent needs explicit branch choices instead of a buried recommendation
   - skill: aoa-session-self-diagnose
     case_id: session_self_diagnose_reviewed_drift_pattern
     prompt: A reviewed session shows repeated ownership confusion, proof debt, and route collapse, and the next honest move is diagnosis before repair.
@@ -1865,7 +1865,7 @@ snapshot_cases:
     forbidden_output_phrases: []
   - skill: aoa-session-donor-harvest
     case_id: session_donor_harvest_reviewed_multi_unit_session
-    prompt: A reviewed session compaction note contains one reusable practice, one bounded Codex workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
+    prompt: A reviewed session compaction note contains one reusable practice, one bounded local coding-agent workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
     expected: use
     snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-session-donor-harvest/session_donor_harvest_reviewed_multi_unit_session.md
     required_output_phrases:

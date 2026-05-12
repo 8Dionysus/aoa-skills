@@ -6,9 +6,11 @@
       "name": "abyss-safe-infra-change",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "runtime",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -19,9 +21,11 @@
       "name": "abyss-sanitized-share",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "sharing",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -32,9 +36,11 @@
       "name": "abyss-self-diagnostic-spine",
       "scope": "project",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
-      "requires_manual_invocation": false,
+      "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -45,9 +51,11 @@
       "name": "aoa-adr-write",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -59,9 +67,11 @@
       "name": "aoa-approval-gate-check",
       "scope": "risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "explicit-risk",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -73,9 +83,11 @@
       "name": "aoa-automation-opportunity-scan",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -87,9 +99,11 @@
       "name": "aoa-bounded-context-map",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -101,9 +115,11 @@
       "name": "aoa-change-protocol",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -115,9 +131,11 @@
       "name": "aoa-checkpoint-closeout-bridge",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
-      "requires_manual_invocation": false,
+      "requires_manual_invocation": true,
+      "candidate_only": true,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -129,9 +147,11 @@
       "name": "aoa-commit-growth-seam",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -143,9 +163,11 @@
       "name": "aoa-contract-test",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -157,9 +179,11 @@
       "name": "aoa-core-logic-boundary",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -171,9 +195,11 @@
       "name": "aoa-dry-run-first",
       "scope": "risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -184,9 +210,11 @@
       "name": "aoa-invariant-coverage-audit",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -198,9 +226,11 @@
       "name": "aoa-local-stack-bringup",
       "scope": "risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -211,9 +241,11 @@
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -225,9 +257,11 @@
       "name": "aoa-property-invariants",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -239,9 +273,11 @@
       "name": "aoa-quest-harvest",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -253,9 +289,11 @@
       "name": "aoa-safe-infra-change",
       "scope": "risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "explicit-risk",
       "mutation_surface": "runtime",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -266,9 +304,11 @@
       "name": "aoa-sanitized-share",
       "scope": "risk",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "explicit-risk",
       "mutation_surface": "sharing",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -280,9 +320,11 @@
       "name": "aoa-session-donor-harvest",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -294,9 +336,11 @@
       "name": "aoa-session-progression-lift",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -308,9 +352,11 @@
       "name": "aoa-session-route-forks",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -322,9 +368,11 @@
       "name": "aoa-session-self-diagnose",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -336,9 +384,11 @@
       "name": "aoa-session-self-repair",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -350,9 +400,11 @@
       "name": "aoa-source-of-truth-check",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -364,23 +416,27 @@
       "name": "aoa-summon",
       "scope": "core",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "portable-core",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
         "user"
       ],
-      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with Codex-local defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
+      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with local coding-agent defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
     },
     {
       "name": "aoa-tdd-slice",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "invoke",
       "trust_posture": "portable-core",
       "mutation_surface": "repo",
       "requires_manual_invocation": false,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo",
@@ -392,9 +448,11 @@
       "name": "atm10-change-protocol",
       "scope": "project",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
-      "requires_manual_invocation": false,
+      "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -405,9 +463,11 @@
       "name": "atm10-source-of-truth-check",
       "scope": "project",
       "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
-      "requires_manual_invocation": false,
+      "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -418,9 +478,11 @@
       "name": "titan-approval-ledger",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -431,9 +493,11 @@
       "name": "titan-approval-loom",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -444,9 +508,11 @@
       "name": "titan-appserver-bridge",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -457,22 +523,26 @@
       "name": "titan-appserver-plan",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
       ],
-      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     {
       "name": "titan-closeout",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -483,9 +553,11 @@
       "name": "titan-console",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -496,9 +568,11 @@
       "name": "titan-event-replay",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -509,9 +583,11 @@
       "name": "titan-memory-loom",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -522,9 +598,11 @@
       "name": "titan-memory-prune",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -535,9 +613,11 @@
       "name": "titan-mutation-gate",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -548,9 +628,11 @@
       "name": "titan-recall",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -561,9 +643,11 @@
       "name": "titan-receipt",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -574,9 +658,11 @@
       "name": "titan-runtime-gate",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": true,
       "recommended_install_scopes": [
         "repo"
@@ -587,9 +673,11 @@
       "name": "titan-summon",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"
@@ -600,9 +688,11 @@
       "name": "titan-thread-turn-binding",
       "scope": "project",
       "invocation_mode": "explicit-only",
+      "implicit_activation_policy": "manual",
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
       "requires_manual_invocation": true,
+      "candidate_only": false,
       "requires_confirmation_seam": false,
       "recommended_install_scopes": [
         "repo"

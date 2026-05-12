@@ -50,9 +50,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -153,9 +160,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -256,10 +270,17 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
-        "allow_implicit_invocation": true
+        "implicit_activation_policy": "manual",
+        "allow_implicit_invocation": false
       },
       "interface": {
         "display_name": "Abyss Self Diagnostic Spine",
@@ -286,11 +307,11 @@
         "explicit": [
           "Use $abyss-self-diagnostic-spine to turn repo-relative runtime evidence plus optional reviewed session refs into one bounded diagnostic session artifact with an honest exit class and no silent repair authority."
         ],
-        "implicit": [
+        "implicit": [],
+        "manual_invocation_required": [
           "Inside an abyss-* repository, gather repo-relative runtime signals, compare them against a concrete target path and any last-good anchor, and emit one bounded diagnostic session artifact with explicit drift classes, one exit class, and owner-aware handoff hints. Use when runtime evidence is scattered and diagnosis must become honest before any repair claim.",
           "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
         ],
-        "manual_invocation_required": [],
         "negative": [
           "The material is still a live unreviewed session and there is no concrete runtime target or repo-relative evidence surface to normalize yet, so a diagnostic spine artifact would be premature."
         ]
@@ -362,9 +383,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -460,9 +486,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -575,9 +608,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -689,9 +729,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -793,9 +838,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -903,10 +955,17 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
-        "allow_implicit_invocation": true
+        "implicit_activation_policy": "suggest",
+        "allow_implicit_invocation": false
       },
       "interface": {
         "display_name": "AoA Checkpoint Closeout Bridge",
@@ -935,11 +994,11 @@
         "explicit": [
           "Use $aoa-checkpoint-closeout-bridge to build one closeout context from reviewed evidence, keep checkpoint hints provisional, and run donor harvest, progression lift, and quest harvest in order."
         ],
-        "implicit": [
+        "implicit": [],
+        "manual_invocation_required": [
           "Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order.",
           "A reviewed session artifact, a checkpoint note, and a reviewed closeout handoff already exist. Build one explicit closeout context, reread the full reviewed artifact, and drive donor harvest, progression lift, and quest harvest in that order."
         ],
-        "manual_invocation_required": [],
         "negative": [
           "The session is still active, there is no reviewed artifact yet, and the request is to let aoa closeout run silently decide donor, progression, and quest verdicts straight from checkpoint notes."
         ]
@@ -1008,9 +1067,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -1113,9 +1179,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -1219,9 +1290,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -1330,9 +1406,16 @@
           "assets/dry_run_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -1437,9 +1520,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -1546,9 +1634,16 @@
           "assets/local_stack_bringup.template.json",
           "assets/local_stack_report.schema.json",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -1652,9 +1747,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -1757,9 +1857,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -1863,9 +1968,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -1980,9 +2092,16 @@
           "assets/infra_change_report.schema.json",
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2084,9 +2203,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2195,9 +2321,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2311,9 +2444,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2404,7 +2544,7 @@
       ],
       "section_summaries": {
         "Intent": "Use this skill to author `FORK_CARDS` from a reviewed session. The goal is not prediction theater. The goal is legible choice architecture: what routes exist, why each route matters, what each one likely costs, and where each route probably lands first.",
-        "Trigger boundary": "a reviewed session ended with multiple plausible next moves; the operator or Codex needs explicit branch choices instead of a buried recommendation",
+        "Trigger boundary": "a reviewed session ended with multiple plausible next moves; the operator or local coding agent needs explicit branch choices instead of a buried recommendation",
         "Inputs": "reviewed session artifact or harvest packet; candidate next routes",
         "Outputs": "`FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions; one suggested default route if evidence is strong enough",
         "Procedure": "start from reviewed evidence rather than free speculation; separate materially different branches instead of cosmetic variants",
@@ -2424,9 +2564,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2534,9 +2681,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2649,9 +2803,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2761,9 +2922,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -2823,7 +2989,7 @@
     {
       "name": "aoa-summon",
       "display_name": "AoA Summon",
-      "description": "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
+      "description": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.",
       "short_description": "Summon one bounded child route",
       "path": ".agents/skills/aoa-summon/SKILL.md",
       "skill_dir": ".agents/skills/aoa-summon",
@@ -2850,12 +3016,12 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to decide whether and how to launch one bounded child route from an already-anchored parent route. The goal is not delegation theater. The goal is to preserve quest-passport law, Codex-first local execution, stress narrowing, progression and self-agent gates, re...",
+        "Intent": "Use this skill to decide whether and how to launch one bounded child route from an already-anchored parent route. The goal is not delegation theater. The goal is to preserve quest-passport law, local coding-agent execution, stress narrowing, progression and self-agent gates, r...",
         "Trigger boundary": "a parent route already has a real anchor and named expected outputs; a narrower child actor would help through bounded review, evaluation, leaf",
         "Inputs": "a quest passport with difficulty, risk, control mode, and delegate tier; a summon request with desired role or child target, transport preference, one",
-        "Outputs": "one summon decision with allowed or blocked posture; one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,",
-        "Procedure": "start from the parent anchor and quest passport, not from raw pressure to delegate; default `transport_preference` to `codex_local` when the request leaves it open",
-        "Contracts": "this skill governs one bounded child route; it does not grant hidden; local Codex child targeting is the default first choice, not an afterthought",
+        "Outputs": "one summon decision with allowed or blocked posture; one chosen lane such as local leaf execution, local reviewed execution,",
+        "Procedure": "start from the parent anchor and quest passport, not from raw pressure to delegate; default `transport_preference` to local execution when the request leaves it open",
+        "Contracts": "this skill governs one bounded child route; it does not grant hidden; local coding-agent child targeting is the default first choice, not an afterthought",
         "Risks and anti-patterns": "treating delegation as progress without anchor or output clarity; using summon to skip branch choice when several next routes still compete",
         "Verification": "confirm the passport and parent anchor exist; confirm expected outputs are named",
         "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0079 from `8Dionysu...",
@@ -2872,9 +3038,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -2906,7 +3079,7 @@
         ],
         "implicit": [],
         "manual_invocation_required": [
-          "Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer.",
+          "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer.",
           "The parent route already has a quest passport, a concrete anchor, and named outputs, and it needs one bounded local reviewer child to inspect a narrow package fix before the parent continues. Decide the honest child lane, gates, and return plan."
         ],
         "negative": [
@@ -2928,7 +3101,7 @@
           }
         }
       },
-      "disclose_card_markdown": "### aoa-summon\n- Summary: Summon one bounded child route\n- Use when: Delegate one bounded child route through quest-passport law, local-first Codex execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n- Trust posture: portable-core\n- Mutation surface: none\n"
+      "disclose_card_markdown": "### aoa-summon\n- Summary: Summon one bounded child route\n- Use when: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n- Trust posture: portable-core\n- Mutation surface: none\n"
     },
     {
       "name": "aoa-tdd-slice",
@@ -2979,9 +3152,14 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "invoke",
         "allow_implicit_invocation": true
       },
       "interface": {
@@ -3083,10 +3261,17 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
-        "allow_implicit_invocation": true
+        "implicit_activation_policy": "manual",
+        "allow_implicit_invocation": false
       },
       "interface": {
         "display_name": "ATM10 Change Protocol",
@@ -3112,11 +3297,11 @@
         "explicit": [
           "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes."
         ],
-        "implicit": [
+        "implicit": [],
+        "manual_invocation_required": [
           "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces.",
           "Inside this atm10-billing repo, apply the base change protocol but use repo-relative atm10 paths, local commands, and local approval notes."
         ],
-        "manual_invocation_required": [],
         "negative": [
           "This repository is not an atm10-* repo and does not need a project-specific overlay; the base change workflow is enough."
         ]
@@ -3185,10 +3370,17 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/example.md"
         ]
       },
       "policy": {
-        "allow_implicit_invocation": true
+        "implicit_activation_policy": "manual",
+        "allow_implicit_invocation": false
       },
       "interface": {
         "display_name": "ATM10 Source Of Truth Check",
@@ -3214,11 +3406,11 @@
         "explicit": [
           "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture."
         ],
-        "implicit": [
+        "implicit": [],
+        "manual_invocation_required": [
           "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo.",
           "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
         ],
-        "manual_invocation_required": [],
         "negative": [
           "This is broader policy design for a generic repo, not local authority mapping inside an atm10-* repository."
         ]
@@ -3287,9 +3479,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -3384,9 +3583,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -3464,7 +3670,7 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to prepare or inspect the Titan app-server bridge while keeping Codex execution visible and gated.",
+        "Intent": "Use this skill to prepare or inspect the Titan app-server bridge while keeping local agent execution visible and gated.",
         "Trigger boundary": "a Titan console needs a JSON-RPC shaped bridge; thread and turn events need normalization",
         "Inputs": "workspace root; bridge state path",
         "Outputs": "bridge plan or state summary; normalized event candidates",
@@ -3481,9 +3687,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -3534,7 +3747,7 @@
     {
       "name": "titan-appserver-plan",
       "display_name": "Titan Appserver Plan",
-      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
+      "description": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.",
       "short_description": "Plan Titan bridge launch",
       "path": ".agents/skills/titan-appserver-plan/SKILL.md",
       "skill_dir": ".agents/skills/titan-appserver-plan",
@@ -3578,9 +3791,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -3601,11 +3821,11 @@
       "competing_skills": [],
       "sample_prompts": {
         "explicit": [
-          "Use $titan-appserver-plan to generate a JSONL Titan app-server launch plan without executing Codex or starting a server."
+          "Use $titan-appserver-plan to generate a JSONL Titan app-server launch plan without starting hidden agent execution or starting a server."
         ],
         "implicit": [],
         "manual_invocation_required": [
-          "generate a JSONL Titan app-server launch plan without executing Codex or starting a server."
+          "generate a JSONL Titan app-server launch plan without starting hidden agent execution or starting a server."
         ],
         "negative": [
           "The operator already asked to run the server directly, so planning-only posture is not enough without a separate execution gate."
@@ -3626,7 +3846,7 @@
           }
         }
       },
-      "disclose_card_markdown": "### titan-appserver-plan\n- Summary: Plan Titan bridge launch\n- Use when: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+      "disclose_card_markdown": "### titan-appserver-plan\n- Summary: Plan Titan bridge launch\n- Use when: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
     },
     {
       "name": "titan-closeout",
@@ -3675,9 +3895,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -3772,9 +3999,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -3869,9 +4103,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -3966,9 +4207,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -4063,9 +4311,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -4160,9 +4415,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -4257,9 +4519,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -4354,9 +4623,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -4451,9 +4727,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -4531,7 +4814,7 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to begin a Codex session with the first Titan service cohort after an explicit operator summon.",
+        "Intent": "Use this skill to begin a local coding-agent session with the first Titan service cohort after an explicit operator summon.",
         "Trigger boundary": "the operator explicitly requests the Titan cohort; the session needs Atlas route, Sentinel risk, and Mneme provenance lanes",
         "Inputs": "workspace root; summon prompt reference",
         "Outputs": "summon receipt candidate; active and locked roster state",
@@ -4548,9 +4831,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {
@@ -4645,9 +4935,16 @@
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"
+        ],
+        "checks": [
+          "checks/review.md"
+        ],
+        "examples": [
+          "examples/runtime.md"
         ]
       },
       "policy": {
+        "implicit_activation_policy": "manual",
         "allow_implicit_invocation": false
       },
       "interface": {

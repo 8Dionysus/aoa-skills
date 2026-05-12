@@ -13,6 +13,7 @@ from typing import Any, Mapping, Sequence
 import yaml
 
 import skill_layout
+from skill_activation_policy import allow_implicit_invocation, resolve_implicit_activation_policy
 import technique_bridge_tools
 
 
@@ -30,6 +31,14 @@ EXPECTED_HEADINGS = [
 ]
 RUNTIME_HEADINGS = EXPECTED_HEADINGS[:8]
 PENDING_PATTERN = re.compile(r"\b(?:TODO|TBD|AOA-T-PENDING-[A-Z0-9-]+|placeholder)\b")
+UNAPPROVED_CODEX_WORDING_PATTERN = re.compile(r"\bCodex\b")
+AUDIT_BLOCKER_FINDINGS = {
+    "implicit_policy_collapse",
+    "missing_portable_checks_examples",
+    "unapproved_codex_source_wording",
+    "missing_runtime_card",
+    "unsupported_canonical_promotion",
+}
 
 
 def load_json(path: Path) -> Any:
@@ -100,6 +109,14 @@ def generated_by_name(repo_root: Path, relative_path: str) -> dict[str, Mapping[
     return {str(row["name"]): row for row in rows if isinstance(row, Mapping) and "name" in row}
 
 
+def generated_exports_by_name(repo_root: Path) -> dict[str, Mapping[str, Any]]:
+    data = load_json(repo_root / "generated/portable_export_map.json")
+    rows = data.get("exports", [])
+    if not isinstance(rows, list):
+        return {}
+    return {str(row["name"]): row for row in rows if isinstance(row, Mapping) and "name" in row}
+
+
 def technique_dependency_ids(techniques_payload: Mapping[str, Any]) -> list[str]:
     deps: list[str] = []
     for entry in techniques_payload.get("techniques", []):
@@ -162,6 +179,39 @@ def support_artifact_kinds(bundle_entry: Mapping[str, Any]) -> list[str]:
     return kinds
 
 
+def exported_resource_inventory(entry: Mapping[str, Any], dirname: str) -> list[str]:
+    inventory = entry.get("resource_inventory", {})
+    if not isinstance(inventory, Mapping):
+        return []
+    values = inventory.get(dirname, [])
+    if not isinstance(values, list):
+        return []
+    return [str(value) for value in values if isinstance(value, str)]
+
+
+def canonical_resource_inventory(skill_root: Path, dirname: str) -> list[str]:
+    resource_dir = skill_root / dirname
+    if not resource_dir.exists():
+        return []
+    return sorted(
+        f"{dirname}/{path.relative_to(resource_dir).as_posix()}"
+        for path in resource_dir.rglob("*")
+        if path.is_file()
+    )
+
+
+def has_unapproved_codex_wording(skill_root: Path) -> bool:
+    checked_paths = [skill_root / "SKILL.md"]
+    for dirname in ("examples", "checks"):
+        resource_dir = skill_root / dirname
+        if resource_dir.exists():
+            checked_paths.extend(path for path in resource_dir.rglob("*") if path.is_file())
+    return any(
+        path.exists() and UNAPPROVED_CODEX_WORDING_PATTERN.search(path.read_text(encoding="utf-8"))
+        for path in checked_paths
+    )
+
+
 def drift_record_payload(record: technique_bridge_tools.TechniqueDriftRecord) -> dict[str, str]:
     return {
         "technique_id": record.technique_id,
@@ -215,6 +265,10 @@ def build_skill_report(
     public_entry: Mapping[str, Any],
     governance_entry: Mapping[str, Any],
     runtime_entry: Mapping[str, Any],
+    agent_entry: Mapping[str, Any],
+    export_entry: Mapping[str, Any],
+    local_adapter_entry: Mapping[str, Any],
+    policy_entry: Mapping[str, Any],
     technique_drift_records: Sequence[Mapping[str, str]],
 ) -> dict[str, Any]:
     bundle_path = skill_layout.skill_bundle_path(repo_root, skill_name)
@@ -226,6 +280,35 @@ def build_skill_report(
     technique_ids = technique_dependency_ids(techniques_payload)
 
     findings: list[str] = []
+    try:
+        activation_policy = resolve_implicit_activation_policy(policy_entry, skill_name)
+        expected_allow_implicit = allow_implicit_invocation(policy_entry, skill_name)
+    except ValueError:
+        activation_policy = "missing"
+        expected_allow_implicit = False
+        findings.append("implicit_policy_collapse")
+    if runtime_entry.get("implicit_activation_policy") != activation_policy:
+        findings.append("implicit_policy_collapse")
+    if runtime_entry.get("allow_implicit_invocation") != expected_allow_implicit:
+        findings.append("implicit_policy_collapse")
+    if bundle_entry.get("scope") == "core":
+        for dirname in ("checks", "examples"):
+            expected_inventory = canonical_resource_inventory(bundle_path.skill_dir, dirname)
+            if not expected_inventory:
+                continue
+            exported_dir = repo_root / ".agents" / "skills" / skill_name / dirname
+            generated_inventories = [
+                exported_resource_inventory(agent_entry, dirname),
+                exported_resource_inventory(export_entry, dirname),
+                exported_resource_inventory(local_adapter_entry, dirname),
+            ]
+            if not exported_dir.exists() or any(items != expected_inventory for items in generated_inventories):
+                findings.append("missing_portable_checks_examples")
+                break
+        if has_unapproved_codex_wording(bundle_path.skill_dir):
+            findings.append("unapproved_codex_source_wording")
+        if not eval_entry.get("selected_runtime_artifact_path"):
+            findings.append("missing_runtime_card")
     findings.extend(metrics["low_count_findings"])
     if metrics["missing_headings"]:
         findings.append("missing_required_headings")
@@ -253,12 +336,15 @@ def build_skill_report(
         findings.append("missing_promotion_review")
     if bundle_entry.get("status") == "canonical" and not bundle_entry.get("candidate_review_path"):
         findings.append("missing_candidate_review")
+    if bundle_entry.get("status") == "canonical" and eval_entry.get("canonical_eval_ready") is not True:
+        findings.append("unsupported_canonical_promotion")
 
     blocker_count = sum(
         1
         for finding in findings
         if finding
         in {
+            *AUDIT_BLOCKER_FINDINGS,
             "missing_required_headings",
             "missing_use_case",
             "missing_do_not_use_case",
@@ -296,6 +382,7 @@ def build_skill_report(
         "readiness_reconciliation": governance_entry.get("readiness_reconciliation"),
         "runtime": {
             "allow_implicit_invocation": runtime_entry.get("allow_implicit_invocation"),
+            "implicit_activation_policy": activation_policy,
             "trust_posture": runtime_entry.get("trust_posture"),
             "mutation_surface": runtime_entry.get("mutation_surface"),
         },
@@ -327,6 +414,10 @@ def build_report(
     public = generated_by_name(repo_root, "generated/public_surface.json")
     governance = generated_by_name(repo_root, "generated/governance_backlog.json")
     runtime = generated_by_name(repo_root, "generated/runtime_discovery_index.json")
+    agent_catalog = generated_by_name(repo_root, "generated/agent_skill_catalog.json")
+    export_map = generated_exports_by_name(repo_root)
+    local_adapter = generated_by_name(repo_root, "generated/local_adapter_manifest.json")
+    policy = (load_json(repo_root / "config/skill_policy_matrix.json").get("skills") or {})
     names = skill_layout.discover_skill_names(repo_root)
     drift_by_skill, drift_summary = technique_drift_by_skill(
         repo_root=repo_root,
@@ -343,6 +434,10 @@ def build_report(
             public_entry=public.get(name, {}),
             governance_entry=governance.get(name, {}),
             runtime_entry=runtime.get(name, {}),
+            agent_entry=agent_catalog.get(name, {}),
+            export_entry=export_map.get(name, {}),
+            local_adapter_entry=local_adapter.get(name, {}),
+            policy_entry=policy.get(name, {}),
             technique_drift_records=drift_by_skill.get(name, []),
         )
         for name in names
@@ -359,8 +454,12 @@ def build_report(
             "generated/skill_bundle_index.json",
             "generated/skill_evaluation_matrix.json",
             "generated/runtime_discovery_index.json",
+            "generated/agent_skill_catalog.json",
+            "generated/portable_export_map.json",
+            "generated/local_adapter_manifest.json",
             "generated/public_surface.json",
             "generated/governance_backlog.json",
+            "config/skill_policy_matrix.json",
             "local aoa-techniques drift check",
         ],
         "skill_count": len(skills),

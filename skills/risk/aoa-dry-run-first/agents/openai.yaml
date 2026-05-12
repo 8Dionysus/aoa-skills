@@ -1,4 +1,5 @@
 policy:
   allow_implicit_invocation: false
+  implicit_activation_policy: manual
 notes:
-  - This scaffold is explicit-only because preview-first discipline matters most around operationally meaningful execution paths.
+- This scaffold is explicit-only because preview-first discipline matters most around operationally meaningful execution paths.

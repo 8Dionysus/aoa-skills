@@ -1,6 +1,6 @@
 ---
 name: titan-appserver-plan
-description: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.
+description: Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Use when a Titan service-cohort route needs this explicit bounded step. Do not use for hidden background agents, silent mutation, unreviewed proof sovereignty, or memory canonization without owner confirmation.
 license: Apache-2.0
 compatibility: Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.
 metadata:
@@ -47,7 +47,7 @@ Do not use this skill when:
 1. collect the requested bridge launch shape
 2. write or return only plan entries
 3. include receipt and approval refs
-4. state that no Codex process was started
+4. state that no hidden agent process was started
 5. name the validation command or manual check
 
 ## Contracts

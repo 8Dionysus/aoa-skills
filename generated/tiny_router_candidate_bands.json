@@ -23,7 +23,10 @@
         "aoa-source-of-truth-check",
         "atm10-source-of-truth-check"
       ],
-      "manual_only_skills": [],
+      "manual_only_skills": [
+        "atm10-source-of-truth-check"
+      ],
+      "suggest_only_skills": [],
       "overlay_skills": [
         "atm10-source-of-truth-check"
       ]
@@ -49,6 +52,7 @@
         "aoa-port-adapter-refactor"
       ],
       "manual_only_skills": [],
+      "suggest_only_skills": [],
       "overlay_skills": []
     },
     {
@@ -79,8 +83,10 @@
         "atm10-change-protocol"
       ],
       "manual_only_skills": [
-        "aoa-commit-growth-seam"
+        "aoa-commit-growth-seam",
+        "atm10-change-protocol"
       ],
+      "suggest_only_skills": [],
       "overlay_skills": [
         "atm10-change-protocol"
       ]
@@ -104,6 +110,7 @@
         "aoa-property-invariants"
       ],
       "manual_only_skills": [],
+      "suggest_only_skills": [],
       "overlay_skills": []
     },
     {
@@ -156,7 +163,9 @@
         "aoa-summon"
       ],
       "manual_only_skills": [
+        "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
+        "aoa-checkpoint-closeout-bridge",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -164,6 +173,9 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
         "aoa-summon"
+      ],
+      "suggest_only_skills": [
+        "aoa-checkpoint-closeout-bridge"
       ],
       "overlay_skills": [
         "abyss-self-diagnostic-spine"
@@ -207,6 +219,7 @@
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
+      "suggest_only_skills": [],
       "overlay_skills": [
         "abyss-safe-infra-change",
         "abyss-sanitized-share"
@@ -270,6 +283,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
+      "suggest_only_skills": [],
       "overlay_skills": [
         "titan-approval-ledger",
         "titan-approval-loom",

@@ -10,6 +10,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Writes bounded decision artifacts into canonical repository surfaces."
     },
     "aoa-approval-gate-check": {
@@ -20,6 +21,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only because it classifies authority boundaries before risky work."
     },
     "aoa-bounded-context-map": {
@@ -30,6 +32,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Analytical boundary-mapping skill with no direct runtime mutation."
     },
     "aoa-change-protocol": {
@@ -40,6 +43,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "General bounded change workflow for non-trivial code, config, and docs work."
     },
     "aoa-commit-growth-seam": {
@@ -50,6 +54,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Packages one honest local commit boundary after a bounded diff is already ready, while keeping push, publish, and release as separate follow-on routes."
     },
     "aoa-contract-test": {
@@ -60,6 +65,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Writes boundary checks or tests without requiring elevated runtime authority."
     },
     "aoa-core-logic-boundary": {
@@ -70,6 +76,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Refactoring guidance for separating reusable logic from glue code."
     },
     "aoa-dry-run-first": {
@@ -79,6 +86,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Preview-first workflow that should remain explicit because it fronts mutating operations."
     },
     "aoa-invariant-coverage-audit": {
@@ -89,6 +97,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Audit-only skill for checking whether invariants are truly covered."
     },
     "aoa-local-stack-bringup": {
@@ -98,6 +107,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only because local stack launch can create side effects beyond simple file edits."
     },
     "aoa-port-adapter-refactor": {
@@ -108,6 +118,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Architecture refactor skill for isolating concrete dependencies."
     },
     "aoa-property-invariants": {
@@ -118,6 +129,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Adds invariant-oriented tests or checks to a codebase."
     },
     "aoa-quest-harvest": {
@@ -128,6 +140,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Leaf promotion-triage skill for one repeated reviewed quest unit after the wider session-harvest family has already done donor extraction or related post-session shaping."
     },
     "aoa-session-donor-harvest": {
@@ -138,6 +151,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only nucleus skill for turning a reviewed session into a bounded HARVEST_PACKET, routing reusable outputs to the right owner layer, and handing off to later post-session family seams when needed."
     },
     "aoa-checkpoint-closeout-bridge": {
@@ -148,6 +162,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "suggest",
       "notes": "Explicit-preferred orchestration skill for carrying provisional checkpoint evidence into one reviewed closeout execution chain without turning aoa closeout run or checkpoint notes into hidden verdict authority."
     },
     "aoa-summon": {
@@ -158,7 +173,8 @@
         "user"
       ],
       "requires_confirmation_seam": false,
-      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with Codex-local defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
+      "implicit_activation_policy": "manual",
+      "notes": "Explicit-only bounded-child delegation skill for anchored parent routes with local coding-agent defaults, hard progression and self-agent gates, and explicit return plus reviewed-closeout planning."
     },
     "aoa-automation-opportunity-scan": {
       "trust_posture": "portable-core",
@@ -168,6 +184,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only detector skill for classifying whether reviewed recurring work is honestly automation-ready without granting schedule, hidden runtime, or self-mutation authority."
     },
     "aoa-session-route-forks": {
@@ -178,6 +195,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only post-session branch-analysis skill for making next-route options legible without turning fork cards into hidden routing policy."
     },
     "aoa-session-self-diagnose": {
@@ -188,6 +206,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only reviewed-session diagnosis skill for classifying drift, proof debt, and ownership confusion before any repair is attempted."
     },
     "aoa-session-self-repair": {
@@ -198,6 +217,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only checkpoint-governed repair-packet skill that stays smaller than a rollout and does not allow silent self-mutation."
     },
     "aoa-session-progression-lift": {
@@ -208,6 +228,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only evidence-backed progression overlay skill for reviewed sessions that keeps growth legible without creating sovereign scores or hidden routing authority."
     },
     "aoa-safe-infra-change": {
@@ -217,6 +238,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Infrastructure and configuration changes remain explicit-only with rollback discipline."
     },
     "aoa-sanitized-share": {
@@ -227,6 +249,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Explicit-only because it handles potentially sensitive raw technical material."
     },
     "aoa-source-of-truth-check": {
@@ -237,6 +260,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Maps authoritative documentation surfaces and entrypoints."
     },
     "aoa-tdd-slice": {
@@ -247,6 +271,7 @@
         "user"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "invoke",
       "notes": "Bounded test-first change workflow with explicit refactor limits."
     },
     "atm10-change-protocol": {
@@ -256,6 +281,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Project overlay for atm10 repositories only."
     },
     "atm10-source-of-truth-check": {
@@ -265,6 +291,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Project overlay for atm10 repository document authority."
     },
     "abyss-safe-infra-change": {
@@ -274,6 +301,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Project overlay for abyss repository operational changes with explicit local authority."
     },
     "abyss-self-diagnostic-spine": {
@@ -283,6 +311,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Project overlay for abyss runtime diagnosis normalization and honest owner-aware handoff without silent repair."
     },
     "abyss-sanitized-share": {
@@ -292,6 +321,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Project overlay for abyss repository sharing and sanitization surfaces."
     },
     "titan-approval-ledger": {
@@ -301,6 +331,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-approval-loom": {
@@ -310,6 +341,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-appserver-bridge": {
@@ -319,6 +351,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-appserver-plan": {
@@ -328,7 +361,8 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
-      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "implicit_activation_policy": "manual",
+      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-closeout": {
       "trust_posture": "project-overlay",
@@ -337,6 +371,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-console": {
@@ -346,6 +381,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-event-replay": {
@@ -355,6 +391,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-memory-loom": {
@@ -364,6 +401,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-memory-prune": {
@@ -373,6 +411,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-mutation-gate": {
@@ -382,6 +421,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-recall": {
@@ -391,6 +431,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-receipt": {
@@ -400,6 +441,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-runtime-gate": {
@@ -409,6 +451,7 @@
         "repo"
       ],
       "requires_confirmation_seam": true,
+      "implicit_activation_policy": "manual",
       "notes": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-summon": {
@@ -418,6 +461,7 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Explicit-only Titan scaffold; owner repos retain stronger authority."
     },
     "titan-thread-turn-binding": {
@@ -427,7 +471,13 @@
         "repo"
       ],
       "requires_confirmation_seam": false,
+      "implicit_activation_policy": "manual",
       "notes": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Explicit-only Titan scaffold; owner repos retain stronger authority."
     }
+  },
+  "implicit_activation_policy_values": {
+    "invoke": "May be implicitly invoked when trigger evidence matches; exports allow_implicit_invocation=true.",
+    "suggest": "May be surfaced as a candidate, but must not be silently invoked; exports allow_implicit_invocation=false.",
+    "manual": "Explicit/manual only; exports allow_implicit_invocation=false."
   }
 }

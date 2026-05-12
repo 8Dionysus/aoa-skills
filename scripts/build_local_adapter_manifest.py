@@ -10,7 +10,7 @@ from typing import Any
 
 import yaml
 
-RESOURCE_DIR_NAMES = ("scripts", "references", "assets")
+RESOURCE_DIR_NAMES = ("scripts", "references", "assets", "checks", "examples")
 
 
 def parse_frontmatter(path: pathlib.Path) -> tuple[dict[str, Any], str]:
@@ -94,6 +94,7 @@ def main() -> int:
         openai_doc = yaml.safe_load(openai_yaml.read_text(encoding="utf-8")) or {}
         policy = openai_doc.get("policy", {}) if isinstance(openai_doc, dict) else {}
         allow_implicit = policy.get("allow_implicit_invocation")
+        activation_policy = policy.get("implicit_activation_policy")
         inventory = inventory_resources(skill_dir)
         runtime = runtime_by_name.get(frontmatter["name"], {})
 
@@ -104,6 +105,7 @@ def main() -> int:
                 "path": str(skill_md.relative_to(repo_root).as_posix()),
                 "openai_config_path": str(openai_yaml.relative_to(repo_root).as_posix()),
                 "allow_implicit_invocation": allow_implicit,
+                "implicit_activation_policy": activation_policy,
                 "invocation_mode": frontmatter.get("metadata", {}).get("aoa_invocation_mode"),
                 "allowlist_paths": [str(skill_dir.relative_to(repo_root).as_posix())],
                 "resource_inventory": inventory,
@@ -118,6 +120,7 @@ def main() -> int:
                 "description": frontmatter["description"],
                 "path": str(skill_md.relative_to(repo_root).as_posix()),
                 "allow_implicit_invocation": allow_implicit,
+                "implicit_activation_policy": activation_policy,
                 "trust_posture": runtime.get("trust_posture"),
             }
         )

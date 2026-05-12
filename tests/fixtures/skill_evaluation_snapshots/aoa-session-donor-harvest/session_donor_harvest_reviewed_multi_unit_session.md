@@ -2,7 +2,7 @@
 
 ## Prompt
 
-A reviewed session compaction note contains one reusable practice, one bounded Codex workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
+A reviewed session compaction note contains one reusable practice, one bounded local coding-agent workflow, and one broader recurring rollout route, and we need to decide which AoA owner layer each belongs in before drafting the smallest honest next artifacts.
 
 ## Expected selection
 

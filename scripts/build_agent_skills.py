@@ -12,10 +12,15 @@ import shutil
 from typing import Any
 
 import release_manifest_contract
+from skill_activation_policy import (
+    allow_implicit_invocation,
+    manual_invocation_required,
+    resolve_implicit_activation_policy,
+)
 import skill_layout
 import yaml
 
-RESOURCE_DIR_NAMES = ("scripts", "references", "assets")
+RESOURCE_DIR_NAMES = ("scripts", "references", "assets", "checks", "examples")
 STANDARD_INSTALL_ROOTS = {
     "repo": ".agents/skills",
     "user": "$HOME/.agents/skills",
@@ -261,8 +266,11 @@ def build_openai_yaml(
     override: dict[str, Any],
     extension_doc: dict[str, Any],
     icon_paths: dict[str, str],
+    policy_entry: dict[str, Any],
 ) -> dict[str, Any]:
     ui = scope_defaults(skill["scope"])
+    activation_policy = resolve_implicit_activation_policy(policy_entry, skill["name"])
+    allow_implicit = allow_implicit_invocation(policy_entry, skill["name"])
     base_doc: dict[str, Any] = {
         "interface": {
             "display_name": titleize_skill_name(skill["name"]),
@@ -273,7 +281,8 @@ def build_openai_yaml(
             "brand_color": ui["brand_color"],
         },
         "policy": {
-            "allow_implicit_invocation": catalog_entry["invocation_mode"] != "explicit-only",
+            "implicit_activation_policy": activation_policy,
+            "allow_implicit_invocation": allow_implicit,
         },
     }
 
@@ -283,7 +292,8 @@ def build_openai_yaml(
     merged = merge_dict(merged, per_skill_extension)
 
     merged.setdefault("policy", {})
-    merged["policy"]["allow_implicit_invocation"] = catalog_entry["invocation_mode"] != "explicit-only"
+    merged["policy"]["implicit_activation_policy"] = activation_policy
+    merged["policy"]["allow_implicit_invocation"] = allow_implicit
 
     if merged.get("dependencies", {}).get("tools") == []:
         dependencies = dict(merged["dependencies"])
@@ -347,13 +357,16 @@ def build_trust_entry(
     catalog_entry: dict[str, Any],
     policy_entry: dict[str, Any],
 ) -> dict[str, Any]:
+    activation_policy = resolve_implicit_activation_policy(policy_entry, skill["name"])
     return {
         "name": skill["name"],
         "scope": skill["scope"],
         "invocation_mode": catalog_entry["invocation_mode"],
+        "implicit_activation_policy": activation_policy,
         "trust_posture": policy_entry["trust_posture"],
         "mutation_surface": policy_entry["mutation_surface"],
-        "requires_manual_invocation": catalog_entry["invocation_mode"] == "explicit-only",
+        "requires_manual_invocation": manual_invocation_required(policy_entry, skill["name"]),
+        "candidate_only": activation_policy == "suggest",
         "requires_confirmation_seam": bool(policy_entry.get("requires_confirmation_seam")),
         "recommended_install_scopes": policy_entry["recommended_install_scopes"],
         "notes": policy_entry["notes"],
@@ -369,6 +382,7 @@ def build_runtime_entry(
     inventory: dict[str, list[str]],
     policy_entry: dict[str, Any],
 ) -> dict[str, Any]:
+    activation_policy = resolve_implicit_activation_policy(policy_entry, skill["name"])
     return {
         "name": skill["name"],
         "display_name": titleize_skill_name(skill["name"]),
@@ -377,7 +391,10 @@ def build_runtime_entry(
         "path": f".agents/skills/{skill['name']}/SKILL.md",
         "openai_config_path": f".agents/skills/{skill['name']}/agents/openai.yaml",
         "invocation_mode": catalog_entry["invocation_mode"],
+        "implicit_activation_policy": activation_policy,
         "allow_implicit_invocation": openai_doc.get("policy", {}).get("allow_implicit_invocation"),
+        "manual_invocation_required": manual_invocation_required(policy_entry, skill["name"]),
+        "candidate_only": activation_policy == "suggest",
         "trust_posture": policy_entry["trust_posture"],
         "mutation_surface": policy_entry["mutation_surface"],
         "requires_confirmation_seam": bool(policy_entry.get("requires_confirmation_seam")),
@@ -448,6 +465,7 @@ def resolve_pack_profiles(
                     "target_path": f"{target_root}/SKILL.md",
                     "openai_config_path": f"{target_root}/agents/openai.yaml",
                     "allow_implicit_invocation": skill_entry["allow_implicit_invocation"],
+                    "implicit_activation_policy": skill_entry["implicit_activation_policy"],
                     "trust_posture": skill_entry["trust_posture"],
                 }
             )
@@ -862,6 +880,7 @@ def build_local_adapter_manifests(
                 "path": entry["path"],
                 "openai_config_path": entry["openai_config_path"],
                 "allow_implicit_invocation": entry["allow_implicit_invocation"],
+                "implicit_activation_policy": entry["implicit_activation_policy"],
                 "invocation_mode": entry["invocation_mode"],
                 "allowlist_paths": [path_reference(skills_root / entry["name"], repo_root)],
                 "resource_inventory": entry.get("resource_inventory", {}),
@@ -876,6 +895,7 @@ def build_local_adapter_manifests(
                 "description": entry["description"],
                 "path": entry["path"],
                 "allow_implicit_invocation": entry["allow_implicit_invocation"],
+                "implicit_activation_policy": entry["implicit_activation_policy"],
                 "trust_posture": entry["trust_posture"],
             }
         )
@@ -995,7 +1015,14 @@ def main() -> int:
             build_markdown(skill, catalog_entry, override, compatibility_default, source_repo),
         )
 
-        openai_doc = build_openai_yaml(skill, catalog_entry, override, extension_doc, icon_paths)
+        openai_doc = build_openai_yaml(
+            skill,
+            catalog_entry,
+            override,
+            extension_doc,
+            icon_paths,
+            policy_entry,
+        )
         openai_docs[skill["name"]] = openai_doc
         write_text_file(
             skill_dir / "agents" / "openai.yaml",
@@ -1008,7 +1035,8 @@ def main() -> int:
             if path.is_file()
         )
 
-        allow_implicit = catalog_entry["invocation_mode"] != "explicit-only"
+        activation_policy = resolve_implicit_activation_policy(policy_entry, skill["name"])
+        allow_implicit = allow_implicit_invocation(policy_entry, skill["name"])
         ui = openai_doc.get("interface", {})
         catalog_skill_entry = {
             "name": skill["name"],
@@ -1020,7 +1048,10 @@ def main() -> int:
             "scope": skill["scope"],
             "status": skill["status"],
             "invocation_mode": catalog_entry["invocation_mode"],
+            "implicit_activation_policy": activation_policy,
             "allow_implicit_invocation": allow_implicit,
+            "manual_invocation_required": manual_invocation_required(policy_entry, skill["name"]),
+            "candidate_only": activation_policy == "suggest",
             "source_skill_path": skill["skill_path"],
             "technique_dependencies": catalog_entry.get("technique_dependencies", []),
             "trust_posture": policy_entry["trust_posture"],
@@ -1039,7 +1070,9 @@ def main() -> int:
                 "name": skill["name"],
                 "description": override["description"],
                 "path": catalog_skill_entry["path"],
+                "implicit_activation_policy": activation_policy,
                 "allow_implicit_invocation": allow_implicit,
+                "candidate_only": activation_policy == "suggest",
                 "trust_posture": policy_entry["trust_posture"],
             }
         )
@@ -1051,7 +1084,9 @@ def main() -> int:
                 "target_skill_path": catalog_skill_entry["path"],
                 "target_openai_config_path": catalog_skill_entry["openai_config_path"],
                 "invocation_mode": catalog_entry["invocation_mode"],
+                "implicit_activation_policy": activation_policy,
                 "allow_implicit_invocation": allow_implicit,
+                "candidate_only": activation_policy == "suggest",
                 "resource_inventory": inventory,
             }
         )

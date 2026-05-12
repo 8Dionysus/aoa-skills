@@ -2,7 +2,7 @@
 name: aoa-summon
 scope: core
 status: evaluated
-summary: Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
+summary: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.
 invocation_mode: explicit-only
 technique_dependencies:
   - AOA-T-0078
@@ -19,7 +19,7 @@ Use this skill to decide whether and how to launch one bounded child route from
 an already-anchored parent route.
 
 The goal is not delegation theater.
-The goal is to preserve quest-passport law, Codex-first local execution,
+The goal is to preserve quest-passport law, local coding-agent execution,
 stress narrowing, progression and self-agent gates, return planning,
 checkpoint-aware reviewed closeout, and owner-local publication mapping.
 
@@ -31,7 +31,7 @@ Use this skill when:
   implementation, or local verification
 - the child result must map back into return, closeout, and owner-publication
   surfaces
-- local Codex execution is the honest default unless a separate execution
+- local coding-agent execution is the honest default unless a separate execution
   surface is actually required
 
 Do not use this skill when:
@@ -52,16 +52,16 @@ Do not use this skill when:
   named expected outputs
 - named expected outputs for the child route
 - optional reviewed artifact path, stress bundle ref, checkpoint note ref,
-  Codex trace ref, progression overlay ref, self-agent checkpoint ref, and
+  local agent trace ref, progression overlay ref, self-agent checkpoint ref, and
   audit refs
 
 ## Outputs
 
 - one summon decision with allowed or blocked posture
-- one chosen lane such as `codex_local_leaf`, `codex_local_reviewed`,
+- one chosen lane such as local leaf execution, local reviewed execution,
   `remote_reviewed`, `split_required`, or `human_gate`
 - `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`
-- optional `codex_local_target`
+- optional local child target
 - `return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and
   `owner_publication_plan`
 - return receipt or acceptance expectation when the child crosses an actor,
@@ -71,14 +71,14 @@ Do not use this skill when:
 ## Procedure
 
 1. start from the parent anchor and quest passport, not from raw pressure to delegate
-2. default `transport_preference` to `codex_local` when the request leaves it open
+2. default `transport_preference` to local execution when the request leaves it open
 3. verify that expected outputs are named before picking a lane
 4. classify the lane with difficulty, risk, control mode, requested role, and
    `references/passport-lane-matrix.v3.md`
 5. keep low-risk `d0_probe`, `d1_patch`, and bounded `d2_slice` leaf work in
-   `codex_local_leaf` when anchor and outputs are clear
+   local leaf execution when anchor and outputs are clear
 6. keep local reviewer, evaluator, and architect-like narrowing work in
-   `codex_local_reviewed`
+   local reviewed execution
 7. allow `remote_reviewed` only when a separate endpoint or execution surface
    is actually required
 8. if difficulty is `d3+`, return `split_required` instead of launching child execution
@@ -101,7 +101,7 @@ Do not use this skill when:
 
 - this skill governs one bounded child route; it does not grant hidden
   orchestration authority
-- local Codex child targeting is the default first choice, not an afterthought
+- local coding-agent child targeting is the default first choice, not an afterthought
 - branch choice must already be settled; unresolved route choice belongs to
   `aoa-session-route-forks`
 - the SDK-owned E2E fixture at

@@ -16,7 +16,7 @@ metadata:
 # titan-summon
 
 ## Intent
-Use this skill to begin a Codex session with the first Titan service cohort after an explicit operator summon.
+Use this skill to begin a local coding-agent session with the first Titan service cohort after an explicit operator summon.
 
 ## Trigger boundary
 Use this skill when:

@@ -24,7 +24,7 @@ for one bounded child route.
 ## Boundary notes
 
 Use this skill when the parent route is already anchored and the child helper
-is narrower than the parent route. Keep local Codex execution as the default,
+is narrower than the parent route. Keep local coding-agent execution as the default,
 keep the passport and gates explicit, and keep return planning tied back to
 reviewed closeout.
 

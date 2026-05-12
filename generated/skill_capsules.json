@@ -136,7 +136,7 @@
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-change-protocol/SKILL.md",
       "status": "canonical",
-      "summary": "Bounded workflow for Codex to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
+      "summary": "Bounded workflow for a local coding agent to read the owner route, plan a scoped change, verify it explicitly, and report it clearly.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
@@ -414,7 +414,7 @@
         "AOA-T-0078",
         "AOA-T-0079"
       ],
-      "trigger_boundary_short": "Use when a reviewed session ended with multiple plausible next moves; the operator or Codex needs explicit branch choices instead of a buried recommendation; Avoid when there is only one obvious next bounded move;...",
+      "trigger_boundary_short": "Use when a reviewed session ended with multiple plausible next moves; the operator or local coding agent needs explicit branch choices instead of a buried recommendation; Avoid when there is only one obvious next...",
       "verification_short": "Checks: confirm each branch differs materially; confirm likely owner repo is named; confirm at least one cost or risk is explicit; confirm stop conditions exist for risky branches.",
       "workflow_short": "Purpose: author FORKCARDS from a reviewed session. Flow: start from reviewed evidence rather than free speculation -> separate materially different branches instead of cosmetic variants -> name the likely first owner repo for each branch -> state likely..."
     },
@@ -478,11 +478,11 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: treating delegation as progress without anchor or output clarity; using summon to skip branch choice when several next routes still compete; using a remote child route to bypass local proof, approval, or...",
       "name": "aoa-summon",
-      "outputs_short": "Produces: one summon decision with allowed or blocked posture; one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate; executionsurface, cohortpattern, reasoncodes,...",
+      "outputs_short": "Produces: one summon decision with allowed or blocked posture; one chosen lane such as local leaf execution, local reviewed execution, remotereviewed, splitrequired, or humangate; executionsurface, cohortpattern,...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "evaluated",
-      "summary": "Delegate one bounded child route through quest-passport law, Codex-first local execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
+      "summary": "Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, progression and self-agent gates, governed return, and checkpoint-aware reviewed closeout planning.",
       "technique_dependencies": [
         "AOA-T-0078",
         "AOA-T-0079",
@@ -491,7 +491,7 @@
       ],
       "trigger_boundary_short": "Use when a parent route already has a real anchor and named expected outputs; a narrower child actor would help through bounded review, evaluation, leaf implementation, or local verification; Avoid when the parent...",
       "verification_short": "Checks: confirm the passport and parent anchor exist; confirm expected outputs are named; confirm branch choice is already settled; otherwise route to aoa-session-route-forks; confirm the chosen lane matches...",
-      "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to codexlocal when the request..."
+      "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to local execution when the..."
     },
     {
       "inputs_short": "Needs: desired behavior; target module, command, builder, validator, adapter, generated/export path, or workflow step; constraints and non-goals; available test surface.",
@@ -597,9 +597,9 @@
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
       ],
-      "trigger_boundary_short": "Use when a Titan console needs a JSON-RPC shaped bridge; thread and turn events need normalization; Avoid when the request asks for hidden background agents; the bridge would execute Codex without an...",
+      "trigger_boundary_short": "Use when a Titan console needs a JSON-RPC shaped bridge; thread and turn events need normalization; Avoid when the request asks for hidden background agents; the bridge would start hidden agent execution without an...",
       "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: prepare or inspect the Titan app-server bridge while keeping Codex execution visible and gated. Flow: confirm bridge purpose and non-execution posture -> bind inputs to thread and turn -> normalize incoming events -> route approval items to the..."
+      "workflow_short": "Purpose: prepare or inspect the Titan app-server bridge while keeping local agent execution visible and gated. Flow: confirm bridge purpose and non-execution posture -> bind inputs to thread and turn -> normalize incoming events -> route approval items to..."
     },
     {
       "inputs_short": "Needs: workspace root; console or bridge state ref; desired endpoint or transport shape; receipt path.",
@@ -610,7 +610,7 @@
       "scope": "project",
       "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold",
-      "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing Codex.",
+      "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.",
       "technique_dependencies": [
         "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
         "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
@@ -797,7 +797,7 @@
       ],
       "trigger_boundary_short": "Use when the operator explicitly requests the Titan cohort; the session needs Atlas route, Sentinel risk, and Mneme provenance lanes; Avoid when the request asks for hidden background agents; Forge should mutate...",
       "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: begin a Codex session with the first Titan service cohort after an explicit operator summon. Flow: confirm explicit summon intent -> use the service-cohort summon prompt -> activate Atlas, Sentinel, and Mneme only -> keep Forge locked until..."
+      "workflow_short": "Purpose: begin a local coding-agent session with the first Titan service cohort after an explicit operator summon. Flow: confirm explicit summon intent -> use the service-cohort summon prompt -> activate Atlas, Sentinel, and Mneme only -> keep Forge..."
     },
     {
       "inputs_short": "Needs: thread id; turn id; event ids or payloads; receipt ref.",

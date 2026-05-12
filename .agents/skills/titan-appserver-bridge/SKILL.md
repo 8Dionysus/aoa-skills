@@ -16,7 +16,7 @@ metadata:
 # titan-appserver-bridge
 
 ## Intent
-Use this skill to prepare or inspect the Titan app-server bridge while keeping Codex execution visible and gated.
+Use this skill to prepare or inspect the Titan app-server bridge while keeping local agent execution visible and gated.
 
 ## Trigger boundary
 Use this skill when:
@@ -26,7 +26,7 @@ Use this skill when:
 
 Do not use this skill when:
 - the request asks for hidden background agents
-- the bridge would execute Codex without an operator-visible plan
+- the bridge would start hidden agent execution without an operator-visible plan
 - role truth or memory truth would be moved into the bridge
 
 ## Inputs
