@@ -229,11 +229,15 @@ def technique_drift_by_skill(
     target_ref: str,
 ) -> tuple[dict[str, list[dict[str, str]]], dict[str, Any]]:
     if techniques_repo is None:
-        return {}, {"available": False, "reason": "skipped"}
+        return {}, {"available": False, "reason": "skipped", "state_counts": {}}
 
     candidate = techniques_repo.expanduser()
     if not candidate.exists():
-        return {}, {"available": False, "reason": f"missing techniques repo: {candidate}"}
+        return {}, {
+            "available": False,
+            "reason": f"missing techniques repo: {candidate}",
+            "state_counts": {},
+        }
 
     resolved_repo = technique_bridge_tools.resolve_techniques_repo(candidate)
     resolved_ref = technique_bridge_tools.resolve_git_ref(resolved_repo, target_ref)
