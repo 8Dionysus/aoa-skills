@@ -1445,17 +1445,19 @@
       "status": "scaffold",
       "summary": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0058"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "When to use",
             "Inputs",
             "Outputs",
             "Core procedure",
@@ -1464,13 +1466,30 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0058",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1487,17 +1506,19 @@
       "status": "scaffold",
       "summary": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0062"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "When to use",
             "Inputs",
             "Outputs",
             "Core procedure",
@@ -1506,13 +1527,30 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0062",
+          "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1529,32 +1567,51 @@
       "status": "scaffold",
       "summary": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0066",
+        "AOA-T-0043"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0066",
+          "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0043",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1571,17 +1628,19 @@
       "status": "scaffold",
       "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0004",
+        "AOA-T-0091",
+        "AOA-T-0045"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0004",
+          "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "When to use",
             "Inputs",
             "Outputs",
             "Core procedure",
@@ -1590,13 +1649,30 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0091",
+          "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1613,32 +1689,51 @@
       "status": "scaffold",
       "summary": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0076",
+        "AOA-T-0045"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0076",
+          "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1655,34 +1750,53 @@
       "status": "scaffold",
       "summary": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0062",
+        "AOA-T-0028"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0062",
+          "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0028",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
             "Validation"
           ]
         }
@@ -1697,32 +1811,51 @@
       "status": "scaffold",
       "summary": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0066",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0066",
+          "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0043",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1739,32 +1872,51 @@
       "status": "scaffold",
       "summary": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0053",
+          "path": "techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0043",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1781,32 +1933,51 @@
       "status": "scaffold",
       "summary": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0103",
+        "AOA-T-0104",
+        "AOA-T-0043"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0103",
+          "path": "techniques/governance/practice-adoption-lifecycle/adopted-practice-retention-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0104",
+          "path": "techniques/governance/practice-adoption-lifecycle/superseded-practice-obsolescence-route/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0043",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1823,17 +1994,19 @@
       "status": "scaffold",
       "summary": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0004",
+        "AOA-T-0091"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "When to use",
             "Inputs",
             "Outputs",
             "Core procedure",
@@ -1842,13 +2015,30 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0004",
+          "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "When to use",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0091",
+          "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1865,32 +2055,51 @@
       "status": "scaffold",
       "summary": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0053",
+          "path": "techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0043",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1907,32 +2116,51 @@
       "status": "scaffold",
       "summary": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0043",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1949,17 +2177,19 @@
       "status": "scaffold",
       "summary": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0058",
+        "AOA-T-0091"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "When to use",
             "Inputs",
             "Outputs",
             "Core procedure",
@@ -1968,13 +2198,30 @@
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0091",
+          "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"
@@ -1991,34 +2238,53 @@
       "status": "scaffold",
       "summary": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0060",
+        "AOA-T-0058",
+        "AOA-T-0028"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0060",
+          "path": "techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0028",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
             "Validation"
           ]
         }
@@ -2033,32 +2299,51 @@
       "status": "scaffold",
       "summary": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0062",
+        "AOA-T-0066",
+        "AOA-T-0045"
       ],
       "technique_refs": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "path": "TBD",
+          "id": "AOA-T-0062",
+          "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
             "Inputs",
             "Outputs",
             "Core procedure",
             "Contracts",
+            "Risks",
             "Validation"
           ]
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "path": "TBD",
+          "id": "AOA-T-0066",
+          "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
           "use_sections": [
             "Intent",
+            "Inputs",
             "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0045",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "use_sections": [
+            "Intent",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
             "Contracts",
             "Risks",
             "Validation"

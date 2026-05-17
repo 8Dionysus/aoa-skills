@@ -1,27 +1,42 @@
 skill_name: titan-runtime-gate
 composition_mode: bounded
 techniques:
-  - id: AOA-T-PENDING-TITAN-GATE-DISCIPLINE
+  - id: AOA-T-0028
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+  - id: AOA-T-0058
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - Inputs
       - Outputs
       - Core procedure
       - Contracts
+      - Risks
       - Validation
-  - id: AOA-T-PENDING-TITAN-RECEIPT-LINEAGE
+  - id: AOA-T-0091
     repo: 8Dionysus/aoa-techniques
-    path: TBD
-    source_ref: TBD
+    path: techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
+      - Inputs
       - Outputs
+      - Core procedure
       - Contracts
       - Risks
       - Validation
 notes:
-  - Replace AOA-T-PENDING-TITAN-GATE-DISCIPLINE and AOA-T-PENDING-TITAN-RECEIPT-LINEAGE, path TBD, and source_ref TBD after publish.
-  - Keep Titan skills explicit-only until the role, runtime, memory, and proof surfaces graduate from scaffold.
+  - Use published techniques as bridge evidence for gate, receipt, provenance, replay, retention, or owner-route behavior; they do not make this Titan skill an authority surface.
+  - Keep Titan-specific role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority in the owner repositories.

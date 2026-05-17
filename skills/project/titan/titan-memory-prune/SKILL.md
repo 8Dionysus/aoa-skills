@@ -5,8 +5,9 @@ status: scaffold
 summary: Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.
 invocation_mode: explicit-only
 technique_dependencies:
-  - AOA-T-PENDING-TITAN-GATE-DISCIPLINE
-  - AOA-T-PENDING-TITAN-RECEIPT-LINEAGE
+  - AOA-T-0103
+  - AOA-T-0104
+  - AOA-T-0043
 ---
 
 # titan-memory-prune
@@ -45,41 +46,45 @@ Do not use this skill when:
 
 ## Procedure
 
-1. inspect the record and source refs
-2. classify the reason for pruning
-3. prefer masks or tombstones before deletion
-4. preserve lineage-significant events
-5. return proposals and required confirmations
+1. load the candidate memory records and their source refs
+2. classify each risky record as retain, redact, tombstone, merge, or defer
+3. preserve provenance for any proposed removal or masking action
+4. avoid silent deletion and require owner approval for destructive memory changes
+5. return a pruning proposal with verification and rollback posture
 
 ## Contracts
 
 - The skill is explicit-only and must not be invoked as hidden background behavior.
-- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.
-- Forge mutation and Delta judgment gates must remain distinct and visible.
-- Owner-repo validation and human judgment remain stronger than the local skill output.
+- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.
+- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.
+- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.
+- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.
 
 ## Risks and anti-patterns
 
 - treating Titan vocabulary as permission to widen authority
-- letting receipt or replay state replace owner-repo evidence
+- letting receipt, replay, console, or bridge state replace owner-repo evidence
 - auto-approving Forge or Delta because a plan looks plausible
-- canonizing candidate memory without source-owned confirmation
+- promoting candidate memory, approvals, replay, or receipts into canon without owner review
+- using the skill for an ordinary repo task that has no explicit Titan route
 
 ## Verification
 
-- confirm the request and outputs stayed inside the declared Titan lane
-- confirm any mutation or judgment gate was explicit and recorded
-- confirm source refs, receipt refs, or ledger refs are preserved when available
-- confirm the result names stop lines and remaining owner validation needs
+- confirm direct skill invocation or explicit Titan service-cohort request is present
+- confirm lane, gate, source refs, and owner surface are named when relevant
+- confirm Forge or Delta locked or allowed state matches recorded approval evidence
+- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth
+- confirm next validation, replay, repair, or owner-route follow-up is named before continuation
 
 ## Technique traceability
 
 Manifest-backed techniques:
-- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation
-- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation
+- AOA-T-0103 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/practice-adoption-lifecycle/adopted-practice-retention-review/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0104 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/practice-adoption-lifecycle/superseded-practice-obsolescence-route/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
+- AOA-T-0043 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation
 
 ## Adaptation points
 
-- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.
-- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.
-- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.
+- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.
+- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.
+- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.

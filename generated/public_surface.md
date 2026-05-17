@@ -8,7 +8,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 - total skills: 45
 - default references: 12
 - default-reference ready skills: 13
-- pending technique bridge lineage: 15
+- pending technique bridge lineage: 0
 - risk surfaces: 5
 
 ## Default references
@@ -50,21 +50,7 @@ It is built from committed skill bundles, review records, and evaluation fixture
 
 | name | maturity | readiness | scope | invocation | lineage | governance decision | lanes | readiness blockers | technique bridge | promotion review | candidate review |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| titan-approval-ledger | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-approval-loom | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-appserver-bridge | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-appserver-plan | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-closeout | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-console | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-event-replay | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-memory-loom | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-memory-prune | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-mutation-gate | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-recall | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-receipt | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-runtime-gate | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-summon | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
-| titan-thread-turn-binding | scaffold | not_applicable | project | explicit-only | pending | - | - | - | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs | - | - |
+| - | - | - | - | - | - | - | - | - | - | - | - |
 
 ## Risk surfaces
 

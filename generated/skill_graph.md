@@ -101,23 +101,28 @@ graph TD
   profile_repo_atm10_overlay["profile: repo-atm10-overlay"]
   skill_atm10_source_of_truth_check["atm10-source-of-truth-check"]
   skill_titan_approval_ledger["titan-approval-ledger"]
-  lineage_pending["lineage: pending"]
-  technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE["AOA-T-PENDING-TITAN-GATE-DISCIPLINE"]
-  technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE["AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"]
+  technique_AOA_T_0045["AOA-T-0045"]
   profile_repo_titan_overlay["profile: repo-titan-overlay"]
   skill_titan_approval_loom["titan-approval-loom"]
   skill_titan_appserver_bridge["titan-appserver-bridge"]
+  technique_AOA_T_0066["AOA-T-0066"]
+  technique_AOA_T_0043["AOA-T-0043"]
   skill_titan_appserver_plan["titan-appserver-plan"]
+  technique_AOA_T_0091["AOA-T-0091"]
   skill_titan_closeout["titan-closeout"]
   skill_titan_console["titan-console"]
   skill_titan_event_replay["titan-event-replay"]
   skill_titan_memory_loom["titan-memory-loom"]
+  technique_AOA_T_0053["AOA-T-0053"]
   skill_titan_memory_prune["titan-memory-prune"]
+  technique_AOA_T_0103["AOA-T-0103"]
+  technique_AOA_T_0104["AOA-T-0104"]
   skill_titan_mutation_gate["titan-mutation-gate"]
   skill_titan_recall["titan-recall"]
   skill_titan_receipt["titan-receipt"]
   skill_titan_runtime_gate["titan-runtime-gate"]
   skill_titan_summon["titan-summon"]
+  technique_AOA_T_0060["AOA-T-0060"]
   skill_titan_thread_turn_binding["titan-thread-turn-binding"]
   skill_abyss_safe_infra_change -->|maturity| status_evaluated
   skill_abyss_safe_infra_change -->|scope| scope_project
@@ -603,10 +608,11 @@ graph TD
   skill_atm10_source_of_truth_check -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_approval_ledger -->|maturity| status_scaffold
   skill_titan_approval_ledger -->|scope| scope_project
-  skill_titan_approval_ledger -->|lineage| lineage_pending
+  skill_titan_approval_ledger -->|lineage| lineage_published
   skill_titan_approval_ledger -->|invocation_policy| policy_explicit_only
-  skill_titan_approval_ledger -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_approval_ledger -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_approval_ledger -->|depends_on| technique_AOA_T_0028
+  skill_titan_approval_ledger -->|depends_on| technique_AOA_T_0045
+  skill_titan_approval_ledger -->|depends_on| technique_AOA_T_0058
   skill_titan_approval_ledger -->|included_in_profile| profile_repo_default
   skill_titan_approval_ledger -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_approval_ledger -->|available_in_artifact_group| artifact_group_portable_export
@@ -616,10 +622,11 @@ graph TD
   skill_titan_approval_ledger -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_approval_loom -->|maturity| status_scaffold
   skill_titan_approval_loom -->|scope| scope_project
-  skill_titan_approval_loom -->|lineage| lineage_pending
+  skill_titan_approval_loom -->|lineage| lineage_published
   skill_titan_approval_loom -->|invocation_policy| policy_explicit_only
-  skill_titan_approval_loom -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_approval_loom -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_approval_loom -->|depends_on| technique_AOA_T_0028
+  skill_titan_approval_loom -->|depends_on| technique_AOA_T_0045
+  skill_titan_approval_loom -->|depends_on| technique_AOA_T_0062
   skill_titan_approval_loom -->|included_in_profile| profile_repo_default
   skill_titan_approval_loom -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_approval_loom -->|available_in_artifact_group| artifact_group_portable_export
@@ -629,10 +636,11 @@ graph TD
   skill_titan_approval_loom -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_appserver_bridge -->|maturity| status_scaffold
   skill_titan_appserver_bridge -->|scope| scope_project
-  skill_titan_appserver_bridge -->|lineage| lineage_pending
+  skill_titan_appserver_bridge -->|lineage| lineage_published
   skill_titan_appserver_bridge -->|invocation_policy| policy_explicit_only
-  skill_titan_appserver_bridge -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_appserver_bridge -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_appserver_bridge -->|depends_on| technique_AOA_T_0045
+  skill_titan_appserver_bridge -->|depends_on| technique_AOA_T_0066
+  skill_titan_appserver_bridge -->|depends_on| technique_AOA_T_0043
   skill_titan_appserver_bridge -->|included_in_profile| profile_repo_default
   skill_titan_appserver_bridge -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_appserver_bridge -->|available_in_artifact_group| artifact_group_portable_export
@@ -642,10 +650,11 @@ graph TD
   skill_titan_appserver_bridge -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_appserver_plan -->|maturity| status_scaffold
   skill_titan_appserver_plan -->|scope| scope_project
-  skill_titan_appserver_plan -->|lineage| lineage_pending
+  skill_titan_appserver_plan -->|lineage| lineage_published
   skill_titan_appserver_plan -->|invocation_policy| policy_explicit_only
-  skill_titan_appserver_plan -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_appserver_plan -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_appserver_plan -->|depends_on| technique_AOA_T_0004
+  skill_titan_appserver_plan -->|depends_on| technique_AOA_T_0091
+  skill_titan_appserver_plan -->|depends_on| technique_AOA_T_0045
   skill_titan_appserver_plan -->|included_in_profile| profile_repo_default
   skill_titan_appserver_plan -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_appserver_plan -->|available_in_artifact_group| artifact_group_portable_export
@@ -655,10 +664,11 @@ graph TD
   skill_titan_appserver_plan -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_closeout -->|maturity| status_scaffold
   skill_titan_closeout -->|scope| scope_project
-  skill_titan_closeout -->|lineage| lineage_pending
+  skill_titan_closeout -->|lineage| lineage_published
   skill_titan_closeout -->|invocation_policy| policy_explicit_only
-  skill_titan_closeout -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_closeout -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_closeout -->|depends_on| technique_AOA_T_0058
+  skill_titan_closeout -->|depends_on| technique_AOA_T_0076
+  skill_titan_closeout -->|depends_on| technique_AOA_T_0045
   skill_titan_closeout -->|included_in_profile| profile_repo_default
   skill_titan_closeout -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_closeout -->|available_in_artifact_group| artifact_group_portable_export
@@ -668,10 +678,11 @@ graph TD
   skill_titan_closeout -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_console -->|maturity| status_scaffold
   skill_titan_console -->|scope| scope_project
-  skill_titan_console -->|lineage| lineage_pending
+  skill_titan_console -->|lineage| lineage_published
   skill_titan_console -->|invocation_policy| policy_explicit_only
-  skill_titan_console -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_console -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_console -->|depends_on| technique_AOA_T_0045
+  skill_titan_console -->|depends_on| technique_AOA_T_0062
+  skill_titan_console -->|depends_on| technique_AOA_T_0028
   skill_titan_console -->|included_in_profile| profile_repo_default
   skill_titan_console -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_console -->|available_in_artifact_group| artifact_group_portable_export
@@ -681,10 +692,11 @@ graph TD
   skill_titan_console -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_event_replay -->|maturity| status_scaffold
   skill_titan_event_replay -->|scope| scope_project
-  skill_titan_event_replay -->|lineage| lineage_pending
+  skill_titan_event_replay -->|lineage| lineage_published
   skill_titan_event_replay -->|invocation_policy| policy_explicit_only
-  skill_titan_event_replay -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_event_replay -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_event_replay -->|depends_on| technique_AOA_T_0066
+  skill_titan_event_replay -->|depends_on| technique_AOA_T_0045
+  skill_titan_event_replay -->|depends_on| technique_AOA_T_0043
   skill_titan_event_replay -->|included_in_profile| profile_repo_default
   skill_titan_event_replay -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_event_replay -->|available_in_artifact_group| artifact_group_portable_export
@@ -694,10 +706,11 @@ graph TD
   skill_titan_event_replay -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_memory_loom -->|maturity| status_scaffold
   skill_titan_memory_loom -->|scope| scope_project
-  skill_titan_memory_loom -->|lineage| lineage_pending
+  skill_titan_memory_loom -->|lineage| lineage_published
   skill_titan_memory_loom -->|invocation_policy| policy_explicit_only
-  skill_titan_memory_loom -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_memory_loom -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_memory_loom -->|depends_on| technique_AOA_T_0053
+  skill_titan_memory_loom -->|depends_on| technique_AOA_T_0043
+  skill_titan_memory_loom -->|depends_on| technique_AOA_T_0045
   skill_titan_memory_loom -->|included_in_profile| profile_repo_default
   skill_titan_memory_loom -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_memory_loom -->|available_in_artifact_group| artifact_group_portable_export
@@ -707,10 +720,11 @@ graph TD
   skill_titan_memory_loom -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_memory_prune -->|maturity| status_scaffold
   skill_titan_memory_prune -->|scope| scope_project
-  skill_titan_memory_prune -->|lineage| lineage_pending
+  skill_titan_memory_prune -->|lineage| lineage_published
   skill_titan_memory_prune -->|invocation_policy| policy_explicit_only
-  skill_titan_memory_prune -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_memory_prune -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_memory_prune -->|depends_on| technique_AOA_T_0103
+  skill_titan_memory_prune -->|depends_on| technique_AOA_T_0104
+  skill_titan_memory_prune -->|depends_on| technique_AOA_T_0043
   skill_titan_memory_prune -->|included_in_profile| profile_repo_default
   skill_titan_memory_prune -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_memory_prune -->|available_in_artifact_group| artifact_group_portable_export
@@ -720,10 +734,11 @@ graph TD
   skill_titan_memory_prune -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_mutation_gate -->|maturity| status_scaffold
   skill_titan_mutation_gate -->|scope| scope_project
-  skill_titan_mutation_gate -->|lineage| lineage_pending
+  skill_titan_mutation_gate -->|lineage| lineage_published
   skill_titan_mutation_gate -->|invocation_policy| policy_explicit_only
-  skill_titan_mutation_gate -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_mutation_gate -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_mutation_gate -->|depends_on| technique_AOA_T_0028
+  skill_titan_mutation_gate -->|depends_on| technique_AOA_T_0004
+  skill_titan_mutation_gate -->|depends_on| technique_AOA_T_0091
   skill_titan_mutation_gate -->|included_in_profile| profile_repo_default
   skill_titan_mutation_gate -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_mutation_gate -->|available_in_artifact_group| artifact_group_portable_export
@@ -733,10 +748,11 @@ graph TD
   skill_titan_mutation_gate -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_recall -->|maturity| status_scaffold
   skill_titan_recall -->|scope| scope_project
-  skill_titan_recall -->|lineage| lineage_pending
+  skill_titan_recall -->|lineage| lineage_published
   skill_titan_recall -->|invocation_policy| policy_explicit_only
-  skill_titan_recall -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_recall -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_recall -->|depends_on| technique_AOA_T_0053
+  skill_titan_recall -->|depends_on| technique_AOA_T_0043
+  skill_titan_recall -->|depends_on| technique_AOA_T_0045
   skill_titan_recall -->|included_in_profile| profile_repo_default
   skill_titan_recall -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_recall -->|available_in_artifact_group| artifact_group_portable_export
@@ -746,10 +762,11 @@ graph TD
   skill_titan_recall -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_receipt -->|maturity| status_scaffold
   skill_titan_receipt -->|scope| scope_project
-  skill_titan_receipt -->|lineage| lineage_pending
+  skill_titan_receipt -->|lineage| lineage_published
   skill_titan_receipt -->|invocation_policy| policy_explicit_only
-  skill_titan_receipt -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_receipt -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_receipt -->|depends_on| technique_AOA_T_0058
+  skill_titan_receipt -->|depends_on| technique_AOA_T_0045
+  skill_titan_receipt -->|depends_on| technique_AOA_T_0043
   skill_titan_receipt -->|included_in_profile| profile_repo_default
   skill_titan_receipt -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_receipt -->|available_in_artifact_group| artifact_group_portable_export
@@ -759,10 +776,11 @@ graph TD
   skill_titan_receipt -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_runtime_gate -->|maturity| status_scaffold
   skill_titan_runtime_gate -->|scope| scope_project
-  skill_titan_runtime_gate -->|lineage| lineage_pending
+  skill_titan_runtime_gate -->|lineage| lineage_published
   skill_titan_runtime_gate -->|invocation_policy| policy_explicit_only
-  skill_titan_runtime_gate -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_runtime_gate -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_runtime_gate -->|depends_on| technique_AOA_T_0028
+  skill_titan_runtime_gate -->|depends_on| technique_AOA_T_0058
+  skill_titan_runtime_gate -->|depends_on| technique_AOA_T_0091
   skill_titan_runtime_gate -->|included_in_profile| profile_repo_default
   skill_titan_runtime_gate -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_runtime_gate -->|available_in_artifact_group| artifact_group_portable_export
@@ -772,10 +790,11 @@ graph TD
   skill_titan_runtime_gate -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_summon -->|maturity| status_scaffold
   skill_titan_summon -->|scope| scope_project
-  skill_titan_summon -->|lineage| lineage_pending
+  skill_titan_summon -->|lineage| lineage_published
   skill_titan_summon -->|invocation_policy| policy_explicit_only
-  skill_titan_summon -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_summon -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_summon -->|depends_on| technique_AOA_T_0060
+  skill_titan_summon -->|depends_on| technique_AOA_T_0058
+  skill_titan_summon -->|depends_on| technique_AOA_T_0028
   skill_titan_summon -->|included_in_profile| profile_repo_default
   skill_titan_summon -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_summon -->|available_in_artifact_group| artifact_group_portable_export
@@ -785,10 +804,11 @@ graph TD
   skill_titan_summon -->|available_in_artifact_group| artifact_group_tiny_router
   skill_titan_thread_turn_binding -->|maturity| status_scaffold
   skill_titan_thread_turn_binding -->|scope| scope_project
-  skill_titan_thread_turn_binding -->|lineage| lineage_pending
+  skill_titan_thread_turn_binding -->|lineage| lineage_published
   skill_titan_thread_turn_binding -->|invocation_policy| policy_explicit_only
-  skill_titan_thread_turn_binding -->|depends_on| technique_AOA_T_PENDING_TITAN_GATE_DISCIPLINE
-  skill_titan_thread_turn_binding -->|depends_on| technique_AOA_T_PENDING_TITAN_RECEIPT_LINEAGE
+  skill_titan_thread_turn_binding -->|depends_on| technique_AOA_T_0062
+  skill_titan_thread_turn_binding -->|depends_on| technique_AOA_T_0066
+  skill_titan_thread_turn_binding -->|depends_on| technique_AOA_T_0045
   skill_titan_thread_turn_binding -->|included_in_profile| profile_repo_default
   skill_titan_thread_turn_binding -->|included_in_profile| profile_repo_titan_overlay
   skill_titan_thread_turn_binding -->|available_in_artifact_group| artifact_group_portable_export
@@ -830,19 +850,19 @@ graph TD
 | aoa-tdd-slice | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0014, AOA-T-0001 |
 | atm10-change-protocol | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002 |
 | atm10-source-of-truth-check | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0013, AOA-T-0002, AOA-T-0009 |
-| titan-approval-ledger | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-approval-loom | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-appserver-bridge | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-appserver-plan | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-closeout | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-console | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-event-replay | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-memory-loom | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-memory-prune | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-mutation-gate | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-recall | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-receipt | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-runtime-gate | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-summon | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
-| titan-thread-turn-binding | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
+| titan-approval-ledger | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028, AOA-T-0045, AOA-T-0058 |
+| titan-approval-loom | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028, AOA-T-0045, AOA-T-0062 |
+| titan-appserver-bridge | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0045, AOA-T-0066, AOA-T-0043 |
+| titan-appserver-plan | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0004, AOA-T-0091, AOA-T-0045 |
+| titan-closeout | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0058, AOA-T-0076, AOA-T-0045 |
+| titan-console | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0045, AOA-T-0062, AOA-T-0028 |
+| titan-event-replay | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0066, AOA-T-0045, AOA-T-0043 |
+| titan-memory-loom | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0053, AOA-T-0043, AOA-T-0045 |
+| titan-memory-prune | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0103, AOA-T-0104, AOA-T-0043 |
+| titan-mutation-gate | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028, AOA-T-0004, AOA-T-0091 |
+| titan-recall | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0053, AOA-T-0043, AOA-T-0045 |
+| titan-receipt | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0058, AOA-T-0045, AOA-T-0043 |
+| titan-runtime-gate | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0028, AOA-T-0058, AOA-T-0091 |
+| titan-summon | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0060, AOA-T-0058, AOA-T-0028 |
+| titan-thread-turn-binding | scaffold | project | explicit-only | published | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0062, AOA-T-0066, AOA-T-0045 |
 

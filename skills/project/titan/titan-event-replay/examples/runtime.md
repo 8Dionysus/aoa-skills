@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-event-replay` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+A bridge event stream must be replayed after interruption so reviewers can inspect derived state and source gaps.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan Event Replay and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request reconstructs reviewable state from saved events while keeping replay derived and non-authoritative.
 
 ## Expected inputs
 
@@ -26,12 +26,14 @@ The request matches the skill boundary for Titan Event Replay and can be handled
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- Replay is derived evidence and cannot open a gate by itself.
+- Ordering gaps should remain explicit even when the replay is useful.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.

@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-appserver-plan` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+An operator wants an app-server launch plan for Titan runtime surfaces, but no runtime process should start yet.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan App-Server Plan and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request needs a plan artifact before runtime starts, so dry-run and mutation-gate posture stay visible.
 
 ## Expected inputs
 
@@ -26,12 +26,14 @@ The request matches the skill boundary for Titan App-Server Plan and can be hand
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- Plan output is allowed; runtime start requires a separate explicit gate.
+- Avoid hard-coding host-only paths when owner docs provide the current command.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.

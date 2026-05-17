@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-memory-prune` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+Titan memory contains stale or sensitive candidate records and needs a reviewed retain, redact, tombstone, merge, or defer proposal.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan Memory Prune and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request reviews memory retention or obsolescence without silently deleting or rewriting records.
 
 ## Expected inputs
 
@@ -26,12 +26,14 @@ The request matches the skill boundary for Titan Memory Prune and can be handled
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- Prune recommendations are not deletions unless an owner-approved mutation follows.
+- Tombstone and redaction decisions should preserve enough provenance for audit.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.

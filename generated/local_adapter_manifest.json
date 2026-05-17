@@ -1235,7 +1235,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0045,AOA-T-0058",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1272,7 +1272,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0045,AOA-T-0062",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1309,7 +1309,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0045,AOA-T-0066,AOA-T-0043",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1346,7 +1346,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0004,AOA-T-0091,AOA-T-0045",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1383,7 +1383,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-closeout/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0058,AOA-T-0076,AOA-T-0045",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1420,7 +1420,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-console/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0045,AOA-T-0062,AOA-T-0028",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1457,7 +1457,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0066,AOA-T-0045,AOA-T-0043",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1494,7 +1494,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0053,AOA-T-0043,AOA-T-0045",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1531,7 +1531,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0103,AOA-T-0104,AOA-T-0043",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1568,7 +1568,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0004,AOA-T-0091",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1605,7 +1605,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-recall/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0053,AOA-T-0043,AOA-T-0045",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1642,7 +1642,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-receipt/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0058,AOA-T-0045,AOA-T-0043",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1679,7 +1679,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0028,AOA-T-0058,AOA-T-0091",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1716,7 +1716,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-summon/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0060,AOA-T-0058,AOA-T-0028",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",
@@ -1753,7 +1753,7 @@
         "aoa_invocation_mode": "explicit-only",
         "aoa_source_skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE,AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
+        "aoa_technique_dependencies": "AOA-T-0062,AOA-T-0066,AOA-T-0045",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "trust_posture": "project-overlay",

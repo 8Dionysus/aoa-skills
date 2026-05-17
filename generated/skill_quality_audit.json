@@ -5,23 +5,23 @@
   "skills": [
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 6,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 5,
+        "inputs_count": 8,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 5,
+        "outputs_count": 7,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 42,
+        "procedure_step_count": 8,
+        "risks_count": 7,
+        "runtime_line_count": 60,
         "trigger_bullets": {
-          "do_not_use": 6,
-          "use": 4
+          "do_not_use": 7,
+          "use": 6
         },
-        "verification_count": 5
+        "verification_count": 7
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -63,14 +63,14 @@
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0028"
           },
           {
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0001"
           }
         ],
@@ -82,23 +82,23 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 7,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 5,
+        "inputs_count": 8,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 5,
+        "outputs_count": 7,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 42,
+        "procedure_step_count": 7,
+        "risks_count": 7,
+        "runtime_line_count": 62,
         "trigger_bullets": {
-          "do_not_use": 6,
-          "use": 4
+          "do_not_use": 8,
+          "use": 6
         },
-        "verification_count": 5
+        "verification_count": 8
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -140,14 +140,14 @@
             "path": "techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0034"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -159,23 +159,23 @@
     },
     {
       "body": {
-        "contracts_count": 7,
+        "contracts_count": 10,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 5,
+        "inputs_count": 7,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 9,
+        "outputs_count": 11,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 8,
-        "risks_count": 6,
-        "runtime_line_count": 59,
+        "procedure_step_count": 10,
+        "risks_count": 9,
+        "runtime_line_count": 77,
         "trigger_bullets": {
-          "do_not_use": 5,
-          "use": 5
+          "do_not_use": 8,
+          "use": 6
         },
-        "verification_count": 7
+        "verification_count": 9
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -214,16 +214,16 @@
         "records": [
           {
             "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0080"
           },
           {
             "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0081"
           }
         ],
@@ -291,16 +291,16 @@
         "records": [
           {
             "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0033"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -370,7 +370,7 @@
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0028"
           }
         ],
@@ -439,23 +439,23 @@
         "records": [
           {
             "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0086"
           },
           {
             "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0087"
           },
           {
             "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0088"
           }
         ],
@@ -525,14 +525,14 @@
             "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
             "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0016"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -602,14 +602,14 @@
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0001"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -678,23 +678,23 @@
         "records": [
           {
             "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0075"
           },
           {
             "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0084"
           },
           {
             "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0089"
           }
         ],
@@ -764,14 +764,14 @@
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0001"
           },
           {
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0028"
           }
         ],
@@ -839,16 +839,16 @@
         "records": [
           {
             "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
-            "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0003"
           },
           {
             "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
-            "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0015"
           }
         ],
@@ -918,14 +918,14 @@
             "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
             "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0016"
           },
           {
             "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
             "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0015"
           }
         ],
@@ -996,14 +996,14 @@
             "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0004"
           },
           {
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0028"
           }
         ],
@@ -1072,7 +1072,7 @@
             "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
             "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0017"
           }
         ],
@@ -1143,30 +1143,30 @@
         "records": [
           {
             "path": "techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0036"
           },
           {
             "path": "techniques/execution/runtime-truth-lifecycle/contextual-host-doctor/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0037"
           },
           {
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0028"
           },
           {
             "path": "techniques/execution/runtime-truth-lifecycle/one-command-service-lifecycle/TECHNIQUE.md",
-            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0038"
           }
         ],
@@ -1236,14 +1236,14 @@
             "path": "techniques/proof/skill-support/bounded-context-map/TECHNIQUE.md",
             "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0016"
           },
           {
             "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
             "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0015"
           }
         ],
@@ -1311,16 +1311,16 @@
         "records": [
           {
             "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
-            "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0017"
           },
           {
             "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
-            "pinned_ref": "fbead87e01b82df6c56e3d92a074cd7515131847",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0007"
           }
         ],
@@ -1388,16 +1388,16 @@
         "records": [
           {
             "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0089"
           },
           {
             "path": "techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0090"
           }
         ],
@@ -1468,14 +1468,14 @@
             "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0028"
           },
           {
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0001"
           }
         ],
@@ -1546,14 +1546,14 @@
             "path": "techniques/instruction/docs-boundary/public-safe-artifact-sanitization/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0034"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -1622,23 +1622,23 @@
         "records": [
           {
             "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0075"
           },
           {
             "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0076"
           },
           {
             "path": "techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0077"
           }
         ],
@@ -1706,16 +1706,16 @@
         "records": [
           {
             "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0084"
           },
           {
             "path": "techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0085"
           }
         ],
@@ -1783,16 +1783,16 @@
         "records": [
           {
             "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0078"
           },
           {
             "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0079"
           }
         ],
@@ -1860,16 +1860,16 @@
         "records": [
           {
             "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0080"
           },
           {
             "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0081"
           }
         ],
@@ -1937,16 +1937,16 @@
         "records": [
           {
             "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0082"
           },
           {
             "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0083"
           }
         ],
@@ -2017,21 +2017,21 @@
             "path": "techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0013"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
           },
           {
             "path": "techniques/instruction/docs-boundary/lightweight-status-snapshot/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0009"
           }
         ],
@@ -2101,30 +2101,30 @@
         "records": [
           {
             "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0078"
           },
           {
             "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0079"
           },
           {
             "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0062"
           },
           {
             "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
-            "pinned_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0058"
           }
         ],
@@ -2193,14 +2193,14 @@
             "path": "techniques/execution/agent-workflows-core/tdd-slice/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0014"
           },
           {
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0001"
           }
         ],
@@ -2212,23 +2212,23 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 8,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 5,
+        "inputs_count": 7,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 5,
+        "outputs_count": 8,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 40,
+        "procedure_step_count": 10,
+        "risks_count": 8,
+        "runtime_line_count": 66,
         "trigger_bullets": {
-          "do_not_use": 4,
-          "use": 4
+          "do_not_use": 6,
+          "use": 6
         },
-        "verification_count": 5
+        "verification_count": 9
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2270,14 +2270,14 @@
             "path": "techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0001"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
           }
         ],
@@ -2289,23 +2289,23 @@
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 9,
         "extra_headings": [],
         "heading_count": 10,
-        "inputs_count": 5,
+        "inputs_count": 8,
         "low_count_findings": [],
         "missing_headings": [],
-        "outputs_count": 5,
+        "outputs_count": 7,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 40,
+        "procedure_step_count": 9,
+        "risks_count": 9,
+        "runtime_line_count": 68,
         "trigger_bullets": {
-          "do_not_use": 4,
-          "use": 4
+          "do_not_use": 6,
+          "use": 7
         },
-        "verification_count": 5
+        "verification_count": 9
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2339,7 +2339,8 @@
       "status": "evaluated",
       "technique_dependencies": [
         "AOA-T-0013",
-        "AOA-T-0002"
+        "AOA-T-0002",
+        "AOA-T-0009"
       ],
       "technique_drift": {
         "records": [
@@ -2347,26 +2348,33 @@
             "path": "techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0013"
           },
           {
             "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
             "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
             "state": "clean",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
             "technique_id": "AOA-T-0002"
+          },
+          {
+            "path": "techniques/instruction/docs-boundary/lightweight-status-snapshot/TECHNIQUE.md",
+            "pinned_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0009"
           }
         ],
         "state_counts": {
-          "clean": 2
+          "clean": 3
         }
       },
       "verdict": "healthy"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2376,13 +2384,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 36,
+        "risks_count": 5,
+        "runtime_line_count": 39,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2398,14 +2406,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-approval-ledger",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2416,35 +2422,43 @@
       "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0058"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0028"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
+          },
+          {
+            "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0058"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2454,13 +2468,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 36,
+        "risks_count": 5,
+        "runtime_line_count": 39,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2476,14 +2490,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-approval-loom",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2494,35 +2506,43 @@
       "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0062"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0028"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
+          },
+          {
+            "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0062"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2532,13 +2552,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2554,14 +2574,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-appserver-bridge",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2572,35 +2590,43 @@
       "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0066",
+        "AOA-T-0043"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0066"
+          },
+          {
+            "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0043"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2610,13 +2636,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2632,14 +2658,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-appserver-plan",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2650,35 +2674,43 @@
       "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0004",
+        "AOA-T-0091",
+        "AOA-T-0045"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0004"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0091"
+          },
+          {
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2688,13 +2720,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2710,14 +2742,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-closeout",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2728,35 +2758,43 @@
       "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0076",
+        "AOA-T-0045"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0058"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0076"
+          },
+          {
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2766,13 +2804,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2788,14 +2826,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-console",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2806,35 +2842,43 @@
       "skill_path": "skills/project/titan/titan-console/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0062",
+        "AOA-T-0028"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0062"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0028"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2844,13 +2888,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2866,14 +2910,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-event-replay",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2884,35 +2926,43 @@
       "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0066",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0066"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
+          },
+          {
+            "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0043"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -2922,13 +2972,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -2944,14 +2994,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-memory-loom",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -2962,35 +3010,43 @@
       "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0053"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0043"
+          },
+          {
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -3000,13 +3056,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -3022,14 +3078,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-memory-prune",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -3040,35 +3094,43 @@
       "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0103",
+        "AOA-T-0104",
+        "AOA-T-0043"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/governance/practice-adoption-lifecycle/adopted-practice-retention-review/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0103"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/governance/practice-adoption-lifecycle/superseded-practice-obsolescence-route/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0104"
+          },
+          {
+            "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0043"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 6,
@@ -3078,13 +3140,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 38,
+        "risks_count": 5,
+        "runtime_line_count": 41,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -3100,14 +3162,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-mutation-gate",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -3118,35 +3178,43 @@
       "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0004",
+        "AOA-T-0091"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0028"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0004"
+          },
+          {
+            "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0091"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -3156,13 +3224,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -3178,14 +3246,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-recall",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -3196,35 +3262,43 @@
       "skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0053"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0043"
+          },
+          {
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -3234,13 +3308,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -3256,14 +3330,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-receipt",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -3274,35 +3346,43 @@
       "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0058"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
+          },
+          {
+            "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0043"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -3312,13 +3392,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -3334,14 +3414,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-runtime-gate",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -3352,35 +3430,43 @@
       "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0058",
+        "AOA-T-0091"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0028"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0058"
+          },
+          {
+            "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0091"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -3389,14 +3475,14 @@
         "outputs_count": 5,
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
-        "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "procedure_step_count": 6,
+        "risks_count": 5,
+        "runtime_line_count": 41,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -3412,14 +3498,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-summon",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -3430,35 +3514,43 @@
       "skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0060",
+        "AOA-T-0058",
+        "AOA-T-0028"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0060"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0058"
+          },
+          {
+            "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0028"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
       "body": {
-        "contracts_count": 4,
+        "contracts_count": 5,
         "extra_headings": [],
         "heading_count": 10,
         "inputs_count": 5,
@@ -3468,13 +3560,13 @@
         "pending_markers": [],
         "procedure_duplicate_numbers": [],
         "procedure_step_count": 5,
-        "risks_count": 4,
-        "runtime_line_count": 37,
+        "risks_count": 5,
+        "runtime_line_count": 40,
         "trigger_bullets": {
           "do_not_use": 3,
           "use": 3
         },
-        "verification_count": 4
+        "verification_count": 5
       },
       "evidence": {
         "autonomy_check_count": 1,
@@ -3490,14 +3582,12 @@
         "use_case_count": 1,
         "use_snapshot_count": 1
       },
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "governance_decision": null,
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-thread-turn-binding",
-      "readiness_reconciliation": "project_overlay_eval_ready",
+      "readiness_reconciliation": "project_overlay_federation_ready",
       "runtime": {
         "allow_implicit_invocation": false,
         "implicit_activation_policy": "manual",
@@ -3508,28 +3598,36 @@
       "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0062",
+        "AOA-T-0066",
+        "AOA-T-0045"
       ],
       "technique_drift": {
         "records": [
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE"
+            "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0062"
           },
           {
-            "path": "TBD",
-            "pinned_ref": "TBD",
-            "state": "pending",
-            "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
-            "technique_id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+            "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0066"
+          },
+          {
+            "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+            "pinned_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "state": "clean",
+            "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+            "technique_id": "AOA-T-0045"
           }
         ],
         "state_counts": {
-          "pending": 2
+          "clean": 3
         }
       },
       "verdict": "working_scaffold_needs_promotion_review"
@@ -3551,16 +3649,13 @@
     "local aoa-techniques drift check"
   ],
   "summary": {
-    "findings": {
-      "pending_technique_lineage": 15
-    },
+    "findings": {},
     "technique_drift": {
       "available": true,
       "state_counts": {
-        "clean": 66,
-        "pending": 30
+        "clean": 112
       },
-      "target_ref": "b62014daeb3bd0870f9b62610fd5d5c42ff746aa",
+      "target_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
       "techniques_repo": "/srv/AbyssOS/aoa-techniques"
     },
     "verdicts": {
@@ -3577,135 +3672,105 @@
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-approval-ledger",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-approval-loom",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-appserver-bridge",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-appserver-plan",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-closeout",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-console",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-event-replay",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-memory-loom",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-memory-prune",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-mutation-gate",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-recall",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-receipt",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-runtime-gate",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-summon",
       "scope": "project",
       "status": "scaffold",
       "verdict": "working_scaffold_needs_promotion_review"
     },
     {
-      "findings": [
-        "pending_technique_lineage"
-      ],
+      "findings": [],
       "name": "titan-thread-turn-binding",
       "scope": "project",
       "status": "scaffold",

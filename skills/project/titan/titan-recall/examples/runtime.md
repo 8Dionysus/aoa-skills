@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-recall` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+A later session asks what a Titan lane previously observed and needs candidate recall with source refs and authority warnings.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan Recall and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request retrieves candidate memory and must route any important claim back to source evidence.
 
 ## Expected inputs
 
@@ -26,12 +26,14 @@ The request matches the skill boundary for Titan Recall and can be handled witho
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- Recall output is advisory until checked against source refs.
+- Redacted or tombstoned entries should not be reconstructed from memory context.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.

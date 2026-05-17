@@ -9,7 +9,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 - total skills: 45
 - candidate ready without review: 10
-- pending technique bridge lineage: 15
+- pending technique bridge lineage: 0
 - canonical maintenance cohort: 12
 - comparative pending cohort: 13
 - review truth-sync gaps: 0
@@ -47,21 +47,21 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-tdd-slice | canonical | published | true | true | default_reference | change_workflows | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-tdd-slice.md | - |
 | atm10-change-protocol | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-change-protocol.md |
 | atm10-source-of-truth-check | evaluated | published | false | true | - | - | project_overlay_federation_ready | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md |
-| titan-approval-ledger | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-approval-loom | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-appserver-bridge | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-appserver-plan | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-closeout | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-console | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-event-replay | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-memory-loom | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-memory-prune | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-mutation-gate | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-recall | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-receipt | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-runtime-gate | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-summon | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
-| titan-thread-turn-binding | scaffold | pending | false | true | - | - | project_overlay_eval_ready | - | - |
+| titan-approval-ledger | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-approval-loom | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-appserver-bridge | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-appserver-plan | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-closeout | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-console | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-event-replay | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-memory-loom | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-memory-prune | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-mutation-gate | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-recall | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-receipt | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-runtime-gate | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-summon | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
+| titan-thread-turn-binding | scaffold | published | false | true | - | - | project_overlay_federation_ready | - | - |
 
 ## Review truth sync
 
@@ -98,7 +98,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 ## Cohorts
 
 - `candidate_ready_without_review`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
-- `blocked_by_pending_lineage`: titan-approval-ledger, titan-approval-loom, titan-appserver-bridge, titan-appserver-plan, titan-closeout, titan-console, titan-event-replay, titan-memory-loom, titan-memory-prune, titan-mutation-gate, titan-recall, titan-receipt, titan-runtime-gate, titan-summon, titan-thread-turn-binding
+- `blocked_by_pending_lineage`: -
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
 - `review_truth_sync`: -

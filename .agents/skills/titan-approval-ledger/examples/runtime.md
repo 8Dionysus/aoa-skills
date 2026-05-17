@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-approval-ledger` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+An operator explicitly approves one Forge mutation or Delta judgment gate and needs a ledger record that will not become owner truth.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan Approval Ledger and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request is about recording one explicit approval seam, not deciding role truth or executing the approved work.
 
 ## Expected inputs
 
@@ -25,12 +25,14 @@ The request matches the skill boundary for Titan Approval Ledger and can be hand
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- Do not let an approval record execute the approved mutation or judgment.
+- Do not reuse one approval across another actor, target, or gate kind.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.
