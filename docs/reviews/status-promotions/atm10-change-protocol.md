@@ -11,7 +11,7 @@ name: atm10-change-protocol
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `8a902dd379b3`
+- reviewed revision: `eb340748d355`
 
 ## Target status
 
@@ -27,13 +27,18 @@ name: atm10-change-protocol
 - `skills/project/atm10/atm10-change-protocol/checks/review.md`
 - `mechanics/boundary-bridge/overlays/atm10/REVIEW.md`
 - `tests/fixtures/skill_evaluation_cases.yaml`
+- `tests/fixtures/skill_evaluation_snapshots/atm10-change-protocol/`
+- `ATM10-Agent/AGENTS.md` read-only route evidence
+- `ATM10-Agent/docs/SOURCE_OF_TRUTH.md` read-only document-role evidence
+- `ATM10-Agent/docs/RUNBOOK.md` read-only command-surface evidence
+- `ATM10-Agent/docs/PRODUCT_EDGE_POSTURE.md` read-only support/test-tier evidence
 
 ## Findings
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `not applicable`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the overlay still stays thin and repo-relative, and the new status mainly formalizes existing evaluation evidence rather than changing workflow meaning.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the overlay still stays thin and repo-relative, but the runtime meaning now names ATM10 route cards, public docs, validation tiers, dry-run/report-only safety, recovery anchors, and downstream authority stop-lines.
 
 ## Gaps and blockers
 

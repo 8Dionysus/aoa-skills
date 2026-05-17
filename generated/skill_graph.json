@@ -2371,6 +2371,11 @@
       "target": "technique_AOA_T_0002"
     },
     {
+      "kind": "depends_on",
+      "source": "skill_atm10_source_of_truth_check",
+      "target": "technique_AOA_T_0009"
+    },
+    {
       "kind": "included_in_profile",
       "source": "skill_atm10_source_of_truth_check",
       "target": "profile_repo_atm10_overlay"
@@ -3976,7 +3981,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "5d927c2a034e5bd80e764b5e88581486ef0473900c34182e5ffb9637510cfc65",
+      "content_hash": "f97c9d760f3e7b4d6658ee1050b091b75a6aad915a191028581078f32c8a3056",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4002,7 +4007,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
       "scope": "project",
       "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
-      "skill_revision": "5d927c2a034e",
+      "skill_revision": "f97c9d760f3e",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -4058,7 +4063,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "67fab93e13ffde2c992cda65b54c8fcddffe48778dc1baa1669e696602dc45da",
+      "content_hash": "5bd25d9d8c97b080cb11eb51f886b8cd53232978c3e5e373344e2cb7f49ef997",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4084,7 +4089,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
       "scope": "project",
       "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
-      "skill_revision": "67fab93e13ff",
+      "skill_revision": "5bd25d9d8c97",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -4140,7 +4145,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "c49fc4106729aeb029ff669103f9f0ede68d65abcfce38f6a92865eb9de939db",
+      "content_hash": "fa2c4d06912e93440a77b1bfe67e9a272cd3d1b59d12248776b33bfd4fe2c6e8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -4166,7 +4171,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
-      "skill_revision": "c49fc4106729",
+      "skill_revision": "fa2c4d06912e",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -6420,7 +6425,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "8a902dd379b35cd5cd6360f6aaef2ad51e7bbb5c75e01e8052ff48d2d97329ba",
+      "content_hash": "eb340748d355ef9c56d73e151de8f70f07239e0b88c03125245458cfd1602cf3",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6446,7 +6451,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
       "scope": "project",
       "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
-      "skill_revision": "8a902dd379b3",
+      "skill_revision": "eb340748d355",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -6502,7 +6507,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "414fd4a607c3a799295a03e423561c86f9da2f704b8ce5548ebe8072bf3df74a",
+      "content_hash": "fccd8fdf392a78c14e89a44eb04d6ad7e726d9831d183629dac61bc72db528f3",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -6528,7 +6533,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
       "scope": "project",
       "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
-      "skill_revision": "414fd4a607c3",
+      "skill_revision": "fccd8fdf392a",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -6549,7 +6554,8 @@
       ],
       "technique_dependencies": [
         "AOA-T-0013",
-        "AOA-T-0002"
+        "AOA-T-0002",
+        "AOA-T-0009"
       ],
       "technique_lineage": [
         {
@@ -6563,6 +6569,13 @@
           "id": "AOA-T-0002",
           "lineage_state": "published",
           "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+        },
+        {
+          "id": "AOA-T-0009",
+          "lineage_state": "published",
+          "path": "techniques/instruction/docs-boundary/lightweight-status-snapshot/TECHNIQUE.md",
           "repo": "aoa-techniques",
           "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
         }

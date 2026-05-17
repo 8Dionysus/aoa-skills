@@ -158,9 +158,8 @@ class TinyRouterInputsTest(unittest.TestCase):
             target_case = next(
                 case
                 for case in eval_cases
-                if case["case_id"] == "tiny-defer-aoa-source-of-truth-check"
+                if case["case_id"] == "tiny-defer-abyss-self-diagnostic-spine"
             )
-            target_case["expected_band"] = "change-validation"
             target_case["expected_shortlist_includes"] = []
             target_case["repo_family_hint"] = None
             eval_cases_path.write_text(
@@ -179,7 +178,7 @@ class TinyRouterInputsTest(unittest.TestCase):
         self.assertEqual(completed.returncode, 2, msg=completed.stdout + completed.stderr)
         payload = json.loads(completed.stdout)
         self.assertIn(
-            "tiny-defer-aoa-source-of-truth-check: cross-band overlay defer targets must set repo_family_hint",
+            "tiny-defer-abyss-self-diagnostic-spine: cross-band overlay defer cases must set repo_family_hint",
             payload["errors"],
         )
 

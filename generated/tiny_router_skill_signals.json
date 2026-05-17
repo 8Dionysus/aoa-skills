@@ -2075,7 +2075,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-session-self-diagnose to turn reviewed session evidence into a diagnosis packet with drift types, symptoms, probable causes, repair shapes, and owner hints.",
       "primary_negative_prompt": "The session contains no meaningful friction or contradiction, and the next move is straightforward execution rather than diagnosis.",
-      "primary_defer_prompt": "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-session-self-repair",
@@ -2167,7 +2167,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-session-self-repair to turn a reviewed diagnosis packet into a bounded repair packet with checkpoint posture, rollback markers, health checks, and owner-layer targets.",
       "primary_negative_prompt": "There is no reviewed diagnosis yet, so producing a repair packet now would be premature and likely hide the real problem.",
-      "primary_defer_prompt": "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made."
+      "primary_defer_prompt": ""
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -2244,7 +2244,7 @@
       ],
       "primary_positive_prompt": "Use $aoa-source-of-truth-check to map which files are authoritative, surface overlaps, and keep top-level guidance short and link-driven.",
       "primary_negative_prompt": "The repository is tiny and there is no meaningful ambiguity about which file is authoritative.",
-      "primary_defer_prompt": "Inside this atm10-orders repo, map the authoritative docs using repo-relative atm10 canonical-file patterns and local review posture."
+      "primary_defer_prompt": "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written."
     },
     {
       "name": "aoa-summon",
@@ -2436,10 +2436,10 @@
       "manual_invocation_required": true,
       "candidate_only": false,
       "project_overlay": true,
-      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
-      "summary_short": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit...",
-      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
-      "description_sha256": "e0f5533ad013bea96c55ee9d27f0cee6e1ccd9a0f7e88fc3466c5aa1f5cfe4ea",
+      "summary": "Thin ATM10 overlay for bounded change execution with repo-relative route cards, public docs, commands, review checks, recovery anchors, and explicit local approval notes.",
+      "summary_short": "Thin ATM10 overlay for bounded change execution with repo-relative route cards, public docs, commands, review...",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
+      "description_sha256": "45693932852a02321b01983411bbd463ed40e8c008367d38bbb7488f6f8f5263",
       "positive_cues": [
         "atm10",
         "atm10 change",
@@ -2489,15 +2489,15 @@
         "base",
         "commands",
         "notes",
-        "paths",
         "relative",
         "approval",
         "overlay",
-        "review",
+        "anchors",
         "aoa",
         "apply",
         "but",
-        "checklists"
+        "cards",
+        "checks"
       ],
       "companions": [
         "aoa-change-protocol",
@@ -2519,10 +2519,10 @@
       "manual_invocation_required": true,
       "candidate_only": false,
       "project_overlay": true,
-      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
-      "summary_short": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review...",
-      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
-      "description_sha256": "e0c744178c0b7c1f9e4f1bb39dc6b3b1338f8c77b8d1f66e5d989a8724a046d4",
+      "summary": "Thin ATM10 overlay for clarifying repo-local document authority, public-surface roles, canonical files, review checklists, and review posture without changing the base workflow.",
+      "summary_short": "Thin ATM10 overlay for clarifying repo-local document authority, public-surface roles, canonical files, review...",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
+      "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305",
       "positive_cues": [
         "atm10",
         "atm10 docs",
@@ -2569,10 +2569,10 @@
         "check",
         "source",
         "truth",
+        "authority",
         "base",
         "canonical",
         "file",
-        "inside",
         "overlay",
         "patterns",
         "posture",

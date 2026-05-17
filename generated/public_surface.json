@@ -945,7 +945,7 @@
       "scope": "project",
       "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "status": "evaluated",
-      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
+      "summary": "Thin ATM10 overlay for bounded change execution with repo-relative route cards, public docs, commands, review checks, recovery anchors, and explicit local approval notes.",
       "technique_bridge_findings": []
     },
     {
@@ -966,7 +966,7 @@
       "scope": "project",
       "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated",
-      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
+      "summary": "Thin ATM10 overlay for clarifying repo-local document authority, public-surface roles, canonical files, review checklists, and review posture without changing the base workflow.",
       "technique_bridge_findings": []
     },
     {

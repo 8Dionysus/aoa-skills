@@ -177,7 +177,7 @@ REQUIRED_DOCS: tuple[AgentsDocSpec, ...] = (
             "# AGENTS.md",
             "`PROJECT_OVERLAY.md`",
             "`REVIEW.md`",
-            "`skills/<family>-*`",
+            "`skills/project/<family>/<skill>/`",
             "thin overlay",
             "downstream integration",
         ),

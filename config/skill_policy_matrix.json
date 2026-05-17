@@ -282,7 +282,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Project overlay for atm10 repositories only."
+      "notes": "Manual project overlay for ATM10 repositories only; route-card and local validation context must be deliberate."
     },
     "atm10-source-of-truth-check": {
       "trust_posture": "project-overlay",
@@ -292,7 +292,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Project overlay for atm10 repository document authority."
+      "notes": "Manual project overlay for ATM10 repository document authority and public-surface role clarification."
     },
     "abyss-safe-infra-change": {
       "trust_posture": "project-overlay",

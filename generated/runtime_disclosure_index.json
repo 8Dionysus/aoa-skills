@@ -35,12 +35,12 @@
       "section_summaries": {
         "Intent": "Use this skill to adapt `aoa-safe-infra-change` to an `abyss-*` repository when the base operational workflow is correct but the local repo still needs repo-relative commands, authority notes, and risk framing.",
         "Trigger boundary": "the base `aoa-safe-infra-change` workflow is already correct, but an `abyss-*` repo needs repo-relative operational surfaces, commands, or approval notes; the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family",
-        "Inputs": "target operational change and touched local surface; repo-relative operational files or commands",
-        "Outputs": "bounded local infra-change plan; repo-relative command or path sketch",
-        "Procedure": "start from `aoa-safe-infra-change` instead of inventing a new project-family workflow; name the repo-relative operational files, commands, and authority posture that matter locally",
+        "Inputs": "target operational change and touched local surface; repo-relative operational files, commands, generated receipts, or runtime check paths",
+        "Outputs": "bounded local infra-change plan; repo-relative command, path, or receipt sketch",
+        "Procedure": "start from `aoa-safe-infra-change` instead of inventing a new project-family workflow; read the nearest repo route card before treating a path as locally owned",
         "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
         "Risks and anti-patterns": "hiding downstream authority inside vague local operational notes; turning a thin overlay into project doctrine or a scenario bundle",
-        "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
+        "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths, commands, receipts, or runtime checks are named explicitly",
         "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks,...",
         "Adaptation points": "repo-relative operational surfaces; local authority and approval notes"
       },
@@ -146,8 +146,8 @@
         "Intent": "Use this skill to adapt `aoa-sanitized-share` to an `abyss-*` repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture.",
         "Trigger boundary": "the base `aoa-sanitized-share` workflow is already correct, but an `abyss-*` repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds; raw logs, diagnostics, config snippets, or incident notes from one `abyss-*` repo need a bounded public-saf...",
         "Inputs": "raw material to sanitize; intended audience or sharing context",
-        "Outputs": "sanitized local shareable artifact; note on what was generalized or removed",
-        "Procedure": "start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow; name the repo-relative output surface, audience, and local sensitivity thresholds that matter",
+        "Outputs": "sanitized local shareable artifact; note on what was generalized, removed, summarized, or retained",
+        "Procedure": "start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow; name the audience and destination before deciding what can remain visible",
         "Contracts": "preserve the base skill meaning; keep local paths and output placement repo-relative and explicit",
         "Risks and anti-patterns": "hiding local sharing thresholds in vague prose; collapsing a thin overlay into project doctrine or incident policy",
         "Verification": "confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly",
@@ -255,9 +255,9 @@
       "section_summaries": {
         "Intent": "Use this skill to adapt `aoa-session-self-diagnose` to an `abyss-*` repository when the local repo needs one runtime-owned diagnostic session artifact that can cite runtime evidence, compare against last-good posture, and hand off honestly toward the reviewed session diagnosis...",
         "Trigger boundary": "the base `aoa-session-self-diagnose` workflow is already correct, but an `abyss-*` repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs; a concrete runtime path must be diagnosed before any repair claim becomes honest",
-        "Inputs": "resolved or requested preset / profile selectors; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
-        "Outputs": "one bounded runtime-owned `diagnostic_session_v1`; one explicit `exit_class`",
-        "Procedure": "start from `aoa-session-self-diagnose` instead of inventing a new project-family workflow; resolve the diagnostic target before interpreting symptoms",
+        "Inputs": "resolved or requested diagnostic target, preset, profile, or repo-relative path; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or related evidence refs",
+        "Outputs": "one bounded runtime-owned `diagnostic_session_v1`; one explicit `exit_class` chosen from a locally named finite set, such as `retest`, `governed_repair`, `manual_regrounding`, `owner_handoff`, or `insufficient_evidence`",
+        "Procedure": "start from `aoa-session-self-diagnose` instead of inventing a new project-family workflow; resolve the diagnostic target before interpreting symptoms or naming a drift class",
         "Contracts": "preserve the base skill meaning; the overlay stays read-only and citation-friendly",
         "Risks and anti-patterns": "treating one axis failure as total collapse; confusing runtime drift with source-owned doctrine drift",
         "Verification": "confirm the base skill is still the correct workflow; confirm a concrete target exists",
@@ -759,7 +759,8 @@
       "competing_skills": [
         "aoa-core-logic-boundary",
         "aoa-port-adapter-refactor",
-        "aoa-adr-write"
+        "aoa-adr-write",
+        "aoa-source-of-truth-check"
       ],
       "sample_prompts": {
         "explicit": [
@@ -3217,7 +3218,7 @@
     {
       "name": "atm10-change-protocol",
       "display_name": "ATM10 Change Protocol",
-      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
       "short_description": "ATM10 bounded change overlay",
       "path": ".agents/skills/atm10-change-protocol/SKILL.md",
       "skill_dir": ".agents/skills/atm10-change-protocol",
@@ -3244,11 +3245,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning.",
+        "Intent": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning or moving ATM10 runtime authority into `aoa-skills`.",
         "Trigger boundary": "the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes; a bounded non-trivial change still needs an explicit plan and verification path inside the local repo",
-        "Inputs": "target goal and touched local surface; repo-relative source-of-truth files",
-        "Outputs": "bounded local change plan; repo-relative command or path sketch",
-        "Procedure": "start from `aoa-change-protocol` rather than rewriting the workflow; name the repo-relative files, commands, and approval posture that matter locally",
+        "Inputs": "target goal and touched local surface; ATM10 route stack such as `AGENTS.md`, nearest nested `AGENTS.md`, `docs/SOURCE_OF_TRUTH.md`, `docs/RUNBOOK.md`, `docs/PRODUCT_EDGE_POSTURE.md`, or the exact touched local surface",
+        "Outputs": "bounded local change plan; route-card and source-of-truth evidence inspected",
+        "Procedure": "start from `aoa-change-protocol` rather than rewriting the workflow; read the ATM10 root route card, then the nearest nested `AGENTS.md` for every touched path",
         "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
         "Risks and anti-patterns": "hiding downstream authority inside vague local notes; turning a thin overlay into repo doctrine or a scenario bundle",
         "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
@@ -3276,7 +3277,7 @@
       "interface": {
         "display_name": "ATM10 Change Protocol",
         "short_description": "ATM10 bounded change overlay",
-        "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes.",
+        "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative ATM10 route cards, paths, commands, checks, recovery anchors, and local review notes.",
         "icon_small": "./assets/small-logo.svg",
         "icon_large": "./assets/large-logo.svg",
         "brand_color": "#6D28D9"
@@ -3321,12 +3322,12 @@
           }
         }
       },
-      "disclose_card_markdown": "### atm10-change-protocol\n- Summary: ATM10 bounded change overlay\n- Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+      "disclose_card_markdown": "### atm10-change-protocol\n- Summary: ATM10 bounded change overlay\n- Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
     },
     {
       "name": "atm10-source-of-truth-check",
       "display_name": "ATM10 Source Of Truth Check",
-      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
       "short_description": "ATM10 source-of-truth overlay",
       "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
       "skill_dir": ".agents/skills/atm10-source-of-truth-check",
@@ -3337,7 +3338,7 @@
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002",
+        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002,AOA-T-0009",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -3353,11 +3354,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local doc map needs repo-relative detail.",
+        "Intent": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local public-doc and repo-surface map needs repo-relative detail.",
         "Trigger boundary": "the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `...",
         "Inputs": "repo-relative docs or guidance surfaces; local canonical-file candidates",
-        "Outputs": "local source-of-truth map; bounded clarification note",
-        "Procedure": "start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine; name the repo-relative docs and guidance files involved in the ambiguity",
+        "Outputs": "local source-of-truth map; active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map",
+        "Procedure": "start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine; read the ATM10 root route card and `docs/SOURCE_OF_TRUTH.md`; if a touched path has a nested `AGENTS.md`, read that before judging local authority",
         "Contracts": "preserve the base skill meaning; keep local file maps repo-relative and explicit",
         "Risks and anti-patterns": "inventing a broader docs governance framework inside a thin overlay; using family labels without reducing local ambiguity",
         "Verification": "confirm the base skill is still the right workflow; confirm authoritative repo-relative files are named explicitly",
@@ -3385,7 +3386,7 @@
       "interface": {
         "display_name": "ATM10 Source Of Truth Check",
         "short_description": "ATM10 source-of-truth overlay",
-        "default_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.",
+        "default_prompt": "Use $atm10-source-of-truth-check to map authoritative ATM10 docs, public-surface roles, repo-relative file patterns, and explicit local review posture.",
         "icon_small": "./assets/small-logo.svg",
         "icon_large": "./assets/large-logo.svg",
         "brand_color": "#6D28D9"
@@ -3430,7 +3431,7 @@
           }
         }
       },
-      "disclose_card_markdown": "### atm10-source-of-truth-check\n- Summary: ATM10 source-of-truth overlay\n- Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+      "disclose_card_markdown": "### atm10-source-of-truth-check\n- Summary: ATM10 source-of-truth overlay\n- Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
     },
     {
       "name": "titan-approval-ledger",

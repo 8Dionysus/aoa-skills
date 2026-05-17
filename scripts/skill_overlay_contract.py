@@ -13,7 +13,7 @@ import skill_source_model
 import yaml
 
 
-OVERLAY_STUBS_DIR = Path("tests") / "fixtures" / "overlay_stubs"
+OVERLAY_FIXTURES_DIR = Path("tests") / "fixtures" / "overlay_fixtures"
 LIVE_OVERLAYS_DIR = Path("mechanics") / "boundary-bridge" / "overlays"
 PROJECT_OVERLAY_FILE = "PROJECT_OVERLAY.md"
 LIVE_OVERLAY_REVIEW_FILE = "REVIEW.md"
@@ -34,7 +34,7 @@ PROJECT_OVERLAY_SKILL_HEADINGS = (
     "Local procedure notes",
     "Authority and safety notes",
     "Verification notes",
-    "Stub-only notes",
+    "Fixture-only notes",
 )
 LIVE_PROJECT_OVERLAY_HEADINGS = (
     "Purpose",
@@ -63,7 +63,7 @@ OVERLAY_READINESS_SOURCE_OF_TRUTH = {
     "evaluation_fixtures": "tests/fixtures/skill_evaluation_cases.yaml",
 }
 OVERLAY_SKILL_BULLET_PATTERN = re.compile(r"^\s*-\s*`([a-z0-9-]+)`")
-OVERLAY_STUB_DIR_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)+$")
+OVERLAY_FIXTURE_DIR_PATTERN = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)+$")
 
 
 @dataclass(frozen=True)
@@ -188,27 +188,27 @@ def collect_overlay_heading_issues(
     return issues
 
 
-def collect_overlay_stub_issues(repo_root: Path) -> list[OverlayContractIssue]:
-    root = repo_root / OVERLAY_STUBS_DIR
+def collect_overlay_fixture_issues(repo_root: Path) -> list[OverlayContractIssue]:
+    root = repo_root / OVERLAY_FIXTURES_DIR
     issues: list[OverlayContractIssue] = []
     if not root.is_dir():
         return issues
 
-    for stub_dir in sorted(path for path in root.iterdir() if path.is_dir()):
-        if OVERLAY_STUB_DIR_PATTERN.match(stub_dir.name) is None:
+    for fixture_dir in sorted(path for path in root.iterdir() if path.is_dir()):
+        if OVERLAY_FIXTURE_DIR_PATTERN.match(fixture_dir.name) is None:
             issues.append(
                 OverlayContractIssue(
-                    relative_location(stub_dir, repo_root),
-                    "overlay stub directories must follow '<family>-<stub-name>' naming",
+                    relative_location(fixture_dir, repo_root),
+                    "overlay fixture directories must follow '<family>-<fixture-name>' naming",
                 )
             )
-        overlay_path = stub_dir / PROJECT_OVERLAY_FILE
-        overlay_skill_path = stub_dir / PROJECT_OVERLAY_SKILL_FILE
+        overlay_path = fixture_dir / PROJECT_OVERLAY_FILE
+        overlay_skill_path = fixture_dir / PROJECT_OVERLAY_SKILL_FILE
         if not overlay_path.is_file():
             issues.append(
                 OverlayContractIssue(
                     relative_location(overlay_path, repo_root),
-                    "overlay stub is missing PROJECT_OVERLAY.md",
+                    "overlay fixture is missing PROJECT_OVERLAY.md",
                 )
             )
             continue
@@ -216,7 +216,7 @@ def collect_overlay_stub_issues(repo_root: Path) -> list[OverlayContractIssue]:
             issues.append(
                 OverlayContractIssue(
                     relative_location(overlay_skill_path, repo_root),
-                    "overlay stub is missing PROJECT_OVERLAY_SKILL.md",
+                    "overlay fixture is missing PROJECT_OVERLAY_SKILL.md",
                 )
             )
             continue
@@ -256,14 +256,14 @@ def collect_overlay_stub_issues(repo_root: Path) -> list[OverlayContractIssue]:
         if not contains_phrase(
             overlay_skill_text,
             (
-                "stub",
-                "future stub",
+                "fixture",
+                "future fixture",
             ),
         ):
             issues.append(
                 OverlayContractIssue(
                     relative_location(overlay_skill_path, repo_root),
-                    "project overlay skill must explicitly describe itself as a stub or future stub",
+                    "project overlay skill must explicitly describe itself as a fixture or future fixture",
                 )
             )
         if not contains_phrase(
@@ -307,7 +307,7 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
                 issues.append(
                     OverlayContractIssue(
                         relative_location(overlay_path, repo_root),
-                        f"live overlay '{family}' requires at least one matching skills/{family}-* bundle",
+                        f"live overlay '{family}' requires at least one matching skills/project/{family}/<skill> bundle",
                     )
                 )
             continue
@@ -342,7 +342,7 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
                 issues.append(
                     OverlayContractIssue(
                         relative_location(review_path, repo_root),
-                        f"live overlay family review '{family}' must mention every matching skills/{family}-* bundle",
+                        f"live overlay family review '{family}' must mention every matching skills/project/{family}/<skill> bundle",
                     )
                 )
 
@@ -392,7 +392,7 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
             issues.append(
                 OverlayContractIssue(
                     relative_location(overlay_path, repo_root),
-                    f"live project overlay '{family}' must list matching skills/{family}-* bundles under 'Overlayed skills'",
+                    f"live project overlay '{family}' must list matching skills/project/{family}/<skill> bundles under 'Overlayed skills'",
                 )
             )
             continue
@@ -402,7 +402,7 @@ def collect_live_overlay_issues(repo_root: Path) -> list[OverlayContractIssue]:
                 issues.append(
                     OverlayContractIssue(
                         relative_location(overlay_path, repo_root),
-                        f"live project overlay '{family}' may only list skills/{family}-* bundles under 'Overlayed skills'",
+                        f"live project overlay '{family}' may only list skills/project/{family}/<skill> bundles under 'Overlayed skills'",
                     )
                 )
                 break

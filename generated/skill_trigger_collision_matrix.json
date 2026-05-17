@@ -474,14 +474,14 @@
     {
       "case_id": "collision-27",
       "skill_name": "abyss-self-diagnostic-spine",
-      "expected_behavior": "invoke-skill",
-      "expected_skill": "abyss-self-diagnostic-spine",
+      "expected_behavior": "manual-invocation-required",
+      "expected_skill": null,
       "competing_skills": [
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
       "prompt": "Inside this abyss-stack repo, gather repo-relative runtime evidence around one concrete target path, normalize it into a bounded diagnostic session artifact, and name the honest exit class before any repair claim is made.",
-      "note": "The abyss overlay should win when the base diagnosis workflow needs one runtime-owned repo-relative artifact instead of a generic session packet."
+      "note": "The abyss overlay is the right manual route when the base diagnosis workflow needs one runtime-owned repo-relative artifact, but the scaffold must not auto-activate."
     },
     {
       "case_id": "collision-28",
@@ -583,10 +583,11 @@
       "expected_behavior": "invoke-skill",
       "expected_skill": "aoa-bounded-context-map",
       "competing_skills": [
-        "aoa-adr-write"
+        "aoa-adr-write",
+        "aoa-source-of-truth-check"
       ],
       "prompt": "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written.",
-      "note": "This is context carving before a decision note, not ADR authoring."
+      "note": "This is context carving before a decision note or source-of-truth map."
     }
   ]
 }

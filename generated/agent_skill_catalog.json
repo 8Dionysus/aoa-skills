@@ -1354,7 +1354,7 @@
     {
       "name": "atm10-change-protocol",
       "display_name": "ATM10 Change Protocol",
-      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
       "short_description": "ATM10 bounded change overlay",
       "path": ".agents/skills/atm10-change-protocol/SKILL.md",
       "openai_config_path": ".agents/skills/atm10-change-protocol/agents/openai.yaml",
@@ -1398,7 +1398,7 @@
     {
       "name": "atm10-source-of-truth-check",
       "display_name": "ATM10 Source Of Truth Check",
-      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
       "short_description": "ATM10 source-of-truth overlay",
       "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
       "openai_config_path": ".agents/skills/atm10-source-of-truth-check/agents/openai.yaml",
@@ -1412,7 +1412,8 @@
       "source_skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "technique_dependencies": [
         "AOA-T-0013",
-        "AOA-T-0002"
+        "AOA-T-0002",
+        "AOA-T-0009"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "none",

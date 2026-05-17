@@ -5,12 +5,12 @@
     {
       "name": "abyss-safe-infra-change",
       "compact_summary": "Abyss safe infra overlay",
-      "activation_card_markdown": "Use when: Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.\n\nKeep in memory: target operational change and touched local surface, repo-relative operational files or commands, bounded local infra-change plan, repo-relative command or path sketch.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Apply the aoa-safe-infra-change workflow inside an abyss-* repository using repo-relative operational surfaces, explicit local authority notes, rollback posture, and local validation commands. Use when the base infra-change workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the task is really about producing a shareable artifact.\n\nKeep in memory: target operational change and touched local surface, repo-relative operational files, commands, generated receipts, or runtime check paths, bounded local infra-change plan, repo-relative command, path, or receipt sketch.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "target operational change and touched local surface",
-        "repo-relative operational files or commands",
+        "repo-relative operational files, commands, generated receipts, or runtime check paths",
         "bounded local infra-change plan",
-        "repo-relative command or path sketch"
+        "repo-relative command, path, or receipt sketch"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -28,12 +28,12 @@
     {
       "name": "abyss-sanitized-share",
       "compact_summary": "Abyss sanitized-share overlay",
-      "activation_card_markdown": "Use when: Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.\n\nKeep in memory: raw material to sanitize, intended audience or sharing context, sanitized local shareable artifact, note on what was generalized or removed.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Apply the aoa-sanitized-share workflow inside an abyss-* repository using repo-relative sharing surfaces, explicit local thresholds, and local review posture. Use when the base sanitization workflow is correct but a thin project overlay is needed for one abyss repo. Do not use when the base skill is sufficient without local adaptation or when the real task is the underlying operational mutation.\n\nKeep in memory: raw material to sanitize, intended audience or sharing context, sanitized local shareable artifact, note on what was generalized, removed, summarized, or retained.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "raw material to sanitize",
         "intended audience or sharing context",
         "sanitized local shareable artifact",
-        "note on what was generalized or removed"
+        "note on what was generalized, removed, summarized, or retained"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -51,12 +51,12 @@
     {
       "name": "abyss-self-diagnostic-spine",
       "compact_summary": "Abyss runtime diagnosis overlay",
-      "activation_card_markdown": "Use when: Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.\n\nKeep in memory: resolved or requested preset / profile selectors, runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs, one bounded runtime-owned `diagnostic_session_v1`, one explicit `exit_class`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.\n\nKeep in memory: resolved or requested diagnostic target, preset, profile, or repo-relative path, runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or related evidence refs, one bounded runtime-owned `diagnostic_session_v1`, one explicit `exit_class` chosen from a locally named finite set, such as `retest`, `governed_repair`, `manual_regrounding`, `owner_handoff`, or `insufficient_evidence`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
-        "resolved or requested preset / profile selectors",
-        "runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
+        "resolved or requested diagnostic target, preset, profile, or repo-relative path",
+        "runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or related evidence refs",
         "one bounded runtime-owned `diagnostic_session_v1`",
-        "one explicit `exit_class`"
+        "one explicit `exit_class` chosen from a locally named finite set, such as `retest`, `governed_repair`, `manual_regrounding`, `owner_handoff`, or `insufficient_evidence`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -649,12 +649,12 @@
     {
       "name": "atm10-change-protocol",
       "compact_summary": "ATM10 bounded change overlay",
-      "activation_card_markdown": "Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.\n\nKeep in memory: target goal and touched local surface, repo-relative source-of-truth files, bounded local change plan, repo-relative command or path sketch.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.\n\nKeep in memory: target goal and touched local surface, ATM10 route stack such as `AGENTS.md`, nearest nested `AGENTS.md`, `docs/SOURCE_OF_TRUTH.md`, `docs/RUNBOOK.md`, `docs/PRODUCT_EDGE_POSTURE.md`, or the exact touched local surface, bounded local change plan, route-card and source-of-truth evidence inspected.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "target goal and touched local surface",
-        "repo-relative source-of-truth files",
+        "ATM10 route stack such as `AGENTS.md`, nearest nested `AGENTS.md`, `docs/SOURCE_OF_TRUTH.md`, `docs/RUNBOOK.md`, `docs/PRODUCT_EDGE_POSTURE.md`, or the exact touched local surface",
         "bounded local change plan",
-        "repo-relative command or path sketch"
+        "route-card and source-of-truth evidence inspected"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -672,12 +672,12 @@
     {
       "name": "atm10-source-of-truth-check",
       "compact_summary": "ATM10 source-of-truth overlay",
-      "activation_card_markdown": "Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.\n\nKeep in memory: repo-relative docs or guidance surfaces, local canonical-file candidates, local source-of-truth map, bounded clarification note.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.\n\nKeep in memory: repo-relative docs or guidance surfaces, local canonical-file candidates, local source-of-truth map, active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "repo-relative docs or guidance surfaces",
         "local canonical-file candidates",
         "local source-of-truth map",
-        "bounded clarification note"
+        "active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map"
       ],
       "retain_sections": [
         "Trigger boundary",

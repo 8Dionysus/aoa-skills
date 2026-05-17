@@ -9,5 +9,6 @@ The task needs a broader playbook or a different base workflow, not a thin atm10
 A deflection that says the request needs a broader playbook or a different base skill, not a thin atm10 overlay.
 ## Boundary notes
 Do not use this overlay when the request expands beyond one bounded repo-local adaptation.
+Also deflect if the request would change live input events, service exposure, perception truth, retrieval/KAG truth, model-host posture, or operator automation authority without downstream ATM10-owned approval.
 ## Verification hooks
 The response should reject scenario-level scope creep and avoid inventing a family doctrine.

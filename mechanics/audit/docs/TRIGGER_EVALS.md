@@ -1,8 +1,8 @@
 # Trigger evals and collision tests
 
-Wave 2 replaced the first-wave trigger CSV with a richer JSONL dataset.
-Wave 3 keeps that dataset separate from install profiles and trust policy.
-Wave 7 adds a stricter description-first activation suite without replacing the older seed data.
+The trigger-eval surface is a policy-aware JSONL dataset derived from the earlier CSV seed.
+It stays separate from install profiles and trust policy.
+The description-first activation suite validates the portable `description` field without replacing the seed data.
 
 ## Why the format changed
 
@@ -16,6 +16,8 @@ We now need to distinguish:
 - adjacent negative controls
 - collision prompts against nearby skills
 - explicit-only skills that should require manual invocation even when the semantic match is strong
+- `suggest` skills that may appear as candidates without hidden activation
+- `manual` skills that must keep natural-language semantic matches out of hidden activation and candidate-surfacing paths
 
 ## Dataset fields
 
@@ -45,10 +47,11 @@ Possible values:
 
 The collision matrix groups the skills most likely to blur together.
 These prompts are designed to reveal description drift and routing overlap, not just activation success.
+Collision cases must still obey `implicit_activation_policy`: `invoke` cases may expect `invoke-skill`, `suggest` cases may produce candidate-only coverage, and `manual` cases must resolve to `manual-invocation-required` even when the local match is strong.
 
-## Wave-7 activation contract
+## Description Activation Contract
 
-Wave 7 adds:
+The description activation suite adds:
 
 - `generated/skill_description_signals.json`
 - `generated/description_trigger_eval_cases.jsonl`
@@ -67,7 +70,7 @@ The newer case classes are:
 - `should-not-trigger`
 - `prefer-other-skill`
 
-Chaos-wave stress coverage stays inside the same contract. Use
+Stress coverage stays inside the same contract. Use
 `../mechanics/antifragility/parts/collision-stress-program/README.md` when you
 need the bounded stress-specific extension for:
 

@@ -310,6 +310,13 @@ def main() -> int:
             continue
         if collision_case.get("expected_behavior") != "invoke-skill" or not collision_case.get("expected_skill"):
             continue
+        expected_skill_name = collision_case["expected_skill"]
+        expected_skill_policy = resolve_implicit_activation_policy(
+            activation_policy_by_name.get(expected_skill_name),
+            expected_skill_name,
+        )
+        if expected_skill_policy == "manual":
+            continue
 
         for competing_skill in collision_case.get("competing_skills", []):
             competing_signal = signals_by_name[competing_skill]

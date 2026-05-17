@@ -67,8 +67,8 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 | name | status | lineage | governance decision | review path | reviewed revision | current revision | meaning changed | issues | synced |
 |---|---|---|---|---|---|---|---|---|---|
-| abyss-safe-infra-change | evaluated | published | - | docs/reviews/status-promotions/abyss-safe-infra-change.md | 5d927c2a034e | 5d927c2a034e | False | - | true |
-| abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | 67fab93e13ff | 67fab93e13ff | False | - | true |
+| abyss-safe-infra-change | evaluated | published | - | docs/reviews/status-promotions/abyss-safe-infra-change.md | f97c9d760f3e | f97c9d760f3e | True | - | true |
+| abyss-sanitized-share | evaluated | published | - | docs/reviews/status-promotions/abyss-sanitized-share.md | 5bd25d9d8c97 | 5bd25d9d8c97 | True | - | true |
 | aoa-adr-write | canonical | published | default_reference | docs/reviews/status-promotions/aoa-adr-write.md | a2f205f916c0 | a2f205f916c0 | True | - | true |
 | aoa-approval-gate-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-approval-gate-check.md | a9093bc2b6b3 | a9093bc2b6b3 | True | - | true |
 | aoa-automation-opportunity-scan | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-automation-opportunity-scan.md | a6095d450a17 | a6095d450a17 | True | - | true |
@@ -92,8 +92,8 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-session-self-repair | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-repair.md | 17edbf208692 | 17edbf208692 | True | - | true |
 | aoa-source-of-truth-check | canonical | published | default_reference | docs/reviews/status-promotions/aoa-source-of-truth-check.md | 7f6e64468a52 | 7f6e64468a52 | True | - | true |
 | aoa-summon | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-summon.md | 7e8c8fcae843 | 7e8c8fcae843 | True | - | true |
-| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | 8a902dd379b3 | 8a902dd379b3 | False | - | true |
-| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | 414fd4a607c3 | 414fd4a607c3 | False | - | true |
+| atm10-change-protocol | evaluated | published | - | docs/reviews/status-promotions/atm10-change-protocol.md | eb340748d355 | eb340748d355 | True | - | true |
+| atm10-source-of-truth-check | evaluated | published | - | docs/reviews/status-promotions/atm10-source-of-truth-check.md | fccd8fdf392a | fccd8fdf392a | True | - | true |
 
 ## Cohorts
 

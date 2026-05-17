@@ -64,26 +64,26 @@
   "governance_backlog_version": 5,
   "review_truth_sync": [
     {
-      "current_revision": "5d927c2a034e",
+      "current_revision": "f97c9d760f3e",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "abyss-safe-infra-change",
       "review_path": "docs/reviews/status-promotions/abyss-safe-infra-change.md",
-      "reviewed_revision": "5d927c2a034e",
-      "runtime_skill_md_meaning_changed": false,
+      "reviewed_revision": "f97c9d760f3e",
+      "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "67fab93e13ff",
+      "current_revision": "5bd25d9d8c97",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "abyss-sanitized-share",
       "review_path": "docs/reviews/status-promotions/abyss-sanitized-share.md",
-      "reviewed_revision": "67fab93e13ff",
-      "runtime_skill_md_meaning_changed": false,
+      "reviewed_revision": "5bd25d9d8c97",
+      "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
@@ -364,26 +364,26 @@
       "truth_synced": true
     },
     {
-      "current_revision": "8a902dd379b3",
+      "current_revision": "eb340748d355",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "atm10-change-protocol",
       "review_path": "docs/reviews/status-promotions/atm10-change-protocol.md",
-      "reviewed_revision": "8a902dd379b3",
-      "runtime_skill_md_meaning_changed": false,
+      "reviewed_revision": "eb340748d355",
+      "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     },
     {
-      "current_revision": "414fd4a607c3",
+      "current_revision": "fccd8fdf392a",
       "governance_decision": null,
       "issues": [],
       "lineage_state": "published",
       "name": "atm10-source-of-truth-check",
       "review_path": "docs/reviews/status-promotions/atm10-source-of-truth-check.md",
-      "reviewed_revision": "414fd4a607c3",
-      "runtime_skill_md_meaning_changed": false,
+      "reviewed_revision": "fccd8fdf392a",
+      "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true
     }

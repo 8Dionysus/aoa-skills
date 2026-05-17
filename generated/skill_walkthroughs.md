@@ -36,7 +36,9 @@ Common expand sections:
 
 - the base aoa-safe-infra-change workflow is already correct, but an abyss- repo needs repo-relative operational surfaces, commands, or approval notes
 - the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family
+- the local surface is repo-owned operational material such as a compose file, service wrapper, env or config template, bootstrap script, deployment toggle, restart rule, runtime check, or generated operational receipt
 - explicit local authority, rollback posture, or verification commands still need to be named before execution
+- the change needs a local preflight, preview, stop line, or recovery anchor matched to the touched surface rather than a generic safety claim
 - the family review doc and bundle-local checklist still need to stay aligned
 
 ### Do not use when
@@ -46,13 +48,16 @@ Common expand sections:
 - the overlay would only restate the base workflow without adding a real local surface
 - the main question is whether authority exists at all; use aoa-approval-gate-check
 - the main need is to prefer or interpret a preview path before execution; use aoa-dry-run-first
+- the touched surface belongs to a stronger owner repo, host-level service, secret plane, or deployment environment that has not been explicitly confirmed for this change
 - the work would widen into broader project doctrine instead of a thin local overlay
 
 ### Object use shape
 
 - bounded local infra-change plan
-- repo-relative command or path sketch
-- explicit local authority and rollback note
+- repo-relative command, path, or receipt sketch
+- explicit local authority, approval, stop-line, and rollback note
+- surface-specific verification plan with the smallest honest proof
+- note about any material that must be sanitized before sharing
 - pointer to the family review surface
 - concise verification note for the local repo surface
 
@@ -75,6 +80,8 @@ Common expand sections:
 - the base aoa-sanitized-share workflow is already correct, but an abyss- repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds
 - raw logs, diagnostics, config snippets, or incident notes from one abyss- repo need a bounded public-safe or wider-shareable form
 - the local repo needs a canonical place or review posture for the sanitized output
+- the material mixes durable lessons with raw paths, hostnames, account names, environment values, stack traces, timing traces, local commands, or unpublished operational context
+- the share target needs an explicit audience, retention posture, and raw-vs-sanitized separation before publication or handoff
 - the family review doc and bundle-local checklist still need to stay aligned
 
 ### Do not use when
@@ -84,13 +91,17 @@ Common expand sections:
 - the overlay would only restate the base sanitization workflow without adding a real local sharing surface
 - the main question is whether the underlying action should be allowed at all; use aoa-approval-gate-check
 - the material is already clearly public-safe and no local sharing surface or threshold needs clarification
+- the request asks to preserve raw operational data for an owner-local diagnosis rather than produce a shareable artifact
+- the repo route says the destination belongs to another owner and no owner-facing handoff has been named
 - the work would widen into broader project doctrine instead of a thin local overlay
 
 ### Object use shape
 
 - sanitized local shareable artifact
-- note on what was generalized or removed
+- note on what was generalized, removed, summarized, or retained
 - repo-relative placement or reference
+- raw-vs-sanitized separation note
+- explicit audience and remaining-review posture
 - pointer to the family review surface
 - concise warning about any remaining sensitive edge
 
@@ -112,7 +123,8 @@ Common expand sections:
 
 - the base aoa-session-self-diagnose workflow is already correct, but an abyss- repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs
 - a concrete runtime path must be diagnosed before any repair claim becomes honest
-- multiple runtime-body signals exist but remain scattered across local docs, logs, or checks
+- multiple runtime-body signals exist but remain scattered across local docs, logs, checks, generated receipts, or run outputs
+- the evidence spans axes such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or last-good comparison and needs one bounded diagnostic shape
 - reviewed session evidence exists and should be cited rather than absorbed into runtime canon
 - the next honest move may be retest, governed repair, quest follow-up, progression lift, or manual regrounding
 
@@ -121,14 +133,19 @@ Common expand sections:
 - the route is asking for immediate silent repair; use aoa-session-self-repair only after reviewed diagnosis exists
 - there is no concrete target path to diagnose
 - the material is still a live unreviewed session that belongs in the session-harvest family first
+- the main confusion is which diagnostic doc, runbook, or route surface is authoritative; use aoa-source-of-truth-check
+- the ask is only to run a generic doctor or health command without producing a reviewed diagnostic artifact
+- the request needs a broad project doctrine change, quest mutation, progression update, or repair packet rather than read-only diagnosis
 - no abyss- repo adaptation is needed and the base aoa-session-self-diagnose skill is sufficient
 - the work would widen into broader project doctrine instead of a thin local overlay
 
 ### Object use shape
 
 - one bounded runtime-owned diagnosticsessionv1
-- one explicit exitclass
+- one explicit exitclass chosen from a locally named finite set, such as retest, governedrepair, manualregrounding, ownerhandoff, or insufficientevidence
 - named drift classes with evidence refs and unknowns when needed
+- per-axis verdicts that preserve mixed states instead of flattening everything into one pass/fail result
+- freshness and confidence notes for each major evidence family
 - optional handoff recommendation toward
 - aoa-session-self-diagnose
 - aoa-session-self-repair
@@ -1176,13 +1193,15 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/project/atm10/atm10-change-protocol/SKILL.md`
-- pick summary: Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.
+- pick summary: Thin ATM10 overlay for bounded change execution with repo-relative route cards, public docs, commands, review checks, recovery anchors, and explicit local approval notes.
 
 ### Use when
 
 - the base aoa-change-protocol workflow is already correct, but an atm10- repo needs repo-relative paths, commands, or local approval notes
 - a bounded non-trivial change still needs an explicit plan and verification path inside the local repo
 - a contributor needs a thin local overlay rather than a fresh workflow design
+- the change touches ATM10 public docs, scripts, schemas, source modules, tests, or workflow files and the nearest route cards must be read before editing
+- a local validation tier, smoke command, dry-run posture, or recovery anchor must be named without widening the base workflow
 - the family review doc and bundle-local checklist still need to stay aligned
 
 ### Do not use when
@@ -1191,11 +1210,16 @@ Common expand sections:
 - the work would introduce new upstream technique meaning instead of adapting the local repo surface
 - a more specific risk skill is still the clearer fit, such as aoa-dry-run-first, aoa-safe-infra-change, or aoa-approval-gate-check
 - the task does not need repo-relative local adaptation and the base skill can be used directly
+- the work would change live input events, operator automation authority, perception truth, retrieval/KAG truth, model-host posture, or service exposure without downstream ATM10-owned approval
+- the request is only to clarify which ATM10 document owns a rule before any change plan exists; use atm10-source-of-truth-check
 
 ### Object use shape
 
 - bounded local change plan
-- repo-relative command or path sketch
+- route-card and source-of-truth evidence inspected
+- repo-relative command or path sketch with the smallest honest verification tier
+- explicit stop-line for downstream authority, operator safety, service exposure, or host-specific assumptions
+- rollback or recovery anchor for the touched ATM10 surface
 - pointer to the family review surface
 - verification note for the local repo surface
 - concise handoff on what stays downstream and explicit
@@ -1212,13 +1236,16 @@ Common expand sections:
 - status: `evaluated`
 - invocation mode: `explicit-preferred`
 - skill path: `skills/project/atm10/atm10-source-of-truth-check/SKILL.md`
-- pick summary: Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.
+- pick summary: Thin ATM10 overlay for clarifying repo-local document authority, public-surface roles, canonical files, review checklists, and review posture without changing the base workflow.
 
 ### Use when
 
 - the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules
 - contributors need a thin overlay that maps repo-relative docs such as README.md, docs/ARCHITECTURE.md, or docs/[canonical-guide].md
 - confusion exists between overview docs and authoritative files inside one local repo
+- active commands, archived commands, public status, support-profile claims, runtime baseline notes, release posture, or local-only planning surfaces are being mixed
+- a top-level ATM10 entrypoint is accumulating runbook-scale detail that should move to a canonical home
+- a public-safe local route must distinguish tracked docs from ignored maintainer scratch, internal chronology, private logs, or tool-local config
 - the family review doc and bundle-local checklist still need to stay aligned
 
 ### Do not use when
@@ -1227,12 +1254,16 @@ Common expand sections:
 - the task is purely code-local and has no meaningful docs or guidance ambiguity
 - the work would introduce new upstream technique meaning instead of thin local adaptation
 - the main need is recording rationale for a decision rather than clarifying authority; use aoa-adr-write
+- the authoritative files are already clear and the remaining work is an ordinary bounded change; use atm10-change-protocol or the base aoa-change-protocol
+- the question belongs to ATM10 runtime behavior, perception truth, model-host selection, operator automation, or private local state rather than document authority
 
 ### Object use shape
 
 - local source-of-truth map
+- active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map
 - bounded clarification note
 - repo-relative canonical-file pattern
+- lightweight entrypoint guidance when a summary doc should route outward instead of duplicating commands or counters
 - pointer to the family review surface
 - verification summary for the local docs surface
 

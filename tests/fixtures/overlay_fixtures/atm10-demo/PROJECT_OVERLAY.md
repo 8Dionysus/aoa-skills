@@ -31,4 +31,4 @@
 
 - do not widen this overlay into project doctrine or a full playbook
 - do not hide private paths, secrets, or internal-only operations
-- keep any richer downstream adaptation as a future stub rather than live scope expansion
+- keep any richer downstream adaptation as a future fixture rather than live scope expansion

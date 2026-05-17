@@ -13,11 +13,11 @@
     ".agents/skills/*/SKILL.md"
   ],
   "skill_count": 45,
-  "total_cases": 205,
+  "total_cases": 202,
   "case_class_totals": {
     "explicit-handle": 46,
     "manual-invocation-required": 56,
-    "prefer-other-skill": 31,
+    "prefer-other-skill": 28,
     "should-not-trigger": 46,
     "should-trigger": 26
   },
@@ -173,10 +173,10 @@
       "implicit_activation_policy": "invoke",
       "description_sha256": "c6441f677758e2ea9f91d09f3291d093e1d9f6ea919674ebe2ffd046b62586aa",
       "family": "change-execution-vs-test-first",
-      "total_cases": 10,
+      "total_cases": 9,
       "case_class_totals": {
         "explicit-handle": 1,
-        "prefer-other-skill": 3,
+        "prefer-other-skill": 2,
         "should-not-trigger": 1,
         "should-trigger": 5
       },
@@ -512,11 +512,10 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "918ebdbc962c2c4d7878d90b971136fd3186a023850a71264eb31a743fa3a0ed",
       "family": "session-harvest-family",
-      "total_cases": 5,
+      "total_cases": 4,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
-        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -533,11 +532,10 @@
       "implicit_activation_policy": "manual",
       "description_sha256": "538dd2a1460463bb3d83ff8b4eb5d07553c98bc1f6f373175a791ed78bd42869",
       "family": "session-harvest-family",
-      "total_cases": 5,
+      "total_cases": 4,
       "case_class_totals": {
         "explicit-handle": 1,
         "manual-invocation-required": 2,
-        "prefer-other-skill": 1,
         "should-not-trigger": 1
       },
       "required_case_classes": [
@@ -616,7 +614,7 @@
       "name": "atm10-change-protocol",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "manual",
-      "description_sha256": "e0f5533ad013bea96c55ee9d27f0cee6e1ccd9a0f7e88fc3466c5aa1f5cfe4ea",
+      "description_sha256": "45693932852a02321b01983411bbd463ed40e8c008367d38bbb7488f6f8f5263",
       "family": "overlay-vs-base-skill",
       "total_cases": 5,
       "case_class_totals": {
@@ -637,7 +635,7 @@
       "name": "atm10-source-of-truth-check",
       "invocation_mode": "explicit-preferred",
       "implicit_activation_policy": "manual",
-      "description_sha256": "e0c744178c0b7c1f9e4f1bb39dc6b3b1338f8c77b8d1f66e5d989a8724a046d4",
+      "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305",
       "family": "overlay-vs-base-skill",
       "total_cases": 5,
       "case_class_totals": {

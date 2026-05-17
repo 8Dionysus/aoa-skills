@@ -2,4 +2,4 @@ policy:
   allow_implicit_invocation: false
   implicit_activation_policy: manual
 notes:
-- This thin atm10 overlay stays explicit-preferred while local document authority, repo-relative paths, review checklists, and review rules still need inspection.
+- This thin ATM10 overlay stays manual-only; use it only when an explicit ATM10 handle or deliberate manual route decision needs repo-relative document authority, public-surface roles, review posture, and source-of-truth clarification.

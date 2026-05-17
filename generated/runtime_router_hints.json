@@ -147,7 +147,8 @@
       "competing_skills": [
         "aoa-core-logic-boundary",
         "aoa-port-adapter-refactor",
-        "aoa-adr-write"
+        "aoa-adr-write",
+        "aoa-source-of-truth-check"
       ],
       "should_trigger": [
         "Clarify system or domain boundaries, name contexts, and surface interfaces so changes stay semantically scoped. Use when naming is overloaded, responsibilities are mixed, or a task needs a cleaner boundary before coding.",
@@ -678,7 +679,7 @@
     },
     {
       "name": "atm10-change-protocol",
-      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
       "collision_family": "overlay-vs-base-skill",
       "competing_skills": [
         "aoa-change-protocol"
@@ -699,7 +700,7 @@
     },
     {
       "name": "atm10-source-of-truth-check",
-      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
       "collision_family": "overlay-vs-base-skill",
       "competing_skills": [
         "aoa-source-of-truth-check"

@@ -406,7 +406,7 @@
       "manifest_canonical_path_ready": true,
       "name": "atm10-source-of-truth-check",
       "pending_technique_count": 0,
-      "published_technique_count": 2,
+      "published_technique_count": 3,
       "scope": "project",
       "skill_path": "atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated",

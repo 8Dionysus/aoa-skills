@@ -42,7 +42,7 @@ It does not change the base skill boundary.
 ## Validation
 
 - confirm the overlay does not change the base skill boundary
-- confirm every listed overlay skill has a matching `skills/abyss-*` bundle
+- confirm every listed overlay skill has a matching `skills/project/abyss/<skill>/` bundle
 - confirm the family review doc and bundle-local review checklists stay aligned
 - confirm repo-relative paths, commands, and sharing surfaces stay public-safe and reviewable
 - confirm downstream authority remains explicit

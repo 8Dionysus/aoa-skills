@@ -1301,7 +1301,7 @@ def validate_snapshot_fixture_contract(repo_root: Path) -> list[ValidationIssue]
 
 def validate_overlay_contract(repo_root: Path) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
-    for contract_issue in skill_overlay_contract.collect_overlay_stub_issues(repo_root):
+    for contract_issue in skill_overlay_contract.collect_overlay_fixture_issues(repo_root):
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
     for contract_issue in skill_overlay_contract.collect_live_overlay_issues(repo_root):
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))

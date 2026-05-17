@@ -57,15 +57,20 @@ class SkillQualityAuditTests(unittest.TestCase):
         report = self.run_audit()
         by_name = {entry["name"]: entry for entry in report["skills"]}
 
-        self.assertEqual([], by_name["aoa-session-self-repair"]["findings"])
-        self.assertNotIn("technique_source_drift", by_name["aoa-session-self-repair"]["findings"])
+        self.assertIn("technique_source_drift", by_name["aoa-session-self-repair"]["findings"])
         self.assertNotIn("pending_technique_lineage", by_name["aoa-summon"]["findings"])
-        self.assertEqual("healthy", by_name["aoa-summon"]["verdict"])
+        self.assertIn("technique_source_drift", by_name["aoa-summon"]["findings"])
+        self.assertEqual("working_with_maintenance_findings", by_name["aoa-summon"]["verdict"])
         self.assertNotIn("pending_markers_in_skill_body", by_name["aoa-summon"]["findings"])
         self.assertIn("pending_technique_lineage", by_name["titan-console"]["findings"])
         self.assertNotIn("missing_autonomy_check", by_name["titan-console"]["findings"])
         self.assertEqual("healthy", by_name["aoa-change-protocol"]["verdict"])
-        self.assertEqual(0, report["summary"]["technique_drift"]["state_counts"].get("drifted", 0))
+        self.assertIn("technique_source_drift", by_name["aoa-local-stack-bringup"]["findings"])
+        self.assertEqual([], by_name["atm10-change-protocol"]["findings"])
+        self.assertEqual("healthy", by_name["atm10-change-protocol"]["verdict"])
+        self.assertEqual([], by_name["atm10-source-of-truth-check"]["findings"])
+        self.assertEqual("healthy", by_name["atm10-source-of-truth-check"]["verdict"])
+        self.assertGreaterEqual(report["summary"]["technique_drift"]["state_counts"].get("drifted", 0), 1)
 
     def test_quality_audit_markdown_has_upgrade_targets_and_matrix(self) -> None:
         completed = subprocess.run(

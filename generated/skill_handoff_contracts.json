@@ -10,22 +10,29 @@
       "invocation_mode": "explicit-only",
       "inputs": [
         "target operational change and touched local surface",
-        "repo-relative operational files or commands",
-        "explicit local authority or approval posture",
-        "validation and rollback path",
+        "repo-relative operational files, commands, generated receipts, or runtime check paths",
+        "surface class, side-effect class, and expected blast radius",
+        "explicit local authority, approval posture, and stop condition",
+        "preflight or preview path when one exists",
+        "validation path and rollback or recovery anchor",
+        "sensitivity notes for raw logs, host details, secrets, or unpublished runtime data",
         "base skill reference"
       ],
       "outputs": [
         "bounded local infra-change plan",
-        "repo-relative command or path sketch",
-        "explicit local authority and rollback note",
+        "repo-relative command, path, or receipt sketch",
+        "explicit local authority, approval, stop-line, and rollback note",
+        "surface-specific verification plan with the smallest honest proof",
+        "note about any material that must be sanitized before sharing",
         "pointer to the family review surface",
         "concise verification note for the local repo surface"
       ],
       "verification": [
         "confirm the base skill is still the correct workflow",
-        "confirm repo-relative paths and commands are named explicitly",
-        "confirm local authority, rollback posture, and verification remain explicit",
+        "confirm repo-relative paths, commands, receipts, or runtime checks are named explicitly",
+        "confirm local authority, stop condition, rollback posture, and verification remain explicit",
+        "confirm the selected preflight or preview is proportional to the side effect",
+        "confirm no stronger host, secret, deployment, or sibling-owner authority was implied",
         "confirm the adaptation stays bounded to the local repo surface",
         "confirm the family review doc and bundle-local checklist stay aligned"
       ],
@@ -33,19 +40,26 @@
         "preserve the base skill meaning",
         "keep paths and commands repo-relative",
         "keep local authority explicit",
+        "keep host paths, secrets, credentials, and unpublished operational details out of shareable notes unless separately sanitized",
+        "do not convert a generated receipt or runtime artifact into source authority",
         "keep the overlay explicit-only, public-safe, and reviewable"
       ],
       "consumes_artifact_tags": [
         "target-operational-change-and-touched-local-surface",
-        "repo-relative-operational-files-or-commands",
-        "explicit-local-authority-or-approval-posture",
-        "validation-and-rollback-path",
+        "repo-relative-operational-files-commands-generated-receipts-or-r",
+        "surface-class-side-effect-class-and-expected-blast-radius",
+        "explicit-local-authority-approval-posture-and-stop-condition",
+        "preflight-or-preview-path-when-one-exists",
+        "validation-path-and-rollback-or-recovery-anchor",
+        "sensitivity-notes-for-raw-logs-host-details-secrets-or-unpublish",
         "base-skill-reference"
       ],
       "provides_artifact_tags": [
         "bounded-local-infra-change-plan",
-        "repo-relative-command-or-path-sketch",
-        "explicit-local-authority-and-rollback-note",
+        "repo-relative-command-path-or-receipt-sketch",
+        "explicit-local-authority-approval-stop-line-and-rollback-note",
+        "surface-specific-verification-plan-with-the-smallest-honest-proo",
+        "note-about-any-material-that-must-be-sanitized-before-sharing",
         "pointer-to-the-family-review-surface",
         "concise-verification-note-for-the-local-repo-surface"
       ],
@@ -53,15 +67,17 @@
         "from_skill": "abyss-safe-infra-change",
         "produced_artifacts": [
           "bounded-local-infra-change-plan",
-          "repo-relative-command-or-path-sketch",
-          "explicit-local-authority-and-rollback-note",
+          "repo-relative-command-path-or-receipt-sketch",
+          "explicit-local-authority-approval-stop-line-and-rollback-note",
+          "surface-specific-verification-plan-with-the-smallest-honest-proo",
+          "note-about-any-material-that-must-be-sanitized-before-sharing",
           "pointer-to-the-family-review-surface",
           "concise-verification-note-for-the-local-repo-surface"
         ],
         "verification_notes": [
           "confirm the base skill is still the correct workflow",
-          "confirm repo-relative paths and commands are named explicitly",
-          "confirm local authority, rollback posture, and verification remain explicit"
+          "confirm repo-relative paths, commands, receipts, or runtime checks are named explicitly",
+          "confirm local authority, stop condition, rollback posture, and verification remain explicit"
         ],
         "contract_notes": [
           "preserve the base skill meaning",
@@ -80,20 +96,28 @@
         "raw material to sanitize",
         "intended audience or sharing context",
         "repo-relative destination or canonical sharing surface",
-        "local sensitivity thresholds or review posture",
+        "local sensitivity thresholds, review posture, and retention expectation",
+        "redaction map for what is removed, generalized, summarized, or retained",
+        "raw-source location and sanitized-output location, kept distinct",
+        "owner or audience constraints for public, wider-project, maintainer-only, or private handoff",
         "base skill reference"
       ],
       "outputs": [
         "sanitized local shareable artifact",
-        "note on what was generalized or removed",
+        "note on what was generalized, removed, summarized, or retained",
         "repo-relative placement or reference",
+        "raw-vs-sanitized separation note",
+        "explicit audience and remaining-review posture",
         "pointer to the family review surface",
         "concise warning about any remaining sensitive edge"
       ],
       "verification": [
         "confirm the base skill is still the correct workflow",
         "confirm the repo-relative sharing surface is named explicitly",
-        "confirm local thresholds and review posture are visible rather than implied",
+        "confirm audience, thresholds, retention, and review posture are visible rather than implied",
+        "confirm raw-source and sanitized-output placement remain distinct",
+        "confirm the redaction map preserves the useful lesson while removing unsafe detail",
+        "confirm no owner-local raw data was promoted into public or wider-shareable truth",
         "confirm the adaptation stays bounded to one local repo family surface",
         "confirm the family review doc and bundle-local checklist stay aligned"
       ],
@@ -101,19 +125,27 @@
         "preserve the base skill meaning",
         "keep local paths and output placement repo-relative and explicit",
         "keep local review posture visible rather than implied",
+        "keep raw material, private host or account details, credentials, exact tokens, environment values, and unpublished incident context out of the shareable artifact",
+        "do not let a sanitized artifact become the canonical source for raw operational truth",
+        "do not erase the lesson so aggressively that the artifact becomes unactionable",
         "keep the overlay explicit-only, public-safe, and reviewable"
       ],
       "consumes_artifact_tags": [
         "raw-material-to-sanitize",
         "intended-audience-or-sharing-context",
         "repo-relative-destination-or-canonical-sharing-surface",
-        "local-sensitivity-thresholds-or-review-posture",
+        "local-sensitivity-thresholds-review-posture-and-retention-expect",
+        "redaction-map-for-what-is-removed-generalized-summarized-or-reta",
+        "raw-source-location-and-sanitized-output-location-kept-distinct",
+        "owner-or-audience-constraints-for-public-wider-project-maintaine",
         "base-skill-reference"
       ],
       "provides_artifact_tags": [
         "sanitized-local-shareable-artifact",
-        "note-on-what-was-generalized-or-removed",
+        "note-on-what-was-generalized-removed-summarized-or-retained",
         "repo-relative-placement-or-reference",
+        "raw-vs-sanitized-separation-note",
+        "explicit-audience-and-remaining-review-posture",
         "pointer-to-the-family-review-surface",
         "concise-warning-about-any-remaining-sensitive-edge"
       ],
@@ -121,15 +153,17 @@
         "from_skill": "abyss-sanitized-share",
         "produced_artifacts": [
           "sanitized-local-shareable-artifact",
-          "note-on-what-was-generalized-or-removed",
+          "note-on-what-was-generalized-removed-summarized-or-retained",
           "repo-relative-placement-or-reference",
+          "raw-vs-sanitized-separation-note",
+          "explicit-audience-and-remaining-review-posture",
           "pointer-to-the-family-review-surface",
           "concise-warning-about-any-remaining-sensitive-edge"
         ],
         "verification_notes": [
           "confirm the base skill is still the correct workflow",
           "confirm the repo-relative sharing surface is named explicitly",
-          "confirm local thresholds and review posture are visible rather than implied"
+          "confirm audience, thresholds, retention, and review posture are visible rather than implied"
         ],
         "contract_notes": [
           "preserve the base skill meaning",
@@ -145,16 +179,20 @@
       "description": "Apply the aoa-session-self-diagnose workflow inside an abyss-* repository using repo-relative runtime evidence, bounded diagnostic-session artifacts, last-good comparison posture, and honest owner-aware handoff. Use when the base diagnosis workflow is correct but one abyss repo needs a thin runtime-owned diagnostic read model before any repair claim becomes honest. Do not use when the request is really for silent repair, when no concrete target path exists, or when the base skill is already sufficient without local adaptation.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
-        "resolved or requested preset / profile selectors",
-        "runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
-        "optional reviewed session or harvest packet refs",
-        "optional last-good comparison ref",
+        "resolved or requested diagnostic target, preset, profile, or repo-relative path",
+        "runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or related evidence refs",
+        "evidence timestamps, command refs, generated receipt refs, and known freshness limits",
+        "optional reviewed session, harvest packet, closeout, or owner-facing handoff refs",
+        "optional last-good comparison ref and the reason it is a valid anchor",
+        "intended local truth goal and the stop line before repair or quest mutation",
         "base skill reference"
       ],
       "outputs": [
         "one bounded runtime-owned `diagnostic_session_v1`",
-        "one explicit `exit_class`",
+        "one explicit `exit_class` chosen from a locally named finite set, such as `retest`, `governed_repair`, `manual_regrounding`, `owner_handoff`, or `insufficient_evidence`",
         "named drift classes with evidence refs and unknowns when needed",
+        "per-axis verdicts that preserve mixed states instead of flattening everything into one pass/fail result",
+        "freshness and confidence notes for each major evidence family",
         "optional handoff recommendation toward:",
         "`aoa-session-self-diagnose`",
         "`aoa-session-self-repair`",
@@ -167,47 +205,54 @@
         "confirm a concrete target exists",
         "confirm the produced artifact stays runtime-owned and citation-friendly",
         "confirm drift classes are named explicitly",
+        "confirm per-axis verdicts, freshness, confidence, and unknowns are visible",
         "confirm one exit class is chosen",
         "confirm any handoff points to the right owner layer",
-        "confirm no silent repair authority was added"
+        "confirm no silent repair authority was added",
+        "confirm no quest, progression, or source-of-truth mutation was implied"
       ],
       "contracts": [
         "preserve the base skill meaning",
         "the overlay stays read-only and citation-friendly",
+        "semantic matches do not silently activate this scaffold; use an explicit handle or deliberate manual route decision",
         "this overlay does not replace `aoa-doctor`",
         "this overlay does not grant free self-repair",
         "reviewed session packets remain packet-shaped and owner-aware",
         "quest state is not auto-mutated by this overlay",
+        "source-owned doctrine, generated receipts, runtime facts, and reviewed session evidence keep distinct roles",
+        "one failed axis cannot erase healthy axes, and one healthy axis cannot hide a blocker",
         "public-safe defaults stay strong"
       ],
       "consumes_artifact_tags": [
-        "resolved-or-requested-preset-profile-selectors",
+        "resolved-or-requested-diagnostic-target-preset-profile-or-repo-r",
         "runtime-body-signals-such-as-doctor-machine-fit-render-truth-smo",
-        "optional-reviewed-session-or-harvest-packet-refs",
-        "optional-last-good-comparison-ref",
+        "evidence-timestamps-command-refs-generated-receipt-refs-and-know",
+        "optional-reviewed-session-harvest-packet-closeout-or-owner-facin",
+        "optional-last-good-comparison-ref-and-the-reason-it-is-a-valid-a",
+        "intended-local-truth-goal-and-the-stop-line-before-repair-or-que",
         "base-skill-reference"
       ],
       "provides_artifact_tags": [
         "one-bounded-runtime-owned-diagnostic-session-v1",
-        "one-explicit-exit-class",
+        "one-explicit-exit-class-chosen-from-a-locally-named-finite-set-s",
         "named-drift-classes-with-evidence-refs-and-unknowns-when-needed",
+        "per-axis-verdicts-that-preserve-mixed-states-instead-of-flatteni",
+        "freshness-and-confidence-notes-for-each-major-evidence-family",
         "optional-handoff-recommendation-toward",
         "aoa-session-self-diagnose",
-        "aoa-session-self-repair",
-        "aoa-session-progression-lift",
-        "aoa-quest-harvest"
+        "aoa-session-self-repair"
       ],
       "handoff_packet_template": {
         "from_skill": "abyss-self-diagnostic-spine",
         "produced_artifacts": [
           "one-bounded-runtime-owned-diagnostic-session-v1",
-          "one-explicit-exit-class",
+          "one-explicit-exit-class-chosen-from-a-locally-named-finite-set-s",
           "named-drift-classes-with-evidence-refs-and-unknowns-when-needed",
+          "per-axis-verdicts-that-preserve-mixed-states-instead-of-flatteni",
+          "freshness-and-confidence-notes-for-each-major-evidence-family",
           "optional-handoff-recommendation-toward",
           "aoa-session-self-diagnose",
-          "aoa-session-self-repair",
-          "aoa-session-progression-lift",
-          "aoa-quest-harvest"
+          "aoa-session-self-repair"
         ],
         "verification_notes": [
           "confirm the base skill is still the correct workflow",
@@ -217,7 +262,7 @@
         "contract_notes": [
           "preserve the base skill meaning",
           "the overlay stays read-only and citation-friendly",
-          "this overlay does not replace `aoa-doctor`"
+          "semantic matches do not silently activate this scaffold; use an explicit handle or deliberate manual route decision"
         ],
         "next_recommended_skills": []
       }
@@ -2241,18 +2286,23 @@
     {
       "name": "atm10-change-protocol",
       "display_name": "ATM10 Change Protocol",
-      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "target goal and touched local surface",
-        "repo-relative source-of-truth files",
-        "repo-relative commands or checks",
+        "ATM10 route stack such as `AGENTS.md`, nearest nested `AGENTS.md`, `docs/SOURCE_OF_TRUTH.md`, `docs/RUNBOOK.md`, `docs/PRODUCT_EDGE_POSTURE.md`, or the exact touched local surface",
+        "repo-relative source-of-truth files, generated/export companions, docs, scripts, schemas, tests, or workflow files",
+        "repo-relative commands or checks, including whether they are full pytest, public-doc hardening, a script smoke, or a no-run explained check",
         "local approval or review rules",
+        "local dry-run, report-only, rollback, or recovery posture",
         "base skill reference"
       ],
       "outputs": [
         "bounded local change plan",
-        "repo-relative command or path sketch",
+        "route-card and source-of-truth evidence inspected",
+        "repo-relative command or path sketch with the smallest honest verification tier",
+        "explicit stop-line for downstream authority, operator safety, service exposure, or host-specific assumptions",
+        "rollback or recovery anchor for the touched ATM10 surface",
         "pointer to the family review surface",
         "verification note for the local repo surface",
         "concise handoff on what stays downstream and explicit"
@@ -2260,26 +2310,39 @@
       "verification": [
         "confirm the base skill is still the correct workflow",
         "confirm repo-relative paths and commands are named explicitly",
+        "confirm the relevant ATM10 route cards and source-of-truth surfaces were inspected",
         "confirm approval posture is still downstream and explicit",
         "confirm the adaptation remains bounded to the local repo surface",
+        "confirm the selected validation tier matches the touched surface and any skipped check is named",
+        "confirm dry-run/report-only safety was preserved or the stronger posture is explicitly backed by ATM10-owned evidence",
+        "confirm rollback or recovery posture is named for the touched surface",
         "confirm the family review doc and bundle-local checklist stay aligned"
       ],
       "contracts": [
         "preserve the base skill meaning",
         "keep paths and commands repo-relative",
         "keep local authority explicit",
-        "keep the overlay reviewable and public-safe"
+        "keep the overlay reviewable and public-safe",
+        "keep ATM10 owner truth in ATM10-owned route cards, docs, scripts, schemas, tests, and runtime artifacts",
+        "keep generated, compact, exported, or installed surfaces weaker than the authored source they summarize",
+        "keep dry-run/report-only behavior as the default for automation and policy surfaces unless downstream evidence says otherwise",
+        "keep Windows 11 and PowerShell 7 command posture visible when the touched surface is operator-facing"
       ],
       "consumes_artifact_tags": [
         "target-goal-and-touched-local-surface",
-        "repo-relative-source-of-truth-files",
-        "repo-relative-commands-or-checks",
+        "atm10-route-stack-such-as-agents-md-nearest-nested-agents-md-doc",
+        "repo-relative-source-of-truth-files-generated-export-companions-",
+        "repo-relative-commands-or-checks-including-whether-they-are-full",
         "local-approval-or-review-rules",
+        "local-dry-run-report-only-rollback-or-recovery-posture",
         "base-skill-reference"
       ],
       "provides_artifact_tags": [
         "bounded-local-change-plan",
-        "repo-relative-command-or-path-sketch",
+        "route-card-and-source-of-truth-evidence-inspected",
+        "repo-relative-command-or-path-sketch-with-the-smallest-honest-ve",
+        "explicit-stop-line-for-downstream-authority-operator-safety-serv",
+        "rollback-or-recovery-anchor-for-the-touched-atm10-surface",
         "pointer-to-the-family-review-surface",
         "verification-note-for-the-local-repo-surface",
         "concise-handoff-on-what-stays-downstream-and-explicit"
@@ -2288,7 +2351,10 @@
         "from_skill": "atm10-change-protocol",
         "produced_artifacts": [
           "bounded-local-change-plan",
-          "repo-relative-command-or-path-sketch",
+          "route-card-and-source-of-truth-evidence-inspected",
+          "repo-relative-command-or-path-sketch-with-the-smallest-honest-ve",
+          "explicit-stop-line-for-downstream-authority-operator-safety-serv",
+          "rollback-or-recovery-anchor-for-the-touched-atm10-surface",
           "pointer-to-the-family-review-surface",
           "verification-note-for-the-local-repo-surface",
           "concise-handoff-on-what-stays-downstream-and-explicit"
@@ -2296,7 +2362,7 @@
         "verification_notes": [
           "confirm the base skill is still the correct workflow",
           "confirm repo-relative paths and commands are named explicitly",
-          "confirm approval posture is still downstream and explicit"
+          "confirm the relevant ATM10 route cards and source-of-truth surfaces were inspected"
         ],
         "contract_notes": [
           "preserve the base skill meaning",
@@ -2309,19 +2375,24 @@
     {
       "name": "atm10-source-of-truth-check",
       "display_name": "ATM10 Source Of Truth Check",
-      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
       "invocation_mode": "explicit-preferred",
       "inputs": [
         "repo-relative docs or guidance surfaces",
         "local canonical-file candidates",
         "local review rules for doc changes",
         "contributor confusion points",
+        "ATM10 public-surface roles from `docs/SOURCE_OF_TRUTH.md`",
+        "affected active, archived, generated/export, local-only, internal, or runtime-adjacent surfaces",
+        "candidate validation path such as public-doc hardening tests, nested AGENTS checks, or a no-run review note",
         "base skill reference"
       ],
       "outputs": [
         "local source-of-truth map",
+        "active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map",
         "bounded clarification note",
         "repo-relative canonical-file pattern",
+        "lightweight entrypoint guidance when a summary doc should route outward instead of duplicating commands or counters",
         "pointer to the family review surface",
         "verification summary for the local docs surface"
       ],
@@ -2330,25 +2401,39 @@
         "confirm authoritative repo-relative files are named explicitly",
         "confirm local review posture is visible rather than implied",
         "confirm the adaptation reduces ambiguity without widening scope",
+        "confirm active, archived, generated/export, local-only, internal, and runtime-adjacent surfaces are not collapsed into one role",
+        "confirm entrypoint docs stay short and route to canonical homes where those exist",
+        "confirm public-safe boundaries and private/local-only exclusions are preserved",
+        "confirm any support-profile, release, or runtime-baseline wording points to the owning ATM10 surface",
         "confirm the family review doc and bundle-local checklist stay aligned"
       ],
       "contracts": [
         "preserve the base skill meaning",
         "keep local file maps repo-relative and explicit",
         "surface local authority and review posture without hiding it",
-        "keep the overlay public-safe and reviewable"
+        "keep the overlay public-safe and reviewable",
+        "keep ATM10 source-of-truth claims inside ATM10-owned public docs and route cards",
+        "keep active runbook content separate from archived or recoverable references",
+        "keep generated, exported, installed, and run-artifact surfaces weaker than the authored files they summarize",
+        "keep public support-profile claims no broader than the docs and test tiers that actually validate them",
+        "keep private workstation paths, local model paths, private logs, hostnames, tokens, screenshots with sensitive details, and internal scratch out of public examples"
       ],
       "consumes_artifact_tags": [
         "repo-relative-docs-or-guidance-surfaces",
         "local-canonical-file-candidates",
         "local-review-rules-for-doc-changes",
         "contributor-confusion-points",
+        "atm10-public-surface-roles-from-docs-source-of-truth-md",
+        "affected-active-archived-generated-export-local-only-internal-or",
+        "candidate-validation-path-such-as-public-doc-hardening-tests-nes",
         "base-skill-reference"
       ],
       "provides_artifact_tags": [
         "local-source-of-truth-map",
+        "active-current-versus-archived-generated-export-local-only-inter",
         "bounded-clarification-note",
         "repo-relative-canonical-file-pattern",
+        "lightweight-entrypoint-guidance-when-a-summary-doc-should-route-",
         "pointer-to-the-family-review-surface",
         "verification-summary-for-the-local-docs-surface"
       ],
@@ -2356,8 +2441,10 @@
         "from_skill": "atm10-source-of-truth-check",
         "produced_artifacts": [
           "local-source-of-truth-map",
+          "active-current-versus-archived-generated-export-local-only-inter",
           "bounded-clarification-note",
           "repo-relative-canonical-file-pattern",
+          "lightweight-entrypoint-guidance-when-a-summary-doc-should-route-",
           "pointer-to-the-family-review-surface",
           "verification-summary-for-the-local-docs-surface"
         ],

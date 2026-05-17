@@ -245,17 +245,25 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
         activation_policy = str(local_entry.get("implicit_activation_policy") or "manual")
         manual_required = activation_policy != "invoke"
         candidate_only = activation_policy == "suggest"
+        if activation_policy == "invoke":
+            positive_classes = ["should-trigger", "explicit-handle", "manual-invocation-required"]
+            positive_modes = ["implicit", "explicit"]
+            positive_expected_behavior = "invoke-skill"
+        elif activation_policy == "suggest":
+            positive_classes = ["manual-invocation-required", "explicit-handle", "should-trigger"]
+            positive_modes = ["implicit", "explicit"]
+            positive_expected_behavior = None
+        else:
+            positive_classes = ["explicit-handle"]
+            positive_modes = ["explicit"]
+            positive_expected_behavior = "invoke-skill"
         positive_case = choose_case(
             skill_description_cases,
-            preferred_classes=(
-                ["should-trigger", "explicit-handle", "manual-invocation-required"]
-                if activation_policy == "invoke"
-                else ["manual-invocation-required", "explicit-handle", "should-trigger"]
-            ),
+            preferred_classes=positive_classes,
         ) or choose_case(
             skill_base_cases,
-            preferred_modes=["implicit", "explicit"],
-            expected_behavior=("invoke-skill" if activation_policy == "invoke" else None),
+            preferred_modes=positive_modes,
+            expected_behavior=positive_expected_behavior,
         )
         negative_case = choose_case(
             skill_description_cases,
@@ -354,9 +362,13 @@ def build_documents(repo_root: Path) -> dict[Path, str]:
             and defer_case["expected_skill"] != skill_name
         ):
             expected_skill = defer_case["expected_skill"]
+            expected_activation_policy = str(
+                local_by_name.get(expected_skill, {}).get("implicit_activation_policy")
+                or "manual"
+            )
             expected_shortlist_includes = (
                 [expected_skill]
-                if band_by_skill[expected_skill] == band_id
+                if band_by_skill[expected_skill] == band_id and expected_activation_policy != "manual"
                 else []
             )
             eval_cases.append(
