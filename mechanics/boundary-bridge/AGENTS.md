@@ -1,32 +1,25 @@
 # AGENTS.md
 
-Boundary-bridge package guidance for `aoa-skills`.
+## Applies to
 
-## Purpose
+This card applies to `mechanics/boundary-bridge/` except where a nearer card applies.
 
-This package owns skill-layer boundary bridges: layer position, technique-skill
-bridges, support-dir adapters, overlays, two-stage selection, MCP/OpenAI
-metadata seams, and tiny downstream routing contracts.
+## Role
 
-It does not own routing policy, downstream owner truth, or generated metadata
-as doctrine.
+`mechanics/boundary-bridge/` owns skill-layer boundary bridges between skills, techniques, overlays, and downstream integration for the skill layer. Boundary-bridge package guidance keeps this movement bounded and reviewable.
 
-## Start here
+## Read before editing
 
-1. `README.md`
-2. `DIRECTION.md`
-3. `PARTS.md`
-4. the relevant active doc under `docs/`
-5. `examples/README.md` for MCP/OpenAI scaffold examples
-6. `overlays/AGENTS.md` for overlay family edits
+Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/boundary-bridge/README.md`, `mechanics/boundary-bridge/DIRECTION.md`, `mechanics/boundary-bridge/PARTS.md`, `mechanics/boundary-bridge/PROVENANCE.md`, `mechanics/boundary-bridge/ROADMAP.md`, and any nearer card, `docs/AGENTS.md`.
+
+## Boundaries
+
+Keep `mechanics/boundary-bridge/` focused on mechanic movement. Do not make it canonical skill content, sibling-repo technique truth, proof doctrine, or generated authority. Preserve Boundary-bridge package guidance; overlays/AGENTS.md; downstream integration as a bounded local signal, not a global command.
 
 ## Validation
 
-```bash
-python scripts/validate_tiny_router_inputs.py --repo-root .
-python scripts/validate_skill_mcp_wiring.py --workspace-config /path/to/.codex/config.toml --format text
-python -m pytest -q tests/test_mechanics_topology.py
-```
+Run `python scripts/validate_tiny_router_inputs.py --repo-root .`, `python scripts/build_tiny_router_inputs.py --repo-root . --check`, and bridge-local tests when examples or overlays move.
 
-Use `python scripts/release_check.py` when generated export, overlays, or
-portable manifests change.
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

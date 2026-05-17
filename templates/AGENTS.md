@@ -1,80 +1,37 @@
 # AGENTS.md
 
-Guidance for coding agents and humans working under `templates/`.
+## Applies to
 
-## Purpose
+This card applies to `templates/`.
 
-`templates/` stores public authoring scaffolds for `aoa-skills`. Templates teach the expected contract shape for skills, overlays, review surfaces, snapshots, and supporting manifests. They do not override live repository doctrine, schemas, or validators.
+## Role
 
-## Read this first
+`templates/` owns reusable source templates such as `SKILL.template.md` and `PROJECT_OVERLAY.template.md`.
 
-Before editing a template, read in this order:
+## Read before editing
 
-1. `../AGENTS.md`
-2. `../docs/REPOSITORY_STRUCTURE.md`
-3. `../mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`
-4. `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` when the template is overlay-related
-5. the live source objects that the template is meant to model
-6. any validator or test that currently checks the same contract
+Read root `AGENTS.md`, `templates/README.md` if present, the consuming builder or validator, and at least one current canonical bundle using the template pattern.
 
-## Primary templates
+## Boundaries
 
-The main template surfaces here are:
-
-- `SKILL.template.md`
-- `RUNTIME_EXAMPLE.template.md`
-- `EVALUATION_SNAPSHOT.template.md`
-- `PROJECT_OVERLAY.template.md`
-- `PROJECT_OVERLAY_SKILL.template.md`
-- `SKILL_COMPOSITION_EXCEPTION_REVIEW.template.md`
-- `CANDIDATE_REVIEW.template.md`
-- `STATUS_PROMOTION_REVIEW.template.md`
-- `techniques.template.yaml`
-
-## Allowed changes
-
-Safe, normal contributions here include:
-
-- clarifying placeholders and section guidance
-- tightening required structure so templates match live contracts more clearly
-- adding a new template when a repeated, reviewed pattern clearly exists
-- aligning template wording with validators, docs, and current repository doctrine
-
-## Changes requiring extra care
-
-Use extra caution when:
-
-- changing placeholder names or frontmatter keys
-- changing status vocabulary or review-stage language
-- changing required sections that validators or docs expect
-- hard-coding a repository-specific assumption into a supposedly reusable template
-
-## Hard NO
-
-Do not:
-
-- bake secrets, private paths, or internal URLs into templates
-- turn a template into hidden project doctrine
-- let template wording outrun the validators, docs, or schemas it is supposed to support
-- remove placeholders just to make a template read like a finished artifact
-
-Preserve placeholder intent. Keep examples repo-relative, public-safe, and obviously illustrative.
+Preserve placeholder intent. Do not make templates silently AoA-only when they need to remain portable, and do not add fields that validators or generated surfaces cannot consume.
 
 ## Validation
 
-After changing a template, run the smallest checks that cover the touched contract. In most cases that means:
+Run `python scripts/validate_skills.py`, template-related tests, and any builder affected by the template.
 
-- `python -m unittest discover -s tests`
-- `python scripts/validate_nested_agents.py`
-- `python scripts/validate_skills.py`
+## Closeout
 
-Run `python scripts/build_catalog.py` as well if the template change affects generated guidance or release prep expectations.
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
 
-## Output expectations
+## Template Contract
 
-When reporting work in `templates/`, include:
+Templates teach expected source shape; they do not override live repository
+doctrine, schemas, validators, or canonical bundles.
 
-- which templates changed
-- which live contract or validator the template was aligned with
-- whether the change affects structure, wording, or both
-- whether any follow-up is needed in docs, tests, or schemas
+When changing a template, inspect a current canonical example and the validator
+that accepts it. Keep optional sections visibly optional, required fields
+matched to schema expectations, and generated/export consumers in sync.
+
+Do not hide workflow law in a template that active bundles, schemas, and
+validators do not understand.

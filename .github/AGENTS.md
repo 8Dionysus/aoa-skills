@@ -1,25 +1,37 @@
 # AGENTS.md
 
-## Guidance for `.github/`
+## Applies to
 
-`.github/` is this repository's GitHub platform surface: workflows, PR templates, issue templates, CODEOWNERS, and repository metadata.
+This card applies to `.github/` and GitHub-native workflow, issue, PR, and repository automation files in this repository.
 
-Read the root `AGENTS.md` first. Root `AGENTS.md` owns repository identity, owner boundaries, the branch/PR/CI/merge route, and the shortest local validation path. This file owns only the GitHub-native files under `.github/`.
+## Role
 
-Do not encode sibling-repo doctrine, private workspace assumptions, or hidden release behavior here. Do not add secrets, private environment assumptions, or workflow steps that mutate sibling repositories without explicit owner routing. Keep GitHub automation public-safe, deterministic, and weaker than source-owned repository docs. Do not make CI green by weakening the guardrail that should catch drift.
+Keep GitHub landing support aligned with root `AGENTS.md` without making GitHub configuration the source of skill-layer truth.
 
-## Platform sync
+## Read before editing
 
-Keep `.github/CODEOWNERS`, PR templates, and workflow names aligned with the root route card.
-`Repo Validation` is the landing check expected by the root GitHub landing workflow. If that check is added, renamed, or its meaning changes, update the root route, PR expectations, and this file in the same change.
+Read root `AGENTS.md`, `DESIGN.AGENTS.md`, and the specific workflow or template being changed. For release or merge behavior, also read `scripts/release_check.py` and any workflow file that invokes it.
 
-When workflow or repository-policy files change, report:
+## Boundaries
 
-- GitHub surface touched
-- local validation run
-- whether `Repo Validation` was added, renamed, skipped, or changed
-- remaining platform risk
+Do not encode skill meaning, status promotion, or generated-surface authority in GitHub files. GitHub workflows may verify repository claims; they do not author those claims.
 
-## Verify
+## Validation
 
-Use the root `AGENTS.md` verification path for the changed surface. For GitHub-only edits, inspect the workflow YAML and run the nearest repo-local static, release, or validation check when available.
+For workflow changes, run the narrowest local command that mirrors the job when possible, then `python scripts/release_check.py` when the change is release-facing. For wording-only templates, run `git diff --check`.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+
+## Platform Sync
+
+Keep `.github/CODEOWNERS`, PR templates, workflow names, and root landing
+expectations aligned.
+
+`Repo Validation` is the landing check expected by the root GitHub workflow. If
+that check is added, renamed, skipped, or its meaning changes, update the root
+route, PR expectations, and this file in the same change.
+
+Report the GitHub surface touched, local validation run, CI-name impact, and
+remaining platform risk.

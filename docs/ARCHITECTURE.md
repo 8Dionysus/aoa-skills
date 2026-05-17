@@ -2,13 +2,15 @@
 
 ## Purpose
 
-`aoa-skills` is a public repository of reusable Codex skills.
+`aoa-skills` is a public repository of reusable local coding-agent skills.
 It is the operational companion to `aoa-techniques`.
 It is one bounded execution layer in the AoA ontology spine; see
 `mechanics/boundary-bridge/docs/LAYER_POSITION.md` for the repo-owned boundary note.
+Root `DESIGN.md` describes the system form of that layer; this architecture
+reference explains the technical model.
 
 - `aoa-techniques` answers: what is the reusable practice, when should it be used, what are its invariants, risks, and validation rules?
-- `aoa-skills` answers: what self-contained agent workflow should Codex execute, and how does that workflow relate to reusable practice?
+- `aoa-skills` answers: what self-contained workflow should a local coding agent execute, and how does that workflow relate to reusable practice?
 
 ## Conceptual model
 
@@ -70,9 +72,9 @@ A technique is born in a real project such as `atm10-agent` or `abyss-stack`.
 The technique is sanitized, generalized, validated, and promoted into `aoa-techniques`.
 
 ### Layer 3: skill canon
-A skill in `aoa-skills` is a Codex-usable workflow. It may be assembled from
-techniques, and it may later be decomposed into techniques when live execution
-reveals reusable practice. The bridge is bidirectional:
+A skill in `aoa-skills` is a workflow usable by a local coding agent. It may be
+assembled from techniques, and it may later be decomposed into techniques when
+live execution reveals reusable practice. The bridge is bidirectional:
 
 - techniques -> skill: compose reusable practices into an executable workflow
 - skill -> techniques: extract stable practice from repeated execution

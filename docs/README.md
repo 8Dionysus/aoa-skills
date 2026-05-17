@@ -1,6 +1,6 @@
 # Docs map
 
-`aoa-skills` is the Codex-facing companion to `aoa-techniques`.
+`aoa-skills` is the local coding-agent skill companion to `aoa-techniques`.
 
 Where `aoa-techniques` stores public, reusable, validated engineering techniques,
 `aoa-skills` stores reusable agent skills: self-contained executable workflows
@@ -10,6 +10,8 @@ execution may also produce technique extraction requests.
 ## Quick route by question
 
 - If you want one concrete source-authored skill before any derived layer, start with `../skills/core/engineering/aoa-change-protocol/SKILL.md` and then `../mechanics/release-support/docs/RUNTIME_PATH.md`.
+- If you need the root skill-layer design form, start with `../DESIGN.md`.
+- If you need the form of agent-facing route cards, start with `../DESIGN.AGENTS.md`.
 - If you need to navigate source bundle placement, start with `../skills/README.md`.
 - If you want the current canonical surface at a glance, start with `../SKILL_INDEX.md`.
 - If you are choosing or using a skill, start with `../mechanics/release-support/docs/RUNTIME_PATH.md`.
@@ -47,58 +49,60 @@ execution may also produce technique extraction requests.
 ## Read in this order
 
 1. `../skills/core/engineering/aoa-change-protocol/SKILL.md` - one concrete source-authored starter bundle.
-2. `../SKILL_INDEX.md` - the current skill map across the repo.
-3. `../mechanics/release-support/docs/RUNTIME_PATH.md` - the runtime inspection guide for `pick -> inspect -> expand -> object use`.
-4. `../mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md` - adaptive protocol for applicability maps, closeout, and harvest handoff.
-5. `../mechanics/audit/docs/EVALUATION_PATH.md` - the evaluation evidence guide for matrix outputs and snapshot-backed coverage.
-6. `../mechanics/audit/docs/PUBLIC_SURFACE.md` - the derived public-product and governance layer, kept separate from runtime inspection and evaluation evidence.
-7. `../mechanics/boundary-bridge/docs/LAYER_POSITION.md` - repo-owned layer-position note for the boundary between techniques, skills, and playbooks.
-8. `../mechanics/README.md` - owner-local skill mechanics route and package-card standard.
-9. `../mechanics/OWNER_REQUEST_RECEIPTS.md` - owner-local receipts for AoA center requests assigned to `aoa-skills`.
-10. `../mechanics/growth-cycle/README.md` - adaptive orchestration and session-growth lifecycle movement.
-11. `../mechanics/checkpoint/README.md` - checkpoint-note protocol and reviewed closeout bridge boundary.
-12. `../mechanics/method-growth/README.md` - reviewed candidate-lineage, owner-status, followthrough, and adoption lifecycle movement.
-13. `../mechanics/rpg/README.md` - ability-card and loadout reader posture.
-14. `../mechanics/antifragility/README.md` - fallback, via negativa, and collision-stress posture.
-15. `../mechanics/agon/README.md` - Agon package-local mechanics route.
-16. `ARCHITECTURE.md` - high-level model of the repository.
-17. `../mechanics/boundary-bridge/docs/BRIDGE_SPEC.md` - how skills reference and compose techniques.
-18. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
-19. `../mechanics/ROADMAP.md` - roadmap router; package `ROADMAP.md` files own
+2. `../DESIGN.md` - system form of the bounded execution canon.
+3. `../DESIGN.AGENTS.md` - design form of agent-facing route cards.
+4. `../SKILL_INDEX.md` - the current skill map across the repo.
+5. `../mechanics/release-support/docs/RUNTIME_PATH.md` - the runtime inspection guide for `pick -> inspect -> expand -> object use`.
+6. `../mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md` - adaptive protocol for applicability maps, closeout, and harvest handoff.
+7. `../mechanics/audit/docs/EVALUATION_PATH.md` - the evaluation evidence guide for matrix outputs and snapshot-backed coverage.
+8. `../mechanics/audit/docs/PUBLIC_SURFACE.md` - the derived public-product and governance layer, kept separate from runtime inspection and evaluation evidence.
+9. `../mechanics/boundary-bridge/docs/LAYER_POSITION.md` - repo-owned layer-position note for the boundary between techniques, skills, and playbooks.
+10. `../mechanics/README.md` - owner-local skill mechanics route and package-card standard.
+11. `../mechanics/OWNER_REQUEST_RECEIPTS.md` - owner-local receipts for AoA center requests assigned to `aoa-skills`.
+12. `../mechanics/growth-cycle/README.md` - adaptive orchestration and session-growth lifecycle movement.
+13. `../mechanics/checkpoint/README.md` - checkpoint-note protocol and reviewed closeout bridge boundary.
+14. `../mechanics/method-growth/README.md` - reviewed candidate-lineage, owner-status, followthrough, and adoption lifecycle movement.
+15. `../mechanics/rpg/README.md` - ability-card and loadout reader posture.
+16. `../mechanics/antifragility/README.md` - fallback, via negativa, and collision-stress posture.
+17. `../mechanics/agon/README.md` - Agon package-local mechanics route.
+18. `ARCHITECTURE.md` - high-level model of the repository.
+19. `../mechanics/boundary-bridge/docs/BRIDGE_SPEC.md` - how skills reference and compose techniques.
+20. `REPOSITORY_STRUCTURE.md` - folder layout and conventions.
+21. `../mechanics/ROADMAP.md` - roadmap router; package `ROADMAP.md` files own
     future contours.
-20. `../mechanics/release-support/docs/RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
-21. `../mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
-22. `../mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` - owner refresh law for the portable export foundation when generated or adapter-facing surfaces drift.
-23. `../mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md` - local runtime seams around that export, including the legacy activation shim.
-24. `../mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md` and `../mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md` - optional OpenAI metadata seam plus named MCP wiring guidance for the generated export.
-25. `../mechanics/release-support/docs/INSTALL_AND_PROFILES.md` - install roots, skill-pack profiles, and disable-snippet helpers.
-26. `../mechanics/release-support/docs/CONTEXT_RETENTION.md` - generated retention-support metadata around the export.
-27. `../mechanics/release-support/docs/UI_METADATA_AND_ASSETS.md` - icon and UI metadata rules for the export.
-28. `../mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md` - generated disable-profile snippets and example config surfaces.
-29. `../mechanics/release-support/legacy/waves/THIRD_WAVE.md` - portable-layer hardening for install, trust, and config surfaces.
-30. `../mechanics/release-support/legacy/waves/FOURTH_WAVE.md` - dedicated-tool runtime seam added around the same export.
-31. `../mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md` - primary wave-4 runtime path for discover, disclose, activate, and compact.
-32. `../mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md` - tool-shaped contract for the wave-4 runtime seam.
-33. `../mechanics/release-support/docs/SESSION_COMPACTION.md` - session state and compaction behavior for long-running local wrappers.
-34. `../mechanics/audit/docs/TRIGGER_EVALS.md` - policy-aware trigger-eval dataset and collision-family guidance.
-35. `../mechanics/antifragility/parts/collision-stress-program/README.md` - additive stress-era collision coverage for timeout chaos, source-of-truth wins, and thin incident suppression.
-36. `../mechanics/release-support/legacy/waves/SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
-37. `../mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
-38. `../mechanics/audit/docs/SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
-39. `../mechanics/release-support/legacy/waves/EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
-40. `../mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
-41. `../mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
-42. `../mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
-43. `../mechanics/method-growth/docs/MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
-44. `../mechanics/method-growth/docs/PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
-45. `../mechanics/method-growth/docs/PROMOTION_PRESSURE.md` - lived-use review-pressure readout for non-canonical skills.
-46. `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including validator fixture packs and live exemplar packs.
-47. `../mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
-48. `../mechanics/boundary-bridge/overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
-49. `../mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
-50. `../mechanics/boundary-bridge/overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
-51. `reviews/README.md` - public review-record conventions and review surfaces.
-52. `../mechanics/release-support/legacy/waves/PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
+22. `../mechanics/release-support/docs/RELEASING.md` - bounded release flow, release note shape, and repo-level validation path.
+23. `../mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md` - generated Codex-facing export contract for `.agents/skills/*`.
+24. `../mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` - owner refresh law for the portable export foundation when generated or adapter-facing surfaces drift.
+25. `../mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md` - local runtime seams around that export, including the legacy activation shim.
+26. `../mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md` and `../mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md` - optional OpenAI metadata seam plus named MCP wiring guidance for the generated export.
+27. `../mechanics/release-support/docs/INSTALL_AND_PROFILES.md` - install roots, skill-pack profiles, and disable-snippet helpers.
+28. `../mechanics/release-support/docs/CONTEXT_RETENTION.md` - generated retention-support metadata around the export.
+29. `../mechanics/release-support/docs/UI_METADATA_AND_ASSETS.md` - icon and UI metadata rules for the export.
+30. `../mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md` - generated disable-profile snippets and example config surfaces.
+31. `../mechanics/release-support/legacy/waves/THIRD_WAVE.md` - portable-layer hardening for install, trust, and config surfaces.
+32. `../mechanics/release-support/legacy/waves/FOURTH_WAVE.md` - dedicated-tool runtime seam added around the same export.
+33. `../mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md` - primary wave-4 runtime path for discover, disclose, activate, and compact.
+34. `../mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md` - tool-shaped contract for the wave-4 runtime seam.
+35. `../mechanics/release-support/docs/SESSION_COMPACTION.md` - session state and compaction behavior for long-running local wrappers.
+36. `../mechanics/audit/docs/TRIGGER_EVALS.md` - policy-aware trigger-eval dataset and collision-family guidance.
+37. `../mechanics/antifragility/parts/collision-stress-program/README.md` - additive stress-era collision coverage for timeout chaos, source-of-truth wins, and thin incident suppression.
+38. `../mechanics/release-support/legacy/waves/SEVENTH_WAVE.md` - activation-quality wave for description-first evals and soft standards-conformance.
+39. `../mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md` - description-first activation-contract dataset and coverage rules.
+40. `../mechanics/audit/docs/SKILLS_REF_VALIDATION.md` - soft standards-conformance lane for the generated export.
+41. `../mechanics/release-support/legacy/waves/EIGHTH_WAVE.md` - deterministic support-bundle wave for three high-risk skills.
+42. `../mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md` - support-resource contract for canonical `scripts/`, `references/`, and `assets/`.
+43. `../mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md` - bridge posture between existing AoA support dirs and the wave-8 standard dirs.
+44. `../mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md` - additive checkpoint-note contract that prepares reviewed closeout without replacing the explicit session-harvest family.
+45. `../mechanics/method-growth/docs/MATURITY_MODEL.md` - documented status ladder, promotion rules, and canonical-candidate review guidance.
+46. `../mechanics/method-growth/docs/PROMOTION_PATH.md` - public convention for moving skills through the maturity ladder.
+47. `../mechanics/method-growth/docs/PROMOTION_PRESSURE.md` - lived-use review-pressure readout for non-canonical skills.
+48. `../mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` - repo-local contract for thin project overlays, including validator fixture packs and live exemplar packs.
+49. `../mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md` - one current live family overlay pack.
+50. `../mechanics/boundary-bridge/overlays/atm10/REVIEW.md` - family-level review surface for that live pack.
+51. `../mechanics/boundary-bridge/overlays/abyss/PROJECT_OVERLAY.md` - another current live family overlay pack.
+52. `../mechanics/boundary-bridge/overlays/abyss/REVIEW.md` - family-level review surface for that live pack.
+53. `reviews/README.md` - public review-record conventions and review surfaces.
+54. `../mechanics/release-support/legacy/waves/PHASED_SKILL_PLAN.md` - supplemental public plan for the scaffold expansion pass that established the early skill core.
 
 ## Core ideas
 
@@ -135,7 +139,7 @@ execution may also produce technique extraction requests.
 ## Layers
 
 - `aoa-techniques` - technique canon
-- `aoa-skills` - Codex skill canon
+- `aoa-skills` - local coding-agent skill canon
 - `aoa-playbooks` - recurring scenario method and executable route canon
 - repo `mechanics/` - owner-local skill-layer movement around AoA mechanics
 - repo `.agents/skills` - generated Codex-facing export derived from canonical skill sources

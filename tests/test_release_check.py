@@ -88,6 +88,10 @@ class ReleaseCheckTests(unittest.TestCase):
             ("python", "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
+        self.assertIn(
+            ("python", "scripts/validate_agents_design.py"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
 
     def test_build_release_check_sequence_can_append_packaging_smoke(self) -> None:
         self.assertEqual(

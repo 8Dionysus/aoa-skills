@@ -1,37 +1,25 @@
 # AGENTS.md
 
-Guidance for `skills/core/session-growth/`.
+## Applies to
 
-## Purpose
+This card applies to `skills/core/session-growth/`.
 
-This lane owns reviewed session-growth skills: donor harvest, checkpoint
-closeout bridge, route forks, diagnosis, repair, progression lift, quest
-harvest, automation opportunity scan, commit growth seam, and summon posture.
+## Role
 
-## Read First
+This lane owns session growth, closeout, summon, route fork, self-diagnosis, and repeated-use skills.
 
-1. `../../AGENTS.md`
-2. `../AGENTS.md`
-3. this file
-4. `../../README.md`
-5. the target bundle `SKILL.md`
-6. the target bundle `techniques.yaml`
-7. touched support artifacts
-8. relevant mechanics package such as `../../../mechanics/growth-cycle/`,
-   `../../../mechanics/checkpoint/`, `../../../mechanics/method-growth/`, or
-   `../../../mechanics/questbook/`
+## Read before editing
 
-## Local Law
+Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target bundle, and relevant mechanics under checkpoint, growth-cycle, recurrence, or questbook.
 
-- Keep outputs reviewed, evidence-linked, and reversible.
-- Do not turn session notes into final harvest, memory canon, proof verdict,
-  quest authority, runtime activation, or hidden scheduler state.
-- Name the owner layer for every handoff.
-- Keep RPG, progression, recurrence, checkpoint, and self-repair language
-  bounded by reviewable evidence.
+## Boundaries
+
+Keep growth language bounded, reviewable, reversible, and useful for real sessions. Do not turn session growth into hidden memory authority or agent destiny.
 
 ## Validation
 
-Run the bounded source/export flow from `../../AGENTS.md` after bundle changes.
-Use package-local mechanics tests when the change touches growth-cycle,
-checkpoint, method-growth, questbook, recurrence, RPG, or stats-facing bridges.
+Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

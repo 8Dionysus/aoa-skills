@@ -1,0 +1,25 @@
+# AGENTS.md
+
+## Applies to
+
+This card applies to `mechanics/agon/legacy/`.
+
+## Role
+
+This lane owns retired Agon source fragments and migration evidence.
+
+## Read before editing
+
+Read parent `mechanics/agon/AGENTS.md`, `mechanics/agon/PROVENANCE.md`, and `mechanics/agon/legacy/README.md`.
+
+## Boundaries
+
+Legacy evidence may explain current Agon choices; it must not revive old naming or requested-only behavior without active package review.
+
+## Validation
+
+`git diff --check` plus parent validation if legacy meaning is migrated.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

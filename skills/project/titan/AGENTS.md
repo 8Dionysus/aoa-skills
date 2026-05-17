@@ -1,27 +1,25 @@
 # AGENTS.md
 
-Guidance for `skills/project/titan/`.
+## Applies to
 
-## Purpose
+This card applies to `skills/project/titan/`.
 
-This family owns Titan overlays for approval, runtime gates, memory, recall,
-receipts, closeout, console, app-server bridge, summon, and thread-turn binding.
+## Role
 
-## Read First
+This lane owns Titan project skills for approval, runtime, memory, receipt, and console workflows.
 
-1. `../AGENTS.md`
-2. this file
-3. `../../README.md`
-4. the target bundle `SKILL.md` and `techniques.yaml`
+## Read before editing
 
-## Local Law
+Read `skills/project/AGENTS.md`, the target bundle, and Titan owner guidance before editing.
 
-- Keep Titan bundles as skill invocation and reviewable handoff surfaces.
-- Do not turn them into Titan runtime authority, memory canon, approval ledger
-  state, or agent-role source truth.
-- Keep Forge mutation and Delta judgment language behind explicit gates.
-- Keep receipts as witnesses, not final owner truth.
+## Boundaries
+
+Keep Titan runtime and memory claims in Titan-owned context. This repo owns the skill wrapper, not live Titan state.
 
 ## Validation
 
-Run the project overlay validation path from `../AGENTS.md`.
+Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

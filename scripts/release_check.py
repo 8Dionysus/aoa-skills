@@ -55,6 +55,7 @@ RELEASE_CHECK_COMMAND_SEQUENCE = (
         "mechanics/agon/parts/workflow-candidate-bridge/tests",
         "mechanics/agon/parts/epistemic-candidate-boundary/tests",
     ),
+    ("python", "scripts/validate_agents_design.py"),
     ("python", "scripts/validate_nested_agents.py"),
     ("python", "scripts/validate_skills.py"),
     ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),

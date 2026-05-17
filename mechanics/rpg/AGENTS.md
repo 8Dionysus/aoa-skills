@@ -2,54 +2,24 @@
 
 ## Applies to
 
-This card applies to `mechanics/rpg/` and every nested path until a nearer
-`AGENTS.md` narrows the lane.
+This card applies to `mechanics/rpg/` except where a nearer card applies.
+
+## Role
+
+`mechanics/rpg/` owns ability-reader surfaces and role-like reader projections without turning skills into characters for the skill layer. RPG package guidance keeps this movement bounded and reviewable.
 
 ## Read before editing
 
-Read the repository root `AGENTS.md`, `mechanics/AGENTS.md`, this card,
-`README.md`, `DIRECTION.md`, `PARTS.md`, and `PROVENANCE.md` before changing
-files in this lane.
-
-If the change touches ability schemas, generated ability examples, pack
-profiles, overlays, progression artifacts, or skill bundles, read those
-affected surfaces too.
+Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/rpg/README.md`, `mechanics/rpg/DIRECTION.md`, `mechanics/rpg/PARTS.md`, `mechanics/rpg/PROVENANCE.md`, `mechanics/rpg/ROADMAP.md`, and any nearer card, `parts/AGENTS.md`.
 
 ## Boundaries
 
-- `mechanics/rpg/` owns the `aoa-skills` side of ability-reader and loadout
-  posture around existing skill bundles.
-- It does not own hidden ontology, runtime ledger state, role canon, skill
-  truth, playbook choreography, proof verdicts, quest closure, memory canon,
-  routing authority, owner acceptance, or automatic skill promotion.
-- Ability cards and loadout hints remain reader surfaces below canonical skill
-  bundles.
-
-## Editing posture
-
-- Change the active part first when behavior changes.
-- Keep `README.md` as the package card and route.
-- Keep `PARTS.md` focused on functioning part boundaries.
-- Keep `PROVENANCE.md` focused on moved-path accounting, generated ability
-  companions, pack/profile sources, and owner routes.
-- Update `LANDING_LOG.md` when a checked landing changes.
-- Update `ROADMAP.md` when future RPG pressure changes.
+Keep `mechanics/rpg/` focused on mechanic movement. Do not make it canonical skill content, sibling-repo technique truth, proof doctrine, or generated authority. Preserve ability-reader as a bounded local signal, not a global command.
 
 ## Validation
 
-The local narrow path includes generated ability schema validation, mechanics
-topology, and nested route validation.
-
-```bash
-python -m pytest -q tests/test_generated_surface_schemas.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py tests/test_mechanics_topology.py
-python scripts/validate_nested_agents.py
-```
-
-For broader docs, generated, export, or skill-bundle changes, also run the
-repository validation path from root `AGENTS.md`.
+Run `python -m pytest -q tests/test_generated_surface_schemas.py tests/test_roadmap_parity.py`.
 
 ## Closeout
 
-Closeout must name changed active parts, whether generated ability surfaces or
-schemas changed, whether skill meaning changed, checks run, checks skipped,
-remaining risk, and the next owner route if this package was only a waypoint.
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

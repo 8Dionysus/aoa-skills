@@ -1,23 +1,25 @@
 # AGENTS.md
 
-## Guidance for `config/`
+## Applies to
 
-`config/` holds repo-wide portable export, policy, profile, project-core,
-runtime guardrail, trigger-eval, and router inputs for the skill layer.
-Mechanic-local seed configs belong with the owning mechanic package or part.
+This card applies to `config/`.
 
-Config changes are small contract changes. Keep them explicit, reviewable, and subordinate to source skill bundles and documented public-surface policy.
+## Role
 
-Use config files to describe allowed export behavior, profile defaults, project-core receipt shape, trust gates, and bounded activation policy. Do not use config to smuggle new skill meaning that belongs in `skills/**/SKILL.md`.
+`config/` owns policy matrices, install profiles, release manifests, trust gates, and other machine-readable configuration that builders use to derive portable export behavior.
 
-When touching `project_core_skill_kernel.json`, preserve receipt readability, owner-status posture, and the difference between advisory surface detection and actual skill activation authority.
+## Read before editing
 
-No secrets, tokens, local-only absolute paths, or hidden allowlists. In lower-case too: no secrets. Prefer documented examples over private operator assumptions.
+Read root `AGENTS.md`, `DESIGN.md`, `config/README.md`, and the schema or builder that consumes the file being changed. For kernel policy, start with `project_core_skill_kernel.json` and the relevant validator.
 
-Verify with the nearest config-specific validator when present, then:
+## Boundaries
 
-```bash
-python scripts/build_catalog.py --check
-python scripts/validate_skills.py --fail-on-review-truth-sync
-python scripts/validate_semantic_agents.py
-```
+Config changes are behavior changes. Keep portable export rules explicit, do not smuggle status promotion through config, keep trust gates reviewable, and store no secrets. If a config field changes skill meaning, update the canonical bundle or schema instead of only changing generated output.
+
+## Validation
+
+Run `python scripts/validate_skills.py`, the builder that consumes the changed config, and `python scripts/build_catalog.py --check` when catalog or export behavior can move.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

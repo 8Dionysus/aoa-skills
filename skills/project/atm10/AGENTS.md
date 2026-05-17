@@ -1,25 +1,25 @@
 # AGENTS.md
 
-Guidance for `skills/project/atm10/`.
+## Applies to
 
-## Purpose
+This card applies to `skills/project/atm10/`.
 
-This family owns ATM10 companion overlays for change and source-of-truth work.
+## Role
 
-## Read First
+This lane owns ATM10 project skills for local companion and source-of-truth work.
 
-1. `../AGENTS.md`
-2. this file
-3. `../../README.md`
-4. the target bundle `SKILL.md` and `techniques.yaml`
+## Read before editing
 
-## Local Law
+Read `skills/project/AGENTS.md`, the target bundle, and the owning ATM10 repository guidance before editing.
 
-- Keep ATM10-local paths, review surfaces, and approval posture bounded.
-- Do not move ATM10 runtime behavior, private retrieval state, perception
-  truth, or operator automation authority into `aoa-skills`.
-- Preserve the base core-skill relationship.
+## Boundaries
+
+Do not generalize ATM10-only assumptions into core skills or sibling projects.
 
 ## Validation
 
-Run the project overlay validation path from `../AGENTS.md`.
+Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
