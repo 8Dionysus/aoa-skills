@@ -22,6 +22,10 @@ Tracking starts with the community-docs baseline for this repository.
 - mechanics packages for audit, boundary-bridge, experience, and
   release-support now provide local route cards, provenance, landing logs, and
   active docs maps for previously flat mechanics surfaces.
+- `generated/skill_intelligence_registry*.json` and
+  `scripts/skill_intelligence.py` add a source-derived registry, lexical search,
+  candidate explanation, and status surface for the first Skill Intelligence
+  layer slice without adding a semantic backend or changing skill authority.
 
 ### Changed
 

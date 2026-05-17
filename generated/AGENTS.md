@@ -42,6 +42,7 @@ accepting the diff:
 - `governance_backlog.json` and `governance_backlog.md`
 - `skill_bundle_index.json` and `skill_bundle_index.md`
 - `skill_graph.json` and `skill_graph.md`
+- `skill_intelligence_registry.json` and `skill_intelligence_registry.min.json`
 - `skill_boundary_matrix.json` and `skill_boundary_matrix.md`
 - `skill_lineage_surface.json` and `skill_lineage_surface.md`
 - `overlay_readiness.json` and `overlay_readiness.md`

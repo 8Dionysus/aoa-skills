@@ -20,7 +20,7 @@ then regenerate.
 
 | Class | Examples |
 |---|---|
-| Skill-derived | `skill_catalog*.json`, `skill_*_matrix.*`, `skill_graph.*` |
+| Skill-derived | `skill_catalog*.json`, `skill_*_matrix.*`, `skill_graph.*`, `skill_intelligence_registry*.json` |
 | Export-derived | `agent_skill_catalog*.json`, `portable_export_map.json`, `local_adapter_manifest*.json` |
 | Governance-derived | `public_surface.*`, `governance_backlog.*`, `overlay_readiness.*` |
 | Questbook-derived | `quest_catalog*.json`, `quest_dispatch*.json` |
