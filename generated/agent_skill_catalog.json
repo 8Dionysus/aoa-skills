@@ -1456,8 +1456,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0058"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1500,8 +1501,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0062"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1544,8 +1546,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0066",
+        "AOA-T-0043"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1588,8 +1591,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0004",
+        "AOA-T-0091",
+        "AOA-T-0045"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1632,8 +1636,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0076",
+        "AOA-T-0045"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
@@ -1676,8 +1681,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-console/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0062",
+        "AOA-T-0028"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1720,8 +1726,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0066",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
@@ -1764,8 +1771,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1808,8 +1816,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0103",
+        "AOA-T-0104",
+        "AOA-T-0043"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1852,8 +1861,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0004",
+        "AOA-T-0091"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1896,8 +1906,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
@@ -1940,8 +1951,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -1984,8 +1996,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0058",
+        "AOA-T-0091"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",
@@ -2028,8 +2041,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0060",
+        "AOA-T-0058",
+        "AOA-T-0028"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "none",
@@ -2072,8 +2086,9 @@
       "candidate_only": false,
       "source_skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0062",
+        "AOA-T-0066",
+        "AOA-T-0045"
       ],
       "trust_posture": "project-overlay",
       "mutation_surface": "repo",

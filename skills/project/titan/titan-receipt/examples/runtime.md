@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-receipt` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+A Titan lane event, gate, or closeout step needs a receipt packet that acts as witness evidence.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan Receipt and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request needs a witness packet that records state and evidence without becoming final truth.
 
 ## Expected inputs
 
@@ -26,12 +26,14 @@ The request matches the skill boundary for Titan Receipt and can be handled with
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- A receipt witnesses a state transition; it does not prove the transition was correct.
+- Receipts should preserve unknowns instead of smoothing them away.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.

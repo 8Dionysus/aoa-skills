@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-console` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+An operator wants a visible Titan lane dashboard that shows active Atlas, Sentinel, Mneme and locked Forge or Delta state.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan Console and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request is an explicit Titan console view and needs lane status without changing gate authority.
 
 ## Expected inputs
 
@@ -26,12 +26,14 @@ The request matches the skill boundary for Titan Console and can be handled with
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- A console view is not role authority or approval authority.
+- Warnings should stay visible instead of being normalized into green state.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.

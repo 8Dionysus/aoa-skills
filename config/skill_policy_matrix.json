@@ -332,7 +332,7 @@
       ],
       "requires_confirmation_seam": true,
       "implicit_activation_policy": "manual",
-      "notes": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-approval-loom": {
       "trust_posture": "project-overlay",
@@ -342,7 +342,7 @@
       ],
       "requires_confirmation_seam": true,
       "implicit_activation_policy": "manual",
-      "notes": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-appserver-bridge": {
       "trust_posture": "project-overlay",
@@ -352,7 +352,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-appserver-plan": {
       "trust_posture": "project-overlay",
@@ -362,7 +362,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without executing the local coding agent. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-closeout": {
       "trust_posture": "project-overlay",
@@ -372,7 +372,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-console": {
       "trust_posture": "project-overlay",
@@ -382,7 +382,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-event-replay": {
       "trust_posture": "project-overlay",
@@ -392,7 +392,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-memory-loom": {
       "trust_posture": "project-overlay",
@@ -402,7 +402,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-memory-prune": {
       "trust_posture": "project-overlay",
@@ -412,7 +412,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-mutation-gate": {
       "trust_posture": "project-overlay",
@@ -422,7 +422,7 @@
       ],
       "requires_confirmation_seam": true,
       "implicit_activation_policy": "manual",
-      "notes": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-recall": {
       "trust_posture": "project-overlay",
@@ -432,7 +432,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-receipt": {
       "trust_posture": "project-overlay",
@@ -442,7 +442,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-runtime-gate": {
       "trust_posture": "project-overlay",
@@ -452,7 +452,7 @@
       ],
       "requires_confirmation_seam": true,
       "implicit_activation_policy": "manual",
-      "notes": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-summon": {
       "trust_posture": "project-overlay",
@@ -462,7 +462,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked. Manual Titan overlay; owner repos retain stronger authority."
     },
     "titan-thread-turn-binding": {
       "trust_posture": "project-overlay",
@@ -472,7 +472,7 @@
       ],
       "requires_confirmation_seam": false,
       "implicit_activation_policy": "manual",
-      "notes": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Explicit-only Titan scaffold; owner repos retain stronger authority."
+      "notes": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity. Manual Titan overlay; owner repos retain stronger authority."
     }
   },
   "implicit_activation_policy_values": {

@@ -551,7 +551,7 @@
     {
       "inputs_short": "Needs: receipt or ledger reference; approved Titan lane; gate kind; operator intent text.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-approval-ledger",
       "outputs_short": "Produces: approval record candidate; gate kind and target lane; source refs for the receipt or ledger; stop note when the approval is missing or ambiguous.",
       "scope": "project",
@@ -559,17 +559,18 @@
       "status": "scaffold",
       "summary": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0058"
       ],
       "trigger_boundary_short": "Use when an operator has approved a named Forge or Delta gate; the approval must be attached to a receipt, console ledger, or bridge ledger; Avoid when the request has no explicit operator approval; the action is...",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: record an explicit Titan approval decision for a bounded Forge mutation or Delta judgment gate. Flow: confirm the approval is explicit -> bind the approval to the receipt or bridge ledger -> confirm Forge uses mutation and Delta uses judgment ->..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: record an explicit Titan approval decision for a bounded Forge mutation or Delta judgment gate. Flow: identify whether the approval is for Forge mutation or Delta judgment -> record the operator-visible approval text and timestamp or receipt ref..."
     },
     {
       "inputs_short": "Needs: bridge state path; thread id and turn id; approval request id; operator decision.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-approval-loom",
       "outputs_short": "Produces: updated approval queue entry; decision event candidate; gate status summary; blocked-action note when approval is insufficient.",
       "scope": "project",
@@ -577,17 +578,18 @@
       "status": "scaffold",
       "summary": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0062"
       ],
       "trigger_boundary_short": "Use when a bridge turn contains pending approvals; operator intent must be matched to a queued action; Avoid when an action should be auto-approved; approval would bypass Forge or Delta gates.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: inspect, add, or resolve approval-queue items for the Titan app-server bridge. Flow: load the bridge state or event source -> match the approval request to thread and turn -> confirm the operator decision is explicit -> preserve Forge and Delta..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: inspect, add, or resolve approval-queue items for the Titan app-server bridge. Flow: load the current bridge approval queue and receipt refs -> separate pending, allowed, blocked, and expired approval entries -> bind each approval to Forge or..."
     },
     {
       "inputs_short": "Needs: workspace root; bridge state path; thread and turn identifiers; event payloads or launch plan request.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-appserver-bridge",
       "outputs_short": "Produces: bridge plan or state summary; normalized event candidates; approval queue status; replay or metrics summary.",
       "scope": "project",
@@ -595,17 +597,18 @@
       "status": "scaffold",
       "summary": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0066",
+        "AOA-T-0043"
       ],
       "trigger_boundary_short": "Use when a Titan console needs a JSON-RPC shaped bridge; thread and turn events need normalization; Avoid when the request asks for hidden background agents; the bridge would start hidden agent execution without an...",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: prepare or inspect the Titan app-server bridge while keeping local agent execution visible and gated. Flow: confirm bridge purpose and non-execution posture -> bind inputs to thread and turn -> normalize incoming events -> route approval items to..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: prepare or inspect the Titan app-server bridge while keeping local agent execution visible and gated. Flow: identify the bridge thread, turn, receipt, and event sources -> translate bridge state into inspectable JSON-RPC or equivalent relay..."
     },
     {
       "inputs_short": "Needs: workspace root; console or bridge state ref; desired endpoint or transport shape; receipt path.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-appserver-plan",
       "outputs_short": "Produces: JSONL launch-plan entries; required prechecks; approval gates; non-execution reminder.",
       "scope": "project",
@@ -613,17 +616,18 @@
       "status": "scaffold",
       "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0004",
+        "AOA-T-0091",
+        "AOA-T-0045"
       ],
       "trigger_boundary_short": "Use when the operator wants a visible app-server launch plan; a console needs bridge startup commands described but not run; Avoid when the request asks to start the server now; required workspace or receipt refs...",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: produce a launch plan for a Titan app-server route while leaving execution to a later explicit operator action. Flow: collect the requested bridge launch shape -> write or return only plan entries -> include receipt and approval refs -> state..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: produce a launch plan for a Titan app-server route while leaving execution to a later explicit operator action. Flow: collect workspace root, app-server command, state paths, and safety limits -> produce a launch plan without starting the server..."
     },
     {
       "inputs_short": "Needs: receipt path; operator summary; gates used; validation evidence.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-closeout",
       "outputs_short": "Produces: closed receipt or closeout packet; role and boundary summary; gate summary; verification status.",
       "scope": "project",
@@ -631,17 +635,18 @@
       "status": "scaffold",
       "summary": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0076",
+        "AOA-T-0045"
       ],
       "trigger_boundary_short": "Use when a Titan receipt is ready to close; Atlas, Sentinel, and Mneme posture needs one summary; Avoid when the session has no receipt; closeout would replace owner-repo validation.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: this skill at the end of a Titan service-cohort session to close the local receipt without claiming final owner truth. Flow: validate the receipt exists -> summarize Atlas route, Sentinel risk, and Mneme provenance -> include Forge and Delta only..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: this skill at the end of a Titan service-cohort session to close the local receipt without claiming final owner truth. Flow: load the active receipt, gate, ledger, console, and memory-candidate refs -> summarize Atlas route, Sentinel risk, and..."
     },
     {
       "inputs_short": "Needs: workspace root; console state path; receipt path; operator intent.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-console",
       "outputs_short": "Produces: console state summary; lane status table; approval gate status; digest candidate.",
       "scope": "project",
@@ -649,17 +654,18 @@
       "status": "scaffold",
       "summary": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0062",
+        "AOA-T-0028"
       ],
       "trigger_boundary_short": "Use when the operator wants a visible Titan lane dashboard; console state must show active, locked, or gated lanes; Avoid when the console would become role truth; Forge or Delta would unlock without explicit approval.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: create, inspect, or update an operator-visible Titan console state. Flow: load or initialize console state -> show Atlas, Sentinel, Mneme, Forge, and Delta lanes -> keep Forge and Delta locked until matching approvals -> record visible events and..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: create, inspect, or update an operator-visible Titan console state. Flow: load or create the visible console state from receipt and bridge refs -> show Atlas, Sentinel, Mneme, Forge, and Delta lane status separately -> keep Forge and Delta locked..."
     },
     {
       "inputs_short": "Needs: event log path; optional current state path; thread or turn filter; receipt ref.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-event-replay",
       "outputs_short": "Produces: replayed state summary; event order report; differences from current state; authority warning.",
       "scope": "project",
@@ -667,17 +673,18 @@
       "status": "scaffold",
       "summary": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0066",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "trigger_boundary_short": "Use when bridge state must be reconstructed from events; a digest or approval queue needs replay evidence; Avoid when events are missing source refs; replay output would be treated as proof or memory canon.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: replay Titan event logs and compare the resulting state to current bridge or console state. Flow: load events in ledger order -> filter by thread or turn when requested -> reconstruct lane, approval, and digest state -> compare with current state..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: replay Titan event logs and compare the resulting state to current bridge or console state. Flow: select the bridge or console event stream and its source refs -> replay events into inspectable derived state without granting authority -> preserve..."
     },
     {
       "inputs_short": "Needs: receipt or event source; bearer id or Titan name; source refs; confidence note.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-memory-loom",
       "outputs_short": "Produces: candidate remembrance record; recall authority warning; source and confidence fields; redaction or tombstone candidates.",
       "scope": "project",
@@ -685,17 +692,18 @@
       "status": "scaffold",
       "summary": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "trigger_boundary_short": "Use when a Titan receipt or event should become recallable later; cross-session digest needs candidate memory entries; Avoid when memory would be canonized without owner confirmation; the input lacks source refs.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: ingest Titan receipts or events into candidate-grade remembrance records. Flow: identify the source receipt or event -> extract candidate memory facts -> preserve bearer and session identity -> attach source refs and confidence."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: ingest Titan receipts or events into candidate-grade remembrance records. Flow: identify receipt, event, or closeout sources that may become recall candidates -> extract only bounded memory facts with source refs and confidence -> mark every..."
     },
     {
       "inputs_short": "Needs: memory record id; source refs; reason for prune request; retention rule.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-memory-prune",
       "outputs_short": "Produces: redaction proposal; tombstone proposal; records to keep unchanged; reason and source refs.",
       "scope": "project",
@@ -703,17 +711,18 @@
       "status": "scaffold",
       "summary": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0103",
+        "AOA-T-0104",
+        "AOA-T-0043"
       ],
       "trigger_boundary_short": "Use when a Titan memory record may be stale, sensitive, or wrong; a recall result needs redaction handling; Avoid when the request asks for silent deletion; the record lacks source or authority metadata.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: review Titan memory records for retention, masking, tombstone, or pruning proposals. Flow: inspect the record and source refs -> classify the reason for pruning -> prefer masks or tombstones before deletion -> preserve lineage-significant events."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: review Titan memory records for retention, masking, tombstone, or pruning proposals. Flow: load the candidate memory records and their source refs -> classify each risky record as retain, redact, tombstone, merge, or defer -> preserve provenance..."
     },
     {
       "inputs_short": "Needs: intent text; target repos and paths; allowed actor; precheck evidence.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-mutation-gate",
       "outputs_short": "Produces: mutation gate packet; allowed or blocked decision; precheck summary; validation expectation.",
       "scope": "project",
@@ -721,17 +730,18 @@
       "status": "scaffold",
       "summary": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0004",
+        "AOA-T-0091"
       ],
       "trigger_boundary_short": "Use when Forge is being asked to edit files; the mutation target and validation path need to be explicit; Avoid when the request has no explicit mutation intent; targets or validation are unclear.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: this skill before Forge performs any workspace-write or code mutation work. Flow: verify explicit mutation intent -> verify target repo and paths -> collect Atlas route, Sentinel risk, and Mneme provenance notes -> confirm Forge is the allowed actor."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: this skill before Forge performs any workspace-write or code mutation work. Flow: verify explicit Forge mutation intent and allowed actor -> name target repos, paths, prechecks, validation, and rollback or stop condition -> collect Atlas route,..."
     },
     {
       "inputs_short": "Needs: query text; bearer id or Titan name; memory index path; time or session filter.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-recall",
       "outputs_short": "Produces: matching remembrance records; record ids and source refs; authority warning; confidence notes.",
       "scope": "project",
@@ -739,17 +749,18 @@
       "status": "scaffold",
       "summary": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "trigger_boundary_short": "Use when a user asks what a Titan remembers; a session needs bearer memory candidates; Avoid when recall would replace owner-repo evidence; records lack source refs.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: retrieve and present Titan remembrance records without treating recall as source truth. Flow: search the candidate memory index -> filter by bearer or session when provided -> return source-backed matches only -> include confidence and authority..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: retrieve and present Titan remembrance records without treating recall as source truth. Flow: take the recall query and constrain it to Titan candidate memory records -> return record id, source refs, confidence, state, and authority note for..."
     },
     {
       "inputs_short": "Needs: workspace root; operator id; receipt path; note or closeout summary.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-receipt",
       "outputs_short": "Produces: created or updated receipt; validation result; receipt note; closeout state.",
       "scope": "project",
@@ -757,17 +768,18 @@
       "status": "scaffold",
       "summary": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "trigger_boundary_short": "Use when a Titan session needs a receipt; an existing receipt needs validation or a note; Avoid when receipt state would be treated as owner truth; the receipt path is unclear.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: manage local Titan session receipts for summon, gate, note, validation, and closeout steps. Flow: choose the receipt action -> validate required fields and path -> write or inspect only the requested receipt surface -> preserve gates and source refs."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: manage local Titan session receipts for summon, gate, note, validation, and closeout steps. Flow: identify the session, actor lane, event, or closeout moment being receipted -> record state, source refs, gate refs, and validation refs as witness..."
     },
     {
       "inputs_short": "Needs: receipt path; requested Titan; gate kind; intent text.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-runtime-gate",
       "outputs_short": "Produces: updated gate state; allowed or blocked decision; receipt event; lane summary.",
       "scope": "project",
@@ -775,17 +787,18 @@
       "status": "scaffold",
       "summary": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0058",
+        "AOA-T-0091"
       ],
       "trigger_boundary_short": "Use when Forge needs a mutation gate; Delta needs a judgment gate; Avoid when Atlas, Sentinel, or Mneme are being gated unnecessarily; Forge is requested with judgment or Delta with mutation.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: a Titan session needs to activate Forge or Delta from locked to gated state. Flow: confirm receipt exists -> confirm requested Titan is Forge or Delta -> confirm gate kind matches the Titan -> record the gate event."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: a Titan session needs to activate Forge or Delta from locked to gated state. Flow: identify whether the requested runtime lane is Forge mutation or Delta judgment -> bind the lane request to a receipt, operator approval, and bounded evidence..."
     },
     {
       "inputs_short": "Needs: workspace root; summon prompt reference; operator intent; receipt output path.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-summon",
       "outputs_short": "Produces: summon receipt candidate; active and locked roster state; route, risk, and memory posture summary; gate status.",
       "scope": "project",
@@ -793,17 +806,18 @@
       "status": "scaffold",
       "summary": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0060",
+        "AOA-T-0058",
+        "AOA-T-0028"
       ],
       "trigger_boundary_short": "Use when the operator explicitly requests the Titan cohort; the session needs Atlas route, Sentinel risk, and Mneme provenance lanes; Avoid when the request asks for hidden background agents; Forge should mutate...",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: begin a local coding-agent session with the first Titan service cohort after an explicit operator summon. Flow: confirm explicit summon intent -> use the service-cohort summon prompt -> activate Atlas, Sentinel, and Mneme only -> keep Forge..."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: begin a local coding-agent session with the first Titan service cohort after an explicit operator summon. Flow: confirm explicit operator summon intent and workspace root -> read the relevant owner docs or runbook refs for current Titan posture..."
     },
     {
       "inputs_short": "Needs: thread id; turn id; event ids or payloads; receipt ref.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt or replay state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible; canonizing candidate...",
+      "main_anti_patterns_short": "Avoid: treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence; auto-approving Forge or Delta because a plan looks plausible;...",
       "name": "titan-thread-turn-binding",
       "outputs_short": "Produces: thread-turn binding record; scoped event list; approval refs; replay key.",
       "scope": "project",
@@ -811,12 +825,13 @@
       "status": "scaffold",
       "summary": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.",
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0062",
+        "AOA-T-0066",
+        "AOA-T-0045"
       ],
       "trigger_boundary_short": "Use when events need a thread-turn identity; approval or digest state must be scoped to one turn; Avoid when thread or turn identifiers are missing; the binding would collapse multiple sessions into one record.",
-      "verification_short": "Checks: confirm the request and outputs stayed inside the declared Titan lane; confirm any mutation or judgment gate was explicit and recorded; confirm source refs, receipt refs, or ledger refs are preserved when...",
-      "workflow_short": "Purpose: attach Titan bridge events and approvals to a specific thread and turn boundary. Flow: validate thread and turn identifiers -> attach events and approvals to the binding -> preserve receipt and source refs -> reject ambiguous cross-session merges."
+      "verification_short": "Checks: confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant; confirm Forge or Delta locked or allowed state...",
+      "workflow_short": "Purpose: attach Titan bridge events and approvals to a specific thread and turn boundary. Flow: identify the thread id, turn id, receipt refs, and event refs being connected -> bind approvals and replay state to explicit turn boundaries -> flag missing,..."
     }
   ],
   "source_of_truth": {

@@ -2633,7 +2633,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "af73a8e64734691235565f762a815cc5ce0f63b9a210c25cdd4ee4260b694430",
+      "content_hash": "26099c03d3b66a0ab661ac9a751ec368107b9b633ccc3ceba64e9347c9e96c7c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2654,12 +2654,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-approval-ledger",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
-      "skill_revision": "af73a8e64734",
+      "skill_revision": "26099c03d3b6",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2674,23 +2674,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0058"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0058",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -2710,7 +2718,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "d47259368b6fe54c978b4743133e99933381b206340e3b3aaa225501c26e0205",
+      "content_hash": "6be4cec75de6ec54817dd87e7274f090e6f3bf1f9d962c6683d4fe6259c3c040",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2731,12 +2739,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-approval-loom",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
-      "skill_revision": "d47259368b6f",
+      "skill_revision": "6be4cec75de6",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2751,23 +2759,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0045",
+        "AOA-T-0062"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0062",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -2787,7 +2803,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "eab2c491d89f142914f5ef0c75a01ca9742a7cbaccc631e07dce7c2c279d7bed",
+      "content_hash": "533650f6b409f4c57d7902ad1a4f03c03df38e9435ff6ea2cb0465a6bb44c45b",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2808,12 +2824,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-appserver-bridge",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
-      "skill_revision": "eab2c491d89f",
+      "skill_revision": "533650f6b409",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2828,23 +2844,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0066",
+        "AOA-T-0043"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0066",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0043",
+          "lineage_state": "published",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -2864,7 +2888,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "0987481436f5e53be5298bd96c9082a14950c75cdf0411d373cf57caa5c01838",
+      "content_hash": "95c669f1733c17efa73024fe9cc5aa2ddcb4d342cc9eda20136e034447b149b1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2885,12 +2909,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-appserver-plan",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
-      "skill_revision": "0987481436f5",
+      "skill_revision": "95c669f1733c",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2905,23 +2929,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0004",
+        "AOA-T-0091",
+        "AOA-T-0045"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0004",
+          "lineage_state": "published",
+          "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0091",
+          "lineage_state": "published",
+          "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -2941,7 +2973,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "2b155a3bbdb4a787ce5e02c768448292ef5a02719f0aded217ce3557aa4a45ff",
+      "content_hash": "edcedabad22d28d36cb2a350ba12fb58f5bdce0307d607ee15327dd75b7bf00e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2962,12 +2994,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-closeout",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
-      "skill_revision": "2b155a3bbdb4",
+      "skill_revision": "edcedabad22d",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2982,23 +3014,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0076",
+        "AOA-T-0045"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0076",
+          "lineage_state": "published",
+          "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3018,7 +3058,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "218cd05c3bae7beef2d7aaf9009f5c33012054cc376e7f46f18a35c67ff2a8e1",
+      "content_hash": "4e29cf865cd26801602c7479f9aa872e6d0d6153362b4ee94cbd22e805769072",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3039,12 +3079,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-console",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-console/SKILL.md",
-      "skill_revision": "218cd05c3bae",
+      "skill_revision": "4e29cf865cd2",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3059,23 +3099,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0045",
+        "AOA-T-0062",
+        "AOA-T-0028"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0062",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3095,7 +3143,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "446979fda1aef79eb3f622094c5aad96bbf8a9d1b7c0f22a40267a017674fe2b",
+      "content_hash": "d7f0ca93a7a237210273010808833ce41f0c77a30637cf516ca15feb4b891ea6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3116,12 +3164,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-event-replay",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
-      "skill_revision": "446979fda1ae",
+      "skill_revision": "d7f0ca93a7a2",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3136,23 +3184,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0066",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0066",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0043",
+          "lineage_state": "published",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3172,7 +3228,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "d319334b2c50fea7d697acdeaf12f0d425ac2c9bbdfeacee272bfce6f3bd8fdb",
+      "content_hash": "07807d1661e8d76cd0cc9b70001914d291c3f6667bc389883e3499fcab10f0cc",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3193,12 +3249,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-memory-loom",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
-      "skill_revision": "d319334b2c50",
+      "skill_revision": "07807d1661e8",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3213,23 +3269,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0053",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0043",
+          "lineage_state": "published",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3249,7 +3313,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "a3720bf55a78b4f3fa9c1387f8b99572f9e004531c98843257d100de935e6687",
+      "content_hash": "e8684c2d588567c44540cd51407f485da8df2a8f419c62314122532767494448",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3270,12 +3334,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-memory-prune",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
-      "skill_revision": "a3720bf55a78",
+      "skill_revision": "e8684c2d5885",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3290,23 +3354,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0103",
+        "AOA-T-0104",
+        "AOA-T-0043"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0103",
+          "lineage_state": "published",
+          "path": "techniques/governance/practice-adoption-lifecycle/adopted-practice-retention-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0104",
+          "lineage_state": "published",
+          "path": "techniques/governance/practice-adoption-lifecycle/superseded-practice-obsolescence-route/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0043",
+          "lineage_state": "published",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3326,7 +3398,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "9f140b23c74ba3e9e404b618b7012ad23636e7c99abaef6c05ec957f87d3e54d",
+      "content_hash": "208b66876410aef74ad70f9eb2a72e75fb5839534a7126a383b2820317aa8c7a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3347,12 +3419,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-mutation-gate",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
-      "skill_revision": "9f140b23c74b",
+      "skill_revision": "208b66876410",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3367,23 +3439,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0004",
+        "AOA-T-0091"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0004",
+          "lineage_state": "published",
+          "path": "techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0091",
+          "lineage_state": "published",
+          "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3403,7 +3483,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "e71657e67265ad227f53c0aee6cbd7c1c0d229b47e9617ff6cb42b071d5479bc",
+      "content_hash": "6b5bfe82ba6819c00a8a0b1a4d133c7c5fd60ec80129373cb83ad9378fa17cc1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3424,12 +3504,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-recall",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-recall/SKILL.md",
-      "skill_revision": "e71657e67265",
+      "skill_revision": "6b5bfe82ba68",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3444,23 +3524,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0053",
+        "AOA-T-0043",
+        "AOA-T-0045"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0053",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0043",
+          "lineage_state": "published",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3480,7 +3568,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "731573a777c04987b145642357546e161ffaa92eb263c047e4ff380057550fe2",
+      "content_hash": "91eaec8dd78e09f13a4c0d848344bc7d0405ad97a0df115c633532ad3f1494ef",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3501,12 +3589,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-receipt",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
-      "skill_revision": "731573a777c0",
+      "skill_revision": "91eaec8dd78e",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3521,23 +3609,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0058",
+        "AOA-T-0045",
+        "AOA-T-0043"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0043",
+          "lineage_state": "published",
+          "path": "techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3557,7 +3653,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "63a5e7383a23321ba146ea3f0b3608bcb80bab5471252df4e1295400a50eb6d2",
+      "content_hash": "d6bd4f6710258a84cd0e76dbf060d62568524e93dd9942c07458b2af10c993c8",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3578,12 +3674,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-runtime-gate",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
-      "skill_revision": "63a5e7383a23",
+      "skill_revision": "d6bd4f671025",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3598,23 +3694,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0028",
+        "AOA-T-0058",
+        "AOA-T-0091"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0091",
+          "lineage_state": "published",
+          "path": "techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3634,7 +3738,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "2725c36bf6709f27944e850f3c53c1971df062e488391657b8a20861a68f3be0",
+      "content_hash": "a10698e758a81aca81bfa67610c321fb764e414de514cbb6962db7cf93fcb3fe",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3655,12 +3759,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-summon",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-summon/SKILL.md",
-      "skill_revision": "2725c36bf670",
+      "skill_revision": "a10698e758a8",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3675,23 +3779,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0060",
+        "AOA-T-0058",
+        "AOA-T-0028"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0060",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0058",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0028",
+          "lineage_state": "published",
+          "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -3711,7 +3823,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "48884c95275f68a426ee58c5d5f28900f77d11689479d1646357770f4127f2ba",
+      "content_hash": "45d0a20ef891a41b37c473221b10829443b3884957d5b64f9560374149647f6e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3732,12 +3844,12 @@
         "repo-titan-overlay"
       ],
       "invocation_mode": "explicit-only",
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "name": "titan-thread-turn-binding",
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
-      "skill_revision": "48884c95275f",
+      "skill_revision": "45d0a20ef891",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3752,23 +3864,31 @@
         }
       ],
       "technique_dependencies": [
-        "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-        "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE"
+        "AOA-T-0062",
+        "AOA-T-0066",
+        "AOA-T-0045"
       ],
       "technique_lineage": [
         {
-          "id": "AOA-T-PENDING-TITAN-GATE-DISCIPLINE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0062",
+          "lineage_state": "published",
+          "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
-          "id": "AOA-T-PENDING-TITAN-RECEIPT-LINEAGE",
-          "lineage_state": "pending",
-          "path": "TBD",
+          "id": "AOA-T-0066",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "TBD"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+        },
+        {
+          "id": "AOA-T-0045",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     }

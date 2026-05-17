@@ -1766,32 +1766,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. confirm the approval is explicit\n2. bind the approval to the receipt or bridge ledger\n3. confirm Forge uses mutation and Delta uses judgment\n4. record scope, target, and validation expectation\n5. return the approval record and any stop lines",
+          "content_markdown": "1. identify whether the approval is for Forge mutation or Delta judgment\n2. record the operator-visible approval text and timestamp or receipt ref\n3. bind the approval to one target, evidence packet, and gate kind\n4. mark the approval record as witness evidence rather than owner truth\n5. name what remains blocked after the approval, including validation or owner review",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0058 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -1824,32 +1824,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. load the bridge state or event source\n2. match the approval request to thread and turn\n3. confirm the operator decision is explicit\n4. preserve Forge and Delta gate requirements\n5. record the approval event and replay path",
+          "content_markdown": "1. load the current bridge approval queue and receipt refs\n2. separate pending, allowed, blocked, and expired approval entries\n3. bind each approval to Forge or Delta without merging the gates\n4. preserve replayable evidence for operator intent and queue state changes\n5. return the next visible queue action without starting hidden execution",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0062 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -1882,32 +1882,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. confirm bridge purpose and non-execution posture\n2. bind inputs to thread and turn\n3. normalize incoming events\n4. route approval items to the approval loom\n5. return replayable state and metrics without launching hidden work",
+          "content_markdown": "1. identify the bridge thread, turn, receipt, and event sources\n2. translate bridge state into inspectable JSON-RPC or equivalent relay state\n3. keep approvals, metrics, and replay data subordinate to source events\n4. refuse hidden agent execution or silent gate changes\n5. return replay, approval, or owner-route follow-up needed before continuation",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0066 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0043 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -1940,32 +1940,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. collect the requested bridge launch shape\n2. write or return only plan entries\n3. include receipt and approval refs\n4. state that no hidden agent process was started\n5. name the validation command or manual check",
+          "content_markdown": "1. collect workspace root, app-server command, state paths, and safety limits\n2. produce a launch plan without starting the server or child agents\n3. include expected receipt, bridge, approval, and validation surfaces\n4. name operator confirmations required before any runtime process starts\n5. return the plan artifact path or inline plan and its stop conditions",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0004 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0091 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -1998,32 +1998,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. validate the receipt exists\n2. summarize Atlas route, Sentinel risk, and Mneme provenance\n3. include Forge and Delta only when gated\n4. record verification state honestly\n5. return next owner route without canonizing memory",
+          "content_markdown": "1. load the active receipt, gate, ledger, console, and memory-candidate refs\n2. summarize Atlas route, Sentinel risk, and Mneme provenance state\n3. separate completed validation from remaining owner-repo review\n4. record whether Forge or Delta ever crossed their gates and with what evidence\n5. emit the next-owner summary without promoting candidate memory or proof claims",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0058 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0076 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2056,32 +2056,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. load or initialize console state\n2. show Atlas, Sentinel, Mneme, Forge, and Delta lanes\n3. keep Forge and Delta locked until matching approvals\n4. record visible events and digest notes\n5. return state and next explicit action",
+          "content_markdown": "1. load or create the visible console state from receipt and bridge refs\n2. show Atlas, Sentinel, Mneme, Forge, and Delta lane status separately\n3. keep Forge and Delta locked unless approval refs already exist\n4. surface stale, missing, or contradictory gate evidence as console warnings\n5. return the next operator-visible command or stop line",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0062 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2114,32 +2114,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. load events in ledger order\n2. filter by thread or turn when requested\n3. reconstruct lane, approval, and digest state\n4. compare with current state when provided\n5. return replay evidence and limits",
+          "content_markdown": "1. select the bridge or console event stream and its source refs\n2. replay events into inspectable derived state without granting authority\n3. preserve gaps, ordering uncertainty, and replay limits in the output\n4. compare replayed gate state against receipts or ledger refs when available\n5. name whether the replay supports review, repair, or only further inspection",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0066 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0043 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2172,32 +2172,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. identify the source receipt or event\n2. extract candidate memory facts\n3. preserve bearer and session identity\n4. attach source refs and confidence\n5. return recall limits and any redaction needs",
+          "content_markdown": "1. identify receipt, event, or closeout sources that may become recall candidates\n2. extract only bounded memory facts with source refs and confidence\n3. mark every record as candidate unless an owner surface has confirmed it\n4. attach redaction, retention, or tombstone hints when risk is visible\n5. return recall limits and verification routes with the candidate records",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0053 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0043 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2230,32 +2230,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. inspect the record and source refs\n2. classify the reason for pruning\n3. prefer masks or tombstones before deletion\n4. preserve lineage-significant events\n5. return proposals and required confirmations",
+          "content_markdown": "1. load the candidate memory records and their source refs\n2. classify each risky record as retain, redact, tombstone, merge, or defer\n3. preserve provenance for any proposed removal or masking action\n4. avoid silent deletion and require owner approval for destructive memory changes\n5. return a pruning proposal with verification and rollback posture",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0103 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/practice-adoption-lifecycle/adopted-practice-retention-review/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0104 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/practice-adoption-lifecycle/superseded-practice-obsolescence-route/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0043 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2288,32 +2288,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. verify explicit mutation intent\n2. verify target repo and paths\n3. collect Atlas route, Sentinel risk, and Mneme provenance notes\n4. confirm Forge is the allowed actor\n5. record validation and rollback or stop path",
+          "content_markdown": "1. verify explicit Forge mutation intent and allowed actor\n2. name target repos, paths, prechecks, validation, and rollback or stop condition\n3. collect Atlas route, Sentinel risk, and Mneme provenance notes\n4. fail closed when approval, target, validation, or rollback posture is missing\n5. emit an allow or block packet linked to the receipt or approval ledger",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0004 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/intent-chain/intent-plan-dry-run-contract-chain/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0091 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2346,32 +2346,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. search the candidate memory index\n2. filter by bearer or session when provided\n3. return source-backed matches only\n4. include confidence and authority limits\n5. point to owner verification when needed",
+          "content_markdown": "1. take the recall query and constrain it to Titan candidate memory records\n2. return record id, source refs, confidence, state, and authority note for each hit\n3. separate candidate, confirmed, redacted, and tombstoned records\n4. route uncertain or sensitive hits to source verification before use\n5. avoid converting recall results into owner truth or final verdicts",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0053 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/local-first-session-index/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0043 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2404,32 +2404,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. choose the receipt action\n2. validate required fields and path\n3. write or inspect only the requested receipt surface\n4. preserve gates and source refs\n5. return status and next owner route",
+          "content_markdown": "1. identify the session, actor lane, event, or closeout moment being receipted\n2. record state, source refs, gate refs, and validation refs as witness evidence\n3. distinguish candidate, open, allowed, blocked, and closed receipt states\n4. preserve owner-route limits and missing evidence in the receipt body\n5. return the receipt path or packet and the next review action",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0058 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0043 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/capability-boundary/multi-source-primary-input-provenance/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2462,32 +2462,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. confirm receipt exists\n2. confirm requested Titan is Forge or Delta\n3. confirm gate kind matches the Titan\n4. record the gate event\n5. return the updated roster state",
+          "content_markdown": "1. identify whether the requested runtime lane is Forge mutation or Delta judgment\n2. bind the lane request to a receipt, operator approval, and bounded evidence packet\n3. keep unmatched or stale approvals from opening the wrong lane\n4. fail closed when the gate kind, actor, target, or validation is ambiguous\n5. record allowed, blocked, or pending state with the next owner-visible step",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0058 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0091 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/owner-truth-closeout/workspace-root-ingress-and-mutation-gate/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2520,32 +2520,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. confirm explicit summon intent\n2. use the service-cohort summon prompt\n3. activate Atlas, Sentinel, and Mneme only\n4. keep Forge locked until mutation intent\n5. keep Delta locked until judgment intent",
+          "content_markdown": "1. confirm explicit operator summon intent and workspace root\n2. read the relevant owner docs or runbook refs for current Titan posture\n3. create or update the summon receipt candidate\n4. activate Atlas, Sentinel, and Mneme as service lanes only\n5. keep Forge and Delta locked until separate mutation or judgment gates exist\n6. return route, risk, memory posture, gate status, and the next move",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0060 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0058 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -2578,32 +2578,32 @@
           "key": "outputs"
         },
         {
-          "content_markdown": "1. validate thread and turn identifiers\n2. attach events and approvals to the binding\n3. preserve receipt and source refs\n4. reject ambiguous cross-session merges\n5. return replayable binding state",
+          "content_markdown": "1. identify the thread id, turn id, receipt refs, and event refs being connected\n2. bind approvals and replay state to explicit turn boundaries\n3. flag missing, duplicate, or out-of-order thread and turn evidence\n4. keep derived continuity state subordinate to bridge and receipt sources\n5. return the binding packet and the next inspection or repair path",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct and visible.\n- Owner-repo validation and human judgment remain stronger than the local skill output.",
+          "content_markdown": "- The skill is explicit-only and must not be invoked as hidden background behavior.\n- Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.\n- Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.\n- Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.\n- Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions.",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt or replay state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- canonizing candidate memory without source-owned confirmation",
+          "content_markdown": "- treating Titan vocabulary as permission to widen authority\n- letting receipt, replay, console, or bridge state replace owner-repo evidence\n- auto-approving Forge or Delta because a plan looks plausible\n- promoting candidate memory, approvals, replay, or receipts into canon without owner review\n- using the skill for an ordinary repo task that has no explicit Titan route",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the request and outputs stayed inside the declared Titan lane\n- confirm any mutation or judgment gate was explicit and recorded\n- confirm source refs, receipt refs, or ledger refs are preserved when available\n- confirm the result names stop lines and remaining owner validation needs",
+          "content_markdown": "- confirm direct skill invocation or explicit Titan service-cohort request is present\n- confirm lane, gate, source refs, and owner surface are named when relevant\n- confirm Forge or Delta locked or allowed state matches recorded approval evidence\n- confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth\n- confirm next validation, replay, repair, or owner-route follow-up is named before continuation",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-PENDING-TITAN-GATE-DISCIPLINE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-PENDING-TITAN-RECEIPT-LINEAGE from `8Dionysus/aoa-techniques` at `TBD` using path `TBD` and sections: Intent, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0062 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0066 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/transcript-replay-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0045 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/history/history-artifacts/witness-trace-as-reviewable-artifact/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- Replace pending technique refs with published aoa-techniques refs after the Titan workflow techniques are promoted.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into the skill law.\n- If a Titan surface graduates from scaffold to reviewed, add review evidence before changing status.",
+          "content_markdown": "- Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.\n- Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law.\n- If a Titan surface graduates from scaffold to reviewed or evaluated, add review evidence before changing status.",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }

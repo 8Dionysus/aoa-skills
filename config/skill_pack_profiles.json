@@ -272,7 +272,7 @@
       ]
     },
     "repo-titan-overlay": {
-      "description": "Install only the Titan project overlay scaffold skills into a repository root.",
+      "description": "Install only the manual Titan project overlay skills into a repository root.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "skills": [

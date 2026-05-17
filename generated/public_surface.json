@@ -1,22 +1,6 @@
 {
   "cohorts": {
-    "blocked_by_pending_lineage": [
-      "titan-approval-ledger",
-      "titan-approval-loom",
-      "titan-appserver-bridge",
-      "titan-appserver-plan",
-      "titan-closeout",
-      "titan-console",
-      "titan-event-replay",
-      "titan-memory-loom",
-      "titan-memory-prune",
-      "titan-mutation-gate",
-      "titan-recall",
-      "titan-receipt",
-      "titan-runtime-gate",
-      "titan-summon",
-      "titan-thread-turn-binding"
-    ],
+    "blocked_by_pending_lineage": [],
     "candidate_ready": [
       "aoa-automation-opportunity-scan",
       "aoa-checkpoint-closeout-bridge",
@@ -982,7 +966,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-approval-ledger",
       "promotion_review_path": null,
@@ -990,11 +974,7 @@
       "skill_path": "skills/project/titan/titan-approval-ledger/SKILL.md",
       "status": "scaffold",
       "summary": "Record explicit operator approval for Forge mutation or Delta judgment gates without treating approval records as owner truth.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1009,7 +989,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-approval-loom",
       "promotion_review_path": null,
@@ -1017,11 +997,7 @@
       "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
       "status": "scaffold",
       "summary": "Maintain the app-server bridge approval queue while preserving Forge and Delta gates, receipts, and visible operator intent.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1036,7 +1012,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-appserver-bridge",
       "promotion_review_path": null,
@@ -1044,11 +1020,7 @@
       "skill_path": "skills/project/titan/titan-appserver-bridge/SKILL.md",
       "status": "scaffold",
       "summary": "Operate the Titan app-server bridge as inspectable thread, turn, event, approval, replay, and metrics state without hidden execution.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1063,7 +1035,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-appserver-plan",
       "promotion_review_path": null,
@@ -1071,11 +1043,7 @@
       "skill_path": "skills/project/titan/titan-appserver-plan/SKILL.md",
       "status": "scaffold",
       "summary": "Generate an inspectable Titan app-server launch plan as JSONL or equivalent plan output without starting hidden agent execution.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1090,7 +1058,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-closeout",
       "promotion_review_path": null,
@@ -1098,11 +1066,7 @@
       "skill_path": "skills/project/titan/titan-closeout/SKILL.md",
       "status": "scaffold",
       "summary": "Close a Titan service-cohort session with role, risk, provenance, gate, verification, and next-owner summary.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1117,7 +1081,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-console",
       "promotion_review_path": null,
@@ -1125,11 +1089,7 @@
       "skill_path": "skills/project/titan/titan-console/SKILL.md",
       "status": "scaffold",
       "summary": "Open or maintain a visible Titan operator-console state while keeping Forge and Delta locked until approvals exist.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1144,7 +1104,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-event-replay",
       "promotion_review_path": null,
@@ -1152,11 +1112,7 @@
       "skill_path": "skills/project/titan/titan-event-replay/SKILL.md",
       "status": "scaffold",
       "summary": "Replay Titan bridge or console events into inspectable state without granting runtime authority to the replay result.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1171,7 +1127,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-memory-loom",
       "promotion_review_path": null,
@@ -1179,11 +1135,7 @@
       "skill_path": "skills/project/titan/titan-memory-loom/SKILL.md",
       "status": "scaffold",
       "summary": "Initialize or update Titan Memory Loom records as candidate memory with source refs, confidence, and authority warnings.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1198,7 +1150,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-memory-prune",
       "promotion_review_path": null,
@@ -1206,11 +1158,7 @@
       "skill_path": "skills/project/titan/titan-memory-prune/SKILL.md",
       "status": "scaffold",
       "summary": "Propose redaction, tombstone, or pruning candidates for Titan memory without silent deletion or canon rewrite.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1225,7 +1173,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-mutation-gate",
       "promotion_review_path": null,
@@ -1233,11 +1181,7 @@
       "skill_path": "skills/project/titan/titan-mutation-gate/SKILL.md",
       "status": "scaffold",
       "summary": "Gate Forge workspace-write work with explicit intent, target paths, prechecks, validation, and rollback or stop posture.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1252,7 +1196,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-recall",
       "promotion_review_path": null,
@@ -1260,11 +1204,7 @@
       "skill_path": "skills/project/titan/titan-recall/SKILL.md",
       "status": "scaffold",
       "summary": "Retrieve Titan candidate memory records with source, record id, authority note, confidence, and verification path.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1279,7 +1219,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-receipt",
       "promotion_review_path": null,
@@ -1287,11 +1227,7 @@
       "skill_path": "skills/project/titan/titan-receipt/SKILL.md",
       "status": "scaffold",
       "summary": "Create, validate, note, or close Titan session receipts as witnesses rather than final truth.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1306,7 +1242,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-runtime-gate",
       "promotion_review_path": null,
@@ -1314,11 +1250,7 @@
       "skill_path": "skills/project/titan/titan-runtime-gate/SKILL.md",
       "status": "scaffold",
       "summary": "Activate Forge mutation or Delta judgment lanes only through matching explicit runtime gates on a Titan receipt.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1333,7 +1265,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-summon",
       "promotion_review_path": null,
@@ -1341,11 +1273,7 @@
       "skill_path": "skills/project/titan/titan-summon/SKILL.md",
       "status": "scaffold",
       "summary": "Begin an explicit Titan service-cohort session with Atlas, Sentinel, and Mneme active and Forge or Delta locked.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     },
     {
       "candidate_review_path": null,
@@ -1360,7 +1288,7 @@
       "governance_lane_ids": [],
       "invocation_mode": "explicit-only",
       "is_default_reference": false,
-      "lineage_state": "pending",
+      "lineage_state": "published",
       "maturity_status": "scaffold",
       "name": "titan-thread-turn-binding",
       "promotion_review_path": null,
@@ -1368,11 +1296,7 @@
       "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
       "status": "scaffold",
       "summary": "Bind Titan bridge events, approvals, and replay state to explicit thread and turn ids for inspectable continuity.",
-      "technique_bridge_findings": [
-        "pending_technique_dependencies",
-        "pending_technique_entries",
-        "tbd_technique_refs"
-      ]
+      "technique_bridge_findings": []
     }
   ],
   "source_of_truth": {

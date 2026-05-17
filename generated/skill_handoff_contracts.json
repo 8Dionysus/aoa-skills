@@ -2480,16 +2480,18 @@
         "stop note when the approval is missing or ambiguous"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "receipt-or-ledger-reference",
@@ -2513,14 +2515,14 @@
           "stop-note-when-the-approval-is-missing-or-ambiguous"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -2544,16 +2546,18 @@
         "blocked-action note when approval is insufficient"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "bridge-state-path",
@@ -2577,14 +2581,14 @@
           "blocked-action-note-when-approval-is-insufficient"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -2609,16 +2613,18 @@
         "explicit non-execution note"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "workspace-root",
@@ -2644,14 +2650,14 @@
           "explicit-non-execution-note"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -2676,16 +2682,18 @@
         "validation command suggestion"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "workspace-root",
@@ -2711,14 +2719,14 @@
           "validation-command-suggestion"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -2743,16 +2751,18 @@
         "next owner-repo action"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "receipt-path",
@@ -2778,14 +2788,14 @@
           "next-owner-repo-action"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -2810,16 +2820,18 @@
         "blocked-action notes"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "workspace-root",
@@ -2845,14 +2857,14 @@
           "blocked-action-notes"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -2877,16 +2889,18 @@
         "next verification step"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "event-log-path",
@@ -2912,14 +2926,14 @@
           "next-verification-step"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -2944,16 +2958,18 @@
         "digest note"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "receipt-or-event-source",
@@ -2979,14 +2995,14 @@
           "digest-note"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -3011,16 +3027,18 @@
         "stop line for missing confirmation"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "memory-record-id",
@@ -3046,14 +3064,14 @@
           "stop-line-for-missing-confirmation"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -3079,16 +3097,18 @@
         "rollback or stop note"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "intent-text",
@@ -3115,14 +3135,14 @@
           "rollback-or-stop-note"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -3147,16 +3167,18 @@
         "verification path"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "query-text",
@@ -3182,14 +3204,14 @@
           "verification-path"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -3214,16 +3236,18 @@
         "authority warning"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "workspace-root",
@@ -3249,14 +3273,14 @@
           "authority-warning"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -3281,16 +3305,18 @@
         "next validation step"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "receipt-path",
@@ -3316,14 +3342,14 @@
           "next-validation-step"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -3348,16 +3374,18 @@
         "next move"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "workspace-root",
@@ -3383,14 +3411,14 @@
           "next-move"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }
@@ -3415,16 +3443,18 @@
         "continuity warning"
       ],
       "verification": [
-        "confirm the request and outputs stayed inside the declared Titan lane",
-        "confirm any mutation or judgment gate was explicit and recorded",
-        "confirm source refs, receipt refs, or ledger refs are preserved when available",
-        "confirm the result names stop lines and remaining owner validation needs"
+        "confirm direct skill invocation or explicit Titan service-cohort request is present",
+        "confirm lane, gate, source refs, and owner surface are named when relevant",
+        "confirm Forge or Delta locked or allowed state matches recorded approval evidence",
+        "confirm generated artifacts are marked witness, candidate, derived, or advisory rather than final truth",
+        "confirm next validation, replay, repair, or owner-route follow-up is named before continuation"
       ],
       "contracts": [
         "The skill is explicit-only and must not be invoked as hidden background behavior.",
-        "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-        "Forge mutation and Delta judgment gates must remain distinct and visible.",
-        "Owner-repo validation and human judgment remain stronger than the local skill output."
+        "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+        "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth.",
+        "Forge mutation and Delta judgment gates must remain distinct, operator-visible, and receipt-linked.",
+        "Missing source refs, missing approval, missing validation, or unclear owner route must be named as stop conditions."
       ],
       "consumes_artifact_tags": [
         "thread-id",
@@ -3450,14 +3480,14 @@
           "continuity-warning"
         ],
         "verification_notes": [
-          "confirm the request and outputs stayed inside the declared Titan lane",
-          "confirm any mutation or judgment gate was explicit and recorded",
-          "confirm source refs, receipt refs, or ledger refs are preserved when available"
+          "confirm direct skill invocation or explicit Titan service-cohort request is present",
+          "confirm lane, gate, source refs, and owner surface are named when relevant",
+          "confirm Forge or Delta locked or allowed state matches recorded approval evidence"
         ],
         "contract_notes": [
           "The skill is explicit-only and must not be invoked as hidden background behavior.",
-          "Titan receipts, bridge ledgers, console state, and memory records are witnesses, not final owner truth.",
-          "Forge mutation and Delta judgment gates must remain distinct and visible."
+          "Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dionysus.",
+          "Receipts, bridge ledgers, console state, replay artifacts, approval records, and memory records are witnesses or candidates, not final owner truth."
         ],
         "next_recommended_skills": []
       }

@@ -2,11 +2,11 @@
 
 ## Scenario
 
-A Titan service-cohort session needs `titan-thread-turn-binding` to handle one bounded operator-visible step while preserving receipt, gate, and owner-route evidence.
+A bridge replay needs thread and turn ids bound to event and approval refs so continuity can be inspected.
 
 ## Why this skill fits
 
-The request matches the skill boundary for Titan Thread Turn Binding and can be handled without hidden agents, silent mutation, or source-of-truth transfer.
+The request keeps bridge continuity inspectable by tying events and approvals to concrete turns.
 
 ## Expected inputs
 
@@ -26,12 +26,14 @@ The request matches the skill boundary for Titan Thread Turn Binding and can be 
 
 ## Boundary notes
 
-- Keep Forge mutation and Delta judgment gates explicit.
-- Keep receipt, bridge, console, replay, and memory outputs subordinate to owner-repo validation.
-- Stop when operator approval, source refs, or validation paths are missing.
+- Turn binding preserves continuity evidence; it does not decide whether the work was correct.
+- Missing turns should become repair prompts, not guessed continuity.
+- Keep Titan artifacts subordinate to owner-repo validation and human judgment.
+- Stop when approval, source refs, validation, or owner route is missing.
 
 ## Verification notes
 
-- Confirm the lane and gate status are visible in the output.
-- Confirm any receipt or ledger ref is preserved.
+- Confirm explicit Titan invocation or service-cohort request is present.
+- Confirm lane and gate status are visible in the output.
+- Confirm any receipt, ledger, source, replay, approval, or memory ref is preserved.
 - Confirm the next owner-repo action is named when the skill output is not enough.
