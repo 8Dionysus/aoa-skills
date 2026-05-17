@@ -181,7 +181,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "fa2c4d06912e93440a77b1bfe67e9a272cd3d1b59d12248776b33bfd4fe2c6e8",
+      "content_hash": "7cdd6e184bb7f5ebdad2c7318d7dd4a38ec16349be28f3eeb880c139e7a6994c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -207,7 +207,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
-      "skill_revision": "fa2c4d06912e",
+      "skill_revision": "7cdd6e184bb7",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -231,14 +231,14 @@
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0081",
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -258,7 +258,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-adr-write.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "a2f205f916c07d173e39164408ae2985c7d320ebbd67388e04220012a903dc6e",
+      "content_hash": "417365a96443ff00f81c50e50a5d4374602472b68f8fb71680bbbe2b5df19044",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -287,7 +287,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-adr-write.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-adr-write/SKILL.md",
-      "skill_revision": "a2f205f916c0",
+      "skill_revision": "417365a96443",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -316,14 +316,14 @@
           "lineage_state": "published",
           "path": "techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0002",
           "lineage_state": "published",
           "path": "techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -424,7 +424,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "a6095d450a17b3f6de50b40b9c9bdfa7a1250dcfb1f2ff82743eb7db87314c6e",
+      "content_hash": "07ab40701e3b8977d98af002f5204d2b6a57912c6261e778bd5d6efce306e85a",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -456,7 +456,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-automation-opportunity-scan.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-automation-opportunity-scan/SKILL.md",
-      "skill_revision": "a6095d450a17",
+      "skill_revision": "07ab40701e3b",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -486,21 +486,21 @@
           "lineage_state": "published",
           "path": "techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0087",
           "lineage_state": "published",
           "path": "techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0088",
           "lineage_state": "published",
           "path": "techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -690,7 +690,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "d934a5b62bfb8f211e3b2821d917f1712da46cd289dcbf84bc79bc5254df8f70",
+      "content_hash": "be4999a2bf9c879555970eba60cb998f6df549ceb7edf7c8db026dcbcc526a8c",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -720,7 +720,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "skill_revision": "d934a5b62bfb",
+      "skill_revision": "be4999a2bf9c",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -750,21 +750,21 @@
           "lineage_state": "published",
           "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0084",
           "lineage_state": "published",
           "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0089",
           "lineage_state": "published",
           "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -866,7 +866,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-contract-test.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "4e13118e609496f3a69099780e1ad3e2c6af6408bf17554fddcea10b91696bf9",
+      "content_hash": "5643013a5d81241f189e623cdd8e52d7fac1d85c70d252cb771f3f570a79c163",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -895,7 +895,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-contract-test.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-contract-test/SKILL.md",
-      "skill_revision": "4e13118e6094",
+      "skill_revision": "5643013a5d81",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -924,14 +924,14 @@
           "lineage_state": "published",
           "path": "techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0015",
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/contract-test-design/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -1203,7 +1203,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-local-stack-bringup.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "c126c3a41720ad34f956a65bfaabac60bef1d912e7fb8e7fbfd7ec1992bd6660",
+      "content_hash": "7b229825ac1d242acded5a95456499d16993526fc08c17379b76418d06bf13a1",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1231,7 +1231,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-local-stack-bringup.md",
       "scope": "risk",
       "skill_path": "skills/risk/aoa-local-stack-bringup/SKILL.md",
-      "skill_revision": "c126c3a41720",
+      "skill_revision": "7b229825ac1d",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1267,28 +1267,28 @@
           "lineage_state": "published",
           "path": "techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0037",
           "lineage_state": "published",
           "path": "techniques/execution/runtime-truth-lifecycle/contextual-host-doctor/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0028",
           "lineage_state": "published",
           "path": "techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0038",
           "lineage_state": "published",
           "path": "techniques/execution/runtime-truth-lifecycle/one-command-service-lifecycle/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "cd276f040d55d490bd015b8698c7a5d594b9f875"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -1393,7 +1393,7 @@
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-property-invariants.md",
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "25d31fa59624b1238a2ea625c516cbcd4b1e2769e1ad2dd76295aa4ed5d41188",
+      "content_hash": "b8fdd2c5b34c8e3d1dcde0e9736e79d7fba422532e1981c8ea2325a476830905",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1422,7 +1422,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-property-invariants.md",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-property-invariants/SKILL.md",
-      "skill_revision": "25d31fa59624",
+      "skill_revision": "b8fdd2c5b34c",
       "status": "canonical",
       "support_artifacts": [
         {
@@ -1451,14 +1451,14 @@
           "lineage_state": "published",
           "path": "techniques/proof/skill-support/property-invariants/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0007",
           "lineage_state": "published",
           "path": "techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "fbead87e01b82df6c56e3d92a074cd7515131847"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -1478,7 +1478,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "b9e9568a5f1ca7d8f447dd1c9a0639f9afb564fb3da5e4e5490c670aca0348a6",
+      "content_hash": "3672a25831c312dca67a711e50e158874bd427a2eb25619be5b618f0b0b398b2",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1510,7 +1510,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-quest-harvest.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-quest-harvest/SKILL.md",
-      "skill_revision": "b9e9568a5f1c",
+      "skill_revision": "3672a25831c3",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1539,14 +1539,14 @@
           "lineage_state": "published",
           "path": "techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0090",
           "lineage_state": "published",
           "path": "techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -1745,7 +1745,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "ba0484678a8dc8bc2cfc3cd8227df2fc8e656914648756ee93b2c8ba5b5d6846",
+      "content_hash": "341ad3eec340fd345c7dae59933fcfb8f11e01f142f88d403ee940840fd36f3e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1777,7 +1777,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "ba0484678a8d",
+      "skill_revision": "341ad3eec340",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1807,21 +1807,21 @@
           "lineage_state": "published",
           "path": "techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0076",
           "lineage_state": "published",
           "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0077",
           "lineage_state": "published",
           "path": "techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -1841,7 +1841,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "179c5348cd75a8c886c6844df207f2be933a2b92cce1cbc5526b2edc629ae43a",
+      "content_hash": "80f8c55f299fafef5d8a9f353574568296b74c84e798d04cf7aa332a8650ceab",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1872,7 +1872,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-session-progression-lift.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-progression-lift/SKILL.md",
-      "skill_revision": "179c5348cd75",
+      "skill_revision": "80f8c55f299f",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1901,14 +1901,14 @@
           "lineage_state": "published",
           "path": "techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0085",
           "lineage_state": "published",
           "path": "techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -1928,7 +1928,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "2781c7c38bc3e883e7aed2a753f12e5d09797e8594f23a4fbc99c5c5a8796bdd",
+      "content_hash": "35b0365511239f959b45cd0882b099623b091293b71f5d47b968488d2882f77b",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1959,7 +1959,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-session-route-forks.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-route-forks/SKILL.md",
-      "skill_revision": "2781c7c38bc3",
+      "skill_revision": "35b036551123",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -1988,14 +1988,14 @@
           "lineage_state": "published",
           "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0079",
           "lineage_state": "published",
           "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -2015,7 +2015,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "d319db0ea57d4dbf4dca5676d46d1b55174c220cf19a95411d134fe68dbc77dd",
+      "content_hash": "54e0926c66eadc83c6c02d7ca679c4fca9d0280ccd2aec2bff3e9a3dbebfc09d",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2046,7 +2046,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-diagnose.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-diagnose/SKILL.md",
-      "skill_revision": "d319db0ea57d",
+      "skill_revision": "54e0926c66ea",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -2075,14 +2075,14 @@
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0081",
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -2102,7 +2102,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "17edbf208692db4bfef676379e81333626f7a420a4f1abbe2af4da831d7b608d",
+      "content_hash": "0b867807a7486185f26774bb85d12be129bf34680d6c13e15f25d5e7dfc41134",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2133,7 +2133,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-session-self-repair.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-self-repair/SKILL.md",
-      "skill_revision": "17edbf208692",
+      "skill_revision": "0b867807a748",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -2162,14 +2162,14 @@
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0083",
           "lineage_state": "published",
           "path": "techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },
@@ -2282,7 +2282,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "7e8c8fcae843913371627d6f89c855959fc3c6e57cada2aaa5bdac3282927c28",
+      "content_hash": "7c02d67527afffe0ad1b6956ee134d3fb7a2708092e5706868572f9597a43ac9",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2309,7 +2309,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-summon.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "skill_revision": "7e8c8fcae843",
+      "skill_revision": "7c02d67527af",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -2340,28 +2340,28 @@
           "lineage_state": "published",
           "path": "techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0079",
           "lineage_state": "published",
           "path": "techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0062",
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         },
         {
           "id": "AOA-T-0058",
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "b0f7e094bf81abaf0895a729d504a97f3af91ae8"
+          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
         }
       ]
     },

@@ -11,7 +11,7 @@ name: aoa-session-progression-lift
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `179c5348cd75`
+- reviewed revision: `80f8c55f299f`
 
 ## Target status
 

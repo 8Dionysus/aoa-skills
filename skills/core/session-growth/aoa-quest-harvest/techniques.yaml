@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0089
     repo: 8Dionysus/aoa-techniques
     path: techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md
-    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - When to use
@@ -16,7 +16,7 @@ techniques:
   - id: AOA-T-0090
     repo: 8Dionysus/aoa-techniques
     path: techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md
-    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - When to use

@@ -172,7 +172,7 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "a093eb841ec154726329e7c5bfb7bceced02613fbd77dd2f1ee8999c82202202",
+      "sha256": "c0a2419014c844057b8157fbea2589b38be3342fb14aa87124fd47226751b243",
       "bytes": 287851
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "07d2ce84aaf5b34b45edcc8bac2966d26766fbd9dcefa9096c8b294a8ba80447",
+      "sha256": "7ca9152b0b0fbd535a15bc9041f38cdccbae979b41a381532ae61ffd81bb7a69",
       "bytes": 314723
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "abced2bfd287954b3705b48426441d6cf27a78ac168fc48cba418adcbe2d152a",
+      "sha256": "671dcaf09d5043daeec08c86906513d18d347faa301f723788fc6728725ce0d3",
       "bytes": 91714
     },
     {
@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "9a3158f61c8fc7f2e76155d78b591d97728f404cabd0d0bf5c024f1eca99f7a3",
+      "sha256": "48393f6f2969dfe41363b56ae6bdf59a83d38c2ba10924ad781b6bc0c4177017",
       "bytes": 128812
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "5cf9b61f0d2ed6bd34dc8296c60929c99912847ca5f686f7bcffec6d8ae424bb",
+      "sha256": "a9d19d6877e705db4dd6f7b17dd8fc582846fdf2e2a386f1f989ab323167a9da",
       "bytes": 15065
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "8c3f4fdc2a5642f3d37e39e43271e263796c600be145628fe665fe15fa7f5aef",
+      "sha256": "3290d022cf9f5f9302719a1df0d9149896351c04d14bd30634832daefdc30f0c",
       "bytes": 236835
     },
     {
@@ -466,13 +466,13 @@
     },
     {
       "name": "abyss-self-diagnostic-spine",
-      "skill_revision": "fa2c4d06912e",
-      "content_hash": "fa2c4d06912e93440a77b1bfe67e9a272cd3d1b59d12248776b33bfd4fe2c6e8"
+      "skill_revision": "7cdd6e184bb7",
+      "content_hash": "7cdd6e184bb7f5ebdad2c7318d7dd4a38ec16349be28f3eeb880c139e7a6994c"
     },
     {
       "name": "aoa-adr-write",
-      "skill_revision": "a2f205f916c0",
-      "content_hash": "a2f205f916c07d173e39164408ae2985c7d320ebbd67388e04220012a903dc6e"
+      "skill_revision": "417365a96443",
+      "content_hash": "417365a96443ff00f81c50e50a5d4374602472b68f8fb71680bbbe2b5df19044"
     },
     {
       "name": "aoa-approval-gate-check",
@@ -481,8 +481,8 @@
     },
     {
       "name": "aoa-automation-opportunity-scan",
-      "skill_revision": "a6095d450a17",
-      "content_hash": "a6095d450a17b3f6de50b40b9c9bdfa7a1250dcfb1f2ff82743eb7db87314c6e"
+      "skill_revision": "07ab40701e3b",
+      "content_hash": "07ab40701e3b8977d98af002f5204d2b6a57912c6261e778bd5d6efce306e85a"
     },
     {
       "name": "aoa-bounded-context-map",
@@ -496,8 +496,8 @@
     },
     {
       "name": "aoa-checkpoint-closeout-bridge",
-      "skill_revision": "d934a5b62bfb",
-      "content_hash": "d934a5b62bfb8f211e3b2821d917f1712da46cd289dcbf84bc79bc5254df8f70"
+      "skill_revision": "be4999a2bf9c",
+      "content_hash": "be4999a2bf9c879555970eba60cb998f6df549ceb7edf7c8db026dcbcc526a8c"
     },
     {
       "name": "aoa-commit-growth-seam",
@@ -506,8 +506,8 @@
     },
     {
       "name": "aoa-contract-test",
-      "skill_revision": "4e13118e6094",
-      "content_hash": "4e13118e609496f3a69099780e1ad3e2c6af6408bf17554fddcea10b91696bf9"
+      "skill_revision": "5643013a5d81",
+      "content_hash": "5643013a5d81241f189e623cdd8e52d7fac1d85c70d252cb771f3f570a79c163"
     },
     {
       "name": "aoa-core-logic-boundary",
@@ -526,8 +526,8 @@
     },
     {
       "name": "aoa-local-stack-bringup",
-      "skill_revision": "c126c3a41720",
-      "content_hash": "c126c3a41720ad34f956a65bfaabac60bef1d912e7fb8e7fbfd7ec1992bd6660"
+      "skill_revision": "7b229825ac1d",
+      "content_hash": "7b229825ac1d242acded5a95456499d16993526fc08c17379b76418d06bf13a1"
     },
     {
       "name": "aoa-port-adapter-refactor",
@@ -536,13 +536,13 @@
     },
     {
       "name": "aoa-property-invariants",
-      "skill_revision": "25d31fa59624",
-      "content_hash": "25d31fa59624b1238a2ea625c516cbcd4b1e2769e1ad2dd76295aa4ed5d41188"
+      "skill_revision": "b8fdd2c5b34c",
+      "content_hash": "b8fdd2c5b34c8e3d1dcde0e9736e79d7fba422532e1981c8ea2325a476830905"
     },
     {
       "name": "aoa-quest-harvest",
-      "skill_revision": "b9e9568a5f1c",
-      "content_hash": "b9e9568a5f1ca7d8f447dd1c9a0639f9afb564fb3da5e4e5490c670aca0348a6"
+      "skill_revision": "3672a25831c3",
+      "content_hash": "3672a25831c312dca67a711e50e158874bd427a2eb25619be5b618f0b0b398b2"
     },
     {
       "name": "aoa-safe-infra-change",
@@ -556,28 +556,28 @@
     },
     {
       "name": "aoa-session-donor-harvest",
-      "skill_revision": "ba0484678a8d",
-      "content_hash": "ba0484678a8dc8bc2cfc3cd8227df2fc8e656914648756ee93b2c8ba5b5d6846"
+      "skill_revision": "341ad3eec340",
+      "content_hash": "341ad3eec340fd345c7dae59933fcfb8f11e01f142f88d403ee940840fd36f3e"
     },
     {
       "name": "aoa-session-progression-lift",
-      "skill_revision": "179c5348cd75",
-      "content_hash": "179c5348cd75a8c886c6844df207f2be933a2b92cce1cbc5526b2edc629ae43a"
+      "skill_revision": "80f8c55f299f",
+      "content_hash": "80f8c55f299fafef5d8a9f353574568296b74c84e798d04cf7aa332a8650ceab"
     },
     {
       "name": "aoa-session-route-forks",
-      "skill_revision": "2781c7c38bc3",
-      "content_hash": "2781c7c38bc3e883e7aed2a753f12e5d09797e8594f23a4fbc99c5c5a8796bdd"
+      "skill_revision": "35b036551123",
+      "content_hash": "35b0365511239f959b45cd0882b099623b091293b71f5d47b968488d2882f77b"
     },
     {
       "name": "aoa-session-self-diagnose",
-      "skill_revision": "d319db0ea57d",
-      "content_hash": "d319db0ea57d4dbf4dca5676d46d1b55174c220cf19a95411d134fe68dbc77dd"
+      "skill_revision": "54e0926c66ea",
+      "content_hash": "54e0926c66eadc83c6c02d7ca679c4fca9d0280ccd2aec2bff3e9a3dbebfc09d"
     },
     {
       "name": "aoa-session-self-repair",
-      "skill_revision": "17edbf208692",
-      "content_hash": "17edbf208692db4bfef676379e81333626f7a420a4f1abbe2af4da831d7b608d"
+      "skill_revision": "0b867807a748",
+      "content_hash": "0b867807a7486185f26774bb85d12be129bf34680d6c13e15f25d5e7dfc41134"
     },
     {
       "name": "aoa-source-of-truth-check",
@@ -586,8 +586,8 @@
     },
     {
       "name": "aoa-summon",
-      "skill_revision": "7e8c8fcae843",
-      "content_hash": "7e8c8fcae843913371627d6f89c855959fc3c6e57cada2aaa5bdac3282927c28"
+      "skill_revision": "7c02d67527af",
+      "content_hash": "7c02d67527afffe0ad1b6956ee134d3fb7a2708092e5706868572f9597a43ac9"
     },
     {
       "name": "aoa-tdd-slice",
@@ -689,7 +689,7 @@
         "abyss-sanitized-share",
         "abyss-self-diagnostic-spine"
       ],
-      "profile_revision": "10d1524fdd7e7b8e5fe4a519e2d8e4f3d147c325067b71c1dea7fe24194246be"
+      "profile_revision": "8e781aef5a27ac3ddbad45aefb9e045a21f3099ae80f292670a268a1d703676f"
     },
     {
       "name": "repo-atm10-overlay",
@@ -706,7 +706,7 @@
       "skill_names": [
         "aoa-automation-opportunity-scan"
       ],
-      "profile_revision": "a6838750b3852fc14cb3a0decf6e62a14bb93bb5edf5859a8858ffc1bf242bda"
+      "profile_revision": "9070f811956dd52b960a894ee86a125ca61272d7a3ca7b41a8ad1161c6bd0db9"
     },
     {
       "name": "repo-core-only",
@@ -731,7 +731,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "cbf676d1bc9c756fedbe0e315af5def7a6b9c5c9c61a78148237eee136593510"
+      "profile_revision": "cbb2011eb1404fae491eb817629c5c7c5fa1ab6d297c336c32026792b706370f"
     },
     {
       "name": "repo-default",
@@ -783,7 +783,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "c1ccfd7f8ed3b14d872f1b7ba67a55924e51adf5a889ecb31fb3df5b43700f0d"
+      "profile_revision": "170a32b15f125ec3333d6f69178f99f34956a94f0c328ff9fe8b7b6f55305509"
     },
     {
       "name": "repo-project-core-kernel",
@@ -798,7 +798,7 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "profile_revision": "5f2eded7dbca93642bc7892d602575fda8ab3c85e93585d9ec34059249008fcd"
+      "profile_revision": "c4ec6169287810a4344983168339be16abb099e013da91a2a66012d8d39cb9db"
     },
     {
       "name": "repo-project-core-outer-ring",
@@ -815,7 +815,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "4438ffb25e0f9a069604f9ba4e288e7df395ad8680b21a35e8e0485b85372593"
+      "profile_revision": "8eb3176866e13fa75729fbb25b82cfaee318a0a639ba820da36d3cf98d9e8449"
     },
     {
       "name": "repo-project-foundation",
@@ -845,7 +845,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "66baa9676ee45452a63a2f7588920bcc0d59ac25cf0307b6d5ec38f82c0f8967"
+      "profile_revision": "8f3c9c554c82f03fd7d3ac56b5b284c62313cbfdb2051fa56b1fd6f9a0404651"
     },
     {
       "name": "repo-project-risk-guard-ring",
@@ -857,7 +857,7 @@
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
-      "profile_revision": "494493c9fddc547236535a1ca2cb6b7599de2bd8be7986b912963cbe1acaa430"
+      "profile_revision": "ba97caaa9a036d1130053d6aa642076f6aad0ff49ae5abf4e9da0fb19b277bb3"
     },
     {
       "name": "repo-quest-harvest-only",
@@ -865,7 +865,7 @@
       "skill_names": [
         "aoa-quest-harvest"
       ],
-      "profile_revision": "5f37614e2da2ddd0ae5ddcb1e52ac795101125d85831ad38a88e2ce68bc3c44f"
+      "profile_revision": "6d3bd1e4c8fe7011ece186af5d2ac8699f4c37749bdfc9daadacf60b4c1cd79e"
     },
     {
       "name": "repo-risk-explicit",
@@ -877,7 +877,7 @@
         "aoa-safe-infra-change",
         "aoa-sanitized-share"
       ],
-      "profile_revision": "270ce93ce40b9879b1683684eda7ce738a6242854e0dd96f06d2e7043bbe9b8f"
+      "profile_revision": "fc41161654dd96edd49f44e53032089a528ea94f40c3ea2bb76bcf4590fcab3d"
     },
     {
       "name": "repo-session-donor-harvest-only",
@@ -885,7 +885,7 @@
       "skill_names": [
         "aoa-session-donor-harvest"
       ],
-      "profile_revision": "85981e9c04f87a739e263c3097bce4dafc30f0422ecc9bd5804d3168095552d7"
+      "profile_revision": "d1320f7933e4a0f3315756ba4e9908704b6b628cfe7e4b1c8d72213e4496e1e0"
     },
     {
       "name": "repo-session-growth",
@@ -902,7 +902,7 @@
         "aoa-session-self-repair",
         "aoa-summon"
       ],
-      "profile_revision": "5edd2718995e533d783bcc0cf16f34515c75af7064880d4723d7f72f66294c49"
+      "profile_revision": "e16a39cd833c6e76a339a00dcebe3109b7519ace2851939760c4baccae4b3233"
     },
     {
       "name": "repo-session-harvest-family",
@@ -917,7 +917,7 @@
         "aoa-session-self-diagnose",
         "aoa-session-self-repair"
       ],
-      "profile_revision": "eada3a8b2e91f8e0cc299b308db3d1c3e4fcd17f7b3b18217630da1c1fd8cd20"
+      "profile_revision": "080f9adf2d19cf0a488b48a25d7fbea07b3b5edbbc581820b7b2c67039647ea7"
     },
     {
       "name": "repo-summon-only",
@@ -925,7 +925,7 @@
       "skill_names": [
         "aoa-summon"
       ],
-      "profile_revision": "cd416abe1230972671ee6f1c745fcc145a969dc7709f5d510956057e3bca51b5"
+      "profile_revision": "72935251b8afec13ee0674878d6a7de256f57c6b51ea09a3a45f6c065f5fa554"
     },
     {
       "name": "repo-titan-overlay",
@@ -970,7 +970,7 @@
         "aoa-source-of-truth-check",
         "aoa-tdd-slice"
       ],
-      "profile_revision": "70035ffce5408667bffe1638cdbfe85ae23612a2d548e350e42ac7b888e8b0e7"
+      "profile_revision": "35b5dcf88ee3bcf56d845790fc36145d4ef23b866310a736bc33f9655f833d06"
     }
   ],
   "release_identity": {

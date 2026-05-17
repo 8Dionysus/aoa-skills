@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0078
     repo: 8Dionysus/aoa-techniques
     path: techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md
-    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - Inputs
@@ -15,7 +15,7 @@ techniques:
   - id: AOA-T-0079
     repo: 8Dionysus/aoa-techniques
     path: techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md
-    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - Inputs
@@ -26,7 +26,7 @@ techniques:
   - id: AOA-T-0062
     repo: 8Dionysus/aoa-techniques
     path: techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md
-    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - Outputs
@@ -37,7 +37,7 @@ techniques:
   - id: AOA-T-0058
     repo: 8Dionysus/aoa-techniques
     path: techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md
-    source_ref: b0f7e094bf81abaf0895a729d504a97f3af91ae8
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - Outputs
