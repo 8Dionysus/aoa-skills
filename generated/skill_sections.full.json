@@ -11,37 +11,37 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the base `aoa-safe-infra-change` workflow is already correct, but an `abyss-*` repo needs repo-relative operational surfaces, commands, or approval notes\n- the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family\n- explicit local authority, rollback posture, or verification commands still need to be named before execution\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the task is really about producing a shareable public-safe artifact rather than the operational change itself; use `abyss-sanitized-share`\n- no `abyss-*` repo adaptation is needed and the base `aoa-safe-infra-change` skill is sufficient\n- the overlay would only restate the base workflow without adding a real local surface\n- the main question is whether authority exists at all; use `aoa-approval-gate-check`\n- the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`\n- the work would widen into broader project doctrine instead of a thin local overlay",
+          "content_markdown": "Use this skill when:\n- the base `aoa-safe-infra-change` workflow is already correct, but an `abyss-*` repo needs repo-relative operational surfaces, commands, or approval notes\n- the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family\n- the local surface is repo-owned operational material such as a compose file, service wrapper, env or config template, bootstrap script, deployment toggle, restart rule, runtime check, or generated operational receipt\n- explicit local authority, rollback posture, or verification commands still need to be named before execution\n- the change needs a local preflight, preview, stop line, or recovery anchor matched to the touched surface rather than a generic safety claim\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the task is really about producing a shareable public-safe artifact rather than the operational change itself; use `abyss-sanitized-share`\n- no `abyss-*` repo adaptation is needed and the base `aoa-safe-infra-change` skill is sufficient\n- the overlay would only restate the base workflow without adding a real local surface\n- the main question is whether authority exists at all; use `aoa-approval-gate-check`\n- the main need is to prefer or interpret a preview path before execution; use `aoa-dry-run-first`\n- the touched surface belongs to a stronger owner repo, host-level service, secret plane, or deployment environment that has not been explicitly confirmed for this change\n- the work would widen into broader project doctrine instead of a thin local overlay",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
         {
-          "content_markdown": "- target operational change and touched local surface\n- repo-relative operational files or commands\n- explicit local authority or approval posture\n- validation and rollback path\n- base skill reference",
+          "content_markdown": "- target operational change and touched local surface\n- repo-relative operational files, commands, generated receipts, or runtime check paths\n- surface class, side-effect class, and expected blast radius\n- explicit local authority, approval posture, and stop condition\n- preflight or preview path when one exists\n- validation path and rollback or recovery anchor\n- sensitivity notes for raw logs, host details, secrets, or unpublished runtime data\n- base skill reference",
           "heading": "Inputs",
           "key": "inputs"
         },
         {
-          "content_markdown": "- bounded local infra-change plan\n- repo-relative command or path sketch\n- explicit local authority and rollback note\n- pointer to the family review surface\n- concise verification note for the local repo surface",
+          "content_markdown": "- bounded local infra-change plan\n- repo-relative command, path, or receipt sketch\n- explicit local authority, approval, stop-line, and rollback note\n- surface-specific verification plan with the smallest honest proof\n- note about any material that must be sanitized before sharing\n- pointer to the family review surface\n- concise verification note for the local repo surface",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from `aoa-safe-infra-change` instead of inventing a new project-family workflow\n2. name the repo-relative operational files, commands, and authority posture that matter locally\n3. keep the adaptation bounded to the local repo surface under change\n4. preserve the base risk framing, rollback thinking, and explicit verification posture\n5. make explicit what still requires downstream human approval or repo-specific judgment",
+          "content_markdown": "1. start from `aoa-safe-infra-change` instead of inventing a new project-family workflow\n2. read the nearest repo route card before treating a path as locally owned\n3. classify the touched surface: source config, generated operational receipt, runtime wrapper, launch command, environment template, deployment toggle, or verification script\n4. name the side effect, authority posture, stop condition, and rollback or recovery anchor before proposing execution\n5. choose the smallest local preflight or preview that can prove the change shape without performing a stronger mutation\n6. keep commands and paths repo-relative unless the operator explicitly authorizes a host or environment path\n7. preserve the base risk framing, rollback thinking, and explicit verification posture\n8. make explicit what still requires downstream human approval or repo-specific judgment",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- preserve the base skill meaning\n- keep paths and commands repo-relative\n- keep local authority explicit\n- keep the overlay explicit-only, public-safe, and reviewable",
+          "content_markdown": "- preserve the base skill meaning\n- keep paths and commands repo-relative\n- keep local authority explicit\n- keep host paths, secrets, credentials, and unpublished operational details out of shareable notes unless separately sanitized\n- do not convert a generated receipt or runtime artifact into source authority\n- keep the overlay explicit-only, public-safe, and reviewable",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- hiding downstream authority inside vague local operational notes\n- turning a thin overlay into project doctrine or a scenario bundle\n- naming repo-relative commands without enough verification or rollback context\n- silently changing the base workflow instead of adapting the local repo surface",
+          "content_markdown": "- hiding downstream authority inside vague local operational notes\n- turning a thin overlay into project doctrine or a scenario bundle\n- naming repo-relative commands without enough verification or rollback context\n- treating a dry-run, generated receipt, or log sample as proof of a live mutation that did not happen\n- using an `abyss-*` label to claim authority over a sibling owner or host-level surface\n- copying raw runtime data into a review note when `abyss-sanitized-share` is the correct next step\n- silently changing the base workflow instead of adapting the local repo surface",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths and commands are named explicitly\n- confirm local authority, rollback posture, and verification remain explicit\n- confirm the adaptation stays bounded to the local repo surface\n- confirm the family review doc and bundle-local checklist stay aligned",
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths, commands, receipts, or runtime checks are named explicitly\n- confirm local authority, stop condition, rollback posture, and verification remain explicit\n- confirm the selected preflight or preview is proportional to the side effect\n- confirm no stronger host, secret, deployment, or sibling-owner authority was implied\n- confirm the adaptation stays bounded to the local repo surface\n- confirm the family review doc and bundle-local checklist stay aligned",
           "heading": "Verification",
           "key": "verification"
         },
@@ -69,37 +69,37 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the base `aoa-sanitized-share` workflow is already correct, but an `abyss-*` repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds\n- raw logs, diagnostics, config snippets, or incident notes from one `abyss-*` repo need a bounded public-safe or wider-shareable form\n- the local repo needs a canonical place or review posture for the sanitized output\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the real task is the underlying operational or configuration mutation itself; use `abyss-safe-infra-change`\n- no `abyss-*` repo adaptation is needed and the base `aoa-sanitized-share` skill is sufficient\n- the overlay would only restate the base sanitization workflow without adding a real local sharing surface\n- the main question is whether the underlying action should be allowed at all; use `aoa-approval-gate-check`\n- the material is already clearly public-safe and no local sharing surface or threshold needs clarification\n- the work would widen into broader project doctrine instead of a thin local overlay",
+          "content_markdown": "Use this skill when:\n- the base `aoa-sanitized-share` workflow is already correct, but an `abyss-*` repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds\n- raw logs, diagnostics, config snippets, or incident notes from one `abyss-*` repo need a bounded public-safe or wider-shareable form\n- the local repo needs a canonical place or review posture for the sanitized output\n- the material mixes durable lessons with raw paths, hostnames, account names, environment values, stack traces, timing traces, local commands, or unpublished operational context\n- the share target needs an explicit audience, retention posture, and raw-vs-sanitized separation before publication or handoff\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the real task is the underlying operational or configuration mutation itself; use `abyss-safe-infra-change`\n- no `abyss-*` repo adaptation is needed and the base `aoa-sanitized-share` skill is sufficient\n- the overlay would only restate the base sanitization workflow without adding a real local sharing surface\n- the main question is whether the underlying action should be allowed at all; use `aoa-approval-gate-check`\n- the material is already clearly public-safe and no local sharing surface or threshold needs clarification\n- the request asks to preserve raw operational data for an owner-local diagnosis rather than produce a shareable artifact\n- the repo route says the destination belongs to another owner and no owner-facing handoff has been named\n- the work would widen into broader project doctrine instead of a thin local overlay",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
         {
-          "content_markdown": "- raw material to sanitize\n- intended audience or sharing context\n- repo-relative destination or canonical sharing surface\n- local sensitivity thresholds or review posture\n- base skill reference",
+          "content_markdown": "- raw material to sanitize\n- intended audience or sharing context\n- repo-relative destination or canonical sharing surface\n- local sensitivity thresholds, review posture, and retention expectation\n- redaction map for what is removed, generalized, summarized, or retained\n- raw-source location and sanitized-output location, kept distinct\n- owner or audience constraints for public, wider-project, maintainer-only, or private handoff\n- base skill reference",
           "heading": "Inputs",
           "key": "inputs"
         },
         {
-          "content_markdown": "- sanitized local shareable artifact\n- note on what was generalized or removed\n- repo-relative placement or reference\n- pointer to the family review surface\n- concise warning about any remaining sensitive edge",
+          "content_markdown": "- sanitized local shareable artifact\n- note on what was generalized, removed, summarized, or retained\n- repo-relative placement or reference\n- raw-vs-sanitized separation note\n- explicit audience and remaining-review posture\n- pointer to the family review surface\n- concise warning about any remaining sensitive edge",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow\n2. name the repo-relative output surface, audience, and local sensitivity thresholds that matter\n3. keep the adaptation bounded to one local repo family surface\n4. preserve the base raw-vs-shareable split and caution-first sanitization posture\n5. make explicit what still requires downstream human review or unpublished local judgment",
+          "content_markdown": "1. start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow\n2. name the audience and destination before deciding what can remain visible\n3. separate the raw source from the sanitized output and avoid making the raw source part of the shareable artifact\n4. map each sensitive class to an action: remove, generalize, summarize, replace with a repo-relative stand-in, or keep with rationale\n5. preserve the operational lesson, evidence shape, and owner route without preserving unnecessary local identifiers\n6. keep the adaptation bounded to one local repo family surface\n7. make explicit what still requires downstream human review or unpublished local judgment",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- preserve the base skill meaning\n- keep local paths and output placement repo-relative and explicit\n- keep local review posture visible rather than implied\n- keep the overlay explicit-only, public-safe, and reviewable",
+          "content_markdown": "- preserve the base skill meaning\n- keep local paths and output placement repo-relative and explicit\n- keep local review posture visible rather than implied\n- keep raw material, private host or account details, credentials, exact tokens, environment values, and unpublished incident context out of the shareable artifact\n- do not let a sanitized artifact become the canonical source for raw operational truth\n- do not erase the lesson so aggressively that the artifact becomes unactionable\n- keep the overlay explicit-only, public-safe, and reviewable",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- hiding local sharing thresholds in vague prose\n- collapsing a thin overlay into project doctrine or incident policy\n- naming a repo-relative destination without enough sanitization or audience context\n- silently replacing the base workflow instead of adapting the local repo surface",
+          "content_markdown": "- hiding local sharing thresholds in vague prose\n- collapsing a thin overlay into project doctrine or incident policy\n- naming a repo-relative destination without enough sanitization or audience context\n- preserving exact raw paths, hostnames, account names, environment values, or timing traces when a generalized reference would carry the lesson\n- deleting all evidence shape and leaving only a harmless but useless summary\n- mixing raw and sanitized material in the same destination without a clear owner-local reason\n- silently replacing the base workflow instead of adapting the local repo surface",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm the repo-relative sharing surface is named explicitly\n- confirm local thresholds and review posture are visible rather than implied\n- confirm the adaptation stays bounded to one local repo family surface\n- confirm the family review doc and bundle-local checklist stay aligned",
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm the repo-relative sharing surface is named explicitly\n- confirm audience, thresholds, retention, and review posture are visible rather than implied\n- confirm raw-source and sanitized-output placement remain distinct\n- confirm the redaction map preserves the useful lesson while removing unsafe detail\n- confirm no owner-local raw data was promoted into public or wider-shareable truth\n- confirm the adaptation stays bounded to one local repo family surface\n- confirm the family review doc and bundle-local checklist stay aligned",
           "heading": "Verification",
           "key": "verification"
         },
@@ -127,42 +127,42 @@
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the base `aoa-session-self-diagnose` workflow is already correct, but an `abyss-*` repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs\n- a concrete runtime path must be diagnosed before any repair claim becomes honest\n- multiple runtime-body signals exist but remain scattered across local docs, logs, or checks\n- reviewed session evidence exists and should be cited rather than absorbed into runtime canon\n- the next honest move may be retest, governed repair, quest follow-up, progression lift, or manual regrounding\n\nDo not use this skill when:\n- the route is asking for immediate silent repair; use `aoa-session-self-repair` only after reviewed diagnosis exists\n- there is no concrete target path to diagnose\n- the material is still a live unreviewed session that belongs in the session-harvest family first\n- no `abyss-*` repo adaptation is needed and the base `aoa-session-self-diagnose` skill is sufficient\n- the work would widen into broader project doctrine instead of a thin local overlay",
+          "content_markdown": "Use this skill when:\n- the base `aoa-session-self-diagnose` workflow is already correct, but an `abyss-*` repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs\n- a concrete runtime path must be diagnosed before any repair claim becomes honest\n- multiple runtime-body signals exist but remain scattered across local docs, logs, checks, generated receipts, or run outputs\n- the evidence spans axes such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or last-good comparison and needs one bounded diagnostic shape\n- reviewed session evidence exists and should be cited rather than absorbed into runtime canon\n- the next honest move may be retest, governed repair, quest follow-up, progression lift, or manual regrounding\n\nDo not use this skill when:\n- the route is asking for immediate silent repair; use `aoa-session-self-repair` only after reviewed diagnosis exists\n- there is no concrete target path to diagnose\n- the material is still a live unreviewed session that belongs in the session-harvest family first\n- the main confusion is which diagnostic doc, runbook, or route surface is authoritative; use `aoa-source-of-truth-check`\n- the ask is only to run a generic doctor or health command without producing a reviewed diagnostic artifact\n- the request needs a broad project doctrine change, quest mutation, progression update, or repair packet rather than read-only diagnosis\n- no `abyss-*` repo adaptation is needed and the base `aoa-session-self-diagnose` skill is sufficient\n- the work would widen into broader project doctrine instead of a thin local overlay",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
         {
-          "content_markdown": "- resolved or requested preset / profile selectors\n- runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs\n- optional reviewed session or harvest packet refs\n- optional last-good comparison ref\n- base skill reference",
+          "content_markdown": "- resolved or requested diagnostic target, preset, profile, or repo-relative path\n- runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or related evidence refs\n- evidence timestamps, command refs, generated receipt refs, and known freshness limits\n- optional reviewed session, harvest packet, closeout, or owner-facing handoff refs\n- optional last-good comparison ref and the reason it is a valid anchor\n- intended local truth goal and the stop line before repair or quest mutation\n- base skill reference",
           "heading": "Inputs",
           "key": "inputs"
         },
         {
-          "content_markdown": "- one bounded runtime-owned `diagnostic_session_v1`\n- one explicit `exit_class`\n- named drift classes with evidence refs and unknowns when needed\n- optional handoff recommendation toward:\n  - `aoa-session-self-diagnose`\n  - `aoa-session-self-repair`\n  - `aoa-session-progression-lift`\n  - `aoa-quest-harvest`\n- a concise verification note for the local repo surface",
+          "content_markdown": "- one bounded runtime-owned `diagnostic_session_v1`\n- one explicit `exit_class` chosen from a locally named finite set, such as `retest`, `governed_repair`, `manual_regrounding`, `owner_handoff`, or `insufficient_evidence`\n- named drift classes with evidence refs and unknowns when needed\n- per-axis verdicts that preserve mixed states instead of flattening everything into one pass/fail result\n- freshness and confidence notes for each major evidence family\n- optional handoff recommendation toward:\n  - `aoa-session-self-diagnose`\n  - `aoa-session-self-repair`\n  - `aoa-session-progression-lift`\n  - `aoa-quest-harvest`\n- a concise verification note for the local repo surface",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from `aoa-session-self-diagnose` instead of inventing a new project-family workflow\n2. resolve the diagnostic target before interpreting symptoms\n3. gather repo-relative runtime-body evidence refs without widening ownership\n4. normalize the evidence into multi-axis verdicts and explicit drift classes\n5. compare against last-good posture when a bounded anchor exists\n6. choose one exit class\n7. if reviewed session evidence exists, cite the next honest owner-facing handoff\n8. emit the artifact without mutating quest, repair, or progression authority",
+          "content_markdown": "1. start from `aoa-session-self-diagnose` instead of inventing a new project-family workflow\n2. resolve the diagnostic target before interpreting symptoms or naming a drift class\n3. confirm the nearest route card and source-of-truth surface so the artifact does not claim ownership over a stronger layer\n4. gather repo-relative runtime-body evidence refs without widening ownership or copying raw sensitive material into the artifact\n5. classify evidence by axis and freshness, including unknowns and missing checks\n6. normalize the evidence into multi-axis verdicts and explicit drift classes\n7. compare against last-good posture only when the anchor is bounded and still relevant\n8. choose one exit class and name the smallest next owner route it permits\n9. if reviewed session evidence exists, cite it as evidence or handoff context rather than absorbing it into runtime canon\n10. emit the artifact without mutating quest, repair, or progression authority",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- preserve the base skill meaning\n- the overlay stays read-only and citation-friendly\n- this overlay does not replace `aoa-doctor`\n- this overlay does not grant free self-repair\n- reviewed session packets remain packet-shaped and owner-aware\n- quest state is not auto-mutated by this overlay\n- public-safe defaults stay strong",
+          "content_markdown": "- preserve the base skill meaning\n- the overlay stays read-only and citation-friendly\n- semantic matches do not silently activate this scaffold; use an explicit handle or deliberate manual route decision\n- this overlay does not replace `aoa-doctor`\n- this overlay does not grant free self-repair\n- reviewed session packets remain packet-shaped and owner-aware\n- quest state is not auto-mutated by this overlay\n- source-owned doctrine, generated receipts, runtime facts, and reviewed session evidence keep distinct roles\n- one failed axis cannot erase healthy axes, and one healthy axis cannot hide a blocker\n- public-safe defaults stay strong",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- treating one axis failure as total collapse\n- confusing runtime drift with source-owned doctrine drift\n- using diagnosis to smuggle mutation authority\n- turning every repeated issue into automatic progression or quest promotion\n- hiding unknowns instead of naming them\n- silently changing the base workflow instead of adapting the local repo surface",
+          "content_markdown": "- treating one axis failure as total collapse\n- confusing runtime drift with source-owned doctrine drift\n- using diagnosis to smuggle mutation authority\n- turning every repeated issue into automatic progression or quest promotion\n- hiding unknowns instead of naming them\n- treating generated receipts as current when their freshness is unknown\n- absorbing reviewed session packets into runtime canon instead of citing them\n- using the `abyss-*` overlay when the base session diagnosis skill or a source-of-truth check is the smaller route\n- silently changing the base workflow instead of adapting the local repo surface",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm a concrete target exists\n- confirm the produced artifact stays runtime-owned and citation-friendly\n- confirm drift classes are named explicitly\n- confirm one exit class is chosen\n- confirm any handoff points to the right owner layer\n- confirm no silent repair authority was added",
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm a concrete target exists\n- confirm the produced artifact stays runtime-owned and citation-friendly\n- confirm drift classes are named explicitly\n- confirm per-axis verdicts, freshness, confidence, and unknowns are visible\n- confirm one exit class is chosen\n- confirm any handoff points to the right owner layer\n- confirm no silent repair authority was added\n- confirm no quest, progression, or source-of-truth mutation was implied",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0080 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation\n- AOA-T-0081 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0080 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation\n- AOA-T-0081 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -220,7 +220,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0033 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -336,7 +336,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0086 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation\n- AOA-T-0087 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0088 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0086 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation\n- AOA-T-0087 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/automation-readiness/human-loop-to-first-landing/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0088 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/automation-readiness/approval-sensitivity-check/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -510,7 +510,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0075 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0084 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0089 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0075 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0084 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0089 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -626,7 +626,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0003 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0003 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation\n- AOA-T-0015 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/skill-support/contract-test-design/TECHNIQUE.md` and sections: Intent, Inputs, Core procedure, Risks",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -858,7 +858,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0036 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0037 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/runtime-truth-lifecycle/contextual-host-doctor/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0038 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/runtime-truth-lifecycle/one-command-service-lifecycle/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0036 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0037 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/runtime-truth-lifecycle/contextual-host-doctor/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0028 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0038 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/runtime-truth-lifecycle/one-command-service-lifecycle/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -974,7 +974,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0007 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0017 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0007 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/evaluation-chain/signal-first-gate-promotion/TECHNIQUE.md` and sections: summary, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1032,7 +1032,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0089 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0090 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0089 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0090 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/promotion-boundary/nearest-wrong-target-rejection/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1206,7 +1206,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0075 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0076 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation\n- AOA-T-0077 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md` and sections: Inputs, Outputs, Contracts, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0075 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0076 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Core procedure, Risks, Validation\n- AOA-T-0077 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/harvest-packet-contract/TECHNIQUE.md` and sections: Inputs, Outputs, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1264,7 +1264,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0084 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0085 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md` and sections: Outputs, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0084 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation\n- AOA-T-0085 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/multi-axis-quest-overlay/TECHNIQUE.md` and sections: Outputs, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1322,7 +1322,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0078 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0079 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0078 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0079 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1380,7 +1380,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0080 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation\n- AOA-T-0081 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0080 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation\n- AOA-T-0081 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/diagnosis-from-reviewed-evidence/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1438,7 +1438,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0082 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0083 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0082 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation\n- AOA-T-0083 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/checkpoint-bound-self-repair/TECHNIQUE.md` and sections: Outputs, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1554,7 +1554,7 @@
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0078 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0079 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation\n- AOA-T-0062 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md` and sections: Intent, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0058 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0078 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation\n- AOA-T-0079 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/risk-passport-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Risks, Validation\n- AOA-T-0062 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md` and sections: Intent, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0058 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/receipt-confirmed-handoff-packet/TECHNIQUE.md` and sections: Intent, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
@@ -1630,52 +1630,52 @@
       "scope": "project",
       "sections": [
         {
-          "content_markdown": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning.",
+          "content_markdown": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning or moving ATM10 runtime authority into `aoa-skills`.",
           "heading": "Intent",
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes\n- a bounded non-trivial change still needs an explicit plan and verification path inside the local repo\n- a contributor needs a thin local overlay rather than a fresh workflow design\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the task really needs a broader playbook or scenario bundle rather than a thin overlay\n- the work would introduce new upstream technique meaning instead of adapting the local repo surface\n- a more specific risk skill is still the clearer fit, such as `aoa-dry-run-first`, `aoa-safe-infra-change`, or `aoa-approval-gate-check`\n- the task does not need repo-relative local adaptation and the base skill can be used directly",
+          "content_markdown": "Use this skill when:\n- the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes\n- a bounded non-trivial change still needs an explicit plan and verification path inside the local repo\n- a contributor needs a thin local overlay rather than a fresh workflow design\n- the change touches ATM10 public docs, scripts, schemas, source modules, tests, or workflow files and the nearest route cards must be read before editing\n- a local validation tier, smoke command, dry-run posture, or recovery anchor must be named without widening the base workflow\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the task really needs a broader playbook or scenario bundle rather than a thin overlay\n- the work would introduce new upstream technique meaning instead of adapting the local repo surface\n- a more specific risk skill is still the clearer fit, such as `aoa-dry-run-first`, `aoa-safe-infra-change`, or `aoa-approval-gate-check`\n- the task does not need repo-relative local adaptation and the base skill can be used directly\n- the work would change live input events, operator automation authority, perception truth, retrieval/KAG truth, model-host posture, or service exposure without downstream ATM10-owned approval\n- the request is only to clarify which ATM10 document owns a rule before any change plan exists; use `atm10-source-of-truth-check`",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
         {
-          "content_markdown": "- target goal and touched local surface\n- repo-relative source-of-truth files\n- repo-relative commands or checks\n- local approval or review rules\n- base skill reference",
+          "content_markdown": "- target goal and touched local surface\n- ATM10 route stack such as `AGENTS.md`, nearest nested `AGENTS.md`, `docs/SOURCE_OF_TRUTH.md`, `docs/RUNBOOK.md`, `docs/PRODUCT_EDGE_POSTURE.md`, or the exact touched local surface\n- repo-relative source-of-truth files, generated/export companions, docs, scripts, schemas, tests, or workflow files\n- repo-relative commands or checks, including whether they are full pytest, public-doc hardening, a script smoke, or a no-run explained check\n- local approval or review rules\n- local dry-run, report-only, rollback, or recovery posture\n- base skill reference",
           "heading": "Inputs",
           "key": "inputs"
         },
         {
-          "content_markdown": "- bounded local change plan\n- repo-relative command or path sketch\n- pointer to the family review surface\n- verification note for the local repo surface\n- concise handoff on what stays downstream and explicit",
+          "content_markdown": "- bounded local change plan\n- route-card and source-of-truth evidence inspected\n- repo-relative command or path sketch with the smallest honest verification tier\n- explicit stop-line for downstream authority, operator safety, service exposure, or host-specific assumptions\n- rollback or recovery anchor for the touched ATM10 surface\n- pointer to the family review surface\n- verification note for the local repo surface\n- concise handoff on what stays downstream and explicit",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from `aoa-change-protocol` rather than rewriting the workflow\n2. name the repo-relative files, commands, and approval posture that matter locally\n3. keep the adaptation bounded to the local repo surface under change\n4. preserve the base `plan -> scoped change -> verify -> report` shape\n5. make explicit what still requires downstream human approval or repo-specific judgment",
+          "content_markdown": "1. start from `aoa-change-protocol` rather than rewriting the workflow\n2. read the ATM10 root route card, then the nearest nested `AGENTS.md` for every touched path\n3. when docs or public posture may move, read `docs/SOURCE_OF_TRUTH.md`; when runnable commands may move, read `docs/RUNBOOK.md`; when support claims or test tiers may move, read `docs/PRODUCT_EDGE_POSTURE.md`\n4. classify the touched surface as docs, scripts, source, schemas, tests, workflow, generated/export, or operator/runtime-adjacent\n5. name the repo-relative files, commands, review posture, and approval boundary that matter locally\n6. keep the adaptation bounded to the local repo surface under change and preserve the base `plan -> scoped change -> verify -> report` shape\n7. choose the smallest honest validation path, such as full `python -m pytest`, public-doc hardening tests, a script smoke, or an explicitly skipped check with reason\n8. keep safe automation dry-run or report-only by default unless ATM10-owned docs, implementation, tests, and maintainer approval explicitly support a stronger path\n9. name the rollback or recovery anchor before applying the change\n10. report what changed, which local authority stayed downstream, what was verified, what was not verified, and where the next ATM10 owner route is",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- preserve the base skill meaning\n- keep paths and commands repo-relative\n- keep local authority explicit\n- keep the overlay reviewable and public-safe",
+          "content_markdown": "- preserve the base skill meaning\n- keep paths and commands repo-relative\n- keep local authority explicit\n- keep the overlay reviewable and public-safe\n- keep ATM10 owner truth in ATM10-owned route cards, docs, scripts, schemas, tests, and runtime artifacts\n- keep generated, compact, exported, or installed surfaces weaker than the authored source they summarize\n- keep dry-run/report-only behavior as the default for automation and policy surfaces unless downstream evidence says otherwise\n- keep Windows 11 and PowerShell 7 command posture visible when the touched surface is operator-facing",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- hiding downstream authority inside vague local notes\n- turning a thin overlay into repo doctrine or a scenario bundle\n- naming local commands without enough verification context\n- silently changing the base workflow instead of adapting it",
+          "content_markdown": "- hiding downstream authority inside vague local notes\n- turning a thin overlay into repo doctrine or a scenario bundle\n- naming local commands without enough verification context\n- silently changing the base workflow instead of adapting it\n- treating `aoa-skills` as owner of ATM10 perception, KAG, retrieval, service, voice, operator-panel, or safe-automation runtime truth\n- turning public-safe examples into private workstation paths, private run logs, local model paths, hostnames, tokens, or hidden local defaults\n- using a generated report, run artifact, or installed skill export as the authoritative source for a change\n- bypassing source-of-truth clarification when the real uncertainty is document authority rather than change execution",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths and commands are named explicitly\n- confirm approval posture is still downstream and explicit\n- confirm the adaptation remains bounded to the local repo surface\n- confirm the family review doc and bundle-local checklist stay aligned",
+          "content_markdown": "- confirm the base skill is still the correct workflow\n- confirm repo-relative paths and commands are named explicitly\n- confirm the relevant ATM10 route cards and source-of-truth surfaces were inspected\n- confirm approval posture is still downstream and explicit\n- confirm the adaptation remains bounded to the local repo surface\n- confirm the selected validation tier matches the touched surface and any skipped check is named\n- confirm dry-run/report-only safety was preserved or the stronger posture is explicitly backed by ATM10-owned evidence\n- confirm rollback or recovery posture is named for the touched surface\n- confirm the family review doc and bundle-local checklist stay aligned",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: summary",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0001 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/plan-diff-apply-verify-report/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- repo-relative change surfaces\n- local commands and verification steps\n- local source-of-truth files\n- local approval or review notes\n- family review doc and bundle-local review checklist",
+          "content_markdown": "- repo-relative change surfaces\n- local commands and verification steps\n- local source-of-truth files\n- local approval or review notes\n- local stop-lines for operator safety, service exposure, model-host posture, and runtime-adjacent changes\n- rollback, recovery, and artifact posture for ATM10-owned surfaces\n- family review doc and bundle-local review checklist",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }
@@ -1688,52 +1688,52 @@
       "scope": "project",
       "sections": [
         {
-          "content_markdown": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local doc map needs repo-relative detail.",
+          "content_markdown": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local public-doc and repo-surface map needs repo-relative detail.",
           "heading": "Intent",
           "key": "intent"
         },
         {
-          "content_markdown": "Use this skill when:\n- the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules\n- contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `docs/[canonical-guide].md`\n- confusion exists between overview docs and authoritative files inside one local repo\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the main need is broader policy design rather than local document authority mapping\n- the task is purely code-local and has no meaningful docs or guidance ambiguity\n- the work would introduce new upstream technique meaning instead of thin local adaptation\n- the main need is recording rationale for a decision rather than clarifying authority; use `aoa-adr-write`",
+          "content_markdown": "Use this skill when:\n- the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules\n- contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `docs/[canonical-guide].md`\n- confusion exists between overview docs and authoritative files inside one local repo\n- active commands, archived commands, public status, support-profile claims, runtime baseline notes, release posture, or local-only planning surfaces are being mixed\n- a top-level ATM10 entrypoint is accumulating runbook-scale detail that should move to a canonical home\n- a public-safe local route must distinguish tracked docs from ignored maintainer scratch, internal chronology, private logs, or tool-local config\n- the family review doc and bundle-local checklist still need to stay aligned\n\nDo not use this skill when:\n- the main need is broader policy design rather than local document authority mapping\n- the task is purely code-local and has no meaningful docs or guidance ambiguity\n- the work would introduce new upstream technique meaning instead of thin local adaptation\n- the main need is recording rationale for a decision rather than clarifying authority; use `aoa-adr-write`\n- the authoritative files are already clear and the remaining work is an ordinary bounded change; use `atm10-change-protocol` or the base `aoa-change-protocol`\n- the question belongs to ATM10 runtime behavior, perception truth, model-host selection, operator automation, or private local state rather than document authority",
           "heading": "Trigger boundary",
           "key": "trigger_boundary"
         },
         {
-          "content_markdown": "- repo-relative docs or guidance surfaces\n- local canonical-file candidates\n- local review rules for doc changes\n- contributor confusion points\n- base skill reference",
+          "content_markdown": "- repo-relative docs or guidance surfaces\n- local canonical-file candidates\n- local review rules for doc changes\n- contributor confusion points\n- ATM10 public-surface roles from `docs/SOURCE_OF_TRUTH.md`\n- affected active, archived, generated/export, local-only, internal, or runtime-adjacent surfaces\n- candidate validation path such as public-doc hardening tests, nested AGENTS checks, or a no-run review note\n- base skill reference",
           "heading": "Inputs",
           "key": "inputs"
         },
         {
-          "content_markdown": "- local source-of-truth map\n- bounded clarification note\n- repo-relative canonical-file pattern\n- pointer to the family review surface\n- verification summary for the local docs surface",
+          "content_markdown": "- local source-of-truth map\n- active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map\n- bounded clarification note\n- repo-relative canonical-file pattern\n- lightweight entrypoint guidance when a summary doc should route outward instead of duplicating commands or counters\n- pointer to the family review surface\n- verification summary for the local docs surface",
           "heading": "Outputs",
           "key": "outputs"
         },
         {
-          "content_markdown": "1. start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine\n2. name the repo-relative docs and guidance files involved in the ambiguity\n3. map which file should stay authoritative for each local concern\n4. keep the adaptation bounded to the local repo surface under review\n5. make explicit what still depends on downstream human review or unpublished local policy",
+          "content_markdown": "1. start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine\n2. read the ATM10 root route card and `docs/SOURCE_OF_TRUTH.md`; if a touched path has a nested `AGENTS.md`, read that before judging local authority\n3. name the repo-relative docs, source/config/schema surfaces, generated/export companions, run artifacts, or local-only surfaces involved in the ambiguity\n4. map each local concern to the smallest authoritative home, such as `MANIFEST.md` for public current state, `ROADMAP.md` for direction, `docs/RUNBOOK.md` for active runnable commands, `docs/ARCHIVED_TRACKS.md` for archived/recoverable command references, `docs/PRODUCT_EDGE_POSTURE.md` for support/test-tier claims, `docs/QWEN3_MODEL_STACK.md` for model/runtime baseline posture, or `docs/SOURCE_OF_TRUTH.md` for document-role rules\n5. keep `README.md` and other entrypoints short and link-driven once the canonical home exists\n6. separate tracked public docs from ignored local-only planning, internal chronology, private logs, host-specific paths, tokens, and tool-local config\n7. keep the adaptation bounded to the local repo surface under review\n8. make explicit what still depends on downstream human review, unpublished local policy, or ATM10-owned runtime evidence\n9. verify that the clarification reduces ambiguity without making `aoa-skills` the authority for ATM10 behavior",
           "heading": "Procedure",
           "key": "procedure"
         },
         {
-          "content_markdown": "- preserve the base skill meaning\n- keep local file maps repo-relative and explicit\n- surface local authority and review posture without hiding it\n- keep the overlay public-safe and reviewable",
+          "content_markdown": "- preserve the base skill meaning\n- keep local file maps repo-relative and explicit\n- surface local authority and review posture without hiding it\n- keep the overlay public-safe and reviewable\n- keep ATM10 source-of-truth claims inside ATM10-owned public docs and route cards\n- keep active runbook content separate from archived or recoverable references\n- keep generated, exported, installed, and run-artifact surfaces weaker than the authored files they summarize\n- keep public support-profile claims no broader than the docs and test tiers that actually validate them\n- keep private workstation paths, local model paths, private logs, hostnames, tokens, screenshots with sensitive details, and internal scratch out of public examples",
           "heading": "Contracts",
           "key": "contracts"
         },
         {
-          "content_markdown": "- inventing a broader docs governance framework inside a thin overlay\n- using family labels without reducing local ambiguity\n- hiding local review rules in prose that looks canonical\n- silently replacing the base skill with project doctrine",
+          "content_markdown": "- inventing a broader docs governance framework inside a thin overlay\n- using family labels without reducing local ambiguity\n- hiding local review rules in prose that looks canonical\n- silently replacing the base skill with project doctrine\n- treating `README.md`, generated outputs, run artifacts, or installed skills as the source of truth when ATM10 already has canonical docs\n- mixing active commands with archived/recoverable references\n- spreading release cadence, supported profiles, or test-tier claims across several docs when one canonical surface owns them\n- turning ignored local-only planning or internal chronology into public truth\n- using this overlay to make runtime, service, model, operator automation, or perception decisions that belong in ATM10-owned implementation and docs",
           "heading": "Risks and anti-patterns",
           "key": "risks_and_anti_patterns"
         },
         {
-          "content_markdown": "- confirm the base skill is still the right workflow\n- confirm authoritative repo-relative files are named explicitly\n- confirm local review posture is visible rather than implied\n- confirm the adaptation reduces ambiguity without widening scope\n- confirm the family review doc and bundle-local checklist stay aligned",
+          "content_markdown": "- confirm the base skill is still the right workflow\n- confirm authoritative repo-relative files are named explicitly\n- confirm local review posture is visible rather than implied\n- confirm the adaptation reduces ambiguity without widening scope\n- confirm active, archived, generated/export, local-only, internal, and runtime-adjacent surfaces are not collapsed into one role\n- confirm entrypoint docs stay short and route to canonical homes where those exist\n- confirm public-safe boundaries and private/local-only exclusions are preserved\n- confirm any support-profile, release, or runtime-baseline wording points to the owning ATM10 surface\n- confirm the family review doc and bundle-local checklist stay aligned",
           "heading": "Verification",
           "key": "verification"
         },
         {
-          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0013 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0013 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/instruction-surface/single-source-rule-distribution/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0002 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/source-of-truth-layout/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation\n- AOA-T-0009 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/lightweight-status-snapshot/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation",
           "heading": "Technique traceability",
           "key": "technique_traceability"
         },
         {
-          "content_markdown": "- local doc hierarchies\n- repo-relative canonical-file patterns\n- local review rules for doc changes\n- repository-specific authority examples\n- family review doc and bundle-local review checklist",
+          "content_markdown": "- local doc hierarchies\n- repo-relative canonical-file patterns\n- local review rules for doc changes\n- repository-specific authority examples\n- lightweight entrypoint rules for `README.md`, `MANIFEST.md`, and other summary docs\n- active versus archived command placement\n- public-safe exclusions for internal scratch, private logs, host-specific paths, and tool-local config\n- family review doc and bundle-local review checklist",
           "heading": "Adaptation points",
           "key": "adaptation_points"
         }

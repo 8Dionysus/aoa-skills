@@ -331,10 +331,11 @@
       "exception_review_path": null,
       "name": "atm10-source-of-truth-check",
       "recommended_action": "keep_multi_technique",
-      "technique_count": 2,
+      "technique_count": 3,
       "technique_ids": [
         "AOA-T-0013",
-        "AOA-T-0002"
+        "AOA-T-0002",
+        "AOA-T-0009"
       ]
     },
     {

@@ -2,11 +2,11 @@
   "capsule_version": 1,
   "skills": [
     {
-      "inputs_short": "Needs: target operational change and touched local surface; repo-relative operational files or commands; explicit local authority or approval posture; validation and rollback path.",
+      "inputs_short": "Needs: target operational change and touched local surface; repo-relative operational files, commands, generated receipts, or runtime check paths; surface class, side-effect class, and expected blast radius;...",
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: hiding downstream authority inside vague local operational notes; turning a thin overlay into project doctrine or a scenario bundle; naming repo-relative commands without enough verification or rollback...",
       "name": "abyss-safe-infra-change",
-      "outputs_short": "Produces: bounded local infra-change plan; repo-relative command or path sketch; explicit local authority and rollback note; pointer to the family review surface.",
+      "outputs_short": "Produces: bounded local infra-change plan; repo-relative command, path, or receipt sketch; explicit local authority, approval, stop-line, and rollback note; surface-specific verification plan with the smallest...",
       "scope": "project",
       "skill_path": "skills/project/abyss/abyss-safe-infra-change/SKILL.md",
       "status": "evaluated",
@@ -16,15 +16,15 @@
         "AOA-T-0001"
       ],
       "trigger_boundary_short": "Use when the base aoa-safe-infra-change workflow is already correct, but an abyss- repo needs repo-relative operational surfaces, commands, or approval notes; the task is a bounded infrastructure, service,...",
-      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly; confirm local authority, rollback posture, and verification remain explicit; confirm the...",
+      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths, commands, receipts, or runtime checks are named explicitly; confirm local authority, stop condition, rollback posture, and...",
       "workflow_short": "Purpose: adapt aoa-safe-infra-change to an abyss- repository when the base operational workflow is correct but the local repo still needs repo-relative commands, authority notes, and risk framing. Flow: start from aoa-safe-infra-change instead of..."
     },
     {
-      "inputs_short": "Needs: raw material to sanitize; intended audience or sharing context; repo-relative destination or canonical sharing surface; local sensitivity thresholds or review posture.",
+      "inputs_short": "Needs: raw material to sanitize; intended audience or sharing context; repo-relative destination or canonical sharing surface; local sensitivity thresholds, review posture, and retention expectation.",
       "invocation_mode": "explicit-only",
-      "main_anti_patterns_short": "Avoid: hiding local sharing thresholds in vague prose; collapsing a thin overlay into project doctrine or incident policy; naming a repo-relative destination without enough sanitization or audience context; silently...",
+      "main_anti_patterns_short": "Avoid: hiding local sharing thresholds in vague prose; collapsing a thin overlay into project doctrine or incident policy; naming a repo-relative destination without enough sanitization or audience context;...",
       "name": "abyss-sanitized-share",
-      "outputs_short": "Produces: sanitized local shareable artifact; note on what was generalized or removed; repo-relative placement or reference; pointer to the family review surface.",
+      "outputs_short": "Produces: sanitized local shareable artifact; note on what was generalized, removed, summarized, or retained; repo-relative placement or reference; raw-vs-sanitized separation note.",
       "scope": "project",
       "skill_path": "skills/project/abyss/abyss-sanitized-share/SKILL.md",
       "status": "evaluated",
@@ -34,15 +34,15 @@
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the base aoa-sanitized-share workflow is already correct, but an abyss- repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds; raw logs, diagnostics, config snippets,...",
-      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly; confirm local thresholds and review posture are visible rather than implied; confirm the...",
+      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly; confirm audience, thresholds, retention, and review posture are visible rather than...",
       "workflow_short": "Purpose: adapt aoa-sanitized-share to an abyss- repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture. Flow: start from aoa-sanitized-share rather than..."
     },
     {
-      "inputs_short": "Needs: resolved or requested preset / profile selectors; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs; optional reviewed session or harvest packet refs;...",
+      "inputs_short": "Needs: resolved or requested diagnostic target, preset, profile, or repo-relative path; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or related...",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: treating one axis failure as total collapse; confusing runtime drift with source-owned doctrine drift; using diagnosis to smuggle mutation authority; turning every repeated issue into automatic progression or...",
       "name": "abyss-self-diagnostic-spine",
-      "outputs_short": "Produces: one bounded runtime-owned diagnosticsessionv1; one explicit exitclass; named drift classes with evidence refs and unknowns when needed; optional handoff recommendation toward.",
+      "outputs_short": "Produces: one bounded runtime-owned diagnosticsessionv1; one explicit exitclass chosen from a locally named finite set, such as retest, governedrepair, manualregrounding, ownerhandoff, or insufficientevidence; named...",
       "scope": "project",
       "skill_path": "skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md",
       "status": "scaffold",
@@ -512,40 +512,41 @@
       "workflow_short": "Purpose: test-first discipline to implement a small behavior slice with a clear observable target, minimal implementation, and explicit verification. Flow: define the desired behavior in a bounded way -> when the behavior is wider than a simple module..."
     },
     {
-      "inputs_short": "Needs: target goal and touched local surface; repo-relative source-of-truth files; repo-relative commands or checks; local approval or review rules.",
+      "inputs_short": "Needs: target goal and touched local surface; ATM10 route stack such as AGENTS.md, nearest nested AGENTS.md, docs/SOURCEOFTRUTH.md, docs/RUNBOOK.md, docs/PRODUCTEDGEPOSTURE.md, or the exact touched local surface;...",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: hiding downstream authority inside vague local notes; turning a thin overlay into repo doctrine or a scenario bundle; naming local commands without enough verification context; silently changing the base...",
       "name": "atm10-change-protocol",
-      "outputs_short": "Produces: bounded local change plan; repo-relative command or path sketch; pointer to the family review surface; verification note for the local repo surface.",
+      "outputs_short": "Produces: bounded local change plan; route-card and source-of-truth evidence inspected; repo-relative command or path sketch with the smallest honest verification tier; explicit stop-line for downstream authority,...",
       "scope": "project",
       "skill_path": "skills/project/atm10/atm10-change-protocol/SKILL.md",
       "status": "evaluated",
-      "summary": "Thin atm10 overlay for bounded change execution with repo-relative paths, commands, review checklists, and explicit local approval notes.",
+      "summary": "Thin ATM10 overlay for bounded change execution with repo-relative route cards, public docs, commands, review checks, recovery anchors, and explicit local approval notes.",
       "technique_dependencies": [
         "AOA-T-0001",
         "AOA-T-0002"
       ],
       "trigger_boundary_short": "Use when the base aoa-change-protocol workflow is already correct, but an atm10- repo needs repo-relative paths, commands, or local approval notes; a bounded non-trivial change still needs an explicit plan and...",
-      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly; confirm approval posture is still downstream and explicit; confirm the adaptation remains...",
-      "workflow_short": "Purpose: adapt aoa-change-protocol to an atm10- repository without changing the base workflow meaning. Flow: start from aoa-change-protocol rather than rewriting the workflow -> name the repo-relative files, commands, and approval posture that matter..."
+      "verification_short": "Checks: confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly; confirm the relevant ATM10 route cards and source-of-truth surfaces were inspected;...",
+      "workflow_short": "Purpose: adapt aoa-change-protocol to an atm10- repository without changing the base workflow meaning or moving ATM10 runtime authority into aoa-skills. Flow: start from aoa-change-protocol rather than rewriting the workflow -> read the ATM10 root route..."
     },
     {
       "inputs_short": "Needs: repo-relative docs or guidance surfaces; local canonical-file candidates; local review rules for doc changes; contributor confusion points.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: inventing a broader docs governance framework inside a thin overlay; using family labels without reducing local ambiguity; hiding local review rules in prose that looks canonical; silently replacing the base...",
       "name": "atm10-source-of-truth-check",
-      "outputs_short": "Produces: local source-of-truth map; bounded clarification note; repo-relative canonical-file pattern; pointer to the family review surface.",
+      "outputs_short": "Produces: local source-of-truth map; active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map; bounded clarification note; repo-relative canonical-file pattern.",
       "scope": "project",
       "skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
       "status": "evaluated",
-      "summary": "Thin atm10 overlay for clarifying repo-local document authority, canonical files, review checklists, and review posture without changing the base workflow.",
+      "summary": "Thin ATM10 overlay for clarifying repo-local document authority, public-surface roles, canonical files, review checklists, and review posture without changing the base workflow.",
       "technique_dependencies": [
         "AOA-T-0013",
-        "AOA-T-0002"
+        "AOA-T-0002",
+        "AOA-T-0009"
       ],
       "trigger_boundary_short": "Use when the base aoa-source-of-truth-check workflow is already correct, but an atm10- repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps...",
       "verification_short": "Checks: confirm the base skill is still the right workflow; confirm authoritative repo-relative files are named explicitly; confirm local review posture is visible rather than implied; confirm the adaptation reduces...",
-      "workflow_short": "Purpose: adapt aoa-source-of-truth-check to an atm10- repository when the base workflow is right but the local doc map needs repo-relative detail. Flow: start from aoa-source-of-truth-check instead of inventing a family-specific docs doctrine -> name the..."
+      "workflow_short": "Purpose: adapt aoa-source-of-truth-check to an atm10- repository when the base workflow is right but the local public-doc and repo-surface map needs repo-relative detail. Flow: start from aoa-source-of-truth-check instead of inventing a family-specific..."
     },
     {
       "inputs_short": "Needs: receipt or ledger reference; approved Titan lane; gate kind; operator intent text.",

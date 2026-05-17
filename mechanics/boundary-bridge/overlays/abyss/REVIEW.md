@@ -17,7 +17,7 @@
 - `skills/project/abyss/abyss-safe-infra-change/SKILL.md`
 - `skills/project/abyss/abyss-sanitized-share/SKILL.md`
 - `skills/project/abyss/abyss-self-diagnostic-spine/SKILL.md`
-- bundle-local review checklists under `skills/abyss-*/checks/review.md`
+- bundle-local review checklists under `skills/project/abyss/*/checks/review.md`
 - overlay evaluation fixtures in `tests/fixtures/skill_evaluation_cases.yaml`
 
 ## Findings

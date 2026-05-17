@@ -593,6 +593,7 @@ graph TD
   skill_atm10_source_of_truth_check -->|invocation_policy| policy_explicit_preferred
   skill_atm10_source_of_truth_check -->|depends_on| technique_AOA_T_0013
   skill_atm10_source_of_truth_check -->|depends_on| technique_AOA_T_0002
+  skill_atm10_source_of_truth_check -->|depends_on| technique_AOA_T_0009
   skill_atm10_source_of_truth_check -->|included_in_profile| profile_repo_atm10_overlay
   skill_atm10_source_of_truth_check -->|included_in_profile| profile_repo_default
   skill_atm10_source_of_truth_check -->|available_in_artifact_group| artifact_group_portable_export
@@ -828,7 +829,7 @@ graph TD
 | aoa-summon | evaluated | core | explicit-only | published | repo-default, repo-session-growth, repo-summon-only | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0078, AOA-T-0079, AOA-T-0062, AOA-T-0058 |
 | aoa-tdd-slice | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0014, AOA-T-0001 |
 | atm10-change-protocol | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0001, AOA-T-0002 |
-| atm10-source-of-truth-check | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0013, AOA-T-0002 |
+| atm10-source-of-truth-check | evaluated | project | explicit-preferred | published | repo-atm10-overlay, repo-default | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0013, AOA-T-0002, AOA-T-0009 |
 | titan-approval-ledger | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
 | titan-approval-loom | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |
 | titan-appserver-bridge | scaffold | project | explicit-only | pending | repo-default, repo-titan-overlay | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-PENDING-TITAN-GATE-DISCIPLINE, AOA-T-PENDING-TITAN-RECEIPT-LINEAGE |

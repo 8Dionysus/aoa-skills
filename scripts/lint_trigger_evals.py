@@ -76,6 +76,10 @@ def main() -> int:
             case for case in skill_cases
             if case.get("mode") == "implicit" and case.get("expected_behavior") == "invoke-skill"
         ]
+        collision_positive = [
+            case for case in skill_cases
+            if case.get("mode") == "collision" and case.get("expected_behavior") == "invoke-skill"
+        ]
         implicit_manual = [
             case for case in skill_cases
             if case.get("mode") == "implicit" and case.get("expected_behavior") == "manual-invocation-required"
@@ -84,6 +88,8 @@ def main() -> int:
         if not allow_implicit:
             if implicit_positive:
                 errors.append(f"{skill_name}: non-invoke skills must not have implicit positive trigger cases")
+            if collision_positive:
+                errors.append(f"{skill_name}: non-invoke skills must not have collision positive trigger cases")
             if not implicit_manual:
                 errors.append(f"{skill_name}: non-invoke skills need an implicit manual-invocation-required case")
         else:

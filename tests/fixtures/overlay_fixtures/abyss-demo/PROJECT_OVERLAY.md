@@ -31,4 +31,4 @@
 
 - do not turn this overlay into hidden operational doctrine
 - do not add private infrastructure details
-- keep richer downstream adaptation as a future stub rather than live scope expansion
+- keep richer downstream adaptation as a future fixture rather than live scope expansion

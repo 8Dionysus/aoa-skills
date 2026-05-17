@@ -40,7 +40,7 @@ It does not fetch or compare upstream repos; it only reflects committed bundle f
 | aoa-summon | evaluated | core | published | 4 | 0 | 0 | true | - |
 | aoa-tdd-slice | canonical | core | published | 2 | 0 | 0 | true | - |
 | atm10-change-protocol | evaluated | project | published | 2 | 0 | 0 | true | - |
-| atm10-source-of-truth-check | evaluated | project | published | 2 | 0 | 0 | true | - |
+| atm10-source-of-truth-check | evaluated | project | published | 3 | 0 | 0 | true | - |
 | titan-approval-ledger | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | titan-approval-loom | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |
 | titan-appserver-bridge | scaffold | project | pending | 0 | 2 | 2 | false | pending_technique_dependencies, pending_technique_entries, tbd_technique_refs |

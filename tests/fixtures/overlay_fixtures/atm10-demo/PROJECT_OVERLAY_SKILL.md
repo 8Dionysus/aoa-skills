@@ -1,4 +1,4 @@
-# atm10-demo Overlay Skill Stub
+# atm10-demo Overlay Skill Fixture
 
 ## Base skill
 
@@ -7,7 +7,7 @@
 
 ## Overlay triggers
 
-- use this future stub when the base change workflow is already correct but the repo needs local paths or commands
+- use this future fixture when the base change workflow is already correct but the repo needs local paths or commands
 - do not use it for upstream technique changes or broad scenario composition
 
 ## Local inputs
@@ -37,7 +37,7 @@
 - verify that every path and command stays repository-relative
 - verify that the output remains reviewable and public-safe
 
-## Stub-only notes
+## Fixture-only notes
 
-- this is a future stub, not a live project-family skill
-- richer downstream behavior should stay stubbed until a separate overlay contract is promoted
+- this is a future fixture, not a live project-family skill
+- richer downstream behavior should stay fixture-bound until a separate overlay contract is promoted

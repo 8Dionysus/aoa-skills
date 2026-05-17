@@ -42,7 +42,7 @@ It is a boundary/readiness view, not a direct status surface.
 | aoa-summon | 4 | multi_technique | keep_multi_technique | - |
 | aoa-tdd-slice | 2 | multi_technique | keep_multi_technique | - |
 | atm10-change-protocol | 2 | multi_technique | keep_multi_technique | - |
-| atm10-source-of-truth-check | 2 | multi_technique | keep_multi_technique | - |
+| atm10-source-of-truth-check | 3 | multi_technique | keep_multi_technique | - |
 | titan-approval-ledger | 2 | multi_technique | keep_multi_technique | - |
 | titan-approval-loom | 2 | multi_technique | keep_multi_technique | - |
 | titan-appserver-bridge | 2 | multi_technique | keep_multi_technique | - |

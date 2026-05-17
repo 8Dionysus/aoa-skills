@@ -11,7 +11,7 @@ name: abyss-sanitized-share
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `67fab93e13ff`
+- reviewed revision: `5bd25d9d8c97`
 
 ## Target status
 
@@ -32,8 +32,8 @@ name: abyss-sanitized-share
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `not applicable`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the overlay stays thin and repo-relative, and the direct `evaluated` landing mainly formalizes same-PR review and evaluation evidence rather than changing workflow meaning.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the overlay still stays thin and repo-relative, but now makes audience, retention, raw-vs-sanitized separation, and redaction mapping explicit so the artifact stays useful without carrying unsafe local detail.
 
 ## Gaps and blockers
 

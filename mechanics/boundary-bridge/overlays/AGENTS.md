@@ -17,8 +17,8 @@ Before editing an overlay family doc, read in this order:
 3. `../README.md`
 4. the target `mechanics/boundary-bridge/overlays/<family>/PROJECT_OVERLAY.md`
 5. the target `mechanics/boundary-bridge/overlays/<family>/REVIEW.md`
-6. the matching `skills/<family>-*/SKILL.md`
-7. any matching bundle-local review checklists such as `skills/<family>-*/checks/review.md`
+6. the matching `skills/project/<family>/<skill>/SKILL.md`
+7. any matching bundle-local review checklists such as `skills/project/<family>/<skill>/checks/review.md`
 
 ## Directory contract
 
@@ -26,7 +26,7 @@ A live thin overlay pack should stay family-scoped and reviewable. It normally i
 
 - `mechanics/boundary-bridge/overlays/<family>/PROJECT_OVERLAY.md`
 - `mechanics/boundary-bridge/overlays/<family>/REVIEW.md`
-- one or more matching `skills/<family>-*` bundles
+- one or more matching `skills/project/<family>/<skill>/` bundles
 - bundle-local review checklists when the family review surface names them
 
 Keep the overlay thin. Keep it repo-local. Keep it public-safe.
@@ -45,7 +45,7 @@ Safe, normal contributions here include:
 Use extra caution when:
 
 - changing the overlay family name
-- changing the list of matching `skills/<family>-*` bundles
+- changing the list of matching `skills/project/<family>/<skill>/` bundles
 - changing family-level approval language or authority posture
 - changing wording that could imply the overlay changes the base skill boundary
 
@@ -63,7 +63,7 @@ Do not:
 
 When overlay docs change, confirm:
 
-- every listed overlay skill has a matching `skills/<family>-*` bundle
+- every listed overlay skill has a matching `skills/project/<family>/<skill>/` bundle
 - family review notes still match bundle-local review checklists
 - repo-relative commands and paths stay public-safe
 - the overlay still describes a thin overlay rather than a downstream integration
@@ -79,6 +79,6 @@ Then run:
 When reporting work in `mechanics/boundary-bridge/overlays/`, include:
 
 - which family pack changed
-- which matching `skills/<family>-*` bundles were checked
+- which matching `skills/project/<family>/<skill>/` bundles were checked
 - whether the overlay boundary changed or only examples/review notes changed
 - any follow-up needed in overlay skills or family review docs

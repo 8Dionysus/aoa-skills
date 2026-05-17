@@ -11,7 +11,7 @@ name: aoa-checkpoint-closeout-bridge
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `d934a5b62bfb`
+- reviewed revision: `be4999a2bf9c`
 
 ## Target status
 

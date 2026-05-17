@@ -14,7 +14,7 @@
 - `mechanics/release-support/docs/RUNTIME_PATH.md` — main runtime guide for `pick -> inspect -> expand -> object use`
 - `mechanics/audit/docs/PUBLIC_SURFACE.md` — public guide to the current governance and product-signaling layer
 - `mechanics/method-growth/docs/PROMOTION_PATH.md` — public repository convention for maturity transitions
-- `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` — repo-local contract for thin project overlays and stub-only downstream adaptation
+- `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` — repo-local contract for thin project overlays and validator fixture packs
 - `docs/reviews/` — public review records for candidate and promotion work
 - `docs/reviews/canonical-candidates/` — canonical-candidate review records
 - `docs/reviews/status-promotions/` — review records for non-canonical promotion steps

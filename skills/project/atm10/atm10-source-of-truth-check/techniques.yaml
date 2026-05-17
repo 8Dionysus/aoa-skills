@@ -27,3 +27,16 @@ techniques:
       - Contracts
       - Risks
       - Validation
+  - id: AOA-T-0009
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/instruction/docs-boundary/lightweight-status-snapshot/TECHNIQUE.md
+    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation

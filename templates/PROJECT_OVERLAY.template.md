@@ -39,4 +39,4 @@ State that the overlay does not change the base skill boundary.
 - confirm all paths are repository-relative
 - confirm all commands are local and reviewable
 - confirm the overlay preserves the base skill boundary
-- confirm the overlayed skills section exactly matches the committed `skills/<family>-*` bundles
+- confirm the overlayed skills section exactly matches the committed `skills/project/<family>/<skill>/` bundles

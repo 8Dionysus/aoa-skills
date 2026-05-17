@@ -7,7 +7,7 @@
 - current governance lane decision: `default_reference`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `25d31fa59624`
+- reviewed revision: `b8fdd2c5b34c`
 
 ## Target status
 

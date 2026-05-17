@@ -457,7 +457,7 @@
       "recommended_install_scopes": [
         "repo"
       ],
-      "notes": "Project overlay for atm10 repositories only."
+      "notes": "Manual project overlay for ATM10 repositories only; route-card and local validation context must be deliberate."
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -472,7 +472,7 @@
       "recommended_install_scopes": [
         "repo"
       ],
-      "notes": "Project overlay for atm10 repository document authority."
+      "notes": "Manual project overlay for ATM10 repository document authority and public-surface role clarification."
     },
     {
       "name": "titan-approval-ledger",

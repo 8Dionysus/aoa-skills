@@ -11,7 +11,7 @@ name: aoa-session-self-repair
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `17edbf208692`
+- reviewed revision: `0b867807a748`
 
 ## Target status
 

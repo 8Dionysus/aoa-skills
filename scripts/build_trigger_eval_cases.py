@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Normalize the legacy wave-2 trigger-eval seed against activation policy."""
+"""Normalize trigger-eval seed rows against activation policy."""
 
 from __future__ import annotations
 
@@ -68,17 +68,19 @@ def normalize_rows(rows: list[dict[str, Any]], policy_doc: dict[str, Any]) -> li
         policy_entry = policy_by_name.get(skill_name)
         activation_policy = resolve_implicit_activation_policy(policy_entry, skill_name)
         allow_implicit = allow_implicit_invocation(policy_entry, skill_name)
-        if (
-            item.get("mode") == "implicit"
-            and item.get("expected_behavior") == "invoke-skill"
-            and not allow_implicit
-        ):
+        mode = item.get("mode")
+        if mode in {"implicit", "collision"} and item.get("expected_behavior") == "invoke-skill" and not allow_implicit:
             item["expected_behavior"] = "manual-invocation-required"
             item["expected_skill"] = None
             if activation_policy == "suggest":
                 item["note"] = (
                     "Implicit semantic matches may surface this skill as a candidate, "
                     "but reviewed activation remains explicit."
+                )
+            elif mode == "collision":
+                item["note"] = (
+                    "Strong collision-family matches must not activate this manual skill; "
+                    "use an explicit handle or deliberate manual decision before execution."
                 )
             else:
                 item["note"] = (

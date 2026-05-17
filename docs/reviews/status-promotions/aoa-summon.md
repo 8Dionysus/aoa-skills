@@ -11,7 +11,7 @@ name: aoa-summon
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `7e8c8fcae843`
+- reviewed revision: `7c02d67527af`
 
 ## Target status
 

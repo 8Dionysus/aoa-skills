@@ -11,7 +11,7 @@ name: abyss-safe-infra-change
 - current governance lane decision: `not applicable`
 - scope: `project`
 - current lineage: `published`
-- reviewed revision: `5d927c2a034e`
+- reviewed revision: `f97c9d760f3e`
 
 ## Target status
 
@@ -32,8 +32,8 @@ name: abyss-safe-infra-change
 
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `not applicable`
-- runtime `SKILL.md` meaning changed: `no`
-- current bundle note: the overlay stays thin and repo-relative, and the direct `evaluated` landing mainly formalizes same-PR review and evaluation evidence rather than inventing a new workflow.
+- runtime `SKILL.md` meaning changed: `yes`
+- current bundle note: the overlay still stays thin and repo-relative, but now names surface class, stop condition, preflight, recovery anchor, and sanitization handoff so local operational changes do not overclaim authority or leak raw runtime material.
 
 ## Gaps and blockers
 

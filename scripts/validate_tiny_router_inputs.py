@@ -115,6 +115,7 @@ def validate(repo_root: Path) -> dict[str, Any]:
             source_skill = case_id[len("tiny-defer-") :]
             if source_skill in signal_by_name:
                 source_band = signal_by_name[source_skill]["band"]
+                source_signal = signal_by_name[source_skill]
                 included = case.get("expected_shortlist_includes", [])
                 source_defer_case = defer_case_by_source_and_prompt.get((source_skill, case.get("prompt")))
                 expected_skill = (
@@ -122,11 +123,27 @@ def validate(repo_root: Path) -> dict[str, Any]:
                     if isinstance(source_defer_case, dict)
                     else None
                 )
+                expected_activation = (
+                    resolve_implicit_activation_policy(
+                        activation_policy_by_name.get(expected_skill),
+                        expected_skill,
+                    )
+                    if isinstance(expected_skill, str) and expected_skill in activation_policy_by_name
+                    else "manual"
+                )
                 if case.get("expected_band") != source_band and included:
                     errors.append(
                         f"{case_id}: cross-band defer cases must not require expected_shortlist_includes"
                     )
-                if case.get("expected_band") == source_band and not included:
+                if (
+                    case.get("expected_band") != source_band
+                    and source_signal.get("project_overlay")
+                    and not case.get("repo_family_hint")
+                ):
+                    errors.append(
+                        f"{case_id}: cross-band overlay defer cases must set repo_family_hint"
+                    )
+                if case.get("expected_band") == source_band and not included and expected_activation != "manual":
                     errors.append(
                         f"{case_id}: same-band defer cases must require expected_shortlist_includes"
                     )

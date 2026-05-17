@@ -35,12 +35,12 @@
       "section_summaries": {
         "Intent": "Use this skill to adapt `aoa-safe-infra-change` to an `abyss-*` repository when the base operational workflow is correct but the local repo still needs repo-relative commands, authority notes, and risk framing.",
         "Trigger boundary": "the base `aoa-safe-infra-change` workflow is already correct, but an `abyss-*` repo needs repo-relative operational surfaces, commands, or approval notes; the task is a bounded infrastructure, service, configuration, or operational change inside one local repo family",
-        "Inputs": "target operational change and touched local surface; repo-relative operational files or commands",
-        "Outputs": "bounded local infra-change plan; repo-relative command or path sketch",
-        "Procedure": "start from `aoa-safe-infra-change` instead of inventing a new project-family workflow; name the repo-relative operational files, commands, and authority posture that matter locally",
+        "Inputs": "target operational change and touched local surface; repo-relative operational files, commands, generated receipts, or runtime check paths",
+        "Outputs": "bounded local infra-change plan; repo-relative command, path, or receipt sketch",
+        "Procedure": "start from `aoa-safe-infra-change` instead of inventing a new project-family workflow; read the nearest repo route card before treating a path as locally owned",
         "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
         "Risks and anti-patterns": "hiding downstream authority inside vague local operational notes; turning a thin overlay into project doctrine or a scenario bundle",
-        "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
+        "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths, commands, receipts, or runtime checks are named explicitly",
         "Technique traceability": "AOA-T-0028 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks,...",
         "Adaptation points": "repo-relative operational surfaces; local authority and approval notes"
       },
@@ -146,8 +146,8 @@
         "Intent": "Use this skill to adapt `aoa-sanitized-share` to an `abyss-*` repository when the base sanitization workflow is right but the local repo still needs repo-relative sharing surfaces, thresholds, and review posture.",
         "Trigger boundary": "the base `aoa-sanitized-share` workflow is already correct, but an `abyss-*` repo needs local sharing surfaces, repo-relative paths, or explicit sanitization thresholds; raw logs, diagnostics, config snippets, or incident notes from one `abyss-*` repo need a bounded public-saf...",
         "Inputs": "raw material to sanitize; intended audience or sharing context",
-        "Outputs": "sanitized local shareable artifact; note on what was generalized or removed",
-        "Procedure": "start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow; name the repo-relative output surface, audience, and local sensitivity thresholds that matter",
+        "Outputs": "sanitized local shareable artifact; note on what was generalized, removed, summarized, or retained",
+        "Procedure": "start from `aoa-sanitized-share` rather than inventing a new family-specific sharing workflow; name the audience and destination before deciding what can remain visible",
         "Contracts": "preserve the base skill meaning; keep local paths and output placement repo-relative and explicit",
         "Risks and anti-patterns": "hiding local sharing thresholds in vague prose; collapsing a thin overlay into project doctrine or incident policy",
         "Verification": "confirm the base skill is still the correct workflow; confirm the repo-relative sharing surface is named explicitly",
@@ -255,13 +255,13 @@
       "section_summaries": {
         "Intent": "Use this skill to adapt `aoa-session-self-diagnose` to an `abyss-*` repository when the local repo needs one runtime-owned diagnostic session artifact that can cite runtime evidence, compare against last-good posture, and hand off honestly toward the reviewed session diagnosis...",
         "Trigger boundary": "the base `aoa-session-self-diagnose` workflow is already correct, but an `abyss-*` repo needs one runtime-owned diagnostic session artifact with repo-relative evidence refs; a concrete runtime path must be diagnosed before any repair claim becomes honest",
-        "Inputs": "resolved or requested preset / profile selectors; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, or related evidence refs",
-        "Outputs": "one bounded runtime-owned `diagnostic_session_v1`; one explicit `exit_class`",
-        "Procedure": "start from `aoa-session-self-diagnose` instead of inventing a new project-family workflow; resolve the diagnostic target before interpreting symptoms",
+        "Inputs": "resolved or requested diagnostic target, preset, profile, or repo-relative path; runtime-body signals such as doctor, machine-fit, render-truth, smoke, autonomy, config projection, route receipt, or related evidence refs",
+        "Outputs": "one bounded runtime-owned `diagnostic_session_v1`; one explicit `exit_class` chosen from a locally named finite set, such as `retest`, `governed_repair`, `manual_regrounding`, `owner_handoff`, or `insufficient_evidence`",
+        "Procedure": "start from `aoa-session-self-diagnose` instead of inventing a new project-family workflow; resolve the diagnostic target before interpreting symptoms or naming a drift class",
         "Contracts": "preserve the base skill meaning; the overlay stays read-only and citation-friendly",
         "Risks and anti-patterns": "treating one axis failure as total collapse; confusing runtime drift with source-owned doctrine drift",
         "Verification": "confirm the base skill is still the correct workflow; confirm a concrete target exists",
-        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `cd276...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `3b1d5...",
         "Adaptation points": "repo-relative runtime evidence refs; local diagnostic target and last-good posture"
       },
       "resource_inventory": {
@@ -371,7 +371,7 @@
         "Contracts": "the note should explain why, not just what changed; the decision should be bounded and understandable",
         "Risks and anti-patterns": "writing an ADR for a trivial edit with no real decision; writing a decision record before a decision actually exists",
         "Verification": "confirm the decision was meaningful enough to record; confirm the rationale is explicit",
-        "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts,...",
+        "Technique traceability": "AOA-T-0033 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/instruction/docs-boundary/decision-rationale-recording/TECHNIQUE.md` and sections: Intent, When to use, When not to use, Inputs, Outputs, Core procedure, Contracts,...",
         "Adaptation points": "local ADR templates; alternative decision-note homes outside formal `docs/adr/` layouts"
       },
       "resource_inventory": {
@@ -590,7 +590,7 @@
         "Contracts": "this skill detects and packages automation opportunities; it does not create live automation authority; schedule hints remain hints, not runtime truth",
         "Risks and anti-patterns": "treating one exciting session as proof of repeatability; treating `seed_ready` as a synonym for unattended execution",
         "Verification": "confirm each candidate names the current manual route; confirm evidence refs justify the repeat signal",
-        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Diony...",
+        "Technique traceability": "AOA-T-0086 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/automation-readiness/automation-fit-matrix/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Risks, Validation; AOA-T-0087 from `8Diony...",
         "Adaptation points": "project overlays may add local execution modes, trigger classes, or schedule vocabularies; project overlays may add local approval classes or environment-risk labels"
       },
       "resource_inventory": {
@@ -759,7 +759,8 @@
       "competing_skills": [
         "aoa-core-logic-boundary",
         "aoa-port-adapter-refactor",
-        "aoa-adr-write"
+        "aoa-adr-write",
+        "aoa-source-of-truth-check"
       ],
       "sample_prompts": {
         "explicit": [
@@ -942,7 +943,7 @@
         "Contracts": "checkpoint note stays provisional and lower-authority than reviewed closeout; `checkpoint-collect` never emits final harvest, progression, or quest verdicts",
         "Risks and anti-patterns": "treating checkpoint hints as if they were final donor harvest truth; treating `execute-closeout-chain` JSON as if it were the actual skill",
         "Verification": "confirm `checkpoint-collect` only updates local ledger surfaces; confirm the bridge never emits final verdicts during mid-session capture",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0084 from `8Dionysus/aoa-techniques`...",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0084 from `8Dionysus/aoa-techniques`...",
         "Adaptation points": "local reviewed artifact entrypoints; local receipt bundle locations"
       },
       "resource_inventory": {
@@ -1168,7 +1169,7 @@
         "Contracts": "the contract should be visible to another human or agent; verification should be tied to the boundary, not only to internals",
         "Risks and anti-patterns": "vague contracts that do not actually constrain behavior; treating a smoke summary as proof when it does not cover the real boundary",
         "Verification": "confirm the contract is visible and reviewable; confirm validation is tied to the interface or boundary",
-        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-t...",
+        "Technique traceability": "AOA-T-0003 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/evaluation-chain/contract-first-smoke-summary/TECHNIQUE.md` and sections: Intent, When to use, Outputs, Contracts, Validation; AOA-T-0015 from `8Dionysus/aoa-t...",
         "Adaptation points": "local endpoints or module boundaries; local smoke or test commands"
       },
       "resource_inventory": {
@@ -1617,7 +1618,7 @@
         "Contracts": "render review happens before startup; readiness checks stay tied to the selected runtime rather than acting like one global score",
         "Risks and anti-patterns": "treating rendered truth as proof that the host is ready or that startup will succeed; treating a passing doctor result as proof of post-start health",
         "Verification": "confirm the rendered output answered what would actually start before launch; confirm the readiness verdict was selector-aware and itemized with visible severity",
-        "Technique traceability": "AOA-T-0036 from `8Dionysus/aoa-techniques` at `cd276f040d55d490bd015b8698c7a5d594b9f875` using path `techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Val...",
+        "Technique traceability": "AOA-T-0036 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Val...",
         "Adaptation points": "local render commands and safe storage rules for rendered config; local runtime selectors, profiles, or presets"
       },
       "resource_inventory": {
@@ -1846,7 +1847,7 @@
         "Contracts": "each property should express a real invariant, not a wish; the test should broaden coverage beyond a small handpicked set",
         "Risks and anti-patterns": "writing weak properties that prove almost nothing; confusing random data with meaningful coverage",
         "Verification": "confirm the property expresses a meaningful invariant; confirm the invariant broadens coverage beyond fixed examples",
-        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `fbead87e01b82df6c56e3d92a074cd7515131847` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fr...",
+        "Technique traceability": "AOA-T-0017 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/proof/skill-support/property-invariants/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0007 fr...",
         "Adaptation points": "local generator tools; domain-specific invariants"
       },
       "resource_inventory": {
@@ -1954,7 +1955,7 @@
         "Contracts": "invocation must remain explicit and post-session; orchestrator class identity must not be promoted into a skill",
         "Risks and anti-patterns": "promoting a theme instead of a repeatable workflow; treating repeated discussion, urgency, or excitement as repeat evidence",
         "Verification": "confirm the harvest pack is reviewed and bounded; confirm exactly one repeated reviewed unit is isolated before final triage",
-        "Technique traceability": "AOA-T-0089 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AO...",
+        "Technique traceability": "AOA-T-0089 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/promotion-boundary/quest-unit-promotion-review/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AO...",
         "Adaptation points": "local quest IDs and harvest entrypoints; local owner-repo route maps"
       },
       "resource_inventory": {
@@ -2303,7 +2304,7 @@
         "Contracts": "invocation must remain explicit and post-session; the skill harvests donor units; it does not treat session history as memory canon or instruction authority",
         "Risks and anti-patterns": "collapsing technique, skill, and playbook into one generic \"good reuse\" bucket; mistaking session themes for reusable units",
         "Verification": "confirm the source artifact is reviewed and bounded; confirm checkpoint, closeout-handoff, or ledger hints were dispositioned as",
-        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 fr...",
+        "Technique traceability": "AOA-T-0075 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/session-donor-harvest/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0076 fr...",
         "Adaptation points": "local session artifact entrypoints; local review packet templates"
       },
       "resource_inventory": {
@@ -2430,7 +2431,7 @@
         "Contracts": "progression remains evidence-backed; multi-axis only; no authoritative universal score",
         "Risks and anti-patterns": "inventing progress from mood; promoting checkpoint axis hints or generated summaries into movement without",
         "Verification": "confirm all meaningful axis claims cite reviewed evidence; confirm the delta declares baseline posture before comparative movement claims",
-        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniq...",
+        "Technique traceability": "AOA-T-0084 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/donor-harvest/progression-evidence-lift/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Contracts, Validation; AOA-T-0085 from `8Dionysus/aoa-techniq...",
         "Adaptation points": "local axis notes; role-affinity hints"
       },
       "resource_inventory": {
@@ -2551,7 +2552,7 @@
         "Contracts": "branch cards do not become routing authority; fork analysis must stay evidence-backed",
         "Risks and anti-patterns": "fake certainty about future routes; using fork cards as hidden routing policy",
         "Verification": "confirm each branch differs materially; confirm likely owner repo is named",
-        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techn...",
+        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0079 from `8Dionysus/aoa-techn...",
         "Adaptation points": "local control-mode labels; local delegate tiers or approval classes"
       },
       "resource_inventory": {
@@ -2668,7 +2669,7 @@
         "Contracts": "diagnosis is read-only; one odd anecdote is not enough for structural certainty",
         "Risks and anti-patterns": "mistaking symptom for cause; using vague vibes as diagnosis",
         "Verification": "confirm each diagnosis cites evidence refs; confirm symptoms and causes are separated",
-        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `b0f7e...",
+        "Technique traceability": "AOA-T-0080 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/session-drift-taxonomy/TECHNIQUE.md` and sections: Intent, Outputs, Risks, Validation; AOA-T-0081 from `8Dionysus/aoa-techniques` at `3b1d5...",
         "Adaptation points": "local drift taxonomies; repo-specific failure classes"
       },
       "resource_inventory": {
@@ -2789,7 +2790,7 @@
         "Contracts": "self-repair is not free self-modification; important surface changes must pass checkpoint posture",
         "Risks and anti-patterns": "silent doctrine edits; approval bypass",
         "Verification": "confirm diagnosis exists and is cited; confirm the chosen repair is the smallest honest shape",
-        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa...",
+        "Technique traceability": "AOA-T-0082 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/recovery/diagnosis-repair/repair-shape-from-diagnosis/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Validation; AOA-T-0083 from `8Dionysus/aoa...",
         "Adaptation points": "local approval classes; repo-specific rollback anchors"
       },
       "resource_inventory": {
@@ -3024,7 +3025,7 @@
         "Contracts": "this skill governs one bounded child route; it does not grant hidden; local coding-agent child targeting is the default first choice, not an afterthought",
         "Risks and anti-patterns": "treating delegation as progress without anchor or output clarity; using summon to skip branch choice when several next routes still compete",
         "Verification": "confirm the passport and parent anchor exist; confirm expected outputs are named",
-        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `b0f7e094bf81abaf0895a729d504a97f3af91ae8` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0079 from `8Dionysu...",
+        "Technique traceability": "AOA-T-0078 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/governance/decision-routing/decision-fork-cards/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Validation; AOA-T-0079 from `8Dionysu...",
         "Adaptation points": "project overlays may add local child-role labels, control modes, or transport; project overlays may map local reviewed-closeout or checkpoint families onto"
       },
       "resource_inventory": {
@@ -3217,7 +3218,7 @@
     {
       "name": "atm10-change-protocol",
       "display_name": "ATM10 Change Protocol",
-      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.",
+      "description": "Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.",
       "short_description": "ATM10 bounded change overlay",
       "path": ".agents/skills/atm10-change-protocol/SKILL.md",
       "skill_dir": ".agents/skills/atm10-change-protocol",
@@ -3244,11 +3245,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning.",
+        "Intent": "Use this skill to adapt `aoa-change-protocol` to an `atm10-*` repository without changing the base workflow meaning or moving ATM10 runtime authority into `aoa-skills`.",
         "Trigger boundary": "the base `aoa-change-protocol` workflow is already correct, but an `atm10-*` repo needs repo-relative paths, commands, or local approval notes; a bounded non-trivial change still needs an explicit plan and verification path inside the local repo",
-        "Inputs": "target goal and touched local surface; repo-relative source-of-truth files",
-        "Outputs": "bounded local change plan; repo-relative command or path sketch",
-        "Procedure": "start from `aoa-change-protocol` rather than rewriting the workflow; name the repo-relative files, commands, and approval posture that matter locally",
+        "Inputs": "target goal and touched local surface; ATM10 route stack such as `AGENTS.md`, nearest nested `AGENTS.md`, `docs/SOURCE_OF_TRUTH.md`, `docs/RUNBOOK.md`, `docs/PRODUCT_EDGE_POSTURE.md`, or the exact touched local surface",
+        "Outputs": "bounded local change plan; route-card and source-of-truth evidence inspected",
+        "Procedure": "start from `aoa-change-protocol` rather than rewriting the workflow; read the ATM10 root route card, then the nearest nested `AGENTS.md` for every touched path",
         "Contracts": "preserve the base skill meaning; keep paths and commands repo-relative",
         "Risks and anti-patterns": "hiding downstream authority inside vague local notes; turning a thin overlay into repo doctrine or a scenario bundle",
         "Verification": "confirm the base skill is still the correct workflow; confirm repo-relative paths and commands are named explicitly",
@@ -3276,7 +3277,7 @@
       "interface": {
         "display_name": "ATM10 Change Protocol",
         "short_description": "ATM10 bounded change overlay",
-        "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative atm10 paths, commands, and local review notes.",
+        "default_prompt": "Use $atm10-change-protocol to apply the base change protocol with repo-relative ATM10 route cards, paths, commands, checks, recovery anchors, and local review notes.",
         "icon_small": "./assets/small-logo.svg",
         "icon_large": "./assets/large-logo.svg",
         "brand_color": "#6D28D9"
@@ -3321,12 +3322,12 @@
           }
         }
       },
-      "disclose_card_markdown": "### atm10-change-protocol\n- Summary: ATM10 bounded change overlay\n- Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative paths, commands, review checklists, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for local commands and source-of-truth surfaces. Do not use when the base skill is sufficient without local adaptation or when a broader playbook is needed.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
+      "disclose_card_markdown": "### atm10-change-protocol\n- Summary: ATM10 bounded change overlay\n- Use when: Apply the aoa-change-protocol workflow inside an atm10-* repository using repo-relative route cards, public docs, commands, checks, recovery anchors, and explicit local approval notes. Use when the base change protocol is correct but a thin project overlay is needed for ATM10-local command, source-of-truth, validation, or safety posture. Do not use when the base skill is sufficient without local adaptation, when document authority is the only question, or when a broader playbook is needed.\n- Trust posture: project-overlay\n- Mutation surface: repo\n"
     },
     {
       "name": "atm10-source-of-truth-check",
       "display_name": "ATM10 Source Of Truth Check",
-      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.",
+      "description": "Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.",
       "short_description": "ATM10 source-of-truth overlay",
       "path": ".agents/skills/atm10-source-of-truth-check/SKILL.md",
       "skill_dir": ".agents/skills/atm10-source-of-truth-check",
@@ -3337,7 +3338,7 @@
         "aoa_invocation_mode": "explicit-preferred",
         "aoa_source_skill_path": "skills/project/atm10/atm10-source-of-truth-check/SKILL.md",
         "aoa_source_repo": "8Dionysus/aoa-skills",
-        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002",
+        "aoa_technique_dependencies": "AOA-T-0013,AOA-T-0002,AOA-T-0009",
         "aoa_portable_profile": "codex-facing-wave-3"
       },
       "headings_available": [
@@ -3353,11 +3354,11 @@
         "Adaptation points"
       ],
       "section_summaries": {
-        "Intent": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local doc map needs repo-relative detail.",
+        "Intent": "Use this skill to adapt `aoa-source-of-truth-check` to an `atm10-*` repository when the base workflow is right but the local public-doc and repo-surface map needs repo-relative detail.",
         "Trigger boundary": "the base `aoa-source-of-truth-check` workflow is already correct, but an `atm10-*` repo needs local canonical-file patterns, repo-relative docs, or doc review rules; contributors need a thin overlay that maps repo-relative docs such as `README.md`, `docs/ARCHITECTURE.md`, or `...",
         "Inputs": "repo-relative docs or guidance surfaces; local canonical-file candidates",
-        "Outputs": "local source-of-truth map; bounded clarification note",
-        "Procedure": "start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine; name the repo-relative docs and guidance files involved in the ambiguity",
+        "Outputs": "local source-of-truth map; active/current versus archived, generated/export, local-only, internal, or runtime-adjacent placement map",
+        "Procedure": "start from `aoa-source-of-truth-check` instead of inventing a family-specific docs doctrine; read the ATM10 root route card and `docs/SOURCE_OF_TRUTH.md`; if a touched path has a nested `AGENTS.md`, read that before judging local authority",
         "Contracts": "preserve the base skill meaning; keep local file maps repo-relative and explicit",
         "Risks and anti-patterns": "inventing a broader docs governance framework inside a thin overlay; using family labels without reducing local ambiguity",
         "Verification": "confirm the base skill is still the right workflow; confirm authoritative repo-relative files are named explicitly",
@@ -3385,7 +3386,7 @@
       "interface": {
         "display_name": "ATM10 Source Of Truth Check",
         "short_description": "ATM10 source-of-truth overlay",
-        "default_prompt": "Use $atm10-source-of-truth-check to map authoritative atm10 docs with repo-relative file patterns and explicit local review posture.",
+        "default_prompt": "Use $atm10-source-of-truth-check to map authoritative ATM10 docs, public-surface roles, repo-relative file patterns, and explicit local review posture.",
         "icon_small": "./assets/small-logo.svg",
         "icon_large": "./assets/large-logo.svg",
         "brand_color": "#6D28D9"
@@ -3430,7 +3431,7 @@
           }
         }
       },
-      "disclose_card_markdown": "### atm10-source-of-truth-check\n- Summary: ATM10 source-of-truth overlay\n- Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative document maps, canonical-file patterns, and local review posture. Use when contributors need a thin project overlay to identify authoritative docs inside an atm10-* repo. Do not use when the task is broader policy design, purely code-local, or better handled by the base skill without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
+      "disclose_card_markdown": "### atm10-source-of-truth-check\n- Summary: ATM10 source-of-truth overlay\n- Use when: Apply the aoa-source-of-truth-check workflow inside an atm10-* repository using repo-relative public-surface roles, document maps, canonical-file patterns, entrypoint trimming, and local review posture. Use when contributors need a thin project overlay to identify authoritative ATM10 docs or separate active, archived, generated, local-only, and runtime-adjacent surfaces. Do not use when the task is broader policy design, purely code-local, runtime authority, or better handled by the base skill without local adaptation.\n- Trust posture: project-overlay\n- Mutation surface: none\n"
     },
     {
       "name": "titan-approval-ledger",

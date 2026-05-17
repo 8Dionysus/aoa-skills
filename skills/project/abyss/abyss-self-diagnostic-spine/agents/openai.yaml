@@ -2,4 +2,4 @@ policy:
   allow_implicit_invocation: false
   implicit_activation_policy: manual
 notes:
-- This thin abyss overlay may be auto-suggested when one abyss repo needs runtime diagnosis normalization, but it stays explicit-preferred because local intent and owner-aware handoff still matter.
+- This scaffold overlay stays manual-only; use it only after an explicit handle or deliberate manual route decision, and do not surface it as a silent semantic-match candidate.

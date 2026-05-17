@@ -12,7 +12,7 @@
   ],
   "skill_count": 45,
   "band_count": 7,
-  "case_count": 111,
+  "case_count": 109,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -273,7 +273,7 @@
       "manual_invocation_required": true,
       "candidate_only": false,
       "project_overlay": true,
-      "description_sha256": "e0f5533ad013bea96c55ee9d27f0cee6e1ccd9a0f7e88fc3466c5aa1f5cfe4ea"
+      "description_sha256": "45693932852a02321b01983411bbd463ed40e8c008367d38bbb7488f6f8f5263"
     },
     {
       "name": "atm10-source-of-truth-check",
@@ -282,7 +282,7 @@
       "manual_invocation_required": true,
       "candidate_only": false,
       "project_overlay": true,
-      "description_sha256": "e0c744178c0b7c1f9e4f1bb39dc6b3b1338f8c77b8d1f66e5d989a8724a046d4"
+      "description_sha256": "8cd17be221e3bf3352b948cc0f4e0fcd3afad8d9999de0c5f414d0eb6092a305"
     },
     {
       "name": "titan-approval-ledger",

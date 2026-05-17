@@ -4,7 +4,7 @@ techniques:
   - id: AOA-T-0036
     repo: 8Dionysus/aoa-techniques
     path: techniques/execution/runtime-truth-lifecycle/render-truth-before-startup/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - When to use
@@ -17,7 +17,7 @@ techniques:
   - id: AOA-T-0037
     repo: 8Dionysus/aoa-techniques
     path: techniques/execution/runtime-truth-lifecycle/contextual-host-doctor/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - When to use
@@ -30,7 +30,7 @@ techniques:
   - id: AOA-T-0028
     repo: 8Dionysus/aoa-techniques
     path: techniques/execution/agent-workflows-core/confirmation-gated-mutating-action/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - When to use
@@ -43,7 +43,7 @@ techniques:
   - id: AOA-T-0038
     repo: 8Dionysus/aoa-techniques
     path: techniques/execution/runtime-truth-lifecycle/one-command-service-lifecycle/TECHNIQUE.md
-    source_ref: cd276f040d55d490bd015b8698c7a5d594b9f875
+    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
     use_sections:
       - Intent
       - When to use

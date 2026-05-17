@@ -1,4 +1,4 @@
-# abyss-demo Overlay Skill Stub
+# abyss-demo Overlay Skill Fixture
 
 ## Base skill
 
@@ -7,7 +7,7 @@
 
 ## Overlay triggers
 
-- use this future stub when the safe change workflow is correct but the downstream repo needs local commands or approval notes
+- use this future fixture when the safe change workflow is correct but the downstream repo needs local commands or approval notes
 - do not use it for broad project doctrine or cross-repo automation
 
 ## Local inputs
@@ -37,7 +37,7 @@
 - verify that every path and command stays repository-relative
 - verify that the output remains public-safe and reviewable
 
-## Stub-only notes
+## Fixture-only notes
 
-- this is a future stub, not a live project-family skill
-- richer downstream behavior should stay stubbed until a separate overlay contract is promoted
+- this is a future fixture, not a live project-family skill
+- richer downstream behavior should stay fixture-bound until a separate overlay contract is promoted
