@@ -19,6 +19,7 @@ import skill_evaluation_surface
 import skill_governance_backlog_surface
 import skill_governance_lane_contract
 import skill_governance_surface
+import skill_intelligence_surface
 import skill_lineage_surface
 import skill_overlay_contract
 import skill_runtime_surface
@@ -59,6 +60,12 @@ BUNDLE_INDEX_JSON_PATH = skill_bundle_surface.BUNDLE_INDEX_JSON_PATH
 BUNDLE_INDEX_MARKDOWN_PATH = skill_bundle_surface.BUNDLE_INDEX_MARKDOWN_PATH
 SKILL_GRAPH_JSON_PATH = skill_bundle_surface.SKILL_GRAPH_JSON_PATH
 SKILL_GRAPH_MARKDOWN_PATH = skill_bundle_surface.SKILL_GRAPH_MARKDOWN_PATH
+SKILL_INTELLIGENCE_JSON_PATH = (
+    skill_intelligence_surface.SKILL_INTELLIGENCE_JSON_PATH
+)
+SKILL_INTELLIGENCE_MIN_JSON_PATH = (
+    skill_intelligence_surface.SKILL_INTELLIGENCE_MIN_JSON_PATH
+)
 QUEST_CATALOG_JSON_PATH = Path(GENERATED_DIR_NAME) / "quest_catalog.min.json"
 QUEST_DISPATCH_JSON_PATH = Path(GENERATED_DIR_NAME) / "quest_dispatch.min.json"
 QUEST_CATALOG_EXAMPLE_PATH = Path(GENERATED_DIR_NAME) / "quest_catalog.min.example.json"
@@ -1076,6 +1083,10 @@ def build_skill_graph_outputs(repo_root: Path) -> dict[Path, str]:
     }
 
 
+def build_skill_intelligence_outputs(repo_root: Path) -> dict[Path, str]:
+    return skill_intelligence_surface.build_skill_intelligence_texts(repo_root)
+
+
 def generated_surface_specs(repo_root: Path = REPO_ROOT) -> tuple[GeneratedSurfaceSpec, ...]:
     specs: list[GeneratedSurfaceSpec] = [
         GeneratedSurfaceSpec(
@@ -1259,6 +1270,24 @@ def generated_surface_specs(repo_root: Path = REPO_ROOT) -> tuple[GeneratedSurfa
             ),
             build_texts=build_skill_graph_outputs,
         ),
+        GeneratedSurfaceSpec(
+            key="skill_intelligence",
+            outputs=(
+                GeneratedSurfaceOutput(
+                    path=SKILL_INTELLIGENCE_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                    aggregate_sensitive=True,
+                ),
+                GeneratedSurfaceOutput(
+                    path=SKILL_INTELLIGENCE_MIN_JSON_PATH,
+                    is_json=True,
+                    item_collection_key="skills",
+                    aggregate_sensitive=True,
+                ),
+            ),
+            build_texts=build_skill_intelligence_outputs,
+        ),
     ]
     if questbook_surface_enabled(repo_root):
         specs.insert(
@@ -1428,6 +1457,14 @@ def write_skill_graph(repo_root: Path) -> tuple[Path, Path]:
     return written_paths[0], written_paths[1]
 
 
+def write_skill_intelligence(repo_root: Path) -> tuple[Path, Path]:
+    written_paths = write_generated_surface(
+        repo_root,
+        generated_surface_spec("skill_intelligence", repo_root),
+    )
+    return written_paths[0], written_paths[1]
+
+
 def check_catalogs(repo_root: Path) -> list[str]:
     return check_generated_surface(repo_root, generated_surface_spec("catalogs", repo_root))
 
@@ -1487,6 +1524,13 @@ def check_bundle_index(repo_root: Path) -> list[str]:
 
 def check_skill_graph(repo_root: Path) -> list[str]:
     return check_generated_surface(repo_root, generated_surface_spec("skill_graph", repo_root))
+
+
+def check_skill_intelligence(repo_root: Path) -> list[str]:
+    return check_generated_surface(
+        repo_root,
+        generated_surface_spec("skill_intelligence", repo_root),
+    )
 
 
 def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> int:

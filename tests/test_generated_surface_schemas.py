@@ -33,6 +33,7 @@ class GeneratedSurfaceSchemaTests(unittest.TestCase):
             ("overlay_readiness.schema.json", "overlay_readiness.json"),
             ("skill_bundle_index.schema.json", "skill_bundle_index.json"),
             ("skill_graph.schema.json", "skill_graph.json"),
+            ("skill_intelligence_registry.schema.json", "skill_intelligence_registry.json"),
             ("project-core-outer-ring.schema.json", "project_core_outer_ring.min.json"),
             ("project-core-outer-ring-readiness.schema.json", "project_core_outer_ring_readiness.min.json"),
             ("project-core-kernel-governance.schema.json", "project_core_kernel_governance.min.json"),
