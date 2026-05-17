@@ -15,8 +15,8 @@
         "scripts": [
           {
             "path": "infra_change_contract.py",
-            "sha256": "6ced68f93019372fa3bf2984f56d5c27458a2978a5a784022caad311b2b1095a",
-            "bytes": "6290"
+            "sha256": "e4381cd2c63502625b2c52a5263442f51918fcd5c86d57b71691c6479927fb7a",
+            "bytes": "6332"
           },
           {
             "path": "risk_surface_scan.py",

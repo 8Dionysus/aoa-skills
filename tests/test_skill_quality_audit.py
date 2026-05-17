@@ -79,6 +79,29 @@ class SkillQualityAuditTests(unittest.TestCase):
             report["summary"]["technique_drift"]["state_counts"].get("pending", 0),
         )
 
+    def test_quality_audit_keeps_stable_drift_summary_when_techniques_repo_is_missing(self) -> None:
+        completed = subprocess.run(
+            [
+                sys.executable,
+                "scripts/audit_skill_quality.py",
+                "--repo-root",
+                ".",
+                "--techniques-repo",
+                str(REPO_ROOT / ".missing-aoa-techniques-for-test"),
+                "--format",
+                "json",
+            ],
+            cwd=REPO_ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+
+        self.assertEqual(0, completed.returncode, msg=completed.stderr or completed.stdout)
+        drift_summary = json.loads(completed.stdout)["summary"]["technique_drift"]
+        self.assertFalse(drift_summary["available"])
+        self.assertEqual({}, drift_summary["state_counts"])
+
     def test_quality_audit_markdown_has_upgrade_targets_and_matrix(self) -> None:
         completed = subprocess.run(
             [

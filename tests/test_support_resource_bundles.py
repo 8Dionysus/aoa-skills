@@ -195,6 +195,36 @@ class SupportBundleScriptTests(unittest.TestCase):
         self.assertIn(result["risk_band"], {"medium", "high"})
         self.assertTrue(result["rollback_ready"])
 
+    def test_infra_change_contract_preserves_hold_when_required_fields_are_missing(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            payload_path = Path(tmpdir) / "infra-change.json"
+            payload_path.write_text(
+                json.dumps(
+                    {
+                        "change_summary": "invalid payload without required operational fields",
+                        "verification_steps": ["terraform plan"],
+                    }
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    "skills/risk/aoa-safe-infra-change/scripts/infra_change_contract.py",
+                    str(payload_path),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(2, completed.returncode, msg=completed.stderr)
+            result = json.loads(completed.stdout)
+            self.assertEqual("hold", result["report_state"])
+            self.assertIn("No touched_surfaces were provided.", result["errors"])
+            self.assertIn("No mutating_commands were provided.", result["errors"])
+
     def test_risk_surface_scan(self) -> None:
         payload = REPO_ROOT / "skills/risk/aoa-safe-infra-change/assets/infra_change_contract.template.json"
         result = run_json("skills/risk/aoa-safe-infra-change/scripts/risk_surface_scan.py", str(payload))
