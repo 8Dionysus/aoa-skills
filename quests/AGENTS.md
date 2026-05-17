@@ -1,25 +1,25 @@
 # AGENTS.md
 
-## Guidance for `quests/`
+## Applies to
 
-`quests/` stores durable public-safe obligations that should survive the
-current diff.
+This card applies to `quests/`.
 
-Quest sources live in lane-first lifecycle directories:
-`quests/<lane>/<state>/<quest-file>`.
-Do not add top-level quest aliases.
+## Role
 
-Use a quest when an obligation needs durable follow-through. Do not use this
-directory for private todos, roadmap duplication, proof verdicts, runtime
-state, or generated indexes.
+`quests/` preserves durable obligations and quest-oriented skill-layer follow-through that should survive a single chat turn.
 
-When moving or editing a quest, keep YAML `state`, owner surface, generated
-quest read models, and Questbook references aligned.
+## Read before editing
 
-Verify with:
+Read root `AGENTS.md`, `quests/README.md`, and the mechanic package that originated the obligation before editing.
 
-```bash
-python scripts/build_catalog.py
-python scripts/validate_skills.py
-python scripts/build_catalog.py --check
-```
+## Boundaries
+
+Do not turn quests into live runtime state, hidden agent destiny, or proof of completion. A quest records a reviewable obligation; completion still needs evidence in the owning surface.
+
+## Validation
+
+Run the route or roadmap parity check named by the owning mechanic. If no local check exists, run `python scripts/validate_skills.py` and `git diff --check`.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

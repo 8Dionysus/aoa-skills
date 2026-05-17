@@ -1,36 +1,25 @@
 # AGENTS.md
 
-Guidance for `skills/risk/`.
+## Applies to
 
-## Purpose
+This card applies to `skills/risk/`.
 
-`risk/` owns portable guard skills for approval, dry-run, infrastructure,
-bounded local stack bring-up, and sanitized sharing.
+## Role
 
-## Read First
+This lane owns risk-control skills such as approval gates, dry-run-first, sanitized share, local stack bringup, and safe infra change.
 
-1. `../AGENTS.md`
-2. this file
-3. `../README.md`
-4. the target bundle `SKILL.md`
-5. the target bundle `techniques.yaml`
-6. touched `checks/`, `examples/`, `references/`, `scripts/`, or `assets/`
+## Read before editing
 
-## Local Law
+Read `skills/AGENTS.md`, the target risk bundle, and any guard or approval surface referenced by the task.
 
-- Prefer explicit invocation for risk-heavy work.
-- Keep confirmation, preview, rollback, redaction, and lifecycle boundaries
-  visible.
-- Do not normalize hidden destructive actions, implicit approval, or secret
-  exposure.
-- Project-specific stricter policy belongs in `../project/<family>/`.
+## Boundaries
+
+Risk skills must make actions safer without becoming blanket permission. Keep gates explicit and do not hide risky mutation behind workflow language.
 
 ## Validation
 
-After source changes, rebuild generated surfaces and portable export. For
-support bundles, also run:
+Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
 
-```bash
-python scripts/build_support_resources.py --repo-root .
-python scripts/validate_support_resources.py --repo-root . --check-portable
-```
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

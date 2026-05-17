@@ -1,35 +1,25 @@
 # AGENTS.md
 
-Audit package guidance for `aoa-skills`.
+## Applies to
 
-## Purpose
+This card applies to `mechanics/audit/` except where a nearer card applies.
 
-This package owns skill-layer audit posture: review routing, evaluation evidence
-reading, public-status readouts, trigger-quality checks, conformance checks,
-and repo-local audit contracts.
+## Role
 
-It does not own proof doctrine, verdict authority, runtime activation, or
-downstream remediation truth.
+`mechanics/audit/` owns skill-layer audit posture, public status, promotion pressure, and evidence checks for the skill layer. Audit package guidance keeps this movement bounded and reviewable.
 
-## Start here
+## Read before editing
 
-1. `README.md`
-2. `DIRECTION.md`
-3. `PARTS.md`
-4. `docs/AUDIT_CONTRACT.md`
-5. the relevant active doc under `docs/`
+Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/audit/README.md`, `mechanics/audit/DIRECTION.md`, `mechanics/audit/PARTS.md`, `mechanics/audit/PROVENANCE.md`, `mechanics/audit/ROADMAP.md`, and any nearer card, `docs/AGENTS.md`.
+
+## Boundaries
+
+Keep `mechanics/audit/` focused on mechanic movement. Do not make it canonical skill content, sibling-repo technique truth, proof doctrine, or generated authority. Preserve Audit package guidance; skill-layer audit posture; docs/AUDIT_CONTRACT.md as a bounded local signal, not a global command.
 
 ## Validation
 
-Use the narrowest relevant checks:
+Run `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/audit_skill_quality.py --repo-root . --fail-on-blocked`, and focused tests for changed audit surfaces.
 
-```bash
-python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
-python scripts/lint_trigger_evals.py --repo-root .
-python scripts/lint_description_trigger_evals.py --repo-root .
-python scripts/run_skills_ref_validation.py --repo-root .
-python -m pytest -q tests/test_mechanics_topology.py
-```
+## Closeout
 
-Run `python scripts/release_check.py` when generated public, evaluation,
-trigger, portable, or release surfaces change.
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

@@ -1,21 +1,25 @@
 # AGENTS.md
 
-## Guidance for `manifests/`
+## Applies to
 
-`manifests/` is the root manifest route district.
-It may hold route cards or registries, but manifest records themselves belong
-with the owning mechanic package or part.
+This card applies to `manifests/`.
 
-Do not add component, hook, recurrence, adapter, export, or runtime manifest
-records here unless the record is truly root-owned and no mechanic package owns
-the behavior.
+## Role
 
-When a manifest record moves, update the owner package provenance, tests, and
-any generated consumer that stores the path.
+`manifests/` owns pack and release-oriented manifests that help consumers understand what canonical skill surfaces were exported or staged.
 
-Verify with the owner package validator plus:
+## Read before editing
 
-```bash
-python scripts/validate_nested_agents.py
-python scripts/validate_skills.py
-```
+Read root `AGENTS.md`, `manifests/README.md`, `generated/AGENTS.md`, and the manifest builder or validator before editing.
+
+## Boundaries
+
+Do not use manifests to promote skill status, certify downstream adoption, or replace canonical bundle metadata. Manifest claims must remain derivable or receipt-backed.
+
+## Validation
+
+Run the manifest builder or validator that owns the changed file. For release-visible manifest changes, run `python scripts/release_check.py`.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

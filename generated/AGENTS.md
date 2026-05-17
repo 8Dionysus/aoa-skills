@@ -1,29 +1,37 @@
 # AGENTS.md
 
-Guidance for coding agents and humans working under `generated/`.
+## Applies to
 
-## Purpose
+This card applies to `generated/`.
 
-`generated/` stores committed derived reader and governance surfaces built from authored sources elsewhere in the repository. These files are useful, public, and reviewable, but they are not the primary source of truth.
+## Role
 
-The main source-owned meaning still lives in authored inputs such as `skills/*/SKILL.md`, `skills/*/techniques.yaml`, committed review docs, and evaluation fixtures.
+`generated/` carries derived repository companions such as `skill_catalog.json`, matrices, route summaries, and release support outputs.
 
-## Read this first
+## Read before editing
 
-Before touching anything in `generated/`, read in this order:
+Read root `AGENTS.md`, `DESIGN.AGENTS.md`, `generated/README.md`, and the builder that owns the file before touching this lane.
 
-1. `../AGENTS.md`
-2. `README.md`
-3. `../README.md`
-4. `../mechanics/release-support/docs/RUNTIME_PATH.md`
-5. `../mechanics/audit/docs/EVALUATION_PATH.md`
-6. `../mechanics/audit/docs/PUBLIC_SURFACE.md`
-7. the generator entrypoint in `../scripts/build_catalog.py`
-8. the authored source surface that actually owns the meaning you are trying to change
+## Boundaries
 
-## Directory contract
+Do not hand-author files in `generated/`. If a generated surface is wrong, change `skills/`, `config/`, schemas, templates, or the relevant builder. Generated files summarize source truth; they do not become source truth.
 
-This directory contains derived surfaces such as:
+## Validation
+
+Regenerate with the owning builder, commonly `python scripts/build_catalog.py`, then check freshness with `python scripts/build_catalog.py --check`. For broader generated movement, run `python scripts/release_check.py`.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
+
+## Source Surfaces
+
+Generated surfaces commonly derive from `skills/**/SKILL.md`,
+`skills/**/techniques.yaml`, `docs/reviews/**`, `config/**`, schemas, templates,
+and builders under `scripts/` or mechanic package `parts/`.
+
+If any of these files change unexpectedly, inspect the owning source before
+accepting the diff:
 
 - `skill_catalog.json` and `skill_catalog.min.json`
 - `skill_capsules.json`
@@ -41,65 +49,11 @@ This directory contains derived surfaces such as:
 - `agent_skill_catalog.json` and `agent_skill_catalog.min.json`
 - `portable_export_map.json`
 - `local_adapter_manifest.json` and `local_adapter_manifest.min.json`
-- `skill_trigger_eval_cases.csv` and `skill_trigger_eval_cases.jsonl`
-- `skill_trigger_collision_matrix.json`
-- `agon_skill_binding_candidates.min.json`
-- `agon_epistemic_skill_candidates.min.json`
+- trigger, description-trigger, runtime, support-resource, and Agon candidate
+  outputs
 
-Do not hand-author files in `generated/` as if they were canonical prose. Change the owning source or the generator, then regenerate.
+## Hard No
 
-## Allowed changes
-
-Safe, normal contributions here include:
-
-- regenerating committed outputs after source changes
-- fixing generator logic or contracts when a derived surface is wrong
-- tightening schema or parity checks around derived surfaces
-- removing stale generated drift after the owning sources were corrected
-
-## Changes requiring extra care
-
-Use extra caution when:
-
-- changing the shape of a generated JSON surface
-- changing wording that downstream readers may parse or rely on
-- changing how walkthrough, evaluation, lineage, or governance signals are derived
-- changing multiple derived surfaces without naming the owning authored cause
-- changing candidate-bridge indexes in ways that would make
-  `requested_not_landed` look like promoted skill truth
-
-## Hard NO
-
-Do not:
-
-- manually edit a generated file and stop there
-- treat a generated surface as a replacement for the authored bundle
-- sneak undocumented policy changes into derived outputs
-- delete generated files to hide source or generator drift
-
-## Validation
-
-For changes that affect derived outputs, run:
-
-- `python scripts/build_catalog.py`
-- `python scripts/build_agent_skills.py --repo-root .`
-- `python scripts/validate_nested_agents.py`
-- `python scripts/validate_skills.py`
-- `python scripts/validate_agent_skills.py --repo-root .`
-- `python scripts/lint_trigger_evals.py --repo-root .`
-- `python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`
-- `python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py`
-- `python mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py --check`
-- `python mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py`
-- `python scripts/build_catalog.py --check`
-
-If a generated file changed unexpectedly, inspect the owning source before accepting the diff.
-
-## Output expectations
-
-When reporting work in `generated/`, include:
-
-- which derived surfaces changed
-- which authored sources caused the change
-- whether any schema or contract shape changed
-- what regeneration and validation commands were run
+Do not manually edit a generated file and stop there, delete generated files to
+hide drift, sneak policy changes into derived output, or make
+`requested_not_landed` candidate evidence look like accepted skill truth.

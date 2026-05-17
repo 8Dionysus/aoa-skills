@@ -1,26 +1,25 @@
 # AGENTS.md
 
-## Guidance for `tests/`
+## Applies to
 
-`tests/` protects root skill contracts, generated-surface parity, support
-resources, trigger quality, and downstream handoff shapes.
+This card applies to `tests/`.
 
-Mechanic-local tests may live with the owning mechanic package or part. Use
-`../mechanics/ARTIFACT_TOPOLOGY.md` when a test only makes sense beside one
-mechanic-owned schema, seed, or builder.
+## Role
 
-Tests should exercise behavior or contract truth, not merely freeze incidental formatting. Prefer fixtures that make a boundary visible: activation, support-resource portability, technique drift, receipt shape, and trigger collision.
+`tests/` owns repository proof for skill contracts, generated-surface parity, trigger collision behavior, public-safe exports, and release helpers.
 
-Do not update expected outputs without checking the authored source that owns the meaning. If generated files changed, rebuild first and then inspect the diff.
+## Read before editing
 
-Keep tests public-safe. No secrets, private paths, live credentials, or unreduced operator data.
+Read root `AGENTS.md`, the target script or source file, and neighboring tests before editing. Prefer adding the smallest test that proves the rule, then broaden only when the behavior crosses surfaces.
 
-When a test guards a downstream seam, name the owner repo and the bounded claim the test protects.
+## Boundaries
 
-Verify with:
+Do not use tests to bless generated drift, adapter-only wording as core meaning, or status promotion without review evidence. Fixtures must stay public-safe and should avoid brittle absolute host paths unless the test is explicitly workspace-scoped.
 
-```bash
-python -m pytest -q tests
-python -m pytest -q mechanics/agon/parts/workflow-candidate-bridge/tests mechanics/agon/parts/epistemic-candidate-boundary/tests
-python scripts/validate_semantic_agents.py
-```
+## Validation
+
+Run the focused test first, then `python -m pytest -q tests` when the behavior is shared or release-facing.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

@@ -1,35 +1,25 @@
 # AGENTS.md
 
-Guidance for `skills/core/engineering/`.
+## Applies to
 
-## Purpose
+This card applies to `skills/core/engineering/`.
 
-This lane owns portable engineering execution skills: source-of-truth review,
-decision capture, change protocol, TDD, boundaries, ports, contracts,
-invariants, and coverage audits.
+## Role
 
-## Read First
+This lane owns engineering workflow skills such as contract tests, invariants, ports, ADRs, and source-of-truth checks.
 
-1. `../../AGENTS.md`
-2. `../AGENTS.md`
-3. this file
-4. `../../README.md`
-5. the target bundle `SKILL.md`
-6. the target bundle `techniques.yaml`
-7. touched support artifacts
+## Read before editing
 
-## Local Law
+Read `skills/AGENTS.md`, `skills/core/AGENTS.md`, the target `SKILL.md`, `techniques.yaml`, and any checks/examples/references.
 
-- Keep skills reusable across repositories.
-- Keep owner-route, proof, and verification language concrete but not
-  project-local.
-- Do not hide project-specific commands or private runtime details in this
-  lane.
-- If a workflow needs a named owner family, create or update a project overlay
-  under `../../project/`.
+## Boundaries
+
+Keep engineering skills neutral, execution-oriented, and not overfit to one repo. AoA examples may guide but must not collapse general utility.
 
 ## Validation
 
-Run the bounded source/export flow from `../../AGENTS.md` after bundle changes.
-For topology or builder changes, run `python scripts/release_check.py` from the
-repository root.
+Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

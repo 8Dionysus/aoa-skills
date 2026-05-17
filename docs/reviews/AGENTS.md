@@ -1,0 +1,25 @@
+# AGENTS.md
+
+## Applies to
+
+This card applies to `docs/reviews/` and review subdirectories unless a nearer card is added.
+
+## Role
+
+Review docs preserve evaluated evidence for canonical candidacy, status promotions, and composition exceptions.
+
+## Read before editing
+
+Read root `AGENTS.md`, `docs/AGENTS.md`, `docs/reviews/README.md`, and the target skill bundle before changing a review file.
+
+## Boundaries
+
+A review file may record evidence; it must not auto-promote a skill. Status changes still need the configured evaluation and promotion gates.
+
+## Validation
+
+Run `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_skill_promotion_pressure.py --repo-root . --workspace-root /srv/AbyssOS`, and the focused validator for the reviewed bundle when relevant.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

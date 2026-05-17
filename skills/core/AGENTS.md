@@ -1,33 +1,25 @@
 # AGENTS.md
 
-Guidance for `skills/core/`.
+## Applies to
 
-## Purpose
+This card applies to `skills/core/`.
 
-`core/` holds portable AoA skill workflows that are not owned by one project
-family. It splits reusable engineering execution from reviewed session-growth
-movement so agents do not treat all core skills as one flat lane.
+## Role
 
-## Read First
+This lane owns core skills that should remain broadly useful inside the AoA skill layer.
 
-1. `../AGENTS.md`
-2. this file
-3. the nearest child `AGENTS.md`
-4. `../README.md`
-5. the target bundle `SKILL.md` and `techniques.yaml`
+## Read before editing
 
-## Local Law
+Read `skills/AGENTS.md`, `skills/core/engineering/AGENTS.md` or `skills/core/session-growth/AGENTS.md`, and the target bundle.
 
-- Keep core wording portable and public-safe.
-- Route project-specific paths, commands, approvals, and runtime assumptions to
-  `../project/`.
-- Route approval, destructive potential, sanitized sharing, and local runtime
-  bring-up to `../risk/` unless the current bundle is only referencing those
-  guards.
-- Do not add per-bundle `AGENTS.md` by default; bundle contracts belong in
-  `SKILL.md`, `techniques.yaml`, and support artifacts.
+## Boundaries
+
+Core skills must stay self-contained and broadly applicable; avoid narrow repository-only examples unless they are clearly examples, not the rule.
 
 ## Validation
 
-After source changes under this subtree, rebuild generated surfaces and run the
-validation path named by `../AGENTS.md`.
+Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

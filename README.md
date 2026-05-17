@@ -1,6 +1,7 @@
 # aoa-skills
 
-Public library of reusable Codex-facing skills for coding agents and humans.
+Public library of reusable local coding-agent skills for agentic coding work
+and human review.
 
 `aoa-skills` is the operational companion to `aoa-techniques`. Where `aoa-techniques` stores reusable engineering practice, `aoa-skills` stores **skill bundles**: self-contained workflows an agent can execute. A skill may package techniques and bounded actions, and a mature skill may also produce technique extraction work. Technique links are bridge evidence, not runtime dependency or automatic status blockers. A single-technique skill is an explicit reviewed exception, not the default shape.
 
@@ -13,6 +14,8 @@ A skill here is not a random prompt and not a hidden project hack. It is a reusa
 Use the shortest route by need:
 
 - first starter bundle: `skills/core/engineering/aoa-change-protocol/SKILL.md`
+- skill-layer design form: `DESIGN.md`
+- agent-facing guidance design: `DESIGN.AGENTS.md`
 - source topology: `skills/README.md`
 - current skill surface: `SKILL_INDEX.md`
 - current direction router: `mechanics/ROADMAP.md`, then the nearest mechanic
@@ -58,7 +61,7 @@ Use the shortest route by need:
 
 Good candidates:
 
-- reusable Codex-facing workflows
+- reusable local coding-agent workflows
 - bounded change-protocol skills
 - testing and validation skills
 - architecture and context-mapping skills
@@ -101,7 +104,7 @@ claim non-skill activation authority.
 
 - `skills/` for canonical skill bundles and deterministic support resources
 - `mechanics/` for owner-local skill-layer movement surfaces around AoA mechanics
-- `.agents/skills/` for the generated Codex-facing export layer
+- `.agents/skills/` for the generated Codex-compatible export layer
 - `config/` for portable export, policy, and profile inputs
 - `generated/` for derived catalogs, capsules, walkthroughs, evaluation matrices, and runtime manifests
 - `docs/`, `templates/`, `schemas/`, `scripts/`, and `tests/` for architecture, authoring, validation, and generation

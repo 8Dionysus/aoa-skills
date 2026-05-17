@@ -1,26 +1,25 @@
 # AGENTS.md
 
-## Guidance for `scripts/`
+## Applies to
 
-`scripts/` holds deterministic builders, validators, reports, and inspectors
-for repo-wide skill canon surfaces.
+This card applies to `scripts/`.
 
-Mechanic-local builders and validators live with the owning mechanic package or
-part. Use `../mechanics/ARTIFACT_TOPOLOGY.md` before moving a script into or out
-of root `scripts/`.
+## Role
 
-Prefer deterministic, repo-relative behavior. Scripts should not depend on hidden network state, private workspace paths, or ambient credentials unless the command explicitly documents that dependency.
+`scripts/` owns deterministic builders, validators, audits, release helpers, and repo-relative automation for the skill canon.
 
-When changing builders, preserve authored-source ownership: `skills/**/SKILL.md`, `techniques.yaml`, and support resources own meaning; generated catalogs, portable exports, tiny-router inputs, and reports summarize it.
+## Read before editing
 
-When changing validators, keep failure messages actionable and tied to concrete files. Do not weaken validation to pass a broken corpus.
+Read root `AGENTS.md`, `DESIGN.md`, `DESIGN.AGENTS.md` when route-law is touched, and the tests for the script being changed. Start from callers before changing shared helpers.
 
-When changing reports, preserve bounded language. A report may expose gaps or readiness, but it must not overclaim capability.
+## Boundaries
 
-Verify with the touched command and normally:
+Scripts must stay deterministic, repo-relative, public-safe, and explicit about source versus generated authority. Keep builder output stable, avoid network assumptions unless already part of the contract, and keep bounded language in reports.
 
-```bash
-python scripts/build_catalog.py --check
-python scripts/validate_skills.py --fail-on-review-truth-sync
-python scripts/validate_semantic_agents.py
-```
+## Validation
+
+Run the script directly. For common builders and validators, use `python scripts/build_catalog.py`, `python scripts/validate_skills.py`, `python scripts/validate_agents_design.py`, related tests, and `python scripts/release_check.py` for release-facing changes.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

@@ -1,98 +1,42 @@
 # AGENTS.md
 
-Route card for the `aoa-skills/mechanics/` surface.
+## Applies to
 
-## Purpose
+This card applies to `mechanics/` except where a nearer mechanic package card applies.
 
-`mechanics/` owns skill-layer movement surfaces for `aoa-skills`.
-These files describe how bounded workflow candidates, support layers, export
-surfaces, checkpoint carry, recurrence pressure, adoption pressure, and
-downstream bridge signals move around skill canon.
+## Role
 
-Mechanics are not canonical skill bundles. They shape the route into or around
-canon, while `skills/` owns executable skill content and `generated/` owns
-derived reader evidence.
+`mechanics/` owns skill-layer movement surfaces: adoption, audit, bridge, checkpoint, recurrence, release support, quest integration, and related package routes around the skill canon.
 
-## Owner lane
+## Read before editing
 
-This surface owns:
+Read root `AGENTS.md`, `mechanics/README.md`, `mechanics/ARTIFACT_TOPOLOGY.md`, `mechanics/ROADMAP.md`, and the target package `AGENTS.md`. Package README cards use `Local owns` to name local source responsibility.
 
-- owner-local movement grammar for candidate-to-skill flow inside the AoA
-  mechanics vocabulary
-- bounded skill-side candidate intake, adoption, audit, recurrence,
-  checkpoint, questbook, release-support, Agon, antifragility, boundary-bridge,
-  experience, growth-cycle, method-growth, and RPG routes
-- public-safe stop-lines for deciding when a surface must hand off to another
-  AoA repository
-- package-local active parts and provenance bridges that are too procedural for
-  flat `docs/` but not skill bundles
+## Boundaries
 
-It does not own:
+`skills/` owns executable skill content. Mechanics may route, evaluate, bridge, and preserve movement, but they must not rewrite bundle truth by implication or treat generated mirrors as authority.
 
-- canonical skill bundle meaning, which belongs under `skills/`
-- generated catalogs, manifests, runtime cards, or export truth, which belongs
-  under `generated/`, `.agents/skills/`, and the scripts that build them
-- reusable technique truth, which belongs in `aoa-techniques`
-- proof doctrine, which belongs in `aoa-evals`
-- routing policy, which belongs in `aoa-routing`
-- scenario composition, which belongs in `aoa-playbooks`
-- role, memory, KAG, stats, runtime infrastructure, or downstream project truth
+## Validation
 
-## Start here
+Run the target package validator first. For mesh shape, run `python scripts/validate_nested_agents.py`; for release-facing changes, run `python scripts/release_check.py`.
 
-1. Read the repository root `AGENTS.md`, `README.md`, `mechanics/README.md`,
-   `mechanics/ARTIFACT_TOPOLOGY.md`, and `mechanics/ROADMAP.md`.
-2. Read `mechanics/boundary-bridge/docs/LAYER_POSITION.md`, `docs/ARCHITECTURE.md`,
-   `mechanics/boundary-bridge/docs/BRIDGE_SPEC.md`, and `mechanics/release-support/docs/RUNTIME_PATH.md`.
-3. Read the nearest package README, starting with its local `Mechanic card`.
-4. If the package has `DIRECTION.md`, `PARTS.md`, `PROVENANCE.md`,
-   `LANDING_LOG.md`, `ROADMAP.md`, or `parts/`, use those active route
-   surfaces before opening historical material.
-5. If a package change touches skill bundles, generated/export outputs,
-   reviews, quests, or config, follow the nearest nested `AGENTS.md` there too.
+## Closeout
 
-## Local law
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
 
-- Mechanics may route, constrain, stage, and preserve movement, but they do not
-  silently promote candidates into `skills/`.
-- Every cross-repo handoff must name the stronger owner and stop-line rather
-  than importing that owner's authority into this repository.
-- Package README cards use `Local owns`, not `Center owns`.
-- `mechanics/ROADMAP.md` is a direction router. Package `ROADMAP.md` files own
+## Local Law
+
+- `mechanics/ROADMAP.md` is a direction router; package `ROADMAP.md` files own
   package future contours.
 - `mechanics/ARTIFACT_TOPOLOGY.md` owns placement law for mechanic-owned
   schemas, examples, config, generated companions, manifests, scripts, tests,
   and quests.
+- Package surfaces normally split into `DIRECTION.md`, `PARTS.md`,
+  `PROVENANCE.md`, `LANDING_LOG.md`, `ROADMAP.md`, `parts/`, and local
+  `legacy/` when source lineage must be preserved.
 - Generated artifacts remain evidence or export companions, not authority.
-- Legacy or source-preservation surfaces preserve lineage. They are not a junk
-  drawer, and they must not be the only place current active behavior lives.
-- When a mechanic grows beyond a simple README, prefer the AoA split:
-  `DIRECTION.md`, `PARTS.md`, `PROVENANCE.md`, `LANDING_LOG.md`, `ROADMAP.md`,
-  `parts/`, and package-local `legacy/` when source lineage must be preserved.
-- If a mechanics surface becomes an executable skill bundle with stable trigger
-  boundaries, inputs, outputs, risks, and verification, promote it through the
-  normal `skills/` review path instead of letting it sprawl here.
-
-## Verify
-
-Use the root validation path after mechanics changes:
-
-Run `python scripts/validate_nested_agents.py` whenever a mechanics `AGENTS.md`
-file is added or changed.
-
-```bash
-python scripts/build_catalog.py --check
-python scripts/validate_skills.py --fail-on-review-truth-sync
-python scripts/validate_nested_agents.py
-python -m unittest discover -s tests
-```
-
-If a package touches generated/export, recurrence, Agon, tiny-router, support
-resources, or release-manifest surfaces, run the named package-local and root
-validators before closeout.
-
-## Report
-
-Name the mechanics package changed, which active parts moved, whether skill
-meaning changed, whether generated/export surfaces changed, what validation
-ran, what was skipped, and where the next package should resume.
+- Legacy surfaces preserve lineage. They are not junk drawers, and current
+  active behavior must not live only there.
+- If a mechanic becomes an executable skill bundle with stable trigger
+  boundaries, inputs, outputs, risks, and verification, promote it through
+  `skills/` instead of letting it sprawl here.

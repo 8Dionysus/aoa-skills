@@ -1,56 +1,38 @@
-# Spark lane for aoa-skills
+# AGENTS.md
 
-This file only governs work started from `Spark/`.
+## Applies to
 
-The root `AGENTS.md` remains authoritative for repository identity, ownership boundaries, reading order, and validation commands. This local file only narrows how GPT-5.3-Codex-Spark should behave when used as the fast-loop lane.
+This card applies to `Spark/`.
 
-If `SWARM.md` exists in this directory, treat it as queue / swarm context. This `AGENTS.md` is the operating policy for Spark work.
+## Role
 
-## Default Spark posture
+`Spark/` is a compatibility and companion lane for Spark-facing skill-pack or agent-use surfaces. It may help local agent operation, but it does not own canonical skill truth.
 
-- Use Spark for short-loop work where a small diff is enough.
-- Start with a map: task, files, risks, and validation path.
-- Prefer one bounded patch per loop.
-- Read the nearest source docs before editing.
-- Use the narrowest relevant validation already documented by the repo.
-- Report exactly what was and was not checked.
-- Escalate instead of widening into a broad architectural rewrite.
+## Read before editing
 
-## Spark is strongest here for
+Read root `AGENTS.md`, `DESIGN.AGENTS.md`, and the nearest Spark README or config before editing. If a change mirrors a skill bundle, read the canonical `skills/**/SKILL.md` first.
 
-- skill-bundle wording and structure cleanup
-- technique-traceability refinement
-- schema and generated-surface alignment
-- targeted docs or test updates
-- small anti-pattern, trigger-boundary, or verification-language repairs
+## Boundaries
 
-## Do not widen Spark here into
+Do not let Spark-specific vocabulary become core skill wording. Keep adapter labels at the edge, and route canonical bundle changes back to `skills/`.
 
-- portfolio-wide skill redesign
-- rewriting upstream technique meaning here
-- rewriting eval doctrine here
-- inflating a bounded skill into a playbook-shaped composition
+## Validation
 
-## Local done signal
+Run the nearest Spark-specific check if one exists. Otherwise run `python scripts/validate_agent_skills.py --repo-root .` for skill-pack effects and `git diff --check` for route-card or wording changes.
 
-A Spark task is done here when:
+## Closeout
 
-- the skill remains bounded and reviewable
-- technique traceability is clearer
-- risk and verification posture are explicit
-- generated outputs are aligned when touched
-- the repo’s documented validation path was used when relevant
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
 
-## Local note
+## Spark Posture
 
-Spark should treat each skill like a tight workflow contract, not like a place to invent a new canon.
+Use Spark for short-loop work where a small diff is enough: skill wording,
+schema alignment, generated-surface checks, targeted docs, and narrow tests.
 
-## Reporting contract
+Start with a map: task, files, risks, and validation path. Prefer one bounded
+patch per loop. Escalate instead of widening into portfolio-scale redesign,
+upstream technique rewrites, eval doctrine, or playbook-shaped composition.
 
-Always report:
-
-- the restated task and touched scope
-- which files or surfaces changed
-- whether the change was semantic, structural, or clarity-only
-- what validation actually ran
-- what still needs a slower model or human review
+A Spark task is done here when the skill remains bounded and reviewable,
+generated outputs are aligned when touched, validation was actually run, and
+the report says what still needs slower review.

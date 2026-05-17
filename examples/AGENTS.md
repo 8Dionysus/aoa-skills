@@ -1,22 +1,25 @@
 # AGENTS.md
 
-## Guidance for `examples/`
+## Applies to
 
-`examples/` is the root example district for repo-owned examples only.
-Mechanic-owned examples live under `mechanics/<slug>/examples/` or the
-nearest owning part.
+This card applies to `examples/`.
 
-Examples are illustrative, not canonical. They should make a contract easier to understand without becoming a second source of truth beside schemas, docs, or `SKILL.md`.
+## Role
 
-Every example that demonstrates a schema-backed shape should stay paired with the schema or doc that owns it. Keep names, required fields, and boundary wording aligned with that owner.
+`examples/` is the root example district for portable, public-safe demonstrations that do not belong to one mechanic package or one skill bundle.
 
-Do not add secrets, private workspace paths, real credentials, or unreduced personal data. Use neutral placeholders and explain what must be replaced.
+## Read before editing
 
-When examples show degraded, receipt, or follow-through behavior, preserve the bounded posture: examples may show a next step, not grant open-ended task authority.
+Read root `AGENTS.md`, `examples/README.md`, and the schema or builder referenced by the example. Use `mechanics/<slug>/examples/` for mechanic-local examples and bundle-local `examples/` for skill-specific runtime cards.
 
-Verify with the relevant example validator when present, plus:
+## Boundaries
 
-```bash
-python scripts/build_openai_yaml_examples.py --map mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json --output-dir mechanics/boundary-bridge/examples --check
-python scripts/validate_semantic_agents.py
-```
+Examples must be public-safe, preserve schema-backed shape when a schema exists, and be written with neutral placeholders. Do not use examples to introduce active doctrine, hidden adoption claims, secrets, or unbounded posture.
+
+## Validation
+
+Run the nearest schema or builder check. For broad example drift, run `python scripts/validate_skills.py` and any package-local tests named by the owning mechanic.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.

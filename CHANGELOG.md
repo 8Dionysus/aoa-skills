@@ -9,6 +9,13 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Added
 
+- Root `DESIGN.md` and `DESIGN.AGENTS.md` now define the skill-layer system
+  form and the agent-facing guidance form adapted from the AoA center pattern.
+- The `AGENTS.md` mesh now covers source, docs, mechanics, parts, legacy,
+  generated/export, tests, scripts, and portable pack districts with the
+  canonical six-section route-card shape.
+- `scripts/validate_agents_design.py` and its tests now enforce required
+  AGENTS card placement, heading order, and non-empty canonical sections.
 - `mechanics/OWNER_REQUEST_RECEIPTS.md` records owner-local AoA request
   receipts for skill-layer mechanics, separating landed requests from
   accepted-but-not-landed future package pressure.
@@ -18,6 +25,11 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Changed
 
+- Root `AGENTS.md` now follows the canonical route-card shell with route modes,
+  post-change review, hard boundaries, and review-critical drift for
+  `aoa-skills`.
+- `scripts/release_check.py` now validates the AGENTS design mesh before the
+  nested and semantic AGENTS checks.
 - mechanics-shaped root and flat-doc surfaces now route through `mechanics/`,
   including `mechanics/ROADMAP.md`, `mechanics/questbook/QUESTBOOK.md`,
   audit evidence, boundary bridge overlays, experience workflow posture,

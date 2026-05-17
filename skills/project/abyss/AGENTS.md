@@ -1,26 +1,25 @@
 # AGENTS.md
 
-Guidance for `skills/project/abyss/`.
+## Applies to
 
-## Purpose
+This card applies to `skills/project/abyss/`.
 
-This family owns AbyssOS-facing project overlays for infra, sharing, and
-diagnostic posture.
+## Role
 
-## Read First
+This lane owns AbyssOS/AoA project skills for safe infra, sanitized sharing, and diagnostic spine work.
 
-1. `../AGENTS.md`
-2. this file
-3. `../../README.md`
-4. the target bundle `SKILL.md` and `techniques.yaml`
+## Read before editing
 
-## Local Law
+Read `skills/project/AGENTS.md`, the target `SKILL.md`, and the owning AbyssOS or AoA repo card before changing behavior.
 
-- Keep AbyssOS policy explicit and repo-relative.
-- Do not move workspace-root projection truth, runtime ownership, or sibling
-  repository authority into these bundles.
-- Route stronger owner truth to the owning repository named by the task.
+## Boundaries
+
+Keep Abyss project language clear without making these skills universal defaults for non-Abyss repos.
 
 ## Validation
 
-Run the project overlay validation path from `../AGENTS.md`.
+Run `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, `python scripts/validate_agent_skills.py --repo-root .`, and focused bundle checks when present.
+
+## Closeout
+
+Report changed surfaces, checks run, checks skipped, remaining risk, and the next owner route. If a nearby source document carried agent-facing working law into this card, name that transfer.
