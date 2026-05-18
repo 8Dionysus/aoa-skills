@@ -11,7 +11,7 @@ name: aoa-checkpoint-closeout-bridge
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `be4999a2bf9c`
+- reviewed revision: `374523874b9a`
 
 ## Target status
 
@@ -35,7 +35,8 @@ name: aoa-checkpoint-closeout-bridge
 - current bundle note: the bridge now treats checkpoint hints as focus inputs,
   records explicit stage statuses, and preserves the donor -> progression ->
   quest order without forcing verdicts when reviewed evidence supports a skip,
-  defer, or stop.
+  defer, or stop; project-local reviewed follow-through now routes to the
+  Growth-cycle harvest-note lane rather than flat docs.
 
 ## Gaps and blockers
 

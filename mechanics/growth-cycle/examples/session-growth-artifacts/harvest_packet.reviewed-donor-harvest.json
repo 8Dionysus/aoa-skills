@@ -5,7 +5,7 @@
   "route_ref": "route:session-growth",
   "owner_repo": "aoa-skills",
   "reviewed_artifacts": [
-    "repo:aoa-skills/docs/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
+    "repo:aoa-skills/mechanics/growth-cycle/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
   ],
   "extract_counts": {
     "skill": 1,
@@ -45,7 +45,7 @@
       "status_posture": "early",
       "evidence_refs": [
         "repo:aoa-sdk/examples/closeout_context.lineage.example.json",
-        "repo:aoa-skills/docs/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
+        "repo:aoa-skills/mechanics/growth-cycle/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
       ],
       "supersedes": [],
       "merged_into": null,
@@ -58,7 +58,7 @@
       "drop_reason": "theme-only residue, no bounded reusable object",
       "status_posture": "thin-evidence",
       "evidence_refs": [
-        "repo:aoa-skills/docs/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
+        "repo:aoa-skills/mechanics/growth-cycle/session-harvests/2026-04-09.workspace-checkpoint-growth-closeout-follow-through.md"
       ]
     }
   ]

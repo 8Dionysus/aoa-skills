@@ -56,6 +56,13 @@ Tracking starts with the community-docs baseline for this repository.
   including `mechanics/ROADMAP.md`, `mechanics/questbook/QUESTBOOK.md`,
   audit evidence, boundary bridge overlays, experience workflow posture,
   method-growth maturity docs, and release-support runtime/release surfaces.
+- Growth-cycle now owns committed session-harvest notes and the
+  candidate-harvest template under package-local lanes; `docs/` keeps only a
+  route to that evidence surface.
+- Root `legacy/` is retired as a tracked active district; raw reformation
+  evidence now lives under package-local mechanics legacy lanes, with durable
+  rationale in `docs/decisions/` and distilled learning in
+  `mechanics/growth-cycle/session-harvests/`.
 - `aoa-automation-opportunity-scan` packet contracts now require explicit
   determinism and secret-coupling posture, and `aoa-session-donor-harvest`
   only routes to self-repair after a reviewed diagnosis exists.

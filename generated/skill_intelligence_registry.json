@@ -2061,8 +2061,8 @@
         "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
         "techniques_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/techniques.yaml",
         "policy_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/agents/openai.yaml",
-        "content_hash": "be4999a2bf9c879555970eba60cb998f6df549ceb7edf7c8db026dcbcc526a8c",
-        "skill_revision": "be4999a2bf9c"
+        "content_hash": "374523874b9ac814ec7bcb195ec29a6675413db53d637ca383c8a373bd2da091",
+        "skill_revision": "374523874b9a"
       },
       "policy": {
         "invocation_mode": "explicit-preferred",
@@ -2307,8 +2307,8 @@
           "section_role": "adaptation",
           "source_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
           "source_anchor": "## Adaptation points",
-          "text": "Project overlays may add: - local reviewed artifact entrypoints - local receipt bundle locations - local stop conditions before quest triage - local stage-status vocabulary and report locations, as long as the donor -> progression -> quest dependency order remains visible - local owner-layer route maps for generated donor packets - project-local reviewed follow-through notes under `docs/session-harvests/` when bridge upkeep becomes reusable but is still below promotion authority - project-local reminders that downstream `aoa-session-self-diagnose`, owner follow-through, and stats refresh stay explicit next steps outside this skill - local post-closeout stats or owner follow-through commands that stay outside this bridge skill",
-          "text_sha256": "f861763a443e70c9d759d4ca61041d4c75582cbcafe01aeec9bc39eecdb97f41",
+          "text": "Project overlays may add: - local reviewed artifact entrypoints - local receipt bundle locations - local stop conditions before quest triage - local stage-status vocabulary and report locations, as long as the donor -> progression -> quest dependency order remains visible - local owner-layer route maps for generated donor packets - project-local reviewed follow-through notes under `mechanics/growth-cycle/session-harvests/` when bridge upkeep becomes reusable but is still below promotion authority - project-local reminders that downstream `aoa-session-self-diagnose`, owner follow-through, and stats refresh stay explicit next steps outside this skill - local post-closeout stats or owner follow-through commands that stay outside this bridge skill",
+          "text_sha256": "15ce83187db1f2588d68584d2f005ac98ab27332b36f351476f15d6894a9b9fa",
           "token_count": 100
         }
       ]

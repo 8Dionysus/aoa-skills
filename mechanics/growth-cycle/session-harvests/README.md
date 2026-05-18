@@ -1,8 +1,8 @@
 # Session Candidate Harvest Notes
 
-This directory stores bounded session-level harvest notes produced after
-execution and closeout, but before any owner-layer promotion becomes a formal
-skill, eval, playbook, memo, or technique decision.
+This Growth-cycle lane stores bounded session-level harvest notes produced
+after execution and closeout, but before any owner-layer promotion becomes a
+formal skill, eval, playbook, memo, technique, quest, or decision record.
 
 Use this surface when a session produced reusable candidates that should not
 stay in chat memory, but also should not be misfiled as:
@@ -10,9 +10,11 @@ stay in chat memory, but also should not be misfiled as:
 - `docs/reviews/canonical-candidates/`, which is only for existing skill bundles
 - `docs/reviews/status-promotions/`, which is only for existing skill status changes
 - owner-layer doctrine, when the candidate is still only harvested evidence
+- raw legacy or provenance archives, when the useful lesson can be distilled
+  without making the raw notebook a first-read route
 
 Each note should stay bounded and public-safe.
-Use [SESSION_CANDIDATE_HARVEST.template.md](../../templates/SESSION_CANDIDATE_HARVEST.template.md)
+Use [SESSION_CANDIDATE_HARVEST.template.md](../templates/SESSION_CANDIDATE_HARVEST.template.md)
 for the shape.
 
 Constraints:
@@ -20,3 +22,5 @@ Constraints:
 - a session-harvest note is not a promotion verdict
 - a session-harvest note is not memory canon
 - a session-harvest note does not create a new skill by itself
+- a session-harvest note should link raw evidence when raw evidence remains
+  useful, but should not copy a full temporary notebook into docs

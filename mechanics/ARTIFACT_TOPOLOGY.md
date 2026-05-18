@@ -70,6 +70,11 @@ alias, or compatibility duplicate.
 Package-local `legacy/`, seed, and landing receipt districts are allowed when
 they preserve source lineage without becoming alternate active routes.
 
+Do not add a generic `mechanics/legacy/` district. Raw lineage belongs under
+the corresponding package-local `mechanics/<slug>/legacy/` lane; if no mechanic
+owns the material, route it to `mechanics/growth-cycle/session-harvests/` or `docs/decisions/`
+instead of inventing a broad archive.
+
 ## Skill Canon
 
 Mechanic artifacts may prepare, validate, or publish evidence around skill

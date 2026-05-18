@@ -20,10 +20,10 @@ surfaces. The move changes their route, not their authority level.
 
 Current evidence companions remain in:
 
-- `docs/session-harvests/`
+- `mechanics/growth-cycle/session-harvests/`
 - `mechanics/growth-cycle/examples/session-growth-artifacts/`
 - `templates/SKILL_APPLICABILITY_MAP.template.md`
-- `templates/SESSION_CANDIDATE_HARVEST.template.md`
+- `mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md`
 - `config/project_core_skill_kernel.json`
 - `scripts/publish_core_skill_receipts.py`
 
@@ -33,6 +33,27 @@ or examples into promotion truth.
 Example families use semantic suffixes. `reviewed-donor-harvest`,
 `derived-visibility-handoff`, and `kernel-maturity` are active evidence-family
 names, not pass numbers or maturity scores.
+
+Session-harvest notes and their candidate-harvest template moved from the flat
+docs/templates lanes into Growth-cycle because the harvest-note boundary is a
+Growth-cycle part:
+
+| Former path | Current path | Active route |
+|---|---|---|
+| `docs/session-harvests/` | `mechanics/growth-cycle/session-harvests/` | [Harvest Note Boundary](parts/harvest-note-boundary/README.md) |
+| `templates/SESSION_CANDIDATE_HARVEST.template.md` | `mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md` | [Harvest Note Boundary](parts/harvest-note-boundary/README.md) |
+
+## Preserved Reformation Rhythm Source
+
+The mechanics reformation notebook is preserved as package-local raw lineage:
+
+| Former path | Preserved raw path | Active route |
+|---|---|---|
+| `legacy/MECHANICS_REFORMATION_RHYTHM.md` | `mechanics/growth-cycle/legacy/reformation-rhythm/raw/MECHANICS_REFORMATION_RHYTHM.md` | [Harvest Note Boundary](parts/harvest-note-boundary/README.md) and [Adaptive Orchestration](parts/adaptive-orchestration/README.md) |
+
+The distilled public learning lives in
+`mechanics/growth-cycle/session-harvests/2026-05-18.mechanics-reformation-root-legacy-distillation.md`.
+The raw notebook is not a current route card.
 
 ## Recurrence Companion
 

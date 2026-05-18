@@ -10,7 +10,7 @@ This card applies to `mechanics/growth-cycle/` except where a nearer card applie
 
 ## Read before editing
 
-Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/growth-cycle/README.md`, `mechanics/growth-cycle/DIRECTION.md`, `mechanics/growth-cycle/PARTS.md`, `mechanics/growth-cycle/PROVENANCE.md`, `mechanics/growth-cycle/ROADMAP.md`, and any nearer card, `docs/AGENTS.md`, `parts/AGENTS.md`.
+Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/growth-cycle/README.md`, `mechanics/growth-cycle/DIRECTION.md`, `mechanics/growth-cycle/PARTS.md`, `mechanics/growth-cycle/PROVENANCE.md`, `mechanics/growth-cycle/ROADMAP.md`, and any nearer card such as `docs/AGENTS.md`, `parts/AGENTS.md`, `session-harvests/AGENTS.md`, `templates/AGENTS.md`, or `legacy/AGENTS.md`.
 
 ## Boundaries
 

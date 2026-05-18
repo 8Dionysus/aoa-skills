@@ -24,7 +24,7 @@ gate readout is `generated/project_core_kernel_governance.min.json`.
 
 ## Next Work
 
-- Keep `docs/session-harvests/` as public evidence only while it remains useful;
+- Keep `mechanics/growth-cycle/session-harvests/` as public evidence only while it remains useful;
   do not let it become promotion verdict authority.
 - Keep the session-harvest family after reviewed run, closure, or pause; do not
   use it inside an active route.

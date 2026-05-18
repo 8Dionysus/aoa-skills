@@ -86,6 +86,10 @@ to the route.
 - [Landing Log](LANDING_LOG.md): dated accounting for checked landings.
 - [Roadmap](ROADMAP.md): next honest growth-cycle passes.
 - [Docs](docs/README.md): active growth-cycle contract docs.
+- [Session Harvests](session-harvests/README.md): public-safe evidence notes
+  below owner-layer promotion.
+- [Templates](templates/AGENTS.md): Growth-cycle-owned harvest note shape.
+- [Legacy](legacy/README.md): retired iteration-rhythm provenance.
 
 ## Functioning parts
 

@@ -690,7 +690,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "be4999a2bf9c879555970eba60cb998f6df549ceb7edf7c8db026dcbcc526a8c",
+      "content_hash": "374523874b9ac814ec7bcb195ec29a6675413db53d637ca383c8a373bd2da091",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -720,7 +720,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md",
-      "skill_revision": "be4999a2bf9c",
+      "skill_revision": "374523874b9a",
       "status": "evaluated",
       "support_artifacts": [
         {
