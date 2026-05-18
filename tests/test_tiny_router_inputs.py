@@ -55,6 +55,7 @@ class TinyRouterInputsTest(unittest.TestCase):
         signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
         protected_cues = ("route forks", "diagnosis packet", "repair packet")
         automation_fillers = ("automation opportunity", "automation candidate", "seed ready", "not now")
+        matched_names = []
 
         for entry in signals["skills"]:
             if (
@@ -63,6 +64,7 @@ class TinyRouterInputsTest(unittest.TestCase):
             ):
                 continue
 
+            matched_names.append(entry["name"])
             cues = entry["positive_cues"]
             for cue in protected_cues:
                 self.assertIn(cue, cues, msg=f"{entry['name']} dropped route cue {cue!r}")
@@ -75,6 +77,8 @@ class TinyRouterInputsTest(unittest.TestCase):
                         cues.index(filler),
                         msg=f"{entry['name']} lets automation filler {filler!r} precede route cues",
                     )
+
+        self.assertTrue(matched_names, msg="no non-automation quest-harvest skills were checked")
 
     def test_non_invoke_skills_stay_manual_and_project_skills_stay_overlays(self) -> None:
         catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
