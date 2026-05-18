@@ -205,7 +205,30 @@ def discover_quest_paths(repo_root: Path) -> tuple[Path, ...]:
     )
 
 
+def duplicate_quest_id_paths(repo_root: Path) -> dict[str, tuple[Path, ...]]:
+    paths_by_id: dict[str, list[Path]] = {}
+    for path in discover_quest_paths(repo_root):
+        paths_by_id.setdefault(path.stem, []).append(path)
+    return {
+        quest_id: tuple(paths)
+        for quest_id, paths in paths_by_id.items()
+        if len(paths) > 1
+    }
+
+
+def ensure_unique_quest_ids(repo_root: Path) -> None:
+    duplicates = duplicate_quest_id_paths(repo_root)
+    if not duplicates:
+        return
+    details = []
+    for quest_id, paths in sorted(duplicates.items()):
+        refs = ", ".join(relative_path(path, repo_root) for path in paths)
+        details.append(f"{quest_id}: {refs}")
+    raise ValueError("duplicate quest ids are not allowed: " + "; ".join(details))
+
+
 def discover_quest_source_paths(repo_root: Path) -> dict[str, str]:
+    ensure_unique_quest_ids(repo_root)
     return {
         path.stem: relative_path(path, repo_root)
         for path in discover_quest_paths(repo_root)
@@ -213,6 +236,7 @@ def discover_quest_source_paths(repo_root: Path) -> dict[str, str]:
 
 
 def discover_quest_path_map(repo_root: Path) -> dict[str, Path]:
+    ensure_unique_quest_ids(repo_root)
     return {path.stem: path for path in discover_quest_paths(repo_root)}
 
 

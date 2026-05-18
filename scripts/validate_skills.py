@@ -306,7 +306,21 @@ def validate_quest_schema_envelope(
 def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     quest_ids = build_catalog.discover_quest_ids(repo_root)
-    quest_paths = build_catalog.discover_quest_path_map(repo_root)
+    duplicate_quest_paths = build_catalog.duplicate_quest_id_paths(repo_root)
+    for quest_id, paths in sorted(duplicate_quest_paths.items()):
+        issues.append(
+            ValidationIssue(
+                f"quests/**/{quest_id}.yaml",
+                "duplicate quest id files are not allowed: "
+                + ", ".join(relative_location(path) for path in paths),
+            )
+        )
+    if duplicate_quest_paths:
+        quest_paths: dict[str, Path] = {}
+        for quest_path in build_catalog.discover_quest_paths(repo_root):
+            quest_paths.setdefault(quest_path.stem, quest_path)
+    else:
+        quest_paths = build_catalog.discover_quest_path_map(repo_root)
     missing_foundation_ids = build_catalog.missing_foundation_quest_ids(quest_ids)
     required_paths = (
         repo_root / QUESTBOOK_PATH,

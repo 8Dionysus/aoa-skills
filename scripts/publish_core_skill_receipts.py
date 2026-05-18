@@ -185,7 +185,10 @@ def validate_surface_detection_context(context: dict[str, Any], *, location: str
         )
 
     shortlist_confidence = context.get("shortlist_confidence")
-    if shortlist_confidence is not None and shortlist_confidence not in {"low", "medium", "high"}:
+    if shortlist_confidence is not None and (
+        not isinstance(shortlist_confidence, str)
+        or shortlist_confidence not in {"low", "medium", "high"}
+    ):
         raise ReceiptPublishError(
             f"{location}.shortlist_confidence: must be omitted or one of {['low', 'medium', 'high']!r}"
         )

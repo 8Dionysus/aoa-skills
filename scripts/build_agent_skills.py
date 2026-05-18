@@ -190,18 +190,24 @@ def section_map(skill: dict[str, Any]) -> dict[str, str]:
 
 def extract_bullets(markdown: str, limit: int | None = 3) -> list[str]:
     items: list[str] = []
+    limit_reached = False
     for raw_line in markdown.splitlines():
-        line = raw_line.strip()
-        if not line:
+        stripped = raw_line.strip()
+        if not stripped:
             continue
-        if line.startswith("- "):
-            items.append(normalize_space(line[2:]))
-        elif line[:2].isdigit() and ". " in line[:4]:
-            items.append(normalize_space(line.split(". ", 1)[1]))
-        elif line[:1].isdigit() and ". " in line[:3]:
-            items.append(normalize_space(line.split(". ", 1)[1]))
+        if raw_line[:1].isspace() and items and not stripped.startswith("- ") and ". " not in stripped[:4]:
+            items[-1] = normalize_space(f"{items[-1]} {stripped}")
+            continue
+        if limit_reached:
+            continue
+        if stripped.startswith("- "):
+            items.append(normalize_space(stripped[2:]))
+        elif stripped[:2].isdigit() and ". " in stripped[:4]:
+            items.append(normalize_space(stripped.split(". ", 1)[1]))
+        elif stripped[:1].isdigit() and ". " in stripped[:3]:
+            items.append(normalize_space(stripped.split(". ", 1)[1]))
         if limit is not None and len(items) >= limit:
-            break
+            limit_reached = True
     return items
 
 
@@ -656,8 +662,11 @@ def build_project_core_outer_ring_readiness_doc(
     for skill_name in ring_doc["skills"]:
         catalog_entry = catalog_by_name.get(skill_name, {})
         blockers: list[str] = []
-        cluster_id = cluster_by_name[skill_name]
+        cluster_id = cluster_by_name.get(skill_name)
         collision_family = collision_by_name.get(skill_name)
+        if cluster_id is None:
+            cluster_id = "unmapped"
+            blockers.append("missing_cluster_mapping")
         if skill_name not in repo_outer_ring:
             blockers.append("missing_from_repo_project_core_outer_ring")
         if skill_name not in repo_core_only:
@@ -758,8 +767,11 @@ def build_project_risk_guard_ring_governance_doc(
     for skill_name in ring_doc["skills"]:
         catalog_entry = catalog_by_name.get(skill_name, {})
         blockers: list[str] = []
-        cluster_id = cluster_by_name[skill_name]
+        cluster_id = cluster_by_name.get(skill_name)
         collision_family = collision_by_name.get(skill_name)
+        if cluster_id is None:
+            cluster_id = "unmapped"
+            blockers.append("missing_cluster_mapping")
         adjacent_overlay_skill_name = adjacent_overlay_by_name.get(skill_name)
         adjacent_overlay_present = bool(
             adjacent_overlay_skill_name and adjacent_overlay_skill_name in catalog_by_name

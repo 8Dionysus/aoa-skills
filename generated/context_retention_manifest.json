@@ -120,12 +120,12 @@
     {
       "name": "aoa-automation-opportunity-scan",
       "compact_summary": "Classify automation-ready routes",
-      "activation_card_markdown": "Use when: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.\n\nKeep in memory: reviewed session artifact, harvest packet, or recurring project slice, evidence of repeated manual work, `AUTOMATION_OPPORTUNITY_PACKET`, one or more `AUTOMATION_CANDIDATE` cards.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Detect reviewed or repeated project processes that are candidates for automation, classify whether they are seed-ready, and route them to the right owner layer without granting schedule or mutation authority. Use when a reviewed session or repeated project slice reveals a recurring manual route and the honest question is whether it should stay manual, become a bounded skill, or become a playbook automation seed candidate. Do not use for one-off exploratory work, creative synthesis with no stable trigger or output, live scheduling requests, or hidden self-change.\n\nKeep in memory: reviewed session artifact, harvest packet, or recurring project slice, evidence of repeated manual work, `AUTOMATION_OPPORTUNITY_PACKET`, one or more `AUTOMATION_CANDIDATE` cards `references/stats-event-envelope.md` and `references/automation-candidate-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact, harvest packet, or recurring project slice",
         "evidence of repeated manual work",
         "`AUTOMATION_OPPORTUNITY_PACKET`",
-        "one or more `AUTOMATION_CANDIDATE` cards"
+        "one or more `AUTOMATION_CANDIDATE` cards `references/stats-event-envelope.md` and `references/automation-candidate-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -189,12 +189,12 @@
     {
       "name": "aoa-checkpoint-closeout-bridge",
       "compact_summary": "Bridge checkpoints into reviewed closeout",
-      "activation_card_markdown": "Use when: Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.\n\nKeep in memory: reviewed session artifact, optional local checkpoint note, in `checkpoint-collect` mode:, updated local checkpoint note.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Bridge provisional checkpoint evidence into one explicit reviewed closeout execution chain without turning notes into final harvest, progression, or quest authority. Use when a reviewed session artifact exists, checkpoint notes or closeout handoffs already carry focus hints, and the next honest move is to reread the reviewed artifact while driving donor harvest, progression lift, and quest harvest in that fixed order. Do not use for mid-session collection only, for hidden execution inside `aoa closeout run`, or when the request tries to mint final verdicts from checkpoint notes without reviewed evidence.\n\nKeep in memory: reviewed session artifact, optional local checkpoint note local agent rollout trace, transcript excerpts, and relevant receipts, in `checkpoint-collect` mode:, updated local checkpoint note skill runs artifacts or receipts were emitted reread session evidence, which checkpoint hints were accepted, and which hints were rejected as stale, cross-session, or contaminated.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact",
-        "optional local checkpoint note",
+        "optional local checkpoint note local agent rollout trace, transcript excerpts, and relevant receipts",
         "in `checkpoint-collect` mode:",
-        "updated local checkpoint note"
+        "updated local checkpoint note skill runs artifacts or receipts were emitted reread session evidence, which checkpoint hints were accepted, and which hints were rejected as stale, cross-session, or contaminated"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -212,12 +212,12 @@
     {
       "name": "aoa-commit-growth-seam",
       "compact_summary": "Commit bounded diffs honestly",
-      "activation_card_markdown": "Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n\nKeep in memory: one bounded local diff, working tree status, including any unrelated local changes, one bounded commit-or-defer decision, `commit_authorization_posture`, such as `authorized_now`, `defer_commit`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a validated bounded diff into one intentional local commit with explicit scope review, named verification carry-forward, and a visible stop line before push or publish. Use when a bounded code, config, or docs diff is already prepared locally and the next honest move is one local commit boundary rather than more coding. Do not use when the task still needs more repair or verification, when no bounded diff exists, or when the main task is push, PR, release, or public-share.\n\nKeep in memory: one bounded local diff, working tree status, including any unrelated local changes, one bounded commit-or-defer decision, `commit_authorization_posture`, such as `authorized_now`, `defer_commit`, `needs_split`, or `needs_verification`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "one bounded local diff",
         "working tree status, including any unrelated local changes",
         "one bounded commit-or-defer decision",
-        "`commit_authorization_posture`, such as `authorized_now`, `defer_commit`,"
+        "`commit_authorization_posture`, such as `authorized_now`, `defer_commit`, `needs_split`, or `needs_verification`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -396,12 +396,12 @@
     {
       "name": "aoa-quest-harvest",
       "compact_summary": "Triage quest promotion honestly",
-      "activation_card_markdown": "Use when: Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.\n\nKeep in memory: source quest or quest family, reviewed run summary or harvest pack, promotion verdict, owner repo and follow-up surface.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Give the final promotion verdict on one repeated reviewed quest-shaped unit without collapsing skills, playbooks, orchestrator classes, proof, or memory into one layer. Use when a bounded quest-shaped work pattern has repeated, reviewed evidence exists, and you need the final honest verdict on whether it should stay a quest or move into the next owner surface. Do not use when the route is still active, only one anecdotal occurrence exists, the task is to invent net-new doctrine, or a broader reviewed session artifact still needs donor harvest, route forks, diagnosis, repair, or progression reflection first.\n\nKeep in memory: source quest or quest family, reviewed run summary or harvest pack isolated during reviewed harvest, promotion verdict, owner repo and follow-up surface `reviewed_repeat_weak`, `contested_repeat`, `topic_only_repeat`, `mixed_residue`, or `owner_pending` acceptance in the destination repo and `references/quest-promotion-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "source quest or quest family",
-        "reviewed run summary or harvest pack",
+        "reviewed run summary or harvest pack isolated during reviewed harvest",
         "promotion verdict",
-        "owner repo and follow-up surface"
+        "owner repo and follow-up surface `reviewed_repeat_weak`, `contested_repeat`, `topic_only_repeat`, `mixed_residue`, or `owner_pending` acceptance in the destination repo and `references/quest-promotion-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -465,12 +465,12 @@
     {
       "name": "aoa-session-donor-harvest",
       "compact_summary": "Harvest reusable units from sessions",
-      "activation_card_markdown": "Use when: Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state, one bounded `HARVEST_PACKET`, one reviewed intake note that says which checkpoint or handoff hints were.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a reviewed session artifact into a bounded HARVEST_PACKET, route each reusable unit to the right AoA owner layer, and hand off to the next honest post-session skill when needed. Use when the source is a reviewed session transcript, compaction note, or recap and the real question is what should survive this session rather than merely what happened. Do not use for active or unreviewed sessions, raw session capture or indexing work, or when the only remaining object is already one repeated quest unit that just needs `aoa-quest-harvest` for the final promotion verdict.\n\nKeep in memory: reviewed session artifact, session goal and closure state pre-harvest focus hints that may also contain stale or neighboring-session residue, one bounded `HARVEST_PACKET`, one reviewed intake note that says which checkpoint or handoff hints were accepted, rejected, or carried as unresolved focus only stable enough to deserve explicit automation-readiness classification `aoa-session-route-forks`, `aoa-session-self-diagnose`, `aoa-session-self-repair` only when a reviewed diagnosis already exists, `aoa-session-progression-lift`, or `aoa-quest-harvest` `references/harvest-packet-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact",
-        "session goal and closure state",
+        "session goal and closure state pre-harvest focus hints that may also contain stale or neighboring-session residue",
         "one bounded `HARVEST_PACKET`",
-        "one reviewed intake note that says which checkpoint or handoff hints were"
+        "one reviewed intake note that says which checkpoint or handoff hints were accepted, rejected, or carried as unresolved focus only stable enough to deserve explicit automation-readiness classification `aoa-session-route-forks`, `aoa-session-self-diagnose`, `aoa-session-self-repair` only when a reviewed diagnosis already exists, `aoa-session-progression-lift`, or `aoa-quest-harvest` `references/harvest-packet-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -488,12 +488,12 @@
     {
       "name": "aoa-session-progression-lift",
       "compact_summary": "Lift reviewed progression signals",
-      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, baseline posture such as `baseline_ref`, `prior_delta_ref`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Lift reviewed session evidence into a bounded multi-axis progression delta with explicit unlock hints, quest reflection cues, and no fake single-score authority. Use when a reviewed session produced meaningful mastery evidence and you need progression legibility without mutating source role profiles or routing authority. Do not use when there is no reviewed evidence, when the request wants one universal power number, or when progression language is being used as hidden policy.\n\nKeep in memory: reviewed session artifact or harvest packet, named evidence refs provisional axis hints, `PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints, baseline posture such as `baseline_ref`, `prior_delta_ref`, `first_observed`, `baseline_missing`, `baseline_stale`, or `baseline_contested` evidence posture, and any defer or no-movement reason and `references/progression-delta-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact or harvest packet",
-        "named evidence refs",
+        "named evidence refs provisional axis hints",
         "`PROGRESSION_DELTA` with axis movement, verdict, and optional unlock hints",
-        "baseline posture such as `baseline_ref`, `prior_delta_ref`,"
+        "baseline posture such as `baseline_ref`, `prior_delta_ref`, `first_observed`, `baseline_missing`, `baseline_stale`, or `baseline_contested` evidence posture, and any defer or no-movement reason and `references/progression-delta-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -511,12 +511,12 @@
     {
       "name": "aoa-session-route-forks",
       "compact_summary": "Make next-route forks explicit",
-      "activation_card_markdown": "Use when: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.\n\nKeep in memory: reviewed session artifact or harvest packet, candidate next routes, `FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions, one suggested default route if evidence is strong enough.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn reviewed session evidence into explicit next-route forks with likely gains, costs, risks, owner targets, and stop conditions so continuation stays legible instead of buried in chat memory. Use when a reviewed session ended with several plausible next moves and you need visible branch choices rather than a hidden recommendation. Do not use when there is only one obvious next move, when donor harvest still has not happened, or when the real question is final promotion of one repeated quest unit.\n\nKeep in memory: reviewed session artifact or harvest packet, candidate next routes, `FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions, one suggested default route if evidence is strong enough is real `references/decision-fork-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact or harvest packet",
         "candidate next routes",
         "`FORK_CARDS` with likely gain, cost, risk, owner repo, and stop conditions",
-        "one suggested default route if evidence is strong enough"
+        "one suggested default route if evidence is strong enough is real `references/decision-fork-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -534,12 +534,12 @@
     {
       "name": "aoa-session-self-diagnose",
       "compact_summary": "Diagnose reviewed session drift",
-      "activation_card_markdown": "Use when: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.\n\nKeep in memory: reviewed session artifact or harvest packet, observed frictions, failures, or contradictions, `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints, evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Classify drift, friction, proof gaps, ownership confusion, and repeated failure patterns from a reviewed session into a bounded diagnosis packet without mutating anything yet. Use when the next honest move is diagnosis before repair and the reviewed material points to repeated contradictions, blockers, or boundary blur. Do not use for live sessions, for issues that are already fully diagnosed, or when the real task is final quest-promotion triage.\n\nKeep in memory: reviewed session artifact or harvest packet, observed frictions, failures, or contradictions, `DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints, evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown rollback gaps, or secret coupling `references/stats-event-envelope.md` and `references/diagnosis-packet-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed session artifact or harvest packet",
         "observed frictions, failures, or contradictions",
         "`DIAGNOSIS_PACKET` with drift types, symptoms, probable causes, repair shapes, and owner hints",
-        "evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown"
+        "evidence posture for each meaningful symptom and probable cause, such as reviewed symptom, reviewed inference, provisional hint, contested evidence, stale evidence, or unknown rollback gaps, or secret coupling `references/stats-event-envelope.md` and `references/diagnosis-packet-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -557,12 +557,12 @@
     {
       "name": "aoa-session-self-repair",
       "compact_summary": "Author checkpointed repair packets",
-      "activation_card_markdown": "Use when: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.\n\nKeep in memory: reviewed diagnosis packet, owner-layer candidates, `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub, explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Turn a reviewed diagnosis packet into the smallest honest repair packet with checkpoint posture, rollback markers, health checks, and explicit owner-layer targets instead of silent self-mutation. Use when diagnosis already exists and the next honest move is a bounded repair plan or repair-ready packet. Do not use without a reviewed diagnosis, for playbook-scale rollout work, or for vague self-improvement rhetoric with no bounded target.\n\nKeep in memory: reviewed diagnosis packet, owner-layer candidates, `REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub, explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required stabilize a route before later automation scanning or seeding `references/repair-cycle-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "reviewed diagnosis packet",
         "owner-layer candidates",
         "`REPAIR_PACKET` with target owner repo, smallest diff shape, approval need, rollback marker, health check, and improvement-log stub",
-        "explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required"
+        "explicit repair execution posture such as proposed, prepared, executing, verified, blocked, or handoff_required stabilize a route before later automation scanning or seeding `references/repair-cycle-receipt-schema.yaml` `references/core-skill-application-receipt-schema.yaml`"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -603,12 +603,12 @@
     {
       "name": "aoa-summon",
       "compact_summary": "Summon one bounded child route",
-      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one, one summon decision with allowed or blocked posture, one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one parent anchor (`route_anchor`, `parent_task_id`, or `session_ref`), and named expected outputs local agent trace ref, progression overlay ref, self-agent checkpoint ref, and audit refs, one summon decision with allowed or blocked posture, one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`, `remote_reviewed`, `split_required`, or `human_gate` `owner_publication_plan` session, or owner boundary.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "must_keep": [
         "a quest passport with difficulty, risk, control mode, and delegate tier",
-        "a summon request with desired role or child target, transport preference, one",
+        "a summon request with desired role or child target, transport preference, one parent anchor (`route_anchor`, `parent_task_id`, or `session_ref`), and named expected outputs local agent trace ref, progression overlay ref, self-agent checkpoint ref, and audit refs",
         "one summon decision with allowed or blocked posture",
-        "one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`,"
+        "one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`, `remote_reviewed`, `split_required`, or `human_gate` `owner_publication_plan` session, or owner boundary"
       ],
       "retain_sections": [
         "Trigger boundary",
