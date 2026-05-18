@@ -20,6 +20,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import build_catalog
+import skill_evaluation_contract
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {
@@ -2041,6 +2042,63 @@ class BuildCatalogTests(unittest.TestCase):
         )
         self.assertIn("# Skill evaluation matrix", markdown)
         self.assertIn("| aoa-test-skill | canonical | core | explicit-preferred |", markdown)
+
+    def test_evaluation_matrix_rejects_existing_absolute_snapshot_path(self) -> None:
+        repo_root = self.make_repo(
+            status="canonical",
+            review_surfaces=("canonical-candidates",),
+            include_evaluation_fixtures=True,
+        )
+        external_dir = Path(tempfile.mkdtemp(prefix="aoa-skills-external-snapshot-"))
+        self.addCleanup(shutil.rmtree, external_dir, True)
+        external_snapshot = external_dir / "aoa_test_skill_use_snapshot_1.md"
+        external_snapshot.write_text(
+            textwrap.dedent(
+                """\
+                # Evaluation Snapshot
+
+                ## Prompt
+
+                use case
+
+                ## Expected selection
+
+                Decision: use `aoa-test-skill`.
+
+                ## Why
+
+                - the bounded trigger is needed
+
+                ## Expected object
+
+                - output
+
+                ## Boundary notes
+
+                - keep the scope bounded
+
+                ## Verification hooks
+
+                - verify the output
+                """
+            ),
+            encoding="utf-8",
+        )
+        fixtures_path = repo_root / "tests" / "fixtures" / "skill_evaluation_cases.yaml"
+        fixtures = yaml.safe_load(fixtures_path.read_text(encoding="utf-8"))
+        fixtures["snapshot_cases"][0]["snapshot_path"] = external_snapshot.as_posix()
+        fixtures_path.write_text(
+            yaml.safe_dump(fixtures, sort_keys=False),
+            encoding="utf-8",
+        )
+
+        payload = build_catalog.build_evaluation_matrix_payload(repo_root)
+
+        self.assertFalse(payload["skills"][0]["canonical_eval_ready"])
+        self.assertIn(
+            skill_evaluation_contract.BLOCKER_MISSING_SNAPSHOT_FILE,
+            payload["skills"][0]["canonical_eval_blockers"],
+        )
 
     def test_check_mode_passes_after_write(self) -> None:
         repo_root = self.make_repo(
