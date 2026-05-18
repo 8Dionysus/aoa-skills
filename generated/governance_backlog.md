@@ -12,7 +12,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 - pending technique bridge lineage: 0
 - canonical maintenance cohort: 12
 - comparative pending cohort: 13
-- review truth-sync gaps: 0
+- review truth-sync gaps: 1
 - docs truth-sync issues: 0
 
 | name | status | lineage | governance ready | eval ready | governance decision | lanes | reconciliation | candidate review | promotion review |
@@ -85,7 +85,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-quest-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-quest-harvest.md | 3672a25831c3 | 3672a25831c3 | True | - | true |
 | aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | 882901e7a920 | 882901e7a920 | False | - | true |
 | aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 4a48a4e10b5d | 4a48a4e10b5d | True | - | true |
-| aoa-session-donor-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-donor-harvest.md | 399518a3da07 | 399518a3da07 | True | - | true |
+| aoa-session-donor-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-donor-harvest.md | 399518a3da07 | 9877151c0fe9 | True | reviewed_revision_mismatch(expected=9877151c0fe9, recorded=399518a3da07) | false |
 | aoa-session-progression-lift | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-progression-lift.md | 80f8c55f299f | 80f8c55f299f | True | - | true |
 | aoa-session-route-forks | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-route-forks.md | 35b036551123 | 35b036551123 | True | - | true |
 | aoa-session-self-diagnose | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-diagnose.md | 54e0926c66ea | 54e0926c66ea | True | - | true |
@@ -101,6 +101,6 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 - `blocked_by_pending_lineage`: -
 - `canonical_maintenance`: aoa-adr-write, aoa-approval-gate-check, aoa-bounded-context-map, aoa-change-protocol, aoa-contract-test, aoa-dry-run-first, aoa-invariant-coverage-audit, aoa-property-invariants, aoa-safe-infra-change, aoa-sanitized-share, aoa-source-of-truth-check, aoa-tdd-slice
 - `comparative_pending`: aoa-automation-opportunity-scan, aoa-checkpoint-closeout-bridge, aoa-commit-growth-seam, aoa-core-logic-boundary, aoa-local-stack-bringup, aoa-port-adapter-refactor, aoa-quest-harvest, aoa-session-donor-harvest, aoa-session-progression-lift, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-summon
-- `review_truth_sync`: -
+- `review_truth_sync`: aoa-session-donor-harvest
 - `docs_truth_sync`: -
 

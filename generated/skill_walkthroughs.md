@@ -877,7 +877,7 @@ Common expand sections:
 - candidate ref minted only after reviewed harvest
 - source cluster ref when the reviewed input carried one
 - reusable unit name
-- unit kind: pattern, mechanic, utility, law, proof, recall, or route
+- unit kind: pattern, mechanic, utility, law, proof, recall, route, or automationcandidate
 - owner shape: technique, skill, playbook, eval, memo, agent, or hold
 - owner hypothesis and owner repo recommendation
 - one chosen next artifact
