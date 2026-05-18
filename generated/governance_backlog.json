@@ -43,9 +43,7 @@
       "aoa-summon"
     ],
     "docs_truth_sync": [],
-    "review_truth_sync": [
-      "aoa-session-donor-harvest"
-    ]
+    "review_truth_sync": []
   },
   "governance_backlog_version": 5,
   "review_truth_sync": [
@@ -268,16 +266,14 @@
     {
       "current_revision": "9877151c0fe9",
       "governance_decision": "stay_evaluated",
-      "issues": [
-        "reviewed_revision_mismatch(expected=9877151c0fe9, recorded=399518a3da07)"
-      ],
+      "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
       "review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
-      "reviewed_revision": "399518a3da07",
+      "reviewed_revision": "9877151c0fe9",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
-      "truth_synced": false
+      "truth_synced": true
     },
     {
       "current_revision": "80f8c55f299f",
