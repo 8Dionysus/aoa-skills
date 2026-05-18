@@ -66,6 +66,8 @@ RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/lint_pack_profiles.py", "--repo-root", "."),
     ("python", "scripts/lint_support_resources.py", "--repo-root", "."),
     ("python", "scripts/run_skills_ref_validation.py", "--repo-root", "."),
+    ("python", ".agents/spark/scripts/validate_spark_lane.py"),
+    ("python", "-m", "unittest", "discover", "-s", ".agents/spark/tests", "-p", "test*.py"),
     ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_support_resources.py", "--repo-root", ".", "--check"),
     ("python", "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"),

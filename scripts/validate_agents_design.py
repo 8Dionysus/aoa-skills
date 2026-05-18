@@ -23,9 +23,9 @@ EXPECTED_AGENT_CARDS: tuple[Path, ...] = tuple(
     Path(path)
     for path in (
         ".agents/AGENTS.md",
+        ".agents/spark/AGENTS.md",
         ".github/AGENTS.md",
         "AGENTS.md",
-        "Spark/AGENTS.md",
         "config/AGENTS.md",
         "docs/AGENTS.md",
         "docs/decisions/AGENTS.md",

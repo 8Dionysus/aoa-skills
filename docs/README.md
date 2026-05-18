@@ -44,7 +44,8 @@ generated-surface summary.
 | [`reviews/`](reviews/) | review records for status, canonical candidates, and exceptions |
 | [`AGENTS_ROOT_REFERENCE.md`](AGENTS_ROOT_REFERENCE.md) | preserved historical root guidance; not the active command or authority source |
 
-Generated files under `../generated/` and portable exports under `../.agents/`
-are reader, runtime, or transport companions. Follow them back to source bundles,
-source config, review records, mechanics packages, or builders before changing
-meaning.
+Generated files under `../generated/`, portable exports under
+`../.agents/skills/`, and Spark lane packets under `../.agents/spark/` are
+reader, runtime, transport, or agent-lane companions. Follow them back to source
+bundles, source config, review records, mechanics packages, or builders before
+changing meaning.

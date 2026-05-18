@@ -978,6 +978,6 @@
     "releasing_doc": "mechanics/release-support/docs/RELEASING.md",
     "latest_tagged_version": "0.4.0",
     "latest_tagged_date": "2026-05-18",
-    "has_unreleased_changes": false
+    "has_unreleased_changes": true
   }
 }

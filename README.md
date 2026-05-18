@@ -28,7 +28,7 @@ linked owner surface instead of expanding this page.
 | Canonical skill bundles | [skills](skills/README.md) |
 | Owner-local skill mechanics | [mechanics](mechanics/README.md) |
 | Derived reader surfaces | [generated](generated/README.md) |
-| Portable skill export | [.agents](.agents/AGENTS.md) |
+| Portable skill export and Spark agent lane | [.agents](.agents/AGENTS.md) |
 
 This repository is strongest when it turns a repeated way of working into a
 bounded, reviewable execution object. It is weakest when it tries to become

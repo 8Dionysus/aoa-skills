@@ -9,7 +9,14 @@ Tracking starts with the community-docs baseline for this repository.
 
 ### Added
 
+- Codex Spark now has a validated `.agents/spark/` fast-session lane with a
+  registry, scenario packets, result and handoff templates, schemas, validator,
+  tests, and release-check wiring.
+
 ### Changed
+
+- The old root `Spark/` companion lane moved under `.agents/spark/`, matching
+  the agent-lane topology used by `Agents-of-Abyss` and `aoa-techniques`.
 
 ### Fixed
 

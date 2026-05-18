@@ -92,6 +92,14 @@ class ReleaseCheckTests(unittest.TestCase):
             ("python", "scripts/validate_agents_design.py"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
+        self.assertIn(
+            ("python", ".agents/spark/scripts/validate_spark_lane.py"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
+            ("python", "-m", "unittest", "discover", "-s", ".agents/spark/tests", "-p", "test*.py"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
 
     def test_build_release_check_sequence_can_append_packaging_smoke(self) -> None:
         self.assertEqual(
