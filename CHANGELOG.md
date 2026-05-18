@@ -38,6 +38,9 @@ Tracking starts with the community-docs baseline for this repository.
   including `mechanics/ROADMAP.md`, `mechanics/questbook/QUESTBOOK.md`,
   audit evidence, boundary bridge overlays, experience workflow posture,
   method-growth maturity docs, and release-support runtime/release surfaces.
+- `aoa-automation-opportunity-scan` packet contracts now require explicit
+  determinism and secret-coupling posture, and `aoa-session-donor-harvest`
+  only routes to self-repair after a reviewed diagnosis exists.
 
 ## [0.3.3] - 2026-04-23
 

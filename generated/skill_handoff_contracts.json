@@ -1625,6 +1625,7 @@
         "confirm hold and defer outcomes remain available",
         "confirm the output names the next artifact rather than only abstract categories",
         "confirm any family handoff hint is explicit rather than smuggled into the",
+        "confirm any `aoa-session-self-repair` handoff cites an existing reviewed",
         "confirm any `automation_candidate` names the current manual route and still",
         "confirm any emitted receipt stays append-only, evidence-linked, and smaller",
         "confirm any emitted `CORE_SKILL_APPLICATION_RECEIPT` points to the matching"

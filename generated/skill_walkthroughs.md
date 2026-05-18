@@ -886,7 +886,7 @@ Common expand sections:
 - evidence anchors from the session artifact
 - one short list of items to defer, drop, or keep as quest residue
 - one optional automationcandidate extract when a repeated manual route is stable enough to deserve explicit automation-readiness classification
-- one optional handoff list to aoa-automation-opportunity-scan, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair, aoa-session-progression-lift, or aoa-quest-harvest
+- one optional handoff list to aoa-automation-opportunity-scan, aoa-session-route-forks, aoa-session-self-diagnose, aoa-session-self-repair only when a reviewed diagnosis already exists, aoa-session-progression-lift, or aoa-quest-harvest
 - one HARVESTPACKETRECEIPT using references/stats-event-envelope.md and references/harvest-packet-receipt-schema.yaml
 - one CORESKILLAPPLICATIONRECEIPT using references/core-skill-application-receipt-schema.yaml
 

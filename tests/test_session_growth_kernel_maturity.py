@@ -81,6 +81,27 @@ def _load_receipt_contract(relative_path: str) -> dict[str, object]:
     }
 
 
+def _load_packet_required_fields(relative_path: str) -> list[str]:
+    text = (REPO_ROOT / relative_path).read_text(encoding="utf-8")
+    required_fields: list[str] = []
+    in_required_fields = False
+
+    for raw_line in text.splitlines():
+        line = raw_line.rstrip()
+        if line.startswith("required_fields:"):
+            in_required_fields = True
+            continue
+        if in_required_fields:
+            stripped = line.strip()
+            if stripped.startswith("- "):
+                required_fields.append(stripped[2:].strip())
+                continue
+            if stripped:
+                break
+
+    return required_fields
+
+
 def _load_module(name: str, path: Path):
     sys.path.insert(0, str(path.parent))
     spec = importlib.util.spec_from_file_location(name, path)
@@ -142,6 +163,17 @@ def test_kernel_maturity_kernel_packets_keep_reviewed_source_and_one_lineage_cha
 
     assert cluster_refs == {"cluster:route:aoa-playbooks-playbook-registry-min"}
     assert candidate_refs == {"candidate:aoa-skills:2026-04-11:reviewed-automation-followthrough"}
+
+
+def test_automation_opportunity_packet_example_follows_required_field_contract() -> None:
+    packet = _load_json(PACKET_PATHS["automation_candidate"])
+    required_fields = _load_packet_required_fields(
+        "skills/core/session-growth/aoa-automation-opportunity-scan/references/automation-opportunity-packet-schema.yaml"
+    )
+
+    assert "determinism_posture" in required_fields
+    assert "secret_coupling" in required_fields
+    assert all(field in packet for field in required_fields)
 
 
 def test_kernel_maturity_detail_receipts_follow_skill_contracts_and_point_back_to_packets() -> None:

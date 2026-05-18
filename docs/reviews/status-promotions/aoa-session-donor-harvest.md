@@ -11,7 +11,7 @@ name: aoa-session-donor-harvest
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `341ad3eec340`
+- reviewed revision: `399518a3da07`
 
 ## Target status
 
@@ -31,9 +31,10 @@ name: aoa-session-donor-harvest
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: donor harvest now filters checkpoint, closeout-handoff,
-  and ledger hints through reviewed evidence before `candidate_ref` minting,
-  while preserving donor extraction as the first owner-placement nucleus.
+- current bundle note: donor harvest filters checkpoint, closeout-handoff, and
+  ledger hints through reviewed evidence before `candidate_ref` minting,
+  preserves donor extraction as the first owner-placement nucleus, and only
+  routes to `aoa-session-self-repair` when a reviewed diagnosis already exists.
 
 ## Gaps and blockers
 
