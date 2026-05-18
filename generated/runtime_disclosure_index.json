@@ -4823,7 +4823,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dio...",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence",
         "Verification": "confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant",
-        "Technique traceability": "AOA-T-0060 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation;...",
+        "Technique traceability": "AOA-T-0060 from `8Dionysus/aoa-techniques` at `fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e` using path `techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation;...",
         "Adaptation points": "Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law."
       },
       "resource_inventory": {
@@ -4927,7 +4927,7 @@
         "Contracts": "The skill is explicit-only and must not be invoked as hidden background behavior.; Titan role, helper/control-plane, runtime implementation, memory, proof, and public-runbook authority stays in owner repositories: aoa-agents, aoa-sdk, abyss-stack, aoa-memo, aoa-evals, and 8Dio...",
         "Risks and anti-patterns": "treating Titan vocabulary as permission to widen authority; letting receipt, replay, console, or bridge state replace owner-repo evidence",
         "Verification": "confirm direct skill invocation or explicit Titan service-cohort request is present; confirm lane, gate, source refs, and owner surface are named when relevant",
-        "Technique traceability": "AOA-T-0062 from `8Dionysus/aoa-techniques` at `3b1d5d623569aa4920b87280d0db0e911d2e29d5` using path `techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
+        "Technique traceability": "AOA-T-0062 from `8Dionysus/aoa-techniques` at `fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e` using path `techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md` and sections: Intent, Inputs, Outputs, Core procedure, Contracts, Risks, Validation; AOA-T-0...",
         "Adaptation points": "Extract a Titan-specific reusable technique into aoa-techniques only after repeated reviewed evidence exists; do not add pending IDs as placeholders.; Keep repo-local command examples in owner docs or examples rather than hard-coding them into skill law."
       },
       "resource_inventory": {

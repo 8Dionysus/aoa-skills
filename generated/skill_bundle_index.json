@@ -2282,7 +2282,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "7c02d67527afffe0ad1b6956ee134d3fb7a2708092e5706868572f9597a43ac9",
+      "content_hash": "64a3947c88b357cc100abe90cb977dafabaca57d08901081bf5fad989cdd6e44",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2309,7 +2309,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-summon.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
-      "skill_revision": "7c02d67527af",
+      "skill_revision": "64a3947c88b3",
       "status": "evaluated",
       "support_artifacts": [
         {
@@ -2354,7 +2354,7 @@
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e"
         },
         {
           "id": "AOA-T-0058",
@@ -2718,7 +2718,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "6be4cec75de6ec54817dd87e7274f090e6f3bf1f9d962c6683d4fe6259c3c040",
+      "content_hash": "59dfc8b44be91e646ad533b567a6931ada7a76034c04d7255669baf38fbdd852",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -2744,7 +2744,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-approval-loom/SKILL.md",
-      "skill_revision": "6be4cec75de6",
+      "skill_revision": "59dfc8b44be9",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -2783,7 +2783,7 @@
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e"
         }
       ]
     },
@@ -3058,7 +3058,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "4e29cf865cd26801602c7479f9aa872e6d0d6153362b4ee94cbd22e805769072",
+      "content_hash": "1a92f9309ef83143afa03b5e09d01a8c80fa0f8e7860842751c689546c7508ca",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3084,7 +3084,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-console/SKILL.md",
-      "skill_revision": "4e29cf865cd2",
+      "skill_revision": "1a92f9309ef8",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3116,7 +3116,7 @@
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e"
         },
         {
           "id": "AOA-T-0028",
@@ -3738,7 +3738,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "a10698e758a81aca81bfa67610c321fb764e414de514cbb6962db7cf93fcb3fe",
+      "content_hash": "63336ffac6b128c9b7333d1c37e948d518c4d0efed774a02b730901cf52c1f9b",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3764,7 +3764,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-summon/SKILL.md",
-      "skill_revision": "a10698e758a8",
+      "skill_revision": "63336ffac6b1",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3789,7 +3789,7 @@
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e"
         },
         {
           "id": "AOA-T-0058",
@@ -3823,7 +3823,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": false,
       "canonical_eval_ready": true,
-      "content_hash": "45d0a20ef891a41b37c473221b10829443b3884957d5b64f9560374149647f6e",
+      "content_hash": "b811284d4f871f085e354b58861510c4520b6471f48890dc32b139c4914112e6",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -3849,7 +3849,7 @@
       "promotion_review_path": null,
       "scope": "project",
       "skill_path": "skills/project/titan/titan-thread-turn-binding/SKILL.md",
-      "skill_revision": "45d0a20ef891",
+      "skill_revision": "b811284d4f87",
       "status": "scaffold",
       "support_artifacts": [
         {
@@ -3874,7 +3874,7 @@
           "lineage_state": "published",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5"
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e"
         },
         {
           "id": "AOA-T-0066",

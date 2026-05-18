@@ -28,7 +28,7 @@ techniques:
   - id: AOA-T-0062
     repo: 8Dionysus/aoa-techniques
     path: techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md
-    source_ref: 3b1d5d623569aa4920b87280d0db0e911d2e29d5
+    source_ref: fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e
     use_sections:
       - Intent
       - Inputs

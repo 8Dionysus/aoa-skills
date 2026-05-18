@@ -11,7 +11,7 @@ name: aoa-summon
 - current governance lane decision: `stay_evaluated`
 - scope: `core`
 - current lineage: `published`
-- reviewed revision: `7c02d67527af`
+- reviewed revision: `64a3947c88b3`
 
 ## Target status
 
@@ -31,7 +31,7 @@ name: aoa-summon
 - machine-checkable floor result: `pass`
 - recorded governance outcome: `stay_evaluated`
 - runtime `SKILL.md` meaning changed: `yes`
-- current bundle note: technique lineage is grounded in published decision, risk-passport, bounded-episode, and receipt-confirmed handoff techniques; the bundle now also blocks unresolved route choice to `aoa-session-route-forks` and requires an explicit receipt or acceptance expectation for cross-boundary child work.
+- current bundle note: technique lineage is grounded in published decision, risk-passport, bounded-episode, and receipt-confirmed handoff techniques; the bundle now also blocks unresolved route choice to `aoa-session-route-forks` and requires an explicit receipt or acceptance expectation for cross-boundary child work. Latest lineage maintenance only refreshed the published `AOA-T-0062` source ref and did not change the evaluated status decision.
 
 ## Gaps and blockers
 

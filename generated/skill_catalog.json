@@ -1258,7 +1258,7 @@
           "id": "AOA-T-0062",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e",
           "use_sections": [
             "Intent",
             "Outputs",
@@ -1545,7 +1545,7 @@
           "id": "AOA-T-0062",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -1774,7 +1774,7 @@
           "id": "AOA-T-0062",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2247,7 +2247,7 @@
           "id": "AOA-T-0060",
           "path": "techniques/continuity/handoff-continuation/session-opening-ritual-before-work/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e",
           "use_sections": [
             "Intent",
             "Inputs",
@@ -2308,7 +2308,7 @@
           "id": "AOA-T-0062",
           "path": "techniques/continuity/handoff-continuation/episode-bounded-agent-loop/TECHNIQUE.md",
           "repo": "aoa-techniques",
-          "source_ref": "3b1d5d623569aa4920b87280d0db0e911d2e29d5",
+          "source_ref": "fe4b04ed877916c46e60e70aaa9a1d4c86e81b6e",
           "use_sections": [
             "Intent",
             "Inputs",
