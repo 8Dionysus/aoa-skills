@@ -51,6 +51,35 @@ class TinyRouterInputsTest(unittest.TestCase):
         self.assertEqual({entry["name"] for entry in manifest["skills"]}, actual_names)
         self.assertEqual(manifest["skill_count"], len(actual_names))
 
+    def test_quest_harvest_route_cues_survive_positive_cue_cap(self) -> None:
+        signals = load_json(REPO_ROOT / "generated" / "tiny_router_skill_signals.json")
+        protected_cues = ("route forks", "diagnosis packet", "repair packet")
+        automation_fillers = ("automation opportunity", "automation candidate", "seed ready", "not now")
+        matched_names = []
+
+        for entry in signals["skills"]:
+            if (
+                entry["band"] != "quest-harvest-governance"
+                or entry["name"] == "aoa-automation-opportunity-scan"
+            ):
+                continue
+
+            matched_names.append(entry["name"])
+            cues = entry["positive_cues"]
+            for cue in protected_cues:
+                self.assertIn(cue, cues, msg=f"{entry['name']} dropped route cue {cue!r}")
+
+            last_protected_index = max(cues.index(cue) for cue in protected_cues)
+            for filler in automation_fillers:
+                if filler in cues:
+                    self.assertLess(
+                        last_protected_index,
+                        cues.index(filler),
+                        msg=f"{entry['name']} lets automation filler {filler!r} precede route cues",
+                    )
+
+        self.assertTrue(matched_names, msg="no non-automation quest-harvest skills were checked")
+
     def test_non_invoke_skills_stay_manual_and_project_skills_stay_overlays(self) -> None:
         catalog = load_json(REPO_ROOT / "generated" / "skill_catalog.min.json")
         policy_doc = load_json(REPO_ROOT / "config" / "skill_policy_matrix.json")

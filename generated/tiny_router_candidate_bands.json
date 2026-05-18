@@ -117,15 +117,11 @@
       "id": "quest-harvest-governance",
       "summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
-        "session donor",
-        "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready",
-        "not now",
         "route forks",
         "diagnosis packet",
         "repair packet",
+        "session donor",
+        "donor harvest",
         "progression delta",
         "quest harvest",
         "promotion triage",
@@ -148,7 +144,11 @@
         "runtime self diagnosis",
         "diagnostic session artifact",
         "runtime evidence handoff",
-        "exit class"
+        "exit class",
+        "automation opportunity",
+        "automation candidate",
+        "seed ready",
+        "not now"
       ],
       "skills": [
         "abyss-self-diagnostic-spine",

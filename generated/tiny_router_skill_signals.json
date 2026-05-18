@@ -193,11 +193,11 @@
         "diagnostic session artifact",
         "runtime evidence handoff",
         "exit class",
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
         "session donor",
-        "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready"
+        "donor harvest"
       ],
       "negative_cues": [
         "immediate silent repair",
@@ -216,12 +216,12 @@
         "handoff",
         "exit",
         "class",
+        "route",
+        "forks",
+        "packet",
+        "repair",
         "donor",
-        "harvest",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed"
+        "harvest"
       ],
       "negative_tokens": [
         "immediate",
@@ -445,9 +445,9 @@
         "checkpoint required",
         "recurring manual route",
         "playbook automation seed",
-        "session donor",
-        "donor harvest",
-        "route forks"
+        "route forks",
+        "diagnosis packet",
+        "repair packet"
       ],
       "negative_cues": [
         "one off creative thread",
@@ -469,12 +469,12 @@
         "manual",
         "route",
         "playbook",
-        "session",
-        "donor",
-        "harvest",
         "forks",
         "diagnosis",
-        "packet"
+        "packet",
+        "repair",
+        "session",
+        "donor"
       ],
       "negative_tokens": [
         "one",
@@ -708,12 +708,12 @@
         "closeout context",
         "donor progression quest chain",
         "checkpoint collect",
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
         "session donor",
         "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready",
-        "not now"
+        "progression delta"
       ],
       "negative_cues": [
         "mid-session collection only",
@@ -733,14 +733,14 @@
         "chain",
         "checkpoint",
         "collect",
+        "route",
+        "forks",
+        "diagnosis",
+        "packet",
+        "repair",
         "session",
         "harvest",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed",
-        "ready",
-        "now"
+        "delta"
       ],
       "negative_tokens": [
         "mid",
@@ -1462,10 +1462,10 @@
         "owner surface",
         "stay a quest",
         "final promotion verdict",
-        "session donor",
-        "donor harvest",
-        "automation opportunity",
-        "automation candidate"
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
+        "session donor"
       ],
       "negative_cues": [
         "route still active",
@@ -1486,14 +1486,14 @@
         "stay",
         "final",
         "verdict",
+        "route",
+        "forks",
+        "diagnosis",
+        "packet",
+        "repair",
         "session",
         "donor",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed",
-        "ready",
-        "now"
+        "progression"
       ],
       "negative_tokens": [
         "route",
@@ -1726,9 +1726,9 @@
         "reviewed compaction note",
         "harvest packet",
         "what should survive this session",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready"
+        "route forks",
+        "diagnosis packet",
+        "repair packet"
       ],
       "negative_cues": [
         "session still live",
@@ -1752,11 +1752,11 @@
         "packet",
         "what",
         "survive",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed",
-        "ready"
+        "route",
+        "forks",
+        "diagnosis",
+        "repair",
+        "progression"
       ],
       "negative_tokens": [
         "session",
@@ -1822,11 +1822,11 @@
         "unlock hint",
         "reviewed mastery evidence",
         "quest reflection",
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
         "session donor",
-        "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready"
+        "donor harvest"
       ],
       "negative_cues": [
         "no reviewed evidence",
@@ -1846,13 +1846,13 @@
         "evidence",
         "quest",
         "reflection",
+        "route",
+        "forks",
+        "diagnosis",
+        "packet",
+        "repair",
         "session",
-        "donor",
-        "harvest",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed"
+        "donor"
       ],
       "negative_tokens": [
         "reviewed",
@@ -1914,11 +1914,11 @@
         "branch choices",
         "multiple plausible next moves",
         "stop conditions",
+        "diagnosis packet",
+        "repair packet",
         "session donor",
         "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready"
+        "progression delta"
       ],
       "negative_cues": [
         "one obvious next move",
@@ -1938,12 +1938,12 @@
         "moves",
         "stop",
         "conditions",
+        "diagnosis",
+        "packet",
+        "repair",
         "session",
         "donor",
-        "harvest",
-        "automation",
-        "opportunity",
-        "candidate"
+        "harvest"
       ],
       "negative_tokens": [
         "one",
@@ -2006,11 +2006,11 @@
         "proof gap",
         "ownership confusion",
         "repeated friction",
+        "route forks",
+        "repair packet",
         "session donor",
         "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready"
+        "progression delta"
       ],
       "negative_cues": [
         "session still live",
@@ -2029,14 +2029,14 @@
         "confusion",
         "repeated",
         "friction",
+        "route",
+        "forks",
+        "repair",
         "session",
         "donor",
         "harvest",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed",
-        "ready"
+        "progression",
+        "delta"
       ],
       "negative_tokens": [
         "session",
@@ -2099,11 +2099,11 @@
         "rollback marker",
         "health check",
         "reviewed diagnosis",
+        "route forks",
+        "diagnosis packet",
         "session donor",
         "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready"
+        "progression delta"
       ],
       "negative_cues": [
         "no reviewed diagnosis",
@@ -2122,14 +2122,14 @@
         "check",
         "reviewed",
         "diagnosis",
+        "route",
+        "forks",
         "session",
         "donor",
         "harvest",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed",
-        "ready"
+        "progression",
+        "delta",
+        "quest"
       ],
       "negative_tokens": [
         "reviewed",
@@ -2268,11 +2268,11 @@
         "codex local child",
         "return plan",
         "reviewed helper lane",
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
         "session donor",
-        "donor harvest",
-        "automation opportunity",
-        "automation candidate",
-        "seed ready"
+        "donor harvest"
       ],
       "negative_cues": [
         "whole orchestration mesh",
@@ -2293,13 +2293,13 @@
         "reviewed",
         "helper",
         "lane",
+        "forks",
+        "diagnosis",
+        "packet",
+        "repair",
         "session",
         "donor",
-        "harvest",
-        "automation",
-        "opportunity",
-        "candidate",
-        "seed"
+        "harvest"
       ],
       "negative_tokens": [
         "whole",
