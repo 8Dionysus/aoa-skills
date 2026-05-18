@@ -82,8 +82,8 @@ A good skill operation has:
 - a stop-line when the task belongs outside the skill layer.
 
 Technique links may explain lineage, composition, decomposition, refresh
-pressure, or extraction candidates. They are bridge evidence, not hidden runtime
-dependencies and not automatic status blockers.
+pressure, or extraction candidates. Runtime skill use should still remain
+self-contained from the authored bundle.
 
 ## Design as Aim
 
@@ -110,7 +110,7 @@ They do not rescue an incomplete workflow.
 meaning. `.agents/skills/*`, generated catalogs, manifests, runtime cards, and
 adapter files carry or summarize that meaning.
 
-### 3. Bridge evidence, not bridge captivity
+### 3. Bridges Without Captivity
 
 `aoa-techniques` and `aoa-skills` are directly related, but neither should
 become a blocker for the other's legitimate work. Skills may compose techniques,
@@ -126,7 +126,7 @@ schema, export profile, or runtime seam actually requires them.
 
 The source tree should help agents walk the canon. Functional lanes, local
 route cards, and bounded mechanics packages are preferable to root sprawl,
-legacy buckets, or compatibility aliases in source.
+unrouted legacy collections, or compatibility aliases in source.
 
 ### 6. Activation is a contract
 
@@ -174,7 +174,7 @@ A future skill can find the lane where it belongs.
 - root docs repeating every package;
 - adapter names becoming core meaning;
 - generated files treated as source truth;
-- technique links used as hidden runtime dependencies;
+- skill meaning that only works through a live sibling fetch;
 - playbook, proof, memory, routing, role, or runtime authority hidden in a skill;
 - status promotion without review evidence;
 - project overlays that become downstream truth mirrors;

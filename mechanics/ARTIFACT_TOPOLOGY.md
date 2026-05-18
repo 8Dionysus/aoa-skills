@@ -74,7 +74,7 @@ they preserve source lineage without becoming alternate active routes.
 
 Mechanic artifacts may prepare, validate, or publish evidence around skill
 movement. They do not become canonical skill bundles by location. Executable
-skill meaning remains under `skills/`, and the flat Codex export remains under
+skill meaning remains under `skills/`, and the flat portable export remains under
 `.agents/skills/`.
 
 ## Questbook

@@ -120,11 +120,3 @@ Before acting, confirm all three:
 - the next action is still reversible or reviewable
 
 If any of those fail, expand the inspection step or pick a smaller object.
-
-## Future stubs
-
-TODO: if runtime selection ever needs a cross-repo route map, keep it as a separate routing surface rather than embedding live fetches here.
-
-TODO: if evaluation evidence becomes part of runtime selection, reference the existing repo-local surface instead of turning this guide into promotion doctrine.
-
-TODO: if playbook-level composition becomes necessary, keep it above the skill layer and only point here from the smallest usable object.

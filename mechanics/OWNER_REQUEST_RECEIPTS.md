@@ -33,12 +33,12 @@ landing; proof and public quality claims route to `aoa-evals`.
 | Request | Owner-local status | Center queue status | Owner-local evidence | Remaining boundary |
 |---|---|---|---|---|
 | `ORQ-METHOD-SKILLS-001` | `landed` | may be `landed` | `mechanics/method-growth/` and method-growth schemas/examples | no final skill truth or activation claim from center |
-| `ORQ-DISTILLATION-SKILLS-001` | `accepted` | may be `accepted` | session-growth skills and future `distillation` pressure in `mechanics/README.md` | no generic distillation package has landed yet |
+| `ORQ-DISTILLATION-SKILLS-001` | `accepted` | may be `accepted` | session-growth skills and donor/harvest routes | no dedicated distillation package has landed yet |
 | `ORQ-GROWTHCYCLE-SKILLS-001` | `landed` | may be `landed` | session-growth skill family and `mechanics/growth-cycle/` | no final harvest, progression, quest, proof, or owner-acceptance authority |
 | `ORQ-CHECKPOINT-SKILLS-001` | `landed` | may be `landed` | `aoa-checkpoint-closeout-bridge` and `mechanics/checkpoint/` | checkpoint notes stay below reviewed closeout |
-| `ORQ-EXPERIENCE-SKILLS-001` | `accepted` | may be `accepted` | Experience skill docs remain routed as future package pressure | no Experience mechanics package or executable approval authority has landed |
+| `ORQ-EXPERIENCE-SKILLS-001` | `accepted` | may be `accepted` | `mechanics/experience/` local route and contract docs | no release approval, runtime write, assistant self-authority, or owner consent authority |
 | `ORQ-RPG-SKILLS-001` | `landed` | may be `landed` | `mechanics/rpg/` reader surfaces and ability/loadout companions | no skill ontology, feat canon, runtime inventory, or progression proof |
-| `ORQ-AUDIT-SKILLS-001` | `accepted` | may be `accepted` | existing audit-adjacent skills and future `audit` pressure in `mechanics/README.md` | no general audit mechanics package has landed yet |
+| `ORQ-AUDIT-SKILLS-001` | `accepted` | may be `accepted` | `mechanics/audit/` local route, audit docs, review records, and generated readouts | no proof verdict, remediation authority, or center audit acceptance |
 
 ## ORQ-METHOD-SKILLS-001
 
@@ -82,8 +82,6 @@ What is accepted:
 - The closest landed evidence is the session-growth family, especially
   `skills/core/session-growth/aoa-session-donor-harvest/SKILL.md`, plus route-fork, diagnosis,
   repair, progression, automation, and quest-harvest companions.
-- `mechanics/README.md` keeps `distillation` as future package pressure until a
-  dedicated active route or narrower superseding request lands.
 
 Not landed yet:
 
@@ -154,12 +152,12 @@ Validation evidence:
 
 Owner-local status: `accepted`
 
-What is accepted:
+What is accepted locally:
 
 - `aoa-skills` accepts the owner-local need for bounded Experience receipt,
   adoption, release, office, and service-operation skill surfaces.
-- Existing Experience-shaped docs remain owner-local evidence and future
-  package pressure:
+- The local package exists and keeps these contracts owner-local:
+  - `mechanics/experience/README.md`
   - `mechanics/experience/docs/GOVERNANCE_SKILL_ADOPTION.md`
   - `mechanics/experience/docs/RECEIPT_GENERATION_SKILLS.md`
   - `mechanics/experience/docs/OFFICE_TASK_BOUNDARY_SKILLS.md`
@@ -167,9 +165,8 @@ What is accepted:
   - `mechanics/experience/docs/ROLLBACK_DRILL_SKILL.md`
   - `mechanics/experience/docs/INSTALLATION_SKILL_SURFACES.md`
 
-Not landed yet:
+Not granted here:
 
-- no `mechanics/experience/` owner-local package exists in `aoa-skills`
 - the existing docs do not grant release approval, runtime authority, assistant
   self-authority, or direct Tree-of-Sophia write authority
 
@@ -204,19 +201,17 @@ Validation evidence:
 
 Owner-local status: `accepted`
 
-What is accepted:
+What is accepted locally:
 
 - `aoa-skills` accepts the owner-local need for bounded executable audit
   workflows with triggers, procedures, risks, and verification boundaries.
-- Existing audit-adjacent evidence includes
+- The local package exists and keeps these audit routes owner-local:
+  `mechanics/audit/README.md`, audit docs, review records, generated readouts,
   `skills/core/engineering/aoa-invariant-coverage-audit/SKILL.md`, evaluation-path docs,
-  public-surface docs, maturity docs, promotion docs, trigger-eval docs, and
-  governance backlog readouts.
-- `mechanics/README.md` keeps `audit` as future package pressure.
+  public-surface docs, maturity docs, promotion docs, and trigger-eval docs.
 
-Not landed yet:
+Not granted here:
 
-- no `mechanics/audit/` owner-local package exists in `aoa-skills`
 - existing audit-adjacent skills do not cover the whole center audit mechanic
 
 Center posture: the AoA queue may advance from `requested` to `accepted`, but

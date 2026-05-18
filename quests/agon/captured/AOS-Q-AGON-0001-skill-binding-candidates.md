@@ -2,7 +2,7 @@
 
 ## Intent
 
-Receive Wave IV bounded workflow candidate requests from `Agents-of-Abyss`.
+Receive bounded workflow candidate requests from `Agents-of-Abyss`.
 
 ## Done when
 

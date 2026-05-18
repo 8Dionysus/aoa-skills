@@ -27,14 +27,13 @@ class ReleaseDocsTests(unittest.TestCase):
 
         self.assertIn("RELEASING.md", docs_readme)
 
-    def test_readme_mentions_review_truth_sync_and_drift_gates(self) -> None:
+    def test_readme_routes_release_claim_gates_without_owning_commands(self) -> None:
         readme = README_PATH.read_text(encoding="utf-8")
 
-        self.assertIn("python scripts/validate_skills.py --fail-on-review-truth-sync", readme)
-        self.assertIn(
-            "python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift",
-            readme,
-        )
+        self.assertIn("mechanics/release-support/docs/RELEASING.md", readme)
+        self.assertIn("AGENTS.md", readme)
+        self.assertNotIn("--fail-on-review-truth-sync", readme)
+        self.assertNotIn("--fail-on-drift", readme)
 
     def test_releasing_doc_mentions_release_check_tag_and_github_release(self) -> None:
         releasing = RELEASING_PATH.read_text(encoding="utf-8")

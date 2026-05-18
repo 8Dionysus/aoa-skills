@@ -1,7 +1,7 @@
-# Local adapter contract around the Codex-facing export
+# Local adapter contract around the portable export
 
-This document defines the smallest adapter seam for runtimes that want to consume `aoa-skills` without implementing native Codex skill discovery.
-It now sits alongside the wave-4 dedicated-tool runtime seam and remains the backward-compatible path for older wrappers.
+This document defines the smallest adapter seam for runtimes that want to consume `aoa-skills` without implementing native skill discovery.
+It sits alongside the dedicated-tool runtime seam and remains the backward-compatible path for older wrappers.
 
 ## Discovery
 

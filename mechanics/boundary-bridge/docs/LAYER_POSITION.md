@@ -12,7 +12,7 @@ kind of meaning does this repo own, and what stays upstream or downstream?"
 
 That means this repo owns:
 
-- reusable Codex-facing workflow bundles
+- reusable local-agent workflow bundles
 - explicit runtime boundaries for agent use
 - technique traceability and composition records
 - skill-native extraction pressure when repeated execution reveals reusable practice

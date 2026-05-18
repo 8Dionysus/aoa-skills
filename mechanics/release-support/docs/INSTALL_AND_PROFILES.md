@@ -1,6 +1,6 @@
 # Install roots and skill pack profiles
 
-Wave 3 adds explicit install profiles instead of assuming one giant skill set always belongs everywhere.
+Install profiles keep skill-pack membership explicit instead of assuming one giant skill set always belongs everywhere.
 
 ## Authoring file
 

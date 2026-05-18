@@ -1,13 +1,13 @@
 # Description trigger evals
 
-This document defines the wave-7 activation contract.
+This document defines the description-first activation contract.
 
 ## Core idea
 
 Skill activation is decided before the model reads the full body.
 The description therefore needs its own test surface.
 
-Wave 7 makes that surface explicit by generating:
+This surface is explicit in:
 
 - a per-skill description signal index
 - description-grounded positive cases
@@ -63,4 +63,4 @@ Mirrored defer cases close that hole.
 ## Relationship to the older trigger suite
 
 The older trigger suite remains valuable as a seed and regression source.
-The wave-7 suite is the activation-governed view of that same territory.
+The description-first suite is the activation-governed view of that same territory.

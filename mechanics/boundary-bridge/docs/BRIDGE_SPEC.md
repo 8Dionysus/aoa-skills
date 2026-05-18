@@ -7,7 +7,7 @@ resolution.
 ## Goal
 
 Keep techniques as the canonical source of reusable engineering practice while
-keeping skills as self-contained Codex-friendly workflows.
+keeping skills as self-contained local-agent workflows.
 The bridge is bidirectional: techniques can be composed into skills, and stable
 skill workflows can be decomposed into technique extraction requests.
 Skills are expected to act as execution packages, not as thin mirrors of a
@@ -17,7 +17,7 @@ fits in the wider AoA layer map.
 
 ## Non-goal
 
-Skills should not be thin links that require Codex to fetch a remote repository at runtime to understand the technique.
+Skills should not be thin links that require a local agent to fetch a remote repository at runtime to understand the technique.
 The runtime artifact should remain self-contained enough to execute reviewably.
 Technique bridge state should not be used as the only reason to block a
 skill-native maturity or promotion review. It should instead name bridge repair,
@@ -30,7 +30,7 @@ multi-technique and/or multi-action execution.
 A skill that references only one technique must carry an explicit exception
 review explaining why it still deserves a skill boundary.
 A skill can use selected sections from each referenced technique.
-Wave IV Agon companion requests under `mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json`
+Agon companion requests under `mechanics/agon/parts/workflow-candidate-bridge/config/agon_skill_binding_candidates.seed.json`
 and `generated/agon_skill_binding_candidates.min.json` are bridge inputs only:
 they remain `requested_not_landed` and do not bypass the normal bundle review
 path or the explicit single-technique exception rule.
@@ -131,7 +131,7 @@ Explicit single-skill write mode:
 python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --write
 ```
 
-The helper is dry-run-first. Repo-wide write mode remains intentionally unavailable in this pass.
+The helper is dry-run-first and only writes one named skill at a time.
 
 The helper now also reports bridge-coverage gaps against the committed runtime shape.
 Those gaps are review signals, not auto-generated content.
@@ -202,7 +202,7 @@ Shared-donor refresh example:
   - `skills/core/engineering/aoa-property-invariants/techniques.yaml`
   - `skills/core/engineering/aoa-property-invariants/SKILL.md`
 - review posture:
-  - both bundles may be refreshed against the same resolved local target ref in one bounded wave
+  - both bundles may be refreshed against the same resolved local target ref in one bounded pass
   - the refresh remains acceptable even when only one referenced technique in the bundle is currently `drifted`
 
 Mixed-lineage refresh example:
@@ -226,7 +226,7 @@ It does not close pending lineage and does not widen into upstream publication w
 
 ## Runtime expectations
 
-At runtime, Codex should be able to use the committed `SKILL.md` without requiring live dependency resolution.
+At runtime, a local agent should be able to use the committed `SKILL.md` without requiring live dependency resolution.
 
 References to technique IDs may remain in the skill for traceability.
 

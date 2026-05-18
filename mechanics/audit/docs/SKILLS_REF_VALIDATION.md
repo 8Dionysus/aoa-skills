@@ -1,6 +1,6 @@
 # skills-ref validation
 
-Wave 7 adds a soft open-standard conformance lane using the upstream `skills-ref` reference validator.
+This document owns the soft open-standard conformance lane using the upstream `skills-ref` reference validator.
 
 ## Intent
 

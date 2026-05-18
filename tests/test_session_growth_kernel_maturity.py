@@ -128,7 +128,7 @@ def test_session_growth_kernel_maturity_docs_route_to_live_kernel_maturity_famil
     assert "mechanics/growth-cycle/examples/session-growth-artifacts/" in doc
     assert "examples/session-growth-kernel/" in doc
     assert "../mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md" in docs_map
-    assert "mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md" in readme
+    assert "mechanics/ROADMAP.md" in readme
     assert "SESSION_GROWTH_KERNEL_MATURITY.md" in candidate_doc
     assert "../../method-growth/docs/CANDIDATE_REF_REFINERY.md" in doc
     assert "must not mint `seed_ref` or `object_ref`" in doc

@@ -2,7 +2,7 @@
 
 This is the dedicated-tool path.
 
-Instead of telling the runtime to read `SKILL.md` directly, the runtime exposes explicit tool-shaped seams around the existing Codex-facing export.
+Instead of telling the runtime to read `SKILL.md` directly, the runtime exposes explicit tool-shaped seams around the existing portable export.
 
 ## Stages
 

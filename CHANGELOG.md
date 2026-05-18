@@ -32,6 +32,10 @@ Tracking starts with the community-docs baseline for this repository.
 - Root `AGENTS.md` now follows the canonical route-card shell with route modes,
   post-change review, hard boundaries, and review-critical drift for
   `aoa-skills`.
+- Root and docs entry surfaces now stay route-focused: public overview,
+  docs-map, architecture, mechanics, release-support, and adapter surfaces route
+  to their owners without carrying package atlases, legacy wave language, or
+  sibling-repo doctrine.
 - `scripts/release_check.py` now validates the AGENTS design mesh before the
   nested and semantic AGENTS checks.
 - mechanics-shaped root and flat-doc surfaces now route through `mechanics/`,

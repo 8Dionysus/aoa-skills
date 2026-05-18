@@ -59,31 +59,11 @@ mechanic-owned substance lives with the package or nearest part.
   office-task, receipt, installation, policy-hold, and rollback workflow
   posture below skill canon.
 - [boundary-bridge](boundary-bridge/README.md): layer-position, technique-skill
-  bridge, thin overlays, OpenAI/Codex wiring, tiny-router, and downstream
+  bridge, thin overlays, adapter wiring, tiny-router, and downstream
   stop-line surfaces.
 - [release-support](release-support/README.md): portable export, install
   profiles, local adapter, runtime seams, support-resource packaging, and
   release verification surfaces.
-
-## Remaining Package Pressure
-
-The following pressure remains after the current mechanics landing. Treat this
-list as a route map for future bounded packages or package-deepening passes, not
-as authority to move source surfaces blindly.
-
-| Mechanic | Current pressure |
-|---|---|
-| `distillation` | session-harvest notes, skill-shaped donor intake, source-to-active accounting, and candidate handoff without final owner truth |
-| `method-growth` remaining pressure | governance-consent, maturity, promotion, and public status movement after candidate-lineage and adoption lifecycle route |
-| `growth-cycle` remaining pressure | donor/progression/diagnosis/repair/automation/quest package parts after orchestration and kernel-maturity route |
-| `questbook` remaining pressure | quest object route receipts and generated quest validation notes after the integration package has settled |
-| `checkpoint` remaining pressure | SDK control receipts, reviewed checkpoint snapshots, and runtime export boundaries after checkpoint-note route |
-| `recurrence` remaining pressure | component refresh law, manifest validation notes, and downstream drift-watch handoff after observation/closure route |
-| `antifragility` remaining pressure | rollback drill release/experience boundary, risk-ring validation notes, support-resource hardening, and runtime guardrail handoff after fallback/pruning/collision route |
-| `rpg` remaining pressure | generated ability validation notes and progression-shaped reader hints after ability/loadout route |
-
-Move one package at a time. A future package should be easier to enter after
-the move than before it.
 
 ## Package card standard
 
@@ -113,7 +93,7 @@ review records, generated companions, or downstream owners only when relevant.
 
 ## Active and historical split
 
-When a mechanic has grown through waves, seeds, receipts, candidates, or
+When a mechanic has grown through historical batches, seeds, receipts, candidates, or
 runtime/export pressure, do not flatten every file into the package root.
 
 Prefer this shape:

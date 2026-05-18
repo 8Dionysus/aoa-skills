@@ -1,6 +1,6 @@
 # Two-Stage Skill Selection
 
-Wave 9 keeps skill activation split into two bounded steps.
+This route keeps skill activation split into two bounded steps.
 
 ## Stage 1
 

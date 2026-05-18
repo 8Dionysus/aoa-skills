@@ -83,11 +83,3 @@ This guide does not decide:
 
 It also does not collapse into the generated runtime or public matrices.
 Those stay in `generated/skill_walkthroughs.*`, `generated/skill_evaluation_matrix.*`, and `generated/public_surface.*`, which are separate derived surfaces.
-
-## Future stubs
-
-TODO: if a richer matrix rendering is ever needed, keep it as a repo-local derived surface rather than a live cross-repo fetch.
-
-TODO: if LLM-executed evaluation is ever introduced, keep it behind an explicit repo-local CLI and document the output shape here without widening runtime selection.
-
-TODO: if cross-repo evaluation evidence ever becomes necessary, derive it from existing repository facts instead of live remote reads.

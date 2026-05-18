@@ -10,7 +10,7 @@ Read it after `AGENTS.md` and before making changes.
 
 It owns:
 
-- public Codex-facing workflow bundles,
+- public local-agent workflow bundles,
 - trigger boundaries, invocation posture, inputs, outputs, and bounded procedures,
 - skill-level technique traceability and pinned bridge refs,
 - repo-local runtime, evaluation, and public derived surfaces for skills,
@@ -172,7 +172,7 @@ Do not list a command in the report unless it was actually run.
 
 ## Review guidelines
 
-Use these severity rules for Codex GitHub review and local `/review`.
+Use these severity rules for GitHub review and local `/review`.
 
 ### Treat as P0
 

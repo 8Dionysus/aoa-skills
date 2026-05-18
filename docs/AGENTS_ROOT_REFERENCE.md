@@ -20,7 +20,7 @@ Guidance for coding agents and humans contributing to `aoa-skills`.
 ## Purpose
 
 `aoa-skills` is the bounded execution canon of AoA.
-It stores public, reusable, Codex-facing skill bundles that package reusable
+It stores public, reusable local-agent skill bundles that package reusable
 practice into reviewable workflows an agent can execute.
 
 A skill is normally a multi-technique or multi-action package.
@@ -64,7 +64,7 @@ Only contribute skills that are:
 - bounded
 - reviewable
 - public-safe
-- useful to Codex
+- useful to a local coding agent
 - traceable to reusable practice
 
 A skill is not the origin of practice.
@@ -149,7 +149,7 @@ Do not:
 - collapse scenario-level playbooks into the skill layer
 - let ability cards or loadouts become canonical skill truth
 - let quest surfaces become live quest state, campaign authority, or a hidden runtime ledger
-- move full Codex-facing interface or named MCP dependency metadata into source `skills/**/agents/openai.yaml`; keep that file policy-only and route generated-export metadata through `config/openai_skill_extensions.json`
+- move full adapter interface or named MCP dependency metadata into source `skills/**/agents/openai.yaml`; keep that file policy-only and route generated-export metadata through `config/openai_skill_extensions.json`
 - commit secrets, tokens, internal-only URLs, or sensitive infrastructure detail
 - hide destructive workflows behind vague trigger boundaries
 - silently widen scope beyond the stated task

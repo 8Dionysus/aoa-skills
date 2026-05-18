@@ -22,13 +22,13 @@
 - `templates/RUNTIME_EXAMPLE.template.md` — canonical runtime example scaffold
 - `templates/PROJECT_OVERLAY.template.md` — canonical project overlay scaffold
 - `templates/PROJECT_OVERLAY_SKILL.template.md` — canonical overlayed skill scaffold
-- `.agents/` — generated Codex-facing export layer
+- `.agents/` — generated portable skill export layer
 - `config/` — repo-wide portable export, policy, profile, runtime, trigger-eval, and router inputs
 - `examples/` — root-owned examples only; mechanic examples live under the owning `mechanics/<slug>/` package or nearest part
 - `manifests/` — manifest route district; records live with owning mechanic packages or parts
 - `quests/` — lane-first durable obligation sources under `quests/<lane>/<state>/`
 - `skills/` — canonical skill source topology
-- `generated/` — derived reader catalogs plus portable export discovery, local-adapter manifests, wave-3 support manifests, wave-4 runtime seam surfaces, wave-8 support-resource manifests, and trigger-eval seed data
+- `generated/` — derived reader catalogs, portable export discovery, runtime seams, support-resource manifests, and trigger-eval data
 - `scripts/` — deterministic repo-wide builders, validators, reports, inspectors, and release helpers
 - `schemas/` — repo-wide machine-readable contracts; mechanic-local schemas live with their package or part
 
@@ -42,12 +42,12 @@ Each skill lives under the recursive source topology:
 - `skills/project/<family>/<skill-name>/`
 
 The bundle identifier remains the leaf directory name. Do not add flat
-compatibility aliases at `skills/<skill-name>/`; the generated Codex-facing
-export under `.agents/skills/*` is the flat compatibility surface.
+compatibility aliases at `skills/<skill-name>/`; the generated portable export
+under `.agents/skills/*` is the flat compatibility surface.
 
 Recommended contents:
 
-- `SKILL.md` — main Codex-facing runtime skill document
+- `SKILL.md` — main runtime skill document
 - `techniques.yaml` — bridge manifest that records which techniques shape the skill
 - `agents/openai.yaml` — optional invocation and policy settings
 - `references/` — optional reference docs or excerpts
@@ -89,35 +89,35 @@ Belong in `techniques.yaml`:
 - selected sections
 - composition notes
 
-Belong in `generated/skill_catalog*.json`:
+Belong in generated skill catalogs:
 - derived routing and reader surfaces
 - deterministic projections of committed `SKILL.md` and `techniques.yaml`
-- no new authority beyond the source files
+- routing and reader data derived from source files
 
 Belong in `.agents/skills/*`:
-- generated Codex-facing skill export files
+- generated portable skill export files
 - frontmatter and `agents/openai.yaml` derived from canonical skills plus portable export config
-- no new authority beyond the source files and portable export config
+- transport data derived from source files and portable export config
 
 Belong in `generated/skill_walkthroughs.json` and `generated/skill_walkthroughs.md`:
 - derived runtime inspect surfaces
 - support-artifact aware entry points for `pick -> inspect -> expand -> object use`
-- no new authority beyond committed `SKILL.md`, local support artifacts, and public review records
+- runtime inspection data derived from committed `SKILL.md`, local support artifacts, and public review records
 
 Belong in `generated/public_surface.json` and `generated/public_surface.md`:
 - derived governance and public-product signaling
 - cohort views such as default references, default-reference-ready skills, and pending-lineage blockers
-- no status change authority beyond the source files, review records, and evaluation fixtures
+- status readouts derived from source files, review records, and evaluation fixtures
 
-Belong in `generated/agent_skill_catalog*.json`, `generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`, `generated/runtime_discovery_index*.json`, `generated/runtime_disclosure_index.json`, `generated/runtime_activation_aliases.json`, `generated/runtime_tool_schemas.json`, `generated/runtime_session_contract.json`, `generated/runtime_prompt_blocks.json`, `generated/runtime_router_hints.json`, `generated/runtime_seam_manifest.json`, `generated/deterministic_resource_manifest.json`, `generated/support_resource_index.json`, `generated/structured_output_schema_index.json`, `generated/support_resource_bridge_map.json`, `generated/expected_existing_aoa_support_dirs.json`, and `generated/release_manifest.json`:
+Belong in generated portable, runtime, support-resource, and release manifest surfaces:
 - portable discovery, activation, install, and trust surfaces
 - deterministic projections of `.agents/skills/*`, canonical invocation policy, and repo-owned portable-layer config
-- no new authority beyond source bundles and portable export config
+- transport and runtime data derived from source bundles and portable export config
 
 Belong in `agents/openai.yaml`:
 - invocation mode
 - policy
-- future Codex-specific metadata
+- adapter-specific metadata
 
 Belong in `docs/reviews/`:
 - candidate review records
@@ -129,7 +129,7 @@ Belong in `docs/reviews/`:
 
 - private secrets
 - environment-specific sensitive paths
-- one-off hacks that were not generalized
+- one-off shortcuts that were not generalized
 - techniques that should live in `aoa-techniques`
 - project runtime state or logs
 

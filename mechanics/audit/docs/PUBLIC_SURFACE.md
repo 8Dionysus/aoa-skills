@@ -1,7 +1,7 @@
 # Public surface
 
 This document explains how to read the derived public-product surface of `aoa-skills`,
-the bounded execution canon for Codex-facing skills, without assuming hidden release metadata
+the bounded execution canon for local-agent skills, without assuming hidden release metadata
 or private repository state.
 
 Use this guide when you need status, promotion, or governance signals.
@@ -195,13 +195,3 @@ Repo-level release identity now lives in `CHANGELOG.md`, `mechanics/release-supp
 The public-product surface remains repo-local and derived.
 Overlay preparation is also separate from this layer; the thin contract lives in `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md`, and repo-local live exemplar packs such as `mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md` stay distinct from downstream adoption.
 If you need the human review records behind a candidate or promotion decision, use `docs/reviews/README.md` and the matching file in `docs/reviews/canonical-candidates/` or `docs/reviews/status-promotions/`.
-
-Future stubs:
-
-TODO: if the derived public-product layer ever needs a richer release summary, keep it generated and separate from runtime inspection.
-
-TODO: if cross-repo public-surface signals become necessary, derive them from existing repo facts rather than live fetches.
-
-TODO: if the runtime path ever needs a routing index, keep that in `mechanics/release-support/docs/RUNTIME_PATH.md` or a separate runtime helper rather than blending it into this derived surface.
-
-TODO: if the evaluation matrix ever needs a richer public-facing overlay, keep it in a separate repo-local evidence surface rather than folding it into public status signaling.

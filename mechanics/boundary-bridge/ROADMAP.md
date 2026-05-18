@@ -3,7 +3,7 @@
 ## Current Contour
 
 Boundary-bridge owns skill-layer crossings: overlay contracts, source-owned
-bridge meaning, tiny-router compression, local Codex/MCP/OpenAI disclosure, and
+bridge meaning, tiny-router compression, local adapter disclosure, and
 downstream-consumption seams. It keeps optional host wiring below source truth.
 
 Active surfaces include `docs/BRIDGE_SPEC.md`, `docs/LAYER_POSITION.md`,
@@ -19,7 +19,7 @@ overlay examples for `atm10-*` and `abyss-*`.
   authority, validation evidence, and no silent fork of public core meaning.
 - Keep `atm10` and `abyss` under one discovered live-family contract; treat the
   second family as a transfer check, not a hierarchy.
-- Plan source-owned bridge waves with explicit merge order and rerun policy
+- Plan source-owned bridge changes with explicit merge order and rerun policy
   before downstream repos consume new meaning from `main`.
 - Tighten tiny-router references after generated surfaces rebuild.
 - Decide whether live overlay family reviews need a package-local index only

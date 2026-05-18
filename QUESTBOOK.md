@@ -42,7 +42,7 @@ the obligation belongs to another owner route.
 
 ## Frontier
 
-- `AOA-SK-Q-0003` - tighten the Codex portable layer and local adapter contract
+- `AOA-SK-Q-0003` - tighten the portable layer and local adapter contract
   for `.agents/skills` export.
 
 ## Near
