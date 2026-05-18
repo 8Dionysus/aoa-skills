@@ -12,6 +12,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import release_manifest_contract
+import build_agent_skills
 
 
 def load_json(path: pathlib.Path):
@@ -107,6 +108,22 @@ class CodexPortableContractTests(unittest.TestCase):
             self.assertIsInstance(packet["produced_artifacts"], list)
             self.assertIsInstance(packet["verification_notes"], list)
             self.assertIsInstance(packet["contract_notes"], list)
+
+    def test_artifact_tags_preserve_distinct_long_prefix_collisions(self):
+        shared_prefix = "verification " + "shared lineage " * 8
+        items = [
+            shared_prefix + "alpha evidence packet",
+            shared_prefix + "beta evidence packet",
+            shared_prefix + "alpha evidence packet",
+        ]
+
+        tags = build_agent_skills.artifact_tags(items)
+
+        self.assertEqual(len(tags), 2)
+        self.assertEqual(len(set(tags)), 2)
+        self.assertTrue(all(len(tag) <= 64 for tag in tags))
+        self.assertTrue(tags[0].startswith("verification-shared-lineage"))
+        self.assertTrue(tags[1].startswith("verification-shared-lineage"))
 
     def test_runtime_seam_indexes_match_catalog(self):
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
