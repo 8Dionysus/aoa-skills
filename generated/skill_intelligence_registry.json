@@ -554,7 +554,7 @@
           "diagnostic session artifact",
           "runtime evidence handoff",
           "exit class",
-          "session donor"
+          "route forks"
         ],
         "negative_phrases": [
           "immediate silent repair",
@@ -2084,8 +2084,8 @@
           "closeout context",
           "donor progression quest chain",
           "checkpoint collect",
-          "session donor",
-          "donor harvest"
+          "route forks",
+          "diagnosis packet"
         ],
         "negative_phrases": [
           "mid-session collection only",
@@ -5470,7 +5470,7 @@
           "unlock hint",
           "reviewed mastery evidence",
           "quest reflection",
-          "session donor"
+          "route forks"
         ],
         "negative_phrases": [
           "no reviewed evidence",
@@ -5728,7 +5728,7 @@
           "branch choices",
           "multiple plausible next moves",
           "stop conditions",
-          "session donor"
+          "diagnosis packet"
         ],
         "negative_phrases": [
           "one obvious next move",
@@ -5986,7 +5986,7 @@
           "proof gap",
           "ownership confusion",
           "repeated friction",
-          "session donor"
+          "route forks"
         ],
         "negative_phrases": [
           "session still live",
@@ -6244,7 +6244,7 @@
           "rollback marker",
           "health check",
           "reviewed diagnosis",
-          "session donor"
+          "route forks"
         ],
         "negative_phrases": [
           "no reviewed diagnosis",
@@ -6764,7 +6764,7 @@
           "codex local child",
           "return plan",
           "reviewed helper lane",
-          "session donor"
+          "route forks"
         ],
         "negative_phrases": [
           "whole orchestration mesh",

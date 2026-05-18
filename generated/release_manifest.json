@@ -212,7 +212,7 @@
     },
     {
       "path": "config/tiny_router_skill_bands.json",
-      "sha256": "3997cf66cf5b8f235cfc2e7eb2320f50bf53c4b9fc5eb1d95e807665ac388023",
+      "sha256": "0a6a3ec1204f11a020d67a74d2e43d50d33be4a85511da0c390bf09dc0a61ef0",
       "bytes": 28837
     }
   ],
@@ -409,18 +409,18 @@
     },
     {
       "path": "generated/tiny_router_skill_signals.json",
-      "sha256": "af629e79a51693d2f2508a265090098d75e1eed455cb5ee145bb25615aadb41e",
-      "bytes": 143913
+      "sha256": "208a6fe91fe4c5107696f3a0524f88a05e13890a3b09921f5c85e7df1b6a0251",
+      "bytes": 143762
     },
     {
       "path": "generated/tiny_router_candidate_bands.json",
-      "sha256": "951b535a47ba4f72520839f9c53d8d5fb21746d5e8c1177af237a798774607c9",
+      "sha256": "e2521388165972f3ebd0a9f3fc934fb96027e78d5e4989038efa530763d46f3d",
       "bytes": 8567
     },
     {
       "path": "generated/tiny_router_capsules.min.json",
-      "sha256": "5c0f2113dca58715d9dce2a239a2c0884635075736f565a14eec9e2cba7c1b38",
-      "bytes": 48453
+      "sha256": "a5c9317021b80f67e2dc9b11d4d52557bca436cd482b83b3d07bcb1a8810bb78",
+      "bytes": 48447
     },
     {
       "path": "generated/tiny_router_eval_cases.jsonl",
