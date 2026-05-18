@@ -18,8 +18,8 @@ class RoadmapParityTestCase(unittest.TestCase):
         changelog = read("CHANGELOG.md")
         router = read("mechanics/ROADMAP.md")
 
-        self.assertIn("v0.3.3", readme)
-        self.assertIn("[0.3.3]", changelog)
+        self.assertIn("v0.4.0", readme)
+        self.assertIn("[0.4.0]", changelog)
         self.assertIn("This file routes future skill-layer pressure", router)
         self.assertIn("nearest package `ROADMAP.md` owns", router)
         self.assertIn("mechanics/README.md", router)

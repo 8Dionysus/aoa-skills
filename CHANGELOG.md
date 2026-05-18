@@ -7,6 +7,20 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-05-18
+
+### Summary
+
+- this release turns `aoa-skills` from a flatter skill corpus into a routed
+  skill system with clearer source topology, AGENTS guidance, mechanics lanes,
+  generated companions, and portable export posture
+- skill execution meaning is now more explicitly self-contained: technique
+  bridges remain visible, but they no longer act as universal validity or
+  runtime dependency blockers
+- the release adds the first Skill Intelligence registry slice, closes the core
+  skill audit policy gates, and tightens session-growth, project-overlay,
+  summon, and diagnosis contract surfaces
+
 ### Added
 
 - Root `DESIGN.md` and `DESIGN.AGENTS.md` now define the skill-layer system
@@ -45,6 +59,35 @@ Tracking starts with the community-docs baseline for this repository.
 - `aoa-automation-opportunity-scan` packet contracts now require explicit
   determinism and secret-coupling posture, and `aoa-session-donor-harvest`
   only routes to self-repair after a reviewed diagnosis exists.
+- Canonical skills, project overlays, release-support docs, and portable
+  exports now use neutral local-agent wording except where adapter compatibility
+  surfaces require a platform-specific name.
+- `aoa-summon`, session-growth skills, Titan overlays, and diagnosis receipt
+  examples now have tighter runtime contracts and clearer stop-lines.
+
+### Included in this release
+
+- mechanics topology reformation across `mechanics/`, `quests/`, `generated/`,
+  route cards, roadmaps, landing logs, provenance, and owner request receipts
+- skills source topology reformation across `skills/core`, `skills/risk`, and
+  `skills/project`, including lane-local `AGENTS.md` cards and bundle support
+  artifacts
+- core engineering and session-growth skill audit follow-through, including
+  activation policy separation, portable export completeness, runtime examples,
+  quality audit blockers, and downstream install parity
+- GitHub-facing repository metadata, release-support surfaces, and generated
+  skill-intelligence discovery surfaces
+
+### Validation
+
+- `python scripts/release_check.py`
+- `python scripts/release_check.py --include-packaging-smoke`
+
+### Notes
+
+- this release keeps `aoa-skills` as the bounded execution canon: not the
+  technique owner, proof owner, route owner, memory owner, runtime owner, or
+  downstream adoption authority
 
 ## [0.3.3] - 2026-04-23
 
