@@ -6740,8 +6740,8 @@
         "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
         "techniques_path": "skills/core/session-growth/aoa-summon/techniques.yaml",
         "policy_path": "skills/core/session-growth/aoa-summon/agents/openai.yaml",
-        "content_hash": "64a3947c88b357cc100abe90cb977dafabaca57d08901081bf5fad989cdd6e44",
-        "skill_revision": "64a3947c88b3"
+        "content_hash": "49650198b0937198d71cde27c951034cc0f1a026dab672b58b6eb958ea19278c",
+        "skill_revision": "49650198b093"
       },
       "policy": {
         "invocation_mode": "explicit-only",
@@ -6935,9 +6935,9 @@
           "section_role": "outputs",
           "source_path": "skills/core/session-growth/aoa-summon/SKILL.md",
           "source_anchor": "## Outputs",
-          "text": "- one summon decision with allowed or blocked posture - one chosen lane such as local leaf execution, local reviewed execution, `remote_reviewed`, `split_required`, or `human_gate` - `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions` - optional local child target - `return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and `owner_publication_plan` - return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary - `closeout_required`, `checkpoint_required`, and `progression_required`",
-          "text_sha256": "a1c6070c276dd29b72aa319e7bc5e6bdd6132b3d54c273bd5fdf63f84f15ea5a",
-          "token_count": 63
+          "text": "- one summon decision with allowed or blocked posture - one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`, `remote_reviewed`, `split_required`, or `human_gate` - `execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions` - optional `codex_local_target` - `return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and `owner_publication_plan` - return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary - `closeout_required`, `checkpoint_required`, and `progression_required`",
+          "text_sha256": "2e532f162bd8fd7a5b8f20c7f29d43cf4bc726f1bf02e74228af4e2892da8cb8",
+          "token_count": 57
         },
         {
           "doc_id": "skill:aoa-summon:section:procedure",
@@ -6945,9 +6945,9 @@
           "section_role": "procedure",
           "source_path": "skills/core/session-growth/aoa-summon/SKILL.md",
           "source_anchor": "## Procedure",
-          "text": "1. start from the parent anchor and quest passport, not from raw pressure to delegate 2. default `transport_preference` to local execution when the request leaves it open 3. verify that expected outputs are named before picking a lane 4. classify the lane with difficulty, risk, control mode, requested role, and `references/passport-lane-matrix.v3.md` 5. keep low-risk `d0_probe`, `d1_patch`, and bounded `d2_slice` leaf work in local leaf execution when anchor and outputs are clear 6. keep local reviewer, evaluator, and architect-like narrowing work in local reviewed execution 7. allow `remote_reviewed` only when a separate endpoint or execution surface is actually required 8. if difficulty is `d3+`, return `split_required` instead of launching child execution 9. if stress posture says `stop_before_mutation`, only allow a narrowing non-mutating child; otherwise gate to human review 10. if `require_progression` is true or the route depends on reviewed unlock posture, require a reviewed progression overlay before summon 11. if the route is self-agent or policy-sensitive, require reviewed self-agent checkpoint posture before summon 12. emit return, checkpoint bridge, memo export, and owner publication plans that stay subordinate to reviewed closeout and owner truth 13. name whether a return receipt or acceptance state is needed before the parent route may continue 14. apply `references/no-raw-traces-rule.md` so child traces remain aids rather than proof or memo canon 15. map failed, narrowed, or blocked child states back into return posture instead of letting them disappear",
-          "text_sha256": "2d6e7c7b87187acba31cdef9d9f4dc34705658d40e0903bd4e5fe4201a59d2aa",
-          "token_count": 230
+          "text": "1. start from the parent anchor and quest passport, not from raw pressure to delegate 2. default `transport_preference` to `codex_local` when the request leaves it open 3. verify that expected outputs are named before picking a lane 4. classify the lane with difficulty, risk, control mode, requested role, and `references/passport-lane-matrix.v3.md` 5. keep low-risk `d0_probe`, `d1_patch`, and bounded `d2_slice` leaf work in `codex_local_leaf` when anchor and outputs are clear 6. keep local reviewer, evaluator, and architect-like narrowing work in `codex_local_reviewed` 7. allow `remote_reviewed` only when a separate endpoint or execution surface is actually required 8. if difficulty is `d3+`, return `split_required` instead of launching child execution 9. if stress posture says `stop_before_mutation`, only allow a narrowing non-mutating child; otherwise gate to human review 10. if `require_progression` is true or the route depends on reviewed unlock posture, require a reviewed progression overlay before summon 11. if the route is self-agent or policy-sensitive, require reviewed self-agent checkpoint posture before summon 12. emit return, checkpoint bridge, memo export, and owner publication plans that stay subordinate to reviewed closeout and owner truth 13. name whether a return receipt or acceptance state is needed before the parent route may continue 14. apply `references/no-raw-traces-rule.md` so child traces remain aids rather than proof or memo canon 15. map failed, narrowed, or blocked child states back into return posture instead of letting them disappear",
+          "text_sha256": "c6fa647ac6a44301710fb006f6ea395c5827171f88ae509d72ea98ebd7c6751a",
+          "token_count": 225
         },
         {
           "doc_id": "skill:aoa-summon:section:contracts",

@@ -172,8 +172,8 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "46d187909644712f7427b74bc7ff65ff93ecce7da130c5d57db7801c7dd0e220",
-      "bytes": 307476
+      "sha256": "44777091e4c095b547025978a11303bcce85a0d40d5927e9b8ca466df993bef0",
+      "bytes": 307470
     },
     {
       "path": "generated/skill_catalog.min.json",
@@ -244,13 +244,13 @@
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "9994b409a222c6c5a523161f3a875a4bcbe94fbf002788e15bb78e4496299af8",
-      "bytes": 196352
+      "sha256": "ea7e60b3ab39ffe4283455c30d4d48a9003f7f9ed5a05dbc281959f896821efb",
+      "bytes": 196346
     },
     {
       "path": "generated/context_retention_manifest.json",
-      "sha256": "eecafe4a52fb85d60109012c46b4a4c4c7a0fa710235a312d4fa5d61531bf690",
-      "bytes": 66280
+      "sha256": "7f5d9220aebdf368490938865a2c0e702d7c9a6639511d587c440c3b8703433e",
+      "bytes": 66276
     },
     {
       "path": "generated/trust_policy_matrix.json",
@@ -289,8 +289,8 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "c7e22660a3b34cc2e5a74a55fe84bebe4b8420c6e9d96314e4ae1f9dd8d2fb21",
-      "bytes": 317636
+      "sha256": "b2fdf5850503eee228866ca2c9953c0f29fdb989589b2510ee05bda723d657cb",
+      "bytes": 317632
     },
     {
       "path": "generated/runtime_activation_aliases.json",
@@ -334,8 +334,8 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "9d36d8edac2f088c342994581caf88e5eed80486f79114dc0498eaafcd0acbe3",
-      "bytes": 91714
+      "sha256": "e54a43b60a18c4b83daf90a7b22d7417da4035f8d07793fc91afb705c2253bdd",
+      "bytes": 91710
     },
     {
       "path": "generated/runtime_guardrail_tool_schemas.json",
@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "0f2b4679fefadec684ca25e1099d1e4d394c5128a7287f54d4dcf3454a13adfb",
+      "sha256": "7ecc232c445a9451ba82016debffb7cde9461ac1a7dcddf70a4300e1a8941f9e",
       "bytes": 135886
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "4c128eed9a9ec489b3fb7ab2c93cd3f6b1e483f9fa78ce2d19d16c0e66e130cc",
+      "sha256": "40d82dd0f1b8ce8f5f1c03f33da47d6e7d49227a5f40c2a1dad483512028d7f5",
       "bytes": 14735
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "8d806d0fe2259f308c3d26384045107e0f81ca802ded6b5df825eb0e5a2f020d",
+      "sha256": "a3cb7ed2d4fb0967fed449359de60d5578ecb934ca6d8ab9494c009934026dfc",
       "bytes": 245461
     },
     {
@@ -586,8 +586,8 @@
     },
     {
       "name": "aoa-summon",
-      "skill_revision": "64a3947c88b3",
-      "content_hash": "64a3947c88b357cc100abe90cb977dafabaca57d08901081bf5fad989cdd6e44"
+      "skill_revision": "49650198b093",
+      "content_hash": "49650198b0937198d71cde27c951034cc0f1a026dab672b58b6eb958ea19278c"
     },
     {
       "name": "aoa-tdd-slice",
@@ -783,7 +783,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "03d343bfa58d31274f2599e0ac35cf12b56bc18cfe2e5a86f7dca14c1eeb495d"
+      "profile_revision": "1745547faeef947f260696aa64e30866d6f258c6519e0a1d37738f5160fb7b37"
     },
     {
       "name": "repo-project-core-kernel",
@@ -902,7 +902,7 @@
         "aoa-session-self-repair",
         "aoa-summon"
       ],
-      "profile_revision": "293017b8f4dd68b5560122904aa138991ea9452d984221882bea874fc1918a90"
+      "profile_revision": "bbd7d374b031ffb560759e0ddbed7f03eb88c24e8c599334eb999b5ac0ce3763"
     },
     {
       "name": "repo-session-harvest-family",
@@ -925,7 +925,7 @@
       "skill_names": [
         "aoa-summon"
       ],
-      "profile_revision": "3c48b8db17eb54e52ba2c9404b45ac664361bfcd3c81dd05f873ee01a385babe"
+      "profile_revision": "f99fc14351410156a2963907227bb1ad0df9cd0eb3d9f6cbc27c50128a197f35"
     },
     {
       "name": "repo-titan-overlay",

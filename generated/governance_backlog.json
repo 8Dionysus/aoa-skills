@@ -336,13 +336,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "64a3947c88b3",
+      "current_revision": "49650198b093",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-summon",
       "review_path": "docs/reviews/status-promotions/aoa-summon.md",
-      "reviewed_revision": "64a3947c88b3",
+      "reviewed_revision": "49650198b093",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true

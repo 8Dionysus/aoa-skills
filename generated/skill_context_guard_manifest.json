@@ -845,8 +845,8 @@
       "name": "aoa-summon",
       "display_name": "AoA Summon",
       "source_scope": "repo",
-      "instruction_sha256": "7980f8b1f5175b51d7b7c0a775bb29964b1169c10b94246e6c14aed07a955179",
-      "dedupe_key": "aoa-summon:7980f8b1f5175b51d7b7c0a775bb29964b1169c10b94246e6c14aed07a955179",
+      "instruction_sha256": "e4ce70c50701c5fc5f9535ee74bf68e8a943d67a0e9fe9cd7543fa6ea06243d1",
+      "dedupe_key": "aoa-summon:e4ce70c50701c5fc5f9535ee74bf68e8a943d67a0e9fe9cd7543fa6ea06243d1",
       "protect_from_compaction": true,
       "pin_strategy": "protected-tool-output",
       "reactivation_strategy": "compact-packet-then-activate",
@@ -855,7 +855,7 @@
         "a quest passport with difficulty, risk, control mode, and delegate tier",
         "a summon request with desired role or child target, transport preference, one",
         "one summon decision with allowed or blocked posture",
-        "one chosen lane such as local leaf execution, local reviewed execution,"
+        "one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`,"
       ],
       "retain_sections": [
         "Trigger boundary",
@@ -863,7 +863,7 @@
         "Verification"
       ],
       "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
-      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one, one summon decision with allowed or blocked posture, one chosen lane such as local leaf execution, local reviewed execution,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "activation_card_markdown": "Use when: Delegate one bounded child route through quest-passport law, local coding-agent execution defaults, hard gates for progression, self-agent, and stress posture, and governed return into reviewed closeout. Use when a parent route already has a real anchor and named outputs and the honest next move is a narrower child reviewer, evaluator, verifier, or leaf helper rather than a larger orchestration layer. Do not use when the route lacks an anchor, the outputs are unnamed, the work is `d3+` and still needs a split, or remote delegation is being used to bypass proof, approval, or closeout posture.\n\nKeep in memory: a quest passport with difficulty, risk, control mode, and delegate tier, a summon request with desired role or child target, transport preference, one, one summon decision with allowed or blocked posture, one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`,.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
       "reactivation_call": {
         "name": "guarded_activate_skill",
         "arguments": {
