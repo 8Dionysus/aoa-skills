@@ -1,166 +1,185 @@
 # aoa-skills
 
-Public library of reusable local coding-agent skills for agentic coding work
-and human review.
+`aoa-skills` is the bounded execution canon of AoA: the place where reusable
+practice becomes self-contained skill bundles a local coding agent can inspect,
+execute, validate, and hand off.
 
-`aoa-skills` is the operational companion to `aoa-techniques`. Where `aoa-techniques` stores reusable engineering practice, `aoa-skills` stores **skill bundles**: self-contained workflows an agent can execute. A skill may package techniques and bounded actions, and a mature skill may also produce technique extraction work. Technique links are bridge evidence, not runtime dependency or automatic status blockers. A single-technique skill is an explicit reviewed exception, not the default shape.
+It is the operational companion to `aoa-techniques`. Techniques keep reusable
+practice meaning. Skills keep executable workflow meaning. The bridge is real,
+but it is a bridge: technique links are lineage and composition evidence, not
+hidden runtime dependencies or automatic status blockers.
 
-A skill here is not a random prompt and not a hidden project hack. It is a reusable agent-facing workflow with clear trigger boundaries, explicit contracts, risks, verification guidance, and honest technique bridge traceability when such a bridge is declared.
+Use this README as the public front door. Use the linked owner surfaces when
+work becomes skill-local, mechanical, generated, exported, evaluated, or
+repository-local.
 
 > Current release: `v0.3.3`. See [CHANGELOG](CHANGELOG.md) for release notes.
 
-## Start here
+## What This Repository Does
 
-Use the shortest route by need:
+| Function | Skill-layer surface |
+|---|---|
+| Describes the system form of the skill canon | [DESIGN](DESIGN.md) |
+| Describes the form of agent-facing guidance | [DESIGN.AGENTS](DESIGN.AGENTS.md) |
+| Routes agent work through owner boundaries and local checks | [AGENTS](AGENTS.md) |
+| Explains the technical source/generated/export model | [ARCHITECTURE](docs/ARCHITECTURE.md) |
+| Maps the current public skill catalog | [SKILL_INDEX](SKILL_INDEX.md) |
+| Holds canonical authored skill bundles | [skills](skills/README.md) |
+| Routes owner-local skill mechanics | [mechanics](mechanics/README.md) |
+| Publishes source-derived catalogs, matrices, and runtime companions | [generated](generated/README.md) |
+| Carries the generated portable skill export | [.agents](.agents/AGENTS.md) |
 
-- first starter bundle: `skills/core/engineering/aoa-change-protocol/SKILL.md`
-- skill-layer design form: `DESIGN.md`
-- agent-facing guidance design: `DESIGN.AGENTS.md`
-- source topology: `skills/README.md`
-- current skill surface: `SKILL_INDEX.md`
-- current direction router: `mechanics/ROADMAP.md`, then the nearest mechanic
-  package `ROADMAP.md`
-- runtime path: `mechanics/release-support/docs/RUNTIME_PATH.md`
-- orchestration and closeout path: `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`
-- evaluation path: `mechanics/audit/docs/EVALUATION_PATH.md`
-- public status and governance: `mechanics/audit/docs/PUBLIC_SURFACE.md`
-- verify current repo state: `python scripts/build_catalog.py --check`, `python scripts/validate_skills.py --fail-on-review-truth-sync`, `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift`, `python scripts/validate_agent_skills.py --repo-root .`, `python scripts/validate_support_resources.py --repo-root . --check-portable`, `python scripts/validate_tiny_router_inputs.py --repo-root .`, and `python -m pytest -q tests`
-- docs map: `docs/README.md`
-- layer position and boundaries: `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+This repository is strongest when it turns a repeated way of working into a
+bounded, reviewable execution object. It is weakest when it tries to become
+technique canon, proof doctrine, scenario composition, memory, routing, runtime,
+or downstream truth.
 
-## Route by need
+## Start Here
 
-- packaging, relationship, and release-manifest views: `generated/skill_bundle_index.md`, `generated/skill_graph.md`, `generated/skill_composition_audit.md`, and `generated/release_manifest.json`
-- public status, governance, and overlay-maturity readouts: `generated/public_surface.md`, `generated/governance_backlog.md`, and `generated/overlay_readiness.md`
-- via negativa pruning checklist: `mechanics/antifragility/parts/via-negativa-pruning/README.md`
-- runtime inspect and walkthrough surfaces: `generated/skill_walkthroughs.md` and `scripts/inspect_skill.py`
-- additive degraded and receipt-authoring guidance for future skill bundles: `mechanics/antifragility/parts/fallback-authoring-posture/README.md`
-- checkpoint-aware pre-harvest session-growth capture: `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`, `mechanics/checkpoint/schemas/session_checkpoint_note.schema.json`, and `mechanics/checkpoint/examples/session_checkpoint_note.example.json`
-- reviewed owner-status landing and bounded next-step followthrough after `candidate_ref` exists: `mechanics/method-growth/docs/OWNER_STATUS_SURFACES.md`, `mechanics/method-growth/docs/GOVERNED_FOLLOWTHROUGH.md`, `mechanics/method-growth/schemas/reviewed_owner_landing_bundle.schema.json`, `mechanics/method-growth/schemas/route_followthrough_decision.schema.json`, and matching examples under `mechanics/method-growth/examples/`
-- explicit skill adoption lifecycle posture: `mechanics/method-growth/parts/adoption-boundary/README.md`, `mechanics/method-growth/parts/adoption-evidence-receipts/README.md`, `mechanics/method-growth/parts/retention-regression-retirement/README.md`, and `mechanics/method-growth/parts/pattern-adoption-handoff/README.md`
-- owner-local mechanics, AoA owner-request receipts, Checkpoint carry, Method-growth candidate/adoption movement, Questbook integration, Recurrence observation, Antifragility risk posture, and Agon bounded-workflow companion bridge: `mechanics/README.md`, `mechanics/OWNER_REQUEST_RECEIPTS.md`, `mechanics/checkpoint/README.md`, `mechanics/checkpoint/parts/checkpoint-note-lane/README.md`, `mechanics/method-growth/README.md`, `mechanics/method-growth/parts/candidate-lineage/README.md`, `mechanics/method-growth/parts/adoption-boundary/README.md`, `mechanics/method-growth/parts/adoption-evidence-receipts/README.md`, `mechanics/method-growth/parts/retention-regression-retirement/README.md`, `mechanics/method-growth/parts/pattern-adoption-handoff/README.md`, `mechanics/questbook/README.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `mechanics/recurrence/README.md`, `mechanics/recurrence/parts/live-observation-producers/README.md`, `mechanics/recurrence/parts/review-decision-closure/README.md`, `mechanics/antifragility/README.md`, `mechanics/antifragility/parts/fallback-authoring-posture/README.md`, `mechanics/antifragility/parts/via-negativa-pruning/README.md`, `mechanics/antifragility/parts/collision-stress-program/README.md`, `mechanics/agon/README.md`, `mechanics/agon/parts/workflow-candidate-bridge/README.md`, `mechanics/agon/parts/candidate-validation-gate/README.md`, `generated/agon_skill_binding_candidates.min.json`, `python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`, `python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py`, and `python -m pytest -q mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py`
-- adaptive applicability, closeout, and harvest routing for multi-skill sessions: `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, `templates/SKILL_APPLICABILITY_MAP.template.md`, and `templates/SESSION_CANDIDATE_HARVEST.template.md`
-- checkpoint-to-closeout bridge orchestration: `skills/core/session-growth/aoa-checkpoint-closeout-bridge/SKILL.md`, `mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md`, and `mechanics/checkpoint/docs/CHECKPOINT_NOTE_PATH.md`
-- ability-reader and loadout surfaces: `mechanics/rpg/parts/ability-reader-boundary/README.md`, `mechanics/rpg/parts/loadout-posture/README.md`, and `generated/skill_ability_cards.min.example.json`
-- evaluation evidence and matrix outputs: `generated/skill_evaluation_matrix.md`, `tests/fixtures/skill_evaluation_cases.yaml`, and `scripts/report_skill_evaluation.py`
-- authored skill quality audit across bodies, evidence, runtime, lineage, and upgrade targets: `scripts/audit_skill_quality.py`, `generated/skill_quality_audit.md`, and `generated/skill_quality_audit.json`
-- real repository skill-dispatch trials: `scripts/run_skill_reality_trials.py`, `generated/skill_reality_trials.md`, and `generated/skill_reality_trials.json`
-- lived-use promotion pressure for non-canonical skills: `mechanics/method-growth/docs/PROMOTION_PRESSURE.md`, `scripts/report_skill_promotion_pressure.py`, `generated/skill_promotion_pressure.md`, and `generated/skill_promotion_pressure.json`
-- deferred workflow, checkpoint-note promotion, recurring cross-repo follow-through, and quest dispatch: `QUESTBOOK.md`, `mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md`, `generated/quest_catalog.min.json`, and `generated/quest_dispatch.min.json`
-- portable export, component refresh law, and local runtime seams: `mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md`, `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md`, `mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md`, `mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md`, `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md`, `mechanics/release-support/docs/RUNTIME_SEAM_SECOND_PATH.md`, `mechanics/release-support/docs/RUNTIME_TOOL_CONTRACTS.md`, `mechanics/release-support/docs/SESSION_COMPACTION.md`, and `.agents/skills/*`
-- workspace and repo adoption audit before rollout: `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`, `scripts/audit_workspace_skill_adoption.py`, `generated/workspace_skill_adoption_audit.md`, and `generated/workspace_skill_adoption_audit.json`
-- named MCP dependency scaffolds and workspace-alignment checks: `mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json`, `mechanics/boundary-bridge/examples/openai.*.example.yaml`, `scripts/build_openai_yaml_examples.py`, and `scripts/validate_skill_mcp_wiring.py`
-- install, trust, config, and UI surfaces: `mechanics/release-support/docs/INSTALL_AND_PROFILES.md`, `mechanics/release-support/docs/CONTEXT_RETENTION.md`, `mechanics/release-support/docs/UI_METADATA_AND_ASSETS.md`, `mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md`, `mechanics/release-support/docs/TRUST_GATE_AND_ALLOWLIST.md`, `mechanics/release-support/docs/SKILL_CONTEXT_GUARD.md`, and `mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md`
-- activation quality and conformance: `mechanics/audit/docs/TRIGGER_EVALS.md`, `mechanics/antifragility/parts/collision-stress-program/README.md`, `mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md`, and `mechanics/audit/docs/SKILLS_REF_VALIDATION.md`
-- deterministic resources and downstream tiny-router bridge: `mechanics/release-support/docs/DETERMINISTIC_RESOURCE_BUNDLES.md`, `mechanics/boundary-bridge/docs/BRIDGE_FROM_AOA_SUPPORT_DIRS.md`, and `mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md`
-- project-core kernel receipts, maturity guidance, and bounded follow-up surface context: `config/project_core_skill_kernel.json`, `scripts/publish_core_skill_receipts.py`, `skills/**/references/core-skill-application-receipt-schema.yaml`, `mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md`, and `mechanics/growth-cycle/examples/session_growth_artifacts/*.wave4.json`
-- promotion, maturity, and release posture: `mechanics/method-growth/docs/MATURITY_MODEL.md`, `mechanics/method-growth/docs/PROMOTION_PATH.md`, and `mechanics/release-support/docs/RELEASING.md`
-- thin downstream overlays: `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` and `mechanics/boundary-bridge/overlays/*`
+Read only what matches your entry need.
+When a question is package-deep, use the nearest mechanic surface instead of
+turning this README into the package map.
 
-## What belongs here
+| Need | Route |
+|---|---|
+| Shortest honest overview | this README, then [DESIGN](DESIGN.md), [SKILL_INDEX](SKILL_INDEX.md), and [ARCHITECTURE](docs/ARCHITECTURE.md) |
+| Agent editing route | [AGENTS](AGENTS.md), then the nearest nested `AGENTS.md` |
+| Skill-layer system form | [DESIGN](DESIGN.md) |
+| Agent-surface design | [DESIGN.AGENTS](DESIGN.AGENTS.md) |
+| Canonical source topology | [skills](skills/README.md) |
+| Skill mechanics and package routes | [mechanics](mechanics/README.md) |
+| Skill-technique boundary | [LAYER_POSITION](mechanics/boundary-bridge/docs/LAYER_POSITION.md) |
+| Runtime use path | [RUNTIME_PATH](mechanics/release-support/docs/RUNTIME_PATH.md) |
+| Evaluation and public status | [EVALUATION_PATH](mechanics/audit/docs/EVALUATION_PATH.md), [PUBLIC_SURFACE](mechanics/audit/docs/PUBLIC_SURFACE.md) |
+| Export, install, and downstream adoption | [INSTALL_AND_PROFILES](mechanics/release-support/docs/INSTALL_AND_PROFILES.md), [COMPONENT_REFRESH_LAW](mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md) |
+| Current direction and durable obligations | [mechanics/ROADMAP.md](mechanics/ROADMAP.md), then the nearest mechanic `ROADMAP.md`; [QUESTBOOK.md](QUESTBOOK.md) |
+| AoA owner requests into this repo | [mechanics/OWNER_REQUEST_RECEIPTS.md](mechanics/OWNER_REQUEST_RECEIPTS.md) |
+| Agon bounded-workflow bridge | [mechanics/agon/parts/workflow-candidate-bridge/README.md](mechanics/agon/parts/workflow-candidate-bridge/README.md) and [generated/agon_skill_binding_candidates.min.json](generated/agon_skill_binding_candidates.min.json) |
+| Compact machine route | [SKILL_INDEX](SKILL_INDEX.md), [skill_intelligence_registry.min.json](generated/skill_intelligence_registry.min.json) |
 
-Good candidates:
+## Route Modes
 
-- reusable local coding-agent workflows
-- bounded change-protocol skills
-- testing and validation skills
-- architecture and context-mapping skills
-- contract and invariant skills
-- thin project overlays
-- refresh helpers for canonical skill surfaces
+Every substantial change should choose the smallest route that owns the claim.
 
-Bad candidates:
+| Route mode | Use when | Start surface |
+|---|---|---|
+| `first-reading` | you need the shortest honest repository overview | `README.md` |
+| `system-design` | skill-layer form, topology, export posture, or layer relationships change | [DESIGN](DESIGN.md) |
+| `agent-surface-design` | AGENTS shape, card placement, route modes, or closeout expectations change | [DESIGN.AGENTS](DESIGN.AGENTS.md) |
+| `skill-editing` | a canonical skill bundle, trigger boundary, invocation posture, or technique metadata changes | [skills/AGENTS](skills/AGENTS.md) |
+| `mechanic-change` | owner-local movement around canon changes | [mechanics/README](mechanics/README.md) |
+| `generated-surface` | derived catalogs, matrices, manifests, runtime cards, or export companions change | [generated/AGENTS](generated/AGENTS.md) |
+| `export-refresh` | `.agents/skills`, install profiles, support resources, or downstream pack parity changes | [COMPONENT_REFRESH_LAW](mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md) |
+| `public-status` | status, evaluation, promotion pressure, governance, or public claims change | [PUBLIC_SURFACE](mechanics/audit/docs/PUBLIC_SURFACE.md) |
 
-- private infrastructure instructions
-- secret-bearing examples
-- raw project dumps
-- one-off prompts with no reusable boundary
-- techniques that belong in `aoa-techniques`
-- undocumented scripts
-- skills that silently widen the task
+## Claim Check
 
-## Core distinction
+Before trusting or publishing a skill-layer claim, route it through the
+smallest surface that can answer it.
 
-- `aoa-techniques` owns reusable practice meaning
-- `aoa-skills` owns bounded execution meaning
-- `aoa-playbooks` owns scenario composition
+| Claim question | Check |
+|---|---|
+| Is this repository allowed to own the claim? | [DESIGN](DESIGN.md), [ARCHITECTURE](docs/ARCHITECTURE.md) |
+| Is this active skill meaning? | `skills/**/SKILL.md` and `skills/**/techniques.yaml` |
+| Is this reusable practice rather than executable workflow? | `aoa-techniques`, not this repository |
+| Is this proof doctrine or quality verdicting? | `aoa-evals`, with local routing through [EVALUATION_PATH](mechanics/audit/docs/EVALUATION_PATH.md) |
+| Is this scenario composition or questline shape? | `aoa-playbooks`, not the skill bundle |
+| Is this generated, exported, or installed output? | source builder/config first, then [generated](generated/AGENTS.md) or [.agents](.agents/AGENTS.md) |
+| Does this affect downstream install parity? | [INSTALL_AND_PROFILES](mechanics/release-support/docs/INSTALL_AND_PROFILES.md) and workspace adoption audit |
+| Does this change how agents work in the repository? | [AGENTS](AGENTS.md) and [DESIGN.AGENTS](DESIGN.AGENTS.md) |
 
-In short:
+Generated and exported surfaces are companions, not authority. Source bundles,
+source config, mechanics packages, and owner repositories keep meaning.
 
-`origin project -> technique canon <-> skill canon -> project overlay`
+## Current Contour
 
-The runtime path for public skill use remains:
+The current public contour is a source-topologized skill canon with generated
+portable exports and owner-local mechanics around canon movement.
 
-`pick -> inspect -> expand -> object use`
+Current anchors:
 
-Authored markdown still owns meaning. Generated catalogs, capsules, portable exports, and bridge manifests help routing and activation, but they do not replace the canonical skill bundle.
+- [skills](skills/README.md) for canonical skill bundles and source topology
+- [DESIGN](DESIGN.md), [DESIGN.AGENTS](DESIGN.AGENTS.md), and
+  [ARCHITECTURE](docs/ARCHITECTURE.md) for layer form and source/export
+  discipline
+- [mechanics](mechanics/README.md) for skill-layer movement, adoption,
+  recurrence, checkpoint, quest, audit, boundary bridge, and release-support
+  routes
+- [generated](generated/README.md) for compact catalogs, matrices, runtime
+  companions, and public read models
+- [.agents](.agents/AGENTS.md) for generated portable skill export surfaces
 
-When project-core kernel receipts carry `surface_detection_context`, that
-payload stays advisory. It may preserve shortlist, ambiguity, and closeout-link
-truth for follow-up surface detection, but it does not let `aoa-skills`
-claim non-skill activation authority.
+Detailed mechanic futures live in `mechanics/<slug>/ROADMAP.md` or active
+mechanic package surfaces, not in this README.
 
-## Repository layout
+## Skill Canon
 
-- `skills/` for canonical skill bundles and deterministic support resources
-- `mechanics/` for owner-local skill-layer movement surfaces around AoA mechanics
-- `.agents/skills/` for the generated Codex-compatible export layer
-- `config/` for portable export, policy, and profile inputs
-- `generated/` for derived catalogs, capsules, walkthroughs, evaluation matrices, and runtime manifests
-- `docs/`, `templates/`, `schemas/`, `scripts/`, and `tests/` for architecture, authoring, validation, and generation
+Canonical source bundles live under `skills/`:
 
-## Local validation
+| Lane | Use for |
+|---|---|
+| [core/engineering](skills/core/engineering/AGENTS.md) | reusable engineering workflows such as change protocol, ADRs, source truth, TDD, contracts, invariants, ports, and boundaries |
+| [core/session-growth](skills/core/session-growth/AGENTS.md) | reviewed session-growth workflows such as harvest, route forks, repair, progression, quest harvest, closeout bridge, automation scan, and summon |
+| [risk](skills/risk/AGENTS.md) | explicit risk guards for approval, dry run, infra changes, stack bring-up, and sanitized sharing |
+| [project](skills/project/AGENTS.md) | thin project overlays that adapt reusable workflows to named owner families |
 
-Install local dependencies:
+A skill bundle owns its `SKILL.md`, `techniques.yaml`, and bundle-local support
+artifacts. Mechanics explain movement around the canon; they do not contain
+canonical skills.
 
-```bash
-python -m pip install -r requirements-dev.txt
-```
+## Technical Districts
 
-Run the bounded repo check:
+Root-adjacent districts have local route cards:
+
+| District | Use for |
+|---|---|
+| [config](config/AGENTS.md) | portable export, policy, profile, trigger, and adapter inputs |
+| [scripts](scripts/AGENTS.md) | builders, validators, reports, inspectors, installers, and runtime seams |
+| [schemas](schemas/AGENTS.md) | machine contracts for generated and review surfaces |
+| [tests](tests/AGENTS.md) | regression and contract checks |
+| [docs](docs/AGENTS.md) | architecture, decisions, reviews, and supporting docs |
+| [templates](templates/AGENTS.md) | reusable authoring templates |
+| [examples](examples/AGENTS.md) | compact example objects and fixtures |
+| [quests](quests/AGENTS.md) | durable skill-layer obligations |
+| [manifests](manifests/AGENTS.md) | manifest posture and source-linked inventories |
+
+District cards explain local handling. They do not replace skill bundles,
+mechanics packages, generated-source builders, or sibling owner repositories.
+
+## Verify
+
+Use the narrowest check that matches the changed surface. For repo-wide or
+release-facing changes, run:
 
 ```bash
 python scripts/release_check.py
 ```
 
-For a read-only/current-state verify pass, use:
+For root guidance changes, the minimum route is:
 
 ```bash
+python scripts/validate_agents_design.py
+python scripts/validate_nested_agents.py
 python scripts/build_catalog.py --check
+```
+
+When release-facing status, review truth, or technique lineage can affect a
+public claim, include the matching gates:
+
+```bash
 python scripts/validate_skills.py --fail-on-review-truth-sync
-python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
 python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
-python scripts/build_openai_yaml_examples.py --map mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json --output-dir mechanics/boundary-bridge/examples --check
-python scripts/validate_agent_skills.py --repo-root .
-python scripts/validate_support_resources.py --repo-root . --check-portable
-python scripts/validate_tiny_router_inputs.py --repo-root .
-python -m pytest -q tests
 ```
 
-For day-to-day iteration, the smallest core loop remains:
+## Working Rule
 
-```bash
-python scripts/build_catalog.py
-python scripts/validate_skills.py
-python scripts/build_catalog.py --check
-```
+Grow the skill canon by making the next execution route clearer.
 
-If you change skill bodies, portable export, policy posture, descriptions, deterministic resources, or tiny-router bridge inputs, also run the documented build and validation commands for those families.
-
-When the task specifically touches named MCP dependency wiring, also validate the
-workspace seam against a real workspace config:
-
-```bash
-python scripts/validate_skill_mcp_wiring.py --workspace-config /path/to/.codex/config.toml --format text
-```
-
-## Go elsewhere when...
-
-- you need reusable practice meaning: `aoa-techniques`
-- you need proof doctrine or quality claims: `aoa-evals`
-- you need routing and dispatch logic: `aoa-routing`
-- you need role contracts: `aoa-agents`
-- you need scenario composition: `aoa-playbooks`
+Add bundles, mechanics, generated companions, examples, tests, and exports only
+where they improve reviewability and preserve owner boundaries. When a detail
+belongs to a technique, proof surface, playbook, route, memory object, runtime
+body, downstream repository, roadmap, landing log, changelog, quest, or
+decision record, route it there.
 
 ## License
 

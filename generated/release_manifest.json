@@ -172,7 +172,7 @@
   "authoring_input_digests": [
     {
       "path": "generated/skill_sections.full.json",
-      "sha256": "94d2251e06b01d1ae23a5b30116aa4d29dbbb43abce31b4f515bdb15bf689082",
+      "sha256": "e237c4a141e068ef99467a544ae0d72c6e7db9ca0ec38814e256cf2588858820",
       "bytes": 307134
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "path": "generated/runtime_disclosure_index.json",
-      "sha256": "b2fedc1d1164b033dcdc009821ca75f053c3d5ed550df36930f5bb28b9c21eb0",
+      "sha256": "c7e22660a3b34cc2e5a74a55fe84bebe4b8420c6e9d96314e4ae1f9dd8d2fb21",
       "bytes": 317636
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "17e881f80ac5edaba5d8fc50fb47868d2b291748ef6c66b538387e09f53d53d4",
+      "sha256": "772f504e1f36295f825ff6a1866da3037bfd440f1cad1a0ceb121819904dca81",
       "bytes": 91714
     },
     {
@@ -434,17 +434,17 @@
     },
     {
       "path": "generated/skill_bundle_index.json",
-      "sha256": "d985e00ae9ec92c99b4e30f6f13dcd7300fc461da06d53486a058166779f181a",
+      "sha256": "7ca34ad9fe7bf2eb82b2794c689be9007d36335d2b11310cd149db527661eef4",
       "bytes": 135886
     },
     {
       "path": "generated/skill_bundle_index.md",
-      "sha256": "3b7bb649f5851d62d44e8fd4ab56c58c3813ef4551cc56bf805d00eafe43344f",
+      "sha256": "04daede888c67d42275a8a863a45332b0e606bdbbb16c13d1dd5e310dfd22d68",
       "bytes": 14735
     },
     {
       "path": "generated/skill_graph.json",
-      "sha256": "7b7a23af3de35232fe9cdd7dcf66ee0298c69583c29c213d19d927aecb7525aa",
+      "sha256": "b9eb10c0d18e860b2b1314b4fdc6159091b0968214817b9dba9de3df9498ba2e",
       "bytes": 245461
     },
     {
@@ -586,8 +586,8 @@
     },
     {
       "name": "aoa-summon",
-      "skill_revision": "7c02d67527af",
-      "content_hash": "7c02d67527afffe0ad1b6956ee134d3fb7a2708092e5706868572f9597a43ac9"
+      "skill_revision": "64a3947c88b3",
+      "content_hash": "64a3947c88b357cc100abe90cb977dafabaca57d08901081bf5fad989cdd6e44"
     },
     {
       "name": "aoa-tdd-slice",
@@ -611,8 +611,8 @@
     },
     {
       "name": "titan-approval-loom",
-      "skill_revision": "6be4cec75de6",
-      "content_hash": "6be4cec75de6ec54817dd87e7274f090e6f3bf1f9d962c6683d4fe6259c3c040"
+      "skill_revision": "59dfc8b44be9",
+      "content_hash": "59dfc8b44be91e646ad533b567a6931ada7a76034c04d7255669baf38fbdd852"
     },
     {
       "name": "titan-appserver-bridge",
@@ -631,8 +631,8 @@
     },
     {
       "name": "titan-console",
-      "skill_revision": "4e29cf865cd2",
-      "content_hash": "4e29cf865cd26801602c7479f9aa872e6d0d6153362b4ee94cbd22e805769072"
+      "skill_revision": "1a92f9309ef8",
+      "content_hash": "1a92f9309ef83143afa03b5e09d01a8c80fa0f8e7860842751c689546c7508ca"
     },
     {
       "name": "titan-event-replay",
@@ -671,13 +671,13 @@
     },
     {
       "name": "titan-summon",
-      "skill_revision": "a10698e758a8",
-      "content_hash": "a10698e758a81aca81bfa67610c321fb764e414de514cbb6962db7cf93fcb3fe"
+      "skill_revision": "63336ffac6b1",
+      "content_hash": "63336ffac6b128c9b7333d1c37e948d518c4d0efed774a02b730901cf52c1f9b"
     },
     {
       "name": "titan-thread-turn-binding",
-      "skill_revision": "45d0a20ef891",
-      "content_hash": "45d0a20ef891a41b37c473221b10829443b3884957d5b64f9560374149647f6e"
+      "skill_revision": "b811284d4f87",
+      "content_hash": "b811284d4f871f085e354b58861510c4520b6471f48890dc32b139c4914112e6"
     }
   ],
   "install_profile_revisions": [
@@ -783,7 +783,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "e972eb665b495e3fe9779ce0bbda18579d2520693892497d2fa273d048d62b22"
+      "profile_revision": "4b0be1f08db9b74dac8520bbf313a393371e49ff73d551194ac5d81ca8464e1a"
     },
     {
       "name": "repo-project-core-kernel",
@@ -902,7 +902,7 @@
         "aoa-session-self-repair",
         "aoa-summon"
       ],
-      "profile_revision": "e16a39cd833c6e76a339a00dcebe3109b7519ace2851939760c4baccae4b3233"
+      "profile_revision": "419b03e5c472537591eaffe1a1c6344156806923b0c731deef4258198015f1b4"
     },
     {
       "name": "repo-session-harvest-family",
@@ -925,7 +925,7 @@
       "skill_names": [
         "aoa-summon"
       ],
-      "profile_revision": "72935251b8afec13ee0674878d6a7de256f57c6b51ea09a3a45f6c065f5fa554"
+      "profile_revision": "3c48b8db17eb54e52ba2c9404b45ac664361bfcd3c81dd05f873ee01a385babe"
     },
     {
       "name": "repo-titan-overlay",
@@ -947,7 +947,7 @@
         "titan-summon",
         "titan-thread-turn-binding"
       ],
-      "profile_revision": "0fa9e10c9c4200383ed61f69eb6c7d06b160b90b1fce247890e700de53e01a98"
+      "profile_revision": "e7537d737eb3da9303fe70037bae67ac858d26cb74ccae1610e730e125cb529b"
     },
     {
       "name": "user-curated-core",
