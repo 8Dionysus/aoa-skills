@@ -490,12 +490,21 @@ def snapshot_blockers_for_case(
     case: Mapping[str, Any],
 ) -> set[str]:
     blockers: set[str] = set()
+    resolved_repo_root = repo_root.resolve()
     snapshot_path_value = case.get("snapshot_path")
     if not isinstance(snapshot_path_value, str) or not snapshot_path_value.strip():
         blockers.add(BLOCKER_MISSING_SNAPSHOT_FILE)
         return blockers
+    if not skill_catalog_contract.is_repo_relative_path(snapshot_path_value):
+        blockers.add(BLOCKER_MISSING_SNAPSHOT_FILE)
+        return blockers
 
-    snapshot_path = repo_root / snapshot_path_value
+    snapshot_path = (resolved_repo_root / snapshot_path_value).resolve()
+    try:
+        snapshot_path.relative_to(resolved_repo_root)
+    except ValueError:
+        blockers.add(BLOCKER_MISSING_SNAPSHOT_FILE)
+        return blockers
     if not snapshot_path.is_file():
         blockers.add(BLOCKER_MISSING_SNAPSHOT_FILE)
         return blockers
@@ -505,7 +514,7 @@ def snapshot_blockers_for_case(
     )
     heading_issues = skill_artifact_contract.collect_heading_contract_issues(
         section_pairs,
-        location=relative_location(snapshot_path, repo_root),
+        location=relative_location(snapshot_path, resolved_repo_root),
         artifact_label="evaluation snapshot",
         expected_headings=EVALUATION_SNAPSHOT_HEADINGS,
     )
