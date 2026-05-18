@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 import pathlib
 import re
@@ -144,20 +145,43 @@ def slugify(text: str) -> str:
     return value or "artifact"
 
 
-def unique_preserve(items: list[str]) -> list[str]:
-    out: list[str] = []
-    seen: set[str] = set()
-    for item in items:
-        if item not in seen:
-            seen.add(item)
-            out.append(item)
-    return out
+def compact_artifact_tag(slug: str, *, seen_tags: set[str], max_length: int = 64) -> str:
+    candidate = slug[:max_length] or "artifact"
+    if candidate not in seen_tags:
+        return candidate
+
+    full_digest = hashlib.sha1(slug.encode("utf-8")).hexdigest()
+    for digest_length in range(10, len(full_digest) + 1, 6):
+        digest = full_digest[:digest_length]
+        base_length = max_length - len(digest) - 1
+        base = slug[:base_length].rstrip("-") or "artifact"
+        candidate = f"{base}-{digest}"
+        if candidate not in seen_tags:
+            return candidate
+
+    fallback = str(len(seen_tags) + 1)
+    base_length = max_length - len(fallback) - 1
+    base = slug[:base_length].rstrip("-") or "artifact"
+    return f"{base}-{fallback}"
 
 
 def artifact_tags(items: list[str], limit: int = 8) -> list[str]:
-    tags = [slugify(item)[:64] for item in items if item]
-    tags = [tag for tag in tags if tag]
-    return unique_preserve(tags)[:limit]
+    tags: list[str] = []
+    seen_slugs: set[str] = set()
+    seen_tags: set[str] = set()
+    for item in items:
+        if not item:
+            continue
+        slug = slugify(item)
+        if slug in seen_slugs:
+            continue
+        seen_slugs.add(slug)
+        tag = compact_artifact_tag(slug, seen_tags=seen_tags)
+        seen_tags.add(tag)
+        tags.append(tag)
+        if len(tags) >= limit:
+            break
+    return tags
 
 
 def section_map(skill: dict[str, Any]) -> dict[str, str]:
