@@ -85,7 +85,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-quest-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-quest-harvest.md | 3672a25831c3 | 3672a25831c3 | True | - | true |
 | aoa-safe-infra-change | canonical | published | default_reference | docs/reviews/status-promotions/aoa-safe-infra-change.md | 882901e7a920 | 882901e7a920 | False | - | true |
 | aoa-sanitized-share | canonical | published | default_reference | docs/reviews/status-promotions/aoa-sanitized-share.md | 4a48a4e10b5d | 4a48a4e10b5d | True | - | true |
-| aoa-session-donor-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-donor-harvest.md | 399518a3da07 | 399518a3da07 | True | - | true |
+| aoa-session-donor-harvest | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-donor-harvest.md | 9877151c0fe9 | 9877151c0fe9 | True | - | true |
 | aoa-session-progression-lift | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-progression-lift.md | 80f8c55f299f | 80f8c55f299f | True | - | true |
 | aoa-session-route-forks | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-route-forks.md | 35b036551123 | 35b036551123 | True | - | true |
 | aoa-session-self-diagnose | evaluated | published | stay_evaluated | docs/reviews/status-promotions/aoa-session-self-diagnose.md | 54e0926c66ea | 54e0926c66ea | True | - | true |

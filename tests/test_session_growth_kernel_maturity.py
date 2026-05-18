@@ -175,7 +175,17 @@ def test_automation_opportunity_packet_example_follows_required_field_contract()
 
     assert "determinism_posture" in required_fields
     assert "secret_coupling" in required_fields
+    assert "evidence_refs" in required_fields
     assert all(field in packet for field in required_fields)
+
+
+def test_donor_harvest_contract_names_automation_candidate_extract_kind() -> None:
+    source_text = (
+        REPO_ROOT / "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md"
+    ).read_text(encoding="utf-8")
+
+    assert "unit kind: pattern, mechanic, utility, law, proof, recall, route, or automation_candidate" in source_text
+    assert "by reuse kind: pattern, mechanic, utility, law, proof, recall, route, or automation_candidate" in source_text
 
 
 def test_kernel_maturity_detail_receipts_follow_skill_contracts_and_point_back_to_packets() -> None:

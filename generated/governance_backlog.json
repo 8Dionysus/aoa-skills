@@ -264,13 +264,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "399518a3da07",
+      "current_revision": "9877151c0fe9",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-session-donor-harvest",
       "review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
-      "reviewed_revision": "399518a3da07",
+      "reviewed_revision": "9877151c0fe9",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true

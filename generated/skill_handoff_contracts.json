@@ -1599,7 +1599,7 @@
         "candidate ref minted only after reviewed harvest",
         "source cluster ref when the reviewed input carried one",
         "reusable unit name",
-        "unit kind: pattern, mechanic, utility, law, proof, recall, or route",
+        "unit kind: pattern, mechanic, utility, law, proof, recall, route, or automation_candidate",
         "owner shape: technique, skill, playbook, eval, memo, agent, or hold",
         "owner hypothesis and owner repo recommendation",
         "one chosen next artifact",
@@ -1663,7 +1663,7 @@
         "candidate-ref-minted-only-after-reviewed-harvest",
         "source-cluster-ref-when-the-reviewed-input-carried-one",
         "reusable-unit-name",
-        "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
+        "unit-kind-pattern-mechanic-utility-law-proof-recall-route-or-aut",
         "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold"
       ],
       "handoff_packet_template": {
@@ -1675,7 +1675,7 @@
           "candidate-ref-minted-only-after-reviewed-harvest",
           "source-cluster-ref-when-the-reviewed-input-carried-one",
           "reusable-unit-name",
-          "unit-kind-pattern-mechanic-utility-law-proof-recall-or-route",
+          "unit-kind-pattern-mechanic-utility-law-proof-recall-route-or-aut",
           "owner-shape-technique-skill-playbook-eval-memo-agent-or-hold"
         ],
         "verification_notes": [
