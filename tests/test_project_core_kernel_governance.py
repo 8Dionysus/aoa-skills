@@ -147,6 +147,21 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
 
         self.assertIn("activation_truth", str(exc.exception))
 
+    def test_publish_core_skill_receipts_rejects_non_string_shortlist_confidence(self) -> None:
+        module = load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
+
+        receipt = build_core_skill_receipt(
+            detail_event_kind="harvest_packet_receipt",
+            surface_detection_context={
+                "shortlist_confidence": [],
+            },
+        )
+
+        with self.assertRaises(module.ReceiptPublishError) as exc:
+            module.validate_receipt(receipt, location="memory")
+
+        self.assertIn("shortlist_confidence", str(exc.exception))
+
     def test_publish_core_skill_receipts_rejects_invalid_authority_contract(self) -> None:
         module = load_module("publish_core_skill_receipts", PUBLISH_SCRIPT_PATH)
 
@@ -236,6 +251,56 @@ class ProjectCoreKernelGovernanceTests(unittest.TestCase):
             all(entry["gate_passed"] for entry in governance["skills"]),
             msg=json.dumps(governance, indent=2),
         )
+
+    def test_outer_ring_missing_cluster_mapping_reports_blocker(self) -> None:
+        build_module = load_module("build_agent_skills", BUILD_SCRIPT_PATH)
+
+        ring_doc = json.loads((REPO_ROOT / "config" / "project_core_outer_ring.json").read_text(encoding="utf-8"))
+        catalog = json.loads((REPO_ROOT / "generated" / "agent_skill_catalog.json").read_text(encoding="utf-8"))
+        profiles = json.loads((REPO_ROOT / "config" / "skill_pack_profiles.json").read_text(encoding="utf-8"))
+        collision_doc = json.loads(
+            (REPO_ROOT / "generated" / "skill_trigger_collision_matrix.json").read_text(encoding="utf-8")
+        )
+        ring_doc["skills"] = [*ring_doc["skills"], "aoa-unknown-outer-ring"]
+
+        readiness = build_module.build_project_core_outer_ring_readiness_doc(
+            ring_doc=ring_doc,
+            skill_catalog=catalog,
+            profiles_doc=profiles,
+            collision_doc=collision_doc,
+        )
+
+        unknown_entry = next(entry for entry in readiness["skills"] if entry["skill_name"] == "aoa-unknown-outer-ring")
+        self.assertEqual("unmapped", unknown_entry["cluster_id"])
+        self.assertIn("missing_cluster_mapping", unknown_entry["blockers"])
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            temp_repo = pathlib.Path(tmpdir) / "aoa-skills"
+            shutil.copytree(
+                REPO_ROOT,
+                temp_repo,
+                ignore=shutil.ignore_patterns(".git", "__pycache__", ".pytest_cache"),
+            )
+            ring_path = temp_repo / "config" / "project_core_outer_ring.json"
+            ring_path.write_text(json.dumps(ring_doc, indent=2) + "\n", encoding="utf-8")
+
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(VALIDATE_SCRIPT_PATH),
+                    "--repo-root",
+                    str(temp_repo),
+                ],
+                cwd=REPO_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+
+        combined_output = completed.stdout + completed.stderr
+        self.assertEqual(1, completed.returncode, msg=combined_output)
+        self.assertIn("config/project_core_outer_ring.json skills must match", completed.stderr)
+        self.assertNotIn("Traceback", combined_output)
 
 
 if __name__ == "__main__":

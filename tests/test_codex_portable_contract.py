@@ -109,6 +109,19 @@ class CodexPortableContractTests(unittest.TestCase):
             self.assertIsInstance(packet["verification_notes"], list)
             self.assertIsInstance(packet["contract_notes"], list)
 
+    def test_handoff_contracts_preserve_wrapped_receipt_references(self):
+        handoff_doc = load_json(REPO_ROOT / "generated" / "skill_handoff_contracts.json")
+        handoff_by_name = {entry["name"]: entry for entry in handoff_doc["skills"]}
+
+        self.assertIn(
+            "one `AUTOMATION_CANDIDATE_RECEIPT` using `references/stats-event-envelope.md` and `references/automation-candidate-receipt-schema.yaml`",
+            handoff_by_name["aoa-automation-opportunity-scan"]["outputs"],
+        )
+        self.assertIn(
+            "one `QUEST_PROMOTION_RECEIPT` using `references/stats-event-envelope.md` and `references/quest-promotion-receipt-schema.yaml`",
+            handoff_by_name["aoa-quest-harvest"]["outputs"],
+        )
+
     def test_artifact_tags_preserve_distinct_long_prefix_collisions(self):
         shared_prefix = "verification " + "shared lineage " * 8
         items = [

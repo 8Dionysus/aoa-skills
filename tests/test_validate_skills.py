@@ -3011,6 +3011,34 @@ class ValidateQuestbookSurfaceTests(unittest.TestCase):
         self.assertIn("AOA-SK-Q-0005", catalog_ids)
         self.assertIn("AOA-SK-Q-0005", dispatch_ids)
 
+    def test_duplicate_quest_ids_across_lifecycle_dirs_fail(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            source_path = quest_fixture_path(repo_root, "AOA-SK-Q-0004")
+            duplicate_path = repo_root / "quests" / "duplicate-lane" / "AOA-SK-Q-0004.yaml"
+            write_text(duplicate_path, source_path.read_text(encoding="utf-8"))
+
+            issues = validate_skills.validate_questbook_surface(repo_root)
+
+        self.assertTrue(
+            any(
+                issue.location == "quests/**/AOA-SK-Q-0004.yaml"
+                and "duplicate quest id files are not allowed" in issue.message
+                for issue in issues
+            )
+        )
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            repo_root = Path(temp_dir) / "aoa-skills"
+            self.write_valid_surface(repo_root)
+            source_path = quest_fixture_path(repo_root, "AOA-SK-Q-0004")
+            duplicate_path = repo_root / "quests" / "duplicate-lane" / "AOA-SK-Q-0004.yaml"
+            write_text(duplicate_path, source_path.read_text(encoding="utf-8"))
+
+            with self.assertRaisesRegex(ValueError, "duplicate quest ids are not allowed"):
+                build_catalog.build_quest_catalog_payload(repo_root)
+
     def test_missing_questbook_file_fails(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             repo_root = Path(temp_dir) / "aoa-skills"

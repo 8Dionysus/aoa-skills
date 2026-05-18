@@ -244,13 +244,13 @@
     },
     {
       "path": "generated/skill_handoff_contracts.json",
-      "sha256": "92a4ed0c5d951040471cfd6a488b870e960e73ce87fee895c64711ffe14bc259",
-      "bytes": 196376
+      "sha256": "5a90aa2a1102a955ccdf2dc915c9d453fa5437925ab0580735ebcc6b74558812",
+      "bytes": 201859
     },
     {
       "path": "generated/context_retention_manifest.json",
-      "sha256": "7f5d9220aebdf368490938865a2c0e702d7c9a6639511d587c440c3b8703433e",
-      "bytes": 66276
+      "sha256": "1fe8a21a9e6777fb9be6dc180a44ff02c43873536d48c91ae2cd5da85c0ab977",
+      "bytes": 70734
     },
     {
       "path": "generated/trust_policy_matrix.json",
@@ -334,8 +334,8 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "5c046125a73f924dbfd80e542522f1c18b5d32a0239187040a43af0591c86493",
-      "bytes": 91710
+      "sha256": "dc9a86e814b5d09194e472325ebe336e4a1deab084bc3a5a41ffa4207ccbb5fe",
+      "bytes": 96168
     },
     {
       "path": "generated/runtime_guardrail_tool_schemas.json",

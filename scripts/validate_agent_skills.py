@@ -1429,10 +1429,17 @@ def main() -> int:
     expected_outer_ring_readiness_skills: list[dict[str, Any]] = []
     for skill_name in outer_ring_skills:
         source_entry = source_by_name.get(skill_name, {})
-        expected_cluster = expected_cluster_by_skill[skill_name]
+        expected_cluster = expected_cluster_by_skill.get(skill_name)
         actual_families = sorted(description_families_by_skill.get(skill_name, []))
-        actual_collision_family = expected_cluster if expected_cluster in actual_families else (actual_families[0] if actual_families else None)
+        actual_collision_family = (
+            expected_cluster
+            if expected_cluster is not None and expected_cluster in actual_families
+            else (actual_families[0] if actual_families else None)
+        )
         blockers: list[str] = []
+        if expected_cluster is None:
+            expected_cluster = "unmapped"
+            blockers.append("missing_cluster_mapping")
         if skill_name not in outer_ring_profile_skills:
             blockers.append("missing_from_repo_project_core_outer_ring")
         if skill_name not in repo_core_only_skills:
