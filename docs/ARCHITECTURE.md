@@ -58,6 +58,11 @@ Main generated companion families:
 For exact generated file lists, use the release-support docs and generated
 manifest surfaces rather than this architecture overview.
 
+The repository also has an agent-facing Codex Spark lane under
+`.agents/spark/`. That lane is launch, result, handoff, and validation material
+for short-loop work. It is not a generated companion and not authored skill
+meaning.
+
 A skill may relate to one or more techniques and/or several bounded actions, but
 its identity is the bounded workflow it gives an agent.
 A skill is not the home of recurring scenario method; that boundary stays in
@@ -149,6 +154,8 @@ Derived surfaces should stay deterministic and disposable:
 - the Skill Intelligence registry supports search and explanation; it does not
   create a semantic backend, auto-promote skill status, or replace authored
   bundles
+- `.agents/spark/` supports bounded Spark sessions; it does not replace source
+  bundles, generated builders, release support, or review evidence
 
 ## Versioning direction
 

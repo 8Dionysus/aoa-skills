@@ -297,6 +297,8 @@ Nested `AGENTS.md` cards narrow local work.
 `docs/ARCHITECTURE.md` explains the technical model.
 `mechanics/README.md` routes owner-local skill mechanics.
 `generated/` and `.agents/skills/` remain derived companions built from source.
+`.agents/spark/` is an agent-facing Spark lane for launch, result, handoff, and
+validation packets; it is not authored skill meaning.
 
 `DESIGN.AGENTS.md` holds the design form of the agent-facing layer.
 
