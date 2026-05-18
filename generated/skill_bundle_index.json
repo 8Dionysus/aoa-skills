@@ -1745,7 +1745,7 @@
       "candidate_review_path": null,
       "canonical_candidate_ready": true,
       "canonical_eval_ready": true,
-      "content_hash": "341ad3eec340fd345c7dae59933fcfb8f11e01f142f88d403ee940840fd36f3e",
+      "content_hash": "399518a3da0713ce0896df83231fe70d46b5973b70879d6a7443f0676dcd196e",
       "generated_surface_versions": {
         "boundary_matrix": 2,
         "bundle_index": 2,
@@ -1777,7 +1777,7 @@
       "promotion_review_path": "docs/reviews/status-promotions/aoa-session-donor-harvest.md",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-session-donor-harvest/SKILL.md",
-      "skill_revision": "341ad3eec340",
+      "skill_revision": "399518a3da07",
       "status": "evaluated",
       "support_artifacts": [
         {

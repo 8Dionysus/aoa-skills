@@ -105,6 +105,8 @@ Current anchors:
 - [mechanics](mechanics/README.md) for skill-layer movement, adoption,
   recurrence, checkpoint, quest, audit, boundary bridge, and release-support
   routes
+- [mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md](mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md)
+  for reviewed project-core session-growth kernel packet and receipt examples
 - [generated](generated/README.md) for compact catalogs, matrices, runtime
   companions, and public read models
 - [.agents](.agents/AGENTS.md) for generated portable skill export surfaces
