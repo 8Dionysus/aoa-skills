@@ -7,6 +7,12 @@ Tracking starts with the community-docs baseline for this repository.
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Fixed
+
 ## [0.4.0] - 2026-05-18
 
 ### Summary
