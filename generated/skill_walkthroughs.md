@@ -1136,9 +1136,9 @@ Common expand sections:
 ### Object use shape
 
 - one summon decision with allowed or blocked posture
-- one chosen lane such as local leaf execution, local reviewed execution, remotereviewed, splitrequired, or humangate
+- one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate
 - executionsurface, cohortpattern, reasoncodes, and blockedactions
-- optional local child target
+- optional codexlocaltarget
 - returnplan, checkpointbridgeplan, memoexportplan, and ownerpublicationplan
 - return receipt or acceptance expectation when the child crosses an actor, session, or owner boundary
 - closeoutrequired, checkpointrequired, and progressionrequired

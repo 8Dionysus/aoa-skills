@@ -478,7 +478,7 @@
       "invocation_mode": "explicit-only",
       "main_anti_patterns_short": "Avoid: treating delegation as progress without anchor or output clarity; using summon to skip branch choice when several next routes still compete; using a remote child route to bypass local proof, approval, or...",
       "name": "aoa-summon",
-      "outputs_short": "Produces: one summon decision with allowed or blocked posture; one chosen lane such as local leaf execution, local reviewed execution, remotereviewed, splitrequired, or humangate; executionsurface, cohortpattern,...",
+      "outputs_short": "Produces: one summon decision with allowed or blocked posture; one chosen lane such as codexlocalleaf, codexlocalreviewed, remotereviewed, splitrequired, or humangate; executionsurface, cohortpattern, reasoncodes,...",
       "scope": "core",
       "skill_path": "skills/core/session-growth/aoa-summon/SKILL.md",
       "status": "evaluated",
@@ -491,7 +491,7 @@
       ],
       "trigger_boundary_short": "Use when a parent route already has a real anchor and named expected outputs; a narrower child actor would help through bounded review, evaluation, leaf implementation, or local verification; Avoid when the parent...",
       "verification_short": "Checks: confirm the passport and parent anchor exist; confirm expected outputs are named; confirm branch choice is already settled; otherwise route to aoa-session-route-forks; confirm the chosen lane matches...",
-      "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to local execution when the..."
+      "workflow_short": "Purpose: decide whether and how to launch one bounded child route from an already-anchored parent route. Flow: start from the parent anchor and quest passport, not from raw pressure to delegate -> default transportpreference to codexlocal when the request..."
     },
     {
       "inputs_short": "Needs: desired behavior; target module, command, builder, validator, adapter, generated/export path, or workflow step; constraints and non-goals; available test surface.",

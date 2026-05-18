@@ -27,6 +27,49 @@ def load_json(path: Path) -> dict:
 
 
 class AoaSummonE2EFixtureTests(unittest.TestCase):
+    def test_aoa_summon_docs_use_v3_contract_tokens(self) -> None:
+        skill_dir = skill_layout.skill_dir_path(REPO_ROOT, "aoa-summon")
+        exported_dir = REPO_ROOT / ".agents" / "skills" / "aoa-summon"
+        request_schema = load_json(
+            skill_dir / "references" / "summon-request-v3.schema.json"
+        )
+        result_schema = load_json(
+            skill_dir / "references" / "summon-result-v3.schema.json"
+        )
+
+        lane_tokens = set(result_schema["properties"]["lane"]["enum"])
+        self.assertEqual(
+            lane_tokens,
+            {
+                "codex_local_leaf",
+                "codex_local_reviewed",
+                "remote_reviewed",
+                "split_required",
+                "human_gate",
+            },
+        )
+        self.assertEqual(
+            request_schema["properties"]["summon_request"]["properties"][
+                "transport_preference"
+            ]["enum"],
+            ["codex_local", "a2a_remote", "either"],
+        )
+        self.assertIn("codex_local_target", result_schema["properties"])
+
+        for path in (skill_dir / "SKILL.md", exported_dir / "SKILL.md"):
+            text = path.read_text(encoding="utf-8")
+            for token in lane_tokens:
+                self.assertIn(f"`{token}`", text)
+            self.assertIn("`transport_preference` to `codex_local`", text)
+            self.assertIn("`codex_local_target`", text)
+            for stale_phrase in (
+                "local leaf execution",
+                "local reviewed execution",
+                "local child target",
+                "`transport_preference` to local execution",
+            ):
+                self.assertNotIn(stale_phrase, text)
+
     def test_aoa_summon_runtime_example_points_to_sdk_e2e_fixture(self) -> None:
         skill_dir = skill_layout.skill_dir_path(REPO_ROOT, "aoa-summon")
         skill_text = (skill_dir / "SKILL.md").read_text(encoding="utf-8")

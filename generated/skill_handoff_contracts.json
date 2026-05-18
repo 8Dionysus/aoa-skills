@@ -2139,9 +2139,9 @@
       ],
       "outputs": [
         "one summon decision with allowed or blocked posture",
-        "one chosen lane such as local leaf execution, local reviewed execution,",
+        "one chosen `lane` such as `codex_local_leaf`, `codex_local_reviewed`,",
         "`execution_surface`, `cohort_pattern`, `reason_codes`, and `blocked_actions`",
-        "optional local child target",
+        "optional `codex_local_target`",
         "`return_plan`, `checkpoint_bridge_plan`, `memo_export_plan`, and",
         "return receipt or acceptance expectation when the child crosses an actor,",
         "`closeout_required`, `checkpoint_required`, and `progression_required`"
@@ -2182,9 +2182,9 @@
       ],
       "provides_artifact_tags": [
         "one-summon-decision-with-allowed-or-blocked-posture",
-        "one-chosen-lane-such-as-local-leaf-execution-local-reviewed-exec",
+        "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed",
         "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
-        "optional-local-child-target",
+        "optional-codex-local-target",
         "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
         "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
         "closeout-required-checkpoint-required-and-progression-required"
@@ -2193,9 +2193,9 @@
         "from_skill": "aoa-summon",
         "produced_artifacts": [
           "one-summon-decision-with-allowed-or-blocked-posture",
-          "one-chosen-lane-such-as-local-leaf-execution-local-reviewed-exec",
+          "one-chosen-lane-such-as-codex-local-leaf-codex-local-reviewed",
           "execution-surface-cohort-pattern-reason-codes-and-blocked-action",
-          "optional-local-child-target",
+          "optional-codex-local-target",
           "return-plan-checkpoint-bridge-plan-memo-export-plan-and",
           "return-receipt-or-acceptance-expectation-when-the-child-crosses-",
           "closeout-required-checkpoint-required-and-progression-required"
