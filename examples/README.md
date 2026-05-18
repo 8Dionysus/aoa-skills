@@ -19,9 +19,8 @@ a skill bundle, a schema fixture, or generated validation output.
 
 None.
 
-## Before Editing
+## Owner Route
 
-1. Name the source surface the example illustrates.
-2. Check whether a mechanic package owns the behavior.
-3. Keep example data public-safe and neutral.
-4. Run the nearest validator for the owning surface.
+Use [AGENTS](AGENTS.md) before editing. Name the source surface the example
+illustrates, check whether a mechanic package or skill bundle owns the
+behavior, and keep example data public-safe and neutral.

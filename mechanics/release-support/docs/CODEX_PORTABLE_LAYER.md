@@ -85,14 +85,23 @@ Generated support layers remain subordinate to the export:
 - `generated/mcp_dependency_manifest.json`
 - `generated/release_manifest.json`
 
-These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
-`generated/skill_handoff_contracts.json` remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
-`generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, relationship views, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
-`scripts/stage_skill_pack.py` is the first staged handoff primitive above that contract: it materializes one profile-scoped bundle directory with a bundle-local `bundle_manifest.json` and a human-facing `README.md` instead of copying the full repo release manifest into every handoff.
-`scripts/stage_skill_pack.py --archive-path ...` adds an optional ZIP transport wrapper over that same staged directory without adding a second manifest or widening the release contract.
-`scripts/inspect_skill_pack.py` is the first self-contained handoff inspection primitive over that bundle-local contract: it checks manifest integrity, staged file digests, bundle digest, and archive layout before any install step.
-`scripts/import_skill_pack.py` is the preferred receiver-side path on top of that same contract: it always inspects first, then optionally installs and verifies one staged bundle or ZIP handoff as one repo-local flow.
-`scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` remain the lower-level advanced path when install and verification need to stay separate without introducing a new registry surface.
+These surfaces make installation, local adaptation, trust checks, and context
+retention easier without becoming a new authoring layer.
+
+- `generated/skill_handoff_contracts.json` remains skill-derived so downstream
+  playbook layers can consume compact per-skill handoff contracts.
+- `generated/release_manifest.json` is the packaging-facing contract for this
+  export stack; it is not a second release ledger.
+- `scripts/stage_skill_pack.py` materializes one profile-scoped bundle with a
+  bundle-local `bundle_manifest.json` and a human-facing `README.md`.
+- `scripts/stage_skill_pack.py --archive-path ...` adds an optional ZIP
+  transport wrapper over the same staged directory.
+- `scripts/inspect_skill_pack.py` checks manifest integrity, staged file
+  digests, bundle digest, and archive layout before an install step.
+- `scripts/import_skill_pack.py` inspects first, then optionally installs and
+  verifies one staged bundle or ZIP handoff as one repo-local flow.
+- `scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` remain the
+  lower-level advanced path when install and verification need to stay separate.
 `scripts/audit_workspace_skill_adoption.py` is the read-only workspace pass over
 the same profile verification contract: it checks root and repo install
 surfaces before rollout, but it does not install, approve, or accept skills for

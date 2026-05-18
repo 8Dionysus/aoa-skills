@@ -335,6 +335,9 @@ class MechanicsTopologyTests(unittest.TestCase):
         rpg_readme = (REPO_ROOT / "mechanics" / "rpg" / "README.md").read_text(
             encoding="utf-8"
         )
+        mechanics_agents = (REPO_ROOT / "mechanics" / "AGENTS.md").read_text(
+            encoding="utf-8"
+        )
         for heading in (
             "## Mechanic card",
             "### Trigger",
@@ -347,7 +350,7 @@ class MechanicsTopologyTests(unittest.TestCase):
             "### Next route",
         ):
             with self.subTest(heading=heading):
-                self.assertIn(heading, mechanics_readme)
+                self.assertIn(heading, mechanics_agents)
                 self.assertIn(heading, agon_readme)
                 self.assertIn(heading, method_growth_readme)
                 self.assertIn(heading, growth_cycle_readme)

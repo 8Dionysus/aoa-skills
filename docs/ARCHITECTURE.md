@@ -6,7 +6,8 @@
 It is one bounded execution layer in the AoA ontology spine; see
 `mechanics/boundary-bridge/docs/LAYER_POSITION.md` for the repo-owned boundary note.
 Root `DESIGN.md` describes the system form of that layer; this architecture
-reference explains the technical model.
+reference explains the technical model. Root `CHARTER.md` names the repository
+authority boundary.
 
 - `aoa-techniques` answers: what is the reusable practice, when should it be used, what are its invariants, risks, and validation rules?
 - `aoa-skills` answers: what self-contained workflow should a local coding agent execute, and how does that workflow relate to reusable practice?
@@ -34,27 +35,28 @@ The committed `SKILL.md` must stand on its own. Technique links can explain
 lineage, composition, decomposition, refresh pressure, or future extraction;
 runtime use should still be understandable from the authored skill bundle.
 
-The repository may also publish a generated portable export under `.agents/skills/*`.
-That export is built from the canonical authored bundle plus portable export config,
-and exists to make skill discovery and activation work cleanly in compatible runtimes.
-It does not replace the authored bundle as the source of truth.
+The repository also publishes generated companions. They are operational
+interfaces over authored source, not authored meaning.
 
-The repository may also publish derived reader surfaces in `generated/`.
-Those surfaces are built from committed `SKILL.md`, `techniques.yaml`, review records, and evaluation fixtures and are meant to help routing, indexing, and public governance signaling without becoming a second source of truth.
-The same derived posture now applies to `.agents/skills/*`, `generated/agent_skill_catalog*.json`,
-`generated/portable_export_map.json`, `generated/local_adapter_manifest*.json`,
-`generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`,
-`generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`,
-`generated/codex_config_snippets.json`, `generated/mcp_dependency_manifest.json`,
-`generated/runtime_discovery_index*.json`, `generated/runtime_disclosure_index.json`,
-`generated/runtime_activation_aliases.json`, `generated/runtime_tool_schemas.json`,
-`generated/runtime_session_contract.json`, `generated/runtime_prompt_blocks.json`,
-`generated/runtime_router_hints.json`, `generated/runtime_seam_manifest.json`,
-`generated/skill_intelligence_registry*.json`,
-`generated/deterministic_resource_manifest.json`, `generated/support_resource_index.json`,
-`generated/structured_output_schema_index.json`, `generated/support_resource_bridge_map.json`,
-`generated/expected_existing_aoa_support_dirs.json`, and `generated/release_manifest.json`:
-they are generated operational interfaces, not authored meaning.
+Main generated companion families:
+
+- Portable export: `.agents/skills/*` for compatible runtimes, built from
+  canonical bundles plus portable export config.
+- Catalogs and sections: reader maps for discovery, routing, and inspection,
+  built from committed `SKILL.md` and `techniques.yaml`.
+- Runtime seam and guardrails: local activation, disclosure, aliases, session
+  contracts, prompt blocks, and router hints, built from source bundles and
+  repo-owned runtime config.
+- Support resources: deterministic support bundle indexes and bridges back to
+  AoA-native support dirs, built from canonical skill support artifacts.
+- Governance, evaluation, and release surfaces: public status, review pressure,
+  release digests, and packaging checks, built from source bundles, review
+  records, evaluation fixtures, and release config.
+- Skill Intelligence registry: lexical search, explanation, and status over
+  current skills, built from canonical skill sources and generated evidence.
+
+For exact generated file lists, use the release-support docs and generated
+manifest surfaces rather than this architecture overview.
 
 A skill may relate to one or more techniques and/or several bounded actions, but
 its identity is the bounded workflow it gives an agent.
@@ -128,14 +130,25 @@ Operational or destructive workflows that should require explicit invocation and
 ## Build philosophy
 
 Skills should be reviewable artifacts.
-They can be generated or assembled from technique references, but the committed `SKILL.md` should remain understandable to a human reviewer without additional hidden state.
-Derived catalogs should stay deterministic and disposable: if a reader surface drifts, regenerate it from the authoritative markdown and manifest inputs.
-The current repo-local governance and release signaling layer should also stay derived rather than introducing a second explicit skill-metadata contract.
-The portable export layer follows the same rule: `.agents/skills/*` is a generated export,
-`config/portable_skill_overrides.json`, `config/openai_skill_extensions.json`, `config/skill_pack_profiles.json`, and `config/skill_policy_matrix.json` are the repo-owned configuration seams for that export, and local-friendly runtimes should wrap the export rather than inventing a second canonical skill format.
-The runtime seam follows that same layer contract: `scripts/skill_runtime_seam.py` is the primary runtime path, while `scripts/activate_skill.py` remains the compatibility shim.
-The support-resource layer follows the same repo-owned posture with deterministic support bundles under canonical skill roots; `scripts/build_support_resources.py` records those resources and their bridge back to AoA-native support dirs without becoming a second portable-sync authority.
-The Skill Intelligence registry is also derived: `generated/skill_intelligence_registry*.json` and `scripts/skill_intelligence.py` provide portable lexical search, explanation, and status checks over canonical skill sources and generated evidence. They do not create a semantic backend, auto-promote skill status, or replace the authored `SKILL.md` bundles.
+They can be generated or assembled from technique references, but the committed
+`SKILL.md` should remain understandable to a human reviewer without additional
+hidden state.
+
+Derived surfaces should stay deterministic and disposable:
+
+- if a reader surface drifts, regenerate it from authoritative markdown,
+  manifests, config, and review evidence
+- governance and release signaling should remain derived rather than becoming a
+  second explicit skill-metadata contract
+- `.agents/skills/*` is a generated export, not a second canonical skill tree
+- repo-owned export config lives under `config/`
+- `scripts/skill_runtime_seam.py` is the primary runtime path, while
+  `scripts/activate_skill.py` remains a compatibility shim
+- support-resource builders record deterministic support bundles without
+  becoming a second portable-sync authority
+- the Skill Intelligence registry supports search and explanation; it does not
+  create a semantic backend, auto-promote skill status, or replace authored
+  bundles
 
 ## Versioning direction
 
@@ -144,5 +157,8 @@ A skill should eventually record:
 - the technique IDs it depends on
 - optionally the source technique commit or release reference used when the skill was generated or updated
 
-That future versioning direction is separate from the current public-surface layer.
-In the current pass, `aoa-skills` can publish repo-level GitHub releases and tags for bounded baseline cuts, but it still does not add explicit per-skill release metadata; derived public-product signals remain separate from release identity.
+That future versioning direction is separate from the current public-surface
+layer. In the current pass, `aoa-skills` can publish repo-level GitHub releases
+and tags for bounded baseline cuts, but it still does not add explicit
+per-skill release metadata; derived public-product signals remain separate from
+release identity.

@@ -29,9 +29,8 @@ The receipt surface answers the center queue. It does not replace
 for schemas, examples, config, generated companions, manifests, scripts, tests,
 and quests that sit near mechanics.
 
-Use it before moving artifacts between root technical districts and mechanic
-homes. Root districts keep repo-wide contracts and root-published read models;
-mechanic-owned substance lives with the package or nearest part.
+Use [AGENTS.md](AGENTS.md) for mechanic editing conventions, package-card
+shape, active/history split, validation route, and closeout expectations.
 
 ## Cross-mechanics map
 
@@ -64,50 +63,6 @@ mechanic-owned substance lives with the package or nearest part.
 - [release-support](release-support/README.md): portable export, install
   profiles, local adapter, runtime seams, support-resource packaging, and
   release verification surfaces.
-
-## Package card standard
-
-Each `mechanics/<slug>/README.md` is an agent-operable local card. It should
-let a reader answer when to use the mechanic, what this repository owns, which
-stronger owners keep final truth, what may enter, what may leave, what must not
-be claimed, how to validate the route, and where to go next.
-
-Use these headings in package READMEs:
-
-| Heading | Purpose |
-|---|---|
-| `## Mechanic card` | compact package status and entry posture |
-| `### Trigger` | when the local mechanic applies |
-| `### Local owns` | what `aoa-skills` may author here |
-| `### Stronger owner split` | AoA center or sibling owners that keep stronger truth |
-| `### Inputs` | material that may enter this mechanic |
-| `### Outputs` | material that may leave without becoming skill canon by itself |
-| `### Must not claim` | stop-lines that keep the package below stronger owners |
-| `### Validation` | where to find exact checks for this package |
-| `### Next route` | the next active surface, provenance bridge, or owner route |
-
-This mirrors the AoA center card shape, but adapts the authority. `aoa-skills`
-does not say `Center owns`; it says what the skill-execution layer owns, then
-routes stronger law or acceptance to `Agents-of-Abyss`, sibling repositories,
-review records, generated companions, or downstream owners only when relevant.
-
-## Active and historical split
-
-When a mechanic has grown through historical batches, seeds, receipts, candidates, or
-runtime/export pressure, do not flatten every file into the package root.
-
-Prefer this shape:
-
-- active route in `README.md`, `DIRECTION.md`, `PARTS.md`, and `parts/`
-- provenance bridge in `PROVENANCE.md`
-- checked landing history in `LANDING_LOG.md`
-- future route pressure in `ROADMAP.md`
-- artifact placement law in root `ARTIFACT_TOPOLOGY.md`
-- source-to-active accounting in package-local `legacy/` when preserved source
-  material exists
-
-Use the package card first, then open active parts. Enter legacy only when the
-source route matters.
 
 ## Boundary
 

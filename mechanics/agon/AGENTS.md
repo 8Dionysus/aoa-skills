@@ -18,7 +18,15 @@ Keep `mechanics/agon/` focused on mechanic movement. Do not make it canonical sk
 
 ## Validation
 
-Run `python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`, `python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py`, and `python -m pytest -q tests/test_mechanics_topology.py`. The focused topology proof includes `tests/test_mechanics_topology.py`.
+Run the changed candidate bridge builder and validator before broader topology
+checks:
+
+- workflow candidate bridge: build check, validate, and part-local test
+- epistemic candidate boundary: build check, validate, and part-local test
+- package shape: `tests/test_mechanics_topology.py`
+
+Required workflow-candidate build check:
+`python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`
 
 ## Closeout
 

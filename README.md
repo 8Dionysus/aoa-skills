@@ -19,6 +19,7 @@ linked owner surface instead of expanding this page.
 
 | Function | Surface |
 |---|---|
+| Repository authority boundary | [CHARTER](CHARTER.md) |
 | Skill-layer system form | [DESIGN](DESIGN.md) |
 | Agent-facing guidance form | [DESIGN.AGENTS](DESIGN.AGENTS.md) |
 | Agent route law and local checks | [AGENTS](AGENTS.md) |
@@ -40,7 +41,7 @@ Read only what matches your entry need.
 
 | Need | Route |
 |---|---|
-| Shortest honest overview | this README, then [DESIGN](DESIGN.md), [SKILL_INDEX](SKILL_INDEX.md), and [ARCHITECTURE](docs/ARCHITECTURE.md) |
+| Shortest honest overview | this README, then [CHARTER](CHARTER.md), [DESIGN](DESIGN.md), [SKILL_INDEX](SKILL_INDEX.md), and [ARCHITECTURE](docs/ARCHITECTURE.md) |
 | Agent editing route | [AGENTS](AGENTS.md), then the nearest nested `AGENTS.md` |
 | Skill source topology | [skills](skills/README.md) |
 | Boundary with sibling owner repos | [LAYER_POSITION](mechanics/boundary-bridge/docs/LAYER_POSITION.md) |

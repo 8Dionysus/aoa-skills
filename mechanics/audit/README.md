@@ -38,7 +38,7 @@ source surfaces and do not author truth.
 
 - audit route guidance
 - local evidence-reading path
-- validation command set
+- validation route
 - review or follow-up target
 - no proof, runtime, remediation, routing, or owner-acceptance authority
 

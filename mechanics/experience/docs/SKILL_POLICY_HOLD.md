@@ -1,14 +1,11 @@
 # Skill Policy Hold
 
-Status: seed v0.8.0  
-Repo landing: `aoa-skills`  
-Layer: Experience Polis Governance
-
 ## Purpose
 
 Release holds for skill patches.
 
-v0.8 adds a polis-governance contour around the experience mechanic. Earlier seeds forged capture, distillation, certification, deployment, federation and adoption. This seed asks a harder question: **who may decide when those paths conflict?**
+Use the stronger owner split in [Experience](../README.md). This file only
+defines owner-local hold behavior for `aoa-skills`.
 
 ## Local law
 
@@ -30,7 +27,8 @@ v0.8 adds a polis-governance contour around the experience mechanic. Earlier see
 
 ## Invariants
 
-- Codex may collect evidence and propose packets, but may not vote, certify, veto, amend charters, or submit direct Tree-of-Sophia writes.
+- A local coding agent may collect evidence and propose packets, but may not
+  vote, certify, veto, amend charters, or submit direct Tree-of-Sophia writes.
 - Assistant agents may request review, but may not self-recharter, self-promote, or convert service revision into agonic scar authority.
 - Agonic agents may contest, appeal and receive scars, but may not launder scars through assistant release paths.
 - Councils produce reviewable decisions, not hidden doctrine.

@@ -18,7 +18,8 @@ Do not orphan parts from `PARTS.md`, do not bypass requested-only candidate boun
 
 ## Validation
 
-`python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check` and part-local tests.
+Run the changed part's builder, validator, and part-local test. For package
+shape, also run `tests/test_mechanics_topology.py`.
 
 ## Closeout
 

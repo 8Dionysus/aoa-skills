@@ -17,7 +17,7 @@ Explain the additional workflow, boundary, or operational package that the skill
 
 ## Adjacent skills considered
 
-- 
+- <skill-id>
 
 ## Recommendation
 

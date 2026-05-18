@@ -2,6 +2,7 @@
 
 This file preserves the previous full root guidance for `aoa-skills`.
 The live root route card is `../AGENTS.md`.
+The live repository authority boundary is `../CHARTER.md`.
 
 Use this reference when:
 
@@ -9,7 +10,9 @@ Use this reference when:
 - resolving a task branch that the short route card intentionally summarized
 - checking whether a slimming move should become a nested `AGENTS.md`, owner doc, or validator rule
 
-Do not treat this file as a competing root. If a preserved rule still actively governs a local directory, move or restate it at the smallest owner surface rather than re-bloating the root.
+Do not treat this file as a competing root. If a preserved rule still actively
+governs a local directory, move or restate it at the smallest owner surface
+rather than re-bloating the root.
 
 ## Preserved root AGENTS.md from before Pack 5
 
@@ -182,38 +185,22 @@ repository integrity.
 
 ### VERIFY
 
-Run the smallest applicable validation set from `README.md`.
+Use this preserved section for validation intent, not as the active command
+source. Current commands belong in live route cards, package-local guidance,
+release-support docs, and script ownership surfaces.
 
-Minimum validation for canonical skill changes:
+Current route:
 
-```bash
-python scripts/build_catalog.py
-python scripts/validate_skills.py
-python scripts/build_catalog.py --check
-```
+- start with the nearest `AGENTS.md`
+- use root `AGENTS.md` for repo-root and canonical skill guidance changes
+- use `scripts/AGENTS.md` when builders, validators, or audits change
+- use `mechanics/release-support/AGENTS.md` and its docs for portable export,
+  support resources, policy posture, downstream bridge, or release-facing work
+- use package-local `AGENTS.md` when a mechanic package owns a narrower gate
 
-Use the broader current-state or release-prep path when the change touches
-evaluation matrices, portable export, drift checks, policy posture, support
-resources, or bridge inputs:
-
-```bash
-python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
-python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
-python scripts/build_openai_yaml_examples.py --map mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json --output-dir mechanics/boundary-bridge/examples --check
-python scripts/validate_agent_skills.py --repo-root .
-python scripts/validate_support_resources.py --repo-root . --check-portable
-python scripts/validate_tiny_router_inputs.py --repo-root .
-python -m pytest -q tests
-python scripts/release_check.py
-```
-
-If the task touches the Agon skill candidate bridge, also run:
-
-```bash
-python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check
-python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py
-python -m pytest -q mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py
-```
+Verify the smallest surface that proves the change, then widen only when the
+change touches generated/export surfaces, evaluation matrices, release posture,
+support resources, policy, or bridge inputs.
 
 Confirm that:
 
@@ -264,12 +251,7 @@ Treat the following as P1:
 
 Ignore trivial wording nits unless the task explicitly asks for copyediting.
 
-For runtime-path debugging, prefer the documented local paths such as:
-
-```bash
-python scripts/inspect_skill.py --skill <skill-name>
-python scripts/skill_runtime_guardrails.py discover --repo-root . ...
-```
-
-Those paths are for inspection and activation testing, not for replacing the
+For runtime-path debugging, prefer the inspection and activation-test helpers
+named by `scripts/AGENTS.md`, root `AGENTS.md`, and the runtime/release-support
+owner docs. Those paths are for testing behavior, not for replacing the
 canonical authoring surface.
