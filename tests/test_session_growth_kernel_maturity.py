@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 import sys
 
+import yaml
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PUBLISH_SCRIPT_PATH = REPO_ROOT / "scripts" / "publish_core_skill_receipts.py"
 
@@ -193,6 +195,15 @@ def test_kernel_maturity_detail_receipts_follow_skill_contracts_and_point_back_t
         assert len(json.dumps(receipt["payload"], sort_keys=True)) < len(
             json.dumps(packet, sort_keys=True)
         )
+
+
+def test_kernel_maturity_detail_receipt_contract_references_parse_as_yaml() -> None:
+    for _, schema_path, _ in DETAIL_RECEIPT_CASES.values():
+        schema = yaml.safe_load((REPO_ROOT / schema_path).read_text(encoding="utf-8"))
+
+        assert isinstance(schema, dict)
+        assert isinstance(schema.get("rules"), list)
+        assert all(isinstance(rule, str) for rule in schema["rules"])
 
 
 def test_kernel_maturity_core_receipts_validate_against_live_kernel_publisher() -> None:
