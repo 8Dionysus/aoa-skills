@@ -13,7 +13,7 @@ Use this README as the public front door. When work becomes agent-operational,
 skill-local, mechanical, generated, exported, or status-bearing, follow the
 linked owner surface instead of expanding this page.
 
-> Current release: `v0.3.3`. See [CHANGELOG](CHANGELOG.md) for release notes.
+> Current release: `v0.4.0`. See [CHANGELOG](CHANGELOG.md) for release notes.
 
 ## What This Repository Does
 

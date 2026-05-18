@@ -976,8 +976,8 @@
   "release_identity": {
     "changelog": "CHANGELOG.md",
     "releasing_doc": "mechanics/release-support/docs/RELEASING.md",
-    "latest_tagged_version": "0.3.3",
-    "latest_tagged_date": "2026-04-23",
-    "has_unreleased_changes": true
+    "latest_tagged_version": "0.4.0",
+    "latest_tagged_date": "2026-05-18",
+    "has_unreleased_changes": false
   }
 }
