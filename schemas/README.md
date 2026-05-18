@@ -14,9 +14,8 @@ Use `mechanics/ARTIFACT_TOPOLOGY.md` before adding or moving a schema that is
 near a mechanic. If the schema only validates one mechanic package or part, keep
 it with that owner.
 
-## Before Editing
+## Owner Route
 
-1. Identify the owner surface for the meaning.
-2. Keep schema changes paired with examples and validators.
-3. Do not loosen a schema only to quiet an example.
-4. Run `python scripts/validate_skills.py --fail-on-review-truth-sync`.
+Use [AGENTS](AGENTS.md) before editing. Identify the owner surface for the
+meaning, keep schema changes paired with examples and validators, and do not
+loosen a schema only to quiet an example.

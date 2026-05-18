@@ -12,8 +12,8 @@ lane, names the nearest owner boundary, and routes wider claims to the owning
 surface.
 
 It is the agent-facing route law for this repository. It does not replace
-`README.md`, `DESIGN.md`, `DESIGN.AGENTS.md`, `docs/ARCHITECTURE.md`,
-`mechanics/README.md`, or local source truth.
+`README.md`, `CHARTER.md`, `DESIGN.md`, `DESIGN.AGENTS.md`,
+`docs/ARCHITECTURE.md`, `mechanics/README.md`, or local source truth.
 
 ## Read before editing
 
@@ -28,6 +28,9 @@ law, also read `DESIGN.AGENTS.md`.
 
 For changes to skill-layer form, source topology, generated/export posture,
 activation boundaries, or layer relationships, also read `DESIGN.md`.
+
+For changes to repository authority, owner boundaries, root posture, or claims
+about what `aoa-skills` may own, also read `CHARTER.md`.
 
 ## Boundaries
 
@@ -64,6 +67,7 @@ next owner route if this repository was only a waypoint.
 It stores reusable, public-safe skill bundles that package practice into
 reviewable workflows a local coding agent can execute.
 A skill is workflow meaning, not agent destiny.
+For the full authority boundary, use `CHARTER.md`.
 
 ## Owner lane
 
@@ -90,10 +94,11 @@ It does not own:
 For first reading or outside orientation, use this route:
 
 1. `README.md`
-2. `DESIGN.md`
-3. `SKILL_INDEX.md`
-4. `docs/ARCHITECTURE.md`
-5. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
+2. `CHARTER.md`
+3. `DESIGN.md`
+4. `SKILL_INDEX.md`
+5. `docs/ARCHITECTURE.md`
+6. `mechanics/boundary-bridge/docs/LAYER_POSITION.md`
 
 For agent editing, use this route:
 
@@ -121,6 +126,7 @@ Use the named route before widening a skill-layer claim:
 | Route mode | Use when | First surface |
 |---|---|---|
 | `first-reading` | you need the shortest honest repository overview | `README.md` |
+| `authority-boundary` | repository authority, owner split, or root posture changes | `CHARTER.md` |
 | `system-design` | skill-layer form, topology, export posture, or layer relationship changes | `DESIGN.md` |
 | `agent-surface-design` | AGENTS shape, local-card placement, route modes, closeout, or portable agent guidance changes | `DESIGN.AGENTS.md` |
 | `skill-editing` | canonical skill bundle wording, trigger boundary, invocation, technique metadata, or support artifacts change | `skills/AGENTS.md` |
@@ -187,6 +193,8 @@ Update only the ones that moved; otherwise say no update was needed.
 
 - `DESIGN.md` when skill-layer form, topology, source/export posture, adapter
   vocabulary, activation boundaries, or layer relationships changed.
+- `CHARTER.md` when repository authority, owner boundaries, root posture, or
+  what this repo may claim changed.
 - `DESIGN.AGENTS.md` when agent-facing form, card shape, route modes, closeout
   expectations, generated companions, or portable agent guidance changed.
 - `README.md` or `docs/README.md` when first-reading or docs-map routes changed.
@@ -242,8 +250,8 @@ Update only the ones that moved; otherwise say no update was needed.
 
 Treat these as high-risk findings in this repository:
 
-- contradictions across `README.md`, `DESIGN.md`, `DESIGN.AGENTS.md`,
-  `AGENTS.md`, `docs/ARCHITECTURE.md`, `mechanics/README.md`,
+- contradictions across `README.md`, `CHARTER.md`, `DESIGN.md`,
+  `DESIGN.AGENTS.md`, `AGENTS.md`, `docs/ARCHITECTURE.md`, `mechanics/README.md`,
   `mechanics/ROADMAP.md`, `skills/AGENTS.md`, and generated source-backed
   capsules;
 - routing that points readers to the wrong owner repository or skill-layer
@@ -265,9 +273,10 @@ python scripts/validate_skills.py
 python scripts/build_catalog.py --check
 ```
 
-Use the broader validation path in `docs/AGENTS_ROOT_REFERENCE.md` when
-matrices, portable exports, support resources, policy posture, or downstream
-bridges change.
+For broader validation, follow the nearest package `AGENTS.md`,
+`scripts/AGENTS.md`, and `mechanics/release-support/AGENTS.md` plus the
+specific owner docs they name. Use `docs/AGENTS_ROOT_REFERENCE.md` only for
+preserved validation intent, not as the active command source.
 
 Run `python scripts/validate_nested_agents.py` whenever an `AGENTS.md` card is
 added or changed.
@@ -282,4 +291,4 @@ decision review changed any follow-up surface, and which checks ran.
 
 `docs/AGENTS_ROOT_REFERENCE.md` preserves the former detailed root guidance,
 including task-specific doc branches, audit contract, review priorities, and
-extended validation commands.
+historical validation intent.

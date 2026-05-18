@@ -13,8 +13,8 @@ stable place without forcing component records back into the root.
 | Skill recurrence component and hook bindings | `mechanics/recurrence/manifests/` |
 | Agon recurrence component and hook bindings | `mechanics/agon/parts/recurrence-observation/manifests/` |
 
-## Before Editing
+## Owner Route
 
-1. Choose the owning package first.
-2. Put records under the owner, not root.
-3. Keep path references in provenance, tests, and generated consumers aligned.
+Use [AGENTS](AGENTS.md) before editing. Choose the owning package first, put
+records under that owner rather than root, and keep provenance, tests, and
+generated consumers aligned.

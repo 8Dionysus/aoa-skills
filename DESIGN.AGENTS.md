@@ -6,7 +6,7 @@
 `aoa-skills`.
 
 It is not an `AGENTS.md` card, skill bundle, prompt library, policy matrix,
-roadmap, schema, validator, generated index, or portable export.
+charter, roadmap, schema, validator, generated index, or portable export.
 
 It answers one question:
 
@@ -290,6 +290,7 @@ A sibling owner can remain outside the skill layer.
 ## Relationship to Other Surfaces
 
 `README.md` introduces the repository.
+`CHARTER.md` names the repository authority boundary.
 `DESIGN.md` names the skill-layer system form.
 `AGENTS.md` routes agent work in the repository.
 Nested `AGENTS.md` cards narrow local work.

@@ -31,30 +31,49 @@ This document explains the same lane decisions in prose without changing status 
 - state: `comparative_pending`
 - default reference anchor: `aoa-bounded-context-map`
 - stay-evaluated decisions: `aoa-core-logic-boundary`, `aoa-port-adapter-refactor`
-- rationale: `aoa-bounded-context-map` remains the default entry anchor for first-pass context and boundary clarification, while the refactor-oriented pair stays intentionally specialized follow-on work once the main problem is either core-versus-glue separation or a concrete dependency seam
-- review sources: `docs/reviews/canonical-candidates/aoa-bounded-context-map.md`, `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md`, `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md`
+- rationale: `aoa-bounded-context-map` remains the default entry anchor for
+  first-pass context and boundary clarification, while the refactor-oriented
+  pair stays intentionally specialized follow-on work.
+- review sources:
+  - `docs/reviews/canonical-candidates/aoa-bounded-context-map.md`
+  - `docs/reviews/canonical-candidates/aoa-core-logic-boundary.md`
+  - `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md`
 
 ## decision_docs_authority
 
 - state: `stable_defaults`
 - default references: `aoa-adr-write`, `aoa-source-of-truth-check`
-- rationale: both are now stable defaults for adjacent but distinct decision-rationale recording and document-authority clarification work across varied repo conventions
-- review sources: `docs/reviews/canonical-candidates/aoa-adr-write.md`, `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md`
+- rationale: both are now stable defaults for adjacent but distinct
+  decision-rationale recording and document-authority clarification work.
+- review sources:
+  - `docs/reviews/canonical-candidates/aoa-adr-write.md`
+  - `docs/reviews/canonical-candidates/aoa-source-of-truth-check.md`
 
 ## risk_authority_preview_execution
 
 - state: `stable_defaults`
 - default references: `aoa-approval-gate-check`, `aoa-dry-run-first`, `aoa-safe-infra-change`, `aoa-sanitized-share`
-- rationale: the lane now has stable defaults for four distinct workflow classes: authority classification, preview-first planning, bounded infra/config execution, and sanitized sharing
-- review sources: `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`, `docs/reviews/canonical-candidates/aoa-dry-run-first.md`, `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`, `docs/reviews/canonical-candidates/aoa-sanitized-share.md`
+- rationale: the lane now has stable defaults for authority classification,
+  preview-first planning, bounded infra/config execution, and sanitized sharing.
+- review sources:
+  - `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`
+  - `docs/reviews/canonical-candidates/aoa-dry-run-first.md`
+  - `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`
+  - `docs/reviews/canonical-candidates/aoa-sanitized-share.md`
 
 ## local_runtime_bringup
 
 - state: `comparative_pending`
 - default reference anchors: `aoa-approval-gate-check`, `aoa-safe-infra-change`
 - stay-evaluated decisions: `aoa-local-stack-bringup`
-- rationale: local multi-service bring-up now clears the evaluated floor, but it remains intentionally non-canonical while the repo records its boundary against authority classification and bounded infra-change work
-- review sources: `docs/reviews/status-promotions/aoa-local-stack-bringup.md`, `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md`, `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`, `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`
+- rationale: local multi-service bring-up now clears the evaluated floor, but
+  it remains intentionally non-canonical while the repo records its boundary
+  against authority classification and bounded infra-change work.
+- review sources:
+  - `docs/reviews/status-promotions/aoa-local-stack-bringup.md`
+  - `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md`
+  - `docs/reviews/canonical-candidates/aoa-approval-gate-check.md`
+  - `docs/reviews/canonical-candidates/aoa-safe-infra-change.md`
 
 ## invariant_authoring_vs_audit
 
@@ -66,6 +85,29 @@ This document explains the same lane decisions in prose without changing status 
 ## session_growth_closeout
 
 - state: `comparative_pending`
-- stay-evaluated decisions: `aoa-summon`, `aoa-checkpoint-closeout-bridge`, `aoa-automation-opportunity-scan`, `aoa-session-route-forks`, `aoa-session-self-repair`, `aoa-quest-harvest`, `aoa-session-donor-harvest`, `aoa-session-self-diagnose`, `aoa-session-progression-lift`, `aoa-commit-growth-seam`
-- rationale: these session-growth skills are already installed, dispatched, snapshot-backed, and actively used, so their maturity should be recorded as evaluated; the lane intentionally stops short of default-reference/canonical claims until comparative owner reasoning is reviewed across closeout, harvest, progression, repair, summon, and commit-boundary workflows
-- review sources: `docs/reviews/status-promotions/aoa-summon.md`, `docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md`, `docs/reviews/status-promotions/aoa-automation-opportunity-scan.md`, `docs/reviews/status-promotions/aoa-session-route-forks.md`, `docs/reviews/status-promotions/aoa-session-self-repair.md`, `docs/reviews/status-promotions/aoa-quest-harvest.md`, `docs/reviews/status-promotions/aoa-session-donor-harvest.md`, `docs/reviews/status-promotions/aoa-session-self-diagnose.md`, `docs/reviews/status-promotions/aoa-session-progression-lift.md`, `docs/reviews/status-promotions/aoa-commit-growth-seam.md`
+- stay-evaluated decisions:
+  - `aoa-summon`
+  - `aoa-checkpoint-closeout-bridge`
+  - `aoa-automation-opportunity-scan`
+  - `aoa-session-route-forks`
+  - `aoa-session-self-repair`
+  - `aoa-quest-harvest`
+  - `aoa-session-donor-harvest`
+  - `aoa-session-self-diagnose`
+  - `aoa-session-progression-lift`
+  - `aoa-commit-growth-seam`
+- rationale: these session-growth skills are already installed, dispatched,
+  snapshot-backed, and actively used, so their maturity should be recorded as
+  evaluated. The lane intentionally stops short of default-reference/canonical
+  claims until comparative owner reasoning is reviewed.
+- review sources:
+  - `docs/reviews/status-promotions/aoa-summon.md`
+  - `docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md`
+  - `docs/reviews/status-promotions/aoa-automation-opportunity-scan.md`
+  - `docs/reviews/status-promotions/aoa-session-route-forks.md`
+  - `docs/reviews/status-promotions/aoa-session-self-repair.md`
+  - `docs/reviews/status-promotions/aoa-quest-harvest.md`
+  - `docs/reviews/status-promotions/aoa-session-donor-harvest.md`
+  - `docs/reviews/status-promotions/aoa-session-self-diagnose.md`
+  - `docs/reviews/status-promotions/aoa-session-progression-lift.md`
+  - `docs/reviews/status-promotions/aoa-commit-growth-seam.md`

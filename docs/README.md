@@ -8,6 +8,7 @@ generated-surface summary.
 
 | Need | Start Here |
 |---|---|
+| Repository authority boundary | [`../CHARTER.md`](../CHARTER.md) |
 | System form | [`../DESIGN.md`](../DESIGN.md) |
 | Agent-facing form | [`../DESIGN.AGENTS.md`](../DESIGN.AGENTS.md) |
 | Technical source/generated/export model | [`ARCHITECTURE.md`](ARCHITECTURE.md) |
@@ -41,7 +42,7 @@ generated-surface summary.
 |---|---|
 | [`decisions/`](decisions/) | decision records for structural, workflow, and ownership changes |
 | [`reviews/`](reviews/) | review records for status, canonical candidates, and exceptions |
-| [`AGENTS_ROOT_REFERENCE.md`](AGENTS_ROOT_REFERENCE.md) | preserved depth reference for agent routes that were too detailed for root `AGENTS.md` |
+| [`AGENTS_ROOT_REFERENCE.md`](AGENTS_ROOT_REFERENCE.md) | preserved historical root guidance; not the active command or authority source |
 
 Generated files under `../generated/` and portable exports under `../.agents/`
 are reader, runtime, or transport companions. Follow them back to source bundles,

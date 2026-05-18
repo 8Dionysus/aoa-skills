@@ -3,7 +3,14 @@
 ## Top level
 
 - `README.md` — project entry point
+- `CHARTER.md` — repository authority boundary for the skill layer
+- `DESIGN.md` — skill-system form
+- `DESIGN.AGENTS.md` — agent-facing guidance form
+- `AGENTS.md` — active agent route law
 - `SKILL_INDEX.md` — public map of current skills and their maturity
+- `CHANGELOG.md` — release-visible history
+- `CONTRIBUTING.md` — public contribution route
+- `SECURITY.md` — private reporting route for sensitive findings
 - `docs/` — architecture, repository layout, review records, governance lanes,
   and preserved root reference
 - `QUESTBOOK.md` — compact public index for durable skill-layer obligations
@@ -63,7 +70,7 @@ Recommended contents:
 - `examples/` — optional runtime examples or bounded mini scenarios
 - `checks/` — optional review checklist or validation notes, with `checks/review.md` as the canonical checklist path
 
-## Initial naming convention
+## Naming convention
 
 Use one of these prefixes:
 - `aoa-` for public core skills

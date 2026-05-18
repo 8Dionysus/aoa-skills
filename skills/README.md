@@ -39,8 +39,7 @@ surfaces. When a bundle moves lanes, update route docs and generated source
 paths in the same change.
 
 The normal source-to-export path is: update the authored bundle, rebuild derived
-surfaces, then run the validators named by `skills/AGENTS.md` and the nearest
-lane `AGENTS.md`.
+surfaces, then follow `skills/AGENTS.md` and the nearest lane `AGENTS.md`.
 
 ## Stop Lines
 

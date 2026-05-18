@@ -5,7 +5,7 @@
 `DESIGN.md` describes the system form of `aoa-skills`.
 
 It is not the README, architecture reference, roadmap, skill bundle, agent
-instruction card, generated catalog, or portable export contract.
+instruction card, charter, generated catalog, or portable export contract.
 
 It answers one question:
 
@@ -183,6 +183,7 @@ A future skill can find the lane where it belongs.
 ## Relationship to Other Root Surfaces
 
 [`README.md`](README.md) introduces the public repository.
+[`CHARTER.md`](CHARTER.md) names the repository authority boundary.
 [`AGENTS.md`](AGENTS.md) routes agent work.
 [`DESIGN.AGENTS.md`](DESIGN.AGENTS.md) holds the design form of the
 agent-facing guidance mesh.

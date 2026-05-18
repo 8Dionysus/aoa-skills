@@ -28,8 +28,6 @@ promotion.
 
 ## Validation
 
-```bash
-python mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py --check
-python mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py
-python -m pytest -q mechanics/agon/parts/epistemic-candidate-boundary/tests/test_agon_epistemic_skill_candidates.py
-```
+Use [parts/AGENTS](../AGENTS.md#validation) and the package [AGENTS](../../AGENTS.md#validation).
+This part requires the epistemic candidate boundary build check, validator, and
+part-local test before package-level topology checks.

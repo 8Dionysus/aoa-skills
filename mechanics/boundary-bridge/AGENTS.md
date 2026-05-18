@@ -19,6 +19,7 @@ Keep `mechanics/boundary-bridge/` focused on mechanic movement. Do not make it c
 ## Validation
 
 Run `python scripts/validate_tiny_router_inputs.py --repo-root .`, `python scripts/build_tiny_router_inputs.py --repo-root . --check`, and bridge-local tests when examples or overlays move.
+For `examples/`, run the OpenAI YAML example builder over `mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json` and check the generated example output.
 
 ## Closeout
 

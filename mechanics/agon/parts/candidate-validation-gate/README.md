@@ -9,11 +9,9 @@ It does not create canonical skills.
 
 ## Validation
 
-```bash
-python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check
-python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py
-python -m pytest -q mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py
-```
+Use [parts/AGENTS](../AGENTS.md#validation) and the package [AGENTS](../../AGENTS.md#validation).
+This gate follows the workflow candidate bridge build check, validator, and
+part-local test before package-level topology checks.
 
 ## Exit criteria
 

@@ -36,9 +36,8 @@ Each lane may contain `captured/`, `triaged/`, `ready/`, `active/`,
 | `agon/<state>/AOS-Q-AGON-*.md` | Agon requested-skill notes. | Must not grant live Agon authority. |
 | `generated/quest_*.json` | Root-published read models built from source quests. | Rebuild with `scripts/build_catalog.py`; do not edit by hand. |
 
-## Before Editing
+## Owner Route
 
-1. Check root `QUESTBOOK.md`.
-2. Choose lane first, then lifecycle state.
-3. Keep owner split explicit.
-4. Regenerate and validate quest read models.
+Use [AGENTS](AGENTS.md) before editing. Check root `QUESTBOOK.md`, choose lane
+first, then lifecycle state, keep owner split explicit, and refresh quest read
+models through the owning route.

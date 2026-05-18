@@ -34,6 +34,21 @@ Report changed surfaces, checks run, checks skipped, remaining risk, and the nex
 - Package surfaces normally split into `DIRECTION.md`, `PARTS.md`,
   `PROVENANCE.md`, `LANDING_LOG.md`, `ROADMAP.md`, `parts/`, and local
   `legacy/` when source lineage must be preserved.
+- Package README cards are the first reader route for a mechanic package. Keep
+  them concise and source-oriented; do not move executable command lanes or
+  editing conventions out of the nearest `AGENTS.md`.
+- Package README cards use this local card shape:
+  `## Mechanic card`, `### Trigger`, `### Local owns`,
+  `### Stronger owner split`, `### Inputs`, `### Outputs`,
+  `### Must not claim`, `### Validation`, and `### Next route`.
+- Package README cards should name what `aoa-skills` owns, then route stronger
+  law or acceptance to `Agents-of-Abyss`, sibling repositories, review records,
+  generated companions, or downstream owners only when relevant.
+- Active route belongs in `README.md`, `DIRECTION.md`, `PARTS.md`, and
+  `parts/`; provenance belongs in `PROVENANCE.md`; checked landing history
+  belongs in `LANDING_LOG.md`; future pressure belongs in `ROADMAP.md`.
+- Enter package-local `legacy/` only when preserved source lineage matters.
+  Legacy is not the first route for normal package edits.
 - Generated artifacts remain evidence or export companions, not authority.
 - Legacy surfaces preserve lineage. They are not junk drawers, and current
   active behavior must not live only there.
