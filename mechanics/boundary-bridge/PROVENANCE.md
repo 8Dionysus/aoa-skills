@@ -15,6 +15,19 @@ This bridge records the source-to-active move for boundary and overlay surfaces.
 | `docs/OPENAI_SKILL_EXTENSIONS.md` | `mechanics/boundary-bridge/docs/OPENAI_SKILL_EXTENSIONS.md` |
 | `docs/overlays/` | `mechanics/boundary-bridge/overlays/` |
 
+## Preserved Skill Intelligence Strategy
+
+The first Skill Intelligence strategy artifact is preserved as package-local
+raw lineage:
+
+| Former path | Preserved raw path | Active route |
+|---|---|---|
+| `legacy/2026-05-17__skill-intelligence-layer-strategy.md` | `mechanics/boundary-bridge/legacy/skill-intelligence/raw/2026-05-17__skill-intelligence-layer-strategy.md` | `docs/decisions/2026-05-17-skill-intelligence-registry-first-slice.md` and `docs/ARCHITECTURE.md` |
+
+The raw strategy informs registry, search, explanation, tiny-router adjacency,
+and future retrieval boundaries. It does not own current generated registry
+behavior or router policy.
+
 ## Stop-line
 
 Boundary bridge makes handoffs legible. It does not absorb sibling-owner truth.

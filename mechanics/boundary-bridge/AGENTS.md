@@ -10,11 +10,11 @@ This card applies to `mechanics/boundary-bridge/` except where a nearer card app
 
 ## Read before editing
 
-Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/boundary-bridge/README.md`, `mechanics/boundary-bridge/DIRECTION.md`, `mechanics/boundary-bridge/PARTS.md`, `mechanics/boundary-bridge/PROVENANCE.md`, `mechanics/boundary-bridge/ROADMAP.md`, and any nearer card, `docs/AGENTS.md`.
+Read root `AGENTS.md`, `mechanics/AGENTS.md`, `mechanics/boundary-bridge/README.md`, `mechanics/boundary-bridge/DIRECTION.md`, `mechanics/boundary-bridge/PARTS.md`, `mechanics/boundary-bridge/PROVENANCE.md`, `mechanics/boundary-bridge/ROADMAP.md`, and any nearer card, `docs/AGENTS.md`, `overlays/AGENTS.md`, or `legacy/AGENTS.md`.
 
 ## Boundaries
 
-Keep `mechanics/boundary-bridge/` focused on mechanic movement. Do not make it canonical skill content, sibling-repo technique truth, proof doctrine, or generated authority. Preserve Boundary-bridge package guidance; overlays/AGENTS.md; downstream integration as a bounded local signal, not a global command.
+Keep `mechanics/boundary-bridge/` focused on mechanic movement. Do not make it canonical skill content, sibling-repo technique truth, proof doctrine, or generated authority. Preserve skill intelligence, overlay, and downstream integration work as bounded local signals, not global commands.
 
 ## Validation
 

@@ -30,7 +30,7 @@ Add a package card, direction, parts, provenance, landing log, roadmap, active
 docs map, and active parts for adaptive orchestration, session kernel maturity,
 and harvest-note boundary.
 
-Keep `docs/session-harvests/` in place for this slice.
+At this decision point, keep `docs/session-harvests/` in place for this slice.
 
 ## Consequences
 

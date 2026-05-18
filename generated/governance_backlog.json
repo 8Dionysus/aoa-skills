@@ -120,13 +120,13 @@
       "truth_synced": true
     },
     {
-      "current_revision": "be4999a2bf9c",
+      "current_revision": "374523874b9a",
       "governance_decision": "stay_evaluated",
       "issues": [],
       "lineage_state": "published",
       "name": "aoa-checkpoint-closeout-bridge",
       "review_path": "docs/reviews/status-promotions/aoa-checkpoint-closeout-bridge.md",
-      "reviewed_revision": "be4999a2bf9c",
+      "reviewed_revision": "374523874b9a",
       "runtime_skill_md_meaning_changed": true,
       "status": "evaluated",
       "truth_synced": true

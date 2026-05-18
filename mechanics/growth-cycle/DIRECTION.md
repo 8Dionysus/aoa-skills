@@ -30,6 +30,6 @@ task execution
 
 ## Current hold
 
-Do not move `docs/session-harvests/` in this slice. Those notes carry evidence
-refs and external paths that need a separate owner-safe move if they ever leave
-the docs surface.
+Keep `mechanics/growth-cycle/session-harvests/` as the package-local evidence
+lane. If a note becomes accepted owner truth, update the owner surface and keep
+the harvest note as provenance below that truth.

@@ -64,3 +64,4 @@ moved surfaces.
 - [Roadmap](ROADMAP.md)
 - [Docs](docs/README.md)
 - [Overlays](overlays/AGENTS.md)
+- [Legacy](legacy/README.md)

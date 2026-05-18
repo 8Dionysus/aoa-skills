@@ -22,16 +22,17 @@ final verdict.
 ## Active Outputs
 
 - harvest-note boundary
-- evidence route to `docs/session-harvests/`
+- evidence route to `mechanics/growth-cycle/session-harvests/`
 - candidate-harvest template route
 - next-owner hint
 
 ## Next Route
 
-Keep current notes under `docs/session-harvests/` until a separate
-provenance-heavy pass decides otherwise.
+Keep current notes under `mechanics/growth-cycle/session-harvests/`. When a
+note becomes accepted owner truth, update the owner surface and leave the note
+as provenance rather than moving authority into the note.
 
 Source route:
 
-- `docs/session-harvests/`
-- `templates/SESSION_CANDIDATE_HARVEST.template.md`
+- `mechanics/growth-cycle/session-harvests/`
+- `mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md`

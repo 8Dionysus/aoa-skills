@@ -9,7 +9,7 @@
     "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
     "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
     "templates/SKILL_APPLICABILITY_MAP.template.md",
-    "templates/SESSION_CANDIDATE_HARVEST.template.md"
+    "mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md"
   ],
   "generated_surfaces": [
     "generated/skill_catalog.min.json",
@@ -160,7 +160,7 @@
       "input_ref": "session-harvest-notes",
       "kind": "harvest",
       "path_globs": [
-        "docs/session-harvests/*"
+        "mechanics/growth-cycle/session-harvests/*"
       ],
       "notes": "bounded post-session candidate pressure"
     }
@@ -252,7 +252,7 @@
     {
       "beacon_ref": "skills.bundle_candidate.harvest_pressure",
       "kind": "skill_bundle_candidate",
-      "decision_surface": "templates/SESSION_CANDIDATE_HARVEST.template.md",
+      "decision_surface": "mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md",
       "target_repo": "aoa-skills",
       "observation_inputs": [
         "session-harvest-notes",
@@ -293,10 +293,10 @@
     "mechanics/growth-cycle/docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
     "mechanics/audit/docs/TRIGGER_EVALS.md",
     "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
-    "templates/SESSION_CANDIDATE_HARVEST.template.md"
+    "mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md"
   ],
   "candidate_targets": [
     "generated/skill_evaluation_matrix.md",
-    "templates/SESSION_CANDIDATE_HARVEST.template.md"
+    "mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md"
   ]
 }

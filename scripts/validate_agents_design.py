@@ -31,10 +31,8 @@ EXPECTED_AGENT_CARDS: tuple[Path, ...] = tuple(
         "docs/decisions/AGENTS.md",
         "docs/governance/AGENTS.md",
         "docs/reviews/AGENTS.md",
-        "docs/session-harvests/AGENTS.md",
         "examples/AGENTS.md",
         "generated/AGENTS.md",
-        "legacy/AGENTS.md",
         "manifests/AGENTS.md",
         "mechanics/AGENTS.md",
         "mechanics/agon/AGENTS.md",
@@ -46,6 +44,7 @@ EXPECTED_AGENT_CARDS: tuple[Path, ...] = tuple(
         "mechanics/audit/docs/AGENTS.md",
         "mechanics/boundary-bridge/AGENTS.md",
         "mechanics/boundary-bridge/docs/AGENTS.md",
+        "mechanics/boundary-bridge/legacy/AGENTS.md",
         "mechanics/boundary-bridge/overlays/AGENTS.md",
         "mechanics/checkpoint/AGENTS.md",
         "mechanics/checkpoint/docs/AGENTS.md",
@@ -54,7 +53,10 @@ EXPECTED_AGENT_CARDS: tuple[Path, ...] = tuple(
         "mechanics/experience/docs/AGENTS.md",
         "mechanics/growth-cycle/AGENTS.md",
         "mechanics/growth-cycle/docs/AGENTS.md",
+        "mechanics/growth-cycle/legacy/AGENTS.md",
         "mechanics/growth-cycle/parts/AGENTS.md",
+        "mechanics/growth-cycle/session-harvests/AGENTS.md",
+        "mechanics/growth-cycle/templates/AGENTS.md",
         "mechanics/method-growth/AGENTS.md",
         "mechanics/method-growth/docs/AGENTS.md",
         "mechanics/method-growth/legacy/AGENTS.md",
@@ -101,7 +103,12 @@ def _display(path: Path, repo_root: Path) -> str:
 def iter_agent_cards(repo_root: Path) -> list[Path]:
     tracked_cards = _tracked_agent_cards(repo_root)
     if tracked_cards is not None:
-        return tracked_cards
+        cards = [path for path in tracked_cards if path.exists()]
+        for expected in EXPECTED_AGENT_CARDS:
+            path = repo_root / expected
+            if path.exists():
+                cards.append(path)
+        return sorted(set(cards))
 
     cards: list[Path] = []
     for path in repo_root.rglob("AGENTS.md"):

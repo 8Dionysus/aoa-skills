@@ -486,6 +486,8 @@ class MechanicsTopologyTests(unittest.TestCase):
         moved_paths = (
             "docs/ADAPTIVE_SKILL_ORCHESTRATION.md",
             "docs/SESSION_GROWTH_KERNEL_MATURITY.md",
+            "docs/session-harvests",
+            "templates/SESSION_CANDIDATE_HARVEST.template.md",
         )
         for relative_path in moved_paths:
             with self.subTest(path=relative_path):
@@ -497,6 +499,8 @@ class MechanicsTopologyTests(unittest.TestCase):
             "mechanics/growth-cycle/parts/adaptive-orchestration/README.md",
             "mechanics/growth-cycle/parts/session-kernel-maturity/README.md",
             "mechanics/growth-cycle/parts/harvest-note-boundary/README.md",
+            "mechanics/growth-cycle/session-harvests/README.md",
+            "mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md",
         )
         for relative_path in active_paths:
             with self.subTest(path=relative_path):
@@ -515,7 +519,11 @@ class MechanicsTopologyTests(unittest.TestCase):
                 self.assertIn(f"docs/{source_name}", provenance)
                 self.assertIn(f"mechanics/growth-cycle/docs/{source_name}", provenance)
 
-        self.assertIn("docs/session-harvests/", provenance)
+        self.assertIn("mechanics/growth-cycle/session-harvests/", provenance)
+        self.assertIn(
+            "mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md",
+            provenance,
+        )
         self.assertIn(
             "mechanics/recurrence/manifests/component.skills.bundle-and-activation-beacons.json",
             provenance,

@@ -33,6 +33,7 @@ generated-surface summary.
 | Where is evaluation evidence read? | [`../mechanics/audit/docs/EVALUATION_PATH.md`](../mechanics/audit/docs/EVALUATION_PATH.md) |
 | Where is public status read? | [`../mechanics/audit/docs/PUBLIC_SURFACE.md`](../mechanics/audit/docs/PUBLIC_SURFACE.md) |
 | Where is session-growth kernel maturity tracked? | [`../mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md`](../mechanics/growth-cycle/docs/SESSION_GROWTH_KERNEL_MATURITY.md) |
+| Where are session-harvest notes kept? | [`../mechanics/growth-cycle/session-harvests/README.md`](../mechanics/growth-cycle/session-harvests/README.md) |
 
 ## Review And History
 
@@ -40,7 +41,6 @@ generated-surface summary.
 |---|---|
 | [`decisions/`](decisions/) | decision records for structural, workflow, and ownership changes |
 | [`reviews/`](reviews/) | review records for status, canonical candidates, and exceptions |
-| [`session-harvests/`](session-harvests/) | bounded harvest notes before they become owner-layer truth |
 | [`AGENTS_ROOT_REFERENCE.md`](AGENTS_ROOT_REFERENCE.md) | preserved depth reference for agent routes that were too detailed for root `AGENTS.md` |
 
 Generated files under `../generated/` and portable exports under `../.agents/`

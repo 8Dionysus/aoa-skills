@@ -18,6 +18,8 @@
 - `docs/reviews/` — public review records for candidate and promotion work
 - `docs/reviews/canonical-candidates/` — canonical-candidate review records
 - `docs/reviews/status-promotions/` — review records for non-canonical promotion steps
+- `mechanics/growth-cycle/session-harvests/` — bounded session learning before owner-layer truth
+- `mechanics/growth-cycle/templates/` — Growth-cycle-owned harvest-note templates
 - `templates/` — templates for authoring skills and related files
 - `templates/RUNTIME_EXAMPLE.template.md` — canonical runtime example scaffold
 - `templates/PROJECT_OVERLAY.template.md` — canonical project overlay scaffold
@@ -31,6 +33,11 @@
 - `generated/` — derived reader catalogs, portable export discovery, runtime seams, support-resource manifests, and trigger-eval data
 - `scripts/` — deterministic repo-wide builders, validators, reports, inspectors, and release helpers
 - `schemas/` — repo-wide machine-readable contracts; mechanic-local schemas live with their package or part
+
+There is no root `legacy/` district. Durable rationale belongs in
+`docs/decisions/`, bounded session learning belongs in `mechanics/growth-cycle/session-harvests/`,
+and raw mechanic lineage belongs under the corresponding package-local
+`mechanics/<slug>/legacy/` lane.
 
 ## Skill bundle shape
 
