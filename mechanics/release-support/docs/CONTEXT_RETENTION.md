@@ -1,7 +1,7 @@
 # Context retention support
 
-Codex already uses progressive disclosure for skills.
-Wave 3 adds a generated support layer so other runtimes or wrappers can hold onto the right fragments without re-reading everything blindly.
+Skill runtimes use progressive disclosure.
+The generated support layer helps runtimes or wrappers hold the right fragments without re-reading everything blindly.
 
 ## Generated file
 

@@ -113,7 +113,7 @@ Right now, `aoa-skills` is best released as:
 
 - a curated public skill corpus
 - a self-serve repo with one bounded repo-owned release-check entrypoint
-- a validated repository structure with generated reader/runtime/governance surfaces plus a generated Codex-facing portable export, a wave-4 raw runtime seam, a wave-6 governed runtime layer, a wave-7 description-first activation-eval layer, a wave-8 deterministic support-resource bridge, a wave-9 tiny-router compression bridge for downstream routing, and a legacy-compatible local adapter seam
+- a validated repository structure with generated reader/runtime/governance surfaces, portable export, runtime guardrails, description-first activation checks, support-resource bridge, tiny-router compression bridge, and local adapter seam
 - a machine-readable portable release contract in `generated/release_manifest.json` that stays subordinate to the changelog/tag/release-note identity
 - a self-contained staged-bundle inspection step in `scripts/inspect_skill_pack.py` before install-side verification
 - a release-facing packaging smoke helper in `scripts/smoke_skill_pack_handoff.py`, wired into `scripts/release_check.py --include-packaging-smoke`

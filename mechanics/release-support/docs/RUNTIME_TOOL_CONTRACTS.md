@@ -1,6 +1,6 @@
 # Runtime tool contracts
 
-The wave-4 seam exposes six tool-shaped operations.
+The runtime seam exposes six tool-shaped operations.
 
 ## discover_skills
 

@@ -6,7 +6,7 @@ The description-first activation suite validates the portable `description` fiel
 
 ## Why the format changed
 
-The old shape was enough for a first pass.
+The first dataset shape was enough for seed coverage.
 It was not enough for policy-aware evaluation.
 
 We now need to distinguish:
@@ -97,7 +97,7 @@ python scripts/build_description_trigger_evals.py --repo-root .
 python scripts/lint_description_trigger_evals.py --repo-root .
 ```
 
-Pack profiles and trust posture live in separate wave-3 surfaces and should be checked with:
+Pack profiles and trust posture live in separate support surfaces and should be checked with:
 
 ```bash
 python scripts/lint_pack_profiles.py --repo-root .

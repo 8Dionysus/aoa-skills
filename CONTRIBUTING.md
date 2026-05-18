@@ -5,8 +5,8 @@ Thank you for contributing.
 ## What belongs here
 
 Good contributions:
-- reusable Codex skills
-- skill bundles that compose one or more public techniques into a bounded agent workflow
+- reusable AoA skill bundles
+- bounded agent workflows that stand on their own and reference sibling practice only when useful
 - skill templates and repository conventions
 - validation or review helpers for skill bundles
 - thin project overlay examples that clarify how a core skill adapts to a real repository
@@ -16,10 +16,10 @@ Bad contributions:
 - private operational context
 - secrets, tokens, or sensitive infrastructure details
 - one-off prompts without reusable skill structure
-- project-specific hacks with no adaptation notes
+- project-specific shortcuts with no adaptation notes
 - undocumented scripts
 - techniques that belong in `aoa-techniques` rather than here
-- skills that duplicate a technique without adding Codex-facing workflow value
+- skills that mirror another repository's practice without adding executable workflow value
 
 ## Before opening a PR
 
@@ -35,7 +35,7 @@ Please make sure:
 - examples and references are public-safe
 - project-shaped overlays do not silently change the core meaning of the skill
 - runtime, evaluation, and public-surface layers stay distinct from one another
-- Codex-facing export drift is refreshed when canonical skill bodies, invocation modes, portable descriptions, or trigger boundaries change
+- portable export drift is refreshed when canonical skill bodies, invocation modes, portable descriptions, or trigger boundaries change
 
 Run the full bounded repository check before opening a PR:
 
@@ -52,7 +52,7 @@ python scripts/validate_skills.py
 python scripts/build_catalog.py --check
 ```
 
-For portable export work, or after changing canonical skill bodies, invocation modes, description overrides, OpenAI export metadata, pack profiles, policy posture, or skill assets, also run:
+For portable export work, or after changing canonical skill bodies, invocation modes, description overrides, adapter metadata, pack profiles, policy posture, or skill assets, also run:
 
 ```bash
 python scripts/build_agent_skills.py --repo-root .
@@ -86,8 +86,6 @@ To apply that refresh, use explicit single-skill write mode:
 python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --write
 ```
 
-The helper does not support repo-wide write mode in this pass.
-
 If you add a new runtime example, start from `templates/RUNTIME_EXAMPLE.template.md`
 and keep the canonical headings exactly:
 - `Scenario`
@@ -105,8 +103,8 @@ If you add `checks/review.md`, keep the canonical checklist headings exactly:
 
 ## Core distinction
 
-`aoa-techniques` is the source of truth for public reusable engineering techniques.
-`aoa-skills` is the Codex-facing layer that packages one or more techniques into an executable workflow.
+`aoa-skills` owns self-contained execution workflows for local coding agents.
+`aoa-techniques` owns public reusable engineering practice.
 
 If the contribution is primarily a reusable engineering pattern, publish or refine it in `aoa-techniques` first.
 If the contribution is primarily an agent-facing workflow bundle, it belongs here.
@@ -135,7 +133,7 @@ and `mechanics/method-growth/docs/PROMOTION_PATH.md`, and make the supporting ev
 
 PRs are reviewed for:
 - bounded scope
-- Codex usefulness
+- execution usefulness
 - traceability to techniques when relevant
 - public safety
 - reviewability of the final `SKILL.md`
@@ -181,7 +179,7 @@ A good PR should make it clear:
 - whether the change belongs in `mechanics/boundary-bridge/docs/OVERLAY_SPEC.md` as a repo-local overlay contract clarification or in a live exemplar skill bundle
 - whether `.agents/skills/*`, `generated/agent_skill_catalog*.json`, `generated/local_adapter_manifest*.json`, `generated/context_retention_manifest.json`, `generated/trust_policy_matrix.json`, `generated/skill_runtime_contracts.json`, `generated/skill_pack_profiles.resolved.json`, `generated/codex_config_snippets.json`, or trigger-eval seed data changed
 
-If you think a richer integration would need another repository, leave a local stub or TODO note instead of adding live cross-repo behavior in this repository wave.
+If richer integration belongs in another repository, record the owner route or follow-up surface instead of adding live cross-repo behavior here.
 
 ## Public hygiene
 

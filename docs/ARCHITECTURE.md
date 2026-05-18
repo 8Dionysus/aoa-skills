@@ -3,7 +3,6 @@
 ## Purpose
 
 `aoa-skills` is a public repository of reusable local coding-agent skills.
-It is the operational companion to `aoa-techniques`.
 It is one bounded execution layer in the AoA ontology spine; see
 `mechanics/boundary-bridge/docs/LAYER_POSITION.md` for the repo-owned boundary note.
 Root `DESIGN.md` describes the system form of that layer; this architecture
@@ -32,13 +31,12 @@ It packages:
 - technique composition metadata
 
 The committed `SKILL.md` must stand on its own. Technique links can explain
-lineage, composition, decomposition, refresh pressure, or future extraction, but
-they are not runtime dependencies and should not become the only evidence that a
-skill is mature.
+lineage, composition, decomposition, refresh pressure, or future extraction;
+runtime use should still be understandable from the authored skill bundle.
 
-The repository may also publish a generated Codex-facing export under `.agents/skills/*`.
+The repository may also publish a generated portable export under `.agents/skills/*`.
 That export is built from the canonical authored bundle plus portable export config,
-and exists to make skill discovery and activation work cleanly in Codex-compatible runtimes.
+and exists to make skill discovery and activation work cleanly in compatible runtimes.
 It does not replace the authored bundle as the source of truth.
 
 The repository may also publish derived reader surfaces in `generated/`.
@@ -58,9 +56,8 @@ The same derived posture now applies to `.agents/skills/*`, `generated/agent_ski
 `generated/expected_existing_aoa_support_dirs.json`, and `generated/release_manifest.json`:
 they are generated operational interfaces, not authored meaning.
 
-A skill normally relates to one or more techniques and/or several bounded
-actions, but its identity is the bounded workflow it gives an agent. A
-single-technique skill is allowed only as an explicit reviewed exception.
+A skill may relate to one or more techniques and/or several bounded actions, but
+its identity is the bounded workflow it gives an agent.
 A skill is not the home of recurring scenario method; that boundary stays in
 `aoa-playbooks`.
 
@@ -98,7 +95,7 @@ A project-local overlay adds:
 
 1. skills are self-contained execution objects
 2. techniques are the source of truth for reusable practice
-3. technique links are adjacent bridge evidence, not live runtime dependencies
+3. technique bridge entries document lineage while runtime use stays self-contained
 4. skills may compose techniques into workflows, and mature skill workflows may
    produce technique extraction requests
 5. skills should not silently rewrite technique canon when they claim a technique bridge
@@ -107,7 +104,7 @@ A project-local overlay adds:
 8. build-time composition is preferred over runtime remote dependency
 9. project overlays should remain thin
 10. dangerous or operationally sensitive skills should default to explicit invocation
-11. a single-technique skill needs an explicit exception review that justifies the skill layer
+11. narrow skill wrappers need review evidence that they add executable value
 
 ## Skill categories
 
@@ -134,7 +131,7 @@ Skills should be reviewable artifacts.
 They can be generated or assembled from technique references, but the committed `SKILL.md` should remain understandable to a human reviewer without additional hidden state.
 Derived catalogs should stay deterministic and disposable: if a reader surface drifts, regenerate it from the authoritative markdown and manifest inputs.
 The current repo-local governance and release signaling layer should also stay derived rather than introducing a second explicit skill-metadata contract.
-The Codex-facing portable layer follows the same rule: `.agents/skills/*` is a generated export,
+The portable export layer follows the same rule: `.agents/skills/*` is a generated export,
 `config/portable_skill_overrides.json`, `config/openai_skill_extensions.json`, `config/skill_pack_profiles.json`, and `config/skill_policy_matrix.json` are the repo-owned configuration seams for that export, and local-friendly runtimes should wrap the export rather than inventing a second canonical skill format.
 The runtime seam follows that same layer contract: `scripts/skill_runtime_seam.py` is the primary runtime path, while `scripts/activate_skill.py` remains the compatibility shim.
 The support-resource layer follows the same repo-owned posture with deterministic support bundles under canonical skill roots; `scripts/build_support_resources.py` records those resources and their bridge back to AoA-native support dirs without becoming a second portable-sync authority.

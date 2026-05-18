@@ -1,6 +1,6 @@
 # UI metadata and icon assets
 
-Wave 3 makes the Codex-facing export look more native by filling in more of `agents/openai.yaml`.
+The adapter export carries UI metadata through `agents/openai.yaml`.
 
 ## Added interface fields
 

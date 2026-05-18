@@ -6,12 +6,12 @@
 - `checks/`
 - `examples/`
 
-Wave 8 adds standard skill-bundle directories without discarding the existing
-AoA language.
+The portable support-resource layer adds standard skill-bundle directories
+without discarding existing AoA language.
 
 ## Bridge posture
 
-Existing AoA support surface | Wave 8 standard surface
+Existing AoA support surface | Portable support surface
 --- | ---
 `agents/openai.yaml` | remains metadata, not duplicated
 `checks/review.md` | complemented by `references/*` and script validators
@@ -21,8 +21,8 @@ Existing AoA support surface | Wave 8 standard surface
 
 The current repo already derives governance and review surfaces from the AoA
 layout. Replacing those directories would create unnecessary churn. Adding
-standard support-bundle directories makes the skills easier to consume by Codex
-and local runtimes while preserving repo-native semantics.
+standard support-bundle directories makes the skills easier to consume by local
+agents and adapter runtimes while preserving repo-native semantics.
 
 ## Recommended evolution path
 

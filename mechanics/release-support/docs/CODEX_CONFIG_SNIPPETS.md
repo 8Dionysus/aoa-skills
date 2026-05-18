@@ -1,6 +1,6 @@
 # Codex config snippets
 
-Wave 3 adds generated snippets for disabling whole install profiles cleanly.
+This document describes generated snippets for disabling whole install profiles cleanly.
 
 ## Generated file
 

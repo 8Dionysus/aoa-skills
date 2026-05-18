@@ -1,6 +1,6 @@
 # Deterministic resource bundles
 
-This document defines the support-bundle contract introduced in wave 8.
+This document defines the support-bundle contract.
 
 ## Goal
 
@@ -24,7 +24,7 @@ Each targeted skill should have:
 3. `assets/`
    - JSON schema or template
    - stable structured output targets
-   - portable between Codex and local adapters
+   - portable between local agents and adapters
 
 ## Script design rules
 

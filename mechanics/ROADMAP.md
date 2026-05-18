@@ -22,7 +22,7 @@ The current work is no longer baseline scaffolding. It is owner clarity:
 - `audit` owns public-surface, evaluation, governance backlog, review-record,
   and proof-readout pressure.
 - `boundary-bridge` owns overlays, source-owned bridge contracts, tiny-router
-  compression, OpenAI/Codex/MCP disclosure, and downstream-consumption seams.
+  compression, adapter disclosure, and downstream-consumption seams.
 - `release-support` owns portable export, install profiles, local adapters,
   runtime seams, release manifests, staged bundles, ZIP handoff, and packaging
   smoke.
@@ -50,7 +50,7 @@ When a change lands, update the owner package that future agents must read next:
 
 - generated public, evaluation, governance, review, or promotion evidence:
   `audit/ROADMAP.md`
-- overlays, bridge contracts, tiny-router, MCP/OpenAI/Codex wiring, or
+- overlays, bridge contracts, tiny-router, adapter wiring, or
   downstream consumption: `boundary-bridge/ROADMAP.md`
 - release manifests, export/import, staged bundle, ZIP, profile install, local
   adapter, runtime seam, or support resources: `release-support/ROADMAP.md`

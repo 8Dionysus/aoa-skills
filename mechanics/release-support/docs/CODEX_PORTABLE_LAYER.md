@@ -7,8 +7,8 @@ This document defines the portable Agent Skills layer that makes `aoa-skills` di
 The target shape is:
 
 - canonical AoA authoring remains in `skills/**/SKILL.md` plus generated AoA catalogs
-- Codex-facing export lives in `.agents/skills/*`
-- local-friendly runtimes wrap or mirror the Codex-facing export rather than replacing it
+- adapter export lives in `.agents/skills/*`
+- local-friendly runtimes wrap or mirror the adapter export rather than replacing it
 
 When repeated drift or stale generated surfaces show up around that export, use
 `mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md` as the owner refresh route. That law stays
@@ -28,7 +28,7 @@ The builder reads:
 - `config/description_trigger_eval_policy.json`
 
 These files supply the current instruction body, scope, status, invocation mode,
-technique dependencies, trigger descriptions, optional OpenAI-facing metadata,
+technique dependencies, trigger descriptions, optional adapter metadata,
 install posture, and trust posture for each AoA skill.
 
 ## Mapping rules
@@ -38,9 +38,9 @@ install posture, and trust posture for each AoA skill.
 Portable `SKILL.md` files use standard Agent Skills frontmatter:
 
 - `name`: identical to the AoA skill directory name
-- `description`: curated Codex trigger text describing what the skill does and when to use it
+- `description`: curated trigger text describing what the skill does and when to use it
 - `license`: `Apache-2.0`
-- `compatibility`: generic compatibility note for Codex or similar coding agents
+- `compatibility`: generic compatibility note for local coding agents
 - `metadata`: AoA-specific fields moved under namespaced keys
 
 ### AoA metadata mapping
@@ -55,12 +55,13 @@ Portable `SKILL.md` files use standard Agent Skills frontmatter:
 
 ### Invocation policy and UI metadata
 
-The portable layer mirrors AoA invocation mode in `agents/openai.yaml`:
+The portable layer mirrors explicit implicit-activation policy in `agents/openai.yaml`:
 
-- `explicit-only` -> `policy.allow_implicit_invocation: false`
-- `explicit-preferred` -> `policy.allow_implicit_invocation: true`
+- `invoke` -> `policy.allow_implicit_invocation: true`
+- `suggest` -> `policy.allow_implicit_invocation: false`
+- `manual` -> `policy.allow_implicit_invocation: false`
 
-Wave 3 also fills in:
+The adapter metadata also fills in:
 
 - `interface.icon_small`
 - `interface.icon_large`
@@ -70,7 +71,7 @@ That keeps risk posture canonical while making the export more native in selecto
 
 ## Support artifacts around the export
 
-Wave 3 adds generated support layers that remain subordinate to the export:
+Generated support layers remain subordinate to the export:
 
 - `generated/agent_skill_catalog*.json`
 - `generated/portable_export_map.json`
@@ -85,7 +86,7 @@ Wave 3 adds generated support layers that remain subordinate to the export:
 - `generated/release_manifest.json`
 
 These surfaces make installation, local adaptation, trust checks, and context retention easier without becoming a new authoring layer.
-`generated/skill_handoff_contracts.json` is the only wave-5 bridge kept in `aoa-skills`: it remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
+`generated/skill_handoff_contracts.json` remains skill-derived and exists so downstream playbook layers can consume compact per-skill handoff contracts without moving scenario composition back into this repository.
 `generated/release_manifest.json` is the packaging-facing contract for this export stack: it pins artifact groups, relationship views, authoring-input digests, generated-file digests, skill bundle revisions, install-profile revisions, and changelog-derived release identity without becoming a second release ledger.
 `scripts/stage_skill_pack.py` is the first staged handoff primitive above that contract: it materializes one profile-scoped bundle directory with a bundle-local `bundle_manifest.json` and a human-facing `README.md` instead of copying the full repo release manifest into every handoff.
 `scripts/stage_skill_pack.py --archive-path ...` adds an optional ZIP transport wrapper over that same staged directory without adding a second manifest or widening the release contract.
@@ -97,7 +98,7 @@ the same profile verification contract: it checks root and repo install
 surfaces before rollout, but it does not install, approve, or accept skills for
 downstream owners.
 
-Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
+The dedicated-tool runtime seam adds these generated surfaces around the same export:
 
 - `generated/runtime_discovery_index*.json`
 - `generated/runtime_disclosure_index.json`
@@ -110,7 +111,7 @@ Wave 4 adds a second-path dedicated-tool runtime seam around the same export:
 
 Those runtime files still sit downstream of `.agents/skills/*` and do not introduce a second authoring format.
 
-Wave 6 adds a governed runtime layer above the raw seam:
+The governed runtime layer adds:
 
 - `generated/repo_trust_gate_manifest.json`
 - `generated/permission_allowlist_manifest.json`
@@ -121,7 +122,7 @@ Wave 6 adds a governed runtime layer above the raw seam:
 
 Those guardrail files keep trust, allowlists, and compaction-safe reuse repo-owned and still subordinate to the same export.
 
-Wave 7 adds an activation-quality layer above the same export:
+The activation-quality layer adds:
 
 - `generated/skill_description_signals.json`
 - `generated/description_trigger_eval_cases.jsonl`
@@ -131,7 +132,7 @@ Wave 7 adds an activation-quality layer above the same export:
 
 Those files make description quality and open-surface conformance testable without introducing a second authoring format or a second release identity.
 
-Wave 8 adds a deterministic support-resource bridge for three high-risk skills:
+The deterministic support-resource bridge adds:
 
 - `generated/deterministic_resource_manifest.json`
 - `generated/support_resource_index.json`
@@ -140,7 +141,7 @@ Wave 8 adds a deterministic support-resource bridge for three high-risk skills:
 - `generated/deterministic_resource_eval_cases.jsonl`
 - `generated/expected_existing_aoa_support_dirs.json`
 
-Wave 9 adds a tiny-router compression bridge for downstream two-stage routing:
+The tiny-router compression bridge adds:
 
 - `generated/tiny_router_skill_signals.json`
 - `generated/tiny_router_candidate_bands.json`
@@ -219,31 +220,31 @@ Lint pack-profile authoring:
 
     python scripts/lint_pack_profiles.py --repo-root .
 
-Build the wave-4 runtime seam:
+Build the runtime seam:
 
     python scripts/build_runtime_seam.py --repo-root .
 
-Build the wave-6 runtime guardrails:
+Build the runtime guardrails:
 
     python scripts/build_runtime_guardrails.py --repo-root .
 
-Build the wave-7 description-trigger suite:
+Build the description-trigger suite:
 
     python scripts/build_description_trigger_evals.py --repo-root .
 
-Build the wave-8 support-resource manifests:
+Build the support-resource manifests:
 
     python scripts/build_support_resources.py --repo-root .
 
-Lint the wave-7 description-trigger suite:
+Lint the description-trigger suite:
 
     python scripts/lint_description_trigger_evals.py --repo-root .
 
-Validate the wave-8 support-resource bridge:
+Validate the support-resource bridge:
 
     python scripts/validate_support_resources.py --repo-root . --check-portable
 
-Lint the wave-8 support-resource bridge:
+Lint the support-resource bridge:
 
     python scripts/lint_support_resources.py --repo-root .
 
@@ -263,9 +264,9 @@ Inspect one activated local-adapter compatibility payload:
 
     python scripts/activate_skill.py --repo-root . --skill aoa-change-protocol --format json
 
-## Future local-friendly path
+## Local-friendly path
 
-The Codex-facing layer is the common portable surface. Local runtimes should adapt around it by:
+The adapter export is the common portable surface. Local runtimes should adapt around it by:
 
 - reading `generated/agent_skill_catalog*.json` for discovery
 - using `generated/runtime_discovery_index*.json` and `generated/runtime_disclosure_index.json` for shortlist and preview

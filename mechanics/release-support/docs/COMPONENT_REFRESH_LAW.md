@@ -5,7 +5,7 @@
 This document is the owner refresh law for
 `component:skills-export:foundation`.
 
-Use it when canonical skill inputs stay intact but the generated Codex-facing
+Use it when canonical skill inputs stay intact but the generated portable
 export, adapter-facing discovery surfaces, or runtime discovery views drift,
 repeat the same repair, or block adjacent routes.
 
@@ -57,7 +57,7 @@ downstream workspace installs.
   - recommended route class: `reexport`
 - `openai_yaml_dependency_drift`
   - drift class: `wiring_drift`
-  - meaning: generated OpenAI-facing metadata or named MCP dependency guidance
+  - meaning: generated adapter metadata or named MCP dependency guidance
     no longer matches repo-owned export inputs
   - recommended route class: `reexport`
 - `runtime_discovery_surface_stale`

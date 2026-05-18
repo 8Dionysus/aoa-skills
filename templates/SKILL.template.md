@@ -11,7 +11,7 @@ technique_dependencies: []
 
 ## Intent
 
-What this skill helps Codex do.
+What this skill helps a local coding agent do.
 
 ## Trigger boundary
 
