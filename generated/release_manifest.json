@@ -249,8 +249,8 @@
     },
     {
       "path": "generated/context_retention_manifest.json",
-      "sha256": "1fe8a21a9e6777fb9be6dc180a44ff02c43873536d48c91ae2cd5da85c0ab977",
-      "bytes": 70734
+      "sha256": "cbd299fc0cba55b145ec379d956a78a7cbad49bc21e4533e53700bcf84c01f8d",
+      "bytes": 66922
     },
     {
       "path": "generated/trust_policy_matrix.json",
@@ -334,8 +334,8 @@
     },
     {
       "path": "generated/skill_context_guard_manifest.json",
-      "sha256": "dc9a86e814b5d09194e472325ebe336e4a1deab084bc3a5a41ffa4207ccbb5fe",
-      "bytes": 96168
+      "sha256": "b6ecad08c5f69a48ce94cbf6607aa6cfa00892d5c75f4b043d7a641ca06ea5e1",
+      "bytes": 92356
     },
     {
       "path": "generated/runtime_guardrail_tool_schemas.json",
