@@ -190,24 +190,36 @@ def section_map(skill: dict[str, Any]) -> dict[str, str]:
 
 def extract_bullets(markdown: str, limit: int | None = 3) -> list[str]:
     items: list[str] = []
-    limit_reached = False
+    accepting_continuation = False
     for raw_line in markdown.splitlines():
         stripped = raw_line.strip()
         if not stripped:
             continue
-        if raw_line[:1].isspace() and items and not stripped.startswith("- ") and ". " not in stripped[:4]:
-            items[-1] = normalize_space(f"{items[-1]} {stripped}")
+        is_continuation = (
+            raw_line[:1].isspace()
+            and items
+            and not stripped.startswith("- ")
+            and ". " not in stripped[:4]
+        )
+        if is_continuation:
+            if accepting_continuation:
+                items[-1] = normalize_space(f"{items[-1]} {stripped}")
             continue
-        if limit_reached:
-            continue
+        bullet: str | None = None
         if stripped.startswith("- "):
-            items.append(normalize_space(stripped[2:]))
+            bullet = stripped[2:]
         elif stripped[:2].isdigit() and ". " in stripped[:4]:
-            items.append(normalize_space(stripped.split(". ", 1)[1]))
+            bullet = stripped.split(". ", 1)[1]
         elif stripped[:1].isdigit() and ". " in stripped[:3]:
-            items.append(normalize_space(stripped.split(". ", 1)[1]))
+            bullet = stripped.split(". ", 1)[1]
+        if bullet is None:
+            accepting_continuation = False
+            continue
         if limit is not None and len(items) >= limit:
-            limit_reached = True
+            accepting_continuation = False
+            continue
+        items.append(normalize_space(bullet))
+        accepting_continuation = True
     return items
 
 

@@ -138,6 +138,28 @@ class CodexPortableContractTests(unittest.TestCase):
         self.assertTrue(tags[0].startswith("verification-shared-lineage"))
         self.assertTrue(tags[1].startswith("verification-shared-lineage"))
 
+    def test_extract_bullets_does_not_merge_skipped_bullet_continuations(self):
+        markdown = "\n".join(
+            [
+                "- retained first",
+                "  first continuation",
+                "- retained second",
+                "  second continuation",
+                "- skipped third",
+                "  skipped continuation",
+            ]
+        )
+
+        bullets = build_agent_skills.extract_bullets(markdown, limit=2)
+
+        self.assertEqual(
+            bullets,
+            [
+                "retained first first continuation",
+                "retained second second continuation",
+            ],
+        )
+
     def test_runtime_seam_indexes_match_catalog(self):
         catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
         discovery = load_json(REPO_ROOT / "generated" / "runtime_discovery_index.json")
