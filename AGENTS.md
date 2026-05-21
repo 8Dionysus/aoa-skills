@@ -154,6 +154,14 @@ Use the named route before widening a skill-layer claim:
 - Report what changed, what was verified, what was not verified, and where the
   next agent should resume.
 
+## Memory route
+
+For skill-layer recall, continuity, compaction recovery, comparison with past
+work, or preserved lessons, start with `aoa_memo` and the workspace memory map.
+Session grounding routes through `.aoa`; local candidate writing routes through
+this repository's `memo/` port when that port exists; durable reviewed memory
+lands through `aoa-memo`.
+
 ## Decision review
 
 After structural, ownership, workflow, route-law, validator-authority,
