@@ -29,7 +29,7 @@ class SkillIntelligenceSurfaceTests(unittest.TestCase):
         }
 
     def test_registry_covers_every_source_skill(self) -> None:
-        self.assertEqual(len(self.payload["skills"]), 45)
+        self.assertEqual(len(self.payload["skills"]), 46)
         self.assertEqual(
             self.payload["profile"],
             "skill-intelligence-registry-v1",

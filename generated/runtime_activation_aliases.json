@@ -183,6 +183,18 @@
       }
     },
     {
+      "name": "aoa-memo-writeback",
+      "codex_mention": "$aoa-memo-writeback",
+      "codex_browser": "/skills",
+      "local_slash_alias": "/aoa-memo-writeback",
+      "tool_call": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-memo-writeback"
+        }
+      }
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "codex_mention": "$aoa-port-adapter-refactor",
       "codex_browser": "/skills",

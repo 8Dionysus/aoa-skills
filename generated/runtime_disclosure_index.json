@@ -635,6 +635,7 @@
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
         "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -1700,6 +1701,116 @@
       "disclose_card_markdown": "### aoa-local-stack-bringup\n- Summary: Bring up local stacks safely\n- Use when: Bring up a bounded local multi-service stack by rendering runtime truth, checking selector-aware host readiness, and launching through one explicit lifecycle entrypoint with a visible stop path. Use when profiles, presets, or overlays can change what starts and host readiness must be reviewed before launch. Do not use for remote deployment, pure diagnostics without launch intent, or generic infra-change work.\n- Trust posture: explicit-risk\n- Mutation surface: runtime\n"
     },
     {
+      "name": "aoa-memo-writeback",
+      "display_name": "AoA Memo Writeback",
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "short_description": "Route session evidence to memo",
+      "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+      "skill_dir": ".agents/skills/aoa-memo-writeback",
+      "compatibility": "Designed for Codex or similar coding agents with repository file access and an interactive shell. Network access is optional and only needed when repository validation or referenced workflows require it.",
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0026,AOA-T-0106,AOA-T-0076",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "headings_available": [
+        "Intent",
+        "Trigger boundary",
+        "Inputs",
+        "Outputs",
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification",
+        "Technique traceability",
+        "Adaptation points"
+      ],
+      "section_summaries": {
+        "Intent": "Use this skill to decide whether a live session, closeout, landed change, or review thread produced memory-worthy material and route that material into the owning repository's local memo port, an `aoa-memo` reviewed-intake export, or an explicit no-writeback stop line. The ski...",
+        "Trigger boundary": "a session is still live and a meaningful decision, route change, failure; a closeout, PR, diff, commit, release, or review suggests memory-worthy work,",
+        "Inputs": "active owner repo or likely owner repo; current task intent, closeout, PR, diff, commit range, review thread, or",
+        "Outputs": "one `memo_writeback_decision`: `write_candidate`, `prepare_export`,; if writing is warranted and a local port exists: one local memo candidate",
+        "Procedure": "Name the owner repo and the nearest stronger owner for the material before; Inspect `.aoa` first when the reason may live in the session: use search,",
+        "Contracts": "`.aoa` evidence remains raw or generated session evidence, not reviewed; PRs, diffs, and commits are reconciliation lenses, not the primary record of",
+        "Risks and anti-patterns": "using a clean commit summary as a substitute for the session evidence that; turning `.aoa` raw transcript material into canon without reviewed",
+        "Verification": "confirm the owner repo and stronger owner route were named; confirm `.aoa` refs, source refs, or review refs support the decision",
+        "Technique traceability": "AOA-T-0026 from `8Dionysus/aoa-techniques` at; AOA-T-0106 from `8Dionysus/aoa-techniques` at",
+        "Adaptation points": "repo-local memory-worthy trigger classes; local privacy and public-safe packet rules"
+      },
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "policy": {
+        "implicit_activation_policy": "suggest",
+        "allow_implicit_invocation": false
+      },
+      "interface": {
+        "display_name": "AoA Memo Writeback",
+        "short_description": "Route session evidence to memo",
+        "default_prompt": "Use $aoa-memo-writeback to inspect session evidence, decide whether memo writeback is needed, and route it to a local memo candidate, export packet, or explicit no-writeback stop line.",
+        "icon_small": "./assets/small-logo.svg",
+        "icon_large": "./assets/large-logo.svg",
+        "brand_color": "#2563EB"
+      },
+      "runtime_contract_ref": "generated/skill_runtime_contracts.json#aoa-memo-writeback",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-memo-writeback",
+      "trust_policy_ref": "generated/trust_policy_matrix.json#aoa-memo-writeback",
+      "collision_family": "session-harvest-family",
+      "collision_notes": [
+        "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
+        "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
+        "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
+        "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
+        "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
+        "aoa-session-self-repair turns an existing reviewed diagnosis into the smallest honest repair packet with checkpoint posture and rollback thinking.",
+        "aoa-session-progression-lift reflects reviewed mastery movement as a bounded multi-axis delta without pretending to be routing or role authority.",
+        "aoa-quest-harvest stays the narrow final promotion verdict once the material is already reduced to one repeated reviewed quest unit."
+      ],
+      "competing_skills": [],
+      "sample_prompts": {
+        "explicit": [
+          "Use $aoa-memo-writeback to inspect session evidence, decide whether memo writeback is needed, and route it to a local memo candidate, export packet, or explicit no-writeback stop line."
+        ],
+        "implicit": [],
+        "manual_invocation_required": [
+          "A live session corrected an owner route, the diff only shows the final cleanup, and the agent needs to preserve .aoa evidence refs through the repo memo port as a reviewed-later memory candidate."
+        ],
+        "negative": [
+          "The only work is repairing raw .aoa preservation and rebuilding the search index; no owner route, memo port, or bounded memory question exists yet."
+        ]
+      },
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-memo-writeback",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-memo-writeback",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-memo-writeback"
+            }
+          }
+        }
+      },
+      "disclose_card_markdown": "### aoa-memo-writeback\n- Summary: Route session evidence to memo\n- Use when: Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.\n- Trust posture: portable-core\n- Mutation surface: repo\n"
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "display_name": "AoA Port Adapter Refactor",
       "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
@@ -1996,6 +2107,7 @@
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
         "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -2349,6 +2461,7 @@
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
         "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -2472,6 +2585,7 @@
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
         "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -2709,6 +2823,7 @@
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
         "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -2831,6 +2946,7 @@
       "collision_notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
         "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -2955,7 +3071,8 @@
         "aoa-adr-write",
         "aoa-quest-harvest",
         "abyss-self-diagnostic-spine",
-        "aoa-bounded-context-map"
+        "aoa-bounded-context-map",
+        "aoa-memo-writeback"
       ],
       "sample_prompts": {
         "explicit": [

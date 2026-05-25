@@ -32,8 +32,8 @@ class SkillQualityAuditTests(unittest.TestCase):
     def test_quality_audit_covers_every_skill(self) -> None:
         report = self.run_audit()
 
-        self.assertEqual(45, report["skill_count"])
-        self.assertEqual(45, len(report["skills"]))
+        self.assertEqual(46, report["skill_count"])
+        self.assertEqual(46, len(report["skills"]))
         self.assertEqual(
             {
                 "generated/governance_backlog.json",

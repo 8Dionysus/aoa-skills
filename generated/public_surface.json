@@ -491,6 +491,31 @@
       "technique_bridge_findings": []
     },
     {
+      "candidate_review_path": null,
+      "canonical_candidate_blockers": [
+        "status_below_evaluated"
+      ],
+      "canonical_candidate_ready": false,
+      "default_reference_readiness": "blocked",
+      "default_reference_readiness_blockers": [
+        "status_below_evaluated"
+      ],
+      "governance_decision": null,
+      "governance_evidence_case_ids": [],
+      "governance_lane_ids": [],
+      "invocation_mode": "explicit-preferred",
+      "is_default_reference": false,
+      "lineage_state": "published",
+      "maturity_status": "scaffold",
+      "name": "aoa-memo-writeback",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "status": "scaffold",
+      "summary": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
+      "technique_bridge_findings": []
+    },
+    {
       "candidate_review_path": "docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md",
       "canonical_candidate_blockers": [],
       "canonical_candidate_ready": true,

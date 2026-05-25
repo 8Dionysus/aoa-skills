@@ -585,6 +585,41 @@
       "notes": "Explicit-only because local stack launch can create side effects beyond simple file edits."
     },
     {
+      "name": "aoa-memo-writeback",
+      "display_name": "AoA Memo Writeback",
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "short_description": "Route session evidence to memo",
+      "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": true,
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "default_prompt": "Use $aoa-memo-writeback to inspect session evidence, decide whether memo writeback is needed, and route it to a local memo candidate, export packet, or explicit no-writeback stop line.",
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-memo-writeback",
+      "notes": "Session-to-memo bridge skill that may write local memo candidates or exports only through the owning repository's memo port; durable memory remains reviewed aoa-memo truth."
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "display_name": "AoA Port Adapter Refactor",
       "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",

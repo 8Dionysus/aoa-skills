@@ -6,7 +6,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 
 ## Summary
 
-- total skills: 45
+- total skills: 46
 - canonical skills: 12
 - canonical skills with eval gaps: 0
 
@@ -27,6 +27,7 @@ evaluation fixtures, and authored snapshot-backed evidence files.
 | aoa-dry-run-first | canonical | risk | explicit-only | 1 | 1 | 2 | 1 | 1 | `skills/risk/aoa-dry-run-first/examples/runtime.md` | `docs/reviews/status-promotions/aoa-dry-run-first.md` | `docs/reviews/canonical-candidates/aoa-dry-run-first.md` | true | - |
 | aoa-invariant-coverage-audit | canonical | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/engineering/aoa-invariant-coverage-audit/examples/example.md` | `docs/reviews/status-promotions/aoa-invariant-coverage-audit.md` | `docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md` | true | - |
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | 1 | 1 | 1 | 1 | 1 | `skills/risk/aoa-local-stack-bringup/examples/runtime.md` | `docs/reviews/status-promotions/aoa-local-stack-bringup.md` | `docs/reviews/canonical-candidates/aoa-local-stack-bringup.md` | true | - |
+| aoa-memo-writeback | scaffold | core | explicit-preferred | 1 | 1 | 1 | 1 | 1 | `skills/core/session-growth/aoa-memo-writeback/examples/runtime.md` | - | - | true | - |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | 1 | 2 | 2 | 1 | 1 | `skills/core/engineering/aoa-port-adapter-refactor/examples/example.md` | `docs/reviews/status-promotions/aoa-port-adapter-refactor.md` | `docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md` | true | - |
 | aoa-property-invariants | canonical | core | explicit-preferred | 1 | 2 | 3 | 1 | 1 | `skills/core/engineering/aoa-property-invariants/examples/example.md` | `docs/reviews/status-promotions/aoa-property-invariants.md` | `docs/reviews/canonical-candidates/aoa-property-invariants.md` | true | - |
 | aoa-quest-harvest | evaluated | core | explicit-only | 1 | 2 | 1 | 1 | 1 | `skills/core/session-growth/aoa-quest-harvest/examples/runtime.md` | `docs/reviews/status-promotions/aoa-quest-harvest.md` | - | true | - |

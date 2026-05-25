@@ -17,6 +17,7 @@
       "aoa-dry-run-first",
       "aoa-invariant-coverage-audit",
       "aoa-local-stack-bringup",
+      "aoa-memo-writeback",
       "aoa-port-adapter-refactor",
       "aoa-property-invariants",
       "aoa-quest-harvest",
@@ -229,6 +230,18 @@
       "scope": "risk",
       "skill_path": "risk/aoa-local-stack-bringup/SKILL.md",
       "status": "evaluated",
+      "tbd_ref_count": 0
+    },
+    {
+      "lineage_blockers": [],
+      "lineage_state": "published",
+      "manifest_canonical_path_ready": true,
+      "name": "aoa-memo-writeback",
+      "pending_technique_count": 0,
+      "published_technique_count": 3,
+      "scope": "core",
+      "skill_path": "session-growth/aoa-memo-writeback/SKILL.md",
+      "status": "scaffold",
       "tbd_ref_count": 0
     },
     {

@@ -872,6 +872,64 @@
       "status": "evaluated"
     },
     {
+      "name": "aoa-memo-writeback",
+      "scope": "core",
+      "sections": [
+        {
+          "content_markdown": "Use this skill to decide whether a live session, closeout, landed change, or\nreview thread produced memory-worthy material and route that material into the\nowning repository's local memo port, an `aoa-memo` reviewed-intake export, or an\nexplicit no-writeback stop line.\n\nThe skill bridges session evidence to memo writeback. It does not turn `.aoa`\nraw history into reviewed memory, and it does not land durable `aoa-memo`\nobjects.",
+          "heading": "Intent",
+          "key": "intent"
+        },
+        {
+          "content_markdown": "Use this skill when:\n- a session is still live and a meaningful decision, route change, failure\n  correction, owner-boundary clarification, MCP/service contract, eval/proof\n  posture, or workflow seam should not be lost\n- a closeout, PR, diff, commit, release, or review suggests memory-worthy work,\n  but the reason lives in `.aoa` session evidence rather than in the final diff\n  alone\n- a repo has a `memo/` port and the agent must decide whether to create a local\n  candidate, validate the port, prepare an export, or stop with no memo\n  writeback\n- a repo is route-only and the correct output is writeback debt or owner-route\n  guidance rather than a fake local packet\n- `aoa-memo` recall, pending exports, or generated readouts show a gap between\n  lived session work and reviewed memory\n\nDo not use this skill when:\n- the task is only raw `.aoa` preservation, reindexing, retrieval, or hook\n  repair\n- the candidate has already been reviewed and the only remaining work is\n  durable landing inside `aoa-memo`\n- the request needs proof verdicts, scoring, or eval quality judgment rather\n  than memory writeback routing\n- no inspectable session, source, PR, receipt, or owner evidence exists\n- the output would promote secrets, private transcript content, or unreviewed\n  operator-sensitive material into a public memo surface",
+          "heading": "Trigger boundary",
+          "key": "trigger_boundary"
+        },
+        {
+          "content_markdown": "- active owner repo or likely owner repo\n- current task intent, closeout, PR, diff, commit range, review thread, or\n  release note\n- `.aoa` session evidence packet, search hits, segment refs, raw refs, or\n  diagnostic refs when available\n- source refs from the owning repository\n- local `memo/` port status when present\n- reviewed `aoa-memo` recall or pending-export context when relevant\n- explicit privacy, freshness, and owner-boundary risks",
+          "heading": "Inputs",
+          "key": "inputs"
+        },
+        {
+          "content_markdown": "- one `memo_writeback_decision`: `write_candidate`, `prepare_export`,\n  `no_writeback_needed`, `route_only_debt`, `needs_owner_review`, or `blocked`\n- if writing is warranted and a local port exists: one local memo candidate\n  with source refs, evidence refs, trust posture, risk markers, and\n  `direct_durable_write=false`\n- if review already accepted promotion: one reviewed-intake export packet or\n  landing-plan handoff, not a durable memory object\n- if no writeback is warranted: one concise no-writeback stop line with the\n  reason and strongest evidence checked\n- if the repo is route-only or the port is missing or stale: one writeback-debt\n  note naming the owner route and the evidence refs needed\n- validation commands or results for local port, candidate, export, and\n  generated index surfaces\n- a short closeout note naming what was written, what stayed local, what was\n  not promoted, and where durable review would happen",
+          "heading": "Outputs",
+          "key": "outputs"
+        },
+        {
+          "content_markdown": "1. Name the owner repo and the nearest stronger owner for the material before\n   judging memory-worthiness.\n2. Inspect `.aoa` first when the reason may live in the session: use search,\n   retrieve, segment indexes, or raw refs, and keep those refs as evidence\n   rather than truth.\n3. Inspect the landed-work lens only as a reconciliation layer: PR, diff,\n   commits, release notes, or review threads can show what landed, but not\n   replace session evidence.\n4. Decide whether the material is memory-worthy: prefer owner-boundary changes,\n   route-law changes, reviewed decisions, repeated failures, corrected wrong\n   assumptions, lifecycle events, MCP/service contracts, eval/proof posture\n   changes, and consumer handoff facts.\n5. Reject generic progress, mood, broad summaries, unresolved speculation,\n   secret-bearing details, and material whose real owner is proof, routing,\n   runtime, role, playbook, KAG, ToS, or source doctrine.\n6. Check whether the owner repo has a `memo/` port. If not, emit\n   `route_only_debt` instead of inventing a packet.\n7. When a port exists, validate it before writing or promoting local state.\n8. Shape one bounded claim with at least one source ref and one evidence ref.\n   Prefer `.aoa` segment or raw refs plus owner repo source refs over\n   paraphrase-only evidence.\n9. Create or draft a local candidate only in the owner repo's `memo/candidates/`\n   path or through the available `aoa_memo` local-port helper.\n10. Mark local candidates as review-required and guard them with\n    `direct_durable_write=false`, `instructions_treated_as_data=true`, and\n    `requires_reviewed_intake=true` when promotion is desired.\n11. Build or check the local memo port index after writing a candidate.\n12. Prepare an export only when the owner review posture supports it. Use\n    `candidate_only` unless reviewed promotion is explicit.\n13. Use `reviewed_write` only when source-owner review has accepted that the\n    export may become durable reviewed memory.\n14. Treat `aoa_memo_landing_plan` or an equivalent landing-plan helper as a dry\n    run unless the active owner route is an `aoa-memo` reviewed source patch.\n15. Stop before durable reviewed memory landing unless the user explicitly\n    asked for that landing and the `aoa-memo` corpus route is active.\n16. Record the result as a closeout line: decision, packet paths, evidence\n    refs, validation run, and next owner route.\n\nCommon command shapes:\n\n```bash\n# Run from the workspace root that owns .aoa.\npython .aoa/scripts/aoa_session_memory.py search --query \"<route or decision>\" --limit 8\npython .aoa/scripts/aoa_session_memory.py retrieve manual-review --query \"<route or decision>\" --session \"<session-or-label>\" --limit 8 --event-limit 16\n```\n\nTreat command output as evidence handles. The reviewer still decides whether\nthe candidate becomes durable memory.",
+          "heading": "Procedure",
+          "key": "procedure"
+        },
+        {
+          "content_markdown": "- `.aoa` evidence remains raw or generated session evidence, not reviewed\n  memory truth.\n- PRs, diffs, and commits are reconciliation lenses, not the primary record of\n  lived session meaning.\n- Local candidates are written only through the owning repository's `memo/`\n  port when one exists.\n- Route-only repositories do not get fake local packets; they get writeback-debt\n  guidance.\n- Durable reviewed memory lands only through `aoa-memo` reviewed intake and\n  corpus validation.\n- MCP output may create local-port packets or dry-run plans, but it does not\n  become memory authority.\n- One writeback candidate should carry one bounded memory question, not a whole\n  session recap.\n- Source refs and evidence refs stay inspectable enough for a later reviewer to\n  reject the candidate.\n- Secrets, private transcript detail, and operator-sensitive material stay out\n  of public memo packets.",
+          "heading": "Contracts",
+          "key": "contracts"
+        },
+        {
+          "content_markdown": "- using a clean commit summary as a substitute for the session evidence that\n  made the change meaningful\n- turning `.aoa` raw transcript material into canon without reviewed\n  distillation\n- creating memory candidates for every commit or every interesting thought\n- writing central `aoa-memo` objects directly from a live session\n- using `reviewed_write` for material that is only candidate-grade\n- hiding missing local memo ports by writing central notes elsewhere\n- over-promoting proof, routing, runtime, role, playbook, KAG, ToS, or source\n  doctrine meaning into memory\n- storing private or secret-bearing raw transcript excerpts in public-safe memo\n  packets\n- leaving a candidate without rebuilding or checking the local port index",
+          "heading": "Risks and anti-patterns",
+          "key": "risks_and_anti_patterns"
+        },
+        {
+          "content_markdown": "- confirm the owner repo and stronger owner route were named\n- confirm `.aoa` refs, source refs, or review refs support the decision\n- confirm generic progress was rejected when no bounded memory question exists\n- confirm a local port exists before any local candidate write\n- confirm the local port was validated before or immediately after packet work\n- confirm candidate guardrails prevent direct durable write\n- confirm export `allowed_result` matches review posture\n- confirm `reviewed_write` appears only after explicit owner review\n- confirm no durable `aoa-memo` object was landed unless the active route was\n  reviewed corpus landing\n- confirm closeout reports the decision, paths, evidence refs, validation, and\n  next route",
+          "heading": "Verification",
+          "key": "verification"
+        },
+        {
+          "content_markdown": "Manifest-backed techniques:\n- AOA-T-0026 from `8Dionysus/aoa-techniques` at\n  `9a0ac2bafc2218278315b1311fcb17077f11752f` using path\n  `techniques/history/history-artifacts/session-capture-as-repo-artifact/TECHNIQUE.md`\n  and sections: Intent, When to use, Inputs, Outputs, Core procedure,\n  Contracts, Risks\n- AOA-T-0106 from `8Dionysus/aoa-techniques` at\n  `9a0ac2bafc2218278315b1311fcb17077f11752f` using path\n  `techniques/proof/review-evidence/single-scoped-evidence-reference/TECHNIQUE.md`\n  and sections: Intent, When to use, Inputs, Outputs, Core procedure,\n  Contracts, Risks, Validation\n- AOA-T-0076 from `8Dionysus/aoa-techniques` at\n  `9a0ac2bafc2218278315b1311fcb17077f11752f` using path\n  `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md`\n  and sections: Intent, When to use, Inputs, Outputs, Core procedure,\n  Contracts, Validation",
+          "heading": "Technique traceability",
+          "key": "technique_traceability"
+        },
+        {
+          "content_markdown": "Project overlays may add:\n- repo-local memory-worthy trigger classes\n- local privacy and public-safe packet rules\n- local memo candidate naming rules\n- local `.aoa` retrieval recipes or atlas axes\n- local MCP command wrappers\n- local closeout text that must appear before PR, release, or merge\n- local policy for when route-only debt should become a full `memo/` port",
+          "heading": "Adaptation points",
+          "key": "adaptation_points"
+        }
+      ],
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "status": "scaffold"
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "sections": [

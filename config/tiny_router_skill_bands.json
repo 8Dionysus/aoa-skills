@@ -93,7 +93,7 @@
     },
     {
       "id": "quest-harvest-governance",
-      "summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
         "route forks",
         "diagnosis packet",
@@ -119,6 +119,13 @@
         "codex local child",
         "return plan",
         "checkpoint collect",
+        "memo writeback",
+        "memory candidate",
+        "local memo port",
+        "reviewed intake export",
+        "aoa memo",
+        "session evidence refs",
+        "no writeback stop line",
         "runtime self diagnosis",
         "diagnostic session artifact",
         "runtime evidence handoff",
@@ -131,6 +138,7 @@
       "skills": [
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
+        "aoa-memo-writeback",
         "aoa-checkpoint-closeout-bridge",
         "aoa-summon",
         "aoa-automation-opportunity-scan",
@@ -421,6 +429,29 @@
         "already have reviewed diagnosis",
         "primary need is explicit route comparison",
         "primary need is progression overlay"
+      ]
+    },
+    "aoa-memo-writeback": {
+      "band": "quest-harvest-governance",
+      "positive_cues": [
+        "memo writeback",
+        "memory candidate",
+        "local memo port",
+        "session evidence refs",
+        "reviewed intake export",
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
+        "no writeback stop line",
+        "aoa memo pending export"
+      ],
+      "negative_cues": [
+        "raw aoa preservation only",
+        "hook repair only",
+        "reviewed memory landing itself",
+        "proof verdict",
+        "eval scoring",
+        "generic summary without owner route"
       ]
     },
     "aoa-checkpoint-closeout-bridge": {
@@ -954,11 +985,18 @@
     ],
     "aoa-session-donor-harvest": [
       "aoa-quest-harvest",
+      "aoa-memo-writeback",
       "aoa-automation-opportunity-scan",
       "aoa-session-route-forks",
       "aoa-session-self-diagnose",
       "aoa-session-progression-lift",
       "aoa-source-of-truth-check"
+    ],
+    "aoa-memo-writeback": [
+      "aoa-session-donor-harvest",
+      "aoa-checkpoint-closeout-bridge",
+      "aoa-source-of-truth-check",
+      "aoa-change-protocol"
     ],
     "aoa-summon": [
       "aoa-checkpoint-closeout-bridge",

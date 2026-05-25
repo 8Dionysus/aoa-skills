@@ -274,6 +274,25 @@
       "workflow_short": "Purpose: turn local multi-service startup into a reviewable bring-up workflow with a visible pre-start seam and one explicit launch path. Flow: name the selected runtime, the expected service set, and the explicit launch surface before starting anything..."
     },
     {
+      "inputs_short": "Needs: active owner repo or likely owner repo; current task intent, closeout, PR, diff, commit range, review thread, or release note; aoa session evidence packet, search hits, segment refs, raw refs, or diagnostic...",
+      "invocation_mode": "explicit-preferred",
+      "main_anti_patterns_short": "Avoid: using a clean commit summary as a substitute for the session evidence that made the change meaningful; turning .aoa raw transcript material into canon without reviewed distillation; creating memory candidates...",
+      "name": "aoa-memo-writeback",
+      "outputs_short": "Produces: one memowritebackdecision: writecandidate, prepareexport, nowritebackneeded, routeonlydebt, needsownerreview, or blocked; if writing is warranted and a local port exists: one local memo candidate with...",
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "status": "scaffold",
+      "summary": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
+      "technique_dependencies": [
+        "AOA-T-0026",
+        "AOA-T-0106",
+        "AOA-T-0076"
+      ],
+      "trigger_boundary_short": "Use when a session is still live and a meaningful decision, route change, failure correction, owner-boundary clarification, MCP/service contract, eval/proof posture, or workflow seam should not be lost; a closeout,...",
+      "verification_short": "Checks: confirm the owner repo and stronger owner route were named; confirm .aoa refs, source refs, or review refs support the decision; confirm generic progress was rejected when no bounded memory question exists;...",
+      "workflow_short": "Purpose: decide whether a live session, closeout, landed change, or review thread produced memory-worthy material and route that material into the owning repository's local memo port, an aoa-memo reviewed-intake export, or an explicit no-writeback stop..."
+    },
+    {
       "inputs_short": "Needs: target module, builder, tool, workflow, or slice; concrete dependency or runtime concern that currently leaks into reusable logic; desired scope of refactor; validation expectations.",
       "invocation_mode": "explicit-preferred",
       "main_anti_patterns_short": "Avoid: introducing empty abstractions with no real boundary value; extracting a port that mirrors an overgrown concrete dependency instead of narrowing it; using the refactor as a pretext for unrelated architectural...",

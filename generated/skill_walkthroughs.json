@@ -929,6 +929,56 @@
     },
     {
       "do_not_use_when": [
+        "the task is only raw .aoa preservation, reindexing, retrieval, or hook repair",
+        "the candidate has already been reviewed and the only remaining work is durable landing inside aoa-memo",
+        "the request needs proof verdicts, scoring, or eval quality judgment rather than memory writeback routing",
+        "no inspectable session, source, PR, receipt, or owner evidence exists",
+        "the output would promote secrets, private transcript content, or unreviewed operator-sensitive material into a public memo surface"
+      ],
+      "expand_sections": [
+        "Procedure",
+        "Contracts",
+        "Risks and anti-patterns",
+        "Verification"
+      ],
+      "inspection_order": [
+        "capsule",
+        "sections",
+        "full",
+        "evidence"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "name": "aoa-memo-writeback",
+      "object_use_shape": [
+        "one memowritebackdecision: writecandidate, prepareexport, nowritebackneeded, routeonlydebt, needsownerreview, or blocked",
+        "if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and directdurablewrite=false",
+        "if review already accepted promotion: one reviewed-intake export packet or landing-plan handoff, not a durable memory object",
+        "if no writeback is warranted: one concise no-writeback stop line with the reason and strongest evidence checked",
+        "if the repo is route-only or the port is missing or stale: one writeback-debt note naming the owner route and the evidence refs needed",
+        "validation commands or results for local port, candidate, export, and generated index surfaces",
+        "a short closeout note naming what was written, what stayed local, what was not promoted, and where durable review would happen"
+      ],
+      "pick_summary": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/core/session-growth/aoa-memo-writeback/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        }
+      ],
+      "use_when": [
+        "a session is still live and a meaningful decision, route change, failure correction, owner-boundary clarification, MCP/service contract, eval/proof posture, or workflow seam should not be lost",
+        "a closeout, PR, diff, commit, release, or review suggests memory-worthy work, but the reason lives in .aoa session evidence rather than in the final diff alone",
+        "a repo has a memo/ port and the agent must decide whether to create a local candidate, validate the port, prepare an export, or stop with no memo writeback",
+        "a repo is route-only and the correct output is writeback debt or owner-route guidance rather than a fake local packet",
+        "aoa-memo recall, pending exports, or generated readouts show a gap between lived session work and reviewed memory"
+      ]
+    },
+    {
+      "do_not_use_when": [
         "the task is a tiny local fix with no architectural pressure",
         "there is no meaningful boundary to clarify yet",
         "the code would become more ceremonial than useful after extraction",

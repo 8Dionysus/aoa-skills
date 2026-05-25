@@ -57,6 +57,17 @@
       "implicit_activation_policy": "manual",
       "notes": "Packages one honest local commit boundary after a bounded diff is already ready, while keeping push, publish, and release as separate follow-on routes."
     },
+    "aoa-memo-writeback": {
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "requires_confirmation_seam": false,
+      "implicit_activation_policy": "suggest",
+      "notes": "Session-to-memo bridge skill that may write local memo candidates or exports only through the owning repository's memo port; durable memory remains reviewed aoa-memo truth."
+    },
     "aoa-contract-test": {
       "trust_posture": "portable-core",
       "mutation_surface": "repo",

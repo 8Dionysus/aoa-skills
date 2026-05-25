@@ -63,6 +63,10 @@
       "tools": []
     },
     {
+      "name": "aoa-memo-writeback",
+      "tools": []
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "tools": []
     },

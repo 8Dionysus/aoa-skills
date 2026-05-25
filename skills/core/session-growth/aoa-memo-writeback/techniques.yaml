@@ -1,0 +1,44 @@
+skill_name: aoa-memo-writeback
+composition_mode: bounded
+techniques:
+  - id: AOA-T-0026
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/history/history-artifacts/session-capture-as-repo-artifact/TECHNIQUE.md
+    source_ref: 9a0ac2bafc2218278315b1311fcb17077f11752f
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+  - id: AOA-T-0106
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/proof/review-evidence/single-scoped-evidence-reference/TECHNIQUE.md
+    source_ref: 9a0ac2bafc2218278315b1311fcb17077f11752f
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Risks
+      - Validation
+  - id: AOA-T-0076
+    repo: 8Dionysus/aoa-techniques
+    path: techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md
+    source_ref: 9a0ac2bafc2218278315b1311fcb17077f11752f
+    use_sections:
+      - Intent
+      - When to use
+      - Inputs
+      - Outputs
+      - Core procedure
+      - Contracts
+      - Validation
+notes:
+  - Keep .aoa as session-evidence plane, not reviewed memory authority.
+  - Keep durable reviewed memory landing inside aoa-memo reviewed intake.
+  - Prefer one bounded memory question over whole-session recaps.

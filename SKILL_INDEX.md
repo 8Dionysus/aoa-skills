@@ -8,6 +8,7 @@ This file is the repository-wide map of public skills.
 |---|---|---|---|
 | aoa-change-protocol | core | canonical | Skill for bounded change execution using plan, scoped edits, validation, and concise reporting. |
 | aoa-commit-growth-seam | core | scaffold | Skill for turning a validated bounded diff into one intentional local commit with explicit scope review and a visible stop line before push or publish. |
+| aoa-memo-writeback | core | scaffold | Skill for deciding whether session evidence and landed-work context should become a local memo candidate, reviewed-intake export, or explicit no-writeback stop line. |
 | aoa-tdd-slice | core | canonical | Skill for implementing a small feature slice through test-first change discipline. |
 | aoa-contract-test | core | canonical | Skill for designing or extending contract-oriented validation at service or module boundaries. |
 | aoa-bounded-context-map | core | canonical | Skill for carving or clarifying domain or system boundaries and their interfaces. |

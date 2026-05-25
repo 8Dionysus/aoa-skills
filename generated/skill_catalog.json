@@ -710,6 +710,68 @@
     {
       "composition_mode": "bounded",
       "invocation_mode": "explicit-preferred",
+      "name": "aoa-memo-writeback",
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "status": "scaffold",
+      "summary": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
+      "technique_dependencies": [
+        "AOA-T-0026",
+        "AOA-T-0106",
+        "AOA-T-0076"
+      ],
+      "technique_refs": [
+        {
+          "id": "AOA-T-0026",
+          "path": "techniques/history/history-artifacts/session-capture-as-repo-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks"
+          ]
+        },
+        {
+          "id": "AOA-T-0106",
+          "path": "techniques/proof/review-evidence/single-scoped-evidence-reference/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Risks",
+            "Validation"
+          ]
+        },
+        {
+          "id": "AOA-T-0076",
+          "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f",
+          "use_sections": [
+            "Intent",
+            "When to use",
+            "Inputs",
+            "Outputs",
+            "Core procedure",
+            "Contracts",
+            "Validation"
+          ]
+        }
+      ]
+    },
+    {
+      "composition_mode": "bounded",
+      "invocation_mode": "explicit-preferred",
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",

@@ -167,6 +167,16 @@
       "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516"
     },
     {
+      "skill_name": "aoa-memo-writeback",
+      "path": ".agents/skills/aoa-memo-writeback",
+      "command": [
+        "skills-ref",
+        "validate",
+        ".agents/skills/aoa-memo-writeback"
+      ],
+      "description_sha256": "e6870123d0f2b8cae7facde3b47ce58e9f7f5a229fe4616b6da6e4091a6e3d12"
+    },
+    {
       "skill_name": "aoa-port-adapter-refactor",
       "path": ".agents/skills/aoa-port-adapter-refactor",
       "command": [

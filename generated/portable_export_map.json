@@ -422,6 +422,29 @@
       }
     },
     {
+      "name": "aoa-memo-writeback",
+      "source_skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "target_dir": ".agents/skills/aoa-memo-writeback",
+      "target_skill_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+      "target_openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "candidate_only": true,
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      }
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "source_skill_path": "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
       "target_dir": ".agents/skills/aoa-port-adapter-refactor",

@@ -238,6 +238,22 @@
       "notes": "Explicit-only because local stack launch can create side effects beyond simple file edits."
     },
     {
+      "name": "aoa-memo-writeback",
+      "scope": "core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
+      "trust_posture": "portable-core",
+      "mutation_surface": "repo",
+      "requires_manual_invocation": true,
+      "candidate_only": true,
+      "requires_confirmation_seam": false,
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "notes": "Session-to-memo bridge skill that may write local memo candidates or exports only through the owning repository's memo port; durable memory remains reviewed aoa-memo truth."
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "invocation_mode": "explicit-preferred",
