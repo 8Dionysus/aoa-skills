@@ -459,6 +459,15 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-session-route-forks",
           "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
           "target_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
@@ -626,6 +635,15 @@
           "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
           "trust_posture": "portable-core"
         },
         {
@@ -879,7 +897,7 @@
       ]
     },
     "repo-project-core-kernel": {
-      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, checkpoint closeout bridge, automation opportunity scanning, memo writeback, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "install_root": ".agents/skills",
@@ -909,6 +927,15 @@
           "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
           "trust_posture": "portable-core"
         },
         {
@@ -1110,7 +1137,7 @@
       ]
     },
     "repo-session-harvest-family": {
-      "description": "Backward-compatible operational alias for the project-core session-growth kernel profile, keeping the full explicit post-session session-harvest family available under its existing rollout name.",
+      "description": "Backward-compatible operational alias for the project-core session-growth kernel profile, keeping the full explicit post-session session-harvest and memo-writeback family available under its existing rollout name.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "install_root": ".agents/skills",
@@ -1140,6 +1167,15 @@
           "openai_config_path": ".agents/skills/aoa-automation-opportunity-scan/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "implicit_activation_policy": "manual",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
           "trust_posture": "portable-core"
         },
         {
@@ -1223,6 +1259,15 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-session-route-forks",
           "source_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
           "target_path": ".agents/skills/aoa-session-route-forks/SKILL.md",
@@ -1274,15 +1319,6 @@
           "openai_config_path": ".agents/skills/aoa-commit-growth-seam/agents/openai.yaml",
           "allow_implicit_invocation": false,
           "implicit_activation_policy": "manual",
-          "trust_posture": "portable-core"
-        },
-        {
-          "name": "aoa-memo-writeback",
-          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
-          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
-          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
-          "allow_implicit_invocation": false,
-          "implicit_activation_policy": "suggest",
           "trust_posture": "portable-core"
         },
         {

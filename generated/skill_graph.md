@@ -366,8 +366,12 @@ graph TD
   skill_aoa_memo_writeback -->|depends_on| technique_AOA_T_0026
   skill_aoa_memo_writeback -->|depends_on| technique_AOA_T_0106
   skill_aoa_memo_writeback -->|depends_on| technique_AOA_T_0076
+  skill_aoa_memo_writeback -->|included_in_profile| profile_repo_core_only
   skill_aoa_memo_writeback -->|included_in_profile| profile_repo_default
+  skill_aoa_memo_writeback -->|included_in_profile| profile_repo_project_core_kernel
+  skill_aoa_memo_writeback -->|included_in_profile| profile_repo_project_foundation
   skill_aoa_memo_writeback -->|included_in_profile| profile_repo_session_growth
+  skill_aoa_memo_writeback -->|included_in_profile| profile_repo_session_harvest_family
   skill_aoa_memo_writeback -->|included_in_profile| profile_user_curated_core
   skill_aoa_memo_writeback -->|available_in_artifact_group| artifact_group_portable_export
   skill_aoa_memo_writeback -->|available_in_artifact_group| artifact_group_runtime_seam
@@ -853,7 +857,7 @@ graph TD
 | aoa-dry-run-first | canonical | risk | explicit-only | published | repo-default, repo-project-foundation, repo-project-risk-guard-ring, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0004, AOA-T-0028 |
 | aoa-invariant-coverage-audit | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0017 |
 | aoa-local-stack-bringup | evaluated | risk | explicit-only | published | repo-default, repo-project-foundation, repo-project-risk-guard-ring, repo-risk-explicit | portable_export, runtime_seam, runtime_guardrails, description_trigger, support_resources, tiny_router | AOA-T-0036, AOA-T-0037, AOA-T-0028, AOA-T-0038 |
-| aoa-memo-writeback | scaffold | core | explicit-preferred | published | repo-default, repo-session-growth, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0026, AOA-T-0106, AOA-T-0076 |
+| aoa-memo-writeback | scaffold | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-kernel, repo-project-foundation, repo-session-growth, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0026, AOA-T-0106, AOA-T-0076 |
 | aoa-port-adapter-refactor | evaluated | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0016, AOA-T-0015 |
 | aoa-property-invariants | canonical | core | explicit-preferred | published | repo-core-only, repo-default, repo-project-core-outer-ring, repo-project-foundation, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0017, AOA-T-0007 |
 | aoa-quest-harvest | evaluated | core | explicit-only | published | repo-core-only, repo-default, repo-project-core-kernel, repo-project-foundation, repo-quest-harvest-only, repo-session-growth, repo-session-harvest-family, user-curated-core | portable_export, runtime_seam, runtime_guardrails, description_trigger, tiny_router | AOA-T-0089, AOA-T-0090 |

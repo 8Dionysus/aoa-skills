@@ -26,7 +26,9 @@ Several owner surfaces are involved:
 
 ## Decision
 
-Add `aoa-memo-writeback` as a core session-growth skill in `aoa-skills`.
+Add `aoa-memo-writeback` as a core session-growth skill in `aoa-skills`, and
+include it in the `project-core-session-growth-v1` kernel rather than leaving it
+as a merely installed companion skill.
 
 The skill owns the reusable agent procedure for deciding whether a live session,
 closeout, PR, commit, review, or generated recall gap should route to:
@@ -47,7 +49,10 @@ only through `aoa-memo` reviewed corpus validation.
 
 Use suggestion-eligible activation rather than silent invocation. The skill may
 surface as a candidate when semantic evidence matches, but writing a local memo
-candidate remains an explicit act through the owning repo's memo port.
+candidate remains an explicit act through the owning repo's memo port. Because
+`aoa skills enter` dispatches from the project foundation profile, kernel
+membership is required for agents far from memo to see the route without already
+knowing the skill name.
 
 ## Consequences
 
@@ -62,6 +67,9 @@ candidate remains an explicit act through the owning repo's memo port.
 - The portable export, description-trigger evals, tiny-router inputs, skill
   intelligence registry, pack profiles, and support-resource surfaces now
   include the new route.
+- The project foundation now exposes memo writeback through the session-growth
+  kernel, so workspace dispatch can surface `aoa-memo-writeback` from intent
+  text such as local memo port, reviewed intake export, or session evidence refs.
 - The live workspace skill install still needs an explicit install/update step
   after source landing before future sessions will see the skill from
   `/srv/AbyssOS/.agents/skills`.

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kernel_id": "project-core-session-growth-v1",
   "owner_repo": "aoa-skills",
-  "description": "Canonical project-core kernel for explicit reviewed session growth work across donor harvest, checkpoint closeout bridge, automation scanning, route choice, diagnosis, repair, progression, and final quest triage.",
+  "description": "Canonical project-core kernel for explicit reviewed session growth work across donor harvest, checkpoint closeout bridge, automation scanning, memo writeback, route choice, diagnosis, repair, progression, and final quest triage.",
   "canonical_install_profile": "repo-project-core-kernel",
   "backward_compatible_aliases": [
     "repo-session-harvest-family"
@@ -19,6 +19,7 @@
     "aoa-session-donor-harvest",
     "aoa-checkpoint-closeout-bridge",
     "aoa-automation-opportunity-scan",
+    "aoa-memo-writeback",
     "aoa-session-route-forks",
     "aoa-session-self-diagnose",
     "aoa-session-self-repair",
@@ -40,6 +41,11 @@
       "skill_name": "aoa-automation-opportunity-scan",
       "detail_event_kind": "automation_candidate_receipt",
       "detail_receipt_schema_ref": "references/automation-candidate-receipt-schema.yaml"
+    },
+    {
+      "skill_name": "aoa-memo-writeback",
+      "detail_event_kind": "memo_writeback_decision_receipt",
+      "detail_receipt_schema_ref": "references/memo-writeback-decision-receipt-schema.yaml"
     },
     {
       "skill_name": "aoa-session-route-forks",

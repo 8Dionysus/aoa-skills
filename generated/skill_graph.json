@@ -1198,12 +1198,32 @@
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_memo_writeback",
+      "target": "profile_repo_core_only"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_memo_writeback",
       "target": "profile_repo_default"
     },
     {
       "kind": "included_in_profile",
       "source": "skill_aoa_memo_writeback",
+      "target": "profile_repo_project_core_kernel"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_memo_writeback",
+      "target": "profile_repo_project_foundation"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_memo_writeback",
       "target": "profile_repo_session_growth"
+    },
+    {
+      "kind": "included_in_profile",
+      "source": "skill_aoa_memo_writeback",
+      "target": "profile_repo_session_harvest_family"
     },
     {
       "kind": "included_in_profile",
@@ -5479,8 +5499,12 @@
         "walkthrough": 1
       },
       "install_profiles": [
+        "repo-core-only",
         "repo-default",
+        "repo-project-core-kernel",
+        "repo-project-foundation",
         "repo-session-growth",
+        "repo-session-harvest-family",
         "user-curated-core"
       ],
       "invocation_mode": "explicit-preferred",

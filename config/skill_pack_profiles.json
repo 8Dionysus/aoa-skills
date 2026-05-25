@@ -63,6 +63,7 @@
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
+        "aoa-memo-writeback",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
@@ -88,6 +89,7 @@
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
+        "aoa-memo-writeback",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
@@ -143,13 +145,14 @@
       ]
     },
     "repo-project-core-kernel": {
-      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
+      "description": "Install the canonical project-core session-growth kernel into a repository root, including donor harvest, checkpoint closeout bridge, automation opportunity scanning, memo writeback, route forks, diagnosis, repair, progression, and the narrow quest leaf.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
+        "aoa-memo-writeback",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
@@ -187,13 +190,14 @@
       ]
     },
     "repo-session-harvest-family": {
-      "description": "Backward-compatible operational alias for the project-core session-growth kernel profile, keeping the full explicit post-session session-harvest family available under its existing rollout name.",
+      "description": "Backward-compatible operational alias for the project-core session-growth kernel profile, keeping the full explicit post-session session-harvest and memo-writeback family available under its existing rollout name.",
       "scope": "repo",
       "install_mode": "symlink-preferred",
       "skills": [
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
+        "aoa-memo-writeback",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
@@ -209,13 +213,13 @@
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
         "aoa-automation-opportunity-scan",
+        "aoa-memo-writeback",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
         "aoa-session-self-repair",
         "aoa-session-progression-lift",
         "aoa-quest-harvest",
         "aoa-commit-growth-seam",
-        "aoa-memo-writeback",
         "aoa-summon"
       ]
     },
