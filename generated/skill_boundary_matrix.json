@@ -782,6 +782,19 @@
     {
       "adjacency_blockers": [],
       "adjacency_do_not_use_count": 0,
+      "adjacency_ready": false,
+      "adjacency_use_count": 0,
+      "adjacent_skill_names": [],
+      "governance_lane_ids": [],
+      "name": "aoa-memo-writeback",
+      "required_adjacency_coverage": false,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "status": "scaffold"
+    },
+    {
+      "adjacency_blockers": [],
+      "adjacency_do_not_use_count": 0,
       "adjacency_ready": true,
       "adjacency_use_count": 2,
       "adjacent_skill_names": [

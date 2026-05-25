@@ -1560,6 +1560,127 @@
       }
     },
     {
+      "name": "aoa-memo-writeback",
+      "display_name": "AoA Memo Writeback",
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "short_description": "Route session evidence to memo",
+      "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+      "trust_posture": "portable-core",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "candidate_only": true,
+      "mutation_surface": "repo",
+      "recommended_install_scopes": [
+        "repo",
+        "user"
+      ],
+      "explicit_handles": {
+        "codex": {
+          "mention": "$aoa-memo-writeback",
+          "browser": "/skills"
+        },
+        "local_wrapper": {
+          "slash_alias": "/aoa-memo-writeback",
+          "tool_call": {
+            "name": "activate_skill",
+            "arguments": {
+              "skill_name": "aoa-memo-writeback"
+            }
+          }
+        }
+      },
+      "keywords": [
+        "adaptation",
+        "agent",
+        "and",
+        "anti-patterns",
+        "aoa",
+        "boundary",
+        "bridge",
+        "candidate",
+        "capture",
+        "change",
+        "closeout",
+        "commit",
+        "consumer",
+        "contract",
+        "contracts",
+        "core",
+        "decide",
+        "decision",
+        "decisions",
+        "eval",
+        "event",
+        "evidence",
+        "explicit",
+        "export",
+        "failure",
+        "for",
+        "generic",
+        "handoff",
+        "history",
+        "inputs",
+        "intent",
+        "itself",
+        "landing",
+        "line",
+        "live",
+        "local",
+        "memo",
+        "memory",
+        "memory-worthy",
+        "needs",
+        "no-writeback",
+        "not",
+        "outputs",
+        "owner",
+        "owner-boundary",
+        "points",
+        "posture",
+        "prepare",
+        "procedure",
+        "proof",
+        "raw",
+        "record",
+        "reveals",
+        "review",
+        "reviewed",
+        "reviewed-intake",
+        "risks",
+        "route",
+        "scoring",
+        "service",
+        "session",
+        "stop",
+        "summaries",
+        "technique",
+        "the",
+        "traceability",
+        "trigger",
+        "turning",
+        "use",
+        "verdicts",
+        "verification",
+        "whether",
+        "without",
+        "write",
+        "writeback"
+      ],
+      "disclose_tool": {
+        "name": "disclose_skill",
+        "arguments": {
+          "skill_name": "aoa-memo-writeback"
+        }
+      },
+      "activate_tool": {
+        "name": "activate_skill",
+        "arguments": {
+          "skill_name": "aoa-memo-writeback"
+        }
+      }
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "display_name": "AoA Port Adapter Refactor",
       "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",

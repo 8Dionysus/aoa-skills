@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "profile": "codex-facing-wave-9-tiny-router-inputs",
-  "skill_count": 45,
+  "skill_count": 46,
   "band_count": 7,
   "skills": [
     {
@@ -174,7 +174,7 @@
     {
       "name": "abyss-self-diagnostic-spine",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "project",
       "status": "scaffold",
       "invocation_mode": "explicit-preferred",
@@ -424,7 +424,7 @@
     {
       "name": "aoa-automation-opportunity-scan",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
@@ -690,7 +690,7 @@
     {
       "name": "aoa-checkpoint-closeout-bridge",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-preferred",
@@ -1276,6 +1276,102 @@
       "primary_defer_prompt": ""
     },
     {
+      "name": "aoa-memo-writeback",
+      "band": "quest-harvest-governance",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "scope": "core",
+      "status": "scaffold",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "manual_invocation_required": true,
+      "candidate_only": true,
+      "project_overlay": false,
+      "summary": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
+      "summary_short": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo...",
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "description_sha256": "e6870123d0f2b8cae7facde3b47ce58e9f7f5a229fe4616b6da6e4091a6e3d12",
+      "positive_cues": [
+        "memo writeback",
+        "memory candidate",
+        "local memo port",
+        "session evidence refs",
+        "reviewed intake export",
+        "route forks",
+        "diagnosis packet",
+        "repair packet",
+        "no writeback stop line",
+        "aoa memo pending export"
+      ],
+      "negative_cues": [
+        "raw aoa preservation only",
+        "hook repair only",
+        "reviewed memory landing itself",
+        "proof verdict",
+        "eval scoring",
+        "generic summary without owner route"
+      ],
+      "cue_tokens": [
+        "memo",
+        "writeback",
+        "memory",
+        "candidate",
+        "port",
+        "session",
+        "evidence",
+        "refs",
+        "reviewed",
+        "intake",
+        "export",
+        "route",
+        "forks",
+        "diagnosis",
+        "packet",
+        "repair",
+        "stop",
+        "line"
+      ],
+      "negative_tokens": [
+        "raw",
+        "aoa",
+        "preservation",
+        "hook",
+        "repair",
+        "reviewed",
+        "memory",
+        "landing",
+        "itself",
+        "proof",
+        "verdict",
+        "eval"
+      ],
+      "auto_tokens": [
+        "memo",
+        "session",
+        "writeback",
+        "memory",
+        "owner",
+        "route",
+        "reviewed",
+        "aoa",
+        "candidate",
+        "decision",
+        "eval",
+        "evidence",
+        "export",
+        "line"
+      ],
+      "companions": [
+        "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-source-of-truth-check",
+        "aoa-change-protocol"
+      ],
+      "primary_positive_prompt": "Use $aoa-memo-writeback to inspect session evidence, decide whether memo writeback is needed, and route it to a local memo candidate, export packet, or explicit no-writeback stop line.",
+      "primary_negative_prompt": "The only work is repairing raw .aoa preservation and rebuilding the search index; no owner route, memo port, or bounded memory question exists yet.",
+      "primary_defer_prompt": "The repository has conflicting docs about whether the memo port or root route card owns workspace memory guidance. Clarify the authoritative files and keep entrypoints link-driven before writing any memo candidate."
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "band": "boundary-architecture",
       "band_summary": "Bounded contexts, responsibility boundaries, core-vs-glue separation, and ports/adapters.",
@@ -1442,7 +1538,7 @@
     {
       "name": "aoa-quest-harvest",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
@@ -1705,7 +1801,7 @@
     {
       "name": "aoa-session-donor-harvest",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
@@ -1790,6 +1886,7 @@
       ],
       "companions": [
         "aoa-quest-harvest",
+        "aoa-memo-writeback",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -1803,7 +1900,7 @@
     {
       "name": "aoa-session-progression-lift",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
@@ -1895,7 +1992,7 @@
     {
       "name": "aoa-session-route-forks",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
@@ -1987,7 +2084,7 @@
     {
       "name": "aoa-session-self-diagnose",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
@@ -2080,7 +2177,7 @@
     {
       "name": "aoa-session-self-repair",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",
@@ -2249,7 +2346,7 @@
     {
       "name": "aoa-summon",
       "band": "quest-harvest-governance",
-      "band_summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "band_summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "scope": "core",
       "status": "evaluated",
       "invocation_mode": "explicit-only",

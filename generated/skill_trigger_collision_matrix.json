@@ -57,6 +57,7 @@
       "skills": [
         "aoa-session-donor-harvest",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-automation-opportunity-scan",
         "aoa-session-route-forks",
         "aoa-session-self-diagnose",
@@ -67,6 +68,7 @@
       "notes": [
         "aoa-session-donor-harvest is the post-session nucleus: it authors a bounded HARVEST_PACKET and names the next honest family handoff.",
         "aoa-checkpoint-closeout-bridge turns checkpoint-led shortlist hints into one explicit reviewed-closeout chain without letting provisional notes become final authority.",
+        "aoa-memo-writeback routes session evidence and landed-work context toward a local memo candidate, reviewed-intake export, or explicit no-writeback stop line without making raw session history reviewed memory.",
         "aoa-automation-opportunity-scan classifies whether a recurring reviewed route should stay manual, become a bounded skill, or become a playbook automation seed without granting scheduler or background authority.",
         "aoa-session-route-forks makes several plausible next routes legible when continuation should stay branch-aware instead of hidden in one recommendation.",
         "aoa-session-self-diagnose turns repeated friction, drift, or proof blur from reviewed evidence into a diagnosis packet before mutation.",
@@ -588,6 +590,17 @@
       ],
       "prompt": "Separate runtime receipts, routing hints, playbook gates, and eval bridge candidates into bounded contexts before any new decision record is written.",
       "note": "This is context carving before a decision note or source-of-truth map."
+    },
+    {
+      "case_id": "collision-37",
+      "skill_name": "aoa-source-of-truth-check",
+      "expected_behavior": "invoke-skill",
+      "expected_skill": "aoa-source-of-truth-check",
+      "competing_skills": [
+        "aoa-memo-writeback"
+      ],
+      "prompt": "The repository has conflicting docs about whether the memo port or root route card owns workspace memory guidance. Clarify the authoritative files and keep entrypoints link-driven before writing any memo candidate.",
+      "note": "When the problem is document authority, source-of-truth mapping should win and memo writeback should defer."
     }
   ]
 }

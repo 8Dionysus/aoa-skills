@@ -32,6 +32,11 @@
       "short_description": "Commit bounded diffs honestly",
       "default_prompt": "Use $aoa-commit-growth-seam to isolate one bounded diff, carry forward the real validation state, and stop at one intentional local commit boundary before any push or publish route."
     },
+    "aoa-memo-writeback": {
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "short_description": "Route session evidence to memo",
+      "default_prompt": "Use $aoa-memo-writeback to inspect session evidence, decide whether memo writeback is needed, and route it to a local memo candidate, export packet, or explicit no-writeback stop line."
+    },
     "aoa-contract-test": {
       "description": "Design or extend contract-oriented validation at module, service, or workflow boundaries. Use when two components interact across a meaningful interface, downstream assumptions matter, or a smoke path needs an explicit contract. Do not use for purely local changes or when the real need is invariant or property testing instead of boundary validation.",
       "short_description": "Strengthen interface contracts",

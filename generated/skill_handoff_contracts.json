@@ -1200,6 +1200,94 @@
       }
     },
     {
+      "name": "aoa-memo-writeback",
+      "display_name": "AoA Memo Writeback",
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "invocation_mode": "explicit-preferred",
+      "inputs": [
+        "active owner repo or likely owner repo",
+        "current task intent, closeout, PR, diff, commit range, review thread, or release note",
+        "`.aoa` session evidence packet, search hits, segment refs, raw refs, or diagnostic refs when available",
+        "source refs from the owning repository",
+        "local `memo/` port status when present",
+        "reviewed `aoa-memo` recall or pending-export context when relevant",
+        "explicit privacy, freshness, and owner-boundary risks"
+      ],
+      "outputs": [
+        "one `memo_writeback_decision`: `write_candidate`, `prepare_export`, `no_writeback_needed`, `route_only_debt`, `needs_owner_review`, or `blocked`",
+        "if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and `direct_durable_write=false`",
+        "if review already accepted promotion: one reviewed-intake export packet or landing-plan handoff, not a durable memory object",
+        "if no writeback is warranted: one concise no-writeback stop line with the reason and strongest evidence checked",
+        "if the repo is route-only or the port is missing or stale: one writeback-debt note naming the owner route and the evidence refs needed",
+        "validation commands or results for local port, candidate, export, and generated index surfaces",
+        "a short closeout note naming what was written, what stayed local, what was not promoted, and where durable review would happen"
+      ],
+      "verification": [
+        "confirm the owner repo and stronger owner route were named",
+        "confirm `.aoa` refs, source refs, or review refs support the decision",
+        "confirm generic progress was rejected when no bounded memory question exists",
+        "confirm a local port exists before any local candidate write",
+        "confirm the local port was validated before or immediately after packet work",
+        "confirm candidate guardrails prevent direct durable write",
+        "confirm export `allowed_result` matches review posture",
+        "confirm `reviewed_write` appears only after explicit owner review",
+        "confirm no durable `aoa-memo` object was landed unless the active route was reviewed corpus landing",
+        "confirm closeout reports the decision, paths, evidence refs, validation, and next route"
+      ],
+      "contracts": [
+        "`.aoa` evidence remains raw or generated session evidence, not reviewed memory truth.",
+        "PRs, diffs, and commits are reconciliation lenses, not the primary record of lived session meaning.",
+        "Local candidates are written only through the owning repository's `memo/` port when one exists.",
+        "Route-only repositories do not get fake local packets; they get writeback-debt guidance.",
+        "Durable reviewed memory lands only through `aoa-memo` reviewed intake and corpus validation.",
+        "MCP output may create local-port packets or dry-run plans, but it does not become memory authority.",
+        "One writeback candidate should carry one bounded memory question, not a whole session recap.",
+        "Source refs and evidence refs stay inspectable enough for a later reviewer to reject the candidate.",
+        "Secrets, private transcript detail, and operator-sensitive material stay out of public memo packets."
+      ],
+      "consumes_artifact_tags": [
+        "active-owner-repo-or-likely-owner-repo",
+        "current-task-intent-closeout-pr-diff-commit-range-review-thread-",
+        "aoa-session-evidence-packet-search-hits-segment-refs-raw-refs-or",
+        "source-refs-from-the-owning-repository",
+        "local-memo-port-status-when-present",
+        "reviewed-aoa-memo-recall-or-pending-export-context-when-relevant",
+        "explicit-privacy-freshness-and-owner-boundary-risks"
+      ],
+      "provides_artifact_tags": [
+        "one-memo-writeback-decision-write-candidate-prepare-export-no-wr",
+        "if-writing-is-warranted-and-a-local-port-exists-one-local-memo-c",
+        "if-review-already-accepted-promotion-one-reviewed-intake-export-",
+        "if-no-writeback-is-warranted-one-concise-no-writeback-stop-line-",
+        "if-the-repo-is-route-only-or-the-port-is-missing-or-stale-one-wr",
+        "validation-commands-or-results-for-local-port-candidate-export-a",
+        "a-short-closeout-note-naming-what-was-written-what-stayed-local-"
+      ],
+      "handoff_packet_template": {
+        "from_skill": "aoa-memo-writeback",
+        "produced_artifacts": [
+          "one-memo-writeback-decision-write-candidate-prepare-export-no-wr",
+          "if-writing-is-warranted-and-a-local-port-exists-one-local-memo-c",
+          "if-review-already-accepted-promotion-one-reviewed-intake-export-",
+          "if-no-writeback-is-warranted-one-concise-no-writeback-stop-line-",
+          "if-the-repo-is-route-only-or-the-port-is-missing-or-stale-one-wr",
+          "validation-commands-or-results-for-local-port-candidate-export-a",
+          "a-short-closeout-note-naming-what-was-written-what-stayed-local-"
+        ],
+        "verification_notes": [
+          "confirm the owner repo and stronger owner route were named",
+          "confirm `.aoa` refs, source refs, or review refs support the decision",
+          "confirm generic progress was rejected when no bounded memory question exists"
+        ],
+        "contract_notes": [
+          "`.aoa` evidence remains raw or generated session evidence, not reviewed memory truth.",
+          "PRs, diffs, and commits are reconciliation lenses, not the primary record of lived session meaning.",
+          "Local candidates are written only through the owning repository's `memo/` port when one exists."
+        ],
+        "next_recommended_skills": []
+      }
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "display_name": "AoA Port Adapter Refactor",
       "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",

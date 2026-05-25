@@ -224,6 +224,7 @@
       ],
       "adjacent_skills": [
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -371,6 +372,7 @@
       "adjacent_skills": [
         "aoa-automation-opportunity-scan",
         "aoa-change-protocol",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -627,6 +629,48 @@
       "mirror_case_ids": []
     },
     {
+      "name": "aoa-memo-writeback",
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "description_sha256": "e6870123d0f2b8cae7facde3b47ce58e9f7f5a229fe4616b6da6e4091a6e3d12",
+      "summary_clause": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory",
+      "use_when_clause": "a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line",
+      "do_not_use_clause": "for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route",
+      "invocation_mode": "explicit-preferred",
+      "implicit_activation_policy": "suggest",
+      "allow_implicit_invocation": false,
+      "family": "session-harvest-family",
+      "families": [
+        "session-harvest-family"
+      ],
+      "adjacent_skills": [
+        "aoa-automation-opportunity-scan",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-quest-harvest",
+        "aoa-session-donor-harvest",
+        "aoa-session-progression-lift",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-source-of-truth-check"
+      ],
+      "default_prompt": "Use $aoa-memo-writeback to inspect session evidence, decide whether memo writeback is needed, and route it to a local memo candidate, export packet, or explicit no-writeback stop line.",
+      "required_case_classes": [
+        "explicit-handle",
+        "manual-invocation-required",
+        "should-not-trigger",
+        "prefer-other-skill"
+      ],
+      "base_case_ids": [
+        "memo-writeback-explicit",
+        "memo-writeback-manual",
+        "memo-writeback-adjacent-negative"
+      ],
+      "collision_case_ids": [],
+      "mirror_case_ids": [
+        "desc-mirror-029-aoa-memo-writeback"
+      ]
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
       "description_sha256": "e47ea2a0e2307feeff4d3c14974e7115fbb99a6cf81a1a86c1514aa24055b508",
@@ -720,6 +764,7 @@
         "aoa-adr-write",
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
@@ -858,6 +903,7 @@
       "adjacent_skills": [
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-progression-lift",
         "aoa-session-route-forks",
@@ -900,6 +946,7 @@
       "adjacent_skills": [
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-route-forks",
@@ -944,6 +991,7 @@
         "aoa-automation-opportunity-scan",
         "aoa-change-protocol",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -986,6 +1034,7 @@
         "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -1027,6 +1076,7 @@
         "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -1072,6 +1122,7 @@
         "aoa-adr-write",
         "aoa-bounded-context-map",
         "aoa-change-protocol",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-safe-infra-change",
         "aoa-sanitized-share",
@@ -1091,12 +1142,14 @@
         "14-adjacent-negative",
         "collision-17",
         "collision-28",
-        "collision-34"
+        "collision-34",
+        "collision-37"
       ],
       "collision_case_ids": [
         "desc-collision-collision-17",
         "desc-collision-collision-28",
-        "desc-collision-collision-34"
+        "desc-collision-collision-34",
+        "desc-collision-collision-37"
       ],
       "mirror_case_ids": [
         "desc-mirror-028-aoa-source-of-truth-check"

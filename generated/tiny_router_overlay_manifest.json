@@ -10,9 +10,9 @@
     "config/skill_policy_matrix.json",
     "config/tiny_router_skill_bands.json"
   ],
-  "skill_count": 45,
+  "skill_count": 46,
   "band_count": 7,
-  "case_count": 109,
+  "case_count": 112,
   "skills": [
     {
       "name": "abyss-safe-infra-change",
@@ -148,6 +148,15 @@
       "candidate_only": false,
       "project_overlay": false,
       "description_sha256": "f878029a986286568d5254e65a58127f9bcfa51c949b0f08ddd9feadfaab6516"
+    },
+    {
+      "name": "aoa-memo-writeback",
+      "band": "quest-harvest-governance",
+      "implicit_activation_policy": "suggest",
+      "manual_invocation_required": true,
+      "candidate_only": true,
+      "project_overlay": false,
+      "description_sha256": "e6870123d0f2b8cae7facde3b47ce58e9f7f5a229fe4616b6da6e4091a6e3d12"
     },
     {
       "name": "aoa-port-adapter-refactor",

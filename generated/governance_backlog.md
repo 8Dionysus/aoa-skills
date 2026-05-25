@@ -7,7 +7,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 
 ## Summary
 
-- total skills: 45
+- total skills: 46
 - candidate ready without review: 10
 - pending technique bridge lineage: 0
 - canonical maintenance cohort: 12
@@ -32,6 +32,7 @@ Read those rows as per-skill maintenance signals, not as missing canonical-decis
 | aoa-dry-run-first | canonical | published | true | true | default_reference | risk_authority_preview_execution | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-dry-run-first.md | docs/reviews/status-promotions/aoa-dry-run-first.md |
 | aoa-invariant-coverage-audit | canonical | published | true | true | default_reference | invariant_authoring_vs_audit | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-invariant-coverage-audit.md | docs/reviews/status-promotions/aoa-invariant-coverage-audit.md |
 | aoa-local-stack-bringup | evaluated | published | true | true | stay_evaluated | local_runtime_bringup | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-local-stack-bringup.md | docs/reviews/status-promotions/aoa-local-stack-bringup.md |
+| aoa-memo-writeback | scaffold | published | false | true | - | - | eval_ready_but_governance_blocked | - | - |
 | aoa-port-adapter-refactor | evaluated | published | true | true | stay_evaluated | core_boundary_refactor | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-port-adapter-refactor.md | docs/reviews/status-promotions/aoa-port-adapter-refactor.md |
 | aoa-property-invariants | canonical | published | true | true | default_reference | invariant_authoring_vs_audit | governance_and_eval_ready | docs/reviews/canonical-candidates/aoa-property-invariants.md | docs/reviews/status-promotions/aoa-property-invariants.md |
 | aoa-quest-harvest | evaluated | published | true | true | stay_evaluated | session_growth_closeout | governance_and_eval_ready | - | docs/reviews/status-promotions/aoa-quest-harvest.md |

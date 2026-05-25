@@ -38,8 +38,8 @@ class SkillPromotionPressureTests(unittest.TestCase):
     def test_report_covers_every_skill_and_sources(self) -> None:
         report = self.run_report()
 
-        self.assertEqual(45, report["skill_count"])
-        self.assertEqual(45, len(report["skills"]))
+        self.assertEqual(46, report["skill_count"])
+        self.assertEqual(46, len(report["skills"]))
         self.assertEqual(
             "generated/public_surface.json",
             report["source_of_truth"]["status_and_governance"],

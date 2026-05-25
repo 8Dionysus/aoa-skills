@@ -64,6 +64,15 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-contract-test",
           "source_path": ".agents/skills/aoa-contract-test/SKILL.md",
           "target_path": ".agents/skills/aoa-contract-test/SKILL.md",
@@ -1268,6 +1277,15 @@
           "trust_posture": "portable-core"
         },
         {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
+          "trust_posture": "portable-core"
+        },
+        {
           "name": "aoa-summon",
           "source_path": ".agents/skills/aoa-summon/SKILL.md",
           "target_path": ".agents/skills/aoa-summon/SKILL.md",
@@ -1450,6 +1468,15 @@
           "openai_config_path": "$HOME/.agents/skills/aoa-core-logic-boundary/agents/openai.yaml",
           "allow_implicit_invocation": true,
           "implicit_activation_policy": "invoke",
+          "trust_posture": "portable-core"
+        },
+        {
+          "name": "aoa-memo-writeback",
+          "source_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+          "target_path": "$HOME/.agents/skills/aoa-memo-writeback/SKILL.md",
+          "openai_config_path": "$HOME/.agents/skills/aoa-memo-writeback/agents/openai.yaml",
+          "allow_implicit_invocation": false,
+          "implicit_activation_policy": "suggest",
           "trust_posture": "portable-core"
         },
         {

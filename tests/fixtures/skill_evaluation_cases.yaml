@@ -149,6 +149,12 @@ autonomy_checks:
       - github.com/8Dionysus/aoa-techniques
       - git clone
       - live dependency resolution
+  - skill: aoa-memo-writeback
+    forbidden_runtime_terms:
+      - aoa-techniques
+      - github.com/8Dionysus/aoa-techniques
+      - git clone
+      - live dependency resolution
   - skill: aoa-summon
     forbidden_runtime_terms:
       - aoa-techniques
@@ -754,6 +760,21 @@ trigger_cases:
       - there is no reviewed artifact yet
       - the request tries to make `aoa closeout run` a hidden skill runner
       - the task wants final harvest, progression, or quest verdicts from checkpoint
+  - skill: aoa-memo-writeback
+    case_id: memo_writeback_session_evidence_to_candidate
+    prompt: A live session corrected an owner-route mistake, the landed diff only shows the final docs update, and the reason to remember it lives in `.aoa` search hits plus a repo-local `memo/` port that can hold a candidate.
+    expected: use
+    required_phrases:
+      - a session is still live and a meaningful decision
+      - a closeout, PR, diff, commit, release, or review suggests memory-worthy work
+      - a repo has a `memo/` port and the agent must decide whether to create a local
+  - skill: aoa-memo-writeback
+    case_id: memo_writeback_raw_aoa_preservation_only
+    prompt: The only request is to repair the `.aoa` hook, preserve raw transcript files, and rebuild the search index. No owner route, memo port, reviewed source, or bounded memory question has been identified yet.
+    expected: do_not_use
+    required_phrases:
+      - the task is only raw `.aoa` preservation, reindexing, retrieval, or hook
+      - no inspectable session, source, PR, receipt, or owner evidence exists
   - skill: aoa-summon
     case_id: summon_anchored_local_child_review
     prompt: An anchored parent route already has a quest passport, named outputs, and a bounded need for one local reviewer child to inspect a narrow package fix before the parent route continues.
@@ -1686,6 +1707,24 @@ snapshot_cases:
     required_output_phrases:
       - do_not_use
       - A deflection that keeps the route in repair or verification instead of forcing a commit boundary too early.
+    forbidden_output_phrases: []
+  - skill: aoa-memo-writeback
+    case_id: memo_writeback_session_evidence_to_candidate
+    prompt: A live session corrected an owner-route mistake, the landed diff only shows the final docs update, and the reason to remember it lives in `.aoa` search hits plus a repo-local `memo/` port that can hold a candidate.
+    expected: use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-memo-writeback/memo_writeback_session_evidence_to_candidate.md
+    required_output_phrases:
+      - use
+      - A memo_writeback_decision of `write_candidate` with one local memo candidate, source refs, .aoa evidence refs, review-required guardrails, and no direct durable aoa-memo object.
+    forbidden_output_phrases: []
+  - skill: aoa-memo-writeback
+    case_id: memo_writeback_raw_aoa_preservation_only
+    prompt: The only request is to repair the `.aoa` hook, preserve raw transcript files, and rebuild the search index. No owner route, memo port, reviewed source, or bounded memory question has been identified yet.
+    expected: do_not_use
+    snapshot_path: tests/fixtures/skill_evaluation_snapshots/aoa-memo-writeback/memo_writeback_raw_aoa_preservation_only.md
+    required_output_phrases:
+      - do_not_use
+      - A no-writeback stop line that deflects to raw .aoa preservation or retrieval repair instead of creating a memo candidate.
     forbidden_output_phrases: []
   - skill: atm10-change-protocol
     case_id: atm10_change_protocol_local_overlay

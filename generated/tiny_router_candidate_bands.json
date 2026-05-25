@@ -115,7 +115,7 @@
     },
     {
       "id": "quest-harvest-governance",
-      "summary": "Post-session donor harvest, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
+      "summary": "Post-session donor harvest, memo writeback, checkpoint closeout bridge, automation opportunity scanning, route forks, diagnosis, repair, progression, and quest promotion triage for reviewed session artifacts or repeated reviewed patterns.",
       "cues": [
         "route forks",
         "diagnosis packet",
@@ -141,6 +141,13 @@
         "codex local child",
         "return plan",
         "checkpoint collect",
+        "memo writeback",
+        "memory candidate",
+        "local memo port",
+        "reviewed intake export",
+        "aoa memo",
+        "session evidence refs",
+        "no writeback stop line",
         "runtime self diagnosis",
         "diagnostic session artifact",
         "runtime evidence handoff",
@@ -154,6 +161,7 @@
         "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -166,6 +174,7 @@
         "abyss-self-diagnostic-spine",
         "aoa-automation-opportunity-scan",
         "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback",
         "aoa-quest-harvest",
         "aoa-session-donor-harvest",
         "aoa-session-progression-lift",
@@ -175,7 +184,8 @@
         "aoa-summon"
       ],
       "suggest_only_skills": [
-        "aoa-checkpoint-closeout-bridge"
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-memo-writeback"
       ],
       "overlay_skills": [
         "abyss-self-diagnostic-spine"

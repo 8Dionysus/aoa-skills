@@ -348,6 +348,29 @@
       "requires_confirmation_seam": true
     },
     {
+      "name": "aoa-memo-writeback",
+      "compact_summary": "Route session evidence to memo",
+      "activation_card_markdown": "Use when: Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.\n\nKeep in memory: active owner repo or likely owner repo, current task intent, closeout, PR, diff, commit range, review thread, or release note, one `memo_writeback_decision`: `write_candidate`, `prepare_export`, `no_writeback_needed`, `route_only_debt`, `needs_owner_review`, or `blocked`, if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and `direct_durable_write=false`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "must_keep": [
+        "active owner repo or likely owner repo",
+        "current task intent, closeout, PR, diff, commit range, review thread, or release note",
+        "one `memo_writeback_decision`: `write_candidate`, `prepare_export`, `no_writeback_needed`, `route_only_debt`, `needs_owner_review`, or `blocked`",
+        "if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and `direct_durable_write=false`"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "metadata_keys": [
+        "aoa_scope",
+        "aoa_status",
+        "aoa_invocation_mode"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "requires_confirmation_seam": false
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "compact_summary": "Refactor toward ports/adapters",
       "activation_card_markdown": "Use when: Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.\n\nKeep in memory: target module, builder, tool, workflow, or slice, concrete dependency or runtime concern that currently leaks into reusable logic, clearer boundary between logic and infrastructure, proposed or implemented port shape.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",

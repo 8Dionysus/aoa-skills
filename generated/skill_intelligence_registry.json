@@ -3873,6 +3873,256 @@
       ]
     },
     {
+      "name": "aoa-memo-writeback",
+      "scope": "core",
+      "status": "scaffold",
+      "summary": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
+      "source": {
+        "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+        "techniques_path": "skills/core/session-growth/aoa-memo-writeback/techniques.yaml",
+        "policy_path": "skills/core/session-growth/aoa-memo-writeback/agents/openai.yaml",
+        "content_hash": "85009a22e39fdb583bf42babf1607289e6443b3d13020693a936775e7e5e59f9",
+        "skill_revision": "85009a22e39f"
+      },
+      "policy": {
+        "invocation_mode": "explicit-preferred",
+        "implicit_activation_policy": "suggest",
+        "trust_posture": "portable-core",
+        "mutation_surface": "repo",
+        "requires_manual_invocation": true,
+        "candidate_only": true,
+        "requires_confirmation_seam": false
+      },
+      "runtime": {
+        "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+        "allow_implicit_invocation": false
+      },
+      "tiny_router": {
+        "band": "quest-harvest-governance",
+        "cue_phrases": [
+          "memo writeback",
+          "memory candidate",
+          "local memo port",
+          "session evidence refs",
+          "reviewed intake export",
+          "route forks"
+        ],
+        "negative_phrases": [
+          "raw aoa preservation only",
+          "hook repair only",
+          "reviewed memory landing itself"
+        ],
+        "companions": [
+          "aoa-session-donor-harvest",
+          "aoa-checkpoint-closeout-bridge",
+          "aoa-source-of-truth-check"
+        ]
+      },
+      "resources": {
+        "bundle_support_artifacts": [
+          {
+            "path": "skills/core/session-growth/aoa-memo-writeback/examples/runtime.md",
+            "selected_for_runtime_inspection": true,
+            "type": "runtime_example"
+          }
+        ],
+        "support_resource_index": {
+          "targeted": false,
+          "standard_dir_counts": {},
+          "legacy_dir_counts": {}
+        },
+        "selected_runtime_artifact_path": "skills/core/session-growth/aoa-memo-writeback/examples/runtime.md"
+      },
+      "lineage": {
+        "technique_dependencies": [
+          "AOA-T-0026",
+          "AOA-T-0106",
+          "AOA-T-0076"
+        ],
+        "technique_lineage": [
+          {
+            "id": "AOA-T-0026",
+            "lineage_state": "published",
+            "path": "techniques/history/history-artifacts/session-capture-as-repo-artifact/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f"
+          },
+          {
+            "id": "AOA-T-0106",
+            "lineage_state": "published",
+            "path": "techniques/proof/review-evidence/single-scoped-evidence-reference/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f"
+          },
+          {
+            "id": "AOA-T-0076",
+            "lineage_state": "published",
+            "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+            "repo": "aoa-techniques",
+            "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f"
+          }
+        ],
+        "lineage_state": "published"
+      },
+      "boundaries": {
+        "adjacent_skill_names": [],
+        "adjacency_ready": false,
+        "adjacency_blockers": []
+      },
+      "evaluation": {
+        "canonical_eval_ready": true,
+        "canonical_eval_blockers": [],
+        "use_case_count": 1,
+        "do_not_use_case_count": 1,
+        "autonomy_check_count": 1,
+        "promotion_review_path": null,
+        "candidate_review_path": null
+      },
+      "graph_refs": {
+        "node_id": "skill_aoa_memo_writeback",
+        "outgoing_edge_count": 15,
+        "incoming_edge_count": 0,
+        "outgoing_edge_kinds": {
+          "available_in_artifact_group": 5,
+          "depends_on": 3,
+          "included_in_profile": 3,
+          "invocation_policy": 1,
+          "lineage": 1,
+          "maturity": 1,
+          "scope": 1
+        },
+        "incoming_edge_kinds": {}
+      },
+      "install_refs": {
+        "repo_export_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+        "repo_export_present": true,
+        "install_profiles": [
+          "repo-default",
+          "repo-session-growth",
+          "user-curated-core"
+        ],
+        "artifact_group_coverage": [
+          "portable_export",
+          "runtime_seam",
+          "runtime_guardrails",
+          "description_trigger",
+          "tiny_router"
+        ]
+      },
+      "search_documents": [
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:summary",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "summary",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "frontmatter.summary",
+          "text": "Turn session evidence, landed-work context, and owner routes into one explicit memo writeback decision, local memo candidate, export packet, or no-writeback stop line without treating session history as reviewed memory.",
+          "text_sha256": "19794b6c104299d1ad1ea4987a3db527907a26039372d0a7e0a9c6aae58e6edc",
+          "token_count": 30
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:intent",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "intent",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Intent",
+          "text": "Use this skill to decide whether a live session, closeout, landed change, or review thread produced memory-worthy material and route that material into the owning repository's local memo port, an `aoa-memo` reviewed-intake export, or an explicit no-writeback stop line. The skill bridges session evidence to memo writeback. It does not turn `.aoa` raw history into reviewed memory, and it does not land durable `aoa-memo` objects.",
+          "text_sha256": "afb4eb4838184033dc695c5016aa741930f99bd207c2c069262d49c7e03fc71a",
+          "token_count": 65
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:trigger_boundary",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "trigger_boundary",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Trigger boundary",
+          "text": "Use this skill when: - a session is still live and a meaningful decision, route change, failure correction, owner-boundary clarification, MCP/service contract, eval/proof posture, or workflow seam should not be lost - a closeout, PR, diff, commit, release, or review suggests memory-worthy work, but the reason lives in `.aoa` session evidence rather than in the final diff alone - a repo has a `memo/` port and the agent must decide whether to create a local candidate, validate the port, prepare an export, or stop with no memo writeback - a repo is route-only and the correct output is writeback debt or owner-route guidance rather than a fake local packet - `aoa-memo` recall, pending exports, or generated readouts show a gap between lived session work and reviewed memory Do not use this skill when: - the task is only raw `.aoa` preservation, reindexing, retrieval, or hook repair - the candidate has already been reviewed and the only remaining work is durable landing inside `aoa-memo` - the request needs proof verdicts, scoring, or eval quality judgment rather than memory writeback routing - no inspectable session, source, PR, receipt, or owner evidence exists - the output would promote secrets, private transcript content, or unreviewed operator-sensitive material into a public memo surface",
+          "text_sha256": "9ef1b73839893a8c7ab6bd035a12a655791c2c6a6ae46dc1e8352d2c257307ca",
+          "token_count": 208
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:inputs",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "inputs",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Inputs",
+          "text": "- active owner repo or likely owner repo - current task intent, closeout, PR, diff, commit range, review thread, or release note - `.aoa` session evidence packet, search hits, segment refs, raw refs, or diagnostic refs when available - source refs from the owning repository - local `memo/` port status when present - reviewed `aoa-memo` recall or pending-export context when relevant - explicit privacy, freshness, and owner-boundary risks",
+          "text_sha256": "409c473cef1508a9ba2d9f4c88138a126b4eb56c6031dcdea299daaa9daaadf7",
+          "token_count": 68
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:outputs",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "outputs",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Outputs",
+          "text": "- one `memo_writeback_decision`: `write_candidate`, `prepare_export`, `no_writeback_needed`, `route_only_debt`, `needs_owner_review`, or `blocked` - if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and `direct_durable_write=false` - if review already accepted promotion: one reviewed-intake export packet or landing-plan handoff, not a durable memory object - if no writeback is warranted: one concise no-writeback stop line with the reason and strongest evidence checked - if the repo is route-only or the port is missing or stale: one writeback-debt note naming the owner route and the evidence refs needed - validation commands or results for local port, candidate, export, and generated index surfaces - a short closeout note naming what was written, what stayed local, what was not promoted, and where durable review would happen",
+          "text_sha256": "ef419b30d4a81f8fa2a4c7774f1b2d695d88e132fae3b4d152026be487bf7d56",
+          "token_count": 132
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:procedure",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "procedure",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Procedure",
+          "text": "1. Name the owner repo and the nearest stronger owner for the material before judging memory-worthiness. 2. Inspect `.aoa` first when the reason may live in the session: use search, retrieve, segment indexes, or raw refs, and keep those refs as evidence rather than truth. 3. Inspect the landed-work lens only as a reconciliation layer: PR, diff, commits, release notes, or review threads can show what landed, but not replace session evidence. 4. Decide whether the material is memory-worthy: prefer owner-boundary changes, route-law changes, reviewed decisions, repeated failures, corrected wrong assumptions, lifecycle events, MCP/service contracts, eval/proof posture changes, and consumer handoff facts. 5. Reject generic progress, mood, broad summaries, unresolved speculation, secret-bearing details, and material whose real owner is proof, routing, runtime, role, playbook, KAG, ToS, or source doctrine. 6. Check whether the owner repo has a `memo/` port. If not, emit `route_only_debt` instead of inventing a packet. 7. When a port exists, validate it before writing or promoting local state. 8. Shape one bounded claim with at least one source ref and one evidence ref. Prefer `.aoa` segment or raw refs plus owner repo source refs over paraphrase-only evidence. 9. Create or draft a local candidate only in the owner repo's `memo/candidates/` path or through the available `aoa_memo` local-port helper. 10. Mark local candidates as review-required and guard them with `direct_durable_write=false`, `instructions_treated_as_data=true`, and `requires_reviewed_intake=true` when promotion is desired. 11. Build or check the local memo port index after writing a candidate. 12. Prepare an export only when the owner review posture supports it. Use `candidate_only` unless reviewed promotion is explicit. 13. Use `reviewed_write` only when source-owner review has accepted that the export may become durable reviewed memory. 14. Treat `aoa_memo_landing_plan` or an equivalent landing-plan helper as a dry run unless the active owner route is an `aoa-memo` reviewed source patch. 15. Stop before durable reviewed memory landing unless the user explicitly asked for that landing and the `aoa-memo` corpus route is active. 16. Record the result as a closeout line: decision, packet paths, evidence refs, validation run, and next owner route. Common command shapes: ```bash # Run from the workspace root that owns .aoa. python .aoa/scripts/aoa_session_memory.py search --query \"<route or decision>\" --limit 8 python .aoa/scripts/aoa_session_memory.py retrieve manual-review --query \"<route or decision>\" --session \"<session-or-label>\" --limit 8 --event-limit 16 ``` Treat command output as evidence handles. The reviewer still decides whether the candidate becomes durable memory.",
+          "text_sha256": "5663f8441af596fb34ddbe52c031615e09861025148495fa4ce5802b1be10f66",
+          "token_count": 395
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:contracts",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "contracts",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Contracts",
+          "text": "- `.aoa` evidence remains raw or generated session evidence, not reviewed memory truth. - PRs, diffs, and commits are reconciliation lenses, not the primary record of lived session meaning. - Local candidates are written only through the owning repository's `memo/` port when one exists. - Route-only repositories do not get fake local packets; they get writeback-debt guidance. - Durable reviewed memory lands only through `aoa-memo` reviewed intake and corpus validation. - MCP output may create local-port packets or dry-run plans, but it does not become memory authority. - One writeback candidate should carry one bounded memory question, not a whole session recap. - Source refs and evidence refs stay inspectable enough for a later reviewer to reject the candidate. - Secrets, private transcript detail, and operator-sensitive material stay out of public memo packets.",
+          "text_sha256": "90b576b9b781d8b9437b8b99c7d0da19dd658e97ea8c0247b8db7a51337912c6",
+          "token_count": 133
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:risk",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "risk",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Risks and anti-patterns",
+          "text": "- using a clean commit summary as a substitute for the session evidence that made the change meaningful - turning `.aoa` raw transcript material into canon without reviewed distillation - creating memory candidates for every commit or every interesting thought - writing central `aoa-memo` objects directly from a live session - using `reviewed_write` for material that is only candidate-grade - hiding missing local memo ports by writing central notes elsewhere - over-promoting proof, routing, runtime, role, playbook, KAG, ToS, or source doctrine meaning into memory - storing private or secret-bearing raw transcript excerpts in public-safe memo packets - leaving a candidate without rebuilding or checking the local port index",
+          "text_sha256": "33e208d52fb1410d36b853f078d8d18c8ecb96c63773482b09aca184cc557f3b",
+          "token_count": 109
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:verification",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "verification",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Verification",
+          "text": "- confirm the owner repo and stronger owner route were named - confirm `.aoa` refs, source refs, or review refs support the decision - confirm generic progress was rejected when no bounded memory question exists - confirm a local port exists before any local candidate write - confirm the local port was validated before or immediately after packet work - confirm candidate guardrails prevent direct durable write - confirm export `allowed_result` matches review posture - confirm `reviewed_write` appears only after explicit owner review - confirm no durable `aoa-memo` object was landed unless the active route was reviewed corpus landing - confirm closeout reports the decision, paths, evidence refs, validation, and next route",
+          "text_sha256": "18851f880b31fa819248faca4eeca9721ee7a5539b56273e414a061e0935e3a9",
+          "token_count": 112
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:lineage",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "lineage",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Technique traceability",
+          "text": "Manifest-backed techniques: - AOA-T-0026 from `8Dionysus/aoa-techniques` at `9a0ac2bafc2218278315b1311fcb17077f11752f` using path `techniques/history/history-artifacts/session-capture-as-repo-artifact/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks - AOA-T-0106 from `8Dionysus/aoa-techniques` at `9a0ac2bafc2218278315b1311fcb17077f11752f` using path `techniques/proof/review-evidence/single-scoped-evidence-reference/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Risks, Validation - AOA-T-0076 from `8Dionysus/aoa-techniques` at `9a0ac2bafc2218278315b1311fcb17077f11752f` using path `techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md` and sections: Intent, When to use, Inputs, Outputs, Core procedure, Contracts, Validation",
+          "text_sha256": "d4b2e01ffa2657ab052c0ad917769c3a307c483c67e3826580fd9b7076bf00e6",
+          "token_count": 66
+        },
+        {
+          "doc_id": "skill:aoa-memo-writeback:section:adaptation",
+          "skill_name": "aoa-memo-writeback",
+          "section_role": "adaptation",
+          "source_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+          "source_anchor": "## Adaptation points",
+          "text": "Project overlays may add: - repo-local memory-worthy trigger classes - local privacy and public-safe packet rules - local memo candidate naming rules - local `.aoa` retrieval recipes or atlas axes - local MCP command wrappers - local closeout text that must appear before PR, release, or merge - local policy for when route-only debt should become a full `memo/` port",
+          "text_sha256": "0dedf879cb550dea3c5dcd24dfe118c5a472e3f6c4be568cb7ff20adaa43c9d6",
+          "token_count": 60
+        }
+      ]
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "scope": "core",
       "status": "evaluated",
@@ -5212,8 +5462,8 @@
         ],
         "companions": [
           "aoa-quest-harvest",
-          "aoa-automation-opportunity-scan",
-          "aoa-session-route-forks"
+          "aoa-memo-writeback",
+          "aoa-automation-opportunity-scan"
         ]
       },
       "resources": {

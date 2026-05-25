@@ -605,6 +605,41 @@
       "context_retention_ref": "generated/context_retention_manifest.json#aoa-local-stack-bringup"
     },
     {
+      "name": "aoa-memo-writeback",
+      "description": "Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.",
+      "path": ".agents/skills/aoa-memo-writeback/SKILL.md",
+      "openai_config_path": ".agents/skills/aoa-memo-writeback/agents/openai.yaml",
+      "allow_implicit_invocation": false,
+      "implicit_activation_policy": "suggest",
+      "invocation_mode": "explicit-preferred",
+      "allowlist_paths": [
+        ".agents/skills/aoa-memo-writeback"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "metadata": {
+        "aoa_scope": "core",
+        "aoa_status": "scaffold",
+        "aoa_invocation_mode": "explicit-preferred",
+        "aoa_source_skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+        "aoa_source_repo": "8Dionysus/aoa-skills",
+        "aoa_technique_dependencies": "AOA-T-0026,AOA-T-0106,AOA-T-0076",
+        "aoa_portable_profile": "codex-facing-wave-3"
+      },
+      "trust_posture": "portable-core",
+      "context_retention_ref": "generated/context_retention_manifest.json#aoa-memo-writeback"
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "description": "Refactor code toward clearer ports and adapters so domain or application logic is less entangled with infrastructure details. Use when concrete dependencies leak into core logic, tests are hard because external concerns bleed inward, or a module needs a clearer seam before further change. Do not use for tiny local fixes or when there is no meaningful boundary to clarify.",
       "path": ".agents/skills/aoa-port-adapter-refactor/SKILL.md",

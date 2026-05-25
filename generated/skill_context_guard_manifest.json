@@ -490,6 +490,38 @@
       }
     },
     {
+      "name": "aoa-memo-writeback",
+      "display_name": "AoA Memo Writeback",
+      "source_scope": "repo",
+      "instruction_sha256": "2bca6ee982db433c65bbf0d31efc5ae48386a7ac1cce906e4cc096f6d8057af0",
+      "dedupe_key": "aoa-memo-writeback:2bca6ee982db433c65bbf0d31efc5ae48386a7ac1cce906e4cc096f6d8057af0",
+      "protect_from_compaction": true,
+      "pin_strategy": "protected-tool-output",
+      "reactivation_strategy": "compact-packet-then-activate",
+      "compact_summary": "Route session evidence to memo",
+      "must_keep": [
+        "active owner repo or likely owner repo",
+        "current task intent, closeout, PR, diff, commit range, review thread, or release note",
+        "one `memo_writeback_decision`: `write_candidate`, `prepare_export`, `no_writeback_needed`, `route_only_debt`, `needs_owner_review`, or `blocked`",
+        "if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and `direct_durable_write=false`"
+      ],
+      "retain_sections": [
+        "Trigger boundary",
+        "Procedure",
+        "Verification"
+      ],
+      "rehydration_hint": "Reload the full SKILL.md and keep policy, procedure, and verification in active context before resuming.",
+      "activation_card_markdown": "Use when: Bridge session evidence into memory writeback decisions without turning raw session history into reviewed memory. Use when a live session, closeout, PR, commit, or review reveals a memory-worthy decision, failure, route change, owner-boundary event, service contract, eval posture, or consumer handoff and the agent needs to decide whether to write a local memo candidate, prepare a reviewed-intake export, or record an explicit no-writeback stop line. Do not use for raw session capture, reviewed memory landing itself, proof verdicts, eval scoring, or generic summaries with no owner route.\n\nKeep in memory: active owner repo or likely owner repo, current task intent, closeout, PR, diff, commit range, review thread, or release note, one `memo_writeback_decision`: `write_candidate`, `prepare_export`, `no_writeback_needed`, `route_only_debt`, `needs_owner_review`, or `blocked`, if writing is warranted and a local port exists: one local memo candidate with source refs, evidence refs, trust posture, risk markers, and `direct_durable_write=false`.\n\nIf the skill drops out of context, reload Trigger boundary, Procedure, and Verification from SKILL.md.",
+      "reactivation_call": {
+        "name": "guarded_activate_skill",
+        "arguments": {
+          "skill_name": "aoa-memo-writeback",
+          "explicit_handle": "$aoa-memo-writeback",
+          "session_file": ".aoa/skill-runtime-session.json"
+        }
+      }
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "display_name": "AoA Port Adapter Refactor",
       "source_scope": "repo",

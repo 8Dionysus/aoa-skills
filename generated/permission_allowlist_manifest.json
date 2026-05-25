@@ -896,6 +896,61 @@
       "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
     },
     {
+      "name": "aoa-memo-writeback",
+      "display_name": "AoA Memo Writeback",
+      "source_scope": "repo",
+      "allowlist_id": "skill:aoa-memo-writeback",
+      "read_access": "read-only",
+      "merge_strategy": "union-active-skills",
+      "path_templates": {
+        "repo": [
+          "$REPO_ROOT/.agents/skills/aoa-memo-writeback",
+          "$REPO_ROOT/.agents/skills/aoa-memo-writeback/scripts",
+          "$REPO_ROOT/.agents/skills/aoa-memo-writeback/references",
+          "$REPO_ROOT/.agents/skills/aoa-memo-writeback/assets",
+          "$REPO_ROOT/.agents/skills/aoa-memo-writeback/checks",
+          "$REPO_ROOT/.agents/skills/aoa-memo-writeback/examples"
+        ],
+        "user": [
+          "$HOME/.agents/skills/aoa-memo-writeback",
+          "$HOME/.agents/skills/aoa-memo-writeback/scripts",
+          "$HOME/.agents/skills/aoa-memo-writeback/references",
+          "$HOME/.agents/skills/aoa-memo-writeback/assets",
+          "$HOME/.agents/skills/aoa-memo-writeback/checks",
+          "$HOME/.agents/skills/aoa-memo-writeback/examples"
+        ],
+        "admin": [
+          "/etc/codex/skills/aoa-memo-writeback",
+          "/etc/codex/skills/aoa-memo-writeback/scripts",
+          "/etc/codex/skills/aoa-memo-writeback/references",
+          "/etc/codex/skills/aoa-memo-writeback/assets",
+          "/etc/codex/skills/aoa-memo-writeback/checks",
+          "/etc/codex/skills/aoa-memo-writeback/examples"
+        ]
+      },
+      "repo_relative_paths": [
+        ".agents/skills/aoa-memo-writeback",
+        ".agents/skills/aoa-memo-writeback/scripts",
+        ".agents/skills/aoa-memo-writeback/references",
+        ".agents/skills/aoa-memo-writeback/assets",
+        ".agents/skills/aoa-memo-writeback/checks",
+        ".agents/skills/aoa-memo-writeback/examples"
+      ],
+      "resource_inventory": {
+        "scripts": [],
+        "references": [],
+        "assets": [
+          "assets/large-logo.svg",
+          "assets/small-logo.svg"
+        ],
+        "checks": [],
+        "examples": [
+          "examples/runtime.md"
+        ]
+      },
+      "notes": "List bundled resources without eager reads. Local wrappers should allow read access to these directories so scripts, references, assets, checks, and examples do not trigger per-file permission prompts."
+    },
+    {
       "name": "aoa-port-adapter-refactor",
       "display_name": "AoA Port Adapter Refactor",
       "source_scope": "repo",

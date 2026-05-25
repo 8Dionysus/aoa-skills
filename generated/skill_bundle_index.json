@@ -1301,6 +1301,87 @@
         "tiny_router"
       ],
       "bundle_files": [
+        "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+        "skills/core/session-growth/aoa-memo-writeback/techniques.yaml",
+        "skills/core/session-growth/aoa-memo-writeback/agents/openai.yaml"
+      ],
+      "candidate_review_path": null,
+      "canonical_candidate_ready": false,
+      "canonical_eval_ready": true,
+      "content_hash": "85009a22e39fdb583bf42babf1607289e6443b3d13020693a936775e7e5e59f9",
+      "generated_surface_versions": {
+        "boundary_matrix": 2,
+        "bundle_index": 2,
+        "capsule": 1,
+        "catalog": 1,
+        "evaluation_matrix": 1,
+        "governance_backlog": 5,
+        "lineage_surface": 1,
+        "overlay_readiness": 1,
+        "public_surface": 3,
+        "sections": 1,
+        "skill_composition_audit": 1,
+        "skill_graph": 2,
+        "walkthrough": 1
+      },
+      "install_profiles": [
+        "repo-default",
+        "repo-session-growth",
+        "user-curated-core"
+      ],
+      "invocation_mode": "explicit-preferred",
+      "lineage_state": "published",
+      "name": "aoa-memo-writeback",
+      "promotion_review_path": null,
+      "scope": "core",
+      "skill_path": "skills/core/session-growth/aoa-memo-writeback/SKILL.md",
+      "skill_revision": "85009a22e39f",
+      "status": "scaffold",
+      "support_artifacts": [
+        {
+          "path": "skills/core/session-growth/aoa-memo-writeback/examples/runtime.md",
+          "selected_for_runtime_inspection": true,
+          "type": "runtime_example"
+        }
+      ],
+      "technique_dependencies": [
+        "AOA-T-0026",
+        "AOA-T-0106",
+        "AOA-T-0076"
+      ],
+      "technique_lineage": [
+        {
+          "id": "AOA-T-0026",
+          "lineage_state": "published",
+          "path": "techniques/history/history-artifacts/session-capture-as-repo-artifact/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f"
+        },
+        {
+          "id": "AOA-T-0106",
+          "lineage_state": "published",
+          "path": "techniques/proof/review-evidence/single-scoped-evidence-reference/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f"
+        },
+        {
+          "id": "AOA-T-0076",
+          "lineage_state": "published",
+          "path": "techniques/governance/decision-routing/owner-layer-triage/TECHNIQUE.md",
+          "repo": "aoa-techniques",
+          "source_ref": "9a0ac2bafc2218278315b1311fcb17077f11752f"
+        }
+      ]
+    },
+    {
+      "artifact_group_coverage": [
+        "portable_export",
+        "runtime_seam",
+        "runtime_guardrails",
+        "description_trigger",
+        "tiny_router"
+      ],
+      "bundle_files": [
         "skills/core/engineering/aoa-port-adapter-refactor/SKILL.md",
         "skills/core/engineering/aoa-port-adapter-refactor/techniques.yaml",
         "skills/core/engineering/aoa-port-adapter-refactor/agents/openai.yaml"
