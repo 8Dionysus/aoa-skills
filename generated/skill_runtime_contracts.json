@@ -606,7 +606,11 @@
       "default_prompt": "Use $aoa-memo-writeback to inspect session evidence, decide whether memo writeback is needed, and route it to a local memo candidate, export packet, or explicit no-writeback stop line.",
       "resource_inventory": {
         "scripts": [],
-        "references": [],
+        "references": [
+          "references/core-skill-application-receipt-schema.yaml",
+          "references/memo-writeback-decision-receipt-schema.yaml",
+          "references/stats-event-envelope.md"
+        ],
         "assets": [
           "assets/large-logo.svg",
           "assets/small-logo.svg"

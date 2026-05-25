@@ -3980,12 +3980,12 @@
       },
       "graph_refs": {
         "node_id": "skill_aoa_memo_writeback",
-        "outgoing_edge_count": 15,
+        "outgoing_edge_count": 19,
         "incoming_edge_count": 0,
         "outgoing_edge_kinds": {
           "available_in_artifact_group": 5,
           "depends_on": 3,
-          "included_in_profile": 3,
+          "included_in_profile": 7,
           "invocation_policy": 1,
           "lineage": 1,
           "maturity": 1,
@@ -3997,8 +3997,12 @@
         "repo_export_path": ".agents/skills/aoa-memo-writeback/SKILL.md",
         "repo_export_present": true,
         "install_profiles": [
+          "repo-core-only",
           "repo-default",
+          "repo-project-core-kernel",
+          "repo-project-foundation",
           "repo-session-growth",
+          "repo-session-harvest-family",
           "user-curated-core"
         ],
         "artifact_group_coverage": [

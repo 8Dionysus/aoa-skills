@@ -16,6 +16,7 @@ ALLOWED_DETAIL_EVENT_KINDS = {
     "decision_fork_receipt",
     "diagnosis_packet_receipt",
     "harvest_packet_receipt",
+    "memo_writeback_decision_receipt",
     "progression_delta_receipt",
     "quest_promotion_receipt",
     "repair_cycle_receipt",
@@ -31,6 +32,7 @@ ALLOWED_OWNER_REPOS = {
 ALLOWED_HANDOFF_TARGETS = {
     "aoa-session-donor-harvest",
     "aoa-automation-opportunity-scan",
+    "aoa-memo-writeback",
     "aoa-session-route-forks",
     "aoa-session-self-diagnose",
     "aoa-session-self-repair",

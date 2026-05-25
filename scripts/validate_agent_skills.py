@@ -203,6 +203,7 @@ EXPECTED_FOUNDATION_PROFILE_SKILLS = [
     "aoa-session-donor-harvest",
     "aoa-checkpoint-closeout-bridge",
     "aoa-automation-opportunity-scan",
+    "aoa-memo-writeback",
     "aoa-session-route-forks",
     "aoa-session-self-diagnose",
     "aoa-session-self-repair",
