@@ -3,6 +3,61 @@
   "owner": "scripts/validate_nested_agents.py",
   "docs": [
     {
+      "path": "config/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "portable export",
+        "project_core_skill_kernel.json",
+        "trust gates",
+        "no secrets",
+        "validate_skills.py"
+      ]
+    },
+    {
+      "path": "examples/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "root example district",
+        "mechanics/<slug>/examples/",
+        "schema-backed shape",
+        "neutral placeholders",
+        "bounded posture"
+      ]
+    },
+    {
+      "path": "schemas/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "Schema edits are contract edits",
+        "$schema",
+        "$id",
+        "SKILL.md",
+        "validate_skills.py"
+      ]
+    },
+    {
+      "path": "scripts/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "deterministic builders",
+        "repo-relative",
+        "build_catalog.py",
+        "validate_skills.py",
+        "bounded language"
+      ]
+    },
+    {
+      "path": "tests/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "skill contracts",
+        "generated-surface parity",
+        "trigger collision",
+        "public-safe",
+        "python -m pytest -q tests"
+      ]
+    },
+    {
       "path": "mechanics/AGENTS.md",
       "required_snippets": [
         "# AGENTS.md",

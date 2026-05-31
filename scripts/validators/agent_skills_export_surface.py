@@ -631,12 +631,14 @@ def validate_exported_resource_surfaces(repo_root: pathlib.Path, skill_dir: path
             if support_index_entry is not None and support_index_entry.get("legacy_dir_counts", {}).get(dirname) != len(rel_paths):
                 errors.append(f"generated/support_resource_index.json legacy {dirname} count mismatch for {skill_dir.name}")
 
-
-
-def validate_exported_runtime_catalog_surfaces(repo_root: pathlib.Path, skill_dir: pathlib.Path, skill_md: pathlib.Path, openai_yaml: pathlib.Path, indexes: ExportSurfaceIndexes, source_entry: Any, frontmatter: Any, manifest_entry: Any, dependency_tools: list[dict[str, Any]], allow_implicit: Any, activation_policy: str, description: Any, errors: list[str]) -> Any:
-    handoff_entry = indexes.handoff_by_name.get(skill_dir.name)
+def validate_handoff_entry(
+    indexes: ExportSurfaceIndexes,
+    skill_name: str,
+    errors: list[str],
+) -> None:
+    handoff_entry = indexes.handoff_by_name.get(skill_name)
     if handoff_entry is None:
-        errors.append(f"generated/skill_handoff_contracts.json missing {skill_dir.name}")
+        errors.append(f"generated/skill_handoff_contracts.json missing {skill_name}")
     else:
         for field_name in (
             "inputs",
@@ -649,114 +651,160 @@ def validate_exported_runtime_catalog_surfaces(repo_root: pathlib.Path, skill_di
             value = handoff_entry.get(field_name)
             if not isinstance(value, list):
                 errors.append(
-                    f"generated/skill_handoff_contracts.json {skill_dir.name} field {field_name!r} must be a list"
+                    f"generated/skill_handoff_contracts.json {skill_name} field {field_name!r} must be a list"
                 )
                 continue
             if any(not isinstance(item, str) or not item.strip() for item in value):
                 errors.append(
-                    f"generated/skill_handoff_contracts.json {skill_dir.name} field {field_name!r} must contain non-empty strings"
+                    f"generated/skill_handoff_contracts.json {skill_name} field {field_name!r} must contain non-empty strings"
                 )
         packet = handoff_entry.get("handoff_packet_template")
         if not isinstance(packet, dict):
             errors.append(
-                f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template must be a mapping"
+                f"generated/skill_handoff_contracts.json {skill_name} handoff_packet_template must be a mapping"
             )
         else:
-            if packet.get("from_skill") != skill_dir.name:
+            if packet.get("from_skill") != skill_name:
                 errors.append(
-                    f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template.from_skill mismatch"
+                    f"generated/skill_handoff_contracts.json {skill_name} handoff_packet_template.from_skill mismatch"
                 )
             for field_name in ("produced_artifacts", "verification_notes", "contract_notes", "next_recommended_skills"):
                 value = packet.get(field_name)
                 if not isinstance(value, list):
                     errors.append(
-                        f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template.{field_name} must be a list"
+                        f"generated/skill_handoff_contracts.json {skill_name} handoff_packet_template.{field_name} must be a list"
                     )
                 elif any(not isinstance(item, str) or not item.strip() for item in value):
                     errors.append(
-                        f"generated/skill_handoff_contracts.json {skill_dir.name} handoff_packet_template.{field_name} must contain non-empty strings"
+                        f"generated/skill_handoff_contracts.json {skill_name} handoff_packet_template.{field_name} must contain non-empty strings"
                     )
 
-    runtime_entry = indexes.runtime_by_name.get(skill_dir.name)
+
+def validate_runtime_contract_entry(
+    indexes: ExportSurfaceIndexes,
+    skill_name: str,
+    activation_policy: str,
+    allow_implicit: Any,
+    errors: list[str],
+) -> None:
+    runtime_entry = indexes.runtime_by_name.get(skill_name)
     if runtime_entry is None:
-        errors.append(f"generated/skill_runtime_contracts.json missing {skill_dir.name}")
+        errors.append(f"generated/skill_runtime_contracts.json missing {skill_name}")
     else:
         if runtime_entry.get("implicit_activation_policy") != activation_policy:
-            errors.append(f"generated/skill_runtime_contracts.json implicit_activation_policy mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_runtime_contracts.json implicit_activation_policy mismatch for {skill_name}")
         if runtime_entry.get("allow_implicit_invocation") != allow_implicit:
-            errors.append(f"generated/skill_runtime_contracts.json allow_implicit_invocation mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_runtime_contracts.json allow_implicit_invocation mismatch for {skill_name}")
         if runtime_entry.get("manual_invocation_required") != (activation_policy != "invoke"):
-            errors.append(f"generated/skill_runtime_contracts.json manual_invocation_required mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_runtime_contracts.json manual_invocation_required mismatch for {skill_name}")
         if runtime_entry.get("candidate_only") != (activation_policy == "suggest"):
-            errors.append(f"generated/skill_runtime_contracts.json candidate_only mismatch for {skill_dir.name}")
-        if runtime_entry.get("context_retention_ref") != f"generated/context_retention_manifest.json#{skill_dir.name}":
-            errors.append(f"generated/skill_runtime_contracts.json context_retention_ref mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_runtime_contracts.json candidate_only mismatch for {skill_name}")
+        if runtime_entry.get("context_retention_ref") != f"generated/context_retention_manifest.json#{skill_name}":
+            errors.append(f"generated/skill_runtime_contracts.json context_retention_ref mismatch for {skill_name}")
 
-    trust_entry = indexes.trust_by_name.get(skill_dir.name)
+
+def validate_trust_and_context_entries(
+    indexes: ExportSurfaceIndexes,
+    skill_name: str,
+    source_entry: Any,
+    activation_policy: str,
+    errors: list[str],
+) -> tuple[Any, Any]:
+    trust_entry = indexes.trust_by_name.get(skill_name)
     if trust_entry is None:
-        errors.append(f"generated/trust_policy_matrix.json missing {skill_dir.name}")
+        errors.append(f"generated/trust_policy_matrix.json missing {skill_name}")
     else:
         if source_entry and trust_entry.get("invocation_mode") != source_entry.get("invocation_mode"):
-            errors.append(f"generated/trust_policy_matrix.json invocation_mode mismatch for {skill_dir.name}")
+            errors.append(f"generated/trust_policy_matrix.json invocation_mode mismatch for {skill_name}")
         if trust_entry.get("implicit_activation_policy") != activation_policy:
-            errors.append(f"generated/trust_policy_matrix.json implicit_activation_policy mismatch for {skill_dir.name}")
+            errors.append(f"generated/trust_policy_matrix.json implicit_activation_policy mismatch for {skill_name}")
         requires_manual = activation_policy != "invoke"
         if trust_entry.get("requires_manual_invocation") != requires_manual:
-            errors.append(f"generated/trust_policy_matrix.json requires_manual_invocation mismatch for {skill_dir.name}")
+            errors.append(f"generated/trust_policy_matrix.json requires_manual_invocation mismatch for {skill_name}")
         if trust_entry.get("candidate_only") != (activation_policy == "suggest"):
-            errors.append(f"generated/trust_policy_matrix.json candidate_only mismatch for {skill_dir.name}")
+            errors.append(f"generated/trust_policy_matrix.json candidate_only mismatch for {skill_name}")
 
-    context_entry = indexes.context_by_name.get(skill_dir.name)
+    context_entry = indexes.context_by_name.get(skill_name)
     if context_entry is None:
-        errors.append(f"generated/context_retention_manifest.json missing {skill_dir.name}")
+        errors.append(f"generated/context_retention_manifest.json missing {skill_name}")
     else:
         if not context_entry.get("retain_sections"):
-            errors.append(f"generated/context_retention_manifest.json retain_sections missing for {skill_dir.name}")
+            errors.append(f"generated/context_retention_manifest.json retain_sections missing for {skill_name}")
+    return trust_entry, context_entry
 
-    guardrail_trust_entry = indexes.guardrail_trust_by_name.get(skill_dir.name)
+
+def validate_guardrail_catalog_entries(
+    indexes: ExportSurfaceIndexes,
+    skill_name: str,
+    source_entry: Any,
+    trust_entry: Any,
+    context_entry: Any,
+    manifest_entry: Any,
+    errors: list[str],
+) -> None:
+    guardrail_trust_entry = indexes.guardrail_trust_by_name.get(skill_name)
     if guardrail_trust_entry is None:
-        errors.append(f"generated/repo_trust_gate_manifest.json missing {skill_dir.name}")
+        errors.append(f"generated/repo_trust_gate_manifest.json missing {skill_name}")
     else:
         if source_entry and guardrail_trust_entry.get("invocation_mode") != source_entry.get("invocation_mode"):
-            errors.append(f"generated/repo_trust_gate_manifest.json invocation_mode mismatch for {skill_dir.name}")
+            errors.append(f"generated/repo_trust_gate_manifest.json invocation_mode mismatch for {skill_name}")
         if trust_entry is not None and guardrail_trust_entry.get("trust_posture") != trust_entry.get("trust_posture"):
-            errors.append(f"generated/repo_trust_gate_manifest.json trust_posture mismatch for {skill_dir.name}")
+            errors.append(f"generated/repo_trust_gate_manifest.json trust_posture mismatch for {skill_name}")
         if guardrail_trust_entry.get("source_scope") != "repo":
-            errors.append(f"generated/repo_trust_gate_manifest.json source_scope mismatch for {skill_dir.name}")
+            errors.append(f"generated/repo_trust_gate_manifest.json source_scope mismatch for {skill_name}")
 
-    guardrail_allowlist_entry = indexes.guardrail_allowlist_by_name.get(skill_dir.name)
+    guardrail_allowlist_entry = indexes.guardrail_allowlist_by_name.get(skill_name)
     if guardrail_allowlist_entry is None:
-        errors.append(f"generated/permission_allowlist_manifest.json missing {skill_dir.name}")
+        errors.append(f"generated/permission_allowlist_manifest.json missing {skill_name}")
     else:
         if guardrail_allowlist_entry.get("source_scope") != "repo":
-            errors.append(f"generated/permission_allowlist_manifest.json source_scope mismatch for {skill_dir.name}")
-        if guardrail_allowlist_entry.get("resource_inventory") != manifest_entry.get("resource_inventory"):
-            errors.append(f"generated/permission_allowlist_manifest.json resource_inventory mismatch for {skill_dir.name}")
-        if guardrail_allowlist_entry.get("allowlist_id") != f"skill:{skill_dir.name}":
-            errors.append(f"generated/permission_allowlist_manifest.json allowlist_id mismatch for {skill_dir.name}")
+            errors.append(f"generated/permission_allowlist_manifest.json source_scope mismatch for {skill_name}")
+        expected_inventory = manifest_entry.get("resource_inventory") if isinstance(manifest_entry, dict) else None
+        if guardrail_allowlist_entry.get("resource_inventory") != expected_inventory:
+            errors.append(f"generated/permission_allowlist_manifest.json resource_inventory mismatch for {skill_name}")
+        if guardrail_allowlist_entry.get("allowlist_id") != f"skill:{skill_name}":
+            errors.append(f"generated/permission_allowlist_manifest.json allowlist_id mismatch for {skill_name}")
 
-    guardrail_context_entry = indexes.guardrail_context_by_name.get(skill_dir.name)
+    guardrail_context_entry = indexes.guardrail_context_by_name.get(skill_name)
     if guardrail_context_entry is None:
-        errors.append(f"generated/skill_context_guard_manifest.json missing {skill_dir.name}")
+        errors.append(f"generated/skill_context_guard_manifest.json missing {skill_name}")
     else:
         if guardrail_context_entry.get("source_scope") != "repo":
-            errors.append(f"generated/skill_context_guard_manifest.json source_scope mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_context_guard_manifest.json source_scope mismatch for {skill_name}")
         if context_entry is not None and guardrail_context_entry.get("must_keep") != context_entry.get("must_keep"):
-            errors.append(f"generated/skill_context_guard_manifest.json must_keep mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_context_guard_manifest.json must_keep mismatch for {skill_name}")
         if context_entry is not None and guardrail_context_entry.get("retain_sections") != context_entry.get("retain_sections"):
-            errors.append(f"generated/skill_context_guard_manifest.json retain_sections mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_context_guard_manifest.json retain_sections mismatch for {skill_name}")
         if not isinstance(guardrail_context_entry.get("instruction_sha256"), str) or len(guardrail_context_entry["instruction_sha256"]) != 64:
-            errors.append(f"generated/skill_context_guard_manifest.json instruction_sha256 mismatch for {skill_dir.name}")
-        if guardrail_context_entry.get("dedupe_key") != f"{skill_dir.name}:{guardrail_context_entry.get('instruction_sha256')}":
-            errors.append(f"generated/skill_context_guard_manifest.json dedupe_key mismatch for {skill_dir.name}")
+            errors.append(f"generated/skill_context_guard_manifest.json instruction_sha256 mismatch for {skill_name}")
+        if guardrail_context_entry.get("dedupe_key") != f"{skill_name}:{guardrail_context_entry.get('instruction_sha256')}":
+            errors.append(f"generated/skill_context_guard_manifest.json dedupe_key mismatch for {skill_name}")
 
-    mcp_entry = indexes.mcp_by_name.get(skill_dir.name)
+
+def validate_mcp_dependency_entry(
+    indexes: ExportSurfaceIndexes,
+    skill_name: str,
+    dependency_tools: list[dict[str, Any]],
+    errors: list[str],
+) -> None:
+    mcp_entry = indexes.mcp_by_name.get(skill_name)
     if mcp_entry is None:
-        errors.append(f"generated/mcp_dependency_manifest.json missing {skill_dir.name}")
+        errors.append(f"generated/mcp_dependency_manifest.json missing {skill_name}")
     else:
         if mcp_entry.get("tools", []) != dependency_tools:
-            errors.append(f"generated/mcp_dependency_manifest.json tools mismatch for {skill_dir.name}")
+            errors.append(f"generated/mcp_dependency_manifest.json tools mismatch for {skill_name}")
 
+
+def validate_runtime_discovery_entries(
+    repo_root: pathlib.Path,
+    skill_dir: pathlib.Path,
+    skill_md: pathlib.Path,
+    indexes: ExportSurfaceIndexes,
+    frontmatter: Any,
+    allow_implicit: Any,
+    activation_policy: str,
+    errors: list[str],
+) -> None:
     discovery_entry = indexes.discovery_by_name.get(skill_dir.name)
     if discovery_entry is None:
         errors.append(f"generated/runtime_discovery_index.json missing {skill_dir.name}")
@@ -785,6 +833,14 @@ def validate_exported_runtime_catalog_surfaces(repo_root: pathlib.Path, skill_di
         if discovery_min_entry.get("implicit_activation_policy") != activation_policy:
             errors.append(f"generated/runtime_discovery_index.min.json implicit_activation_policy mismatch for {skill_dir.name}")
 
+
+def validate_runtime_disclosure_entry(
+    repo_root: pathlib.Path,
+    skill_dir: pathlib.Path,
+    skill_md: pathlib.Path,
+    indexes: ExportSurfaceIndexes,
+    errors: list[str],
+) -> None:
     disclosure_entry = indexes.disclosure_by_name.get(skill_dir.name)
     if disclosure_entry is None:
         errors.append(f"generated/runtime_disclosure_index.json missing {skill_dir.name}")
@@ -802,12 +858,19 @@ def validate_exported_runtime_catalog_surfaces(repo_root: pathlib.Path, skill_di
         if disclosure_entry.get("trust_policy_ref") != f"generated/trust_policy_matrix.json#{skill_dir.name}":
             errors.append(f"generated/runtime_disclosure_index.json trust_policy_ref mismatch for {skill_dir.name}")
 
-    router_entry = indexes.router_by_name.get(skill_dir.name)
+
+def validate_runtime_router_and_alias_entries(
+    indexes: ExportSurfaceIndexes,
+    skill_name: str,
+    description: Any,
+    errors: list[str],
+) -> Any:
+    router_entry = indexes.router_by_name.get(skill_name)
     if router_entry is None:
-        errors.append(f"generated/runtime_router_hints.json missing {skill_dir.name}")
+        errors.append(f"generated/runtime_router_hints.json missing {skill_name}")
     else:
         if router_entry.get("description") != description:
-            errors.append(f"generated/runtime_router_hints.json description mismatch for {skill_dir.name}")
+            errors.append(f"generated/runtime_router_hints.json description mismatch for {skill_name}")
         should_trigger = router_entry.get("should_trigger", [])
         manual_required = router_entry.get("manual_invocation_required", [])
         negative_controls = router_entry.get("negative_controls", [])
@@ -819,19 +882,37 @@ def validate_exported_runtime_catalog_surfaces(repo_root: pathlib.Path, skill_di
         if overlap:
             errors.append(
                 "generated/runtime_router_hints.json routing buckets must be disjoint "
-                f"for {skill_dir.name}: {sorted(overlap)!r}"
+                f"for {skill_name}: {sorted(overlap)!r}"
             )
 
-    alias_entry = indexes.alias_by_name.get(skill_dir.name)
+    alias_entry = indexes.alias_by_name.get(skill_name)
     if alias_entry is None:
-        errors.append(f"generated/runtime_activation_aliases.json missing {skill_dir.name}")
+        errors.append(f"generated/runtime_activation_aliases.json missing {skill_name}")
     else:
-        if alias_entry.get("codex_mention") != f"${skill_dir.name}":
-            errors.append(f"generated/runtime_activation_aliases.json codex_mention mismatch for {skill_dir.name}")
-        if alias_entry.get("tool_call", {}).get("arguments", {}).get("skill_name") != skill_dir.name:
-            errors.append(f"generated/runtime_activation_aliases.json tool_call mismatch for {skill_dir.name}")
+        if alias_entry.get("codex_mention") != f"${skill_name}":
+            errors.append(f"generated/runtime_activation_aliases.json codex_mention mismatch for {skill_name}")
+        if alias_entry.get("tool_call", {}).get("arguments", {}).get("skill_name") != skill_name:
+            errors.append(f"generated/runtime_activation_aliases.json tool_call mismatch for {skill_name}")
 
     return router_entry
+
+
+def validate_exported_runtime_catalog_surfaces(repo_root: pathlib.Path, skill_dir: pathlib.Path, skill_md: pathlib.Path, openai_yaml: pathlib.Path, indexes: ExportSurfaceIndexes, source_entry: Any, frontmatter: Any, manifest_entry: Any, dependency_tools: list[dict[str, Any]], allow_implicit: Any, activation_policy: str, description: Any, errors: list[str]) -> Any:
+    skill_name = skill_dir.name
+    validate_handoff_entry(indexes, skill_name, errors)
+    validate_runtime_contract_entry(indexes, skill_name, activation_policy, allow_implicit, errors)
+    trust_entry, context_entry = validate_trust_and_context_entries(
+        indexes, skill_name, source_entry, activation_policy, errors
+    )
+    validate_guardrail_catalog_entries(
+        indexes, skill_name, source_entry, trust_entry, context_entry, manifest_entry, errors
+    )
+    validate_mcp_dependency_entry(indexes, skill_name, dependency_tools, errors)
+    validate_runtime_discovery_entries(
+        repo_root, skill_dir, skill_md, indexes, frontmatter, allow_implicit, activation_policy, errors
+    )
+    validate_runtime_disclosure_entry(repo_root, skill_dir, skill_md, indexes, errors)
+    return validate_runtime_router_and_alias_entries(indexes, skill_name, description, errors)
 
 
 def validate_exported_description_router_surfaces(docs: ExportSurfaceDocuments, indexes: ExportSurfaceIndexes, skill_dir: pathlib.Path, description: Any, source_scope: Any, source_invocation_mode: Any, allow_implicit: Any, activation_policy: str, router_entry: Any, errors: list[str]) -> None:
@@ -1001,39 +1082,49 @@ def validate_exported_description_router_surfaces(docs: ExportSurfaceDocuments, 
             errors.append(f"{skill_dir.name}: missing mirrored defer coverage in description-trigger cases")
 
 
-def validate_exported_skill_directory(
-    repo_root: pathlib.Path,
-    docs: ExportSurfaceDocuments,
-    indexes: ExportSurfaceIndexes,
-    errors: list[str],
+def required_exported_skill_files(
     skill_dir: pathlib.Path,
-) -> None:
+    errors: list[str],
+) -> tuple[pathlib.Path, pathlib.Path] | None:
     skill_md = skill_dir / "SKILL.md"
     openai_yaml = skill_dir / "agents" / "openai.yaml"
     small_icon = skill_dir / "assets" / "small-logo.svg"
     large_icon = skill_dir / "assets" / "large-logo.svg"
     if not skill_md.exists():
         errors.append(f"{skill_dir}: missing SKILL.md")
-        return
+        return None
     if not openai_yaml.exists():
         errors.append(f"{skill_dir}: missing agents/openai.yaml")
-        return
+        return None
     if not small_icon.exists() or not large_icon.exists():
         errors.append(f"{skill_dir}: missing icon assets")
-        return
+        return None
+    return skill_md, openai_yaml
 
+
+def parse_exported_skill_document(
+    skill_md: pathlib.Path,
+    errors: list[str],
+) -> tuple[Any, str] | None:
     try:
-        frontmatter, body = parse_frontmatter(skill_md)
+        return parse_frontmatter(skill_md)
     except Exception as exc:  # noqa: BLE001
         errors.append(str(exc))
-        return
+        return None
 
+
+def validate_exported_skill_frontmatter(
+    skill_md: pathlib.Path,
+    skill_name: str,
+    frontmatter: Any,
+    body: str,
+    errors: list[str],
+) -> tuple[Any, Any]:
     name = frontmatter.get("name")
     description = frontmatter.get("description")
     metadata = frontmatter.get("metadata")
-
-    if name != skill_dir.name:
-        errors.append(f"{skill_md}: frontmatter name {name!r} does not match directory {skill_dir.name!r}")
+    if name != skill_name:
+        errors.append(f"{skill_md}: frontmatter name {name!r} does not match directory {skill_name!r}")
     if not isinstance(name, str) or not NAME_RE.match(name):
         errors.append(f"{skill_md}: invalid skill name {name!r}")
     if not isinstance(description, str) or not description.strip():
@@ -1045,7 +1136,6 @@ def validate_exported_skill_directory(
             errors.append(f"{skill_md}: description should include 'Use when' for trigger clarity")
         if "Do not use" not in description:
             errors.append(f"{skill_md}: description should include 'Do not use' for boundary clarity")
-
     if not isinstance(metadata, dict):
         errors.append(f"{skill_md}: metadata must be a mapping")
     else:
@@ -1053,23 +1143,34 @@ def validate_exported_skill_directory(
             errors.append(f"{skill_md}: metadata keys mismatch; got {sorted(metadata)!r}")
         if metadata.get("aoa_portable_profile") != EXPORT_PROFILE:
             errors.append(f"{skill_md}: aoa_portable_profile must be {EXPORT_PROFILE!r}")
-        for key, value in metadata.items():
-            if not isinstance(key, str) or not isinstance(value, str):
-                errors.append(f"{skill_md}: metadata keys and values must be strings")
-                break
-
+        if any(not isinstance(key, str) or not isinstance(value, str) for key, value in metadata.items()):
+            errors.append(f"{skill_md}: metadata keys and values must be strings")
     if not body.strip():
         errors.append(f"{skill_md}: markdown body is empty")
+    return description, metadata
 
+
+def load_openai_yaml_doc(
+    openai_yaml: pathlib.Path,
+    errors: list[str],
+) -> dict[str, Any] | None:
     try:
         openai_doc = yaml.safe_load(openai_yaml.read_text(encoding="utf-8")) or {}
     except Exception as exc:  # noqa: BLE001
         errors.append(f"{openai_yaml}: invalid YAML: {exc}")
-        return
+        return None
     if not isinstance(openai_doc, dict):
         errors.append(f"{openai_yaml}: top-level YAML must be a mapping")
-        return
+        return None
+    return openai_doc
 
+
+def validate_openai_interface(
+    openai_yaml: pathlib.Path,
+    skill_dir: pathlib.Path,
+    openai_doc: dict[str, Any],
+    errors: list[str],
+) -> None:
     interface = openai_doc.get("interface")
     if not isinstance(interface, dict):
         errors.append(f"{openai_yaml}: interface must be a mapping")
@@ -1091,6 +1192,14 @@ def validate_exported_skill_directory(
             if not icon_path.exists():
                 errors.append(f"{openai_yaml}: {icon_key} path does not exist: {icon_rel}")
 
+
+def resolve_openai_policy(
+    openai_yaml: pathlib.Path,
+    skill_name: str,
+    openai_doc: dict[str, Any],
+    policy_doc: dict[str, Any],
+    errors: list[str],
+) -> tuple[Any, str, bool]:
     policy = openai_doc.get("policy")
     if not isinstance(policy, dict):
         errors.append(f"{openai_yaml}: policy must be a mapping")
@@ -1098,43 +1207,60 @@ def validate_exported_skill_directory(
     allow_implicit = policy.get("allow_implicit_invocation")
     if not isinstance(allow_implicit, bool):
         errors.append(f"{openai_yaml}: policy.allow_implicit_invocation must be a boolean")
-    policy_matrix_entry = (docs.policy_doc.get("skills") or {}).get(skill_dir.name)
+    policy_matrix_entry = (policy_doc.get("skills") or {}).get(skill_name)
     try:
-        activation_policy = resolve_implicit_activation_policy(
-            policy_matrix_entry,
-            skill_dir.name,
-        )
-        expected_allow = allow_implicit_invocation(policy_matrix_entry, skill_dir.name)
+        activation_policy = resolve_implicit_activation_policy(policy_matrix_entry, skill_name)
+        expected_allow = allow_implicit_invocation(policy_matrix_entry, skill_name)
     except ValueError as exc:
         errors.append(str(exc))
         activation_policy = "manual"
         expected_allow = False
     if policy.get("implicit_activation_policy") != activation_policy:
-        errors.append(
-            f"{openai_yaml}: policy.implicit_activation_policy does not match config/skill_policy_matrix.json"
-        )
+        errors.append(f"{openai_yaml}: policy.implicit_activation_policy does not match config/skill_policy_matrix.json")
+    return allow_implicit, activation_policy, expected_allow
 
+
+def collect_openai_dependency_tools(
+    openai_yaml: pathlib.Path,
+    openai_doc: dict[str, Any],
+    errors: list[str],
+) -> list[dict[str, Any]]:
     dependency_tools: list[dict[str, Any]] = []
     dependencies = openai_doc.get("dependencies", {})
-    if dependencies is not None:
-        if not isinstance(dependencies, dict):
-            errors.append(f"{openai_yaml}: dependencies must be a mapping when present")
-        else:
-            tools = dependencies.get("tools", [])
-            if tools is not None:
-                if not isinstance(tools, list):
-                    errors.append(f"{openai_yaml}: dependencies.tools must be a list when present")
-                else:
-                    dependency_tools = tools
-                    for idx, tool in enumerate(tools):
-                        if not isinstance(tool, dict):
-                            errors.append(f"{openai_yaml}: dependencies.tools[{idx}] must be a mapping")
-                            break
-                        if not isinstance(tool.get("type"), str) or not tool["type"].strip():
-                            errors.append(f"{openai_yaml}: dependencies.tools[{idx}].type must be a non-empty string")
-                        if not isinstance(tool.get("value"), str) or not tool["value"].strip():
-                            errors.append(f"{openai_yaml}: dependencies.tools[{idx}].value must be a non-empty string")
+    if dependencies is None:
+        return dependency_tools
+    if not isinstance(dependencies, dict):
+        errors.append(f"{openai_yaml}: dependencies must be a mapping when present")
+        return dependency_tools
+    tools = dependencies.get("tools", [])
+    if tools is None:
+        return dependency_tools
+    if not isinstance(tools, list):
+        errors.append(f"{openai_yaml}: dependencies.tools must be a list when present")
+        return dependency_tools
+    dependency_tools = tools
+    for idx, tool in enumerate(tools):
+        if not isinstance(tool, dict):
+            errors.append(f"{openai_yaml}: dependencies.tools[{idx}] must be a mapping")
+            break
+        if not isinstance(tool.get("type"), str) or not tool["type"].strip():
+            errors.append(f"{openai_yaml}: dependencies.tools[{idx}].type must be a non-empty string")
+        if not isinstance(tool.get("value"), str) or not tool["value"].strip():
+            errors.append(f"{openai_yaml}: dependencies.tools[{idx}].value must be a non-empty string")
+    return dependency_tools
 
+
+def validate_export_catalog_entries(
+    repo_root: pathlib.Path,
+    indexes: ExportSurfaceIndexes,
+    skill_dir: pathlib.Path,
+    skill_md: pathlib.Path,
+    openai_yaml: pathlib.Path,
+    allow_implicit: Any,
+    activation_policy: str,
+    expected_allow: bool,
+    errors: list[str],
+) -> tuple[Any, Any, Any, Any, Any, Any]:
     source_entry = indexes.source_by_name.get(skill_dir.name)
     source_scope = source_entry.get("scope") if source_entry else None
     source_invocation_mode = source_entry.get("invocation_mode") if source_entry else None
@@ -1188,6 +1314,46 @@ def validate_exported_skill_directory(
         for allowlist_path in manifest_entry.get("allowlist_paths", []):
             if not (repo_root / allowlist_path).exists():
                 errors.append(f"generated/local_adapter_manifest.json allowlist path does not exist: {allowlist_path}")
+    return source_entry, source_scope, source_invocation_mode, agent_entry, export_entry, manifest_entry
+
+
+def validate_exported_skill_directory(
+    repo_root: pathlib.Path,
+    docs: ExportSurfaceDocuments,
+    indexes: ExportSurfaceIndexes,
+    errors: list[str],
+    skill_dir: pathlib.Path,
+) -> None:
+    required_files = required_exported_skill_files(skill_dir, errors)
+    if required_files is None:
+        return
+    skill_md, openai_yaml = required_files
+    parsed = parse_exported_skill_document(skill_md, errors)
+    if parsed is None:
+        return
+    frontmatter, body = parsed
+    description, _metadata = validate_exported_skill_frontmatter(
+        skill_md, skill_dir.name, frontmatter, body, errors
+    )
+    openai_doc = load_openai_yaml_doc(openai_yaml, errors)
+    if openai_doc is None:
+        return
+    validate_openai_interface(openai_yaml, skill_dir, openai_doc, errors)
+    allow_implicit, activation_policy, expected_allow = resolve_openai_policy(
+        openai_yaml, skill_dir.name, openai_doc, docs.policy_doc, errors
+    )
+    dependency_tools = collect_openai_dependency_tools(openai_yaml, openai_doc, errors)
+    source_entry, source_scope, source_invocation_mode, agent_entry, export_entry, manifest_entry = validate_export_catalog_entries(
+        repo_root,
+        indexes,
+        skill_dir,
+        skill_md,
+        openai_yaml,
+        allow_implicit,
+        activation_policy,
+        expected_allow,
+        errors,
+    )
 
     validate_exported_resource_surfaces(
         repo_root, skill_dir, indexes, agent_entry, export_entry, manifest_entry, errors

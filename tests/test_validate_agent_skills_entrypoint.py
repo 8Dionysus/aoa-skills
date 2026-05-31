@@ -55,7 +55,7 @@ class ValidateAgentSkillsEntrypointTests(unittest.TestCase):
         ).splitlines()
 
         self.assertLessEqual(len(validate_lines), 80)
-        self.assertLessEqual(len(skill_lines), 260)
+        self.assertLessEqual(len(skill_lines), 180)
 
     def test_export_contract_manifest_loads_runtime_constants(self) -> None:
         contract = agent_skills_export_contract.load_contract()
