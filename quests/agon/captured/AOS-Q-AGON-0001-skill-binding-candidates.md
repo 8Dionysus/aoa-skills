@@ -13,8 +13,6 @@ Receive bounded workflow candidate requests from `Agents-of-Abyss`.
 
 ## Verify
 
-```bash
-python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check
-python mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py
-python -m pytest -q mechanics/agon/parts/workflow-candidate-bridge/tests/test_agon_skill_binding_candidates.py
-```
+Use the workflow-candidate bridge build check, validator, and part-local test
+named by `mechanics/agon/AGENTS.md`. The captured quest should preserve the
+verification route, not a second copy of the command block.

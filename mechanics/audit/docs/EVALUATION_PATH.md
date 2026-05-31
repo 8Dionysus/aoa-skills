@@ -43,11 +43,8 @@ Treat it as the source of truth for coverage questions such as:
 - `do_not_use` trigger cases
 - snapshot-backed boundary checks when a skill carries them
 
-Read the repo-local matrix report directly with:
-
-```bash
-python scripts/report_skill_evaluation.py
-```
+Read the repo-local matrix report through the evaluation report surface named
+by `mechanics/audit/AGENTS.md`.
 
 Read the matrix in this order:
 1. identify the skill
@@ -56,11 +53,8 @@ Read the matrix in this order:
 4. check any snapshot-backed coverage that accompanies the skill
 5. verify the local validator output against the committed matrix
 
-If upstream technique drift may explain a failed evaluation claim, consult the bridge drift report CLI:
-
-```bash
-python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques
-```
+If upstream technique drift may explain a failed evaluation claim, consult the
+bridge drift report surface against the local `aoa-techniques` checkout.
 
 That report is related to evidence reading, but it is not itself evaluation doctrine.
 
