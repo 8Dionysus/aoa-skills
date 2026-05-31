@@ -18,6 +18,8 @@ Legacy/waves/ evidence may explain why current export support exists; it must no
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 `git diff --check` plus `python scripts/release_check.py` if active release guidance moves.
 
 ## Closeout

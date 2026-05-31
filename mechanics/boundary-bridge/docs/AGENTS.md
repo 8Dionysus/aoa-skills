@@ -18,6 +18,8 @@ Do not collapse skills into techniques or techniques into skills. The bridge exp
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 `python scripts/validate_tiny_router_inputs.py --repo-root .` and bridge-specific build checks when docs feed generated routes.
 
 ## Closeout

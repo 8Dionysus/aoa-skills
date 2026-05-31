@@ -14,6 +14,7 @@ generated-surface summary.
 | Technical source/generated/export model | [`ARCHITECTURE.md`](ARCHITECTURE.md) |
 | Repository layout | [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md) |
 | Validator topology and inventory | [`validation/VALIDATOR_TOPOLOGY.md`](validation/VALIDATOR_TOPOLOGY.md) |
+| Validation command authority | [`validation/COMMAND_AUTHORITY.md`](validation/COMMAND_AUTHORITY.md) |
 | Current skill map | [`../SKILL_INDEX.md`](../SKILL_INDEX.md) |
 | Canonical skill bundles | [`../skills/README.md`](../skills/README.md) |
 | Owner-local mechanics | [`../mechanics/README.md`](../mechanics/README.md) |

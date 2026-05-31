@@ -13,6 +13,12 @@ The machine inventory lives in
 when adding, deleting, renaming, splitting, folding, or changing the lane of a
 validation-like entrypoint.
 
+Full blocking lane command sequences live in
+[`../../config/validation_lanes.json`](../../config/validation_lanes.json).
+Nearest `AGENTS.md` cards may name focused owner checks and lane ids; they
+should not become a second copy of full lane sequences. The balancing rule lives
+in [`COMMAND_AUTHORITY.md`](COMMAND_AUTHORITY.md).
+
 ## Operating Shape
 
 Use this route before editing validator code:
@@ -24,8 +30,9 @@ Use this route before editing validator code:
    adapters when the execution body is non-trivial.
 4. Put bulky deterministic execution in `scripts/validators/*`.
 5. Put route-law or contract data in JSON manifests, not Python lists.
-6. Wire blocking checks through `scripts/validation_lanes.py`.
-7. Keep live workspace and broad evidence reports advisory unless a lane
+6. Store blocking lane sequences in `config/validation_lanes.json`.
+7. Wire callers through `scripts/validation_lanes.py` and `scripts/ci_gate.py`.
+8. Keep live workspace and broad evidence reports advisory unless a lane
    explicitly names their failure mode.
 
 ## Lanes
@@ -52,7 +59,7 @@ Use this route before editing validator code:
 | Portable export/runtime | `.agents/skills/*`, runtime seam, guardrails, Agent Skills export surface. | `scripts/validators/agent_skills_export_surface.py`, `scripts/skill_runtime_seam.py`, `scripts/skill_runtime_guardrails.py` | Fix source/config/builder and rerun export lane. |
 | Support/tiny-router | Support resources, deterministic resource manifests, pack profiles, tiny-router capsules. | `scripts/validators/support_resource_surface.py`, `scripts/validators/pack_profile_surface.py`, `scripts/validators/tiny_router_surface.py` | Fix canonical support files or generated mirrors; rerun export/generated lane. |
 | Risk/guardrail | Explicit-only posture, permission/trust/context guardrail manifests. | `scripts/build_runtime_guardrails.py`, `scripts/skill_runtime_guardrails.py` | Fix policy config or source bundle risk posture; rerun runtime generated checks. |
-| Release/CI | Lane command order, generated drift paths, packaging smoke, growth-vs-release split. | `scripts/validation_lanes.py`, `scripts/ci_gate.py`, `scripts/release_check.py` | Fix lane definitions and tests before changing GitHub workflow YAML. |
+| Release/CI | Lane command order, generated drift paths, packaging smoke, growth-vs-release split. | `config/validation_lanes.json`, `scripts/validation_lanes.py`, `scripts/ci_gate.py`, `scripts/release_check.py` | Fix lane manifest definitions and tests before changing GitHub workflow YAML. |
 | Advisory audit/report | Promotion pressure, workspace adoption, quality audit, technique drift, reality trials. | Report scripts and audit docs. | Treat as review evidence unless a command is explicitly invoked with a failing flag. |
 
 ## Current Debt Closures
@@ -63,8 +70,9 @@ Use this route before editing validator code:
 - Tiny-router, support-resource, trigger-eval, description-trigger,
   pack-profile, and support-resource lint execution now lives in owner modules
   under `scripts/validators/`; root files are CLI adapters.
-- `scripts/validation_lanes.py` remains the source of CI command sequencing.
-  GitHub workflow YAML should call lanes, not invent hidden validation meaning.
+- `config/validation_lanes.json` is the source of CI command sequencing;
+  `scripts/validation_lanes.py` is the loader/API. GitHub workflow YAML should
+  call lanes, not invent hidden validation meaning.
 
 ## Boundary
 

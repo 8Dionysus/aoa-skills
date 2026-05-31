@@ -18,6 +18,8 @@ Keep `mechanics/agon/` focused on mechanic movement. Do not make it canonical sk
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run the changed candidate bridge builder and validator before broader topology
 checks:
 

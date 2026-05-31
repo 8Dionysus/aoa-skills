@@ -18,6 +18,8 @@ Keep overlays thin. Do not duplicate canonical `SKILL.md`, invent downstream ado
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `python scripts/validate_tiny_router_inputs.py --repo-root .` and any overlay-specific review check named by the parent package.
 
 ## Closeout

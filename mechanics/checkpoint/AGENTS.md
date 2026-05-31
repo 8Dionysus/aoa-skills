@@ -18,6 +18,8 @@ Keep `mechanics/checkpoint/` focused on mechanic movement. Do not make it canoni
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `python -m pytest -q tests/test_session_checkpoint_note.py tests/test_session_growth_kernel_maturity.py`.
 
 ## Closeout

@@ -32,6 +32,8 @@ for review or handoff traces, `exports/` for packets meant for `aoa-memo`, and
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 ```bash
 AOA_MEMO_ROOT="${AOA_MEMO_ROOT:-/srv/AbyssOS/aoa-memo}"
 python "$AOA_MEMO_ROOT/scripts/memory/validate_local_memo_port.py" --path memo

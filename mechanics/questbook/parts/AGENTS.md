@@ -18,6 +18,8 @@ Keep questbook integration connected to owning skill or mechanic surfaces; no or
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 `python -m pytest -q tests/test_validate_skills.py tests/test_session_checkpoint_note.py`.
 
 ## Closeout

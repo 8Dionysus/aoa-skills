@@ -18,6 +18,8 @@ Keep `mechanics/experience/` focused on mechanic movement. Do not make it canoni
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `python scripts/validate_skills.py --fail-on-review-truth-sync` and package-local experience tests for changed waves or docs.
 
 ## Closeout

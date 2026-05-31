@@ -4,7 +4,9 @@
 - Status: Accepted
 - Date: 2026-05-31
 - Owner surface: `docs/validation/VALIDATOR_TOPOLOGY.md`,
-  `docs/validation/validator_inventory.json`, `scripts/validators/`
+  `docs/validation/COMMAND_AUTHORITY.md`,
+  `docs/validation/validator_inventory.json`, `config/validation_lanes.json`,
+  `scripts/validators/`
 
 ## Index Metadata
 
@@ -33,6 +35,8 @@ where a failure should route.
 Create a validator topology surface under `docs/validation/`:
 
 - `VALIDATOR_TOPOLOGY.md` is the human route map.
+- `COMMAND_AUTHORITY.md` records the command storage balance between the lane
+  manifest, Python callers, workflow YAML, and nearest `AGENTS.md` cards.
 - `validator_inventory.json` is the machine-readable inventory used by tests to
   catch orphan validation-like entrypoints and hidden required checks.
 
@@ -84,4 +88,5 @@ repository.
 - `docs/validation/validator_inventory.json` records the current validator map.
 - `tests/test_validator_topology.py` checks inventory shape, lane wiring, root
   CLI adapter thinness, and absence of orphan validation-like entrypoints.
-- `scripts/validation_lanes.py` remains the source of CI command sequencing.
+- `config/validation_lanes.json` is the source of CI command sequencing;
+  `scripts/validation_lanes.py` remains the Python loader/API.

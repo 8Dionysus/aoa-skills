@@ -16,12 +16,16 @@ Tracking starts with the community-docs baseline for this repository.
   source-fast, generated, export, release, and nightly sentinel modes.
 - Release and nightly workflows now separate frozen `v*` release checks from
   moving-`main` growth checks.
-- Shared validation lane definitions now live in `scripts/validation_lanes.py`,
-  and validator contract data now has manifest-backed homes under
+- Shared validation lane definitions now route through
+  `config/validation_lanes.json` and `scripts/validation_lanes.py`, and
+  validator contract data now has manifest-backed homes under
   `scripts/validators/`.
 - Validator topology now has a human map and machine inventory under
   `docs/validation/`, with tests that guard owner, lane, mode, and next-route
   declarations for validation-like entrypoints.
+- Validation command authority now has a dedicated
+  `docs/validation/COMMAND_AUTHORITY.md` route that keeps full lane sequences in
+  the manifest and focused local checks in nearest `AGENTS.md` cards.
 - A new `AOA-SK-D-0029` decision records the validator topology and owner-module
   route.
 

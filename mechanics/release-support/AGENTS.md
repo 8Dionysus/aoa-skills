@@ -18,6 +18,8 @@ Keep `mechanics/release-support/` focused on mechanic movement. Do not make it c
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run the specific CI lane or build command named by the changed support
 document. Use `python scripts/ci_gate.py --mode export` for portable export
 movement and `python scripts/ci_gate.py --mode release` or `python
