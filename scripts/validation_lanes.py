@@ -1,197 +1,81 @@
-"""Shared validation lane definitions for aoa-skills."""
+"""Shared validation lane loader for aoa-skills.
+
+The executable command authority lives in ``config/validation_lanes.json``.
+This module keeps the existing Python API stable for CI, release, and tests.
+"""
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
+from typing import Any
+
 Command = tuple[str, ...]
 
-SOURCE_FAST_COMMAND_SEQUENCE: tuple[Command, ...] = (
-    ("python", "scripts/validate_agents_design.py"),
-    ("python", "scripts/validate_nested_agents.py"),
-    (
-        "python",
-        "scripts/validate_skills.py",
-        "--skip-generated",
-        "--fail-on-review-truth-sync",
-    ),
-)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+VALIDATION_LANES_PATH = REPO_ROOT / "config" / "validation_lanes.json"
 
-EXPORT_GENERATED_DRIFT_PATHS = (
-    ".agents/skills",
-    "generated/agent_skill_catalog.json",
-    "generated/agent_skill_catalog.min.json",
-    "generated/portable_export_map.json",
-    "generated/local_adapter_manifest.json",
-    "generated/local_adapter_manifest.min.json",
-    "generated/context_retention_manifest.json",
-    "generated/trust_policy_matrix.json",
-    "generated/skill_runtime_contracts.json",
-    "generated/skill_pack_profiles.resolved.json",
-    "generated/codex_config_snippets.json",
-    "generated/mcp_dependency_manifest.json",
-    "generated/skill_trigger_eval_cases.jsonl",
-    "generated/skill_trigger_eval_cases.csv",
-    "generated/skill_description_signals.json",
-    "generated/description_trigger_eval_cases.jsonl",
-    "generated/description_trigger_eval_cases.csv",
-    "generated/description_trigger_eval_manifest.json",
-    "generated/skills_ref_validation_manifest.json",
-    "generated/deterministic_resource_manifest.json",
-    "generated/support_resource_index.json",
-    "generated/structured_output_schema_index.json",
-    "generated/support_resource_bridge_map.json",
-    "generated/deterministic_resource_eval_cases.jsonl",
-    "generated/expected_existing_aoa_support_dirs.json",
-    "generated/tiny_router_skill_signals.json",
-    "generated/tiny_router_candidate_bands.json",
-    "generated/tiny_router_capsules.min.json",
-    "generated/tiny_router_eval_cases.jsonl",
-    "generated/tiny_router_overlay_manifest.json",
-    "generated/skill_bundle_index.json",
-    "generated/skill_bundle_index.md",
-    "generated/skill_graph.json",
-    "generated/skill_graph.md",
-    "generated/release_manifest.json",
-)
-RUNTIME_GENERATED_DRIFT_PATHS = (
-    "generated/runtime_discovery_index.json",
-    "generated/runtime_discovery_index.min.json",
-    "generated/runtime_disclosure_index.json",
-    "generated/runtime_activation_aliases.json",
-    "generated/runtime_tool_schemas.json",
-    "generated/runtime_session_contract.json",
-    "generated/runtime_prompt_blocks.json",
-    "generated/runtime_router_hints.json",
-    "generated/runtime_seam_manifest.json",
-    "generated/repo_trust_gate_manifest.json",
-    "generated/permission_allowlist_manifest.json",
-    "generated/skill_context_guard_manifest.json",
-    "generated/runtime_guardrail_tool_schemas.json",
-    "generated/runtime_guardrail_prompt_blocks.json",
-    "generated/runtime_guardrail_manifest.json",
-    "mechanics/release-support/examples/repo-trust-store.json",
-    "mechanics/release-support/examples/permission-allowlist.json",
-    "mechanics/release-support/examples/guardrailed-runtime-config.json",
-)
+
+def _load_manifest() -> dict[str, Any]:
+    payload = json.loads(VALIDATION_LANES_PATH.read_text(encoding="utf-8"))
+    if payload.get("schema_version") != 1:
+        raise ValueError(
+            f"{VALIDATION_LANES_PATH}: unsupported schema_version "
+            f"{payload.get('schema_version')!r}"
+        )
+    return payload
+
+
+def _command(command: object, where: str) -> Command:
+    if not isinstance(command, list) or not command:
+        raise ValueError(f"{VALIDATION_LANES_PATH}: {where} must be a non-empty list")
+    if any(not isinstance(part, str) or not part for part in command):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: {where} must contain strings")
+    return tuple(command)
+
+
+def _command_sequence(manifest: dict[str, Any], name: str) -> tuple[Command, ...]:
+    sequences = manifest.get("command_sequences")
+    if not isinstance(sequences, dict):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: command_sequences must be a mapping")
+    sequence = sequences.get(name)
+    if not isinstance(sequence, list) or not sequence:
+        raise ValueError(f"{VALIDATION_LANES_PATH}: missing command sequence {name!r}")
+    return tuple(_command(command, f"command_sequences.{name}[{idx}]") for idx, command in enumerate(sequence))
+
+
+def _single_command(manifest: dict[str, Any], name: str) -> Command:
+    commands = manifest.get("single_commands")
+    if not isinstance(commands, dict):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: single_commands must be a mapping")
+    return _command(commands.get(name), f"single_commands.{name}")
+
+
+def _drift_paths(manifest: dict[str, Any], name: str) -> tuple[str, ...]:
+    drift_paths = manifest.get("drift_paths")
+    if not isinstance(drift_paths, dict):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: drift_paths must be a mapping")
+    paths = drift_paths.get(name)
+    if not isinstance(paths, list) or not paths:
+        raise ValueError(f"{VALIDATION_LANES_PATH}: missing drift path list {name!r}")
+    if any(not isinstance(path, str) or not path for path in paths):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: drift_paths.{name} must contain strings")
+    return tuple(paths)
+
+
+_MANIFEST = _load_manifest()
+
+EXPORT_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "export_generated")
+RUNTIME_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "runtime_generated")
 EXPORT_DRIFT_PATHS = (*EXPORT_GENERATED_DRIFT_PATHS, *RUNTIME_GENERATED_DRIFT_PATHS)
 
-EXPORT_GENERATED_CHECK_COMMAND_SEQUENCE: tuple[Command, ...] = (
-    ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_support_resources.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"),
-    ("python", "scripts/validate_tiny_router_inputs.py", "--repo-root", "."),
-    ("python", "scripts/lint_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_description_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_pack_profiles.py", "--repo-root", "."),
-    ("python", "scripts/lint_support_resources.py", "--repo-root", "."),
-    ("python", "scripts/run_skills_ref_validation.py", "--repo-root", "."),
-    ("git", "diff", "--exit-code", "--", *EXPORT_GENERATED_DRIFT_PATHS),
+SOURCE_FAST_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "source_fast")
+EXPORT_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
+    _MANIFEST, "export_generated_check"
 )
-
-RUNTIME_GENERATED_CHECK_COMMAND_SEQUENCE: tuple[Command, ...] = (
-    ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
-    ("git", "diff", "--exit-code", "--", *RUNTIME_GENERATED_DRIFT_PATHS),
+RUNTIME_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
+    _MANIFEST, "runtime_generated_check"
 )
-
-EXPORT_FULL_COMMAND_SEQUENCE: tuple[Command, ...] = (
-    ("python", "scripts/build_catalog.py", "--group", "all"),
-    ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
-    ("python", "scripts/build_runtime_guardrails.py", "--repo-root", "."),
-    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", "."),
-    ("python", "scripts/build_description_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/build_support_resources.py", "--repo-root", "."),
-    ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", "."),
-    ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"),
-    ("python", "scripts/validate_tiny_router_inputs.py", "--repo-root", "."),
-    ("python", "scripts/lint_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_description_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_pack_profiles.py", "--repo-root", "."),
-    ("python", "scripts/lint_support_resources.py", "--repo-root", "."),
-    ("python", "scripts/run_skills_ref_validation.py", "--repo-root", "."),
-    ("git", "diff", "--exit-code", "--", *EXPORT_DRIFT_PATHS),
-)
-
-RELEASE_CHECK_COMMAND_SEQUENCE: tuple[Command, ...] = (
-    ("python", "scripts/build_catalog.py"),
-    ("python", "scripts/generate_decision_indexes.py", "--check"),
-    ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", "."),
-    (
-        "python",
-        "scripts/build_openai_yaml_examples.py",
-        "--map",
-        "mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json",
-        "--output-dir",
-        "mechanics/boundary-bridge/examples",
-        "--check",
-    ),
-    ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
-    ("python", "scripts/build_runtime_guardrails.py", "--repo-root", "."),
-    ("python", "scripts/build_description_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/build_support_resources.py", "--repo-root", "."),
-    ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", "."),
-    (
-        "python",
-        "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
-        "--check",
-    ),
-    (
-        "python",
-        "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py",
-    ),
-    (
-        "python",
-        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py",
-        "--check",
-    ),
-    (
-        "python",
-        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py",
-    ),
-    ("python", "-m", "unittest", "discover", "-s", "tests"),
-    (
-        "python",
-        "-m",
-        "pytest",
-        "-q",
-        "mechanics/agon/parts/workflow-candidate-bridge/tests",
-        "mechanics/agon/parts/epistemic-candidate-boundary/tests",
-    ),
-    ("python", "scripts/validate_agents_design.py"),
-    ("python", "scripts/validate_nested_agents.py"),
-    ("python", "scripts/validate_skills.py"),
-    ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"),
-    ("python", "scripts/validate_tiny_router_inputs.py", "--repo-root", "."),
-    ("python", "scripts/lint_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_description_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_pack_profiles.py", "--repo-root", "."),
-    ("python", "scripts/lint_support_resources.py", "--repo-root", "."),
-    ("python", "scripts/run_skills_ref_validation.py", "--repo-root", "."),
-    ("python", ".agents/spark/scripts/validate_spark_lane.py"),
-    ("python", "-m", "unittest", "discover", "-s", ".agents/spark/tests", "-p", "test*.py"),
-    ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_support_resources.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_catalog.py", "--check"),
-)
-
-PACKAGING_SMOKE_COMMAND: Command = (
-    "python",
-    "scripts/smoke_skill_pack_handoff.py",
-    "--repo-root",
-    ".",
-    "--transport",
-    "both",
-    "--format",
-    "json",
-)
+EXPORT_FULL_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "export_full")
+RELEASE_CHECK_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "release_check")
+PACKAGING_SMOKE_COMMAND = _single_command(_MANIFEST, "packaging_smoke")

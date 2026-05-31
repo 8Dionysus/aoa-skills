@@ -3,8 +3,8 @@
 - Decision ID: AOA-SK-D-0028
 - Status: Accepted
 - Date: 2026-05-31
-- Owner surface: `scripts/validation_lanes.py`, `scripts/ci_gate.py`,
-  `.github/workflows/`
+- Owner surface: `config/validation_lanes.json`,
+  `scripts/validation_lanes.py`, `scripts/ci_gate.py`, `.github/workflows/`
 
 ## Index Metadata
 
@@ -68,9 +68,10 @@ This preserves the repository's owner boundaries:
 - release checks stay available for frozen release surfaces;
 - nightly checks observe growth rather than enforcing release stasis.
 
-Keeping lane definitions in `scripts/validation_lanes.py` and execution routing
-in `scripts/ci_gate.py` also prevents GitHub YAML and release helper scripts
-from becoming hidden sources of validation authority.
+Keeping lane command sequences in `config/validation_lanes.json`, loading them
+through `scripts/validation_lanes.py`, and routing execution through
+`scripts/ci_gate.py` prevents GitHub YAML, local AGENTS cards, and release
+helper scripts from becoming hidden sources of validation authority.
 
 ## Consequences
 
@@ -103,7 +104,8 @@ As of 2026-05-31:
   aggregation was becoming heavier than the skill-canon organ it protects.
 - Reason: `aoa-skills` needs fast source checks during growth and full release
   checks only when freezing a release artifact.
-- Source surfaces updated: `scripts/validation_lanes.py`, `scripts/ci_gate.py`,
+- Source surfaces updated: `config/validation_lanes.json`,
+  `scripts/validation_lanes.py`, `scripts/ci_gate.py`,
   `scripts/validate_skills.py`, `scripts/build_catalog.py`,
   `.github/workflows/`, root and release-support route docs. The generated lane
   now includes explicit export and runtime groups instead of hiding those checks
@@ -126,8 +128,11 @@ As of 2026-05-31:
   checks, and runtime guardrail checks. Tests now guard the thin CLI adapter and
   the phase-split validator shape.
 - Follow-up hardening: the Spark lane validator now reads the shared release
-  command sequence from `scripts/validation_lanes.py` instead of scanning
+  command sequence through `scripts/validation_lanes.py` instead of scanning
   `scripts/release_check.py` text.
+- Follow-up hardening: full lane command sequences and drift paths now live in
+  `config/validation_lanes.json`; `scripts/validation_lanes.py` is a loader/API,
+  and nearest `AGENTS.md` cards carry only focused local checks or lane ids.
 - Follow-up hardening: full export validation now includes trigger-eval seed
   rebuilds and drift paths because description-trigger, runtime seam, and
   tiny-router surfaces consume those seed cases.
@@ -149,7 +154,8 @@ It does not require `main` to match the latest release tag.
 
 ## Validation
 
-- `scripts/validation_lanes.py` owns shared command sequences and drift paths.
+- `config/validation_lanes.json` owns shared command sequences and drift paths.
+- `scripts/validation_lanes.py` loads that manifest for Python callers.
 - `scripts/ci_gate.py` executes active CI lanes.
 - `.github/workflows/repo-validation.yml` keeps the required growth check.
 - `.github/workflows/codex-portable-export.yml` keeps required `build-validate`

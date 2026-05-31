@@ -25,6 +25,8 @@ or sibling-owner surface is updated.
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `git diff --check`; run the owning surface validator if a harvest changes an active claim.
 
 ## Closeout

@@ -41,6 +41,8 @@ scenario `README.md` plus `PROMPT.md`.
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run the smallest covering checks:
 
 ```bash

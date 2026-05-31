@@ -12,9 +12,9 @@ This card applies to `scripts/`.
 
 Read root `AGENTS.md`, `DESIGN.md`, `DESIGN.AGENTS.md` when route-law is
 touched, and the tests for the script being changed. For CI or release command
-ordering, read `scripts/validation_lanes.py` before editing `scripts/ci_gate.py`
-or `scripts/release_check.py`. Start from callers before changing shared
-helpers.
+ordering, read `config/validation_lanes.json` before editing
+`scripts/validation_lanes.py`, `scripts/ci_gate.py`, or
+`scripts/release_check.py`. Start from callers before changing shared helpers.
 
 ## Boundaries
 
@@ -29,6 +29,8 @@ export/runtime surfaces; keep root `scripts/validate_*.py` entrypoints as CLI
 and orchestration adapters.
 
 ## Validation
+
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
 Run the script directly. For CI lane behavior, use `python scripts/ci_gate.py
 --mode source-fast`, `python scripts/ci_gate.py --mode generated --group all`,

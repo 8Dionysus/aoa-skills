@@ -44,6 +44,8 @@ schema, export profile, or runtime seam actually requires them.
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run the nearest validator named by this card or a nearer local card. For
 growth-facing repository changes, use `python scripts/ci_gate.py --mode
 source-fast`. For release-facing changes, use `python scripts/ci_gate.py --mode

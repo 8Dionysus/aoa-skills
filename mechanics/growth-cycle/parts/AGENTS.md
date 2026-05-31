@@ -18,6 +18,8 @@ Do not make part-local adaptive skill experiments into canonical skill status wi
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 `python -m pytest -q tests/test_session_growth_kernel_maturity.py tests/test_session_checkpoint_note.py`.
 
 ## Closeout

@@ -18,6 +18,8 @@ Do not hand-author files in `generated/`. If a generated surface is wrong, chang
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Regenerate with the owning builder, commonly `python scripts/build_catalog.py`, then check freshness with `python scripts/build_catalog.py --check`. For broader generated movement, run `python scripts/release_check.py`.
 
 ## Closeout

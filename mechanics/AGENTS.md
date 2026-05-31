@@ -18,6 +18,8 @@ Read root `AGENTS.md`, `mechanics/README.md`, `mechanics/ARTIFACT_TOPOLOGY.md`, 
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run the target package validator first. For mesh shape, run `python scripts/validate_nested_agents.py`; for release-facing changes, run `python scripts/release_check.py`.
 
 ## Closeout

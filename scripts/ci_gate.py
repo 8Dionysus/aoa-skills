@@ -38,6 +38,7 @@ def python_script_command_paths(commands: Sequence[Sequence[str]]) -> set[str]:
 
 EXPORT_RELEVANT_FILES = {
     ".github/workflows/codex-portable-export.yml",
+    "config/validation_lanes.json",
     "requirements-dev.txt",
     "scripts/ci_gate.py",
     "scripts/validation_lanes.py",

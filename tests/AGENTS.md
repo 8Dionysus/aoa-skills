@@ -18,6 +18,8 @@ Do not use tests to bless generated drift, adapter-only wording as core meaning,
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run the focused test first, then `python -m pytest -q tests` when the behavior is shared or release-facing.
 
 ## Closeout

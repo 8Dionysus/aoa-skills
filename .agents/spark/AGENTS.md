@@ -45,6 +45,8 @@ scenario set, validator, tests, or release-check wiring.
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 For Spark lane changes, include:
 
 ```bash

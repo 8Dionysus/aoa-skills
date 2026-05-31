@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ast
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -17,6 +18,12 @@ import validation_lanes
 
 INVENTORY_PATH = REPO_ROOT / "docs" / "validation" / "validator_inventory.json"
 TOPOLOGY_PATH = REPO_ROOT / "docs" / "validation" / "VALIDATOR_TOPOLOGY.md"
+VALIDATION_LANES_MANIFEST_PATH = REPO_ROOT / "config" / "validation_lanes.json"
+AGENTS_VALIDATION_PREAMBLE = (
+    "Full lane command sequences live in `config/validation_lanes.json`; "
+    "this local card may name only focused owner checks, lane ids, or the "
+    "nearest route for the changed surface."
+)
 THIN_ROOT_ADAPTERS = (
     "scripts/validate_agent_skills.py",
     "scripts/validate_tiny_router_inputs.py",
@@ -44,6 +51,10 @@ def python_script_paths_from(commands: tuple[tuple[str, ...], ...]) -> set[str]:
         if len(command) >= 2 and command[0] == "python" and command[1].endswith(".py"):
             paths.add(command[1])
     return paths
+
+
+def command_sequence_from_manifest(manifest: dict, name: str) -> tuple[tuple[str, ...], ...]:
+    return tuple(tuple(command) for command in manifest["command_sequences"][name])
 
 
 class ValidatorTopologyTests(unittest.TestCase):
@@ -95,6 +106,52 @@ class ValidatorTopologyTests(unittest.TestCase):
 
         missing = sorted(lane_script_paths - inventory_paths)
         self.assertEqual([], missing)
+
+    def test_validation_lane_manifest_is_command_authority(self) -> None:
+        manifest = json.loads(VALIDATION_LANES_MANIFEST_PATH.read_text(encoding="utf-8"))
+
+        self.assertEqual(VALIDATION_LANES_MANIFEST_PATH, validation_lanes.VALIDATION_LANES_PATH)
+        self.assertEqual(command_sequence_from_manifest(manifest, "source_fast"), validation_lanes.SOURCE_FAST_COMMAND_SEQUENCE)
+        self.assertEqual(
+            command_sequence_from_manifest(manifest, "export_generated_check"),
+            validation_lanes.EXPORT_GENERATED_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertEqual(
+            command_sequence_from_manifest(manifest, "runtime_generated_check"),
+            validation_lanes.RUNTIME_GENERATED_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertEqual(command_sequence_from_manifest(manifest, "export_full"), validation_lanes.EXPORT_FULL_COMMAND_SEQUENCE)
+        self.assertEqual(command_sequence_from_manifest(manifest, "release_check"), validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE)
+        self.assertEqual(tuple(manifest["drift_paths"]["export_generated"]), validation_lanes.EXPORT_GENERATED_DRIFT_PATHS)
+        self.assertEqual(tuple(manifest["drift_paths"]["runtime_generated"]), validation_lanes.RUNTIME_GENERATED_DRIFT_PATHS)
+        self.assertEqual(tuple(manifest["single_commands"]["packaging_smoke"]), validation_lanes.PACKAGING_SMOKE_COMMAND)
+
+        loader_text = (SCRIPTS_DIR / "validation_lanes.py").read_text(encoding="utf-8")
+        self.assertNotIn("scripts/build_agent_skills.py", loader_text)
+        self.assertNotIn("generated/runtime_discovery_index.json", loader_text)
+
+    def test_all_agents_cards_name_validation_command_storage_balance(self) -> None:
+        missing = []
+        for path in sorted(REPO_ROOT.rglob("AGENTS.md")):
+            text = path.read_text(encoding="utf-8")
+            if "## Validation" in text and AGENTS_VALIDATION_PREAMBLE not in text:
+                missing.append(path.relative_to(REPO_ROOT).as_posix())
+        self.assertEqual([], missing)
+
+    def test_github_workflows_do_not_inline_validation_lane_commands(self) -> None:
+        workflow_dir = REPO_ROOT / ".github" / "workflows"
+        forbidden = re.compile(
+            r"python scripts/(?:validate_|lint_|build_|run_skills_ref_validation|"
+            r"smoke_skill_pack|generate_decision)"
+        )
+        allowed = re.compile(r"python scripts/(?:ci_gate|release_check|report_technique_drift)\.py")
+        offenders: list[str] = []
+        for path in sorted(workflow_dir.glob("*.yml")):
+            for lineno, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                if forbidden.search(line) and not allowed.search(line):
+                    rel = path.relative_to(REPO_ROOT).as_posix()
+                    offenders.append(f"{rel}:{lineno}: {line.strip()}")
+        self.assertEqual([], offenders)
 
     def test_validation_like_entrypoints_are_not_orphaned(self) -> None:
         inventory_paths = {entry["path"] for entry in load_inventory()["entries"]}

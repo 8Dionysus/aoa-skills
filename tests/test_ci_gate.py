@@ -142,6 +142,7 @@ class CiGateTests(unittest.TestCase):
     def test_export_changed_only_runs_for_export_gate_logic(self) -> None:
         for path in (
             ".github/workflows/codex-portable-export.yml",
+            "config/validation_lanes.json",
             "requirements-dev.txt",
             "scripts/ci_gate.py",
             "scripts/validation_lanes.py",

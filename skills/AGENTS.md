@@ -18,6 +18,8 @@ Do not add per-bundle `AGENTS.md` by default. Bundle truth belongs in `SKILL.md`
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `python scripts/validate_nested_agents.py`, `python scripts/validate_skills.py`, `python scripts/build_catalog.py --check`, and focused tests for changed bundle behavior.
 
 ## Closeout

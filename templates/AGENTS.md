@@ -18,6 +18,8 @@ Preserve placeholder intent. Do not make templates silently AoA-only when they n
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `python scripts/validate_skills.py`, template-related tests, and any builder affected by the template.
 
 ## Closeout

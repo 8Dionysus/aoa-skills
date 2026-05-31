@@ -18,6 +18,8 @@ Do not treat experience anecdotes as canonical readiness. Rollback and consent l
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 `python scripts/validate_skills.py --fail-on-review-truth-sync` and wave-specific tests for changed docs.
 
 ## Closeout

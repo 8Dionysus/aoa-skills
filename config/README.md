@@ -1,8 +1,8 @@
 # Config District
 
 `config/` holds repo-wide source inputs for portable export, pack profiles,
-policy posture, project-core rings, runtime guardrails, trigger-eval policy, and
-tiny-router bands.
+policy posture, project-core rings, runtime guardrails, trigger-eval policy,
+validation lane command sequences, and tiny-router bands.
 
 Mechanic-local seed configs belong under the owning mechanic package or part.
 For example, Agon candidate seeds live under `mechanics/agon/parts/*/config/`,

@@ -18,6 +18,8 @@ Keep `mechanics/recurrence/` focused on mechanic movement. Do not make it canoni
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `python -m pytest -q tests/test_roadmap_parity.py tests/test_current_direction_routes.py`.
 
 ## Closeout

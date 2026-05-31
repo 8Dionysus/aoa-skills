@@ -21,6 +21,8 @@ the current registry, router, overlay, adapter, or downstream authority.
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `git diff --check` plus parent validation if legacy meaning is migrated.
 
 ## Closeout

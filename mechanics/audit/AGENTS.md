@@ -18,6 +18,8 @@ Keep `mechanics/audit/` focused on mechanic movement. Do not make it canonical s
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`, `python scripts/audit_skill_quality.py --repo-root . --fail-on-blocked`, and focused tests for changed audit surfaces.
 
 ## Closeout

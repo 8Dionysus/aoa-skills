@@ -18,6 +18,8 @@ Do not use manifests to promote skill status, certify downstream adoption, or re
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Run the manifest builder or validator that owns the changed file. For release-visible manifest changes, run `python scripts/release_check.py`.
 
 ## Closeout

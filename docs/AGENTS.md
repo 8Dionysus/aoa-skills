@@ -18,6 +18,8 @@ Docs may explain, decide, and route, but they must not override `skills/**`, mec
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 For docs-only changes, run `git diff --check`. For architecture, review, route-law, or generated/export claims, run the validator named by the owning surface and `python scripts/validate_agents_design.py` when AGENTS cards moved.
 
 ## Closeout

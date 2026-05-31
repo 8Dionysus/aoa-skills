@@ -18,6 +18,8 @@ Do not describe manual pack edits as source work. Portable export must remain bu
 
 ## Validation
 
+Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
+
 Use `python scripts/ci_gate.py --mode export` for export/support surfaces and
 `python scripts/ci_gate.py --mode release` for release-facing surfaces, or the
 specific export/support validator named by the changed document.
