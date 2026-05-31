@@ -45,7 +45,9 @@ schema, export profile, or runtime seam actually requires them.
 ## Validation
 
 Run the nearest validator named by this card or a nearer local card. For
-release-facing or repo-wide changes, use `python scripts/release_check.py`.
+growth-facing repository changes, use `python scripts/ci_gate.py --mode
+source-fast`. For release-facing changes, use `python scripts/ci_gate.py --mode
+release` or `python scripts/release_check.py --include-packaging-smoke`.
 
 For root guidance changes, at minimum run:
 
@@ -276,9 +278,18 @@ Treat these as high-risk findings in this repository:
 Minimum canonical skill validation:
 
 ```bash
-python scripts/build_catalog.py
-python scripts/validate_skills.py
-python scripts/build_catalog.py --check
+python scripts/ci_gate.py --mode source-fast
+```
+
+Generated/readout, export, release, and nightly checks are separate lanes:
+
+```bash
+python scripts/ci_gate.py --mode generated --group all
+python scripts/ci_gate.py --mode generated --group export
+python scripts/ci_gate.py --mode generated --group runtime
+python scripts/ci_gate.py --mode export
+python scripts/ci_gate.py --mode release
+python scripts/ci_gate.py --mode nightly
 ```
 
 For broader validation, follow the nearest package `AGENTS.md`,

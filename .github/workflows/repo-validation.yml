@@ -6,21 +6,18 @@ on:
       - main
   pull_request:
 
+concurrency:
+  group: repo-validation-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  release_audit:
+  growth_gate:
     name: Repo Validation
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout aoa-skills
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
-          path: workspace/aoa-skills
-
-      - name: Checkout aoa-techniques sibling
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
-        with:
-          repository: 8Dionysus/aoa-techniques
-          path: workspace/aoa-techniques
           fetch-depth: 0
 
       - name: Setup Python
@@ -29,17 +26,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        working-directory: workspace/aoa-skills
         run: python -m pip install -r requirements-dev.txt
 
-      - name: Run review truth-sync gate
-        working-directory: workspace/aoa-skills
-        run: python scripts/validate_skills.py --fail-on-review-truth-sync
+      - name: Run source-fast growth gate
+        run: python scripts/ci_gate.py --mode source-fast
 
-      - name: Run technique drift gate
-        working-directory: workspace/aoa-skills
-        run: python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
-
-      - name: Run release audit
-        working-directory: workspace/aoa-skills
-        run: python scripts/release_check.py --include-packaging-smoke
+      - name: Run main integration generated gate
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: python scripts/ci_gate.py --mode generated --group all

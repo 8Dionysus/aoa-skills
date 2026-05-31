@@ -22,17 +22,15 @@ import skill_boundary_surface
 import skill_catalog_contract
 import skill_composition_audit
 import skill_evaluation_contract
-import skill_governance_backlog_surface
 import skill_governance_lane_contract
 import skill_governance_surface
-import skill_lineage_surface
 import skill_layout
 import skill_overlay_contract
 import skill_review_surface
 import skill_runtime_surface
 import skill_section_contract
 import skill_source_model
-import skill_bundle_surface
+from validators import generated_surface, questbook_surface
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -46,106 +44,28 @@ DOCS_README_PATH = Path("docs") / "README.md"
 STATUS_PROMOTION_REVIEWS_DIR = Path("docs") / "reviews" / "status-promotions"
 CANONICAL_CANDIDATES_DIR = Path("docs") / "reviews" / "canonical-candidates"
 EVALUATION_FIXTURES_PATH = Path("tests") / "fixtures" / "skill_evaluation_cases.yaml"
-GENERATED_SURFACE_SCHEMA_BY_PATH = {
-    build_catalog.PUBLIC_SURFACE_JSON_PATH: "public_surface.schema.json",
-    build_catalog.WALKTHROUGHS_JSON_PATH: "skill_walkthroughs.schema.json",
-    build_catalog.EVALUATION_MATRIX_JSON_PATH: "skill_evaluation_matrix.schema.json",
-    build_catalog.LINEAGE_SURFACE_JSON_PATH: "skill_lineage_surface.schema.json",
-    build_catalog.BOUNDARY_MATRIX_JSON_PATH: "skill_boundary_matrix.schema.json",
-    build_catalog.GOVERNANCE_BACKLOG_JSON_PATH: "governance_backlog.schema.json",
-    build_catalog.SKILL_COMPOSITION_AUDIT_JSON_PATH: "skill_composition_audit.schema.json",
-    build_catalog.OVERLAY_READINESS_JSON_PATH: "overlay_readiness.schema.json",
-    build_catalog.BUNDLE_INDEX_JSON_PATH: "skill_bundle_index.schema.json",
-    build_catalog.SKILL_GRAPH_JSON_PATH: "skill_graph.schema.json",
-}
-QUESTBOOK_PATH = Path("QUESTBOOK.md")
-QUESTBOOK_INTEGRATION_PATH = (
-    Path("mechanics") / "questbook" / "docs" / "QUESTBOOK_SKILL_INTEGRATION.md"
-)
-QUEST_SCHEMA_PATH = Path("mechanics") / "questbook" / "schemas" / "quest.schema.json"
-QUEST_DISPATCH_SCHEMA_PATH = (
-    Path("mechanics") / "questbook" / "schemas" / "quest_dispatch.schema.json"
-)
+GENERATED_SURFACE_SCHEMA_BY_PATH = generated_surface.GENERATED_SURFACE_SCHEMA_BY_PATH
+QUESTBOOK_PATH = questbook_surface.QUESTBOOK_PATH
+QUESTBOOK_INTEGRATION_PATH = questbook_surface.QUESTBOOK_INTEGRATION_PATH
+QUEST_SCHEMA_PATH = questbook_surface.QUEST_SCHEMA_PATH
+QUEST_DISPATCH_SCHEMA_PATH = questbook_surface.QUEST_DISPATCH_SCHEMA_PATH
 SCHEMA_PATH_OVERRIDES = {
     "quest.schema.json": QUEST_SCHEMA_PATH,
     "quest_dispatch.schema.json": QUEST_DISPATCH_SCHEMA_PATH,
 }
-QUEST_CATALOG_PATH = Path("generated") / "quest_catalog.min.json"
-QUEST_DISPATCH_PATH = Path("generated") / "quest_dispatch.min.json"
-QUEST_CATALOG_EXAMPLE_PATH = Path("generated") / "quest_catalog.min.example.json"
-QUEST_DISPATCH_EXAMPLE_PATH = Path("generated") / "quest_dispatch.min.example.json"
-FOUNDATION_QUEST_IDS = build_catalog.FOUNDATION_QUEST_IDS
+QUEST_CATALOG_PATH = questbook_surface.QUEST_CATALOG_PATH
+QUEST_DISPATCH_PATH = questbook_surface.QUEST_DISPATCH_PATH
+QUEST_CATALOG_EXAMPLE_PATH = questbook_surface.QUEST_CATALOG_EXAMPLE_PATH
+QUEST_DISPATCH_EXAMPLE_PATH = questbook_surface.QUEST_DISPATCH_EXAMPLE_PATH
+FOUNDATION_QUEST_IDS = questbook_surface.FOUNDATION_QUEST_IDS
 QUEST_IDS = FOUNDATION_QUEST_IDS
-QUESTBOOK_REQUIRED_INDEX_TOKENS = (
-    "skill/eval alignment debts",
-    ".agents/skills/",
-    "Frontier",
-    "Near",
-    "Harvest candidates",
-)
-CLOSED_QUEST_STATES = {"done", "dropped"}
-QUEST_LIFECYCLE_STATES = {
-    "captured",
-    "triaged",
-    "ready",
-    "active",
-    "blocked",
-    "reanchor",
-    "done",
-    "dropped",
-}
-QUESTBOOK_REQUIRED_INTEGRATION_TOKENS = (
-    "generated/public_surface.md",
-    "generated/governance_backlog.md",
-    "generated/skill_evaluation_matrix.md",
-    "mechanics/release-support/docs/RUNTIME_PATH.md",
-    "mechanics/audit/docs/EVALUATION_PATH.md",
-    "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
-    "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
-    "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md",
-    "mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md",
-    "hidden second source of truth",
-)
-QUEST_SCHEMA_REQUIRED_FIELDS = (
-    "schema_version",
-    "id",
-    "title",
-    "repo",
-    "owner_surface",
-    "kind",
-    "state",
-    "band",
-    "difficulty",
-    "risk",
-    "control_mode",
-    "delegate_tier",
-    "write_scope",
-    "activation",
-    "anchor_ref",
-    "evidence",
-    "opened_at",
-    "touched_at",
-    "public_safe",
-)
-QUEST_DISPATCH_REQUIRED_FIELDS = (
-    "schema_version",
-    "id",
-    "repo",
-    "state",
-    "band",
-    "difficulty",
-    "risk",
-    "control_mode",
-    "delegate_tier",
-    "split_required",
-    "write_scope",
-    "activation_mode",
-    "public_safe",
-)
-QUESTBOOK_FORBIDDEN_ANCHORS = (
-    "mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md",
-    "ATM10-Agent",
-)
+QUESTBOOK_REQUIRED_INDEX_TOKENS = questbook_surface.QUESTBOOK_REQUIRED_INDEX_TOKENS
+CLOSED_QUEST_STATES = questbook_surface.CLOSED_QUEST_STATES
+QUEST_LIFECYCLE_STATES = questbook_surface.QUEST_LIFECYCLE_STATES
+QUESTBOOK_REQUIRED_INTEGRATION_TOKENS = questbook_surface.QUESTBOOK_REQUIRED_INTEGRATION_TOKENS
+QUEST_SCHEMA_REQUIRED_FIELDS = questbook_surface.QUEST_SCHEMA_REQUIRED_FIELDS
+QUEST_DISPATCH_REQUIRED_FIELDS = questbook_surface.QUEST_DISPATCH_REQUIRED_FIELDS
+QUESTBOOK_FORBIDDEN_ANCHORS = questbook_surface.QUESTBOOK_FORBIDDEN_ANCHORS
 
 REQUIRED_HEADINGS = set(skill_section_contract.CANONICAL_HEADINGS)
 EXPECTED_TECHNIQUE_REPO = skill_catalog_contract.EXPECTED_TECHNIQUE_REPO
@@ -181,6 +101,16 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--skill",
         help="Validate a single skill bundle by directory name.",
+    )
+    parser.add_argument(
+        "--skip-generated",
+        action="store_true",
+        help="Skip generated-surface freshness checks for growth/source-fast validation.",
+    )
+    parser.add_argument(
+        "--with-generated",
+        action="store_true",
+        help="Also validate generated surfaces when validating a single skill.",
     )
     parser.add_argument(
         "--fail-on-review-truth-sync",
@@ -266,444 +196,17 @@ def validate_quest_schema_envelope(
     schema_version: str,
     required_fields: tuple[str, ...],
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    payload = load_json_file(schema_path, issues)
-    if payload is None:
-        return issues
-    location = relative_location(schema_path)
-    if not isinstance(payload, dict):
-        return [ValidationIssue(location, "schema payload must be a JSON object")]
-    if payload.get("title") != title:
-        issues.append(ValidationIssue(location, f"schema title must be '{title}'"))
-    if payload.get("type") != "object":
-        issues.append(ValidationIssue(location, "schema type must be 'object'"))
-    if payload.get("additionalProperties") is not False:
-        issues.append(
-            ValidationIssue(location, "schema must set additionalProperties to false")
-        )
-    if payload.get("required") != list(required_fields):
-        issues.append(
-            ValidationIssue(
-                location,
-                "schema required fields must stay aligned with the questbook contract",
-            )
-        )
-    properties = payload.get("properties")
-    if not isinstance(properties, dict):
-        issues.append(ValidationIssue(location, "schema properties must be an object"))
-        return issues
-    schema_version_entry = properties.get("schema_version")
-    if not isinstance(schema_version_entry, dict) or schema_version_entry.get("const") != schema_version:
-        issues.append(
-            ValidationIssue(
-                location,
-                f"schema_version must stay pinned to '{schema_version}'",
-            )
-        )
-    return issues
+    return questbook_surface.validate_quest_schema_envelope(
+        repo_root,
+        schema_path,
+        title=title,
+        schema_version=schema_version,
+        required_fields=required_fields,
+    )
 
 
 def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    quest_ids = build_catalog.discover_quest_ids(repo_root)
-    duplicate_quest_paths = build_catalog.duplicate_quest_id_paths(repo_root)
-    for quest_id, paths in sorted(duplicate_quest_paths.items()):
-        issues.append(
-            ValidationIssue(
-                f"quests/**/{quest_id}.yaml",
-                "duplicate quest id files are not allowed: "
-                + ", ".join(relative_location(path) for path in paths),
-            )
-        )
-    if duplicate_quest_paths:
-        quest_paths: dict[str, Path] = {}
-        for quest_path in build_catalog.discover_quest_paths(repo_root):
-            quest_paths.setdefault(quest_path.stem, quest_path)
-    else:
-        quest_paths = build_catalog.discover_quest_path_map(repo_root)
-    missing_foundation_ids = build_catalog.missing_foundation_quest_ids(quest_ids)
-    required_paths = (
-        repo_root / QUESTBOOK_PATH,
-        repo_root / QUESTBOOK_INTEGRATION_PATH,
-        repo_root / QUEST_SCHEMA_PATH,
-        repo_root / QUEST_DISPATCH_SCHEMA_PATH,
-        repo_root / QUEST_CATALOG_PATH,
-        repo_root / QUEST_DISPATCH_PATH,
-        repo_root / QUEST_CATALOG_EXAMPLE_PATH,
-        repo_root / QUEST_DISPATCH_EXAMPLE_PATH,
-    )
-    for path in required_paths:
-        if not path.is_file():
-            issues.append(ValidationIssue(relative_location(path), "file is missing"))
-
-    questbook_path = repo_root / QUESTBOOK_PATH
-    questbook_text = ""
-    if questbook_path.is_file():
-        questbook_text = questbook_path.read_text(encoding="utf-8")
-        for token in QUESTBOOK_REQUIRED_INDEX_TOKENS:
-            if token not in questbook_text:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(questbook_path),
-                        f"must mention '{token}' explicitly",
-                    )
-                )
-        for token in QUESTBOOK_FORBIDDEN_ANCHORS:
-            if token in questbook_text:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(questbook_path),
-                        f"must not mention '{token}'",
-                    )
-                )
-
-    integration_path = repo_root / QUESTBOOK_INTEGRATION_PATH
-    if integration_path.is_file():
-        integration_text = integration_path.read_text(encoding="utf-8")
-        for token in QUESTBOOK_REQUIRED_INTEGRATION_TOKENS:
-            if token not in integration_text:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(integration_path),
-                        f"must mention '{token}' explicitly",
-                    )
-                )
-        for token in QUESTBOOK_FORBIDDEN_ANCHORS:
-            if token in integration_text:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(integration_path),
-                        f"must not mention '{token}'",
-                    )
-                )
-
-    issues.extend(
-        validate_quest_schema_envelope(
-            repo_root,
-            repo_root / QUEST_SCHEMA_PATH,
-            title="aoa-skills work_quest_v1",
-            schema_version="work_quest_v1",
-            required_fields=QUEST_SCHEMA_REQUIRED_FIELDS,
-        )
-    )
-    issues.extend(
-        validate_quest_schema_envelope(
-            repo_root,
-            repo_root / QUEST_DISPATCH_SCHEMA_PATH,
-            title="aoa-skills quest_dispatch_v1",
-            schema_version="quest_dispatch_v1",
-            required_fields=QUEST_DISPATCH_REQUIRED_FIELDS,
-        )
-    )
-
-    quest_payloads: dict[str, dict[str, Any]] = {}
-    active_quest_ids: list[str] = []
-    closed_quest_ids: list[str] = []
-    for quest_id in missing_foundation_ids:
-        issues.append(
-            ValidationIssue(
-                f"quests/**/{quest_id}.yaml",
-                "file is missing",
-            )
-        )
-    for quest_id in quest_ids:
-        quest_path = quest_paths.get(quest_id, repo_root / "quests" / f"{quest_id}.yaml")
-        payload = load_yaml_file(quest_path, issues)
-        location = relative_location(quest_path)
-        if payload is None:
-            continue
-        if not isinstance(payload, dict):
-            issues.append(ValidationIssue(location, "quest payload must parse to a mapping"))
-            continue
-        schema_valid = validate_against_schema(payload, "quest.schema.json", location, issues)
-        if payload.get("id") != quest_id:
-            issues.append(ValidationIssue(location, f"id must be '{quest_id}'"))
-        if payload.get("repo") != "aoa-skills":
-            issues.append(ValidationIssue(location, "repo must be 'aoa-skills'"))
-        if payload.get("public_safe") is not True:
-            issues.append(ValidationIssue(location, "public_safe must be true"))
-        path_state = quest_path.parent.name
-        if path_state in QUEST_LIFECYCLE_STATES and payload.get("state") != path_state:
-            issues.append(
-                ValidationIssue(
-                    location,
-                    f"state must match quest path state '{path_state}'",
-                )
-            )
-        if quest_id == "AOA-SK-Q-0004":
-            activation = payload.get("activation")
-            anchor_ref = payload.get("anchor_ref")
-            if not isinstance(activation, dict) or activation.get("ref") != "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md":
-                issues.append(
-                    ValidationIssue(
-                        location,
-                        "AOA-SK-Q-0004 must keep activation.ref 'mechanics/boundary-bridge/docs/OVERLAY_SPEC.md'",
-                    )
-                )
-            if not isinstance(anchor_ref, dict) or anchor_ref.get("ref") != "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md":
-                issues.append(
-                    ValidationIssue(
-                        location,
-                        "AOA-SK-Q-0004 must keep anchor_ref.ref 'mechanics/boundary-bridge/docs/OVERLAY_SPEC.md'",
-                    )
-                )
-        for token in QUESTBOOK_FORBIDDEN_ANCHORS:
-            if token in quest_path.read_text(encoding="utf-8"):
-                issues.append(ValidationIssue(location, f"must not mention '{token}'"))
-        if schema_valid:
-            quest_payloads[quest_id] = payload
-        if payload.get("state") in CLOSED_QUEST_STATES:
-            closed_quest_ids.append(quest_id)
-        else:
-            active_quest_ids.append(quest_id)
-
-    if questbook_text:
-        for quest_id in active_quest_ids:
-            if quest_id not in questbook_text:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(questbook_path),
-                        f"must reference active quest id '{quest_id}'",
-                    )
-                )
-        for quest_id in closed_quest_ids:
-            if quest_id in questbook_text:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(questbook_path),
-                        f"must not list closed quest id '{quest_id}'",
-                    )
-                )
-
-    valid_quest_ids = [quest_id for quest_id in quest_ids if quest_id in quest_payloads]
-
-    try:
-        expected_catalog = build_catalog.build_quest_catalog_payload(
-            repo_root, payloads=quest_payloads
-        )
-    except ValueError as exc:
-        issues.append(ValidationIssue("quests", str(exc)))
-        expected_catalog = None
-    expected_catalog_by_id = {entry["id"]: entry for entry in expected_catalog or []}
-    live_catalog_payload = load_json_file(repo_root / QUEST_CATALOG_PATH, issues)
-    if isinstance(live_catalog_payload, list) and expected_catalog is not None:
-        live_catalog_by_id: dict[str, dict[str, Any]] = {}
-        for entry in live_catalog_payload:
-            if isinstance(entry, dict):
-                entry_id = entry.get("id")
-                if isinstance(entry_id, str) and entry_id in expected_catalog_by_id:
-                    live_catalog_by_id[entry_id] = entry
-        if any(
-            live_catalog_by_id.get(quest_id) != expected_catalog_by_id[quest_id]
-            for quest_id in valid_quest_ids
-        ):
-            issues.append(
-                ValidationIssue(
-                    relative_location(repo_root / QUEST_CATALOG_PATH),
-                    "live catalog must stay aligned with quests/**/AOA-SK-Q-*.yaml",
-                )
-            )
-    elif live_catalog_payload is not None:
-        issues.append(
-            ValidationIssue(
-                relative_location(repo_root / QUEST_CATALOG_PATH),
-                "payload must be a JSON array",
-            )
-        )
-
-    catalog_payload = load_json_file(repo_root / QUEST_CATALOG_EXAMPLE_PATH, issues)
-    if isinstance(catalog_payload, list) and expected_catalog is not None:
-        catalog_by_id: dict[str, dict[str, Any]] = {}
-        for entry in catalog_payload:
-            if isinstance(entry, dict):
-                entry_id = entry.get("id")
-                if isinstance(entry_id, str) and entry_id in expected_catalog_by_id:
-                    catalog_by_id[entry_id] = entry
-        if any(
-            catalog_by_id.get(quest_id) != expected_catalog_by_id[quest_id]
-            for quest_id in valid_quest_ids
-        ):
-            issues.append(
-                ValidationIssue(
-                    relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
-                    "example catalog must stay aligned with quests/**/AOA-SK-Q-*.yaml",
-                )
-            )
-        else:
-            live_catalog_by_id: dict[str, dict[str, Any]] = {}
-            if isinstance(live_catalog_payload, list):
-                for entry in live_catalog_payload:
-                    if isinstance(entry, dict):
-                        entry_id = entry.get("id")
-                        if isinstance(entry_id, str) and entry_id in expected_catalog_by_id:
-                            live_catalog_by_id[entry_id] = entry
-            if any(
-                catalog_by_id.get(quest_id) != live_catalog_by_id.get(quest_id)
-                for quest_id in valid_quest_ids
-            ):
-                issues.append(
-                    ValidationIssue(
-                        relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
-                        "example catalog must match generated/quest_catalog.min.json",
-                    )
-                )
-    elif catalog_payload is not None:
-        issues.append(
-            ValidationIssue(
-                relative_location(repo_root / QUEST_CATALOG_EXAMPLE_PATH),
-                "payload must be a JSON array",
-            )
-        )
-
-    try:
-        expected_dispatch = build_catalog.build_quest_dispatch_payload(
-            repo_root, payloads=quest_payloads
-        )
-    except ValueError as exc:
-        issues.append(ValidationIssue("quests", str(exc)))
-        expected_dispatch = None
-    expected_dispatch_by_id = {entry["id"]: entry for entry in expected_dispatch or []}
-    live_dispatch_payload = load_json_file(repo_root / QUEST_DISPATCH_PATH, issues)
-    live_dispatch_by_id: dict[str, dict[str, Any]] = {}
-    live_dispatch_invalid_ids: set[str] = set()
-    if isinstance(live_dispatch_payload, list) and expected_dispatch is not None:
-        for index, entry in enumerate(live_dispatch_payload):
-            entry_location = f"{relative_location(repo_root / QUEST_DISPATCH_PATH)}[{index}]"
-            if not isinstance(entry, dict):
-                issues.append(
-                    ValidationIssue(
-                        relative_location(repo_root / QUEST_DISPATCH_PATH),
-                        "dispatch entries must be JSON objects",
-                    )
-                )
-                continue
-            entry_valid = validate_against_schema(
-                entry,
-                "quest_dispatch.schema.json",
-                entry_location,
-                issues,
-            )
-            quest_id = entry.get("id")
-            if not entry_valid and isinstance(quest_id, str):
-                live_dispatch_invalid_ids.add(quest_id)
-            if entry_valid and isinstance(quest_id, str) and quest_id not in expected_dispatch_by_id:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(repo_root / QUEST_DISPATCH_PATH),
-                        f"dispatch entry '{quest_id}' must map to a quest declared in quests/**/AOA-SK-Q-*.yaml",
-                    )
-                )
-            requires_artifacts = entry.get("requires_artifacts")
-            if not isinstance(requires_artifacts, list) or not requires_artifacts or not all(
-                isinstance(item, str) and item for item in requires_artifacts
-            ):
-                issues.append(
-                    ValidationIssue(
-                        relative_location(repo_root / QUEST_DISPATCH_PATH),
-                        f"dispatch entry '{quest_id}' must keep a non-empty requires_artifacts list",
-                    )
-                )
-            if entry_valid and isinstance(quest_id, str) and quest_id in expected_dispatch_by_id:
-                live_dispatch_by_id[quest_id] = entry
-        comparable_live_dispatch_ids = [
-            quest_id for quest_id in valid_quest_ids if quest_id not in live_dispatch_invalid_ids
-        ]
-        if any(
-            live_dispatch_by_id.get(quest_id) != expected_dispatch_by_id[quest_id]
-            for quest_id in comparable_live_dispatch_ids
-        ):
-            issues.append(
-                ValidationIssue(
-                    relative_location(repo_root / QUEST_DISPATCH_PATH),
-                    "dispatch entry '"
-                    + next(
-                        quest_id
-                        for quest_id in comparable_live_dispatch_ids
-                        if live_dispatch_by_id.get(quest_id) != expected_dispatch_by_id[quest_id]
-                    )
-                    + "' must stay aligned with quests/**/AOA-SK-Q-*.yaml",
-                )
-            )
-    elif live_dispatch_payload is not None:
-        issues.append(
-            ValidationIssue(
-                relative_location(repo_root / QUEST_DISPATCH_PATH),
-                "payload must be a JSON array",
-            )
-        )
-
-    dispatch_payload = load_json_file(repo_root / QUEST_DISPATCH_EXAMPLE_PATH, issues)
-    if isinstance(dispatch_payload, list) and expected_dispatch is not None:
-        example_dispatch_by_id: dict[str, dict[str, Any]] = {}
-        example_dispatch_invalid_ids: set[str] = set()
-        for index, entry in enumerate(dispatch_payload):
-            entry_location = f"{relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH)}[{index}]"
-            if not isinstance(entry, dict):
-                issues.append(
-                    ValidationIssue(
-                        relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                        "dispatch entries must be JSON objects",
-                    )
-                )
-                continue
-            entry_valid = validate_against_schema(
-                entry,
-                "quest_dispatch.schema.json",
-                entry_location,
-                issues,
-            )
-            quest_id = entry.get("id")
-            if not entry_valid and isinstance(quest_id, str):
-                example_dispatch_invalid_ids.add(quest_id)
-            if entry_valid and isinstance(quest_id, str) and quest_id not in expected_dispatch_by_id:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                        f"example dispatch entry '{quest_id}' must map to a quest declared in quests/**/AOA-SK-Q-*.yaml",
-                    )
-                )
-            if entry_valid and isinstance(quest_id, str) and quest_id in expected_dispatch_by_id:
-                example_dispatch_by_id[quest_id] = entry
-        comparable_example_dispatch_ids = [
-            quest_id
-            for quest_id in valid_quest_ids
-            if quest_id not in example_dispatch_invalid_ids
-        ]
-        if any(
-            example_dispatch_by_id.get(quest_id) != expected_dispatch_by_id[quest_id]
-            for quest_id in comparable_example_dispatch_ids
-        ):
-            issues.append(
-                ValidationIssue(
-                    relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                    "example dispatch must stay aligned with quests/**/AOA-SK-Q-*.yaml",
-                )
-            )
-        else:
-            comparable_quest_ids = [
-                quest_id
-                for quest_id in comparable_example_dispatch_ids
-                if quest_id in example_dispatch_by_id and quest_id in live_dispatch_by_id
-            ]
-            if any(
-                example_dispatch_by_id[quest_id] != live_dispatch_by_id[quest_id]
-                for quest_id in comparable_quest_ids
-            ):
-                issues.append(
-                    ValidationIssue(
-                        relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                        "example dispatch must match generated/quest_dispatch.min.json",
-                    )
-                )
-    elif dispatch_payload is not None:
-        issues.append(
-            ValidationIssue(
-                relative_location(repo_root / QUEST_DISPATCH_EXAMPLE_PATH),
-                "payload must be a JSON array",
-            )
-        )
-
-    return issues
+    return questbook_surface.validate_questbook_surface(repo_root)
 
 
 def parse_skill_markdown(
@@ -1745,1219 +1248,70 @@ def validate_skill_manifest_parity(
         issues.append(ValidationIssue(contract_issue.location, contract_issue.message))
 
 
-def catalog_entries_by_name(
-    catalog: dict[str, Any],
-    *,
-    array_key: str,
-    key_name: str,
-    location: str,
-    issues: list[ValidationIssue],
-) -> dict[str, dict[str, Any]]:
-    entries = catalog.get(array_key)
-    if not isinstance(entries, list):
-        issues.append(
-            ValidationIssue(location, f"catalog field '{array_key}' must be a list")
-        )
-        return {}
-
-    entry_map: dict[str, dict[str, Any]] = {}
-    for index, entry in enumerate(entries):
-        if not isinstance(entry, dict):
-            issues.append(
-                ValidationIssue(
-                    location,
-                    f"catalog field '{array_key}[{index}]' must be an object",
-                )
-            )
-            continue
-        name = entry.get(key_name)
-        if not isinstance(name, str):
-            issues.append(
-                ValidationIssue(
-                    location,
-                    f"catalog field '{array_key}[{index}].{key_name}' must be a string",
-                )
-            )
-            continue
-        entry_map[name] = entry
-    return entry_map
+def _coerce_generated_issues(
+    issues: Sequence[generated_surface.ValidationIssue],
+) -> list[ValidationIssue]:
+    return [ValidationIssue(issue.location, issue.message) for issue in issues]
 
 
 def validate_generated_catalogs(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    full_path = repo_root / build_catalog.FULL_CATALOG_PATH
-    min_path = repo_root / build_catalog.MIN_CATALOG_PATH
-
-    full_text: str | None = None
-    min_text: str | None = None
-    full_data: dict[str, Any] | None = None
-    min_data: dict[str, Any] | None = None
-
-    for path in (full_path, min_path):
-        if not path.is_file():
-            issues.append(
-                ValidationIssue(relative_location(path), "generated catalog is missing")
-            )
-
-    if full_path.is_file():
-        full_text = full_path.read_text(encoding="utf-8")
-        try:
-            parsed = json.loads(full_text)
-        except json.JSONDecodeError as exc:
-            issues.append(
-                ValidationIssue(
-                    relative_location(full_path),
-                    f"invalid JSON: {exc.msg}",
-                )
-            )
-        else:
-            if isinstance(parsed, dict):
-                full_data = parsed
-            else:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(full_path),
-                        "catalog must parse to an object",
-                    )
-                )
-
-    if min_path.is_file():
-        min_text = min_path.read_text(encoding="utf-8")
-        try:
-            parsed = json.loads(min_text)
-        except json.JSONDecodeError as exc:
-            issues.append(
-                ValidationIssue(
-                    relative_location(min_path),
-                    f"invalid JSON: {exc.msg}",
-                )
-            )
-        else:
-            if isinstance(parsed, dict):
-                min_data = parsed
-            else:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(min_path),
-                        "catalog must parse to an object",
-                    )
-                )
-
-    if full_data is None or min_data is None:
-        return issues
-
-    def project_min_catalog_safely(
-        full_catalog: dict[str, Any],
-        *,
-        location: str,
-        label: str,
-    ) -> dict[str, Any] | None:
-        try:
-            return build_catalog.project_min_catalog(full_catalog)
-        except (KeyError, TypeError):
-            issues.append(
-                ValidationIssue(
-                    location,
-                    f"{label} is malformed; min projection could not be computed",
-                )
-            )
-            return None
-
-    if skill_names is None:
-        projected_min = project_min_catalog_safely(
-            full_data,
-            location=relative_location(full_path),
-            label="generated catalog",
-        )
-        if projected_min is None:
-            return issues
-        if min_data != projected_min:
-            issues.append(
-                ValidationIssue(
-                    relative_location(min_path),
-                    "min catalog must be an exact projection of the full catalog",
-                )
-            )
-
-        try:
-            expected_full_text, expected_min_text = build_catalog.build_catalog_texts(repo_root)
-        except (FileNotFoundError, ValueError):
-            return issues
-
-        if full_text is not None and full_text != expected_full_text:
-            issues.append(
-                ValidationIssue(
-                    relative_location(full_path),
-                    "generated catalog is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        if min_text is not None and min_text != expected_min_text:
-            issues.append(
-                ValidationIssue(
-                    relative_location(min_path),
-                    "generated catalog is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        return issues
-
-    full_location = relative_location(full_path)
-    min_location = relative_location(min_path)
-    actual_full_entries = catalog_entries_by_name(
-        full_data,
-        array_key="skills",
-        key_name="name",
-        location=full_location,
-        issues=issues,
+    return _coerce_generated_issues(
+        generated_surface.validate_generated_catalogs(repo_root, skill_names=skill_names)
     )
-    actual_min_entries = catalog_entries_by_name(
-        min_data,
-        array_key="skills",
-        key_name="name",
-        location=min_location,
-        issues=issues,
-    )
-
-    for skill_name in skill_names:
-        expected_full_entry = build_catalog.build_skill_entry(repo_root, skill_name)
-        expected_min_entry = build_catalog.project_min_catalog(
-            {
-                "catalog_version": build_catalog.CATALOG_VERSION,
-                "source_of_truth": build_catalog.SOURCE_OF_TRUTH,
-                "skills": [expected_full_entry],
-            }
-        )["skills"][0]
-
-        actual_full_entry = actual_full_entries.get(skill_name)
-        actual_min_entry = actual_min_entries.get(skill_name)
-        if actual_full_entry is None:
-            issues.append(
-                ValidationIssue(
-                    full_location,
-                    f"generated catalog is missing skill '{skill_name}'",
-                )
-            )
-            continue
-        if actual_min_entry is None:
-            issues.append(
-                ValidationIssue(
-                    min_location,
-                    f"generated min catalog is missing skill '{skill_name}'",
-                )
-            )
-            continue
-
-        if actual_full_entry != expected_full_entry:
-            issues.append(
-                ValidationIssue(
-                    full_location,
-                    f"generated catalog entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        if actual_min_entry != expected_min_entry:
-            issues.append(
-                ValidationIssue(
-                    min_location,
-                    f"generated min catalog entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        projected_min_catalog_payload = project_min_catalog_safely(
-            {
-                "catalog_version": full_data.get("catalog_version"),
-                "source_of_truth": full_data.get("source_of_truth"),
-                "skills": [actual_full_entry],
-            },
-            location=full_location,
-            label=f"generated catalog entry for '{skill_name}'",
-        )
-        if projected_min_catalog_payload is None:
-            continue
-        projected_min_entry = projected_min_catalog_payload["skills"][0]
-        if actual_min_entry != projected_min_entry:
-            issues.append(
-                ValidationIssue(
-                    min_location,
-                    f"generated min catalog entry for '{skill_name}' must stay a projection of the full catalog",
-                )
-            )
-
-    return issues
-
-
-def validate_capsule_catalog_alignment(
-    catalog_data: dict[str, Any],
-    capsule_data: dict[str, Any],
-    *,
-    skill_names: Sequence[str] | None,
-    issues: list[ValidationIssue],
-    catalog_location: str,
-    capsule_location: str,
-) -> None:
-    starting_issue_count = len(issues)
-    catalog_entries = catalog_entries_by_name(
-        catalog_data,
-        array_key="skills",
-        key_name="name",
-        location=catalog_location,
-        issues=issues,
-    )
-    capsule_entries = catalog_entries_by_name(
-        capsule_data,
-        array_key="skills",
-        key_name="name",
-        location=capsule_location,
-        issues=issues,
-    )
-    if len(issues) != starting_issue_count:
-        return
-
-    if skill_names is None:
-        missing = sorted(set(catalog_entries) - set(capsule_entries))
-        extra = sorted(set(capsule_entries) - set(catalog_entries))
-        for skill_name in missing:
-            issues.append(
-                ValidationIssue(
-                    capsule_location,
-                    f"generated capsules are missing skill '{skill_name}'",
-                )
-            )
-        for skill_name in extra:
-            issues.append(
-                ValidationIssue(
-                    capsule_location,
-                    f"generated capsules include unknown skill '{skill_name}'",
-                )
-            )
-        target_names = sorted(set(catalog_entries) & set(capsule_entries))
-    else:
-        target_names = list(skill_names)
-
-    shared_fields = (
-        "scope",
-        "status",
-        "summary",
-        "invocation_mode",
-        "technique_dependencies",
-        "skill_path",
-    )
-    for skill_name in target_names:
-        catalog_entry = catalog_entries.get(skill_name)
-        capsule_entry = capsule_entries.get(skill_name)
-        if catalog_entry is None or capsule_entry is None:
-            continue
-        for field_name in shared_fields:
-            if capsule_entry.get(field_name) != catalog_entry.get(field_name):
-                issues.append(
-                    ValidationIssue(
-                        capsule_location,
-                        f"generated capsule entry for '{skill_name}' must align with full catalog field '{field_name}'",
-                    )
-                )
 
 
 def validate_generated_capsules(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    capsule_path = repo_root / build_catalog.CAPSULE_PATH
-
-    capsule_text: str | None = None
-    capsule_data: dict[str, Any] | None = None
-
-    if not capsule_path.is_file():
-        issues.append(
-            ValidationIssue(relative_location(capsule_path), "generated capsules are missing")
-        )
-        return issues
-
-    capsule_text = capsule_path.read_text(encoding="utf-8")
-    try:
-        parsed = json.loads(capsule_text)
-    except json.JSONDecodeError as exc:
-        issues.append(
-            ValidationIssue(
-                relative_location(capsule_path),
-                f"invalid JSON: {exc.msg}",
-            )
-        )
-        return issues
-
-    if not isinstance(parsed, dict):
-        issues.append(
-            ValidationIssue(
-                relative_location(capsule_path),
-                "capsules must parse to an object",
-            )
-        )
-        return issues
-
-    capsule_data = parsed
-    if capsule_data.get("capsule_version") != build_catalog.CAPSULE_VERSION:
-        issues.append(
-            ValidationIssue(
-                relative_location(capsule_path),
-                f"capsule_version must be {build_catalog.CAPSULE_VERSION}",
-            )
-        )
-    if capsule_data.get("source_of_truth") != build_catalog.CAPSULE_SOURCE_OF_TRUTH:
-        issues.append(
-            ValidationIssue(
-                relative_location(capsule_path),
-                "capsule source_of_truth does not match the expected contract",
-            )
-        )
-    if not isinstance(capsule_data.get("skills"), list):
-        issues.append(
-            ValidationIssue(
-                relative_location(capsule_path),
-                "capsules field 'skills' must be a list",
-            )
-        )
-        return issues
-
-    if skill_names is None:
-        try:
-            expected_capsule_text = build_catalog.build_capsule_text(repo_root)
-        except (FileNotFoundError, ValueError) as exc:
-            issues.append(
-                ValidationIssue(
-                    relative_location(capsule_path),
-                    f"capsule source validation failed: {exc}",
-                )
-            )
-            return issues
-
-        if capsule_text != expected_capsule_text:
-            issues.append(
-                ValidationIssue(
-                    relative_location(capsule_path),
-                    "generated capsules are out of date; run python scripts/build_catalog.py",
-                )
-            )
-    else:
-        capsule_entries = catalog_entries_by_name(
-            capsule_data,
-            array_key="skills",
-            key_name="name",
-            location=relative_location(capsule_path),
-            issues=issues,
-        )
-        for skill_name in skill_names:
-            try:
-                expected_capsule_entry = build_catalog.build_skill_capsule_entry(
-                    repo_root, skill_name
-                )
-            except (FileNotFoundError, ValueError) as exc:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(capsule_path),
-                        f"capsule source validation failed for '{skill_name}': {exc}",
-                    )
-                )
-                continue
-
-            actual_capsule_entry = capsule_entries.get(skill_name)
-            if actual_capsule_entry is None:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(capsule_path),
-                        f"generated capsules are missing skill '{skill_name}'",
-                    )
-                )
-                continue
-            if actual_capsule_entry != expected_capsule_entry:
-                issues.append(
-                    ValidationIssue(
-                        relative_location(capsule_path),
-                        f"generated capsule entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
-                    )
-                )
-
-    full_catalog_path = repo_root / build_catalog.FULL_CATALOG_PATH
-    if full_catalog_path.is_file():
-        try:
-            full_catalog_data = json.loads(full_catalog_path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            return issues
-        if isinstance(full_catalog_data, dict):
-            validate_capsule_catalog_alignment(
-                full_catalog_data,
-                capsule_data,
-                skill_names=skill_names,
-                issues=issues,
-                catalog_location=relative_location(full_catalog_path),
-                capsule_location=relative_location(capsule_path),
-            )
-
-    return issues
-
-
-def validate_sections_catalog_alignment(
-    full_catalog_data: dict[str, Any],
-    sections_data: dict[str, Any],
-    *,
-    skill_names: Sequence[str] | None,
-    issues: list[ValidationIssue],
-    catalog_location: str,
-    sections_location: str,
-) -> None:
-    starting_issue_count = len(issues)
-    catalog_entries = catalog_entries_by_name(
-        full_catalog_data,
-        array_key="skills",
-        key_name="name",
-        location=catalog_location,
-        issues=issues,
+    return _coerce_generated_issues(
+        generated_surface.validate_generated_capsules(repo_root, skill_names=skill_names)
     )
-    section_entries = catalog_entries_by_name(
-        sections_data,
-        array_key="skills",
-        key_name="name",
-        location=sections_location,
-        issues=issues,
-    )
-    if len(issues) != starting_issue_count:
-        return
-
-    if skill_names is None:
-        missing = sorted(set(catalog_entries) - set(section_entries))
-        extra = sorted(set(section_entries) - set(catalog_entries))
-        for skill_name in missing:
-            issues.append(
-                ValidationIssue(
-                    sections_location,
-                    f"generated sections are missing skill '{skill_name}'",
-                )
-            )
-        for skill_name in extra:
-            issues.append(
-                ValidationIssue(
-                    sections_location,
-                    f"generated sections include unknown skill '{skill_name}'",
-                )
-            )
-        target_names = sorted(set(catalog_entries) & set(section_entries))
-    else:
-        target_names = list(skill_names)
-
-    shared_fields = ("scope", "status", "skill_path")
-    for skill_name in target_names:
-        catalog_entry = catalog_entries.get(skill_name)
-        section_entry = section_entries.get(skill_name)
-        if catalog_entry is None or section_entry is None:
-            continue
-        for field_name in shared_fields:
-            if section_entry.get(field_name) != catalog_entry.get(field_name):
-                issues.append(
-                    ValidationIssue(
-                        sections_location,
-                        f"generated section entry for '{skill_name}' must align with full catalog field '{field_name}'",
-                    )
-                )
 
 
 def validate_generated_sections(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    sections_path = repo_root / build_catalog.SECTIONS_PATH
-    sections_location = relative_location(sections_path)
-
-    if not sections_path.is_file():
-        issues.append(
-            ValidationIssue(sections_location, "generated sections are missing")
-        )
-        return issues
-
-    sections_text = sections_path.read_text(encoding="utf-8")
-    try:
-        parsed = json.loads(sections_text)
-    except json.JSONDecodeError as exc:
-        issues.append(ValidationIssue(sections_location, f"invalid JSON: {exc.msg}"))
-        return issues
-
-    if not isinstance(parsed, dict):
-        issues.append(
-            ValidationIssue(sections_location, "sections must parse to an object")
-        )
-        return issues
-
-    sections_data = parsed
-    if sections_data.get("section_version") != build_catalog.SECTION_VERSION:
-        issues.append(
-            ValidationIssue(
-                sections_location,
-                f"section_version must be {build_catalog.SECTION_VERSION}",
-            )
-        )
-    if sections_data.get("source_of_truth") != skill_section_contract.SECTION_SOURCE_OF_TRUTH:
-        issues.append(
-            ValidationIssue(
-                sections_location,
-                "section source_of_truth does not match the expected contract",
-            )
-        )
-    if not isinstance(sections_data.get("skills"), list):
-        issues.append(
-            ValidationIssue(sections_location, "sections field 'skills' must be a list")
-        )
-        return issues
-
-    if skill_names is None:
-        try:
-            expected_sections_text = build_catalog.build_sections_text(repo_root)
-        except (FileNotFoundError, ValueError) as exc:
-            issues.append(
-                ValidationIssue(
-                    sections_location,
-                    f"section source validation failed: {exc}",
-                )
-            )
-            return issues
-
-        if sections_text != expected_sections_text:
-            issues.append(
-                ValidationIssue(
-                    sections_location,
-                    "generated sections are out of date; run python scripts/build_catalog.py",
-                )
-            )
-    else:
-        section_entries = catalog_entries_by_name(
-            sections_data,
-            array_key="skills",
-            key_name="name",
-            location=sections_location,
-            issues=issues,
-        )
-        for skill_name in skill_names:
-            skill_md_path = skill_layout.skill_md_path(repo_root, skill_name)
-            try:
-                metadata, body = build_catalog.parse_skill_document(skill_md_path)
-                expected_section_entry, contract_issues = skill_section_contract.build_sections_entry(
-                    repo_root,
-                    metadata,
-                    skill_md_path,
-                    body,
-                )
-            except (FileNotFoundError, ValueError) as exc:
-                issues.append(
-                    ValidationIssue(
-                        sections_location,
-                        f"section source validation failed for '{skill_name}': {exc}",
-                    )
-                )
-                continue
-
-            for contract_issue in contract_issues:
-                issues.append(
-                    ValidationIssue(contract_issue.location, contract_issue.message)
-                )
-            if contract_issues or expected_section_entry is None:
-                continue
-
-            actual_section_entry = section_entries.get(skill_name)
-            if actual_section_entry is None:
-                issues.append(
-                    ValidationIssue(
-                        sections_location,
-                        f"generated sections are missing skill '{skill_name}'",
-                    )
-                )
-                continue
-            if actual_section_entry != expected_section_entry:
-                issues.append(
-                    ValidationIssue(
-                        sections_location,
-                        f"generated section entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
-                    )
-                )
-
-    full_catalog_path = repo_root / build_catalog.FULL_CATALOG_PATH
-    if full_catalog_path.is_file():
-        try:
-            full_catalog_data = json.loads(full_catalog_path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            return issues
-        if isinstance(full_catalog_data, dict):
-            validate_sections_catalog_alignment(
-                full_catalog_data,
-                sections_data,
-                skill_names=skill_names,
-                issues=issues,
-                catalog_location=relative_location(full_catalog_path),
-                sections_location=sections_location,
-            )
-
-    return issues
+    return _coerce_generated_issues(
+        generated_surface.validate_generated_sections(repo_root, skill_names=skill_names)
+    )
 
 
 def validate_generated_walkthroughs(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    walkthrough_path = repo_root / build_catalog.WALKTHROUGHS_JSON_PATH
-    walkthrough_markdown_path = repo_root / build_catalog.WALKTHROUGHS_MARKDOWN_PATH
-    walkthrough_location = relative_location(walkthrough_path)
-    walkthrough_markdown_location = relative_location(walkthrough_markdown_path)
-
-    if not walkthrough_path.is_file():
-        issues.append(
-            ValidationIssue(
-                walkthrough_location,
-                "generated walkthrough surface is missing",
-            )
-        )
-        if not walkthrough_markdown_path.is_file():
-            issues.append(
-                ValidationIssue(
-                    walkthrough_markdown_location,
-                    "generated walkthrough markdown is missing",
-                )
-            )
-        return issues
-
-    if not walkthrough_markdown_path.is_file():
-        issues.append(
-            ValidationIssue(
-                walkthrough_markdown_location,
-                "generated walkthrough markdown is missing",
-            )
-        )
-        return issues
-
-    walkthrough_text = walkthrough_path.read_text(encoding="utf-8")
-    walkthrough_markdown_text = walkthrough_markdown_path.read_text(encoding="utf-8")
-    try:
-        parsed = json.loads(walkthrough_text)
-    except json.JSONDecodeError as exc:
-        issues.append(
-            ValidationIssue(
-                walkthrough_location,
-                f"invalid JSON: {exc.msg}",
-            )
-        )
-        return issues
-
-    if not isinstance(parsed, dict):
-        issues.append(
-            ValidationIssue(
-                walkthrough_location,
-                "walkthrough surface must parse to an object",
-            )
-        )
-        return issues
-
-    walkthrough_data = parsed
-    validate_against_schema(
-        walkthrough_data,
-        GENERATED_SURFACE_SCHEMA_BY_PATH[build_catalog.WALKTHROUGHS_JSON_PATH],
-        walkthrough_location,
-        issues,
+    return _coerce_generated_issues(
+        generated_surface.validate_generated_walkthroughs(repo_root, skill_names=skill_names)
     )
-    if walkthrough_data.get("walkthrough_version") != build_catalog.WALKTHROUGH_VERSION:
-        issues.append(
-            ValidationIssue(
-                walkthrough_location,
-                f"walkthrough_version must be {build_catalog.WALKTHROUGH_VERSION}",
-            )
-        )
-    if walkthrough_data.get("source_of_truth") != build_catalog.WALKTHROUGH_SOURCE_OF_TRUTH:
-        issues.append(
-            ValidationIssue(
-                walkthrough_location,
-                "walkthrough source_of_truth does not match the expected contract",
-            )
-        )
-    if not isinstance(walkthrough_data.get("skills"), list):
-        issues.append(
-            ValidationIssue(
-                walkthrough_location,
-                "walkthrough surface field 'skills' must be a list",
-            )
-        )
-        return issues
-
-    try:
-        expected_walkthrough_text, expected_walkthrough_markdown_text = (
-            build_catalog.build_walkthrough_texts(repo_root)
-        )
-        expected_walkthrough_payload = build_catalog.build_walkthrough_payload(repo_root)
-    except (FileNotFoundError, ValueError) as exc:
-        issues.append(
-            ValidationIssue(
-                walkthrough_location,
-                f"walkthrough source validation failed: {exc}",
-            )
-        )
-        return issues
-
-    if skill_names is None:
-        if walkthrough_text != expected_walkthrough_text:
-            issues.append(
-                ValidationIssue(
-                    walkthrough_location,
-                    "generated walkthrough surface is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        if walkthrough_markdown_text != expected_walkthrough_markdown_text:
-            issues.append(
-                ValidationIssue(
-                    walkthrough_markdown_location,
-                    "generated walkthrough markdown is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        return issues
-
-    actual_entries = catalog_entries_by_name(
-        walkthrough_data,
-        array_key="skills",
-        key_name="name",
-        location=walkthrough_location,
-        issues=issues,
-    )
-    expected_entries = catalog_entries_by_name(
-        expected_walkthrough_payload,
-        array_key="skills",
-        key_name="name",
-        location=walkthrough_location,
-        issues=[],
-    )
-
-    for skill_name in skill_names:
-        actual_entry = actual_entries.get(skill_name)
-        expected_entry = expected_entries.get(skill_name)
-        if actual_entry is None:
-            issues.append(
-                ValidationIssue(
-                    walkthrough_location,
-                    f"generated walkthrough surface is missing skill '{skill_name}'",
-                )
-            )
-            continue
-        if expected_entry is None:
-            continue
-        if actual_entry != expected_entry:
-            issues.append(
-                ValidationIssue(
-                    walkthrough_location,
-                    f"generated walkthrough entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
-                )
-            )
-
-    return issues
 
 
 def validate_generated_public_surface(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    public_surface_path = repo_root / build_catalog.PUBLIC_SURFACE_JSON_PATH
-    public_surface_markdown_path = repo_root / build_catalog.PUBLIC_SURFACE_MARKDOWN_PATH
-    public_surface_location = relative_location(public_surface_path)
-    public_surface_markdown_location = relative_location(public_surface_markdown_path)
-
-    if not public_surface_path.is_file():
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                "generated public surface is missing",
-            )
-        )
-        if not public_surface_markdown_path.is_file():
-            issues.append(
-                ValidationIssue(
-                    public_surface_markdown_location,
-                    "generated public surface markdown is missing",
-                )
-            )
-        return issues
-
-    if not public_surface_markdown_path.is_file():
-        issues.append(
-            ValidationIssue(
-                public_surface_markdown_location,
-                "generated public surface markdown is missing",
-            )
-        )
-        return issues
-
-    public_surface_text = public_surface_path.read_text(encoding="utf-8")
-    public_surface_markdown_text = public_surface_markdown_path.read_text(encoding="utf-8")
-    try:
-        parsed = json.loads(public_surface_text)
-    except json.JSONDecodeError as exc:
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                f"invalid JSON: {exc.msg}",
-            )
-        )
-        return issues
-
-    if not isinstance(parsed, dict):
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                "public surface must parse to an object",
-            )
-        )
-        return issues
-
-    public_surface_data = parsed
-    validate_against_schema(
-        public_surface_data,
-        GENERATED_SURFACE_SCHEMA_BY_PATH[build_catalog.PUBLIC_SURFACE_JSON_PATH],
-        public_surface_location,
-        issues,
+    return _coerce_generated_issues(
+        generated_surface.validate_generated_public_surface(repo_root, skill_names=skill_names)
     )
-    if public_surface_data.get("public_surface_version") != build_catalog.PUBLIC_SURFACE_VERSION:
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                f"public_surface_version must be {build_catalog.PUBLIC_SURFACE_VERSION}",
-            )
-        )
-    if public_surface_data.get("source_of_truth") != build_catalog.PUBLIC_SURFACE_SOURCE_OF_TRUTH:
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                "public surface source_of_truth does not match the expected contract",
-            )
-        )
-    if not isinstance(public_surface_data.get("cohorts"), dict):
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                "public surface field 'cohorts' must be an object",
-            )
-        )
-    if not isinstance(public_surface_data.get("skills"), list):
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                "public surface field 'skills' must be a list",
-            )
-        )
-        return issues
-
-    try:
-        expected_public_surface_text, expected_public_surface_markdown_text = (
-            build_catalog.build_public_surface_texts(repo_root)
-        )
-        expected_public_surface_payload = build_catalog.build_public_surface_payload(repo_root)
-    except (FileNotFoundError, ValueError) as exc:
-        issues.append(
-            ValidationIssue(
-                public_surface_location,
-                f"public surface source validation failed: {exc}",
-            )
-        )
-        return issues
-
-    if skill_names is None:
-        if public_surface_text != expected_public_surface_text:
-            issues.append(
-                ValidationIssue(
-                    public_surface_location,
-                    "generated public surface is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        if public_surface_markdown_text != expected_public_surface_markdown_text:
-            issues.append(
-                ValidationIssue(
-                    public_surface_markdown_location,
-                    "generated public surface markdown is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        return issues
-
-    actual_entries = catalog_entries_by_name(
-        public_surface_data,
-        array_key="skills",
-        key_name="name",
-        location=public_surface_location,
-        issues=issues,
-    )
-    expected_entries = catalog_entries_by_name(
-        expected_public_surface_payload,
-        array_key="skills",
-        key_name="name",
-        location=public_surface_location,
-        issues=[],
-    )
-    actual_cohorts = public_surface_data.get("cohorts", {})
-    expected_cohorts = expected_public_surface_payload.get("cohorts", {})
-    cohort_names = (
-        skill_governance_surface.DEFAULT_REFERENCES_COHORT,
-        skill_governance_surface.CANDIDATE_READY_COHORT,
-        skill_governance_surface.PENDING_LINEAGE_COHORT,
-        skill_governance_surface.RISK_SURFACES_COHORT,
-    )
-
-    for skill_name in skill_names:
-        actual_entry = actual_entries.get(skill_name)
-        expected_entry = expected_entries.get(skill_name)
-        if actual_entry is None:
-            issues.append(
-                ValidationIssue(
-                    public_surface_location,
-                    f"generated public surface is missing skill '{skill_name}'",
-                )
-            )
-            continue
-        if expected_entry is None:
-            continue
-        if actual_entry != expected_entry:
-            issues.append(
-                ValidationIssue(
-                    public_surface_location,
-                    f"generated public surface entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        for cohort_name in cohort_names:
-            actual_members = actual_cohorts.get(cohort_name, [])
-            expected_members = expected_cohorts.get(cohort_name, [])
-            if (skill_name in actual_members) != (skill_name in expected_members):
-                issues.append(
-                    ValidationIssue(
-                        public_surface_location,
-                        f"generated public surface cohorts for '{skill_name}' are out of date; run python scripts/build_catalog.py",
-                    )
-                )
-                break
-
-    return issues
 
 
 def validate_generated_evaluation_matrix(
     repo_root: Path,
     skill_names: Sequence[str] | None = None,
 ) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    matrix_path = repo_root / build_catalog.EVALUATION_MATRIX_JSON_PATH
-    matrix_markdown_path = repo_root / build_catalog.EVALUATION_MATRIX_MARKDOWN_PATH
-    matrix_location = relative_location(matrix_path)
-    matrix_markdown_location = relative_location(matrix_markdown_path)
-
-    if not matrix_path.is_file():
-        issues.append(
-            ValidationIssue(
-                matrix_location,
-                "generated evaluation matrix is missing",
-            )
-        )
-        if not matrix_markdown_path.is_file():
-            issues.append(
-                ValidationIssue(
-                    matrix_markdown_location,
-                    "generated evaluation matrix markdown is missing",
-                )
-            )
-        return issues
-
-    if not matrix_markdown_path.is_file():
-        issues.append(
-            ValidationIssue(
-                matrix_markdown_location,
-                "generated evaluation matrix markdown is missing",
-            )
-        )
-        return issues
-
-    matrix_text = matrix_path.read_text(encoding="utf-8")
-    matrix_markdown_text = matrix_markdown_path.read_text(encoding="utf-8")
-    try:
-        parsed = json.loads(matrix_text)
-    except json.JSONDecodeError as exc:
-        issues.append(
-            ValidationIssue(
-                matrix_location,
-                f"invalid JSON: {exc.msg}",
-            )
-        )
-        return issues
-
-    if not isinstance(parsed, dict):
-        issues.append(
-            ValidationIssue(
-                matrix_location,
-                "evaluation matrix must parse to an object",
-            )
-        )
-        return issues
-
-    matrix_data = parsed
-    validate_against_schema(
-        matrix_data,
-        GENERATED_SURFACE_SCHEMA_BY_PATH[build_catalog.EVALUATION_MATRIX_JSON_PATH],
-        matrix_location,
-        issues,
+    return _coerce_generated_issues(
+        generated_surface.validate_generated_evaluation_matrix(repo_root, skill_names=skill_names)
     )
-    if matrix_data.get("evaluation_matrix_version") != build_catalog.EVALUATION_MATRIX_VERSION:
-        issues.append(
-            ValidationIssue(
-                matrix_location,
-                f"evaluation_matrix_version must be {build_catalog.EVALUATION_MATRIX_VERSION}",
-            )
-        )
-    if matrix_data.get("source_of_truth") != build_catalog.EVALUATION_MATRIX_SOURCE_OF_TRUTH:
-        issues.append(
-            ValidationIssue(
-                matrix_location,
-                "evaluation matrix source_of_truth does not match the expected contract",
-            )
-        )
-    if not isinstance(matrix_data.get("skills"), list):
-        issues.append(
-            ValidationIssue(
-                matrix_location,
-                "evaluation matrix field 'skills' must be a list",
-            )
-        )
-        return issues
-
-    try:
-        expected_matrix_text, expected_matrix_markdown_text = (
-            build_catalog.build_evaluation_matrix_texts(repo_root)
-        )
-        expected_matrix_payload = build_catalog.build_evaluation_matrix_payload(repo_root)
-    except (FileNotFoundError, ValueError) as exc:
-        issues.append(
-            ValidationIssue(
-                matrix_location,
-                f"evaluation matrix source validation failed: {exc}",
-            )
-        )
-        return issues
-
-    if skill_names is None:
-        if matrix_text != expected_matrix_text:
-            issues.append(
-                ValidationIssue(
-                    matrix_location,
-                    "generated evaluation matrix is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        if matrix_markdown_text != expected_matrix_markdown_text:
-            issues.append(
-                ValidationIssue(
-                    matrix_markdown_location,
-                    "generated evaluation matrix markdown is out of date; run python scripts/build_catalog.py",
-                )
-            )
-        return issues
-
-    actual_entries = catalog_entries_by_name(
-        matrix_data,
-        array_key="skills",
-        key_name="name",
-        location=matrix_location,
-        issues=issues,
-    )
-    expected_entries = catalog_entries_by_name(
-        expected_matrix_payload,
-        array_key="skills",
-        key_name="name",
-        location=matrix_location,
-        issues=[],
-    )
-
-    for skill_name in skill_names:
-        actual_entry = actual_entries.get(skill_name)
-        expected_entry = expected_entries.get(skill_name)
-        if actual_entry is None:
-            issues.append(
-                ValidationIssue(
-                    matrix_location,
-                    f"generated evaluation matrix is missing skill '{skill_name}'",
-                )
-            )
-            continue
-        if expected_entry is None:
-            continue
-        if actual_entry != expected_entry:
-            issues.append(
-                ValidationIssue(
-                    matrix_location,
-                    f"generated evaluation matrix entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
-                )
-            )
-
-    return issues
-
-
-def validate_generated_surface_from_spec(
-    repo_root: Path,
-    spec: build_catalog.GeneratedSurfaceSpec,
-) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    try:
-        expected_texts = build_catalog.build_surface_text_map(repo_root, spec)
-    except (FileNotFoundError, ValueError) as exc:
-        for output in spec.outputs:
-            issues.append(
-                ValidationIssue(
-                    output.path.as_posix(),
-                    f"{spec.key} source validation failed: {exc}",
-                )
-            )
-        return issues
-
-    for output in spec.outputs:
-        path = repo_root / output.path
-        location = relative_location(path)
-        if not path.is_file():
-            issues.append(
-                ValidationIssue(
-                    location,
-                    f"generated {spec.key.replace('_', ' ')} artifact is missing",
-                )
-            )
-            continue
-
-        text = path.read_text(encoding="utf-8")
-        schema_name = GENERATED_SURFACE_SCHEMA_BY_PATH.get(output.path)
-        if output.is_json and schema_name is not None:
-            try:
-                payload = json.loads(text)
-            except json.JSONDecodeError as exc:
-                issues.append(ValidationIssue(location, f"invalid JSON: {exc.msg}"))
-            else:
-                validate_against_schema(payload, schema_name, location, issues)
-
-        if text != expected_texts[output.path]:
-            issues.append(
-                ValidationIssue(
-                    location,
-                    f"generated {spec.key.replace('_', ' ')} artifact is out of date; run python scripts/build_catalog.py",
-                )
-            )
-
-    return issues
 
 
 def validate_additional_generated_surfaces(repo_root: Path) -> list[ValidationIssue]:
-    issues: list[ValidationIssue] = []
-    skipped_keys = {
-        "catalogs",
-        "capsules",
-        "sections",
-        "walkthroughs",
-        "public_surface",
-        "evaluation_matrix",
-    }
-    for spec in build_catalog.generated_surface_specs(repo_root):
-        if spec.key in skipped_keys:
-            continue
-        issues.extend(validate_generated_surface_from_spec(repo_root, spec))
-    return issues
+    return _coerce_generated_issues(
+        generated_surface.validate_additional_generated_surfaces(repo_root)
+    )
 
 
 def format_issues(issues: Sequence[ValidationIssue]) -> str:
@@ -2970,6 +1324,7 @@ def run_validation(
     skill_name: str | None = None,
     *,
     fail_on_review_truth_sync: bool = False,
+    validate_generated: bool | None = None,
 ) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     try:
@@ -2986,6 +1341,9 @@ def run_validation(
     else:
         target_skills = all_skill_names
         selected_skills = None
+
+    if validate_generated is None:
+        validate_generated = skill_name is None
 
     for name in target_skills:
         bundle_issues = validate_skill_bundle(repo_root, name)
@@ -3005,6 +1363,8 @@ def run_validation(
     if fail_on_review_truth_sync:
         for name in target_skills:
             validate_review_truth_sync(repo_root, name, issues)
+    if not validate_generated:
+        return issues
     if skill_name is None:
         issues.extend(validate_generated_catalogs(repo_root))
         issues.extend(validate_generated_capsules(repo_root))
@@ -3028,10 +1388,14 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
     repo_root = repo_root or REPO_ROOT
     try:
         args = parse_args(argv)
+        if args.skip_generated and args.with_generated:
+            raise ValueError("--skip-generated and --with-generated cannot be combined")
+        validate_generated = args.with_generated if args.skill else not args.skip_generated
         issues = run_validation(
             repo_root,
             skill_name=args.skill,
             fail_on_review_truth_sync=args.fail_on_review_truth_sync,
+            validate_generated=validate_generated,
         )
     except ValueError as exc:
         print(f"Argument error: {exc}", file=sys.stderr)

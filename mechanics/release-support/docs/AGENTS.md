@@ -18,7 +18,9 @@ Do not describe manual pack edits as source work. Portable export must remain bu
 
 ## Validation
 
-`python scripts/release_check.py` or the specific export/support validator named by the changed document.
+Use `python scripts/ci_gate.py --mode export` for export/support surfaces and
+`python scripts/ci_gate.py --mode release` for release-facing surfaces, or the
+specific export/support validator named by the changed document.
 
 ## Closeout
 

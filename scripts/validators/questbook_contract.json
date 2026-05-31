@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "owner": "scripts/validate_skills.py",
+  "surface_paths": {
+    "questbook": "QUESTBOOK.md",
+    "integration": "mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md",
+    "quest_schema": "mechanics/questbook/schemas/quest.schema.json",
+    "quest_dispatch_schema": "mechanics/questbook/schemas/quest_dispatch.schema.json",
+    "quest_catalog": "generated/quest_catalog.min.json",
+    "quest_dispatch": "generated/quest_dispatch.min.json",
+    "quest_catalog_example": "generated/quest_catalog.min.example.json",
+    "quest_dispatch_example": "generated/quest_dispatch.min.example.json"
+  },
+  "required_tokens": {
+    "questbook_index": [
+      "skill/eval alignment debts",
+      ".agents/skills/",
+      "Frontier",
+      "Near",
+      "Harvest candidates"
+    ],
+    "integration": [
+      "generated/public_surface.md",
+      "generated/governance_backlog.md",
+      "generated/skill_evaluation_matrix.md",
+      "mechanics/release-support/docs/RUNTIME_PATH.md",
+      "mechanics/audit/docs/EVALUATION_PATH.md",
+      "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
+      "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
+      "mechanics/boundary-bridge/docs/OVERLAY_SPEC.md",
+      "mechanics/boundary-bridge/docs/TWO_STAGE_SKILL_SELECTION.md",
+      "hidden second source of truth"
+    ]
+  },
+  "states": {
+    "closed": [
+      "done",
+      "dropped"
+    ],
+    "lifecycle": [
+      "captured",
+      "triaged",
+      "ready",
+      "active",
+      "blocked",
+      "reanchor",
+      "done",
+      "dropped"
+    ]
+  },
+  "required_fields": {
+    "quest": [
+      "schema_version",
+      "id",
+      "title",
+      "repo",
+      "owner_surface",
+      "kind",
+      "state",
+      "band",
+      "difficulty",
+      "risk",
+      "control_mode",
+      "delegate_tier",
+      "write_scope",
+      "activation",
+      "anchor_ref",
+      "evidence",
+      "opened_at",
+      "touched_at",
+      "public_safe"
+    ],
+    "quest_dispatch": [
+      "schema_version",
+      "id",
+      "repo",
+      "state",
+      "band",
+      "difficulty",
+      "risk",
+      "control_mode",
+      "delegate_tier",
+      "split_required",
+      "write_scope",
+      "activation_mode",
+      "public_safe"
+    ]
+  },
+  "forbidden_anchors": [
+    "mechanics/boundary-bridge/overlays/atm10/PROJECT_OVERLAY.md",
+    "ATM10-Agent"
+  ]
+}

@@ -11,12 +11,41 @@ Tracking starts with the community-docs baseline for this repository.
 
 - Codex Spark now has a validated `.agents/spark/` fast-session lane with a
   registry, scenario packets, result and handoff templates, schemas, validator,
-  tests, and release-check wiring.
+  tests, and shared release-lane wiring.
+- Growth-first CI lanes now route through `scripts/ci_gate.py`, with explicit
+  source-fast, generated, export, release, and nightly sentinel modes.
+- Release and nightly workflows now separate frozen `v*` release checks from
+  moving-`main` growth checks.
+- Shared validation lane definitions now live in `scripts/validation_lanes.py`,
+  and validator contract data now has manifest-backed homes under
+  `scripts/validators/`.
 
 ### Changed
 
 - The old root `Spark/` companion lane moved under `.agents/spark/`, matching
   the agent-lane topology used by `Agents-of-Abyss` and `aoa-techniques`.
+- Single-skill validation no longer checks aggregate generated surfaces unless
+  `--with-generated` is requested.
+- `Repo Validation` now uses a growth-safe source-fast gate, while release
+  packaging smoke moves to the release lane.
+- `validate_agent_skills.py` is now a thin CLI adapter over the Agent Skills
+  export/runtime validator surface.
+- The Spark lane validator now checks `scripts/validation_lanes.py` instead of
+  treating `scripts/release_check.py` text as the release command source.
+- Full export validation now rebuilds and drift-checks trigger-eval seed data
+  before dependent description, runtime, and tiny-router surfaces.
+- `validate_agent_skills.py` and the questbook section of `validate_skills.py`
+  now load contract data from validator manifests instead of carrying those
+  lists directly in Python.
+- Generated/read-model, questbook, and Agent Skills export/runtime validation
+  now execute from owner modules under `scripts/validators/`, leaving the
+  script entrypoints as CLI/orchestration adapters.
+- Questbook surface validation is now split into explicit schema, quest YAML,
+  generated catalog, and dispatch phases inside its owner module.
+- Agent Skills export/runtime validation is now phase-split into document
+  loading, index building, skill-set parity, per-skill resource/runtime/router
+  phases, project ring checks, release relationship checks, and runtime
+  guardrail checks.
 
 ### Fixed
 

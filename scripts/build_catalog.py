@@ -134,6 +134,27 @@ INLINE_CODE_PATTERN = re.compile(r"`([^`]+)`")
 EMPHASIS_PATTERN = re.compile(r"(\*\*|\*|__|_)")
 MAX_SHORT_FIELD_LENGTH = 220
 MAX_WORKFLOW_SHORT_LENGTH = 260
+GENERATED_SURFACE_GROUP_KEYS: dict[str, tuple[str, ...]] = {
+    "reader": (
+        "catalogs",
+        "capsules",
+        "sections",
+        "questbook",
+        "walkthroughs",
+        "lineage_surface",
+        "bundle_index",
+        "skill_graph",
+        "skill_intelligence",
+    ),
+    "public": ("public_surface",),
+    "evaluation": ("evaluation_matrix", "boundary_matrix"),
+    "governance": (
+        "governance_backlog",
+        "skill_composition_audit",
+        "overlay_readiness",
+    ),
+}
+GENERATED_SURFACE_GROUPS = ("all", *GENERATED_SURFACE_GROUP_KEYS)
 
 
 @dataclass(frozen=True)
@@ -160,6 +181,12 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
         "--check",
         action="store_true",
         help="Check whether generated surfaces are present and current.",
+    )
+    parser.add_argument(
+        "--group",
+        choices=GENERATED_SURFACE_GROUPS,
+        default="all",
+        help="Generated surface group to build or check.",
     )
     return parser.parse_args(argv)
 
@@ -1349,6 +1376,17 @@ def generated_surface_spec(key: str, repo_root: Path = REPO_ROOT) -> GeneratedSu
     raise KeyError(key)
 
 
+def generated_surface_specs_for_group(
+    group: str,
+    repo_root: Path = REPO_ROOT,
+) -> tuple[GeneratedSurfaceSpec, ...]:
+    specs = generated_surface_specs(repo_root)
+    if group == "all":
+        return specs
+    wanted_keys = set(GENERATED_SURFACE_GROUP_KEYS[group])
+    return tuple(spec for spec in specs if spec.key in wanted_keys)
+
+
 def build_surface_text_map(repo_root: Path, spec: GeneratedSurfaceSpec) -> dict[Path, str]:
     return spec.build_texts(repo_root)
 
@@ -1561,22 +1599,24 @@ def main(argv: Sequence[str] | None = None, repo_root: Path | None = None) -> in
     repo_root = repo_root or REPO_ROOT
     try:
         args = parse_args(argv)
+        selected_specs = generated_surface_specs_for_group(args.group, repo_root)
         if args.check:
             problems: list[str] = []
-            for spec in generated_surface_specs(repo_root):
+            for spec in selected_specs:
                 problems.extend(check_generated_surface(repo_root, spec))
             if problems:
-                print("Generated surface check failed.")
+                print(f"Generated surface check failed for group '{args.group}'.")
                 for problem in problems:
                     print(f"- {problem}")
                 return 1
             print(
-                f"Generated surface check passed for {len(discover_skill_names(repo_root))} skills."
+                f"Generated surface check passed for group '{args.group}' "
+                f"and {len(discover_skill_names(repo_root))} skills."
             )
             return 0
 
         written_paths: list[Path] = []
-        for spec in generated_surface_specs(repo_root):
+        for spec in selected_specs:
             written_paths.extend(write_generated_surface(repo_root, spec))
     except (FileNotFoundError, ValueError) as exc:
         print(f"Runtime error: {exc}", file=sys.stderr)

@@ -52,7 +52,7 @@ The center pattern is not just prompt text.
 - Results and handoffs have explicit homes, but ordinary closeout stays in the
   conversation or PR unless a packet helps future sessions.
 - Validation checks registry shape, scenario files, packet markers,
-  registered-vs-discovered parity, and release-check wiring.
+  registered-vs-discovered parity, and shared release-lane wiring.
 
 ## Codex 5.3 Spark Calibration
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import contextlib
 import io
 import json
@@ -23,6 +24,7 @@ import validate_skills
 import build_catalog
 import skill_lineage_surface
 import skill_review_surface
+from validators import generated_surface, questbook_contract, questbook_surface
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {
@@ -137,6 +139,71 @@ def quest_fixture_path(repo_root: Path, quest_id: str) -> Path:
 
 
 class ValidateSkillsTests(unittest.TestCase):
+    def test_questbook_contract_manifest_loads_runtime_constants(self) -> None:
+        contract = questbook_contract.load_contract()
+
+        self.assertEqual(validate_skills.QUESTBOOK_PATH, contract.questbook_path)
+        self.assertEqual(validate_skills.QUESTBOOK_REQUIRED_INDEX_TOKENS, contract.required_index_tokens)
+        self.assertEqual(validate_skills.CLOSED_QUEST_STATES, set(contract.closed_states))
+        self.assertEqual(
+            validate_skills.QUEST_DISPATCH_REQUIRED_FIELDS,
+            contract.quest_dispatch_required_fields,
+        )
+
+    def test_questbook_contract_rejects_absolute_paths(self) -> None:
+        payload = json.loads(
+            questbook_contract.DEFAULT_CONTRACT_PATH.read_text(encoding="utf-8")
+        )
+        payload["surface_paths"]["questbook"] = "/tmp/QUESTBOOK.md"
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            broken_contract = Path(tmpdir) / "questbook_contract.json"
+            broken_contract.write_text(json.dumps(payload), encoding="utf-8")
+
+            with self.assertRaisesRegex(ValueError, "questbook must be repo-relative"):
+                questbook_contract.load_contract(broken_contract)
+
+    def test_questbook_surface_validator_stays_phase_split(self) -> None:
+        source_lines = Path(questbook_surface.__file__).read_text(
+            encoding="utf-8"
+        ).splitlines()
+        entrypoint = [
+            line
+            for line in source_lines
+            if line.startswith("def validate_questbook_surface")
+            or line.startswith("def validate_dispatch_surfaces")
+            or line.startswith("def validate_catalog_surfaces")
+        ]
+
+        self.assertEqual(
+            [
+                "def validate_catalog_surfaces(",
+                "def validate_dispatch_surfaces(",
+                "def validate_questbook_surface(repo_root: Path) -> list[ValidationIssue]:",
+            ],
+            entrypoint,
+        )
+
+    def test_validator_modules_keep_bounded_function_sizes(self) -> None:
+        module_limits = (
+            (Path(validate_skills.__file__), 180),
+            (Path(questbook_surface.__file__), 180),
+            (Path(generated_surface.__file__), 230),
+        )
+
+        for module_path, line_limit in module_limits:
+            syntax_tree = ast.parse(module_path.read_text(encoding="utf-8"))
+            for node in ast.walk(syntax_tree):
+                if not isinstance(node, ast.FunctionDef):
+                    continue
+                line_count = node.end_lineno - node.lineno + 1
+                self.assertLessEqual(
+                    line_count,
+                    line_limit,
+                    f"{module_path.relative_to(REPO_ROOT)}:{node.lineno} "
+                    f"{node.name} has {line_count} lines",
+                )
+
     def add_skill_bundle(
         self,
         repo_root: Path,
@@ -2098,7 +2165,7 @@ class ValidateSkillsTests(unittest.TestCase):
             messages,
         )
 
-    def test_single_skill_validation_checks_additional_generated_surfaces(self) -> None:
+    def test_single_skill_validation_skips_generated_surfaces_by_default(self) -> None:
         repo_root = self.make_repo()
         self.write_catalogs(repo_root)
 
@@ -2111,12 +2178,41 @@ class ValidateSkillsTests(unittest.TestCase):
         )
 
         issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        self.assertFalse(
+            any(
+                issue.message
+                == "generated lineage surface artifact is out of date; run python scripts/build_catalog.py"
+                for issue in issues
+            )
+        )
+        self.assertEqual(0, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
+
+    def test_single_skill_validation_can_include_generated_surfaces(self) -> None:
+        repo_root = self.make_repo()
+        self.write_catalogs(repo_root)
+
+        lineage_path = repo_root / "generated" / "skill_lineage_surface.json"
+        payload = json.loads(lineage_path.read_text(encoding="utf-8"))
+        payload["skills"][0]["pending_technique_count"] = 99
+        lineage_path.write_text(
+            json.dumps(payload, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+        issues = validate_skills.run_validation(
+            repo_root,
+            skill_name="aoa-test-skill",
+            validate_generated=True,
+        )
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated lineage surface artifact is out of date; run python scripts/build_catalog.py",
             messages,
         )
-        self.assertEqual(1, self.run_main(repo_root, ["--skill", "aoa-test-skill"]))
+        self.assertEqual(
+            1,
+            self.run_main(repo_root, ["--skill", "aoa-test-skill", "--with-generated"]),
+        )
 
     def test_stale_skill_composition_audit_surface_fails(self) -> None:
         repo_root = self.make_repo()
@@ -2741,7 +2837,11 @@ class ValidateSkillsTests(unittest.TestCase):
         frontmatter["summary"] = "Changed without rebuilding catalog."
         self.write_skill_frontmatter(repo_root, frontmatter)
 
-        issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        issues = validate_skills.run_validation(
+            repo_root,
+            skill_name="aoa-test-skill",
+            validate_generated=True,
+        )
         messages = [issue.message for issue in issues]
 
         self.assertIn(
@@ -2792,7 +2892,11 @@ class ValidateSkillsTests(unittest.TestCase):
         del full_catalog["skills"][0]["summary"]
         full_path.write_text(json.dumps(full_catalog), encoding="utf-8")
 
-        issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        issues = validate_skills.run_validation(
+            repo_root,
+            skill_name="aoa-test-skill",
+            validate_generated=True,
+        )
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated catalog entry for 'aoa-test-skill' is malformed; min projection could not be computed",
@@ -2872,7 +2976,11 @@ class ValidateSkillsTests(unittest.TestCase):
             encoding="utf-8",
         )
 
-        issues = validate_skills.run_validation(repo_root, skill_name="aoa-test-skill")
+        issues = validate_skills.run_validation(
+            repo_root,
+            skill_name="aoa-test-skill",
+            validate_generated=True,
+        )
         messages = [issue.message for issue in issues]
         self.assertIn(
             "generated section entry for 'aoa-test-skill' is out of date; run python scripts/build_catalog.py",

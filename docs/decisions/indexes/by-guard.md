@@ -56,10 +56,12 @@
 - [AOA-SK-D-0006 Mechanics Companion Surface Routing](../AOA-SK-D-0006-mechanics-companion-surface-routing.md) (`docs/decisions/AOA-SK-D-0006-mechanics-companion-surface-routing.md`)
 - [AOA-SK-D-0012 Mechanics RPG Reader Surfaces](../AOA-SK-D-0012-mechanics-rpg-reader-surfaces.md) (`docs/decisions/AOA-SK-D-0012-mechanics-rpg-reader-surfaces.md`)
 - [AOA-SK-D-0021 Skill Intelligence Registry First Slice](../AOA-SK-D-0021-skill-intelligence-registry-first-slice.md) (`docs/decisions/AOA-SK-D-0021-skill-intelligence-registry-first-slice.md`)
+- [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
 
 ## export/runtime
 
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
+- [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
 
 ## AGENTS/mesh
 
@@ -69,6 +71,7 @@
 ## release/tooling
 
 - [AOA-SK-D-0027 Canonical Decision IDs And Indexes](../AOA-SK-D-0027-canonical-decision-ids-and-indexes.md) (`docs/decisions/AOA-SK-D-0027-canonical-decision-ids-and-indexes.md`)
+- [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
 
 ## questbook
 
@@ -88,3 +91,7 @@
 
 - [AOA-SK-D-0017 Lived-Use Promotion Pressure](../AOA-SK-D-0017-lived-use-promotion-pressure.md) (`docs/decisions/AOA-SK-D-0017-lived-use-promotion-pressure.md`)
 - [AOA-SK-D-0018 Session Growth Evaluated Governance](../AOA-SK-D-0018-session-growth-evaluated-governance.md) (`docs/decisions/AOA-SK-D-0018-session-growth-evaluated-governance.md`)
+
+## CI lane
+
+- [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)

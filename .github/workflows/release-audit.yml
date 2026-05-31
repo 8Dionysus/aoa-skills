@@ -1,0 +1,46 @@
+name: Release Audit
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+concurrency:
+  group: release-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release_audit:
+    name: Release Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout aoa-skills
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          path: workspace/aoa-skills
+          fetch-depth: 0
+
+      - name: Checkout aoa-techniques sibling
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: 8Dionysus/aoa-techniques
+          path: workspace/aoa-techniques
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        working-directory: workspace/aoa-skills
+        run: python -m pip install -r requirements-dev.txt
+
+      - name: Run technique drift release gate
+        working-directory: workspace/aoa-skills
+        run: python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift
+
+      - name: Run release freeze gate
+        working-directory: workspace/aoa-skills
+        run: python scripts/ci_gate.py --mode release

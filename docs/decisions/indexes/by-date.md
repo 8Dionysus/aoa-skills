@@ -49,3 +49,7 @@
 ## 2026-05-30
 
 - [AOA-SK-D-0027 Canonical Decision IDs And Indexes](../AOA-SK-D-0027-canonical-decision-ids-and-indexes.md) (`docs/decisions/AOA-SK-D-0027-canonical-decision-ids-and-indexes.md`)
+
+## 2026-05-31
+
+- [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)

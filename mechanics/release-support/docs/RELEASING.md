@@ -22,35 +22,18 @@ A release should make it easy to answer:
 
 1. Confirm the target release scope.
 2. Update `CHANGELOG.md`.
-3. Run the bounded repo-level release check:
-   - `python scripts/release_check.py`
-   - if the release touches packaging handoff flows, also run `python scripts/release_check.py --include-packaging-smoke`
-   - the current script runs:
-     - `python scripts/build_catalog.py`
-     - `python scripts/build_agent_skills.py --repo-root .`
-     - `python scripts/build_openai_yaml_examples.py --map mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json --output-dir mechanics/boundary-bridge/examples --check`
-     - `python scripts/build_runtime_seam.py --repo-root .`
-     - `python scripts/build_runtime_guardrails.py --repo-root .`
-     - `python scripts/build_description_trigger_evals.py --repo-root .`
-     - `python scripts/build_support_resources.py --repo-root .`
-     - `python scripts/build_tiny_router_inputs.py --repo-root .`
-     - `python -m unittest discover -s tests`
-     - `python scripts/validate_nested_agents.py`
-     - `python scripts/validate_skills.py`
-     - `python scripts/validate_agent_skills.py --repo-root .`
-     - `python scripts/validate_support_resources.py --repo-root . --check-portable`
-     - `python scripts/validate_tiny_router_inputs.py --repo-root .`
-     - `python scripts/lint_trigger_evals.py --repo-root .`
-     - `python scripts/lint_description_trigger_evals.py --repo-root .`
-     - `python scripts/lint_pack_profiles.py --repo-root .`
-     - `python scripts/lint_support_resources.py --repo-root .`
-     - `python scripts/run_skills_ref_validation.py --repo-root .`
-     - `python scripts/build_tiny_router_inputs.py --repo-root . --check`
-     - `python scripts/build_support_resources.py --repo-root . --check`
-     - `python scripts/build_description_trigger_evals.py --repo-root . --check`
-     - `python scripts/build_runtime_guardrails.py --repo-root . --check`
-     - `python scripts/build_runtime_seam.py --repo-root . --check`
-     - `python scripts/build_catalog.py --check`
+3. Run the release lane:
+   - `python scripts/ci_gate.py --mode release`
+   - this is equivalent to the bounded repo-level release check with packaging
+     smoke: `python scripts/release_check.py --include-packaging-smoke`
+   - the authoritative command sequence lives in
+     `scripts/validation_lanes.py` as `RELEASE_CHECK_COMMAND_SEQUENCE` plus
+     `PACKAGING_SMOKE_COMMAND`
+   - the release lane covers catalog and decision-index generation,
+     portable/runtime/support/tiny-router builders, trigger and
+     description-trigger eval builders and lints, Agon candidate checks,
+     repository tests, AGENTS/skill/export validators, Spark lane validation,
+     generated drift checks, and packaging smoke
    - if the first pass materializes tracked updates, the script reruns the same bounded sequence once and requires the second pass to leave the git-backed worktree snapshot unchanged
    - when the repo starts with no tracked diff, that same bounded drift check also confirms `git diff --exit-code`
 4. Confirm `SKILL_INDEX.md` still matches the current public skill surface.
@@ -79,6 +62,27 @@ A release should make it easy to answer:
 8. Merge the release-prep PR to `main`.
 9. Create a Git tag such as `v0.1.0`.
 10. Publish GitHub release notes using the matching changelog section or a clearly equivalent human-first shape.
+
+## CI lane interpretation
+
+`main` is the moving growth surface. It may legitimately differ from the latest
+release tag immediately after a release. Treat `generated/release_manifest.json`
+`has_unreleased_changes: true` as normal growth evidence on `main`, not as a
+release failure.
+
+Use the lanes this way:
+
+- PR and ordinary growth work: `python scripts/ci_gate.py --mode source-fast`
+- main integration generated/readout check: `python scripts/ci_gate.py --mode generated --group all`
+- scoped generated/readout checks: `python scripts/ci_gate.py --mode generated --group reader|public|evaluation|governance|export|runtime`
+- portable export/runtime/support check: `python scripts/ci_gate.py --mode export`
+- frozen release or tag check: `python scripts/ci_gate.py --mode release`
+- scheduled sentinel: `python scripts/ci_gate.py --mode nightly`
+
+GitHub scheduled workflows run from the default branch, so the nightly sentinel
+checks `main` as a growth surface and separately checks the latest `v*` tag as a
+frozen release artifact. Do not make a scheduled workflow require `main` to
+match the latest release.
 
 ## Release note shape
 
