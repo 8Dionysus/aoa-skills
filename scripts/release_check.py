@@ -12,6 +12,7 @@ from pathlib import Path
 
 RELEASE_CHECK_COMMAND_SEQUENCE = (
     ("python", "scripts/build_catalog.py"),
+    ("python", "scripts/generate_decision_indexes.py", "--check"),
     ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
     ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", "."),
     (

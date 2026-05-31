@@ -29,6 +29,10 @@ class ReleaseCheckTests(unittest.TestCase):
 
     def test_release_sequence_includes_runtime_seam_guardrails_description_eval_support_and_tiny_router_steps(self) -> None:
         self.assertIn(
+            ("python", "scripts/generate_decision_indexes.py", "--check"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
             ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )

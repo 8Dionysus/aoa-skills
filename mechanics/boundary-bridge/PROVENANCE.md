@@ -22,7 +22,7 @@ raw lineage:
 
 | Former path | Preserved raw path | Active route |
 |---|---|---|
-| `legacy/2026-05-17__skill-intelligence-layer-strategy.md` | `mechanics/boundary-bridge/legacy/skill-intelligence/raw/2026-05-17__skill-intelligence-layer-strategy.md` | `docs/decisions/2026-05-17-skill-intelligence-registry-first-slice.md` and `docs/ARCHITECTURE.md` |
+| `legacy/2026-05-17__skill-intelligence-layer-strategy.md` | `mechanics/boundary-bridge/legacy/skill-intelligence/raw/2026-05-17__skill-intelligence-layer-strategy.md` | `docs/decisions/AOA-SK-D-0021-skill-intelligence-registry-first-slice.md` and `docs/ARCHITECTURE.md` |
 
 The raw strategy informs registry, search, explanation, tiny-router adjacency,
 and future retrieval boundaries. It does not own current generated registry

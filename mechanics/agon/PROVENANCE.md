@@ -42,7 +42,7 @@ metadata until a separate schema migration removes them.
 ## Decision route
 
 The structural decision for the first mechanics landing is
-[`docs/decisions/2026-05-06-mechanics-agon-start.md`](../../docs/decisions/2026-05-06-mechanics-agon-start.md).
+[`docs/decisions/AOA-SK-D-0003-mechanics-agon-start.md`](../../docs/decisions/AOA-SK-D-0003-mechanics-agon-start.md).
 
 ## Stop line
 

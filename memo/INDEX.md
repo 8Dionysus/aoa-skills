@@ -6,18 +6,22 @@ Generated from `PORT.yaml` and local memo packets.
 
 | District | Count |
 |---|---:|
-| candidates | 0 |
+| candidates | 1 |
 | receipts | 0 |
 | exports | 0 |
 | local | 0 |
 
 ## Routes
 
-No routed candidates yet.
+| Route | Count |
+|---|---:|
+| `reviewed_intake` | 1 |
 
 ## Open Items
 
-No open candidate items.
+| ID | State | Route | Path |
+|---|---|---|---|
+| `candidate:aoa-skills:20260531T042137Z:c62df052-aoa-skills-decisions-now-use-can` | `candidate` | `reviewed_intake` | `candidates/20260531T042137Z.c62df052.aoa-skills-decisions-now-use-canonical-aoa-sk-d.candidate.json` |
 
 ## Agent Route
 

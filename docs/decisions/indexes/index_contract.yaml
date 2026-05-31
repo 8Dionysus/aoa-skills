@@ -1,0 +1,20 @@
+schema: aoa_skills_decision_index_contract_v1
+decision_id_prefix: AOA-SK-D
+path_policy: full_canonical_id_filename
+source_glob: docs/decisions/AOA-SK-D-*.md
+generated_indexes:
+  - docs/decisions/indexes/README.md
+  - docs/decisions/indexes/by-number.md
+  - docs/decisions/indexes/by-date.md
+  - docs/decisions/indexes/by-surface.md
+  - docs/decisions/indexes/by-skill-lane.md
+  - docs/decisions/indexes/by-mechanic.md
+  - docs/decisions/indexes/by-guard.md
+required_metadata:
+  - Original date
+  - Surface classes
+  - Skill lanes
+  - Mechanic parents
+  - Guard families
+  - Posture
+authority: decision notes own rationale; generated indexes are lookup read models only
