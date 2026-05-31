@@ -19,6 +19,17 @@ def load_json(path: Path) -> dict:
 
 
 class SparkLaneTestCase(unittest.TestCase):
+    def write_release_lane(self, repo_root: Path, *, include_validator: bool = True) -> None:
+        (repo_root / "scripts").mkdir()
+        if include_validator:
+            sequence = (
+                "RELEASE_CHECK_COMMAND_SEQUENCE = "
+                "((\"python\", \".agents/spark/scripts/validate_spark_lane.py\"),)\n"
+            )
+        else:
+            sequence = "RELEASE_CHECK_COMMAND_SEQUENCE = ()\n"
+        (repo_root / "scripts/validation_lanes.py").write_text(sequence, encoding="utf-8")
+
     def run_validator(self, repo_root: Path) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
             [
@@ -65,11 +76,7 @@ class SparkLaneTestCase(unittest.TestCase):
                 temp_spark_root,
                 ignore=shutil.ignore_patterns("__pycache__"),
             )
-            (temp_root / "scripts").mkdir()
-            (temp_root / "scripts/release_check.py").write_text(
-                ".agents/spark/scripts/validate_spark_lane.py\n",
-                encoding="utf-8",
-            )
+            self.write_release_lane(temp_root)
             extra = temp_root / ".agents/spark/scenarios/unregistered"
             (extra / "templates").mkdir(parents=True)
             (extra / "examples").mkdir(parents=True)
@@ -90,11 +97,7 @@ class SparkLaneTestCase(unittest.TestCase):
                 temp_spark_root,
                 ignore=shutil.ignore_patterns("__pycache__"),
             )
-            (temp_root / "scripts").mkdir()
-            (temp_root / "scripts/release_check.py").write_text(
-                ".agents/spark/scripts/validate_spark_lane.py\n",
-                encoding="utf-8",
-            )
+            self.write_release_lane(temp_root)
             prompt = temp_root / ".agents/spark/scenarios/skill-audit/PROMPT.md"
             prompt.write_text(
                 prompt.read_text(encoding="utf-8").replace("done-or-handoff", "done or handoff"),
@@ -104,6 +107,25 @@ class SparkLaneTestCase(unittest.TestCase):
 
         self.assertNotEqual(result.returncode, 0, result.stdout)
         self.assertIn("must mention done-or-handoff", result.stdout)
+
+    def test_missing_release_lane_validator_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            temp_root = Path(temp)
+            temp_spark_root = temp_root / ".agents" / "spark"
+            temp_spark_root.parent.mkdir()
+            shutil.copytree(
+                SPARK_ROOT,
+                temp_spark_root,
+                ignore=shutil.ignore_patterns("__pycache__"),
+            )
+            self.write_release_lane(temp_root, include_validator=False)
+            result = self.run_validator(temp_root)
+
+        self.assertNotEqual(result.returncode, 0, result.stdout)
+        self.assertIn(
+            "shared release validation lane does not run .agents/spark/scripts/validate_spark_lane.py",
+            result.stdout,
+        )
 
     def test_templates_have_done_or_handoff_shape(self) -> None:
         registry = load_json(REGISTRY)

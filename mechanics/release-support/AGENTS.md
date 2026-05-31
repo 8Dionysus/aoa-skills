@@ -18,7 +18,12 @@ Keep `mechanics/release-support/` focused on mechanic movement. Do not make it c
 
 ## Validation
 
-Run `python scripts/release_check.py`, plus the specific build or validate command named by the changed support document.
+Run the specific CI lane or build command named by the changed support
+document. Use `python scripts/ci_gate.py --mode export` for portable export
+movement and `python scripts/ci_gate.py --mode release` or `python
+scripts/release_check.py --include-packaging-smoke` for release-facing changes.
+For direct release-support validation, `python scripts/release_check.py`
+remains the legacy release audit entrypoint.
 
 ## Closeout
 

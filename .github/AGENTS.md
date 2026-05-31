@@ -18,7 +18,10 @@ Do not encode skill meaning, status promotion, or generated-surface authority in
 
 ## Validation
 
-For workflow changes, run the narrowest local command that mirrors the job when possible, then `python scripts/release_check.py` when the change is release-facing. For wording-only templates, run `git diff --check`.
+For workflow changes, run the narrowest local `scripts/ci_gate.py` mode that
+mirrors the job when possible, then `python scripts/ci_gate.py --mode release`
+or `python scripts/release_check.py --include-packaging-smoke` when the change
+is release-facing. For wording-only templates, run `git diff --check`.
 
 ## Closeout
 
@@ -29,9 +32,12 @@ Report changed surfaces, checks run, checks skipped, remaining risk, and the nex
 Keep `.github/CODEOWNERS`, PR templates, workflow names, and root landing
 expectations aligned.
 
-`Repo Validation` is the landing check expected by the root GitHub workflow. If
-that check is added, renamed, skipped, or its meaning changes, update the root
-route, PR expectations, and this file in the same change.
+`Repo Validation` is the landing check expected by the root GitHub workflow.
+`build-validate` is also a live required check in branch protection, so the
+portable-export workflow must keep reporting a completed check even when export
+work is skipped for growth-safe PRs. If either check is added, renamed, skipped,
+or its meaning changes, update the root route, PR expectations, and this file in
+the same change.
 
 Report the GitHub surface touched, local validation run, CI-name impact, and
 remaining platform risk.

@@ -79,14 +79,13 @@ downstream workspace installs.
 ## Refresh routes
 
 - check:
-  - `python scripts/build_catalog.py --check`
+  - `python scripts/ci_gate.py --mode export --changed-only`
+  - `python scripts/build_catalog.py --check --group reader`
 - execute:
   - `python scripts/build_catalog.py`
 - validate:
-  - `python scripts/validate_skills.py --fail-on-review-truth-sync`
-  - `python scripts/validate_agent_skills.py --repo-root .`
-  - `python scripts/validate_support_resources.py --repo-root . --check-portable`
-  - `python scripts/validate_tiny_router_inputs.py --repo-root .`
+  - `python scripts/ci_gate.py --mode source-fast`
+  - `python scripts/ci_gate.py --mode export`
 
 Use `repair` only for a bounded owner fix that keeps source authorship in
 `skills/**` or `config/`. Use `reexport` or `rebuild` when the generated layer
@@ -96,8 +95,9 @@ itself is stale.
 
 Proof commands:
 
-- `python scripts/build_catalog.py --check`
-- `python scripts/validate_skills.py --fail-on-review-truth-sync`
+- `python scripts/ci_gate.py --mode source-fast`
+- `python scripts/ci_gate.py --mode generated --group all`
+- `python scripts/ci_gate.py --mode export`
 - `python scripts/report_skill_evaluation.py --fail-on-canonical-gaps`
 - `python scripts/validate_agent_skills.py --repo-root .`
 - `python scripts/validate_support_resources.py --repo-root . --check-portable`

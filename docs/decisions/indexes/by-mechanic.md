@@ -10,6 +10,10 @@
 
 - [AOA-SK-D-0004 Mechanics Antifragility Risk Posture](../AOA-SK-D-0004-mechanics-antifragility-risk-posture.md) (`docs/decisions/AOA-SK-D-0004-mechanics-antifragility-risk-posture.md`)
 
+## audit
+
+- [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+
 ## checkpoint
 
 - [AOA-SK-D-0005 Mechanics Checkpoint Note](../AOA-SK-D-0005-mechanics-checkpoint-note.md) (`docs/decisions/AOA-SK-D-0005-mechanics-checkpoint-note.md`)
@@ -40,6 +44,7 @@
 ## release-support
 
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
+- [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
 
 ## rpg
 

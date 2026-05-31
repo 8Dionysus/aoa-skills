@@ -14,6 +14,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import release_check
+import validation_lanes
 
 
 class ReleaseCheckTests(unittest.TestCase):
@@ -28,6 +29,10 @@ class ReleaseCheckTests(unittest.TestCase):
         )
 
     def test_release_sequence_includes_runtime_seam_guardrails_description_eval_support_and_tiny_router_steps(self) -> None:
+        self.assertIs(
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+            validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
         self.assertIn(
             ("python", "scripts/generate_decision_indexes.py", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,

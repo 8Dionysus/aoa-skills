@@ -2109,6 +2109,10 @@ class BuildCatalogTests(unittest.TestCase):
         self.write_all_surfaces(repo_root)
 
         self.assertEqual(0, self.run_main(repo_root, ["--check"]))
+        self.assertEqual(0, self.run_main(repo_root, ["--check", "--group", "reader"]))
+        self.assertEqual(0, self.run_main(repo_root, ["--check", "--group", "public"]))
+        self.assertEqual(0, self.run_main(repo_root, ["--check", "--group", "evaluation"]))
+        self.assertEqual(0, self.run_main(repo_root, ["--check", "--group", "governance"]))
 
     def test_check_mode_fails_when_catalog_is_stale(self) -> None:
         repo_root = self.make_repo(
@@ -2182,6 +2186,8 @@ class BuildCatalogTests(unittest.TestCase):
         )
 
         self.assertEqual(1, self.run_main(repo_root, ["--check"]))
+        self.assertEqual(1, self.run_main(repo_root, ["--check", "--group", "public"]))
+        self.assertEqual(0, self.run_main(repo_root, ["--check", "--group", "reader"]))
 
     def test_check_mode_fails_when_walkthroughs_are_stale(self) -> None:
         repo_root = self.make_repo(

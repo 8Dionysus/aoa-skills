@@ -9,88 +9,14 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+import validation_lanes
 
-RELEASE_CHECK_COMMAND_SEQUENCE = (
-    ("python", "scripts/build_catalog.py"),
-    ("python", "scripts/generate_decision_indexes.py", "--check"),
-    ("python", "scripts/build_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", "."),
-    (
-        "python",
-        "scripts/build_openai_yaml_examples.py",
-        "--map",
-        "mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json",
-        "--output-dir",
-        "mechanics/boundary-bridge/examples",
-        "--check",
-    ),
-    ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
-    ("python", "scripts/build_runtime_guardrails.py", "--repo-root", "."),
-    ("python", "scripts/build_description_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/build_support_resources.py", "--repo-root", "."),
-    ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", "."),
-    (
-        "python",
-        "mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py",
-        "--check",
-    ),
-    (
-        "python",
-        "mechanics/agon/parts/workflow-candidate-bridge/scripts/validate_agon_skill_binding_candidates.py",
-    ),
-    (
-        "python",
-        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/build_agon_epistemic_skill_candidates.py",
-        "--check",
-    ),
-    (
-        "python",
-        "mechanics/agon/parts/epistemic-candidate-boundary/scripts/validate_agon_epistemic_skill_candidates.py",
-    ),
-    ("python", "-m", "unittest", "discover", "-s", "tests"),
-    (
-        "python",
-        "-m",
-        "pytest",
-        "-q",
-        "mechanics/agon/parts/workflow-candidate-bridge/tests",
-        "mechanics/agon/parts/epistemic-candidate-boundary/tests",
-    ),
-    ("python", "scripts/validate_agents_design.py"),
-    ("python", "scripts/validate_nested_agents.py"),
-    ("python", "scripts/validate_skills.py"),
-    ("python", "scripts/validate_agent_skills.py", "--repo-root", "."),
-    ("python", "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"),
-    ("python", "scripts/validate_tiny_router_inputs.py", "--repo-root", "."),
-    ("python", "scripts/lint_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_description_trigger_evals.py", "--repo-root", "."),
-    ("python", "scripts/lint_pack_profiles.py", "--repo-root", "."),
-    ("python", "scripts/lint_support_resources.py", "--repo-root", "."),
-    ("python", "scripts/run_skills_ref_validation.py", "--repo-root", "."),
-    ("python", ".agents/spark/scripts/validate_spark_lane.py"),
-    ("python", "-m", "unittest", "discover", "-s", ".agents/spark/tests", "-p", "test*.py"),
-    ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_support_resources.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_trigger_eval_cases.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
-    ("python", "scripts/build_catalog.py", "--check"),
-)
+RELEASE_CHECK_COMMAND_SEQUENCE = validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE
 WORKTREE_SNAPSHOT_COMMAND = ("git", "status", "--porcelain=v1", "--untracked-files=all")
 TRACKED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--binary", "--no-ext-diff")
 CACHED_DIFF_SNAPSHOT_COMMAND = ("git", "diff", "--cached", "--binary", "--no-ext-diff")
 CLEAN_REPO_DIFF_COMMAND = ("git", "diff", "--exit-code")
-PACKAGING_SMOKE_COMMAND = (
-    "python",
-    "scripts/smoke_skill_pack_handoff.py",
-    "--repo-root",
-    ".",
-    "--transport",
-    "both",
-    "--format",
-    "json",
-)
+PACKAGING_SMOKE_COMMAND = validation_lanes.PACKAGING_SMOKE_COMMAND
 
 
 @dataclass(frozen=True)

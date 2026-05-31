@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "owner": "scripts/validate_agent_skills.py",
+  "profiles": {
+    "export": "codex-facing-wave-3",
+    "runtime": "codex-facing-wave-4-runtime-seam",
+    "guardrail": "codex-facing-wave-6-runtime-guardrails",
+    "description_trigger": "codex-facing-wave-7-description-trigger-evals",
+    "skills_ref": "codex-facing-wave-7-standard-validation",
+    "support_resource": "codex-facing-wave-8-support-bundles",
+    "tiny_router": "codex-facing-wave-9-tiny-router-inputs"
+  },
+  "support_resources": {
+    "targeted_skills": [
+      "aoa-dry-run-first",
+      "aoa-safe-infra-change",
+      "aoa-local-stack-bringup"
+    ],
+    "standard_dirs": [
+      "scripts",
+      "references",
+      "assets"
+    ],
+    "legacy_dirs": [
+      "agents",
+      "checks",
+      "examples"
+    ],
+    "portable_resource_dirs": [
+      "scripts",
+      "references",
+      "assets",
+      "checks",
+      "examples"
+    ]
+  },
+  "required_metadata": [
+    "aoa_scope",
+    "aoa_status",
+    "aoa_invocation_mode",
+    "aoa_source_skill_path",
+    "aoa_source_repo",
+    "aoa_technique_dependencies",
+    "aoa_portable_profile"
+  ],
+  "required_generated_files": [
+    "generated/skill_catalog.min.json",
+    "generated/skill_sections.full.json",
+    "generated/agent_skill_catalog.json",
+    "generated/agent_skill_catalog.min.json",
+    "generated/portable_export_map.json",
+    "generated/local_adapter_manifest.json",
+    "generated/local_adapter_manifest.min.json",
+    "generated/skill_handoff_contracts.json",
+    "generated/context_retention_manifest.json",
+    "generated/trust_policy_matrix.json",
+    "generated/skill_runtime_contracts.json",
+    "generated/skill_pack_profiles.resolved.json",
+    "generated/project_core_skill_kernel.min.json",
+    "generated/project_core_kernel_governance.min.json",
+    "generated/project_core_outer_ring.min.json",
+    "generated/project_core_outer_ring_readiness.min.json",
+    "generated/project_risk_guard_ring.min.json",
+    "generated/project_risk_guard_ring_governance.min.json",
+    "generated/project_foundation_profile.min.json",
+    "generated/codex_config_snippets.json",
+    "generated/mcp_dependency_manifest.json",
+    "generated/runtime_discovery_index.json",
+    "generated/runtime_discovery_index.min.json",
+    "generated/runtime_disclosure_index.json",
+    "generated/runtime_activation_aliases.json",
+    "generated/runtime_tool_schemas.json",
+    "generated/runtime_session_contract.json",
+    "generated/runtime_prompt_blocks.json",
+    "generated/runtime_router_hints.json",
+    "generated/runtime_seam_manifest.json",
+    "generated/repo_trust_gate_manifest.json",
+    "generated/permission_allowlist_manifest.json",
+    "generated/skill_context_guard_manifest.json",
+    "generated/runtime_guardrail_tool_schemas.json",
+    "generated/runtime_guardrail_prompt_blocks.json",
+    "generated/runtime_guardrail_manifest.json",
+    "generated/skill_description_signals.json",
+    "generated/description_trigger_eval_cases.jsonl",
+    "generated/description_trigger_eval_cases.csv",
+    "generated/description_trigger_eval_manifest.json",
+    "generated/skills_ref_validation_manifest.json",
+    "generated/deterministic_resource_manifest.json",
+    "generated/support_resource_index.json",
+    "generated/structured_output_schema_index.json",
+    "generated/support_resource_bridge_map.json",
+    "generated/deterministic_resource_eval_cases.jsonl",
+    "generated/expected_existing_aoa_support_dirs.json",
+    "generated/tiny_router_skill_signals.json",
+    "generated/tiny_router_candidate_bands.json",
+    "generated/tiny_router_capsules.min.json",
+    "generated/tiny_router_eval_cases.jsonl",
+    "generated/tiny_router_overlay_manifest.json",
+    "generated/skill_bundle_index.json",
+    "generated/skill_bundle_index.md",
+    "generated/skill_graph.json",
+    "generated/skill_graph.md",
+    "generated/release_manifest.json"
+  ],
+  "required_config_files": [
+    "config/portable_skill_overrides.json",
+    "config/openai_skill_extensions.json",
+    "config/skill_pack_profiles.json",
+    "config/project_core_skill_kernel.json",
+    "config/project_core_outer_ring.json",
+    "config/project_risk_guard_ring.json",
+    "config/skill_policy_matrix.json",
+    "config/runtime_guardrail_policy.json",
+    "config/description_trigger_eval_policy.json",
+    "config/tiny_router_skill_bands.json"
+  ],
+  "project_core": {
+    "outer_ring": {
+      "skills": [
+        "aoa-adr-write",
+        "aoa-source-of-truth-check",
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor",
+        "aoa-change-protocol",
+        "aoa-tdd-slice",
+        "aoa-contract-test",
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit"
+      ],
+      "clusters": [
+        {
+          "cluster_id": "decision-and-doc-authority",
+          "skills": [
+            "aoa-adr-write",
+            "aoa-source-of-truth-check"
+          ]
+        },
+        {
+          "cluster_id": "boundary-shaping",
+          "skills": [
+            "aoa-bounded-context-map",
+            "aoa-core-logic-boundary",
+            "aoa-port-adapter-refactor"
+          ]
+        },
+        {
+          "cluster_id": "change-execution-vs-test-first",
+          "skills": [
+            "aoa-change-protocol",
+            "aoa-tdd-slice",
+            "aoa-contract-test"
+          ]
+        },
+        {
+          "cluster_id": "property-authoring-vs-coverage-audit",
+          "skills": [
+            "aoa-property-invariants",
+            "aoa-invariant-coverage-audit"
+          ]
+        }
+      ]
+    },
+    "risk_ring": {
+      "skills": [
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share"
+      ],
+      "clusters": [
+        {
+          "cluster_id": "safety-and-mutation-gating",
+          "skills": [
+            "aoa-approval-gate-check",
+            "aoa-dry-run-first",
+            "aoa-local-stack-bringup",
+            "aoa-safe-infra-change",
+            "aoa-sanitized-share"
+          ]
+        }
+      ],
+      "adjacent_overlays": [
+        {
+          "base_skill_name": "aoa-safe-infra-change",
+          "overlay_skill_name": "abyss-safe-infra-change"
+        },
+        {
+          "base_skill_name": "aoa-sanitized-share",
+          "overlay_skill_name": "abyss-sanitized-share"
+        }
+      ]
+    },
+    "foundation_profile": {
+      "skills": [
+        "aoa-session-donor-harvest",
+        "aoa-checkpoint-closeout-bridge",
+        "aoa-automation-opportunity-scan",
+        "aoa-memo-writeback",
+        "aoa-session-route-forks",
+        "aoa-session-self-diagnose",
+        "aoa-session-self-repair",
+        "aoa-session-progression-lift",
+        "aoa-quest-harvest",
+        "aoa-adr-write",
+        "aoa-source-of-truth-check",
+        "aoa-bounded-context-map",
+        "aoa-core-logic-boundary",
+        "aoa-port-adapter-refactor",
+        "aoa-change-protocol",
+        "aoa-tdd-slice",
+        "aoa-contract-test",
+        "aoa-property-invariants",
+        "aoa-invariant-coverage-audit",
+        "aoa-approval-gate-check",
+        "aoa-dry-run-first",
+        "aoa-local-stack-bringup",
+        "aoa-safe-infra-change",
+        "aoa-sanitized-share"
+      ]
+    }
+  }
+}

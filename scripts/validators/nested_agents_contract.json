@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "owner": "scripts/validate_nested_agents.py",
+  "docs": [
+    {
+      "path": "mechanics/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/` owns skill-layer movement surfaces",
+        "`skills/` owns executable skill content",
+        "Package README cards use `Local owns`",
+        "`python scripts/validate_nested_agents.py`"
+      ]
+    },
+    {
+      "path": "mechanics/agon/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/agon/`",
+        "requested-only",
+        "`python mechanics/agon/parts/workflow-candidate-bridge/scripts/build_agon_skill_binding_candidates.py --check`",
+        "`tests/test_mechanics_topology.py`"
+      ]
+    },
+    {
+      "path": "mechanics/method-growth/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/method-growth/`",
+        "candidate lineage",
+        "python -m pytest -q tests/test_session_checkpoint_note.py tests/test_session_growth_kernel_maturity.py"
+      ]
+    },
+    {
+      "path": "mechanics/growth-cycle/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/growth-cycle/`",
+        "adaptive skill",
+        "python -m pytest -q tests/test_session_growth_kernel_maturity.py tests/test_session_checkpoint_note.py"
+      ]
+    },
+    {
+      "path": "mechanics/checkpoint/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/checkpoint/`",
+        "checkpoint-note",
+        "python -m pytest -q tests/test_session_checkpoint_note.py tests/test_session_growth_kernel_maturity.py"
+      ]
+    },
+    {
+      "path": "mechanics/questbook/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/questbook/`",
+        "questbook integration",
+        "python -m pytest -q tests/test_validate_skills.py tests/test_session_checkpoint_note.py"
+      ]
+    },
+    {
+      "path": "mechanics/recurrence/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/recurrence/`",
+        "recurrence observation",
+        "python -m pytest -q tests/test_roadmap_parity.py tests/test_current_direction_routes.py"
+      ]
+    },
+    {
+      "path": "mechanics/rpg/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/rpg/`",
+        "ability-reader",
+        "python -m pytest -q tests/test_generated_surface_schemas.py tests/test_roadmap_parity.py"
+      ]
+    },
+    {
+      "path": "mechanics/antifragility/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`mechanics/antifragility/`",
+        "collision-stress",
+        "python -m pytest -q tests/test_mechanics_topology.py tests/test_roadmap_parity.py tests/test_current_direction_routes.py"
+      ]
+    },
+    {
+      "path": "mechanics/audit/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "Audit package guidance",
+        "skill-layer audit posture",
+        "docs/AUDIT_CONTRACT.md",
+        "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps"
+      ]
+    },
+    {
+      "path": "mechanics/boundary-bridge/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "Boundary-bridge package guidance",
+        "skill-layer boundary bridges",
+        "overlays/AGENTS.md",
+        "python scripts/validate_tiny_router_inputs.py --repo-root ."
+      ]
+    },
+    {
+      "path": "mechanics/experience/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "Experience package guidance",
+        "adoption consent",
+        "rollback",
+        "python scripts/validate_skills.py --fail-on-review-truth-sync"
+      ]
+    },
+    {
+      "path": "mechanics/release-support/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "Release-support package guidance",
+        "portable export",
+        "legacy/waves/",
+        "python scripts/release_check.py"
+      ]
+    },
+    {
+      "path": "skills/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`SKILL.md`",
+        "`techniques.yaml`",
+        "`agents/openai.yaml`",
+        "Do not add per-bundle `AGENTS.md` by default",
+        "`python scripts/validate_nested_agents.py`"
+      ]
+    },
+    {
+      "path": "generated/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "Do not hand-author files in `generated/`",
+        "`skill_catalog.json`",
+        "`python scripts/build_catalog.py`",
+        "`python scripts/build_catalog.py --check`"
+      ]
+    },
+    {
+      "path": "templates/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`SKILL.template.md`",
+        "`PROJECT_OVERLAY.template.md`",
+        "Preserve placeholder intent",
+        "`python scripts/validate_skills.py`"
+      ]
+    },
+    {
+      "path": "mechanics/boundary-bridge/overlays/AGENTS.md",
+      "required_snippets": [
+        "# AGENTS.md",
+        "`PROJECT_OVERLAY.md`",
+        "`REVIEW.md`",
+        "`skills/project/<family>/<skill>/`",
+        "thin overlay",
+        "downstream integration"
+      ]
+    }
+  ]
+}
