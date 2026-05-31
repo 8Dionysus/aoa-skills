@@ -383,26 +383,32 @@ def load_index_contract(repo_root: Path) -> tuple[dict[str, object] | None, list
     return payload, []
 
 
+def validate_index_contract_payload(contract: dict[str, object]) -> list[tuple[str, str]]:
+    issues: list[tuple[str, str]] = []
+    expected = [path.as_posix() for path in GENERATED_INDEX_PATHS]
+    if contract.get("generated_indexes") != expected:
+        issues.append(
+            (
+                INDEX_CONTRACT_PATH.as_posix(),
+                "generated_indexes must match the decision index read-model set",
+            )
+        )
+    if contract.get("decision_id_prefix") != "AOA-SK-D":
+        issues.append(
+            (
+                INDEX_CONTRACT_PATH.as_posix(),
+                "decision_id_prefix must be AOA-SK-D",
+            )
+        )
+    return issues
+
+
 def validate_decision_index_surfaces(repo_root: Path) -> list[tuple[str, str]]:
     records, issues = collect_decision_records(repo_root)
     contract, contract_issues = load_index_contract(repo_root)
     issues.extend(contract_issues)
     if contract is not None:
-        expected = [path.as_posix() for path in GENERATED_INDEX_PATHS]
-        if contract.get("generated_indexes") != expected:
-            issues.append(
-                (
-                    INDEX_CONTRACT_PATH.as_posix(),
-                    "generated_indexes must match the decision index read-model set",
-                )
-            )
-        if contract.get("decision_id_prefix") != "AOA-SK-D":
-            issues.append(
-                (
-                    INDEX_CONTRACT_PATH.as_posix(),
-                    "decision_id_prefix must be AOA-SK-D",
-                )
-            )
+        issues.extend(validate_index_contract_payload(contract))
 
     if issues:
         return issues

@@ -4,6 +4,9 @@ import shutil
 import sys
 import tempfile
 import unittest
+import contextlib
+import io
+from unittest import mock
 from pathlib import Path
 
 
@@ -13,6 +16,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import decision_indexes
+import generate_decision_indexes
 
 
 class DecisionIndexTests(unittest.TestCase):
@@ -60,6 +64,36 @@ class DecisionIndexTests(unittest.TestCase):
             [path.as_posix() for path in decision_indexes.GENERATED_INDEX_PATHS],
             contract["generated_indexes"],
         )
+
+    def test_generate_check_uses_full_contract_validation(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_root = Path(temp_dir)
+            shutil.copytree(REPO_ROOT / "docs" / "decisions", temp_root / "docs" / "decisions")
+            contract_path = temp_root / "docs" / "decisions" / "indexes" / "index_contract.yaml"
+            contract_text = contract_path.read_text(encoding="utf-8")
+            contract_path.write_text(
+                contract_text.replace("decision_id_prefix: AOA-SK-D", "decision_id_prefix: AOA-BAD-D"),
+                encoding="utf-8",
+            )
+
+            stdout = io.StringIO()
+            with (
+                mock.patch.object(
+                    sys,
+                    "argv",
+                    [
+                        "generate_decision_indexes.py",
+                        "--check",
+                        "--repo-root",
+                        temp_root.as_posix(),
+                    ],
+                ),
+                contextlib.redirect_stdout(stdout),
+            ):
+                exit_code = generate_decision_indexes.main()
+
+        self.assertEqual(1, exit_code)
+        self.assertIn("decision_id_prefix must be AOA-SK-D", stdout.getvalue())
 
 
 if __name__ == "__main__":

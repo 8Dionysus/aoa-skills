@@ -21,8 +21,19 @@ def main() -> int:
     args = parser.parse_args()
 
     repo_root = args.repo_root.resolve()
+    if args.check:
+        issues = decision_indexes.validate_decision_index_surfaces(repo_root)
+        if issues:
+            for location, message in issues:
+                print(f"- {location}: {message}")
+            return 1
+        return 0
+
     records, issues = decision_indexes.collect_decision_records(repo_root)
-    issues.extend(decision_indexes.load_index_contract(repo_root)[1])
+    contract, contract_issues = decision_indexes.load_index_contract(repo_root)
+    issues.extend(contract_issues)
+    if contract is not None:
+        issues.extend(decision_indexes.validate_index_contract_payload(contract))
     if issues:
         for location, message in issues:
             print(f"- {location}: {message}")
