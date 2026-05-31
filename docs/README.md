@@ -40,7 +40,7 @@ generated-surface summary.
 
 | Surface | Role |
 |---|---|
-| [`decisions/`](decisions/) | decision records for structural, workflow, and ownership changes |
+| [`decisions/`](decisions/README.md) | decision records for structural, workflow, and ownership changes |
 | [`reviews/`](reviews/) | review records for status, canonical candidates, and exceptions |
 | [`AGENTS_ROOT_REFERENCE.md`](AGENTS_ROOT_REFERENCE.md) | preserved historical root guidance; not the active command or authority source |
 

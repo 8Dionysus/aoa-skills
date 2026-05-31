@@ -5,7 +5,7 @@ source-derived Skill Intelligence slice.
 
 Current owner routes:
 
-- accepted registry decision: [`../../../../docs/decisions/2026-05-17-skill-intelligence-registry-first-slice.md`](../../../../docs/decisions/2026-05-17-skill-intelligence-registry-first-slice.md)
+- accepted registry decision: [`../../../../docs/decisions/AOA-SK-D-0021-skill-intelligence-registry-first-slice.md`](../../../../docs/decisions/AOA-SK-D-0021-skill-intelligence-registry-first-slice.md)
 - technical source/generated model: [`../../../../docs/ARCHITECTURE.md`](../../../../docs/ARCHITECTURE.md)
 - Boundary-bridge route: [`../../README.md`](../../README.md)
 - Boundary-bridge provenance: [`../../PROVENANCE.md`](../../PROVENANCE.md)
