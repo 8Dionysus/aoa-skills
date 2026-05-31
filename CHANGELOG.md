@@ -19,6 +19,11 @@ Tracking starts with the community-docs baseline for this repository.
 - Shared validation lane definitions now live in `scripts/validation_lanes.py`,
   and validator contract data now has manifest-backed homes under
   `scripts/validators/`.
+- Validator topology now has a human map and machine inventory under
+  `docs/validation/`, with tests that guard owner, lane, mode, and next-route
+  declarations for validation-like entrypoints.
+- A new `AOA-SK-D-0029` decision records the validator topology and owner-module
+  route.
 
 ### Changed
 
@@ -46,6 +51,11 @@ Tracking starts with the community-docs baseline for this repository.
   loading, index building, skill-set parity, per-skill resource/runtime/router
   phases, project ring checks, release relationship checks, and runtime
   guardrail checks.
+- Tiny-router, support-resource, trigger-eval, description-trigger, and pack
+  profile checks now execute from owner modules under `scripts/validators/`;
+  the root entrypoints are thin CLI adapters.
+- The former semantic AGENTS validator has been folded into the manifest-backed
+  nested AGENTS contract instead of remaining as a separate one-off script.
 
 ### Fixed
 

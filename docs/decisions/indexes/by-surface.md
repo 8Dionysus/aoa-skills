@@ -22,6 +22,7 @@
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
 - [AOA-SK-D-0026 Memo Writeback Skill Owner Boundary](../AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md) (`docs/decisions/AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+- [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
 
 ## docs route
 
@@ -103,8 +104,13 @@
 - [AOA-SK-D-0002 Mechanic Artifact Topology](../AOA-SK-D-0002-mechanic-artifact-topology.md) (`docs/decisions/AOA-SK-D-0002-mechanic-artifact-topology.md`)
 - [AOA-SK-D-0027 Canonical Decision IDs And Indexes](../AOA-SK-D-0027-canonical-decision-ids-and-indexes.md) (`docs/decisions/AOA-SK-D-0027-canonical-decision-ids-and-indexes.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+- [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
 
 ## legacy/provenance
 
 - [AOA-SK-D-0013 Mechanics Surface Rehome](../AOA-SK-D-0013-mechanics-surface-rehome.md) (`docs/decisions/AOA-SK-D-0013-mechanics-surface-rehome.md`)
 - [AOA-SK-D-0025 Root Legacy Retirement](../AOA-SK-D-0025-root-legacy-retirement.md) (`docs/decisions/AOA-SK-D-0025-root-legacy-retirement.md`)
+
+## generated/read-model
+
+- [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)

@@ -25,6 +25,8 @@ class NestedAgentsDocsTests(unittest.TestCase):
             Path("mechanics") / "release-support" / "AGENTS.md",
             {spec.path for spec in specs},
         )
+        self.assertIn(Path("config") / "AGENTS.md", {spec.path for spec in specs})
+        self.assertIn(Path("tests") / "AGENTS.md", {spec.path for spec in specs})
 
     def test_contract_manifest_rejects_duplicate_paths(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

@@ -13,6 +13,11 @@
 ## audit
 
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+- [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
+
+## boundary-bridge
+
+- [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
 
 ## checkpoint
 
@@ -45,6 +50,7 @@
 
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+- [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
 
 ## rpg
 
