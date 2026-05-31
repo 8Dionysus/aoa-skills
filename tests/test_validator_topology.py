@@ -24,6 +24,27 @@ AGENTS_VALIDATION_PREAMBLE = (
     "this local card may name only focused owner checks, lane ids, or the "
     "nearest route for the changed surface."
 )
+VALIDATION_COMMAND_BLOCK_RE = re.compile(
+    r"```(?:bash|sh)?\n(?:(?!```).)*(?:python scripts/|python -m|"
+    r"git diff --check|git diff --exit-code|scripts/ci_gate.py|"
+    r"scripts/release_check.py)",
+    re.S,
+)
+NON_AGENTS_COMMAND_BLOCK_ALLOWED_PREFIXES = (
+    "docs/decisions/AOA-SK-D-",
+    "mechanics/agon/legacy/",
+    "mechanics/boundary-bridge/legacy/",
+    "mechanics/growth-cycle/legacy/",
+    "mechanics/release-support/legacy/",
+)
+NON_AGENTS_COMMAND_BLOCK_ALLOWED_FILES = {
+    "mechanics/audit/docs/SKILLS_REF_VALIDATION.md",
+    "mechanics/method-growth/docs/PROMOTION_PRESSURE.md",
+    "mechanics/release-support/docs/CODEX_CONFIG_SNIPPETS.md",
+    "mechanics/release-support/docs/INSTALL_AND_PROFILES.md",
+    "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
+    "mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md",
+}
 THIN_ROOT_ADAPTERS = (
     "scripts/validate_agent_skills.py",
     "scripts/validate_tiny_router_inputs.py",
@@ -151,6 +172,22 @@ class ValidatorTopologyTests(unittest.TestCase):
                 if forbidden.search(line) and not allowed.search(line):
                     rel = path.relative_to(REPO_ROOT).as_posix()
                     offenders.append(f"{rel}:{lineno}: {line.strip()}")
+        self.assertEqual([], offenders)
+
+    def test_active_non_agents_docs_do_not_store_validation_command_blocks(self) -> None:
+        offenders: list[str] = []
+        for path in sorted(REPO_ROOT.rglob("*.md")):
+            rel = path.relative_to(REPO_ROOT).as_posix()
+            if rel == "AGENTS.md" or rel.endswith("/AGENTS.md"):
+                continue
+            if rel in NON_AGENTS_COMMAND_BLOCK_ALLOWED_FILES:
+                continue
+            if any(rel.startswith(prefix) for prefix in NON_AGENTS_COMMAND_BLOCK_ALLOWED_PREFIXES):
+                continue
+            text = path.read_text(encoding="utf-8")
+            if VALIDATION_COMMAND_BLOCK_RE.search(text):
+                offenders.append(rel)
+
         self.assertEqual([], offenders)
 
     def test_validation_like_entrypoints_are_not_orphaned(self) -> None:

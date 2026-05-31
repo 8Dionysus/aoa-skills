@@ -119,17 +119,11 @@ The reverse route is also first-class:
 This keeps living skill workflows from being trapped behind technique
 publication while preserving the direct relationship between the layers.
 
-Current local helper:
+Current local helper: use `scripts/refresh_skill_from_manifest.py` in dry-run
+mode for one named skill.
 
-```bash
-python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol
-```
-
-Explicit single-skill write mode:
-
-```bash
-python scripts/refresh_skill_from_manifest.py --skill aoa-change-protocol --write
-```
+Explicit single-skill write mode stays available through the same helper with
+its write flag.
 
 The helper is dry-run-first and only writes one named skill at a time.
 
@@ -138,12 +132,9 @@ Those gaps are review signals, not auto-generated content.
 Single-skill write mode may refresh `technique_dependencies` and the traceability block,
 but it must not invent missing runtime sections on behalf of the author.
 
-Current cross-repo hardening helpers:
-
-```bash
-python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques
-python scripts/refresh_skill_from_techniques.py --skill aoa-change-protocol --techniques-repo ../aoa-techniques
-```
+Current cross-repo hardening helpers are `scripts/report_technique_drift.py`
+and `scripts/refresh_skill_from_techniques.py` against a local
+`../aoa-techniques` checkout.
 
 `report_technique_drift.py` compares published `source_ref` values against a chosen local
 `aoa-techniques` ref and reports `clean`, `drifted`, or `pending` technique refs per skill.
@@ -180,8 +171,9 @@ One upstream source technique can stay aligned across multiple skill bundles wit
   - `skills/risk/aoa-safe-infra-change/techniques.yaml`
   - `skills/risk/aoa-safe-infra-change/SKILL.md`
 - drift control:
-  - `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --skill aoa-change-protocol --skill aoa-safe-infra-change`
-  - `python scripts/refresh_skill_from_techniques.py --skill aoa-change-protocol --skill aoa-safe-infra-change --techniques-repo ../aoa-techniques`
+  - run the technique drift report for the selected skill cohort
+  - run the technique refresh helper for that same explicit cohort when the
+    refresh is approved
 
 This is the current donor evidence shape for one-source to many-target distribution:
 one pinned source ref, multiple committed consumer surfaces, and explicit refresh tooling when the upstream source changes.
@@ -214,12 +206,9 @@ Mixed-lineage refresh example:
 - pending technique ref:
   - `AOA-T-PENDING-DRY-RUN-FIRST` stays `path: TBD` and `source_ref: TBD`
 
-Bounded repo-local wave example:
-
-```bash
-python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --skill aoa-bounded-context-map --skill aoa-contract-test --skill aoa-dry-run-first --skill aoa-invariant-coverage-audit --skill aoa-property-invariants --skill aoa-tdd-slice
-python scripts/refresh_skill_from_techniques.py --skill aoa-bounded-context-map --skill aoa-contract-test --skill aoa-dry-run-first --skill aoa-invariant-coverage-audit --skill aoa-property-invariants --skill aoa-tdd-slice --techniques-repo ../aoa-techniques
-```
+Bounded repo-local wave example: run the drift report and refresh helper over an
+explicit `--skill` cohort. Keep the selected skill list in the change report
+rather than copying long command blocks into this spec.
 
 This kind of wave refreshes already published refs and the traceability surfaces that depend on them.
 It does not close pending lineage and does not widen into upstream publication work inside `aoa-techniques`.
@@ -252,11 +241,11 @@ be reviewed for possible extraction or updated adjacency.
 
 Recommended local workflow:
 
-1. run `python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques`
-2. run `python scripts/refresh_skill_from_techniques.py --skill <skill-name> --techniques-repo ../aoa-techniques`
+1. run the technique drift report against the local `aoa-techniques` checkout
+2. run the technique refresh helper for an explicit skill list when approved
 3. manually review whether the upstream drift changes runtime meaning or only pinned refs and traceability
-4. rebuild generated reader surfaces with `python scripts/build_catalog.py`
-5. re-run `python scripts/validate_skills.py`
+4. rebuild generated reader surfaces through the generated/read-model lane
+5. rerun the source skill validator through the focused owner route
 
 The bridge/drift flow uses CLI output and ordinary git diff as the review surface.
 It does not add committed drift-report artifacts.

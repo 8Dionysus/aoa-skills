@@ -89,22 +89,18 @@ When any of these change, update the trigger evals in the same pull request:
 - a major `do not use` boundary
 - overlay activation conditions
 
-Then run:
-
-```bash
-python scripts/lint_trigger_evals.py --repo-root .
-python scripts/build_description_trigger_evals.py --repo-root .
-python scripts/lint_description_trigger_evals.py --repo-root .
-```
+Then use the activation/trigger owner checks named by
+`mechanics/audit/AGENTS.md` and the generated/export lane manifest. The focused
+owners are the trigger-eval builder/lint, description-trigger builder/lint, and
+tiny-router validation surfaces.
 
 Pack profiles and trust posture live in separate support surfaces and should be checked with:
 
-```bash
-python scripts/lint_pack_profiles.py --repo-root .
-```
+Use the pack-profile owner lint when install profile membership or generated
+config snippets can move.
 
 If you want the soft open-standard conformance lane as well, run:
 
-```bash
-python scripts/run_skills_ref_validation.py --repo-root .
-```
+Use the skills-ref soft conformance wrapper after portable export has been
+built. Missing external validator remains a clean skip; real validator failures
+remain failures.

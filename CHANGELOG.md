@@ -60,6 +60,9 @@ Tracking starts with the community-docs baseline for this repository.
   the root entrypoints are thin CLI adapters.
 - The former semantic AGENTS validator has been folded into the manifest-backed
   nested AGENTS contract instead of remaining as a separate one-off script.
+- Active route, audit, quest, and Spark scenario docs now point to lane ids,
+  owner surfaces, or nearest `AGENTS.md` routes instead of carrying validation
+  command blocks outside the command-authority surfaces.
 
 ### Fixed
 

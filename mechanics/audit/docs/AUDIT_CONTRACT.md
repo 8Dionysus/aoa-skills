@@ -120,53 +120,41 @@ Do not make these changes without explicit human confirmation:
 
 ### Minimum after meaningful changes
 
-```bash
-python scripts/release_check.py
-```
+Use the release lane when the audit changes release-facing surfaces. Full lane
+command authority stays in `config/validation_lanes.json`; nearest `AGENTS.md`
+cards name the focused local route.
 
 ### When touching bundles, derived surfaces, or validation contracts
 
-```bash
-python scripts/build_catalog.py
-python scripts/validate_skills.py
-python scripts/build_catalog.py --check
-```
+Use the source and generated/read-model routes for skill bundles and derived
+surfaces. The owning surfaces are `scripts/validate_skills.py`,
+`scripts/build_catalog.py`, and the validation lane manifest.
 
 ### When touching canonical skills, evaluation evidence, or public status surfaces
 
-```bash
-python scripts/report_skill_evaluation.py
-python scripts/report_skill_evaluation.py --fail-on-canonical-gaps
-```
+Use the evaluation report surface, with the canonical-gap failure mode when the
+change is intended to block on evidence completeness.
 
 ### When touching one skill directly
 
-```bash
-python scripts/inspect_skill.py --skill <skill-name>
-python scripts/inspect_skill.py --skill <skill-name> --view evidence
-```
+Use the skill inspection surface for the changed skill and include evidence view
+when the claim touches review or evaluation posture.
 
 ### When touching technique dependencies or bridge docs
 
-```bash
-python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques
-```
+Use the technique drift report surface against the local `aoa-techniques`
+checkout.
 
 If you are intentionally refreshing a published technique ref, keep the wave explicit and bounded:
 
-```bash
-python scripts/refresh_skill_from_techniques.py --skill <skill-name> --techniques-repo ../aoa-techniques
-python scripts/build_catalog.py
-python scripts/validate_skills.py
-```
+Use the technique refresh helper for the named skill, then rebuild generated
+read models and rerun the source skill validator through the focused owner
+route.
 
 ### When touching scripts or validator behavior
 
-Run the nearest `pytest` modules for the affected surfaces, for example:
-
-```bash
-python -m pytest tests/test_validate_skills.py tests/test_build_catalog.py
-```
+Run the nearest tests for the affected script, validator, or generated surface.
+For validation-command authority, use `docs/validation/COMMAND_AUTHORITY.md`.
 
 Do not list a command in the report unless it was actually run.
 
@@ -210,9 +198,9 @@ Every audit or patch report for this repo should include:
 
 ### VERIFY
 
-- `python scripts/release_check.py` status
-- any `build_catalog`, `validate_skills`, `report_skill_evaluation`, `inspect_skill`, or drift commands actually run
-- any `pytest` modules actually run
+- release-lane status when release-facing surfaces changed
+- any catalog, skill validation, evaluation, inspection, drift, or focused test
+  commands actually run
 - what was not run
 
 ### REPORT

@@ -24,4 +24,6 @@ acceptance, multi-repo synthesis, or a slower review.
 
 ## Validation
 
-Run `python scripts/release_check.py` when local dependencies are available.
+Use this scenario's `default_validation` entry in `.agents/spark/registry.json`
+when local dependencies are available. Do not duplicate the release command
+sequence in the scenario README.

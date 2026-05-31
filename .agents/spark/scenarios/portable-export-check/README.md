@@ -25,12 +25,7 @@ review evidence, downstream owner receipts, or cross-repository adoption work.
 
 ## Validation
 
-Use:
-
-```bash
-python scripts/validate_agent_skills.py --repo-root .
-python scripts/validate_support_resources.py --repo-root . --check-portable
-```
-
-Run `python scripts/build_agent_skills.py --repo-root .` only when a source
-change or builder change requires a refreshed export.
+Use this scenario's `default_validation` entry in `.agents/spark/registry.json`
+and the export lane authority in `config/validation_lanes.json`. Rebuild export
+surfaces only when a source or builder change requires refreshed portable
+output.

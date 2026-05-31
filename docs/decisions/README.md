@@ -19,7 +19,7 @@ evidence, and one-off planning thoughts route to their owning surfaces instead.
 | output | canonical decision note, metadata-backed lookup index, and route back to the source surface |
 | owner | `docs/decisions/AGENTS.md` for lane law; canonical decision notes for rationale; generated indexes for lookup only |
 | next route | source surface first, then local route card, `CHARTER.md`, `DESIGN.md`, `DESIGN.AGENTS.md`, `docs/ARCHITECTURE.md`, generated lookup indexes, or the affected skill/mechanic owner |
-| validation | `python scripts/generate_decision_indexes.py --check`, `git diff --check`, and the owning validator for the changed surface |
+| validation | decision-index freshness via `docs/decisions/AGENTS.md`, diff hygiene, and the owning validator for the changed surface |
 
 ## Authority
 
@@ -67,11 +67,9 @@ Use them in both directions:
 - bottom up: changed source surface -> local route card or generated read model
   -> validator guard -> decision rationale -> stronger owner surface.
 
-Regenerate the read models after decision metadata changes:
-
-```bash
-python scripts/generate_decision_indexes.py
-```
+Regenerate the read models after decision metadata changes through the focused
+decision-index route named by `docs/decisions/AGENTS.md`. Full lane command
+authority stays in `config/validation_lanes.json`.
 
 ## Addressing
 
