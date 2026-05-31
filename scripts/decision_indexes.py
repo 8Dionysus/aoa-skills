@@ -13,6 +13,18 @@ import yaml
 DECISIONS_DIR = Path("docs/decisions")
 INDEXES_DIR = DECISIONS_DIR / "indexes"
 INDEX_CONTRACT_PATH = INDEXES_DIR / "index_contract.yaml"
+INDEX_CONTRACT_SCHEMA = "aoa_skills_decision_index_contract_v1"
+DECISION_ID_PREFIX = "AOA-SK-D"
+PATH_POLICY = "full_canonical_id_filename"
+SOURCE_GLOB = "docs/decisions/AOA-SK-D-*.md"
+REQUIRED_METADATA = (
+    "Original date",
+    "Surface classes",
+    "Skill lanes",
+    "Mechanic parents",
+    "Guard families",
+    "Posture",
+)
 GENERATED_INDEX_PATHS = (
     INDEXES_DIR / "README.md",
     INDEXES_DIR / "by-number.md",
@@ -386,6 +398,34 @@ def load_index_contract(repo_root: Path) -> tuple[dict[str, object] | None, list
 def validate_index_contract_payload(contract: dict[str, object]) -> list[tuple[str, str]]:
     issues: list[tuple[str, str]] = []
     expected = [path.as_posix() for path in GENERATED_INDEX_PATHS]
+    if contract.get("schema") != INDEX_CONTRACT_SCHEMA:
+        issues.append(
+            (
+                INDEX_CONTRACT_PATH.as_posix(),
+                f"schema must be {INDEX_CONTRACT_SCHEMA}",
+            )
+        )
+    if contract.get("decision_id_prefix") != DECISION_ID_PREFIX:
+        issues.append(
+            (
+                INDEX_CONTRACT_PATH.as_posix(),
+                f"decision_id_prefix must be {DECISION_ID_PREFIX}",
+            )
+        )
+    if contract.get("path_policy") != PATH_POLICY:
+        issues.append(
+            (
+                INDEX_CONTRACT_PATH.as_posix(),
+                f"path_policy must be {PATH_POLICY}",
+            )
+        )
+    if contract.get("source_glob") != SOURCE_GLOB:
+        issues.append(
+            (
+                INDEX_CONTRACT_PATH.as_posix(),
+                f"source_glob must be {SOURCE_GLOB}",
+            )
+        )
     if contract.get("generated_indexes") != expected:
         issues.append(
             (
@@ -393,11 +433,11 @@ def validate_index_contract_payload(contract: dict[str, object]) -> list[tuple[s
                 "generated_indexes must match the decision index read-model set",
             )
         )
-    if contract.get("decision_id_prefix") != "AOA-SK-D":
+    if contract.get("required_metadata") != list(REQUIRED_METADATA):
         issues.append(
             (
                 INDEX_CONTRACT_PATH.as_posix(),
-                "decision_id_prefix must be AOA-SK-D",
+                "required_metadata must match the parsed decision metadata fields",
             )
         )
     return issues

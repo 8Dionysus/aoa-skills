@@ -95,6 +95,40 @@ class DecisionIndexTests(unittest.TestCase):
         self.assertEqual(1, exit_code)
         self.assertIn("decision_id_prefix must be AOA-SK-D", stdout.getvalue())
 
+    def test_index_contract_validation_covers_parser_contract_fields(self) -> None:
+        contract, issues = decision_indexes.load_index_contract(REPO_ROOT)
+        self.assertEqual([], issues)
+        assert contract is not None
+
+        drifted = dict(contract)
+        drifted["path_policy"] = "date_prefixed_filename"
+        drifted["source_glob"] = "docs/decisions/*.md"
+        drifted["required_metadata"] = ["Original date"]
+
+        contract_issues = decision_indexes.validate_index_contract_payload(drifted)
+
+        self.assertIn(
+            (
+                "docs/decisions/indexes/index_contract.yaml",
+                "path_policy must be full_canonical_id_filename",
+            ),
+            contract_issues,
+        )
+        self.assertIn(
+            (
+                "docs/decisions/indexes/index_contract.yaml",
+                "source_glob must be docs/decisions/AOA-SK-D-*.md",
+            ),
+            contract_issues,
+        )
+        self.assertIn(
+            (
+                "docs/decisions/indexes/index_contract.yaml",
+                "required_metadata must match the parsed decision metadata fields",
+            ),
+            contract_issues,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
