@@ -15,21 +15,21 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import skill_intelligence_surface
+from tests.support.source_catalog import source_skill_count
 
 
 class SkillIntelligenceSurfaceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.payload = skill_intelligence_surface.build_skill_intelligence_registry_payload(
-            REPO_ROOT
+        cls.payload = (
+            skill_intelligence_surface.build_skill_intelligence_registry_payload(
+                REPO_ROOT
+            )
         )
-        cls.skills = {
-            entry["name"]: entry
-            for entry in cls.payload["skills"]
-        }
+        cls.skills = {entry["name"]: entry for entry in cls.payload["skills"]}
 
     def test_registry_covers_every_source_skill(self) -> None:
-        self.assertEqual(len(self.payload["skills"]), 46)
+        self.assertEqual(len(self.payload["skills"]), source_skill_count(REPO_ROOT))
         self.assertEqual(
             self.payload["profile"],
             "skill-intelligence-registry-v1",
@@ -114,10 +114,14 @@ class SkillIntelligenceSurfaceTests(unittest.TestCase):
         self.assertNotIn("text", first_doc)
         json.dumps(min_payload)
 
-    def test_fallback_trust_uses_policy_matrix_when_generated_trust_is_absent(self) -> None:
+    def test_fallback_trust_uses_policy_matrix_when_generated_trust_is_absent(
+        self,
+    ) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             repo_root = Path(tmp_dir)
-            skill_dir = repo_root / "skills" / "core" / "engineering" / "aoa-test-policy"
+            skill_dir = (
+                repo_root / "skills" / "core" / "engineering" / "aoa-test-policy"
+            )
             skill_dir.mkdir(parents=True)
             (repo_root / "config").mkdir()
             (skill_dir / "SKILL.md").write_text(
@@ -165,7 +169,9 @@ Use when generated trust is absent.
 """,
                 encoding="utf-8",
             )
-            (skill_dir / "techniques.yaml").write_text("techniques: []\n", encoding="utf-8")
+            (skill_dir / "techniques.yaml").write_text(
+                "techniques: []\n", encoding="utf-8"
+            )
             (repo_root / "config" / "skill_policy_matrix.json").write_text(
                 json.dumps(
                     {
@@ -182,8 +188,10 @@ Use when generated trust is absent.
                 encoding="utf-8",
             )
 
-            payload = skill_intelligence_surface.build_skill_intelligence_registry_payload(
-                repo_root
+            payload = (
+                skill_intelligence_surface.build_skill_intelligence_registry_payload(
+                    repo_root
+                )
             )
 
         skill = payload["skills"][0]
@@ -193,10 +201,14 @@ Use when generated trust is absent.
         self.assertFalse(skill["policy"]["candidate_only"])
         self.assertTrue(skill["runtime"]["allow_implicit_invocation"])
 
-    def test_fallback_trust_keeps_explicit_preferred_candidate_only_without_policy(self) -> None:
+    def test_fallback_trust_keeps_explicit_preferred_candidate_only_without_policy(
+        self,
+    ) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             repo_root = Path(tmp_dir)
-            skill_dir = repo_root / "skills" / "core" / "engineering" / "aoa-test-suggest"
+            skill_dir = (
+                repo_root / "skills" / "core" / "engineering" / "aoa-test-suggest"
+            )
             skill_dir.mkdir(parents=True)
             (skill_dir / "SKILL.md").write_text(
                 """---
@@ -243,10 +255,14 @@ Use when no policy matrix is available.
 """,
                 encoding="utf-8",
             )
-            (skill_dir / "techniques.yaml").write_text("techniques: []\n", encoding="utf-8")
+            (skill_dir / "techniques.yaml").write_text(
+                "techniques: []\n", encoding="utf-8"
+            )
 
-            payload = skill_intelligence_surface.build_skill_intelligence_registry_payload(
-                repo_root
+            payload = (
+                skill_intelligence_surface.build_skill_intelligence_registry_payload(
+                    repo_root
+                )
             )
 
         skill = payload["skills"][0]

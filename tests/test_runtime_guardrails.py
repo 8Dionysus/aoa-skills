@@ -28,7 +28,7 @@ def load_module(name: str, path: pathlib.Path):
     return module
 
 
-class Wave6RuntimeGuardrailsTests(unittest.TestCase):
+class RuntimeGuardrailsTests(unittest.TestCase):
     def test_trust_gate_allowlist_and_rehydration_flow(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmpdir_path = pathlib.Path(tmpdir)
@@ -48,7 +48,9 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
                     "json",
                 ]
             )
-            self.assertEqual(discover_blocked.returncode, 0, msg=discover_blocked.stderr)
+            self.assertEqual(
+                discover_blocked.returncode, 0, msg=discover_blocked.stderr
+            )
             discover_blocked_payload = json.loads(discover_blocked.stdout)
             self.assertEqual(discover_blocked_payload["stage"], "discover")
             self.assertEqual(discover_blocked_payload["count"], 0)
@@ -72,7 +74,9 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
                     "json",
                 ]
             )
-            self.assertEqual(blocked_activate.returncode, 0, msg=blocked_activate.stderr)
+            self.assertEqual(
+                blocked_activate.returncode, 0, msg=blocked_activate.stderr
+            )
             blocked_activate_payload = json.loads(blocked_activate.stdout)
             self.assertEqual(blocked_activate_payload["stage"], "activate_blocked")
 
@@ -110,7 +114,9 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
                     "json",
                 ]
             )
-            self.assertEqual(discover_allowed.returncode, 0, msg=discover_allowed.stderr)
+            self.assertEqual(
+                discover_allowed.returncode, 0, msg=discover_allowed.stderr
+            )
             discover_allowed_payload = json.loads(discover_allowed.stdout)
             self.assertGreaterEqual(discover_allowed_payload["count"], 17)
             self.assertEqual(discover_allowed_payload["blocked_count"], 0)
@@ -162,7 +168,12 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
             allowlist_payload = json.loads(allowlist.stdout)
             self.assertEqual(allowlist_payload["stage"], "allowlist")
             self.assertEqual(allowlist_payload["read_access"], "read-only")
-            self.assertTrue(any(path.endswith(".agents/skills/aoa-change-protocol") for path in allowlist_payload["paths"]))
+            self.assertTrue(
+                any(
+                    path.endswith(".agents/skills/aoa-change-protocol")
+                    for path in allowlist_payload["paths"]
+                )
+            )
 
             compact = run_command(
                 [
@@ -201,12 +212,20 @@ class Wave6RuntimeGuardrailsTests(unittest.TestCase):
             self.assertEqual(rehydrate.returncode, 0, msg=rehydrate.stderr)
             rehydrate_payload = json.loads(rehydrate.stdout)
             self.assertEqual(rehydrate_payload["stage"], "rehydrate")
-            self.assertEqual(rehydrate_payload["skill_packets"][0]["name"], "aoa-change-protocol")
+            self.assertEqual(
+                rehydrate_payload["skill_packets"][0]["name"], "aoa-change-protocol"
+            )
             self.assertIn("dedupe_key", rehydrate_payload["skill_packets"][0])
-            self.assertEqual(rehydrate_payload["activation_calls"][0]["name"], "guarded_activate_skill")
+            self.assertEqual(
+                rehydrate_payload["activation_calls"][0]["name"],
+                "guarded_activate_skill",
+            )
 
     def test_repo_root_only_match_does_not_override_git_origin_identity(self):
-        module = load_module("skill_runtime_guardrails", REPO_ROOT / "scripts" / "skill_runtime_guardrails.py")
+        module = load_module(
+            "skill_runtime_guardrails",
+            REPO_ROOT / "scripts" / "skill_runtime_guardrails.py",
+        )
         store = {
             "entries": [
                 {

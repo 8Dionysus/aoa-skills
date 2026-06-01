@@ -8,10 +8,16 @@ import unittest
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-class Wave7DescriptionTriggerBuilderTests(unittest.TestCase):
+class DescriptionTriggerBuilderTests(unittest.TestCase):
     def test_builder_has_no_drift(self):
         completed = subprocess.run(
-            [sys.executable, "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"],
+            [
+                sys.executable,
+                "scripts/build_description_trigger_evals.py",
+                "--repo-root",
+                ".",
+                "--check",
+            ],
             cwd=REPO_ROOT,
             text=True,
             capture_output=True,
@@ -24,13 +30,27 @@ class Wave7DescriptionTriggerBuilderTests(unittest.TestCase):
         )
 
     def test_generated_description_eval_artifacts_exist(self):
-        manifest = json.loads((REPO_ROOT / "generated" / "description_trigger_eval_manifest.json").read_text())
-        signals = json.loads((REPO_ROOT / "generated" / "skill_description_signals.json").read_text())
-        skills_ref = json.loads((REPO_ROOT / "generated" / "skills_ref_validation_manifest.json").read_text())
-        source_catalog = json.loads((REPO_ROOT / "generated" / "skill_catalog.min.json").read_text())
+        manifest = json.loads(
+            (
+                REPO_ROOT / "generated" / "description_trigger_eval_manifest.json"
+            ).read_text()
+        )
+        signals = json.loads(
+            (REPO_ROOT / "generated" / "skill_description_signals.json").read_text()
+        )
+        skills_ref = json.loads(
+            (
+                REPO_ROOT / "generated" / "skills_ref_validation_manifest.json"
+            ).read_text()
+        )
+        source_catalog = json.loads(
+            (REPO_ROOT / "generated" / "skill_catalog.min.json").read_text()
+        )
         expected_skill_count = len(source_catalog["skills"])
 
-        self.assertEqual(manifest["profile"], "codex-facing-wave-7-description-trigger-evals")
+        self.assertEqual(
+            manifest["profile"], "codex-facing-wave-7-description-trigger-evals"
+        )
         self.assertGreaterEqual(manifest["total_cases"], 70)
         self.assertEqual(len(signals["skills"]), expected_skill_count)
         self.assertEqual(len(skills_ref["targets"]), expected_skill_count)

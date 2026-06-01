@@ -10,7 +10,7 @@ from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS_ROOT = ROOT / "mechanics" / "method-growth" / "schemas"
-WAVE3_STEMS = (
+METHOD_GROWTH_CONTRACT_STEMS = (
     "skill_adoption_compatibility_report",
     "skill_adoption_owner_decision",
     "skill_adoption_receipt",
@@ -41,19 +41,26 @@ GUARDRAIL_BOOLEAN_FIELDS = {
     "submit_only",
 }
 RATIO_FIELD_HINTS = ("rate", "threshold")
-ENUM_ESCAPE_VALUE = "__wave3_not_allowed__"
+ENUM_ESCAPE_VALUE = "__method_growth_not_allowed__"
 
 
 def load_contract(stem: str) -> tuple[dict[str, object], dict[str, object]]:
     schema_path = SCHEMAS_ROOT / f"{stem}_v1.json"
-    example_path = ROOT / "mechanics" / "method-growth" / "examples" / f"{stem}.example.json"
+    example_path = (
+        ROOT / "mechanics" / "method-growth" / "examples" / f"{stem}.example.json"
+    )
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     example = json.loads(example_path.read_text(encoding="utf-8"))
     return schema, example
 
 
-def validation_errors(schema: dict[str, object], value: dict[str, object]) -> list[object]:
-    return sorted(Draft202012Validator(schema).iter_errors(value), key=lambda error: list(error.path))
+def validation_errors(
+    schema: dict[str, object], value: dict[str, object]
+) -> list[object]:
+    return sorted(
+        Draft202012Validator(schema).iter_errors(value),
+        key=lambda error: list(error.path),
+    )
 
 
 def wrong_type_value(value: object) -> object:
@@ -127,9 +134,7 @@ def const_escape_value(value: object) -> object:
 def documented_output_kinds() -> set[str]:
     output_kinds: set[str] = set()
     paths = list((ROOT / "docs").glob("*.md"))
-    paths.extend(
-        (ROOT / "mechanics" / "method-growth" / "parts").glob("*/README.md")
-    )
+    paths.extend((ROOT / "mechanics" / "method-growth" / "parts").glob("*/README.md"))
     for path in paths:
         in_outputs = False
         for line in path.read_text(encoding="utf-8").splitlines():
@@ -164,7 +169,9 @@ def array_field_targets(example: dict[str, object]) -> list[tuple[str, str]]:
     return targets
 
 
-def set_section_value(value: dict[str, object], section: str, key: str, replacement: object) -> None:
+def set_section_value(
+    value: dict[str, object], section: str, key: str, replacement: object
+) -> None:
     if section == "top":
         value[key] = replacement
         return
@@ -174,68 +181,103 @@ def set_section_value(value: dict[str, object], section: str, key: str, replacem
     nested[key] = replacement
 
 
-class ExperienceWave3SeedContractTests(unittest.TestCase):
-    def assert_invalid(self, schema: dict[str, object], value: dict[str, object], label: str) -> None:
+class MethodGrowthAdoptionContractTests(unittest.TestCase):
+    def assert_invalid(
+        self, schema: dict[str, object], value: dict[str, object], label: str
+    ) -> None:
         errors = validation_errors(schema, value)
         self.assertTrue(errors, f"{label} unexpectedly validated")
 
-    def test_experience_wave3_examples_match_schemas(self) -> None:
+    def test_method_growth_adoption_examples_match_schemas(self) -> None:
         missing_pairs: list[str] = []
-        for stem in WAVE3_STEMS:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema_path = SCHEMAS_ROOT / f"{stem}_v1.json"
-            example_path = ROOT / "mechanics" / "method-growth" / "examples" / f"{stem}.example.json"
+            example_path = (
+                ROOT
+                / "mechanics"
+                / "method-growth"
+                / "examples"
+                / f"{stem}.example.json"
+            )
             if not schema_path.exists():
-                missing_pairs.append(f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}")
+                missing_pairs.append(
+                    f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}"
+                )
             if not example_path.exists():
-                missing_pairs.append(f"{schema_path.relative_to(ROOT)} -> {example_path.relative_to(ROOT)}")
-        self.assertFalse(missing_pairs, "missing wave3 contract pair(s): " + ", ".join(missing_pairs))
+                missing_pairs.append(
+                    f"{schema_path.relative_to(ROOT)} -> {example_path.relative_to(ROOT)}"
+                )
+        self.assertFalse(
+            missing_pairs,
+            "missing method-growth contract pair(s): " + ", ".join(missing_pairs),
+        )
 
-        self.assertTrue(WAVE3_STEMS)
-        for stem in WAVE3_STEMS:
+        self.assertTrue(METHOD_GROWTH_CONTRACT_STEMS)
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             with self.subTest(stem=stem):
                 schema, example = load_contract(stem)
                 Draft202012Validator.check_schema(schema)
                 errors = validation_errors(schema, example)
-                self.assertFalse(errors, f"{stem}: {errors[0].message}" if errors else stem)
+                self.assertFalse(
+                    errors, f"{stem}: {errors[0].message}" if errors else stem
+                )
 
-    def test_experience_wave3_outputs_are_documented(self) -> None:
+    def test_method_growth_adoption_outputs_are_documented(self) -> None:
         documented = documented_output_kinds()
-        missing = sorted(set(WAVE3_STEMS) - documented)
-        self.assertFalse(missing, "undocumented wave3 output kind(s): " + ", ".join(missing))
+        missing = sorted(set(METHOD_GROWTH_CONTRACT_STEMS) - documented)
+        self.assertFalse(
+            missing, "undocumented method-growth output kind(s): " + ", ".join(missing)
+        )
 
-    def test_experience_wave3_schemas_reject_escape_hatches(self) -> None:
-        self.assertTrue(WAVE3_STEMS)
-        for stem in WAVE3_STEMS:
+    def test_method_growth_adoption_schemas_reject_escape_hatches(self) -> None:
+        self.assertTrue(METHOD_GROWTH_CONTRACT_STEMS)
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             with self.subTest(stem=stem):
                 schema, example = load_contract(stem)
 
                 with_unknown_top = copy.deepcopy(example)
                 with_unknown_top["contract_escape"] = True
-                self.assert_invalid(schema, with_unknown_top, f"{stem} unknown top-level field")
+                self.assert_invalid(
+                    schema, with_unknown_top, f"{stem} unknown top-level field"
+                )
 
                 refs = example.get("refs")
                 if isinstance(refs, dict):
                     with_unknown_ref = copy.deepcopy(example)
                     self.assertIsInstance(with_unknown_ref["refs"], dict)
                     with_unknown_ref["refs"]["contract_escape"] = "loose-ref"
-                    self.assert_invalid(schema, with_unknown_ref, f"{stem} unknown refs field")
+                    self.assert_invalid(
+                        schema, with_unknown_ref, f"{stem} unknown refs field"
+                    )
 
                 payload = example.get("payload")
                 if isinstance(payload, dict):
                     with_unknown_payload = copy.deepcopy(example)
                     self.assertIsInstance(with_unknown_payload["payload"], dict)
                     with_unknown_payload["payload"]["contract_escape"] = "loose-payload"
-                    self.assert_invalid(schema, with_unknown_payload, f"{stem} unknown payload field")
+                    self.assert_invalid(
+                        schema, with_unknown_payload, f"{stem} unknown payload field"
+                    )
 
                     for key, value in payload.items():
                         with self.subTest(stem=stem, key=key, case="wrong-type"):
                             with_wrong_payload_type = copy.deepcopy(example)
-                            self.assertIsInstance(with_wrong_payload_type["payload"], dict)
-                            with_wrong_payload_type["payload"][key] = wrong_type_value(value)
-                            self.assert_invalid(schema, with_wrong_payload_type, f"{stem} wrong {key} type")
+                            self.assertIsInstance(
+                                with_wrong_payload_type["payload"], dict
+                            )
+                            with_wrong_payload_type["payload"][key] = wrong_type_value(
+                                value
+                            )
+                            self.assert_invalid(
+                                schema,
+                                with_wrong_payload_type,
+                                f"{stem} wrong {key} type",
+                            )
 
-    def test_experience_wave3_schemas_reject_guardrail_boolean_inversions(self) -> None:
-        for stem in WAVE3_STEMS:
+    def test_method_growth_adoption_schemas_reject_guardrail_boolean_inversions(
+        self,
+    ) -> None:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema, example = load_contract(stem)
             payload = example.get("payload")
             if not isinstance(payload, dict):
@@ -249,9 +291,11 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
                     mutated["payload"][key] = not value
                     self.assert_invalid(schema, mutated, f"{stem} inverted {key}")
 
-    def test_experience_wave3_schemas_reject_missing_required_payload_fields(self) -> None:
+    def test_method_growth_adoption_schemas_reject_missing_required_payload_fields(
+        self,
+    ) -> None:
         exercised = 0
-        for stem in WAVE3_STEMS:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema, example = load_contract(stem)
             payload = example.get("payload")
             if not isinstance(payload, dict):
@@ -264,12 +308,18 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
                     mutated = copy.deepcopy(example)
                     self.assertIsInstance(mutated["payload"], dict)
                     del mutated["payload"][key]
-                    self.assert_invalid(schema, mutated, f"{stem} missing required payload.{key}")
-        self.assertGreater(exercised, 0, "no required wave3 payload fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} missing required payload.{key}"
+                    )
+        self.assertGreater(
+            exercised, 0, "no required method-growth payload fields were exercised"
+        )
 
-    def test_experience_wave3_schemas_reject_missing_required_envelope_and_refs_fields(self) -> None:
+    def test_method_growth_adoption_schemas_reject_missing_required_envelope_and_refs_fields(
+        self,
+    ) -> None:
         exercised = 0
-        for stem in WAVE3_STEMS:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema, example = load_contract(stem)
             for key in required_fields(schema):
                 if key not in example:
@@ -278,7 +328,9 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
                 with self.subTest(stem=stem, section="top", key=key):
                     mutated = copy.deepcopy(example)
                     del mutated[key]
-                    self.assert_invalid(schema, mutated, f"{stem} missing required {key}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} missing required {key}"
+                    )
 
             refs = example.get("refs")
             if not isinstance(refs, dict):
@@ -291,11 +343,17 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
                     mutated = copy.deepcopy(example)
                     self.assertIsInstance(mutated["refs"], dict)
                     del mutated["refs"][key]
-                    self.assert_invalid(schema, mutated, f"{stem} missing required refs.{key}")
-        self.assertGreater(exercised, 0, "no required wave3 envelope or refs fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} missing required refs.{key}"
+                    )
+        self.assertGreater(
+            exercised,
+            0,
+            "no required method-growth envelope or refs fields were exercised",
+        )
 
-    def test_experience_wave3_schemas_reject_invalid_numeric_ranges(self) -> None:
-        for stem in WAVE3_STEMS:
+    def test_method_growth_adoption_schemas_reject_invalid_numeric_ranges(self) -> None:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema, example = load_contract(stem)
             payload = example.get("payload")
             if not isinstance(payload, dict):
@@ -319,30 +377,44 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
                         mutated = copy.deepcopy(example)
                         self.assertIsInstance(mutated["payload"], dict)
                         mutated["payload"][key] = 1.5
-                        self.assert_invalid(schema, mutated, f"{stem} out-of-range {key}")
+                        self.assert_invalid(
+                            schema, mutated, f"{stem} out-of-range {key}"
+                        )
 
-    def test_experience_wave3_schemas_reject_non_string_array_items(self) -> None:
+    def test_method_growth_adoption_schemas_reject_non_string_array_items(self) -> None:
         exercised = 0
-        for stem in WAVE3_STEMS:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema, example = load_contract(stem)
             for section, key in array_field_targets(example):
                 exercised += 1
-                with self.subTest(stem=stem, section=section, key=key, case="non-string"):
+                with self.subTest(
+                    stem=stem, section=section, key=key, case="non-string"
+                ):
                     mutated = copy.deepcopy(example)
                     set_section_value(mutated, section, key, [12345])
-                    self.assert_invalid(schema, mutated, f"{stem} non-string {section}.{key} item")
-                with self.subTest(stem=stem, section=section, key=key, case="empty-string"):
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} non-string {section}.{key} item"
+                    )
+                with self.subTest(
+                    stem=stem, section=section, key=key, case="empty-string"
+                ):
                     mutated = copy.deepcopy(example)
                     set_section_value(mutated, section, key, [""])
-                    self.assert_invalid(schema, mutated, f"{stem} empty {section}.{key} item")
-        self.assertGreater(exercised, 0, "no wave3 array fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} empty {section}.{key} item"
+                    )
+        self.assertGreater(exercised, 0, "no method-growth array fields were exercised")
 
-    def test_experience_wave3_schemas_reject_enum_escape_values(self) -> None:
+    def test_method_growth_adoption_schemas_reject_enum_escape_values(self) -> None:
         exercised = 0
-        for stem in WAVE3_STEMS:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema, example = load_contract(stem)
             for key, prop in schema_properties(schema).items():
-                if not isinstance(prop, dict) or "enum" not in prop or key not in example:
+                if (
+                    not isinstance(prop, dict)
+                    or "enum" not in prop
+                    or key not in example
+                ):
                     continue
                 exercised += 1
                 with self.subTest(stem=stem, section="top", key=key):
@@ -353,22 +425,32 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
             if not isinstance(payload, dict):
                 continue
             for key, prop in payload_schema_properties(schema).items():
-                if not isinstance(prop, dict) or "enum" not in prop or key not in payload:
+                if (
+                    not isinstance(prop, dict)
+                    or "enum" not in prop
+                    or key not in payload
+                ):
                     continue
                 exercised += 1
                 with self.subTest(stem=stem, section="payload", key=key):
                     mutated = copy.deepcopy(example)
                     self.assertIsInstance(mutated["payload"], dict)
                     mutated["payload"][key] = ENUM_ESCAPE_VALUE
-                    self.assert_invalid(schema, mutated, f"{stem} enum escape payload.{key}")
-        self.assertGreater(exercised, 0, "no wave3 enum fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} enum escape payload.{key}"
+                    )
+        self.assertGreater(exercised, 0, "no method-growth enum fields were exercised")
 
-    def test_experience_wave3_schemas_reject_const_escape_values(self) -> None:
+    def test_method_growth_adoption_schemas_reject_const_escape_values(self) -> None:
         exercised = 0
-        for stem in WAVE3_STEMS:
+        for stem in METHOD_GROWTH_CONTRACT_STEMS:
             schema, example = load_contract(stem)
             for key, prop in schema_properties(schema).items():
-                if not isinstance(prop, dict) or "const" not in prop or key not in example:
+                if (
+                    not isinstance(prop, dict)
+                    or "const" not in prop
+                    or key not in example
+                ):
                     continue
                 exercised += 1
                 with self.subTest(stem=stem, section="top", key=key):
@@ -379,15 +461,21 @@ class ExperienceWave3SeedContractTests(unittest.TestCase):
             if not isinstance(payload, dict):
                 continue
             for key, prop in payload_schema_properties(schema).items():
-                if not isinstance(prop, dict) or "const" not in prop or key not in payload:
+                if (
+                    not isinstance(prop, dict)
+                    or "const" not in prop
+                    or key not in payload
+                ):
                     continue
                 exercised += 1
                 with self.subTest(stem=stem, section="payload", key=key):
                     mutated = copy.deepcopy(example)
                     self.assertIsInstance(mutated["payload"], dict)
                     mutated["payload"][key] = const_escape_value(payload[key])
-                    self.assert_invalid(schema, mutated, f"{stem} const escape payload.{key}")
-        self.assertGreater(exercised, 0, "no wave3 const fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} const escape payload.{key}"
+                    )
+        self.assertGreater(exercised, 0, "no method-growth const fields were exercised")
 
 
 if __name__ == "__main__":

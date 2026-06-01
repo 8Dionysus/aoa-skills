@@ -460,37 +460,5 @@ class CodexPortableContractTests(unittest.TestCase):
             band_skill_names.update(band["skills"])
         self.assertEqual(band_skill_names, set(source_by_name))
 
-    def test_validation_scripts_pass(self):
-        commands = [
-            [sys.executable, "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"],
-            [sys.executable, "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"],
-            [sys.executable, "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"],
-            [sys.executable, "scripts/build_support_resources.py", "--repo-root", ".", "--check"],
-            [sys.executable, "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"],
-            [sys.executable, "scripts/validate_agent_skills.py", "--repo-root", "."],
-            [sys.executable, "scripts/verify_skill_pack.py", "--repo-root", ".", "--profile", "repo-default", "--format", "json"],
-            [sys.executable, "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"],
-            [sys.executable, "scripts/validate_tiny_router_inputs.py", "--repo-root", "."],
-            [sys.executable, "scripts/lint_trigger_evals.py", "--repo-root", "."],
-            [sys.executable, "scripts/lint_description_trigger_evals.py", "--repo-root", "."],
-            [sys.executable, "scripts/lint_pack_profiles.py", "--repo-root", "."],
-            [sys.executable, "scripts/lint_support_resources.py", "--repo-root", "."],
-            [sys.executable, "scripts/run_skills_ref_validation.py", "--repo-root", "."],
-        ]
-        for command in commands:
-            completed = subprocess.run(
-                command,
-                cwd=REPO_ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
-            )
-            self.assertEqual(
-                completed.returncode,
-                0,
-                msg=f"command failed: {' '.join(command)}\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
-            )
-
-
 if __name__ == "__main__":
     unittest.main()

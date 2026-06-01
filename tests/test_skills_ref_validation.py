@@ -12,7 +12,7 @@ import unittest
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-class Wave7SkillsRefValidationTests(unittest.TestCase):
+class SkillsRefValidationTests(unittest.TestCase):
     def run_command(self, command, env=None):
         return subprocess.run(
             command,
@@ -28,7 +28,14 @@ class Wave7SkillsRefValidationTests(unittest.TestCase):
         env["PATH"] = ""
         env.pop("SKILLS_REF_BIN", None)
         completed = self.run_command(
-            [sys.executable, "scripts/run_skills_ref_validation.py", "--repo-root", ".", "--format", "json"],
+            [
+                sys.executable,
+                "scripts/run_skills_ref_validation.py",
+                "--repo-root",
+                ".",
+                "--format",
+                "json",
+            ],
             env=env,
         )
         self.assertEqual(completed.returncode, 0, msg=completed.stderr)
@@ -71,7 +78,9 @@ class Wave7SkillsRefValidationTests(unittest.TestCase):
             )
             self.assertEqual(completed.returncode, 0, msg=completed.stderr)
             payload = json.loads(completed.stdout)
-            source_catalog = json.loads((REPO_ROOT / "generated" / "skill_catalog.min.json").read_text())
+            source_catalog = json.loads(
+                (REPO_ROOT / "generated" / "skill_catalog.min.json").read_text()
+            )
             self.assertEqual(payload["status"], "passed")
             self.assertEqual(payload["passed_count"], len(source_catalog["skills"]))
 

@@ -8,7 +8,7 @@ import unittest
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-class Wave3RuntimeContractTests(unittest.TestCase):
+class RuntimeDiscoveryContractTests(unittest.TestCase):
     def test_activate_skill_includes_runtime_and_context_contracts(self):
         command = [
             sys.executable,

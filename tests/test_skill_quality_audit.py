@@ -6,6 +6,8 @@ import subprocess
 import sys
 import unittest
 
+from tests.support.source_catalog import source_skill_count
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -26,14 +28,17 @@ class SkillQualityAuditTests(unittest.TestCase):
             capture_output=True,
             check=False,
         )
-        self.assertEqual(0, completed.returncode, msg=completed.stderr or completed.stdout)
+        self.assertEqual(
+            0, completed.returncode, msg=completed.stderr or completed.stdout
+        )
         return json.loads(completed.stdout)
 
     def test_quality_audit_covers_every_skill(self) -> None:
         report = self.run_audit()
+        expected_skill_count = source_skill_count(REPO_ROOT)
 
-        self.assertEqual(46, report["skill_count"])
-        self.assertEqual(46, len(report["skills"]))
+        self.assertEqual(expected_skill_count, report["skill_count"])
+        self.assertEqual(expected_skill_count, len(report["skills"]))
         self.assertEqual(
             {
                 "generated/governance_backlog.json",
@@ -62,7 +67,9 @@ class SkillQualityAuditTests(unittest.TestCase):
         self.assertNotIn("pending_technique_lineage", by_name["aoa-summon"]["findings"])
         self.assertEqual([], by_name["aoa-summon"]["findings"])
         self.assertEqual("healthy", by_name["aoa-summon"]["verdict"])
-        self.assertNotIn("pending_markers_in_skill_body", by_name["aoa-summon"]["findings"])
+        self.assertNotIn(
+            "pending_markers_in_skill_body", by_name["aoa-summon"]["findings"]
+        )
         self.assertEqual([], by_name["titan-console"]["findings"])
         self.assertEqual("published", by_name["titan-console"]["lineage_state"])
         self.assertNotIn("missing_autonomy_check", by_name["titan-console"]["findings"])
@@ -73,13 +80,17 @@ class SkillQualityAuditTests(unittest.TestCase):
         self.assertEqual("healthy", by_name["atm10-change-protocol"]["verdict"])
         self.assertEqual([], by_name["atm10-source-of-truth-check"]["findings"])
         self.assertEqual("healthy", by_name["atm10-source-of-truth-check"]["verdict"])
-        self.assertNotIn("drifted", report["summary"]["technique_drift"]["state_counts"])
+        self.assertNotIn(
+            "drifted", report["summary"]["technique_drift"]["state_counts"]
+        )
         self.assertEqual(
             0,
             report["summary"]["technique_drift"]["state_counts"].get("pending", 0),
         )
 
-    def test_quality_audit_keeps_stable_drift_summary_when_techniques_repo_is_missing(self) -> None:
+    def test_quality_audit_keeps_stable_drift_summary_when_techniques_repo_is_missing(
+        self,
+    ) -> None:
         completed = subprocess.run(
             [
                 sys.executable,
@@ -97,7 +108,9 @@ class SkillQualityAuditTests(unittest.TestCase):
             check=False,
         )
 
-        self.assertEqual(0, completed.returncode, msg=completed.stderr or completed.stdout)
+        self.assertEqual(
+            0, completed.returncode, msg=completed.stderr or completed.stdout
+        )
         drift_summary = json.loads(completed.stdout)["summary"]["technique_drift"]
         self.assertFalse(drift_summary["available"])
         self.assertEqual({}, drift_summary["state_counts"])
