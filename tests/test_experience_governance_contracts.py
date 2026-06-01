@@ -10,26 +10,37 @@ from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS_ROOT = ROOT / "mechanics" / "experience" / "schemas"
-ENUM_ESCAPE_VALUE = "__wave4_not_allowed__"
+ENUM_ESCAPE_VALUE = "__experience_governance_not_allowed__"
 
-WAVE4_CONTRACTS = (
-    ('skill_governance_patch', 'skill_governance_patch_v1.json'),
-    ('skill_policy_hold', 'skill_policy_hold_v1.json'),
-    ('governance_runtime_skill_invocation_v1', 'governance_runtime_skill_invocation_v1.json'),
+EXPERIENCE_GOVERNANCE_CONTRACTS = (
+    ("skill_governance_patch", "skill_governance_patch_v1.json"),
+    ("skill_policy_hold", "skill_policy_hold_v1.json"),
+    (
+        "governance_runtime_skill_invocation_v1",
+        "governance_runtime_skill_invocation_v1.json",
+    ),
 )
 
 
-
-def load_contract(stem: str, schema_file: str) -> tuple[dict[str, object], dict[str, object]]:
+def load_contract(
+    stem: str, schema_file: str
+) -> tuple[dict[str, object], dict[str, object]]:
     schema_path = SCHEMAS_ROOT / schema_file
-    example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+    example_path = (
+        ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+    )
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     example = json.loads(example_path.read_text(encoding="utf-8"))
     return schema, example
 
 
-def validation_errors(schema: dict[str, object], value: dict[str, object]) -> list[object]:
-    return sorted(Draft202012Validator(schema).iter_errors(value), key=lambda error: list(error.path))
+def validation_errors(
+    schema: dict[str, object], value: dict[str, object]
+) -> list[object]:
+    return sorted(
+        Draft202012Validator(schema).iter_errors(value),
+        key=lambda error: list(error.path),
+    )
 
 
 def wrong_type_value(value: object) -> object:
@@ -108,7 +119,9 @@ def delete_path(value: object, path: tuple[object, ...]) -> None:
         del cursor[last]
 
 
-def walk_values(value: object, path: tuple[object, ...] = ()) -> list[tuple[tuple[object, ...], object]]:
+def walk_values(
+    value: object, path: tuple[object, ...] = ()
+) -> list[tuple[tuple[object, ...], object]]:
     found: list[tuple[tuple[object, ...], object]] = []
     if isinstance(value, dict):
         for key, child in value.items():
@@ -123,7 +136,9 @@ def walk_values(value: object, path: tuple[object, ...] = ()) -> list[tuple[tupl
     return found
 
 
-def object_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[object, ...]]:
+def object_paths(
+    value: object, path: tuple[object, ...] = ()
+) -> list[tuple[object, ...]]:
     found: list[tuple[object, ...]] = []
     if isinstance(value, dict):
         found.append(path)
@@ -135,7 +150,9 @@ def object_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[obj
     return found
 
 
-def array_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[object, ...]]:
+def array_paths(
+    value: object, path: tuple[object, ...] = ()
+) -> list[tuple[object, ...]]:
     found: list[tuple[object, ...]] = []
     if isinstance(value, dict):
         for key, child in value.items():
@@ -158,7 +175,9 @@ def schema_properties(schema: object) -> dict[str, object]:
     return props if isinstance(props, dict) else {}
 
 
-def required_paths(schema: object, example: object, path: tuple[object, ...] = ()) -> list[tuple[object, ...]]:
+def required_paths(
+    schema: object, example: object, path: tuple[object, ...] = ()
+) -> list[tuple[object, ...]]:
     found: list[tuple[object, ...]] = []
     if not isinstance(schema, dict):
         return found
@@ -177,7 +196,9 @@ def required_paths(schema: object, example: object, path: tuple[object, ...] = (
     return found
 
 
-def constrained_paths(schema: object, example: object, keyword: str, path: tuple[object, ...] = ()) -> list[tuple[tuple[object, ...], object]]:
+def constrained_paths(
+    schema: object, example: object, keyword: str, path: tuple[object, ...] = ()
+) -> list[tuple[tuple[object, ...], object]]:
     found: list[tuple[tuple[object, ...], object]] = []
     if not isinstance(schema, dict):
         return found
@@ -186,53 +207,79 @@ def constrained_paths(schema: object, example: object, keyword: str, path: tuple
     if schema_type(schema) == "object" and isinstance(example, dict):
         for key, prop in schema_properties(schema).items():
             if key in example:
-                found.extend(constrained_paths(prop, example[key], keyword, (*path, key)))
+                found.extend(
+                    constrained_paths(prop, example[key], keyword, (*path, key))
+                )
     if schema_type(schema) == "array" and isinstance(example, list) and example:
-        found.extend(constrained_paths(schema.get("items"), example[0], keyword, (*path, 0)))
+        found.extend(
+            constrained_paths(schema.get("items"), example[0], keyword, (*path, 0))
+        )
     return found
 
 
-class ExperienceWave4SeedContractTests(unittest.TestCase):
-    def assert_invalid(self, schema: dict[str, object], value: dict[str, object], label: str) -> None:
+class ExperienceGovernanceContractTests(unittest.TestCase):
+    def assert_invalid(
+        self, schema: dict[str, object], value: dict[str, object], label: str
+    ) -> None:
         errors = validation_errors(schema, value)
         self.assertTrue(errors, f"{label} unexpectedly validated")
 
-    def test_experience_wave4_examples_match_schemas(self) -> None:
-        self.assertTrue(WAVE4_CONTRACTS)
+    def test_experience_governance_examples_match_schemas(self) -> None:
+        self.assertTrue(EXPERIENCE_GOVERNANCE_CONTRACTS)
         missing_pairs: list[str] = []
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema_path = SCHEMAS_ROOT / schema_file
-            example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+            example_path = (
+                ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+            )
             if not schema_path.exists():
-                missing_pairs.append(f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}")
+                missing_pairs.append(
+                    f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}"
+                )
             if not example_path.exists():
-                missing_pairs.append(f"{schema_path.relative_to(ROOT)} -> {example_path.relative_to(ROOT)}")
-        self.assertFalse(missing_pairs, "missing wave4 contract pair(s): " + ", ".join(missing_pairs))
+                missing_pairs.append(
+                    f"{schema_path.relative_to(ROOT)} -> {example_path.relative_to(ROOT)}"
+                )
+        self.assertFalse(
+            missing_pairs,
+            "missing experience-governance contract pair(s): "
+            + ", ".join(missing_pairs),
+        )
 
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             with self.subTest(stem=stem):
                 schema, example = load_contract(stem, schema_file)
                 Draft202012Validator.check_schema(schema)
                 errors = validation_errors(schema, example)
-                self.assertFalse(errors, f"{stem}: {errors[0].message}" if errors else stem)
+                self.assertFalse(
+                    errors, f"{stem}: {errors[0].message}" if errors else stem
+                )
 
-    def test_experience_wave4_schemas_reject_unknown_fields(self) -> None:
+    def test_experience_governance_schemas_reject_unknown_fields(self) -> None:
         exercised = 0
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path in object_paths(example):
                 exercised += 1
-                with self.subTest(stem=stem, path=".".join(str(part) for part in path) or "top"):
+                with self.subTest(
+                    stem=stem, path=".".join(str(part) for part in path) or "top"
+                ):
                     mutated = copy.deepcopy(example)
                     target = get_path(mutated, path) if path else mutated
                     self.assertIsInstance(target, dict)
                     target["contract_escape"] = "loose-field"
-                    self.assert_invalid(schema, mutated, f"{stem} unknown field at {path}")
-        self.assertGreater(exercised, 0, "no wave4 object fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} unknown field at {path}"
+                    )
+        self.assertGreater(
+            exercised, 0, "no experience-governance object fields were exercised"
+        )
 
-    def test_experience_wave4_schemas_reject_wrong_types_for_every_field(self) -> None:
+    def test_experience_governance_schemas_reject_wrong_types_for_every_field(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, value in walk_values(example):
                 exercised += 1
@@ -240,23 +287,29 @@ class ExperienceWave4SeedContractTests(unittest.TestCase):
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, wrong_type_value(value))
                     self.assert_invalid(schema, mutated, f"{stem} wrong type at {path}")
-        self.assertGreater(exercised, 0, "no wave4 fields were exercised")
+        self.assertGreater(
+            exercised, 0, "no experience-governance fields were exercised"
+        )
 
-    def test_experience_wave4_schemas_reject_missing_required_fields(self) -> None:
+    def test_experience_governance_schemas_reject_missing_required_fields(self) -> None:
         exercised = 0
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path in required_paths(schema, example):
                 exercised += 1
                 with self.subTest(stem=stem, path=".".join(str(part) for part in path)):
                     mutated = copy.deepcopy(example)
                     delete_path(mutated, path)
-                    self.assert_invalid(schema, mutated, f"{stem} missing required field at {path}")
-        self.assertGreater(exercised, 0, "no wave4 required fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} missing required field at {path}"
+                    )
+        self.assertGreater(
+            exercised, 0, "no experience-governance required fields were exercised"
+        )
 
-    def test_experience_wave4_schemas_reject_bad_array_items(self) -> None:
+    def test_experience_governance_schemas_reject_bad_array_items(self) -> None:
         exercised = 0
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path in array_paths(example):
                 value = get_path(example, path)
@@ -264,20 +317,34 @@ class ExperienceWave4SeedContractTests(unittest.TestCase):
                     continue
                 exercised += 1
                 replacement = [wrong_type_value(value[0])] if value else [12345]
-                with self.subTest(stem=stem, path=".".join(str(part) for part in path), case="wrong-item"):
+                with self.subTest(
+                    stem=stem,
+                    path=".".join(str(part) for part in path),
+                    case="wrong-item",
+                ):
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, replacement)
-                    self.assert_invalid(schema, mutated, f"{stem} wrong array item at {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} wrong array item at {path}"
+                    )
                 if not value or isinstance(value[0], str):
-                    with self.subTest(stem=stem, path=".".join(str(part) for part in path), case="empty-string"):
+                    with self.subTest(
+                        stem=stem,
+                        path=".".join(str(part) for part in path),
+                        case="empty-string",
+                    ):
                         mutated = copy.deepcopy(example)
                         set_path(mutated, path, [""])
-                        self.assert_invalid(schema, mutated, f"{stem} empty string array item at {path}")
-        self.assertGreater(exercised, 0, "no wave4 array fields were exercised")
+                        self.assert_invalid(
+                            schema, mutated, f"{stem} empty string array item at {path}"
+                        )
+        self.assertGreater(
+            exercised, 0, "no experience-governance array fields were exercised"
+        )
 
-    def test_experience_wave4_schemas_reject_const_escapes(self) -> None:
+    def test_experience_governance_schemas_reject_const_escapes(self) -> None:
         exercised = 0
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, _const_value in constrained_paths(schema, example, "const"):
                 if not path:
@@ -286,12 +353,16 @@ class ExperienceWave4SeedContractTests(unittest.TestCase):
                 with self.subTest(stem=stem, path=".".join(str(part) for part in path)):
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, const_escape_value(get_path(example, path)))
-                    self.assert_invalid(schema, mutated, f"{stem} const escape at {path}")
-        self.assertGreater(exercised, 0, "no wave4 const fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} const escape at {path}"
+                    )
+        self.assertGreater(
+            exercised, 0, "no experience-governance const fields were exercised"
+        )
 
-    def test_experience_wave4_schemas_reject_enum_escapes(self) -> None:
+    def test_experience_governance_schemas_reject_enum_escapes(self) -> None:
         exercised = 0
-        for stem, schema_file in WAVE4_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, _enum_values in constrained_paths(schema, example, "enum"):
                 if not path:
@@ -300,25 +371,40 @@ class ExperienceWave4SeedContractTests(unittest.TestCase):
                 with self.subTest(stem=stem, path=".".join(str(part) for part in path)):
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, ENUM_ESCAPE_VALUE)
-                    self.assert_invalid(schema, mutated, f"{stem} enum escape at {path}")
-        self.assertGreater(exercised, 0, "no wave4 enum fields were exercised")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} enum escape at {path}"
+                    )
+        self.assertGreater(
+            exercised, 0, "no experience-governance enum fields were exercised"
+        )
 
     def test_governance_runtime_skill_invocation_rejects_out_of_set_skill(self) -> None:
-        schema, example = load_contract("governance_runtime_skill_invocation_v1", "governance_runtime_skill_invocation_v1.json")
+        schema, example = load_contract(
+            "governance_runtime_skill_invocation_v1",
+            "governance_runtime_skill_invocation_v1.json",
+        )
         mutated = copy.deepcopy(example)
         mutated["skill"] = "not-a-governance-runtime-skill"
-        self.assert_invalid(schema, mutated, "governance_runtime_skill_invocation_v1 out-of-set skill")
+        self.assert_invalid(
+            schema, mutated, "governance_runtime_skill_invocation_v1 out-of-set skill"
+        )
 
-    def test_experience_wave4_schemas_reject_invalid_numeric_ranges(self) -> None:
-        for stem, schema_file in WAVE4_CONTRACTS:
+    def test_experience_governance_schemas_reject_invalid_numeric_ranges(self) -> None:
+        for stem, schema_file in EXPERIENCE_GOVERNANCE_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, value in walk_values(example):
                 if not isinstance(value, (int, float)) or isinstance(value, bool):
                     continue
-                with self.subTest(stem=stem, path=".".join(str(part) for part in path), case="negative"):
+                with self.subTest(
+                    stem=stem,
+                    path=".".join(str(part) for part in path),
+                    case="negative",
+                ):
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, -1)
-                    self.assert_invalid(schema, mutated, f"{stem} negative number at {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} negative number at {path}"
+                    )
 
 
 if __name__ == "__main__":

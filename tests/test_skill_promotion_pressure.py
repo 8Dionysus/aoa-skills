@@ -7,6 +7,8 @@ import sys
 import tempfile
 import unittest
 
+from tests.support.source_catalog import source_skill_count
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -32,14 +34,17 @@ class SkillPromotionPressureTests(unittest.TestCase):
             capture_output=True,
             check=False,
         )
-        self.assertEqual(0, completed.returncode, msg=completed.stderr or completed.stdout)
+        self.assertEqual(
+            0, completed.returncode, msg=completed.stderr or completed.stdout
+        )
         return json.loads(completed.stdout)
 
     def test_report_covers_every_skill_and_sources(self) -> None:
         report = self.run_report()
+        expected_skill_count = source_skill_count(REPO_ROOT)
 
-        self.assertEqual(46, report["skill_count"])
-        self.assertEqual(46, len(report["skills"]))
+        self.assertEqual(expected_skill_count, report["skill_count"])
+        self.assertEqual(expected_skill_count, len(report["skills"]))
         self.assertEqual(
             "generated/public_surface.json",
             report["source_of_truth"]["status_and_governance"],
@@ -59,7 +64,9 @@ class SkillPromotionPressureTests(unittest.TestCase):
             by_name["aoa-change-protocol"]["promotion_pressure"],
         )
         if self_repair["repeated_usage_signal"]:
-            self.assertEqual("revisit_stay_evaluated", self_repair["promotion_pressure"])
+            self.assertEqual(
+                "revisit_stay_evaluated", self_repair["promotion_pressure"]
+            )
             self.assertGreater(self_repair["usage_evidence"]["usage_score"], 0)
         else:
             self.assertEqual("candidate_ready_watch", self_repair["promotion_pressure"])
@@ -88,9 +95,7 @@ class SkillPromotionPressureTests(unittest.TestCase):
                 json.dumps(
                     {
                         "report": {
-                            "suggest_next": [
-                                {"skill_name": "aoa-session-self-repair"}
-                            ]
+                            "suggest_next": [{"skill_name": "aoa-session-self-repair"}]
                         }
                     }
                 ),
@@ -115,7 +120,9 @@ class SkillPromotionPressureTests(unittest.TestCase):
                 check=False,
             )
 
-        self.assertEqual(0, completed.returncode, msg=completed.stderr or completed.stdout)
+        self.assertEqual(
+            0, completed.returncode, msg=completed.stderr or completed.stdout
+        )
         report = json.loads(completed.stdout)
         self.assertEqual(1, report["scan_summary"]["hook_files_scanned"])
         self.assertEqual(1, report["scan_summary"]["dispatch_files_scanned"])

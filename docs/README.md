@@ -15,6 +15,7 @@ generated-surface summary.
 | Repository layout | [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md) |
 | Validator topology and inventory | [`validation/VALIDATOR_TOPOLOGY.md`](validation/VALIDATOR_TOPOLOGY.md) |
 | Validation command authority | [`validation/COMMAND_AUTHORITY.md`](validation/COMMAND_AUTHORITY.md) |
+| Test topology and inventory | [`testing/TEST_TOPOLOGY.md`](testing/TEST_TOPOLOGY.md) |
 | Current skill map | [`../SKILL_INDEX.md`](../SKILL_INDEX.md) |
 | Canonical skill bundles | [`../skills/README.md`](../skills/README.md) |
 | Owner-local mechanics | [`../mechanics/README.md`](../mechanics/README.md) |

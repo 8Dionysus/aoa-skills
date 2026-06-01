@@ -19,9 +19,17 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
     )
 
 
-class Wave4RuntimeSeamToolchainTests(unittest.TestCase):
+class RuntimeSeamToolchainTests(unittest.TestCase):
     def test_runtime_seam_builder_has_no_drift(self):
-        completed = run_command([sys.executable, "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"])
+        completed = run_command(
+            [
+                sys.executable,
+                "scripts/build_runtime_seam.py",
+                "--repo-root",
+                ".",
+                "--check",
+            ]
+        )
         self.assertEqual(
             completed.returncode,
             0,
@@ -63,7 +71,9 @@ class Wave4RuntimeSeamToolchainTests(unittest.TestCase):
         disclose_payload = json.loads(disclose.stdout)
         self.assertEqual(disclose_payload["stage"], "disclose")
         self.assertEqual(disclose_payload["skill"]["name"], "aoa-change-protocol")
-        self.assertIn("Trigger boundary", disclose_payload["skill"]["section_summaries"])
+        self.assertIn(
+            "Trigger boundary", disclose_payload["skill"]["section_summaries"]
+        )
         self.assertNotIn("instructions_markdown", disclose_payload["skill"])
 
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -89,11 +99,17 @@ class Wave4RuntimeSeamToolchainTests(unittest.TestCase):
             activate_payload = json.loads(activate.stdout)
             self.assertEqual(activate_payload["stage"], "activate")
             self.assertEqual(activate_payload["skill"]["name"], "aoa-change-protocol")
-            self.assertIn('<skill_content name="aoa-change-protocol">', activate_payload["structured_wrap"])
+            self.assertIn(
+                '<skill_content name="aoa-change-protocol">',
+                activate_payload["structured_wrap"],
+            )
             self.assertIn("context_retention", activate_payload)
             self.assertIn("trust_policy", activate_payload)
             self.assertFalse(activate_payload["activation"]["already_active"])
-            self.assertEqual(activate_payload["session"]["active_skills"][0]["name"], "aoa-change-protocol")
+            self.assertEqual(
+                activate_payload["session"]["active_skills"][0]["name"],
+                "aoa-change-protocol",
+            )
 
 
 if __name__ == "__main__":

@@ -102,6 +102,14 @@ class ReleaseCheckTests(unittest.TestCase):
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
+            ("python", "-m", "pytest", "-q", "tests"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertNotIn(
+            ("python", "-m", "unittest", "discover", "-s", "tests"),
+            release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
+        )
+        self.assertIn(
             ("python", ".agents/spark/scripts/validate_spark_lane.py"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )

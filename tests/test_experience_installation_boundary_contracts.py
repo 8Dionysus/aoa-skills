@@ -12,7 +12,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMAS_ROOT = ROOT / "mechanics" / "experience" / "schemas"
-ESCAPE_VALUE = "__wave5_not_allowed__"
+ESCAPE_VALUE = "__experience_installation_not_allowed__"
 FORMAT_CHECKER = FormatChecker()
 RFC3339_DATETIME = re.compile(
     r"^(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})"
@@ -57,13 +57,32 @@ def is_rfc3339_leap_year(year: int) -> bool:
 
 
 def is_rfc3339_date(year: int, month: int, day: int) -> bool:
-    month_lengths = [31, 29 if is_rfc3339_leap_year(year) else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    month_lengths = [
+        31,
+        29 if is_rfc3339_leap_year(year) else 28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31,
+    ]
     return 1 <= month <= 12 and 1 <= day <= month_lengths[month - 1]
 
 
-def is_rfc3339_leap_second(match: re.Match[str], year: int, month: int, day: int, hour: int, minute: int) -> bool:
+def is_rfc3339_leap_second(
+    match: re.Match[str], year: int, month: int, day: int, hour: int, minute: int
+) -> bool:
     if match["zone"] in ("Z", "z"):
-        return hour == 23 and minute == 59 and (year, month, day) in RFC3339_UTC_LEAP_SECOND_DATES
+        return (
+            hour == 23
+            and minute == 59
+            and (year, month, day) in RFC3339_UTC_LEAP_SECOND_DATES
+        )
     if year == 0:
         return False
     offset_minutes = int(match["offset_hour"]) * 60 + int(match["offset_minute"])
@@ -77,7 +96,8 @@ def is_rfc3339_leap_second(match: re.Match[str], year: int, month: int, day: int
     return (
         utc_second.hour == 23
         and utc_second.minute == 59
-        and (utc_second.year, utc_second.month, utc_second.day) in RFC3339_UTC_LEAP_SECOND_DATES
+        and (utc_second.year, utc_second.month, utc_second.day)
+        in RFC3339_UTC_LEAP_SECOND_DATES
     )
 
 
@@ -95,25 +115,32 @@ def is_rfc3339_datetime(value: object) -> bool:
     second = int(match["second"])
     if hour > 23 or minute > 59 or second > 60:
         return False
-    if second == 60 and not is_rfc3339_leap_second(match, int(match["year"]), int(match["month"]), int(match["day"]), hour, minute):
+    if second == 60 and not is_rfc3339_leap_second(
+        match, int(match["year"]), int(match["month"]), int(match["day"]), hour, minute
+    ):
         return False
     if match["offset_hour"] is not None:
         if int(match["offset_hour"]) > 23 or int(match["offset_minute"]) > 59:
             return False
     return True
 
-WAVE5_CONTRACTS = (
-    ('installation_skill_invocation_v1', 'installation_skill_invocation_v1.json'),
-    ('office_task_skill_boundary_v1', 'office_task_skill_boundary_v1.json'),
-    ('receipt_generation_skill_patch_v1', 'receipt_generation_skill_patch_v1.json'),
-    ('rollback_drill_skill_invocation_v1', 'rollback_drill_skill_invocation_v1.json'),
-    ('service_handoff_skill_patch_v1', 'service_handoff_skill_patch_v1.json'),
+
+EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS = (
+    ("installation_skill_invocation_v1", "installation_skill_invocation_v1.json"),
+    ("office_task_skill_boundary_v1", "office_task_skill_boundary_v1.json"),
+    ("receipt_generation_skill_patch_v1", "receipt_generation_skill_patch_v1.json"),
+    ("rollback_drill_skill_invocation_v1", "rollback_drill_skill_invocation_v1.json"),
+    ("service_handoff_skill_patch_v1", "service_handoff_skill_patch_v1.json"),
 )
 
 
-def load_contract(stem: str, schema_file: str) -> tuple[dict[str, object], dict[str, object]]:
+def load_contract(
+    stem: str, schema_file: str
+) -> tuple[dict[str, object], dict[str, object]]:
     schema_path = SCHEMAS_ROOT / schema_file
-    example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+    example_path = (
+        ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+    )
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     example = json.loads(example_path.read_text(encoding="utf-8"))
     return schema, example
@@ -231,7 +258,9 @@ def delete_path(value: object, path: tuple[object, ...]) -> None:
         del cursor[last]
 
 
-def walk_values(value: object, path: tuple[object, ...] = ()) -> list[tuple[tuple[object, ...], object]]:
+def walk_values(
+    value: object, path: tuple[object, ...] = ()
+) -> list[tuple[tuple[object, ...], object]]:
     found: list[tuple[tuple[object, ...], object]] = []
     if isinstance(value, dict):
         for key, child in value.items():
@@ -246,7 +275,9 @@ def walk_values(value: object, path: tuple[object, ...] = ()) -> list[tuple[tupl
     return found
 
 
-def object_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[object, ...]]:
+def object_paths(
+    value: object, path: tuple[object, ...] = ()
+) -> list[tuple[object, ...]]:
     found: list[tuple[object, ...]] = []
     if isinstance(value, dict):
         found.append(path)
@@ -258,7 +289,9 @@ def object_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[obj
     return found
 
 
-def array_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[object, ...]]:
+def array_paths(
+    value: object, path: tuple[object, ...] = ()
+) -> list[tuple[object, ...]]:
     found: list[tuple[object, ...]] = []
     if isinstance(value, dict):
         for key, child in value.items():
@@ -270,7 +303,9 @@ def array_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[obje
     return found
 
 
-def string_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[object, ...]]:
+def string_paths(
+    value: object, path: tuple[object, ...] = ()
+) -> list[tuple[object, ...]]:
     found: list[tuple[object, ...]] = []
     if isinstance(value, str):
         found.append(path)
@@ -283,7 +318,9 @@ def string_paths(value: object, path: tuple[object, ...] = ()) -> list[tuple[obj
     return found
 
 
-def schema_for_path(schema: object, example: object, path: tuple[object, ...]) -> object:
+def schema_for_path(
+    schema: object, example: object, path: tuple[object, ...]
+) -> object:
     cursor_schema = schema
     cursor_value = example
     for part in path:
@@ -297,10 +334,16 @@ def schema_for_path(schema: object, example: object, path: tuple[object, ...]) -
     return effective_schema(cursor_schema, cursor_value)
 
 
-def required_paths(schema: object, example: object, path: tuple[object, ...] = ()) -> list[tuple[object, ...]]:
+def required_paths(
+    schema: object, example: object, path: tuple[object, ...] = ()
+) -> list[tuple[object, ...]]:
     schema = effective_schema(schema, example)
     found: list[tuple[object, ...]] = []
-    if isinstance(schema, dict) and schema.get("type") == "object" and isinstance(example, dict):
+    if (
+        isinstance(schema, dict)
+        and schema.get("type") == "object"
+        and isinstance(example, dict)
+    ):
         required = schema.get("required")
         if isinstance(required, list):
             for key in required:
@@ -309,12 +352,19 @@ def required_paths(schema: object, example: object, path: tuple[object, ...] = (
         for key, prop in schema_properties(schema, example).items():
             if key in example:
                 found.extend(required_paths(prop, example[key], (*path, key)))
-    if isinstance(schema, dict) and schema.get("type") == "array" and isinstance(example, list) and example:
+    if (
+        isinstance(schema, dict)
+        and schema.get("type") == "array"
+        and isinstance(example, list)
+        and example
+    ):
         found.extend(required_paths(schema.get("items"), example[0], (*path, 0)))
     return found
 
 
-def constrained_paths(schema: object, example: object, keyword: str, path: tuple[object, ...] = ()) -> list[tuple[tuple[object, ...], object]]:
+def constrained_paths(
+    schema: object, example: object, keyword: str, path: tuple[object, ...] = ()
+) -> list[tuple[tuple[object, ...], object]]:
     schema = effective_schema(schema, example)
     found: list[tuple[tuple[object, ...], object]] = []
     if not isinstance(schema, dict):
@@ -324,39 +374,59 @@ def constrained_paths(schema: object, example: object, keyword: str, path: tuple
     if schema.get("type") == "object" and isinstance(example, dict):
         for key, prop in schema_properties(schema, example).items():
             if key in example:
-                found.extend(constrained_paths(prop, example[key], keyword, (*path, key)))
+                found.extend(
+                    constrained_paths(prop, example[key], keyword, (*path, key))
+                )
     if schema.get("type") == "array" and isinstance(example, list) and example:
-        found.extend(constrained_paths(schema.get("items"), example[0], keyword, (*path, 0)))
+        found.extend(
+            constrained_paths(schema.get("items"), example[0], keyword, (*path, 0))
+        )
     return found
 
 
-class ExperienceWave5SeedContractTests(unittest.TestCase):
-    def assert_invalid(self, schema: dict[str, object], value: object, label: str) -> None:
+class ExperienceInstallationBoundaryContractTests(unittest.TestCase):
+    def assert_invalid(
+        self, schema: dict[str, object], value: object, label: str
+    ) -> None:
         errors = validation_errors(schema, value)
         self.assertTrue(errors, f"{label} unexpectedly validated")
 
-    def test_experience_wave5_examples_match_schemas(self) -> None:
-        self.assertTrue(WAVE5_CONTRACTS)
+    def test_experience_installation_boundary_examples_match_schemas(self) -> None:
+        self.assertTrue(EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS)
         missing_pairs: list[str] = []
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema_path = SCHEMAS_ROOT / schema_file
-            example_path = ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+            example_path = (
+                ROOT / "mechanics" / "experience" / "examples" / f"{stem}.example.json"
+            )
             if not schema_path.exists():
-                missing_pairs.append(f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}")
+                missing_pairs.append(
+                    f"{example_path.relative_to(ROOT)} -> {schema_path.relative_to(ROOT)}"
+                )
             if not example_path.exists():
-                missing_pairs.append(f"{schema_path.relative_to(ROOT)} -> {example_path.relative_to(ROOT)}")
-        self.assertFalse(missing_pairs, "missing wave5 contract pair(s): " + ", ".join(missing_pairs))
+                missing_pairs.append(
+                    f"{schema_path.relative_to(ROOT)} -> {example_path.relative_to(ROOT)}"
+                )
+        self.assertFalse(
+            missing_pairs,
+            "missing experience-installation contract pair(s): "
+            + ", ".join(missing_pairs),
+        )
 
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             with self.subTest(stem=stem):
                 schema, example = load_contract(stem, schema_file)
                 Draft202012Validator.check_schema(schema)
                 errors = validation_errors(schema, example)
-                self.assertFalse(errors, f"{stem}: {errors[0].message}" if errors else stem)
+                self.assertFalse(
+                    errors, f"{stem}: {errors[0].message}" if errors else stem
+                )
 
-    def test_experience_wave5_schemas_reject_unknown_fields(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_unknown_fields(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path in object_paths(example):
                 with self.subTest(stem=stem, path=path):
@@ -364,13 +434,17 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
                     target = get_path(mutated, path) if path else mutated
                     self.assertIsInstance(target, dict)
                     target["contract_escape"] = "loose-field"
-                    self.assert_invalid(schema, mutated, f"{stem} unknown field at {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} unknown field at {path}"
+                    )
                     exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_wrong_types_for_every_field(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_wrong_types_for_every_field(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, value in walk_values(example):
                 with self.subTest(stem=stem, path=path):
@@ -380,21 +454,27 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
                     exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_missing_required_fields(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_missing_required_fields(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path in required_paths(schema, example):
                 with self.subTest(stem=stem, path=path):
                     mutated = copy.deepcopy(example)
                     delete_path(mutated, path)
-                    self.assert_invalid(schema, mutated, f"{stem} missing required {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} missing required {path}"
+                    )
                     exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_bad_array_items(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_bad_array_items(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path in array_paths(example):
                 with self.subTest(stem=stem, path=path):
@@ -405,51 +485,65 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
                         array_value[0] = wrong_type_value(array_value[0])
                     else:
                         array_value.append({"not": "a valid array item"})
-                    self.assert_invalid(schema, mutated, f"{stem} bad array item at {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} bad array item at {path}"
+                    )
                     exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_empty_strings(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_empty_strings(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path in string_paths(example):
                 with self.subTest(stem=stem, path=path):
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, "")
-                    self.assert_invalid(schema, mutated, f"{stem} empty string at {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} empty string at {path}"
+                    )
                     exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_const_escapes(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_const_escapes(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, _constraint in constrained_paths(schema, example, "const"):
                 with self.subTest(stem=stem, path=path):
                     value = get_path(example, path)
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, escape_value(value))
-                    self.assert_invalid(schema, mutated, f"{stem} const escape at {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} const escape at {path}"
+                    )
                     exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_enum_escapes(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_enum_escapes(self) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, _constraint in constrained_paths(schema, example, "enum"):
                 with self.subTest(stem=stem, path=path):
                     value = get_path(example, path)
                     mutated = copy.deepcopy(example)
                     set_path(mutated, path, escape_value(value))
-                    self.assert_invalid(schema, mutated, f"{stem} enum escape at {path}")
+                    self.assert_invalid(
+                        schema, mutated, f"{stem} enum escape at {path}"
+                    )
                     exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_bad_datetime_formats(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_bad_datetime_formats(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, constraint in constrained_paths(schema, example, "format"):
                 if constraint != "date-time":
@@ -467,13 +561,17 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
                     with self.subTest(stem=stem, path=path, value=bad_value):
                         mutated = copy.deepcopy(example)
                         set_path(mutated, path, bad_value)
-                        self.assert_invalid(schema, mutated, f"{stem} bad date-time at {path}")
+                        self.assert_invalid(
+                            schema, mutated, f"{stem} bad date-time at {path}"
+                        )
                         exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_accept_rfc3339_datetime_variants(self) -> None:
+    def test_experience_installation_boundary_schemas_accept_rfc3339_datetime_variants(
+        self,
+    ) -> None:
         exercised = 0
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, constraint in constrained_paths(schema, example, "format"):
                 if constraint != "date-time":
@@ -490,15 +588,19 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
                         mutated = copy.deepcopy(example)
                         set_path(mutated, path, valid_value)
                         errors = validation_errors(schema, mutated)
-                        self.assertFalse(errors, f"{stem}: {errors[0].message}" if errors else stem)
+                        self.assertFalse(
+                            errors, f"{stem}: {errors[0].message}" if errors else stem
+                        )
                         exercised += 1
         self.assertGreater(exercised, 0)
 
-    def test_experience_wave5_schemas_reject_numeric_bound_escapes_when_present(self) -> None:
+    def test_experience_installation_boundary_schemas_reject_numeric_bound_escapes_when_present(
+        self,
+    ) -> None:
         exercised = 0
         numeric_paths: list[tuple[str, tuple[object, ...]]] = []
         unbounded_numeric_paths: list[tuple[str, tuple[object, ...]]] = []
-        for stem, schema_file in WAVE5_CONTRACTS:
+        for stem, schema_file in EXPERIENCE_INSTALLATION_BOUNDARY_CONTRACTS:
             schema, example = load_contract(stem, schema_file)
             for path, value in walk_values(example):
                 if not isinstance(value, (int, float)) or isinstance(value, bool):
@@ -515,13 +617,17 @@ class ExperienceWave5SeedContractTests(unittest.TestCase):
                     with self.subTest(stem=stem, path=path, bound="minimum"):
                         mutated = copy.deepcopy(example)
                         set_path(mutated, path, field_schema["minimum"] - 1)
-                        self.assert_invalid(schema, mutated, f"{stem} below minimum at {path}")
+                        self.assert_invalid(
+                            schema, mutated, f"{stem} below minimum at {path}"
+                        )
                         exercised += 1
                 if "maximum" in field_schema:
                     with self.subTest(stem=stem, path=path, bound="maximum"):
                         mutated = copy.deepcopy(example)
                         set_path(mutated, path, field_schema["maximum"] + 1)
-                        self.assert_invalid(schema, mutated, f"{stem} above maximum at {path}")
+                        self.assert_invalid(
+                            schema, mutated, f"{stem} above maximum at {path}"
+                        )
                         exercised += 1
         self.assertEqual(unbounded_numeric_paths, [])
         if numeric_paths:

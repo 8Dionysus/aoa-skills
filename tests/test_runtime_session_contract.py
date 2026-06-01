@@ -19,7 +19,7 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
     )
 
 
-class Wave4RuntimeSessionTests(unittest.TestCase):
+class RuntimeSessionContractTests(unittest.TestCase):
     def test_session_deduplication_and_compaction(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             session_file = pathlib.Path(tmpdir) / "session.json"
@@ -80,7 +80,9 @@ class Wave4RuntimeSessionTests(unittest.TestCase):
             self.assertEqual(status.returncode, 0, msg=status.stderr)
             status_payload = json.loads(status.stdout)
             self.assertEqual(len(status_payload["session"]["active_skills"]), 1)
-            self.assertEqual(status_payload["session"]["active_skills"][0]["activation_count"], 2)
+            self.assertEqual(
+                status_payload["session"]["active_skills"][0]["activation_count"], 2
+            )
 
             compact = run_command(
                 [
@@ -96,9 +98,16 @@ class Wave4RuntimeSessionTests(unittest.TestCase):
             self.assertEqual(compact.returncode, 0, msg=compact.stderr)
             compact_payload = json.loads(compact.stdout)
             self.assertEqual(compact_payload["stage"], "compact")
-            self.assertEqual(compact_payload["active_skill_packets"][0]["name"], "aoa-change-protocol")
-            self.assertTrue(compact_payload["active_skill_packets"][0]["protected_from_compaction"])
-            self.assertGreaterEqual(len(compact_payload["active_skill_packets"][0]["must_keep"]), 1)
+            self.assertEqual(
+                compact_payload["active_skill_packets"][0]["name"],
+                "aoa-change-protocol",
+            )
+            self.assertTrue(
+                compact_payload["active_skill_packets"][0]["protected_from_compaction"]
+            )
+            self.assertGreaterEqual(
+                len(compact_payload["active_skill_packets"][0]["must_keep"]), 1
+            )
 
             deactivate = run_command(
                 [

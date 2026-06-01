@@ -26,8 +26,13 @@ Tracking starts with the community-docs baseline for this repository.
 - Validation command authority now has a dedicated
   `docs/validation/COMMAND_AUTHORITY.md` route that keeps full lane sequences in
   the manifest and focused local checks in nearest `AGENTS.md` cards.
+- Test topology now has a human route map and machine inventory under
+  `docs/testing/`, plus pytest markers for source, generated, export, router,
+  release, advisory, live, and slow checks.
 - A new `AOA-SK-D-0029` decision records the validator topology and owner-module
   route.
+- A new `AOA-SK-D-0030` decision records the test topology, lane split, and
+  agentic route/fault contract posture.
 
 ### Changed
 
@@ -63,6 +68,15 @@ Tracking starts with the community-docs baseline for this repository.
 - Active route, audit, quest, and Spark scenario docs now point to lane ids,
   owner surfaces, or nearest `AGENTS.md` routes instead of carrying validation
   command blocks outside the command-authority surfaces.
+- Release checks now execute the default pytest test lane, while
+  `tests/AGENTS.md` and the lane manifest share the same command authority.
+- The former monolithic validation and catalog tests are split by owner
+  surface, with shared fixture, temp-repo, generated-fixture, and CLI helpers
+  routed through `tests/support/`.
+- Historical wave-named tests now use owner-surface names where the active
+  contract meaning is no longer a landing-history artifact.
+- Ordinary contract tests no longer replay a broad release-validator batch;
+  they check lane composition or the directly owned contract instead.
 
 ### Fixed
 

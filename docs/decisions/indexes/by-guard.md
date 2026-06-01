@@ -35,6 +35,7 @@
 - [AOA-SK-D-0023 Growth-Cycle Session Harvest Ownership](../AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md) (`docs/decisions/AOA-SK-D-0023-growth-cycle-session-harvest-ownership.md`)
 - [AOA-SK-D-0024 Root Charter Boundary](../AOA-SK-D-0024-root-charter-boundary.md) (`docs/decisions/AOA-SK-D-0024-root-charter-boundary.md`)
 - [AOA-SK-D-0026 Memo Writeback Skill Owner Boundary](../AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md) (`docs/decisions/AOA-SK-D-0026-memo-writeback-skill-owner-boundary.md`)
+- [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 
 ## technique bridge
 
@@ -57,21 +58,25 @@
 - [AOA-SK-D-0012 Mechanics RPG Reader Surfaces](../AOA-SK-D-0012-mechanics-rpg-reader-surfaces.md) (`docs/decisions/AOA-SK-D-0012-mechanics-rpg-reader-surfaces.md`)
 - [AOA-SK-D-0021 Skill Intelligence Registry First Slice](../AOA-SK-D-0021-skill-intelligence-registry-first-slice.md) (`docs/decisions/AOA-SK-D-0021-skill-intelligence-registry-first-slice.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+- [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 
 ## export/runtime
 
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+- [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 
 ## AGENTS/mesh
 
 - [AOA-SK-D-0020 Root Design And Agent Surface Split](../AOA-SK-D-0020-root-design-agent-surfaces.md) (`docs/decisions/AOA-SK-D-0020-root-design-agent-surfaces.md`)
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
+- [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 
 ## release/tooling
 
 - [AOA-SK-D-0027 Canonical Decision IDs And Indexes](../AOA-SK-D-0027-canonical-decision-ids-and-indexes.md) (`docs/decisions/AOA-SK-D-0027-canonical-decision-ids-and-indexes.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
+- [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 
 ## questbook
 
@@ -91,6 +96,7 @@
 
 - [AOA-SK-D-0017 Lived-Use Promotion Pressure](../AOA-SK-D-0017-lived-use-promotion-pressure.md) (`docs/decisions/AOA-SK-D-0017-lived-use-promotion-pressure.md`)
 - [AOA-SK-D-0018 Session Growth Evaluated Governance](../AOA-SK-D-0018-session-growth-evaluated-governance.md) (`docs/decisions/AOA-SK-D-0018-session-growth-evaluated-governance.md`)
+- [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
 
 ## CI lane
 
