@@ -14,7 +14,7 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import release_check
-import validation_lanes
+from lanes import validation_lanes
 
 
 class ReleaseCheckTests(unittest.TestCase):

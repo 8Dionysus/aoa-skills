@@ -1,0 +1,1 @@
+"""Decision index script organ."""

@@ -19,7 +19,7 @@ Tracking starts with the community-docs baseline for this repository.
 - Shared validation lane definitions now route through
   `config/validation_lanes.json` and `scripts/validation_lanes.py`, and
   validator contract data now has manifest-backed homes under
-  `scripts/validators/`.
+  `scripts/validation/validators/`.
 - Validator topology now has a human map and machine inventory under
   `docs/validation/`, with tests that guard owner, lane, mode, and next-route
   declarations for validation-like entrypoints.
@@ -33,6 +33,8 @@ Tracking starts with the community-docs baseline for this repository.
   route.
 - A new `AOA-SK-D-0030` decision records the test topology, lane split, and
   agentic route/fault contract posture.
+- A new `AOA-SK-D-0031` decision records the script source-home topology and
+  root ingress compatibility route.
 
 ### Changed
 
@@ -44,15 +46,16 @@ Tracking starts with the community-docs baseline for this repository.
   packaging smoke moves to the release lane.
 - `validate_agent_skills.py` is now a thin CLI adapter over the Agent Skills
   export/runtime validator surface.
-- The Spark lane validator now checks `scripts/validation_lanes.py` instead of
-  treating `scripts/release_check.py` text as the release command source.
+- The Spark lane validator now checks `scripts/lanes/validation_lanes.py`
+  instead of treating `scripts/release_check.py` text as the release command
+  source.
 - Full export validation now rebuilds and drift-checks trigger-eval seed data
   before dependent description, runtime, and tiny-router surfaces.
 - `validate_agent_skills.py` and the questbook section of `validate_skills.py`
   now load contract data from validator manifests instead of carrying those
   lists directly in Python.
 - Generated/read-model, questbook, and Agent Skills export/runtime validation
-  now execute from owner modules under `scripts/validators/`, leaving the
+  now execute from owner modules under `scripts/validation/validators/`, leaving the
   script entrypoints as CLI/orchestration adapters.
 - Questbook surface validation is now split into explicit schema, quest YAML,
   generated catalog, and dispatch phases inside its owner module.
@@ -61,7 +64,7 @@ Tracking starts with the community-docs baseline for this repository.
   phases, project ring checks, release relationship checks, and runtime
   guardrail checks.
 - Tiny-router, support-resource, trigger-eval, description-trigger, and pack
-  profile checks now execute from owner modules under `scripts/validators/`;
+  profile checks now execute from owner modules under `scripts/validation/validators/`;
   the root entrypoints are thin CLI adapters.
 - The former semantic AGENTS validator has been folded into the manifest-backed
   nested AGENTS contract instead of remaining as a separate one-off script.
@@ -77,6 +80,10 @@ Tracking starts with the community-docs baseline for this repository.
   contract meaning is no longer a landing-history artifact.
 - Ordinary contract tests no longer replay a broad release-validator batch;
   they check lane composition or the directly owned contract instead.
+- Root `scripts/*.py` files now act as command/front-door compatibility ingress
+  wrappers, while implementation and helper libraries live under organ
+  directories such as `builders/`, `runtime/`, `bundles/`, `skill_model/`, and
+  `validation/`.
 
 ### Fixed
 

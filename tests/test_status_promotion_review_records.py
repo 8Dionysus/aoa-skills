@@ -10,7 +10,7 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import skill_review_surface
+from skill_model import skill_review_surface
 
 
 REVIEW_DIR = REPO_ROOT / "docs" / "reviews" / "status-promotions"

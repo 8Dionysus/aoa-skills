@@ -17,8 +17,8 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import validation_lanes
-from validators import tiny_router_surface, trigger_eval_surface
+from lanes import validation_lanes
+from validation.validators import tiny_router_surface, trigger_eval_surface
 
 
 DESCRIPTION_TRIGGER_FILES = [

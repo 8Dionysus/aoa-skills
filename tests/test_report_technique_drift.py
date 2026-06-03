@@ -13,7 +13,7 @@ for path in (SCRIPTS_DIR, TESTS_DIR):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
 
-import report_technique_drift
+from reports import report_technique_drift
 from bridge_cli_test_support import BridgeCliTestCase, DEFAULT_REPO
 
 

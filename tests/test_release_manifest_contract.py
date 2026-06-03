@@ -13,7 +13,7 @@ import sys
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import release_manifest_contract
+from export import release_manifest_contract
 
 
 class ReleaseManifestContractTests(unittest.TestCase):

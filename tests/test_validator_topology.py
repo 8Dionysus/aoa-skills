@@ -13,7 +13,7 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import validation_lanes
+from lanes import validation_lanes
 
 
 INVENTORY_PATH = REPO_ROOT / "docs" / "validation" / "validator_inventory.json"
@@ -45,7 +45,7 @@ NON_AGENTS_COMMAND_BLOCK_ALLOWED_FILES = {
     "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
     "mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md",
 }
-THIN_ROOT_ADAPTERS = (
+THIN_ROOT_INGRESS = (
     "scripts/validate_agent_skills.py",
     "scripts/validate_tiny_router_inputs.py",
     "scripts/validate_support_resources.py",
@@ -55,10 +55,10 @@ THIN_ROOT_ADAPTERS = (
     "scripts/lint_support_resources.py",
 )
 OWNER_MODULE_LIMITS = {
-    "scripts/validators/tiny_router_surface.py": 180,
-    "scripts/validators/support_resource_surface.py": 180,
-    "scripts/validators/trigger_eval_surface.py": 180,
-    "scripts/validators/pack_profile_surface.py": 120,
+    "scripts/validation/validators/tiny_router_surface.py": 180,
+    "scripts/validation/validators/support_resource_surface.py": 180,
+    "scripts/validation/validators/trigger_eval_surface.py": 180,
+    "scripts/validation/validators/pack_profile_surface.py": 120,
 }
 
 
@@ -217,17 +217,18 @@ class ValidatorTopologyTests(unittest.TestCase):
         missing = sorted(discovered - inventory_paths)
         self.assertEqual([], missing)
 
-    def test_known_root_adapters_stay_thin(self) -> None:
-        for rel_path in THIN_ROOT_ADAPTERS:
+    def test_known_root_validation_ingress_stays_thin(self) -> None:
+        for rel_path in THIN_ROOT_INGRESS:
             with self.subTest(path=rel_path):
                 text = (REPO_ROOT / rel_path).read_text(encoding="utf-8")
                 self.assertLessEqual(len(text.splitlines()), 40)
-                self.assertIn("validators.", text)
+                self.assertIn("from _ingress import expose", text)
+                self.assertIn('expose("validation.', text)
 
     def test_retired_semantic_agents_validator_stays_folded(self) -> None:
         self.assertFalse((SCRIPTS_DIR / "validate_semantic_agents.py").exists())
         contract = json.loads(
-            (SCRIPTS_DIR / "validators" / "nested_agents_contract.json").read_text(
+            (SCRIPTS_DIR / "validation" / "validators" / "nested_agents_contract.json").read_text(
                 encoding="utf-8"
             )
         )

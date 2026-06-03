@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "owner": "docs/validation/SCRIPT_TOPOLOGY.md",
+  "command_authority": "config/validation_lanes.json",
+  "notes": [
+    "Root scripts/*.py files are command/front-door compatibility ingress wrappers only, except scripts/_ingress.py.",
+    "Library, contract, surface, and helper implementation lives under organ directories without root wrappers."
+  ],
+  "compatibility_surfaces": [
+    {
+      "path": "scripts/_ingress.py",
+      "role": "loads an implementation module and aliases legacy root imports to that module"
+    },
+    {
+      "path": "scripts/validators/__init__.py",
+      "role": "aliases legacy validators.* imports to scripts/validation/validators"
+    }
+  ],
+  "organ_dirs": [
+    {
+      "path": "scripts/activation",
+      "family": "activation",
+      "root_ingress": [
+        "scripts/activate_skill.py"
+      ]
+    },
+    {
+      "path": "scripts/adapters",
+      "family": "adapters",
+      "root_ingress": [
+        "scripts/build_local_adapter_manifest.py",
+        "scripts/build_openai_yaml_examples.py",
+        "scripts/render_codex_config.py"
+      ]
+    },
+    {
+      "path": "scripts/audit",
+      "family": "audit",
+      "root_ingress": [
+        "scripts/audit_skill_quality.py",
+        "scripts/audit_workspace_skill_adoption.py",
+        "scripts/run_skill_reality_trials.py"
+      ]
+    },
+    {
+      "path": "scripts/bridges",
+      "family": "bridges",
+      "root_ingress": []
+    },
+    {
+      "path": "scripts/builders",
+      "family": "builders",
+      "root_ingress": [
+        "scripts/build_catalog.py",
+        "scripts/build_description_trigger_evals.py",
+        "scripts/build_support_resources.py",
+        "scripts/build_tiny_router_inputs.py",
+        "scripts/build_trigger_eval_cases.py"
+      ]
+    },
+    {
+      "path": "scripts/bundles",
+      "family": "bundles",
+      "root_ingress": [
+        "scripts/export_skill_bundle.py",
+        "scripts/import_skill_pack.py",
+        "scripts/inspect_skill_pack.py",
+        "scripts/install_skill_pack.py",
+        "scripts/smoke_skill_pack_handoff.py",
+        "scripts/stage_skill_pack.py",
+        "scripts/verify_skill_pack.py"
+      ]
+    },
+    {
+      "path": "scripts/decisions",
+      "family": "decisions",
+      "root_ingress": [
+        "scripts/generate_decision_indexes.py"
+      ]
+    },
+    {
+      "path": "scripts/export",
+      "family": "export",
+      "root_ingress": [
+        "scripts/build_agent_skills.py"
+      ]
+    },
+    {
+      "path": "scripts/lanes",
+      "family": "lanes",
+      "root_ingress": [
+        "scripts/ci_gate.py",
+        "scripts/release_check.py",
+        "scripts/validation_lanes.py"
+      ]
+    },
+    {
+      "path": "scripts/receipts",
+      "family": "receipts",
+      "root_ingress": [
+        "scripts/publish_core_skill_receipts.py",
+        "scripts/publish_live_receipts.py"
+      ]
+    },
+    {
+      "path": "scripts/refresh",
+      "family": "refresh",
+      "root_ingress": [
+        "scripts/refresh_skill_from_manifest.py",
+        "scripts/refresh_skill_from_techniques.py"
+      ]
+    },
+    {
+      "path": "scripts/reports",
+      "family": "reports",
+      "root_ingress": [
+        "scripts/report_skill_boundaries.py",
+        "scripts/report_skill_evaluation.py",
+        "scripts/report_skill_promotion_pressure.py",
+        "scripts/report_technique_drift.py"
+      ]
+    },
+    {
+      "path": "scripts/runtime",
+      "family": "runtime",
+      "root_ingress": [
+        "scripts/build_runtime_guardrails.py",
+        "scripts/build_runtime_seam.py",
+        "scripts/inspect_skill.py",
+        "scripts/skill_runtime_guardrails.py",
+        "scripts/skill_runtime_seam.py"
+      ]
+    },
+    {
+      "path": "scripts/skill_model",
+      "family": "skill_model",
+      "root_ingress": [
+        "scripts/skill_intelligence.py"
+      ]
+    },
+    {
+      "path": "scripts/validation",
+      "family": "validation",
+      "root_ingress": [
+        "scripts/lint_description_trigger_evals.py",
+        "scripts/lint_pack_profiles.py",
+        "scripts/lint_support_resources.py",
+        "scripts/lint_trigger_evals.py",
+        "scripts/run_skills_ref_validation.py",
+        "scripts/validate_agent_skills.py",
+        "scripts/validate_agents_design.py",
+        "scripts/validate_nested_agents.py",
+        "scripts/validate_skill_mcp_wiring.py",
+        "scripts/validate_skills.py",
+        "scripts/validate_support_resources.py",
+        "scripts/validate_tiny_router_inputs.py"
+      ]
+    }
+  ]
+}

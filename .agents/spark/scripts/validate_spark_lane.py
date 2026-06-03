@@ -84,7 +84,7 @@ def read_text(root: Path, rel: str) -> str:
 
 
 def release_sequence_runs_spark_validator(root: Path) -> bool:
-    lanes_path = root / "scripts" / "validation_lanes.py"
+    lanes_path = root / "scripts" / "lanes" / "validation_lanes.py"
     if not lanes_path.is_file():
         return False
     spec = importlib.util.spec_from_file_location("aoa_skills_validation_lanes", lanes_path)

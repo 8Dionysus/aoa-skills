@@ -13,8 +13,8 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import validate_agent_skills
-from validators import agent_skills_export_contract, agent_skills_export_surface
+from validation import validate_agent_skills
+from validation.validators import agent_skills_export_contract, agent_skills_export_surface
 
 
 class ValidateAgentSkillsEntrypointTests(unittest.TestCase):
@@ -23,8 +23,9 @@ class ValidateAgentSkillsEntrypointTests(unittest.TestCase):
             encoding="utf-8"
         )
 
-        self.assertIn("validators.agent_skills_export_surface", script_text)
-        self.assertLessEqual(len(script_text.splitlines()), 80)
+        self.assertIn("from _ingress import expose", script_text)
+        self.assertIn('expose("validation.validate_agent_skills", globals())', script_text)
+        self.assertLessEqual(len(script_text.splitlines()), 4)
         self.assertNotIn("load_json(generated_dir", script_text)
 
     def test_validate_returns_structured_result(self) -> None:

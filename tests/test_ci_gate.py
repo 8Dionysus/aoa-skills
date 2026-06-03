@@ -148,7 +148,7 @@ class CiGateTests(unittest.TestCase):
             "scripts/validation_lanes.py",
             "scripts/build_catalog.py",
             "scripts/build_trigger_eval_cases.py",
-            "scripts/release_manifest_contract.py",
+            "scripts/export/release_manifest_contract.py",
         ):
             with self.subTest(path=path):
                 self.assertTrue(ci_gate.export_relevant([path]))

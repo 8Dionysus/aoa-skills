@@ -14,7 +14,7 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import skill_intelligence_surface
+from skill_model import skill_intelligence_surface
 from tests.support.source_catalog import source_skill_count
 
 
