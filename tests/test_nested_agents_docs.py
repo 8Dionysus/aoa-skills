@@ -10,7 +10,7 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-import validate_nested_agents
+from validation import validate_nested_agents
 
 
 class NestedAgentsDocsTests(unittest.TestCase):

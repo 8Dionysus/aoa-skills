@@ -56,12 +56,12 @@
       "path": "tests/test_agentic_fault_boundaries.py",
       "family": "tool-boundary/fault",
       "protects": "tool-boundary fault",
-      "owner_surface": "scripts/validators/* and release-support CLIs",
+      "owner_surface": "scripts/validation/validators/* and release-support CLIs",
       "lane": "source",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_agentic_fault_boundaries.py",
-      "failure_route": "Fix scripts/validators/* and release-support CLIs before widening the lane."
+      "failure_route": "Fix scripts/validation/validators/* and release-support CLIs before widening the lane."
     },
     {
       "path": "tests/test_agentic_trace_contract.py",
@@ -100,12 +100,12 @@
       "path": "tests/test_build_catalog_evaluation_matrix.py",
       "family": "generated/evaluation-matrix",
       "protects": "generated evaluation-matrix",
-      "owner_surface": "scripts/skill_evaluation_surface.py",
+      "owner_surface": "scripts/skill_model/skill_evaluation_surface.py",
       "lane": "generated",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_build_catalog_evaluation_matrix.py",
-      "failure_route": "Fix scripts/skill_evaluation_surface.py before widening the lane."
+      "failure_route": "Fix scripts/skill_model/skill_evaluation_surface.py before widening the lane."
     },
     {
       "path": "tests/test_build_catalog_governance.py",
@@ -188,12 +188,12 @@
       "path": "tests/test_codex_portable_contract.py",
       "family": "export/runtime",
       "protects": "export runtime",
-      "owner_surface": "scripts/validators/agent_skills_export_surface.py",
+      "owner_surface": "scripts/validation/validators/agent_skills_export_surface.py",
       "lane": "export",
       "mode": "blocking",
       "runtime_cost": "slow",
       "focused_target": "tests/test_codex_portable_contract.py",
-      "failure_route": "Fix scripts/validators/agent_skills_export_surface.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validators/agent_skills_export_surface.py before widening the lane."
     },
     {
       "path": "tests/test_component_refresh_law.py",
@@ -617,12 +617,12 @@
       "path": "tests/test_skill_intelligence_surface.py",
       "family": "generated/skill-intelligence",
       "protects": "generated skill-intelligence",
-      "owner_surface": "scripts/skill_intelligence_surface.py",
+      "owner_surface": "scripts/skill_model/skill_intelligence_surface.py",
       "lane": "generated",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_skill_intelligence_surface.py",
-      "failure_route": "Fix scripts/skill_intelligence_surface.py before widening the lane."
+      "failure_route": "Fix scripts/skill_model/skill_intelligence_surface.py before widening the lane."
     },
     {
       "path": "tests/test_skill_layout.py",
@@ -705,23 +705,23 @@
       "path": "tests/test_support_resource_bundles.py",
       "family": "export/support-resource",
       "protects": "export support-resource",
-      "owner_surface": "scripts/validators/support_resource_surface.py",
+      "owner_surface": "scripts/validation/validators/support_resource_surface.py",
       "lane": "export",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_support_resource_bundles.py",
-      "failure_route": "Fix scripts/validators/support_resource_surface.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validators/support_resource_surface.py before widening the lane."
     },
     {
       "path": "tests/test_support_resource_schemas.py",
       "family": "export/support-resource",
       "protects": "export support-resource",
-      "owner_surface": "scripts/validators/support_resource_surface.py",
+      "owner_surface": "scripts/validation/validators/support_resource_surface.py",
       "lane": "export",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_support_resource_schemas.py",
-      "failure_route": "Fix scripts/validators/support_resource_surface.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validators/support_resource_surface.py before widening the lane."
     },
     {
       "path": "tests/test_test_topology.py",
@@ -735,15 +735,26 @@
       "failure_route": "Fix docs/testing/TEST_TOPOLOGY.md before widening the lane."
     },
     {
+      "path": "tests/test_script_topology.py",
+      "family": "validation-topology",
+      "protects": "script topology",
+      "owner_surface": "docs/validation/SCRIPT_TOPOLOGY.md",
+      "lane": "source",
+      "mode": "blocking",
+      "runtime_cost": "fast",
+      "focused_target": "tests/test_script_topology.py",
+      "failure_route": "Fix docs/validation/SCRIPT_TOPOLOGY.md before widening the script plane."
+    },
+    {
       "path": "tests/test_tiny_router_inputs.py",
       "family": "router/tiny-router",
       "protects": "router tiny-router",
-      "owner_surface": "scripts/validators/tiny_router_surface.py",
+      "owner_surface": "scripts/validation/validators/tiny_router_surface.py",
       "lane": "router",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_tiny_router_inputs.py",
-      "failure_route": "Fix scripts/validators/tiny_router_surface.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validators/tiny_router_surface.py before widening the lane."
     },
     {
       "path": "tests/test_validate_agent_skills_entrypoint.py",
@@ -782,34 +793,34 @@
       "path": "tests/test_validate_skills_evaluation_contract.py",
       "family": "skill-native-eval",
       "protects": "skill-native-eval",
-      "owner_surface": "scripts/skill_evaluation_contract.py",
+      "owner_surface": "scripts/skill_model/skill_evaluation_contract.py",
       "lane": "source",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_validate_skills_evaluation_contract.py",
-      "failure_route": "Fix scripts/skill_evaluation_contract.py before widening the lane."
+      "failure_route": "Fix scripts/skill_model/skill_evaluation_contract.py before widening the lane."
     },
     {
       "path": "tests/test_validate_skills_generated_drift.py",
       "family": "generated/drift",
       "protects": "generated drift",
-      "owner_surface": "scripts/validators/generated_surface.py",
+      "owner_surface": "scripts/validation/validators/generated_surface.py",
       "lane": "generated",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_validate_skills_generated_drift.py",
-      "failure_route": "Fix scripts/validators/generated_surface.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validators/generated_surface.py before widening the lane."
     },
     {
       "path": "tests/test_validate_skills_questbook_contract.py",
       "family": "source/questbook",
       "protects": "source questbook",
-      "owner_surface": "scripts/validators/questbook_surface.py",
+      "owner_surface": "scripts/validation/validators/questbook_surface.py",
       "lane": "source",
       "mode": "blocking",
       "runtime_cost": "medium",
       "focused_target": "tests/test_validate_skills_questbook_contract.py",
-      "failure_route": "Fix scripts/validators/questbook_surface.py before widening the lane."
+      "failure_route": "Fix scripts/validation/validators/questbook_surface.py before widening the lane."
     },
     {
       "path": "tests/test_validate_skills_review_status.py",

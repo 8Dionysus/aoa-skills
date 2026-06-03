@@ -59,18 +59,21 @@
 - [AOA-SK-D-0021 Skill Intelligence Registry First Slice](../AOA-SK-D-0021-skill-intelligence-registry-first-slice.md) (`docs/decisions/AOA-SK-D-0021-skill-intelligence-registry-first-slice.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
 - [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
+- [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 
 ## export/runtime
 
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
 - [AOA-SK-D-0028 Growth-First Validator CI Lanes](../AOA-SK-D-0028-growth-first-validator-ci-lanes.md) (`docs/decisions/AOA-SK-D-0028-growth-first-validator-ci-lanes.md`)
 - [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
+- [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 
 ## AGENTS/mesh
 
 - [AOA-SK-D-0020 Root Design And Agent Surface Split](../AOA-SK-D-0020-root-design-agent-surfaces.md) (`docs/decisions/AOA-SK-D-0020-root-design-agent-surfaces.md`)
 - [AOA-SK-D-0022 Codex Spark Agent Lane Home](../AOA-SK-D-0022-codex-spark-agent-lane-home.md) (`docs/decisions/AOA-SK-D-0022-codex-spark-agent-lane-home.md`)
 - [AOA-SK-D-0030 Test Topology And Agentic Contracts](../AOA-SK-D-0030-test-topology-and-agentic-contracts.md) (`docs/decisions/AOA-SK-D-0030-test-topology-and-agentic-contracts.md`)
+- [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 
 ## release/tooling
 
@@ -110,6 +113,14 @@
 ## owner module
 
 - [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
+
+## script topology
+
+- [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
+
+## validation command authority
+
+- [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
 
 ## validator topology
 

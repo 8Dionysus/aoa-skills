@@ -19,8 +19,8 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import build_catalog
-import skill_evaluation_contract
+from builders import build_catalog
+from skill_model import skill_evaluation_contract
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {

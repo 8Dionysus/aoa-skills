@@ -1,0 +1,1 @@
+"""Activation script organ."""

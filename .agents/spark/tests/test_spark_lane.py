@@ -20,7 +20,7 @@ def load_json(path: Path) -> dict:
 
 class SparkLaneTestCase(unittest.TestCase):
     def write_release_lane(self, repo_root: Path, *, include_validator: bool = True) -> None:
-        (repo_root / "scripts").mkdir()
+        (repo_root / "scripts" / "lanes").mkdir(parents=True)
         if include_validator:
             sequence = (
                 "RELEASE_CHECK_COMMAND_SEQUENCE = "
@@ -28,7 +28,7 @@ class SparkLaneTestCase(unittest.TestCase):
             )
         else:
             sequence = "RELEASE_CHECK_COMMAND_SEQUENCE = ()\n"
-        (repo_root / "scripts/validation_lanes.py").write_text(sequence, encoding="utf-8")
+        (repo_root / "scripts/lanes/validation_lanes.py").write_text(sequence, encoding="utf-8")
 
     def run_validator(self, repo_root: Path) -> subprocess.CompletedProcess[str]:
         return subprocess.run(

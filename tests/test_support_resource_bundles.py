@@ -14,8 +14,8 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import validate_support_resources
-import skill_layout
+from validation import validate_support_resources
+from skill_model import skill_layout
 
 
 def run_json(*args: str) -> dict:

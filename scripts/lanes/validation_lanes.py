@@ -1,0 +1,81 @@
+"""Shared validation lane loader for aoa-skills.
+
+The executable command authority lives in ``config/validation_lanes.json``.
+This module keeps the existing Python API stable for CI, release, and tests.
+"""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+Command = tuple[str, ...]
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+VALIDATION_LANES_PATH = REPO_ROOT / "config" / "validation_lanes.json"
+
+
+def _load_manifest() -> dict[str, Any]:
+    payload = json.loads(VALIDATION_LANES_PATH.read_text(encoding="utf-8"))
+    if payload.get("schema_version") != 1:
+        raise ValueError(
+            f"{VALIDATION_LANES_PATH}: unsupported schema_version "
+            f"{payload.get('schema_version')!r}"
+        )
+    return payload
+
+
+def _command(command: object, where: str) -> Command:
+    if not isinstance(command, list) or not command:
+        raise ValueError(f"{VALIDATION_LANES_PATH}: {where} must be a non-empty list")
+    if any(not isinstance(part, str) or not part for part in command):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: {where} must contain strings")
+    return tuple(command)
+
+
+def _command_sequence(manifest: dict[str, Any], name: str) -> tuple[Command, ...]:
+    sequences = manifest.get("command_sequences")
+    if not isinstance(sequences, dict):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: command_sequences must be a mapping")
+    sequence = sequences.get(name)
+    if not isinstance(sequence, list) or not sequence:
+        raise ValueError(f"{VALIDATION_LANES_PATH}: missing command sequence {name!r}")
+    return tuple(_command(command, f"command_sequences.{name}[{idx}]") for idx, command in enumerate(sequence))
+
+
+def _single_command(manifest: dict[str, Any], name: str) -> Command:
+    commands = manifest.get("single_commands")
+    if not isinstance(commands, dict):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: single_commands must be a mapping")
+    return _command(commands.get(name), f"single_commands.{name}")
+
+
+def _drift_paths(manifest: dict[str, Any], name: str) -> tuple[str, ...]:
+    drift_paths = manifest.get("drift_paths")
+    if not isinstance(drift_paths, dict):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: drift_paths must be a mapping")
+    paths = drift_paths.get(name)
+    if not isinstance(paths, list) or not paths:
+        raise ValueError(f"{VALIDATION_LANES_PATH}: missing drift path list {name!r}")
+    if any(not isinstance(path, str) or not path for path in paths):
+        raise ValueError(f"{VALIDATION_LANES_PATH}: drift_paths.{name} must contain strings")
+    return tuple(paths)
+
+
+_MANIFEST = _load_manifest()
+
+EXPORT_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "export_generated")
+RUNTIME_GENERATED_DRIFT_PATHS = _drift_paths(_MANIFEST, "runtime_generated")
+EXPORT_DRIFT_PATHS = (*EXPORT_GENERATED_DRIFT_PATHS, *RUNTIME_GENERATED_DRIFT_PATHS)
+
+SOURCE_FAST_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "source_fast")
+EXPORT_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
+    _MANIFEST, "export_generated_check"
+)
+RUNTIME_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
+    _MANIFEST, "runtime_generated_check"
+)
+EXPORT_FULL_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "export_full")
+RELEASE_CHECK_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "release_check")
+PACKAGING_SMOKE_COMMAND = _single_command(_MANIFEST, "packaging_smoke")

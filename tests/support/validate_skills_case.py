@@ -20,11 +20,11 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import validate_skills
-import build_catalog
-import skill_lineage_surface
-import skill_review_surface
-from validators import generated_surface, questbook_contract, questbook_surface
+from validation import validate_skills
+from builders import build_catalog
+from skill_model import skill_lineage_surface
+from skill_model import skill_review_surface
+from validation.validators import generated_surface, questbook_contract, questbook_surface
 
 
 PRIMARY_PUBLISHED_TECHNIQUE = {

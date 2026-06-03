@@ -20,10 +20,10 @@ ordering, read `config/validation_lanes.json` before editing
 
 Scripts must stay deterministic, repo-relative, public-safe, and explicit about source versus generated authority. Keep builder output stable, avoid network assumptions unless already part of the contract, and keep bounded language in reports.
 Keep validator contract data out of Python when it is route-law data rather than
-execution logic; prefer manifest-backed contracts under `scripts/validators/`
+execution logic; prefer manifest-backed contracts under `scripts/validation/validators/`
 such as `nested_agents_contract.json`, `agent_skills_export_contract.json`, and
 `questbook_contract.json`.
-Keep bulky validator execution with its owner surface under `scripts/validators/`
+Keep bulky validator execution with its owner surface under `scripts/validation/validators/`
 when the checks protect generated/read-model, questbook, or Agent Skills
 export/runtime surfaces; keep root `scripts/validate_*.py` entrypoints as CLI
 and orchestration adapters.

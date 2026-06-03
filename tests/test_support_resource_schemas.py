@@ -11,7 +11,7 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import skill_layout
+from skill_model import skill_layout
 
 TARGETS = (
     ("aoa-dry-run-first", "dry_run_report.schema.json", "dry_run_contract.template.json"),

@@ -11,8 +11,8 @@ SCRIPTS_DIR = REPO_ROOT / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
-import release_manifest_contract
-import build_agent_skills
+from export import release_manifest_contract
+from export import build_agent_skills
 
 
 def load_json(path: pathlib.Path):
