@@ -28,7 +28,6 @@
       "path": "scripts/adapters",
       "family": "adapters",
       "root_ingress": [
-        "scripts/build_local_adapter_manifest.py",
         "scripts/build_openai_yaml_examples.py",
         "scripts/render_codex_config.py"
       ]

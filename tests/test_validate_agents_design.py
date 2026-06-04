@@ -56,6 +56,20 @@ class ValidateAgentsDesignTests(unittest.TestCase):
         module = load_validator()
         self.assertEqual([], module.validate(REPO_ROOT))
 
+    def test_cli_help_is_argparse_help(self) -> None:
+        result = subprocess.run(
+            (sys.executable, SCRIPT_PATH, "--help"),
+            cwd=REPO_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertIn("usage:", result.stdout)
+        self.assertIn("--repo-root", result.stdout)
+        self.assertNotIn("AGENTS design mesh is present", result.stdout)
+
     def test_missing_expected_card_fails(self) -> None:
         module = load_validator()
         with tempfile.TemporaryDirectory() as tmp:

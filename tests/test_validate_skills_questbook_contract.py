@@ -59,6 +59,7 @@ class ValidateSkillsQuestbookContractTests(ValidateSkillsCase):
             (Path(validate_skills.__file__), 180),
             (Path(questbook_surface.__file__), 180),
             (Path(generated_surface.__file__), 230),
+            (Path(skill_status_surface.__file__), 230),
         )
 
         for module_path, line_limit in module_limits:

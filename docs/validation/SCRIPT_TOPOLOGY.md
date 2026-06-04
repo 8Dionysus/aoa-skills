@@ -21,6 +21,18 @@ Root wrappers are for command/front-door paths, not for library convenience.
 Contract, source-model, surface, bridge, and helper modules should be imported
 from their organ package.
 
+Generated local-adapter manifests are export-derived surfaces. They are built
+through `scripts/build_agent_skills.py`; a standalone
+`scripts/build_local_adapter_manifest.py` ingress is intentionally not retained
+because it duplicates the export builder output without owning a separate lane.
+Project kernel, outer-ring, risk-ring, and foundation-profile export documents
+are generated through the `scripts/export/project_surface.py` phase.
+The Agent Skills export builder `main()` should stay a route over load, portable
+skill export, generated text assembly, and write phases.
+Per-skill portable markdown, OpenAI YAML, resource inventory, context,
+handoff, trust, and runtime contract assembly lives in
+`scripts/export/portable_skill_export.py`.
+
 `scripts/validators/__init__.py` is a compatibility package for older
 `validators.*` imports. Validator implementation and contract JSON live under
 `scripts/validation/validators/`.

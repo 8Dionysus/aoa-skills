@@ -6,6 +6,7 @@ This module keeps the existing Python API stable for CI, release, and tests.
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 from typing import Any
@@ -79,3 +80,45 @@ RUNTIME_GENERATED_CHECK_COMMAND_SEQUENCE = _command_sequence(
 EXPORT_FULL_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "export_full")
 RELEASE_CHECK_COMMAND_SEQUENCE = _command_sequence(_MANIFEST, "release_check")
 PACKAGING_SMOKE_COMMAND = _single_command(_MANIFEST, "packaging_smoke")
+
+
+def _command_text(command: Command) -> str:
+    return " ".join(command)
+
+
+def main(argv: list[str] | None = None) -> int:
+    command_sequences = _MANIFEST["command_sequences"]
+    parser = argparse.ArgumentParser(
+        description=(
+            "Inspect validation lane command sequences from "
+            "config/validation_lanes.json without executing them."
+        )
+    )
+    parser.add_argument(
+        "lane",
+        nargs="?",
+        choices=sorted(command_sequences),
+        help="Optional lane name to display.",
+    )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Emit the selected lane, or the full manifest when no lane is selected, as JSON.",
+    )
+    args = parser.parse_args(argv)
+
+    if args.json:
+        payload = command_sequences[args.lane] if args.lane else _MANIFEST
+        print(json.dumps(payload, indent=2) + "\n", end="")
+        return 0
+
+    if args.lane:
+        print(f"{args.lane}:")
+        for command in _command_sequence(_MANIFEST, args.lane):
+            print(f"- {_command_text(command)}")
+        return 0
+
+    print(f"validation lanes: {VALIDATION_LANES_PATH.relative_to(REPO_ROOT).as_posix()}")
+    for name, sequence in sorted(command_sequences.items()):
+        print(f"- {name}: {len(sequence)} commands")
+    return 0

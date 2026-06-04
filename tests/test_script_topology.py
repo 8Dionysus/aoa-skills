@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import ast
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -69,6 +72,36 @@ def test_root_python_files_are_only_registered_ingress() -> None:
         assert target_module_path(target).is_file(), target
 
 
+def test_inventory_organ_dirs_cover_all_implementation_scripts() -> None:
+    expected_organs = {organ["path"] for organ in load_inventory()["organ_dirs"]}
+    actual_organs: set[str] = set()
+    for script_path in sorted(SCRIPTS_DIR.rglob("*.py")):
+        rel_parts = script_path.relative_to(SCRIPTS_DIR).parts
+        if len(rel_parts) < 2:
+            continue
+        organ = rel_parts[0]
+        if organ == "validators":
+            continue
+        actual_organs.add(f"scripts/{organ}")
+
+    assert actual_organs == expected_organs
+
+
+def test_root_command_ingress_has_safe_help() -> None:
+    for rel_path in sorted(root_ingress_paths(load_inventory())):
+        result = subprocess.run(
+            (sys.executable, rel_path, "--help"),
+            cwd=REPO_ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        combined_output = f"{result.stdout}\n{result.stderr}"
+        assert result.returncode == 0, f"{rel_path} --help failed:\n{combined_output}"
+        assert "usage:" in combined_output or "Usage:" in combined_output, rel_path
+        assert "--help" in combined_output, rel_path
+
+
 def test_inventory_organ_dirs_match_ingress_targets() -> None:
     inventory = load_inventory()
     seen: set[str] = set()
@@ -96,6 +129,73 @@ def test_legacy_validators_package_is_alias_only() -> None:
 
     text = (SCRIPTS_DIR / "validators" / "__init__.py").read_text(encoding="utf-8")
     assert "validation.validators" in text
+
+
+def test_local_adapter_manifest_builder_is_folded_into_export_builder() -> None:
+    root_ingress = root_ingress_paths(load_inventory())
+    assert "scripts/build_local_adapter_manifest.py" not in root_ingress
+    assert not (SCRIPTS_DIR / "build_local_adapter_manifest.py").exists()
+    assert not (SCRIPTS_DIR / "adapters" / "build_local_adapter_manifest.py").exists()
+
+    export_builder = (SCRIPTS_DIR / "export" / "build_agent_skills.py").read_text(encoding="utf-8")
+    adapter_phase = (SCRIPTS_DIR / "export" / "local_adapter_manifest.py").read_text(
+        encoding="utf-8"
+    )
+    assert "def build_local_adapter_manifests(" not in export_builder
+    assert "local_adapter_manifest.build_local_adapter_manifests(" in export_builder
+    assert "def build_local_adapter_manifests(" in adapter_phase
+    assert '"generated/local_adapter_manifest.min.json"' in adapter_phase
+
+
+def test_project_surface_builder_is_phase_split() -> None:
+    export_builder = (SCRIPTS_DIR / "export" / "build_agent_skills.py").read_text(encoding="utf-8")
+    project_phase = (SCRIPTS_DIR / "export" / "project_surface.py").read_text(encoding="utf-8")
+
+    assert "project_surface.build_project_core_kernel_doc(" in export_builder
+    assert "project_surface.build_project_core_kernel_governance_doc(" in export_builder
+    assert "project_surface.build_project_core_outer_ring_readiness_doc(" in export_builder
+    assert "project_surface.build_project_risk_guard_ring_governance_doc(" in export_builder
+    assert '"source_config": "config/project_core_skill_kernel.json"' not in export_builder
+    assert '"source_config": "config/project_core_skill_kernel.json"' in project_phase
+    assert '"generated/project_core_kernel_governance.min.json"' not in project_phase
+
+
+def test_agent_skill_export_builder_main_stays_orchestration_route() -> None:
+    builder_path = SCRIPTS_DIR / "export" / "build_agent_skills.py"
+    builder_text = builder_path.read_text(encoding="utf-8")
+    syntax_tree = ast.parse(builder_text)
+    main_node = next(
+        node for node in ast.walk(syntax_tree)
+        if isinstance(node, ast.FunctionDef) and node.name == "main"
+    )
+    main_source = ast.get_source_segment(builder_text, main_node) or ""
+
+    assert main_node.end_lineno - main_node.lineno + 1 <= 24
+    assert "build_portable_skill_exports(" in main_source
+    assert "build_generated_file_texts(" in main_source
+    assert "write_generated_file_texts(" in main_source
+    assert "for skill in" not in main_source
+    assert "release_manifest_contract.build_release_manifest(" not in main_source
+
+
+def test_portable_skill_export_builder_is_phase_split() -> None:
+    builder_path = SCRIPTS_DIR / "export" / "build_agent_skills.py"
+    builder_text = builder_path.read_text(encoding="utf-8")
+    portable_phase = (SCRIPTS_DIR / "export" / "portable_skill_export.py").read_text(
+        encoding="utf-8"
+    )
+    syntax_tree = ast.parse(builder_text)
+    wrapper_node = next(
+        node for node in ast.walk(syntax_tree)
+        if isinstance(node, ast.FunctionDef) and node.name == "build_portable_skill_exports"
+    )
+    wrapper_source = ast.get_source_segment(builder_text, wrapper_node) or ""
+
+    assert "portable_skill_export.build_portable_skill_exports(" in wrapper_source
+    assert "for skill in" not in wrapper_source
+    assert "for skill in skill_sections[\"skills\"]" in portable_phase
+    assert "def artifact_tags(" not in builder_text
+    assert "def artifact_tags(" in portable_phase
 
 
 def test_moved_implementation_does_not_use_flat_repo_root_parent() -> None:

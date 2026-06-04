@@ -13,6 +13,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 
 from export import release_manifest_contract
 from export import build_agent_skills
+from export import local_adapter_manifest
 
 
 def load_json(path: pathlib.Path):
@@ -35,6 +36,20 @@ class CodexPortableContractTests(unittest.TestCase):
         manifest_names = {entry["name"] for entry in manifest["skills"]}
         catalog_names = {entry["name"] for entry in catalog["skills"]}
         self.assertEqual(manifest_names, catalog_names)
+
+    def test_local_adapter_manifest_phase_matches_generated_outputs(self):
+        catalog = load_json(REPO_ROOT / "generated" / "agent_skill_catalog.json")
+        manifest, manifest_min = local_adapter_manifest.build_local_adapter_manifests(
+            repo_root=REPO_ROOT,
+            skills_root=REPO_ROOT / ".agents" / "skills",
+            catalog_full=catalog,
+        )
+
+        self.assertEqual(manifest, load_json(REPO_ROOT / "generated" / "local_adapter_manifest.json"))
+        self.assertEqual(
+            manifest_min,
+            load_json(REPO_ROOT / "generated" / "local_adapter_manifest.min.json"),
+        )
 
     def test_runtime_contracts_match_catalog(self):
         handoff_doc = load_json(REPO_ROOT / "generated" / "skill_handoff_contracts.json")

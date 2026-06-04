@@ -4,8 +4,10 @@ Validation commands use a hybrid authority model:
 
 - `config/validation_lanes.json` is the canonical storage surface for full
   blocking lane command sequences and drift-path lists.
-- `scripts/validation_lanes.py` is a loader and compatibility API for Python
-  callers. It must not grow its own second copy of lane sequences.
+- `scripts/lanes/validation_lanes.py` is the loader/API for Python callers.
+  Root `scripts/validation_lanes.py` is only compatibility ingress and a safe
+  manifest-inspection CLI. Neither path may grow a second copy of lane
+  sequences.
 - Nearest `AGENTS.md` cards may name focused owner checks, lane ids, and local
   next routes for the changed surface.
 - GitHub workflow YAML should call `scripts/ci_gate.py --mode ...` or the
