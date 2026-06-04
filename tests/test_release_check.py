@@ -20,8 +20,8 @@ from lanes import validation_lanes
 class ReleaseCheckTests(unittest.TestCase):
     def test_resolve_command_uses_current_python_executable(self) -> None:
         self.assertEqual(
-            (sys.executable, "scripts/build_catalog.py"),
-            release_check.resolve_command(("python", "scripts/build_catalog.py")),
+            (sys.executable, "scripts/builders/build_catalog.py"),
+            release_check.resolve_command(("python", "scripts/builders/build_catalog.py")),
         )
         self.assertEqual(
             ("git", "status"),
@@ -34,71 +34,71 @@ class ReleaseCheckTests(unittest.TestCase):
             validation_lanes.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/generate_decision_indexes.py", "--check"),
+            ("python", "scripts/decisions/generate_decision_indexes.py", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_runtime_seam.py", "--repo-root", "."),
+            ("python", "scripts/runtime/build_runtime_seam.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
+            ("python", "scripts/runtime/build_runtime_seam.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_runtime_guardrails.py", "--repo-root", "."),
+            ("python", "scripts/runtime/build_runtime_guardrails.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
+            ("python", "scripts/runtime/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_description_trigger_evals.py", "--repo-root", "."),
+            ("python", "scripts/builders/build_description_trigger_evals.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/lint_description_trigger_evals.py", "--repo-root", "."),
+            ("python", "scripts/validation/lint_description_trigger_evals.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/run_skills_ref_validation.py", "--repo-root", "."),
+            ("python", "scripts/validation/run_skills_ref_validation.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_support_resources.py", "--repo-root", "."),
+            ("python", "scripts/builders/build_support_resources.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", "."),
+            ("python", "scripts/builders/build_tiny_router_inputs.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/validate_support_resources.py", "--repo-root", ".", "--check-portable"),
+            ("python", "scripts/validation/validate_support_resources.py", "--repo-root", ".", "--check-portable"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/validate_tiny_router_inputs.py", "--repo-root", "."),
+            ("python", "scripts/validation/validate_tiny_router_inputs.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/lint_support_resources.py", "--repo-root", "."),
+            ("python", "scripts/validation/lint_support_resources.py", "--repo-root", "."),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
+            ("python", "scripts/builders/build_tiny_router_inputs.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_support_resources.py", "--repo-root", ".", "--check"),
+            ("python", "scripts/builders/build_support_resources.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/build_description_trigger_evals.py", "--repo-root", ".", "--check"),
+            ("python", "scripts/builders/build_description_trigger_evals.py", "--repo-root", ".", "--check"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(
-            ("python", "scripts/validate_agents_design.py"),
+            ("python", "scripts/validation/validate_agents_design.py"),
             release_check.RELEASE_CHECK_COMMAND_SEQUENCE,
         )
         self.assertIn(

@@ -35,6 +35,8 @@ Tracking starts with the community-docs baseline for this repository.
   agentic route/fault contract posture.
 - A new `AOA-SK-D-0031` decision records the script source-home topology and
   root ingress compatibility route.
+- A new `AOA-SK-D-0032` decision records the command-authority migration from
+  root compatibility wrappers to script organ paths.
 
 ### Changed
 
@@ -82,6 +84,10 @@ Tracking starts with the community-docs baseline for this repository.
 - Active route, audit, quest, and Spark scenario docs now point to lane ids,
   owner surfaces, or nearest `AGENTS.md` routes instead of carrying validation
   command blocks outside the command-authority surfaces.
+- Blocking validation lane sequences now execute family-scoped script organ
+  paths under `scripts/lanes/`, `scripts/builders/`, `scripts/validation/`,
+  `scripts/runtime/`, and related command organs instead of root compatibility
+  wrappers.
 - Release checks now execute the default pytest test lane, while
   `tests/AGENTS.md` and the lane manifest share the same command authority.
 - The former monolithic validation and catalog tests are split by owner

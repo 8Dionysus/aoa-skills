@@ -26,11 +26,11 @@ class CiGateTests(unittest.TestCase):
 
         self.assertEqual(
             [
-                ("python", "scripts/validate_agents_design.py"),
-                ("python", "scripts/validate_nested_agents.py"),
+                ("python", "scripts/validation/validate_agents_design.py"),
+                ("python", "scripts/validation/validate_nested_agents.py"),
                 (
                     "python",
-                    "scripts/validate_skills.py",
+                    "scripts/validation/validate_skills.py",
                     "--skip-generated",
                     "--fail-on-review-truth-sync",
                 ),
@@ -48,7 +48,7 @@ class CiGateTests(unittest.TestCase):
             ci_gate.run_generated("reader")
 
         self.assertEqual(
-            [("python", "scripts/build_catalog.py", "--check", "--group", "reader")],
+            [("python", "scripts/builders/build_catalog.py", "--check", "--group", "reader")],
             calls,
         )
 
@@ -61,7 +61,7 @@ class CiGateTests(unittest.TestCase):
         with mock.patch.object(ci_gate, "run_command", side_effect=fake_run):
             ci_gate.run_generated("governance")
 
-        self.assertIn(("python", "scripts/generate_decision_indexes.py", "--check"), calls)
+        self.assertIn(("python", "scripts/decisions/generate_decision_indexes.py", "--check"), calls)
 
     def test_generated_export_group_runs_export_generated_checks(self) -> None:
         calls: list[tuple[str, ...]] = []
@@ -72,14 +72,14 @@ class CiGateTests(unittest.TestCase):
         with mock.patch.object(ci_gate, "run_command", side_effect=fake_run):
             ci_gate.run_generated("export")
 
-        self.assertEqual(("python", "scripts/build_agent_skills.py", "--repo-root", "."), calls[0])
-        self.assertIn(("python", "scripts/validate_agent_skills.py", "--repo-root", "."), calls)
+        self.assertEqual(("python", "scripts/export/build_agent_skills.py", "--repo-root", "."), calls[0])
+        self.assertIn(("python", "scripts/validation/validate_agent_skills.py", "--repo-root", "."), calls)
         self.assertEqual(
             ("git", "diff", "--exit-code", "--", *ci_gate.EXPORT_GENERATED_DRIFT_PATHS),
             calls[-1],
         )
         self.assertNotIn(
-            ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
+            ("python", "scripts/runtime/build_runtime_seam.py", "--repo-root", ".", "--check"),
             calls,
         )
 
@@ -94,8 +94,8 @@ class CiGateTests(unittest.TestCase):
 
         self.assertEqual(
             [
-                ("python", "scripts/build_runtime_seam.py", "--repo-root", ".", "--check"),
-                ("python", "scripts/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
+                ("python", "scripts/runtime/build_runtime_seam.py", "--repo-root", ".", "--check"),
+                ("python", "scripts/runtime/build_runtime_guardrails.py", "--repo-root", ".", "--check"),
                 ("git", "diff", "--exit-code", "--", *ci_gate.RUNTIME_GENERATED_DRIFT_PATHS),
             ],
             calls,
@@ -110,10 +110,10 @@ class CiGateTests(unittest.TestCase):
         with mock.patch.object(ci_gate, "run_command", side_effect=fake_run):
             ci_gate.run_generated("all")
 
-        self.assertIn(("python", "scripts/build_catalog.py", "--check", "--group", "all"), calls)
+        self.assertIn(("python", "scripts/builders/build_catalog.py", "--check", "--group", "all"), calls)
         self.assertIn(("git", "diff", "--exit-code", "--", *ci_gate.EXPORT_GENERATED_DRIFT_PATHS), calls)
         self.assertIn(("git", "diff", "--exit-code", "--", *ci_gate.RUNTIME_GENERATED_DRIFT_PATHS), calls)
-        self.assertEqual(("python", "scripts/generate_decision_indexes.py", "--check"), calls[-1])
+        self.assertEqual(("python", "scripts/decisions/generate_decision_indexes.py", "--check"), calls[-1])
 
     def test_export_changed_only_skips_non_export_paths(self) -> None:
         with (
@@ -136,7 +136,7 @@ class CiGateTests(unittest.TestCase):
         ):
             ci_gate.run_export(changed_only=True, base_ref="abc123")
 
-        self.assertEqual(("python", "scripts/build_catalog.py", "--group", "all"), calls[0])
+        self.assertEqual(("python", "scripts/builders/build_catalog.py", "--group", "all"), calls[0])
         self.assertEqual(("git", "diff", "--exit-code", "--", *ci_gate.EXPORT_DRIFT_PATHS), calls[-1])
 
     def test_export_changed_only_runs_for_export_gate_logic(self) -> None:
@@ -144,10 +144,10 @@ class CiGateTests(unittest.TestCase):
             ".github/workflows/codex-portable-export.yml",
             "config/validation_lanes.json",
             "requirements-dev.txt",
-            "scripts/ci_gate.py",
-            "scripts/validation_lanes.py",
-            "scripts/build_catalog.py",
-            "scripts/build_trigger_eval_cases.py",
+            "scripts/lanes/ci_gate.py",
+            "scripts/lanes/validation_lanes.py",
+            "scripts/builders/build_catalog.py",
+            "scripts/builders/build_trigger_eval_cases.py",
             "scripts/export/release_manifest_contract.py",
         ):
             with self.subTest(path=path):
@@ -159,15 +159,15 @@ class CiGateTests(unittest.TestCase):
 
         self.assertEqual(
             [
-                ("python", "scripts/validate_agents_design.py"),
-                ("python", "scripts/validate_nested_agents.py"),
+                ("python", "scripts/validation/validate_agents_design.py"),
+                ("python", "scripts/validation/validate_nested_agents.py"),
                 (
                     "python",
-                    "scripts/validate_skills.py",
+                    "scripts/validation/validate_skills.py",
                     "--skip-generated",
                     "--fail-on-review-truth-sync",
                 ),
-                ("python", "scripts/release_check.py", "--include-packaging-smoke"),
+                ("python", "scripts/lanes/release_check.py", "--include-packaging-smoke"),
             ],
             [call.args[0] for call in run_command.call_args_list],
         )

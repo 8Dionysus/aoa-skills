@@ -26,13 +26,14 @@ Use this route before editing validator code:
 1. Identify the owner surface.
 2. Check whether the input is source, generated, export/runtime, live workspace,
    or advisory evidence.
-3. Keep root `scripts/validate_*.py` and `scripts/lint_*.py` files as CLI
-   adapters when the execution body is non-trivial.
+3. Keep root `scripts/validate_*.py` and `scripts/lint_*.py` files as
+   compatibility CLI adapters only when a stable front-door path still matters.
 4. Put bulky deterministic execution in `scripts/validation/validators/*`.
 5. Put route-law or contract data in JSON manifests, not Python lists.
 6. Store blocking lane sequences in `config/validation_lanes.json`.
-7. Wire callers through `scripts/lanes/validation_lanes.py`, the compatibility
-   ingress `scripts/validation_lanes.py`, and `scripts/ci_gate.py`.
+7. Wire active callers through `scripts/lanes/validation_lanes.py` and
+   `scripts/lanes/ci_gate.py`; keep root `scripts/validation_lanes.py` as
+   compatibility ingress only.
 8. Keep live workspace and broad evidence reports advisory unless a lane
    explicitly names their failure mode.
 
@@ -40,11 +41,11 @@ Use this route before editing validator code:
 
 | Lane | Role | Typical command |
 |---|---|---|
-| `source-fast` | Fast source gate for authored skill contracts and route law. | `python scripts/ci_gate.py --mode source-fast` |
-| `generated` | Read-model freshness and parity for generated companions. | `python scripts/ci_gate.py --mode generated --group all` |
-| `export` | Portable export, runtime, support-resource, tiny-router, and adapter transport checks. | `python scripts/ci_gate.py --mode export` |
-| `release` | Frozen release gate plus packaging smoke. | `python scripts/ci_gate.py --mode release` |
-| `nightly` | Moving-main growth sentinel plus release identity readout. | `python scripts/ci_gate.py --mode nightly` |
+| `source-fast` | Fast source gate for authored skill contracts and route law. | `python scripts/lanes/ci_gate.py --mode source-fast` |
+| `generated` | Read-model freshness and parity for generated companions. | `python scripts/lanes/ci_gate.py --mode generated --group all` |
+| `export` | Portable export, runtime, support-resource, tiny-router, and adapter transport checks. | `python scripts/lanes/ci_gate.py --mode export` |
+| `release` | Frozen release gate plus packaging smoke. | `python scripts/lanes/ci_gate.py --mode release` |
+| `nightly` | Moving-main growth sentinel plus release identity readout. | `python scripts/lanes/ci_gate.py --mode nightly` |
 | `advisory` | Reports and audits that guide review but do not fail ordinary CI by default. | Run the named report directly. |
 | `manual` | Workspace, sibling, or operator-context check used when that surface is in scope. | Run the named command directly. |
 
@@ -52,15 +53,15 @@ Use this route before editing validator code:
 
 | Family | Protects | Owner module or surface | Failure route |
 |---|---|---|---|
-| Source/topology | `skills/**/SKILL.md`, `techniques.yaml`, skill status, route cards, questbook source shape. | `scripts/validate_skills.py`, `scripts/validate_nested_agents.py`, `scripts/validation/validators/questbook_surface.py` | Fix authored source, route card, or manifest; rerun `source-fast`. |
+| Source/topology | `skills/**/SKILL.md`, `techniques.yaml`, skill status, route cards, questbook source shape. | `scripts/validation/validate_skills.py`, `scripts/validation/validate_nested_agents.py`, `scripts/validation/validators/questbook_surface.py` | Fix authored source, route card, or manifest; rerun `source-fast`. |
 | AGENTS/route-law | Required nested `AGENTS.md` snippets and agent-facing contract shape. | `scripts/validation/validators/nested_agents_contract.json` | Update the local card or contract manifest; do not add a one-off Python validator. |
 | Activation/trigger | Explicit/manual posture, collision cases, description signals, trigger cases, tiny-router surfaces. | `scripts/validation/validators/trigger_eval_surface.py`, `scripts/validation/validators/tiny_router_surface.py` | Fix source skill description/policy, rebuild generated cases, then lint. |
 | Skill-native eval | Snapshot-backed local evidence and generated evaluation matrix. | `scripts/skill_model/skill_evaluation_contract.py`, `scripts/skill_model/skill_evaluation_surface.py` | Repair fixture/snapshot/source bundle mismatch; keep broad proof outside required gates. |
-| Generated/read-model | Catalogs, public/governance/evaluation matrices, decision indexes, skill graph, release manifest. | `scripts/build_catalog.py`, `scripts/generate_decision_indexes.py` | Move source input or builder, regenerate, and require drift-free output. |
-| Portable export/runtime | `.agents/skills/*`, runtime seam, guardrails, Agent Skills export surface. | `scripts/validation/validators/agent_skills_export_surface.py`, `scripts/validation/validators/agent_skills_project_surface.py`, `scripts/skill_runtime_seam.py`, `scripts/skill_runtime_guardrails.py` | Fix source/config/builder and rerun export lane. |
+| Generated/read-model | Catalogs, public/governance/evaluation matrices, decision indexes, skill graph, release manifest. | `scripts/builders/build_catalog.py`, `scripts/decisions/generate_decision_indexes.py` | Move source input or builder, regenerate, and require drift-free output. |
+| Portable export/runtime | `.agents/skills/*`, runtime seam, guardrails, Agent Skills export surface. | `scripts/validation/validators/agent_skills_export_surface.py`, `scripts/validation/validators/agent_skills_project_surface.py`, `scripts/runtime/skill_runtime_seam.py`, `scripts/runtime/skill_runtime_guardrails.py` | Fix source/config/builder and rerun export lane. |
 | Support/tiny-router | Support resources, deterministic resource manifests, pack profiles, tiny-router capsules. | `scripts/validation/validators/support_resource_surface.py`, `scripts/validation/validators/pack_profile_surface.py`, `scripts/validation/validators/tiny_router_surface.py` | Fix canonical support files or generated mirrors; rerun export/generated lane. |
-| Risk/guardrail | Explicit-only posture, permission/trust/context guardrail manifests. | `scripts/build_runtime_guardrails.py`, `scripts/skill_runtime_guardrails.py` | Fix policy config or source bundle risk posture; rerun runtime generated checks. |
-| Release/CI | Lane command order, generated drift paths, packaging smoke, growth-vs-release split. | `config/validation_lanes.json`, `scripts/lanes/validation_lanes.py`, `scripts/validation_lanes.py`, `scripts/ci_gate.py`, `scripts/release_check.py` | Fix lane manifest definitions and tests before changing GitHub workflow YAML. |
+| Risk/guardrail | Explicit-only posture, permission/trust/context guardrail manifests. | `scripts/runtime/build_runtime_guardrails.py`, `scripts/runtime/skill_runtime_guardrails.py` | Fix policy config or source bundle risk posture; rerun runtime generated checks. |
+| Release/CI | Lane command order, generated drift paths, packaging smoke, growth-vs-release split. | `config/validation_lanes.json`, `scripts/lanes/validation_lanes.py`, `scripts/lanes/ci_gate.py`, `scripts/lanes/release_check.py`; root wrappers remain compatibility ingress. | Fix lane manifest definitions and tests before changing GitHub workflow YAML. |
 | Advisory audit/report | Promotion pressure, workspace adoption, quality audit, technique drift, reality trials. | Report scripts and audit docs. | Treat as review evidence unless a command is explicitly invoked with a failing flag. |
 
 ## Current Debt Closures
@@ -74,8 +75,11 @@ Use this route before editing validator code:
 - `config/validation_lanes.json` is the source of CI command sequencing;
   `scripts/lanes/validation_lanes.py` is the loader/API, and root
   `scripts/validation_lanes.py` is compatibility ingress with safe manifest
-  inspection. GitHub workflow YAML should call lanes, not invent hidden
-  validation meaning.
+  inspection.
+- Blocking lane sequences now execute organ implementation paths such as
+  `scripts/validation/validate_skills.py`, `scripts/builders/build_catalog.py`,
+  and `scripts/runtime/build_runtime_seam.py`; root wrappers are not active
+  command-authority owners.
 
 ## Boundary
 

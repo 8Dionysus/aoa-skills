@@ -69,15 +69,15 @@
     "source_fast": [
       [
         "python",
-        "scripts/validate_agents_design.py"
+        "scripts/validation/validate_agents_design.py"
       ],
       [
         "python",
-        "scripts/validate_nested_agents.py"
+        "scripts/validation/validate_nested_agents.py"
       ],
       [
         "python",
-        "scripts/validate_skills.py",
+        "scripts/validation/validate_skills.py",
         "--skip-generated",
         "--fail-on-review-truth-sync"
       ]
@@ -85,84 +85,84 @@
     "export_generated_check": [
       [
         "python",
-        "scripts/build_agent_skills.py",
+        "scripts/export/build_agent_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_trigger_eval_cases.py",
+        "scripts/builders/build_trigger_eval_cases.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_description_trigger_evals.py",
+        "scripts/builders/build_description_trigger_evals.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_support_resources.py",
+        "scripts/builders/build_support_resources.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_tiny_router_inputs.py",
+        "scripts/builders/build_tiny_router_inputs.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/validate_agent_skills.py",
+        "scripts/validation/validate_agent_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/validate_support_resources.py",
+        "scripts/validation/validate_support_resources.py",
         "--repo-root",
         ".",
         "--check-portable"
       ],
       [
         "python",
-        "scripts/validate_tiny_router_inputs.py",
+        "scripts/validation/validate_tiny_router_inputs.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_trigger_evals.py",
+        "scripts/validation/lint_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_description_trigger_evals.py",
+        "scripts/validation/lint_description_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_pack_profiles.py",
+        "scripts/validation/lint_pack_profiles.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_support_resources.py",
+        "scripts/validation/lint_support_resources.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/run_skills_ref_validation.py",
+        "scripts/validation/run_skills_ref_validation.py",
         "--repo-root",
         "."
       ],
@@ -211,14 +211,14 @@
     "runtime_generated_check": [
       [
         "python",
-        "scripts/build_runtime_seam.py",
+        "scripts/runtime/build_runtime_seam.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_runtime_guardrails.py",
+        "scripts/runtime/build_runtime_guardrails.py",
         "--repo-root",
         ".",
         "--check"
@@ -251,98 +251,98 @@
     "export_full": [
       [
         "python",
-        "scripts/build_catalog.py",
+        "scripts/builders/build_catalog.py",
         "--group",
         "all"
       ],
       [
         "python",
-        "scripts/build_agent_skills.py",
+        "scripts/export/build_agent_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_runtime_seam.py",
+        "scripts/runtime/build_runtime_seam.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_runtime_guardrails.py",
+        "scripts/runtime/build_runtime_guardrails.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_trigger_eval_cases.py",
+        "scripts/builders/build_trigger_eval_cases.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_description_trigger_evals.py",
+        "scripts/builders/build_description_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_support_resources.py",
+        "scripts/builders/build_support_resources.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_tiny_router_inputs.py",
+        "scripts/builders/build_tiny_router_inputs.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/validate_agent_skills.py",
+        "scripts/validation/validate_agent_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/validate_support_resources.py",
+        "scripts/validation/validate_support_resources.py",
         "--repo-root",
         ".",
         "--check-portable"
       ],
       [
         "python",
-        "scripts/validate_tiny_router_inputs.py",
+        "scripts/validation/validate_tiny_router_inputs.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_trigger_evals.py",
+        "scripts/validation/lint_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_description_trigger_evals.py",
+        "scripts/validation/lint_description_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_pack_profiles.py",
+        "scripts/validation/lint_pack_profiles.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_support_resources.py",
+        "scripts/validation/lint_support_resources.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/run_skills_ref_validation.py",
+        "scripts/validation/run_skills_ref_validation.py",
         "--repo-root",
         "."
       ],
@@ -409,28 +409,28 @@
     "release_check": [
       [
         "python",
-        "scripts/build_catalog.py"
+        "scripts/builders/build_catalog.py"
       ],
       [
         "python",
-        "scripts/generate_decision_indexes.py",
+        "scripts/decisions/generate_decision_indexes.py",
         "--check"
       ],
       [
         "python",
-        "scripts/build_agent_skills.py",
+        "scripts/export/build_agent_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_trigger_eval_cases.py",
+        "scripts/builders/build_trigger_eval_cases.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_openai_yaml_examples.py",
+        "scripts/adapters/build_openai_yaml_examples.py",
         "--map",
         "mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json",
         "--output-dir",
@@ -439,31 +439,31 @@
       ],
       [
         "python",
-        "scripts/build_runtime_seam.py",
+        "scripts/runtime/build_runtime_seam.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_runtime_guardrails.py",
+        "scripts/runtime/build_runtime_guardrails.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_description_trigger_evals.py",
+        "scripts/builders/build_description_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_support_resources.py",
+        "scripts/builders/build_support_resources.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/build_tiny_router_inputs.py",
+        "scripts/builders/build_tiny_router_inputs.py",
         "--repo-root",
         "."
       ],
@@ -502,62 +502,62 @@
       ],
       [
         "python",
-        "scripts/validate_agents_design.py"
+        "scripts/validation/validate_agents_design.py"
       ],
       [
         "python",
-        "scripts/validate_nested_agents.py"
+        "scripts/validation/validate_nested_agents.py"
       ],
       [
         "python",
-        "scripts/validate_skills.py"
+        "scripts/validation/validate_skills.py"
       ],
       [
         "python",
-        "scripts/validate_agent_skills.py",
+        "scripts/validation/validate_agent_skills.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/validate_support_resources.py",
+        "scripts/validation/validate_support_resources.py",
         "--repo-root",
         ".",
         "--check-portable"
       ],
       [
         "python",
-        "scripts/validate_tiny_router_inputs.py",
+        "scripts/validation/validate_tiny_router_inputs.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_trigger_evals.py",
+        "scripts/validation/lint_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_description_trigger_evals.py",
+        "scripts/validation/lint_description_trigger_evals.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_pack_profiles.py",
+        "scripts/validation/lint_pack_profiles.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/lint_support_resources.py",
+        "scripts/validation/lint_support_resources.py",
         "--repo-root",
         "."
       ],
       [
         "python",
-        "scripts/run_skills_ref_validation.py",
+        "scripts/validation/run_skills_ref_validation.py",
         "--repo-root",
         "."
       ],
@@ -577,49 +577,49 @@
       ],
       [
         "python",
-        "scripts/build_tiny_router_inputs.py",
+        "scripts/builders/build_tiny_router_inputs.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_support_resources.py",
+        "scripts/builders/build_support_resources.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_description_trigger_evals.py",
+        "scripts/builders/build_description_trigger_evals.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_trigger_eval_cases.py",
+        "scripts/builders/build_trigger_eval_cases.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_runtime_guardrails.py",
+        "scripts/runtime/build_runtime_guardrails.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_runtime_seam.py",
+        "scripts/runtime/build_runtime_seam.py",
         "--repo-root",
         ".",
         "--check"
       ],
       [
         "python",
-        "scripts/build_catalog.py",
+        "scripts/builders/build_catalog.py",
         "--check"
       ]
     ]
@@ -627,7 +627,7 @@
   "single_commands": {
     "packaging_smoke": [
       "python",
-      "scripts/smoke_skill_pack_handoff.py",
+      "scripts/bundles/smoke_skill_pack_handoff.py",
       "--repo-root",
       ".",
       "--transport",

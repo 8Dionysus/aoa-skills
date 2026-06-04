@@ -114,13 +114,19 @@
 
 - [AOA-SK-D-0029 Validator Topology And Owner Modules](../AOA-SK-D-0029-validator-topology-and-owner-modules.md) (`docs/decisions/AOA-SK-D-0029-validator-topology-and-owner-modules.md`)
 
+## release/CI
+
+- [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
+
 ## script topology
 
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
+- [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 
 ## validation command authority
 
 - [AOA-SK-D-0031 Script Source Home Topology](../AOA-SK-D-0031-script-source-home-topology.md) (`docs/decisions/AOA-SK-D-0031-script-source-home-topology.md`)
+- [AOA-SK-D-0032 Command Authority Family Paths](../AOA-SK-D-0032-command-authority-family-paths.md) (`docs/decisions/AOA-SK-D-0032-command-authority-family-paths.md`)
 
 ## validator topology
 

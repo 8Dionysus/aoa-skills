@@ -16,7 +16,7 @@
 
 ## VERIFY
 <!--
-- `python scripts/release_check.py` status
+- `python scripts/lanes/release_check.py` status
 - `build_catalog`, `validate_skills`, `report_skill_evaluation`, `inspect_skill`, or drift commands actually run
 - `pytest` modules actually run
 - what was not run

@@ -19,7 +19,7 @@
   ],
   "entries": [
     {
-      "path": "scripts/ci_gate.py",
+      "path": "scripts/lanes/ci_gate.py",
       "family": "release/ci",
       "owner_surface": "config/validation_lanes.json",
       "layer": "orchestrator",
@@ -28,7 +28,7 @@
       "inputs": [
         "lane args",
         "config/validation_lanes.json",
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "outputs": [
         "lane command execution"
@@ -60,9 +60,9 @@
         "canonical lane command manifest"
       ],
       "callers": [
-        "scripts/validation_lanes.py",
-        "scripts/ci_gate.py",
-        "scripts/release_check.py"
+        "scripts/lanes/validation_lanes.py",
+        "scripts/lanes/ci_gate.py",
+        "scripts/lanes/release_check.py"
       ],
       "overlap": "Stores full lane command sequences; nearest AGENTS cards may only name focused checks or lane routes.",
       "pain": "Duplicating full sequences in Python, AGENTS, or workflow YAML creates hidden validation authority.",
@@ -71,7 +71,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/release_check.py",
+      "path": "scripts/lanes/release_check.py",
       "family": "release/ci",
       "owner_surface": "config/validation_lanes.json",
       "layer": "orchestrator",
@@ -86,7 +86,7 @@
         "stable release gate result"
       ],
       "callers": [
-        "scripts/ci_gate.py --mode release",
+        "scripts/lanes/ci_gate.py --mode release",
         ".github/workflows/release-audit.yml"
       ],
       "overlap": "Wraps release lane and worktree stability; lane order lives elsewhere.",
@@ -96,7 +96,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/validate_agents_design.py",
+      "path": "scripts/validation/validate_agents_design.py",
       "family": "AGENTS/route-law",
       "owner_surface": "DESIGN.AGENTS.md",
       "layer": "source",
@@ -111,7 +111,7 @@
         "agent-facing design conformance"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Complements nested AGENTS snippet checks.",
       "pain": "Route-law data must not drift into unrelated validators.",
@@ -120,7 +120,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/validate_nested_agents.py",
+      "path": "scripts/validation/validate_nested_agents.py",
       "family": "AGENTS/route-law",
       "owner_surface": "scripts/validation/validators/nested_agents_contract.json",
       "layer": "source",
@@ -134,7 +134,7 @@
         "required local route snippets"
       ],
       "callers": [
-        "scripts/validation_lanes.py",
+        "scripts/lanes/validation_lanes.py",
         "tests/test_nested_agents_docs.py"
       ],
       "overlap": "Now owns former semantic AGENTS snippet checks.",
@@ -144,7 +144,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/validate_skills.py",
+      "path": "scripts/validation/validate_skills.py",
       "family": "source/topology",
       "owner_surface": "skills/**/SKILL.md",
       "layer": "source",
@@ -160,8 +160,8 @@
         "skill source contract verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py",
-        "scripts/release_check.py"
+        "scripts/lanes/validation_lanes.py",
+        "scripts/lanes/release_check.py"
       ],
       "overlap": "Delegates generated and questbook sub-surfaces to owner modules.",
       "pain": "Still large, but source ownership is broad and phase-split.",
@@ -170,7 +170,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_catalog.py",
+      "path": "scripts/builders/build_catalog.py",
       "family": "generated/read-model",
       "owner_surface": "generated/AGENTS.md",
       "layer": "generated",
@@ -186,7 +186,7 @@
         "generated reader/public/evaluation/governance surfaces"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Builder and --check drift validator share one entrypoint.",
       "pain": "Generated groups must stay explicit to avoid release-gate sprawl.",
@@ -195,7 +195,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/generate_decision_indexes.py",
+      "path": "scripts/decisions/generate_decision_indexes.py",
       "family": "generated/read-model",
       "owner_surface": "docs/decisions/AGENTS.md",
       "layer": "generated",
@@ -208,7 +208,7 @@
         "docs/decisions/indexes/*"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Governance generated lane only.",
       "pain": "Decision index drift can look like docs-only noise.",
@@ -217,7 +217,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_agent_skills.py",
+      "path": "scripts/export/build_agent_skills.py",
       "family": "portable export/runtime",
       "owner_surface": "mechanics/release-support/docs/COMPONENT_REFRESH_LAW.md",
       "layer": "export",
@@ -233,7 +233,7 @@
         "portable export maps"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Paired with validate_agent_skills.py.",
       "pain": "Export drift can be mistaken for source authority.",
@@ -242,7 +242,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/validate_agent_skills.py",
+      "path": "scripts/validation/validate_agent_skills.py",
       "family": "portable export/runtime",
       "owner_surface": "scripts/validation/validators/agent_skills_export_surface.py",
       "layer": "export/runtime",
@@ -257,7 +257,7 @@
         "export/runtime contract verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py",
+        "scripts/lanes/validation_lanes.py",
         "tests/test_validate_agent_skills_entrypoint.py"
       ],
       "overlap": "Thin CLI adapter over owner module.",
@@ -267,7 +267,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_trigger_eval_cases.py",
+      "path": "scripts/builders/build_trigger_eval_cases.py",
       "family": "activation/trigger",
       "owner_surface": "mechanics/audit/docs/TRIGGER_EVALS.md",
       "layer": "generated",
@@ -282,7 +282,7 @@
         "generated/skill_trigger_eval_cases.*"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Paired with lint_trigger_evals.py.",
       "pain": "Trigger seeds can become hidden eval doctrine if not bounded.",
@@ -291,7 +291,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/lint_trigger_evals.py",
+      "path": "scripts/validation/lint_trigger_evals.py",
       "family": "activation/trigger",
       "owner_surface": "scripts/validation/validators/trigger_eval_surface.py",
       "layer": "generated",
@@ -305,7 +305,7 @@
         "trigger coverage verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Shares owner module with description-trigger lint.",
       "pain": "Formerly held full execution in root CLI.",
@@ -314,7 +314,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_description_trigger_evals.py",
+      "path": "scripts/builders/build_description_trigger_evals.py",
       "family": "activation/trigger",
       "owner_surface": "mechanics/audit/docs/DESCRIPTION_TRIGGER_EVALS.md",
       "layer": "generated",
@@ -330,7 +330,7 @@
         "manifest"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Paired with lint_description_trigger_evals.py.",
       "pain": "Description-trigger drift affects tiny-router inputs too.",
@@ -339,7 +339,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/lint_description_trigger_evals.py",
+      "path": "scripts/validation/lint_description_trigger_evals.py",
       "family": "activation/trigger",
       "owner_surface": "scripts/validation/validators/trigger_eval_surface.py",
       "layer": "generated",
@@ -353,7 +353,7 @@
         "description-trigger coverage verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Shares owner module with trigger-eval lint.",
       "pain": "Formerly held full execution in root CLI.",
@@ -362,7 +362,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_tiny_router_inputs.py",
+      "path": "scripts/builders/build_tiny_router_inputs.py",
       "family": "support/tiny-router",
       "owner_surface": "mechanics/boundary-bridge/docs/LAYER_POSITION.md",
       "layer": "generated",
@@ -377,7 +377,7 @@
         "generated/tiny_router_*"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Paired with validate_tiny_router_inputs.py.",
       "pain": "Consumes several generated seed surfaces.",
@@ -386,7 +386,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/validate_tiny_router_inputs.py",
+      "path": "scripts/validation/validate_tiny_router_inputs.py",
       "family": "support/tiny-router",
       "owner_surface": "scripts/validation/validators/tiny_router_surface.py",
       "layer": "generated/export",
@@ -401,7 +401,7 @@
         "tiny-router contract verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py",
+        "scripts/lanes/validation_lanes.py",
         "tests/test_tiny_router_inputs.py"
       ],
       "overlap": "Thin CLI adapter over owner module.",
@@ -411,7 +411,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_support_resources.py",
+      "path": "scripts/builders/build_support_resources.py",
       "family": "support/tiny-router",
       "owner_surface": "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
       "layer": "generated/export",
@@ -425,7 +425,7 @@
         "support resource indexes"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Paired with validate_support_resources.py and lint_support_resources.py.",
       "pain": "Support-resource naming and export digest checks were split across root scripts.",
@@ -434,7 +434,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/validate_support_resources.py",
+      "path": "scripts/validation/validate_support_resources.py",
       "family": "support/tiny-router",
       "owner_surface": "scripts/validation/validators/support_resource_surface.py",
       "layer": "generated/export",
@@ -449,7 +449,7 @@
         "support-resource contract verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py",
+        "scripts/lanes/validation_lanes.py",
         "tests/test_support_resource_bundles.py"
       ],
       "overlap": "Shares owner module with support-resource lint.",
@@ -459,7 +459,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/lint_support_resources.py",
+      "path": "scripts/validation/lint_support_resources.py",
       "family": "support/tiny-router",
       "owner_surface": "scripts/validation/validators/support_resource_surface.py",
       "layer": "source/export",
@@ -472,7 +472,7 @@
         "support-resource naming and count verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Shares owner module with validate_support_resources.py.",
       "pain": "Duplicated targeted skill constants.",
@@ -481,7 +481,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/lint_pack_profiles.py",
+      "path": "scripts/validation/lint_pack_profiles.py",
       "family": "support/tiny-router",
       "owner_surface": "scripts/validation/validators/pack_profile_surface.py",
       "layer": "export",
@@ -495,7 +495,7 @@
         "pack profile contract verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Thin CLI adapter over owner module.",
       "pain": "Formerly held root execution logic.",
@@ -504,7 +504,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_runtime_seam.py",
+      "path": "scripts/runtime/build_runtime_seam.py",
       "family": "portable export/runtime",
       "owner_surface": "scripts/skill_runtime_seam.py",
       "layer": "runtime-generated",
@@ -518,7 +518,7 @@
         "generated/runtime_* seam surfaces"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Paired with runtime generated drift paths.",
       "pain": "Runtime generated surfaces must not become source authority.",
@@ -527,7 +527,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_runtime_guardrails.py",
+      "path": "scripts/runtime/build_runtime_guardrails.py",
       "family": "risk/guardrail",
       "owner_surface": "scripts/skill_runtime_guardrails.py",
       "layer": "runtime-generated",
@@ -541,7 +541,7 @@
         "runtime guardrail manifests and examples"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Complements runtime seam build.",
       "pain": "Guardrail examples can drift from source policy.",
@@ -550,7 +550,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/run_skills_ref_validation.py",
+      "path": "scripts/validation/run_skills_ref_validation.py",
       "family": "portable export/runtime",
       "owner_surface": "mechanics/audit/docs/SKILLS_REF_VALIDATION.md",
       "layer": "export",
@@ -564,7 +564,7 @@
         "portable skills ref validation result"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Validates export refs after build/lint stages.",
       "pain": "Ref validation should remain source-linked.",
@@ -573,7 +573,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/build_openai_yaml_examples.py",
+      "path": "scripts/adapters/build_openai_yaml_examples.py",
       "family": "portable export/runtime",
       "owner_surface": "mechanics/boundary-bridge/examples/skill_mcp_wiring.map.json",
       "layer": "generated-example",
@@ -587,7 +587,7 @@
         "generated openai.yaml examples"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Release-support example check only.",
       "pain": "Adapter examples should stay adapter-specific.",
@@ -596,7 +596,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/validate_skill_mcp_wiring.py",
+      "path": "scripts/validation/validate_skill_mcp_wiring.py",
       "family": "portable export/runtime",
       "owner_surface": "mechanics/boundary-bridge/docs/LAYER_POSITION.md",
       "layer": "manual-adapter",
@@ -620,7 +620,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/verify_skill_pack.py",
+      "path": "scripts/bundles/verify_skill_pack.py",
       "family": "portable export/runtime",
       "owner_surface": "mechanics/release-support/docs/INSTALL_AND_PROFILES.md",
       "layer": "export",
@@ -633,7 +633,7 @@
         "skill pack verification report"
       ],
       "callers": [
-        "scripts/smoke_skill_pack_handoff.py",
+        "scripts/bundles/smoke_skill_pack_handoff.py",
         "manual use"
       ],
       "overlap": "Install-side companion to packaging smoke.",
@@ -643,7 +643,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/smoke_skill_pack_handoff.py",
+      "path": "scripts/bundles/smoke_skill_pack_handoff.py",
       "family": "release/ci",
       "owner_surface": "mechanics/release-support/docs/RELEASING.md",
       "layer": "release-packaging",
@@ -657,7 +657,7 @@
         "packaging smoke report"
       ],
       "callers": [
-        "scripts/release_check.py --include-packaging-smoke"
+        "scripts/lanes/release_check.py --include-packaging-smoke"
       ],
       "overlap": "Exercises stage/install/verify after release lane.",
       "pain": "Expensive enough to stay release-facing.",
@@ -666,7 +666,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/report_skill_evaluation.py",
+      "path": "scripts/reports/report_skill_evaluation.py",
       "family": "skill-native eval",
       "owner_surface": "mechanics/audit/docs/EVALUATION_PATH.md",
       "layer": "advisory/source",
@@ -691,7 +691,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/audit_skill_quality.py",
+      "path": "scripts/audit/audit_skill_quality.py",
       "family": "advisory audit/report",
       "owner_surface": "mechanics/audit/docs/AUDIT_CONTRACT.md",
       "layer": "advisory",
@@ -715,7 +715,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/report_skill_boundaries.py",
+      "path": "scripts/reports/report_skill_boundaries.py",
       "family": "advisory audit/report",
       "owner_surface": "tests/test_report_skill_boundaries.py",
       "layer": "advisory",
@@ -738,7 +738,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/report_skill_promotion_pressure.py",
+      "path": "scripts/reports/report_skill_promotion_pressure.py",
       "family": "advisory audit/report",
       "owner_surface": "mechanics/method-growth/docs/PROMOTION_PRESSURE.md",
       "layer": "advisory/live-workspace",
@@ -762,7 +762,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/audit_workspace_skill_adoption.py",
+      "path": "scripts/audit/audit_workspace_skill_adoption.py",
       "family": "advisory audit/report",
       "owner_surface": "mechanics/release-support/docs/CODEX_PORTABLE_LAYER.md",
       "layer": "live-workspace",
@@ -786,7 +786,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/report_technique_drift.py",
+      "path": "scripts/reports/report_technique_drift.py",
       "family": "advisory audit/report",
       "owner_surface": "mechanics/boundary-bridge/docs/LAYER_POSITION.md",
       "layer": "sibling-bridge",
@@ -810,7 +810,7 @@
       "status": "active"
     },
     {
-      "path": "scripts/run_skill_reality_trials.py",
+      "path": "scripts/audit/run_skill_reality_trials.py",
       "family": "advisory audit/report",
       "owner_surface": "mechanics/audit/docs/AUDIT_CONTRACT.md",
       "layer": "live-workspace",
@@ -841,13 +841,13 @@
       "mode": "blocking",
       "inputs": [
         ".agents/spark lane files",
-        "config/validation_lanes.json via scripts/validation_lanes.py"
+        "config/validation_lanes.json via scripts/lanes/validation_lanes.py"
       ],
       "outputs": [
         "Spark lane validation verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Validates Spark lane against release command semantics.",
       "pain": "Must not parse release_check.py text.",
@@ -869,7 +869,7 @@
         "generated/agon_skill_binding_candidates.min.json"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Mechanic-local generated companion.",
       "pain": "Should stay mechanic-local, not root validator sprawl.",
@@ -891,7 +891,7 @@
         "Agon binding candidate validation verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Mechanic-local generated companion validator.",
       "pain": "Should not move into root script namespace.",
@@ -913,7 +913,7 @@
         "generated/agon_epistemic_skill_candidates.min.json"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Mechanic-local generated companion.",
       "pain": "Should stay mechanic-local.",
@@ -935,7 +935,7 @@
         "Agon epistemic candidate validation verdict"
       ],
       "callers": [
-        "scripts/validation_lanes.py"
+        "scripts/lanes/validation_lanes.py"
       ],
       "overlap": "Mechanic-local generated companion validator.",
       "pain": "Should not move into root script namespace.",
