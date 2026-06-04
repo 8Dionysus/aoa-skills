@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "owner": "scripts/validate_agent_skills.py",
+  "owner": "scripts/validation/validate_agent_skills.py",
   "profiles": {
     "export": "codex-facing-wave-3",
     "runtime": "codex-facing-wave-4-runtime-seam",

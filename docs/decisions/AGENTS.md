@@ -47,11 +47,11 @@ Full lane command sequences live in `config/validation_lanes.json`; this local c
 Run:
 
 ```bash
-python scripts/generate_decision_indexes.py --check
+PYTHONPATH=scripts python scripts/decisions/generate_decision_indexes.py --check
 git diff --check
 ```
 
-When decision metadata changes, run `python scripts/generate_decision_indexes.py`
+When decision metadata changes, run `PYTHONPATH=scripts python scripts/decisions/generate_decision_indexes.py`
 before the `--check` form.
 
 If the decision changes a validated surface, run that surface's validator too.

@@ -1,4 +1,5 @@
 import json
+import os
 import pathlib
 import subprocess
 import sys
@@ -7,6 +8,15 @@ import unittest
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
+SCRIPTS_ROOT = REPO_ROOT / "scripts"
+
+
+def command_env() -> dict[str, str]:
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH")
+    scripts_root = str(SCRIPTS_ROOT)
+    env["PYTHONPATH"] = scripts_root if not existing else f"{scripts_root}{os.pathsep}{existing}"
+    return env
 
 
 def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
@@ -16,6 +26,7 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
         text=True,
         capture_output=True,
         check=False,
+        env=command_env(),
     )
 
 
@@ -24,7 +35,7 @@ class RuntimeSeamToolchainTests(unittest.TestCase):
         completed = run_command(
             [
                 sys.executable,
-                "scripts/build_runtime_seam.py",
+                "scripts/runtime/build_runtime_seam.py",
                 "--repo-root",
                 ".",
                 "--check",

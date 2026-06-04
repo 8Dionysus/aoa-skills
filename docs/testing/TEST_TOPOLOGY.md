@@ -31,11 +31,11 @@ Test files are not command authority. Blocking lane sequences live in
 
 | Family | Protects | Owner Source | Lane | Failure Route |
 |---|---|---|---|---|
-| `source/skill-contract` | `skills/**/SKILL.md`, frontmatter, technique manifests, source bundle rules. | `scripts/validate_skills.py` | `source` | Fix authored skill source or source validator before changing generated output. |
+| `source/skill-contract` | `skills/**/SKILL.md`, frontmatter, technique manifests, source bundle rules. | `scripts/validation/validate_skills.py` | `source` | Fix authored skill source or source validator before changing generated output. |
 | `source/questbook` | Questbook source shape and quest dispatch contracts. | `scripts/validation/validators/questbook_surface.py` | `source` | Fix questbook source, schema, or generated quest companion. |
-| `source/review-status` | reviewed/evaluated/canonical status, review evidence, overlay governance. | `docs/reviews/`, `scripts/validate_skills.py` | `source` | Fix review evidence, status, or governance lane truth. |
+| `source/review-status` | reviewed/evaluated/canonical status, review evidence, overlay governance. | `docs/reviews/`, `scripts/validation/validate_skills.py` | `source` | Fix review evidence, status, or governance lane truth. |
 | `skill-native-eval` | local fixture/snapshot evidence and deterministic evaluation matrix. | `tests/fixtures/skill_evaluation_cases.yaml`, `scripts/skill_model/skill_evaluation_contract.py` | `source` / `router` | Repair fixture, snapshot, or source bundle mismatch; do not widen into broad model evals. |
-| `generated/*` | catalogs, public/read-models, governance, graph, overlay/profile, evaluation matrix. | `scripts/build_catalog.py` and generated-surface owners | `generated` | Move source or builder, regenerate, then require drift-free output. |
+| `generated/*` | catalogs, public/read-models, governance, graph, overlay/profile, evaluation matrix. | `scripts/builders/build_catalog.py` and generated-surface owners | `generated` | Move source or builder, regenerate, then require drift-free output. |
 | `router/*` | trigger, description-trigger, tiny-router, golden route, and trace posture contracts. | trigger/tiny-router builders and validators | `router` | Fix source trigger boundary or generated router companions. |
 | `export/*` | portable export, runtime seam, guardrails, support resources, packaging. | release-support builders and validators | `export` | Fix source/config/builder and rerun export or release lane. |
 | `AGENTS/route-law` | nested route-law shape and command-authority balance. | `AGENTS.md`, `DESIGN.AGENTS.md`, validator topology | `source` | Fix nearest route card or contract manifest. |

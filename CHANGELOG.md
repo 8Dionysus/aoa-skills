@@ -37,6 +37,8 @@ Tracking starts with the community-docs baseline for this repository.
   root ingress compatibility route.
 - A new `AOA-SK-D-0032` decision records the command-authority migration from
   root compatibility wrappers to script organ paths.
+- A new `AOA-SK-D-0033` decision records the root ingress closure, with a
+  strict evidenced allowlist and retired wrapper inventory.
 
 ### Changed
 
@@ -101,6 +103,10 @@ Tracking starts with the community-docs baseline for this repository.
   wrappers, while implementation and helper libraries live under organ
   directories such as `builders/`, `runtime/`, `bundles/`, `skill_model/`, and
   `validation/`.
+- Root script ingress has been squeezed from the broad compatibility layer down
+  to 13 public front doors for lanes, runtime/activation, and bundle handoff;
+  internal builder, validator, audit, report, refresh, receipt, adapter, and
+  skill-model tools now use organ paths.
 
 ### Fixed
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 import pathlib
 import shutil
 import subprocess
@@ -10,6 +11,15 @@ import unittest
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
+SCRIPTS_ROOT = REPO_ROOT / "scripts"
+
+
+def command_env() -> dict[str, str]:
+    env = os.environ.copy()
+    existing = env.get("PYTHONPATH")
+    scripts_root = str(SCRIPTS_ROOT)
+    env["PYTHONPATH"] = scripts_root if not existing else f"{scripts_root}{os.pathsep}{existing}"
+    return env
 
 
 def load_json(path: pathlib.Path):
@@ -23,8 +33,8 @@ def load_jsonl(path: pathlib.Path):
 class TinyRouterInputsTest(unittest.TestCase):
     def test_build_and_validate_live_repo(self) -> None:
         commands = [
-            [sys.executable, "scripts/build_tiny_router_inputs.py", "--repo-root", ".", "--check"],
-            [sys.executable, "scripts/validate_tiny_router_inputs.py", "--repo-root", "."],
+            [sys.executable, "scripts/builders/build_tiny_router_inputs.py", "--repo-root", ".", "--check"],
+            [sys.executable, "scripts/validation/validate_tiny_router_inputs.py", "--repo-root", "."],
         ]
         for command in commands:
             completed = subprocess.run(
@@ -33,6 +43,7 @@ class TinyRouterInputsTest(unittest.TestCase):
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
             self.assertEqual(
                 completed.returncode,
@@ -197,11 +208,12 @@ class TinyRouterInputsTest(unittest.TestCase):
             )
 
             completed = subprocess.run(
-                [sys.executable, "scripts/validate_tiny_router_inputs.py", "--repo-root", str(repo_root)],
+                [sys.executable, "scripts/validation/validate_tiny_router_inputs.py", "--repo-root", str(repo_root)],
                 cwd=REPO_ROOT,
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
 
         self.assertEqual(completed.returncode, 2, msg=completed.stdout + completed.stderr)

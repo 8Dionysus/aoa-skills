@@ -26,7 +26,7 @@ Config changes are behavior changes. Keep portable export rules explicit, do not
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-Run `python scripts/validate_skills.py`, the builder that consumes the changed config, and `python scripts/build_catalog.py --check` when catalog or export behavior can move.
+Run `PYTHONPATH=scripts python scripts/validation/validate_skills.py`, the builder that consumes the changed config, and `PYTHONPATH=scripts python scripts/builders/build_catalog.py --check` when catalog or export behavior can move.
 
 ## Closeout
 

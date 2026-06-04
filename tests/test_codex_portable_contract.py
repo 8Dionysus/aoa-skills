@@ -5,6 +5,8 @@ import sys
 import tempfile
 import unittest
 
+from tests.support.cli import command_env
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = REPO_ROOT / "scripts"
@@ -387,6 +389,7 @@ class CodexPortableContractTests(unittest.TestCase):
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
             self.assertEqual(
                 completed.returncode,
@@ -407,7 +410,7 @@ class CodexPortableContractTests(unittest.TestCase):
             completed = subprocess.run(
                 [
                     sys.executable,
-                    "scripts/build_agent_skills.py",
+                    "scripts/export/build_agent_skills.py",
                     "--repo-root",
                     ".",
                     "--output-root",
@@ -417,6 +420,7 @@ class CodexPortableContractTests(unittest.TestCase):
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
 
             self.assertNotEqual(completed.returncode, 0)

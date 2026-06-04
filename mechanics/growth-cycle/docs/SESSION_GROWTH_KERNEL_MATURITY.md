@@ -87,7 +87,7 @@ The shared reviewed closeout source for this slice is:
 The shared kernel contract remains:
 
 - `config/project_core_skill_kernel.json`
-- `scripts/publish_core_skill_receipts.py`
+- `scripts/receipts/publish_core_skill_receipts.py`
 
 A generated kernel-maturity summary is intentionally deferred until the repo
 has a builder for it. The source-authored doc and examples remain the live

@@ -8,7 +8,10 @@ import sys
 import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-PUBLISH_SCRIPT_PATH = REPO_ROOT / "scripts" / "publish_core_skill_receipts.py"
+SCRIPTS_DIR = REPO_ROOT / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+PUBLISH_SCRIPT_PATH = REPO_ROOT / "scripts" / "receipts" / "publish_core_skill_receipts.py"
 
 PACKET_PATHS = {
     "decision_fork": "mechanics/growth-cycle/examples/session-growth-artifacts/decision_fork.kernel-maturity.json",

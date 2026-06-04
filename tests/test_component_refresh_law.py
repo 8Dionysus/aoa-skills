@@ -98,15 +98,15 @@ class ComponentRefreshLawTests(unittest.TestCase):
         self.assertEqual(refresh_window["open_window_days"], 5)
 
         routes = payload["refresh_routes"]
-        self.assertIn("python scripts/build_catalog.py --check", routes["check"])
-        self.assertIn("python scripts/build_catalog.py", routes["execute"])
+        self.assertIn("PYTHONPATH=scripts python scripts/builders/build_catalog.py --check", routes["check"])
+        self.assertIn("PYTHONPATH=scripts python scripts/builders/build_catalog.py", routes["execute"])
         self.assertIn(
-            "python scripts/validate_agent_skills.py --repo-root .",
+            "PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .",
             routes["validate"],
         )
 
         proof_commands = set(payload["proof_commands"])
-        self.assertIn("python scripts/build_catalog.py --check", proof_commands)
+        self.assertIn("PYTHONPATH=scripts python scripts/builders/build_catalog.py --check", proof_commands)
         self.assertIn("python -m pytest -q tests", proof_commands)
 
         for signal in payload["drift_signals"]:

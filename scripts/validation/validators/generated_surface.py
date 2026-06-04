@@ -237,14 +237,14 @@ def validate_generated_catalogs(
             issues.append(
                 ValidationIssue(
                     relative_location(full_path),
-                    "generated catalog is out of date; run python scripts/build_catalog.py",
+                    "generated catalog is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         if min_text is not None and min_text != expected_min_text:
             issues.append(
                 ValidationIssue(
                     relative_location(min_path),
-                    "generated catalog is out of date; run python scripts/build_catalog.py",
+                    "generated catalog is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         return issues
@@ -299,14 +299,14 @@ def validate_generated_catalogs(
             issues.append(
                 ValidationIssue(
                     full_location,
-                    f"generated catalog entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                    f"generated catalog entry for '{skill_name}' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         if actual_min_entry != expected_min_entry:
             issues.append(
                 ValidationIssue(
                     min_location,
-                    f"generated min catalog entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                    f"generated min catalog entry for '{skill_name}' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         projected_min_catalog_payload = project_min_catalog_safely(
@@ -480,7 +480,7 @@ def validate_generated_capsules(
             issues.append(
                 ValidationIssue(
                     relative_location(capsule_path),
-                    "generated capsules are out of date; run python scripts/build_catalog.py",
+                    "generated capsules are out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
     else:
@@ -518,7 +518,7 @@ def validate_generated_capsules(
                 issues.append(
                     ValidationIssue(
                         relative_location(capsule_path),
-                        f"generated capsule entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                        f"generated capsule entry for '{skill_name}' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                     )
                 )
 
@@ -669,7 +669,7 @@ def validate_generated_sections(
             issues.append(
                 ValidationIssue(
                     sections_location,
-                    "generated sections are out of date; run python scripts/build_catalog.py",
+                    "generated sections are out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
     else:
@@ -719,7 +719,7 @@ def validate_generated_sections(
                 issues.append(
                     ValidationIssue(
                         sections_location,
-                        f"generated section entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                        f"generated section entry for '{skill_name}' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                     )
                 )
 
@@ -848,14 +848,14 @@ def validate_generated_walkthroughs(
             issues.append(
                 ValidationIssue(
                     walkthrough_location,
-                    "generated walkthrough surface is out of date; run python scripts/build_catalog.py",
+                    "generated walkthrough surface is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         if walkthrough_markdown_text != expected_walkthrough_markdown_text:
             issues.append(
                 ValidationIssue(
                     walkthrough_markdown_location,
-                    "generated walkthrough markdown is out of date; run python scripts/build_catalog.py",
+                    "generated walkthrough markdown is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         return issues
@@ -892,7 +892,7 @@ def validate_generated_walkthroughs(
             issues.append(
                 ValidationIssue(
                     walkthrough_location,
-                    f"generated walkthrough entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                    f"generated walkthrough entry for '{skill_name}' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
 
@@ -1012,14 +1012,14 @@ def validate_generated_public_surface(
             issues.append(
                 ValidationIssue(
                     public_surface_location,
-                    "generated public surface is out of date; run python scripts/build_catalog.py",
+                    "generated public surface is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         if public_surface_markdown_text != expected_public_surface_markdown_text:
             issues.append(
                 ValidationIssue(
                     public_surface_markdown_location,
-                    "generated public surface markdown is out of date; run python scripts/build_catalog.py",
+                    "generated public surface markdown is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         return issues
@@ -1064,7 +1064,7 @@ def validate_generated_public_surface(
             issues.append(
                 ValidationIssue(
                     public_surface_location,
-                    f"generated public surface entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                    f"generated public surface entry for '{skill_name}' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         for cohort_name in cohort_names:
@@ -1074,7 +1074,7 @@ def validate_generated_public_surface(
                 issues.append(
                     ValidationIssue(
                         public_surface_location,
-                        f"generated public surface cohorts for '{skill_name}' are out of date; run python scripts/build_catalog.py",
+                        f"generated public surface cohorts for '{skill_name}' are out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                     )
                 )
                 break
@@ -1188,14 +1188,14 @@ def validate_generated_evaluation_matrix(
             issues.append(
                 ValidationIssue(
                     matrix_location,
-                    "generated evaluation matrix is out of date; run python scripts/build_catalog.py",
+                    "generated evaluation matrix is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         if matrix_markdown_text != expected_matrix_markdown_text:
             issues.append(
                 ValidationIssue(
                     matrix_markdown_location,
-                    "generated evaluation matrix markdown is out of date; run python scripts/build_catalog.py",
+                    "generated evaluation matrix markdown is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
         return issues
@@ -1232,7 +1232,7 @@ def validate_generated_evaluation_matrix(
             issues.append(
                 ValidationIssue(
                     matrix_location,
-                    f"generated evaluation matrix entry for '{skill_name}' is out of date; run python scripts/build_catalog.py",
+                    f"generated evaluation matrix entry for '{skill_name}' is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
 
@@ -1282,7 +1282,7 @@ def validate_generated_surface_from_spec(
             issues.append(
                 ValidationIssue(
                     location,
-                    f"generated {spec.key.replace('_', ' ')} artifact is out of date; run python scripts/build_catalog.py",
+                    f"generated {spec.key.replace('_', ' ')} artifact is out of date; run PYTHONPATH=scripts python scripts/builders/build_catalog.py",
                 )
             )
 

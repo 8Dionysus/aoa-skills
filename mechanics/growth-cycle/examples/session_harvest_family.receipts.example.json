@@ -295,7 +295,7 @@
       "approval_posture": "reviewed",
       "rollback_marker": "git:derived-visibility-handoff-pre-repair",
       "health_check_refs": [
-        "cmd:python scripts/validate_skills.py"
+        "cmd:PYTHONPATH=scripts python scripts/validation/validate_skills.py"
       ],
       "resolution_status": "resolved",
       "verification_artifact_count": 1,

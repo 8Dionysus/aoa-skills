@@ -139,14 +139,14 @@ class TestTopologyTests(unittest.TestCase):
     def test_tests_do_not_replay_release_validator_sequence(self) -> None:
         offenders: list[str] = []
         release_validator_names = {
-            "scripts/validate_agent_skills.py",
-            "scripts/validate_support_resources.py",
-            "scripts/validate_tiny_router_inputs.py",
-            "scripts/lint_trigger_evals.py",
-            "scripts/lint_description_trigger_evals.py",
-            "scripts/lint_pack_profiles.py",
-            "scripts/lint_support_resources.py",
-            "scripts/run_skills_ref_validation.py",
+            "scripts/validation/validate_agent_skills.py",
+            "scripts/validation/validate_support_resources.py",
+            "scripts/validation/validate_tiny_router_inputs.py",
+            "scripts/validation/lint_trigger_evals.py",
+            "scripts/validation/lint_description_trigger_evals.py",
+            "scripts/validation/lint_pack_profiles.py",
+            "scripts/validation/lint_support_resources.py",
+            "scripts/validation/run_skills_ref_validation.py",
         }
         allowed = {
             "tests/test_agentic_fault_boundaries.py",

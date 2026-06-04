@@ -7,6 +7,8 @@ import sys
 import tempfile
 import unittest
 
+from tests.support.cli import command_env
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -53,7 +55,7 @@ class WorkspaceSkillAdoptionAuditTests(unittest.TestCase):
             completed = subprocess.run(
                 [
                     sys.executable,
-                    "scripts/audit_workspace_skill_adoption.py",
+                    "scripts/audit/audit_workspace_skill_adoption.py",
                     "--repo-root",
                     ".",
                     "--workspace-root",
@@ -67,6 +69,7 @@ class WorkspaceSkillAdoptionAuditTests(unittest.TestCase):
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
             self.assertEqual(0, completed.returncode, msg=completed.stderr)
             report = json.loads(completed.stdout)
@@ -84,7 +87,7 @@ class WorkspaceSkillAdoptionAuditTests(unittest.TestCase):
             completed = subprocess.run(
                 [
                     sys.executable,
-                    "scripts/audit_workspace_skill_adoption.py",
+                    "scripts/audit/audit_workspace_skill_adoption.py",
                     "--repo-root",
                     ".",
                     "--workspace-root",
@@ -98,6 +101,7 @@ class WorkspaceSkillAdoptionAuditTests(unittest.TestCase):
                 text=True,
                 capture_output=True,
                 check=False,
+                env=command_env(),
             )
             self.assertEqual(0, completed.returncode, msg=completed.stderr)
             self.assertIn("This read-only report verifies", completed.stdout)

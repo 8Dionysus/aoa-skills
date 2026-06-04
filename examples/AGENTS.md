@@ -20,7 +20,7 @@ Examples must be public-safe, preserve schema-backed shape when a schema exists,
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-Run the nearest schema or builder check. For broad example drift, run `python scripts/validate_skills.py` and any package-local tests named by the owning mechanic.
+Run the nearest schema or builder check. For broad example drift, run `PYTHONPATH=scripts python scripts/validation/validate_skills.py` and any package-local tests named by the owning mechanic.
 
 ## Closeout
 

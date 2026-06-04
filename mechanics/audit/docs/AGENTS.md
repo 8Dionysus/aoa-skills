@@ -20,7 +20,7 @@ Do not soften blockers into suggestions unless the audit contract and validators
 
 Full lane command sequences live in `config/validation_lanes.json`; this local card may name only focused owner checks, lane ids, or the nearest route for the changed surface.
 
-`python scripts/report_skill_evaluation.py --fail-on-canonical-gaps` and `python scripts/audit_skill_quality.py --repo-root . --fail-on-blocked`.
+`PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py --fail-on-canonical-gaps` and `PYTHONPATH=scripts python scripts/audit/audit_skill_quality.py --repo-root . --fail-on-blocked`.
 
 ## Closeout
 

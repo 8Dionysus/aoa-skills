@@ -11,7 +11,7 @@ Using both together gives broader coverage.
 ## Files
 
 - `generated/skills_ref_validation_manifest.json`
-- `scripts/run_skills_ref_validation.py`
+- `scripts/validation/run_skills_ref_validation.py`
 
 ## Local install
 
@@ -19,13 +19,13 @@ Using both together gives broader coverage.
 git clone https://github.com/agentskills/agentskills.git /tmp/agentskills
 git -C /tmp/agentskills checkout 2e8b3265237b2e5f255d6e675f89ae83be572329
 python -m pip install -e /tmp/agentskills/skills-ref
-python scripts/run_skills_ref_validation.py --repo-root . --require-skills-ref
+PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root . --require-skills-ref
 ```
 
 You can also point the wrapper at an explicit executable:
 
 ```bash
-python scripts/run_skills_ref_validation.py --repo-root . --skills-ref-bin /path/to/skills-ref --require-skills-ref
+PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root . --skills-ref-bin /path/to/skills-ref --require-skills-ref
 ```
 
 ## CI stance

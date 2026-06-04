@@ -4,6 +4,8 @@ import subprocess
 import sys
 import unittest
 
+from tests.support.cli import command_env
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
 
@@ -13,7 +15,7 @@ class DescriptionTriggerBuilderTests(unittest.TestCase):
         completed = subprocess.run(
             [
                 sys.executable,
-                "scripts/build_description_trigger_evals.py",
+                "scripts/builders/build_description_trigger_evals.py",
                 "--repo-root",
                 ".",
                 "--check",
@@ -22,6 +24,7 @@ class DescriptionTriggerBuilderTests(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env=command_env(),
         )
         self.assertEqual(
             completed.returncode,

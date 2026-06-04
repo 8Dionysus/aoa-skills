@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "owner": "scripts/validate_nested_agents.py",
+  "owner": "scripts/validation/validate_nested_agents.py",
   "docs": [
     {
       "path": "config/AGENTS.md",
@@ -64,7 +64,7 @@
         "`mechanics/` owns skill-layer movement surfaces",
         "`skills/` owns executable skill content",
         "Package README cards use `Local owns`",
-        "`python scripts/validate_nested_agents.py`"
+        "`PYTHONPATH=scripts python scripts/validation/validate_nested_agents.py`"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "Audit package guidance",
         "skill-layer audit posture",
         "docs/AUDIT_CONTRACT.md",
-        "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps"
+        "PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py --fail-on-canonical-gaps"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Boundary-bridge package guidance",
         "skill-layer boundary bridges",
         "overlays/AGENTS.md",
-        "python scripts/validate_tiny_router_inputs.py --repo-root ."
+        "PYTHONPATH=scripts python scripts/validation/validate_tiny_router_inputs.py --repo-root ."
       ]
     },
     {
@@ -167,7 +167,7 @@
         "Experience package guidance",
         "adoption consent",
         "rollback",
-        "python scripts/validate_skills.py --fail-on-review-truth-sync"
+        "PYTHONPATH=scripts python scripts/validation/validate_skills.py --fail-on-review-truth-sync"
       ]
     },
     {
@@ -188,7 +188,7 @@
         "`techniques.yaml`",
         "`agents/openai.yaml`",
         "Do not add per-bundle `AGENTS.md` by default",
-        "`python scripts/validate_nested_agents.py`"
+        "`PYTHONPATH=scripts python scripts/validation/validate_nested_agents.py`"
       ]
     },
     {
@@ -197,8 +197,8 @@
         "# AGENTS.md",
         "Do not hand-author files in `generated/`",
         "`skill_catalog.json`",
-        "`python scripts/build_catalog.py`",
-        "`python scripts/build_catalog.py --check`"
+        "`PYTHONPATH=scripts python scripts/builders/build_catalog.py`",
+        "`PYTHONPATH=scripts python scripts/builders/build_catalog.py --check`"
       ]
     },
     {
@@ -208,7 +208,7 @@
         "`SKILL.template.md`",
         "`PROJECT_OVERLAY.template.md`",
         "Preserve placeholder intent",
-        "`python scripts/validate_skills.py`"
+        "`PYTHONPATH=scripts python scripts/validation/validate_skills.py`"
       ]
     },
     {

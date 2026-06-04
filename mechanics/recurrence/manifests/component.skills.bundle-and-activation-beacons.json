@@ -30,34 +30,34 @@
     "SKILL_INDEX.md"
   ],
   "proof_surfaces": [
-    "python scripts/build_catalog.py --check",
-    "python scripts/validate_skills.py --fail-on-review-truth-sync",
-    "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps",
-    "python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift",
-    "python scripts/validate_agent_skills.py --repo-root .",
-    "python scripts/validate_support_resources.py --repo-root . --check-portable",
-    "python scripts/validate_tiny_router_inputs.py --repo-root .",
+    "PYTHONPATH=scripts python scripts/builders/build_catalog.py --check",
+    "PYTHONPATH=scripts python scripts/validation/validate_skills.py --fail-on-review-truth-sync",
+    "PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py --fail-on-canonical-gaps",
+    "PYTHONPATH=scripts python scripts/reports/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift",
+    "PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .",
+    "PYTHONPATH=scripts python scripts/validation/validate_support_resources.py --repo-root . --check-portable",
+    "PYTHONPATH=scripts python scripts/validation/validate_tiny_router_inputs.py --repo-root .",
     "python -m pytest -q tests"
   ],
   "refresh_routes": [
     {
       "action": "revalidate",
       "commands": [
-        "python scripts/build_catalog.py --check",
-        "python scripts/validate_skills.py --fail-on-review-truth-sync",
-        "python scripts/report_skill_evaluation.py --fail-on-canonical-gaps",
-        "python scripts/validate_agent_skills.py --repo-root .",
-        "python scripts/validate_support_resources.py --repo-root . --check-portable",
-        "python scripts/validate_tiny_router_inputs.py --repo-root ."
+        "PYTHONPATH=scripts python scripts/builders/build_catalog.py --check",
+        "PYTHONPATH=scripts python scripts/validation/validate_skills.py --fail-on-review-truth-sync",
+        "PYTHONPATH=scripts python scripts/reports/report_skill_evaluation.py --fail-on-canonical-gaps",
+        "PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .",
+        "PYTHONPATH=scripts python scripts/validation/validate_support_resources.py --repo-root . --check-portable",
+        "PYTHONPATH=scripts python scripts/validation/validate_tiny_router_inputs.py --repo-root ."
       ],
       "notes": "keep canonical skill bundles, trigger suites, and export surfaces aligned"
     },
     {
       "action": "repair",
       "commands": [
-        "python scripts/build_catalog.py --check",
-        "python scripts/validate_skills.py --fail-on-review-truth-sync",
-        "python scripts/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift"
+        "PYTHONPATH=scripts python scripts/builders/build_catalog.py --check",
+        "PYTHONPATH=scripts python scripts/validation/validate_skills.py --fail-on-review-truth-sync",
+        "PYTHONPATH=scripts python scripts/reports/report_technique_drift.py --techniques-repo ../aoa-techniques --fail-on-drift"
       ],
       "notes": "repair bundle or trigger drift before widening activation authority"
     }

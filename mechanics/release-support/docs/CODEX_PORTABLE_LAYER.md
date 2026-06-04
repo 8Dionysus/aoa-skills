@@ -102,7 +102,7 @@ retention easier without becoming a new authoring layer.
   verifies one staged bundle or ZIP handoff as one repo-local flow.
 - `scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` remain the
   lower-level advanced path when install and verification need to stay separate.
-`scripts/audit_workspace_skill_adoption.py` is the read-only workspace pass over
+`scripts/audit/audit_workspace_skill_adoption.py` is the read-only workspace pass over
 the same profile verification contract: it checks root and repo install
 surfaces before rollout, but it does not install, approve, or accept skills for
 downstream owners.
@@ -162,7 +162,7 @@ These files remain skill-derived compression surfaces only. They are not routing
 policy authority and they must not turn `aoa-skills` into a second router canon.
 
 Those files describe canonical `skills/**/{scripts,references,assets}` resources and their bridge back to existing AoA support dirs.
-The portable export still stays generated from canonical skill roots; `scripts/build_support_resources.py` records the support layer, but it does not become a second portable-sync authority.
+The portable export still stays generated from canonical skill roots; `scripts/builders/build_support_resources.py` records the support layer, but it does not become a second portable-sync authority.
 
 ## Release verification
 
@@ -184,11 +184,11 @@ It intentionally keeps three things separate:
 
 Rebuild the portable layer from repo root:
 
-    python scripts/build_agent_skills.py --repo-root .
+    PYTHONPATH=scripts python scripts/export/build_agent_skills.py --repo-root .
 
 Validate the result:
 
-    python scripts/validate_agent_skills.py --repo-root .
+    PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .
 
 Verify one installed profile/root against the current export:
 
@@ -196,7 +196,7 @@ Verify one installed profile/root against the current export:
 
 Audit real workspace and repo install roots before rollout:
 
-    python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
+    PYTHONPATH=scripts python scripts/audit/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
 
 Stage one profile-scoped handoff bundle:
 
@@ -223,43 +223,43 @@ Keep `scripts/install_skill_pack.py` and `scripts/verify_skill_pack.py` for the 
 
 Lint the policy-aware trigger dataset:
 
-    python scripts/lint_trigger_evals.py --repo-root .
+    PYTHONPATH=scripts python scripts/validation/lint_trigger_evals.py --repo-root .
 
 Lint pack-profile authoring:
 
-    python scripts/lint_pack_profiles.py --repo-root .
+    PYTHONPATH=scripts python scripts/validation/lint_pack_profiles.py --repo-root .
 
 Build the runtime seam:
 
-    python scripts/build_runtime_seam.py --repo-root .
+    PYTHONPATH=scripts python scripts/runtime/build_runtime_seam.py --repo-root .
 
 Build the runtime guardrails:
 
-    python scripts/build_runtime_guardrails.py --repo-root .
+    PYTHONPATH=scripts python scripts/runtime/build_runtime_guardrails.py --repo-root .
 
 Build the description-trigger suite:
 
-    python scripts/build_description_trigger_evals.py --repo-root .
+    PYTHONPATH=scripts python scripts/builders/build_description_trigger_evals.py --repo-root .
 
 Build the support-resource manifests:
 
-    python scripts/build_support_resources.py --repo-root .
+    PYTHONPATH=scripts python scripts/builders/build_support_resources.py --repo-root .
 
 Lint the description-trigger suite:
 
-    python scripts/lint_description_trigger_evals.py --repo-root .
+    PYTHONPATH=scripts python scripts/validation/lint_description_trigger_evals.py --repo-root .
 
 Validate the support-resource bridge:
 
-    python scripts/validate_support_resources.py --repo-root . --check-portable
+    PYTHONPATH=scripts python scripts/validation/validate_support_resources.py --repo-root . --check-portable
 
 Lint the support-resource bridge:
 
-    python scripts/lint_support_resources.py --repo-root .
+    PYTHONPATH=scripts python scripts/validation/lint_support_resources.py --repo-root .
 
 Run the soft standards-conformance wrapper:
 
-    python scripts/run_skills_ref_validation.py --repo-root .
+    PYTHONPATH=scripts python scripts/validation/run_skills_ref_validation.py --repo-root .
 
 Inspect one activated raw runtime-seam payload:
 

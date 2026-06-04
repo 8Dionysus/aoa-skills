@@ -26,6 +26,17 @@ def root_ingress_paths(inventory: dict) -> set[str]:
     return paths
 
 
+def root_ingress_allowlist_paths(inventory: dict) -> set[str]:
+    paths: set[str] = set()
+    for group in inventory["root_ingress_allowlist"]:
+        paths.update(group["paths"])
+    return paths
+
+
+def retired_root_ingress_paths(inventory: dict) -> set[str]:
+    return {entry["path"] for entry in inventory["retired_root_ingress"]}
+
+
 def ingress_target(path: Path) -> str:
     match = INGRESS_RE.search(path.read_text(encoding="utf-8"))
     assert match, f"{path.relative_to(REPO_ROOT).as_posix()} does not expose a target"
@@ -55,13 +66,14 @@ def test_script_topology_doc_names_root_ingress_and_organs() -> None:
 
 def test_root_python_files_are_only_registered_ingress() -> None:
     inventory = load_inventory()
-    expected_root = root_ingress_paths(inventory) | {"scripts/_ingress.py"}
+    expected_root = root_ingress_allowlist_paths(inventory) | {"scripts/_ingress.py"}
     actual_root = {
         path.relative_to(REPO_ROOT).as_posix()
         for path in SCRIPTS_DIR.glob("*.py")
     }
 
     assert actual_root == expected_root
+    assert root_ingress_paths(inventory) == root_ingress_allowlist_paths(inventory)
 
     for rel_path in sorted(root_ingress_paths(inventory)):
         path = REPO_ROOT / rel_path
@@ -70,6 +82,47 @@ def test_root_python_files_are_only_registered_ingress() -> None:
         assert len(text.splitlines()) <= 4
         target = ingress_target(path)
         assert target_module_path(target).is_file(), target
+
+
+def test_root_ingress_allowlist_has_evidence_and_retirement_route() -> None:
+    inventory = load_inventory()
+    seen: set[str] = set()
+
+    for group in inventory["root_ingress_allowlist"]:
+        assert group["decision"] in {"keep", "migrate-first"}
+        assert group["paths"], group
+        assert group["owner_surface"], group
+        assert group["reason"], group
+        assert group["downstream_evidence"], group
+        assert group["retirement_condition"], group
+
+        owner_surface = REPO_ROOT / group["owner_surface"]
+        assert owner_surface.exists(), group["owner_surface"]
+        for evidence in group["downstream_evidence"]:
+            if "*" in evidence:
+                assert list(REPO_ROOT.glob(evidence)), evidence
+            else:
+                assert (REPO_ROOT / evidence).exists(), evidence
+
+        for rel_path in group["paths"]:
+            assert rel_path not in seen, rel_path
+            seen.add(rel_path)
+            path = REPO_ROOT / rel_path
+            assert path.is_file(), rel_path
+            assert target_module_path(ingress_target(path)).is_file(), rel_path
+
+
+def test_retired_root_ingress_is_absent_but_target_remains() -> None:
+    inventory = load_inventory()
+    active = root_ingress_paths(inventory)
+
+    for entry in inventory["retired_root_ingress"]:
+        rel_path = entry["path"]
+        assert rel_path not in active, rel_path
+        assert not (REPO_ROOT / rel_path).exists(), rel_path
+        assert (REPO_ROOT / entry["target"]).is_file(), entry
+        assert entry["reason"], entry
+        assert entry["retired_by"], entry
 
 
 def test_inventory_organ_dirs_cover_all_implementation_scripts() -> None:

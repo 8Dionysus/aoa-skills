@@ -75,9 +75,9 @@ If `generated/local_adapter_manifest.min.json` already advertises
 
 Use these layers together:
 
-- `python scripts/build_agent_skills.py --repo-root .`
-- `python scripts/validate_agent_skills.py --repo-root .`
-- `python scripts/validate_skill_mcp_wiring.py --workspace-config /path/to/.codex/config.toml`
+- `PYTHONPATH=scripts python scripts/export/build_agent_skills.py --repo-root .`
+- `PYTHONPATH=scripts python scripts/validation/validate_agent_skills.py --repo-root .`
+- `PYTHONPATH=scripts python scripts/validation/validate_skill_mcp_wiring.py --workspace-config /path/to/.codex/config.toml`
 
 ## Suggested merge path
 

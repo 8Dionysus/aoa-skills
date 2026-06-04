@@ -46,14 +46,14 @@ NON_AGENTS_COMMAND_BLOCK_ALLOWED_FILES = {
     "mechanics/release-support/docs/LOCAL_ADAPTER_CONTRACT.md",
     "mechanics/release-support/docs/RUNTIME_GOVERNANCE_LAYER.md",
 }
-THIN_ROOT_INGRESS = (
-    "scripts/validate_agent_skills.py",
-    "scripts/validate_tiny_router_inputs.py",
-    "scripts/validate_support_resources.py",
-    "scripts/lint_trigger_evals.py",
-    "scripts/lint_description_trigger_evals.py",
-    "scripts/lint_pack_profiles.py",
-    "scripts/lint_support_resources.py",
+THIN_VALIDATION_CLI_ADAPTERS = (
+    "scripts/validation/validate_agent_skills.py",
+    "scripts/validation/validate_tiny_router_inputs.py",
+    "scripts/validation/validate_support_resources.py",
+    "scripts/validation/lint_trigger_evals.py",
+    "scripts/validation/lint_description_trigger_evals.py",
+    "scripts/validation/lint_pack_profiles.py",
+    "scripts/validation/lint_support_resources.py",
 )
 OWNER_MODULE_LIMITS = {
     "scripts/validation/validators/agent_skills_project_surface.py": 180,
@@ -150,7 +150,7 @@ class ValidatorTopologyTests(unittest.TestCase):
         self.assertEqual(tuple(manifest["single_commands"]["packaging_smoke"]), validation_lanes.PACKAGING_SMOKE_COMMAND)
 
         loader_text = (SCRIPTS_DIR / "validation_lanes.py").read_text(encoding="utf-8")
-        self.assertNotIn("scripts/build_agent_skills.py", loader_text)
+        self.assertNotIn("scripts/export/build_agent_skills.py", loader_text)
         self.assertNotIn("generated/runtime_discovery_index.json", loader_text)
 
     def test_validation_lanes_root_ingress_is_safe_manifest_cli(self) -> None:
@@ -247,13 +247,13 @@ class ValidatorTopologyTests(unittest.TestCase):
         missing = sorted(discovered - inventory_paths)
         self.assertEqual([], missing)
 
-    def test_known_root_validation_ingress_stays_thin(self) -> None:
-        for rel_path in THIN_ROOT_INGRESS:
+    def test_validation_cli_adapters_stay_thin(self) -> None:
+        for rel_path in THIN_VALIDATION_CLI_ADAPTERS:
             with self.subTest(path=rel_path):
                 text = (REPO_ROOT / rel_path).read_text(encoding="utf-8")
                 self.assertLessEqual(len(text.splitlines()), 40)
-                self.assertIn("from _ingress import expose", text)
-                self.assertIn('expose("validation.', text)
+                self.assertIn("from validation.validators.", text)
+                self.assertIn("raise SystemExit(main())", text)
 
     def test_retired_semantic_agents_validator_stays_folded(self) -> None:
         self.assertFalse((SCRIPTS_DIR / "validate_semantic_agents.py").exists())

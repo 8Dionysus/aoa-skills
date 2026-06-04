@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "owner": "scripts/validate_skills.py",
+  "owner": "scripts/validation/validate_skills.py",
   "surface_paths": {
     "questbook": "QUESTBOOK.md",
     "integration": "mechanics/questbook/docs/QUESTBOOK_SKILL_INTEGRATION.md",

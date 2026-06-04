@@ -9,8 +9,8 @@ Validation commands use a hybrid authority model:
   manifest-inspection CLI. Neither path may grow a second copy of lane
   sequences.
 - Blocking lane sequences should name implementation modules under their
-  script organ directories. Root `scripts/*.py` wrappers are compatibility
-  front doors, not command-authority owners.
+  script organ directories. Only allowlisted root `scripts/*.py` wrappers are
+  compatibility front doors; they are not command-authority owners.
 - Nearest `AGENTS.md` cards may name focused owner checks, lane ids, and local
   next routes for the changed surface.
 - GitHub workflow YAML should call `scripts/lanes/ci_gate.py --mode ...` or the

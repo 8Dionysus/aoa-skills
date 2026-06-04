@@ -30,7 +30,7 @@ class SkillsRefValidationTests(unittest.TestCase):
         completed = self.run_command(
             [
                 sys.executable,
-                "scripts/run_skills_ref_validation.py",
+                "scripts/validation/run_skills_ref_validation.py",
                 "--repo-root",
                 ".",
                 "--format",
@@ -66,7 +66,7 @@ class SkillsRefValidationTests(unittest.TestCase):
             completed = self.run_command(
                 [
                     sys.executable,
-                    "scripts/run_skills_ref_validation.py",
+                    "scripts/validation/run_skills_ref_validation.py",
                     "--repo-root",
                     ".",
                     "--skills-ref-bin",

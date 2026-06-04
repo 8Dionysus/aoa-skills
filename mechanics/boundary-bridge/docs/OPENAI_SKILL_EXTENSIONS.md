@@ -23,7 +23,7 @@ For named MCP dependency wiring in this repository:
 
 - keep `skills/**/agents/openai.yaml` policy-only
 - author generated-export MCP dependencies here
-- rebuild `.agents/skills/*/agents/openai.yaml` through `scripts/build_agent_skills.py`
+- rebuild `.agents/skills/*/agents/openai.yaml` through `scripts/export/build_agent_skills.py`
 - use `mechanics/boundary-bridge/docs/CODEX_SKILL_MCP_WIRING.md` for the workspace-facing discipline and example route families
 
 ## Shape

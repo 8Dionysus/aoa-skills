@@ -34,7 +34,7 @@ The report is evidence and queue pressure, not canonical authority.
 Generate the local readout with:
 
 ```bash
-python scripts/report_skill_promotion_pressure.py \
+PYTHONPATH=scripts python scripts/reports/report_skill_promotion_pressure.py \
   --repo-root . \
   --workspace-root /srv/AbyssOS \
   --write-json generated/skill_promotion_pressure.json \
@@ -46,7 +46,7 @@ For a fast deterministic check without local transcript, hook, or dispatch
 scans, use:
 
 ```bash
-python scripts/report_skill_promotion_pressure.py \
+PYTHONPATH=scripts python scripts/reports/report_skill_promotion_pressure.py \
   --repo-root . \
   --workspace-root /srv/AbyssOS \
   --skip-session-scan \

@@ -26,8 +26,8 @@ Use this route before editing validator code:
 1. Identify the owner surface.
 2. Check whether the input is source, generated, export/runtime, live workspace,
    or advisory evidence.
-3. Keep root `scripts/validate_*.py` and `scripts/lint_*.py` files as
-   compatibility CLI adapters only when a stable front-door path still matters.
+3. Put validation CLI entrypoints under `scripts/validation/`; do not add root
+   `scripts/validate_*.py` or `scripts/lint_*.py` wrappers.
 4. Put bulky deterministic execution in `scripts/validation/validators/*`.
 5. Put route-law or contract data in JSON manifests, not Python lists.
 6. Store blocking lane sequences in `config/validation_lanes.json`.
@@ -71,15 +71,17 @@ Use this route before editing validator code:
   `validate_semantic_agents.py` entrypoint remains.
 - Tiny-router, support-resource, trigger-eval, description-trigger,
   pack-profile, and support-resource lint execution now lives in owner modules
-  under `scripts/validation/validators/`; root files are CLI adapters.
+  under `scripts/validation/validators/`; validation CLI adapters live under
+  `scripts/validation/`, with no root validation wrapper layer.
 - `config/validation_lanes.json` is the source of CI command sequencing;
   `scripts/lanes/validation_lanes.py` is the loader/API, and root
   `scripts/validation_lanes.py` is compatibility ingress with safe manifest
   inspection.
-- Blocking lane sequences now execute organ implementation paths such as
-  `scripts/validation/validate_skills.py`, `scripts/builders/build_catalog.py`,
-  and `scripts/runtime/build_runtime_seam.py`; root wrappers are not active
-  command-authority owners.
+- Blocking lane sequences and active route cards now execute organ
+  implementation paths such as `scripts/validation/validate_skills.py`,
+  `scripts/builders/build_catalog.py`, and
+  `scripts/runtime/build_runtime_seam.py`; root validation, builder, report,
+  refresh, receipt, and adapter wrappers have been retired.
 
 ## Boundary
 

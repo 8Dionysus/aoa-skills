@@ -75,20 +75,20 @@ python scripts/verify_skill_pack.py --repo-root . --profile repo-core-only --bun
 Audit real workspace and repo install roots without installing anything:
 
 ```bash
-python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
-python scripts/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --write-json generated/workspace_skill_adoption_audit.json --write-markdown generated/workspace_skill_adoption_audit.md --format markdown
+PYTHONPATH=scripts python scripts/audit/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --format markdown
+PYTHONPATH=scripts python scripts/audit/audit_workspace_skill_adoption.py --repo-root . --workspace-root .. --profile repo-project-foundation --write-json generated/workspace_skill_adoption_audit.json --write-markdown generated/workspace_skill_adoption_audit.md --format markdown
 ```
 
 Render a disable snippet for a profile:
 
 ```bash
-python scripts/render_codex_config.py --repo-root . --profile repo-risk-explicit
+PYTHONPATH=scripts python scripts/adapters/render_codex_config.py --repo-root . --profile repo-risk-explicit
 ```
 
 Lint the profile authoring:
 
 ```bash
-python scripts/lint_pack_profiles.py --repo-root .
+PYTHONPATH=scripts python scripts/validation/lint_pack_profiles.py --repo-root .
 ```
 
 ## Verification posture
@@ -144,7 +144,7 @@ Use `install_skill_pack.py` plus `verify_skill_pack.py` directly when you want t
 
 ## Workspace adoption audit
 
-`scripts/audit_workspace_skill_adoption.py` is the read-only first pass before
+`scripts/audit/audit_workspace_skill_adoption.py` is the read-only first pass before
 workspace-wide rollout. It verifies a selected profile against:
 
 - the workspace root install surface, normally `/srv/AbyssOS/.agents/skills`

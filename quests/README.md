@@ -34,7 +34,7 @@ Each lane may contain `captured/`, `triaged/`, `ready/`, `active/`,
 |---|---|---|
 | `<lane>/<state>/AOA-SK-Q-*.yaml` | Rich `work_quest_v1` obligations. | YAML `state` must match the path state. |
 | `agon/<state>/AOS-Q-AGON-*.md` | Agon requested-skill notes. | Must not grant live Agon authority. |
-| `generated/quest_*.json` | Root-published read models built from source quests. | Rebuild with `scripts/build_catalog.py`; do not edit by hand. |
+| `generated/quest_*.json` | Root-published read models built from source quests. | Rebuild with `scripts/builders/build_catalog.py`; do not edit by hand. |
 
 ## Owner Route
 

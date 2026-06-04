@@ -25,7 +25,7 @@ Current evidence companions remain in:
 - `templates/SKILL_APPLICABILITY_MAP.template.md`
 - `mechanics/growth-cycle/templates/SESSION_CANDIDATE_HARVEST.template.md`
 - `config/project_core_skill_kernel.json`
-- `scripts/publish_core_skill_receipts.py`
+- `scripts/receipts/publish_core_skill_receipts.py`
 
 This package may route to those surfaces, but it does not turn evidence notes
 or examples into promotion truth.

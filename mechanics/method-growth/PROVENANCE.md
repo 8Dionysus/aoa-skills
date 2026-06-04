@@ -67,7 +67,7 @@ The lived-use promotion-pressure landing added a derived readout rather than a
 moved flat source doc:
 
 - `mechanics/method-growth/docs/PROMOTION_PRESSURE.md`
-- `scripts/report_skill_promotion_pressure.py`
+- `scripts/reports/report_skill_promotion_pressure.py`
 - `generated/skill_promotion_pressure.json`
 - `generated/skill_promotion_pressure.md`
 
